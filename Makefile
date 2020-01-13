@@ -1,7 +1,7 @@
-PROJECT_NAME := xyz Package
+PROJECT_NAME := Rancher2 Package
 include build/common.mk
 
-PACK             := xyz
+PACK             := rancher2
 PACKDIR          := sdk
 PROJECT          := github.com/pulumi/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
@@ -23,31 +23,6 @@ endif
 
 TESTPARALLELISM := 4
 
-OS := $(shell uname)
-EMPTY_TO_AVOID_SED := ""
-
-prepare::
-	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
-	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
-	@if test ! -d "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz"; then "Project already prepared"; exit 1; fi
-
-	mv "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-tfgen-${NAME}
-	mv "cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-resource-${NAME}
-
-	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-xyz,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-	# In MacOS the -i parameter needs an empty string to execute in place.
-	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-xyz,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-# NOTE: Since the plugin is published using the nodejs style semver version
-# We set the PLUGIN_VERSION to be the same as the version we use when building
-# the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
 build:: tfgen provider
 	for LANGUAGE in "nodejs" "python" "go" "dotnet" ; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
