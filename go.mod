@@ -1,12 +1,17 @@
-module github.com/pulumi/pulumi-xyz
+module github.com/pulumi/pulumi-rancher2
 
 go 1.13
 
-replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
+replace (
+	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
+	github.com/prometheus/prometheus => github.com/prometheus/prometheus v1.8.2-0.20190424153033-d3245f150225
+	k8s.io/client-go => k8s.io/client-go v12.0.0+incompatible
+)
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.4.1
+	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.8.0
 	github.com/pulumi/pulumi-terraform-bridge v1.5.2
-	github.com/stretchr/testify v1.4.1-0.20191106224347-f1bd0923b832
+	github.com/terraform-providers/terraform-provider-rancher2 v1.7.1
 )
