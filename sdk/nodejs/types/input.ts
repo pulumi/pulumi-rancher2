@@ -957,6 +957,10 @@ export interface ClusterRkeConfig {
      */
     sshAgentAuth?: pulumi.Input<boolean>;
     /**
+     * Cluster level SSH certificate path (string)
+     */
+    sshCertPath?: pulumi.Input<string>;
+    /**
      * Node SSH private key path (string)
      */
     sshKeyPath?: pulumi.Input<string>;
@@ -1515,6 +1519,10 @@ export interface ClusterRkeConfigDns {
 
 export interface ClusterRkeConfigIngress {
     /**
+     * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+     */
+    dnsPolicy?: pulumi.Input<string>;
+    /**
      * Extra arguments for scheduler service (map)
      */
     extraArgs?: pulumi.Input<{[key: string]: any}>;
@@ -1741,7 +1749,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     key?: pulumi.Input<string>;
     /**
-     * Path for etcd service (string)
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: pulumi.Input<string>;
     /**
@@ -1775,6 +1783,10 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      * S3 config options for etcd backup (list maxitems:1)
      */
     s3BackupConfig?: pulumi.Input<inputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig>;
+    /**
+     * Safe timestamp for etcd backup. Default: `false` (bool)
+     */
+    safeTimestamp?: pulumi.Input<boolean>;
 }
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -1810,9 +1822,21 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
 
 export interface ClusterRkeConfigServicesKubeApi {
     /**
+     * Admission configuration (map)
+     */
+    admissionConfiguration?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
      */
     alwaysPullImages?: pulumi.Input<boolean>;
+    /**
+     * K8s audit log configuration. (list maxitem: 1)
+     */
+    auditLog?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLog>;
+    /**
+     * K8s event rate limit configuration. (list maxitem: 1)
+     */
+    eventRateLimit?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiEventRateLimit>;
     /**
      * Extra arguments for scheduler service (map)
      */
@@ -1834,6 +1858,10 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     podSecurityPolicy?: pulumi.Input<boolean>;
     /**
+     * [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+     */
+    secretsEncryptionConfig?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig>;
+    /**
      * Service Cluster ip Range option for kube controller service (string)
      */
     serviceClusterIpRange?: pulumi.Input<string>;
@@ -1841,6 +1869,66 @@ export interface ClusterRkeConfigServicesKubeApi {
      * Service Node Port Range option for kube API service (string)
      */
     serviceNodePortRange?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigServicesKubeApiAuditLog {
+    /**
+     * Event rate limit configuration. (map)
+     */
+    configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
+    /**
+     * Audit log format. Default: 'json' (string)
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * Audit log max age. Default: `30` (int)
+     */
+    maxAge?: pulumi.Input<number>;
+    /**
+     * Audit log max backup. Default: `10` (int)
+     */
+    maxBackup?: pulumi.Input<number>;
+    /**
+     * Audit log max size. Default: `100` (int)
+     */
+    maxSize?: pulumi.Input<number>;
+    /**
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+     */
+    policy?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
+    /**
+     * Event rate limit configuration. (map)
+     */
+    configuration?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    /**
+     * Secrets encryption configuration. (map)
+     */
+    customConfig?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ClusterRkeConfigServicesKubeController {
@@ -1893,8 +1981,10 @@ export interface ClusterRkeConfigServicesKubelet {
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable or disable failing when swap on is not supported (bool)
+     * * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
      */
     failSwapOn?: pulumi.Input<boolean>;
+    generateServingCertificate?: pulumi.Input<boolean>;
     /**
      * Docker image for scheduler service (string)
      */
@@ -2072,6 +2162,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     privateRegistries?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry>[]>;
     services?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices>;
     sshAgentAuth?: pulumi.Input<boolean>;
+    sshCertPath?: pulumi.Input<string>;
     sshKeyPath?: pulumi.Input<string>;
 }
 
@@ -2267,6 +2358,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    dnsPolicy?: pulumi.Input<string>;
     extraArgs?: pulumi.Input<{[key: string]: any}>;
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     options?: pulumi.Input<{[key: string]: any}>;
@@ -2363,6 +2455,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     intervalHours?: pulumi.Input<number>;
     retention?: pulumi.Input<number>;
     s3BackupConfig?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig>;
+    safeTimestamp?: pulumi.Input<boolean>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -2376,14 +2469,51 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    admissionConfiguration?: pulumi.Input<{[key: string]: any}>;
     alwaysPullImages?: pulumi.Input<boolean>;
+    auditLog?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog>;
+    eventRateLimit?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit>;
     extraArgs?: pulumi.Input<{[key: string]: any}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
     podSecurityPolicy?: pulumi.Input<boolean>;
+    secretsEncryptionConfig?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig>;
     serviceClusterIpRange?: pulumi.Input<string>;
     serviceNodePortRange?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
+    configuration?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration>;
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
+    format?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<number>;
+    maxBackup?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
+    path?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+    configuration?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
@@ -2402,6 +2532,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     failSwapOn?: pulumi.Input<boolean>;
+    generateServingCertificate?: pulumi.Input<boolean>;
     image?: pulumi.Input<string>;
     infraContainerImage?: pulumi.Input<string>;
 }
@@ -2456,6 +2587,7 @@ export interface EtcdBackupBackupConfig {
      * S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
      */
     s3BackupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfigS3BackupConfig>;
+    safeTimestamp?: pulumi.Input<boolean>;
 }
 
 export interface EtcdBackupBackupConfigS3BackupConfig {
@@ -2632,6 +2764,25 @@ export interface NamespaceResourceQuotaLimit {
      * Limit for services node ports in namespace (string)
      */
     servicesNodePorts?: pulumi.Input<string>;
+}
+
+export interface NodePoolNodeTaint {
+    /**
+     * Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * Taint key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Taint time added (string)
+     */
+    timeAdded?: pulumi.Input<string>;
+    /**
+     * Taint value (string)
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface NodeTemplateAmazonec2Config {

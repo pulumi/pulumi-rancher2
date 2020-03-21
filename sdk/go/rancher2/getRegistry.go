@@ -9,11 +9,11 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 docker registry.
-// 
+//
 // Depending of the availability, there are 2 types of Rancher v2 docker registries:
 // - Project registry: Available to all namespaces in the `projectId`
 // - Namespaced registry: Available to just `namespaceId` in the `projectId`
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	var rv LookupRegistryResult

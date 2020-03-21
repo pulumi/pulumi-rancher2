@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 user
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
@@ -22,8 +22,12 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// Set is the user if the user is external. Default: `false` (bool)
+	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user (string)
-	Username string `pulumi:"username"`
+	Name *string `pulumi:"name"`
+	// The username of the user (string)
+	Username *string `pulumi:"username"`
 }
 
 
@@ -35,6 +39,7 @@ type LookupUserResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	IsExternal *bool `pulumi:"isExternal"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The user common name (string)

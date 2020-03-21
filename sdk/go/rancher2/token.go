@@ -11,13 +11,13 @@ import (
 )
 
 // Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
-// 
+//
 // There are 2 kind of tokens:
 // - no scoped: valid for global system.
 // - scoped: valid for just a specific cluster (`clusterId` should be provided).
-// 
+//
 // Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
 type Token struct {
 	pulumi.CustomResourceState

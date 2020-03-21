@@ -17,7 +17,7 @@ class MultiClusterApp(pulumi.CustomResource):
     answers: pulumi.Output[list]
     """
     The multi cluster app answers (list)
-    
+
       * `cluster_id` (`str`) - Cluster ID for answer (string)
       * `project_id` (`str`) - Project ID for target (string)
       * `values` (`dict`) - Key/values for answer (map)
@@ -33,7 +33,7 @@ class MultiClusterApp(pulumi.CustomResource):
     members: pulumi.Output[list]
     """
     The multi cluster app answers (list)
-    
+
       * `accessType` (`str`) - Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
       * `group_principal_id` (`str`) - Member group principal id (string)
       * `user_principal_id` (`str`) - Member user principal id (string)
@@ -57,7 +57,7 @@ class MultiClusterApp(pulumi.CustomResource):
     targets: pulumi.Output[list]
     """
     The multi cluster app target projects (list)
-    
+
       * `appId` (`str`) - App ID for target (string)
       * `healthState` (`str`) - App health state for target (string)
       * `project_id` (`str`) - Project ID for target (string)
@@ -78,9 +78,8 @@ class MultiClusterApp(pulumi.CustomResource):
     upgrade_strategy: pulumi.Output[dict]
     """
     The multi cluster app upgrade strategy (list MaxItems:1)
-    
+
       * `rollingUpdate` (`dict`) - Upgrade strategy rolling update (list MaxItems:1)
-    
         * `batchSize` (`float`) - Rolling update batch size. Default `1` (int)
         * `interval` (`float`) - Rolling update interval. Default `1` (int)
     """
@@ -91,7 +90,6 @@ class MultiClusterApp(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, answers=None, catalog_name=None, labels=None, members=None, name=None, revision_history_limit=None, revision_id=None, roles=None, targets=None, template_name=None, template_version=None, upgrade_strategy=None, wait=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a MultiClusterApp resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for multi cluster app object (map)
@@ -108,34 +106,31 @@ class MultiClusterApp(pulumi.CustomResource):
         :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
         :param pulumi.Input[dict] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
-        
+
         The **answers** object supports the following:
-        
+
           * `cluster_id` (`pulumi.Input[str]`) - Cluster ID for answer (string)
           * `project_id` (`pulumi.Input[str]`) - Project ID for target (string)
           * `values` (`pulumi.Input[dict]`) - Key/values for answer (map)
-        
+
         The **members** object supports the following:
-        
+
           * `accessType` (`pulumi.Input[str]`) - Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
           * `group_principal_id` (`pulumi.Input[str]`) - Member group principal id (string)
           * `user_principal_id` (`pulumi.Input[str]`) - Member user principal id (string)
-        
+
         The **targets** object supports the following:
-        
+
           * `appId` (`pulumi.Input[str]`) - App ID for target (string)
           * `healthState` (`pulumi.Input[str]`) - App health state for target (string)
           * `project_id` (`pulumi.Input[str]`) - Project ID for target (string)
           * `state` (`pulumi.Input[str]`) - App state for target (string)
-        
+
         The **upgrade_strategy** object supports the following:
-        
+
           * `rollingUpdate` (`pulumi.Input[dict]`) - Upgrade strategy rolling update (list MaxItems:1)
-        
             * `batchSize` (`pulumi.Input[float]`) - Rolling update batch size. Default `1` (int)
             * `interval` (`pulumi.Input[float]`) - Rolling update interval. Default `1` (int)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/multi_cluster_app.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -188,7 +183,7 @@ class MultiClusterApp(pulumi.CustomResource):
         """
         Get an existing MultiClusterApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -207,38 +202,36 @@ class MultiClusterApp(pulumi.CustomResource):
         :param pulumi.Input[str] template_version_id: (Computed) The multi cluster app template version ID (string)
         :param pulumi.Input[dict] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
-        
+
         The **answers** object supports the following:
-        
+
           * `cluster_id` (`pulumi.Input[str]`) - Cluster ID for answer (string)
           * `project_id` (`pulumi.Input[str]`) - Project ID for target (string)
           * `values` (`pulumi.Input[dict]`) - Key/values for answer (map)
-        
+
         The **members** object supports the following:
-        
+
           * `accessType` (`pulumi.Input[str]`) - Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
           * `group_principal_id` (`pulumi.Input[str]`) - Member group principal id (string)
           * `user_principal_id` (`pulumi.Input[str]`) - Member user principal id (string)
-        
+
         The **targets** object supports the following:
-        
+
           * `appId` (`pulumi.Input[str]`) - App ID for target (string)
           * `healthState` (`pulumi.Input[str]`) - App health state for target (string)
           * `project_id` (`pulumi.Input[str]`) - Project ID for target (string)
           * `state` (`pulumi.Input[str]`) - App state for target (string)
-        
+
         The **upgrade_strategy** object supports the following:
-        
+
           * `rollingUpdate` (`pulumi.Input[dict]`) - Upgrade strategy rolling update (list MaxItems:1)
-        
             * `batchSize` (`pulumi.Input[float]`) - Rolling update batch size. Default `1` (int)
             * `interval` (`pulumi.Input[float]`) - Rolling update interval. Default `1` (int)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/multi_cluster_app.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["answers"] = answers
         __props__["catalog_name"] = catalog_name

@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project_logging.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectLogging.html.markdown.
  */
 export class ProjectLogging extends pulumi.CustomResource {
     /**

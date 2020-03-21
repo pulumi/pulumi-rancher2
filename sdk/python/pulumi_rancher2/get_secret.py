@@ -13,7 +13,7 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, annotations=None, data=None, description=None, labels=None, name=None, namespace_id=None, project_id=None, id=None):
+    def __init__(__self__, annotations=None, data=None, description=None, id=None, labels=None, name=None, namespace_id=None, project_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -32,6 +32,12 @@ class GetSecretResult:
         """
         (Computed) A secret description (string)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -47,12 +53,6 @@ class GetSecretResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         __self__.project_id = project_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,27 +62,29 @@ class AwaitableGetSecretResult(GetSecretResult):
             annotations=self.annotations,
             data=self.data,
             description=self.description,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             namespace_id=self.namespace_id,
-            project_id=self.project_id,
-            id=self.id)
+            project_id=self.project_id)
 
 def get_secret(name=None,namespace_id=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 secret.
-    
+
     Depending of the availability, there are 2 types of Rancher v2 secrets:
     - Project secret: Available to all namespaces in the `project_id`
     - Namespaced secret: Available to just `namespace_id` in the `project_id`
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
+
+
     :param str name: The name of the secret (string)
     :param str namespace_id: The namespace id where to assign the namespaced secret (string)
     :param str project_id: The project id where to assign the secret (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['namespaceId'] = namespace_id
@@ -97,8 +99,8 @@ def get_secret(name=None,namespace_id=None,project_id=None,opts=None):
         annotations=__ret__.get('annotations'),
         data=__ret__.get('data'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         namespace_id=__ret__.get('namespaceId'),
-        project_id=__ret__.get('projectId'),
-        id=__ret__.get('id'))
+        project_id=__ret__.get('projectId'))

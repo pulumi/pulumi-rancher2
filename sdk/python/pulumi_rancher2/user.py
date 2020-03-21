@@ -38,9 +38,11 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, enabled=None, labels=None, name=None, password=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
-        
+
         When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/user.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
@@ -48,8 +50,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The user full name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[str] username: The user username (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,7 +90,7 @@ class User(pulumi.CustomResource):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,12 +100,11 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[list] principal_ids: (Computed) The user principal IDs (list)
         :param pulumi.Input[str] username: The user username (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/user.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["enabled"] = enabled
         __props__["labels"] = labels

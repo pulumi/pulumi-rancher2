@@ -33,7 +33,9 @@ class GlobalRoleBinding(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, global_role_id=None, labels=None, name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/globalRole.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
@@ -41,8 +43,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/global_role_binding.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         """
         Get an existing GlobalRoleBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,12 +90,11 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/global_role_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["global_role_id"] = global_role_id
         __props__["labels"] = labels

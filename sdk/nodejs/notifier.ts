@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/notifier.html.markdown.
- */
 export class Notifier extends pulumi.CustomResource {
     /**
      * Get an existing Notifier resource's state with the given name, ID, and optional extra
@@ -46,6 +43,7 @@ export class Notifier extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -60,6 +58,10 @@ export class Notifier extends pulumi.CustomResource {
      * Pagerduty config for notifier (list maxitems:1)
      */
     public readonly pagerdutyConfig!: pulumi.Output<outputs.NotifierPagerdutyConfig | undefined>;
+    /**
+     * Notifier send resolved
+     */
+    public readonly sendResolved!: pulumi.Output<boolean | undefined>;
     /**
      * Slack config for notifier (list maxitems:1)
      */
@@ -95,6 +97,7 @@ export class Notifier extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["pagerdutyConfig"] = state ? state.pagerdutyConfig : undefined;
+            inputs["sendResolved"] = state ? state.sendResolved : undefined;
             inputs["slackConfig"] = state ? state.slackConfig : undefined;
             inputs["smtpConfig"] = state ? state.smtpConfig : undefined;
             inputs["webhookConfig"] = state ? state.webhookConfig : undefined;
@@ -110,6 +113,7 @@ export class Notifier extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pagerdutyConfig"] = args ? args.pagerdutyConfig : undefined;
+            inputs["sendResolved"] = args ? args.sendResolved : undefined;
             inputs["slackConfig"] = args ? args.slackConfig : undefined;
             inputs["smtpConfig"] = args ? args.smtpConfig : undefined;
             inputs["webhookConfig"] = args ? args.webhookConfig : undefined;
@@ -140,6 +144,7 @@ export interface NotifierState {
     readonly clusterId?: pulumi.Input<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -154,6 +159,10 @@ export interface NotifierState {
      * Pagerduty config for notifier (list maxitems:1)
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
+    /**
+     * Notifier send resolved
+     */
+    readonly sendResolved?: pulumi.Input<boolean>;
     /**
      * Slack config for notifier (list maxitems:1)
      */
@@ -186,6 +195,7 @@ export interface NotifierArgs {
     readonly clusterId: pulumi.Input<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -200,6 +210,10 @@ export interface NotifierArgs {
      * Pagerduty config for notifier (list maxitems:1)
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
+    /**
+     * Notifier send resolved
+     */
+    readonly sendResolved?: pulumi.Input<boolean>;
     /**
      * Slack config for notifier (list maxitems:1)
      */

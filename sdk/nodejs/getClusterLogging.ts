@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_logging.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
  */
 export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> & GetClusterLoggingResult {
     if (!opts) {

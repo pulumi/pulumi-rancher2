@@ -57,7 +57,6 @@ class Bootstrap(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, current_password=None, password=None, telemetry=None, token_ttl=None, token_update=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Bootstrap resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
@@ -65,8 +64,6 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[float] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/bootstrap.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +104,7 @@ class Bootstrap(pulumi.CustomResource):
         """
         Get an existing Bootstrap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,12 +119,11 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[str] url: (Computed) URL set as server-url (string)
         :param pulumi.Input[str] user: (Computed) Admin username (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/bootstrap.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["current_password"] = current_password
         __props__["password"] = password
         __props__["telemetry"] = telemetry

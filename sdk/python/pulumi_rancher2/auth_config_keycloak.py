@@ -73,9 +73,11 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, display_name_field=None, enabled=None, groups_field=None, idp_metadata_content=None, labels=None, rancher_api_host=None, sp_cert=None, sp_key=None, uid_field=None, user_name_field=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
-        
+
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigKeyCloak.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -91,8 +93,6 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[str] sp_key: KeyCloak SP key (string)
         :param pulumi.Input[str] uid_field: KeyCloak UID field (string)
         :param pulumi.Input[str] user_name_field: KeyCloak user name field (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_keycloak.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,7 +153,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         """
         Get an existing AuthConfigKeycloak resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,12 +172,11 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
         :param pulumi.Input[str] uid_field: KeyCloak UID field (string)
         :param pulumi.Input[str] user_name_field: KeyCloak user name field (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_keycloak.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_mode"] = access_mode
         __props__["allowed_principal_ids"] = allowed_principal_ids
         __props__["annotations"] = annotations

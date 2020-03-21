@@ -73,9 +73,11 @@ class AuthConfigAzureAd(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, application_id=None, application_secret=None, auth_endpoint=None, enabled=None, endpoint=None, graph_endpoint=None, labels=None, rancher_url=None, tenant_id=None, token_endpoint=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
-        
+
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigAzureAD.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -91,8 +93,6 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         :param pulumi.Input[str] rancher_url: Rancher URL (string). "<rancher_url>/verify-auth-azure"
         :param pulumi.Input[str] tenant_id: AzureAD tenant ID (string)
         :param pulumi.Input[str] token_endpoint: AzureAD token endpoint (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_azuread.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,7 +151,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         """
         Get an existing AuthConfigAzureAd resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,12 +170,11 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: AzureAD tenant ID (string)
         :param pulumi.Input[str] token_endpoint: AzureAD token endpoint (string)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_azuread.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_mode"] = access_mode
         __props__["allowed_principal_ids"] = allowed_principal_ids
         __props__["annotations"] = annotations

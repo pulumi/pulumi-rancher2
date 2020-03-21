@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/notifier.html.markdown.
 type Notifier struct {
 	pulumi.CustomResourceState
@@ -22,6 +22,7 @@ type Notifier struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The notifier description (string)
+	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -29,6 +30,8 @@ type Notifier struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrOutput `pulumi:"pagerdutyConfig"`
+	// Notifier send resolved
+	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrOutput `pulumi:"slackConfig"`
 	// SMTP config for notifier (list maxitems:1)
@@ -75,6 +78,7 @@ type notifierState struct {
 	// The cluster id where create notifier (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The notifier description (string)
+	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description *string `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -82,6 +86,8 @@ type notifierState struct {
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
+	// Notifier send resolved
+	SendResolved *bool `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
 	// SMTP config for notifier (list maxitems:1)
@@ -98,6 +104,7 @@ type NotifierState struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringPtrInput
 	// The notifier description (string)
+	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
@@ -105,6 +112,8 @@ type NotifierState struct {
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
+	// Notifier send resolved
+	SendResolved pulumi.BoolPtrInput
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrInput
 	// SMTP config for notifier (list maxitems:1)
@@ -125,6 +134,7 @@ type notifierArgs struct {
 	// The cluster id where create notifier (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The notifier description (string)
+	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description *string `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -132,6 +142,8 @@ type notifierArgs struct {
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
+	// Notifier send resolved
+	SendResolved *bool `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
 	// SMTP config for notifier (list maxitems:1)
@@ -149,6 +161,7 @@ type NotifierArgs struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringInput
 	// The notifier description (string)
+	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
@@ -156,6 +169,8 @@ type NotifierArgs struct {
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
+	// Notifier send resolved
+	SendResolved pulumi.BoolPtrInput
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrInput
 	// SMTP config for notifier (list maxitems:1)

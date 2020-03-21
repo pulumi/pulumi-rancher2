@@ -9,11 +9,11 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 certificate.
-// 
+//
 // Depending of the availability, there are 2 types of Rancher v2 certificates:
 // - Project certificate: Available to all namespaces in the `projectId`
 // - Namespaced certificate: Available to just `namespaceId` in the `projectId`
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult

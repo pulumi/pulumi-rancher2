@@ -12,8 +12,8 @@ import (
 )
 
 // Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project_logging.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectLogging.html.markdown.
 type ProjectLogging struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -27,7 +27,7 @@ type Cluster struct {
 	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 	ClusterRegistrationToken ClusterClusterRegistrationTokenOutput `pulumi:"clusterRegistrationToken"`
 	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-	ClusterTemplateAnswers ClusterClusterTemplateAnswersPtrOutput `pulumi:"clusterTemplateAnswers"`
+	ClusterTemplateAnswers ClusterClusterTemplateAnswersOutput `pulumi:"clusterTemplateAnswers"`
 	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId pulumi.StringPtrOutput `pulumi:"clusterTemplateId"`
 	// Cluster template questions. Just for Rancher v2.3.x and above (list)
@@ -70,6 +70,8 @@ type Cluster struct {
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
+	// Windows preferred cluster. Default: `false` (bool)
+	WindowsPreferedCluster pulumi.BoolPtrOutput `pulumi:"windowsPreferedCluster"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +156,8 @@ type clusterState struct {
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId *string `pulumi:"systemProjectId"`
+	// Windows preferred cluster. Default: `false` (bool)
+	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
 
 type ClusterState struct {
@@ -211,6 +215,8 @@ type ClusterState struct {
 	RkeConfig ClusterRkeConfigPtrInput
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringPtrInput
+	// Windows preferred cluster. Default: `false` (bool)
+	WindowsPreferedCluster pulumi.BoolPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -264,6 +270,8 @@ type clusterArgs struct {
 	Name *string `pulumi:"name"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
+	// Windows preferred cluster. Default: `false` (bool)
+	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -314,6 +322,8 @@ type ClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
+	// Windows preferred cluster. Default: `false` (bool)
+	WindowsPreferedCluster pulumi.BoolPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

@@ -13,7 +13,7 @@ class GetClusterAlterRuleResult:
     """
     A collection of values returned by getClusterAlterRule.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, id=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -46,6 +46,12 @@ class GetClusterAlterRuleResult:
         __self__.group_wait_seconds = group_wait_seconds
         """
         (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if inherited and not isinstance(inherited, bool):
             raise TypeError("Expected argument 'inherited' to be a bool")
@@ -92,12 +98,6 @@ class GetClusterAlterRuleResult:
         """
         (Computed) The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterAlterRuleResult(GetClusterAlterRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -110,6 +110,7 @@ class AwaitableGetClusterAlterRuleResult(GetClusterAlterRuleResult):
             group_id=self.group_id,
             group_interval_seconds=self.group_interval_seconds,
             group_wait_seconds=self.group_wait_seconds,
+            id=self.id,
             inherited=self.inherited,
             labels=self.labels,
             metric_rule=self.metric_rule,
@@ -117,19 +118,20 @@ class AwaitableGetClusterAlterRuleResult(GetClusterAlterRuleResult):
             node_rule=self.node_rule,
             repeat_interval_seconds=self.repeat_interval_seconds,
             severity=self.severity,
-            system_service_rule=self.system_service_rule,
-            id=self.id)
+            system_service_rule=self.system_service_rule)
 
 def get_cluster_alter_rule(cluster_id=None,labels=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert rule.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
+
+
     :param str cluster_id: The cluster id where create cluster alert rule (string)
     :param str name: The cluster alert rule name (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_alert_rule.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['labels'] = labels
@@ -147,6 +149,7 @@ def get_cluster_alter_rule(cluster_id=None,labels=None,name=None,opts=None):
         group_id=__ret__.get('groupId'),
         group_interval_seconds=__ret__.get('groupIntervalSeconds'),
         group_wait_seconds=__ret__.get('groupWaitSeconds'),
+        id=__ret__.get('id'),
         inherited=__ret__.get('inherited'),
         labels=__ret__.get('labels'),
         metric_rule=__ret__.get('metricRule'),
@@ -154,5 +157,4 @@ def get_cluster_alter_rule(cluster_id=None,labels=None,name=None,opts=None):
         node_rule=__ret__.get('nodeRule'),
         repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'),
         severity=__ret__.get('severity'),
-        system_service_rule=__ret__.get('systemServiceRule'),
-        id=__ret__.get('id'))
+        system_service_rule=__ret__.get('systemServiceRule'))

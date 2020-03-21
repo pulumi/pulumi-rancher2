@@ -11,10 +11,10 @@ import (
 )
 
 // Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information. 
-// 
+//
 // Cluster Templates are available from Rancher v2.3.x and above.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_template.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterTemplate.html.markdown.
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 

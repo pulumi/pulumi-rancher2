@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_driver.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
 func LookupClusterDriver(ctx *pulumi.Context, args *LookupClusterDriverArgs, opts ...pulumi.InvokeOption) (*LookupClusterDriverResult, error) {
 	var rv LookupClusterDriverResult
 	err := ctx.Invoke("rancher2:index/getClusterDriver:getClusterDriver", args, &rv, opts...)

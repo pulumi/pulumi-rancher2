@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 notifier.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
 func LookupNotifier(ctx *pulumi.Context, args *LookupNotifierArgs, opts ...pulumi.InvokeOption) (*LookupNotifierResult, error) {
 	var rv LookupNotifierResult

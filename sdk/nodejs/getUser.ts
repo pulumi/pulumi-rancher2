@@ -22,7 +22,8 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
  */
-export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -31,6 +32,8 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetUserResult> = pulumi.runtime.invoke("rancher2:index/getUser:getUser", {
+        "isExternal": args.isExternal,
+        "name": args.name,
         "username": args.username,
     }, opts);
 
@@ -42,9 +45,17 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetUserArgs {
     /**
+     * Set is the user if the user is external. Default: `false` (bool)
+     */
+    readonly isExternal?: boolean;
+    /**
      * The name of the user (string)
      */
-    readonly username: string;
+    readonly name?: string;
+    /**
+     * The username of the user (string)
+     */
+    readonly username?: string;
 }
 
 /**
@@ -59,6 +70,7 @@ export interface GetUserResult {
      * (Computed) The user is enabled (bool)
      */
     readonly enabled: boolean;
+    readonly isExternal?: boolean;
     /**
      * (Computed) Labels of the resource (map)
      */

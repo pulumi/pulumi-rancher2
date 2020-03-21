@@ -5,15 +5,34 @@ package examples
 import (
 	"os"
 	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestAccUser(t *testing.T) {
-	test := getJSBaseOptions(t).
+func TestAccUserTs(t *testing.T) {
+	test := getJSBaseOptions().
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "user"),
+			Dir: path.Join(getCwd(t), "user", "ts"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccUserPython(t *testing.T) {
+	test := getPythonBaseOptions().
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "user", "python"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccUserCsharp(t *testing.T) {
+	test := getCSBaseOptions().
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "user", "csharp"),
 		})
 
 	integration.ProgramTest(t, &test)
@@ -32,7 +51,7 @@ func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{}
 }
 
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+func getJSBaseOptions() integration.ProgramTestOptions {
 	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
@@ -41,4 +60,26 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	})
 
 	return baseJS
+}
+
+func getCSBaseOptions() integration.ProgramTestOptions {
+	base := getBaseOptions()
+	csharpBase := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			"Pulumi.Rancher2",
+		},
+	})
+
+	return csharpBase
+}
+
+func getPythonBaseOptions() integration.ProgramTestOptions {
+	base := getBaseOptions()
+	basePython := base.With(integration.ProgramTestOptions{
+		Dependencies: []string{
+			filepath.Join("..", "sdk", "python", "bin"),
+		},
+	})
+
+	return basePython
 }

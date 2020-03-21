@@ -13,7 +13,7 @@ class GetClusterLoggingResult:
     """
     A collection of values returned by getClusterLogging.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, elasticsearch_config=None, fluentd_config=None, id=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -34,6 +34,12 @@ class GetClusterLoggingResult:
         __self__.fluentd_config = fluentd_config
         """
         (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if kafka_config and not isinstance(kafka_config, dict):
             raise TypeError("Expected argument 'kafka_config' to be a dict")
@@ -89,12 +95,6 @@ class GetClusterLoggingResult:
         """
         (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterLoggingResult(GetClusterLoggingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,6 +105,7 @@ class AwaitableGetClusterLoggingResult(GetClusterLoggingResult):
             cluster_id=self.cluster_id,
             elasticsearch_config=self.elasticsearch_config,
             fluentd_config=self.fluentd_config,
+            id=self.id,
             kafka_config=self.kafka_config,
             kind=self.kind,
             labels=self.labels,
@@ -113,18 +114,19 @@ class AwaitableGetClusterLoggingResult(GetClusterLoggingResult):
             output_flush_interval=self.output_flush_interval,
             output_tags=self.output_tags,
             splunk_config=self.splunk_config,
-            syslog_config=self.syslog_config,
-            id=self.id)
+            syslog_config=self.syslog_config)
 
 def get_cluster_logging(cluster_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-    
-    :param str cluster_id: The cluster id to configure logging (string)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_logging.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
+
+
+    :param str cluster_id: The cluster id to configure logging (string)
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     if opts is None:
@@ -138,6 +140,7 @@ def get_cluster_logging(cluster_id=None,opts=None):
         cluster_id=__ret__.get('clusterId'),
         elasticsearch_config=__ret__.get('elasticsearchConfig'),
         fluentd_config=__ret__.get('fluentdConfig'),
+        id=__ret__.get('id'),
         kafka_config=__ret__.get('kafkaConfig'),
         kind=__ret__.get('kind'),
         labels=__ret__.get('labels'),
@@ -146,5 +149,4 @@ def get_cluster_logging(cluster_id=None,opts=None):
         output_flush_interval=__ret__.get('outputFlushInterval'),
         output_tags=__ret__.get('outputTags'),
         splunk_config=__ret__.get('splunkConfig'),
-        syslog_config=__ret__.get('syslogConfig'),
-        id=__ret__.get('id'))
+        syslog_config=__ret__.get('syslogConfig'))

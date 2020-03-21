@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, labels=None, name=None, pod_security_policy_template_id=None, resource_quota=None, uuid=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, id=None, labels=None, name=None, pod_security_policy_template_id=None, resource_quota=None, uuid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -40,6 +40,12 @@ class GetProjectResult:
         __self__.enable_project_monitoring = enable_project_monitoring
         """
         (Computed) Enable built-in project monitoring. Default `false` (bool)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -68,12 +74,6 @@ class GetProjectResult:
         """
         (Computed) UUID of the project as stored by Rancher 2 (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -85,23 +85,22 @@ class AwaitableGetProjectResult(GetProjectResult):
             container_resource_limit=self.container_resource_limit,
             description=self.description,
             enable_project_monitoring=self.enable_project_monitoring,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             pod_security_policy_template_id=self.pod_security_policy_template_id,
             resource_quota=self.resource_quota,
-            uuid=self.uuid,
-            id=self.id)
+            uuid=self.uuid)
 
 def get_project(cluster_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str cluster_id: ID of the Rancher 2 cluster (string)
     :param str name: The project name (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -117,9 +116,9 @@ def get_project(cluster_id=None,name=None,opts=None):
         container_resource_limit=__ret__.get('containerResourceLimit'),
         description=__ret__.get('description'),
         enable_project_monitoring=__ret__.get('enableProjectMonitoring'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         pod_security_policy_template_id=__ret__.get('podSecurityPolicyTemplateId'),
         resource_quota=__ret__.get('resourceQuota'),
-        uuid=__ret__.get('uuid'),
-        id=__ret__.get('id'))
+        uuid=__ret__.get('uuid'))

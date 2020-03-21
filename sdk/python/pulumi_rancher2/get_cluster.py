@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, kube_config=None, labels=None, name=None, rke_config=None, system_project_id=None, id=None):
+    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, kube_config=None, labels=None, name=None, rke_config=None, system_project_id=None):
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         __self__.aks_config = aks_config
@@ -119,6 +119,12 @@ class GetClusterResult:
         """
         (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if kube_config and not isinstance(kube_config, str):
             raise TypeError("Expected argument 'kube_config' to be a str")
         __self__.kube_config = kube_config
@@ -146,12 +152,6 @@ class GetClusterResult:
         """
         (Computed) System project ID for the cluster (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -176,22 +176,24 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_cluster_monitoring=self.enable_cluster_monitoring,
             enable_network_policy=self.enable_network_policy,
             gke_config=self.gke_config,
+            id=self.id,
             kube_config=self.kube_config,
             labels=self.labels,
             name=self.name,
             rke_config=self.rke_config,
-            system_project_id=self.system_project_id,
-            id=self.id)
+            system_project_id=self.system_project_id)
 
 def get_cluster(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
-    
-    :param str name: The name of the Cluster (string)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster.html.markdown.
+
+
+    :param str name: The name of the Cluster (string)
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -219,9 +221,9 @@ def get_cluster(name=None,opts=None):
         enable_cluster_monitoring=__ret__.get('enableClusterMonitoring'),
         enable_network_policy=__ret__.get('enableNetworkPolicy'),
         gke_config=__ret__.get('gkeConfig'),
+        id=__ret__.get('id'),
         kube_config=__ret__.get('kubeConfig'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         rke_config=__ret__.get('rkeConfig'),
-        system_project_id=__ret__.get('systemProjectId'),
-        id=__ret__.get('id'))
+        system_project_id=__ret__.get('systemProjectId'))

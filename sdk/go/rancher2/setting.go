@@ -12,11 +12,11 @@ import (
 )
 
 // Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
-// 
+//
 // On create, if setting already exists, provider will import it and update its value.
-// 
+//
 // On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
 type Setting struct {
 	pulumi.CustomResourceState

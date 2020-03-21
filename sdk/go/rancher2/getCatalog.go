@@ -9,7 +9,7 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 catalog.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult

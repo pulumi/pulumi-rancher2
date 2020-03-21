@@ -49,7 +49,9 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, group_id=None, group_principal_id=None, labels=None, name=None, project_id=None, role_template_id=None, user_id=None, user_principal_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectRole.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations of the resource (map)
@@ -61,8 +63,6 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project_role_template_binding.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +105,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         """
         Get an existing ProjectRoleTemplateBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,12 +118,11 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project_role_template_binding.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["group_id"] = group_id
         __props__["group_principal_id"] = group_principal_id

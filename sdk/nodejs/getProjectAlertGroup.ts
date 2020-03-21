@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_alert_group.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
  */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> & GetProjectAlertGroupResult {
     if (!opts) {

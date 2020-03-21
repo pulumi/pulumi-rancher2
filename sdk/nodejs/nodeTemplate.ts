@@ -61,7 +61,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/node_template.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
  */
 export class NodeTemplate extends pulumi.CustomResource {
     /**
@@ -126,6 +126,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      * (Computed) The driver of the node template (string)
      */
     public /*out*/ readonly driver!: pulumi.Output<string>;
+    /**
+     * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+     */
+    public readonly driverId!: pulumi.Output<string>;
     /**
      * Engine environment for the node template (string)
      */
@@ -196,6 +200,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
             inputs["driver"] = state ? state.driver : undefined;
+            inputs["driverId"] = state ? state.driverId : undefined;
             inputs["engineEnv"] = state ? state.engineEnv : undefined;
             inputs["engineInsecureRegistries"] = state ? state.engineInsecureRegistries : undefined;
             inputs["engineInstallUrl"] = state ? state.engineInstallUrl : undefined;
@@ -218,6 +223,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["cloudCredentialId"] = args ? args.cloudCredentialId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
+            inputs["driverId"] = args ? args.driverId : undefined;
             inputs["engineEnv"] = args ? args.engineEnv : undefined;
             inputs["engineInsecureRegistries"] = args ? args.engineInsecureRegistries : undefined;
             inputs["engineInstallUrl"] = args ? args.engineInstallUrl : undefined;
@@ -283,6 +289,10 @@ export interface NodeTemplateState {
      * (Computed) The driver of the node template (string)
      */
     readonly driver?: pulumi.Input<string>;
+    /**
+     * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+     */
+    readonly driverId?: pulumi.Input<string>;
     /**
      * Engine environment for the node template (string)
      */
@@ -369,6 +379,10 @@ export interface NodeTemplateArgs {
      * Digitalocean config for the Node Template (list maxitems:1)
      */
     readonly digitaloceanConfig?: pulumi.Input<inputs.NodeTemplateDigitaloceanConfig>;
+    /**
+     * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+     */
+    readonly driverId?: pulumi.Input<string>;
     /**
      * Engine environment for the node template (string)
      */

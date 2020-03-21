@@ -41,7 +41,7 @@ class ClusterAlterGroup(pulumi.CustomResource):
     recipients: pulumi.Output[list]
     """
     The cluster alert group recipients (list)
-    
+
       * `notifierId` (`str`) - Recipient notifier ID (string)
       * `notifierType` (`str`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
       * `recipient` (`str`) - Recipient (string)
@@ -53,7 +53,9 @@ class ClusterAlterGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, group_interval_seconds=None, group_wait_seconds=None, labels=None, name=None, recipients=None, repeat_interval_seconds=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterAlertGroup.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: The cluster alert group annotations (map)
@@ -65,14 +67,12 @@ class ClusterAlterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The cluster alert group name (string)
         :param pulumi.Input[list] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
-        
+
         The **recipients** object supports the following:
-        
+
           * `notifierId` (`pulumi.Input[str]`) - Recipient notifier ID (string)
           * `notifierType` (`pulumi.Input[str]`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
           * `recipient` (`pulumi.Input[str]`) - Recipient (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_alert_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class ClusterAlterGroup(pulumi.CustomResource):
         """
         Get an existing ClusterAlterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,18 +126,17 @@ class ClusterAlterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The cluster alert group name (string)
         :param pulumi.Input[list] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
-        
+
         The **recipients** object supports the following:
-        
+
           * `notifierId` (`pulumi.Input[str]`) - Recipient notifier ID (string)
           * `notifierType` (`pulumi.Input[str]`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
           * `recipient` (`pulumi.Input[str]`) - Recipient (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_alert_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id
         __props__["description"] = description

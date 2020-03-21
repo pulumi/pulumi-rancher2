@@ -1,0 +1,3 @@
+name: user-csharp
+runtime: dotnet
+description: A minimal C# Pulumi program to create rancher2 user

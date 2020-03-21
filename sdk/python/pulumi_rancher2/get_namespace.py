@@ -13,7 +13,7 @@ class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
     """
-    def __init__(__self__, annotations=None, container_resource_limit=None, description=None, labels=None, name=None, project_id=None, resource_quota=None, id=None):
+    def __init__(__self__, annotations=None, container_resource_limit=None, description=None, id=None, labels=None, name=None, project_id=None, resource_quota=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -31,6 +31,12 @@ class GetNamespaceResult:
         __self__.description = description
         """
         (Computed) A namespace description (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -50,12 +56,6 @@ class GetNamespaceResult:
         """
         (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,22 +65,24 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             annotations=self.annotations,
             container_resource_limit=self.container_resource_limit,
             description=self.description,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             project_id=self.project_id,
-            resource_quota=self.resource_quota,
-            id=self.id)
+            resource_quota=self.resource_quota)
 
 def get_namespace(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 namespace.
-    
-    :param str name: The name of the namespace (string)
-    :param str project_id: The project id where namespace is assigned (string)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
+
+
+    :param str name: The name of the namespace (string)
+    :param str project_id: The project id where namespace is assigned (string)
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['projectId'] = project_id
@@ -94,8 +96,8 @@ def get_namespace(name=None,project_id=None,opts=None):
         annotations=__ret__.get('annotations'),
         container_resource_limit=__ret__.get('containerResourceLimit'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
-        resource_quota=__ret__.get('resourceQuota'),
-        id=__ret__.get('id'))
+        resource_quota=__ret__.get('resourceQuota'))

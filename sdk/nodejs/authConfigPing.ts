@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_ping.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigPing.html.markdown.
  */
 export class AuthConfigPing extends pulumi.CustomResource {
     /**

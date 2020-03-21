@@ -13,7 +13,7 @@ class GetProjectAlertGroupResult:
     """
     A collection of values returned by getProjectAlertGroup.
     """
-    def __init__(__self__, annotations=None, description=None, group_interval_seconds=None, group_wait_seconds=None, labels=None, name=None, project_id=None, recipients=None, repeat_interval_seconds=None, id=None):
+    def __init__(__self__, annotations=None, description=None, group_interval_seconds=None, group_wait_seconds=None, id=None, labels=None, name=None, project_id=None, recipients=None, repeat_interval_seconds=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -37,6 +37,12 @@ class GetProjectAlertGroupResult:
         __self__.group_wait_seconds = group_wait_seconds
         """
         (Computed) The project alert group wait seconds. Default: `180` (int)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -62,12 +68,6 @@ class GetProjectAlertGroupResult:
         """
         (Computed) The project alert group wait seconds. Default: `3600` (int)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectAlertGroupResult(GetProjectAlertGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,23 +78,25 @@ class AwaitableGetProjectAlertGroupResult(GetProjectAlertGroupResult):
             description=self.description,
             group_interval_seconds=self.group_interval_seconds,
             group_wait_seconds=self.group_wait_seconds,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             project_id=self.project_id,
             recipients=self.recipients,
-            repeat_interval_seconds=self.repeat_interval_seconds,
-            id=self.id)
+            repeat_interval_seconds=self.repeat_interval_seconds)
 
 def get_project_alert_group(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert group.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
+
+
     :param str name: The project alert group name (string)
     :param str project_id: The project id where create project alert group (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_alert_group.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['projectId'] = project_id
@@ -109,9 +111,9 @@ def get_project_alert_group(name=None,project_id=None,opts=None):
         description=__ret__.get('description'),
         group_interval_seconds=__ret__.get('groupIntervalSeconds'),
         group_wait_seconds=__ret__.get('groupWaitSeconds'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
         recipients=__ret__.get('recipients'),
-        repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'),
-        id=__ret__.get('id'))
+        repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'))

@@ -13,7 +13,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, annotations=None, answers=None, catalog_name=None, description=None, external_id=None, labels=None, name=None, project_id=None, revision_id=None, target_namespace=None, template_name=None, template_version=None, values_yaml=None, id=None):
+    def __init__(__self__, annotations=None, answers=None, catalog_name=None, description=None, external_id=None, id=None, labels=None, name=None, project_id=None, revision_id=None, target_namespace=None, template_name=None, template_version=None, values_yaml=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -43,6 +43,12 @@ class GetAppResult:
         __self__.external_id = external_id
         """
         (Computed) The URL of the helm catalog app (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -83,12 +89,6 @@ class GetAppResult:
         """
         (Computed) values.yaml base64 encoded file content for the app (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAppResult(GetAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +100,7 @@ class AwaitableGetAppResult(GetAppResult):
             catalog_name=self.catalog_name,
             description=self.description,
             external_id=self.external_id,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             project_id=self.project_id,
@@ -107,20 +108,21 @@ class AwaitableGetAppResult(GetAppResult):
             target_namespace=self.target_namespace,
             template_name=self.template_name,
             template_version=self.template_version,
-            values_yaml=self.values_yaml,
-            id=self.id)
+            values_yaml=self.values_yaml)
 
 def get_app(annotations=None,name=None,project_id=None,target_namespace=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 app.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
+
+
     :param str name: The app name (string)
     :param str project_id: The id of the project where the app is deployed (string)
     :param str target_namespace: The namespace name where the app is deployed (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['annotations'] = annotations
     __args__['name'] = name
@@ -138,6 +140,7 @@ def get_app(annotations=None,name=None,project_id=None,target_namespace=None,opt
         catalog_name=__ret__.get('catalogName'),
         description=__ret__.get('description'),
         external_id=__ret__.get('externalId'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
@@ -145,5 +148,4 @@ def get_app(annotations=None,name=None,project_id=None,target_namespace=None,opt
         target_namespace=__ret__.get('targetNamespace'),
         template_name=__ret__.get('templateName'),
         template_version=__ret__.get('templateVersion'),
-        values_yaml=__ret__.get('valuesYaml'),
-        id=__ret__.get('id'))
+        values_yaml=__ret__.get('valuesYaml'))

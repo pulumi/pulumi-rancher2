@@ -13,7 +13,7 @@ class GetNodeTemplateResult:
     """
     A collection of values returned by getNodeTemplate.
     """
-    def __init__(__self__, annotations=None, cloud_credential_id=None, description=None, driver=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, use_internal_ip_address=None, id=None):
+    def __init__(__self__, annotations=None, cloud_credential_id=None, description=None, driver=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, id=None, labels=None, name=None, use_internal_ip_address=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -80,6 +80,12 @@ class GetNodeTemplateResult:
         """
         (Computed) Engine storage driver for the node template (string)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -94,12 +100,6 @@ class GetNodeTemplateResult:
         __self__.use_internal_ip_address = use_internal_ip_address
         """
         (Computed) Engine storage driver for the node template (bool)
-        """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
         """
 class AwaitableGetNodeTemplateResult(GetNodeTemplateResult):
     # pylint: disable=using-constant-test
@@ -118,20 +118,22 @@ class AwaitableGetNodeTemplateResult(GetNodeTemplateResult):
             engine_opt=self.engine_opt,
             engine_registry_mirrors=self.engine_registry_mirrors,
             engine_storage_driver=self.engine_storage_driver,
+            id=self.id,
             labels=self.labels,
             name=self.name,
-            use_internal_ip_address=self.use_internal_ip_address,
-            id=self.id)
+            use_internal_ip_address=self.use_internal_ip_address)
 
 def get_node_template(name=None,use_internal_ip_address=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
-    
-    :param str name: The name of the Node Template (string)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/node_template.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
+
+
+    :param str name: The name of the Node Template (string)
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['useInternalIpAddress'] = use_internal_ip_address
@@ -153,7 +155,7 @@ def get_node_template(name=None,use_internal_ip_address=None,opts=None):
         engine_opt=__ret__.get('engineOpt'),
         engine_registry_mirrors=__ret__.get('engineRegistryMirrors'),
         engine_storage_driver=__ret__.get('engineStorageDriver'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
-        use_internal_ip_address=__ret__.get('useInternalIpAddress'),
-        id=__ret__.get('id'))
+        use_internal_ip_address=__ret__.get('useInternalIpAddress'))

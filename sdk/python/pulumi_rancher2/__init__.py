@@ -10,8 +10,8 @@ for pkg in __all__:
         importlib.import_module(f'{__name__}.{pkg}')
 
 # Export this package's modules as members:
-from .app import *
 from .active_directory import *
+from .app import *
 from .auth_config_adfs import *
 from .auth_config_azure_ad import *
 from .auth_config_free_ipa import *
@@ -33,24 +33,6 @@ from .cluster_role_template_binding import *
 from .cluster_sync import *
 from .cluster_template import *
 from .etcd_backup import *
-from .global_role_binding import *
-from .multi_cluster_app import *
-from .namespace import *
-from .node_driver import *
-from .node_pool import *
-from .node_template import *
-from .notifier import *
-from .project import *
-from .project_alert_group import *
-from .project_alert_rule import *
-from .project_logging import *
-from .project_role_template_binding import *
-from .registry import *
-from .role_tempalte import *
-from .secret import *
-from .setting import *
-from .token import *
-from .user import *
 from .get_app import *
 from .get_catalog import *
 from .get_certificate import *
@@ -80,4 +62,22 @@ from .get_role_tempalte import *
 from .get_secret import *
 from .get_setting import *
 from .get_user import *
+from .global_role_binding import *
+from .multi_cluster_app import *
+from .namespace import *
+from .node_driver import *
+from .node_pool import *
+from .node_template import *
+from .notifier import *
+from .project import *
+from .project_alert_group import *
+from .project_alert_rule import *
+from .project_logging import *
+from .project_role_template_binding import *
 from .provider import *
+from .registry import *
+from .role_tempalte import *
+from .secret import *
+from .setting import *
+from .token import *
+from .user import *

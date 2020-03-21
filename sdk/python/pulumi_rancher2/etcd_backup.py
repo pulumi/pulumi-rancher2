@@ -17,12 +17,11 @@ class EtcdBackup(pulumi.CustomResource):
     backup_config: pulumi.Output[dict]
     """
     Backup config for etcd backup (list maxitems:1)
-    
+
       * `enabled` (`bool`) - Enable etcd backup (bool)
       * `intervalHours` (`float`) - Interval hours for etcd backup. Default `12` (int)
       * `retention` (`float`) - Retention for etcd backup. Default `6` (int)
       * `s3BackupConfig` (`dict`) - S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
-    
         * `access_key` (`str`) - Access key for S3 service (string)
         * `bucketName` (`str`) - Bucket name for S3 service (string)
         * `customCa` (`str`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
@@ -30,6 +29,8 @@ class EtcdBackup(pulumi.CustomResource):
         * `folder` (`str`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
         * `region` (`str`) - Region for S3 service (string)
         * `secret_key` (`str`) - Secret key for S3 service (string)
+
+      * `safeTimestamp` (`bool`)
     """
     cluster_id: pulumi.Output[str]
     """
@@ -58,7 +59,6 @@ class EtcdBackup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, backup_config=None, cluster_id=None, filename=None, labels=None, manual=None, name=None, namespace_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a EtcdBackup resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Etcd Backup object (map)
@@ -69,14 +69,13 @@ class EtcdBackup(pulumi.CustomResource):
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
-        
+
         The **backup_config** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`) - Enable etcd backup (bool)
           * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
           * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
           * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
-        
             * `access_key` (`pulumi.Input[str]`) - Access key for S3 service (string)
             * `bucketName` (`pulumi.Input[str]`) - Bucket name for S3 service (string)
             * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
@@ -85,7 +84,7 @@ class EtcdBackup(pulumi.CustomResource):
             * `region` (`pulumi.Input[str]`) - Region for S3 service (string)
             * `secret_key` (`pulumi.Input[str]`) - Secret key for S3 service (string)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/etcd_backup.html.markdown.
+          * `safeTimestamp` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,7 +124,7 @@ class EtcdBackup(pulumi.CustomResource):
         """
         Get an existing EtcdBackup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,14 +136,13 @@ class EtcdBackup(pulumi.CustomResource):
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
-        
+
         The **backup_config** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`) - Enable etcd backup (bool)
           * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
           * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
           * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
-        
             * `access_key` (`pulumi.Input[str]`) - Access key for S3 service (string)
             * `bucketName` (`pulumi.Input[str]`) - Bucket name for S3 service (string)
             * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
@@ -153,11 +151,12 @@ class EtcdBackup(pulumi.CustomResource):
             * `region` (`pulumi.Input[str]`) - Region for S3 service (string)
             * `secret_key` (`pulumi.Input[str]`) - Secret key for S3 service (string)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/etcd_backup.html.markdown.
+          * `safeTimestamp` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["backup_config"] = backup_config
         __props__["cluster_id"] = cluster_id

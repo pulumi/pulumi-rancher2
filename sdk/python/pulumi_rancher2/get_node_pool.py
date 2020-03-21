@@ -13,7 +13,7 @@ class GetNodePoolResult:
     """
     A collection of values returned by getNodePool.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, control_plane=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_template_id=None, quantity=None, worker=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, control_plane=None, delete_not_ready_after_secs=None, etcd=None, hostname_prefix=None, id=None, labels=None, name=None, node_taints=None, node_template_id=None, quantity=None, worker=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -29,6 +29,12 @@ class GetNodePoolResult:
         """
         (Computed) RKE control plane role for created nodes (bool)
         """
+        if delete_not_ready_after_secs and not isinstance(delete_not_ready_after_secs, float):
+            raise TypeError("Expected argument 'delete_not_ready_after_secs' to be a float")
+        __self__.delete_not_ready_after_secs = delete_not_ready_after_secs
+        """
+        (Computed) Delete not ready node after secs. Default `0` (int)
+        """
         if etcd and not isinstance(etcd, bool):
             raise TypeError("Expected argument 'etcd' to be a bool")
         __self__.etcd = etcd
@@ -41,6 +47,12 @@ class GetNodePoolResult:
         """
         (Computed) The prefix for created nodes of the Node Pool (string)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -50,6 +62,12 @@ class GetNodePoolResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if node_taints and not isinstance(node_taints, list):
+            raise TypeError("Expected argument 'node_taints' to be a list")
+        __self__.node_taints = node_taints
+        """
+        (Computed) Node taints (List)
+        """
         if node_template_id and not isinstance(node_template_id, str):
             raise TypeError("Expected argument 'node_template_id' to be a str")
         __self__.node_template_id = node_template_id
@@ -65,12 +83,6 @@ class GetNodePoolResult:
         """
         (Computed) RKE role role for created nodes (bool)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNodePoolResult(GetNodePoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,26 +92,30 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             annotations=self.annotations,
             cluster_id=self.cluster_id,
             control_plane=self.control_plane,
+            delete_not_ready_after_secs=self.delete_not_ready_after_secs,
             etcd=self.etcd,
             hostname_prefix=self.hostname_prefix,
+            id=self.id,
             labels=self.labels,
             name=self.name,
+            node_taints=self.node_taints,
             node_template_id=self.node_template_id,
             quantity=self.quantity,
-            worker=self.worker,
-            id=self.id)
+            worker=self.worker)
 
 def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
+
+
     :param str cluster_id: The RKE cluster id to use Node Pool (string)
     :param str name: The name of the Node Pool (string)
     :param str node_template_id: The Node Template ID to use for node creation (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/node_pool.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -114,11 +130,13 @@ def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
         annotations=__ret__.get('annotations'),
         cluster_id=__ret__.get('clusterId'),
         control_plane=__ret__.get('controlPlane'),
+        delete_not_ready_after_secs=__ret__.get('deleteNotReadyAfterSecs'),
         etcd=__ret__.get('etcd'),
         hostname_prefix=__ret__.get('hostnamePrefix'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
+        node_taints=__ret__.get('nodeTaints'),
         node_template_id=__ret__.get('nodeTemplateId'),
         quantity=__ret__.get('quantity'),
-        worker=__ret__.get('worker'),
-        id=__ret__.get('id'))
+        worker=__ret__.get('worker'))

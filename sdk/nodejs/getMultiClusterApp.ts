@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multi_cluster_app.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
  */
 export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> & GetMultiClusterAppResult {
     if (!opts) {

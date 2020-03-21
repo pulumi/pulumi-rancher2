@@ -12,10 +12,10 @@ import (
 )
 
 // Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
-// 
+//
 // In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_activedirectory.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigActiveDirectory.html.markdown.
 type ActiveDirectory struct {
 	pulumi.CustomResourceState
 

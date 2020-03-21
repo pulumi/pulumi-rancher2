@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_logging.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
 func LookupClusterLogging(ctx *pulumi.Context, args *LookupClusterLoggingArgs, opts ...pulumi.InvokeOption) (*LookupClusterLoggingResult, error) {
 	var rv LookupClusterLoggingResult
 	err := ctx.Invoke("rancher2:index/getClusterLogging:getClusterLogging", args, &rv, opts...)

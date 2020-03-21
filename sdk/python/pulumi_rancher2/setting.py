@@ -29,19 +29,19 @@ class Setting(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, labels=None, name=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
-        
+
         On create, if setting already exists, provider will import it and update its value.
-        
+
         On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for setting object (map)
         :param pulumi.Input[dict] labels: Labels for setting object (map)
         :param pulumi.Input[str] name: The name of the setting (string)
         :param pulumi.Input[str] value: The value of the setting (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +77,7 @@ class Setting(pulumi.CustomResource):
         """
         Get an existing Setting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Labels for setting object (map)
         :param pulumi.Input[str] name: The name of the setting (string)
         :param pulumi.Input[str] value: The value of the setting (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["labels"] = labels
         __props__["name"] = name

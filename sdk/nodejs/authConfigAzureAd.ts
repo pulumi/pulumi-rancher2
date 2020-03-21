@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_azuread.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigAzureAD.html.markdown.
  */
 export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**

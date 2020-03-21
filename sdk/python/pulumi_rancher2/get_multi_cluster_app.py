@@ -13,7 +13,7 @@ class GetMultiClusterAppResult:
     """
     A collection of values returned by getMultiClusterApp.
     """
-    def __init__(__self__, annotations=None, answers=None, catalog_name=None, labels=None, members=None, name=None, revision_history_limit=None, revision_id=None, roles=None, targets=None, template_name=None, template_version=None, template_version_id=None, upgrade_strategies=None, id=None):
+    def __init__(__self__, annotations=None, answers=None, catalog_name=None, id=None, labels=None, members=None, name=None, revision_history_limit=None, revision_id=None, roles=None, targets=None, template_name=None, template_version=None, template_version_id=None, upgrade_strategies=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -31,6 +31,12 @@ class GetMultiClusterAppResult:
         __self__.catalog_name = catalog_name
         """
         (Computed) The multi cluster app catalog name (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -95,12 +101,6 @@ class GetMultiClusterAppResult:
         """
         (Computed) The multi cluster app upgrade strategy (list)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -110,6 +110,7 @@ class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
             annotations=self.annotations,
             answers=self.answers,
             catalog_name=self.catalog_name,
+            id=self.id,
             labels=self.labels,
             members=self.members,
             name=self.name,
@@ -120,18 +121,19 @@ class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
             template_name=self.template_name,
             template_version=self.template_version,
             template_version_id=self.template_version_id,
-            upgrade_strategies=self.upgrade_strategies,
-            id=self.id)
+            upgrade_strategies=self.upgrade_strategies)
 
 def get_multi_cluster_app(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
-    
-    :param str name: The multi cluster app name (string)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multi_cluster_app.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
+
+
+    :param str name: The multi cluster app name (string)
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -144,6 +146,7 @@ def get_multi_cluster_app(name=None,opts=None):
         annotations=__ret__.get('annotations'),
         answers=__ret__.get('answers'),
         catalog_name=__ret__.get('catalogName'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         members=__ret__.get('members'),
         name=__ret__.get('name'),
@@ -154,5 +157,4 @@ def get_multi_cluster_app(name=None,opts=None):
         template_name=__ret__.get('templateName'),
         template_version=__ret__.get('templateVersion'),
         template_version_id=__ret__.get('templateVersionId'),
-        upgrade_strategies=__ret__.get('upgradeStrategies'),
-        id=__ret__.get('id'))
+        upgrade_strategies=__ret__.get('upgradeStrategies'))

@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 role template resource.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/role_template.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
 func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts ...pulumi.InvokeOption) (*LookupRoleTempalteResult, error) {
 	var rv LookupRoleTempalteResult
 	err := ctx.Invoke("rancher2:index/getRoleTempalte:getRoleTempalte", args, &rv, opts...)

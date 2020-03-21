@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/etcd_backup.html.markdown.
 type EtcdBackup struct {
 	pulumi.CustomResourceState
 

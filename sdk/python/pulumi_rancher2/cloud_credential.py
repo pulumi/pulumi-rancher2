@@ -13,7 +13,7 @@ class CloudCredential(pulumi.CustomResource):
     amazonec2_credential_config: pulumi.Output[dict]
     """
     AWS config for the Cloud Credential (list maxitems:1)
-    
+
       * `access_key` (`str`) - AWS access key (string)
       * `secret_key` (`str`) - AWS secret key (string)
     """
@@ -24,7 +24,7 @@ class CloudCredential(pulumi.CustomResource):
     azure_credential_config: pulumi.Output[dict]
     """
     Azure config for the Cloud Credential (list maxitems:1)
-    
+
       * `client_id` (`str`) - Azure Service Principal Account ID (string)
       * `client_secret` (`str`) - Azure Service Principal Account password (string)
       * `subscriptionId` (`str`) - Azure Subscription ID (string)
@@ -36,7 +36,7 @@ class CloudCredential(pulumi.CustomResource):
     digitalocean_credential_config: pulumi.Output[dict]
     """
     DigitalOcean config for the Cloud Credential (list maxitems:1)
-    
+
       * `accessToken` (`str`) - DigitalOcean access token (string)
     """
     driver: pulumi.Output[str]
@@ -54,13 +54,13 @@ class CloudCredential(pulumi.CustomResource):
     openstack_credential_config: pulumi.Output[dict]
     """
     OpenStack config for the Cloud Credential (list maxitems:1)
-    
+
       * `password` (`str`) - vSphere password (string)
     """
     vsphere_credential_config: pulumi.Output[dict]
     """
     vSphere config for the Cloud Credential (list maxitems:1)
-    
+
       * `password` (`str`) - vSphere password (string)
       * `username` (`str`) - vSphere username (string)
       * `vcenter` (`str`) - vSphere IP/hostname for vCenter (string)
@@ -69,9 +69,11 @@ class CloudCredential(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, amazonec2_credential_config=None, annotations=None, azure_credential_config=None, description=None, digitalocean_credential_config=None, labels=None, name=None, openstack_credential_config=None, vsphere_credential_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
-        
+
         amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloudCredential.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
@@ -83,34 +85,32 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[dict] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[dict] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
-        
+
         The **amazonec2_credential_config** object supports the following:
-        
+
           * `access_key` (`pulumi.Input[str]`) - AWS access key (string)
           * `secret_key` (`pulumi.Input[str]`) - AWS secret key (string)
-        
+
         The **azure_credential_config** object supports the following:
-        
+
           * `client_id` (`pulumi.Input[str]`) - Azure Service Principal Account ID (string)
           * `client_secret` (`pulumi.Input[str]`) - Azure Service Principal Account password (string)
           * `subscriptionId` (`pulumi.Input[str]`) - Azure Subscription ID (string)
-        
+
         The **digitalocean_credential_config** object supports the following:
-        
+
           * `accessToken` (`pulumi.Input[str]`) - DigitalOcean access token (string)
-        
+
         The **openstack_credential_config** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`) - vSphere password (string)
-        
+
         The **vsphere_credential_config** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`) - vSphere password (string)
           * `username` (`pulumi.Input[str]`) - vSphere username (string)
           * `vcenter` (`pulumi.Input[str]`) - vSphere IP/hostname for vCenter (string)
           * `vcenterPort` (`pulumi.Input[str]`) - vSphere Port for vCenter. Default `443` (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloud_credential.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,7 +150,7 @@ class CloudCredential(pulumi.CustomResource):
         """
         Get an existing CloudCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,38 +164,37 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[dict] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[dict] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
-        
+
         The **amazonec2_credential_config** object supports the following:
-        
+
           * `access_key` (`pulumi.Input[str]`) - AWS access key (string)
           * `secret_key` (`pulumi.Input[str]`) - AWS secret key (string)
-        
+
         The **azure_credential_config** object supports the following:
-        
+
           * `client_id` (`pulumi.Input[str]`) - Azure Service Principal Account ID (string)
           * `client_secret` (`pulumi.Input[str]`) - Azure Service Principal Account password (string)
           * `subscriptionId` (`pulumi.Input[str]`) - Azure Subscription ID (string)
-        
+
         The **digitalocean_credential_config** object supports the following:
-        
+
           * `accessToken` (`pulumi.Input[str]`) - DigitalOcean access token (string)
-        
+
         The **openstack_credential_config** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`) - vSphere password (string)
-        
+
         The **vsphere_credential_config** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`) - vSphere password (string)
           * `username` (`pulumi.Input[str]`) - vSphere username (string)
           * `vcenter` (`pulumi.Input[str]`) - vSphere IP/hostname for vCenter (string)
           * `vcenterPort` (`pulumi.Input[str]`) - vSphere Port for vCenter. Default `443` (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloud_credential.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["amazonec2_credential_config"] = amazonec2_credential_config
         __props__["annotations"] = annotations
         __props__["azure_credential_config"] = azure_credential_config

@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Node Pool resource.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/node_pool.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
 func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupNodePoolResult, error) {
 	var rv LookupNodePoolResult
 	err := ctx.Invoke("rancher2:index/getNodePool:getNodePool", args, &rv, opts...)
@@ -38,6 +38,8 @@ type LookupNodePoolResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// (Computed) RKE control plane role for created nodes (bool)
 	ControlPlane bool `pulumi:"controlPlane"`
+	// (Computed) Delete not ready node after secs. Default `0` (int)
+	DeleteNotReadyAfterSecs int `pulumi:"deleteNotReadyAfterSecs"`
 	// (Computed) RKE etcd role for created nodes (bool)
 	Etcd bool `pulumi:"etcd"`
 	// (Computed) The prefix for created nodes of the Node Pool (string)
@@ -47,6 +49,8 @@ type LookupNodePoolResult struct {
 	// (Computed) Labels for Node Pool object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	Name string `pulumi:"name"`
+	// (Computed) Node taints (List)
+	NodeTaints []GetNodePoolNodeTaint `pulumi:"nodeTaints"`
 	NodeTemplateId string `pulumi:"nodeTemplateId"`
 	// (Computed) The number of nodes to create on Node Pool (int)
 	Quantity int `pulumi:"quantity"`

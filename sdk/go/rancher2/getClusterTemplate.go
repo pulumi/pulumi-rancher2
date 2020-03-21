@@ -9,10 +9,10 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster template.
-// 
+//
 // Cluster Templates are available from Rancher v2.3.x and above.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_template.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
 func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs, opts ...pulumi.InvokeOption) (*LookupClusterTemplateResult, error) {
 	var rv LookupClusterTemplateResult
 	err := ctx.Invoke("rancher2:index/getClusterTemplate:getClusterTemplate", args, &rv, opts...)

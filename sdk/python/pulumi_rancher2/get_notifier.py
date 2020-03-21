@@ -13,7 +13,7 @@ class GetNotifierResult:
     """
     A collection of values returned by getNotifier.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, description=None, id=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -28,6 +28,12 @@ class GetNotifierResult:
         __self__.description = description
         """
         (Computed) The notifier description (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -68,12 +74,6 @@ class GetNotifierResult:
         """
         (Computed) Wechat config for notifier (list maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNotifierResult(GetNotifierResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,25 +83,27 @@ class AwaitableGetNotifierResult(GetNotifierResult):
             annotations=self.annotations,
             cluster_id=self.cluster_id,
             description=self.description,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             pagerduty_config=self.pagerduty_config,
             slack_config=self.slack_config,
             smtp_config=self.smtp_config,
             webhook_config=self.webhook_config,
-            wechat_config=self.wechat_config,
-            id=self.id)
+            wechat_config=self.wechat_config)
 
 def get_notifier(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 notifier.
-    
-    :param str cluster_id: The cluster id where create notifier (string)
-    :param str name: The name of the notifier (string)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
+
+
+    :param str cluster_id: The cluster id where create notifier (string)
+    :param str name: The name of the notifier (string)
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -115,11 +117,11 @@ def get_notifier(cluster_id=None,name=None,opts=None):
         annotations=__ret__.get('annotations'),
         cluster_id=__ret__.get('clusterId'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         pagerduty_config=__ret__.get('pagerdutyConfig'),
         slack_config=__ret__.get('slackConfig'),
         smtp_config=__ret__.get('smtpConfig'),
         webhook_config=__ret__.get('webhookConfig'),
-        wechat_config=__ret__.get('wechatConfig'),
-        id=__ret__.get('id'))
+        wechat_config=__ret__.get('wechatConfig'))
