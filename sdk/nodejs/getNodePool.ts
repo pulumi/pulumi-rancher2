@@ -72,6 +72,10 @@ export interface GetNodePoolResult {
      */
     readonly controlPlane: boolean;
     /**
+     * (Computed) Delete not ready node after secs. Default `0` (int)
+     */
+    readonly deleteNotReadyAfterSecs: number;
+    /**
      * (Computed) RKE etcd role for created nodes (bool)
      */
     readonly etcd: boolean;
@@ -84,6 +88,10 @@ export interface GetNodePoolResult {
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
+    /**
+     * (Computed) Node taints (List)
+     */
+    readonly nodeTaints: outputs.GetNodePoolNodeTaint[];
     readonly nodeTemplateId: string;
     /**
      * (Computed) The number of nodes to create on Node Pool (int)

@@ -22,6 +22,10 @@ class NodePool(pulumi.CustomResource):
     """
     RKE control plane role for created nodes (bool)
     """
+    delete_not_ready_after_secs: pulumi.Output[float]
+    """
+    Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+    """
     etcd: pulumi.Output[bool]
     """
     RKE etcd role for created nodes (bool)
@@ -38,6 +42,15 @@ class NodePool(pulumi.CustomResource):
     """
     The name of the Node Pool (string)
     """
+    node_taints: pulumi.Output[list]
+    """
+    Node taints. For Rancher v2.3.3 or above (List)
+    
+      * `effect` (`str`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+      * `key` (`str`) - Taint key (string)
+      * `timeAdded` (`str`) - Taint time added (string)
+      * `value` (`str`) - Taint value (string)
+    """
     node_template_id: pulumi.Output[str]
     """
     The Node Template ID to use for node creation (string)
@@ -50,7 +63,7 @@ class NodePool(pulumi.CustomResource):
     """
     RKE role role for created nodes (bool)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, control_plane=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_template_id=None, quantity=None, worker=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, control_plane=None, delete_not_ready_after_secs=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_taints=None, node_template_id=None, quantity=None, worker=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
         
@@ -59,13 +72,22 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
+        :param pulumi.Input[float] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the Node Pool (string)
+        :param pulumi.Input[list] node_taints: Node taints. For Rancher v2.3.3 or above (List)
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
+        
+        The **node_taints** object supports the following:
+        
+          * `effect` (`pulumi.Input[str]`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+          * `key` (`pulumi.Input[str]`) - Taint key (string)
+          * `timeAdded` (`pulumi.Input[str]`) - Taint time added (string)
+          * `value` (`pulumi.Input[str]`) - Taint value (string)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/node_pool.html.markdown.
         """
@@ -91,12 +113,14 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['control_plane'] = control_plane
+            __props__['delete_not_ready_after_secs'] = delete_not_ready_after_secs
             __props__['etcd'] = etcd
             if hostname_prefix is None:
                 raise TypeError("Missing required property 'hostname_prefix'")
             __props__['hostname_prefix'] = hostname_prefix
             __props__['labels'] = labels
             __props__['name'] = name
+            __props__['node_taints'] = node_taints
             if node_template_id is None:
                 raise TypeError("Missing required property 'node_template_id'")
             __props__['node_template_id'] = node_template_id
@@ -109,7 +133,7 @@ class NodePool(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, control_plane=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_template_id=None, quantity=None, worker=None):
+    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, control_plane=None, delete_not_ready_after_secs=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_taints=None, node_template_id=None, quantity=None, worker=None):
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -120,13 +144,22 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
+        :param pulumi.Input[float] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the Node Pool (string)
+        :param pulumi.Input[list] node_taints: Node taints. For Rancher v2.3.3 or above (List)
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
+        
+        The **node_taints** object supports the following:
+        
+          * `effect` (`pulumi.Input[str]`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+          * `key` (`pulumi.Input[str]`) - Taint key (string)
+          * `timeAdded` (`pulumi.Input[str]`) - Taint time added (string)
+          * `value` (`pulumi.Input[str]`) - Taint value (string)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/node_pool.html.markdown.
         """
@@ -136,10 +169,12 @@ class NodePool(pulumi.CustomResource):
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id
         __props__["control_plane"] = control_plane
+        __props__["delete_not_ready_after_secs"] = delete_not_ready_after_secs
         __props__["etcd"] = etcd
         __props__["hostname_prefix"] = hostname_prefix
         __props__["labels"] = labels
         __props__["name"] = name
+        __props__["node_taints"] = node_taints
         __props__["node_template_id"] = node_template_id
         __props__["quantity"] = quantity
         __props__["worker"] = worker

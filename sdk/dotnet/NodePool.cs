@@ -34,6 +34,12 @@ namespace Pulumi.Rancher2
         public Output<bool?> ControlPlane { get; private set; } = null!;
 
         /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
+        [Output("deleteNotReadyAfterSecs")]
+        public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
+
+        /// <summary>
         /// RKE etcd role for created nodes (bool)
         /// </summary>
         [Output("etcd")]
@@ -56,6 +62,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        [Output("nodeTaints")]
+        public Output<ImmutableArray<Outputs.NodePoolNodeTaints>> NodeTaints { get; private set; } = null!;
 
         /// <summary>
         /// The Node Template ID to use for node creation (string)
@@ -146,6 +158,12 @@ namespace Pulumi.Rancher2
         public Input<bool>? ControlPlane { get; set; }
 
         /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
+        [Input("deleteNotReadyAfterSecs")]
+        public Input<int>? DeleteNotReadyAfterSecs { get; set; }
+
+        /// <summary>
         /// RKE etcd role for created nodes (bool)
         /// </summary>
         [Input("etcd")]
@@ -174,6 +192,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("nodeTaints")]
+        private InputList<Inputs.NodePoolNodeTaintsArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeTaintsArgs> NodeTaints
+        {
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintsArgs>());
+            set => _nodeTaints = value;
+        }
 
         /// <summary>
         /// The Node Template ID to use for node creation (string)
@@ -225,6 +255,12 @@ namespace Pulumi.Rancher2
         public Input<bool>? ControlPlane { get; set; }
 
         /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
+        [Input("deleteNotReadyAfterSecs")]
+        public Input<int>? DeleteNotReadyAfterSecs { get; set; }
+
+        /// <summary>
         /// RKE etcd role for created nodes (bool)
         /// </summary>
         [Input("etcd")]
@@ -254,6 +290,18 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nodeTaints")]
+        private InputList<Inputs.NodePoolNodeTaintsGetArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeTaintsGetArgs> NodeTaints
+        {
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintsGetArgs>());
+            set => _nodeTaints = value;
+        }
+
         /// <summary>
         /// The Node Template ID to use for node creation (string)
         /// </summary>
@@ -275,5 +323,109 @@ namespace Pulumi.Rancher2
         public NodePoolState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class NodePoolNodeTaintsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        /// </summary>
+        [Input("effect")]
+        public Input<string>? Effect { get; set; }
+
+        /// <summary>
+        /// Taint key (string)
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        /// <summary>
+        /// Taint time added (string)
+        /// </summary>
+        [Input("timeAdded")]
+        public Input<string>? TimeAdded { get; set; }
+
+        /// <summary>
+        /// Taint value (string)
+        /// </summary>
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public NodePoolNodeTaintsArgs()
+        {
+        }
+    }
+
+    public sealed class NodePoolNodeTaintsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        /// </summary>
+        [Input("effect")]
+        public Input<string>? Effect { get; set; }
+
+        /// <summary>
+        /// Taint key (string)
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        /// <summary>
+        /// Taint time added (string)
+        /// </summary>
+        [Input("timeAdded")]
+        public Input<string>? TimeAdded { get; set; }
+
+        /// <summary>
+        /// Taint value (string)
+        /// </summary>
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public NodePoolNodeTaintsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class NodePoolNodeTaints
+    {
+        /// <summary>
+        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        /// </summary>
+        public readonly string? Effect;
+        /// <summary>
+        /// Taint key (string)
+        /// </summary>
+        public readonly string Key;
+        /// <summary>
+        /// Taint time added (string)
+        /// </summary>
+        public readonly string TimeAdded;
+        /// <summary>
+        /// Taint value (string)
+        /// </summary>
+        public readonly string Value;
+
+        [OutputConstructor]
+        private NodePoolNodeTaints(
+            string? effect,
+            string key,
+            string timeAdded,
+            string value)
+        {
+            Effect = effect;
+            Key = key;
+            TimeAdded = timeAdded;
+            Value = value;
+        }
+    }
     }
 }

@@ -121,6 +121,10 @@ class NodeTemplate(pulumi.CustomResource):
     """
     (Computed) The driver of the node template (string)
     """
+    driver_id: pulumi.Output[str]
+    """
+    The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+    """
     engine_env: pulumi.Output[dict]
     """
     Engine environment for the node template (string)
@@ -231,7 +235,7 @@ class NodeTemplate(pulumi.CustomResource):
       * `vcenter` (`str`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
       * `vcenterPort` (`str`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
     """
-    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information. 
         
@@ -249,6 +253,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         :param pulumi.Input[str] description: Description for the Node Template (string)
         :param pulumi.Input[dict] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[dict] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[list] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
@@ -436,6 +441,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['cloud_credential_id'] = cloud_credential_id
             __props__['description'] = description
             __props__['digitalocean_config'] = digitalocean_config
+            __props__['driver_id'] = driver_id
             __props__['engine_env'] = engine_env
             __props__['engine_insecure_registries'] = engine_insecure_registries
             __props__['engine_install_url'] = engine_install_url
@@ -456,7 +462,7 @@ class NodeTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
+    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -473,6 +479,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the Node Template (string)
         :param pulumi.Input[dict] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
+        :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[dict] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[list] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
@@ -647,6 +654,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["description"] = description
         __props__["digitalocean_config"] = digitalocean_config
         __props__["driver"] = driver
+        __props__["driver_id"] = driver_id
         __props__["engine_env"] = engine_env
         __props__["engine_insecure_registries"] = engine_insecure_registries
         __props__["engine_install_url"] = engine_install_url

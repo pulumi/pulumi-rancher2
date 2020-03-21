@@ -46,6 +46,10 @@ class Catalog(pulumi.CustomResource):
     """
     The project id of the catalog. Mandatory if `scope = project` (string)
     """
+    refresh: pulumi.Output[bool]
+    """
+    Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+    """
     scope: pulumi.Output[str]
     """
     The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
@@ -58,7 +62,7 @@ class Catalog(pulumi.CustomResource):
     """
     The username to access the catalog if needed (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
         
@@ -73,6 +77,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
+        :param pulumi.Input[bool] refresh: Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
@@ -105,6 +110,7 @@ class Catalog(pulumi.CustomResource):
             __props__['name'] = name
             __props__['password'] = password
             __props__['project_id'] = project_id
+            __props__['refresh'] = refresh
             __props__['scope'] = scope
             if url is None:
                 raise TypeError("Missing required property 'url'")
@@ -117,7 +123,7 @@ class Catalog(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None):
+    def get(resource_name, id, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None):
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,6 +140,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
+        :param pulumi.Input[bool] refresh: Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
@@ -152,6 +159,7 @@ class Catalog(pulumi.CustomResource):
         __props__["name"] = name
         __props__["password"] = password
         __props__["project_id"] = project_id
+        __props__["refresh"] = refresh
         __props__["scope"] = scope
         __props__["url"] = url
         __props__["username"] = username

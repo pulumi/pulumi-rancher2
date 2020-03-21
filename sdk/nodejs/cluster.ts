@@ -8,157 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
- * 
- * ## Example Usage
- * 
- * Creating Rancher v2 imported cluster
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 imported Cluster
- * const fooImported = new rancher2.Cluster("foo-imported", {
- *     description: "Foo rancher2 imported cluster",
- * });
- * ```
- * 
- * Creating Rancher v2 RKE cluster
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 RKE Cluster
- * const fooCustom = new rancher2.Cluster("foo-custom", {
- *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * ```
- * 
- * Creating Rancher v2 RKE cluster enabling and customizing monitoring
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 RKE Cluster
- * const fooCustom = new rancher2.Cluster("foo-custom", {
- *     clusterMonitoringInput: {
- *         answers: {
- *             "exporter-kubelets.https": true,
- *             "exporter-node.enabled": true,
- *             "exporter-node.ports.metrics.port": 9796,
- *             "exporter-node.resources.limits.cpu": "200m",
- *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": false,
- *             "grafana.persistence.size": "10Gi",
- *             "grafana.persistence.storageClass": "default",
- *             "operator.resources.limits.memory": "500Mi",
- *             "prometheus.persistence.enabled": "false",
- *             "prometheus.persistence.size": "50Gi",
- *             "prometheus.persistence.storageClass": "default",
- *             "prometheus.persistent.useReleaseName": "true",
- *             "prometheus.resources.core.limits.cpu": "1000m",
- *             "prometheus.resources.core.limits.memory": "1500Mi",
- *             "prometheus.resources.core.requests.cpu": "750m",
- *             "prometheus.resources.core.requests.memory": "750Mi",
- *             "prometheus.retention": "12h",
- *         },
- *     },
- *     description: "Foo rancher2 custom cluster",
- *     enableClusterMonitoring: true,
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * ```
- * 
- * 
- * Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 RKE Cluster
- * const fooCustom = new rancher2.Cluster("foo-custom", {
- *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
- *     amazonec2Config: {
- *         accessKey: "AWS_ACCESS_KEY",
- *         ami: "<AMI_ID>",
- *         region: "<REGION>",
- *         secretKey: "<AWS_SECRET_KEY>",
- *         securityGroups: ["<AWS_SECURITY_GROUP>"],
- *         subnetId: "<SUBNET_ID>",
- *         vpcId: "<VPC_ID>",
- *         zone: "<ZONE>",
- *     },
- *     description: "foo test",
- * });
- * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("foo", {
- *     clusterId: foo_custom.id,
- *     controlPlane: true,
- *     etcd: true,
- *     hostnamePrefix: "foo-cluster-0",
- *     nodeTemplateId: fooNodeTemplate.id,
- *     quantity: 3,
- *     worker: true,
- * });
- * ```
- * 
- * Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 cluster template
- * const fooClusterTemplate = new rancher2.ClusterTemplate("foo", {
- *     description: "Test cluster template v2",
- *     members: [{
- *         accessType: "owner",
- *         userPrincipalId: "local://user-XXXXX",
- *     }],
- *     templateRevisions: [{
- *         clusterConfig: {
- *             rkeConfig: {
- *                 network: {
- *                     plugin: "canal",
- *                 },
- *                 services: {
- *                     etcd: {
- *                         creation: "6h",
- *                         retention: "24h",
- *                     },
- *                 },
- *             },
- *         },
- *         default: true,
- *         name: "V1",
- *     }],
- * });
- * // Create a new rancher2 RKE Cluster from template
- * const fooCluster = new rancher2.Cluster("foo", {
- *     clusterTemplateId: fooClusterTemplate.id,
- *     clusterTemplateRevisionId: fooClusterTemplate.defaultRevisionId,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster.html.markdown.
  */
@@ -212,7 +61,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
      */
-    public readonly clusterTemplateAnswers!: pulumi.Output<outputs.ClusterClusterTemplateAnswers | undefined>;
+    public readonly clusterTemplateAnswers!: pulumi.Output<outputs.ClusterClusterTemplateAnswers>;
     /**
      * Cluster template ID. Just for Rancher v2.3.x and above (string)
      */
@@ -297,6 +146,10 @@ export class Cluster extends pulumi.CustomResource {
      * (Computed) System project ID for the cluster (string)
      */
     public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
+    /**
+     * Windows preferred cluster. Default: `false` (bool)
+     */
+    public readonly windowsPreferedCluster!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -337,6 +190,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["rkeConfig"] = state ? state.rkeConfig : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
+            inputs["windowsPreferedCluster"] = state ? state.windowsPreferedCluster : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             inputs["aksConfig"] = args ? args.aksConfig : undefined;
@@ -362,6 +216,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rkeConfig"] = args ? args.rkeConfig : undefined;
+            inputs["windowsPreferedCluster"] = args ? args.windowsPreferedCluster : undefined;
             inputs["clusterRegistrationToken"] = undefined /*out*/;
             inputs["defaultProjectId"] = undefined /*out*/;
             inputs["kubeConfig"] = undefined /*out*/;
@@ -490,6 +345,10 @@ export interface ClusterState {
      * (Computed) System project ID for the cluster (string)
      */
     readonly systemProjectId?: pulumi.Input<string>;
+    /**
+     * Windows preferred cluster. Default: `false` (bool)
+     */
+    readonly windowsPreferedCluster?: pulumi.Input<boolean>;
 }
 
 /**
@@ -588,4 +447,8 @@ export interface ClusterArgs {
      * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
+    /**
+     * Windows preferred cluster. Default: `false` (bool)
+     */
+    readonly windowsPreferedCluster?: pulumi.Input<boolean>;
 }

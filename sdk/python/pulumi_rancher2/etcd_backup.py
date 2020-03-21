@@ -30,6 +30,8 @@ class EtcdBackup(pulumi.CustomResource):
         * `folder` (`str`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
         * `region` (`str`) - Region for S3 service (string)
         * `secret_key` (`str`) - Secret key for S3 service (string)
+    
+      * `safeTimestamp` (`bool`)
     """
     cluster_id: pulumi.Output[str]
     """
@@ -84,6 +86,8 @@ class EtcdBackup(pulumi.CustomResource):
             * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
             * `region` (`pulumi.Input[str]`) - Region for S3 service (string)
             * `secret_key` (`pulumi.Input[str]`) - Secret key for S3 service (string)
+        
+          * `safeTimestamp` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/etcd_backup.html.markdown.
         """
@@ -152,6 +156,8 @@ class EtcdBackup(pulumi.CustomResource):
             * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
             * `region` (`pulumi.Input[str]`) - Region for S3 service (string)
             * `secret_key` (`pulumi.Input[str]`) - Secret key for S3 service (string)
+        
+          * `safeTimestamp` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/etcd_backup.html.markdown.
         """

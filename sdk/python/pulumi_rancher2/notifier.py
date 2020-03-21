@@ -21,6 +21,7 @@ class Notifier(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
     The notifier description (string)
+    * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
     """
     labels: pulumi.Output[dict]
     """
@@ -37,6 +38,7 @@ class Notifier(pulumi.CustomResource):
       * `proxyUrl` (`str`) - Wechat proxy url (string)
       * `serviceKey` (`str`) - Pagerduty service key (string)
     """
+    send_resolved: pulumi.Output[bool]
     slack_config: pulumi.Output[dict]
     """
     Slack config for notifier (list maxitems:1)
@@ -75,7 +77,7 @@ class Notifier(pulumi.CustomResource):
       * `recipientType` (`str`) - Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
       * `secret` (`str`) - Wechat agent ID (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, send_resolved=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
         
@@ -84,6 +86,7 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+               * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         :param pulumi.Input[dict] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -154,6 +157,7 @@ class Notifier(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['pagerduty_config'] = pagerduty_config
+            __props__['send_resolved'] = send_resolved
             __props__['slack_config'] = slack_config
             __props__['smtp_config'] = smtp_config
             __props__['webhook_config'] = webhook_config
@@ -165,7 +169,7 @@ class Notifier(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
+    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, send_resolved=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
         """
         Get an existing Notifier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,6 +180,7 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+               * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         :param pulumi.Input[dict] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -230,6 +235,7 @@ class Notifier(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["pagerduty_config"] = pagerduty_config
+        __props__["send_resolved"] = send_resolved
         __props__["slack_config"] = slack_config
         __props__["smtp_config"] = smtp_config
         __props__["webhook_config"] = webhook_config

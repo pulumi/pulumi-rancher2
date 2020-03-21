@@ -957,6 +957,10 @@ export interface ClusterRkeConfig {
      */
     sshAgentAuth?: boolean;
     /**
+     * Cluster level SSH certificate path (string)
+     */
+    sshCertPath: string;
+    /**
      * Node SSH private key path (string)
      */
     sshKeyPath: string;
@@ -1515,6 +1519,10 @@ export interface ClusterRkeConfigDns {
 
 export interface ClusterRkeConfigIngress {
     /**
+     * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+     */
+    dnsPolicy: string;
+    /**
      * Extra arguments for scheduler service (map)
      */
     extraArgs: {[key: string]: any};
@@ -1741,7 +1749,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     key: string;
     /**
-     * Path for etcd service (string)
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path: string;
     /**
@@ -1775,6 +1783,10 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      * S3 config options for etcd backup (list maxitems:1)
      */
     s3BackupConfig?: outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig;
+    /**
+     * Safe timestamp for etcd backup. Default: `false` (bool)
+     */
+    safeTimestamp?: boolean;
 }
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -1810,9 +1822,21 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
 
 export interface ClusterRkeConfigServicesKubeApi {
     /**
+     * Admission configuration (map)
+     */
+    admissionConfiguration?: {[key: string]: any};
+    /**
      * Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
      */
     alwaysPullImages?: boolean;
+    /**
+     * K8s audit log configuration. (list maxitem: 1)
+     */
+    auditLog?: outputs.ClusterRkeConfigServicesKubeApiAuditLog;
+    /**
+     * K8s event rate limit configuration. (list maxitem: 1)
+     */
+    eventRateLimit?: outputs.ClusterRkeConfigServicesKubeApiEventRateLimit;
     /**
      * Extra arguments for scheduler service (map)
      */
@@ -1834,6 +1858,10 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     podSecurityPolicy?: boolean;
     /**
+     * [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+     */
+    secretsEncryptionConfig?: outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
+    /**
      * Service Cluster ip Range option for kube controller service (string)
      */
     serviceClusterIpRange: string;
@@ -1841,6 +1869,66 @@ export interface ClusterRkeConfigServicesKubeApi {
      * Service Node Port Range option for kube API service (string)
      */
     serviceNodePortRange: string;
+}
+
+export interface ClusterRkeConfigServicesKubeApiAuditLog {
+    /**
+     * Event rate limit configuration. (map)
+     */
+    configuration?: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: boolean;
+}
+
+export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
+    /**
+     * Audit log format. Default: 'json' (string)
+     */
+    format?: string;
+    /**
+     * Audit log max age. Default: `30` (int)
+     */
+    maxAge?: number;
+    /**
+     * Audit log max backup. Default: `10` (int)
+     */
+    maxBackup?: number;
+    /**
+     * Audit log max size. Default: `100` (int)
+     */
+    maxSize?: number;
+    /**
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     */
+    path?: string;
+    /**
+     * Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+     */
+    policy?: string;
+}
+
+export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
+    /**
+     * Event rate limit configuration. (map)
+     */
+    configuration?: {[key: string]: any};
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: boolean;
+}
+
+export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    /**
+     * Secrets encryption configuration. (map)
+     */
+    customConfig?: {[key: string]: any};
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     */
+    enabled?: boolean;
 }
 
 export interface ClusterRkeConfigServicesKubeController {
@@ -1893,8 +1981,10 @@ export interface ClusterRkeConfigServicesKubelet {
     extraEnvs?: string[];
     /**
      * Enable or disable failing when swap on is not supported (bool)
+     * * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
      */
     failSwapOn: boolean;
+    generateServingCertificate?: boolean;
     /**
      * Docker image for scheduler service (string)
      */
@@ -2072,6 +2162,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     privateRegistries?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry[];
     services: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices;
     sshAgentAuth?: boolean;
+    sshCertPath: string;
     sshKeyPath: string;
 }
 
@@ -2267,6 +2358,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    dnsPolicy: string;
     extraArgs: {[key: string]: any};
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
@@ -2363,6 +2455,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     intervalHours?: number;
     retention?: number;
     s3BackupConfig?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig;
+    safeTimestamp?: boolean;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -2376,14 +2469,51 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    admissionConfiguration?: {[key: string]: any};
     alwaysPullImages?: boolean;
+    auditLog?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
+    eventRateLimit?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
     extraArgs: {[key: string]: any};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
     podSecurityPolicy?: boolean;
+    secretsEncryptionConfig?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
+    configuration?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: boolean;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
+    format?: string;
+    maxAge?: number;
+    maxBackup?: number;
+    maxSize?: number;
+    path?: string;
+    policy?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+    configuration?: {[key: string]: any};
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: boolean;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig?: {[key: string]: any};
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: boolean;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
@@ -2402,6 +2532,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
+    generateServingCertificate?: boolean;
     image: string;
     infraContainerImage: string;
 }
@@ -2456,6 +2587,7 @@ export interface EtcdBackupBackupConfig {
      * S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
      */
     s3BackupConfig?: outputs.EtcdBackupBackupConfigS3BackupConfig;
+    safeTimestamp?: boolean;
 }
 
 export interface EtcdBackupBackupConfigS3BackupConfig {
@@ -2774,6 +2906,7 @@ export interface GetClusterRkeConfig {
     privateRegistries?: outputs.GetClusterRkeConfigPrivateRegistry[];
     services: outputs.GetClusterRkeConfigServices;
     sshAgentAuth?: boolean;
+    sshCertPath: string;
     sshKeyPath: string;
 }
 
@@ -2969,6 +3102,7 @@ export interface GetClusterRkeConfigDns {
 }
 
 export interface GetClusterRkeConfigIngress {
+    dnsPolicy: string;
     extraArgs: {[key: string]: any};
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
@@ -3062,6 +3196,7 @@ export interface GetClusterRkeConfigServicesEtcdBackupConfig {
     intervalHours?: number;
     retention?: number;
     s3BackupConfig?: outputs.GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig;
+    safeTimestamp?: boolean;
 }
 
 export interface GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -3075,14 +3210,42 @@ export interface GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
 }
 
 export interface GetClusterRkeConfigServicesKubeApi {
+    admissionConfiguration?: {[key: string]: any};
     alwaysPullImages?: boolean;
+    auditLog?: outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
+    eventRateLimit?: outputs.GetClusterRkeConfigServicesKubeApiEventRateLimit;
     extraArgs: {[key: string]: any};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
     podSecurityPolicy?: boolean;
+    secretsEncryptionConfig?: outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface GetClusterRkeConfigServicesKubeApiAuditLog {
+    configuration?: outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfiguration;
+    enabled?: boolean;
+}
+
+export interface GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
+    format?: string;
+    maxAge?: number;
+    maxBackup?: number;
+    maxSize?: number;
+    path?: string;
+    policy?: string;
+}
+
+export interface GetClusterRkeConfigServicesKubeApiEventRateLimit {
+    configuration?: {[key: string]: any};
+    enabled?: boolean;
+}
+
+export interface GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig?: {[key: string]: any};
+    enabled?: boolean;
 }
 
 export interface GetClusterRkeConfigServicesKubeController {
@@ -3101,6 +3264,7 @@ export interface GetClusterRkeConfigServicesKubelet {
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
+    generateServingCertificate?: boolean;
     image: string;
     infraContainerImage: string;
 }
@@ -3188,6 +3352,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     privateRegistries?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry[];
     services: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices;
     sshAgentAuth?: boolean;
+    sshCertPath: string;
     sshKeyPath: string;
 }
 
@@ -3383,6 +3548,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    dnsPolicy: string;
     extraArgs: {[key: string]: any};
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
@@ -3476,6 +3642,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     intervalHours?: number;
     retention?: number;
     s3BackupConfig?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig;
+    safeTimestamp?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -3489,14 +3656,42 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    admissionConfiguration?: {[key: string]: any};
     alwaysPullImages?: boolean;
+    auditLog?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
+    eventRateLimit?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
     extraArgs: {[key: string]: any};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
     podSecurityPolicy?: boolean;
+    secretsEncryptionConfig?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
+    configuration?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
+    enabled?: boolean;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
+    format?: string;
+    maxAge?: number;
+    maxBackup?: number;
+    maxSize?: number;
+    path?: string;
+    policy?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+    configuration?: {[key: string]: any};
+    enabled?: boolean;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig?: {[key: string]: any};
+    enabled?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
@@ -3515,6 +3710,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
+    generateServingCertificate?: boolean;
     image: string;
     infraContainerImage: string;
 }
@@ -3545,6 +3741,7 @@ export interface GetEtcdBackupBackupConfig {
     intervalHours?: number;
     retention?: number;
     s3BackupConfig?: outputs.GetEtcdBackupBackupConfigS3BackupConfig;
+    safeTimestamp?: boolean;
 }
 
 export interface GetEtcdBackupBackupConfigS3BackupConfig {
@@ -3610,6 +3807,13 @@ export interface GetNamespaceResourceQuotaLimit {
     services?: string;
     servicesLoadBalancers?: string;
     servicesNodePorts?: string;
+}
+
+export interface GetNodePoolNodeTaint {
+    effect?: string;
+    key: string;
+    timeAdded: string;
+    value: string;
 }
 
 export interface GetNotifierPagerdutyConfig {
@@ -3939,6 +4143,25 @@ export interface NamespaceResourceQuotaLimit {
      * Limit for services node ports in namespace (string)
      */
     servicesNodePorts?: string;
+}
+
+export interface NodePoolNodeTaint {
+    /**
+     * Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+     */
+    effect?: string;
+    /**
+     * Taint key (string)
+     */
+    key: string;
+    /**
+     * Taint time added (string)
+     */
+    timeAdded: string;
+    /**
+     * Taint value (string)
+     */
+    value: string;
 }
 
 export interface NodeTemplateAmazonec2Config {

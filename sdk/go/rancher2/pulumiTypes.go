@@ -5107,6 +5107,8 @@ type ClusterRkeConfig struct {
 	Services *ClusterRkeConfigServices `pulumi:"services"`
 	// Use ssh agent auth. Default `false` (bool)
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
+	// Cluster level SSH certificate path (string)
+	SshCertPath *string `pulumi:"sshCertPath"`
 	// Node SSH private key path (string)
 	SshKeyPath *string `pulumi:"sshKeyPath"`
 }
@@ -5155,6 +5157,8 @@ type ClusterRkeConfigArgs struct {
 	Services ClusterRkeConfigServicesPtrInput `pulumi:"services"`
 	// Use ssh agent auth. Default `false` (bool)
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
+	// Cluster level SSH certificate path (string)
+	SshCertPath pulumi.StringPtrInput `pulumi:"sshCertPath"`
 	// Node SSH private key path (string)
 	SshKeyPath pulumi.StringPtrInput `pulumi:"sshKeyPath"`
 }
@@ -5316,6 +5320,11 @@ func (o ClusterRkeConfigOutput) SshAgentAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfig) *bool { return v.SshAgentAuth }).(pulumi.BoolPtrOutput)
 }
 
+// Cluster level SSH certificate path (string)
+func (o ClusterRkeConfigOutput) SshCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfig) *string { return v.SshCertPath }).(pulumi.StringPtrOutput)
+}
+
 // Node SSH private key path (string)
 func (o ClusterRkeConfigOutput) SshKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfig) *string { return v.SshKeyPath }).(pulumi.StringPtrOutput)
@@ -5427,6 +5436,11 @@ func (o ClusterRkeConfigPtrOutput) Services() ClusterRkeConfigServicesPtrOutput 
 // Use ssh agent auth. Default `false` (bool)
 func (o ClusterRkeConfigPtrOutput) SshAgentAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfig) *bool { return v.SshAgentAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Cluster level SSH certificate path (string)
+func (o ClusterRkeConfigPtrOutput) SshCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfig) *string { return v.SshCertPath }).(pulumi.StringPtrOutput)
 }
 
 // Node SSH private key path (string)
@@ -8912,6 +8926,8 @@ func (o ClusterRkeConfigDnsPtrOutput) UpstreamNameservers() pulumi.StringArrayOu
 }
 
 type ClusterRkeConfigIngress struct {
+	// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	// Node selector for RKE Ingress (map)
@@ -8930,6 +8946,8 @@ type ClusterRkeConfigIngressInput interface {
 }
 
 type ClusterRkeConfigIngressArgs struct {
+	// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+	DnsPolicy pulumi.StringPtrInput `pulumi:"dnsPolicy"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	// Node selector for RKE Ingress (map)
@@ -9007,6 +9025,11 @@ func (o ClusterRkeConfigIngressOutput) ToClusterRkeConfigIngressPtrOutputWithCon
 		return &v
 	}).(ClusterRkeConfigIngressPtrOutput)
 }
+// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+func (o ClusterRkeConfigIngressOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigIngress) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
+}
+
 // Extra arguments for scheduler service (map)
 func (o ClusterRkeConfigIngressOutput) ExtraArgs() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterRkeConfigIngress) map[string]interface{} { return v.ExtraArgs }).(pulumi.MapOutput)
@@ -9043,6 +9066,11 @@ func (o ClusterRkeConfigIngressPtrOutput) ToClusterRkeConfigIngressPtrOutputWith
 
 func (o ClusterRkeConfigIngressPtrOutput) Elem() ClusterRkeConfigIngressOutput {
 	return o.ApplyT(func (v *ClusterRkeConfigIngress) ClusterRkeConfigIngress { return *v }).(ClusterRkeConfigIngressOutput)
+}
+
+// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+func (o ClusterRkeConfigIngressPtrOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigIngress) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Extra arguments for scheduler service (map)
@@ -10330,7 +10358,7 @@ type ClusterRkeConfigServicesEtcd struct {
 	Image *string `pulumi:"image"`
 	// TLS key for etcd service (string)
 	Key *string `pulumi:"key"`
-	// Path for etcd service (string)
+	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path *string `pulumi:"path"`
 	// Retention for etcd backup. Default `6` (int)
 	Retention *string `pulumi:"retention"`
@@ -10370,7 +10398,7 @@ type ClusterRkeConfigServicesEtcdArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// TLS key for etcd service (string)
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Path for etcd service (string)
+	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Retention for etcd backup. Default `6` (int)
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
@@ -10502,7 +10530,7 @@ func (o ClusterRkeConfigServicesEtcdOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcd) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Path for etcd service (string)
+// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 func (o ClusterRkeConfigServicesEtcdOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcd) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -10595,7 +10623,7 @@ func (o ClusterRkeConfigServicesEtcdPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcd) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Path for etcd service (string)
+// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 func (o ClusterRkeConfigServicesEtcdPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcd) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -10624,6 +10652,8 @@ type ClusterRkeConfigServicesEtcdBackupConfig struct {
 	Retention *int `pulumi:"retention"`
 	// S3 config options for etcd backup (list maxitems:1)
 	S3BackupConfig *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	// Safe timestamp for etcd backup. Default: `false` (bool)
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type ClusterRkeConfigServicesEtcdBackupConfigInput interface {
@@ -10642,6 +10672,8 @@ type ClusterRkeConfigServicesEtcdBackupConfigArgs struct {
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	// S3 config options for etcd backup (list maxitems:1)
 	S3BackupConfig ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	// Safe timestamp for etcd backup. Default: `false` (bool)
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (ClusterRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -10731,6 +10763,11 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) S3BackupConfig() Cluster
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
 }
 
+// Safe timestamp for etcd backup. Default: `false` (bool)
+func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterRkeConfigServicesEtcdBackupConfigPtrOutput struct { *pulumi.OutputState}
 
 func (ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -10767,6 +10804,11 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) Retention() pulumi.In
 // S3 config options for etcd backup (list maxitems:1)
 func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) S3BackupConfig() ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
+}
+
+// Safe timestamp for etcd backup. Default: `false` (bool)
+func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -10966,8 +11008,14 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) SecretK
 }
 
 type ClusterRkeConfigServicesKubeApi struct {
+	// Admission configuration (map)
+	AdmissionConfiguration map[string]interface{} `pulumi:"admissionConfiguration"`
 	// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 	AlwaysPullImages *bool `pulumi:"alwaysPullImages"`
+	// K8s audit log configuration. (list maxitem: 1)
+	AuditLog *ClusterRkeConfigServicesKubeApiAuditLog `pulumi:"auditLog"`
+	// K8s event rate limit configuration. (list maxitem: 1)
+	EventRateLimit *ClusterRkeConfigServicesKubeApiEventRateLimit `pulumi:"eventRateLimit"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	// Extra binds for scheduler service (list)
@@ -10978,6 +11026,8 @@ type ClusterRkeConfigServicesKubeApi struct {
 	Image *string `pulumi:"image"`
 	// Pod Security Policy option for kube API service. Default `false` (bool)
 	PodSecurityPolicy *bool `pulumi:"podSecurityPolicy"`
+	// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+	SecretsEncryptionConfig *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig `pulumi:"secretsEncryptionConfig"`
 	// Service Cluster ip Range option for kube controller service (string)
 	ServiceClusterIpRange *string `pulumi:"serviceClusterIpRange"`
 	// Service Node Port Range option for kube API service (string)
@@ -10992,8 +11042,14 @@ type ClusterRkeConfigServicesKubeApiInput interface {
 }
 
 type ClusterRkeConfigServicesKubeApiArgs struct {
+	// Admission configuration (map)
+	AdmissionConfiguration pulumi.MapInput `pulumi:"admissionConfiguration"`
 	// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 	AlwaysPullImages pulumi.BoolPtrInput `pulumi:"alwaysPullImages"`
+	// K8s audit log configuration. (list maxitem: 1)
+	AuditLog ClusterRkeConfigServicesKubeApiAuditLogPtrInput `pulumi:"auditLog"`
+	// K8s event rate limit configuration. (list maxitem: 1)
+	EventRateLimit ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput `pulumi:"eventRateLimit"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	// Extra binds for scheduler service (list)
@@ -11004,6 +11060,8 @@ type ClusterRkeConfigServicesKubeApiArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Pod Security Policy option for kube API service. Default `false` (bool)
 	PodSecurityPolicy pulumi.BoolPtrInput `pulumi:"podSecurityPolicy"`
+	// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+	SecretsEncryptionConfig ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput `pulumi:"secretsEncryptionConfig"`
 	// Service Cluster ip Range option for kube controller service (string)
 	ServiceClusterIpRange pulumi.StringPtrInput `pulumi:"serviceClusterIpRange"`
 	// Service Node Port Range option for kube API service (string)
@@ -11077,9 +11135,24 @@ func (o ClusterRkeConfigServicesKubeApiOutput) ToClusterRkeConfigServicesKubeApi
 		return &v
 	}).(ClusterRkeConfigServicesKubeApiPtrOutput)
 }
+// Admission configuration (map)
+func (o ClusterRkeConfigServicesKubeApiOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 // Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+// K8s audit log configuration. (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiOutput) AuditLog() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+// K8s event rate limit configuration. (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiOutput) EventRateLimit() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 // Extra arguments for scheduler service (map)
@@ -11105,6 +11178,11 @@ func (o ClusterRkeConfigServicesKubeApiOutput) Image() pulumi.StringPtrOutput {
 // Pod Security Policy option for kube API service. Default `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiOutput) PodSecurityPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
+}
+
+// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiOutput) SecretsEncryptionConfig() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
 
 // Service Cluster ip Range option for kube controller service (string)
@@ -11135,9 +11213,24 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) Elem() ClusterRkeConfigService
 	return o.ApplyT(func (v *ClusterRkeConfigServicesKubeApi) ClusterRkeConfigServicesKubeApi { return *v }).(ClusterRkeConfigServicesKubeApiOutput)
 }
 
+// Admission configuration (map)
+func (o ClusterRkeConfigServicesKubeApiPtrOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 // Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiPtrOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+// K8s audit log configuration. (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiPtrOutput) AuditLog() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+// K8s event rate limit configuration. (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiPtrOutput) EventRateLimit() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 // Extra arguments for scheduler service (map)
@@ -11165,6 +11258,11 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) PodSecurityPolicy() pulumi.Boo
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
 }
 
+// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+func (o ClusterRkeConfigServicesKubeApiPtrOutput) SecretsEncryptionConfig() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
 // Service Cluster ip Range option for kube controller service (string)
 func (o ClusterRkeConfigServicesKubeApiPtrOutput) ServiceClusterIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *string { return v.ServiceClusterIpRange }).(pulumi.StringPtrOutput)
@@ -11173,6 +11271,566 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) ServiceClusterIpRange() pulumi
 // Service Node Port Range option for kube API service (string)
 func (o ClusterRkeConfigServicesKubeApiPtrOutput) ServiceNodePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *string { return v.ServiceNodePortRange }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLog struct {
+	// Event rate limit configuration. (map)
+	Configuration *ClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiAuditLogOutput() ClusterRkeConfigServicesKubeApiAuditLogOutput
+	ToClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiAuditLogOutput
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogArgs struct {
+	// Event rate limit configuration. (map)
+	Configuration ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterRkeConfigServicesKubeApiAuditLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogArgs) ToClusterRkeConfigServicesKubeApiAuditLogOutput() ClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogArgs) ToClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogArgs) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogArgs) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogOutput).ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput
+	ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiAuditLogPtrOutput
+}
+
+type clusterRkeConfigServicesKubeApiAuditLogPtrType ClusterRkeConfigServicesKubeApiAuditLogArgs
+
+func ClusterRkeConfigServicesKubeApiAuditLogPtr(v *ClusterRkeConfigServicesKubeApiAuditLogArgs) ClusterRkeConfigServicesKubeApiAuditLogPtrInput {	return (*clusterRkeConfigServicesKubeApiAuditLogPtrType)(v)
+}
+
+func (*clusterRkeConfigServicesKubeApiAuditLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigServicesKubeApiAuditLogPtrType) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigServicesKubeApiAuditLogPtrType) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigServicesKubeApiAuditLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) ToClusterRkeConfigServicesKubeApiAuditLogOutput() ClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) ToClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLog {
+		return &v
+	}).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+// Event rate limit configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ToClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() ClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigServicesKubeApiAuditLog) ClusterRkeConfigServicesKubeApiAuditLog { return *v }).(ClusterRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+// Event rate limit configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
+	// Audit log format. Default: 'json' (string)
+	Format *string `pulumi:"format"`
+	// Audit log max age. Default: `30` (int)
+	MaxAge *int `pulumi:"maxAge"`
+	// Audit log max backup. Default: `10` (int)
+	MaxBackup *int `pulumi:"maxBackup"`
+	// Audit log max size. Default: `100` (int)
+	MaxSize *int `pulumi:"maxSize"`
+	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+	Path *string `pulumi:"path"`
+	// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+	Policy *string `pulumi:"policy"`
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput
+	ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
+	// Audit log format. Default: 'json' (string)
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// Audit log max age. Default: `30` (int)
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	// Audit log max backup. Default: `10` (int)
+	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
+	// Audit log max size. Default: `100` (int)
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+	ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+}
+
+type clusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs
+
+func ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*clusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
+}
+
+func (*clusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
+		return &v
+	}).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+// Audit log format. Default: 'json' (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Audit log max age. Default: `30` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+// Audit log max backup. Default: `10` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+// Audit log max size. Default: `100` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigServicesKubeApiAuditLogConfiguration) ClusterRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+// Audit log format. Default: 'json' (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Audit log max age. Default: `30` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+// Audit log max backup. Default: `10` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+// Audit log max size. Default: `100` (int)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimit struct {
+	// Event rate limit configuration. (map)
+	Configuration map[string]interface{} `pulumi:"configuration"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiEventRateLimitOutput() ClusterRkeConfigServicesKubeApiEventRateLimitOutput
+	ToClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitOutput
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
+	// Event rate limit configuration. (map)
+	Configuration pulumi.MapInput `pulumi:"configuration"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterRkeConfigServicesKubeApiEventRateLimitOutput() ClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return i.ToClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (i ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiEventRateLimitOutput).ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput
+	ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput
+}
+
+type clusterRkeConfigServicesKubeApiEventRateLimitPtrType ClusterRkeConfigServicesKubeApiEventRateLimitArgs
+
+func ClusterRkeConfigServicesKubeApiEventRateLimitPtr(v *ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput {	return (*clusterRkeConfigServicesKubeApiEventRateLimitPtrType)(v)
+}
+
+func (*clusterRkeConfigServicesKubeApiEventRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigServicesKubeApiEventRateLimitPtrType) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigServicesKubeApiEventRateLimitPtrType) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimitOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitOutput() ClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiEventRateLimit) *ClusterRkeConfigServicesKubeApiEventRateLimit {
+		return &v
+	}).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+// Event rate limit configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() ClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigServicesKubeApiEventRateLimit) ClusterRkeConfigServicesKubeApiEventRateLimit { return *v }).(ClusterRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+// Event rate limit configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
+	// Secrets encryption configuration. (map)
+	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+	ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
+	// Secrets encryption configuration. (map)
+	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	// Enable the authorized cluster endpoint. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return i.ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (i ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput).ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+	ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+}
+
+type clusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs
+
+func ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtr(v *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput {	return (*clusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType)(v)
+}
+
+func (*clusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+		return &v
+	}).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+// Secrets encryption configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem() ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig { return *v }).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+// Secrets encryption configuration. (map)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+// Enable the authorized cluster endpoint. Default `true` (bool)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterRkeConfigServicesKubeController struct {
@@ -11369,7 +12027,9 @@ type ClusterRkeConfigServicesKubelet struct {
 	// Extra environment for scheduler service (list)
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	// Enable or disable failing when swap on is not supported (bool)
+	// * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
 	FailSwapOn *bool `pulumi:"failSwapOn"`
+	GenerateServingCertificate *bool `pulumi:"generateServingCertificate"`
 	// Docker image for scheduler service (string)
 	Image *string `pulumi:"image"`
 	// Infra container image for kubelet service (string)
@@ -11395,7 +12055,9 @@ type ClusterRkeConfigServicesKubeletArgs struct {
 	// Extra environment for scheduler service (list)
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	// Enable or disable failing when swap on is not supported (bool)
+	// * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
 	FailSwapOn pulumi.BoolPtrInput `pulumi:"failSwapOn"`
+	GenerateServingCertificate pulumi.BoolPtrInput `pulumi:"generateServingCertificate"`
 	// Docker image for scheduler service (string)
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Infra container image for kubelet service (string)
@@ -11495,8 +12157,13 @@ func (o ClusterRkeConfigServicesKubeletOutput) ExtraEnvs() pulumi.StringArrayOut
 }
 
 // Enable or disable failing when swap on is not supported (bool)
+// * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
 func (o ClusterRkeConfigServicesKubeletOutput) FailSwapOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubelet) *bool { return v.FailSwapOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterRkeConfigServicesKubeletOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
 }
 
 // Docker image for scheduler service (string)
@@ -11553,8 +12220,13 @@ func (o ClusterRkeConfigServicesKubeletPtrOutput) ExtraEnvs() pulumi.StringArray
 }
 
 // Enable or disable failing when swap on is not supported (bool)
+// * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
 func (o ClusterRkeConfigServicesKubeletPtrOutput) FailSwapOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubelet) *bool { return v.FailSwapOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterRkeConfigServicesKubeletPtrOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
 }
 
 // Docker image for scheduler service (string)
@@ -12432,6 +13104,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	PrivateRegistries []ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry `pulumi:"privateRegistries"`
 	Services *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices `pulumi:"services"`
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
+	SshCertPath *string `pulumi:"sshCertPath"`
 	SshKeyPath *string `pulumi:"sshKeyPath"`
 }
 
@@ -12461,6 +13134,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	PrivateRegistries ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput `pulumi:"privateRegistries"`
 	Services ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtrInput `pulumi:"services"`
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
+	SshCertPath pulumi.StringPtrInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringPtrInput `pulumi:"sshKeyPath"`
 }
 
@@ -12560,6 +13234,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) Services() 
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshAgentAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *bool { return v.SshAgentAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *string { return v.SshCertPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshKeyPath() pulumi.StringPtrOutput {
@@ -15590,6 +16268,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Upstr
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
+	DnsPolicy *string `pulumi:"dnsPolicy"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	Options map[string]interface{} `pulumi:"options"`
@@ -15604,6 +16283,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput interface
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs struct {
+	DnsPolicy pulumi.StringPtrInput `pulumi:"dnsPolicy"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	Options pulumi.MapInput `pulumi:"options"`
@@ -15677,6 +16357,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) ToCl
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput)
 }
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) ExtraArgs() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress) map[string]interface{} { return v.ExtraArgs }).(pulumi.MapOutput)
 }
@@ -15709,6 +16393,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput) T
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput {
 	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress) ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput) DnsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress) *string { return v.DnsPolicy }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput) ExtraArgs() pulumi.MapOutput {
@@ -17106,6 +17794,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 	IntervalHours *int `pulumi:"intervalHours"`
 	Retention *int `pulumi:"retention"`
 	S3BackupConfig *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput interface {
@@ -17121,6 +17810,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 	IntervalHours pulumi.IntPtrInput `pulumi:"intervalHours"`
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	S3BackupConfig ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -17207,6 +17897,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput struct { *pulumi.OutputState}
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -17240,6 +17934,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput) S3BackupConfig() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -17411,12 +18109,16 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi struct {
+	AdmissionConfiguration map[string]interface{} `pulumi:"admissionConfiguration"`
 	AlwaysPullImages *bool `pulumi:"alwaysPullImages"`
+	AuditLog *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog `pulumi:"auditLog"`
+	EventRateLimit *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit `pulumi:"eventRateLimit"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	Image *string `pulumi:"image"`
 	PodSecurityPolicy *bool `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange *string `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange *string `pulumi:"serviceNodePortRange"`
 }
@@ -17429,12 +18131,16 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput i
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs struct {
+	AdmissionConfiguration pulumi.MapInput `pulumi:"admissionConfiguration"`
 	AlwaysPullImages pulumi.BoolPtrInput `pulumi:"alwaysPullImages"`
+	AuditLog ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput `pulumi:"auditLog"`
+	EventRateLimit ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput `pulumi:"eventRateLimit"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	PodSecurityPolicy pulumi.BoolPtrInput `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange pulumi.StringPtrInput `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange pulumi.StringPtrInput `pulumi:"serviceNodePortRange"`
 }
@@ -17506,8 +18212,20 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutp
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput)
 }
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AuditLog() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) EventRateLimit() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) ExtraArgs() pulumi.MapOutput {
@@ -17528,6 +18246,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutp
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) PodSecurityPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) SecretsEncryptionConfig() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) ServiceClusterIpRange() pulumi.StringPtrOutput {
@@ -17556,8 +18278,20 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrO
 	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) AuditLog() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) EventRateLimit() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) ExtraArgs() pulumi.MapOutput {
@@ -17580,12 +18314,540 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrO
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) SecretsEncryptionConfig() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) ServiceClusterIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *string { return v.ServiceClusterIpRange }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput) ServiceNodePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *string { return v.ServiceNodePortRange }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog struct {
+	Configuration *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs struct {
+	Configuration ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Configuration() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration struct {
+	Format *string `pulumi:"format"`
+	MaxAge *int `pulumi:"maxAge"`
+	MaxBackup *int `pulumi:"maxBackup"`
+	MaxSize *int `pulumi:"maxSize"`
+	Path *string `pulumi:"path"`
+	Policy *string `pulumi:"policy"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
+	Configuration map[string]interface{} `pulumi:"configuration"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
+	Configuration pulumi.MapInput `pulumi:"configuration"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
+	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
+	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController struct {
@@ -17753,6 +19015,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet struct
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	FailSwapOn *bool `pulumi:"failSwapOn"`
+	GenerateServingCertificate *bool `pulumi:"generateServingCertificate"`
 	Image *string `pulumi:"image"`
 	InfraContainerImage *string `pulumi:"infraContainerImage"`
 }
@@ -17771,6 +19034,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs st
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	FailSwapOn pulumi.BoolPtrInput `pulumi:"failSwapOn"`
+	GenerateServingCertificate pulumi.BoolPtrInput `pulumi:"generateServingCertificate"`
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	InfraContainerImage pulumi.StringPtrInput `pulumi:"infraContainerImage"`
 }
@@ -17866,6 +19130,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutp
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *bool { return v.FailSwapOn }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -17914,6 +19182,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrO
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrOutput) FailSwapOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *bool { return v.FailSwapOn }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrOutput) Image() pulumi.StringPtrOutput {
@@ -18325,6 +19597,7 @@ type EtcdBackupBackupConfig struct {
 	Retention *int `pulumi:"retention"`
 	// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
 	S3BackupConfig *EtcdBackupBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type EtcdBackupBackupConfigInput interface {
@@ -18343,6 +19616,7 @@ type EtcdBackupBackupConfigArgs struct {
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
 	S3BackupConfig EtcdBackupBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (EtcdBackupBackupConfigArgs) ElementType() reflect.Type {
@@ -18432,6 +19706,10 @@ func (o EtcdBackupBackupConfigOutput) S3BackupConfig() EtcdBackupBackupConfigS3B
 	return o.ApplyT(func (v EtcdBackupBackupConfig) *EtcdBackupBackupConfigS3BackupConfig { return v.S3BackupConfig }).(EtcdBackupBackupConfigS3BackupConfigPtrOutput)
 }
 
+func (o EtcdBackupBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v EtcdBackupBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
+}
+
 type EtcdBackupBackupConfigPtrOutput struct { *pulumi.OutputState}
 
 func (EtcdBackupBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -18468,6 +19746,10 @@ func (o EtcdBackupBackupConfigPtrOutput) Retention() pulumi.IntPtrOutput {
 // S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
 func (o EtcdBackupBackupConfigPtrOutput) S3BackupConfig() EtcdBackupBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v EtcdBackupBackupConfig) *EtcdBackupBackupConfigS3BackupConfig { return v.S3BackupConfig }).(EtcdBackupBackupConfigS3BackupConfigPtrOutput)
+}
+
+func (o EtcdBackupBackupConfigPtrOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v EtcdBackupBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type EtcdBackupBackupConfigS3BackupConfig struct {
@@ -19651,6 +20933,122 @@ func (o NamespaceResourceQuotaLimitOutput) ServicesLoadBalancers() pulumi.String
 // Limit for services node ports in namespace (string)
 func (o NamespaceResourceQuotaLimitOutput) ServicesNodePorts() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NamespaceResourceQuotaLimit) *string { return v.ServicesNodePorts }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNodeTaint struct {
+	// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+	Effect *string `pulumi:"effect"`
+	// Taint key (string)
+	Key string `pulumi:"key"`
+	// Taint time added (string)
+	TimeAdded *string `pulumi:"timeAdded"`
+	// Taint value (string)
+	Value string `pulumi:"value"`
+}
+
+type NodePoolNodeTaintInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeTaintOutput() NodePoolNodeTaintOutput
+	ToNodePoolNodeTaintOutputWithContext(context.Context) NodePoolNodeTaintOutput
+}
+
+type NodePoolNodeTaintArgs struct {
+	// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Taint key (string)
+	Key pulumi.StringInput `pulumi:"key"`
+	// Taint time added (string)
+	TimeAdded pulumi.StringPtrInput `pulumi:"timeAdded"`
+	// Taint value (string)
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NodePoolNodeTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeTaint)(nil)).Elem()
+}
+
+func (i NodePoolNodeTaintArgs) ToNodePoolNodeTaintOutput() NodePoolNodeTaintOutput {
+	return i.ToNodePoolNodeTaintOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeTaintArgs) ToNodePoolNodeTaintOutputWithContext(ctx context.Context) NodePoolNodeTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeTaintOutput)
+}
+
+type NodePoolNodeTaintArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeTaintArrayOutput() NodePoolNodeTaintArrayOutput
+	ToNodePoolNodeTaintArrayOutputWithContext(context.Context) NodePoolNodeTaintArrayOutput
+}
+
+type NodePoolNodeTaintArray []NodePoolNodeTaintInput
+
+func (NodePoolNodeTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeTaint)(nil)).Elem()
+}
+
+func (i NodePoolNodeTaintArray) ToNodePoolNodeTaintArrayOutput() NodePoolNodeTaintArrayOutput {
+	return i.ToNodePoolNodeTaintArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeTaintArray) ToNodePoolNodeTaintArrayOutputWithContext(ctx context.Context) NodePoolNodeTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeTaintArrayOutput)
+}
+
+type NodePoolNodeTaintOutput struct { *pulumi.OutputState }
+
+func (NodePoolNodeTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeTaint)(nil)).Elem()
+}
+
+func (o NodePoolNodeTaintOutput) ToNodePoolNodeTaintOutput() NodePoolNodeTaintOutput {
+	return o
+}
+
+func (o NodePoolNodeTaintOutput) ToNodePoolNodeTaintOutputWithContext(ctx context.Context) NodePoolNodeTaintOutput {
+	return o
+}
+
+// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+func (o NodePoolNodeTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodePoolNodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Taint key (string)
+func (o NodePoolNodeTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v NodePoolNodeTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Taint time added (string)
+func (o NodePoolNodeTaintOutput) TimeAdded() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodePoolNodeTaint) *string { return v.TimeAdded }).(pulumi.StringPtrOutput)
+}
+
+// Taint value (string)
+func (o NodePoolNodeTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func (v NodePoolNodeTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NodePoolNodeTaintArrayOutput struct { *pulumi.OutputState}
+
+func (NodePoolNodeTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeTaint)(nil)).Elem()
+}
+
+func (o NodePoolNodeTaintArrayOutput) ToNodePoolNodeTaintArrayOutput() NodePoolNodeTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeTaintArrayOutput) ToNodePoolNodeTaintArrayOutputWithContext(ctx context.Context) NodePoolNodeTaintArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNodeTaintOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) NodePoolNodeTaint {
+		return vs[0].([]NodePoolNodeTaint)[vs[1].(int)]
+	}).(NodePoolNodeTaintOutput)
 }
 
 type NodeTemplateAmazonec2Config struct {
@@ -27468,6 +28866,7 @@ type GetClusterRkeConfig struct {
 	PrivateRegistries []GetClusterRkeConfigPrivateRegistry `pulumi:"privateRegistries"`
 	Services GetClusterRkeConfigServices `pulumi:"services"`
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
+	SshCertPath string `pulumi:"sshCertPath"`
 	SshKeyPath string `pulumi:"sshKeyPath"`
 }
 
@@ -27497,6 +28896,7 @@ type GetClusterRkeConfigArgs struct {
 	PrivateRegistries GetClusterRkeConfigPrivateRegistryArrayInput `pulumi:"privateRegistries"`
 	Services GetClusterRkeConfigServicesInput `pulumi:"services"`
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
+	SshCertPath pulumi.StringInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringInput `pulumi:"sshKeyPath"`
 }
 
@@ -27596,6 +28996,10 @@ func (o GetClusterRkeConfigOutput) Services() GetClusterRkeConfigServicesOutput 
 
 func (o GetClusterRkeConfigOutput) SshAgentAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfig) *bool { return v.SshAgentAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigOutput) SshCertPath() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterRkeConfig) string { return v.SshCertPath }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigOutput) SshKeyPath() pulumi.StringOutput {
@@ -29737,6 +31141,7 @@ func (o GetClusterRkeConfigDnsOutput) UpstreamNameservers() pulumi.StringArrayOu
 }
 
 type GetClusterRkeConfigIngress struct {
+	DnsPolicy string `pulumi:"dnsPolicy"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	Options map[string]interface{} `pulumi:"options"`
@@ -29751,6 +31156,7 @@ type GetClusterRkeConfigIngressInput interface {
 }
 
 type GetClusterRkeConfigIngressArgs struct {
+	DnsPolicy pulumi.StringInput `pulumi:"dnsPolicy"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	Options pulumi.MapInput `pulumi:"options"`
@@ -29781,6 +31187,10 @@ func (o GetClusterRkeConfigIngressOutput) ToGetClusterRkeConfigIngressOutput() G
 
 func (o GetClusterRkeConfigIngressOutput) ToGetClusterRkeConfigIngressOutputWithContext(ctx context.Context) GetClusterRkeConfigIngressOutput {
 	return o
+}
+
+func (o GetClusterRkeConfigIngressOutput) DnsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigIngress) string { return v.DnsPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigIngressOutput) ExtraArgs() pulumi.MapOutput {
@@ -30825,6 +32235,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfig struct {
 	IntervalHours *int `pulumi:"intervalHours"`
 	Retention *int `pulumi:"retention"`
 	S3BackupConfig *GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type GetClusterRkeConfigServicesEtcdBackupConfigInput interface {
@@ -30839,6 +32250,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfigArgs struct {
 	IntervalHours pulumi.IntPtrInput `pulumi:"intervalHours"`
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	S3BackupConfig GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (GetClusterRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -30881,6 +32293,10 @@ func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) Retention() pulumi.In
 
 func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) S3BackupConfig() GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesEtcdBackupConfig) *GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -31052,12 +32468,16 @@ func (o GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) Secr
 }
 
 type GetClusterRkeConfigServicesKubeApi struct {
+	AdmissionConfiguration map[string]interface{} `pulumi:"admissionConfiguration"`
 	AlwaysPullImages *bool `pulumi:"alwaysPullImages"`
+	AuditLog *GetClusterRkeConfigServicesKubeApiAuditLog `pulumi:"auditLog"`
+	EventRateLimit *GetClusterRkeConfigServicesKubeApiEventRateLimit `pulumi:"eventRateLimit"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	Image string `pulumi:"image"`
 	PodSecurityPolicy *bool `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange string `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange string `pulumi:"serviceNodePortRange"`
 }
@@ -31070,12 +32490,16 @@ type GetClusterRkeConfigServicesKubeApiInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiArgs struct {
+	AdmissionConfiguration pulumi.MapInput `pulumi:"admissionConfiguration"`
 	AlwaysPullImages pulumi.BoolPtrInput `pulumi:"alwaysPullImages"`
+	AuditLog GetClusterRkeConfigServicesKubeApiAuditLogPtrInput `pulumi:"auditLog"`
+	EventRateLimit GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput `pulumi:"eventRateLimit"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	Image pulumi.StringInput `pulumi:"image"`
 	PodSecurityPolicy pulumi.BoolPtrInput `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange pulumi.StringInput `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange pulumi.StringInput `pulumi:"serviceNodePortRange"`
 }
@@ -31106,8 +32530,20 @@ func (o GetClusterRkeConfigServicesKubeApiOutput) ToGetClusterRkeConfigServicesK
 	return o
 }
 
+func (o GetClusterRkeConfigServicesKubeApiOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 func (o GetClusterRkeConfigServicesKubeApiOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiOutput) AuditLog() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) *GetClusterRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiOutput) EventRateLimit() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) *GetClusterRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiOutput) ExtraArgs() pulumi.MapOutput {
@@ -31130,12 +32566,528 @@ func (o GetClusterRkeConfigServicesKubeApiOutput) PodSecurityPolicy() pulumi.Boo
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClusterRkeConfigServicesKubeApiOutput) SecretsEncryptionConfig() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
 func (o GetClusterRkeConfigServicesKubeApiOutput) ServiceClusterIpRange() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) string { return v.ServiceClusterIpRange }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiOutput) ServiceNodePortRange() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApi) string { return v.ServiceNodePortRange }).(pulumi.StringOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLog struct {
+	Configuration *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiAuditLogOutput() GetClusterRkeConfigServicesKubeApiAuditLogOutput
+	ToGetClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiAuditLogOutput
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogArgs struct {
+	Configuration GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogOutput() GetClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogOutput).ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput
+	ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput
+}
+
+type getClusterRkeConfigServicesKubeApiAuditLogPtrType GetClusterRkeConfigServicesKubeApiAuditLogArgs
+
+func GetClusterRkeConfigServicesKubeApiAuditLogPtr(v *GetClusterRkeConfigServicesKubeApiAuditLogArgs) GetClusterRkeConfigServicesKubeApiAuditLogPtrInput {	return (*getClusterRkeConfigServicesKubeApiAuditLogPtrType)(v)
+}
+
+func (*getClusterRkeConfigServicesKubeApiAuditLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigServicesKubeApiAuditLogPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigServicesKubeApiAuditLogPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogOutput() GetClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiAuditLog) *GetClusterRkeConfigServicesKubeApiAuditLog {
+		return &v
+	}).(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() GetClusterRkeConfigServicesKubeApiAuditLogOutput {
+	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiAuditLog) GetClusterRkeConfigServicesKubeApiAuditLog { return *v }).(GetClusterRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
+	Format *string `pulumi:"format"`
+	MaxAge *int `pulumi:"maxAge"`
+	MaxBackup *int `pulumi:"maxBackup"`
+	MaxSize *int `pulumi:"maxSize"`
+	Path *string `pulumi:"path"`
+	Policy *string `pulumi:"policy"`
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput
+	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+}
+
+type getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs
+
+func GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
+}
+
+func (*getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
+		return &v
+	}).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
+	Configuration map[string]interface{} `pulumi:"configuration"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitOutput
+	ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitOutput
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
+	Configuration pulumi.MapInput `pulumi:"configuration"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (i GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput).ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx)
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput
+	ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput
+}
+
+type getClusterRkeConfigServicesKubeApiEventRateLimitPtrType GetClusterRkeConfigServicesKubeApiEventRateLimitArgs
+
+func GetClusterRkeConfigServicesKubeApiEventRateLimitPtr(v *GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput {	return (*getClusterRkeConfigServicesKubeApiEventRateLimitPtrType)(v)
+}
+
+func (*getClusterRkeConfigServicesKubeApiEventRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigServicesKubeApiEventRateLimitPtrType) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigServicesKubeApiEventRateLimitPtrType) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimitOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) *GetClusterRkeConfigServicesKubeApiEventRateLimit {
+		return &v
+	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToGetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() GetClusterRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiEventRateLimit) GetClusterRkeConfigServicesKubeApiEventRateLimit { return *v }).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
+	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+	ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
+	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (i GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput).ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+	ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+}
+
+type getClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs
+
+func GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtr(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput {	return (*getClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType)(v)
+}
+
+func (*getClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+		return &v
+	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToGetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem() GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig { return *v }).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterRkeConfigServicesKubeController struct {
@@ -31220,6 +33172,7 @@ type GetClusterRkeConfigServicesKubelet struct {
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	FailSwapOn bool `pulumi:"failSwapOn"`
+	GenerateServingCertificate *bool `pulumi:"generateServingCertificate"`
 	Image string `pulumi:"image"`
 	InfraContainerImage string `pulumi:"infraContainerImage"`
 }
@@ -31238,6 +33191,7 @@ type GetClusterRkeConfigServicesKubeletArgs struct {
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	FailSwapOn pulumi.BoolInput `pulumi:"failSwapOn"`
+	GenerateServingCertificate pulumi.BoolPtrInput `pulumi:"generateServingCertificate"`
 	Image pulumi.StringInput `pulumi:"image"`
 	InfraContainerImage pulumi.StringInput `pulumi:"infraContainerImage"`
 }
@@ -31290,6 +33244,10 @@ func (o GetClusterRkeConfigServicesKubeletOutput) ExtraEnvs() pulumi.StringArray
 
 func (o GetClusterRkeConfigServicesKubeletOutput) FailSwapOn() pulumi.BoolOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubelet) bool { return v.FailSwapOn }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeletOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeletOutput) Image() pulumi.StringOutput {
@@ -31851,6 +33809,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	PrivateRegistries []GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry `pulumi:"privateRegistries"`
 	Services GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices `pulumi:"services"`
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
+	SshCertPath string `pulumi:"sshCertPath"`
 	SshKeyPath string `pulumi:"sshKeyPath"`
 }
 
@@ -31880,6 +33839,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	PrivateRegistries GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput `pulumi:"privateRegistries"`
 	Services GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput `pulumi:"services"`
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
+	SshCertPath pulumi.StringInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringInput `pulumi:"sshKeyPath"`
 }
 
@@ -31979,6 +33939,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) Services
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshAgentAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) *bool { return v.SshAgentAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshCertPath() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) string { return v.SshCertPath }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshKeyPath() pulumi.StringOutput {
@@ -34120,6 +36084,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Upstr
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
+	DnsPolicy string `pulumi:"dnsPolicy"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	Options map[string]interface{} `pulumi:"options"`
@@ -34134,6 +36099,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput interf
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs struct {
+	DnsPolicy pulumi.StringInput `pulumi:"dnsPolicy"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	Options pulumi.MapInput `pulumi:"options"`
@@ -34164,6 +36130,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) T
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput {
 	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) DnsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress) string { return v.DnsPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) ExtraArgs() pulumi.MapOutput {
@@ -35208,6 +37178,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	IntervalHours *int `pulumi:"intervalHours"`
 	Retention *int `pulumi:"retention"`
 	S3BackupConfig *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput interface {
@@ -35222,6 +37193,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	IntervalHours pulumi.IntPtrInput `pulumi:"intervalHours"`
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	S3BackupConfig GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -35264,6 +37236,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBack
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput) S3BackupConfig() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig { return v.S3BackupConfig }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -35435,12 +37411,16 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBack
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi struct {
+	AdmissionConfiguration map[string]interface{} `pulumi:"admissionConfiguration"`
 	AlwaysPullImages *bool `pulumi:"alwaysPullImages"`
+	AuditLog *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog `pulumi:"auditLog"`
+	EventRateLimit *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit `pulumi:"eventRateLimit"`
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	Image string `pulumi:"image"`
 	PodSecurityPolicy *bool `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange string `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange string `pulumi:"serviceNodePortRange"`
 }
@@ -35453,12 +37433,16 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInpu
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs struct {
+	AdmissionConfiguration pulumi.MapInput `pulumi:"admissionConfiguration"`
 	AlwaysPullImages pulumi.BoolPtrInput `pulumi:"alwaysPullImages"`
+	AuditLog GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput `pulumi:"auditLog"`
+	EventRateLimit GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput `pulumi:"eventRateLimit"`
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	Image pulumi.StringInput `pulumi:"image"`
 	PodSecurityPolicy pulumi.BoolPtrInput `pulumi:"podSecurityPolicy"`
+	SecretsEncryptionConfig GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput `pulumi:"secretsEncryptionConfig"`
 	ServiceClusterIpRange pulumi.StringInput `pulumi:"serviceClusterIpRange"`
 	ServiceNodePortRange pulumi.StringInput `pulumi:"serviceNodePortRange"`
 }
@@ -35489,8 +37473,20 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiO
 	return o
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AdmissionConfiguration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) map[string]interface{} { return v.AdmissionConfiguration }).(pulumi.MapOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AlwaysPullImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) AuditLog() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) EventRateLimit() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) ExtraArgs() pulumi.MapOutput {
@@ -35513,12 +37509,528 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiO
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *bool { return v.PodSecurityPolicy }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) SecretsEncryptionConfig() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig { return v.SecretsEncryptionConfig }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) ServiceClusterIpRange() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) string { return v.ServiceClusterIpRange }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) ServiceNodePortRange() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) string { return v.ServiceNodePortRange }).(pulumi.StringOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog struct {
+	Configuration *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs struct {
+	Configuration GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput {
+	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration struct {
+	Format *string `pulumi:"format"`
+	MaxAge *int `pulumi:"maxAge"`
+	MaxBackup *int `pulumi:"maxBackup"`
+	MaxSize *int `pulumi:"maxSize"`
+	Path *string `pulumi:"path"`
+	Policy *string `pulumi:"policy"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
+	Configuration map[string]interface{} `pulumi:"configuration"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
+	Configuration pulumi.MapInput `pulumi:"configuration"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput {
+	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
+	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
+	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput {
+	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController struct {
@@ -35603,6 +38115,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet str
 	ExtraBinds []string `pulumi:"extraBinds"`
 	ExtraEnvs []string `pulumi:"extraEnvs"`
 	FailSwapOn bool `pulumi:"failSwapOn"`
+	GenerateServingCertificate *bool `pulumi:"generateServingCertificate"`
 	Image string `pulumi:"image"`
 	InfraContainerImage string `pulumi:"infraContainerImage"`
 }
@@ -35621,6 +38134,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs
 	ExtraBinds pulumi.StringArrayInput `pulumi:"extraBinds"`
 	ExtraEnvs pulumi.StringArrayInput `pulumi:"extraEnvs"`
 	FailSwapOn pulumi.BoolInput `pulumi:"failSwapOn"`
+	GenerateServingCertificate pulumi.BoolPtrInput `pulumi:"generateServingCertificate"`
 	Image pulumi.StringInput `pulumi:"image"`
 	InfraContainerImage pulumi.StringInput `pulumi:"infraContainerImage"`
 }
@@ -35673,6 +38187,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletO
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) FailSwapOn() pulumi.BoolOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) bool { return v.FailSwapOn }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) GenerateServingCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) *bool { return v.GenerateServingCertificate }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) Image() pulumi.StringOutput {
@@ -35918,6 +38436,7 @@ type GetEtcdBackupBackupConfig struct {
 	IntervalHours *int `pulumi:"intervalHours"`
 	Retention *int `pulumi:"retention"`
 	S3BackupConfig *GetEtcdBackupBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
+	SafeTimestamp *bool `pulumi:"safeTimestamp"`
 }
 
 type GetEtcdBackupBackupConfigInput interface {
@@ -35932,6 +38451,7 @@ type GetEtcdBackupBackupConfigArgs struct {
 	IntervalHours pulumi.IntPtrInput `pulumi:"intervalHours"`
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	S3BackupConfig GetEtcdBackupBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
+	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
 }
 
 func (GetEtcdBackupBackupConfigArgs) ElementType() reflect.Type {
@@ -35974,6 +38494,10 @@ func (o GetEtcdBackupBackupConfigOutput) Retention() pulumi.IntPtrOutput {
 
 func (o GetEtcdBackupBackupConfigOutput) S3BackupConfig() GetEtcdBackupBackupConfigS3BackupConfigPtrOutput {
 	return o.ApplyT(func (v GetEtcdBackupBackupConfig) *GetEtcdBackupBackupConfigS3BackupConfig { return v.S3BackupConfig }).(GetEtcdBackupBackupConfigS3BackupConfigPtrOutput)
+}
+
+func (o GetEtcdBackupBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetEtcdBackupBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
 type GetEtcdBackupBackupConfigS3BackupConfig struct {
@@ -36871,6 +39395,110 @@ func (o GetNamespaceResourceQuotaLimitOutput) ServicesLoadBalancers() pulumi.Str
 
 func (o GetNamespaceResourceQuotaLimitOutput) ServicesNodePorts() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetNamespaceResourceQuotaLimit) *string { return v.ServicesNodePorts }).(pulumi.StringPtrOutput)
+}
+
+type GetNodePoolNodeTaint struct {
+	Effect *string `pulumi:"effect"`
+	Key string `pulumi:"key"`
+	TimeAdded string `pulumi:"timeAdded"`
+	Value string `pulumi:"value"`
+}
+
+type GetNodePoolNodeTaintInput interface {
+	pulumi.Input
+
+	ToGetNodePoolNodeTaintOutput() GetNodePoolNodeTaintOutput
+	ToGetNodePoolNodeTaintOutputWithContext(context.Context) GetNodePoolNodeTaintOutput
+}
+
+type GetNodePoolNodeTaintArgs struct {
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Key pulumi.StringInput `pulumi:"key"`
+	TimeAdded pulumi.StringInput `pulumi:"timeAdded"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetNodePoolNodeTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodePoolNodeTaint)(nil)).Elem()
+}
+
+func (i GetNodePoolNodeTaintArgs) ToGetNodePoolNodeTaintOutput() GetNodePoolNodeTaintOutput {
+	return i.ToGetNodePoolNodeTaintOutputWithContext(context.Background())
+}
+
+func (i GetNodePoolNodeTaintArgs) ToGetNodePoolNodeTaintOutputWithContext(ctx context.Context) GetNodePoolNodeTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodePoolNodeTaintOutput)
+}
+
+type GetNodePoolNodeTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetNodePoolNodeTaintArrayOutput() GetNodePoolNodeTaintArrayOutput
+	ToGetNodePoolNodeTaintArrayOutputWithContext(context.Context) GetNodePoolNodeTaintArrayOutput
+}
+
+type GetNodePoolNodeTaintArray []GetNodePoolNodeTaintInput
+
+func (GetNodePoolNodeTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodePoolNodeTaint)(nil)).Elem()
+}
+
+func (i GetNodePoolNodeTaintArray) ToGetNodePoolNodeTaintArrayOutput() GetNodePoolNodeTaintArrayOutput {
+	return i.ToGetNodePoolNodeTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodePoolNodeTaintArray) ToGetNodePoolNodeTaintArrayOutputWithContext(ctx context.Context) GetNodePoolNodeTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodePoolNodeTaintArrayOutput)
+}
+
+type GetNodePoolNodeTaintOutput struct { *pulumi.OutputState }
+
+func (GetNodePoolNodeTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodePoolNodeTaint)(nil)).Elem()
+}
+
+func (o GetNodePoolNodeTaintOutput) ToGetNodePoolNodeTaintOutput() GetNodePoolNodeTaintOutput {
+	return o
+}
+
+func (o GetNodePoolNodeTaintOutput) ToGetNodePoolNodeTaintOutputWithContext(ctx context.Context) GetNodePoolNodeTaintOutput {
+	return o
+}
+
+func (o GetNodePoolNodeTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetNodePoolNodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodePoolNodeTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNodePoolNodeTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetNodePoolNodeTaintOutput) TimeAdded() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNodePoolNodeTaint) string { return v.TimeAdded }).(pulumi.StringOutput)
+}
+
+func (o GetNodePoolNodeTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNodePoolNodeTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetNodePoolNodeTaintArrayOutput struct { *pulumi.OutputState}
+
+func (GetNodePoolNodeTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodePoolNodeTaint)(nil)).Elem()
+}
+
+func (o GetNodePoolNodeTaintArrayOutput) ToGetNodePoolNodeTaintArrayOutput() GetNodePoolNodeTaintArrayOutput {
+	return o
+}
+
+func (o GetNodePoolNodeTaintArrayOutput) ToGetNodePoolNodeTaintArrayOutputWithContext(ctx context.Context) GetNodePoolNodeTaintArrayOutput {
+	return o
+}
+
+func (o GetNodePoolNodeTaintArrayOutput) Index(i pulumi.IntInput) GetNodePoolNodeTaintOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNodePoolNodeTaint {
+		return vs[0].([]GetNodePoolNodeTaint)[vs[1].(int)]
+	}).(GetNodePoolNodeTaintOutput)
 }
 
 type GetNotifierPagerdutyConfig struct {
@@ -38701,6 +41329,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiAuditLogOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiEventRateLimitOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeControllerOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeControllerPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeletOutput{})
@@ -38785,6 +41421,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput{})
@@ -38814,6 +41458,8 @@ func init() {
 	pulumi.RegisterOutputType(NamespaceResourceQuotaOutput{})
 	pulumi.RegisterOutputType(NamespaceResourceQuotaPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceResourceQuotaLimitOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeTaintOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodeTemplateAmazonec2ConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateAmazonec2ConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateAzureConfigOutput{})
@@ -38938,6 +41584,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeControllerOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeletOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeproxyOutput{})
@@ -38998,6 +41652,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOutput{})
@@ -39020,6 +41682,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespaceContainerResourceLimitOutput{})
 	pulumi.RegisterOutputType(GetNamespaceResourceQuotaOutput{})
 	pulumi.RegisterOutputType(GetNamespaceResourceQuotaLimitOutput{})
+	pulumi.RegisterOutputType(GetNodePoolNodeTaintOutput{})
+	pulumi.RegisterOutputType(GetNodePoolNodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetNotifierPagerdutyConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierSlackConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})

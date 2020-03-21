@@ -35,6 +35,8 @@ type Catalog struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrOutput `pulumi:"refresh"`
 	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// The url of the catalog repo (string)
@@ -92,6 +94,8 @@ type catalogState struct {
 	Password *string `pulumi:"password"`
 	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId *string `pulumi:"projectId"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh *bool `pulumi:"refresh"`
 	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 	Scope *string `pulumi:"scope"`
 	// The url of the catalog repo (string)
@@ -119,6 +123,8 @@ type CatalogState struct {
 	Password pulumi.StringPtrInput
 	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrInput
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrInput
 	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 	Scope pulumi.StringPtrInput
 	// The url of the catalog repo (string)
@@ -150,6 +156,8 @@ type catalogArgs struct {
 	Password *string `pulumi:"password"`
 	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId *string `pulumi:"projectId"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh *bool `pulumi:"refresh"`
 	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 	Scope *string `pulumi:"scope"`
 	// The url of the catalog repo (string)
@@ -178,6 +186,8 @@ type CatalogArgs struct {
 	Password pulumi.StringPtrInput
 	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrInput
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrInput
 	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 	Scope pulumi.StringPtrInput
 	// The url of the catalog repo (string)

@@ -15,17 +15,29 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
         /// </summary>
-        public static Task<GetUserResult> GetUser(GetUserArgs args, InvokeOptions? options = null)
+        public static Task<GetUserResult> GetUser(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("rancher2:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Set is the user if the user is external. Default: `false` (bool)
+        /// </summary>
+        [Input("isExternal")]
+        public bool? IsExternal { get; set; }
+
+        /// <summary>
         /// The name of the user (string)
         /// </summary>
-        [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The username of the user (string)
+        /// </summary>
+        [Input("username")]
+        public string? Username { get; set; }
 
         public GetUserArgs()
         {
@@ -43,6 +55,7 @@ namespace Pulumi.Rancher2
         /// (Computed) The user is enabled (bool)
         /// </summary>
         public readonly bool Enabled;
+        public readonly bool? IsExternal;
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
@@ -65,6 +78,7 @@ namespace Pulumi.Rancher2
         private GetUserResult(
             ImmutableDictionary<string, object> annotations,
             bool enabled,
+            bool? isExternal,
             ImmutableDictionary<string, object> labels,
             string name,
             ImmutableArray<string> principalIds,
@@ -73,6 +87,7 @@ namespace Pulumi.Rancher2
         {
             Annotations = annotations;
             Enabled = enabled;
+            IsExternal = isExternal;
             Labels = labels;
             Name = name;
             PrincipalIds = principalIds;

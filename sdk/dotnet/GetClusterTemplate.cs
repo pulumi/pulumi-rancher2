@@ -771,6 +771,7 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigIngressResult
     {
+        public readonly string DnsPolicy;
         public readonly ImmutableDictionary<string, object> ExtraArgs;
         public readonly ImmutableDictionary<string, object> NodeSelector;
         public readonly ImmutableDictionary<string, object> Options;
@@ -778,11 +779,13 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigIngressResult(
+            string dnsPolicy,
             ImmutableDictionary<string, object> extraArgs,
             ImmutableDictionary<string, object> nodeSelector,
             ImmutableDictionary<string, object> options,
             string provider)
         {
+            DnsPolicy = dnsPolicy;
             ExtraArgs = extraArgs;
             NodeSelector = nodeSelector;
             Options = options;
@@ -974,6 +977,7 @@ namespace Pulumi.Rancher2
         public readonly ImmutableArray<GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigPrivateRegistriesResult> PrivateRegistries;
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesResult Services;
         public readonly bool? SshAgentAuth;
+        public readonly string SshCertPath;
         public readonly string SshKeyPath;
 
         [OutputConstructor]
@@ -996,6 +1000,7 @@ namespace Pulumi.Rancher2
             ImmutableArray<GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigPrivateRegistriesResult> privateRegistries,
             GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesResult services,
             bool? sshAgentAuth,
+            string sshCertPath,
             string sshKeyPath)
         {
             AddonJobTimeout = addonJobTimeout;
@@ -1016,6 +1021,7 @@ namespace Pulumi.Rancher2
             PrivateRegistries = privateRegistries;
             Services = services;
             SshAgentAuth = sshAgentAuth;
+            SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
         }
     }
@@ -1027,18 +1033,21 @@ namespace Pulumi.Rancher2
         public readonly int? IntervalHours;
         public readonly int? Retention;
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigResult? S3BackupConfig;
+        public readonly bool? SafeTimestamp;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesEtcdBackupConfigResult(
             bool? enabled,
             int? intervalHours,
             int? retention,
-            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigResult? s3BackupConfig)
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigResult? s3BackupConfig,
+            bool? safeTimestamp)
         {
             Enabled = enabled;
             IntervalHours = intervalHours;
             Retention = retention;
             S3BackupConfig = s3BackupConfig;
+            SafeTimestamp = safeTimestamp;
         }
     }
 
@@ -1129,36 +1138,124 @@ namespace Pulumi.Rancher2
     }
 
     [OutputType]
+    public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult
+    {
+        public readonly string? Format;
+        public readonly int? MaxAge;
+        public readonly int? MaxBackup;
+        public readonly int? MaxSize;
+        public readonly string? Path;
+        public readonly string? Policy;
+
+        [OutputConstructor]
+        private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult(
+            string? format,
+            int? maxAge,
+            int? maxBackup,
+            int? maxSize,
+            string? path,
+            string? policy)
+        {
+            Format = format;
+            MaxAge = maxAge;
+            MaxBackup = maxBackup;
+            MaxSize = maxSize;
+            Path = path;
+            Policy = policy;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult
+    {
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult? Configuration;
+        public readonly bool? Enabled;
+
+        [OutputConstructor]
+        private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult(
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult? configuration,
+            bool? enabled)
+        {
+            Configuration = configuration;
+            Enabled = enabled;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiEventRateLimitResult
+    {
+        public readonly ImmutableDictionary<string, object>? Configuration;
+        public readonly bool? Enabled;
+
+        [OutputConstructor]
+        private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(
+            ImmutableDictionary<string, object>? configuration,
+            bool? enabled)
+        {
+            Configuration = configuration;
+            Enabled = enabled;
+        }
+    }
+
+    [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiResult
     {
+        public readonly ImmutableDictionary<string, object>? AdmissionConfiguration;
         public readonly bool? AlwaysPullImages;
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult? AuditLog;
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiEventRateLimitResult? EventRateLimit;
         public readonly ImmutableDictionary<string, object> ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly string Image;
         public readonly bool? PodSecurityPolicy;
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult? SecretsEncryptionConfig;
         public readonly string ServiceClusterIpRange;
         public readonly string ServiceNodePortRange;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiResult(
+            ImmutableDictionary<string, object>? admissionConfiguration,
             bool? alwaysPullImages,
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult? auditLog,
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiEventRateLimitResult? eventRateLimit,
             ImmutableDictionary<string, object> extraArgs,
             ImmutableArray<string> extraBinds,
             ImmutableArray<string> extraEnvs,
             string image,
             bool? podSecurityPolicy,
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult? secretsEncryptionConfig,
             string serviceClusterIpRange,
             string serviceNodePortRange)
         {
+            AdmissionConfiguration = admissionConfiguration;
             AlwaysPullImages = alwaysPullImages;
+            AuditLog = auditLog;
+            EventRateLimit = eventRateLimit;
             ExtraArgs = extraArgs;
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
             PodSecurityPolicy = podSecurityPolicy;
+            SecretsEncryptionConfig = secretsEncryptionConfig;
             ServiceClusterIpRange = serviceClusterIpRange;
             ServiceNodePortRange = serviceNodePortRange;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult
+    {
+        public readonly ImmutableDictionary<string, object>? CustomConfig;
+        public readonly bool? Enabled;
+
+        [OutputConstructor]
+        private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(
+            ImmutableDictionary<string, object>? customConfig,
+            bool? enabled)
+        {
+            CustomConfig = customConfig;
+            Enabled = enabled;
         }
     }
 
@@ -1199,6 +1296,7 @@ namespace Pulumi.Rancher2
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly bool FailSwapOn;
+        public readonly bool? GenerateServingCertificate;
         public readonly string Image;
         public readonly string InfraContainerImage;
 
@@ -1210,6 +1308,7 @@ namespace Pulumi.Rancher2
             ImmutableArray<string> extraBinds,
             ImmutableArray<string> extraEnvs,
             bool failSwapOn,
+            bool? generateServingCertificate,
             string image,
             string infraContainerImage)
         {
@@ -1219,6 +1318,7 @@ namespace Pulumi.Rancher2
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             FailSwapOn = failSwapOn;
+            GenerateServingCertificate = generateServingCertificate;
             Image = image;
             InfraContainerImage = infraContainerImage;
         }

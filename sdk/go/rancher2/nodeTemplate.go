@@ -38,6 +38,8 @@ type NodeTemplate struct {
 	DigitaloceanConfig NodeTemplateDigitaloceanConfigPtrOutput `pulumi:"digitaloceanConfig"`
 	// (Computed) The driver of the node template (string)
 	Driver pulumi.StringOutput `pulumi:"driver"`
+	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+	DriverId pulumi.StringOutput `pulumi:"driverId"`
 	// Engine environment for the node template (string)
 	EngineEnv pulumi.MapOutput `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
@@ -110,6 +112,8 @@ type nodeTemplateState struct {
 	DigitaloceanConfig *NodeTemplateDigitaloceanConfig `pulumi:"digitaloceanConfig"`
 	// (Computed) The driver of the node template (string)
 	Driver *string `pulumi:"driver"`
+	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+	DriverId *string `pulumi:"driverId"`
 	// Engine environment for the node template (string)
 	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
@@ -155,6 +159,8 @@ type NodeTemplateState struct {
 	DigitaloceanConfig NodeTemplateDigitaloceanConfigPtrInput
 	// (Computed) The driver of the node template (string)
 	Driver pulumi.StringPtrInput
+	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+	DriverId pulumi.StringPtrInput
 	// Engine environment for the node template (string)
 	EngineEnv pulumi.MapInput
 	// Insecure registry for the node template (list)
@@ -202,6 +208,8 @@ type nodeTemplateArgs struct {
 	Description *string `pulumi:"description"`
 	// Digitalocean config for the Node Template (list maxitems:1)
 	DigitaloceanConfig *NodeTemplateDigitaloceanConfig `pulumi:"digitaloceanConfig"`
+	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+	DriverId *string `pulumi:"driverId"`
 	// Engine environment for the node template (string)
 	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
@@ -246,6 +254,8 @@ type NodeTemplateArgs struct {
 	Description pulumi.StringPtrInput
 	// Digitalocean config for the Node Template (list maxitems:1)
 	DigitaloceanConfig NodeTemplateDigitaloceanConfigPtrInput
+	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+	DriverId pulumi.StringPtrInput
 	// Engine environment for the node template (string)
 	EngineEnv pulumi.MapInput
 	// Insecure registry for the node template (list)

@@ -23,6 +23,8 @@ type NodePool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrOutput `pulumi:"controlPlane"`
+	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	DeleteNotReadyAfterSecs pulumi.IntPtrOutput `pulumi:"deleteNotReadyAfterSecs"`
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrOutput `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -31,6 +33,8 @@ type NodePool struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodePoolNodeTaintArrayOutput `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringOutput `pulumi:"nodeTemplateId"`
 	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
@@ -82,6 +86,8 @@ type nodePoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane *bool `pulumi:"controlPlane"`
+	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
 	// RKE etcd role for created nodes (bool)
 	Etcd *bool `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -90,6 +96,8 @@ type nodePoolState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId *string `pulumi:"nodeTemplateId"`
 	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
@@ -105,6 +113,8 @@ type NodePoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrInput
+	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	DeleteNotReadyAfterSecs pulumi.IntPtrInput
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrInput
 	// The prefix for created nodes of the Node Pool (string)
@@ -113,6 +123,8 @@ type NodePoolState struct {
 	Labels pulumi.MapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodePoolNodeTaintArrayInput
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringPtrInput
 	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
@@ -132,6 +144,8 @@ type nodePoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
 	ControlPlane *bool `pulumi:"controlPlane"`
+	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
 	// RKE etcd role for created nodes (bool)
 	Etcd *bool `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -140,6 +154,8 @@ type nodePoolArgs struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId string `pulumi:"nodeTemplateId"`
 	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
@@ -156,6 +172,8 @@ type NodePoolArgs struct {
 	ClusterId pulumi.StringInput
 	// RKE control plane role for created nodes (bool)
 	ControlPlane pulumi.BoolPtrInput
+	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	DeleteNotReadyAfterSecs pulumi.IntPtrInput
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrInput
 	// The prefix for created nodes of the Node Pool (string)
@@ -164,6 +182,8 @@ type NodePoolArgs struct {
 	Labels pulumi.MapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodePoolNodeTaintArrayInput
 	// The Node Template ID to use for node creation (string)
 	NodeTemplateId pulumi.StringInput
 	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)

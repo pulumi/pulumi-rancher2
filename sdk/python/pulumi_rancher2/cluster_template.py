@@ -229,6 +229,7 @@ class ClusterTemplate(pulumi.CustomResource):
           * `ignoreDockerVersion` (`bool`)
           * `ingress` (`dict`)
     
+            * `dnsPolicy` (`str`)
             * `extraArgs` (`dict`)
             * `nodeSelector` (`dict`)
             * `options` (`dict`)
@@ -302,6 +303,8 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `region` (`str`)
                   * `secret_key` (`str`)
     
+                * `safeTimestamp` (`bool`)
+    
               * `caCert` (`str`)
               * `cert` (`str`)
               * `creation` (`str`)
@@ -319,12 +322,36 @@ class ClusterTemplate(pulumi.CustomResource):
     
             * `kubeApi` (`dict`)
     
+              * `admissionConfiguration` (`dict`)
               * `alwaysPullImages` (`bool`)
+              * `auditLog` (`dict`)
+    
+                * `configuration` (`dict`)
+    
+                  * `format` (`str`)
+                  * `maxAge` (`float`)
+                  * `maxBackup` (`float`)
+                  * `maxSize` (`float`)
+                  * `path` (`str`)
+                  * `policy` (`str`)
+    
+                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
+    
+              * `eventRateLimit` (`dict`)
+    
+                * `configuration` (`dict`)
+                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
+    
               * `extraArgs` (`dict`)
               * `extraBinds` (`list`)
               * `extraEnvs` (`list`)
               * `image` (`str`)
               * `podSecurityPolicy` (`bool`)
+              * `secretsEncryptionConfig` (`dict`)
+    
+                * `customConfig` (`dict`)
+                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
+    
               * `serviceClusterIpRange` (`str`)
               * `serviceNodePortRange` (`str`)
     
@@ -345,6 +372,7 @@ class ClusterTemplate(pulumi.CustomResource):
               * `extraBinds` (`list`)
               * `extraEnvs` (`list`)
               * `failSwapOn` (`bool`)
+              * `generateServingCertificate` (`bool`)
               * `image` (`str`)
               * `infraContainerImage` (`str`)
     
@@ -363,9 +391,10 @@ class ClusterTemplate(pulumi.CustomResource):
               * `image` (`str`)
     
           * `sshAgentAuth` (`bool`)
+          * `sshCertPath` (`str`)
           * `sshKeyPath` (`str`)
     
-        * `windowsPreferedCluster` (`bool`) - Windows prefered cluster. Default: `false` (bool)
+        * `windows_prefered_cluster` (`bool`) - Windows prefered cluster. Default: `false` (bool)
     
       * `cluster_template_id` (`str`) - Cluster template ID (string)
       * `default` (`bool`) - Default variable value (string)
@@ -592,6 +621,7 @@ class ClusterTemplate(pulumi.CustomResource):
               * `ignoreDockerVersion` (`pulumi.Input[bool]`)
               * `ingress` (`pulumi.Input[dict]`)
         
+                * `dnsPolicy` (`pulumi.Input[str]`)
                 * `extraArgs` (`pulumi.Input[dict]`)
                 * `nodeSelector` (`pulumi.Input[dict]`)
                 * `options` (`pulumi.Input[dict]`)
@@ -665,6 +695,8 @@ class ClusterTemplate(pulumi.CustomResource):
                       * `region` (`pulumi.Input[str]`)
                       * `secret_key` (`pulumi.Input[str]`)
         
+                    * `safeTimestamp` (`pulumi.Input[bool]`)
+        
                   * `caCert` (`pulumi.Input[str]`)
                   * `cert` (`pulumi.Input[str]`)
                   * `creation` (`pulumi.Input[str]`)
@@ -682,12 +714,36 @@ class ClusterTemplate(pulumi.CustomResource):
         
                 * `kubeApi` (`pulumi.Input[dict]`)
         
+                  * `admissionConfiguration` (`pulumi.Input[dict]`)
                   * `alwaysPullImages` (`pulumi.Input[bool]`)
+                  * `auditLog` (`pulumi.Input[dict]`)
+        
+                    * `configuration` (`pulumi.Input[dict]`)
+        
+                      * `format` (`pulumi.Input[str]`)
+                      * `maxAge` (`pulumi.Input[float]`)
+                      * `maxBackup` (`pulumi.Input[float]`)
+                      * `maxSize` (`pulumi.Input[float]`)
+                      * `path` (`pulumi.Input[str]`)
+                      * `policy` (`pulumi.Input[str]`)
+        
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
+                  * `eventRateLimit` (`pulumi.Input[dict]`)
+        
+                    * `configuration` (`pulumi.Input[dict]`)
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
                   * `extraArgs` (`pulumi.Input[dict]`)
                   * `extraBinds` (`pulumi.Input[list]`)
                   * `extraEnvs` (`pulumi.Input[list]`)
                   * `image` (`pulumi.Input[str]`)
                   * `podSecurityPolicy` (`pulumi.Input[bool]`)
+                  * `secretsEncryptionConfig` (`pulumi.Input[dict]`)
+        
+                    * `customConfig` (`pulumi.Input[dict]`)
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
                   * `serviceClusterIpRange` (`pulumi.Input[str]`)
                   * `serviceNodePortRange` (`pulumi.Input[str]`)
         
@@ -708,6 +764,7 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `extraBinds` (`pulumi.Input[list]`)
                   * `extraEnvs` (`pulumi.Input[list]`)
                   * `failSwapOn` (`pulumi.Input[bool]`)
+                  * `generateServingCertificate` (`pulumi.Input[bool]`)
                   * `image` (`pulumi.Input[str]`)
                   * `infraContainerImage` (`pulumi.Input[str]`)
         
@@ -726,9 +783,10 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `image` (`pulumi.Input[str]`)
         
               * `sshAgentAuth` (`pulumi.Input[bool]`)
+              * `sshCertPath` (`pulumi.Input[str]`)
               * `sshKeyPath` (`pulumi.Input[str]`)
         
-            * `windowsPreferedCluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
+            * `windows_prefered_cluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
         
           * `cluster_template_id` (`pulumi.Input[str]`) - Cluster template ID (string)
           * `default` (`pulumi.Input[bool]`) - Default variable value (string)
@@ -989,6 +1047,7 @@ class ClusterTemplate(pulumi.CustomResource):
               * `ignoreDockerVersion` (`pulumi.Input[bool]`)
               * `ingress` (`pulumi.Input[dict]`)
         
+                * `dnsPolicy` (`pulumi.Input[str]`)
                 * `extraArgs` (`pulumi.Input[dict]`)
                 * `nodeSelector` (`pulumi.Input[dict]`)
                 * `options` (`pulumi.Input[dict]`)
@@ -1062,6 +1121,8 @@ class ClusterTemplate(pulumi.CustomResource):
                       * `region` (`pulumi.Input[str]`)
                       * `secret_key` (`pulumi.Input[str]`)
         
+                    * `safeTimestamp` (`pulumi.Input[bool]`)
+        
                   * `caCert` (`pulumi.Input[str]`)
                   * `cert` (`pulumi.Input[str]`)
                   * `creation` (`pulumi.Input[str]`)
@@ -1079,12 +1140,36 @@ class ClusterTemplate(pulumi.CustomResource):
         
                 * `kubeApi` (`pulumi.Input[dict]`)
         
+                  * `admissionConfiguration` (`pulumi.Input[dict]`)
                   * `alwaysPullImages` (`pulumi.Input[bool]`)
+                  * `auditLog` (`pulumi.Input[dict]`)
+        
+                    * `configuration` (`pulumi.Input[dict]`)
+        
+                      * `format` (`pulumi.Input[str]`)
+                      * `maxAge` (`pulumi.Input[float]`)
+                      * `maxBackup` (`pulumi.Input[float]`)
+                      * `maxSize` (`pulumi.Input[float]`)
+                      * `path` (`pulumi.Input[str]`)
+                      * `policy` (`pulumi.Input[str]`)
+        
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
+                  * `eventRateLimit` (`pulumi.Input[dict]`)
+        
+                    * `configuration` (`pulumi.Input[dict]`)
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
                   * `extraArgs` (`pulumi.Input[dict]`)
                   * `extraBinds` (`pulumi.Input[list]`)
                   * `extraEnvs` (`pulumi.Input[list]`)
                   * `image` (`pulumi.Input[str]`)
                   * `podSecurityPolicy` (`pulumi.Input[bool]`)
+                  * `secretsEncryptionConfig` (`pulumi.Input[dict]`)
+        
+                    * `customConfig` (`pulumi.Input[dict]`)
+                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
+        
                   * `serviceClusterIpRange` (`pulumi.Input[str]`)
                   * `serviceNodePortRange` (`pulumi.Input[str]`)
         
@@ -1105,6 +1190,7 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `extraBinds` (`pulumi.Input[list]`)
                   * `extraEnvs` (`pulumi.Input[list]`)
                   * `failSwapOn` (`pulumi.Input[bool]`)
+                  * `generateServingCertificate` (`pulumi.Input[bool]`)
                   * `image` (`pulumi.Input[str]`)
                   * `infraContainerImage` (`pulumi.Input[str]`)
         
@@ -1123,9 +1209,10 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `image` (`pulumi.Input[str]`)
         
               * `sshAgentAuth` (`pulumi.Input[bool]`)
+              * `sshCertPath` (`pulumi.Input[str]`)
               * `sshKeyPath` (`pulumi.Input[str]`)
         
-            * `windowsPreferedCluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
+            * `windows_prefered_cluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
         
           * `cluster_template_id` (`pulumi.Input[str]`) - Cluster template ID (string)
           * `default` (`pulumi.Input[bool]`) - Default variable value (string)

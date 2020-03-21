@@ -74,6 +74,12 @@ namespace Pulumi.Rancher2
         public Output<string> Driver { get; private set; } = null!;
 
         /// <summary>
+        /// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        /// </summary>
+        [Output("driverId")]
+        public Output<string> DriverId { get; private set; } = null!;
+
+        /// <summary>
         /// Engine environment for the node template (string)
         /// </summary>
         [Output("engineEnv")]
@@ -244,6 +250,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("digitaloceanConfig")]
         public Input<Inputs.NodeTemplateDigitaloceanConfigArgs>? DigitaloceanConfig { get; set; }
+
+        /// <summary>
+        /// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        /// </summary>
+        [Input("driverId")]
+        public Input<string>? DriverId { get; set; }
 
         [Input("engineEnv")]
         private InputMap<object>? _engineEnv;
@@ -419,6 +431,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
+
+        /// <summary>
+        /// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        /// </summary>
+        [Input("driverId")]
+        public Input<string>? DriverId { get; set; }
 
         [Input("engineEnv")]
         private InputMap<object>? _engineEnv;

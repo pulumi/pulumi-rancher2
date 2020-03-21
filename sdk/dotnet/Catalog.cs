@@ -70,6 +70,12 @@ namespace Pulumi.Rancher2
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        /// </summary>
+        [Output("refresh")]
+        public Output<bool?> Refresh { get; private set; } = null!;
+
+        /// <summary>
         /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         /// </summary>
         [Output("scope")]
@@ -200,6 +206,12 @@ namespace Pulumi.Rancher2
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
+        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        /// </summary>
+        [Input("refresh")]
+        public Input<bool>? Refresh { get; set; }
+
+        /// <summary>
         /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         /// </summary>
         [Input("scope")]
@@ -289,6 +301,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        /// </summary>
+        [Input("refresh")]
+        public Input<bool>? Refresh { get; set; }
 
         /// <summary>
         /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)

@@ -57,6 +57,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool ControlPlane;
         /// <summary>
+        /// (Computed) Delete not ready node after secs. Default `0` (int)
+        /// </summary>
+        public readonly int DeleteNotReadyAfterSecs;
+        /// <summary>
         /// (Computed) RKE etcd role for created nodes (bool)
         /// </summary>
         public readonly bool Etcd;
@@ -69,6 +73,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed) Node taints (List)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNodePoolNodeTaintsResult> NodeTaints;
         public readonly string NodeTemplateId;
         /// <summary>
         /// (Computed) The number of nodes to create on Node Pool (int)
@@ -88,10 +96,12 @@ namespace Pulumi.Rancher2
             ImmutableDictionary<string, object> annotations,
             string clusterId,
             bool controlPlane,
+            int deleteNotReadyAfterSecs,
             bool etcd,
             string hostnamePrefix,
             ImmutableDictionary<string, object> labels,
             string name,
+            ImmutableArray<Outputs.GetNodePoolNodeTaintsResult> nodeTaints,
             string nodeTemplateId,
             int quantity,
             bool worker,
@@ -100,14 +110,42 @@ namespace Pulumi.Rancher2
             Annotations = annotations;
             ClusterId = clusterId;
             ControlPlane = controlPlane;
+            DeleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
             Etcd = etcd;
             HostnamePrefix = hostnamePrefix;
             Labels = labels;
             Name = name;
+            NodeTaints = nodeTaints;
             NodeTemplateId = nodeTemplateId;
             Quantity = quantity;
             Worker = worker;
             Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetNodePoolNodeTaintsResult
+    {
+        public readonly string? Effect;
+        public readonly string Key;
+        public readonly string TimeAdded;
+        public readonly string Value;
+
+        [OutputConstructor]
+        private GetNodePoolNodeTaintsResult(
+            string? effect,
+            string key,
+            string timeAdded,
+            string value)
+        {
+            Effect = effect;
+            Key = key;
+            TimeAdded = timeAdded;
+            Value = value;
+        }
+    }
     }
 }

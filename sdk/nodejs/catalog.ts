@@ -95,6 +95,10 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
+     * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+     */
+    public readonly refresh!: pulumi.Output<boolean | undefined>;
+    /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */
     public readonly scope!: pulumi.Output<string | undefined>;
@@ -128,6 +132,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
+            inputs["refresh"] = state ? state.refresh : undefined;
             inputs["scope"] = state ? state.scope : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["username"] = state ? state.username : undefined;
@@ -145,6 +150,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["refresh"] = args ? args.refresh : undefined;
             inputs["scope"] = args ? args.scope : undefined;
             inputs["url"] = args ? args.url : undefined;
             inputs["username"] = args ? args.username : undefined;
@@ -201,6 +207,10 @@ export interface CatalogState {
      */
     readonly projectId?: pulumi.Input<string>;
     /**
+     * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+     */
+    readonly refresh?: pulumi.Input<boolean>;
+    /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */
     readonly scope?: pulumi.Input<string>;
@@ -254,6 +264,10 @@ export interface CatalogArgs {
      * The project id of the catalog. Mandatory if `scope = project` (string)
      */
     readonly projectId?: pulumi.Input<string>;
+    /**
+     * Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+     */
+    readonly refresh?: pulumi.Input<boolean>;
     /**
      * The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
      */

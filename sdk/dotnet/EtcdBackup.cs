@@ -268,6 +268,9 @@ namespace Pulumi.Rancher2
         [Input("s3BackupConfig")]
         public Input<EtcdBackupBackupConfigS3BackupConfigArgs>? S3BackupConfig { get; set; }
 
+        [Input("safeTimestamp")]
+        public Input<bool>? SafeTimestamp { get; set; }
+
         public EtcdBackupBackupConfigArgs()
         {
         }
@@ -298,6 +301,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("s3BackupConfig")]
         public Input<EtcdBackupBackupConfigS3BackupConfigGetArgs>? S3BackupConfig { get; set; }
+
+        [Input("safeTimestamp")]
+        public Input<bool>? SafeTimestamp { get; set; }
 
         public EtcdBackupBackupConfigGetArgs()
         {
@@ -425,18 +431,21 @@ namespace Pulumi.Rancher2
         /// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
         /// </summary>
         public readonly EtcdBackupBackupConfigS3BackupConfig? S3BackupConfig;
+        public readonly bool? SafeTimestamp;
 
         [OutputConstructor]
         private EtcdBackupBackupConfig(
             bool? enabled,
             int? intervalHours,
             int? retention,
-            EtcdBackupBackupConfigS3BackupConfig? s3BackupConfig)
+            EtcdBackupBackupConfigS3BackupConfig? s3BackupConfig,
+            bool? safeTimestamp)
         {
             Enabled = enabled;
             IntervalHours = intervalHours;
             Retention = retention;
             S3BackupConfig = s3BackupConfig;
+            SafeTimestamp = safeTimestamp;
         }
     }
 

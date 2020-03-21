@@ -49,6 +49,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly controlPlane!: pulumi.Output<boolean | undefined>;
     /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
+    public readonly deleteNotReadyAfterSecs!: pulumi.Output<number | undefined>;
+    /**
      * RKE etcd role for created nodes (bool)
      */
     public readonly etcd!: pulumi.Output<boolean | undefined>;
@@ -64,6 +68,10 @@ export class NodePool extends pulumi.CustomResource {
      * The name of the Node Pool (string)
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    public readonly nodeTaints!: pulumi.Output<outputs.NodePoolNodeTaint[] | undefined>;
     /**
      * The Node Template ID to use for node creation (string)
      */
@@ -92,10 +100,12 @@ export class NodePool extends pulumi.CustomResource {
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["controlPlane"] = state ? state.controlPlane : undefined;
+            inputs["deleteNotReadyAfterSecs"] = state ? state.deleteNotReadyAfterSecs : undefined;
             inputs["etcd"] = state ? state.etcd : undefined;
             inputs["hostnamePrefix"] = state ? state.hostnamePrefix : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["nodeTaints"] = state ? state.nodeTaints : undefined;
             inputs["nodeTemplateId"] = state ? state.nodeTemplateId : undefined;
             inputs["quantity"] = state ? state.quantity : undefined;
             inputs["worker"] = state ? state.worker : undefined;
@@ -113,10 +123,12 @@ export class NodePool extends pulumi.CustomResource {
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["controlPlane"] = args ? args.controlPlane : undefined;
+            inputs["deleteNotReadyAfterSecs"] = args ? args.deleteNotReadyAfterSecs : undefined;
             inputs["etcd"] = args ? args.etcd : undefined;
             inputs["hostnamePrefix"] = args ? args.hostnamePrefix : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["nodeTaints"] = args ? args.nodeTaints : undefined;
             inputs["nodeTemplateId"] = args ? args.nodeTemplateId : undefined;
             inputs["quantity"] = args ? args.quantity : undefined;
             inputs["worker"] = args ? args.worker : undefined;
@@ -149,6 +161,10 @@ export interface NodePoolState {
      */
     readonly controlPlane?: pulumi.Input<boolean>;
     /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
+    readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
      * RKE etcd role for created nodes (bool)
      */
     readonly etcd?: pulumi.Input<boolean>;
@@ -164,6 +180,10 @@ export interface NodePoolState {
      * The name of the Node Pool (string)
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**
      * The Node Template ID to use for node creation (string)
      */
@@ -195,6 +215,10 @@ export interface NodePoolArgs {
      */
     readonly controlPlane?: pulumi.Input<boolean>;
     /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
+    readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
      * RKE etcd role for created nodes (bool)
      */
     readonly etcd?: pulumi.Input<boolean>;
@@ -210,6 +234,10 @@ export interface NodePoolArgs {
      * The name of the Node Pool (string)
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
     /**
      * The Node Template ID to use for node creation (string)
      */
