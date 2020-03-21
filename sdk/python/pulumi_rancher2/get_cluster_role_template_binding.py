@@ -13,7 +13,7 @@ class GetClusterRoleTemplateBindingResult:
     """
     A collection of values returned by getClusterRoleTemplateBinding.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, group_id=None, group_principal_id=None, labels=None, name=None, role_template_id=None, user_id=None, user_principal_id=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, group_id=None, group_principal_id=None, id=None, labels=None, name=None, role_template_id=None, user_id=None, user_principal_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -34,6 +34,12 @@ class GetClusterRoleTemplateBindingResult:
         __self__.group_principal_id = group_principal_id
         """
         (Computed) The group_principal ID to assign cluster role template binding (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -59,12 +65,6 @@ class GetClusterRoleTemplateBindingResult:
         """
         (Computed) The user_principal ID to assign cluster role template binding (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterRoleTemplateBindingResult(GetClusterRoleTemplateBindingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,24 +75,26 @@ class AwaitableGetClusterRoleTemplateBindingResult(GetClusterRoleTemplateBinding
             cluster_id=self.cluster_id,
             group_id=self.group_id,
             group_principal_id=self.group_principal_id,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             role_template_id=self.role_template_id,
             user_id=self.user_id,
-            user_principal_id=self.user_principal_id,
-            id=self.id)
+            user_principal_id=self.user_principal_id)
 
 def get_cluster_role_template_binding(cluster_id=None,name=None,role_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
+
+
     :param str cluster_id: The cluster id where bind cluster role template (string)
     :param str name: The name of the cluster role template binding (string)
     :param str role_template_id: The role template id from create cluster role template binding (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_role_template_binding.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -108,9 +110,9 @@ def get_cluster_role_template_binding(cluster_id=None,name=None,role_template_id
         cluster_id=__ret__.get('clusterId'),
         group_id=__ret__.get('groupId'),
         group_principal_id=__ret__.get('groupPrincipalId'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         role_template_id=__ret__.get('roleTemplateId'),
         user_id=__ret__.get('userId'),
-        user_principal_id=__ret__.get('userPrincipalId'),
-        id=__ret__.get('id'))
+        user_principal_id=__ret__.get('userPrincipalId'))

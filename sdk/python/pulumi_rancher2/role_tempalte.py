@@ -61,7 +61,7 @@ class RoleTempalte(pulumi.CustomResource):
     rules: pulumi.Output[list]
     """
     Role template policy rules (list)
-    
+
       * `apiGroups` (`list`) - Policy rule api groups (list)
       * `nonResourceUrls` (`list`) - Policy rule non resource urls (list)
       * `resourceNames` (`list`) - Policy rule resource names (list)
@@ -71,9 +71,11 @@ class RoleTempalte(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, administrative=None, annotations=None, context=None, default_role=None, description=None, external=None, hidden=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
-        
+
         `cluster` and `project` scopes are supported for role templates.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/roleTemplate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)
@@ -88,16 +90,14 @@ class RoleTempalte(pulumi.CustomResource):
         :param pulumi.Input[str] name: Role template name (string)
         :param pulumi.Input[list] role_template_ids: Inherit role template IDs (list)
         :param pulumi.Input[list] rules: Role template policy rules (list)
-        
+
         The **rules** object supports the following:
-        
+
           * `apiGroups` (`pulumi.Input[list]`) - Policy rule api groups (list)
           * `nonResourceUrls` (`pulumi.Input[list]`) - Policy rule non resource urls (list)
           * `resourceNames` (`pulumi.Input[list]`) - Policy rule resource names (list)
           * `resources` (`pulumi.Input[list]`) - Policy rule resources (list)
           * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/role_template.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,7 +140,7 @@ class RoleTempalte(pulumi.CustomResource):
         """
         Get an existing RoleTempalte resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -157,20 +157,19 @@ class RoleTempalte(pulumi.CustomResource):
         :param pulumi.Input[str] name: Role template name (string)
         :param pulumi.Input[list] role_template_ids: Inherit role template IDs (list)
         :param pulumi.Input[list] rules: Role template policy rules (list)
-        
+
         The **rules** object supports the following:
-        
+
           * `apiGroups` (`pulumi.Input[list]`) - Policy rule api groups (list)
           * `nonResourceUrls` (`pulumi.Input[list]`) - Policy rule non resource urls (list)
           * `resourceNames` (`pulumi.Input[list]`) - Policy rule resource names (list)
           * `resources` (`pulumi.Input[list]`) - Policy rule resources (list)
           * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/role_template.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["administrative"] = administrative
         __props__["annotations"] = annotations
         __props__["builtin"] = builtin

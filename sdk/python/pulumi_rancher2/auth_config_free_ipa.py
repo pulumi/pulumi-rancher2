@@ -133,9 +133,11 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, certificate=None, connection_timeout=None, enabled=None, group_dn_attribute=None, group_member_mapping_attribute=None, group_member_user_attribute=None, group_name_attribute=None, group_object_class=None, group_search_attribute=None, group_search_base=None, labels=None, nested_group_membership_enabled=None, port=None, servers=None, service_account_distinguished_name=None, service_account_password=None, tls=None, user_disabled_bit_mask=None, user_enabled_attribute=None, user_login_attribute=None, user_member_attribute=None, user_name_attribute=None, user_object_class=None, user_search_attribute=None, user_search_base=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Auth Config FreeIpa resource. This can be used to configure and enable Auth Config FreeIpa for Rancher v2 RKE clusters and retrieve their information.
-        
+
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigFreeIpa.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -166,8 +168,6 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[str] user_object_class: User object class. Default `inetorgperson` (string)
         :param pulumi.Input[str] user_search_attribute: User search attribute. Default `uid|sn|givenName` (string)
         :param pulumi.Input[str] user_search_base: User search base DN (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_freeipa.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -235,7 +235,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         """
         Get an existing AuthConfigFreeIpa resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,12 +269,11 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[str] user_object_class: User object class. Default `inetorgperson` (string)
         :param pulumi.Input[str] user_search_attribute: User search attribute. Default `uid|sn|givenName` (string)
         :param pulumi.Input[str] user_search_base: User search base DN (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_freeipa.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_mode"] = access_mode
         __props__["allowed_principal_ids"] = allowed_principal_ids
         __props__["annotations"] = annotations

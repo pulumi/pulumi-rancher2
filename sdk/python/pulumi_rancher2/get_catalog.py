@@ -13,7 +13,7 @@ class GetCatalogResult:
     """
     A collection of values returned by getCatalog.
     """
-    def __init__(__self__, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None, id=None):
+    def __init__(__self__, annotations=None, branch=None, cluster_id=None, description=None, id=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -37,6 +37,12 @@ class GetCatalogResult:
         __self__.description = description
         """
         (Computed) A catalog description (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -80,12 +86,6 @@ class GetCatalogResult:
         """
         (Computed/Sensitive) The username to access the catalog if needed (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCatalogResult(GetCatalogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -96,6 +96,7 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             branch=self.branch,
             cluster_id=self.cluster_id,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             labels=self.labels,
             name=self.name,
@@ -103,19 +104,20 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             project_id=self.project_id,
             scope=self.scope,
             url=self.url,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_catalog(name=None,scope=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 catalog.
-    
-    :param str name: The catalog name.
-    :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
+
+
+    :param str name: The catalog name.
+    :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['scope'] = scope
@@ -130,6 +132,7 @@ def get_catalog(name=None,scope=None,opts=None):
         branch=__ret__.get('branch'),
         cluster_id=__ret__.get('clusterId'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         kind=__ret__.get('kind'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
@@ -137,5 +140,4 @@ def get_catalog(name=None,scope=None,opts=None):
         project_id=__ret__.get('projectId'),
         scope=__ret__.get('scope'),
         url=__ret__.get('url'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

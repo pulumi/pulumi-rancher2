@@ -13,7 +13,7 @@ class GetProjectRoleTemplateBindingResult:
     """
     A collection of values returned by getProjectRoleTemplateBinding.
     """
-    def __init__(__self__, annotations=None, group_id=None, group_principal_id=None, labels=None, name=None, project_id=None, role_template_id=None, user_id=None, user_principal_id=None, id=None):
+    def __init__(__self__, annotations=None, group_id=None, group_principal_id=None, id=None, labels=None, name=None, project_id=None, role_template_id=None, user_id=None, user_principal_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -31,6 +31,12 @@ class GetProjectRoleTemplateBindingResult:
         __self__.group_principal_id = group_principal_id
         """
         (Computed) The group_principal ID to assign project role template binding (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -59,12 +65,6 @@ class GetProjectRoleTemplateBindingResult:
         """
         (Computed) The user_principal ID to assign project role template binding (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectRoleTemplateBindingResult(GetProjectRoleTemplateBindingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,25 +74,27 @@ class AwaitableGetProjectRoleTemplateBindingResult(GetProjectRoleTemplateBinding
             annotations=self.annotations,
             group_id=self.group_id,
             group_principal_id=self.group_principal_id,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             project_id=self.project_id,
             role_template_id=self.role_template_id,
             user_id=self.user_id,
-            user_principal_id=self.user_principal_id,
-            id=self.id)
+            user_principal_id=self.user_principal_id)
 
 def get_project_role_template_binding(name=None,project_id=None,role_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
+
+
     :param str name: The name of the project role template binding (string)
     :param str project_id: The project id where bind project role template (string)
     :param str role_template_id: The role template id from create project role template binding (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_role_template_binding.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['projectId'] = project_id
@@ -107,10 +109,10 @@ def get_project_role_template_binding(name=None,project_id=None,role_template_id
         annotations=__ret__.get('annotations'),
         group_id=__ret__.get('groupId'),
         group_principal_id=__ret__.get('groupPrincipalId'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project_id=__ret__.get('projectId'),
         role_template_id=__ret__.get('roleTemplateId'),
         user_id=__ret__.get('userId'),
-        user_principal_id=__ret__.get('userPrincipalId'),
-        id=__ret__.get('id'))
+        user_principal_id=__ret__.get('userPrincipalId'))

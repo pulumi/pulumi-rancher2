@@ -34,13 +34,10 @@ class ClusterSync(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_id=None, node_pool_ids=None, synced=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ClusterSync resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_sync.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -78,7 +75,7 @@ class ClusterSync(pulumi.CustomResource):
         """
         Get an existing ClusterSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +84,11 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[str] kube_config: (Computed) Kube Config generated for the cluster sync (string)
         :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_sync.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["default_project_id"] = default_project_id
         __props__["kube_config"] = kube_config

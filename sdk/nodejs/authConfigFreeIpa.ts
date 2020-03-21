@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  * 
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_freeipa.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigFreeIpa.html.markdown.
  */
 export class AuthConfigFreeIpa extends pulumi.CustomResource {
     /**

@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_role_template_binding.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
  */
 export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> & GetProjectRoleTemplateBindingResult {
     if (!opts) {

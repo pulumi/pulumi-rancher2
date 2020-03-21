@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster alert group.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_alert_group.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
 func GetClusterAlertGroup(ctx *pulumi.Context, args *GetClusterAlertGroupArgs, opts ...pulumi.InvokeOption) (*GetClusterAlertGroupResult, error) {
 	var rv GetClusterAlertGroupResult
 	err := ctx.Invoke("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args, &rv, opts...)

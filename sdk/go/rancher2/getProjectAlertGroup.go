@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 project alert group.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_alert_group.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
 func LookupProjectAlertGroup(ctx *pulumi.Context, args *LookupProjectAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertGroupResult, error) {
 	var rv LookupProjectAlertGroupResult
 	err := ctx.Invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args, &rv, opts...)

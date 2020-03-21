@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  * 
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_openldap.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigOpenLdap.html.markdown.
  */
 export class AuthConfigOpenLdap extends pulumi.CustomResource {
     /**

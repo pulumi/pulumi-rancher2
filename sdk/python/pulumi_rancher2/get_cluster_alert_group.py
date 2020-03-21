@@ -13,7 +13,7 @@ class GetClusterAlertGroupResult:
     """
     A collection of values returned by getClusterAlertGroup.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, description=None, group_interval_seconds=None, group_wait_seconds=None, labels=None, name=None, recipients=None, repeat_interval_seconds=None, id=None):
+    def __init__(__self__, annotations=None, cluster_id=None, description=None, group_interval_seconds=None, group_wait_seconds=None, id=None, labels=None, name=None, recipients=None, repeat_interval_seconds=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -41,6 +41,12 @@ class GetClusterAlertGroupResult:
         """
         (Computed) The cluster alert group wait seconds. Default: `180` (int)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -62,12 +68,6 @@ class GetClusterAlertGroupResult:
         """
         (Computed) The cluster alert group wait seconds. Default: `3600` (int)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterAlertGroupResult(GetClusterAlertGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,22 +79,24 @@ class AwaitableGetClusterAlertGroupResult(GetClusterAlertGroupResult):
             description=self.description,
             group_interval_seconds=self.group_interval_seconds,
             group_wait_seconds=self.group_wait_seconds,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             recipients=self.recipients,
-            repeat_interval_seconds=self.repeat_interval_seconds,
-            id=self.id)
+            repeat_interval_seconds=self.repeat_interval_seconds)
 
 def get_cluster_alert_group(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert group.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
+
+
     :param str cluster_id: The cluster id where create cluster alert group (string)
     :param str name: The cluster alert group name (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_alert_group.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -110,8 +112,8 @@ def get_cluster_alert_group(cluster_id=None,name=None,opts=None):
         description=__ret__.get('description'),
         group_interval_seconds=__ret__.get('groupIntervalSeconds'),
         group_wait_seconds=__ret__.get('groupWaitSeconds'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         recipients=__ret__.get('recipients'),
-        repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'),
-        id=__ret__.get('id'))
+        repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'))

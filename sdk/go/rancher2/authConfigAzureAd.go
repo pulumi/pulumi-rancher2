@@ -12,10 +12,10 @@ import (
 )
 
 // Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
-// 
+//
 // In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/auth_config_azuread.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigAzureAD.html.markdown.
 type AuthConfigAzureAd struct {
 	pulumi.CustomResourceState
 

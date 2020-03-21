@@ -13,7 +13,7 @@ class GetClusterDriverResult:
     """
     A collection of values returned by getClusterDriver.
     """
-    def __init__(__self__, active=None, actual_url=None, annotations=None, builtin=None, checksum=None, labels=None, name=None, ui_url=None, url=None, whitelist_domains=None, id=None):
+    def __init__(__self__, active=None, actual_url=None, annotations=None, builtin=None, checksum=None, id=None, labels=None, name=None, ui_url=None, url=None, whitelist_domains=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         __self__.active = active
@@ -44,6 +44,12 @@ class GetClusterDriverResult:
         """
         (Computed) Verify that the downloaded driver matches the expected checksum (string)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -68,12 +74,6 @@ class GetClusterDriverResult:
         """
         (Computed) Domains to whitelist for the ui (list)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterDriverResult(GetClusterDriverResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -85,23 +85,25 @@ class AwaitableGetClusterDriverResult(GetClusterDriverResult):
             annotations=self.annotations,
             builtin=self.builtin,
             checksum=self.checksum,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             ui_url=self.ui_url,
             url=self.url,
-            whitelist_domains=self.whitelist_domains,
-            id=self.id)
+            whitelist_domains=self.whitelist_domains)
 
 def get_cluster_driver(name=None,url=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
+
+
     :param str name: Name of the cluster driver (string)
     :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_driver.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['url'] = url
@@ -117,9 +119,9 @@ def get_cluster_driver(name=None,url=None,opts=None):
         annotations=__ret__.get('annotations'),
         builtin=__ret__.get('builtin'),
         checksum=__ret__.get('checksum'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         ui_url=__ret__.get('uiUrl'),
         url=__ret__.get('url'),
-        whitelist_domains=__ret__.get('whitelistDomains'),
-        id=__ret__.get('id'))
+        whitelist_domains=__ret__.get('whitelistDomains'))

@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/catalog.html.markdown.
 type Catalog struct {
 	pulumi.CustomResourceState

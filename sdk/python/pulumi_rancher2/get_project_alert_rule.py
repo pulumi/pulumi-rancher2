@@ -13,7 +13,7 @@ class GetProjectAlertRuleResult:
     """
     A collection of values returned by getProjectAlertRule.
     """
-    def __init__(__self__, annotations=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, pod_rule=None, project_id=None, repeat_interval_seconds=None, severity=None, workload_rule=None, id=None):
+    def __init__(__self__, annotations=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, id=None, inherited=None, labels=None, metric_rule=None, name=None, pod_rule=None, project_id=None, repeat_interval_seconds=None, severity=None, workload_rule=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -37,6 +37,12 @@ class GetProjectAlertRuleResult:
         __self__.group_wait_seconds = group_wait_seconds
         """
         (Computed) The project alert rule group wait seconds. Default: `180` (int)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if inherited and not isinstance(inherited, bool):
             raise TypeError("Expected argument 'inherited' to be a bool")
@@ -86,12 +92,6 @@ class GetProjectAlertRuleResult:
         """
         (Computed) The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectAlertRuleResult(GetProjectAlertRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -102,6 +102,7 @@ class AwaitableGetProjectAlertRuleResult(GetProjectAlertRuleResult):
             group_id=self.group_id,
             group_interval_seconds=self.group_interval_seconds,
             group_wait_seconds=self.group_wait_seconds,
+            id=self.id,
             inherited=self.inherited,
             labels=self.labels,
             metric_rule=self.metric_rule,
@@ -110,19 +111,20 @@ class AwaitableGetProjectAlertRuleResult(GetProjectAlertRuleResult):
             project_id=self.project_id,
             repeat_interval_seconds=self.repeat_interval_seconds,
             severity=self.severity,
-            workload_rule=self.workload_rule,
-            id=self.id)
+            workload_rule=self.workload_rule)
 
 def get_project_alert_rule(labels=None,name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert rule.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
+
+
     :param str name: The project alert rule name (string)
     :param str project_id: The project id where create project alert rule (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_alert_rule.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['labels'] = labels
     __args__['name'] = name
@@ -138,6 +140,7 @@ def get_project_alert_rule(labels=None,name=None,project_id=None,opts=None):
         group_id=__ret__.get('groupId'),
         group_interval_seconds=__ret__.get('groupIntervalSeconds'),
         group_wait_seconds=__ret__.get('groupWaitSeconds'),
+        id=__ret__.get('id'),
         inherited=__ret__.get('inherited'),
         labels=__ret__.get('labels'),
         metric_rule=__ret__.get('metricRule'),
@@ -146,5 +149,4 @@ def get_project_alert_rule(labels=None,name=None,project_id=None,opts=None):
         project_id=__ret__.get('projectId'),
         repeat_interval_seconds=__ret__.get('repeatIntervalSeconds'),
         severity=__ret__.get('severity'),
-        workload_rule=__ret__.get('workloadRule'),
-        id=__ret__.get('id'))
+        workload_rule=__ret__.get('workloadRule'))

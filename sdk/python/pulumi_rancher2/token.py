@@ -43,6 +43,9 @@ class Token(pulumi.CustomResource):
     (Computed) Token name (string)
     """
     renew: pulumi.Output[bool]
+    """
+    Renew expired or disabled token
+    """
     secret_key: pulumi.Output[str]
     """
     (Computed/Sensitive) Token secret key part (string)
@@ -62,22 +65,23 @@ class Token(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, labels=None, renew=None, ttl=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
-        
+
         There are 2 kind of tokens:
         - no scoped: valid for global system.
         - scoped: valid for just a specific cluster (`cluster_id` should be provided).
-        
+
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[dict] labels: Labels of the token (map)
+        :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -120,7 +124,7 @@ class Token(pulumi.CustomResource):
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,16 +136,16 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
         :param pulumi.Input[dict] labels: Labels of the token (map)
         :param pulumi.Input[str] name: (Computed) Token name (string)
+        :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
         :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_key"] = access_key
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id

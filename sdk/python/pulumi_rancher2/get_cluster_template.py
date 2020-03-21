@@ -13,7 +13,7 @@ class GetClusterTemplateResult:
     """
     A collection of values returned by getClusterTemplate.
     """
-    def __init__(__self__, annotations=None, default_revision_id=None, description=None, labels=None, members=None, name=None, template_revisions=None, id=None):
+    def __init__(__self__, annotations=None, default_revision_id=None, description=None, id=None, labels=None, members=None, name=None, template_revisions=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -29,6 +29,12 @@ class GetClusterTemplateResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -50,12 +56,6 @@ class GetClusterTemplateResult:
         """
         (Computed) Cluster template revisions (list)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,23 +65,25 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             annotations=self.annotations,
             default_revision_id=self.default_revision_id,
             description=self.description,
+            id=self.id,
             labels=self.labels,
             members=self.members,
             name=self.name,
-            template_revisions=self.template_revisions,
-            id=self.id)
+            template_revisions=self.template_revisions)
 
 def get_cluster_template(annotations=None,description=None,labels=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster template.
-    
-    Cluster Templates are available from Rancher v2.3.x and above.
-    
-    :param str name: The cluster template name (string)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster_template.html.markdown.
+    Cluster Templates are available from Rancher v2.3.x and above.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
+
+
+    :param str name: The cluster template name (string)
     """
     __args__ = dict()
+
 
     __args__['annotations'] = annotations
     __args__['description'] = description
@@ -97,8 +99,8 @@ def get_cluster_template(annotations=None,description=None,labels=None,name=None
         annotations=__ret__.get('annotations'),
         default_revision_id=__ret__.get('defaultRevisionId'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         members=__ret__.get('members'),
         name=__ret__.get('name'),
-        template_revisions=__ret__.get('templateRevisions'),
-        id=__ret__.get('id'))
+        template_revisions=__ret__.get('templateRevisions'))

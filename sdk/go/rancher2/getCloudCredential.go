@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cloud Credential.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloud_credential.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
 func LookupCloudCredential(ctx *pulumi.Context, args *LookupCloudCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCloudCredentialResult, error) {
 	var rv LookupCloudCredentialResult
 	err := ctx.Invoke("rancher2:index/getCloudCredential:getCloudCredential", args, &rv, opts...)

@@ -45,7 +45,7 @@ class NodePool(pulumi.CustomResource):
     node_taints: pulumi.Output[list]
     """
     Node taints. For Rancher v2.3.3 or above (List)
-    
+
       * `effect` (`str`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
       * `key` (`str`) - Taint key (string)
       * `timeAdded` (`str`) - Taint time added (string)
@@ -66,7 +66,9 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, control_plane=None, delete_not_ready_after_secs=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_taints=None, node_template_id=None, quantity=None, worker=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodePool.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
@@ -81,15 +83,13 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
-        
+
         The **node_taints** object supports the following:
-        
+
           * `effect` (`pulumi.Input[str]`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
           * `key` (`pulumi.Input[str]`) - Taint key (string)
           * `timeAdded` (`pulumi.Input[str]`) - Taint time added (string)
           * `value` (`pulumi.Input[str]`) - Taint value (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/node_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,7 +137,7 @@ class NodePool(pulumi.CustomResource):
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -153,19 +153,18 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
-        
+
         The **node_taints** object supports the following:
-        
+
           * `effect` (`pulumi.Input[str]`) - Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
           * `key` (`pulumi.Input[str]`) - Taint key (string)
           * `timeAdded` (`pulumi.Input[str]`) - Taint time added (string)
           * `value` (`pulumi.Input[str]`) - Taint value (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/node_pool.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id
         __props__["control_plane"] = control_plane

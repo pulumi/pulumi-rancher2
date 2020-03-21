@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Project Logging.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/project_logging.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
 func LookupProjectLogging(ctx *pulumi.Context, args *LookupProjectLoggingArgs, opts ...pulumi.InvokeOption) (*LookupProjectLoggingResult, error) {
 	var rv LookupProjectLoggingResult
 	err := ctx.Invoke("rancher2:index/getProjectLogging:getProjectLogging", args, &rv, opts...)

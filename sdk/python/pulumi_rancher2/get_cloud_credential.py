@@ -13,12 +13,18 @@ class GetCloudCredentialResult:
     """
     A collection of values returned by getCloudCredential.
     """
-    def __init__(__self__, annotations=None, labels=None, name=None, id=None):
+    def __init__(__self__, annotations=None, id=None, labels=None, name=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
         """
         (Computed) Annotations for the Cloud Credential (map)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -29,12 +35,6 @@ class GetCloudCredentialResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCloudCredentialResult(GetCloudCredentialResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,19 +42,21 @@ class AwaitableGetCloudCredentialResult(GetCloudCredentialResult):
             yield self
         return GetCloudCredentialResult(
             annotations=self.annotations,
+            id=self.id,
             labels=self.labels,
-            name=self.name,
-            id=self.id)
+            name=self.name)
 
 def get_cloud_credential(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.
-    
-    :param str name: The Cloud Credential name.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloud_credential.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
+
+
+    :param str name: The Cloud Credential name.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -65,6 +67,6 @@ def get_cloud_credential(name=None,opts=None):
 
     return AwaitableGetCloudCredentialResult(
         annotations=__ret__.get('annotations'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        id=__ret__.get('id'))
+        name=__ret__.get('name'))

@@ -41,11 +41,13 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, data=None, description=None, labels=None, name=None, namespace_id=None, project_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
-        
+
         Depending of the availability, there are 2 types of Rancher v2 secrets:
         - Project secret: Available to all namespaces in the `project_id`
         - Namespaced secret: Available to just `namespace_id` in the `project_id`
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/secret.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for secret object (map)
@@ -55,8 +57,6 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/secret.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +97,7 @@ class Secret(pulumi.CustomResource):
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -108,12 +108,11 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/secret.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["data"] = data
         __props__["description"] = description

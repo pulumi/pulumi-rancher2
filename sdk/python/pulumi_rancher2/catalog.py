@@ -65,7 +65,9 @@ class Catalog(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/catalog.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for the catalog (map)
@@ -81,8 +83,6 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/catalog.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,7 +127,7 @@ class Catalog(pulumi.CustomResource):
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,12 +144,11 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/catalog.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["branch"] = branch
         __props__["cluster_id"] = cluster_id

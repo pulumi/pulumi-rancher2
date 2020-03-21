@@ -13,7 +13,7 @@ class GetRegistryResult:
     """
     A collection of values returned by getRegistry.
     """
-    def __init__(__self__, annotations=None, description=None, labels=None, name=None, namespace_id=None, project_id=None, registries=None, id=None):
+    def __init__(__self__, annotations=None, description=None, id=None, labels=None, name=None, namespace_id=None, project_id=None, registries=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -25,6 +25,12 @@ class GetRegistryResult:
         __self__.description = description
         """
         (Computed) A registry description (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -47,12 +53,6 @@ class GetRegistryResult:
         """
         (Computed) Registries data for registry (list)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRegistryResult(GetRegistryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,28 +61,30 @@ class AwaitableGetRegistryResult(GetRegistryResult):
         return GetRegistryResult(
             annotations=self.annotations,
             description=self.description,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             namespace_id=self.namespace_id,
             project_id=self.project_id,
-            registries=self.registries,
-            id=self.id)
+            registries=self.registries)
 
 def get_registry(name=None,namespace_id=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 docker registry.
-    
+
     Depending of the availability, there are 2 types of Rancher v2 docker registries:
     - Project registry: Available to all namespaces in the `project_id`
     - Namespaced registry: Available to just `namespace_id` in the `project_id`
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
+
+
     :param str name: The name of the registry (string)
     :param str namespace_id: The namespace id where to assign the namespaced registry (string)
     :param str project_id: The project id where to assign the registry (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['namespaceId'] = namespace_id
@@ -96,9 +98,9 @@ def get_registry(name=None,namespace_id=None,project_id=None,opts=None):
     return AwaitableGetRegistryResult(
         annotations=__ret__.get('annotations'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         namespace_id=__ret__.get('namespaceId'),
         project_id=__ret__.get('projectId'),
-        registries=__ret__.get('registries'),
-        id=__ret__.get('id'))
+        registries=__ret__.get('registries'))

@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 multi cluster app.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multi_cluster_app.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
 func LookupMultiClusterApp(ctx *pulumi.Context, args *LookupMultiClusterAppArgs, opts ...pulumi.InvokeOption) (*LookupMultiClusterAppResult, error) {
 	var rv LookupMultiClusterAppResult
 	err := ctx.Invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", args, &rv, opts...)

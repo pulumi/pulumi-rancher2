@@ -53,7 +53,9 @@ class ClusterDriver(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, active=None, actual_url=None, annotations=None, builtin=None, checksum=None, labels=None, name=None, ui_url=None, url=None, whitelist_domains=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterDriver.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Specify the cluster driver state (bool)
@@ -66,8 +68,6 @@ class ClusterDriver(pulumi.CustomResource):
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
         :param pulumi.Input[list] whitelist_domains: Domains to whitelist for the ui (list)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_driver.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class ClusterDriver(pulumi.CustomResource):
         """
         Get an existing ClusterDriver resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,12 +127,11 @@ class ClusterDriver(pulumi.CustomResource):
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
         :param pulumi.Input[list] whitelist_domains: Domains to whitelist for the ui (list)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_driver.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["active"] = active
         __props__["actual_url"] = actual_url
         __props__["annotations"] = annotations

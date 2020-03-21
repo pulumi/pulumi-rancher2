@@ -13,7 +13,7 @@ class GetGlobalRoleBindingResult:
     """
     A collection of values returned by getGlobalRoleBinding.
     """
-    def __init__(__self__, annotations=None, global_role_id=None, labels=None, name=None, user_id=None, id=None):
+    def __init__(__self__, annotations=None, global_role_id=None, id=None, labels=None, name=None, user_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -23,6 +23,12 @@ class GetGlobalRoleBindingResult:
         if global_role_id and not isinstance(global_role_id, str):
             raise TypeError("Expected argument 'global_role_id' to be a str")
         __self__.global_role_id = global_role_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -38,12 +44,6 @@ class GetGlobalRoleBindingResult:
         """
         (Computed) The user ID to assign global role binding (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,21 +52,23 @@ class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
         return GetGlobalRoleBindingResult(
             annotations=self.annotations,
             global_role_id=self.global_role_id,
+            id=self.id,
             labels=self.labels,
             name=self.name,
-            user_id=self.user_id,
-            id=self.id)
+            user_id=self.user_id)
 
 def get_global_role_binding(global_role_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 global role binding.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
+
+
     :param str global_role_id: The global role id (string)
     :param str name: The name of the global role binding (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/global_role_binding.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['globalRoleId'] = global_role_id
     __args__['name'] = name
@@ -79,7 +81,7 @@ def get_global_role_binding(global_role_id=None,name=None,opts=None):
     return AwaitableGetGlobalRoleBindingResult(
         annotations=__ret__.get('annotations'),
         global_role_id=__ret__.get('globalRoleId'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
-        user_id=__ret__.get('userId'),
-        id=__ret__.get('id'))
+        user_id=__ret__.get('userId'))

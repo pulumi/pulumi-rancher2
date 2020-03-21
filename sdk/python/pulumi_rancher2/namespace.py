@@ -17,7 +17,7 @@ class Namespace(pulumi.CustomResource):
     container_resource_limit: pulumi.Output[dict]
     """
     Default containers resource limits on namespace (List maxitem:1)
-    
+
       * `limitsCpu` (`str`) - Limit for limits cpu in namespace (string)
       * `limitsMemory` (`str`) - Limit for limits memory in namespace (string)
       * `requestsCpu` (`str`) - Limit for requests cpu in namespace (string)
@@ -42,9 +42,8 @@ class Namespace(pulumi.CustomResource):
     resource_quota: pulumi.Output[dict]
     """
     Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-    
+
       * `limit` (`dict`) - Resource quota limit for namespace (list maxitems:1)
-    
         * `configMaps` (`str`) - Limit for config maps in namespace (string)
         * `limitsCpu` (`str`) - Limit for limits cpu in namespace (string)
         * `limitsMemory` (`str`) - Limit for limits memory in namespace (string)
@@ -66,7 +65,9 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, container_resource_limit=None, description=None, labels=None, name=None, project_id=None, resource_quota=None, wait_for_cluster=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/namespace.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
@@ -77,18 +78,17 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input[dict] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-        
+
         The **container_resource_limit** object supports the following:
-        
+
           * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
           * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
           * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
           * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-        
+
         The **resource_quota** object supports the following:
-        
+
           * `limit` (`pulumi.Input[dict]`) - Resource quota limit for namespace (list maxitems:1)
-        
             * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in namespace (string)
             * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
             * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
@@ -102,8 +102,6 @@ class Namespace(pulumi.CustomResource):
             * `services` (`pulumi.Input[str]`)
             * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in namespace (string)
             * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in namespace (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/namespace.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -143,7 +141,7 @@ class Namespace(pulumi.CustomResource):
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,18 +153,17 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input[dict] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-        
+
         The **container_resource_limit** object supports the following:
-        
+
           * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
           * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
           * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
           * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-        
+
         The **resource_quota** object supports the following:
-        
+
           * `limit` (`pulumi.Input[dict]`) - Resource quota limit for namespace (list maxitems:1)
-        
             * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in namespace (string)
             * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
             * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
@@ -180,12 +177,11 @@ class Namespace(pulumi.CustomResource):
             * `services` (`pulumi.Input[str]`)
             * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in namespace (string)
             * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in namespace (string)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/namespace.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["container_resource_limit"] = container_resource_limit
         __props__["description"] = description

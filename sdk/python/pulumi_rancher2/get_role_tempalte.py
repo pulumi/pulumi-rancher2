@@ -13,7 +13,7 @@ class GetRoleTempalteResult:
     """
     A collection of values returned by getRoleTempalte.
     """
-    def __init__(__self__, administrative=None, annotations=None, builtin=None, context=None, default_role=None, description=None, external=None, hidden=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None, id=None):
+    def __init__(__self__, administrative=None, annotations=None, builtin=None, context=None, default_role=None, description=None, external=None, hidden=None, id=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None):
         if administrative and not isinstance(administrative, bool):
             raise TypeError("Expected argument 'administrative' to be a bool")
         __self__.administrative = administrative
@@ -59,6 +59,12 @@ class GetRoleTempalteResult:
         """
         (Computed) Hidden role template (bool)
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -86,12 +92,6 @@ class GetRoleTempalteResult:
         """
         (Computed) Role template policy rules (list)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRoleTempalteResult(GetRoleTempalteResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -106,23 +106,25 @@ class AwaitableGetRoleTempalteResult(GetRoleTempalteResult):
             description=self.description,
             external=self.external,
             hidden=self.hidden,
+            id=self.id,
             labels=self.labels,
             locked=self.locked,
             name=self.name,
             role_template_ids=self.role_template_ids,
-            rules=self.rules,
-            id=self.id)
+            rules=self.rules)
 
 def get_role_tempalte(context=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
+
+
     :param str context: Role template context. `cluster` and `project` values are supported (string)
     :param str name: The name of the Node Template (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/role_template.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['context'] = context
     __args__['name'] = name
@@ -141,9 +143,9 @@ def get_role_tempalte(context=None,name=None,opts=None):
         description=__ret__.get('description'),
         external=__ret__.get('external'),
         hidden=__ret__.get('hidden'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         locked=__ret__.get('locked'),
         name=__ret__.get('name'),
         role_template_ids=__ret__.get('roleTemplateIds'),
-        rules=__ret__.get('rules'),
-        id=__ret__.get('id'))
+        rules=__ret__.get('rules'))

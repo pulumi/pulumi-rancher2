@@ -9,11 +9,11 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 secret.
-// 
+//
 // Depending of the availability, there are 2 types of Rancher v2 secrets:
 // - Project secret: Available to all namespaces in the `projectId`
 // - Namespaced secret: Available to just `namespaceId` in the `projectId`
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	var rv LookupSecretResult

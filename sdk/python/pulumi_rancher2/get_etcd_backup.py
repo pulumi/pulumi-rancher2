@@ -13,7 +13,7 @@ class GetEtcdBackupResult:
     """
     A collection of values returned by getEtcdBackup.
     """
-    def __init__(__self__, annotations=None, backup_config=None, cluster_id=None, filename=None, labels=None, manual=None, name=None, namespace_id=None, id=None):
+    def __init__(__self__, annotations=None, backup_config=None, cluster_id=None, filename=None, id=None, labels=None, manual=None, name=None, namespace_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -34,6 +34,12 @@ class GetEtcdBackupResult:
         __self__.filename = filename
         """
         (Computed) Filename of the Etcd Backup (string)
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -56,12 +62,6 @@ class GetEtcdBackupResult:
         """
         (Computed) Description for the Etcd Backup (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetEtcdBackupResult(GetEtcdBackupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,22 +72,24 @@ class AwaitableGetEtcdBackupResult(GetEtcdBackupResult):
             backup_config=self.backup_config,
             cluster_id=self.cluster_id,
             filename=self.filename,
+            id=self.id,
             labels=self.labels,
             manual=self.manual,
             name=self.name,
-            namespace_id=self.namespace_id,
-            id=self.id)
+            namespace_id=self.namespace_id)
 
 def get_etcd_backup(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 etcd backup.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
+
+
     :param str cluster_id: Cluster ID to config Etcd Backup (string)
     :param str name: The name of the Etcd Backup (string)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcd_backup.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
@@ -102,8 +104,8 @@ def get_etcd_backup(cluster_id=None,name=None,opts=None):
         backup_config=__ret__.get('backupConfig'),
         cluster_id=__ret__.get('clusterId'),
         filename=__ret__.get('filename'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         manual=__ret__.get('manual'),
         name=__ret__.get('name'),
-        namespace_id=__ret__.get('namespaceId'),
-        id=__ret__.get('id'))
+        namespace_id=__ret__.get('namespaceId'))

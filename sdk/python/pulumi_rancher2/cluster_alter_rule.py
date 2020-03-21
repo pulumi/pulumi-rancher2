@@ -21,7 +21,7 @@ class ClusterAlterRule(pulumi.CustomResource):
     event_rule: pulumi.Output[dict]
     """
     The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
-    
+
       * `eventType` (`str`) - Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
       * `resourceKind` (`str`) - Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
     """
@@ -48,7 +48,7 @@ class ClusterAlterRule(pulumi.CustomResource):
     metric_rule: pulumi.Output[dict]
     """
     The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
-    
+
       * `comparison` (`str`) - Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
       * `description` (`str`) - Metric rule description (string)
       * `duration` (`str`) - Metric rule duration (string)
@@ -62,7 +62,7 @@ class ClusterAlterRule(pulumi.CustomResource):
     node_rule: pulumi.Output[dict]
     """
     The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
-    
+
       * `condition` (`str`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
       * `cpuThreshold` (`float`) - Node rule cpu threshold. Default: `70` (int)
       * `memThreshold` (`float`) - Node rule mem threshold. Default: `70` (int)
@@ -80,13 +80,15 @@ class ClusterAlterRule(pulumi.CustomResource):
     system_service_rule: pulumi.Output[dict]
     """
     The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
-    
+
       * `condition` (`str`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterAlertRule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: The cluster alert rule annotations (map)
@@ -103,33 +105,31 @@ class ClusterAlterRule(pulumi.CustomResource):
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input[dict] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
-        
+
         The **event_rule** object supports the following:
-        
+
           * `eventType` (`pulumi.Input[str]`) - Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
           * `resourceKind` (`pulumi.Input[str]`) - Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        
+
         The **metric_rule** object supports the following:
-        
+
           * `comparison` (`pulumi.Input[str]`) - Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
           * `description` (`pulumi.Input[str]`) - Metric rule description (string)
           * `duration` (`pulumi.Input[str]`) - Metric rule duration (string)
           * `expression` (`pulumi.Input[str]`) - Metric rule expression (string)
           * `thresholdValue` (`pulumi.Input[float]`) - Metric rule threshold value (float64)
-        
+
         The **node_rule** object supports the following:
-        
+
           * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
           * `cpuThreshold` (`pulumi.Input[float]`) - Node rule cpu threshold. Default: `70` (int)
           * `memThreshold` (`pulumi.Input[float]`) - Node rule mem threshold. Default: `70` (int)
           * `nodeId` (`pulumi.Input[str]`) - Node ID (string)
           * `selector` (`pulumi.Input[dict]`) - Node rule selector (map)
-        
-        The **system_service_rule** object supports the following:
-        
-          * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_alert_rule.html.markdown.
+        The **system_service_rule** object supports the following:
+
+          * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -177,7 +177,7 @@ class ClusterAlterRule(pulumi.CustomResource):
         """
         Get an existing ClusterAlterRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -195,37 +195,36 @@ class ClusterAlterRule(pulumi.CustomResource):
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input[dict] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
-        
+
         The **event_rule** object supports the following:
-        
+
           * `eventType` (`pulumi.Input[str]`) - Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
           * `resourceKind` (`pulumi.Input[str]`) - Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        
+
         The **metric_rule** object supports the following:
-        
+
           * `comparison` (`pulumi.Input[str]`) - Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
           * `description` (`pulumi.Input[str]`) - Metric rule description (string)
           * `duration` (`pulumi.Input[str]`) - Metric rule duration (string)
           * `expression` (`pulumi.Input[str]`) - Metric rule expression (string)
           * `thresholdValue` (`pulumi.Input[float]`) - Metric rule threshold value (float64)
-        
+
         The **node_rule** object supports the following:
-        
+
           * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
           * `cpuThreshold` (`pulumi.Input[float]`) - Node rule cpu threshold. Default: `70` (int)
           * `memThreshold` (`pulumi.Input[float]`) - Node rule mem threshold. Default: `70` (int)
           * `nodeId` (`pulumi.Input[str]`) - Node ID (string)
           * `selector` (`pulumi.Input[dict]`) - Node rule selector (map)
-        
-        The **system_service_rule** object supports the following:
-        
-          * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster_alert_rule.html.markdown.
+        The **system_service_rule** object supports the following:
+
+          * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id
         __props__["event_rule"] = event_rule
