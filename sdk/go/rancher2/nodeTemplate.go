@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information. 
+// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 //
-// amazonec2, azure, digitalocean, openstack and vsphere drivers are supported for node templates.
+// amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 //
@@ -58,6 +58,8 @@ type NodeTemplate struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the Node Template (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Opennebula config for the Node Template (list maxitems:1)
+	OpennebulaConfig NodeTemplateOpennebulaConfigPtrOutput `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrOutput `pulumi:"openstackConfig"`
 	// Engine storage driver for the node template (bool)
@@ -132,6 +134,8 @@ type nodeTemplateState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
+	// Opennebula config for the Node Template (list maxitems:1)
+	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig *NodeTemplateOpenstackConfig `pulumi:"openstackConfig"`
 	// Engine storage driver for the node template (bool)
@@ -179,6 +183,8 @@ type NodeTemplateState struct {
 	Labels pulumi.MapInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
+	// Opennebula config for the Node Template (list maxitems:1)
+	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrInput
 	// Engine storage driver for the node template (bool)
@@ -228,6 +234,8 @@ type nodeTemplateArgs struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
+	// Opennebula config for the Node Template (list maxitems:1)
+	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig *NodeTemplateOpenstackConfig `pulumi:"openstackConfig"`
 	// Engine storage driver for the node template (bool)
@@ -274,6 +282,8 @@ type NodeTemplateArgs struct {
 	Labels pulumi.MapInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
+	// Opennebula config for the Node Template (list maxitems:1)
+	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)
 	OpenstackConfig NodeTemplateOpenstackConfigPtrInput
 	// Engine storage driver for the node template (bool)

@@ -681,6 +681,25 @@ export interface ClusterGkeConfig {
     zone?: pulumi.Input<string>;
 }
 
+export interface ClusterLoggingCustomTargetConfig {
+    /**
+     * SSL certificate for the syslog service (string)
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * SSL client certificate for the syslog service (string)
+     */
+    clientCert?: pulumi.Input<string>;
+    /**
+     * SSL client key for the syslog service (string)
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
+     * Custom target config content (string)
+     */
+    content: pulumi.Input<string>;
+}
+
 export interface ClusterLoggingElasticsearchConfig {
     /**
      * User password for the elascticsearch service (string)
@@ -1565,11 +1584,15 @@ export interface ClusterRkeConfigNetwork {
      */
     flannelNetworkProvider?: pulumi.Input<inputs.ClusterRkeConfigNetworkFlannelNetworkProvider>;
     /**
+     * Network provider MTU. Default `0` (int)
+     */
+    mtu?: pulumi.Input<number>;
+    /**
      * RKE options for network (map)
      */
     options?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+     * Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      */
     plugin?: pulumi.Input<string>;
     /**
@@ -1904,7 +1927,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     path?: pulumi.Input<string>;
     /**
-     * Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+     * Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
      */
     policy?: pulumi.Input<string>;
 }
@@ -2374,6 +2397,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     calicoNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider>;
     canalNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider>;
     flannelNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider>;
+    mtu?: pulumi.Input<number>;
     options?: pulumi.Input<{[key: string]: any}>;
     plugin?: pulumi.Input<string>;
     weaveNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider>;
@@ -2619,6 +2643,84 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
      * Secret key for S3 service (string)
      */
     secretKey?: pulumi.Input<string>;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
+    /**
+     * The name of the PodSecurityPolicyTemplate (string)
+     */
+    name: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
+    driver: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedHostPath {
+    pathPrefix: string;
+    readOnly?: boolean;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroup {
+    ranges?: inputs.GetPodSecurityPolicyTemplateFsGroupRange[];
+    rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroupRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateHostPort {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsGroup {
+    ranges?: inputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
+    rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsUser {
+    ranges?: inputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
+    rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsUserRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRuntimeClass {
+    allowedRuntimeClassNames: string[];
+    defaultRuntimeClassName?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinux {
+    rule: string;
+    seLinuxOption?: inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    level?: string;
+    role?: string;
+    type?: string;
+    user?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSupplementalGroup {
+    ranges?: inputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
+    rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
+    max: number;
+    min: number;
 }
 
 export interface MultiClusterAppAnswer {
@@ -3076,6 +3178,83 @@ export interface NodeTemplateDigitaloceanConfig {
     userdata?: pulumi.Input<string>;
 }
 
+export interface NodeTemplateOpennebulaConfig {
+    /**
+     * Size of the Volatile disk in MB - only for b2d (string)
+     */
+    b2dSize?: pulumi.Input<string>;
+    /**
+     * CPU value for the VM (string)
+     */
+    cpu?: pulumi.Input<string>;
+    /**
+     * Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+     */
+    devPrefix?: pulumi.Input<string>;
+    /**
+     * VNC is enabled by default. Disable it with this flag (bool)
+     */
+    disableVnc?: pulumi.Input<boolean>;
+    /**
+     * Size of the disk for the VM in MB (string)
+     */
+    diskResize?: pulumi.Input<string>;
+    /**
+     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+     */
+    imageId?: pulumi.Input<string>;
+    /**
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     */
+    imageName?: pulumi.Input<string>;
+    /**
+     * Owner of the image to use as the VM OS (string)
+     * * `memory`- (Optional) Size of the memory for the VM in MB (string)
+     */
+    imageOwner?: pulumi.Input<string>;
+    memory?: pulumi.Input<string>;
+    /**
+     * Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+     */
+    networkName?: pulumi.Input<string>;
+    /**
+     * Opennebula user ID of the Network to connect the machine to (string)
+     */
+    networkOwner?: pulumi.Input<string>;
+    /**
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     */
+    password: pulumi.Input<string>;
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     */
+    sshUser?: pulumi.Input<string>;
+    /**
+     * Opennebula template ID to use. Conflicts with `templateName` (string)
+     */
+    templateId?: pulumi.Input<string>;
+    /**
+     * Name of the Opennbula template to use. Conflicts with `templateId` (string)
+     */
+    templateName?: pulumi.Input<string>;
+    /**
+     * Set the user for the XML-RPC API authentication (string)
+     */
+    user: pulumi.Input<string>;
+    /**
+     * VCPUs for the VM (string)
+     */
+    vcpu?: pulumi.Input<string>;
+    /**
+     * Set the url for the Opennebula XML-RPC API (string)
+     */
+    xmlRpcUrl: pulumi.Input<string>;
+}
+
 export interface NodeTemplateOpenstackConfig {
     activeTimeout?: pulumi.Input<string>;
     /**
@@ -3155,7 +3334,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     password?: pulumi.Input<string>;
     /**
-     * Private keyfile absolute path to use for SSH (string)
+     * Private key content to use for SSH (string)
      */
     privateKeyFile?: pulumi.Input<string>;
     /**
@@ -3414,6 +3593,168 @@ export interface NotifierWechatConfig {
     secret: pulumi.Input<string>;
 }
 
+export interface PodSecurityPolicyTemplateAllowedCsiDriver {
+    /**
+     * The name of the PodSecurityPolicyTemplate (string)
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateAllowedFlexVolume {
+    driver: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateAllowedHostPath {
+    /**
+     * (string)
+     */
+    pathPrefix: pulumi.Input<string>;
+    /**
+     * (string)
+     */
+    readOnly?: pulumi.Input<boolean>;
+}
+
+export interface PodSecurityPolicyTemplateFsGroup {
+    /**
+     * (list)
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateFsGroupRange>[]>;
+    /**
+     * (string)
+     */
+    rule?: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateFsGroupRange {
+    /**
+     * (int)
+     */
+    max: pulumi.Input<number>;
+    /**
+     * (int)
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface PodSecurityPolicyTemplateHostPort {
+    /**
+     * (int)
+     */
+    max: pulumi.Input<number>;
+    /**
+     * (int)
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface PodSecurityPolicyTemplateRunAsGroup {
+    /**
+     * (list)
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsGroupRange>[]>;
+    /**
+     * (string)
+     */
+    rule: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateRunAsGroupRange {
+    /**
+     * (int)
+     */
+    max: pulumi.Input<number>;
+    /**
+     * (int)
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface PodSecurityPolicyTemplateRunAsUser {
+    /**
+     * (list)
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateRunAsUserRange>[]>;
+    /**
+     * (string)
+     */
+    rule: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateRunAsUserRange {
+    /**
+     * (int)
+     */
+    max: pulumi.Input<number>;
+    /**
+     * (int)
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface PodSecurityPolicyTemplateRuntimeClass {
+    /**
+     * (list)
+     */
+    allowedRuntimeClassNames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string)
+     */
+    defaultRuntimeClassName?: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateSeLinux {
+    /**
+     * (string)
+     */
+    rule: pulumi.Input<string>;
+    /**
+     * (list maxitems:1)
+     */
+    seLinuxOption?: pulumi.Input<inputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption>;
+}
+
+export interface PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    /**
+     * (string)
+     */
+    level?: pulumi.Input<string>;
+    /**
+     * (string)
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * (string)
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * (string)
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateSupplementalGroup {
+    /**
+     * (list)
+     */
+    ranges?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateSupplementalGroupRange>[]>;
+    /**
+     * (string)
+     */
+    rule?: pulumi.Input<string>;
+}
+
+export interface PodSecurityPolicyTemplateSupplementalGroupRange {
+    /**
+     * (int)
+     */
+    max: pulumi.Input<number>;
+    /**
+     * (int)
+     */
+    min: pulumi.Input<number>;
+}
+
 export interface ProjectAlertGroupRecipient {
     /**
      * Recipient notifier ID (string)
@@ -3503,6 +3844,25 @@ export interface ProjectContainerResourceLimit {
      * Limit for requests memory in project (string)
      */
     requestsMemory?: pulumi.Input<string>;
+}
+
+export interface ProjectLoggingCustomTargetConfig {
+    /**
+     * SSL certificate for the syslog service (string)
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * SSL client certificate for the syslog service (string)
+     */
+    clientCert?: pulumi.Input<string>;
+    /**
+     * SSL client key for the syslog service (string)
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
+     * Custom target config content (string)
+     */
+    content: pulumi.Input<string>;
 }
 
 export interface ProjectLoggingElasticsearchConfig {

@@ -3891,6 +3891,160 @@ func (o ClusterGkeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterGkeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
+type ClusterLoggingCustomTargetConfig struct {
+	// SSL certificate for the syslog service (string)
+	Certificate *string `pulumi:"certificate"`
+	// SSL client certificate for the syslog service (string)
+	ClientCert *string `pulumi:"clientCert"`
+	// SSL client key for the syslog service (string)
+	ClientKey *string `pulumi:"clientKey"`
+	// Custom target config content (string)
+	Content string `pulumi:"content"`
+}
+
+type ClusterLoggingCustomTargetConfigInput interface {
+	pulumi.Input
+
+	ToClusterLoggingCustomTargetConfigOutput() ClusterLoggingCustomTargetConfigOutput
+	ToClusterLoggingCustomTargetConfigOutputWithContext(context.Context) ClusterLoggingCustomTargetConfigOutput
+}
+
+type ClusterLoggingCustomTargetConfigArgs struct {
+	// SSL certificate for the syslog service (string)
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// SSL client certificate for the syslog service (string)
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// SSL client key for the syslog service (string)
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// Custom target config content (string)
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (ClusterLoggingCustomTargetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i ClusterLoggingCustomTargetConfigArgs) ToClusterLoggingCustomTargetConfigOutput() ClusterLoggingCustomTargetConfigOutput {
+	return i.ToClusterLoggingCustomTargetConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingCustomTargetConfigArgs) ToClusterLoggingCustomTargetConfigOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingCustomTargetConfigOutput)
+}
+
+func (i ClusterLoggingCustomTargetConfigArgs) ToClusterLoggingCustomTargetConfigPtrOutput() ClusterLoggingCustomTargetConfigPtrOutput {
+	return i.ToClusterLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingCustomTargetConfigArgs) ToClusterLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingCustomTargetConfigOutput).ToClusterLoggingCustomTargetConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterLoggingCustomTargetConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterLoggingCustomTargetConfigPtrOutput() ClusterLoggingCustomTargetConfigPtrOutput
+	ToClusterLoggingCustomTargetConfigPtrOutputWithContext(context.Context) ClusterLoggingCustomTargetConfigPtrOutput
+}
+
+type clusterLoggingCustomTargetConfigPtrType ClusterLoggingCustomTargetConfigArgs
+
+func ClusterLoggingCustomTargetConfigPtr(v *ClusterLoggingCustomTargetConfigArgs) ClusterLoggingCustomTargetConfigPtrInput {	return (*clusterLoggingCustomTargetConfigPtrType)(v)
+}
+
+func (*clusterLoggingCustomTargetConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i *clusterLoggingCustomTargetConfigPtrType) ToClusterLoggingCustomTargetConfigPtrOutput() ClusterLoggingCustomTargetConfigPtrOutput {
+	return i.ToClusterLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterLoggingCustomTargetConfigPtrType) ToClusterLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingCustomTargetConfigPtrOutput)
+}
+
+type ClusterLoggingCustomTargetConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterLoggingCustomTargetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o ClusterLoggingCustomTargetConfigOutput) ToClusterLoggingCustomTargetConfigOutput() ClusterLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o ClusterLoggingCustomTargetConfigOutput) ToClusterLoggingCustomTargetConfigOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o ClusterLoggingCustomTargetConfigOutput) ToClusterLoggingCustomTargetConfigPtrOutput() ClusterLoggingCustomTargetConfigPtrOutput {
+	return o.ToClusterLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterLoggingCustomTargetConfigOutput) ToClusterLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingCustomTargetConfig) *ClusterLoggingCustomTargetConfig {
+		return &v
+	}).(ClusterLoggingCustomTargetConfigPtrOutput)
+}
+// SSL certificate for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// SSL client certificate for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// SSL client key for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Custom target config content (string)
+func (o ClusterLoggingCustomTargetConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
+type ClusterLoggingCustomTargetConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterLoggingCustomTargetConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o ClusterLoggingCustomTargetConfigPtrOutput) ToClusterLoggingCustomTargetConfigPtrOutput() ClusterLoggingCustomTargetConfigPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingCustomTargetConfigPtrOutput) ToClusterLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ClusterLoggingCustomTargetConfigPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingCustomTargetConfigPtrOutput) Elem() ClusterLoggingCustomTargetConfigOutput {
+	return o.ApplyT(func (v *ClusterLoggingCustomTargetConfig) ClusterLoggingCustomTargetConfig { return *v }).(ClusterLoggingCustomTargetConfigOutput)
+}
+
+// SSL certificate for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// SSL client certificate for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// SSL client key for the syslog service (string)
+func (o ClusterLoggingCustomTargetConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Custom target config content (string)
+func (o ClusterLoggingCustomTargetConfigPtrOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v ClusterLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
 type ClusterLoggingElasticsearchConfig struct {
 	// User password for the elascticsearch service (string)
 	AuthPassword *string `pulumi:"authPassword"`
@@ -9226,9 +9380,11 @@ type ClusterRkeConfigNetwork struct {
 	CanalNetworkProvider *ClusterRkeConfigNetworkCanalNetworkProvider `pulumi:"canalNetworkProvider"`
 	// Flannel provider config for RKE network (list maxitems:1)
 	FlannelNetworkProvider *ClusterRkeConfigNetworkFlannelNetworkProvider `pulumi:"flannelNetworkProvider"`
+	// Network provider MTU. Default `0` (int)
+	Mtu *int `pulumi:"mtu"`
 	// RKE options for network (map)
 	Options map[string]interface{} `pulumi:"options"`
-	// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+	// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
 	Plugin *string `pulumi:"plugin"`
 	// Weave provider config for RKE network (list maxitems:1)
 	WeaveNetworkProvider *ClusterRkeConfigNetworkWeaveNetworkProvider `pulumi:"weaveNetworkProvider"`
@@ -9248,9 +9404,11 @@ type ClusterRkeConfigNetworkArgs struct {
 	CanalNetworkProvider ClusterRkeConfigNetworkCanalNetworkProviderPtrInput `pulumi:"canalNetworkProvider"`
 	// Flannel provider config for RKE network (list maxitems:1)
 	FlannelNetworkProvider ClusterRkeConfigNetworkFlannelNetworkProviderPtrInput `pulumi:"flannelNetworkProvider"`
+	// Network provider MTU. Default `0` (int)
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	// RKE options for network (map)
 	Options pulumi.MapInput `pulumi:"options"`
-	// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+	// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
 	Plugin pulumi.StringPtrInput `pulumi:"plugin"`
 	// Weave provider config for RKE network (list maxitems:1)
 	WeaveNetworkProvider ClusterRkeConfigNetworkWeaveNetworkProviderPtrInput `pulumi:"weaveNetworkProvider"`
@@ -9338,12 +9496,17 @@ func (o ClusterRkeConfigNetworkOutput) FlannelNetworkProvider() ClusterRkeConfig
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) *ClusterRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(ClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput)
 }
 
+// Network provider MTU. Default `0` (int)
+func (o ClusterRkeConfigNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
 // RKE options for network (map)
 func (o ClusterRkeConfigNetworkOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
 
-// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
 func (o ClusterRkeConfigNetworkOutput) Plugin() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) *string { return v.Plugin }).(pulumi.StringPtrOutput)
 }
@@ -9386,12 +9549,17 @@ func (o ClusterRkeConfigNetworkPtrOutput) FlannelNetworkProvider() ClusterRkeCon
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) *ClusterRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(ClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput)
 }
 
+// Network provider MTU. Default `0` (int)
+func (o ClusterRkeConfigNetworkPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
 // RKE options for network (map)
 func (o ClusterRkeConfigNetworkPtrOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
 
-// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
 func (o ClusterRkeConfigNetworkPtrOutput) Plugin() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigNetwork) *string { return v.Plugin }).(pulumi.StringPtrOutput)
 }
@@ -11410,7 +11578,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path *string `pulumi:"path"`
-	// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+	// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 	Policy *string `pulumi:"policy"`
 }
 
@@ -11432,7 +11600,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
 	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+	// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 }
 
@@ -11528,7 +11696,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pulum
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -11576,7 +11744,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pu
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -16537,6 +16705,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
 	CalicoNetworkProvider *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider `pulumi:"flannelNetworkProvider"`
+	Mtu *int `pulumi:"mtu"`
 	Options map[string]interface{} `pulumi:"options"`
 	Plugin *string `pulumi:"plugin"`
 	WeaveNetworkProvider *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider `pulumi:"weaveNetworkProvider"`
@@ -16553,6 +16722,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs struct {
 	CalicoNetworkProvider ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput `pulumi:"flannelNetworkProvider"`
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	Options pulumi.MapInput `pulumi:"options"`
 	Plugin pulumi.StringPtrInput `pulumi:"plugin"`
 	WeaveNetworkProvider ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput `pulumi:"weaveNetworkProvider"`
@@ -16637,6 +16807,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) Flan
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
@@ -16677,6 +16851,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput) C
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput) FlannelNetworkProvider() ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput) Options() pulumi.MapOutput {
@@ -22339,6 +22517,370 @@ func (o NodeTemplateDigitaloceanConfigPtrOutput) Userdata() pulumi.StringPtrOutp
 	return o.ApplyT(func (v NodeTemplateDigitaloceanConfig) *string { return v.Userdata }).(pulumi.StringPtrOutput)
 }
 
+type NodeTemplateOpennebulaConfig struct {
+	// Size of the Volatile disk in MB - only for b2d (string)
+	B2dSize *string `pulumi:"b2dSize"`
+	// CPU value for the VM (string)
+	Cpu *string `pulumi:"cpu"`
+	// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+	DevPrefix *string `pulumi:"devPrefix"`
+	// VNC is enabled by default. Disable it with this flag (bool)
+	DisableVnc *bool `pulumi:"disableVnc"`
+	// Size of the disk for the VM in MB (string)
+	DiskResize *string `pulumi:"diskResize"`
+	// OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+	ImageId *string `pulumi:"imageId"`
+	// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+	ImageName *string `pulumi:"imageName"`
+	// Owner of the image to use as the VM OS (string)
+	// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+	ImageOwner *string `pulumi:"imageOwner"`
+	Memory *string `pulumi:"memory"`
+	// Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+	NetworkId *string `pulumi:"networkId"`
+	// Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+	NetworkName *string `pulumi:"networkName"`
+	// Opennebula user ID of the Network to connect the machine to (string)
+	NetworkOwner *string `pulumi:"networkOwner"`
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	Password string `pulumi:"password"`
+	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+	SshUser *string `pulumi:"sshUser"`
+	// Opennebula template ID to use. Conflicts with `templateName` (string)
+	TemplateId *string `pulumi:"templateId"`
+	// Name of the Opennbula template to use. Conflicts with `templateId` (string)
+	TemplateName *string `pulumi:"templateName"`
+	// Set the user for the XML-RPC API authentication (string)
+	User string `pulumi:"user"`
+	// VCPUs for the VM (string)
+	Vcpu *string `pulumi:"vcpu"`
+	// Set the url for the Opennebula XML-RPC API (string)
+	XmlRpcUrl string `pulumi:"xmlRpcUrl"`
+}
+
+type NodeTemplateOpennebulaConfigInput interface {
+	pulumi.Input
+
+	ToNodeTemplateOpennebulaConfigOutput() NodeTemplateOpennebulaConfigOutput
+	ToNodeTemplateOpennebulaConfigOutputWithContext(context.Context) NodeTemplateOpennebulaConfigOutput
+}
+
+type NodeTemplateOpennebulaConfigArgs struct {
+	// Size of the Volatile disk in MB - only for b2d (string)
+	B2dSize pulumi.StringPtrInput `pulumi:"b2dSize"`
+	// CPU value for the VM (string)
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+	DevPrefix pulumi.StringPtrInput `pulumi:"devPrefix"`
+	// VNC is enabled by default. Disable it with this flag (bool)
+	DisableVnc pulumi.BoolPtrInput `pulumi:"disableVnc"`
+	// Size of the disk for the VM in MB (string)
+	DiskResize pulumi.StringPtrInput `pulumi:"diskResize"`
+	// OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
+	// Owner of the image to use as the VM OS (string)
+	// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+	ImageOwner pulumi.StringPtrInput `pulumi:"imageOwner"`
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+	// Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+	NetworkName pulumi.StringPtrInput `pulumi:"networkName"`
+	// Opennebula user ID of the Network to connect the machine to (string)
+	NetworkOwner pulumi.StringPtrInput `pulumi:"networkOwner"`
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	Password pulumi.StringInput `pulumi:"password"`
+	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+	SshUser pulumi.StringPtrInput `pulumi:"sshUser"`
+	// Opennebula template ID to use. Conflicts with `templateName` (string)
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	// Name of the Opennbula template to use. Conflicts with `templateId` (string)
+	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
+	// Set the user for the XML-RPC API authentication (string)
+	User pulumi.StringInput `pulumi:"user"`
+	// VCPUs for the VM (string)
+	Vcpu pulumi.StringPtrInput `pulumi:"vcpu"`
+	// Set the url for the Opennebula XML-RPC API (string)
+	XmlRpcUrl pulumi.StringInput `pulumi:"xmlRpcUrl"`
+}
+
+func (NodeTemplateOpennebulaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateOpennebulaConfig)(nil)).Elem()
+}
+
+func (i NodeTemplateOpennebulaConfigArgs) ToNodeTemplateOpennebulaConfigOutput() NodeTemplateOpennebulaConfigOutput {
+	return i.ToNodeTemplateOpennebulaConfigOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateOpennebulaConfigArgs) ToNodeTemplateOpennebulaConfigOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOpennebulaConfigOutput)
+}
+
+func (i NodeTemplateOpennebulaConfigArgs) ToNodeTemplateOpennebulaConfigPtrOutput() NodeTemplateOpennebulaConfigPtrOutput {
+	return i.ToNodeTemplateOpennebulaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateOpennebulaConfigArgs) ToNodeTemplateOpennebulaConfigPtrOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOpennebulaConfigOutput).ToNodeTemplateOpennebulaConfigPtrOutputWithContext(ctx)
+}
+
+type NodeTemplateOpennebulaConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeTemplateOpennebulaConfigPtrOutput() NodeTemplateOpennebulaConfigPtrOutput
+	ToNodeTemplateOpennebulaConfigPtrOutputWithContext(context.Context) NodeTemplateOpennebulaConfigPtrOutput
+}
+
+type nodeTemplateOpennebulaConfigPtrType NodeTemplateOpennebulaConfigArgs
+
+func NodeTemplateOpennebulaConfigPtr(v *NodeTemplateOpennebulaConfigArgs) NodeTemplateOpennebulaConfigPtrInput {	return (*nodeTemplateOpennebulaConfigPtrType)(v)
+}
+
+func (*nodeTemplateOpennebulaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateOpennebulaConfig)(nil)).Elem()
+}
+
+func (i *nodeTemplateOpennebulaConfigPtrType) ToNodeTemplateOpennebulaConfigPtrOutput() NodeTemplateOpennebulaConfigPtrOutput {
+	return i.ToNodeTemplateOpennebulaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeTemplateOpennebulaConfigPtrType) ToNodeTemplateOpennebulaConfigPtrOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOpennebulaConfigPtrOutput)
+}
+
+type NodeTemplateOpennebulaConfigOutput struct { *pulumi.OutputState }
+
+func (NodeTemplateOpennebulaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateOpennebulaConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateOpennebulaConfigOutput) ToNodeTemplateOpennebulaConfigOutput() NodeTemplateOpennebulaConfigOutput {
+	return o
+}
+
+func (o NodeTemplateOpennebulaConfigOutput) ToNodeTemplateOpennebulaConfigOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigOutput {
+	return o
+}
+
+func (o NodeTemplateOpennebulaConfigOutput) ToNodeTemplateOpennebulaConfigPtrOutput() NodeTemplateOpennebulaConfigPtrOutput {
+	return o.ToNodeTemplateOpennebulaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeTemplateOpennebulaConfigOutput) ToNodeTemplateOpennebulaConfigPtrOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpennebulaConfig) *NodeTemplateOpennebulaConfig {
+		return &v
+	}).(NodeTemplateOpennebulaConfigPtrOutput)
+}
+// Size of the Volatile disk in MB - only for b2d (string)
+func (o NodeTemplateOpennebulaConfigOutput) B2dSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.B2dSize }).(pulumi.StringPtrOutput)
+}
+
+// CPU value for the VM (string)
+func (o NodeTemplateOpennebulaConfigOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+func (o NodeTemplateOpennebulaConfigOutput) DevPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.DevPrefix }).(pulumi.StringPtrOutput)
+}
+
+// VNC is enabled by default. Disable it with this flag (bool)
+func (o NodeTemplateOpennebulaConfigOutput) DisableVnc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *bool { return v.DisableVnc }).(pulumi.BoolPtrOutput)
+}
+
+// Size of the disk for the VM in MB (string)
+func (o NodeTemplateOpennebulaConfigOutput) DiskResize() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.DiskResize }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+func (o NodeTemplateOpennebulaConfigOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+func (o NodeTemplateOpennebulaConfigOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// Owner of the image to use as the VM OS (string)
+// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+func (o NodeTemplateOpennebulaConfigOutput) ImageOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageOwner }).(pulumi.StringPtrOutput)
+}
+
+func (o NodeTemplateOpennebulaConfigOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+func (o NodeTemplateOpennebulaConfigOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+func (o NodeTemplateOpennebulaConfigOutput) NetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkName }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula user ID of the Network to connect the machine to (string)
+func (o NodeTemplateOpennebulaConfigOutput) NetworkOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkOwner }).(pulumi.StringPtrOutput)
+}
+
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+func (o NodeTemplateOpennebulaConfigOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+func (o NodeTemplateOpennebulaConfigOutput) SshUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.SshUser }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula template ID to use. Conflicts with `templateName` (string)
+func (o NodeTemplateOpennebulaConfigOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Opennbula template to use. Conflicts with `templateId` (string)
+func (o NodeTemplateOpennebulaConfigOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+// Set the user for the XML-RPC API authentication (string)
+func (o NodeTemplateOpennebulaConfigOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.User }).(pulumi.StringOutput)
+}
+
+// VCPUs for the VM (string)
+func (o NodeTemplateOpennebulaConfigOutput) Vcpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Vcpu }).(pulumi.StringPtrOutput)
+}
+
+// Set the url for the Opennebula XML-RPC API (string)
+func (o NodeTemplateOpennebulaConfigOutput) XmlRpcUrl() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.XmlRpcUrl }).(pulumi.StringOutput)
+}
+
+type NodeTemplateOpennebulaConfigPtrOutput struct { *pulumi.OutputState}
+
+func (NodeTemplateOpennebulaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateOpennebulaConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateOpennebulaConfigPtrOutput) ToNodeTemplateOpennebulaConfigPtrOutput() NodeTemplateOpennebulaConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateOpennebulaConfigPtrOutput) ToNodeTemplateOpennebulaConfigPtrOutputWithContext(ctx context.Context) NodeTemplateOpennebulaConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateOpennebulaConfigPtrOutput) Elem() NodeTemplateOpennebulaConfigOutput {
+	return o.ApplyT(func (v *NodeTemplateOpennebulaConfig) NodeTemplateOpennebulaConfig { return *v }).(NodeTemplateOpennebulaConfigOutput)
+}
+
+// Size of the Volatile disk in MB - only for b2d (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) B2dSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.B2dSize }).(pulumi.StringPtrOutput)
+}
+
+// CPU value for the VM (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) DevPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.DevPrefix }).(pulumi.StringPtrOutput)
+}
+
+// VNC is enabled by default. Disable it with this flag (bool)
+func (o NodeTemplateOpennebulaConfigPtrOutput) DisableVnc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *bool { return v.DisableVnc }).(pulumi.BoolPtrOutput)
+}
+
+// Size of the disk for the VM in MB (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) DiskResize() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.DiskResize }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// Owner of the image to use as the VM OS (string)
+// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) ImageOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.ImageOwner }).(pulumi.StringPtrOutput)
+}
+
+func (o NodeTemplateOpennebulaConfigPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) NetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkName }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula user ID of the Network to connect the machine to (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) NetworkOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.NetworkOwner }).(pulumi.StringPtrOutput)
+}
+
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) SshUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.SshUser }).(pulumi.StringPtrOutput)
+}
+
+// Opennebula template ID to use. Conflicts with `templateName` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Opennbula template to use. Conflicts with `templateId` (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+// Set the user for the XML-RPC API authentication (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.User }).(pulumi.StringOutput)
+}
+
+// VCPUs for the VM (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) Vcpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) *string { return v.Vcpu }).(pulumi.StringPtrOutput)
+}
+
+// Set the url for the Opennebula XML-RPC API (string)
+func (o NodeTemplateOpennebulaConfigPtrOutput) XmlRpcUrl() pulumi.StringOutput {
+	return o.ApplyT(func (v NodeTemplateOpennebulaConfig) string { return v.XmlRpcUrl }).(pulumi.StringOutput)
+}
+
 type NodeTemplateOpenstackConfig struct {
 	ActiveTimeout *string `pulumi:"activeTimeout"`
 	// OpenStack authentication URL (string)
@@ -22379,7 +22921,7 @@ type NodeTemplateOpenstackConfig struct {
 	NovaNetwork *bool `pulumi:"novaNetwork"`
 	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
 	Password *string `pulumi:"password"`
-	// Private keyfile absolute path to use for SSH (string)
+	// Private key content to use for SSH (string)
 	PrivateKeyFile *string `pulumi:"privateKeyFile"`
 	// OpenStack region name (string)
 	Region string `pulumi:"region"`
@@ -22446,7 +22988,7 @@ type NodeTemplateOpenstackConfigArgs struct {
 	NovaNetwork pulumi.BoolPtrInput `pulumi:"novaNetwork"`
 	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Private keyfile absolute path to use for SSH (string)
+	// Private key content to use for SSH (string)
 	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
 	// OpenStack region name (string)
 	Region pulumi.StringInput `pulumi:"region"`
@@ -22632,7 +23174,7 @@ func (o NodeTemplateOpenstackConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NodeTemplateOpenstackConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Private keyfile absolute path to use for SSH (string)
+// Private key content to use for SSH (string)
 func (o NodeTemplateOpenstackConfigOutput) PrivateKeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NodeTemplateOpenstackConfig) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
 }
@@ -22794,7 +23336,7 @@ func (o NodeTemplateOpenstackConfigPtrOutput) Password() pulumi.StringPtrOutput 
 	return o.ApplyT(func (v NodeTemplateOpenstackConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Private keyfile absolute path to use for SSH (string)
+// Private key content to use for SSH (string)
 func (o NodeTemplateOpenstackConfigPtrOutput) PrivateKeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NodeTemplateOpenstackConfig) *string { return v.PrivateKeyFile }).(pulumi.StringPtrOutput)
 }
@@ -24141,6 +24683,1679 @@ func (o NotifierWechatConfigPtrOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func (v NotifierWechatConfig) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+type PodSecurityPolicyTemplateAllowedCsiDriver struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name string `pulumi:"name"`
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedCsiDriverOutput() PodSecurityPolicyTemplateAllowedCsiDriverOutput
+	ToPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedCsiDriverOutput
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverArgs struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PodSecurityPolicyTemplateAllowedCsiDriverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedCsiDriverArgs) ToPodSecurityPolicyTemplateAllowedCsiDriverOutput() PodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedCsiDriverArgs) ToPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+	ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverArray []PodSecurityPolicyTemplateAllowedCsiDriverInput
+
+func (PodSecurityPolicyTemplateAllowedCsiDriverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedCsiDriverArray) ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedCsiDriverArray) ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateAllowedCsiDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedCsiDriverOutput) ToPodSecurityPolicyTemplateAllowedCsiDriverOutput() PodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedCsiDriverOutput) ToPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+// The name of the PodSecurityPolicyTemplate (string)
+func (o PodSecurityPolicyTemplateAllowedCsiDriverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateAllowedCsiDriver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateAllowedCsiDriver {
+		return vs[0].([]PodSecurityPolicyTemplateAllowedCsiDriver)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolume struct {
+	Driver string `pulumi:"driver"`
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedFlexVolumeOutput() PodSecurityPolicyTemplateAllowedFlexVolumeOutput
+	ToPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeOutput
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeArgs struct {
+	Driver pulumi.StringInput `pulumi:"driver"`
+}
+
+func (PodSecurityPolicyTemplateAllowedFlexVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToPodSecurityPolicyTemplateAllowedFlexVolumeOutput() PodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+	ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeArray []PodSecurityPolicyTemplateAllowedFlexVolumeInput
+
+func (PodSecurityPolicyTemplateAllowedFlexVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedFlexVolumeArray) ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedFlexVolumeArray) ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateAllowedFlexVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToPodSecurityPolicyTemplateAllowedFlexVolumeOutput() PodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateAllowedFlexVolume) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateAllowedFlexVolume {
+		return vs[0].([]PodSecurityPolicyTemplateAllowedFlexVolume)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedHostPath struct {
+	// (string)
+	PathPrefix string `pulumi:"pathPrefix"`
+	// (string)
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedHostPathOutput() PodSecurityPolicyTemplateAllowedHostPathOutput
+	ToPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedHostPathOutput
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathArgs struct {
+	// (string)
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	// (string)
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (PodSecurityPolicyTemplateAllowedHostPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedHostPathArgs) ToPodSecurityPolicyTemplateAllowedHostPathOutput() PodSecurityPolicyTemplateAllowedHostPathOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedHostPathArgs) ToPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateAllowedHostPathArrayOutput() PodSecurityPolicyTemplateAllowedHostPathArrayOutput
+	ToPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateAllowedHostPathArrayOutput
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathArray []PodSecurityPolicyTemplateAllowedHostPathInput
+
+func (PodSecurityPolicyTemplateAllowedHostPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateAllowedHostPathArray) ToPodSecurityPolicyTemplateAllowedHostPathArrayOutput() PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return i.ToPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateAllowedHostPathArray) ToPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateAllowedHostPathArrayOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateAllowedHostPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedHostPathOutput) ToPodSecurityPolicyTemplateAllowedHostPathOutput() PodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedHostPathOutput) ToPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateAllowedHostPathOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateAllowedHostPath) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateAllowedHostPathOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateAllowedHostPath) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type PodSecurityPolicyTemplateAllowedHostPathArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateAllowedHostPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToPodSecurityPolicyTemplateAllowedHostPathArrayOutput() PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateAllowedHostPathArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateAllowedHostPath {
+		return vs[0].([]PodSecurityPolicyTemplateAllowedHostPath)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroup struct {
+	// (list)
+	Ranges []PodSecurityPolicyTemplateFsGroupRange `pulumi:"ranges"`
+	// (string)
+	Rule *string `pulumi:"rule"`
+}
+
+type PodSecurityPolicyTemplateFsGroupInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateFsGroupOutput() PodSecurityPolicyTemplateFsGroupOutput
+	ToPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Context) PodSecurityPolicyTemplateFsGroupOutput
+}
+
+type PodSecurityPolicyTemplateFsGroupArgs struct {
+	// (list)
+	Ranges PodSecurityPolicyTemplateFsGroupRangeArrayInput `pulumi:"ranges"`
+	// (string)
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (PodSecurityPolicyTemplateFsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateFsGroupArgs) ToPodSecurityPolicyTemplateFsGroupOutput() PodSecurityPolicyTemplateFsGroupOutput {
+	return i.ToPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateFsGroupArgs) ToPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateFsGroupOutput)
+}
+
+func (i PodSecurityPolicyTemplateFsGroupArgs) ToPodSecurityPolicyTemplateFsGroupPtrOutput() PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateFsGroupArgs) ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateFsGroupOutput).ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateFsGroupPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateFsGroupPtrOutput() PodSecurityPolicyTemplateFsGroupPtrOutput
+	ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateFsGroupPtrOutput
+}
+
+type podSecurityPolicyTemplateFsGroupPtrType PodSecurityPolicyTemplateFsGroupArgs
+
+func PodSecurityPolicyTemplateFsGroupPtr(v *PodSecurityPolicyTemplateFsGroupArgs) PodSecurityPolicyTemplateFsGroupPtrInput {	return (*podSecurityPolicyTemplateFsGroupPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateFsGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateFsGroupPtrType) ToPodSecurityPolicyTemplateFsGroupPtrOutput() PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateFsGroupPtrType) ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateFsGroupPtrOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateFsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateFsGroupOutput) ToPodSecurityPolicyTemplateFsGroupOutput() PodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupOutput) ToPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupOutput) ToPodSecurityPolicyTemplateFsGroupPtrOutput() PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o.ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateFsGroupOutput) ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateFsGroup) *PodSecurityPolicyTemplateFsGroup {
+		return &v
+	}).(PodSecurityPolicyTemplateFsGroupPtrOutput)
+}
+// (list)
+func (o PodSecurityPolicyTemplateFsGroupOutput) Ranges() PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroup) []PodSecurityPolicyTemplateFsGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateFsGroupOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateFsGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateFsGroupPtrOutput) ToPodSecurityPolicyTemplateFsGroupPtrOutput() PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupPtrOutput) ToPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupPtrOutput) Elem() PodSecurityPolicyTemplateFsGroupOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateFsGroup) PodSecurityPolicyTemplateFsGroup { return *v }).(PodSecurityPolicyTemplateFsGroupOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateFsGroupPtrOutput) Ranges() PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroup) []PodSecurityPolicyTemplateFsGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateFsGroupPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupRange struct {
+	// (int)
+	Max int `pulumi:"max"`
+	// (int)
+	Min int `pulumi:"min"`
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateFsGroupRangeOutput() PodSecurityPolicyTemplateFsGroupRangeOutput
+	ToPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Context) PodSecurityPolicyTemplateFsGroupRangeOutput
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeArgs struct {
+	// (int)
+	Max pulumi.IntInput `pulumi:"max"`
+	// (int)
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PodSecurityPolicyTemplateFsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateFsGroupRangeArgs) ToPodSecurityPolicyTemplateFsGroupRangeOutput() PodSecurityPolicyTemplateFsGroupRangeOutput {
+	return i.ToPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateFsGroupRangeArgs) ToPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateFsGroupRangeArrayOutput() PodSecurityPolicyTemplateFsGroupRangeArrayOutput
+	ToPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateFsGroupRangeArrayOutput
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeArray []PodSecurityPolicyTemplateFsGroupRangeInput
+
+func (PodSecurityPolicyTemplateFsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateFsGroupRangeArray) ToPodSecurityPolicyTemplateFsGroupRangeArrayOutput() PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return i.ToPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateFsGroupRangeArray) ToPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateFsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateFsGroupRangeOutput) ToPodSecurityPolicyTemplateFsGroupRangeOutput() PodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupRangeOutput) ToPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateFsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateFsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateFsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PodSecurityPolicyTemplateFsGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateFsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToPodSecurityPolicyTemplateFsGroupRangeArrayOutput() PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateFsGroupRangeArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateFsGroupRange {
+		return vs[0].([]PodSecurityPolicyTemplateFsGroupRange)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+type PodSecurityPolicyTemplateHostPort struct {
+	// (int)
+	Max int `pulumi:"max"`
+	// (int)
+	Min int `pulumi:"min"`
+}
+
+type PodSecurityPolicyTemplateHostPortInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateHostPortOutput() PodSecurityPolicyTemplateHostPortOutput
+	ToPodSecurityPolicyTemplateHostPortOutputWithContext(context.Context) PodSecurityPolicyTemplateHostPortOutput
+}
+
+type PodSecurityPolicyTemplateHostPortArgs struct {
+	// (int)
+	Max pulumi.IntInput `pulumi:"max"`
+	// (int)
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PodSecurityPolicyTemplateHostPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateHostPortArgs) ToPodSecurityPolicyTemplateHostPortOutput() PodSecurityPolicyTemplateHostPortOutput {
+	return i.ToPodSecurityPolicyTemplateHostPortOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateHostPortArgs) ToPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateHostPortOutput)
+}
+
+type PodSecurityPolicyTemplateHostPortArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateHostPortArrayOutput() PodSecurityPolicyTemplateHostPortArrayOutput
+	ToPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateHostPortArrayOutput
+}
+
+type PodSecurityPolicyTemplateHostPortArray []PodSecurityPolicyTemplateHostPortInput
+
+func (PodSecurityPolicyTemplateHostPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateHostPortArray) ToPodSecurityPolicyTemplateHostPortArrayOutput() PodSecurityPolicyTemplateHostPortArrayOutput {
+	return i.ToPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateHostPortArray) ToPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateHostPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateHostPortArrayOutput)
+}
+
+type PodSecurityPolicyTemplateHostPortOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateHostPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateHostPortOutput) ToPodSecurityPolicyTemplateHostPortOutput() PodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateHostPortOutput) ToPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateHostPortOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateHostPort) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateHostPortOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateHostPort) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PodSecurityPolicyTemplateHostPortArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateHostPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateHostPortArrayOutput) ToPodSecurityPolicyTemplateHostPortArrayOutput() PodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateHostPortArrayOutput) ToPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateHostPortArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateHostPort {
+		return vs[0].([]PodSecurityPolicyTemplateHostPort)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateHostPortOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroup struct {
+	// (list)
+	Ranges []PodSecurityPolicyTemplateRunAsGroupRange `pulumi:"ranges"`
+	// (string)
+	Rule string `pulumi:"rule"`
+}
+
+type PodSecurityPolicyTemplateRunAsGroupInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsGroupOutput() PodSecurityPolicyTemplateRunAsGroupOutput
+	ToPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsGroupOutput
+}
+
+type PodSecurityPolicyTemplateRunAsGroupArgs struct {
+	// (list)
+	Ranges PodSecurityPolicyTemplateRunAsGroupRangeArrayInput `pulumi:"ranges"`
+	// (string)
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (PodSecurityPolicyTemplateRunAsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupArgs) ToPodSecurityPolicyTemplateRunAsGroupOutput() PodSecurityPolicyTemplateRunAsGroupOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupArgs) ToPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsGroupOutput)
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupArgs) ToPodSecurityPolicyTemplateRunAsGroupPtrOutput() PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupArgs) ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsGroupOutput).ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsGroupPtrOutput() PodSecurityPolicyTemplateRunAsGroupPtrOutput
+	ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsGroupPtrOutput
+}
+
+type podSecurityPolicyTemplateRunAsGroupPtrType PodSecurityPolicyTemplateRunAsGroupArgs
+
+func PodSecurityPolicyTemplateRunAsGroupPtr(v *PodSecurityPolicyTemplateRunAsGroupArgs) PodSecurityPolicyTemplateRunAsGroupPtrInput {	return (*podSecurityPolicyTemplateRunAsGroupPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateRunAsGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateRunAsGroupPtrType) ToPodSecurityPolicyTemplateRunAsGroupPtrOutput() PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateRunAsGroupPtrType) ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsGroupPtrOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateRunAsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) ToPodSecurityPolicyTemplateRunAsGroupOutput() PodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) ToPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) ToPodSecurityPolicyTemplateRunAsGroupPtrOutput() PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o.ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateRunAsGroup) *PodSecurityPolicyTemplateRunAsGroup {
+		return &v
+	}).(PodSecurityPolicyTemplateRunAsGroupPtrOutput)
+}
+// (list)
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) Ranges() PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroup) []PodSecurityPolicyTemplateRunAsGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRunAsGroupOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroup) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateRunAsGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupPtrOutput) ToPodSecurityPolicyTemplateRunAsGroupPtrOutput() PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupPtrOutput) ToPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupPtrOutput) Elem() PodSecurityPolicyTemplateRunAsGroupOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateRunAsGroup) PodSecurityPolicyTemplateRunAsGroup { return *v }).(PodSecurityPolicyTemplateRunAsGroupOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateRunAsGroupPtrOutput) Ranges() PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroup) []PodSecurityPolicyTemplateRunAsGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRunAsGroupPtrOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroup) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRange struct {
+	// (int)
+	Max int `pulumi:"max"`
+	// (int)
+	Min int `pulumi:"min"`
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsGroupRangeOutput() PodSecurityPolicyTemplateRunAsGroupRangeOutput
+	ToPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsGroupRangeOutput
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeArgs struct {
+	// (int)
+	Max pulumi.IntInput `pulumi:"max"`
+	// (int)
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PodSecurityPolicyTemplateRunAsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupRangeArgs) ToPodSecurityPolicyTemplateRunAsGroupRangeOutput() PodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupRangeArgs) ToPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+	ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeArray []PodSecurityPolicyTemplateRunAsGroupRangeInput
+
+func (PodSecurityPolicyTemplateRunAsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupRangeArray) ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsGroupRangeArray) ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateRunAsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupRangeOutput) ToPodSecurityPolicyTemplateRunAsGroupRangeOutput() PodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupRangeOutput) ToPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateRunAsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateRunAsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateRunAsGroupRange {
+		return vs[0].([]PodSecurityPolicyTemplateRunAsGroupRange)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUser struct {
+	// (list)
+	Ranges []PodSecurityPolicyTemplateRunAsUserRange `pulumi:"ranges"`
+	// (string)
+	Rule string `pulumi:"rule"`
+}
+
+type PodSecurityPolicyTemplateRunAsUserInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsUserOutput() PodSecurityPolicyTemplateRunAsUserOutput
+	ToPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsUserOutput
+}
+
+type PodSecurityPolicyTemplateRunAsUserArgs struct {
+	// (list)
+	Ranges PodSecurityPolicyTemplateRunAsUserRangeArrayInput `pulumi:"ranges"`
+	// (string)
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (PodSecurityPolicyTemplateRunAsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserArgs) ToPodSecurityPolicyTemplateRunAsUserOutput() PodSecurityPolicyTemplateRunAsUserOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserArgs) ToPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserArgs) ToPodSecurityPolicyTemplateRunAsUserPtrOutput() PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserArgs) ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsUserOutput).ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateRunAsUserPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsUserPtrOutput() PodSecurityPolicyTemplateRunAsUserPtrOutput
+	ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsUserPtrOutput
+}
+
+type podSecurityPolicyTemplateRunAsUserPtrType PodSecurityPolicyTemplateRunAsUserArgs
+
+func PodSecurityPolicyTemplateRunAsUserPtr(v *PodSecurityPolicyTemplateRunAsUserArgs) PodSecurityPolicyTemplateRunAsUserPtrInput {	return (*podSecurityPolicyTemplateRunAsUserPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateRunAsUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateRunAsUserPtrType) ToPodSecurityPolicyTemplateRunAsUserPtrOutput() PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateRunAsUserPtrType) ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsUserPtrOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateRunAsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserOutput) ToPodSecurityPolicyTemplateRunAsUserOutput() PodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserOutput) ToPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserOutput) ToPodSecurityPolicyTemplateRunAsUserPtrOutput() PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o.ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserOutput) ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateRunAsUser) *PodSecurityPolicyTemplateRunAsUser {
+		return &v
+	}).(PodSecurityPolicyTemplateRunAsUserPtrOutput)
+}
+// (list)
+func (o PodSecurityPolicyTemplateRunAsUserOutput) Ranges() PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUser) []PodSecurityPolicyTemplateRunAsUserRange { return v.Ranges }).(PodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRunAsUserOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUser) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateRunAsUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserPtrOutput) ToPodSecurityPolicyTemplateRunAsUserPtrOutput() PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserPtrOutput) ToPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserPtrOutput) Elem() PodSecurityPolicyTemplateRunAsUserOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateRunAsUser) PodSecurityPolicyTemplateRunAsUser { return *v }).(PodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateRunAsUserPtrOutput) Ranges() PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUser) []PodSecurityPolicyTemplateRunAsUserRange { return v.Ranges }).(PodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRunAsUserPtrOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUser) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserRange struct {
+	// (int)
+	Max int `pulumi:"max"`
+	// (int)
+	Min int `pulumi:"min"`
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsUserRangeOutput() PodSecurityPolicyTemplateRunAsUserRangeOutput
+	ToPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsUserRangeOutput
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeArgs struct {
+	// (int)
+	Max pulumi.IntInput `pulumi:"max"`
+	// (int)
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PodSecurityPolicyTemplateRunAsUserRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserRangeArgs) ToPodSecurityPolicyTemplateRunAsUserRangeOutput() PodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserRangeArgs) ToPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsUserRangeOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() PodSecurityPolicyTemplateRunAsUserRangeArrayOutput
+	ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateRunAsUserRangeArrayOutput
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeArray []PodSecurityPolicyTemplateRunAsUserRangeInput
+
+func (PodSecurityPolicyTemplateRunAsUserRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserRangeArray) ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return i.ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRunAsUserRangeArray) ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateRunAsUserRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserRangeOutput) ToPodSecurityPolicyTemplateRunAsUserRangeOutput() PodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserRangeOutput) ToPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return o
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateRunAsUserRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUserRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateRunAsUserRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRunAsUserRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PodSecurityPolicyTemplateRunAsUserRangeArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRunAsUserRangeArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateRunAsUserRange {
+		return vs[0].([]PodSecurityPolicyTemplateRunAsUserRange)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateRunAsUserRangeOutput)
+}
+
+type PodSecurityPolicyTemplateRuntimeClass struct {
+	// (list)
+	AllowedRuntimeClassNames []string `pulumi:"allowedRuntimeClassNames"`
+	// (string)
+	DefaultRuntimeClassName *string `pulumi:"defaultRuntimeClassName"`
+}
+
+type PodSecurityPolicyTemplateRuntimeClassInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRuntimeClassOutput() PodSecurityPolicyTemplateRuntimeClassOutput
+	ToPodSecurityPolicyTemplateRuntimeClassOutputWithContext(context.Context) PodSecurityPolicyTemplateRuntimeClassOutput
+}
+
+type PodSecurityPolicyTemplateRuntimeClassArgs struct {
+	// (list)
+	AllowedRuntimeClassNames pulumi.StringArrayInput `pulumi:"allowedRuntimeClassNames"`
+	// (string)
+	DefaultRuntimeClassName pulumi.StringPtrInput `pulumi:"defaultRuntimeClassName"`
+}
+
+func (PodSecurityPolicyTemplateRuntimeClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateRuntimeClassArgs) ToPodSecurityPolicyTemplateRuntimeClassOutput() PodSecurityPolicyTemplateRuntimeClassOutput {
+	return i.ToPodSecurityPolicyTemplateRuntimeClassOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRuntimeClassArgs) ToPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRuntimeClassOutput)
+}
+
+func (i PodSecurityPolicyTemplateRuntimeClassArgs) ToPodSecurityPolicyTemplateRuntimeClassPtrOutput() PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateRuntimeClassArgs) ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRuntimeClassOutput).ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateRuntimeClassPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateRuntimeClassPtrOutput() PodSecurityPolicyTemplateRuntimeClassPtrOutput
+	ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateRuntimeClassPtrOutput
+}
+
+type podSecurityPolicyTemplateRuntimeClassPtrType PodSecurityPolicyTemplateRuntimeClassArgs
+
+func PodSecurityPolicyTemplateRuntimeClassPtr(v *PodSecurityPolicyTemplateRuntimeClassArgs) PodSecurityPolicyTemplateRuntimeClassPtrInput {	return (*podSecurityPolicyTemplateRuntimeClassPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateRuntimeClassPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateRuntimeClassPtrType) ToPodSecurityPolicyTemplateRuntimeClassPtrOutput() PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return i.ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateRuntimeClassPtrType) ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateRuntimeClassPtrOutput)
+}
+
+type PodSecurityPolicyTemplateRuntimeClassOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateRuntimeClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) ToPodSecurityPolicyTemplateRuntimeClassOutput() PodSecurityPolicyTemplateRuntimeClassOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) ToPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) ToPodSecurityPolicyTemplateRuntimeClassPtrOutput() PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return o.ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateRuntimeClass) *PodSecurityPolicyTemplateRuntimeClass {
+		return &v
+	}).(PodSecurityPolicyTemplateRuntimeClassPtrOutput)
+}
+// (list)
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRuntimeClass) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRuntimeClassOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRuntimeClass) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateRuntimeClassPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateRuntimeClassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassPtrOutput) ToPodSecurityPolicyTemplateRuntimeClassPtrOutput() PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassPtrOutput) ToPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateRuntimeClassPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateRuntimeClassPtrOutput) Elem() PodSecurityPolicyTemplateRuntimeClassOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateRuntimeClass) PodSecurityPolicyTemplateRuntimeClass { return *v }).(PodSecurityPolicyTemplateRuntimeClassOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateRuntimeClassPtrOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRuntimeClass) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateRuntimeClassPtrOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateRuntimeClass) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinux struct {
+	// (string)
+	Rule string `pulumi:"rule"`
+	// (list maxitems:1)
+	SeLinuxOption *PodSecurityPolicyTemplateSeLinuxSeLinuxOption `pulumi:"seLinuxOption"`
+}
+
+type PodSecurityPolicyTemplateSeLinuxInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSeLinuxOutput() PodSecurityPolicyTemplateSeLinuxOutput
+	ToPodSecurityPolicyTemplateSeLinuxOutputWithContext(context.Context) PodSecurityPolicyTemplateSeLinuxOutput
+}
+
+type PodSecurityPolicyTemplateSeLinuxArgs struct {
+	// (string)
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// (list maxitems:1)
+	SeLinuxOption PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput `pulumi:"seLinuxOption"`
+}
+
+func (PodSecurityPolicyTemplateSeLinuxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxArgs) ToPodSecurityPolicyTemplateSeLinuxOutput() PodSecurityPolicyTemplateSeLinuxOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxArgs) ToPodSecurityPolicyTemplateSeLinuxOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxOutput)
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxArgs) ToPodSecurityPolicyTemplateSeLinuxPtrOutput() PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxArgs) ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxOutput).ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateSeLinuxPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSeLinuxPtrOutput() PodSecurityPolicyTemplateSeLinuxPtrOutput
+	ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateSeLinuxPtrOutput
+}
+
+type podSecurityPolicyTemplateSeLinuxPtrType PodSecurityPolicyTemplateSeLinuxArgs
+
+func PodSecurityPolicyTemplateSeLinuxPtr(v *PodSecurityPolicyTemplateSeLinuxArgs) PodSecurityPolicyTemplateSeLinuxPtrInput {	return (*podSecurityPolicyTemplateSeLinuxPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateSeLinuxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateSeLinuxPtrType) ToPodSecurityPolicyTemplateSeLinuxPtrOutput() PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateSeLinuxPtrType) ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinuxOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateSeLinuxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxOutput) ToPodSecurityPolicyTemplateSeLinuxOutput() PodSecurityPolicyTemplateSeLinuxOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxOutput) ToPodSecurityPolicyTemplateSeLinuxOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxOutput) ToPodSecurityPolicyTemplateSeLinuxPtrOutput() PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return o.ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxOutput) ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateSeLinux) *PodSecurityPolicyTemplateSeLinux {
+		return &v
+	}).(PodSecurityPolicyTemplateSeLinuxPtrOutput)
+}
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinux) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateSeLinuxOutput) SeLinuxOption() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinux) *PodSecurityPolicyTemplateSeLinuxSeLinuxOption { return v.SeLinuxOption }).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinuxPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateSeLinuxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxPtrOutput) ToPodSecurityPolicyTemplateSeLinuxPtrOutput() PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxPtrOutput) ToPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxPtrOutput) Elem() PodSecurityPolicyTemplateSeLinuxOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateSeLinux) PodSecurityPolicyTemplateSeLinux { return *v }).(PodSecurityPolicyTemplateSeLinuxOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxPtrOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinux) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// (list maxitems:1)
+func (o PodSecurityPolicyTemplateSeLinuxPtrOutput) SeLinuxOption() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinux) *PodSecurityPolicyTemplateSeLinuxSeLinuxOption { return v.SeLinuxOption }).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOption struct {
+	// (string)
+	Level *string `pulumi:"level"`
+	// (string)
+	Role *string `pulumi:"role"`
+	// (string)
+	Type *string `pulumi:"type"`
+	// (string)
+	User *string `pulumi:"user"`
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput
+	ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs struct {
+	// (string)
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// (string)
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// (string)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// (string)
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput).ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput
+	ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput
+}
+
+type podSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs
+
+func PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtr(v *PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput {	return (*podSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+		return &v
+	}).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Elem() PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateSeLinuxSeLinuxOption) PodSecurityPolicyTemplateSeLinuxSeLinuxOption { return *v }).(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroup struct {
+	// (list)
+	Ranges []PodSecurityPolicyTemplateSupplementalGroupRange `pulumi:"ranges"`
+	// (string)
+	Rule *string `pulumi:"rule"`
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSupplementalGroupOutput() PodSecurityPolicyTemplateSupplementalGroupOutput
+	ToPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(context.Context) PodSecurityPolicyTemplateSupplementalGroupOutput
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupArgs struct {
+	// (list)
+	Ranges PodSecurityPolicyTemplateSupplementalGroupRangeArrayInput `pulumi:"ranges"`
+	// (string)
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (PodSecurityPolicyTemplateSupplementalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupArgs) ToPodSecurityPolicyTemplateSupplementalGroupOutput() PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return i.ToPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupArgs) ToPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSupplementalGroupOutput)
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupArgs) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutput() PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupArgs) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSupplementalGroupOutput).ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSupplementalGroupPtrOutput() PodSecurityPolicyTemplateSupplementalGroupPtrOutput
+	ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(context.Context) PodSecurityPolicyTemplateSupplementalGroupPtrOutput
+}
+
+type podSecurityPolicyTemplateSupplementalGroupPtrType PodSecurityPolicyTemplateSupplementalGroupArgs
+
+func PodSecurityPolicyTemplateSupplementalGroupPtr(v *PodSecurityPolicyTemplateSupplementalGroupArgs) PodSecurityPolicyTemplateSupplementalGroupPtrInput {	return (*podSecurityPolicyTemplateSupplementalGroupPtrType)(v)
+}
+
+func (*podSecurityPolicyTemplateSupplementalGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (i *podSecurityPolicyTemplateSupplementalGroupPtrType) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutput() PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return i.ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicyTemplateSupplementalGroupPtrType) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSupplementalGroupPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateSupplementalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) ToPodSecurityPolicyTemplateSupplementalGroupOutput() PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) ToPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutput() PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return o.ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyTemplateSupplementalGroup) *PodSecurityPolicyTemplateSupplementalGroup {
+		return &v
+	}).(PodSecurityPolicyTemplateSupplementalGroupPtrOutput)
+}
+// (list)
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) Ranges() PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroup) []PodSecurityPolicyTemplateSupplementalGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSupplementalGroupOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupPtrOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateSupplementalGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupPtrOutput) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutput() PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupPtrOutput) ToPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupPtrOutput) Elem() PodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o.ApplyT(func (v *PodSecurityPolicyTemplateSupplementalGroup) PodSecurityPolicyTemplateSupplementalGroup { return *v }).(PodSecurityPolicyTemplateSupplementalGroupOutput)
+}
+
+// (list)
+func (o PodSecurityPolicyTemplateSupplementalGroupPtrOutput) Ranges() PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroup) []PodSecurityPolicyTemplateSupplementalGroupRange { return v.Ranges }).(PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
+}
+
+// (string)
+func (o PodSecurityPolicyTemplateSupplementalGroupPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRange struct {
+	// (int)
+	Max int `pulumi:"max"`
+	// (int)
+	Min int `pulumi:"min"`
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSupplementalGroupRangeOutput() PodSecurityPolicyTemplateSupplementalGroupRangeOutput
+	ToPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeOutput
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeArgs struct {
+	// (int)
+	Max pulumi.IntInput `pulumi:"max"`
+	// (int)
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PodSecurityPolicyTemplateSupplementalGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToPodSecurityPolicyTemplateSupplementalGroupRangeOutput() PodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return i.ToPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSupplementalGroupRangeOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput
+	ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeArray []PodSecurityPolicyTemplateSupplementalGroupRangeInput
+
+func (PodSecurityPolicyTemplateSupplementalGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupRangeArray) ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return i.ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplateSupplementalGroupRangeArray) ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeOutput struct { *pulumi.OutputState }
+
+func (PodSecurityPolicyTemplateSupplementalGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToPodSecurityPolicyTemplateSupplementalGroupRangeOutput() PodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return o
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (int)
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v PodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i pulumi.IntInput) PodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PodSecurityPolicyTemplateSupplementalGroupRange {
+		return vs[0].([]PodSecurityPolicyTemplateSupplementalGroupRange)[vs[1].(int)]
+	}).(PodSecurityPolicyTemplateSupplementalGroupRangeOutput)
+}
+
 type ProjectAlertGroupRecipient struct {
 	// Recipient notifier ID (string)
 	NotifierId string `pulumi:"notifierId"`
@@ -24862,6 +27077,160 @@ func (o ProjectContainerResourceLimitPtrOutput) RequestsCpu() pulumi.StringPtrOu
 // Limit for requests memory in project (string)
 func (o ProjectContainerResourceLimitPtrOutput) RequestsMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ProjectContainerResourceLimit) *string { return v.RequestsMemory }).(pulumi.StringPtrOutput)
+}
+
+type ProjectLoggingCustomTargetConfig struct {
+	// SSL certificate for the syslog service (string)
+	Certificate *string `pulumi:"certificate"`
+	// SSL client certificate for the syslog service (string)
+	ClientCert *string `pulumi:"clientCert"`
+	// SSL client key for the syslog service (string)
+	ClientKey *string `pulumi:"clientKey"`
+	// Custom target config content (string)
+	Content string `pulumi:"content"`
+}
+
+type ProjectLoggingCustomTargetConfigInput interface {
+	pulumi.Input
+
+	ToProjectLoggingCustomTargetConfigOutput() ProjectLoggingCustomTargetConfigOutput
+	ToProjectLoggingCustomTargetConfigOutputWithContext(context.Context) ProjectLoggingCustomTargetConfigOutput
+}
+
+type ProjectLoggingCustomTargetConfigArgs struct {
+	// SSL certificate for the syslog service (string)
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// SSL client certificate for the syslog service (string)
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// SSL client key for the syslog service (string)
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// Custom target config content (string)
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (ProjectLoggingCustomTargetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i ProjectLoggingCustomTargetConfigArgs) ToProjectLoggingCustomTargetConfigOutput() ProjectLoggingCustomTargetConfigOutput {
+	return i.ToProjectLoggingCustomTargetConfigOutputWithContext(context.Background())
+}
+
+func (i ProjectLoggingCustomTargetConfigArgs) ToProjectLoggingCustomTargetConfigOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingCustomTargetConfigOutput)
+}
+
+func (i ProjectLoggingCustomTargetConfigArgs) ToProjectLoggingCustomTargetConfigPtrOutput() ProjectLoggingCustomTargetConfigPtrOutput {
+	return i.ToProjectLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectLoggingCustomTargetConfigArgs) ToProjectLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingCustomTargetConfigOutput).ToProjectLoggingCustomTargetConfigPtrOutputWithContext(ctx)
+}
+
+type ProjectLoggingCustomTargetConfigPtrInput interface {
+	pulumi.Input
+
+	ToProjectLoggingCustomTargetConfigPtrOutput() ProjectLoggingCustomTargetConfigPtrOutput
+	ToProjectLoggingCustomTargetConfigPtrOutputWithContext(context.Context) ProjectLoggingCustomTargetConfigPtrOutput
+}
+
+type projectLoggingCustomTargetConfigPtrType ProjectLoggingCustomTargetConfigArgs
+
+func ProjectLoggingCustomTargetConfigPtr(v *ProjectLoggingCustomTargetConfigArgs) ProjectLoggingCustomTargetConfigPtrInput {	return (*projectLoggingCustomTargetConfigPtrType)(v)
+}
+
+func (*projectLoggingCustomTargetConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i *projectLoggingCustomTargetConfigPtrType) ToProjectLoggingCustomTargetConfigPtrOutput() ProjectLoggingCustomTargetConfigPtrOutput {
+	return i.ToProjectLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *projectLoggingCustomTargetConfigPtrType) ToProjectLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingCustomTargetConfigPtrOutput)
+}
+
+type ProjectLoggingCustomTargetConfigOutput struct { *pulumi.OutputState }
+
+func (ProjectLoggingCustomTargetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o ProjectLoggingCustomTargetConfigOutput) ToProjectLoggingCustomTargetConfigOutput() ProjectLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o ProjectLoggingCustomTargetConfigOutput) ToProjectLoggingCustomTargetConfigOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o ProjectLoggingCustomTargetConfigOutput) ToProjectLoggingCustomTargetConfigPtrOutput() ProjectLoggingCustomTargetConfigPtrOutput {
+	return o.ToProjectLoggingCustomTargetConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectLoggingCustomTargetConfigOutput) ToProjectLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigPtrOutput {
+	return o.ApplyT(func(v ProjectLoggingCustomTargetConfig) *ProjectLoggingCustomTargetConfig {
+		return &v
+	}).(ProjectLoggingCustomTargetConfigPtrOutput)
+}
+// SSL certificate for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// SSL client certificate for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// SSL client key for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Custom target config content (string)
+func (o ProjectLoggingCustomTargetConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
+type ProjectLoggingCustomTargetConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ProjectLoggingCustomTargetConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o ProjectLoggingCustomTargetConfigPtrOutput) ToProjectLoggingCustomTargetConfigPtrOutput() ProjectLoggingCustomTargetConfigPtrOutput {
+	return o
+}
+
+func (o ProjectLoggingCustomTargetConfigPtrOutput) ToProjectLoggingCustomTargetConfigPtrOutputWithContext(ctx context.Context) ProjectLoggingCustomTargetConfigPtrOutput {
+	return o
+}
+
+func (o ProjectLoggingCustomTargetConfigPtrOutput) Elem() ProjectLoggingCustomTargetConfigOutput {
+	return o.ApplyT(func (v *ProjectLoggingCustomTargetConfig) ProjectLoggingCustomTargetConfig { return *v }).(ProjectLoggingCustomTargetConfigOutput)
+}
+
+// SSL certificate for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// SSL client certificate for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// SSL client key for the syslog service (string)
+func (o ProjectLoggingCustomTargetConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Custom target config content (string)
+func (o ProjectLoggingCustomTargetConfigPtrOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v ProjectLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
 }
 
 type ProjectLoggingElasticsearchConfig struct {
@@ -29262,7 +31631,7 @@ func (o GetClusterRkeConfigCloudProviderOutput) VsphereCloudProvider() GetCluste
 }
 
 type GetClusterRkeConfigCloudProviderAwsCloudProvider struct {
-	Global *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal `pulumi:"global"`
+	Global GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal `pulumi:"global"`
 	ServiceOverrides []GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride `pulumi:"serviceOverrides"`
 }
 
@@ -29274,7 +31643,7 @@ type GetClusterRkeConfigCloudProviderAwsCloudProviderInput interface {
 }
 
 type GetClusterRkeConfigCloudProviderAwsCloudProviderArgs struct {
-	Global GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput `pulumi:"global"`
+	Global GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput `pulumi:"global"`
 	ServiceOverrides GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput `pulumi:"serviceOverrides"`
 }
 
@@ -29345,8 +31714,8 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderOutput) ToGetClusterRkeC
 		return &v
 	}).(GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput)
 }
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderOutput) Global() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProvider) *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
+func (o GetClusterRkeConfigCloudProviderAwsCloudProviderOutput) Global() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProvider) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderOutput) ServiceOverrides() GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput {
@@ -29371,8 +31740,8 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput) Elem() GetClu
 	return o.ApplyT(func (v *GetClusterRkeConfigCloudProviderAwsCloudProvider) GetClusterRkeConfigCloudProviderAwsCloudProvider { return *v }).(GetClusterRkeConfigCloudProviderAwsCloudProviderOutput)
 }
 
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput) Global() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProvider) *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
+func (o GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput) Global() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProvider) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput) ServiceOverrides() GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput {
@@ -29424,38 +31793,6 @@ func (i GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetCluster
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
-func (i GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return i.ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (i GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput).ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx)
-}
-
-type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
-	pulumi.Input
-
-	ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput
-	ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Context) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput
-}
-
-type getClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrType GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs
-
-func GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtr(v *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput {	return (*getClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrType)(v)
-}
-
-func (*getClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal)(nil)).Elem()
-}
-
-func (i *getClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return i.ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (i *getClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
-}
-
 type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput struct { *pulumi.OutputState }
 
 func (GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ElementType() reflect.Type {
@@ -29470,15 +31807,6 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ToGetClust
 	return o
 }
 
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
-		return &v
-	}).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
-}
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) DisableSecurityGroupIngress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableSecurityGroupIngress }).(pulumi.BoolPtrOutput)
 }
@@ -29516,64 +31844,6 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) Vpc() pulu
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput struct { *pulumi.OutputState}
-
-func (GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal)(nil)).Elem()
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ToGetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Elem() GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
-	return o.ApplyT(func (v *GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal { return *v }).(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) DisableSecurityGroupIngress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableSecurityGroupIngress }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) DisableStrictZoneCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableStrictZoneCheck }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ElbSecurityGroup() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.ElbSecurityGroup }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) KubernetesClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.KubernetesClusterId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) KubernetesClusterTag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.KubernetesClusterTag }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.RoleArn }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) RouteTableId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.RouteTableId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.SubnetId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Vpc() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Vpc }).(pulumi.StringOutput)
-}
-
-func (o GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Zone }).(pulumi.StringOutput)
 }
 
@@ -31264,6 +33534,7 @@ type GetClusterRkeConfigNetwork struct {
 	CalicoNetworkProvider *GetClusterRkeConfigNetworkCalicoNetworkProvider `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider *GetClusterRkeConfigNetworkCanalNetworkProvider `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider *GetClusterRkeConfigNetworkFlannelNetworkProvider `pulumi:"flannelNetworkProvider"`
+	Mtu *int `pulumi:"mtu"`
 	Options map[string]interface{} `pulumi:"options"`
 	Plugin string `pulumi:"plugin"`
 	WeaveNetworkProvider *GetClusterRkeConfigNetworkWeaveNetworkProvider `pulumi:"weaveNetworkProvider"`
@@ -31280,6 +33551,7 @@ type GetClusterRkeConfigNetworkArgs struct {
 	CalicoNetworkProvider GetClusterRkeConfigNetworkCalicoNetworkProviderPtrInput `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider GetClusterRkeConfigNetworkCanalNetworkProviderPtrInput `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider GetClusterRkeConfigNetworkFlannelNetworkProviderPtrInput `pulumi:"flannelNetworkProvider"`
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	Options pulumi.MapInput `pulumi:"options"`
 	Plugin pulumi.StringInput `pulumi:"plugin"`
 	WeaveNetworkProvider GetClusterRkeConfigNetworkWeaveNetworkProviderPtrInput `pulumi:"weaveNetworkProvider"`
@@ -31321,6 +33593,10 @@ func (o GetClusterRkeConfigNetworkOutput) CanalNetworkProvider() GetClusterRkeCo
 
 func (o GetClusterRkeConfigNetworkOutput) FlannelNetworkProvider() GetClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigNetwork) *GetClusterRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(GetClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput)
+}
+
+func (o GetClusterRkeConfigNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 func (o GetClusterRkeConfigNetworkOutput) Options() pulumi.MapOutput {
@@ -32579,7 +34855,7 @@ func (o GetClusterRkeConfigServicesKubeApiOutput) ServiceNodePortRange() pulumi.
 }
 
 type GetClusterRkeConfigServicesKubeApiAuditLog struct {
-	Configuration *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	Configuration GetClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -32591,7 +34867,7 @@ type GetClusterRkeConfigServicesKubeApiAuditLogInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiAuditLogArgs struct {
-	Configuration GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	Configuration GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput `pulumi:"configuration"`
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -32662,8 +34938,8 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) ToGetClusterRkeConfigS
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
 }
-func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
@@ -32688,8 +34964,8 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() GetClusterRk
 	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiAuditLog) GetClusterRkeConfigServicesKubeApiAuditLog { return *v }).(GetClusterRkeConfigServicesKubeApiAuditLogOutput)
 }
 
-func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLog) GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -32702,7 +34978,7 @@ type GetClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
 	MaxBackup *int `pulumi:"maxBackup"`
 	MaxSize *int `pulumi:"maxSize"`
 	Path *string `pulumi:"path"`
-	Policy *string `pulumi:"policy"`
+	Policy string `pulumi:"policy"`
 }
 
 type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
@@ -32718,7 +34994,7 @@ type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
 	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
 	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	Policy pulumi.StringInput `pulumi:"policy"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
@@ -32731,38 +35007,6 @@ func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetCluste
 
 func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
-}
-
-func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
-}
-
-type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
-	ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
-}
-
-type getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs
-
-func GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
-}
-
-func (*getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
-}
-
-func (i *getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return i.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *getClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
 }
 
 type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
@@ -32779,15 +35023,6 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClus
 	return o
 }
 
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
-		return &v
-	}).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
-}
 func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -32808,50 +35043,8 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Path() pu
 	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
-type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
-
-func (GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput {
-	return o.ApplyT(func (v *GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) GetClusterRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigServicesKubeApiAuditLogConfiguration) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
@@ -34205,7 +36398,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOut
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider struct {
-	Global *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal `pulumi:"global"`
+	Global GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal `pulumi:"global"`
 	ServiceOverrides []GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride `pulumi:"serviceOverrides"`
 }
 
@@ -34217,7 +36410,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs struct {
-	Global GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput `pulumi:"global"`
+	Global GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput `pulumi:"global"`
 	ServiceOverrides GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput `pulumi:"serviceOverrides"`
 }
 
@@ -34288,8 +36481,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput) Global() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput) Global() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput) ServiceOverrides() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput {
@@ -34314,8 +36507,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput) Global() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput) Global() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal { return v.Global }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput) ServiceOverrides() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput {
@@ -34367,38 +36560,6 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
 }
 
-func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx)
-}
-
-type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
-	pulumi.Input
-
-	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput
-	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput
-}
-
-type getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs
-
-func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrType)(v)
-}
-
-func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal)(nil)).Elem()
-}
-
-func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
-}
-
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput struct { *pulumi.OutputState }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ElementType() reflect.Type {
@@ -34413,15 +36574,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 	return o
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(context.Background())
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal {
-		return &v
-	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput)
-}
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput) DisableSecurityGroupIngress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableSecurityGroupIngress }).(pulumi.BoolPtrOutput)
 }
@@ -34459,64 +36611,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput struct { *pulumi.OutputState}
-
-func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal)(nil)).Elem()
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput {
-	return o
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput {
-	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) DisableSecurityGroupIngress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableSecurityGroupIngress }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) DisableStrictZoneCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) *bool { return v.DisableStrictZoneCheck }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) ElbSecurityGroup() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.ElbSecurityGroup }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) KubernetesClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.KubernetesClusterId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) KubernetesClusterTag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.KubernetesClusterTag }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.RoleArn }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) RouteTableId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.RouteTableId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.SubnetId }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Vpc() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Vpc }).(pulumi.StringOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal) string { return v.Zone }).(pulumi.StringOutput)
 }
 
@@ -36207,6 +38301,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
 	CalicoNetworkProvider *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider `pulumi:"flannelNetworkProvider"`
+	Mtu *int `pulumi:"mtu"`
 	Options map[string]interface{} `pulumi:"options"`
 	Plugin string `pulumi:"plugin"`
 	WeaveNetworkProvider *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider `pulumi:"weaveNetworkProvider"`
@@ -36223,6 +38318,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs struct 
 	CalicoNetworkProvider GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput `pulumi:"calicoNetworkProvider"`
 	CanalNetworkProvider GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput `pulumi:"canalNetworkProvider"`
 	FlannelNetworkProvider GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput `pulumi:"flannelNetworkProvider"`
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	Options pulumi.MapInput `pulumi:"options"`
 	Plugin pulumi.StringInput `pulumi:"plugin"`
 	WeaveNetworkProvider GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput `pulumi:"weaveNetworkProvider"`
@@ -36264,6 +38360,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) C
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) FlannelNetworkProvider() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider { return v.FlannelNetworkProvider }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput) Options() pulumi.MapOutput {
@@ -37522,7 +39622,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiO
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog struct {
-	Configuration *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
+	Configuration GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -37534,7 +39634,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs struct {
-	Configuration GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
+	Configuration GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput `pulumi:"configuration"`
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -37605,8 +39705,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
@@ -37631,8 +39731,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -37645,7 +39745,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 	MaxBackup *int `pulumi:"maxBackup"`
 	MaxSize *int `pulumi:"maxSize"`
 	Path *string `pulumi:"path"`
-	Policy *string `pulumi:"policy"`
+	Policy string `pulumi:"policy"`
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
@@ -37661,7 +39761,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
 	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	Policy pulumi.StringInput `pulumi:"policy"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ElementType() reflect.Type {
@@ -37674,38 +39774,6 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 
 func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
-}
-
-func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx)
-}
-
-type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
-	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput
-}
-
-type getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs
-
-func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType)(v)
-}
-
-func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
-}
-
-func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput struct { *pulumi.OutputState }
@@ -37722,15 +39790,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 	return o
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration {
-		return &v
-	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
-}
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -37751,50 +39810,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
-type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput struct { *pulumi.OutputState}
-
-func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration)(nil)).Elem()
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
-	return o
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput {
-	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) *string { return v.Policy }).(pulumi.StringPtrOutput)
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
@@ -39816,6 +41833,1177 @@ func (o GetNotifierWechatConfigOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func (v GetNotifierWechatConfig) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+type GetPodSecurityPolicyTemplateAllowedCsiDriver struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name string `pulumi:"name"`
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArgs struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArray []GetPodSecurityPolicyTemplateAllowedCsiDriverInput
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+// The name of the PodSecurityPolicyTemplate (string)
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateAllowedCsiDriver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateAllowedCsiDriver {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedCsiDriver)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolume struct {
+	Driver string `pulumi:"driver"`
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs struct {
+	Driver pulumi.StringInput `pulumi:"driver"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArray []GetPodSecurityPolicyTemplateAllowedFlexVolumeInput
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateAllowedFlexVolume) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateAllowedFlexVolume {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedFlexVolume)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPath struct {
+	PathPrefix string `pulumi:"pathPrefix"`
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput
+	ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArgs struct {
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArgs) ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArgs) ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArray []GetPodSecurityPolicyTemplateAllowedHostPathInput
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArray) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArray) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateAllowedHostPath) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateAllowedHostPath) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateAllowedHostPath {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedHostPath)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroup struct {
+	Ranges []GetPodSecurityPolicyTemplateFsGroupRange `pulumi:"ranges"`
+	Rule *string `pulumi:"rule"`
+}
+
+type GetPodSecurityPolicyTemplateFsGroupInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput
+	ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupArgs struct {
+	Ranges GetPodSecurityPolicyTemplateFsGroupRangeArrayInput `pulumi:"ranges"`
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateFsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) Ranges() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateFsGroup) []GetPodSecurityPolicyTemplateFsGroupRange { return v.Ranges }).(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateFsGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRange struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput
+	ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArgs) ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArgs) ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArray []GetPodSecurityPolicyTemplateFsGroupRangeInput
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArray) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArray) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateFsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateFsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateFsGroupRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateFsGroupRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPort struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type GetPodSecurityPolicyTemplateHostPortInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput
+	ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(context.Context) GetPodSecurityPolicyTemplateHostPortOutput
+}
+
+type GetPodSecurityPolicyTemplateHostPortArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateHostPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArgs) ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput {
+	return i.ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArgs) ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateHostPortOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPortArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput
+	ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateHostPortArray []GetPodSecurityPolicyTemplateHostPortInput
+
+func (GetPodSecurityPolicyTemplateHostPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArray) ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArray) ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateHostPortArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPortOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateHostPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateHostPort) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateHostPort) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPortArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateHostPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateHostPort {
+		return vs[0].([]GetPodSecurityPolicyTemplateHostPort)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateHostPortOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroup struct {
+	Ranges []GetPodSecurityPolicyTemplateRunAsGroupRange `pulumi:"ranges"`
+	Rule string `pulumi:"rule"`
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupArgs struct {
+	Ranges GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput `pulumi:"ranges"`
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) Ranges() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsGroup) []GetPodSecurityPolicyTemplateRunAsGroupRange { return v.Ranges }).(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsGroup) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRange struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArray []GetPodSecurityPolicyTemplateRunAsGroupRangeInput
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateRunAsGroupRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateRunAsGroupRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUser struct {
+	Ranges []GetPodSecurityPolicyTemplateRunAsUserRange `pulumi:"ranges"`
+	Rule string `pulumi:"rule"`
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput
+	ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserArgs struct {
+	Ranges GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput `pulumi:"ranges"`
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) Ranges() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsUser) []GetPodSecurityPolicyTemplateRunAsUserRange { return v.Ranges }).(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsUser) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRange struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsUserRangeOutput() GetPodSecurityPolicyTemplateRunAsUserRangeOutput
+	ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ToGetPodSecurityPolicyTemplateRunAsUserRangeOutput() GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeArray []GetPodSecurityPolicyTemplateRunAsUserRangeInput
+
+func (GetPodSecurityPolicyTemplateRunAsUserRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserRangeArray) ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserRangeArray) ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeOutput() GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsUserRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRunAsUserRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsUserRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateRunAsUserRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateRunAsUserRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateRunAsUserRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateRuntimeClass struct {
+	AllowedRuntimeClassNames []string `pulumi:"allowedRuntimeClassNames"`
+	DefaultRuntimeClassName *string `pulumi:"defaultRuntimeClassName"`
+}
+
+type GetPodSecurityPolicyTemplateRuntimeClassInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRuntimeClassOutput() GetPodSecurityPolicyTemplateRuntimeClassOutput
+	ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRuntimeClassOutput
+}
+
+type GetPodSecurityPolicyTemplateRuntimeClassArgs struct {
+	AllowedRuntimeClassNames pulumi.StringArrayInput `pulumi:"allowedRuntimeClassNames"`
+	DefaultRuntimeClassName pulumi.StringPtrInput `pulumi:"defaultRuntimeClassName"`
+}
+
+func (GetPodSecurityPolicyTemplateRuntimeClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToGetPodSecurityPolicyTemplateRuntimeClassOutput() GetPodSecurityPolicyTemplateRuntimeClassOutput {
+	return i.ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRuntimeClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRuntimeClassOutput)
+}
+
+type GetPodSecurityPolicyTemplateRuntimeClassOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRuntimeClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRuntimeClass)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) ToGetPodSecurityPolicyTemplateRuntimeClassOutput() GetPodSecurityPolicyTemplateRuntimeClassOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRuntimeClassOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRuntimeClass) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateRuntimeClass) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSeLinux struct {
+	Rule string `pulumi:"rule"`
+	SeLinuxOption *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption `pulumi:"seLinuxOption"`
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSeLinuxOutput() GetPodSecurityPolicyTemplateSeLinuxOutput
+	ToGetPodSecurityPolicyTemplateSeLinuxOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSeLinuxOutput
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxArgs struct {
+	Rule pulumi.StringInput `pulumi:"rule"`
+	SeLinuxOption GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput `pulumi:"seLinuxOption"`
+}
+
+func (GetPodSecurityPolicyTemplateSeLinuxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxArgs) ToGetPodSecurityPolicyTemplateSeLinuxOutput() GetPodSecurityPolicyTemplateSeLinuxOutput {
+	return i.ToGetPodSecurityPolicyTemplateSeLinuxOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxArgs) ToGetPodSecurityPolicyTemplateSeLinuxOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxOutput)
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateSeLinuxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSeLinux)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxOutput) ToGetPodSecurityPolicyTemplateSeLinuxOutput() GetPodSecurityPolicyTemplateSeLinuxOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxOutput) ToGetPodSecurityPolicyTemplateSeLinuxOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinux) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxOutput) SeLinuxOption() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinux) *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption { return v.SeLinuxOption }).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption struct {
+	Level *string `pulumi:"level"`
+	Role *string `pulumi:"role"`
+	Type *string `pulumi:"type"`
+	User *string `pulumi:"user"`
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput
+	ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs struct {
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput).ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx)
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput
+	ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput
+}
+
+type getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs
+
+func GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtr(v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput {	return (*getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType)(v)
+}
+
+func (*getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (i *getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+		return &v
+	}).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
+}
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Elem() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
+	return o.ApplyT(func (v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption { return *v }).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroup struct {
+	Ranges []GetPodSecurityPolicyTemplateSupplementalGroupRange `pulumi:"ranges"`
+	Rule *string `pulumi:"rule"`
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSupplementalGroupOutput() GetPodSecurityPolicyTemplateSupplementalGroupOutput
+	ToGetPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSupplementalGroupOutput
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupArgs struct {
+	Ranges GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput `pulumi:"ranges"`
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupArgs) ToGetPodSecurityPolicyTemplateSupplementalGroupOutput() GetPodSecurityPolicyTemplateSupplementalGroupOutput {
+	return i.ToGetPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupArgs) ToGetPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSupplementalGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupOutput() GetPodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) Ranges() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSupplementalGroup) []GetPodSecurityPolicyTemplateSupplementalGroupRange { return v.Ranges }).(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSupplementalGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRange struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput
+	ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeArray []GetPodSecurityPolicyTemplateSupplementalGroupRangeInput
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArray) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArray) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput struct { *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func (v GetPodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput struct { *pulumi.OutputState}
+
+func (GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateSupplementalGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPodSecurityPolicyTemplateSupplementalGroupRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateSupplementalGroupRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput)
+}
+
 type GetProjectAlertGroupRecipient struct {
 	NotifierId string `pulumi:"notifierId"`
 	NotifierType string `pulumi:"notifierType"`
@@ -41247,6 +44435,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterEksConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingCustomTargetConfigOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingCustomTargetConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingElasticsearchConfigOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingElasticsearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingFluentdConfigOutput{})
@@ -41466,6 +44656,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateAzureConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigOutput{})
+	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpenstackConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpenstackConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateVsphereConfigOutput{})
@@ -41480,6 +44672,36 @@ func init() {
 	pulumi.RegisterOutputType(NotifierWebhookConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotifierWechatConfigOutput{})
 	pulumi.RegisterOutputType(NotifierWechatConfigPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedCsiDriverOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedFlexVolumeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedHostPathOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateAllowedHostPathArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateFsGroupOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateFsGroupPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateFsGroupRangeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateFsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateHostPortOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateHostPortArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsGroupOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsGroupPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsGroupRangeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsUserOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsUserPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsUserRangeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRunAsUserRangeArrayOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRuntimeClassOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateRuntimeClassPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSeLinuxOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSeLinuxPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSupplementalGroupOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSupplementalGroupPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSupplementalGroupRangeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAlertGroupRecipientOutput{})
 	pulumi.RegisterOutputType(ProjectAlertGroupRecipientArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAlertRuleMetricRuleOutput{})
@@ -41490,6 +44712,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectAlertRuleWorkloadRulePtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerResourceLimitOutput{})
 	pulumi.RegisterOutputType(ProjectContainerResourceLimitPtrOutput{})
+	pulumi.RegisterOutputType(ProjectLoggingCustomTargetConfigOutput{})
+	pulumi.RegisterOutputType(ProjectLoggingCustomTargetConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLoggingElasticsearchConfigOutput{})
 	pulumi.RegisterOutputType(ProjectLoggingElasticsearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLoggingFluentdConfigOutput{})
@@ -41542,7 +44766,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput{})
-	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderAzureCloudProviderOutput{})
@@ -41587,7 +44810,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
-	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
@@ -41610,7 +44832,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput{})
-	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput{})
@@ -41655,7 +44876,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput{})
-	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput{})
@@ -41689,6 +44909,30 @@ func init() {
 	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierWebhookConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierWechatConfigOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedHostPathOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateHostPortOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateHostPortArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRuntimeClassOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSeLinuxOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSupplementalGroupOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectAlertGroupRecipientOutput{})
 	pulumi.RegisterOutputType(GetProjectAlertGroupRecipientArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectAlertRuleMetricRuleOutput{})

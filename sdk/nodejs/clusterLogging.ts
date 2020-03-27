@@ -66,15 +66,19 @@ export class ClusterLogging extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    public readonly customTargetConfig!: pulumi.Output<outputs.ClusterLoggingCustomTargetConfig | undefined>;
+    /**
+     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly elasticsearchConfig!: pulumi.Output<outputs.ClusterLoggingElasticsearchConfig | undefined>;
     /**
-     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly fluentdConfig!: pulumi.Output<outputs.ClusterLoggingFluentdConfig | undefined>;
     /**
-     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly kafkaConfig!: pulumi.Output<outputs.ClusterLoggingKafkaConfig | undefined>;
     /**
@@ -102,11 +106,11 @@ export class ClusterLogging extends pulumi.CustomResource {
      */
     public readonly outputTags!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     public readonly splunkConfig!: pulumi.Output<outputs.ClusterLoggingSplunkConfig | undefined>;
     /**
-     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     public readonly syslogConfig!: pulumi.Output<outputs.ClusterLoggingSyslogConfig | undefined>;
 
@@ -124,6 +128,7 @@ export class ClusterLogging extends pulumi.CustomResource {
             const state = argsOrState as ClusterLoggingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
+            inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
             inputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
             inputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
@@ -145,6 +150,7 @@ export class ClusterLogging extends pulumi.CustomResource {
             }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
+            inputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
             inputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
             inputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
@@ -181,15 +187,19 @@ export interface ClusterLoggingState {
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    readonly customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
+    /**
+     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
     /**
-     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
     /**
-     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
     /**
@@ -217,11 +227,11 @@ export interface ClusterLoggingState {
      */
     readonly outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     readonly splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
     /**
-     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     readonly syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
 }
@@ -239,15 +249,19 @@ export interface ClusterLoggingArgs {
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    readonly customTargetConfig?: pulumi.Input<inputs.ClusterLoggingCustomTargetConfig>;
+    /**
+     * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
     /**
-     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly fluentdConfig?: pulumi.Input<inputs.ClusterLoggingFluentdConfig>;
     /**
-     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly kafkaConfig?: pulumi.Input<inputs.ClusterLoggingKafkaConfig>;
     /**
@@ -275,11 +289,11 @@ export interface ClusterLoggingArgs {
      */
     readonly outputTags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     readonly splunkConfig?: pulumi.Input<inputs.ClusterLoggingSplunkConfig>;
     /**
-     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     readonly syslogConfig?: pulumi.Input<inputs.ClusterLoggingSyslogConfig>;
 }

@@ -29,9 +29,9 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk v1.4.1
+	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.12.2-0.20200313044354-8111d33438b9
 	github.com/pulumi/pulumi-terraform-bridge v1.8.2
-	github.com/terraform-providers/terraform-provider-rancher2 v1.7.2
+	github.com/terraform-providers/terraform-provider-rancher2 v1.7.3
 )

@@ -149,7 +149,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterGkeConfig?> GkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Kube Config generated for the cluster (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -544,7 +544,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterGkeConfigGetArgs>? GkeConfig { get; set; }
 
         /// <summary>
-        /// (Computed) Kube Config generated for the cluster (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -4634,6 +4634,12 @@ namespace Pulumi.Rancher2
         [Input("flannelNetworkProvider")]
         public Input<ClusterRkeConfigNetworkFlannelNetworkProviderArgs>? FlannelNetworkProvider { get; set; }
 
+        /// <summary>
+        /// Network provider MTU. Default `0` (int)
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
         [Input("options")]
         private InputMap<object>? _options;
 
@@ -4647,7 +4653,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         /// </summary>
         [Input("plugin")]
         public Input<string>? Plugin { get; set; }
@@ -4761,6 +4767,12 @@ namespace Pulumi.Rancher2
         [Input("flannelNetworkProvider")]
         public Input<ClusterRkeConfigNetworkFlannelNetworkProviderGetArgs>? FlannelNetworkProvider { get; set; }
 
+        /// <summary>
+        /// Network provider MTU. Default `0` (int)
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
         [Input("options")]
         private InputMap<object>? _options;
 
@@ -4774,7 +4786,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         /// </summary>
         [Input("plugin")]
         public Input<string>? Plugin { get; set; }
@@ -5715,7 +5727,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -5758,7 +5770,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -7590,7 +7602,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (list maxitems:1)
         /// </summary>
-        public readonly ClusterRkeConfigCloudProviderAwsCloudProviderGlobal? Global;
+        public readonly ClusterRkeConfigCloudProviderAwsCloudProviderGlobal Global;
         /// <summary>
         /// (list)
         /// </summary>
@@ -7598,7 +7610,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private ClusterRkeConfigCloudProviderAwsCloudProvider(
-            ClusterRkeConfigCloudProviderAwsCloudProviderGlobal? global,
+            ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global,
             ImmutableArray<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrides> serviceOverrides)
         {
             Global = global;
@@ -8465,11 +8477,15 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ClusterRkeConfigNetworkFlannelNetworkProvider? FlannelNetworkProvider;
         /// <summary>
+        /// Network provider MTU. Default `0` (int)
+        /// </summary>
+        public readonly int? Mtu;
+        /// <summary>
         /// RKE options for network (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Options;
         /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         /// </summary>
         public readonly string Plugin;
         /// <summary>
@@ -8482,6 +8498,7 @@ namespace Pulumi.Rancher2
             ClusterRkeConfigNetworkCalicoNetworkProvider? calicoNetworkProvider,
             ClusterRkeConfigNetworkCanalNetworkProvider? canalNetworkProvider,
             ClusterRkeConfigNetworkFlannelNetworkProvider? flannelNetworkProvider,
+            int? mtu,
             ImmutableDictionary<string, object> options,
             string plugin,
             ClusterRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
@@ -8489,6 +8506,7 @@ namespace Pulumi.Rancher2
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;
+            Mtu = mtu;
             Options = options;
             Plugin = plugin;
             WeaveNetworkProvider = weaveNetworkProvider;
@@ -8997,7 +9015,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Event rate limit configuration. (map)
         /// </summary>
-        public readonly ClusterRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
+        public readonly ClusterRkeConfigServicesKubeApiAuditLogConfiguration Configuration;
         /// <summary>
         /// Enable the authorized cluster endpoint. Default `true` (bool)
         /// </summary>
@@ -9005,7 +9023,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private ClusterRkeConfigServicesKubeApiAuditLog(
-            ClusterRkeConfigServicesKubeApiAuditLogConfiguration? configuration,
+            ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration,
             bool? enabled)
         {
             Configuration = configuration;
@@ -9037,9 +9055,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
         /// </summary>
-        public readonly string? Policy;
+        public readonly string Policy;
 
         [OutputConstructor]
         private ClusterRkeConfigServicesKubeApiAuditLogConfiguration(
@@ -9048,7 +9066,7 @@ namespace Pulumi.Rancher2
             int? maxBackup,
             int? maxSize,
             string? path,
-            string? policy)
+            string policy)
         {
             Format = format;
             MaxAge = maxAge;

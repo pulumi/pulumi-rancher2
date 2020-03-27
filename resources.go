@@ -220,6 +220,10 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{Source: "nodeTemplate.html.markdown"},
 			},
 			"rancher2_notifier": {Tok: makeResource(mainMod, "Notifier")},
+			"rancher2_pod_security_policy_template": {
+				Tok:  makeResource(mainMod, "PodSecurityPolicyTemplate"),
+				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
+			},
 			"rancher2_project":  {Tok: makeResource(mainMod, "Project")},
 			"rancher2_project_alert_group": {
 				Tok:  makeResource(mainMod, "ProjectAlertGroup"),
@@ -313,6 +317,10 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{Source: "nodeTemplate.html.markdown"},
 			},
 			"rancher2_notifier": {Tok: makeDataSource(mainMod, "getNotifier")},
+			"rancher2_pod_security_policy_template": {
+				Tok:  makeDataSource(mainMod, "getPodSecurityPolicyTemplate"),
+				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
+			},
 			"rancher2_project":  {Tok: makeDataSource(mainMod, "getProject")},
 			"rancher2_project_alert_group": {
 				Tok:  makeDataSource(mainMod, "getProjectAlertGroup"),

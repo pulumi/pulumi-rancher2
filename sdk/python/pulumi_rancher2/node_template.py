@@ -161,6 +161,31 @@ class NodeTemplate(pulumi.CustomResource):
     """
     The name of the Node Template (string)
     """
+    opennebula_config: pulumi.Output[dict]
+    """
+    Opennebula config for the Node Template (list maxitems:1)
+
+      * `b2dSize` (`str`) - Size of the Volatile disk in MB - only for b2d (string)
+      * `cpu` (`str`) - CPU value for the VM (string)
+      * `devPrefix` (`str`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+      * `disableVnc` (`bool`) - VNC is enabled by default. Disable it with this flag (bool)
+      * `diskResize` (`str`) - Size of the disk for the VM in MB (string)
+      * `imageId` (`str`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+      * `imageName` (`str`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+      * `imageOwner` (`str`) - Owner of the image to use as the VM OS (string)
+        * `memory`- (Optional) Size of the memory for the VM in MB (string)
+      * `memory` (`str`)
+      * `networkId` (`str`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+      * `networkName` (`str`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+      * `networkOwner` (`str`) - Opennebula user ID of the Network to connect the machine to (string)
+      * `password` (`str`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+      * `templateId` (`str`) - Opennebula template ID to use. Conflicts with `template_name` (string)
+      * `template_name` (`str`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
+      * `user` (`str`) - Set the user for the XML-RPC API authentication (string)
+      * `vcpu` (`str`) - VCPUs for the VM (string)
+      * `xmlRpcUrl` (`str`) - Set the url for the Opennebula XML-RPC API (string)
+    """
     openstack_config: pulumi.Output[dict]
     """
     Openstack config for the Node Template (list maxitems:1)
@@ -185,7 +210,7 @@ class NodeTemplate(pulumi.CustomResource):
       * `netName` (`str`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
       * `novaNetwork` (`bool`) - Use the nova networking services instead of neutron (string)
       * `password` (`str`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
-      * `privateKeyFile` (`str`) - Private keyfile absolute path to use for SSH (string)
+      * `privateKeyFile` (`str`) - Private key content to use for SSH (string)
       * `region` (`str`) - OpenStack region name (string)
       * `secGroups` (`str`) - OpenStack comma separated security groups for the machine (string)
       * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
@@ -235,11 +260,11 @@ class NodeTemplate(pulumi.CustomResource):
       * `vcenter` (`str`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
       * `vcenterPort` (`str`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
     """
-    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information. 
+        Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 
-        amazonec2, azure, digitalocean, openstack and vsphere drivers are supported for node templates.
+        amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
@@ -265,6 +290,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[dict] labels: Labels for Node Template object (map)
         :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
         :param pulumi.Input[dict] vsphere_config: vSphere config for the Node Template (list maxitems:1)
@@ -350,6 +376,29 @@ class NodeTemplate(pulumi.CustomResource):
           * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
           * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
 
+        The **opennebula_config** object supports the following:
+
+          * `b2dSize` (`pulumi.Input[str]`) - Size of the Volatile disk in MB - only for b2d (string)
+          * `cpu` (`pulumi.Input[str]`) - CPU value for the VM (string)
+          * `devPrefix` (`pulumi.Input[str]`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+          * `disableVnc` (`pulumi.Input[bool]`) - VNC is enabled by default. Disable it with this flag (bool)
+          * `diskResize` (`pulumi.Input[str]`) - Size of the disk for the VM in MB (string)
+          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+          * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
+            * `memory`- (Optional) Size of the memory for the VM in MB (string)
+          * `memory` (`pulumi.Input[str]`)
+          * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+          * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+          * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
+          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+          * `templateId` (`pulumi.Input[str]`) - Opennebula template ID to use. Conflicts with `template_name` (string)
+          * `template_name` (`pulumi.Input[str]`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
+          * `user` (`pulumi.Input[str]`) - Set the user for the XML-RPC API authentication (string)
+          * `vcpu` (`pulumi.Input[str]`) - VCPUs for the VM (string)
+          * `xmlRpcUrl` (`pulumi.Input[str]`) - Set the url for the Opennebula XML-RPC API (string)
+
         The **openstack_config** object supports the following:
 
           * `activeTimeout` (`pulumi.Input[str]`)
@@ -372,7 +421,7 @@ class NodeTemplate(pulumi.CustomResource):
           * `netName` (`pulumi.Input[str]`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
           * `novaNetwork` (`pulumi.Input[bool]`) - Use the nova networking services instead of neutron (string)
           * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
-          * `privateKeyFile` (`pulumi.Input[str]`) - Private keyfile absolute path to use for SSH (string)
+          * `privateKeyFile` (`pulumi.Input[str]`) - Private key content to use for SSH (string)
           * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
           * `secGroups` (`pulumi.Input[str]`) - OpenStack comma separated security groups for the machine (string)
           * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
@@ -451,6 +500,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['engine_storage_driver'] = engine_storage_driver
             __props__['labels'] = labels
             __props__['name'] = name
+            __props__['opennebula_config'] = opennebula_config
             __props__['openstack_config'] = openstack_config
             __props__['use_internal_ip_address'] = use_internal_ip_address
             __props__['vsphere_config'] = vsphere_config
@@ -462,7 +512,7 @@ class NodeTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
+    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -489,6 +539,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[dict] labels: Labels for Node Template object (map)
         :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
         :param pulumi.Input[dict] vsphere_config: vSphere config for the Node Template (list maxitems:1)
@@ -574,6 +625,29 @@ class NodeTemplate(pulumi.CustomResource):
           * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
           * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
 
+        The **opennebula_config** object supports the following:
+
+          * `b2dSize` (`pulumi.Input[str]`) - Size of the Volatile disk in MB - only for b2d (string)
+          * `cpu` (`pulumi.Input[str]`) - CPU value for the VM (string)
+          * `devPrefix` (`pulumi.Input[str]`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+          * `disableVnc` (`pulumi.Input[bool]`) - VNC is enabled by default. Disable it with this flag (bool)
+          * `diskResize` (`pulumi.Input[str]`) - Size of the disk for the VM in MB (string)
+          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+          * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
+            * `memory`- (Optional) Size of the memory for the VM in MB (string)
+          * `memory` (`pulumi.Input[str]`)
+          * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+          * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+          * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
+          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+          * `templateId` (`pulumi.Input[str]`) - Opennebula template ID to use. Conflicts with `template_name` (string)
+          * `template_name` (`pulumi.Input[str]`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
+          * `user` (`pulumi.Input[str]`) - Set the user for the XML-RPC API authentication (string)
+          * `vcpu` (`pulumi.Input[str]`) - VCPUs for the VM (string)
+          * `xmlRpcUrl` (`pulumi.Input[str]`) - Set the url for the Opennebula XML-RPC API (string)
+
         The **openstack_config** object supports the following:
 
           * `activeTimeout` (`pulumi.Input[str]`)
@@ -596,7 +670,7 @@ class NodeTemplate(pulumi.CustomResource):
           * `netName` (`pulumi.Input[str]`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
           * `novaNetwork` (`pulumi.Input[bool]`) - Use the nova networking services instead of neutron (string)
           * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
-          * `privateKeyFile` (`pulumi.Input[str]`) - Private keyfile absolute path to use for SSH (string)
+          * `privateKeyFile` (`pulumi.Input[str]`) - Private key content to use for SSH (string)
           * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
           * `secGroups` (`pulumi.Input[str]`) - OpenStack comma separated security groups for the machine (string)
           * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
@@ -663,6 +737,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["engine_storage_driver"] = engine_storage_driver
         __props__["labels"] = labels
         __props__["name"] = name
+        __props__["opennebula_config"] = opennebula_config
         __props__["openstack_config"] = openstack_config
         __props__["use_internal_ip_address"] = use_internal_ip_address
         __props__["vsphere_config"] = vsphere_config

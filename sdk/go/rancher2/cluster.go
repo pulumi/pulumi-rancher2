@@ -60,7 +60,7 @@ type Cluster struct {
 	EnableNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
-	// (Computed) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -146,7 +146,7 @@ type clusterState struct {
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
-	// (Computed) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -205,7 +205,7 @@ type ClusterState struct {
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
-	// (Computed) Kube Config generated for the cluster (string)
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig pulumi.StringPtrInput
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput

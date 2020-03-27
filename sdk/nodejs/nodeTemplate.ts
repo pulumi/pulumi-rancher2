@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information. 
+ * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  * 
- * amazonec2, azure, digitalocean, openstack and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
  * 
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  * 
@@ -167,6 +167,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Opennebula config for the Node Template (list maxitems:1)
+     */
+    public readonly opennebulaConfig!: pulumi.Output<outputs.NodeTemplateOpennebulaConfig | undefined>;
+    /**
      * Openstack config for the Node Template (list maxitems:1)
      */
     public readonly openstackConfig!: pulumi.Output<outputs.NodeTemplateOpenstackConfig | undefined>;
@@ -210,6 +214,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
             inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
             inputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
             inputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
@@ -233,6 +238,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
             inputs["openstackConfig"] = args ? args.openstackConfig : undefined;
             inputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
             inputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
@@ -330,6 +336,10 @@ export interface NodeTemplateState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Opennebula config for the Node Template (list maxitems:1)
+     */
+    readonly opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
+    /**
      * Openstack config for the Node Template (list maxitems:1)
      */
     readonly openstackConfig?: pulumi.Input<inputs.NodeTemplateOpenstackConfig>;
@@ -419,6 +429,10 @@ export interface NodeTemplateArgs {
      * The name of the Node Template (string)
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Opennebula config for the Node Template (list maxitems:1)
+     */
+    readonly opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
     /**
      * Openstack config for the Node Template (list maxitems:1)
      */
