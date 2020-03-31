@@ -127,7 +127,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gkeConfig!: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
     /**
-     * (Computed) Kube Config generated for the cluster (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster (string)
      */
     public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
     /**
@@ -326,7 +326,7 @@ export interface ClusterState {
      */
     readonly gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
     /**
-     * (Computed) Kube Config generated for the cluster (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster (string)
      */
     readonly kubeConfig?: pulumi.Input<string>;
     /**

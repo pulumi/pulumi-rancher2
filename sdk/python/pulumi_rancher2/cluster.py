@@ -239,7 +239,7 @@ class Cluster(pulumi.CustomResource):
     """
     kube_config: pulumi.Output[str]
     """
-    (Computed) Kube Config generated for the cluster (string)
+    (Computed/Sensitive) Kube Config generated for the cluster (string)
     """
     labels: pulumi.Output[dict]
     """
@@ -423,8 +423,9 @@ class Cluster(pulumi.CustomResource):
         * `flannelNetworkProvider` (`dict`) - Flannel provider config for RKE network (list maxitems:1)
           * `iface` (`str`) - Iface config Flannel network provider (string)
 
+        * `mtu` (`float`) - Network provider MTU. Default `0` (int)
         * `options` (`dict`) - RKE options for network (map)
-        * `plugin` (`str`) - Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+        * `plugin` (`str`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         * `weaveNetworkProvider` (`dict`) - Weave provider config for RKE network (list maxitems:1)
           * `password` (`str`) - Registry password (string)
 
@@ -491,7 +492,7 @@ class Cluster(pulumi.CustomResource):
               * `maxBackup` (`float`) - Audit log max backup. Default: `10` (int)
               * `maxSize` (`float`) - Audit log max size. Default: `100` (int)
               * `path` (`str`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-              * `policy` (`str`) - Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+              * `policy` (`str`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
             * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
 
@@ -901,8 +902,9 @@ class Cluster(pulumi.CustomResource):
             * `flannelNetworkProvider` (`pulumi.Input[dict]`) - Flannel provider config for RKE network (list maxitems:1)
               * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
 
+            * `mtu` (`pulumi.Input[float]`) - Network provider MTU. Default `0` (int)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
             * `weaveNetworkProvider` (`pulumi.Input[dict]`) - Weave provider config for RKE network (list maxitems:1)
               * `password` (`pulumi.Input[str]`) - Registry password (string)
 
@@ -969,7 +971,7 @@ class Cluster(pulumi.CustomResource):
                   * `maxBackup` (`pulumi.Input[float]`) - Audit log max backup. Default: `10` (int)
                   * `maxSize` (`pulumi.Input[float]`) - Audit log max size. Default: `100` (int)
                   * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-                  * `policy` (`pulumi.Input[str]`) - Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+                  * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
                 * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
 
@@ -1107,7 +1109,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
         :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[str] kube_config: (Computed) Kube Config generated for the cluster (string)
+        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
@@ -1441,8 +1443,9 @@ class Cluster(pulumi.CustomResource):
             * `flannelNetworkProvider` (`pulumi.Input[dict]`) - Flannel provider config for RKE network (list maxitems:1)
               * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
 
+            * `mtu` (`pulumi.Input[float]`) - Network provider MTU. Default `0` (int)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
             * `weaveNetworkProvider` (`pulumi.Input[dict]`) - Weave provider config for RKE network (list maxitems:1)
               * `password` (`pulumi.Input[str]`) - Registry password (string)
 
@@ -1509,7 +1512,7 @@ class Cluster(pulumi.CustomResource):
                   * `maxBackup` (`pulumi.Input[float]`) - Audit log max backup. Default: `10` (int)
                   * `maxSize` (`pulumi.Input[float]`) - Audit log max size. Default: `100` (int)
                   * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-                  * `policy` (`pulumi.Input[str]`) - Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+                  * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
                 * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
 

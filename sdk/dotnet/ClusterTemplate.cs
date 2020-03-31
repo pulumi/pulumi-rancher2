@@ -1953,6 +1953,9 @@ namespace Pulumi.Rancher2
         [Input("flannelNetworkProvider")]
         public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs>? FlannelNetworkProvider { get; set; }
 
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
         [Input("options")]
         private InputMap<object>? _options;
         public InputMap<object> Options
@@ -2042,6 +2045,9 @@ namespace Pulumi.Rancher2
 
         [Input("flannelNetworkProvider")]
         public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProviderGetArgs>? FlannelNetworkProvider { get; set; }
+
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
 
         [Input("options")]
         private InputMap<object>? _options;
@@ -3639,12 +3645,12 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProvider
     {
-        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal? Global;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal Global;
         public readonly ImmutableArray<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrides> ServiceOverrides;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProvider(
-            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal? global,
+            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global,
             ImmutableArray<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrides> serviceOverrides)
         {
             Global = global;
@@ -4171,6 +4177,7 @@ namespace Pulumi.Rancher2
         public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCalicoNetworkProvider? CalicoNetworkProvider;
         public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCanalNetworkProvider? CanalNetworkProvider;
         public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProvider? FlannelNetworkProvider;
+        public readonly int? Mtu;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Plugin;
         public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkWeaveNetworkProvider? WeaveNetworkProvider;
@@ -4180,6 +4187,7 @@ namespace Pulumi.Rancher2
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCalicoNetworkProvider? calicoNetworkProvider,
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCanalNetworkProvider? canalNetworkProvider,
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProvider? flannelNetworkProvider,
+            int? mtu,
             ImmutableDictionary<string, object> options,
             string plugin,
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
@@ -4187,6 +4195,7 @@ namespace Pulumi.Rancher2
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;
+            Mtu = mtu;
             Options = options;
             Plugin = plugin;
             WeaveNetworkProvider = weaveNetworkProvider;
@@ -4503,7 +4512,7 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLog
     {
-        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration Configuration;
         /// <summary>
         /// Enable cluster template revision. Default `true` (bool)
         /// </summary>
@@ -4511,7 +4520,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLog(
-            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration? configuration,
+            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration configuration,
             bool? enabled)
         {
             Configuration = configuration;
@@ -4527,7 +4536,7 @@ namespace Pulumi.Rancher2
         public readonly int? MaxBackup;
         public readonly int? MaxSize;
         public readonly string? Path;
-        public readonly string? Policy;
+        public readonly string Policy;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration(
@@ -4536,7 +4545,7 @@ namespace Pulumi.Rancher2
             int? maxBackup,
             int? maxSize,
             string? path,
-            string? policy)
+            string policy)
         {
             Format = format;
             MaxAge = maxAge;

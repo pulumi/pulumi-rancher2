@@ -771,12 +771,12 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterRkeConfigCloudProviderAwsCloudProviderResult
     {
-        public readonly GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult? Global;
+        public readonly GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult Global;
         public readonly ImmutableArray<GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverridesResult> ServiceOverrides;
 
         [OutputConstructor]
         private GetClusterRkeConfigCloudProviderAwsCloudProviderResult(
-            GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult? global,
+            GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult global,
             ImmutableArray<GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverridesResult> serviceOverrides)
         {
             Global = global;
@@ -1330,6 +1330,7 @@ namespace Pulumi.Rancher2
         public readonly GetClusterRkeConfigNetworkCalicoNetworkProviderResult? CalicoNetworkProvider;
         public readonly GetClusterRkeConfigNetworkCanalNetworkProviderResult? CanalNetworkProvider;
         public readonly GetClusterRkeConfigNetworkFlannelNetworkProviderResult? FlannelNetworkProvider;
+        public readonly int? Mtu;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Plugin;
         public readonly GetClusterRkeConfigNetworkWeaveNetworkProviderResult? WeaveNetworkProvider;
@@ -1339,6 +1340,7 @@ namespace Pulumi.Rancher2
             GetClusterRkeConfigNetworkCalicoNetworkProviderResult? calicoNetworkProvider,
             GetClusterRkeConfigNetworkCanalNetworkProviderResult? canalNetworkProvider,
             GetClusterRkeConfigNetworkFlannelNetworkProviderResult? flannelNetworkProvider,
+            int? mtu,
             ImmutableDictionary<string, object> options,
             string plugin,
             GetClusterRkeConfigNetworkWeaveNetworkProviderResult? weaveNetworkProvider)
@@ -1346,6 +1348,7 @@ namespace Pulumi.Rancher2
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;
+            Mtu = mtu;
             Options = options;
             Plugin = plugin;
             WeaveNetworkProvider = weaveNetworkProvider;
@@ -1624,7 +1627,7 @@ namespace Pulumi.Rancher2
         public readonly int? MaxBackup;
         public readonly int? MaxSize;
         public readonly string? Path;
-        public readonly string? Policy;
+        public readonly string Policy;
 
         [OutputConstructor]
         private GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult(
@@ -1633,7 +1636,7 @@ namespace Pulumi.Rancher2
             int? maxBackup,
             int? maxSize,
             string? path,
-            string? policy)
+            string policy)
         {
             Format = format;
             MaxAge = maxAge;
@@ -1647,12 +1650,12 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterRkeConfigServicesKubeApiAuditLogResult
     {
-        public readonly GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult? Configuration;
+        public readonly GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult Configuration;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private GetClusterRkeConfigServicesKubeApiAuditLogResult(
-            GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult? configuration,
+            GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult configuration,
             bool? enabled)
         {
             Configuration = configuration;
