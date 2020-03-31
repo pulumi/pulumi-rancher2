@@ -94,6 +94,12 @@ namespace Pulumi.Rancher2
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
 
+        /// <summary>
+        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// </summary>
+        [Output("version")]
+        public Output<string?> Version { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Catalog resource with the given unique name, arguments, and options.
@@ -230,6 +236,12 @@ namespace Pulumi.Rancher2
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        /// <summary>
+        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public CatalogArgs()
         {
         }
@@ -326,6 +338,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public CatalogState()
         {

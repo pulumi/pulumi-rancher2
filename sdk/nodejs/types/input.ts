@@ -216,6 +216,10 @@ export interface ClusterAksConfig {
 
 export interface ClusterAlterGroupRecipient {
     /**
+     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     */
+    defaultRecipient?: pulumi.Input<boolean>;
+    /**
      * Recipient notifier ID (string)
      */
     notifierId: pulumi.Input<string>;
@@ -299,7 +303,7 @@ export interface ClusterClusterAuthEndpoint {
      */
     caCerts?: pulumi.Input<string>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -311,7 +315,6 @@ export interface ClusterClusterAuthEndpoint {
 export interface ClusterClusterMonitoringInput {
     /**
      * Key/value answers for monitor input (map)
-     * =======
      */
     answers?: pulumi.Input<{[key: string]: any}>;
 }
@@ -393,7 +396,6 @@ export interface ClusterClusterTemplateQuestion {
     type?: pulumi.Input<string>;
     /**
      * Variable name (string)
-     * >>>>>>> c6a2cbc... Feat: added rancher2..ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
      */
     variable: pulumi.Input<string>;
 }
@@ -679,6 +681,36 @@ export interface ClusterGkeConfig {
      * Zone GKE cluster (string)
      */
     zone?: pulumi.Input<string>;
+}
+
+export interface ClusterK3sConfig {
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy?: pulumi.Input<inputs.ClusterK3sConfigUpgradeStrategy>;
+    /**
+     * K3S kubernetes version (string)
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface ClusterK3sConfigUpgradeStrategy {
+    /**
+     * Drain server nodes. Default: `false` (bool)
+     */
+    drainServerNodes?: pulumi.Input<boolean>;
+    /**
+     * Drain worker nodes. Default: `false` (bool)
+     */
+    drainWorkerNodes?: pulumi.Input<boolean>;
+    /**
+     * Server concurrency. Default: `1` (int)
+     */
+    serverConcurrency?: pulumi.Input<number>;
+    /**
+     * Worker concurrency. Default: `1` (int)
+     */
+    workerConcurrency?: pulumi.Input<number>;
 }
 
 export interface ClusterLoggingCustomTargetConfig {
@@ -983,6 +1015,10 @@ export interface ClusterRkeConfig {
      * Node SSH private key path (string)
      */
     sshKeyPath?: pulumi.Input<string>;
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy?: pulumi.Input<inputs.ClusterRkeConfigUpgradeStrategy>;
 }
 
 export interface ClusterRkeConfigAuthentication {
@@ -1791,7 +1827,7 @@ export interface ClusterRkeConfigServicesEtcd {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -1853,11 +1889,11 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     alwaysPullImages?: pulumi.Input<boolean>;
     /**
-     * K8s audit log configuration. (list maxitem: 1)
+     * K8s audit log configuration. (list maxitems: 1)
      */
     auditLog?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLog>;
     /**
-     * K8s event rate limit configuration. (list maxitem: 1)
+     * K8s event rate limit configuration. (list maxitems: 1)
      */
     eventRateLimit?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiEventRateLimit>;
     /**
@@ -1900,7 +1936,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
      */
     configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -1938,7 +1974,7 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
      */
     configuration?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -1949,7 +1985,7 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     customConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -2056,6 +2092,104 @@ export interface ClusterRkeConfigServicesScheduler {
     image?: pulumi.Input<string>;
 }
 
+export interface ClusterRkeConfigUpgradeStrategy {
+    /**
+     * RKE drain nodes. Default: `false` (bool)
+     */
+    drain?: pulumi.Input<boolean>;
+    /**
+     * RKE drain node input (list Maxitems: 1)
+     */
+    drainInput?: pulumi.Input<inputs.ClusterRkeConfigUpgradeStrategyDrainInput>;
+    /**
+     * RKE max unavailable controlplane nodes. Default: `1` (string)
+     */
+    maxUnavailableControlplane?: pulumi.Input<string>;
+    /**
+     * RKE max unavailable worker nodes. Default: `10%` (string)
+     */
+    maxUnavailableWorker?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigUpgradeStrategyDrainInput {
+    /**
+     * Delete RKE node local data. Default: `false` (bool)
+     */
+    deleteLocalData?: pulumi.Input<boolean>;
+    /**
+     * Force RKE node drain. Default: `false` (bool)
+     */
+    force?: pulumi.Input<boolean>;
+    /**
+     * RKE node drain grace period. Default: `-1` (int)
+     */
+    gracePeriod?: pulumi.Input<number>;
+    /**
+     * Ignore RKE daemon sets. Default: `true` (bool)
+     */
+    ignoreDaemonSets?: pulumi.Input<boolean>;
+    /**
+     * RKE node drain timeout. Default: `60` (int)
+     */
+    timeout?: pulumi.Input<number>;
+}
+
+export interface ClusterScheduledClusterScan {
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Cluster scan config (List maxitems:1)
+     */
+    scanConfig: pulumi.Input<inputs.ClusterScheduledClusterScanScanConfig>;
+    /**
+     * Cluster scan schedule config (list maxitems:1)
+     */
+    scheduleConfig: pulumi.Input<inputs.ClusterScheduledClusterScanScheduleConfig>;
+}
+
+export interface ClusterScheduledClusterScanScanConfig {
+    /**
+     * Cluster Cis Scan config (List maxitems:1)
+     */
+    cisScanConfig?: pulumi.Input<inputs.ClusterScheduledClusterScanScanConfigCisScanConfig>;
+}
+
+export interface ClusterScheduledClusterScanScanConfigCisScanConfig {
+    /**
+     * Debug master. Default: `false` (bool)
+     */
+    debugMaster?: pulumi.Input<boolean>;
+    /**
+     * Debug worker. Default: `false` (bool)
+     */
+    debugWorker?: pulumi.Input<boolean>;
+    /**
+     * Override benchmark version (string)
+     */
+    overrideBenchmarkVersion?: pulumi.Input<string>;
+    /**
+     * Override skip (string)
+     */
+    overrideSkips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+     */
+    profile?: pulumi.Input<string>;
+}
+
+export interface ClusterScheduledClusterScanScheduleConfig {
+    /**
+     * Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+     */
+    cronSchedule: pulumi.Input<string>;
+    /**
+     * Retention for etcd backup. Default `6` (int)
+     */
+    retention?: pulumi.Input<number>;
+}
+
 export interface ClusterTemplateMember {
     /**
      * Member access type. Valid values: `["read-only" | "owner"]` (string)
@@ -2149,8 +2283,10 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Rancher Kubernetes Engine Config (list maxitems: 1)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
      */
     rkeConfig: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig>;
+    scheduledClusterScan?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan>;
     /**
      * Windows prefered cluster. Default: `false` (bool)
      */
@@ -2187,6 +2323,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshAgentAuth?: pulumi.Input<boolean>;
     sshCertPath?: pulumi.Input<string>;
     sshKeyPath?: pulumi.Input<string>;
+    upgradeStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -2573,6 +2710,47 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSc
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
+    drain?: pulumi.Input<boolean>;
+    drainInput?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput>;
+    maxUnavailableControlplane?: pulumi.Input<string>;
+    maxUnavailableWorker?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput {
+    deleteLocalData?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
+    gracePeriod?: pulumi.Input<number>;
+    ignoreDaemonSets?: pulumi.Input<boolean>;
+    timeout?: pulumi.Input<number>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+    scanConfig: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig>;
+    scheduleConfig: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
+    cisScanConfig?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
+    debugMaster?: pulumi.Input<boolean>;
+    debugWorker?: pulumi.Input<boolean>;
+    overrideBenchmarkVersion?: pulumi.Input<string>;
+    overrideSkips?: pulumi.Input<pulumi.Input<string>[]>;
+    profile?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
+    cronSchedule: pulumi.Input<string>;
+    retention?: pulumi.Input<number>;
 }
 
 export interface ClusterTemplateTemplateRevisionQuestion {
@@ -3756,6 +3934,7 @@ export interface PodSecurityPolicyTemplateSupplementalGroupRange {
 }
 
 export interface ProjectAlertGroupRecipient {
+    defaultRecipient?: pulumi.Input<boolean>;
     /**
      * Recipient notifier ID (string)
      */

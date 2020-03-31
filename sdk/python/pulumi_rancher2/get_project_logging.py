@@ -13,19 +13,25 @@ class GetProjectLoggingResult:
     """
     A collection of values returned by getProjectLogging.
     """
-    def __init__(__self__, annotations=None, elasticsearch_config=None, fluentd_config=None, id=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None):
+    def __init__(__self__, annotations=None, custom_target_config=None, elasticsearch_config=None, enable_json_parsing=None, fluentd_config=None, id=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
         """
         (Computed) Annotations for Cluster Logging object (map)
         """
+        if custom_target_config and not isinstance(custom_target_config, dict):
+            raise TypeError("Expected argument 'custom_target_config' to be a dict")
+        __self__.custom_target_config = custom_target_config
         if elasticsearch_config and not isinstance(elasticsearch_config, dict):
             raise TypeError("Expected argument 'elasticsearch_config' to be a dict")
         __self__.elasticsearch_config = elasticsearch_config
         """
         (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
         """
+        if enable_json_parsing and not isinstance(enable_json_parsing, bool):
+            raise TypeError("Expected argument 'enable_json_parsing' to be a bool")
+        __self__.enable_json_parsing = enable_json_parsing
         if fluentd_config and not isinstance(fluentd_config, dict):
             raise TypeError("Expected argument 'fluentd_config' to be a dict")
         __self__.fluentd_config = fluentd_config
@@ -102,7 +108,9 @@ class AwaitableGetProjectLoggingResult(GetProjectLoggingResult):
             yield self
         return GetProjectLoggingResult(
             annotations=self.annotations,
+            custom_target_config=self.custom_target_config,
             elasticsearch_config=self.elasticsearch_config,
+            enable_json_parsing=self.enable_json_parsing,
             fluentd_config=self.fluentd_config,
             id=self.id,
             kafka_config=self.kafka_config,
@@ -137,7 +145,9 @@ def get_project_logging(project_id=None,opts=None):
 
     return AwaitableGetProjectLoggingResult(
         annotations=__ret__.get('annotations'),
+        custom_target_config=__ret__.get('customTargetConfig'),
         elasticsearch_config=__ret__.get('elasticsearchConfig'),
+        enable_json_parsing=__ret__.get('enableJsonParsing'),
         fluentd_config=__ret__.get('fluentdConfig'),
         id=__ret__.get('id'),
         kafka_config=__ret__.get('kafkaConfig'),

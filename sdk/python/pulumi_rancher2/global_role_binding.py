@@ -18,6 +18,10 @@ class GlobalRoleBinding(pulumi.CustomResource):
     """
     The role id from create global role binding (string)
     """
+    group_principal_id: pulumi.Output[str]
+    """
+    The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+    """
     labels: pulumi.Output[dict]
     """
     Labels for global role binding (map)
@@ -30,7 +34,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
     """
     The user ID to assign global role binding (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, global_role_id=None, labels=None, name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, global_role_id=None, group_principal_id=None, labels=None, name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
 
@@ -40,6 +44,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
         :param pulumi.Input[str] global_role_id: The role id from create global role binding (string)
+        :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[dict] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
@@ -65,10 +70,9 @@ class GlobalRoleBinding(pulumi.CustomResource):
             if global_role_id is None:
                 raise TypeError("Missing required property 'global_role_id'")
             __props__['global_role_id'] = global_role_id
+            __props__['group_principal_id'] = group_principal_id
             __props__['labels'] = labels
             __props__['name'] = name
-            if user_id is None:
-                raise TypeError("Missing required property 'user_id'")
             __props__['user_id'] = user_id
         super(GlobalRoleBinding, __self__).__init__(
             'rancher2:index/globalRoleBinding:GlobalRoleBinding',
@@ -77,7 +81,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, global_role_id=None, labels=None, name=None, user_id=None):
+    def get(resource_name, id, opts=None, annotations=None, global_role_id=None, group_principal_id=None, labels=None, name=None, user_id=None):
         """
         Get an existing GlobalRoleBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,6 +91,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
         :param pulumi.Input[str] global_role_id: The role id from create global role binding (string)
+        :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         :param pulumi.Input[dict] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
@@ -97,6 +102,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         __props__["annotations"] = annotations
         __props__["global_role_id"] = global_role_id
+        __props__["group_principal_id"] = group_principal_id
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["user_id"] = user_id

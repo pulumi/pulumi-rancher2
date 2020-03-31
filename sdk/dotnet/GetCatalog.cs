@@ -85,6 +85,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Username;
         /// <summary>
+        /// (Computed) Helm version for the catalog (string)
+        /// </summary>
+        public readonly string Version;
+        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -103,6 +107,7 @@ namespace Pulumi.Rancher2
             string? scope,
             string url,
             string username,
+            string version,
             string id)
         {
             Annotations = annotations;
@@ -117,6 +122,7 @@ namespace Pulumi.Rancher2
             Scope = scope;
             Url = url;
             Username = username;
+            Version = version;
             Id = id;
         }
     }

@@ -277,6 +277,9 @@ namespace Pulumi.Rancher2
 
     public sealed class ProjectAlertGroupRecipientsArgs : Pulumi.ResourceArgs
     {
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
         /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
@@ -302,6 +305,9 @@ namespace Pulumi.Rancher2
 
     public sealed class ProjectAlertGroupRecipientsGetArgs : Pulumi.ResourceArgs
     {
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
         /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
@@ -332,6 +338,7 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class ProjectAlertGroupRecipients
     {
+        public readonly bool? DefaultRecipient;
         /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
@@ -347,10 +354,12 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private ProjectAlertGroupRecipients(
+            bool? defaultRecipient,
             string notifierId,
             string notifierType,
             string recipient)
         {
+            DefaultRecipient = defaultRecipient;
             NotifierId = notifierId;
             NotifierType = notifierType;
             Recipient = recipient;

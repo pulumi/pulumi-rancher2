@@ -121,6 +121,10 @@ export interface GetClusterResult {
      */
     readonly gkeConfig: outputs.GetClusterGkeConfig;
     /**
+     * (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     */
+    readonly k3sConfig: outputs.GetClusterK3sConfig;
+    /**
      * (Computed) Kube Config generated for the cluster (string)
      */
     readonly kubeConfig: string;
@@ -133,6 +137,7 @@ export interface GetClusterResult {
      * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
      */
     readonly rkeConfig: outputs.GetClusterRkeConfig;
+    readonly scheduledClusterScans: outputs.GetClusterScheduledClusterScan[];
     /**
      * (Computed) System project ID for the cluster (string)
      */

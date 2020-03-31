@@ -106,6 +106,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetClusterGkeConfigResult GkeConfig;
         /// <summary>
+        /// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.GetClusterK3sConfigResult K3sConfig;
+        /// <summary>
         /// (Computed) Kube Config generated for the cluster (string)
         /// </summary>
         public readonly string KubeConfig;
@@ -118,6 +122,7 @@ namespace Pulumi.Rancher2
         /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterRkeConfigResult RkeConfig;
+        public readonly ImmutableArray<Outputs.GetClusterScheduledClusterScansResult> ScheduledClusterScans;
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
         /// </summary>
@@ -147,10 +152,12 @@ namespace Pulumi.Rancher2
             bool enableClusterMonitoring,
             bool enableNetworkPolicy,
             Outputs.GetClusterGkeConfigResult gkeConfig,
+            Outputs.GetClusterK3sConfigResult k3sConfig,
             string kubeConfig,
             ImmutableDictionary<string, object> labels,
             string name,
             Outputs.GetClusterRkeConfigResult rkeConfig,
+            ImmutableArray<Outputs.GetClusterScheduledClusterScansResult> scheduledClusterScans,
             string systemProjectId,
             string id)
         {
@@ -172,10 +179,12 @@ namespace Pulumi.Rancher2
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             GkeConfig = gkeConfig;
+            K3sConfig = k3sConfig;
             KubeConfig = kubeConfig;
             Labels = labels;
             Name = name;
             RkeConfig = rkeConfig;
+            ScheduledClusterScans = scheduledClusterScans;
             SystemProjectId = systemProjectId;
             Id = id;
         }
@@ -665,6 +674,44 @@ namespace Pulumi.Rancher2
             Taints = taints;
             UseIpAliases = useIpAliases;
             Zone = zone;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterK3sConfigResult
+    {
+        public readonly GetClusterK3sConfigUpgradeStrategyResult UpgradeStrategy;
+        public readonly string Version;
+
+        [OutputConstructor]
+        private GetClusterK3sConfigResult(
+            GetClusterK3sConfigUpgradeStrategyResult upgradeStrategy,
+            string version)
+        {
+            UpgradeStrategy = upgradeStrategy;
+            Version = version;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterK3sConfigUpgradeStrategyResult
+    {
+        public readonly bool? DrainServerNodes;
+        public readonly bool? DrainWorkerNodes;
+        public readonly int? ServerConcurrency;
+        public readonly int? WorkerConcurrency;
+
+        [OutputConstructor]
+        private GetClusterK3sConfigUpgradeStrategyResult(
+            bool? drainServerNodes,
+            bool? drainWorkerNodes,
+            int? serverConcurrency,
+            int? workerConcurrency)
+        {
+            DrainServerNodes = drainServerNodes;
+            DrainWorkerNodes = drainWorkerNodes;
+            ServerConcurrency = serverConcurrency;
+            WorkerConcurrency = workerConcurrency;
         }
     }
 
@@ -1461,6 +1508,7 @@ namespace Pulumi.Rancher2
         public readonly bool? SshAgentAuth;
         public readonly string SshCertPath;
         public readonly string SshKeyPath;
+        public readonly GetClusterRkeConfigUpgradeStrategyResult UpgradeStrategy;
 
         [OutputConstructor]
         private GetClusterRkeConfigResult(
@@ -1483,7 +1531,8 @@ namespace Pulumi.Rancher2
             GetClusterRkeConfigServicesResult services,
             bool? sshAgentAuth,
             string sshCertPath,
-            string sshKeyPath)
+            string sshKeyPath,
+            GetClusterRkeConfigUpgradeStrategyResult upgradeStrategy)
         {
             AddonJobTimeout = addonJobTimeout;
             Addons = addons;
@@ -1505,6 +1554,7 @@ namespace Pulumi.Rancher2
             SshAgentAuth = sshAgentAuth;
             SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
+            UpgradeStrategy = upgradeStrategy;
         }
     }
 
@@ -1875,6 +1925,125 @@ namespace Pulumi.Rancher2
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterRkeConfigUpgradeStrategyDrainInputResult
+    {
+        public readonly bool? DeleteLocalData;
+        public readonly bool? Force;
+        public readonly int? GracePeriod;
+        public readonly bool? IgnoreDaemonSets;
+        public readonly int? Timeout;
+
+        [OutputConstructor]
+        private GetClusterRkeConfigUpgradeStrategyDrainInputResult(
+            bool? deleteLocalData,
+            bool? force,
+            int? gracePeriod,
+            bool? ignoreDaemonSets,
+            int? timeout)
+        {
+            DeleteLocalData = deleteLocalData;
+            Force = force;
+            GracePeriod = gracePeriod;
+            IgnoreDaemonSets = ignoreDaemonSets;
+            Timeout = timeout;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterRkeConfigUpgradeStrategyResult
+    {
+        public readonly bool? Drain;
+        public readonly GetClusterRkeConfigUpgradeStrategyDrainInputResult DrainInput;
+        public readonly string? MaxUnavailableControlplane;
+        public readonly string? MaxUnavailableWorker;
+
+        [OutputConstructor]
+        private GetClusterRkeConfigUpgradeStrategyResult(
+            bool? drain,
+            GetClusterRkeConfigUpgradeStrategyDrainInputResult drainInput,
+            string? maxUnavailableControlplane,
+            string? maxUnavailableWorker)
+        {
+            Drain = drain;
+            DrainInput = drainInput;
+            MaxUnavailableControlplane = maxUnavailableControlplane;
+            MaxUnavailableWorker = maxUnavailableWorker;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterScheduledClusterScansResult
+    {
+        public readonly bool? Enabled;
+        public readonly GetClusterScheduledClusterScansScanConfigResult ScanConfig;
+        public readonly GetClusterScheduledClusterScansScheduleConfigResult ScheduleConfig;
+
+        [OutputConstructor]
+        private GetClusterScheduledClusterScansResult(
+            bool? enabled,
+            GetClusterScheduledClusterScansScanConfigResult scanConfig,
+            GetClusterScheduledClusterScansScheduleConfigResult scheduleConfig)
+        {
+            Enabled = enabled;
+            ScanConfig = scanConfig;
+            ScheduleConfig = scheduleConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterScheduledClusterScansScanConfigCisScanConfigResult
+    {
+        public readonly bool? DebugMaster;
+        public readonly bool? DebugWorker;
+        public readonly string? OverrideBenchmarkVersion;
+        public readonly ImmutableArray<string> OverrideSkips;
+        public readonly string? Profile;
+
+        [OutputConstructor]
+        private GetClusterScheduledClusterScansScanConfigCisScanConfigResult(
+            bool? debugMaster,
+            bool? debugWorker,
+            string? overrideBenchmarkVersion,
+            ImmutableArray<string> overrideSkips,
+            string? profile)
+        {
+            DebugMaster = debugMaster;
+            DebugWorker = debugWorker;
+            OverrideBenchmarkVersion = overrideBenchmarkVersion;
+            OverrideSkips = overrideSkips;
+            Profile = profile;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterScheduledClusterScansScanConfigResult
+    {
+        public readonly GetClusterScheduledClusterScansScanConfigCisScanConfigResult CisScanConfig;
+
+        [OutputConstructor]
+        private GetClusterScheduledClusterScansScanConfigResult(GetClusterScheduledClusterScansScanConfigCisScanConfigResult cisScanConfig)
+        {
+            CisScanConfig = cisScanConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterScheduledClusterScansScheduleConfigResult
+    {
+        public readonly string CronSchedule;
+        public readonly int Retention;
+
+        [OutputConstructor]
+        private GetClusterScheduledClusterScansScheduleConfigResult(
+            string cronSchedule,
+            int retention)
+        {
+            CronSchedule = cronSchedule;
+            Retention = retention;
         }
     }
     }

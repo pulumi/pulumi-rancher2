@@ -27,6 +27,10 @@ export let caCerts: string | undefined = __config.get("caCerts") || utilities.ge
  */
 export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || (utilities.getEnvBoolean("RANCHER_INSECURE") || false);
 /**
+ * Rancher connection retries
+ */
+export let retries: number | undefined = __config.getObject<number>("retries");
+/**
  * API secret used to authenticate with the rancher server
  */
 export let secretKey: string | undefined = __config.get("secretKey") || utilities.getEnv("RANCHER_SECRET_KEY");

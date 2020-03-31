@@ -434,9 +434,13 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         /// </summary>
         [Input("rkeConfig", required: true)]
         public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigArgs> RkeConfig { get; set; } = null!;
+
+        [Input("scheduledClusterScan")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)
@@ -545,9 +549,13 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         /// </summary>
         [Input("rkeConfig", required: true)]
         public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigGetArgs> RkeConfig { get; set; } = null!;
+
+        [Input("scheduledClusterScan")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)
@@ -636,6 +644,9 @@ namespace Pulumi.Rancher2
 
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
+
+        [Input("upgradeStrategy")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigArgs()
         {
@@ -1826,6 +1837,9 @@ namespace Pulumi.Rancher2
 
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
+
+        [Input("upgradeStrategy")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyGetArgs>? UpgradeStrategy { get; set; }
 
         public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigGetArgs()
         {
@@ -3146,6 +3160,226 @@ namespace Pulumi.Rancher2
         }
     }
 
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    {
+        [Input("drain")]
+        public Input<bool>? Drain { get; set; }
+
+        [Input("drainInput")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputArgs>? DrainInput { get; set; }
+
+        [Input("maxUnavailableControlplane")]
+        public Input<string>? MaxUnavailableControlplane { get; set; }
+
+        [Input("maxUnavailableWorker")]
+        public Input<string>? MaxUnavailableWorker { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputArgs : Pulumi.ResourceArgs
+    {
+        [Input("deleteLocalData")]
+        public Input<bool>? DeleteLocalData { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        [Input("ignoreDaemonSets")]
+        public Input<bool>? IgnoreDaemonSets { get; set; }
+
+        [Input("timeout")]
+        public Input<int>? Timeout { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("deleteLocalData")]
+        public Input<bool>? DeleteLocalData { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        [Input("ignoreDaemonSets")]
+        public Input<bool>? IgnoreDaemonSets { get; set; }
+
+        [Input("timeout")]
+        public Input<int>? Timeout { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("drain")]
+        public Input<bool>? Drain { get; set; }
+
+        [Input("drainInput")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInputGetArgs>? DrainInput { get; set; }
+
+        [Input("maxUnavailableControlplane")]
+        public Input<string>? MaxUnavailableControlplane { get; set; }
+
+        [Input("maxUnavailableWorker")]
+        public Input<string>? MaxUnavailableWorker { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("scanConfig", required: true)]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigArgs> ScanConfig { get; set; } = null!;
+
+        [Input("scheduleConfig", required: true)]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigArgs> ScheduleConfig { get; set; } = null!;
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("scanConfig", required: true)]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigGetArgs> ScanConfig { get; set; } = null!;
+
+        [Input("scheduleConfig", required: true)]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigGetArgs> ScheduleConfig { get; set; } = null!;
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("cisScanConfig")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs>? CisScanConfig { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("debugMaster")]
+        public Input<bool>? DebugMaster { get; set; }
+
+        [Input("debugWorker")]
+        public Input<bool>? DebugWorker { get; set; }
+
+        [Input("overrideBenchmarkVersion")]
+        public Input<string>? OverrideBenchmarkVersion { get; set; }
+
+        [Input("overrideSkips")]
+        private InputList<string>? _overrideSkips;
+        public InputList<string> OverrideSkips
+        {
+            get => _overrideSkips ?? (_overrideSkips = new InputList<string>());
+            set => _overrideSkips = value;
+        }
+
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("debugMaster")]
+        public Input<bool>? DebugMaster { get; set; }
+
+        [Input("debugWorker")]
+        public Input<bool>? DebugWorker { get; set; }
+
+        [Input("overrideBenchmarkVersion")]
+        public Input<string>? OverrideBenchmarkVersion { get; set; }
+
+        [Input("overrideSkips")]
+        private InputList<string>? _overrideSkips;
+        public InputList<string> OverrideSkips
+        {
+            get => _overrideSkips ?? (_overrideSkips = new InputList<string>());
+            set => _overrideSkips = value;
+        }
+
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("cisScanConfig")]
+        public Input<ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfigGetArgs>? CisScanConfig { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronSchedule", required: true)]
+        public Input<string> CronSchedule { get; set; } = null!;
+
+        [Input("retention")]
+        public Input<int>? Retention { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronSchedule", required: true)]
+        public Input<string> CronSchedule { get; set; } = null!;
+
+        [Input("retention")]
+        public Input<int>? Retention { get; set; }
+
+        public ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfigGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterTemplateTemplateRevisionsGetArgs : Pulumi.ResourceArgs
     {
         [Input("annotations")]
@@ -3424,8 +3658,10 @@ namespace Pulumi.Rancher2
         public readonly bool? EnableNetworkPolicy;
         /// <summary>
         /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         /// </summary>
         public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfig RkeConfig;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScan? ScheduledClusterScan;
         /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)
         /// </summary>
@@ -3443,6 +3679,7 @@ namespace Pulumi.Rancher2
             bool? enableClusterMonitoring,
             bool? enableNetworkPolicy,
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfig rkeConfig,
+            ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScan? scheduledClusterScan,
             bool? windowsPreferedCluster)
         {
             ClusterAuthEndpoint = clusterAuthEndpoint;
@@ -3455,6 +3692,7 @@ namespace Pulumi.Rancher2
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             RkeConfig = rkeConfig;
+            ScheduledClusterScan = scheduledClusterScan;
             WindowsPreferedCluster = windowsPreferedCluster;
         }
     }
@@ -3504,6 +3742,7 @@ namespace Pulumi.Rancher2
         public readonly bool? SshAgentAuth;
         public readonly string SshCertPath;
         public readonly string SshKeyPath;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategy UpgradeStrategy;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionsClusterConfigRkeConfig(
@@ -3526,7 +3765,8 @@ namespace Pulumi.Rancher2
             ClusterTemplateTemplateRevisionsClusterConfigRkeConfigServices services,
             bool? sshAgentAuth,
             string sshCertPath,
-            string sshKeyPath)
+            string sshKeyPath,
+            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategy upgradeStrategy)
         {
             AddonJobTimeout = addonJobTimeout;
             Addons = addons;
@@ -3548,6 +3788,7 @@ namespace Pulumi.Rancher2
             SshAgentAuth = sshAgentAuth;
             SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
+            UpgradeStrategy = upgradeStrategy;
         }
     }
 
@@ -4700,6 +4941,128 @@ namespace Pulumi.Rancher2
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategy
+    {
+        public readonly bool? Drain;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInput DrainInput;
+        public readonly string? MaxUnavailableControlplane;
+        public readonly string? MaxUnavailableWorker;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategy(
+            bool? drain,
+            ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInput drainInput,
+            string? maxUnavailableControlplane,
+            string? maxUnavailableWorker)
+        {
+            Drain = drain;
+            DrainInput = drainInput;
+            MaxUnavailableControlplane = maxUnavailableControlplane;
+            MaxUnavailableWorker = maxUnavailableWorker;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInput
+    {
+        public readonly bool? DeleteLocalData;
+        public readonly bool? Force;
+        public readonly int? GracePeriod;
+        public readonly bool? IgnoreDaemonSets;
+        public readonly int? Timeout;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigRkeConfigUpgradeStrategyDrainInput(
+            bool? deleteLocalData,
+            bool? force,
+            int? gracePeriod,
+            bool? ignoreDaemonSets,
+            int? timeout)
+        {
+            DeleteLocalData = deleteLocalData;
+            Force = force;
+            GracePeriod = gracePeriod;
+            IgnoreDaemonSets = ignoreDaemonSets;
+            Timeout = timeout;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScan
+    {
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
+        public readonly bool? Enabled;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfig ScanConfig;
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfig ScheduleConfig;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScan(
+            bool? enabled,
+            ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfig scanConfig,
+            ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfig scheduleConfig)
+        {
+            Enabled = enabled;
+            ScanConfig = scanConfig;
+            ScheduleConfig = scheduleConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfig
+    {
+        public readonly ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfig CisScanConfig;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfig(ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfig cisScanConfig)
+        {
+            CisScanConfig = cisScanConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfig
+    {
+        public readonly bool? DebugMaster;
+        public readonly bool? DebugWorker;
+        public readonly string? OverrideBenchmarkVersion;
+        public readonly ImmutableArray<string> OverrideSkips;
+        public readonly string? Profile;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScanConfigCisScanConfig(
+            bool? debugMaster,
+            bool? debugWorker,
+            string? overrideBenchmarkVersion,
+            ImmutableArray<string> overrideSkips,
+            string? profile)
+        {
+            DebugMaster = debugMaster;
+            DebugWorker = debugWorker;
+            OverrideBenchmarkVersion = overrideBenchmarkVersion;
+            OverrideSkips = overrideSkips;
+            Profile = profile;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfig
+    {
+        public readonly string CronSchedule;
+        public readonly int Retention;
+
+        [OutputConstructor]
+        private ClusterTemplateTemplateRevisionsClusterConfigScheduledClusterScanScheduleConfig(
+            string cronSchedule,
+            int retention)
+        {
+            CronSchedule = cronSchedule;
+            Retention = retention;
         }
     }
 

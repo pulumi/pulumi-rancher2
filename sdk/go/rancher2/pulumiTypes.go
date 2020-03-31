@@ -1272,6 +1272,8 @@ func (o ClusterAksConfigPtrOutput) VirtualNetworkResourceGroup() pulumi.StringOu
 }
 
 type ClusterAlterGroupRecipient struct {
+	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId string `pulumi:"notifierId"`
 	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
@@ -1288,6 +1290,8 @@ type ClusterAlterGroupRecipientInput interface {
 }
 
 type ClusterAlterGroupRecipientArgs struct {
+	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId pulumi.StringInput `pulumi:"notifierId"`
 	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
@@ -1341,6 +1345,11 @@ func (o ClusterAlterGroupRecipientOutput) ToClusterAlterGroupRecipientOutput() C
 
 func (o ClusterAlterGroupRecipientOutput) ToClusterAlterGroupRecipientOutputWithContext(ctx context.Context) ClusterAlterGroupRecipientOutput {
 	return o
+}
+
+// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+func (o ClusterAlterGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterAlterGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
 // Recipient notifier ID (string)
@@ -1955,7 +1964,7 @@ func (o ClusterAlterRuleSystemServiceRulePtrOutput) Condition() pulumi.StringPtr
 type ClusterClusterAuthEndpoint struct {
 	// CA certs for the authorized cluster endpoint (string)
 	CaCerts *string `pulumi:"caCerts"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 	// FQDN for the authorized cluster endpoint (string)
 	Fqdn *string `pulumi:"fqdn"`
@@ -1971,7 +1980,7 @@ type ClusterClusterAuthEndpointInput interface {
 type ClusterClusterAuthEndpointArgs struct {
 	// CA certs for the authorized cluster endpoint (string)
 	CaCerts pulumi.StringPtrInput `pulumi:"caCerts"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// FQDN for the authorized cluster endpoint (string)
 	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
@@ -2049,7 +2058,7 @@ func (o ClusterClusterAuthEndpointOutput) CaCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterClusterAuthEndpoint) *string { return v.CaCerts }).(pulumi.StringPtrOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterClusterAuthEndpointOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterClusterAuthEndpoint) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2082,7 +2091,7 @@ func (o ClusterClusterAuthEndpointPtrOutput) CaCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterClusterAuthEndpoint) *string { return v.CaCerts }).(pulumi.StringPtrOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterClusterAuthEndpointPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterClusterAuthEndpoint) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2094,7 +2103,6 @@ func (o ClusterClusterAuthEndpointPtrOutput) Fqdn() pulumi.StringPtrOutput {
 
 type ClusterClusterMonitoringInput struct {
 	// Key/value answers for monitor input (map)
-	// =======
 	Answers map[string]interface{} `pulumi:"answers"`
 }
 
@@ -2107,7 +2115,6 @@ type ClusterClusterMonitoringInputInput interface {
 
 type ClusterClusterMonitoringInputArgs struct {
 	// Key/value answers for monitor input (map)
-	// =======
 	Answers pulumi.MapInput `pulumi:"answers"`
 }
 
@@ -2179,7 +2186,6 @@ func (o ClusterClusterMonitoringInputOutput) ToClusterClusterMonitoringInputPtrO
 	}).(ClusterClusterMonitoringInputPtrOutput)
 }
 // Key/value answers for monitor input (map)
-// =======
 func (o ClusterClusterMonitoringInputOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterClusterMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
 }
@@ -2203,7 +2209,6 @@ func (o ClusterClusterMonitoringInputPtrOutput) Elem() ClusterClusterMonitoringI
 }
 
 // Key/value answers for monitor input (map)
-// =======
 func (o ClusterClusterMonitoringInputPtrOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func (v ClusterClusterMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
 }
@@ -2608,7 +2613,6 @@ type ClusterClusterTemplateQuestion struct {
 	// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
 	Type *string `pulumi:"type"`
 	// Variable name (string)
-	// >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
 	Variable string `pulumi:"variable"`
 }
 
@@ -2627,7 +2631,6 @@ type ClusterClusterTemplateQuestionArgs struct {
 	// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Variable name (string)
-	// >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
 	Variable pulumi.StringInput `pulumi:"variable"`
 }
 
@@ -2694,7 +2697,6 @@ func (o ClusterClusterTemplateQuestionOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Variable name (string)
-// >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
 func (o ClusterClusterTemplateQuestionOutput) Variable() pulumi.StringOutput {
 	return o.ApplyT(func (v ClusterClusterTemplateQuestion) string { return v.Variable }).(pulumi.StringOutput)
 }
@@ -3889,6 +3891,286 @@ func (o ClusterGkeConfigPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 // Zone GKE cluster (string)
 func (o ClusterGkeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterGkeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type ClusterK3sConfig struct {
+	// K3S upgrade strategy (List maxitems: 1)
+	UpgradeStrategy *ClusterK3sConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
+	// K3S kubernetes version (string)
+	Version *string `pulumi:"version"`
+}
+
+type ClusterK3sConfigInput interface {
+	pulumi.Input
+
+	ToClusterK3sConfigOutput() ClusterK3sConfigOutput
+	ToClusterK3sConfigOutputWithContext(context.Context) ClusterK3sConfigOutput
+}
+
+type ClusterK3sConfigArgs struct {
+	// K3S upgrade strategy (List maxitems: 1)
+	UpgradeStrategy ClusterK3sConfigUpgradeStrategyPtrInput `pulumi:"upgradeStrategy"`
+	// K3S kubernetes version (string)
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClusterK3sConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterK3sConfig)(nil)).Elem()
+}
+
+func (i ClusterK3sConfigArgs) ToClusterK3sConfigOutput() ClusterK3sConfigOutput {
+	return i.ToClusterK3sConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterK3sConfigArgs) ToClusterK3sConfigOutputWithContext(ctx context.Context) ClusterK3sConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigOutput)
+}
+
+func (i ClusterK3sConfigArgs) ToClusterK3sConfigPtrOutput() ClusterK3sConfigPtrOutput {
+	return i.ToClusterK3sConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterK3sConfigArgs) ToClusterK3sConfigPtrOutputWithContext(ctx context.Context) ClusterK3sConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigOutput).ToClusterK3sConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterK3sConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterK3sConfigPtrOutput() ClusterK3sConfigPtrOutput
+	ToClusterK3sConfigPtrOutputWithContext(context.Context) ClusterK3sConfigPtrOutput
+}
+
+type clusterK3sConfigPtrType ClusterK3sConfigArgs
+
+func ClusterK3sConfigPtr(v *ClusterK3sConfigArgs) ClusterK3sConfigPtrInput {	return (*clusterK3sConfigPtrType)(v)
+}
+
+func (*clusterK3sConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterK3sConfig)(nil)).Elem()
+}
+
+func (i *clusterK3sConfigPtrType) ToClusterK3sConfigPtrOutput() ClusterK3sConfigPtrOutput {
+	return i.ToClusterK3sConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterK3sConfigPtrType) ToClusterK3sConfigPtrOutputWithContext(ctx context.Context) ClusterK3sConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigPtrOutput)
+}
+
+type ClusterK3sConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterK3sConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterK3sConfig)(nil)).Elem()
+}
+
+func (o ClusterK3sConfigOutput) ToClusterK3sConfigOutput() ClusterK3sConfigOutput {
+	return o
+}
+
+func (o ClusterK3sConfigOutput) ToClusterK3sConfigOutputWithContext(ctx context.Context) ClusterK3sConfigOutput {
+	return o
+}
+
+func (o ClusterK3sConfigOutput) ToClusterK3sConfigPtrOutput() ClusterK3sConfigPtrOutput {
+	return o.ToClusterK3sConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterK3sConfigOutput) ToClusterK3sConfigPtrOutputWithContext(ctx context.Context) ClusterK3sConfigPtrOutput {
+	return o.ApplyT(func(v ClusterK3sConfig) *ClusterK3sConfig {
+		return &v
+	}).(ClusterK3sConfigPtrOutput)
+}
+// K3S upgrade strategy (List maxitems: 1)
+func (o ClusterK3sConfigOutput) UpgradeStrategy() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfig) *ClusterK3sConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterK3sConfigUpgradeStrategyPtrOutput)
+}
+
+// K3S kubernetes version (string)
+func (o ClusterK3sConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClusterK3sConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterK3sConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterK3sConfig)(nil)).Elem()
+}
+
+func (o ClusterK3sConfigPtrOutput) ToClusterK3sConfigPtrOutput() ClusterK3sConfigPtrOutput {
+	return o
+}
+
+func (o ClusterK3sConfigPtrOutput) ToClusterK3sConfigPtrOutputWithContext(ctx context.Context) ClusterK3sConfigPtrOutput {
+	return o
+}
+
+func (o ClusterK3sConfigPtrOutput) Elem() ClusterK3sConfigOutput {
+	return o.ApplyT(func (v *ClusterK3sConfig) ClusterK3sConfig { return *v }).(ClusterK3sConfigOutput)
+}
+
+// K3S upgrade strategy (List maxitems: 1)
+func (o ClusterK3sConfigPtrOutput) UpgradeStrategy() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfig) *ClusterK3sConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterK3sConfigUpgradeStrategyPtrOutput)
+}
+
+// K3S kubernetes version (string)
+func (o ClusterK3sConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClusterK3sConfigUpgradeStrategy struct {
+	// Drain server nodes. Default: `false` (bool)
+	DrainServerNodes *bool `pulumi:"drainServerNodes"`
+	// Drain worker nodes. Default: `false` (bool)
+	DrainWorkerNodes *bool `pulumi:"drainWorkerNodes"`
+	// Server concurrency. Default: `1` (int)
+	ServerConcurrency *int `pulumi:"serverConcurrency"`
+	// Worker concurrency. Default: `1` (int)
+	WorkerConcurrency *int `pulumi:"workerConcurrency"`
+}
+
+type ClusterK3sConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToClusterK3sConfigUpgradeStrategyOutput() ClusterK3sConfigUpgradeStrategyOutput
+	ToClusterK3sConfigUpgradeStrategyOutputWithContext(context.Context) ClusterK3sConfigUpgradeStrategyOutput
+}
+
+type ClusterK3sConfigUpgradeStrategyArgs struct {
+	// Drain server nodes. Default: `false` (bool)
+	DrainServerNodes pulumi.BoolPtrInput `pulumi:"drainServerNodes"`
+	// Drain worker nodes. Default: `false` (bool)
+	DrainWorkerNodes pulumi.BoolPtrInput `pulumi:"drainWorkerNodes"`
+	// Server concurrency. Default: `1` (int)
+	ServerConcurrency pulumi.IntPtrInput `pulumi:"serverConcurrency"`
+	// Worker concurrency. Default: `1` (int)
+	WorkerConcurrency pulumi.IntPtrInput `pulumi:"workerConcurrency"`
+}
+
+func (ClusterK3sConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i ClusterK3sConfigUpgradeStrategyArgs) ToClusterK3sConfigUpgradeStrategyOutput() ClusterK3sConfigUpgradeStrategyOutput {
+	return i.ToClusterK3sConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterK3sConfigUpgradeStrategyArgs) ToClusterK3sConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigUpgradeStrategyOutput)
+}
+
+func (i ClusterK3sConfigUpgradeStrategyArgs) ToClusterK3sConfigUpgradeStrategyPtrOutput() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterK3sConfigUpgradeStrategyArgs) ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigUpgradeStrategyOutput).ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(ctx)
+}
+
+type ClusterK3sConfigUpgradeStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterK3sConfigUpgradeStrategyPtrOutput() ClusterK3sConfigUpgradeStrategyPtrOutput
+	ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(context.Context) ClusterK3sConfigUpgradeStrategyPtrOutput
+}
+
+type clusterK3sConfigUpgradeStrategyPtrType ClusterK3sConfigUpgradeStrategyArgs
+
+func ClusterK3sConfigUpgradeStrategyPtr(v *ClusterK3sConfigUpgradeStrategyArgs) ClusterK3sConfigUpgradeStrategyPtrInput {	return (*clusterK3sConfigUpgradeStrategyPtrType)(v)
+}
+
+func (*clusterK3sConfigUpgradeStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i *clusterK3sConfigUpgradeStrategyPtrType) ToClusterK3sConfigUpgradeStrategyPtrOutput() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterK3sConfigUpgradeStrategyPtrType) ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterK3sConfigUpgradeStrategyPtrOutput)
+}
+
+type ClusterK3sConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (ClusterK3sConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterK3sConfigUpgradeStrategyOutput) ToClusterK3sConfigUpgradeStrategyOutput() ClusterK3sConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterK3sConfigUpgradeStrategyOutput) ToClusterK3sConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterK3sConfigUpgradeStrategyOutput) ToClusterK3sConfigUpgradeStrategyPtrOutput() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o.ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterK3sConfigUpgradeStrategyOutput) ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterK3sConfigUpgradeStrategy) *ClusterK3sConfigUpgradeStrategy {
+		return &v
+	}).(ClusterK3sConfigUpgradeStrategyPtrOutput)
+}
+// Drain server nodes. Default: `false` (bool)
+func (o ClusterK3sConfigUpgradeStrategyOutput) DrainServerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *bool { return v.DrainServerNodes }).(pulumi.BoolPtrOutput)
+}
+
+// Drain worker nodes. Default: `false` (bool)
+func (o ClusterK3sConfigUpgradeStrategyOutput) DrainWorkerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *bool { return v.DrainWorkerNodes }).(pulumi.BoolPtrOutput)
+}
+
+// Server concurrency. Default: `1` (int)
+func (o ClusterK3sConfigUpgradeStrategyOutput) ServerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *int { return v.ServerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// Worker concurrency. Default: `1` (int)
+func (o ClusterK3sConfigUpgradeStrategyOutput) WorkerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *int { return v.WorkerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+type ClusterK3sConfigUpgradeStrategyPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterK3sConfigUpgradeStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) ToClusterK3sConfigUpgradeStrategyPtrOutput() ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) ToClusterK3sConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterK3sConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) Elem() ClusterK3sConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v *ClusterK3sConfigUpgradeStrategy) ClusterK3sConfigUpgradeStrategy { return *v }).(ClusterK3sConfigUpgradeStrategyOutput)
+}
+
+// Drain server nodes. Default: `false` (bool)
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) DrainServerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *bool { return v.DrainServerNodes }).(pulumi.BoolPtrOutput)
+}
+
+// Drain worker nodes. Default: `false` (bool)
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) DrainWorkerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *bool { return v.DrainWorkerNodes }).(pulumi.BoolPtrOutput)
+}
+
+// Server concurrency. Default: `1` (int)
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) ServerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *int { return v.ServerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// Worker concurrency. Default: `1` (int)
+func (o ClusterK3sConfigUpgradeStrategyPtrOutput) WorkerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterK3sConfigUpgradeStrategy) *int { return v.WorkerConcurrency }).(pulumi.IntPtrOutput)
 }
 
 type ClusterLoggingCustomTargetConfig struct {
@@ -5265,6 +5547,8 @@ type ClusterRkeConfig struct {
 	SshCertPath *string `pulumi:"sshCertPath"`
 	// Node SSH private key path (string)
 	SshKeyPath *string `pulumi:"sshKeyPath"`
+	// K3S upgrade strategy (List maxitems: 1)
+	UpgradeStrategy *ClusterRkeConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
 }
 
 type ClusterRkeConfigInput interface {
@@ -5315,6 +5599,8 @@ type ClusterRkeConfigArgs struct {
 	SshCertPath pulumi.StringPtrInput `pulumi:"sshCertPath"`
 	// Node SSH private key path (string)
 	SshKeyPath pulumi.StringPtrInput `pulumi:"sshKeyPath"`
+	// K3S upgrade strategy (List maxitems: 1)
+	UpgradeStrategy ClusterRkeConfigUpgradeStrategyPtrInput `pulumi:"upgradeStrategy"`
 }
 
 func (ClusterRkeConfigArgs) ElementType() reflect.Type {
@@ -5484,6 +5770,11 @@ func (o ClusterRkeConfigOutput) SshKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfig) *string { return v.SshKeyPath }).(pulumi.StringPtrOutput)
 }
 
+// K3S upgrade strategy (List maxitems: 1)
+func (o ClusterRkeConfigOutput) UpgradeStrategy() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfig) *ClusterRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterRkeConfigUpgradeStrategyPtrOutput)
+}
+
 type ClusterRkeConfigPtrOutput struct { *pulumi.OutputState}
 
 func (ClusterRkeConfigPtrOutput) ElementType() reflect.Type {
@@ -5600,6 +5891,11 @@ func (o ClusterRkeConfigPtrOutput) SshCertPath() pulumi.StringPtrOutput {
 // Node SSH private key path (string)
 func (o ClusterRkeConfigPtrOutput) SshKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfig) *string { return v.SshKeyPath }).(pulumi.StringPtrOutput)
+}
+
+// K3S upgrade strategy (List maxitems: 1)
+func (o ClusterRkeConfigPtrOutput) UpgradeStrategy() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfig) *ClusterRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterRkeConfigUpgradeStrategyPtrOutput)
 }
 
 type ClusterRkeConfigAuthentication struct {
@@ -10812,7 +11108,7 @@ func (o ClusterRkeConfigServicesEtcdPtrOutput) Uid() pulumi.IntPtrOutput {
 }
 
 type ClusterRkeConfigServicesEtcdBackupConfig struct {
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 	// Interval hours for etcd backup. Default `12` (int)
 	IntervalHours *int `pulumi:"intervalHours"`
@@ -10832,7 +11128,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigInput interface {
 }
 
 type ClusterRkeConfigServicesEtcdBackupConfigArgs struct {
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Interval hours for etcd backup. Default `12` (int)
 	IntervalHours pulumi.IntPtrInput `pulumi:"intervalHours"`
@@ -10911,7 +11207,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) ToClusterRkeConfigServic
 		return &v
 	}).(ClusterRkeConfigServicesEtcdBackupConfigPtrOutput)
 }
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -10954,7 +11250,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) Elem() ClusterRkeConf
 	return o.ApplyT(func (v *ClusterRkeConfigServicesEtcdBackupConfig) ClusterRkeConfigServicesEtcdBackupConfig { return *v }).(ClusterRkeConfigServicesEtcdBackupConfigOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11180,9 +11476,9 @@ type ClusterRkeConfigServicesKubeApi struct {
 	AdmissionConfiguration map[string]interface{} `pulumi:"admissionConfiguration"`
 	// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 	AlwaysPullImages *bool `pulumi:"alwaysPullImages"`
-	// K8s audit log configuration. (list maxitem: 1)
+	// K8s audit log configuration. (list maxitems: 1)
 	AuditLog *ClusterRkeConfigServicesKubeApiAuditLog `pulumi:"auditLog"`
-	// K8s event rate limit configuration. (list maxitem: 1)
+	// K8s event rate limit configuration. (list maxitems: 1)
 	EventRateLimit *ClusterRkeConfigServicesKubeApiEventRateLimit `pulumi:"eventRateLimit"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
@@ -11214,9 +11510,9 @@ type ClusterRkeConfigServicesKubeApiArgs struct {
 	AdmissionConfiguration pulumi.MapInput `pulumi:"admissionConfiguration"`
 	// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
 	AlwaysPullImages pulumi.BoolPtrInput `pulumi:"alwaysPullImages"`
-	// K8s audit log configuration. (list maxitem: 1)
+	// K8s audit log configuration. (list maxitems: 1)
 	AuditLog ClusterRkeConfigServicesKubeApiAuditLogPtrInput `pulumi:"auditLog"`
-	// K8s event rate limit configuration. (list maxitem: 1)
+	// K8s event rate limit configuration. (list maxitems: 1)
 	EventRateLimit ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput `pulumi:"eventRateLimit"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
@@ -11313,12 +11609,12 @@ func (o ClusterRkeConfigServicesKubeApiOutput) AlwaysPullImages() pulumi.BoolPtr
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
 }
 
-// K8s audit log configuration. (list maxitem: 1)
+// K8s audit log configuration. (list maxitems: 1)
 func (o ClusterRkeConfigServicesKubeApiOutput) AuditLog() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
 }
 
-// K8s event rate limit configuration. (list maxitem: 1)
+// K8s event rate limit configuration. (list maxitems: 1)
 func (o ClusterRkeConfigServicesKubeApiOutput) EventRateLimit() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
@@ -11391,12 +11687,12 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) AlwaysPullImages() pulumi.Bool
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *bool { return v.AlwaysPullImages }).(pulumi.BoolPtrOutput)
 }
 
-// K8s audit log configuration. (list maxitem: 1)
+// K8s audit log configuration. (list maxitems: 1)
 func (o ClusterRkeConfigServicesKubeApiPtrOutput) AuditLog() ClusterRkeConfigServicesKubeApiAuditLogPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiAuditLog { return v.AuditLog }).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
 }
 
-// K8s event rate limit configuration. (list maxitem: 1)
+// K8s event rate limit configuration. (list maxitems: 1)
 func (o ClusterRkeConfigServicesKubeApiPtrOutput) EventRateLimit() ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApi) *ClusterRkeConfigServicesKubeApiEventRateLimit { return v.EventRateLimit }).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
@@ -11444,7 +11740,7 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) ServiceNodePortRange() pulumi.
 type ClusterRkeConfigServicesKubeApiAuditLog struct {
 	// Event rate limit configuration. (map)
 	Configuration *ClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -11458,7 +11754,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogInput interface {
 type ClusterRkeConfigServicesKubeApiAuditLogArgs struct {
 	// Event rate limit configuration. (map)
 	Configuration ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -11534,7 +11830,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() ClusterRk
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11562,7 +11858,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() Cluste
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration { return v.Configuration }).(ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiAuditLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11752,7 +12048,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() 
 type ClusterRkeConfigServicesKubeApiEventRateLimit struct {
 	// Event rate limit configuration. (map)
 	Configuration map[string]interface{} `pulumi:"configuration"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -11766,7 +12062,7 @@ type ClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 type ClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
 	// Event rate limit configuration. (map)
 	Configuration pulumi.MapInput `pulumi:"configuration"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -11842,7 +12138,7 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pul
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11870,7 +12166,7 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() 
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11878,7 +12174,7 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
 	// Secrets encryption configuration. (map)
 	CustomConfig map[string]interface{} `pulumi:"customConfig"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -11892,7 +12188,7 @@ type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
 	// Secrets encryption configuration. (map)
 	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
-	// Enable the authorized cluster endpoint. Default `true` (bool)
+	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -11968,7 +12264,7 @@ func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConf
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11996,7 +12292,7 @@ func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomC
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} { return v.CustomConfig }).(pulumi.MapOutput)
 }
 
-// Enable the authorized cluster endpoint. Default `true` (bool)
+// Enable scheduled cluster scan. Default: `false` (bool)
 func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -12715,6 +13011,741 @@ func (o ClusterRkeConfigServicesSchedulerPtrOutput) Image() pulumi.StringPtrOutp
 	return o.ApplyT(func (v ClusterRkeConfigServicesScheduler) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
+type ClusterRkeConfigUpgradeStrategy struct {
+	// RKE drain nodes. Default: `false` (bool)
+	Drain *bool `pulumi:"drain"`
+	// RKE drain node input (list Maxitems: 1)
+	DrainInput *ClusterRkeConfigUpgradeStrategyDrainInput `pulumi:"drainInput"`
+	// RKE max unavailable controlplane nodes. Default: `1` (string)
+	MaxUnavailableControlplane *string `pulumi:"maxUnavailableControlplane"`
+	// RKE max unavailable worker nodes. Default: `10%` (string)
+	MaxUnavailableWorker *string `pulumi:"maxUnavailableWorker"`
+}
+
+type ClusterRkeConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigUpgradeStrategyOutput() ClusterRkeConfigUpgradeStrategyOutput
+	ToClusterRkeConfigUpgradeStrategyOutputWithContext(context.Context) ClusterRkeConfigUpgradeStrategyOutput
+}
+
+type ClusterRkeConfigUpgradeStrategyArgs struct {
+	// RKE drain nodes. Default: `false` (bool)
+	Drain pulumi.BoolPtrInput `pulumi:"drain"`
+	// RKE drain node input (list Maxitems: 1)
+	DrainInput ClusterRkeConfigUpgradeStrategyDrainInputPtrInput `pulumi:"drainInput"`
+	// RKE max unavailable controlplane nodes. Default: `1` (string)
+	MaxUnavailableControlplane pulumi.StringPtrInput `pulumi:"maxUnavailableControlplane"`
+	// RKE max unavailable worker nodes. Default: `10%` (string)
+	MaxUnavailableWorker pulumi.StringPtrInput `pulumi:"maxUnavailableWorker"`
+}
+
+func (ClusterRkeConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigUpgradeStrategyArgs) ToClusterRkeConfigUpgradeStrategyOutput() ClusterRkeConfigUpgradeStrategyOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigUpgradeStrategyArgs) ToClusterRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyOutput)
+}
+
+func (i ClusterRkeConfigUpgradeStrategyArgs) ToClusterRkeConfigUpgradeStrategyPtrOutput() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigUpgradeStrategyArgs) ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyOutput).ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigUpgradeStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigUpgradeStrategyPtrOutput() ClusterRkeConfigUpgradeStrategyPtrOutput
+	ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(context.Context) ClusterRkeConfigUpgradeStrategyPtrOutput
+}
+
+type clusterRkeConfigUpgradeStrategyPtrType ClusterRkeConfigUpgradeStrategyArgs
+
+func ClusterRkeConfigUpgradeStrategyPtr(v *ClusterRkeConfigUpgradeStrategyArgs) ClusterRkeConfigUpgradeStrategyPtrInput {	return (*clusterRkeConfigUpgradeStrategyPtrType)(v)
+}
+
+func (*clusterRkeConfigUpgradeStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigUpgradeStrategyPtrType) ToClusterRkeConfigUpgradeStrategyPtrOutput() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigUpgradeStrategyPtrType) ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyPtrOutput)
+}
+
+type ClusterRkeConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigUpgradeStrategyOutput) ToClusterRkeConfigUpgradeStrategyOutput() ClusterRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyOutput) ToClusterRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyOutput) ToClusterRkeConfigUpgradeStrategyPtrOutput() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o.ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigUpgradeStrategyOutput) ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigUpgradeStrategy) *ClusterRkeConfigUpgradeStrategy {
+		return &v
+	}).(ClusterRkeConfigUpgradeStrategyPtrOutput)
+}
+// RKE drain nodes. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+// RKE drain node input (list Maxitems: 1)
+func (o ClusterRkeConfigUpgradeStrategyOutput) DrainInput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *ClusterRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+// RKE max unavailable controlplane nodes. Default: `1` (string)
+func (o ClusterRkeConfigUpgradeStrategyOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+// RKE max unavailable worker nodes. Default: `10%` (string)
+func (o ClusterRkeConfigUpgradeStrategyOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigUpgradeStrategyPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigUpgradeStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) ToClusterRkeConfigUpgradeStrategyPtrOutput() ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) ToClusterRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) Elem() ClusterRkeConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigUpgradeStrategy) ClusterRkeConfigUpgradeStrategy { return *v }).(ClusterRkeConfigUpgradeStrategyOutput)
+}
+
+// RKE drain nodes. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+// RKE drain node input (list Maxitems: 1)
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) DrainInput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *ClusterRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+// RKE max unavailable controlplane nodes. Default: `1` (string)
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+// RKE max unavailable worker nodes. Default: `10%` (string)
+func (o ClusterRkeConfigUpgradeStrategyPtrOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInput struct {
+	// Delete RKE node local data. Default: `false` (bool)
+	DeleteLocalData *bool `pulumi:"deleteLocalData"`
+	// Force RKE node drain. Default: `false` (bool)
+	Force *bool `pulumi:"force"`
+	// RKE node drain grace period. Default: `-1` (int)
+	GracePeriod *int `pulumi:"gracePeriod"`
+	// Ignore RKE daemon sets. Default: `true` (bool)
+	IgnoreDaemonSets *bool `pulumi:"ignoreDaemonSets"`
+	// RKE node drain timeout. Default: `60` (int)
+	Timeout *int `pulumi:"timeout"`
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInputInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigUpgradeStrategyDrainInputOutput() ClusterRkeConfigUpgradeStrategyDrainInputOutput
+	ToClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Context) ClusterRkeConfigUpgradeStrategyDrainInputOutput
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInputArgs struct {
+	// Delete RKE node local data. Default: `false` (bool)
+	DeleteLocalData pulumi.BoolPtrInput `pulumi:"deleteLocalData"`
+	// Force RKE node drain. Default: `false` (bool)
+	Force pulumi.BoolPtrInput `pulumi:"force"`
+	// RKE node drain grace period. Default: `-1` (int)
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	// Ignore RKE daemon sets. Default: `true` (bool)
+	IgnoreDaemonSets pulumi.BoolPtrInput `pulumi:"ignoreDaemonSets"`
+	// RKE node drain timeout. Default: `60` (int)
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (ClusterRkeConfigUpgradeStrategyDrainInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigUpgradeStrategyDrainInputArgs) ToClusterRkeConfigUpgradeStrategyDrainInputOutput() ClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigUpgradeStrategyDrainInputArgs) ToClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+func (i ClusterRkeConfigUpgradeStrategyDrainInputArgs) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigUpgradeStrategyDrainInputArgs) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyDrainInputOutput).ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx)
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInputPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput
+	ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Context) ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput
+}
+
+type clusterRkeConfigUpgradeStrategyDrainInputPtrType ClusterRkeConfigUpgradeStrategyDrainInputArgs
+
+func ClusterRkeConfigUpgradeStrategyDrainInputPtr(v *ClusterRkeConfigUpgradeStrategyDrainInputArgs) ClusterRkeConfigUpgradeStrategyDrainInputPtrInput {	return (*clusterRkeConfigUpgradeStrategyDrainInputPtrType)(v)
+}
+
+func (*clusterRkeConfigUpgradeStrategyDrainInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigUpgradeStrategyDrainInputPtrType) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return i.ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigUpgradeStrategyDrainInputPtrType) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInputOutput struct { *pulumi.OutputState }
+
+func (ClusterRkeConfigUpgradeStrategyDrainInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) ToClusterRkeConfigUpgradeStrategyDrainInputOutput() ClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) ToClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigUpgradeStrategyDrainInput) *ClusterRkeConfigUpgradeStrategyDrainInput {
+		return &v
+	}).(ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+// Delete RKE node local data. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+// Force RKE node drain. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// RKE node drain grace period. Default: `-1` (int)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+// Ignore RKE daemon sets. Default: `true` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+// RKE node drain timeout. Default: `60` (int)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) ToClusterRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) Elem() ClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o.ApplyT(func (v *ClusterRkeConfigUpgradeStrategyDrainInput) ClusterRkeConfigUpgradeStrategyDrainInput { return *v }).(ClusterRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+// Delete RKE node local data. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+// Force RKE node drain. Default: `false` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// RKE node drain grace period. Default: `-1` (int)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+// Ignore RKE daemon sets. Default: `true` (bool)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+// RKE node drain timeout. Default: `60` (int)
+func (o ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type ClusterScheduledClusterScan struct {
+	// Enable scheduled cluster scan. Default: `false` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// Cluster scan config (List maxitems:1)
+	ScanConfig ClusterScheduledClusterScanScanConfig `pulumi:"scanConfig"`
+	// Cluster scan schedule config (list maxitems:1)
+	ScheduleConfig ClusterScheduledClusterScanScheduleConfig `pulumi:"scheduleConfig"`
+}
+
+type ClusterScheduledClusterScanInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanOutput() ClusterScheduledClusterScanOutput
+	ToClusterScheduledClusterScanOutputWithContext(context.Context) ClusterScheduledClusterScanOutput
+}
+
+type ClusterScheduledClusterScanArgs struct {
+	// Enable scheduled cluster scan. Default: `false` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Cluster scan config (List maxitems:1)
+	ScanConfig ClusterScheduledClusterScanScanConfigInput `pulumi:"scanConfig"`
+	// Cluster scan schedule config (list maxitems:1)
+	ScheduleConfig ClusterScheduledClusterScanScheduleConfigInput `pulumi:"scheduleConfig"`
+}
+
+func (ClusterScheduledClusterScanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (i ClusterScheduledClusterScanArgs) ToClusterScheduledClusterScanOutput() ClusterScheduledClusterScanOutput {
+	return i.ToClusterScheduledClusterScanOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanArgs) ToClusterScheduledClusterScanOutputWithContext(ctx context.Context) ClusterScheduledClusterScanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanOutput)
+}
+
+func (i ClusterScheduledClusterScanArgs) ToClusterScheduledClusterScanPtrOutput() ClusterScheduledClusterScanPtrOutput {
+	return i.ToClusterScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanArgs) ToClusterScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanOutput).ToClusterScheduledClusterScanPtrOutputWithContext(ctx)
+}
+
+type ClusterScheduledClusterScanPtrInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanPtrOutput() ClusterScheduledClusterScanPtrOutput
+	ToClusterScheduledClusterScanPtrOutputWithContext(context.Context) ClusterScheduledClusterScanPtrOutput
+}
+
+type clusterScheduledClusterScanPtrType ClusterScheduledClusterScanArgs
+
+func ClusterScheduledClusterScanPtr(v *ClusterScheduledClusterScanArgs) ClusterScheduledClusterScanPtrInput {	return (*clusterScheduledClusterScanPtrType)(v)
+}
+
+func (*clusterScheduledClusterScanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (i *clusterScheduledClusterScanPtrType) ToClusterScheduledClusterScanPtrOutput() ClusterScheduledClusterScanPtrOutput {
+	return i.ToClusterScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterScheduledClusterScanPtrType) ToClusterScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanPtrOutput)
+}
+
+type ClusterScheduledClusterScanOutput struct { *pulumi.OutputState }
+
+func (ClusterScheduledClusterScanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanOutput) ToClusterScheduledClusterScanOutput() ClusterScheduledClusterScanOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanOutput) ToClusterScheduledClusterScanOutputWithContext(ctx context.Context) ClusterScheduledClusterScanOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanOutput) ToClusterScheduledClusterScanPtrOutput() ClusterScheduledClusterScanPtrOutput {
+	return o.ToClusterScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterScheduledClusterScanOutput) ToClusterScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanPtrOutput {
+	return o.ApplyT(func(v ClusterScheduledClusterScan) *ClusterScheduledClusterScan {
+		return &v
+	}).(ClusterScheduledClusterScanPtrOutput)
+}
+// Enable scheduled cluster scan. Default: `false` (bool)
+func (o ClusterScheduledClusterScanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Cluster scan config (List maxitems:1)
+func (o ClusterScheduledClusterScanOutput) ScanConfig() ClusterScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) ClusterScheduledClusterScanScanConfig { return v.ScanConfig }).(ClusterScheduledClusterScanScanConfigOutput)
+}
+
+// Cluster scan schedule config (list maxitems:1)
+func (o ClusterScheduledClusterScanOutput) ScheduleConfig() ClusterScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) ClusterScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(ClusterScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterScheduledClusterScanPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterScheduledClusterScanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanPtrOutput) ToClusterScheduledClusterScanPtrOutput() ClusterScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanPtrOutput) ToClusterScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanPtrOutput) Elem() ClusterScheduledClusterScanOutput {
+	return o.ApplyT(func (v *ClusterScheduledClusterScan) ClusterScheduledClusterScan { return *v }).(ClusterScheduledClusterScanOutput)
+}
+
+// Enable scheduled cluster scan. Default: `false` (bool)
+func (o ClusterScheduledClusterScanPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Cluster scan config (List maxitems:1)
+func (o ClusterScheduledClusterScanPtrOutput) ScanConfig() ClusterScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) ClusterScheduledClusterScanScanConfig { return v.ScanConfig }).(ClusterScheduledClusterScanScanConfigOutput)
+}
+
+// Cluster scan schedule config (list maxitems:1)
+func (o ClusterScheduledClusterScanPtrOutput) ScheduleConfig() ClusterScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScan) ClusterScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(ClusterScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterScheduledClusterScanScanConfig struct {
+	// Cluster Cis Scan config (List maxitems:1)
+	CisScanConfig *ClusterScheduledClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
+}
+
+type ClusterScheduledClusterScanScanConfigInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanScanConfigOutput() ClusterScheduledClusterScanScanConfigOutput
+	ToClusterScheduledClusterScanScanConfigOutputWithContext(context.Context) ClusterScheduledClusterScanScanConfigOutput
+}
+
+type ClusterScheduledClusterScanScanConfigArgs struct {
+	// Cluster Cis Scan config (List maxitems:1)
+	CisScanConfig ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput `pulumi:"cisScanConfig"`
+}
+
+func (ClusterScheduledClusterScanScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (i ClusterScheduledClusterScanScanConfigArgs) ToClusterScheduledClusterScanScanConfigOutput() ClusterScheduledClusterScanScanConfigOutput {
+	return i.ToClusterScheduledClusterScanScanConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanScanConfigArgs) ToClusterScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanScanConfigOutput)
+}
+
+type ClusterScheduledClusterScanScanConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterScheduledClusterScanScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanScanConfigOutput) ToClusterScheduledClusterScanScanConfigOutput() ClusterScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScanConfigOutput) ToClusterScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+// Cluster Cis Scan config (List maxitems:1)
+func (o ClusterScheduledClusterScanScanConfigOutput) CisScanConfig() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfig) *ClusterScheduledClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfig struct {
+	// Debug master. Default: `false` (bool)
+	DebugMaster *bool `pulumi:"debugMaster"`
+	// Debug worker. Default: `false` (bool)
+	DebugWorker *bool `pulumi:"debugWorker"`
+	// Override benchmark version (string)
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	// Override skip (string)
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+	Profile *string `pulumi:"profile"`
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfigInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanScanConfigCisScanConfigOutput() ClusterScheduledClusterScanScanConfigCisScanConfigOutput
+	ToClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigOutput
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfigArgs struct {
+	// Debug master. Default: `false` (bool)
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	// Debug worker. Default: `false` (bool)
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	// Override benchmark version (string)
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	// Override skip (string)
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterScheduledClusterScanScanConfigCisScanConfigOutput() ClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return i.ToClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+func (i ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return i.ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanScanConfigCisScanConfigOutput).ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput
+	ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput
+}
+
+type clusterScheduledClusterScanScanConfigCisScanConfigPtrType ClusterScheduledClusterScanScanConfigCisScanConfigArgs
+
+func ClusterScheduledClusterScanScanConfigCisScanConfigPtr(v *ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput {	return (*clusterScheduledClusterScanScanConfigCisScanConfigPtrType)(v)
+}
+
+func (*clusterScheduledClusterScanScanConfigCisScanConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i *clusterScheduledClusterScanScanConfigCisScanConfigPtrType) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return i.ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterScheduledClusterScanScanConfigCisScanConfigPtrType) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterScheduledClusterScanScanConfigCisScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigOutput() ClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ApplyT(func(v ClusterScheduledClusterScanScanConfigCisScanConfig) *ClusterScheduledClusterScanScanConfigCisScanConfig {
+		return &v
+	}).(ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+// Debug master. Default: `false` (bool)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+// Debug worker. Default: `false` (bool)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+// Override benchmark version (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Override skip (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) ToClusterScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) Elem() ClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o.ApplyT(func (v *ClusterScheduledClusterScanScanConfigCisScanConfig) ClusterScheduledClusterScanScanConfigCisScanConfig { return *v }).(ClusterScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+// Debug master. Default: `false` (bool)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+// Debug worker. Default: `false` (bool)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+// Override benchmark version (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Override skip (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+func (o ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type ClusterScheduledClusterScanScheduleConfig struct {
+	// Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+	CronSchedule string `pulumi:"cronSchedule"`
+	// Retention for etcd backup. Default `6` (int)
+	Retention *int `pulumi:"retention"`
+}
+
+type ClusterScheduledClusterScanScheduleConfigInput interface {
+	pulumi.Input
+
+	ToClusterScheduledClusterScanScheduleConfigOutput() ClusterScheduledClusterScanScheduleConfigOutput
+	ToClusterScheduledClusterScanScheduleConfigOutputWithContext(context.Context) ClusterScheduledClusterScanScheduleConfigOutput
+}
+
+type ClusterScheduledClusterScanScheduleConfigArgs struct {
+	// Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+	CronSchedule pulumi.StringInput `pulumi:"cronSchedule"`
+	// Retention for etcd backup. Default `6` (int)
+	Retention pulumi.IntPtrInput `pulumi:"retention"`
+}
+
+func (ClusterScheduledClusterScanScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (i ClusterScheduledClusterScanScheduleConfigArgs) ToClusterScheduledClusterScanScheduleConfigOutput() ClusterScheduledClusterScanScheduleConfigOutput {
+	return i.ToClusterScheduledClusterScanScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterScheduledClusterScanScheduleConfigArgs) ToClusterScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterScheduledClusterScanScheduleConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterScheduledClusterScanScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (o ClusterScheduledClusterScanScheduleConfigOutput) ToClusterScheduledClusterScanScheduleConfigOutput() ClusterScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o ClusterScheduledClusterScanScheduleConfigOutput) ToClusterScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) ClusterScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+// Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+func (o ClusterScheduledClusterScanScheduleConfigOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScheduleConfig) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+// Retention for etcd backup. Default `6` (int)
+func (o ClusterScheduledClusterScanScheduleConfigOutput) Retention() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterScheduledClusterScanScheduleConfig) *int { return v.Retention }).(pulumi.IntPtrOutput)
+}
+
 type ClusterTemplateMember struct {
 	// Member access type. Valid values: `["read-only" | "owner"]` (string)
 	AccessType *string `pulumi:"accessType"`
@@ -13003,7 +14034,9 @@ type ClusterTemplateTemplateRevisionClusterConfig struct {
 	// Enable project network isolation. Default: `false` (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// Rancher Kubernetes Engine Config (list maxitems: 1)
+	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
 	RkeConfig ClusterTemplateTemplateRevisionClusterConfigRkeConfig `pulumi:"rkeConfig"`
+	ScheduledClusterScan *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	// Windows prefered cluster. Default: `false` (bool)
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
@@ -13035,7 +14068,9 @@ type ClusterTemplateTemplateRevisionClusterConfigArgs struct {
 	// Enable project network isolation. Default: `false` (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput `pulumi:"enableNetworkPolicy"`
 	// Rancher Kubernetes Engine Config (list maxitems: 1)
+	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
 	RkeConfig ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput `pulumi:"rkeConfig"`
+	ScheduledClusterScan ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput `pulumi:"scheduledClusterScan"`
 	// Windows prefered cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrInput `pulumi:"windowsPreferedCluster"`
 }
@@ -13112,8 +14147,13 @@ func (o ClusterTemplateTemplateRevisionClusterConfigOutput) EnableNetworkPolicy(
 }
 
 // Rancher Kubernetes Engine Config (list maxitems: 1)
+// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
 func (o ClusterTemplateTemplateRevisionClusterConfigOutput) RkeConfig() ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfig) ClusterTemplateTemplateRevisionClusterConfigRkeConfig { return v.RkeConfig }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigOutput) ScheduledClusterScan() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfig) *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan { return v.ScheduledClusterScan }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
 }
 
 // Windows prefered cluster. Default: `false` (bool)
@@ -13274,6 +14314,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
 	SshCertPath *string `pulumi:"sshCertPath"`
 	SshKeyPath *string `pulumi:"sshKeyPath"`
+	UpgradeStrategy *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput interface {
@@ -13304,6 +14345,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
 	SshCertPath pulumi.StringPtrInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringPtrInput `pulumi:"sshKeyPath"`
+	UpgradeStrategy ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput `pulumi:"upgradeStrategy"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs) ElementType() reflect.Type {
@@ -13410,6 +14452,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshCertPath
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *string { return v.SshKeyPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) UpgradeStrategy() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication struct {
@@ -19648,6 +20694,668 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPt
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy struct {
+	Drain *bool `pulumi:"drain"`
+	DrainInput *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane *string `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker *string `pulumi:"maxUnavailableWorker"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs struct {
+	Drain pulumi.BoolPtrInput `pulumi:"drain"`
+	DrainInput ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane pulumi.StringPtrInput `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker pulumi.StringPtrInput `pulumi:"maxUnavailableWorker"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) DrainInput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) DrainInput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput struct {
+	DeleteLocalData *bool `pulumi:"deleteLocalData"`
+	Force *bool `pulumi:"force"`
+	GracePeriod *int `pulumi:"gracePeriod"`
+	IgnoreDaemonSets *bool `pulumi:"ignoreDaemonSets"`
+	Timeout *int `pulumi:"timeout"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs struct {
+	DeleteLocalData pulumi.BoolPtrInput `pulumi:"deleteLocalData"`
+	Force pulumi.BoolPtrInput `pulumi:"force"`
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	IgnoreDaemonSets pulumi.BoolPtrInput `pulumi:"ignoreDaemonSets"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput { return *v }).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan struct {
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	ScanConfig ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig `pulumi:"scanConfig"`
+	ScheduleConfig ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig `pulumi:"scheduleConfig"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs struct {
+	// Enable cluster template revision. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	ScanConfig ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput `pulumi:"scanConfig"`
+	ScheduleConfig ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput `pulumi:"scheduleConfig"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput).ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtr(v *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
+}
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ScanConfig() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig { return v.ScanConfig }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ScheduleConfig() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan { return *v }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput)
+}
+
+// Enable cluster template revision. Default `true` (bool)
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ScanConfig() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig { return v.ScanConfig }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ScheduleConfig() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig struct {
+	CisScanConfig *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs struct {
+	CisScanConfig ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput `pulumi:"cisScanConfig"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) CisScanConfig() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig) *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig struct {
+	DebugMaster *bool `pulumi:"debugMaster"`
+	DebugWorker *bool `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	Profile *string `pulumi:"profile"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs struct {
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput).ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrType ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtr(v *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput {	return (*clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrType) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrType) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o.ApplyT(func (v *ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig { return *v }).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig struct {
+	CronSchedule string `pulumi:"cronSchedule"`
+	Retention *int `pulumi:"retention"`
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput
+	ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs struct {
+	CronSchedule pulumi.StringInput `pulumi:"cronSchedule"`
+	Retention pulumi.IntPtrInput `pulumi:"retention"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ToClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) Retention() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig) *int { return v.Retention }).(pulumi.IntPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionQuestion struct {
@@ -26357,6 +28065,7 @@ func (o PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i pulu
 }
 
 type ProjectAlertGroupRecipient struct {
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId string `pulumi:"notifierId"`
 	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
@@ -26373,6 +28082,7 @@ type ProjectAlertGroupRecipientInput interface {
 }
 
 type ProjectAlertGroupRecipientArgs struct {
+	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId pulumi.StringInput `pulumi:"notifierId"`
 	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
@@ -26426,6 +28136,10 @@ func (o ProjectAlertGroupRecipientOutput) ToProjectAlertGroupRecipientOutput() P
 
 func (o ProjectAlertGroupRecipientOutput) ToProjectAlertGroupRecipientOutputWithContext(ctx context.Context) ProjectAlertGroupRecipientOutput {
 	return o
+}
+
+func (o ProjectAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v ProjectAlertGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
 // Recipient notifier ID (string)
@@ -29450,6 +31164,7 @@ func (o GetClusterAksConfigOutput) VirtualNetworkResourceGroup() pulumi.StringOu
 }
 
 type GetClusterAlertGroupRecipient struct {
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
 	NotifierId string `pulumi:"notifierId"`
 	NotifierType string `pulumi:"notifierType"`
 	Recipient string `pulumi:"recipient"`
@@ -29463,6 +31178,7 @@ type GetClusterAlertGroupRecipientInput interface {
 }
 
 type GetClusterAlertGroupRecipientArgs struct {
+	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
 	NotifierId pulumi.StringInput `pulumi:"notifierId"`
 	NotifierType pulumi.StringInput `pulumi:"notifierType"`
 	Recipient pulumi.StringInput `pulumi:"recipient"`
@@ -29513,6 +31229,10 @@ func (o GetClusterAlertGroupRecipientOutput) ToGetClusterAlertGroupRecipientOutp
 
 func (o GetClusterAlertGroupRecipientOutput) ToGetClusterAlertGroupRecipientOutputWithContext(ctx context.Context) GetClusterAlertGroupRecipientOutput {
 	return o
+}
+
+func (o GetClusterAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterAlertGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClusterAlertGroupRecipientOutput) NotifierId() pulumi.StringOutput {
@@ -30665,6 +32385,183 @@ func (o GetClusterGkeConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetClusterGkeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
+type GetClusterK3sConfig struct {
+	UpgradeStrategy GetClusterK3sConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
+	Version string `pulumi:"version"`
+}
+
+type GetClusterK3sConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterK3sConfigOutput() GetClusterK3sConfigOutput
+	ToGetClusterK3sConfigOutputWithContext(context.Context) GetClusterK3sConfigOutput
+}
+
+type GetClusterK3sConfigArgs struct {
+	UpgradeStrategy GetClusterK3sConfigUpgradeStrategyInput `pulumi:"upgradeStrategy"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetClusterK3sConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterK3sConfig)(nil)).Elem()
+}
+
+func (i GetClusterK3sConfigArgs) ToGetClusterK3sConfigOutput() GetClusterK3sConfigOutput {
+	return i.ToGetClusterK3sConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterK3sConfigArgs) ToGetClusterK3sConfigOutputWithContext(ctx context.Context) GetClusterK3sConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterK3sConfigOutput)
+}
+
+type GetClusterK3sConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterK3sConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterK3sConfig)(nil)).Elem()
+}
+
+func (o GetClusterK3sConfigOutput) ToGetClusterK3sConfigOutput() GetClusterK3sConfigOutput {
+	return o
+}
+
+func (o GetClusterK3sConfigOutput) ToGetClusterK3sConfigOutputWithContext(ctx context.Context) GetClusterK3sConfigOutput {
+	return o
+}
+
+func (o GetClusterK3sConfigOutput) UpgradeStrategy() GetClusterK3sConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v GetClusterK3sConfig) GetClusterK3sConfigUpgradeStrategy { return v.UpgradeStrategy }).(GetClusterK3sConfigUpgradeStrategyOutput)
+}
+
+func (o GetClusterK3sConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterK3sConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetClusterK3sConfigUpgradeStrategy struct {
+	DrainServerNodes *bool `pulumi:"drainServerNodes"`
+	DrainWorkerNodes *bool `pulumi:"drainWorkerNodes"`
+	ServerConcurrency *int `pulumi:"serverConcurrency"`
+	WorkerConcurrency *int `pulumi:"workerConcurrency"`
+}
+
+type GetClusterK3sConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterK3sConfigUpgradeStrategyOutput() GetClusterK3sConfigUpgradeStrategyOutput
+	ToGetClusterK3sConfigUpgradeStrategyOutputWithContext(context.Context) GetClusterK3sConfigUpgradeStrategyOutput
+}
+
+type GetClusterK3sConfigUpgradeStrategyArgs struct {
+	DrainServerNodes pulumi.BoolPtrInput `pulumi:"drainServerNodes"`
+	DrainWorkerNodes pulumi.BoolPtrInput `pulumi:"drainWorkerNodes"`
+	ServerConcurrency pulumi.IntPtrInput `pulumi:"serverConcurrency"`
+	WorkerConcurrency pulumi.IntPtrInput `pulumi:"workerConcurrency"`
+}
+
+func (GetClusterK3sConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i GetClusterK3sConfigUpgradeStrategyArgs) ToGetClusterK3sConfigUpgradeStrategyOutput() GetClusterK3sConfigUpgradeStrategyOutput {
+	return i.ToGetClusterK3sConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterK3sConfigUpgradeStrategyArgs) ToGetClusterK3sConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterK3sConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterK3sConfigUpgradeStrategyOutput)
+}
+
+type GetClusterK3sConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (GetClusterK3sConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterK3sConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) ToGetClusterK3sConfigUpgradeStrategyOutput() GetClusterK3sConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) ToGetClusterK3sConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterK3sConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) DrainServerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterK3sConfigUpgradeStrategy) *bool { return v.DrainServerNodes }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) DrainWorkerNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterK3sConfigUpgradeStrategy) *bool { return v.DrainWorkerNodes }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) ServerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterK3sConfigUpgradeStrategy) *int { return v.ServerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterK3sConfigUpgradeStrategyOutput) WorkerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterK3sConfigUpgradeStrategy) *int { return v.WorkerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterLoggingCustomTargetConfig struct {
+	Certificate *string `pulumi:"certificate"`
+	ClientCert *string `pulumi:"clientCert"`
+	ClientKey *string `pulumi:"clientKey"`
+	Content string `pulumi:"content"`
+}
+
+type GetClusterLoggingCustomTargetConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterLoggingCustomTargetConfigOutput() GetClusterLoggingCustomTargetConfigOutput
+	ToGetClusterLoggingCustomTargetConfigOutputWithContext(context.Context) GetClusterLoggingCustomTargetConfigOutput
+}
+
+type GetClusterLoggingCustomTargetConfigArgs struct {
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (GetClusterLoggingCustomTargetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i GetClusterLoggingCustomTargetConfigArgs) ToGetClusterLoggingCustomTargetConfigOutput() GetClusterLoggingCustomTargetConfigOutput {
+	return i.ToGetClusterLoggingCustomTargetConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterLoggingCustomTargetConfigArgs) ToGetClusterLoggingCustomTargetConfigOutputWithContext(ctx context.Context) GetClusterLoggingCustomTargetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterLoggingCustomTargetConfigOutput)
+}
+
+type GetClusterLoggingCustomTargetConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterLoggingCustomTargetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) ToGetClusterLoggingCustomTargetConfigOutput() GetClusterLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) ToGetClusterLoggingCustomTargetConfigOutputWithContext(ctx context.Context) GetClusterLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterLoggingCustomTargetConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
 type GetClusterLoggingElasticsearchConfig struct {
 	AuthPassword *string `pulumi:"authPassword"`
 	AuthUsername *string `pulumi:"authUsername"`
@@ -31237,6 +33134,7 @@ type GetClusterRkeConfig struct {
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
 	SshCertPath string `pulumi:"sshCertPath"`
 	SshKeyPath string `pulumi:"sshKeyPath"`
+	UpgradeStrategy GetClusterRkeConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
 }
 
 type GetClusterRkeConfigInput interface {
@@ -31267,6 +33165,7 @@ type GetClusterRkeConfigArgs struct {
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
 	SshCertPath pulumi.StringInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringInput `pulumi:"sshKeyPath"`
+	UpgradeStrategy GetClusterRkeConfigUpgradeStrategyInput `pulumi:"upgradeStrategy"`
 }
 
 func (GetClusterRkeConfigArgs) ElementType() reflect.Type {
@@ -31373,6 +33272,10 @@ func (o GetClusterRkeConfigOutput) SshCertPath() pulumi.StringOutput {
 
 func (o GetClusterRkeConfigOutput) SshKeyPath() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterRkeConfig) string { return v.SshKeyPath }).(pulumi.StringOutput)
+}
+
+func (o GetClusterRkeConfigOutput) UpgradeStrategy() GetClusterRkeConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v GetClusterRkeConfig) GetClusterRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(GetClusterRkeConfigUpgradeStrategyOutput)
 }
 
 type GetClusterRkeConfigAuthentication struct {
@@ -35577,6 +37480,515 @@ func (o GetClusterRkeConfigServicesSchedulerOutput) Image() pulumi.StringOutput 
 	return o.ApplyT(func (v GetClusterRkeConfigServicesScheduler) string { return v.Image }).(pulumi.StringOutput)
 }
 
+type GetClusterRkeConfigUpgradeStrategy struct {
+	Drain *bool `pulumi:"drain"`
+	DrainInput GetClusterRkeConfigUpgradeStrategyDrainInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane *string `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker *string `pulumi:"maxUnavailableWorker"`
+}
+
+type GetClusterRkeConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigUpgradeStrategyOutput() GetClusterRkeConfigUpgradeStrategyOutput
+	ToGetClusterRkeConfigUpgradeStrategyOutputWithContext(context.Context) GetClusterRkeConfigUpgradeStrategyOutput
+}
+
+type GetClusterRkeConfigUpgradeStrategyArgs struct {
+	Drain pulumi.BoolPtrInput `pulumi:"drain"`
+	DrainInput GetClusterRkeConfigUpgradeStrategyDrainInputInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane pulumi.StringPtrInput `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker pulumi.StringPtrInput `pulumi:"maxUnavailableWorker"`
+}
+
+func (GetClusterRkeConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigUpgradeStrategyArgs) ToGetClusterRkeConfigUpgradeStrategyOutput() GetClusterRkeConfigUpgradeStrategyOutput {
+	return i.ToGetClusterRkeConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigUpgradeStrategyArgs) ToGetClusterRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigUpgradeStrategyOutput)
+}
+
+type GetClusterRkeConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) ToGetClusterRkeConfigUpgradeStrategyOutput() GetClusterRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) ToGetClusterRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) DrainInput() GetClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategy) GetClusterRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(GetClusterRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigUpgradeStrategyDrainInput struct {
+	DeleteLocalData *bool `pulumi:"deleteLocalData"`
+	Force *bool `pulumi:"force"`
+	GracePeriod *int `pulumi:"gracePeriod"`
+	IgnoreDaemonSets *bool `pulumi:"ignoreDaemonSets"`
+	Timeout *int `pulumi:"timeout"`
+}
+
+type GetClusterRkeConfigUpgradeStrategyDrainInputInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigUpgradeStrategyDrainInputOutput() GetClusterRkeConfigUpgradeStrategyDrainInputOutput
+	ToGetClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Context) GetClusterRkeConfigUpgradeStrategyDrainInputOutput
+}
+
+type GetClusterRkeConfigUpgradeStrategyDrainInputArgs struct {
+	DeleteLocalData pulumi.BoolPtrInput `pulumi:"deleteLocalData"`
+	Force pulumi.BoolPtrInput `pulumi:"force"`
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	IgnoreDaemonSets pulumi.BoolPtrInput `pulumi:"ignoreDaemonSets"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (GetClusterRkeConfigUpgradeStrategyDrainInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigUpgradeStrategyDrainInputArgs) ToGetClusterRkeConfigUpgradeStrategyDrainInputOutput() GetClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return i.ToGetClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigUpgradeStrategyDrainInputArgs) ToGetClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) GetClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+type GetClusterRkeConfigUpgradeStrategyDrainInputOutput struct { *pulumi.OutputState }
+
+func (GetClusterRkeConfigUpgradeStrategyDrainInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) ToGetClusterRkeConfigUpgradeStrategyDrainInputOutput() GetClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) ToGetClusterRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) GetClusterRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterScanScanConfig struct {
+	CisScanConfig GetClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
+}
+
+type GetClusterScanScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScanScanConfigOutput() GetClusterScanScanConfigOutput
+	ToGetClusterScanScanConfigOutputWithContext(context.Context) GetClusterScanScanConfigOutput
+}
+
+type GetClusterScanScanConfigArgs struct {
+	CisScanConfig GetClusterScanScanConfigCisScanConfigInput `pulumi:"cisScanConfig"`
+}
+
+func (GetClusterScanScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScanScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterScanScanConfigArgs) ToGetClusterScanScanConfigOutput() GetClusterScanScanConfigOutput {
+	return i.ToGetClusterScanScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScanScanConfigArgs) ToGetClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterScanScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScanScanConfigOutput)
+}
+
+type GetClusterScanScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterScanScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScanScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterScanScanConfigOutput) ToGetClusterScanScanConfigOutput() GetClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScanScanConfigOutput) ToGetClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScanScanConfigOutput) CisScanConfig() GetClusterScanScanConfigCisScanConfigOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfig) GetClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(GetClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterScanScanConfigCisScanConfig struct {
+	DebugMaster *bool `pulumi:"debugMaster"`
+	DebugWorker *bool `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	Profile *string `pulumi:"profile"`
+}
+
+type GetClusterScanScanConfigCisScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScanScanConfigCisScanConfigOutput() GetClusterScanScanConfigCisScanConfigOutput
+	ToGetClusterScanScanConfigCisScanConfigOutputWithContext(context.Context) GetClusterScanScanConfigCisScanConfigOutput
+}
+
+type GetClusterScanScanConfigCisScanConfigArgs struct {
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GetClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterScanScanConfigCisScanConfigArgs) ToGetClusterScanScanConfigCisScanConfigOutput() GetClusterScanScanConfigCisScanConfigOutput {
+	return i.ToGetClusterScanScanConfigCisScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScanScanConfigCisScanConfigArgs) ToGetClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterScanScanConfigCisScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterScanScanConfigCisScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterScanScanConfigCisScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) ToGetClusterScanScanConfigCisScanConfigOutput() GetClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) ToGetClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterScheduledClusterScan struct {
+	Enabled *bool `pulumi:"enabled"`
+	ScanConfig GetClusterScheduledClusterScanScanConfig `pulumi:"scanConfig"`
+	ScheduleConfig GetClusterScheduledClusterScanScheduleConfig `pulumi:"scheduleConfig"`
+}
+
+type GetClusterScheduledClusterScanInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduledClusterScanOutput() GetClusterScheduledClusterScanOutput
+	ToGetClusterScheduledClusterScanOutputWithContext(context.Context) GetClusterScheduledClusterScanOutput
+}
+
+type GetClusterScheduledClusterScanArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	ScanConfig GetClusterScheduledClusterScanScanConfigInput `pulumi:"scanConfig"`
+	ScheduleConfig GetClusterScheduledClusterScanScheduleConfigInput `pulumi:"scheduleConfig"`
+}
+
+func (GetClusterScheduledClusterScanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (i GetClusterScheduledClusterScanArgs) ToGetClusterScheduledClusterScanOutput() GetClusterScheduledClusterScanOutput {
+	return i.ToGetClusterScheduledClusterScanOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduledClusterScanArgs) ToGetClusterScheduledClusterScanOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduledClusterScanOutput)
+}
+
+type GetClusterScheduledClusterScanArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduledClusterScanArrayOutput() GetClusterScheduledClusterScanArrayOutput
+	ToGetClusterScheduledClusterScanArrayOutputWithContext(context.Context) GetClusterScheduledClusterScanArrayOutput
+}
+
+type GetClusterScheduledClusterScanArray []GetClusterScheduledClusterScanInput
+
+func (GetClusterScheduledClusterScanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (i GetClusterScheduledClusterScanArray) ToGetClusterScheduledClusterScanArrayOutput() GetClusterScheduledClusterScanArrayOutput {
+	return i.ToGetClusterScheduledClusterScanArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduledClusterScanArray) ToGetClusterScheduledClusterScanArrayOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduledClusterScanArrayOutput)
+}
+
+type GetClusterScheduledClusterScanOutput struct { *pulumi.OutputState }
+
+func (GetClusterScheduledClusterScanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (o GetClusterScheduledClusterScanOutput) ToGetClusterScheduledClusterScanOutput() GetClusterScheduledClusterScanOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanOutput) ToGetClusterScheduledClusterScanOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterScheduledClusterScanOutput) ScanConfig() GetClusterScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScan) GetClusterScheduledClusterScanScanConfig { return v.ScanConfig }).(GetClusterScheduledClusterScanScanConfigOutput)
+}
+
+func (o GetClusterScheduledClusterScanOutput) ScheduleConfig() GetClusterScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScan) GetClusterScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(GetClusterScheduledClusterScanScheduleConfigOutput)
+}
+
+type GetClusterScheduledClusterScanArrayOutput struct { *pulumi.OutputState}
+
+func (GetClusterScheduledClusterScanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterScheduledClusterScan)(nil)).Elem()
+}
+
+func (o GetClusterScheduledClusterScanArrayOutput) ToGetClusterScheduledClusterScanArrayOutput() GetClusterScheduledClusterScanArrayOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanArrayOutput) ToGetClusterScheduledClusterScanArrayOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanArrayOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanArrayOutput) Index(i pulumi.IntInput) GetClusterScheduledClusterScanOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterScheduledClusterScan {
+		return vs[0].([]GetClusterScheduledClusterScan)[vs[1].(int)]
+	}).(GetClusterScheduledClusterScanOutput)
+}
+
+type GetClusterScheduledClusterScanScanConfig struct {
+	CisScanConfig GetClusterScheduledClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
+}
+
+type GetClusterScheduledClusterScanScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduledClusterScanScanConfigOutput() GetClusterScheduledClusterScanScanConfigOutput
+	ToGetClusterScheduledClusterScanScanConfigOutputWithContext(context.Context) GetClusterScheduledClusterScanScanConfigOutput
+}
+
+type GetClusterScheduledClusterScanScanConfigArgs struct {
+	CisScanConfig GetClusterScheduledClusterScanScanConfigCisScanConfigInput `pulumi:"cisScanConfig"`
+}
+
+func (GetClusterScheduledClusterScanScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterScheduledClusterScanScanConfigArgs) ToGetClusterScheduledClusterScanScanConfigOutput() GetClusterScheduledClusterScanScanConfigOutput {
+	return i.ToGetClusterScheduledClusterScanScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduledClusterScanScanConfigArgs) ToGetClusterScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduledClusterScanScanConfigOutput)
+}
+
+type GetClusterScheduledClusterScanScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterScheduledClusterScanScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterScheduledClusterScanScanConfigOutput) ToGetClusterScheduledClusterScanScanConfigOutput() GetClusterScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScanConfigOutput) ToGetClusterScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScanConfigOutput) CisScanConfig() GetClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfig) GetClusterScheduledClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(GetClusterScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterScheduledClusterScanScanConfigCisScanConfig struct {
+	DebugMaster *bool `pulumi:"debugMaster"`
+	DebugWorker *bool `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	Profile *string `pulumi:"profile"`
+}
+
+type GetClusterScheduledClusterScanScanConfigCisScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterScheduledClusterScanScanConfigCisScanConfigOutput
+	ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Context) GetClusterScheduledClusterScanScanConfigCisScanConfigOutput
+}
+
+type GetClusterScheduledClusterScanScanConfigCisScanConfigArgs struct {
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GetClusterScheduledClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return i.ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterScheduledClusterScanScanConfigCisScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) ToGetClusterScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterScheduledClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterScheduledClusterScanScheduleConfig struct {
+	CronSchedule string `pulumi:"cronSchedule"`
+	Retention int `pulumi:"retention"`
+}
+
+type GetClusterScheduledClusterScanScheduleConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterScheduledClusterScanScheduleConfigOutput() GetClusterScheduledClusterScanScheduleConfigOutput
+	ToGetClusterScheduledClusterScanScheduleConfigOutputWithContext(context.Context) GetClusterScheduledClusterScanScheduleConfigOutput
+}
+
+type GetClusterScheduledClusterScanScheduleConfigArgs struct {
+	CronSchedule pulumi.StringInput `pulumi:"cronSchedule"`
+	Retention pulumi.IntInput `pulumi:"retention"`
+}
+
+func (GetClusterScheduledClusterScanScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (i GetClusterScheduledClusterScanScheduleConfigArgs) ToGetClusterScheduledClusterScanScheduleConfigOutput() GetClusterScheduledClusterScanScheduleConfigOutput {
+	return i.ToGetClusterScheduledClusterScanScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterScheduledClusterScanScheduleConfigArgs) ToGetClusterScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterScheduledClusterScanScheduleConfigOutput)
+}
+
+type GetClusterScheduledClusterScanScheduleConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterScheduledClusterScanScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (o GetClusterScheduledClusterScanScheduleConfigOutput) ToGetClusterScheduledClusterScanScheduleConfigOutput() GetClusterScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScheduleConfigOutput) ToGetClusterScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) GetClusterScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o GetClusterScheduledClusterScanScheduleConfigOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScheduleConfig) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+func (o GetClusterScheduledClusterScanScheduleConfigOutput) Retention() pulumi.IntOutput {
+	return o.ApplyT(func (v GetClusterScheduledClusterScanScheduleConfig) int { return v.Retention }).(pulumi.IntOutput)
+}
+
 type GetClusterTemplateMember struct {
 	AccessType *string `pulumi:"accessType"`
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
@@ -35832,6 +38244,7 @@ type GetClusterTemplateTemplateRevisionClusterConfig struct {
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	RkeConfig GetClusterTemplateTemplateRevisionClusterConfigRkeConfig `pulumi:"rkeConfig"`
+	ScheduledClusterScan *GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
 
@@ -35853,6 +38266,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigArgs struct {
 	EnableClusterMonitoring pulumi.BoolPtrInput `pulumi:"enableClusterMonitoring"`
 	EnableNetworkPolicy pulumi.BoolPtrInput `pulumi:"enableNetworkPolicy"`
 	RkeConfig GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput `pulumi:"rkeConfig"`
+	ScheduledClusterScan GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput `pulumi:"scheduledClusterScan"`
 	WindowsPreferedCluster pulumi.BoolPtrInput `pulumi:"windowsPreferedCluster"`
 }
 
@@ -35920,6 +38334,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigOutput) EnableNetworkPoli
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigOutput) RkeConfig() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfig { return v.RkeConfig }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigOutput) ScheduledClusterScan() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfig) *GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan { return v.ScheduledClusterScan }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigOutput) WindowsPreferedCluster() pulumi.BoolPtrOutput {
@@ -36004,6 +38422,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	SshAgentAuth *bool `pulumi:"sshAgentAuth"`
 	SshCertPath string `pulumi:"sshCertPath"`
 	SshKeyPath string `pulumi:"sshKeyPath"`
+	UpgradeStrategy GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput interface {
@@ -36034,6 +38453,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	SshAgentAuth pulumi.BoolPtrInput `pulumi:"sshAgentAuth"`
 	SshCertPath pulumi.StringInput `pulumi:"sshCertPath"`
 	SshKeyPath pulumi.StringInput `pulumi:"sshKeyPath"`
+	UpgradeStrategy GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput `pulumi:"upgradeStrategy"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs) ElementType() reflect.Type {
@@ -36140,6 +38560,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshCertP
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) SshKeyPath() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) string { return v.SshKeyPath }).(pulumi.StringOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) UpgradeStrategy() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication struct {
@@ -40344,6 +42768,431 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedule
 	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler) string { return v.Image }).(pulumi.StringOutput)
 }
 
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy struct {
+	Drain *bool `pulumi:"drain"`
+	DrainInput GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane *string `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker *string `pulumi:"maxUnavailableWorker"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs struct {
+	Drain pulumi.BoolPtrInput `pulumi:"drain"`
+	DrainInput GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput `pulumi:"drainInput"`
+	MaxUnavailableControlplane pulumi.StringPtrInput `pulumi:"maxUnavailableControlplane"`
+	MaxUnavailableWorker pulumi.StringPtrInput `pulumi:"maxUnavailableWorker"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) Drain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *bool { return v.Drain }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) DrainInput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput { return v.DrainInput }).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) MaxUnavailableControlplane() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableControlplane }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput) MaxUnavailableWorker() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy) *string { return v.MaxUnavailableWorker }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput struct {
+	DeleteLocalData *bool `pulumi:"deleteLocalData"`
+	Force *bool `pulumi:"force"`
+	GracePeriod *int `pulumi:"gracePeriod"`
+	IgnoreDaemonSets *bool `pulumi:"ignoreDaemonSets"`
+	Timeout *int `pulumi:"timeout"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs struct {
+	DeleteLocalData pulumi.BoolPtrInput `pulumi:"deleteLocalData"`
+	Force pulumi.BoolPtrInput `pulumi:"force"`
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	IgnoreDaemonSets pulumi.BoolPtrInput `pulumi:"ignoreDaemonSets"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) DeleteLocalData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.DeleteLocalData }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) IgnoreDaemonSets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *bool { return v.IgnoreDaemonSets }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan struct {
+	Enabled *bool `pulumi:"enabled"`
+	ScanConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig `pulumi:"scanConfig"`
+	ScheduleConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig `pulumi:"scheduleConfig"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	ScanConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput `pulumi:"scanConfig"`
+	ScheduleConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput `pulumi:"scheduleConfig"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput).ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtr(v *GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput {	return (*getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ScanConfig() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig { return v.ScanConfig }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput) ScheduleConfig() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput struct { *pulumi.OutputState}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput {
+	return o.ApplyT(func (v *GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan { return *v }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ScanConfig() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig { return v.ScanConfig }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput) ScheduleConfig() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig struct {
+	CisScanConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs struct {
+	CisScanConfig GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput `pulumi:"cisScanConfig"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput) CisScanConfig() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig struct {
+	DebugMaster *bool `pulumi:"debugMaster"`
+	DebugWorker *bool `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	Profile *string `pulumi:"profile"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs struct {
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig struct {
+	CronSchedule string `pulumi:"cronSchedule"`
+	Retention int `pulumi:"retention"`
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs struct {
+	CronSchedule pulumi.StringInput `pulumi:"cronSchedule"`
+	Retention pulumi.IntInput `pulumi:"retention"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput() GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) ToGetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput) Retention() pulumi.IntOutput {
+	return o.ApplyT(func (v GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig) int { return v.Retention }).(pulumi.IntOutput)
+}
+
 type GetClusterTemplateTemplateRevisionQuestion struct {
 	Default string `pulumi:"default"`
 	Required *bool `pulumi:"required"`
@@ -43005,6 +45854,7 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i p
 }
 
 type GetProjectAlertGroupRecipient struct {
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
 	NotifierId string `pulumi:"notifierId"`
 	NotifierType string `pulumi:"notifierType"`
 	Recipient string `pulumi:"recipient"`
@@ -43018,6 +45868,7 @@ type GetProjectAlertGroupRecipientInput interface {
 }
 
 type GetProjectAlertGroupRecipientArgs struct {
+	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
 	NotifierId pulumi.StringInput `pulumi:"notifierId"`
 	NotifierType pulumi.StringInput `pulumi:"notifierType"`
 	Recipient pulumi.StringInput `pulumi:"recipient"`
@@ -43068,6 +45919,10 @@ func (o GetProjectAlertGroupRecipientOutput) ToGetProjectAlertGroupRecipientOutp
 
 func (o GetProjectAlertGroupRecipientOutput) ToGetProjectAlertGroupRecipientOutputWithContext(ctx context.Context) GetProjectAlertGroupRecipientOutput {
 	return o
+}
+
+func (o GetProjectAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v GetProjectAlertGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetProjectAlertGroupRecipientOutput) NotifierId() pulumi.StringOutput {
@@ -43352,6 +46207,69 @@ func (o GetProjectContainerResourceLimitOutput) RequestsCpu() pulumi.StringPtrOu
 
 func (o GetProjectContainerResourceLimitOutput) RequestsMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetProjectContainerResourceLimit) *string { return v.RequestsMemory }).(pulumi.StringPtrOutput)
+}
+
+type GetProjectLoggingCustomTargetConfig struct {
+	Certificate *string `pulumi:"certificate"`
+	ClientCert *string `pulumi:"clientCert"`
+	ClientKey *string `pulumi:"clientKey"`
+	Content string `pulumi:"content"`
+}
+
+type GetProjectLoggingCustomTargetConfigInput interface {
+	pulumi.Input
+
+	ToGetProjectLoggingCustomTargetConfigOutput() GetProjectLoggingCustomTargetConfigOutput
+	ToGetProjectLoggingCustomTargetConfigOutputWithContext(context.Context) GetProjectLoggingCustomTargetConfigOutput
+}
+
+type GetProjectLoggingCustomTargetConfigArgs struct {
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (GetProjectLoggingCustomTargetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (i GetProjectLoggingCustomTargetConfigArgs) ToGetProjectLoggingCustomTargetConfigOutput() GetProjectLoggingCustomTargetConfigOutput {
+	return i.ToGetProjectLoggingCustomTargetConfigOutputWithContext(context.Background())
+}
+
+func (i GetProjectLoggingCustomTargetConfigArgs) ToGetProjectLoggingCustomTargetConfigOutputWithContext(ctx context.Context) GetProjectLoggingCustomTargetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectLoggingCustomTargetConfigOutput)
+}
+
+type GetProjectLoggingCustomTargetConfigOutput struct { *pulumi.OutputState }
+
+func (GetProjectLoggingCustomTargetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectLoggingCustomTargetConfig)(nil)).Elem()
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) ToGetProjectLoggingCustomTargetConfigOutput() GetProjectLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) ToGetProjectLoggingCustomTargetConfigOutputWithContext(ctx context.Context) GetProjectLoggingCustomTargetConfigOutput {
+	return o
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetProjectLoggingCustomTargetConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetProjectLoggingCustomTargetConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetProjectLoggingCustomTargetConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectLoggingCustomTargetConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProjectLoggingCustomTargetConfig) string { return v.Content }).(pulumi.StringOutput)
 }
 
 type GetProjectLoggingElasticsearchConfig struct {
@@ -44435,6 +47353,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterEksConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterK3sConfigOutput{})
+	pulumi.RegisterOutputType(ClusterK3sConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterK3sConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterK3sConfigUpgradeStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingCustomTargetConfigOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingCustomTargetConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingElasticsearchConfigOutput{})
@@ -44535,6 +47457,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesKubeproxyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesSchedulerOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigServicesSchedulerPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigUpgradeStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigUpgradeStrategyDrainInputOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanPtrOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanScanConfigOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanScanConfigCisScanConfigOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterScheduledClusterScanScheduleConfigOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMemberOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMemberArrayOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionOutput{})
@@ -44627,6 +47559,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionQuestionOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionQuestionArrayOutput{})
 	pulumi.RegisterOutputType(EtcdBackupBackupConfigOutput{})
@@ -44751,6 +47693,9 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterTemplateQuestionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterEksConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterGkeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterK3sConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterK3sConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterLoggingCustomTargetConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingElasticsearchConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingFluentdConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingFluentdConfigFluentServerOutput{})
@@ -44818,6 +47763,15 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeletOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesKubeproxyOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigServicesSchedulerOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigUpgradeStrategyDrainInputOutput{})
+	pulumi.RegisterOutputType(GetClusterScanScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterScanScanConfigCisScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduledClusterScanOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduledClusterScanArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduledClusterScanScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduledClusterScanScanConfigCisScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterScheduledClusterScanScheduleConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateMemberOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionOutput{})
@@ -44884,6 +47838,13 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionQuestionOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionQuestionArrayOutput{})
 	pulumi.RegisterOutputType(GetEtcdBackupBackupConfigOutput{})
@@ -44939,6 +47900,7 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectAlertRulePodRuleOutput{})
 	pulumi.RegisterOutputType(GetProjectAlertRuleWorkloadRuleOutput{})
 	pulumi.RegisterOutputType(GetProjectContainerResourceLimitOutput{})
+	pulumi.RegisterOutputType(GetProjectLoggingCustomTargetConfigOutput{})
 	pulumi.RegisterOutputType(GetProjectLoggingElasticsearchConfigOutput{})
 	pulumi.RegisterOutputType(GetProjectLoggingFluentdConfigOutput{})
 	pulumi.RegisterOutputType(GetProjectLoggingFluentdConfigFluentServerOutput{})

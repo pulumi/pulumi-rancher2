@@ -34,6 +34,8 @@ type LookupGlobalRoleBindingResult struct {
 	// (Computed) Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	GlobalRoleId string `pulumi:"globalRoleId"`
+	// (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
+	GroupPrincipalId string `pulumi:"groupPrincipalId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)

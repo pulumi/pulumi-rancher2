@@ -29,6 +29,12 @@ namespace Pulumi.Rancher2
         public Output<string> GlobalRoleId { get; private set; } = null!;
 
         /// <summary>
+        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+        /// </summary>
+        [Output("groupPrincipalId")]
+        public Output<string> GroupPrincipalId { get; private set; } = null!;
+
+        /// <summary>
         /// Labels for global role binding (map)
         /// </summary>
         [Output("labels")]
@@ -110,6 +116,12 @@ namespace Pulumi.Rancher2
         [Input("globalRoleId", required: true)]
         public Input<string> GlobalRoleId { get; set; } = null!;
 
+        /// <summary>
+        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+        /// </summary>
+        [Input("groupPrincipalId")]
+        public Input<string>? GroupPrincipalId { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -131,8 +143,8 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// The user ID to assign global role binding (string)
         /// </summary>
-        [Input("userId", required: true)]
-        public Input<string> UserId { get; set; } = null!;
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         public GlobalRoleBindingArgs()
         {
@@ -158,6 +170,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("globalRoleId")]
         public Input<string>? GlobalRoleId { get; set; }
+
+        /// <summary>
+        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+        /// </summary>
+        [Input("groupPrincipalId")]
+        public Input<string>? GroupPrincipalId { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

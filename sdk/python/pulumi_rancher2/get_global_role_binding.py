@@ -13,7 +13,7 @@ class GetGlobalRoleBindingResult:
     """
     A collection of values returned by getGlobalRoleBinding.
     """
-    def __init__(__self__, annotations=None, global_role_id=None, id=None, labels=None, name=None, user_id=None):
+    def __init__(__self__, annotations=None, global_role_id=None, group_principal_id=None, id=None, labels=None, name=None, user_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -23,6 +23,12 @@ class GetGlobalRoleBindingResult:
         if global_role_id and not isinstance(global_role_id, str):
             raise TypeError("Expected argument 'global_role_id' to be a str")
         __self__.global_role_id = global_role_id
+        if group_principal_id and not isinstance(group_principal_id, str):
+            raise TypeError("Expected argument 'group_principal_id' to be a str")
+        __self__.group_principal_id = group_principal_id
+        """
+        (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -52,6 +58,7 @@ class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
         return GetGlobalRoleBindingResult(
             annotations=self.annotations,
             global_role_id=self.global_role_id,
+            group_principal_id=self.group_principal_id,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -81,6 +88,7 @@ def get_global_role_binding(global_role_id=None,name=None,opts=None):
     return AwaitableGetGlobalRoleBindingResult(
         annotations=__ret__.get('annotations'),
         global_role_id=__ret__.get('globalRoleId'),
+        group_principal_id=__ret__.get('groupPrincipalId'),
         id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),

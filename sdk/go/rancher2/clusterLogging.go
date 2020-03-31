@@ -25,6 +25,8 @@ type ClusterLogging struct {
 	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrOutput `pulumi:"customTargetConfig"`
 	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrOutput `pulumi:"elasticsearchConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing pulumi.BoolPtrOutput `pulumi:"enableJsonParsing"`
 	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ClusterLoggingFluentdConfigPtrOutput `pulumi:"fluentdConfig"`
 	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
@@ -89,6 +91,8 @@ type clusterLoggingState struct {
 	CustomTargetConfig *ClusterLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
 	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ClusterLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing *bool `pulumi:"enableJsonParsing"`
 	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
@@ -120,6 +124,8 @@ type ClusterLoggingState struct {
 	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrInput
 	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrInput
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing pulumi.BoolPtrInput
 	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ClusterLoggingFluentdConfigPtrInput
 	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
@@ -155,6 +161,8 @@ type clusterLoggingArgs struct {
 	CustomTargetConfig *ClusterLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
 	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ClusterLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing *bool `pulumi:"enableJsonParsing"`
 	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
@@ -187,6 +195,8 @@ type ClusterLoggingArgs struct {
 	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrInput
 	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrInput
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing pulumi.BoolPtrInput
 	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ClusterLoggingFluentdConfigPtrInput
 	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)

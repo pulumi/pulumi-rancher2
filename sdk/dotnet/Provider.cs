@@ -78,6 +78,12 @@ namespace Pulumi.Rancher2
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
+        /// Rancher connection retries
+        /// </summary>
+        [Input("retries", json: true)]
+        public Input<int>? Retries { get; set; }
+
+        /// <summary>
         /// API secret used to authenticate with the rancher server
         /// </summary>
         [Input("secretKey")]

@@ -110,6 +110,10 @@ export class Catalog extends pulumi.CustomResource {
      * The username to access the catalog if needed (string)
      */
     public readonly username!: pulumi.Output<string | undefined>;
+    /**
+     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     */
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -136,6 +140,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["scope"] = state ? state.scope : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["username"] = state ? state.username : undefined;
+            inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             if (!args || args.url === undefined) {
@@ -154,6 +159,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["scope"] = args ? args.scope : undefined;
             inputs["url"] = args ? args.url : undefined;
             inputs["username"] = args ? args.username : undefined;
+            inputs["version"] = args ? args.version : undefined;
         }
         if (!opts) {
             opts = {}
@@ -222,6 +228,10 @@ export interface CatalogState {
      * The username to access the catalog if needed (string)
      */
     readonly username?: pulumi.Input<string>;
+    /**
+     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     */
+    readonly version?: pulumi.Input<string>;
 }
 
 /**
@@ -280,4 +290,8 @@ export interface CatalogArgs {
      * The username to access the catalog if needed (string)
      */
     readonly username?: pulumi.Input<string>;
+    /**
+     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     */
+    readonly version?: pulumi.Input<string>;
 }

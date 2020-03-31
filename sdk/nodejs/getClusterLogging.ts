@@ -56,10 +56,12 @@ export interface GetClusterLoggingResult {
      */
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
+    readonly customTargetConfig: outputs.GetClusterLoggingCustomTargetConfig;
     /**
      * (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
      */
     readonly elasticsearchConfig: outputs.GetClusterLoggingElasticsearchConfig;
+    readonly enableJsonParsing: boolean;
     /**
      * (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
      */

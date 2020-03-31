@@ -13,7 +13,7 @@ class GetCatalogResult:
     """
     A collection of values returned by getCatalog.
     """
-    def __init__(__self__, annotations=None, branch=None, cluster_id=None, description=None, id=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None):
+    def __init__(__self__, annotations=None, branch=None, cluster_id=None, description=None, id=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None, version=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -86,6 +86,12 @@ class GetCatalogResult:
         """
         (Computed/Sensitive) The username to access the catalog if needed (string)
         """
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        __self__.version = version
+        """
+        (Computed) Helm version for the catalog (string)
+        """
 class AwaitableGetCatalogResult(GetCatalogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,7 +110,8 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             project_id=self.project_id,
             scope=self.scope,
             url=self.url,
-            username=self.username)
+            username=self.username,
+            version=self.version)
 
 def get_catalog(name=None,scope=None,opts=None):
     """
@@ -140,4 +147,5 @@ def get_catalog(name=None,scope=None,opts=None):
         project_id=__ret__.get('projectId'),
         scope=__ret__.get('scope'),
         url=__ret__.get('url'),
-        username=__ret__.get('username'))
+        username=__ret__.get('username'),
+        version=__ret__.get('version'))

@@ -48,6 +48,7 @@
         "getClusterDriver.ts",
         "getClusterLogging.ts",
         "getClusterRoleTemplateBinding.ts",
+        "getClusterScan.ts",
         "getClusterTemplate.ts",
         "getEtcdBackup.ts",
         "getGlobalRoleBinding.ts",

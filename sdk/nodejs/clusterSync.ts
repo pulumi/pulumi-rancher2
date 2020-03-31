@@ -42,7 +42,7 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     public /*out*/ readonly defaultProjectId!: pulumi.Output<string>;
     /**
-     * (Computed) Kube Config generated for the cluster sync (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      */
     public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
     /**
@@ -54,6 +54,10 @@ export class ClusterSync extends pulumi.CustomResource {
      * (Computed) System project ID for the cluster sync (string)
      */
     public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
+    /**
+     * Wait until monitoring is up and running. Default: `false` (bool)
+     */
+    public readonly waitMonitoring!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ClusterSync resource with the given unique name, arguments, and options.
@@ -73,6 +77,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
             inputs["synced"] = state ? state.synced : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
+            inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
             if (!args || args.clusterId === undefined) {
@@ -81,6 +86,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
             inputs["synced"] = args ? args.synced : undefined;
+            inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
             inputs["defaultProjectId"] = undefined /*out*/;
             inputs["kubeConfig"] = undefined /*out*/;
             inputs["systemProjectId"] = undefined /*out*/;
@@ -109,7 +115,7 @@ export interface ClusterSyncState {
      */
     readonly defaultProjectId?: pulumi.Input<string>;
     /**
-     * (Computed) Kube Config generated for the cluster sync (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      */
     readonly kubeConfig?: pulumi.Input<string>;
     /**
@@ -121,6 +127,10 @@ export interface ClusterSyncState {
      * (Computed) System project ID for the cluster sync (string)
      */
     readonly systemProjectId?: pulumi.Input<string>;
+    /**
+     * Wait until monitoring is up and running. Default: `false` (bool)
+     */
+    readonly waitMonitoring?: pulumi.Input<boolean>;
 }
 
 /**
@@ -136,4 +146,8 @@ export interface ClusterSyncArgs {
      */
     readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly synced?: pulumi.Input<boolean>;
+    /**
+     * Wait until monitoring is up and running. Default: `false` (bool)
+     */
+    readonly waitMonitoring?: pulumi.Input<boolean>;
 }

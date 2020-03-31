@@ -31,8 +31,10 @@ type LookupProjectLoggingArgs struct {
 type LookupProjectLoggingResult struct {
 	// (Computed) Annotations for Cluster Logging object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
+	CustomTargetConfig GetProjectLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
 	// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
 	ElasticsearchConfig GetProjectLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
+	EnableJsonParsing bool `pulumi:"enableJsonParsing"`
 	// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
 	FluentdConfig GetProjectLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// id is the provider-assigned unique ID for this managed resource.

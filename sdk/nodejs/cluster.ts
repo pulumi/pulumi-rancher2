@@ -39,7 +39,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly aksConfig!: pulumi.Output<outputs.ClusterAksConfig | undefined>;
     /**
@@ -103,7 +103,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly driver!: pulumi.Output<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly eksConfig!: pulumi.Output<outputs.ClusterEksConfig | undefined>;
     /**
@@ -120,12 +120,17 @@ export class Cluster extends pulumi.CustomResource {
     public readonly enableClusterMonitoring!: pulumi.Output<boolean | undefined>;
     /**
      * Enable project network isolation. Default `false` (bool)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly gkeConfig!: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
+    /**
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     */
+    public readonly k3sConfig!: pulumi.Output<outputs.ClusterK3sConfig>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster (string)
      */
@@ -139,9 +144,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
      */
     public readonly rkeConfig!: pulumi.Output<outputs.ClusterRkeConfig>;
+    /**
+     * Cluster scheduled scan
+     */
+    public readonly scheduledClusterScan!: pulumi.Output<outputs.ClusterScheduledClusterScan | undefined>;
     /**
      * (Computed) System project ID for the cluster (string)
      */
@@ -185,10 +194,12 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableClusterMonitoring"] = state ? state.enableClusterMonitoring : undefined;
             inputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
             inputs["gkeConfig"] = state ? state.gkeConfig : undefined;
+            inputs["k3sConfig"] = state ? state.k3sConfig : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["rkeConfig"] = state ? state.rkeConfig : undefined;
+            inputs["scheduledClusterScan"] = state ? state.scheduledClusterScan : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
             inputs["windowsPreferedCluster"] = state ? state.windowsPreferedCluster : undefined;
         } else {
@@ -213,9 +224,11 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableClusterMonitoring"] = args ? args.enableClusterMonitoring : undefined;
             inputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
             inputs["gkeConfig"] = args ? args.gkeConfig : undefined;
+            inputs["k3sConfig"] = args ? args.k3sConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rkeConfig"] = args ? args.rkeConfig : undefined;
+            inputs["scheduledClusterScan"] = args ? args.scheduledClusterScan : undefined;
             inputs["windowsPreferedCluster"] = args ? args.windowsPreferedCluster : undefined;
             inputs["clusterRegistrationToken"] = undefined /*out*/;
             inputs["defaultProjectId"] = undefined /*out*/;
@@ -238,7 +251,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfig?: pulumi.Input<inputs.ClusterAksConfig>;
     /**
@@ -302,7 +315,7 @@ export interface ClusterState {
      */
     readonly driver?: pulumi.Input<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
@@ -319,12 +332,17 @@ export interface ClusterState {
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation. Default `false` (bool)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
+    /**
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     */
+    readonly k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster (string)
      */
@@ -338,9 +356,13 @@ export interface ClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
+    /**
+     * Cluster scheduled scan
+     */
+    readonly scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
     /**
      * (Computed) System project ID for the cluster (string)
      */
@@ -356,7 +378,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfig?: pulumi.Input<inputs.ClusterAksConfig>;
     /**
@@ -412,7 +434,7 @@ export interface ClusterArgs {
      */
     readonly driver?: pulumi.Input<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
@@ -429,12 +451,17 @@ export interface ClusterArgs {
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation. Default `false` (bool)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
+    /**
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+     */
+    readonly k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
      * Labels for cluster registration token object (map)
      */
@@ -444,9 +471,13 @@ export interface ClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
+    /**
+     * Cluster scheduled scan
+     */
+    readonly scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
     /**
      * Windows preferred cluster. Default: `false` (bool)
      */

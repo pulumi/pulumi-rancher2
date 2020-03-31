@@ -12,7 +12,7 @@ from . import utilities, tables
 class Cluster(pulumi.CustomResource):
     aks_config: pulumi.Output[dict]
     """
-    The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+    The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
 
       * `aadServerAppSecret` (`str`) - The secret of an Azure Active Directory server application (string)
       * `aadTenantId` (`str`) - The ID of an Azure Active Directory tenant (string)
@@ -61,7 +61,7 @@ class Cluster(pulumi.CustomResource):
     Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 
       * `ca_certs` (`str`) - CA certs for the authorized cluster endpoint (string)
-      * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
+      * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
       * `fqdn` (`str`) - FQDN for the authorized cluster endpoint (string)
     """
     cluster_monitoring_input: pulumi.Output[dict]
@@ -69,7 +69,6 @@ class Cluster(pulumi.CustomResource):
     Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
 
       * `answers` (`dict`) - Key/value answers for monitor input (map)
-        =======
     """
     cluster_registration_token: pulumi.Output[dict]
     """
@@ -107,7 +106,6 @@ class Cluster(pulumi.CustomResource):
       * `required` (`bool`) - Required variable. Default `false` (bool)
       * `type` (`str`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
       * `variable` (`str`) - Variable name (string)
-        >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
     """
     cluster_template_revision_id: pulumi.Output[str]
     """
@@ -143,7 +141,7 @@ class Cluster(pulumi.CustomResource):
     """
     eks_config: pulumi.Output[dict]
     """
-    The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+    The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
 
       * `access_key` (`str`) - The AWS Client ID to use (string)
       * `ami` (`str`) - AMI ID to use for the worker nodes instead of the default (string)
@@ -179,10 +177,11 @@ class Cluster(pulumi.CustomResource):
     enable_network_policy: pulumi.Output[bool]
     """
     Enable project network isolation. Default `false` (bool)
+    * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
     """
     gke_config: pulumi.Output[dict]
     """
-    The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+    The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
 
       * `clusterIpv4Cidr` (`str`) - The IP address range of the container pods (string)
       * `credential` (`str`) - The contents of the GC credential file (string)
@@ -237,6 +236,18 @@ class Cluster(pulumi.CustomResource):
       * `useIpAliases` (`bool`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
       * `zone` (`str`) - Zone GKE cluster (string)
     """
+    k3s_config: pulumi.Output[dict]
+    """
+    The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+
+      * `upgrade_strategy` (`dict`) - K3S upgrade strategy (List maxitems: 1)
+        * `drainServerNodes` (`bool`) - Drain server nodes. Default: `false` (bool)
+        * `drainWorkerNodes` (`bool`) - Drain worker nodes. Default: `false` (bool)
+        * `serverConcurrency` (`float`) - Server concurrency. Default: `1` (int)
+        * `workerConcurrency` (`float`) - Worker concurrency. Default: `1` (int)
+
+      * `version` (`str`) - K3S kubernetes version (string)
+    """
     kube_config: pulumi.Output[str]
     """
     (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -251,7 +262,7 @@ class Cluster(pulumi.CustomResource):
     """
     rke_config: pulumi.Output[dict]
     """
-    The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+    The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
 
       * `addonJobTimeout` (`float`) - Duration in seconds of addon job (int)
       * `addons` (`str`) - Addons descripton to deploy on RKE cluster.
@@ -453,7 +464,7 @@ class Cluster(pulumi.CustomResource):
       * `services` (`dict`) - Kubernetes cluster services (list maxitems:1)
         * `etcd` (`dict`) - Etcd options for RKE services (list maxitems:1)
           * `backup_config` (`dict`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-            * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
+            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
             * `intervalHours` (`float`) - Interval hours for etcd backup. Default `12` (int)
             * `retention` (`float`) - Retention for etcd backup. Default `6` (int)
             * `s3BackupConfig` (`dict`) - S3 config options for etcd backup (list maxitems:1)
@@ -485,7 +496,7 @@ class Cluster(pulumi.CustomResource):
         * `kubeApi` (`dict`) - Kube API options for RKE services (list maxitems:1)
           * `admissionConfiguration` (`dict`) - Admission configuration (map)
           * `alwaysPullImages` (`bool`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-          * `auditLog` (`dict`) - K8s audit log configuration. (list maxitem: 1)
+          * `auditLog` (`dict`) - K8s audit log configuration. (list maxitems: 1)
             * `configuration` (`dict`) - Event rate limit configuration. (map)
               * `format` (`str`) - Audit log format. Default: 'json' (string)
               * `maxAge` (`float`) - Audit log max age. Default: `30` (int)
@@ -494,11 +505,11 @@ class Cluster(pulumi.CustomResource):
               * `path` (`str`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
               * `policy` (`str`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
-            * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
+            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
 
-          * `eventRateLimit` (`dict`) - K8s event rate limit configuration. (list maxitem: 1)
+          * `eventRateLimit` (`dict`) - K8s event rate limit configuration. (list maxitems: 1)
             * `configuration` (`dict`) - Event rate limit configuration. (map)
-            * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
+            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
 
           * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
           * `extraBinds` (`list`) - Extra binds for scheduler service (list)
@@ -507,7 +518,7 @@ class Cluster(pulumi.CustomResource):
           * `podSecurityPolicy` (`bool`) - Pod Security Policy option for kube API service. Default `false` (bool)
           * `secretsEncryptionConfig` (`dict`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
             * `customConfig` (`dict`) - Secrets encryption configuration. (map)
-            * `enabled` (`bool`) - Enable the authorized cluster endpoint. Default `true` (bool)
+            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
 
           * `serviceClusterIpRange` (`str`) - Service Cluster ip Range option for kube controller service (string)
           * `serviceNodePortRange` (`str`) - Service Node Port Range option for kube API service (string)
@@ -547,6 +558,34 @@ class Cluster(pulumi.CustomResource):
       * `sshAgentAuth` (`bool`) - Use ssh agent auth. Default `false` (bool)
       * `sshCertPath` (`str`) - Cluster level SSH certificate path (string)
       * `sshKeyPath` (`str`) - Node SSH private key path (string)
+      * `upgrade_strategy` (`dict`) - K3S upgrade strategy (List maxitems: 1)
+        * `drain` (`bool`) - RKE drain nodes. Default: `false` (bool)
+        * `drainInput` (`dict`) - RKE drain node input (list Maxitems: 1)
+          * `deleteLocalData` (`bool`) - Delete RKE node local data. Default: `false` (bool)
+          * `force` (`bool`) - Force RKE node drain. Default: `false` (bool)
+          * `gracePeriod` (`float`) - RKE node drain grace period. Default: `-1` (int)
+          * `ignoreDaemonSets` (`bool`) - Ignore RKE daemon sets. Default: `true` (bool)
+          * `timeout` (`float`) - RKE node drain timeout. Default: `60` (int)
+
+        * `maxUnavailableControlplane` (`str`) - RKE max unavailable controlplane nodes. Default: `1` (string)
+        * `maxUnavailableWorker` (`str`) - RKE max unavailable worker nodes. Default: `10%` (string)
+    """
+    scheduled_cluster_scan: pulumi.Output[dict]
+    """
+    Cluster scheduled scan
+
+      * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
+      * `scanConfig` (`dict`) - Cluster scan config (List maxitems:1)
+        * `cisScanConfig` (`dict`) - Cluster Cis Scan config (List maxitems:1)
+          * `debugMaster` (`bool`) - Debug master. Default: `false` (bool)
+          * `debugWorker` (`bool`) - Debug worker. Default: `false` (bool)
+          * `overrideBenchmarkVersion` (`str`) - Override benchmark version (string)
+          * `overrideSkips` (`list`) - Override skip (string)
+          * `profile` (`str`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+
+      * `scheduleConfig` (`dict`) - Cluster scan schedule config (list maxitems:1)
+        * `cronSchedule` (`str`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+        * `retention` (`float`) - Retention for etcd backup. Default `6` (int)
     """
     system_project_id: pulumi.Output[str]
     """
@@ -556,7 +595,7 @@ class Cluster(pulumi.CustomResource):
     """
     Windows preferred cluster. Default: `false` (bool)
     """
-    def __init__(__self__, resource_name, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, labels=None, name=None, rke_config=None, windows_prefered_cluster=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, k3s_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scan=None, windows_prefered_cluster=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 
@@ -564,7 +603,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[dict] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[dict] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -578,15 +617,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting. Default `false` (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
-        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+               * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled scan
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
 
         The **aks_config** object supports the following:
@@ -632,13 +674,12 @@ class Cluster(pulumi.CustomResource):
         The **cluster_auth_endpoint** object supports the following:
 
           * `ca_certs` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
           * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
 
         The **cluster_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-            =======
 
         The **cluster_template_answers** object supports the following:
 
@@ -652,7 +693,6 @@ class Cluster(pulumi.CustomResource):
           * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
           * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
           * `variable` (`pulumi.Input[str]`) - Variable name (string)
-            >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
 
         The **eks_config** object supports the following:
 
@@ -729,6 +769,16 @@ class Cluster(pulumi.CustomResource):
           * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
           * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
           * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+
+        The **k3s_config** object supports the following:
+
+          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
+            * `drainServerNodes` (`pulumi.Input[bool]`) - Drain server nodes. Default: `false` (bool)
+            * `drainWorkerNodes` (`pulumi.Input[bool]`) - Drain worker nodes. Default: `false` (bool)
+            * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
+            * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
+
+          * `version` (`pulumi.Input[str]`) - K3S kubernetes version (string)
 
         The **rke_config** object supports the following:
 
@@ -932,7 +982,7 @@ class Cluster(pulumi.CustomResource):
           * `services` (`pulumi.Input[dict]`) - Kubernetes cluster services (list maxitems:1)
             * `etcd` (`pulumi.Input[dict]`) - Etcd options for RKE services (list maxitems:1)
               * `backup_config` (`pulumi.Input[dict]`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
                 * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
                 * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
                 * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup (list maxitems:1)
@@ -964,7 +1014,7 @@ class Cluster(pulumi.CustomResource):
             * `kubeApi` (`pulumi.Input[dict]`) - Kube API options for RKE services (list maxitems:1)
               * `admissionConfiguration` (`pulumi.Input[dict]`) - Admission configuration (map)
               * `alwaysPullImages` (`pulumi.Input[bool]`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitem: 1)
+              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitems: 1)
                 * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
                   * `format` (`pulumi.Input[str]`) - Audit log format. Default: 'json' (string)
                   * `maxAge` (`pulumi.Input[float]`) - Audit log max age. Default: `30` (int)
@@ -973,11 +1023,11 @@ class Cluster(pulumi.CustomResource):
                   * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
                   * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
-              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitem: 1)
+              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitems: 1)
                 * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
               * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
               * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
@@ -986,7 +1036,7 @@ class Cluster(pulumi.CustomResource):
               * `podSecurityPolicy` (`pulumi.Input[bool]`) - Pod Security Policy option for kube API service. Default `false` (bool)
               * `secretsEncryptionConfig` (`pulumi.Input[dict]`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
                 * `customConfig` (`pulumi.Input[dict]`) - Secrets encryption configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
               * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
               * `serviceNodePortRange` (`pulumi.Input[str]`) - Service Node Port Range option for kube API service (string)
@@ -1026,6 +1076,32 @@ class Cluster(pulumi.CustomResource):
           * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
           * `sshCertPath` (`pulumi.Input[str]`) - Cluster level SSH certificate path (string)
           * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
+          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
+            * `drain` (`pulumi.Input[bool]`) - RKE drain nodes. Default: `false` (bool)
+            * `drainInput` (`pulumi.Input[dict]`) - RKE drain node input (list Maxitems: 1)
+              * `deleteLocalData` (`pulumi.Input[bool]`) - Delete RKE node local data. Default: `false` (bool)
+              * `force` (`pulumi.Input[bool]`) - Force RKE node drain. Default: `false` (bool)
+              * `gracePeriod` (`pulumi.Input[float]`) - RKE node drain grace period. Default: `-1` (int)
+              * `ignoreDaemonSets` (`pulumi.Input[bool]`) - Ignore RKE daemon sets. Default: `true` (bool)
+              * `timeout` (`pulumi.Input[float]`) - RKE node drain timeout. Default: `60` (int)
+
+            * `maxUnavailableControlplane` (`pulumi.Input[str]`) - RKE max unavailable controlplane nodes. Default: `1` (string)
+            * `maxUnavailableWorker` (`pulumi.Input[str]`) - RKE max unavailable worker nodes. Default: `10%` (string)
+
+        The **scheduled_cluster_scan** object supports the following:
+
+          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
+          * `scanConfig` (`pulumi.Input[dict]`) - Cluster scan config (List maxitems:1)
+            * `cisScanConfig` (`pulumi.Input[dict]`) - Cluster Cis Scan config (List maxitems:1)
+              * `debugMaster` (`pulumi.Input[bool]`) - Debug master. Default: `false` (bool)
+              * `debugWorker` (`pulumi.Input[bool]`) - Debug worker. Default: `false` (bool)
+              * `overrideBenchmarkVersion` (`pulumi.Input[str]`) - Override benchmark version (string)
+              * `overrideSkips` (`pulumi.Input[list]`) - Override skip (string)
+              * `profile` (`pulumi.Input[str]`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+
+          * `scheduleConfig` (`pulumi.Input[dict]`) - Cluster scan schedule config (list maxitems:1)
+            * `cronSchedule` (`pulumi.Input[str]`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+            * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -1064,9 +1140,11 @@ class Cluster(pulumi.CustomResource):
             __props__['enable_cluster_monitoring'] = enable_cluster_monitoring
             __props__['enable_network_policy'] = enable_network_policy
             __props__['gke_config'] = gke_config
+            __props__['k3s_config'] = k3s_config
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['rke_config'] = rke_config
+            __props__['scheduled_cluster_scan'] = scheduled_cluster_scan
             __props__['windows_prefered_cluster'] = windows_prefered_cluster
             __props__['cluster_registration_token'] = None
             __props__['default_project_id'] = None
@@ -1079,7 +1157,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, kube_config=None, labels=None, name=None, rke_config=None, system_project_id=None, windows_prefered_cluster=None):
+    def get(resource_name, id, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, k3s_config=None, kube_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scan=None, system_project_id=None, windows_prefered_cluster=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1087,7 +1165,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[dict] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[dict] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -1103,16 +1181,19 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting. Default `false` (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
-        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+               * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled scan
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
 
@@ -1159,13 +1240,12 @@ class Cluster(pulumi.CustomResource):
         The **cluster_auth_endpoint** object supports the following:
 
           * `ca_certs` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
           * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
 
         The **cluster_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-            =======
 
         The **cluster_registration_token** object supports the following:
 
@@ -1193,7 +1273,6 @@ class Cluster(pulumi.CustomResource):
           * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
           * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
           * `variable` (`pulumi.Input[str]`) - Variable name (string)
-            >>>>>>> c6a2cbc... Feat: added .ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
 
         The **eks_config** object supports the following:
 
@@ -1270,6 +1349,16 @@ class Cluster(pulumi.CustomResource):
           * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
           * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
           * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+
+        The **k3s_config** object supports the following:
+
+          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
+            * `drainServerNodes` (`pulumi.Input[bool]`) - Drain server nodes. Default: `false` (bool)
+            * `drainWorkerNodes` (`pulumi.Input[bool]`) - Drain worker nodes. Default: `false` (bool)
+            * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
+            * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
+
+          * `version` (`pulumi.Input[str]`) - K3S kubernetes version (string)
 
         The **rke_config** object supports the following:
 
@@ -1473,7 +1562,7 @@ class Cluster(pulumi.CustomResource):
           * `services` (`pulumi.Input[dict]`) - Kubernetes cluster services (list maxitems:1)
             * `etcd` (`pulumi.Input[dict]`) - Etcd options for RKE services (list maxitems:1)
               * `backup_config` (`pulumi.Input[dict]`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
                 * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
                 * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
                 * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup (list maxitems:1)
@@ -1505,7 +1594,7 @@ class Cluster(pulumi.CustomResource):
             * `kubeApi` (`pulumi.Input[dict]`) - Kube API options for RKE services (list maxitems:1)
               * `admissionConfiguration` (`pulumi.Input[dict]`) - Admission configuration (map)
               * `alwaysPullImages` (`pulumi.Input[bool]`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitem: 1)
+              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitems: 1)
                 * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
                   * `format` (`pulumi.Input[str]`) - Audit log format. Default: 'json' (string)
                   * `maxAge` (`pulumi.Input[float]`) - Audit log max age. Default: `30` (int)
@@ -1514,11 +1603,11 @@ class Cluster(pulumi.CustomResource):
                   * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
                   * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
 
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
-              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitem: 1)
+              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitems: 1)
                 * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
               * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
               * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
@@ -1527,7 +1616,7 @@ class Cluster(pulumi.CustomResource):
               * `podSecurityPolicy` (`pulumi.Input[bool]`) - Pod Security Policy option for kube API service. Default `false` (bool)
               * `secretsEncryptionConfig` (`pulumi.Input[dict]`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
                 * `customConfig` (`pulumi.Input[dict]`) - Secrets encryption configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable the authorized cluster endpoint. Default `true` (bool)
+                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
 
               * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
               * `serviceNodePortRange` (`pulumi.Input[str]`) - Service Node Port Range option for kube API service (string)
@@ -1567,6 +1656,32 @@ class Cluster(pulumi.CustomResource):
           * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
           * `sshCertPath` (`pulumi.Input[str]`) - Cluster level SSH certificate path (string)
           * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
+          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
+            * `drain` (`pulumi.Input[bool]`) - RKE drain nodes. Default: `false` (bool)
+            * `drainInput` (`pulumi.Input[dict]`) - RKE drain node input (list Maxitems: 1)
+              * `deleteLocalData` (`pulumi.Input[bool]`) - Delete RKE node local data. Default: `false` (bool)
+              * `force` (`pulumi.Input[bool]`) - Force RKE node drain. Default: `false` (bool)
+              * `gracePeriod` (`pulumi.Input[float]`) - RKE node drain grace period. Default: `-1` (int)
+              * `ignoreDaemonSets` (`pulumi.Input[bool]`) - Ignore RKE daemon sets. Default: `true` (bool)
+              * `timeout` (`pulumi.Input[float]`) - RKE node drain timeout. Default: `60` (int)
+
+            * `maxUnavailableControlplane` (`pulumi.Input[str]`) - RKE max unavailable controlplane nodes. Default: `1` (string)
+            * `maxUnavailableWorker` (`pulumi.Input[str]`) - RKE max unavailable worker nodes. Default: `10%` (string)
+
+        The **scheduled_cluster_scan** object supports the following:
+
+          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
+          * `scanConfig` (`pulumi.Input[dict]`) - Cluster scan config (List maxitems:1)
+            * `cisScanConfig` (`pulumi.Input[dict]`) - Cluster Cis Scan config (List maxitems:1)
+              * `debugMaster` (`pulumi.Input[bool]`) - Debug master. Default: `false` (bool)
+              * `debugWorker` (`pulumi.Input[bool]`) - Debug worker. Default: `false` (bool)
+              * `overrideBenchmarkVersion` (`pulumi.Input[str]`) - Override benchmark version (string)
+              * `overrideSkips` (`pulumi.Input[list]`) - Override skip (string)
+              * `profile` (`pulumi.Input[str]`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+
+          * `scheduleConfig` (`pulumi.Input[dict]`) - Cluster scan schedule config (list maxitems:1)
+            * `cronSchedule` (`pulumi.Input[str]`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+            * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1594,10 +1709,12 @@ class Cluster(pulumi.CustomResource):
         __props__["enable_cluster_monitoring"] = enable_cluster_monitoring
         __props__["enable_network_policy"] = enable_network_policy
         __props__["gke_config"] = gke_config
+        __props__["k3s_config"] = k3s_config
         __props__["kube_config"] = kube_config
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["rke_config"] = rke_config
+        __props__["scheduled_cluster_scan"] = scheduled_cluster_scan
         __props__["system_project_id"] = system_project_id
         __props__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
