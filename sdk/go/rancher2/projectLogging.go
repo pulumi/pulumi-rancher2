@@ -19,11 +19,13 @@ type ProjectLogging struct {
 
 	// Annotations for Project Logging object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ProjectLoggingCustomTargetConfigPtrOutput `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ProjectLoggingElasticsearchConfigPtrOutput `pulumi:"elasticsearchConfig"`
-	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ProjectLoggingFluentdConfigPtrOutput `pulumi:"fluentdConfig"`
-	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	KafkaConfig ProjectLoggingKafkaConfigPtrOutput `pulumi:"kafkaConfig"`
 	// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -39,9 +41,9 @@ type ProjectLogging struct {
 	OutputTags pulumi.MapOutput `pulumi:"outputTags"`
 	// The project id to configure logging (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
 	SplunkConfig ProjectLoggingSplunkConfigPtrOutput `pulumi:"splunkConfig"`
-	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
 	SyslogConfig ProjectLoggingSyslogConfigPtrOutput `pulumi:"syslogConfig"`
 }
 
@@ -81,11 +83,13 @@ func GetProjectLogging(ctx *pulumi.Context,
 type projectLoggingState struct {
 	// Annotations for Project Logging object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig *ProjectLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ProjectLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig *ProjectLoggingFluentdConfig `pulumi:"fluentdConfig"`
-	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	KafkaConfig *ProjectLoggingKafkaConfig `pulumi:"kafkaConfig"`
 	// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
 	Kind *string `pulumi:"kind"`
@@ -101,20 +105,22 @@ type projectLoggingState struct {
 	OutputTags map[string]interface{} `pulumi:"outputTags"`
 	// The project id to configure logging (string)
 	ProjectId *string `pulumi:"projectId"`
-	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
 	SplunkConfig *ProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
-	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
 	SyslogConfig *ProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
 
 type ProjectLoggingState struct {
 	// Annotations for Project Logging object (map)
 	Annotations pulumi.MapInput
-	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ProjectLoggingCustomTargetConfigPtrInput
+	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ProjectLoggingElasticsearchConfigPtrInput
-	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ProjectLoggingFluentdConfigPtrInput
-	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	KafkaConfig ProjectLoggingKafkaConfigPtrInput
 	// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
 	Kind pulumi.StringPtrInput
@@ -130,9 +136,9 @@ type ProjectLoggingState struct {
 	OutputTags pulumi.MapInput
 	// The project id to configure logging (string)
 	ProjectId pulumi.StringPtrInput
-	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
 	SplunkConfig ProjectLoggingSplunkConfigPtrInput
-	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
 	SyslogConfig ProjectLoggingSyslogConfigPtrInput
 }
 
@@ -143,11 +149,13 @@ func (ProjectLoggingState) ElementType() reflect.Type {
 type projectLoggingArgs struct {
 	// Annotations for Project Logging object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig *ProjectLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ProjectLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig *ProjectLoggingFluentdConfig `pulumi:"fluentdConfig"`
-	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	KafkaConfig *ProjectLoggingKafkaConfig `pulumi:"kafkaConfig"`
 	// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
 	Kind string `pulumi:"kind"`
@@ -163,9 +171,9 @@ type projectLoggingArgs struct {
 	OutputTags map[string]interface{} `pulumi:"outputTags"`
 	// The project id to configure logging (string)
 	ProjectId string `pulumi:"projectId"`
-	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
 	SplunkConfig *ProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
-	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
 	SyslogConfig *ProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
 
@@ -173,11 +181,13 @@ type projectLoggingArgs struct {
 type ProjectLoggingArgs struct {
 	// Annotations for Project Logging object (map)
 	Annotations pulumi.MapInput
-	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ProjectLoggingCustomTargetConfigPtrInput
+	// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ProjectLoggingElasticsearchConfigPtrInput
-	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	FluentdConfig ProjectLoggingFluentdConfigPtrInput
-	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	KafkaConfig ProjectLoggingKafkaConfigPtrInput
 	// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
 	Kind pulumi.StringInput
@@ -193,9 +203,9 @@ type ProjectLoggingArgs struct {
 	OutputTags pulumi.MapInput
 	// The project id to configure logging (string)
 	ProjectId pulumi.StringInput
-	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
 	SplunkConfig ProjectLoggingSplunkConfigPtrInput
-	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
 	SyslogConfig ProjectLoggingSyslogConfigPtrInput
 }
 

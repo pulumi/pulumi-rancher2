@@ -29,19 +29,25 @@ namespace Pulumi.Rancher2
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
+        [Output("customTargetConfig")]
+        public Output<Outputs.ClusterLoggingCustomTargetConfig?> CustomTargetConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Output("elasticsearchConfig")]
         public Output<Outputs.ClusterLoggingElasticsearchConfig?> ElasticsearchConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Output("fluentdConfig")]
         public Output<Outputs.ClusterLoggingFluentdConfig?> FluentdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Output("kafkaConfig")]
         public Output<Outputs.ClusterLoggingKafkaConfig?> KafkaConfig { get; private set; } = null!;
@@ -83,13 +89,13 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, object>> OutputTags { get; private set; } = null!;
 
         /// <summary>
-        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         /// </summary>
         [Output("splunkConfig")]
         public Output<Outputs.ClusterLoggingSplunkConfig?> SplunkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         /// </summary>
         [Output("syslogConfig")]
         public Output<Outputs.ClusterLoggingSyslogConfig?> SyslogConfig { get; private set; } = null!;
@@ -159,19 +165,25 @@ namespace Pulumi.Rancher2
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
+        [Input("customTargetConfig")]
+        public Input<Inputs.ClusterLoggingCustomTargetConfigArgs>? CustomTargetConfig { get; set; }
+
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ClusterLoggingElasticsearchConfigArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ClusterLoggingFluentdConfigArgs>? FluentdConfig { get; set; }
 
         /// <summary>
-        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ClusterLoggingKafkaConfigArgs>? KafkaConfig { get; set; }
@@ -225,13 +237,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ClusterLoggingSplunkConfigArgs>? SplunkConfig { get; set; }
 
         /// <summary>
-        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ClusterLoggingSyslogConfigArgs>? SyslogConfig { get; set; }
@@ -262,19 +274,25 @@ namespace Pulumi.Rancher2
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
+        [Input("customTargetConfig")]
+        public Input<Inputs.ClusterLoggingCustomTargetConfigGetArgs>? CustomTargetConfig { get; set; }
+
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ClusterLoggingElasticsearchConfigGetArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ClusterLoggingFluentdConfigGetArgs>? FluentdConfig { get; set; }
 
         /// <summary>
-        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ClusterLoggingKafkaConfigGetArgs>? KafkaConfig { get; set; }
@@ -328,13 +346,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ClusterLoggingSplunkConfigGetArgs>? SplunkConfig { get; set; }
 
         /// <summary>
-        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ClusterLoggingSyslogConfigGetArgs>? SyslogConfig { get; set; }
@@ -346,6 +364,68 @@ namespace Pulumi.Rancher2
 
     namespace Inputs
     {
+
+    public sealed class ClusterLoggingCustomTargetConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
+
+        public ClusterLoggingCustomTargetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingCustomTargetConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
+
+        public ClusterLoggingCustomTargetConfigGetArgs()
+        {
+        }
+    }
 
     public sealed class ClusterLoggingElasticsearchConfigArgs : Pulumi.ResourceArgs
     {
@@ -1010,6 +1090,40 @@ namespace Pulumi.Rancher2
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class ClusterLoggingCustomTargetConfig
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        public readonly string Content;
+
+        [OutputConstructor]
+        private ClusterLoggingCustomTargetConfig(
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string content)
+        {
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            Content = content;
+        }
+    }
 
     [OutputType]
     public sealed class ClusterLoggingElasticsearchConfig

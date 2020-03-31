@@ -62,15 +62,19 @@ export class ProjectLogging extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    public readonly customTargetConfig!: pulumi.Output<outputs.ProjectLoggingCustomTargetConfig | undefined>;
+    /**
+     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly elasticsearchConfig!: pulumi.Output<outputs.ProjectLoggingElasticsearchConfig | undefined>;
     /**
-     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly fluentdConfig!: pulumi.Output<outputs.ProjectLoggingFluentdConfig | undefined>;
     /**
-     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly kafkaConfig!: pulumi.Output<outputs.ProjectLoggingKafkaConfig | undefined>;
     /**
@@ -102,11 +106,11 @@ export class ProjectLogging extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     public readonly splunkConfig!: pulumi.Output<outputs.ProjectLoggingSplunkConfig | undefined>;
     /**
-     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     public readonly syslogConfig!: pulumi.Output<outputs.ProjectLoggingSyslogConfig | undefined>;
 
@@ -123,6 +127,7 @@ export class ProjectLogging extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ProjectLoggingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
+            inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
             inputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
             inputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
@@ -144,6 +149,7 @@ export class ProjectLogging extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
+            inputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
             inputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
             inputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
@@ -177,15 +183,19 @@ export interface ProjectLoggingState {
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    readonly customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
+    /**
+     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
     /**
-     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
     /**
-     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
     /**
@@ -217,11 +227,11 @@ export interface ProjectLoggingState {
      */
     readonly projectId?: pulumi.Input<string>;
     /**
-     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     readonly splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
     /**
-     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     readonly syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
 }
@@ -235,15 +245,19 @@ export interface ProjectLoggingArgs {
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     */
+    readonly customTargetConfig?: pulumi.Input<inputs.ProjectLoggingCustomTargetConfig>;
+    /**
+     * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
     /**
-     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly fluentdConfig?: pulumi.Input<inputs.ProjectLoggingFluentdConfig>;
     /**
-     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+     * The kafka config for Project Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly kafkaConfig?: pulumi.Input<inputs.ProjectLoggingKafkaConfig>;
     /**
@@ -275,11 +289,11 @@ export interface ProjectLoggingArgs {
      */
     readonly projectId: pulumi.Input<string>;
     /**
-     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+     * The splunk config for Project Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
      */
     readonly splunkConfig?: pulumi.Input<inputs.ProjectLoggingSplunkConfig>;
     /**
-     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+     * The syslog config for Project Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
      */
     readonly syslogConfig?: pulumi.Input<inputs.ProjectLoggingSyslogConfig>;
 }

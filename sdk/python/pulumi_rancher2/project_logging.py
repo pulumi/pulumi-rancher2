@@ -14,9 +14,18 @@ class ProjectLogging(pulumi.CustomResource):
     """
     Annotations for Project Logging object (map)
     """
+    custom_target_config: pulumi.Output[dict]
+    """
+    The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+
+      * `certificate` (`str`) - SSL certificate for the syslog service (string)
+      * `clientCert` (`str`) - SSL client certificate for the syslog service (string)
+      * `clientKey` (`str`) - SSL client key for the syslog service (string)
+      * `content` (`str`) - Custom target config content (string)
+    """
     elasticsearch_config: pulumi.Output[dict]
     """
-    The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+    The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
 
       * `authPassword` (`str`) - User password for the elascticsearch service (string)
       * `authUsername` (`str`) - Username for the elascticsearch service (string)
@@ -32,7 +41,7 @@ class ProjectLogging(pulumi.CustomResource):
     """
     fluentd_config: pulumi.Output[dict]
     """
-    The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+    The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
 
       * `certificate` (`str`) - SSL certificate for the syslog service (string)
       * `compress` (`bool`) - Compress data for the fluentd service (bool)
@@ -48,7 +57,7 @@ class ProjectLogging(pulumi.CustomResource):
     """
     kafka_config: pulumi.Output[dict]
     """
-    The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+    The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
 
       * `brokerEndpoints` (`list`) - Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
       * `certificate` (`str`) - SSL certificate for the syslog service (string)
@@ -87,7 +96,7 @@ class ProjectLogging(pulumi.CustomResource):
     """
     splunk_config: pulumi.Output[dict]
     """
-    The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+    The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
 
       * `certificate` (`str`) - SSL certificate for the syslog service (string)
       * `clientCert` (`str`) - SSL client certificate for the syslog service (string)
@@ -101,7 +110,7 @@ class ProjectLogging(pulumi.CustomResource):
     """
     syslog_config: pulumi.Output[dict]
     """
-    The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+    The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
 
       * `certificate` (`str`) - SSL certificate for the syslog service (string)
       * `clientCert` (`str`) - SSL client certificate for the syslog service (string)
@@ -113,7 +122,7 @@ class ProjectLogging(pulumi.CustomResource):
       * `sslVerify` (`bool`) - SSL verify for the syslog service (bool)
       * `token` (`str`) - Token for the syslog service (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, custom_target_config=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
 
@@ -122,9 +131,10 @@ class ProjectLogging(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Project Logging object (map)
-        :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] fluentd_config: The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] kafka_config: The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] fluentd_config: The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] kafka_config: The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[str] kind: The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
         :param pulumi.Input[dict] labels: Labels for Project Logging object (map)
         :param pulumi.Input[str] name: The name of the Project Logging config (string)
@@ -132,8 +142,15 @@ class ProjectLogging(pulumi.CustomResource):
         :param pulumi.Input[float] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
         :param pulumi.Input[dict] output_tags: The output tags for Project Logging (map)
         :param pulumi.Input[str] project_id: The project id to configure logging (string)
-        :param pulumi.Input[dict] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        :param pulumi.Input[dict] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+
+        The **custom_target_config** object supports the following:
+
+          * `certificate` (`pulumi.Input[str]`) - SSL certificate for the syslog service (string)
+          * `clientCert` (`pulumi.Input[str]`) - SSL client certificate for the syslog service (string)
+          * `clientKey` (`pulumi.Input[str]`) - SSL client key for the syslog service (string)
+          * `content` (`pulumi.Input[str]`) - Custom target config content (string)
 
         The **elasticsearch_config** object supports the following:
 
@@ -214,6 +231,7 @@ class ProjectLogging(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
+            __props__['custom_target_config'] = custom_target_config
             __props__['elasticsearch_config'] = elasticsearch_config
             __props__['fluentd_config'] = fluentd_config
             __props__['kafka_config'] = kafka_config
@@ -237,7 +255,7 @@ class ProjectLogging(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None):
+    def get(resource_name, id, opts=None, annotations=None, custom_target_config=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, project_id=None, splunk_config=None, syslog_config=None):
         """
         Get an existing ProjectLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,9 +264,10 @@ class ProjectLogging(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Project Logging object (map)
-        :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] fluentd_config: The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] kafka_config: The kafka config for Project Logging. For `kind = kafka`. Conflicts with `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] fluentd_config: The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] kafka_config: The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[str] kind: The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
         :param pulumi.Input[dict] labels: Labels for Project Logging object (map)
         :param pulumi.Input[str] name: The name of the Project Logging config (string)
@@ -256,8 +275,15 @@ class ProjectLogging(pulumi.CustomResource):
         :param pulumi.Input[float] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
         :param pulumi.Input[dict] output_tags: The output tags for Project Logging (map)
         :param pulumi.Input[str] project_id: The project id to configure logging (string)
-        :param pulumi.Input[dict] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
-        :param pulumi.Input[dict] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        :param pulumi.Input[dict] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[dict] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+
+        The **custom_target_config** object supports the following:
+
+          * `certificate` (`pulumi.Input[str]`) - SSL certificate for the syslog service (string)
+          * `clientCert` (`pulumi.Input[str]`) - SSL client certificate for the syslog service (string)
+          * `clientKey` (`pulumi.Input[str]`) - SSL client key for the syslog service (string)
+          * `content` (`pulumi.Input[str]`) - Custom target config content (string)
 
         The **elasticsearch_config** object supports the following:
 
@@ -325,6 +351,7 @@ class ProjectLogging(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["annotations"] = annotations
+        __props__["custom_target_config"] = custom_target_config
         __props__["elasticsearch_config"] = elasticsearch_config
         __props__["fluentd_config"] = fluentd_config
         __props__["kafka_config"] = kafka_config

@@ -681,6 +681,25 @@ export interface ClusterGkeConfig {
     zone?: string;
 }
 
+export interface ClusterLoggingCustomTargetConfig {
+    /**
+     * SSL certificate for the syslog service (string)
+     */
+    certificate?: string;
+    /**
+     * SSL client certificate for the syslog service (string)
+     */
+    clientCert?: string;
+    /**
+     * SSL client key for the syslog service (string)
+     */
+    clientKey?: string;
+    /**
+     * Custom target config content (string)
+     */
+    content: string;
+}
+
 export interface ClusterLoggingElasticsearchConfig {
     /**
      * User password for the elascticsearch service (string)
@@ -1046,7 +1065,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProvider {
     /**
      * (list maxitems:1)
      */
-    global?: outputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobal;
+    global: outputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobal;
     /**
      * (list)
      */
@@ -1565,11 +1584,15 @@ export interface ClusterRkeConfigNetwork {
      */
     flannelNetworkProvider?: outputs.ClusterRkeConfigNetworkFlannelNetworkProvider;
     /**
+     * Network provider MTU. Default `0` (int)
+     */
+    mtu?: number;
+    /**
      * RKE options for network (map)
      */
     options: {[key: string]: any};
     /**
-     * Plugin for RKE network. `canal` (default), `flannel`, `calico` and `weave` are supported. (string)
+     * Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      */
     plugin: string;
     /**
@@ -1875,7 +1898,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
      * Event rate limit configuration. (map)
      */
-    configuration?: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
+    configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
      * Enable the authorized cluster endpoint. Default `true` (bool)
      */
@@ -1904,9 +1927,9 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     path?: string;
     /**
-     * Audit log policy json formated string. `omitStages` and `rules` json fields are supported. Example: `policy = jsonencode({"rules":[{"level": "Metadata"}]})` (string)
+     * Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
      */
-    policy?: string;
+    policy: string;
 }
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
@@ -2198,7 +2221,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider {
-    global?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal;
+    global: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal;
     serviceOverrides?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride[];
 }
 
@@ -2374,6 +2397,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     calicoNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
+    mtu?: number;
     options: {[key: string]: any};
     plugin: string;
     weaveNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
@@ -2484,7 +2508,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
-    configuration?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
+    configuration: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
      * Enable cluster template revision. Default `true` (bool)
      */
@@ -2497,7 +2521,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     maxBackup?: number;
     maxSize?: number;
     path?: string;
-    policy?: string;
+    policy: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
@@ -2942,7 +2966,7 @@ export interface GetClusterRkeConfigCloudProvider {
 }
 
 export interface GetClusterRkeConfigCloudProviderAwsCloudProvider {
-    global?: outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal;
+    global: outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal;
     serviceOverrides?: outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride[];
 }
 
@@ -3118,6 +3142,7 @@ export interface GetClusterRkeConfigNetwork {
     calicoNetworkProvider?: outputs.GetClusterRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterRkeConfigNetworkFlannelNetworkProvider;
+    mtu?: number;
     options: {[key: string]: any};
     plugin: string;
     weaveNetworkProvider?: outputs.GetClusterRkeConfigNetworkWeaveNetworkProvider;
@@ -3225,7 +3250,7 @@ export interface GetClusterRkeConfigServicesKubeApi {
 }
 
 export interface GetClusterRkeConfigServicesKubeApiAuditLog {
-    configuration?: outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfiguration;
+    configuration: outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     enabled?: boolean;
 }
 
@@ -3235,7 +3260,7 @@ export interface GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     maxBackup?: number;
     maxSize?: number;
     path?: string;
-    policy?: string;
+    policy: string;
 }
 
 export interface GetClusterRkeConfigServicesKubeApiEventRateLimit {
@@ -3388,7 +3413,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider {
-    global?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal;
+    global: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal;
     serviceOverrides?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride[];
 }
 
@@ -3564,6 +3589,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     calicoNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
     canalNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
+    mtu?: number;
     options: {[key: string]: any};
     plugin: string;
     weaveNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
@@ -3671,7 +3697,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog {
-    configuration?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
+    configuration: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration;
     enabled?: boolean;
 }
 
@@ -3681,7 +3707,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     maxBackup?: number;
     maxSize?: number;
     path?: string;
-    policy?: string;
+    policy: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
@@ -3849,6 +3875,84 @@ export interface GetNotifierWechatConfig {
     proxyUrl?: string;
     recipientType?: string;
     secret: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
+    /**
+     * The name of the PodSecurityPolicyTemplate (string)
+     */
+    name: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
+    driver: string;
+}
+
+export interface GetPodSecurityPolicyTemplateAllowedHostPath {
+    pathPrefix: string;
+    readOnly?: boolean;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroup {
+    ranges: outputs.GetPodSecurityPolicyTemplateFsGroupRange[];
+    rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateFsGroupRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateHostPort {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsGroup {
+    ranges?: outputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
+    rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsUser {
+    ranges?: outputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
+    rule: string;
+}
+
+export interface GetPodSecurityPolicyTemplateRunAsUserRange {
+    max: number;
+    min: number;
+}
+
+export interface GetPodSecurityPolicyTemplateRuntimeClass {
+    allowedRuntimeClassNames: string[];
+    defaultRuntimeClassName?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinux {
+    rule: string;
+    seLinuxOption?: outputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
+}
+
+export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    level?: string;
+    role?: string;
+    type?: string;
+    user?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSupplementalGroup {
+    ranges: outputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
+    rule?: string;
+}
+
+export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
+    max: number;
+    min: number;
 }
 
 export interface GetProjectAlertGroupRecipient {
@@ -4455,6 +4559,83 @@ export interface NodeTemplateDigitaloceanConfig {
     userdata?: string;
 }
 
+export interface NodeTemplateOpennebulaConfig {
+    /**
+     * Size of the Volatile disk in MB - only for b2d (string)
+     */
+    b2dSize?: string;
+    /**
+     * CPU value for the VM (string)
+     */
+    cpu?: string;
+    /**
+     * Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+     */
+    devPrefix?: string;
+    /**
+     * VNC is enabled by default. Disable it with this flag (bool)
+     */
+    disableVnc?: boolean;
+    /**
+     * Size of the disk for the VM in MB (string)
+     */
+    diskResize?: string;
+    /**
+     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
+     */
+    imageId?: string;
+    /**
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
+     */
+    imageName?: string;
+    /**
+     * Owner of the image to use as the VM OS (string)
+     * * `memory`- (Optional) Size of the memory for the VM in MB (string)
+     */
+    imageOwner?: string;
+    memory?: string;
+    /**
+     * Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
+     */
+    networkId?: string;
+    /**
+     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
+     */
+    networkName?: string;
+    /**
+     * Opennebula user ID of the Network to connect the machine to (string)
+     */
+    networkOwner?: string;
+    /**
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     */
+    password: string;
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     */
+    sshUser?: string;
+    /**
+     * Opennebula template ID to use. Conflicts with `templateName` (string)
+     */
+    templateId?: string;
+    /**
+     * Name of the Opennbula template to use. Conflicts with `templateId` (string)
+     */
+    templateName?: string;
+    /**
+     * Set the user for the XML-RPC API authentication (string)
+     */
+    user: string;
+    /**
+     * VCPUs for the VM (string)
+     */
+    vcpu?: string;
+    /**
+     * Set the url for the Opennebula XML-RPC API (string)
+     */
+    xmlRpcUrl: string;
+}
+
 export interface NodeTemplateOpenstackConfig {
     activeTimeout?: string;
     /**
@@ -4534,7 +4715,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     password?: string;
     /**
-     * Private keyfile absolute path to use for SSH (string)
+     * Private key content to use for SSH (string)
      */
     privateKeyFile?: string;
     /**
@@ -4793,6 +4974,168 @@ export interface NotifierWechatConfig {
     secret: string;
 }
 
+export interface PodSecurityPolicyTemplateAllowedCsiDriver {
+    /**
+     * The name of the PodSecurityPolicyTemplate (string)
+     */
+    name: string;
+}
+
+export interface PodSecurityPolicyTemplateAllowedFlexVolume {
+    driver: string;
+}
+
+export interface PodSecurityPolicyTemplateAllowedHostPath {
+    /**
+     * (string)
+     */
+    pathPrefix: string;
+    /**
+     * (string)
+     */
+    readOnly?: boolean;
+}
+
+export interface PodSecurityPolicyTemplateFsGroup {
+    /**
+     * (list)
+     */
+    ranges: outputs.PodSecurityPolicyTemplateFsGroupRange[];
+    /**
+     * (string)
+     */
+    rule?: string;
+}
+
+export interface PodSecurityPolicyTemplateFsGroupRange {
+    /**
+     * (int)
+     */
+    max: number;
+    /**
+     * (int)
+     */
+    min: number;
+}
+
+export interface PodSecurityPolicyTemplateHostPort {
+    /**
+     * (int)
+     */
+    max: number;
+    /**
+     * (int)
+     */
+    min: number;
+}
+
+export interface PodSecurityPolicyTemplateRunAsGroup {
+    /**
+     * (list)
+     */
+    ranges?: outputs.PodSecurityPolicyTemplateRunAsGroupRange[];
+    /**
+     * (string)
+     */
+    rule: string;
+}
+
+export interface PodSecurityPolicyTemplateRunAsGroupRange {
+    /**
+     * (int)
+     */
+    max: number;
+    /**
+     * (int)
+     */
+    min: number;
+}
+
+export interface PodSecurityPolicyTemplateRunAsUser {
+    /**
+     * (list)
+     */
+    ranges?: outputs.PodSecurityPolicyTemplateRunAsUserRange[];
+    /**
+     * (string)
+     */
+    rule: string;
+}
+
+export interface PodSecurityPolicyTemplateRunAsUserRange {
+    /**
+     * (int)
+     */
+    max: number;
+    /**
+     * (int)
+     */
+    min: number;
+}
+
+export interface PodSecurityPolicyTemplateRuntimeClass {
+    /**
+     * (list)
+     */
+    allowedRuntimeClassNames: string[];
+    /**
+     * (string)
+     */
+    defaultRuntimeClassName?: string;
+}
+
+export interface PodSecurityPolicyTemplateSeLinux {
+    /**
+     * (string)
+     */
+    rule: string;
+    /**
+     * (list maxitems:1)
+     */
+    seLinuxOption?: outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption;
+}
+
+export interface PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    /**
+     * (string)
+     */
+    level?: string;
+    /**
+     * (string)
+     */
+    role?: string;
+    /**
+     * (string)
+     */
+    type?: string;
+    /**
+     * (string)
+     */
+    user?: string;
+}
+
+export interface PodSecurityPolicyTemplateSupplementalGroup {
+    /**
+     * (list)
+     */
+    ranges: outputs.PodSecurityPolicyTemplateSupplementalGroupRange[];
+    /**
+     * (string)
+     */
+    rule?: string;
+}
+
+export interface PodSecurityPolicyTemplateSupplementalGroupRange {
+    /**
+     * (int)
+     */
+    max: number;
+    /**
+     * (int)
+     */
+    min: number;
+}
+
 export interface ProjectAlertGroupRecipient {
     /**
      * Recipient notifier ID (string)
@@ -4882,6 +5225,25 @@ export interface ProjectContainerResourceLimit {
      * Limit for requests memory in project (string)
      */
     requestsMemory?: string;
+}
+
+export interface ProjectLoggingCustomTargetConfig {
+    /**
+     * SSL certificate for the syslog service (string)
+     */
+    certificate?: string;
+    /**
+     * SSL client certificate for the syslog service (string)
+     */
+    clientCert?: string;
+    /**
+     * SSL client key for the syslog service (string)
+     */
+    clientKey?: string;
+    /**
+     * Custom target config content (string)
+     */
+    content: string;
 }
 
 export interface ProjectLoggingElasticsearchConfig {

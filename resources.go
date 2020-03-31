@@ -253,6 +253,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"rancher2_user": {Tok: makeResource(mainMod, "User")},
+			"rancher2_pod_security_policy_template": {
+				Tok:  makeResource(mainMod, "PodSecurityPolicyTemplate"),
+				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":         {Tok: makeDataSource(mainMod, "getApp")},
@@ -338,11 +342,15 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_secret":  {Tok: makeDataSource(mainMod, "getSecret")},
 			"rancher2_setting": {Tok: makeDataSource(mainMod, "getSetting")},
 			"rancher2_user":    {Tok: makeDataSource(mainMod, "getUser")},
+			"rancher2_pod_security_policy_template": {
+				Tok:  makeDataSource(mainMod, "getPodSecurityPolicyTemplate"),
+				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "latest",
+				"@pulumi/pulumi": "^1.0.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.

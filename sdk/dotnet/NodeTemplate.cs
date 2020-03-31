@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
-    /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information. 
+    /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, openstack and vsphere drivers are supported for node templates.
+    /// amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
@@ -133,6 +133,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Opennebula config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Output("opennebulaConfig")]
+        public Output<Outputs.NodeTemplateOpennebulaConfig?> OpennebulaConfig { get; private set; } = null!;
 
         /// <summary>
         /// Openstack config for the Node Template (list maxitems:1)
@@ -349,6 +355,12 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Opennebula config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("opennebulaConfig")]
+        public Input<Inputs.NodeTemplateOpennebulaConfigArgs>? OpennebulaConfig { get; set; }
+
+        /// <summary>
         /// Openstack config for the Node Template (list maxitems:1)
         /// </summary>
         [Input("openstackConfig")]
@@ -528,6 +540,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Opennebula config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("opennebulaConfig")]
+        public Input<Inputs.NodeTemplateOpennebulaConfigGetArgs>? OpennebulaConfig { get; set; }
 
         /// <summary>
         /// Openstack config for the Node Template (list maxitems:1)
@@ -1481,6 +1499,244 @@ namespace Pulumi.Rancher2
         }
     }
 
+    public sealed class NodeTemplateOpennebulaConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        [Input("b2dSize")]
+        public Input<string>? B2dSize { get; set; }
+
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        [Input("cpu")]
+        public Input<string>? Cpu { get; set; }
+
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        [Input("devPrefix")]
+        public Input<string>? DevPrefix { get; set; }
+
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        [Input("disableVnc")]
+        public Input<bool>? DisableVnc { get; set; }
+
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        [Input("diskResize")]
+        public Input<string>? DiskResize { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        [Input("imageOwner")]
+        public Input<string>? ImageOwner { get; set; }
+
+        [Input("memory")]
+        public Input<string>? Memory { get; set; }
+
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        [Input("networkName")]
+        public Input<string>? NetworkName { get; set; }
+
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        [Input("networkOwner")]
+        public Input<string>? NetworkOwner { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        [Input("user", required: true)]
+        public Input<string> User { get; set; } = null!;
+
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        [Input("vcpu")]
+        public Input<string>? Vcpu { get; set; }
+
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        [Input("xmlRpcUrl", required: true)]
+        public Input<string> XmlRpcUrl { get; set; } = null!;
+
+        public NodeTemplateOpennebulaConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateOpennebulaConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        [Input("b2dSize")]
+        public Input<string>? B2dSize { get; set; }
+
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        [Input("cpu")]
+        public Input<string>? Cpu { get; set; }
+
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        [Input("devPrefix")]
+        public Input<string>? DevPrefix { get; set; }
+
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        [Input("disableVnc")]
+        public Input<bool>? DisableVnc { get; set; }
+
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        [Input("diskResize")]
+        public Input<string>? DiskResize { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        [Input("imageOwner")]
+        public Input<string>? ImageOwner { get; set; }
+
+        [Input("memory")]
+        public Input<string>? Memory { get; set; }
+
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        [Input("networkName")]
+        public Input<string>? NetworkName { get; set; }
+
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        [Input("networkOwner")]
+        public Input<string>? NetworkOwner { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        [Input("user", required: true)]
+        public Input<string> User { get; set; } = null!;
+
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        [Input("vcpu")]
+        public Input<string>? Vcpu { get; set; }
+
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        [Input("xmlRpcUrl", required: true)]
+        public Input<string> XmlRpcUrl { get; set; } = null!;
+
+        public NodeTemplateOpennebulaConfigGetArgs()
+        {
+        }
+    }
+
     public sealed class NodeTemplateOpenstackConfigArgs : Pulumi.ResourceArgs
     {
         [Input("activeTimeout")]
@@ -1601,7 +1857,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Private keyfile absolute path to use for SSH (string)
+        /// Private key content to use for SSH (string)
         /// </summary>
         [Input("privateKeyFile")]
         public Input<string>? PrivateKeyFile { get; set; }
@@ -1779,7 +2035,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Private keyfile absolute path to use for SSH (string)
+        /// Private key content to use for SSH (string)
         /// </summary>
         [Input("privateKeyFile")]
         public Input<string>? PrivateKeyFile { get; set; }
@@ -2742,6 +2998,128 @@ namespace Pulumi.Rancher2
     }
 
     [OutputType]
+    public sealed class NodeTemplateOpennebulaConfig
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        public readonly string? B2dSize;
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        public readonly string? Cpu;
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        public readonly string? DevPrefix;
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        public readonly bool? DisableVnc;
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        public readonly string? DiskResize;
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        public readonly string? ImageId;
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        public readonly string? ImageName;
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        public readonly string? ImageOwner;
+        public readonly string? Memory;
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        public readonly string? NetworkId;
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        public readonly string? NetworkName;
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        public readonly string? NetworkOwner;
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string Password;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        public readonly string? TemplateId;
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        public readonly string? TemplateName;
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        public readonly string User;
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        public readonly string? Vcpu;
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        public readonly string XmlRpcUrl;
+
+        [OutputConstructor]
+        private NodeTemplateOpennebulaConfig(
+            string? b2dSize,
+            string? cpu,
+            string? devPrefix,
+            bool? disableVnc,
+            string? diskResize,
+            string? imageId,
+            string? imageName,
+            string? imageOwner,
+            string? memory,
+            string? networkId,
+            string? networkName,
+            string? networkOwner,
+            string password,
+            string? sshUser,
+            string? templateId,
+            string? templateName,
+            string user,
+            string? vcpu,
+            string xmlRpcUrl)
+        {
+            B2dSize = b2dSize;
+            Cpu = cpu;
+            DevPrefix = devPrefix;
+            DisableVnc = disableVnc;
+            DiskResize = diskResize;
+            ImageId = imageId;
+            ImageName = imageName;
+            ImageOwner = imageOwner;
+            Memory = memory;
+            NetworkId = networkId;
+            NetworkName = networkName;
+            NetworkOwner = networkOwner;
+            Password = password;
+            SshUser = sshUser;
+            TemplateId = templateId;
+            TemplateName = templateName;
+            User = user;
+            Vcpu = vcpu;
+            XmlRpcUrl = xmlRpcUrl;
+        }
+    }
+
+    [OutputType]
     public sealed class NodeTemplateOpenstackConfig
     {
         public readonly string? ActiveTimeout;
@@ -2822,7 +3200,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Private keyfile absolute path to use for SSH (string)
+        /// Private key content to use for SSH (string)
         /// </summary>
         public readonly string? PrivateKeyFile;
         /// <summary>

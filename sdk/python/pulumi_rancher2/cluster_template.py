@@ -228,6 +228,7 @@ class ClusterTemplate(pulumi.CustomResource):
             * `flannelNetworkProvider` (`dict`)
               * `iface` (`str`)
 
+            * `mtu` (`float`)
             * `options` (`dict`)
             * `plugin` (`str`)
             * `weaveNetworkProvider` (`dict`)
@@ -576,6 +577,7 @@ class ClusterTemplate(pulumi.CustomResource):
                 * `flannelNetworkProvider` (`pulumi.Input[dict]`)
                   * `iface` (`pulumi.Input[str]`)
 
+                * `mtu` (`pulumi.Input[float]`)
                 * `options` (`pulumi.Input[dict]`)
                 * `plugin` (`pulumi.Input[str]`)
                 * `weaveNetworkProvider` (`pulumi.Input[dict]`)
@@ -954,6 +956,7 @@ class ClusterTemplate(pulumi.CustomResource):
                 * `flannelNetworkProvider` (`pulumi.Input[dict]`)
                   * `iface` (`pulumi.Input[str]`)
 
+                * `mtu` (`pulumi.Input[float]`)
                 * `options` (`pulumi.Input[dict]`)
                 * `plugin` (`pulumi.Input[str]`)
                 * `weaveNetworkProvider` (`pulumi.Input[dict]`)

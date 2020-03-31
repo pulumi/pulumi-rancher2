@@ -52,6 +52,7 @@ from .get_node_driver import *
 from .get_node_pool import *
 from .get_node_template import *
 from .get_notifier import *
+from .get_pod_security_policy_template import *
 from .get_project import *
 from .get_project_alert_group import *
 from .get_project_alert_rule import *
@@ -69,6 +70,7 @@ from .node_driver import *
 from .node_pool import *
 from .node_template import *
 from .notifier import *
+from .pod_security_policy_template import *
 from .project import *
 from .project_alert_group import *
 from .project_alert_rule import *

@@ -293,12 +293,12 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderResult
     {
-        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult? Global;
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult Global;
         public readonly ImmutableArray<GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverridesResult> ServiceOverrides;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderResult(
-            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult? global,
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult global,
             ImmutableArray<GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverridesResult> serviceOverrides)
         {
             Global = global;
@@ -852,6 +852,7 @@ namespace Pulumi.Rancher2
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCalicoNetworkProviderResult? CalicoNetworkProvider;
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCanalNetworkProviderResult? CanalNetworkProvider;
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProviderResult? FlannelNetworkProvider;
+        public readonly int? Mtu;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Plugin;
         public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkWeaveNetworkProviderResult? WeaveNetworkProvider;
@@ -861,6 +862,7 @@ namespace Pulumi.Rancher2
             GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCalicoNetworkProviderResult? calicoNetworkProvider,
             GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkCanalNetworkProviderResult? canalNetworkProvider,
             GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkFlannelNetworkProviderResult? flannelNetworkProvider,
+            int? mtu,
             ImmutableDictionary<string, object> options,
             string plugin,
             GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigNetworkWeaveNetworkProviderResult? weaveNetworkProvider)
@@ -868,6 +870,7 @@ namespace Pulumi.Rancher2
             CalicoNetworkProvider = calicoNetworkProvider;
             CanalNetworkProvider = canalNetworkProvider;
             FlannelNetworkProvider = flannelNetworkProvider;
+            Mtu = mtu;
             Options = options;
             Plugin = plugin;
             WeaveNetworkProvider = weaveNetworkProvider;
@@ -1146,7 +1149,7 @@ namespace Pulumi.Rancher2
         public readonly int? MaxBackup;
         public readonly int? MaxSize;
         public readonly string? Path;
-        public readonly string? Policy;
+        public readonly string Policy;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult(
@@ -1155,7 +1158,7 @@ namespace Pulumi.Rancher2
             int? maxBackup,
             int? maxSize,
             string? path,
-            string? policy)
+            string policy)
         {
             Format = format;
             MaxAge = maxAge;
@@ -1169,12 +1172,12 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult
     {
-        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult? Configuration;
+        public readonly GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult Configuration;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogResult(
-            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult? configuration,
+            GetClusterTemplateTemplateRevisionsClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult configuration,
             bool? enabled)
         {
             Configuration = configuration;
