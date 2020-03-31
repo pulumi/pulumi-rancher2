@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
- Upgrade to v1.8.0 of the Rancher2 Terraform Provider
+_(none)_
 
 ---
+
+## 1.4.0 (2020-03-31)
+ Upgrade to v1.8.0 of the Rancher2 Terraform Provider
 
 ## 1.3.0 (2020-03-31)
  Upgrade to v1.7.3 of the Rancher2 Terraform Provider
