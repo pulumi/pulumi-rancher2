@@ -15,10 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * // Create a new rancher2 Global Role Binding
+ * // Create a new rancher2 Global Role Binding using userId
  * const foo = new rancher2.GlobalRoleBinding("foo", {
- *     globalRoleId: "<global_role_id>",
- *     userId: "<user_id>",
+ *     globalRoleId: "admin",
+ *     userId: "user-XXXXX",
+ * });
+ * // Create a new rancher2 Global Role Binding using groupPrincipalId
+ * const foo2 = new rancher2.GlobalRoleBinding("foo2", {
+ *     globalRoleId: "admin",
+ *     groupPrincipalId: "local://g-XXXXX",
  * });
  * ```
  *
@@ -60,6 +65,10 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
      */
     public readonly globalRoleId!: pulumi.Output<string>;
     /**
+     * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+     */
+    public readonly groupPrincipalId!: pulumi.Output<string>;
+    /**
      * Labels for global role binding (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -86,6 +95,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             const state = argsOrState as GlobalRoleBindingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["globalRoleId"] = state ? state.globalRoleId : undefined;
+            inputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["userId"] = state ? state.userId : undefined;
@@ -94,11 +104,9 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             if (!args || args.globalRoleId === undefined) {
                 throw new Error("Missing required property 'globalRoleId'");
             }
-            if (!args || args.userId === undefined) {
-                throw new Error("Missing required property 'userId'");
-            }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["globalRoleId"] = args ? args.globalRoleId : undefined;
+            inputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["userId"] = args ? args.userId : undefined;
@@ -127,6 +135,10 @@ export interface GlobalRoleBindingState {
      */
     readonly globalRoleId?: pulumi.Input<string>;
     /**
+     * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+     */
+    readonly groupPrincipalId?: pulumi.Input<string>;
+    /**
      * Labels for global role binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
@@ -153,6 +165,10 @@ export interface GlobalRoleBindingArgs {
      */
     readonly globalRoleId: pulumi.Input<string>;
     /**
+     * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+     */
+    readonly groupPrincipalId?: pulumi.Input<string>;
+    /**
      * Labels for global role binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
@@ -163,5 +179,5 @@ export interface GlobalRoleBindingArgs {
     /**
      * The user ID to assign global role binding (string)
      */
-    readonly userId: pulumi.Input<string>;
+    readonly userId?: pulumi.Input<string>;
 }

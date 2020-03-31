@@ -45,6 +45,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) || (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
             inputs["caCerts"] = (args ? args.caCerts : undefined) || utilities.getEnv("RANCHER_CA_CERTS");
             inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || (utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
+            inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
             inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("RANCHER_SECRET_KEY");
             inputs["tokenKey"] = (args ? args.tokenKey : undefined) || utilities.getEnv("RANCHER_TOKEN_KEY");
         }
@@ -83,6 +84,10 @@ export interface ProviderArgs {
      * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
      */
     readonly insecure?: pulumi.Input<boolean>;
+    /**
+     * Rancher connection retries
+     */
+    readonly retries?: pulumi.Input<number>;
     /**
      * API secret used to authenticate with the rancher server
      */

@@ -42,6 +42,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     """
     The project alert group recipients (list)
 
+      * `defaultRecipient` (`bool`)
       * `notifierId` (`str`) - Recipient notifier ID (string)
       * `notifierType` (`str`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
       * `recipient` (`str`) - Recipient (string)
@@ -70,6 +71,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
         The **recipients** object supports the following:
 
+          * `defaultRecipient` (`pulumi.Input[bool]`)
           * `notifierId` (`pulumi.Input[str]`) - Recipient notifier ID (string)
           * `notifierType` (`pulumi.Input[str]`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
           * `recipient` (`pulumi.Input[str]`) - Recipient (string)
@@ -129,6 +131,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
         The **recipients** object supports the following:
 
+          * `defaultRecipient` (`pulumi.Input[bool]`)
           * `notifierId` (`pulumi.Input[str]`) - Recipient notifier ID (string)
           * `notifierType` (`pulumi.Input[str]`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
           * `recipient` (`pulumi.Input[str]`) - Recipient (string)

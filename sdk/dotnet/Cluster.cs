@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Output("aksConfig")]
         public Output<Outputs.ClusterAksConfig?> AksConfig { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Rancher2
         public Output<string> Driver { get; private set; } = null!;
 
         /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Output("eksConfig")]
         public Output<Outputs.ClusterEksConfig?> EksConfig { get; private set; } = null!;
@@ -138,15 +138,22 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Output("enableNetworkPolicy")]
         public Output<bool?> EnableNetworkPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Output("gkeConfig")]
         public Output<Outputs.ClusterGkeConfig?> GkeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// </summary>
+        [Output("k3sConfig")]
+        public Output<Outputs.ClusterK3sConfig> K3sConfig { get; private set; } = null!;
 
         /// <summary>
         /// (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -167,10 +174,16 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
         /// </summary>
         [Output("rkeConfig")]
         public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster scheduled scan
+        /// </summary>
+        [Output("scheduledClusterScan")]
+        public Output<Outputs.ClusterScheduledClusterScan?> ScheduledClusterScan { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
@@ -231,7 +244,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("aksConfig")]
         public Input<Inputs.ClusterAksConfigArgs>? AksConfig { get; set; }
@@ -327,7 +340,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Driver { get; set; }
 
         /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("eksConfig")]
         public Input<Inputs.ClusterEksConfigArgs>? EksConfig { get; set; }
@@ -352,15 +365,22 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
 
         /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.ClusterGkeConfigArgs>? GkeConfig { get; set; }
+
+        /// <summary>
+        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// </summary>
+        [Input("k3sConfig")]
+        public Input<Inputs.ClusterK3sConfigArgs>? K3sConfig { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -381,10 +401,16 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
+
+        /// <summary>
+        /// Cluster scheduled scan
+        /// </summary>
+        [Input("scheduledClusterScan")]
+        public Input<Inputs.ClusterScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// Windows preferred cluster. Default: `false` (bool)
@@ -400,7 +426,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("aksConfig")]
         public Input<Inputs.ClusterAksConfigGetArgs>? AksConfig { get; set; }
@@ -508,7 +534,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Driver { get; set; }
 
         /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("eksConfig")]
         public Input<Inputs.ClusterEksConfigGetArgs>? EksConfig { get; set; }
@@ -533,15 +559,22 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
+        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
 
         /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.ClusterGkeConfigGetArgs>? GkeConfig { get; set; }
+
+        /// <summary>
+        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// </summary>
+        [Input("k3sConfig")]
+        public Input<Inputs.ClusterK3sConfigGetArgs>? K3sConfig { get; set; }
 
         /// <summary>
         /// (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -568,10 +601,16 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
+
+        /// <summary>
+        /// Cluster scheduled scan
+        /// </summary>
+        [Input("scheduledClusterScan")]
+        public Input<Inputs.ClusterScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
@@ -1072,7 +1111,7 @@ namespace Pulumi.Rancher2
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -1097,7 +1136,7 @@ namespace Pulumi.Rancher2
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -1120,7 +1159,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Key/value answers for monitor input (map)
-        /// =======
         /// </summary>
         public InputMap<object> Answers
         {
@@ -1140,7 +1178,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Key/value answers for monitor input (map)
-        /// =======
         /// </summary>
         public InputMap<object> Answers
         {
@@ -1322,7 +1359,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Variable name (string)
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; c6a2cbc... Feat: added rancher2..ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
         /// </summary>
         [Input("variable", required: true)]
         public Input<string> Variable { get; set; } = null!;
@@ -1354,7 +1390,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Variable name (string)
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; c6a2cbc... Feat: added rancher2..ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
         /// </summary>
         [Input("variable", required: true)]
         public Input<string> Variable { get; set; } = null!;
@@ -2322,6 +2357,106 @@ namespace Pulumi.Rancher2
         }
     }
 
+    public sealed class ClusterK3sConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        [Input("upgradeStrategy")]
+        public Input<ClusterK3sConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
+
+        /// <summary>
+        /// K3S kubernetes version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public ClusterK3sConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterK3sConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        [Input("upgradeStrategy")]
+        public Input<ClusterK3sConfigUpgradeStrategyGetArgs>? UpgradeStrategy { get; set; }
+
+        /// <summary>
+        /// K3S kubernetes version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public ClusterK3sConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterK3sConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Drain server nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drainServerNodes")]
+        public Input<bool>? DrainServerNodes { get; set; }
+
+        /// <summary>
+        /// Drain worker nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drainWorkerNodes")]
+        public Input<bool>? DrainWorkerNodes { get; set; }
+
+        /// <summary>
+        /// Server concurrency. Default: `1` (int)
+        /// </summary>
+        [Input("serverConcurrency")]
+        public Input<int>? ServerConcurrency { get; set; }
+
+        /// <summary>
+        /// Worker concurrency. Default: `1` (int)
+        /// </summary>
+        [Input("workerConcurrency")]
+        public Input<int>? WorkerConcurrency { get; set; }
+
+        public ClusterK3sConfigUpgradeStrategyArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterK3sConfigUpgradeStrategyGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Drain server nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drainServerNodes")]
+        public Input<bool>? DrainServerNodes { get; set; }
+
+        /// <summary>
+        /// Drain worker nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drainWorkerNodes")]
+        public Input<bool>? DrainWorkerNodes { get; set; }
+
+        /// <summary>
+        /// Server concurrency. Default: `1` (int)
+        /// </summary>
+        [Input("serverConcurrency")]
+        public Input<int>? ServerConcurrency { get; set; }
+
+        /// <summary>
+        /// Worker concurrency. Default: `1` (int)
+        /// </summary>
+        [Input("workerConcurrency")]
+        public Input<int>? WorkerConcurrency { get; set; }
+
+        public ClusterK3sConfigUpgradeStrategyGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterRkeConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
@@ -2461,6 +2596,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
+
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        [Input("upgradeStrategy")]
+        public Input<ClusterRkeConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         public ClusterRkeConfigArgs()
         {
@@ -4449,6 +4590,12 @@ namespace Pulumi.Rancher2
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        [Input("upgradeStrategy")]
+        public Input<ClusterRkeConfigUpgradeStrategyGetArgs>? UpgradeStrategy { get; set; }
+
         public ClusterRkeConfigGetArgs()
         {
         }
@@ -5239,7 +5386,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5276,7 +5423,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5593,13 +5740,13 @@ namespace Pulumi.Rancher2
         public Input<bool>? AlwaysPullImages { get; set; }
 
         /// <summary>
-        /// K8s audit log configuration. (list maxitem: 1)
+        /// K8s audit log configuration. (list maxitems: 1)
         /// </summary>
         [Input("auditLog")]
         public Input<ClusterRkeConfigServicesKubeApiAuditLogArgs>? AuditLog { get; set; }
 
         /// <summary>
-        /// K8s event rate limit configuration. (list maxitem: 1)
+        /// K8s event rate limit configuration. (list maxitems: 1)
         /// </summary>
         [Input("eventRateLimit")]
         public Input<ClusterRkeConfigServicesKubeApiEventRateLimitArgs>? EventRateLimit { get; set; }
@@ -5684,7 +5831,7 @@ namespace Pulumi.Rancher2
         public Input<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5789,7 +5936,7 @@ namespace Pulumi.Rancher2
         public Input<ClusterRkeConfigServicesKubeApiAuditLogConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5814,7 +5961,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5839,7 +5986,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5870,13 +6017,13 @@ namespace Pulumi.Rancher2
         public Input<bool>? AlwaysPullImages { get; set; }
 
         /// <summary>
-        /// K8s audit log configuration. (list maxitem: 1)
+        /// K8s audit log configuration. (list maxitems: 1)
         /// </summary>
         [Input("auditLog")]
         public Input<ClusterRkeConfigServicesKubeApiAuditLogGetArgs>? AuditLog { get; set; }
 
         /// <summary>
-        /// K8s event rate limit configuration. (list maxitem: 1)
+        /// K8s event rate limit configuration. (list maxitems: 1)
         /// </summary>
         [Input("eventRateLimit")]
         public Input<ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs>? EventRateLimit { get; set; }
@@ -5967,7 +6114,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -5992,7 +6139,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -6473,6 +6620,342 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
+    public sealed class ClusterRkeConfigUpgradeStrategyArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// RKE drain nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drain")]
+        public Input<bool>? Drain { get; set; }
+
+        /// <summary>
+        /// RKE drain node input (list Maxitems: 1)
+        /// </summary>
+        [Input("drainInput")]
+        public Input<ClusterRkeConfigUpgradeStrategyDrainInputArgs>? DrainInput { get; set; }
+
+        /// <summary>
+        /// RKE max unavailable controlplane nodes. Default: `1` (string)
+        /// </summary>
+        [Input("maxUnavailableControlplane")]
+        public Input<string>? MaxUnavailableControlplane { get; set; }
+
+        /// <summary>
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
+        /// </summary>
+        [Input("maxUnavailableWorker")]
+        public Input<string>? MaxUnavailableWorker { get; set; }
+
+        public ClusterRkeConfigUpgradeStrategyArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Delete RKE node local data. Default: `false` (bool)
+        /// </summary>
+        [Input("deleteLocalData")]
+        public Input<bool>? DeleteLocalData { get; set; }
+
+        /// <summary>
+        /// Force RKE node drain. Default: `false` (bool)
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// RKE node drain grace period. Default: `-1` (int)
+        /// </summary>
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
+        /// Ignore RKE daemon sets. Default: `true` (bool)
+        /// </summary>
+        [Input("ignoreDaemonSets")]
+        public Input<bool>? IgnoreDaemonSets { get; set; }
+
+        /// <summary>
+        /// RKE node drain timeout. Default: `60` (int)
+        /// </summary>
+        [Input("timeout")]
+        public Input<int>? Timeout { get; set; }
+
+        public ClusterRkeConfigUpgradeStrategyDrainInputArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterRkeConfigUpgradeStrategyDrainInputGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Delete RKE node local data. Default: `false` (bool)
+        /// </summary>
+        [Input("deleteLocalData")]
+        public Input<bool>? DeleteLocalData { get; set; }
+
+        /// <summary>
+        /// Force RKE node drain. Default: `false` (bool)
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// RKE node drain grace period. Default: `-1` (int)
+        /// </summary>
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
+        /// Ignore RKE daemon sets. Default: `true` (bool)
+        /// </summary>
+        [Input("ignoreDaemonSets")]
+        public Input<bool>? IgnoreDaemonSets { get; set; }
+
+        /// <summary>
+        /// RKE node drain timeout. Default: `60` (int)
+        /// </summary>
+        [Input("timeout")]
+        public Input<int>? Timeout { get; set; }
+
+        public ClusterRkeConfigUpgradeStrategyDrainInputGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterRkeConfigUpgradeStrategyGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// RKE drain nodes. Default: `false` (bool)
+        /// </summary>
+        [Input("drain")]
+        public Input<bool>? Drain { get; set; }
+
+        /// <summary>
+        /// RKE drain node input (list Maxitems: 1)
+        /// </summary>
+        [Input("drainInput")]
+        public Input<ClusterRkeConfigUpgradeStrategyDrainInputGetArgs>? DrainInput { get; set; }
+
+        /// <summary>
+        /// RKE max unavailable controlplane nodes. Default: `1` (string)
+        /// </summary>
+        [Input("maxUnavailableControlplane")]
+        public Input<string>? MaxUnavailableControlplane { get; set; }
+
+        /// <summary>
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
+        /// </summary>
+        [Input("maxUnavailableWorker")]
+        public Input<string>? MaxUnavailableWorker { get; set; }
+
+        public ClusterRkeConfigUpgradeStrategyGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Cluster scan config (List maxitems:1)
+        /// </summary>
+        [Input("scanConfig", required: true)]
+        public Input<ClusterScheduledClusterScanScanConfigArgs> ScanConfig { get; set; } = null!;
+
+        /// <summary>
+        /// Cluster scan schedule config (list maxitems:1)
+        /// </summary>
+        [Input("scheduleConfig", required: true)]
+        public Input<ClusterScheduledClusterScanScheduleConfigArgs> ScheduleConfig { get; set; } = null!;
+
+        public ClusterScheduledClusterScanArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Cluster scan config (List maxitems:1)
+        /// </summary>
+        [Input("scanConfig", required: true)]
+        public Input<ClusterScheduledClusterScanScanConfigGetArgs> ScanConfig { get; set; } = null!;
+
+        /// <summary>
+        /// Cluster scan schedule config (list maxitems:1)
+        /// </summary>
+        [Input("scheduleConfig", required: true)]
+        public Input<ClusterScheduledClusterScanScheduleConfigGetArgs> ScheduleConfig { get; set; } = null!;
+
+        public ClusterScheduledClusterScanGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScanConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Cluster Cis Scan config (List maxitems:1)
+        /// </summary>
+        [Input("cisScanConfig")]
+        public Input<ClusterScheduledClusterScanScanConfigCisScanConfigArgs>? CisScanConfig { get; set; }
+
+        public ClusterScheduledClusterScanScanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScanConfigCisScanConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Debug master. Default: `false` (bool)
+        /// </summary>
+        [Input("debugMaster")]
+        public Input<bool>? DebugMaster { get; set; }
+
+        /// <summary>
+        /// Debug worker. Default: `false` (bool)
+        /// </summary>
+        [Input("debugWorker")]
+        public Input<bool>? DebugWorker { get; set; }
+
+        /// <summary>
+        /// Override benchmark version (string)
+        /// </summary>
+        [Input("overrideBenchmarkVersion")]
+        public Input<string>? OverrideBenchmarkVersion { get; set; }
+
+        [Input("overrideSkips")]
+        private InputList<string>? _overrideSkips;
+
+        /// <summary>
+        /// Override skip (string)
+        /// </summary>
+        public InputList<string> OverrideSkips
+        {
+            get => _overrideSkips ?? (_overrideSkips = new InputList<string>());
+            set => _overrideSkips = value;
+        }
+
+        /// <summary>
+        /// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
+
+        public ClusterScheduledClusterScanScanConfigCisScanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScanConfigCisScanConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Debug master. Default: `false` (bool)
+        /// </summary>
+        [Input("debugMaster")]
+        public Input<bool>? DebugMaster { get; set; }
+
+        /// <summary>
+        /// Debug worker. Default: `false` (bool)
+        /// </summary>
+        [Input("debugWorker")]
+        public Input<bool>? DebugWorker { get; set; }
+
+        /// <summary>
+        /// Override benchmark version (string)
+        /// </summary>
+        [Input("overrideBenchmarkVersion")]
+        public Input<string>? OverrideBenchmarkVersion { get; set; }
+
+        [Input("overrideSkips")]
+        private InputList<string>? _overrideSkips;
+
+        /// <summary>
+        /// Override skip (string)
+        /// </summary>
+        public InputList<string> OverrideSkips
+        {
+            get => _overrideSkips ?? (_overrideSkips = new InputList<string>());
+            set => _overrideSkips = value;
+        }
+
+        /// <summary>
+        /// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
+
+        public ClusterScheduledClusterScanScanConfigCisScanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScanConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Cluster Cis Scan config (List maxitems:1)
+        /// </summary>
+        [Input("cisScanConfig")]
+        public Input<ClusterScheduledClusterScanScanConfigCisScanConfigGetArgs>? CisScanConfig { get; set; }
+
+        public ClusterScheduledClusterScanScanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScheduleConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Crontab schedule. It should contains 5 fields `"&lt;min&gt; &lt;hour&gt; &lt;month_day&gt; &lt;month&gt; &lt;week_day&gt;"` (string)
+        /// </summary>
+        [Input("cronSchedule", required: true)]
+        public Input<string> CronSchedule { get; set; } = null!;
+
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
+        [Input("retention")]
+        public Input<int>? Retention { get; set; }
+
+        public ClusterScheduledClusterScanScheduleConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterScheduledClusterScanScheduleConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Crontab schedule. It should contains 5 fields `"&lt;min&gt; &lt;hour&gt; &lt;month_day&gt; &lt;month&gt; &lt;week_day&gt;"` (string)
+        /// </summary>
+        [Input("cronSchedule", required: true)]
+        public Input<string> CronSchedule { get; set; } = null!;
+
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
+        [Input("retention")]
+        public Input<int>? Retention { get; set; }
+
+        public ClusterScheduledClusterScanScheduleConfigGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -6718,7 +7201,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string? CaCerts;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -6743,7 +7226,6 @@ namespace Pulumi.Rancher2
     {
         /// <summary>
         /// Key/value answers for monitor input (map)
-        /// =======
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Answers;
 
@@ -6875,7 +7357,6 @@ namespace Pulumi.Rancher2
         public readonly string? Type;
         /// <summary>
         /// Variable name (string)
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; c6a2cbc... Feat: added rancher2..ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
         /// </summary>
         public readonly string Variable;
 
@@ -7331,6 +7812,62 @@ namespace Pulumi.Rancher2
     }
 
     [OutputType]
+    public sealed class ClusterK3sConfig
+    {
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        public readonly ClusterK3sConfigUpgradeStrategy UpgradeStrategy;
+        /// <summary>
+        /// K3S kubernetes version (string)
+        /// </summary>
+        public readonly string Version;
+
+        [OutputConstructor]
+        private ClusterK3sConfig(
+            ClusterK3sConfigUpgradeStrategy upgradeStrategy,
+            string version)
+        {
+            UpgradeStrategy = upgradeStrategy;
+            Version = version;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterK3sConfigUpgradeStrategy
+    {
+        /// <summary>
+        /// Drain server nodes. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DrainServerNodes;
+        /// <summary>
+        /// Drain worker nodes. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DrainWorkerNodes;
+        /// <summary>
+        /// Server concurrency. Default: `1` (int)
+        /// </summary>
+        public readonly int? ServerConcurrency;
+        /// <summary>
+        /// Worker concurrency. Default: `1` (int)
+        /// </summary>
+        public readonly int? WorkerConcurrency;
+
+        [OutputConstructor]
+        private ClusterK3sConfigUpgradeStrategy(
+            bool? drainServerNodes,
+            bool? drainWorkerNodes,
+            int? serverConcurrency,
+            int? workerConcurrency)
+        {
+            DrainServerNodes = drainServerNodes;
+            DrainWorkerNodes = drainWorkerNodes;
+            ServerConcurrency = serverConcurrency;
+            WorkerConcurrency = workerConcurrency;
+        }
+    }
+
+    [OutputType]
     public sealed class ClusterRkeConfig
     {
         /// <summary>
@@ -7413,6 +7950,10 @@ namespace Pulumi.Rancher2
         /// Node SSH private key path (string)
         /// </summary>
         public readonly string SshKeyPath;
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
+        public readonly ClusterRkeConfigUpgradeStrategy UpgradeStrategy;
 
         [OutputConstructor]
         private ClusterRkeConfig(
@@ -7435,7 +7976,8 @@ namespace Pulumi.Rancher2
             ClusterRkeConfigServices services,
             bool? sshAgentAuth,
             string sshCertPath,
-            string sshKeyPath)
+            string sshKeyPath,
+            ClusterRkeConfigUpgradeStrategy upgradeStrategy)
         {
             AddonJobTimeout = addonJobTimeout;
             Addons = addons;
@@ -7457,6 +7999,7 @@ namespace Pulumi.Rancher2
             SshAgentAuth = sshAgentAuth;
             SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
+            UpgradeStrategy = upgradeStrategy;
         }
     }
 
@@ -8839,7 +9382,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterRkeConfigServicesEtcdBackupConfig
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -8939,11 +9482,11 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool? AlwaysPullImages;
         /// <summary>
-        /// K8s audit log configuration. (list maxitem: 1)
+        /// K8s audit log configuration. (list maxitems: 1)
         /// </summary>
         public readonly ClusterRkeConfigServicesKubeApiAuditLog? AuditLog;
         /// <summary>
-        /// K8s event rate limit configuration. (list maxitem: 1)
+        /// K8s event rate limit configuration. (list maxitems: 1)
         /// </summary>
         public readonly ClusterRkeConfigServicesKubeApiEventRateLimit? EventRateLimit;
         /// <summary>
@@ -9017,7 +9560,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ClusterRkeConfigServicesKubeApiAuditLogConfiguration Configuration;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
 
@@ -9085,7 +9628,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Configuration;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
 
@@ -9107,7 +9650,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object>? CustomConfig;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable scheduled cluster scan. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
 
@@ -9294,6 +9837,185 @@ namespace Pulumi.Rancher2
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterRkeConfigUpgradeStrategy
+    {
+        /// <summary>
+        /// RKE drain nodes. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? Drain;
+        /// <summary>
+        /// RKE drain node input (list Maxitems: 1)
+        /// </summary>
+        public readonly ClusterRkeConfigUpgradeStrategyDrainInput DrainInput;
+        /// <summary>
+        /// RKE max unavailable controlplane nodes. Default: `1` (string)
+        /// </summary>
+        public readonly string? MaxUnavailableControlplane;
+        /// <summary>
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
+        /// </summary>
+        public readonly string? MaxUnavailableWorker;
+
+        [OutputConstructor]
+        private ClusterRkeConfigUpgradeStrategy(
+            bool? drain,
+            ClusterRkeConfigUpgradeStrategyDrainInput drainInput,
+            string? maxUnavailableControlplane,
+            string? maxUnavailableWorker)
+        {
+            Drain = drain;
+            DrainInput = drainInput;
+            MaxUnavailableControlplane = maxUnavailableControlplane;
+            MaxUnavailableWorker = maxUnavailableWorker;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterRkeConfigUpgradeStrategyDrainInput
+    {
+        /// <summary>
+        /// Delete RKE node local data. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DeleteLocalData;
+        /// <summary>
+        /// Force RKE node drain. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? Force;
+        /// <summary>
+        /// RKE node drain grace period. Default: `-1` (int)
+        /// </summary>
+        public readonly int? GracePeriod;
+        /// <summary>
+        /// Ignore RKE daemon sets. Default: `true` (bool)
+        /// </summary>
+        public readonly bool? IgnoreDaemonSets;
+        /// <summary>
+        /// RKE node drain timeout. Default: `60` (int)
+        /// </summary>
+        public readonly int? Timeout;
+
+        [OutputConstructor]
+        private ClusterRkeConfigUpgradeStrategyDrainInput(
+            bool? deleteLocalData,
+            bool? force,
+            int? gracePeriod,
+            bool? ignoreDaemonSets,
+            int? timeout)
+        {
+            DeleteLocalData = deleteLocalData;
+            Force = force;
+            GracePeriod = gracePeriod;
+            IgnoreDaemonSets = ignoreDaemonSets;
+            Timeout = timeout;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterScheduledClusterScan
+    {
+        /// <summary>
+        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
+        /// Cluster scan config (List maxitems:1)
+        /// </summary>
+        public readonly ClusterScheduledClusterScanScanConfig ScanConfig;
+        /// <summary>
+        /// Cluster scan schedule config (list maxitems:1)
+        /// </summary>
+        public readonly ClusterScheduledClusterScanScheduleConfig ScheduleConfig;
+
+        [OutputConstructor]
+        private ClusterScheduledClusterScan(
+            bool? enabled,
+            ClusterScheduledClusterScanScanConfig scanConfig,
+            ClusterScheduledClusterScanScheduleConfig scheduleConfig)
+        {
+            Enabled = enabled;
+            ScanConfig = scanConfig;
+            ScheduleConfig = scheduleConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterScheduledClusterScanScanConfig
+    {
+        /// <summary>
+        /// Cluster Cis Scan config (List maxitems:1)
+        /// </summary>
+        public readonly ClusterScheduledClusterScanScanConfigCisScanConfig CisScanConfig;
+
+        [OutputConstructor]
+        private ClusterScheduledClusterScanScanConfig(ClusterScheduledClusterScanScanConfigCisScanConfig cisScanConfig)
+        {
+            CisScanConfig = cisScanConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterScheduledClusterScanScanConfigCisScanConfig
+    {
+        /// <summary>
+        /// Debug master. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DebugMaster;
+        /// <summary>
+        /// Debug worker. Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DebugWorker;
+        /// <summary>
+        /// Override benchmark version (string)
+        /// </summary>
+        public readonly string? OverrideBenchmarkVersion;
+        /// <summary>
+        /// Override skip (string)
+        /// </summary>
+        public readonly ImmutableArray<string> OverrideSkips;
+        /// <summary>
+        /// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        /// </summary>
+        public readonly string? Profile;
+
+        [OutputConstructor]
+        private ClusterScheduledClusterScanScanConfigCisScanConfig(
+            bool? debugMaster,
+            bool? debugWorker,
+            string? overrideBenchmarkVersion,
+            ImmutableArray<string> overrideSkips,
+            string? profile)
+        {
+            DebugMaster = debugMaster;
+            DebugWorker = debugWorker;
+            OverrideBenchmarkVersion = overrideBenchmarkVersion;
+            OverrideSkips = overrideSkips;
+            Profile = profile;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterScheduledClusterScanScheduleConfig
+    {
+        /// <summary>
+        /// Crontab schedule. It should contains 5 fields `"&lt;min&gt; &lt;hour&gt; &lt;month_day&gt; &lt;month&gt; &lt;week_day&gt;"` (string)
+        /// </summary>
+        public readonly string CronSchedule;
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
+        public readonly int Retention;
+
+        [OutputConstructor]
+        private ClusterScheduledClusterScanScheduleConfig(
+            string cronSchedule,
+            int retention)
+        {
+            CronSchedule = cronSchedule;
+            Retention = retention;
         }
     }
     }

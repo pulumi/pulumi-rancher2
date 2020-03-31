@@ -36,6 +36,11 @@ namespace Pulumi.Rancher2
         public static bool? Insecure { get; set; } = __config.GetBoolean("insecure") ?? Utilities.GetEnvBoolean("RANCHER_INSECURE") ?? false;
 
         /// <summary>
+        /// Rancher connection retries
+        /// </summary>
+        public static int? Retries { get; set; } = __config.GetInt32("retries");
+
+        /// <summary>
         /// API secret used to authenticate with the rancher server
         /// </summary>
         public static string? SecretKey { get; set; } = __config.Get("secretKey") ?? Utilities.GetEnv("RANCHER_SECRET_KEY");

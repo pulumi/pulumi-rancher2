@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         public Output<string> DefaultProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Kube Config generated for the cluster sync (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -43,6 +43,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("systemProjectId")]
         public Output<string> SystemProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// </summary>
+        [Output("waitMonitoring")]
+        public Output<bool?> WaitMonitoring { get; private set; } = null!;
 
 
         /// <summary>
@@ -111,6 +117,12 @@ namespace Pulumi.Rancher2
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
+        /// <summary>
+        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// </summary>
+        [Input("waitMonitoring")]
+        public Input<bool>? WaitMonitoring { get; set; }
+
         public ClusterSyncArgs()
         {
         }
@@ -131,7 +143,7 @@ namespace Pulumi.Rancher2
         public Input<string>? DefaultProjectId { get; set; }
 
         /// <summary>
-        /// (Computed) Kube Config generated for the cluster sync (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
@@ -156,6 +168,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("systemProjectId")]
         public Input<string>? SystemProjectId { get; set; }
+
+        /// <summary>
+        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// </summary>
+        [Input("waitMonitoring")]
+        public Input<bool>? WaitMonitoring { get; set; }
 
         public ClusterSyncState()
         {

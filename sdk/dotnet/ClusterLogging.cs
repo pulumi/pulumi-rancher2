@@ -41,6 +41,12 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterLoggingElasticsearchConfig?> ElasticsearchConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Enable json log parsing. Default: `false` (bool)
+        /// </summary>
+        [Output("enableJsonParsing")]
+        public Output<bool?> EnableJsonParsing { get; private set; } = null!;
+
+        /// <summary>
         /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Output("fluentdConfig")]
@@ -177,6 +183,12 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterLoggingElasticsearchConfigArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
+        /// Enable json log parsing. Default: `false` (bool)
+        /// </summary>
+        [Input("enableJsonParsing")]
+        public Input<bool>? EnableJsonParsing { get; set; }
+
+        /// <summary>
         /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         /// </summary>
         [Input("fluentdConfig")]
@@ -284,6 +296,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ClusterLoggingElasticsearchConfigGetArgs>? ElasticsearchConfig { get; set; }
+
+        /// <summary>
+        /// Enable json log parsing. Default: `false` (bool)
+        /// </summary>
+        [Input("enableJsonParsing")]
+        public Input<bool>? EnableJsonParsing { get; set; }
 
         /// <summary>
         /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)

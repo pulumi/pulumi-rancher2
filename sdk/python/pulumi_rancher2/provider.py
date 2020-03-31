@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_key=None, api_url=None, bootstrap=None, ca_certs=None, insecure=None, secret_key=None, token_key=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_key=None, api_url=None, bootstrap=None, ca_certs=None, insecure=None, retries=None, secret_key=None, token_key=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the rancher2 package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -26,6 +26,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] bootstrap: Bootstrap rancher server
         :param pulumi.Input[str] ca_certs: CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
         :param pulumi.Input[bool] insecure: Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+        :param pulumi.Input[float] retries: Rancher connection retries
         :param pulumi.Input[str] secret_key: API secret used to authenticate with the rancher server
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
@@ -61,6 +62,7 @@ class Provider(pulumi.ProviderResource):
             if insecure is None:
                 insecure = (utilities.get_env_bool('RANCHER_INSECURE') or False)
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(json.dumps) if insecure is not None else None
+            __props__['retries'] = pulumi.Output.from_input(retries).apply(json.dumps) if retries is not None else None
             if secret_key is None:
                 secret_key = utilities.get_env('RANCHER_SECRET_KEY')
             __props__['secret_key'] = secret_key

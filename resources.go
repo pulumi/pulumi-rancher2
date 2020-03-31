@@ -346,6 +346,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  makeDataSource(mainMod, "getPodSecurityPolicyTemplate"),
 				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
 			},
+			"rancher2_cluster_scan": {Tok: makeDataSource(mainMod, "getClusterScan")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

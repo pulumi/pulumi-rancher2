@@ -43,6 +43,7 @@ from .get_cluster_alter_rule import *
 from .get_cluster_driver import *
 from .get_cluster_logging import *
 from .get_cluster_role_template_binding import *
+from .get_cluster_scan import *
 from .get_cluster_template import *
 from .get_etcd_backup import *
 from .get_global_role_binding import *

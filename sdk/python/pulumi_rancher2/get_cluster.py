@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, kube_config=None, labels=None, name=None, rke_config=None, system_project_id=None):
+    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         __self__.aks_config = aks_config
@@ -125,6 +125,12 @@ class GetClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if k3s_config and not isinstance(k3s_config, dict):
+            raise TypeError("Expected argument 'k3s_config' to be a dict")
+        __self__.k3s_config = k3s_config
+        """
+        (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        """
         if kube_config and not isinstance(kube_config, str):
             raise TypeError("Expected argument 'kube_config' to be a str")
         __self__.kube_config = kube_config
@@ -146,6 +152,9 @@ class GetClusterResult:
         """
         (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
         """
+        if scheduled_cluster_scans and not isinstance(scheduled_cluster_scans, list):
+            raise TypeError("Expected argument 'scheduled_cluster_scans' to be a list")
+        __self__.scheduled_cluster_scans = scheduled_cluster_scans
         if system_project_id and not isinstance(system_project_id, str):
             raise TypeError("Expected argument 'system_project_id' to be a str")
         __self__.system_project_id = system_project_id
@@ -177,10 +186,12 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_network_policy=self.enable_network_policy,
             gke_config=self.gke_config,
             id=self.id,
+            k3s_config=self.k3s_config,
             kube_config=self.kube_config,
             labels=self.labels,
             name=self.name,
             rke_config=self.rke_config,
+            scheduled_cluster_scans=self.scheduled_cluster_scans,
             system_project_id=self.system_project_id)
 
 def get_cluster(name=None,opts=None):
@@ -222,8 +233,10 @@ def get_cluster(name=None,opts=None):
         enable_network_policy=__ret__.get('enableNetworkPolicy'),
         gke_config=__ret__.get('gkeConfig'),
         id=__ret__.get('id'),
+        k3s_config=__ret__.get('k3sConfig'),
         kube_config=__ret__.get('kubeConfig'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         rke_config=__ret__.get('rkeConfig'),
+        scheduled_cluster_scans=__ret__.get('scheduledClusterScans'),
         system_project_id=__ret__.get('systemProjectId'))

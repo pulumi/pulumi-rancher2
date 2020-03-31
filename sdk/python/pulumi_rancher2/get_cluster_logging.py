@@ -13,7 +13,7 @@ class GetClusterLoggingResult:
     """
     A collection of values returned by getClusterLogging.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, elasticsearch_config=None, fluentd_config=None, id=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None):
+    def __init__(__self__, annotations=None, cluster_id=None, custom_target_config=None, elasticsearch_config=None, enable_json_parsing=None, fluentd_config=None, id=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         __self__.annotations = annotations
@@ -23,12 +23,18 @@ class GetClusterLoggingResult:
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         __self__.cluster_id = cluster_id
+        if custom_target_config and not isinstance(custom_target_config, dict):
+            raise TypeError("Expected argument 'custom_target_config' to be a dict")
+        __self__.custom_target_config = custom_target_config
         if elasticsearch_config and not isinstance(elasticsearch_config, dict):
             raise TypeError("Expected argument 'elasticsearch_config' to be a dict")
         __self__.elasticsearch_config = elasticsearch_config
         """
         (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
         """
+        if enable_json_parsing and not isinstance(enable_json_parsing, bool):
+            raise TypeError("Expected argument 'enable_json_parsing' to be a bool")
+        __self__.enable_json_parsing = enable_json_parsing
         if fluentd_config and not isinstance(fluentd_config, dict):
             raise TypeError("Expected argument 'fluentd_config' to be a dict")
         __self__.fluentd_config = fluentd_config
@@ -103,7 +109,9 @@ class AwaitableGetClusterLoggingResult(GetClusterLoggingResult):
         return GetClusterLoggingResult(
             annotations=self.annotations,
             cluster_id=self.cluster_id,
+            custom_target_config=self.custom_target_config,
             elasticsearch_config=self.elasticsearch_config,
+            enable_json_parsing=self.enable_json_parsing,
             fluentd_config=self.fluentd_config,
             id=self.id,
             kafka_config=self.kafka_config,
@@ -138,7 +146,9 @@ def get_cluster_logging(cluster_id=None,opts=None):
     return AwaitableGetClusterLoggingResult(
         annotations=__ret__.get('annotations'),
         cluster_id=__ret__.get('clusterId'),
+        custom_target_config=__ret__.get('customTargetConfig'),
         elasticsearch_config=__ret__.get('elasticsearchConfig'),
+        enable_json_parsing=__ret__.get('enableJsonParsing'),
         fluentd_config=__ret__.get('fluentdConfig'),
         id=__ret__.get('id'),
         kafka_config=__ret__.get('kafkaConfig'),

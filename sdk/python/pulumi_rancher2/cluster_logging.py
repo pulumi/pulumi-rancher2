@@ -43,6 +43,10 @@ class ClusterLogging(pulumi.CustomResource):
       * `sslVerify` (`bool`) - SSL verify for the syslog service (bool)
       * `sslVersion` (`str`) - SSL version for the elascticsearch service (string)
     """
+    enable_json_parsing: pulumi.Output[bool]
+    """
+    Enable json log parsing. Default: `false` (bool)
+    """
     fluentd_config: pulumi.Output[dict]
     """
     The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
@@ -122,7 +126,7 @@ class ClusterLogging(pulumi.CustomResource):
       * `sslVerify` (`bool`) - SSL verify for the syslog service (bool)
       * `token` (`str`) - Token for the syslog service (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, custom_target_config=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, custom_target_config=None, elasticsearch_config=None, enable_json_parsing=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
 
@@ -134,6 +138,7 @@ class ClusterLogging(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The cluster id to configure logging (string)
         :param pulumi.Input[dict] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[bool] enable_json_parsing: Enable json log parsing. Default: `false` (bool)
         :param pulumi.Input[dict] fluentd_config: The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[dict] kafka_config: The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[str] kind: The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
@@ -236,6 +241,7 @@ class ClusterLogging(pulumi.CustomResource):
             __props__['cluster_id'] = cluster_id
             __props__['custom_target_config'] = custom_target_config
             __props__['elasticsearch_config'] = elasticsearch_config
+            __props__['enable_json_parsing'] = enable_json_parsing
             __props__['fluentd_config'] = fluentd_config
             __props__['kafka_config'] = kafka_config
             if kind is None:
@@ -255,7 +261,7 @@ class ClusterLogging(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, custom_target_config=None, elasticsearch_config=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None):
+    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, custom_target_config=None, elasticsearch_config=None, enable_json_parsing=None, fluentd_config=None, kafka_config=None, kind=None, labels=None, name=None, namespace_id=None, output_flush_interval=None, output_tags=None, splunk_config=None, syslog_config=None):
         """
         Get an existing ClusterLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,6 +273,7 @@ class ClusterLogging(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The cluster id to configure logging (string)
         :param pulumi.Input[dict] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[dict] elasticsearch_config: The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[bool] enable_json_parsing: Enable json log parsing. Default: `false` (bool)
         :param pulumi.Input[dict] fluentd_config: The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[dict] kafka_config: The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         :param pulumi.Input[str] kind: The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
@@ -354,6 +361,7 @@ class ClusterLogging(pulumi.CustomResource):
         __props__["cluster_id"] = cluster_id
         __props__["custom_target_config"] = custom_target_config
         __props__["elasticsearch_config"] = elasticsearch_config
+        __props__["enable_json_parsing"] = enable_json_parsing
         __props__["fluentd_config"] = fluentd_config
         __props__["kafka_config"] = kafka_config
         __props__["kind"] = kind

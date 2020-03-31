@@ -216,6 +216,10 @@ export interface ClusterAksConfig {
 
 export interface ClusterAlterGroupRecipient {
     /**
+     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     */
+    defaultRecipient?: boolean;
+    /**
      * Recipient notifier ID (string)
      */
     notifierId: string;
@@ -299,7 +303,7 @@ export interface ClusterClusterAuthEndpoint {
      */
     caCerts?: string;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -311,7 +315,6 @@ export interface ClusterClusterAuthEndpoint {
 export interface ClusterClusterMonitoringInput {
     /**
      * Key/value answers for monitor input (map)
-     * =======
      */
     answers?: {[key: string]: any};
 }
@@ -393,7 +396,6 @@ export interface ClusterClusterTemplateQuestion {
     type?: string;
     /**
      * Variable name (string)
-     * >>>>>>> c6a2cbc... Feat: added rancher2..ClusterTemplate datasource and resource. For rancher V2.3.x. Doc files
      */
     variable: string;
 }
@@ -679,6 +681,36 @@ export interface ClusterGkeConfig {
      * Zone GKE cluster (string)
      */
     zone?: string;
+}
+
+export interface ClusterK3sConfig {
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy: outputs.ClusterK3sConfigUpgradeStrategy;
+    /**
+     * K3S kubernetes version (string)
+     */
+    version: string;
+}
+
+export interface ClusterK3sConfigUpgradeStrategy {
+    /**
+     * Drain server nodes. Default: `false` (bool)
+     */
+    drainServerNodes?: boolean;
+    /**
+     * Drain worker nodes. Default: `false` (bool)
+     */
+    drainWorkerNodes?: boolean;
+    /**
+     * Server concurrency. Default: `1` (int)
+     */
+    serverConcurrency?: number;
+    /**
+     * Worker concurrency. Default: `1` (int)
+     */
+    workerConcurrency?: number;
 }
 
 export interface ClusterLoggingCustomTargetConfig {
@@ -983,6 +1015,10 @@ export interface ClusterRkeConfig {
      * Node SSH private key path (string)
      */
     sshKeyPath: string;
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy: outputs.ClusterRkeConfigUpgradeStrategy;
 }
 
 export interface ClusterRkeConfigAuthentication {
@@ -1791,7 +1827,7 @@ export interface ClusterRkeConfigServicesEtcd {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -1853,11 +1889,11 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     alwaysPullImages?: boolean;
     /**
-     * K8s audit log configuration. (list maxitem: 1)
+     * K8s audit log configuration. (list maxitems: 1)
      */
     auditLog?: outputs.ClusterRkeConfigServicesKubeApiAuditLog;
     /**
-     * K8s event rate limit configuration. (list maxitem: 1)
+     * K8s event rate limit configuration. (list maxitems: 1)
      */
     eventRateLimit?: outputs.ClusterRkeConfigServicesKubeApiEventRateLimit;
     /**
@@ -1900,7 +1936,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -1938,7 +1974,7 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
      */
     configuration?: {[key: string]: any};
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -1949,7 +1985,7 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     customConfig?: {[key: string]: any};
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable scheduled cluster scan. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -2056,6 +2092,104 @@ export interface ClusterRkeConfigServicesScheduler {
     image: string;
 }
 
+export interface ClusterRkeConfigUpgradeStrategy {
+    /**
+     * RKE drain nodes. Default: `false` (bool)
+     */
+    drain?: boolean;
+    /**
+     * RKE drain node input (list Maxitems: 1)
+     */
+    drainInput: outputs.ClusterRkeConfigUpgradeStrategyDrainInput;
+    /**
+     * RKE max unavailable controlplane nodes. Default: `1` (string)
+     */
+    maxUnavailableControlplane?: string;
+    /**
+     * RKE max unavailable worker nodes. Default: `10%` (string)
+     */
+    maxUnavailableWorker?: string;
+}
+
+export interface ClusterRkeConfigUpgradeStrategyDrainInput {
+    /**
+     * Delete RKE node local data. Default: `false` (bool)
+     */
+    deleteLocalData?: boolean;
+    /**
+     * Force RKE node drain. Default: `false` (bool)
+     */
+    force?: boolean;
+    /**
+     * RKE node drain grace period. Default: `-1` (int)
+     */
+    gracePeriod?: number;
+    /**
+     * Ignore RKE daemon sets. Default: `true` (bool)
+     */
+    ignoreDaemonSets?: boolean;
+    /**
+     * RKE node drain timeout. Default: `60` (int)
+     */
+    timeout?: number;
+}
+
+export interface ClusterScheduledClusterScan {
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: boolean;
+    /**
+     * Cluster scan config (List maxitems:1)
+     */
+    scanConfig: outputs.ClusterScheduledClusterScanScanConfig;
+    /**
+     * Cluster scan schedule config (list maxitems:1)
+     */
+    scheduleConfig: outputs.ClusterScheduledClusterScanScheduleConfig;
+}
+
+export interface ClusterScheduledClusterScanScanConfig {
+    /**
+     * Cluster Cis Scan config (List maxitems:1)
+     */
+    cisScanConfig: outputs.ClusterScheduledClusterScanScanConfigCisScanConfig;
+}
+
+export interface ClusterScheduledClusterScanScanConfigCisScanConfig {
+    /**
+     * Debug master. Default: `false` (bool)
+     */
+    debugMaster?: boolean;
+    /**
+     * Debug worker. Default: `false` (bool)
+     */
+    debugWorker?: boolean;
+    /**
+     * Override benchmark version (string)
+     */
+    overrideBenchmarkVersion?: string;
+    /**
+     * Override skip (string)
+     */
+    overrideSkips?: string[];
+    /**
+     * Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+     */
+    profile?: string;
+}
+
+export interface ClusterScheduledClusterScanScheduleConfig {
+    /**
+     * Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+     */
+    cronSchedule: string;
+    /**
+     * Retention for etcd backup. Default `6` (int)
+     */
+    retention: number;
+}
+
 export interface ClusterTemplateMember {
     /**
      * Member access type. Valid values: `["read-only" | "owner"]` (string)
@@ -2149,8 +2283,10 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
     enableNetworkPolicy?: boolean;
     /**
      * Rancher Kubernetes Engine Config (list maxitems: 1)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
      */
     rkeConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig;
+    scheduledClusterScan?: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
     /**
      * Windows prefered cluster. Default: `false` (bool)
      */
@@ -2187,6 +2323,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshAgentAuth?: boolean;
     sshCertPath: string;
     sshKeyPath: string;
+    upgradeStrategy: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -2575,6 +2712,47 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSc
     image: string;
 }
 
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
+    drain?: boolean;
+    drainInput: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput;
+    maxUnavailableControlplane?: string;
+    maxUnavailableWorker?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput {
+    deleteLocalData?: boolean;
+    force?: boolean;
+    gracePeriod?: number;
+    ignoreDaemonSets?: boolean;
+    timeout?: number;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     */
+    enabled?: boolean;
+    scanConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig;
+    scheduleConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
+    cisScanConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
+    debugMaster?: boolean;
+    debugWorker?: boolean;
+    overrideBenchmarkVersion?: string;
+    overrideSkips?: string[];
+    profile?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
+    cronSchedule: string;
+    retention: number;
+}
+
 export interface ClusterTemplateTemplateRevisionQuestion {
     /**
      * Default variable value (string)
@@ -2686,6 +2864,7 @@ export interface GetClusterAksConfig {
 }
 
 export interface GetClusterAlertGroupRecipient {
+    defaultRecipient?: boolean;
     notifierId: string;
     notifierType: string;
     recipient: string;
@@ -2847,6 +3026,25 @@ export interface GetClusterGkeConfig {
     zone?: string;
 }
 
+export interface GetClusterK3sConfig {
+    upgradeStrategy: outputs.GetClusterK3sConfigUpgradeStrategy;
+    version: string;
+}
+
+export interface GetClusterK3sConfigUpgradeStrategy {
+    drainServerNodes?: boolean;
+    drainWorkerNodes?: boolean;
+    serverConcurrency?: number;
+    workerConcurrency?: number;
+}
+
+export interface GetClusterLoggingCustomTargetConfig {
+    certificate?: string;
+    clientCert?: string;
+    clientKey?: string;
+    content: string;
+}
+
 export interface GetClusterLoggingElasticsearchConfig {
     authPassword?: string;
     authUsername?: string;
@@ -2932,6 +3130,7 @@ export interface GetClusterRkeConfig {
     sshAgentAuth?: boolean;
     sshCertPath: string;
     sshKeyPath: string;
+    upgradeStrategy: outputs.GetClusterRkeConfigUpgradeStrategy;
 }
 
 export interface GetClusterRkeConfigAuthentication {
@@ -3308,6 +3507,56 @@ export interface GetClusterRkeConfigServicesScheduler {
     image: string;
 }
 
+export interface GetClusterRkeConfigUpgradeStrategy {
+    drain?: boolean;
+    drainInput: outputs.GetClusterRkeConfigUpgradeStrategyDrainInput;
+    maxUnavailableControlplane?: string;
+    maxUnavailableWorker?: string;
+}
+
+export interface GetClusterRkeConfigUpgradeStrategyDrainInput {
+    deleteLocalData?: boolean;
+    force?: boolean;
+    gracePeriod?: number;
+    ignoreDaemonSets?: boolean;
+    timeout?: number;
+}
+
+export interface GetClusterScanScanConfig {
+    cisScanConfig: outputs.GetClusterScanScanConfigCisScanConfig;
+}
+
+export interface GetClusterScanScanConfigCisScanConfig {
+    debugMaster?: boolean;
+    debugWorker?: boolean;
+    overrideBenchmarkVersion?: string;
+    overrideSkips?: string[];
+    profile?: string;
+}
+
+export interface GetClusterScheduledClusterScan {
+    enabled?: boolean;
+    scanConfig: outputs.GetClusterScheduledClusterScanScanConfig;
+    scheduleConfig: outputs.GetClusterScheduledClusterScanScheduleConfig;
+}
+
+export interface GetClusterScheduledClusterScanScanConfig {
+    cisScanConfig: outputs.GetClusterScheduledClusterScanScanConfigCisScanConfig;
+}
+
+export interface GetClusterScheduledClusterScanScanConfigCisScanConfig {
+    debugMaster?: boolean;
+    debugWorker?: boolean;
+    overrideBenchmarkVersion?: string;
+    overrideSkips?: string[];
+    profile?: string;
+}
+
+export interface GetClusterScheduledClusterScanScheduleConfig {
+    cronSchedule: string;
+    retention: number;
+}
+
 export interface GetClusterTemplateMember {
     accessType?: string;
     groupPrincipalId?: string;
@@ -3349,6 +3598,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfig {
     enableClusterMonitoring?: boolean;
     enableNetworkPolicy?: boolean;
     rkeConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfig;
+    scheduledClusterScan?: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
     windowsPreferedCluster?: boolean;
 }
 
@@ -3379,6 +3629,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshAgentAuth?: boolean;
     sshCertPath: string;
     sshKeyPath: string;
+    upgradeStrategy: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -3755,6 +4006,44 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     image: string;
 }
 
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
+    drain?: boolean;
+    drainInput: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput;
+    maxUnavailableControlplane?: string;
+    maxUnavailableWorker?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput {
+    deleteLocalData?: boolean;
+    force?: boolean;
+    gracePeriod?: number;
+    ignoreDaemonSets?: boolean;
+    timeout?: number;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan {
+    enabled?: boolean;
+    scanConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig;
+    scheduleConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig {
+    cisScanConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig {
+    debugMaster?: boolean;
+    debugWorker?: boolean;
+    overrideBenchmarkVersion?: string;
+    overrideSkips?: string[];
+    profile?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig {
+    cronSchedule: string;
+    retention: number;
+}
+
 export interface GetClusterTemplateTemplateRevisionQuestion {
     default: string;
     required?: boolean;
@@ -3956,6 +4245,7 @@ export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
 }
 
 export interface GetProjectAlertGroupRecipient {
+    defaultRecipient?: boolean;
     notifierId: string;
     notifierType: string;
     recipient: string;
@@ -3987,6 +4277,13 @@ export interface GetProjectContainerResourceLimit {
     limitsMemory?: string;
     requestsCpu?: string;
     requestsMemory?: string;
+}
+
+export interface GetProjectLoggingCustomTargetConfig {
+    certificate?: string;
+    clientCert?: string;
+    clientKey?: string;
+    content: string;
 }
 
 export interface GetProjectLoggingElasticsearchConfig {
@@ -5137,6 +5434,7 @@ export interface PodSecurityPolicyTemplateSupplementalGroupRange {
 }
 
 export interface ProjectAlertGroupRecipient {
+    defaultRecipient?: boolean;
     /**
      * Recipient notifier ID (string)
      */

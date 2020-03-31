@@ -55,5 +55,7 @@ type LookupCatalogResult struct {
 	Url string `pulumi:"url"`
 	// (Computed/Sensitive) The username to access the catalog if needed (string)
 	Username string `pulumi:"username"`
+	// (Computed) Helm version for the catalog (string)
+	Version string `pulumi:"version"`
 }
 

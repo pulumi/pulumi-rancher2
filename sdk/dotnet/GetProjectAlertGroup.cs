@@ -109,16 +109,19 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetProjectAlertGroupRecipientsResult
     {
+        public readonly bool? DefaultRecipient;
         public readonly string NotifierId;
         public readonly string NotifierType;
         public readonly string Recipient;
 
         [OutputConstructor]
         private GetProjectAlertGroupRecipientsResult(
+            bool? defaultRecipient,
             string notifierId,
             string notifierType,
             string recipient)
         {
+            DefaultRecipient = defaultRecipient;
             NotifierId = notifierId;
             NotifierType = notifierType;
             Recipient = recipient;

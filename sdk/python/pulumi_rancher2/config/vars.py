@@ -36,6 +36,11 @@ insecure = __config__.get('insecure') or (utilities.get_env_bool('RANCHER_INSECU
 Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 """
 
+retries = __config__.get('retries')
+"""
+Rancher connection retries
+"""
+
 secret_key = __config__.get('secretKey') or utilities.get_env('RANCHER_SECRET_KEY')
 """
 API secret used to authenticate with the rancher server

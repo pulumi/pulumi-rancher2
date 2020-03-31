@@ -20,7 +20,7 @@ class ClusterSync(pulumi.CustomResource):
     """
     kube_config: pulumi.Output[str]
     """
-    (Computed) Kube Config generated for the cluster sync (string)
+    (Computed/Sensitive) Kube Config generated for the cluster sync (string)
     """
     node_pool_ids: pulumi.Output[list]
     """
@@ -31,13 +31,18 @@ class ClusterSync(pulumi.CustomResource):
     """
     (Computed) System project ID for the cluster sync (string)
     """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, node_pool_ids=None, synced=None, __props__=None, __name__=None, __opts__=None):
+    wait_monitoring: pulumi.Output[bool]
+    """
+    Wait until monitoring is up and running. Default: `false` (bool)
+    """
+    def __init__(__self__, resource_name, opts=None, cluster_id=None, node_pool_ids=None, synced=None, wait_monitoring=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ClusterSync resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,6 +66,7 @@ class ClusterSync(pulumi.CustomResource):
             __props__['cluster_id'] = cluster_id
             __props__['node_pool_ids'] = node_pool_ids
             __props__['synced'] = synced
+            __props__['wait_monitoring'] = wait_monitoring
             __props__['default_project_id'] = None
             __props__['kube_config'] = None
             __props__['system_project_id'] = None
@@ -71,7 +77,7 @@ class ClusterSync(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, default_project_id=None, kube_config=None, node_pool_ids=None, synced=None, system_project_id=None):
+    def get(resource_name, id, opts=None, cluster_id=None, default_project_id=None, kube_config=None, node_pool_ids=None, synced=None, system_project_id=None, wait_monitoring=None):
         """
         Get an existing ClusterSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -81,9 +87,10 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster sync (string)
-        :param pulumi.Input[str] kube_config: (Computed) Kube Config generated for the cluster sync (string)
+        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
+        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -95,6 +102,7 @@ class ClusterSync(pulumi.CustomResource):
         __props__["node_pool_ids"] = node_pool_ids
         __props__["synced"] = synced
         __props__["system_project_id"] = system_project_id
+        __props__["wait_monitoring"] = wait_monitoring
         return ClusterSync(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

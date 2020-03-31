@@ -41,10 +41,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
+        public readonly Outputs.GetClusterLoggingCustomTargetConfigResult CustomTargetConfig;
         /// <summary>
         /// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterLoggingElasticsearchConfigResult ElasticsearchConfig;
+        public readonly bool EnableJsonParsing;
         /// <summary>
         /// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
         /// </summary>
@@ -94,7 +96,9 @@ namespace Pulumi.Rancher2
         private GetClusterLoggingResult(
             ImmutableDictionary<string, object> annotations,
             string clusterId,
+            Outputs.GetClusterLoggingCustomTargetConfigResult customTargetConfig,
             Outputs.GetClusterLoggingElasticsearchConfigResult elasticsearchConfig,
+            bool enableJsonParsing,
             Outputs.GetClusterLoggingFluentdConfigResult fluentdConfig,
             Outputs.GetClusterLoggingKafkaConfigResult kafkaConfig,
             string kind,
@@ -109,7 +113,9 @@ namespace Pulumi.Rancher2
         {
             Annotations = annotations;
             ClusterId = clusterId;
+            CustomTargetConfig = customTargetConfig;
             ElasticsearchConfig = elasticsearchConfig;
+            EnableJsonParsing = enableJsonParsing;
             FluentdConfig = fluentdConfig;
             KafkaConfig = kafkaConfig;
             Kind = kind;
@@ -126,6 +132,28 @@ namespace Pulumi.Rancher2
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class GetClusterLoggingCustomTargetConfigResult
+    {
+        public readonly string? Certificate;
+        public readonly string? ClientCert;
+        public readonly string? ClientKey;
+        public readonly string Content;
+
+        [OutputConstructor]
+        private GetClusterLoggingCustomTargetConfigResult(
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string content)
+        {
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            Content = content;
+        }
+    }
 
     [OutputType]
     public sealed class GetClusterLoggingElasticsearchConfigResult

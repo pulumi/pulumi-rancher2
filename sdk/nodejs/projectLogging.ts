@@ -70,6 +70,10 @@ export class ProjectLogging extends pulumi.CustomResource {
      */
     public readonly elasticsearchConfig!: pulumi.Output<outputs.ProjectLoggingElasticsearchConfig | undefined>;
     /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    public readonly enableJsonParsing!: pulumi.Output<boolean | undefined>;
+    /**
      * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly fluentdConfig!: pulumi.Output<outputs.ProjectLoggingFluentdConfig | undefined>;
@@ -129,6 +133,7 @@ export class ProjectLogging extends pulumi.CustomResource {
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
+            inputs["enableJsonParsing"] = state ? state.enableJsonParsing : undefined;
             inputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
             inputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
             inputs["kind"] = state ? state.kind : undefined;
@@ -151,6 +156,7 @@ export class ProjectLogging extends pulumi.CustomResource {
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
+            inputs["enableJsonParsing"] = args ? args.enableJsonParsing : undefined;
             inputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
             inputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -190,6 +196,10 @@ export interface ProjectLoggingState {
      * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
+    /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    readonly enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
@@ -252,6 +262,10 @@ export interface ProjectLoggingArgs {
      * The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ProjectLoggingElasticsearchConfig>;
+    /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    readonly enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */

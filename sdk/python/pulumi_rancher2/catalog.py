@@ -62,7 +62,11 @@ class Catalog(pulumi.CustomResource):
     """
     The username to access the catalog if needed (string)
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, __props__=None, __name__=None, __opts__=None):
+    version: pulumi.Output[str]
+    """
+    Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+    """
+    def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
 
@@ -83,6 +87,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,6 +121,7 @@ class Catalog(pulumi.CustomResource):
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['username'] = username
+            __props__['version'] = version
         super(Catalog, __self__).__init__(
             'rancher2:index/catalog:Catalog',
             resource_name,
@@ -123,7 +129,7 @@ class Catalog(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None):
+    def get(resource_name, id, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, version=None):
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -144,6 +150,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,6 +169,7 @@ class Catalog(pulumi.CustomResource):
         __props__["scope"] = scope
         __props__["url"] = url
         __props__["username"] = username
+        __props__["version"] = version
         return Catalog(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

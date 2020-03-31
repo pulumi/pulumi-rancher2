@@ -99,6 +99,10 @@ export interface GetCatalogResult {
      */
     readonly username: string;
     /**
+     * (Computed) Helm version for the catalog (string)
+     */
+    readonly version: string;
+    /**
      * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

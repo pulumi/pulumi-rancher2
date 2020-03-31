@@ -66,6 +66,8 @@ type LookupClusterResult struct {
 	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig GetClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed) Kube Config generated for the cluster (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
@@ -73,6 +75,7 @@ type LookupClusterResult struct {
 	Name string `pulumi:"name"`
 	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
 	RkeConfig GetClusterRkeConfig `pulumi:"rkeConfig"`
+	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
 }

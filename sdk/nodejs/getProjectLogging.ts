@@ -55,10 +55,12 @@ export interface GetProjectLoggingResult {
      * (Computed) Annotations for Cluster Logging object (map)
      */
     readonly annotations: {[key: string]: any};
+    readonly customTargetConfig: outputs.GetProjectLoggingCustomTargetConfig;
     /**
      * (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
      */
     readonly elasticsearchConfig: outputs.GetProjectLoggingElasticsearchConfig;
+    readonly enableJsonParsing: boolean;
     /**
      * (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
      */

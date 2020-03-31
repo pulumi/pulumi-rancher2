@@ -35,6 +35,7 @@ export * from "./getClusterAlterRule";
 export * from "./getClusterDriver";
 export * from "./getClusterLogging";
 export * from "./getClusterRoleTemplateBinding";
+export * from "./getClusterScan";
 export * from "./getClusterTemplate";
 export * from "./getEtcdBackup";
 export * from "./getGlobalRoleBinding";

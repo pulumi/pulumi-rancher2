@@ -278,6 +278,12 @@ namespace Pulumi.Rancher2
     public sealed class ClusterAlterGroupRecipientsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
+        /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
         [Input("notifierId", required: true)]
@@ -302,6 +308,12 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterAlterGroupRecipientsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
         /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
@@ -333,6 +345,10 @@ namespace Pulumi.Rancher2
     public sealed class ClusterAlterGroupRecipients
     {
         /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DefaultRecipient;
+        /// <summary>
         /// Recipient notifier ID (string)
         /// </summary>
         public readonly string NotifierId;
@@ -347,10 +363,12 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private ClusterAlterGroupRecipients(
+            bool? defaultRecipient,
             string notifierId,
             string notifierType,
             string recipient)
         {
+            DefaultRecipient = defaultRecipient;
             NotifierId = notifierId;
             NotifierType = notifierType;
             Recipient = recipient;

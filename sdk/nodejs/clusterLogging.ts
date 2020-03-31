@@ -74,6 +74,10 @@ export class ClusterLogging extends pulumi.CustomResource {
      */
     public readonly elasticsearchConfig!: pulumi.Output<outputs.ClusterLoggingElasticsearchConfig | undefined>;
     /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    public readonly enableJsonParsing!: pulumi.Output<boolean | undefined>;
+    /**
      * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     public readonly fluentdConfig!: pulumi.Output<outputs.ClusterLoggingFluentdConfig | undefined>;
@@ -130,6 +134,7 @@ export class ClusterLogging extends pulumi.CustomResource {
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = state ? state.elasticsearchConfig : undefined;
+            inputs["enableJsonParsing"] = state ? state.enableJsonParsing : undefined;
             inputs["fluentdConfig"] = state ? state.fluentdConfig : undefined;
             inputs["kafkaConfig"] = state ? state.kafkaConfig : undefined;
             inputs["kind"] = state ? state.kind : undefined;
@@ -152,6 +157,7 @@ export class ClusterLogging extends pulumi.CustomResource {
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["customTargetConfig"] = args ? args.customTargetConfig : undefined;
             inputs["elasticsearchConfig"] = args ? args.elasticsearchConfig : undefined;
+            inputs["enableJsonParsing"] = args ? args.enableJsonParsing : undefined;
             inputs["fluentdConfig"] = args ? args.fluentdConfig : undefined;
             inputs["kafkaConfig"] = args ? args.kafkaConfig : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -194,6 +200,10 @@ export interface ClusterLoggingState {
      * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
+    /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    readonly enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
@@ -256,6 +266,10 @@ export interface ClusterLoggingArgs {
      * The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */
     readonly elasticsearchConfig?: pulumi.Input<inputs.ClusterLoggingElasticsearchConfig>;
+    /**
+     * Enable json log parsing. Default: `false` (bool)
+     */
+    readonly enableJsonParsing?: pulumi.Input<boolean>;
     /**
      * The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
      */

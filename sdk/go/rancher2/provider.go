@@ -67,6 +67,8 @@ type providerArgs struct {
 	CaCerts *string `pulumi:"caCerts"`
 	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 	Insecure *bool `pulumi:"insecure"`
+	// Rancher connection retries
+	Retries *int `pulumi:"retries"`
 	// API secret used to authenticate with the rancher server
 	SecretKey *string `pulumi:"secretKey"`
 	// API token used to authenticate with the rancher server
@@ -85,6 +87,8 @@ type ProviderArgs struct {
 	CaCerts pulumi.StringPtrInput
 	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 	Insecure pulumi.BoolPtrInput
+	// Rancher connection retries
+	Retries pulumi.IntPtrInput
 	// API secret used to authenticate with the rancher server
 	SecretKey pulumi.StringPtrInput
 	// API token used to authenticate with the rancher server

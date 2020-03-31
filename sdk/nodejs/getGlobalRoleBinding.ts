@@ -63,6 +63,10 @@ export interface GetGlobalRoleBindingResult {
     readonly annotations: {[key: string]: any};
     readonly globalRoleId: string;
     /**
+     * (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
+     */
+    readonly groupPrincipalId: string;
+    /**
      * (Computed) Labels of the resource (map)
      */
     readonly labels: {[key: string]: any};
