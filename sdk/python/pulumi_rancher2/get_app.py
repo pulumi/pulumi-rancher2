@@ -117,6 +117,7 @@ def get_app(annotations=None,name=None,project_id=None,target_namespace=None,opt
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
 
 
+    :param dict annotations: (Computed) Annotations for the catalog (map)
     :param str name: The app name (string)
     :param str project_id: The id of the project where the app is deployed (string)
     :param str target_namespace: The namespace name where the app is deployed (string)

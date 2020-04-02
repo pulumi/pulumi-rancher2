@@ -234,4 +234,3 @@ type AuthConfigKeycloakArgs struct {
 func (AuthConfigKeycloakArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigKeycloakArgs)(nil)).Elem()
 }
-

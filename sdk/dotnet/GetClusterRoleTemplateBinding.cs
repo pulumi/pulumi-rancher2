@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusterRoleTemplateBinding.InvokeAsync() instead")]
         public static Task<GetClusterRoleTemplateBindingResult> GetClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterRoleTemplateBindingResult>("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterRoleTemplateBinding
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
+        /// </summary>
+        public static Task<GetClusterRoleTemplateBindingResult> InvokeAsync(GetClusterRoleTemplateBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterRoleTemplateBindingResult>("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

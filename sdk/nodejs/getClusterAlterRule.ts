@@ -48,6 +48,9 @@ export interface GetClusterAlterRuleArgs {
      * The cluster id where create cluster alert rule (string)
      */
     readonly clusterId: string;
+    /**
+     * (Computed) The cluster alert rule labels (map)
+     */
     readonly labels?: {[key: string]: any};
     /**
      * The cluster alert rule name (string)

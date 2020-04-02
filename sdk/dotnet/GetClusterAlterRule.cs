@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusterAlterRule.InvokeAsync() instead")]
         public static Task<GetClusterAlterRuleResult> GetClusterAlterRule(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterAlterRule
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
+        /// </summary>
+        public static Task<GetClusterAlterRuleResult> InvokeAsync(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -30,6 +41,10 @@ namespace Pulumi.Rancher2
 
         [Input("labels")]
         private Dictionary<string, object>? _labels;
+
+        /// <summary>
+        /// (Computed) The cluster alert rule labels (map)
+        /// </summary>
         public Dictionary<string, object> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, object>());

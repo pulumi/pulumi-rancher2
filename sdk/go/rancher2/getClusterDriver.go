@@ -28,7 +28,6 @@ type LookupClusterDriverArgs struct {
 	Url *string `pulumi:"url"`
 }
 
-
 // A collection of values returned by getClusterDriver.
 type LookupClusterDriverResult struct {
 	// (Computed) Specify if the cluster driver state (bool)
@@ -45,11 +44,10 @@ type LookupClusterDriverResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) The URL to load for customized Add Clusters screen for this driver (string)
 	UiUrl string `pulumi:"uiUrl"`
-	Url string `pulumi:"url"`
+	Url   string `pulumi:"url"`
 	// (Computed) Domains to whitelist for the ui (list)
 	WhitelistDomains []string `pulumi:"whitelistDomains"`
 }
-

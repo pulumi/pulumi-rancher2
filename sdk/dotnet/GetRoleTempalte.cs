@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRoleTempalte.InvokeAsync() instead")]
         public static Task<GetRoleTempalteResult> GetRoleTempalte(GetRoleTempalteArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRoleTempalte
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 role template resource.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
+        /// </summary>
+        public static Task<GetRoleTempalteResult> InvokeAsync(GetRoleTempalteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

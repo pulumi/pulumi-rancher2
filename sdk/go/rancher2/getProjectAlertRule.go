@@ -22,13 +22,13 @@ func LookupProjectAlertRule(ctx *pulumi.Context, args *LookupProjectAlertRuleArg
 
 // A collection of arguments for invoking getProjectAlertRule.
 type LookupProjectAlertRuleArgs struct {
+	// (Computed) The project alert rule labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The project alert rule name (string)
 	Name string `pulumi:"name"`
 	// The project id where create project alert rule (string)
 	ProjectId string `pulumi:"projectId"`
 }
-
 
 // A collection of values returned by getProjectAlertRule.
 type LookupProjectAlertRuleResult struct {
@@ -48,10 +48,10 @@ type LookupProjectAlertRuleResult struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule GetProjectAlertRuleMetricRule `pulumi:"metricRule"`
-	Name string `pulumi:"name"`
+	Name       string                        `pulumi:"name"`
 	// (Computed) The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
-	PodRule GetProjectAlertRulePodRule `pulumi:"podRule"`
-	ProjectId string `pulumi:"projectId"`
+	PodRule   GetProjectAlertRulePodRule `pulumi:"podRule"`
+	ProjectId string                     `pulumi:"projectId"`
 	// (Computed) The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
 	// (Computed) The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
@@ -59,4 +59,3 @@ type LookupProjectAlertRuleResult struct {
 	// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule GetProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
 }
-

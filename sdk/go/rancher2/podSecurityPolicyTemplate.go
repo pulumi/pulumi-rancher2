@@ -355,4 +355,3 @@ type PodSecurityPolicyTemplateArgs struct {
 func (PodSecurityPolicyTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*podSecurityPolicyTemplateArgs)(nil)).Elem()
 }
-

@@ -234,4 +234,3 @@ type AuthConfigPingArgs struct {
 func (AuthConfigPingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigPingArgs)(nil)).Elem()
 }
-

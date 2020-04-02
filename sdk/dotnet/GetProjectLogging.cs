@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProjectLogging.InvokeAsync() instead")]
         public static Task<GetProjectLoggingResult> GetProjectLogging(GetProjectLoggingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjectLogging
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Project Logging.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
+        /// </summary>
+        public static Task<GetProjectLoggingResult> InvokeAsync(GetProjectLoggingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectLoggingResult>("rancher2:index/getProjectLogging:getProjectLogging", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

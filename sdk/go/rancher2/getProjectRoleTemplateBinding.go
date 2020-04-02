@@ -30,7 +30,6 @@ type LookupProjectRoleTemplateBindingArgs struct {
 	RoleTemplateId *string `pulumi:"roleTemplateId"`
 }
 
-
 // A collection of values returned by getProjectRoleTemplateBinding.
 type LookupProjectRoleTemplateBindingResult struct {
 	// (Computed) Annotations of the resource (map)
@@ -42,13 +41,12 @@ type LookupProjectRoleTemplateBindingResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	ProjectId string `pulumi:"projectId"`
-	RoleTemplateId string `pulumi:"roleTemplateId"`
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           string                 `pulumi:"name"`
+	ProjectId      string                 `pulumi:"projectId"`
+	RoleTemplateId string                 `pulumi:"roleTemplateId"`
 	// (Computed) The user ID to assign project role template binding (string)
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign project role template binding (string)
 	UserPrincipalId string `pulumi:"userPrincipalId"`
 }
-

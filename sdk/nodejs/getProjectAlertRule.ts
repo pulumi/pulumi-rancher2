@@ -44,6 +44,9 @@ export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi
  * A collection of arguments for invoking getProjectAlertRule.
  */
 export interface GetProjectAlertRuleArgs {
+    /**
+     * (Computed) The project alert rule labels (map)
+     */
     readonly labels?: {[key: string]: any};
     /**
      * The project alert rule name (string)

@@ -131,6 +131,7 @@ def get_node_template(name=None,use_internal_ip_address=None,opts=None):
 
 
     :param str name: The name of the Node Template (string)
+    :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)
     """
     __args__ = dict()
 

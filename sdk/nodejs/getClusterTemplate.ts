@@ -46,8 +46,14 @@ export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.I
  * A collection of arguments for invoking getClusterTemplate.
  */
 export interface GetClusterTemplateArgs {
+    /**
+     * (Computed) Annotations for the cluster template (map)
+     */
     readonly annotations?: {[key: string]: any};
     readonly description?: string;
+    /**
+     * (Computed) Labels for the cluster template (map)
+     */
     readonly labels?: {[key: string]: any};
     /**
      * The cluster template name (string)

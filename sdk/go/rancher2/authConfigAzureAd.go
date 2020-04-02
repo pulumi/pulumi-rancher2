@@ -231,4 +231,3 @@ type AuthConfigAzureAdArgs struct {
 func (AuthConfigAzureAdArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAzureAdArgs)(nil)).Elem()
 }
-

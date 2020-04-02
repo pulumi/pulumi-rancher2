@@ -20,7 +20,22 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCertificate.InvokeAsync() instead")]
         public static Task<GetCertificateResult> GetCertificate(GetCertificateArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCertificate
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 certificate.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 certificates:
+        /// - Project certificate: Available to all namespaces in the `project_id`
+        /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
+        /// </summary>
+        public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

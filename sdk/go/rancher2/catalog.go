@@ -209,4 +209,3 @@ type CatalogArgs struct {
 func (CatalogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogArgs)(nil)).Elem()
 }
-

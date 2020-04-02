@@ -30,12 +30,11 @@ type LookupClusterRoleTemplateBindingArgs struct {
 	RoleTemplateId *string `pulumi:"roleTemplateId"`
 }
 
-
 // A collection of values returned by getClusterRoleTemplateBinding.
 type LookupClusterRoleTemplateBindingResult struct {
 	// (Computed) Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The group ID to assign cluster role template binding (string)
 	GroupId string `pulumi:"groupId"`
 	// (Computed) The groupPrincipal ID to assign cluster role template binding (string)
@@ -43,12 +42,11 @@ type LookupClusterRoleTemplateBindingResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	RoleTemplateId string `pulumi:"roleTemplateId"`
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           string                 `pulumi:"name"`
+	RoleTemplateId string                 `pulumi:"roleTemplateId"`
 	// (Computed) The user ID to assign cluster role template binding (string)
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign cluster role template binding (string)
 	UserPrincipalId string `pulumi:"userPrincipalId"`
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProjectRoleTemplateBinding.InvokeAsync() instead")]
         public static Task<GetProjectRoleTemplateBindingResult> GetProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjectRoleTemplateBinding
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 project role template binding.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
+        /// </summary>
+        public static Task<GetProjectRoleTemplateBindingResult> InvokeAsync(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

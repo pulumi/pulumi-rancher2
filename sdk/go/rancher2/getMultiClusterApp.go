@@ -26,7 +26,6 @@ type LookupMultiClusterAppArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getMultiClusterApp.
 type LookupMultiClusterAppResult struct {
 	// (Computed) Annotations for multi cluster app object (map)
@@ -41,7 +40,7 @@ type LookupMultiClusterAppResult struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The multi cluster app members (list)
 	Members []GetMultiClusterAppMember `pulumi:"members"`
-	Name string `pulumi:"name"`
+	Name    string                     `pulumi:"name"`
 	// (Computed) The multi cluster app revision history limit (int)
 	RevisionHistoryLimit int `pulumi:"revisionHistoryLimit"`
 	// (Computed) Current revision id for the multi cluster app (string)
@@ -59,4 +58,3 @@ type LookupMultiClusterAppResult struct {
 	// (Computed) The multi cluster app upgrade strategy (list)
 	UpgradeStrategies []GetMultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategies"`
 }
-

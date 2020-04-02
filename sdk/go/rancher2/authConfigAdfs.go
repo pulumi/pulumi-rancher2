@@ -13,7 +13,7 @@ import (
 
 // Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
 //
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time. 
+// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigADFS.html.markdown.
 type AuthConfigAdfs struct {
@@ -234,4 +234,3 @@ type AuthConfigAdfsArgs struct {
 func (AuthConfigAdfsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAdfsArgs)(nil)).Elem()
 }
-

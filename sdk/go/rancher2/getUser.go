@@ -30,7 +30,6 @@ type LookupUserArgs struct {
 	Username *string `pulumi:"username"`
 }
 
-
 // A collection of values returned by getUser.
 type LookupUserResult struct {
 	// (Computed) Annotations of the resource (map)
@@ -38,14 +37,13 @@ type LookupUserResult struct {
 	// (Computed) The user is enabled (bool)
 	Enabled bool `pulumi:"enabled"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IsExternal *bool `pulumi:"isExternal"`
+	Id         string `pulumi:"id"`
+	IsExternal *bool  `pulumi:"isExternal"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The user common name (string)
 	Name string `pulumi:"name"`
 	// (Computed) The user principal IDs (list)
 	PrincipalIds []string `pulumi:"principalIds"`
-	Username string `pulumi:"username"`
+	Username     string   `pulumi:"username"`
 }
-

@@ -372,4 +372,3 @@ type AuthConfigFreeIpaArgs struct {
 func (AuthConfigFreeIpaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigFreeIpaArgs)(nil)).Elem()
 }
-

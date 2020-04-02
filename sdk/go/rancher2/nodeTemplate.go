@@ -295,4 +295,3 @@ type NodeTemplateArgs struct {
 func (NodeTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeTemplateArgs)(nil)).Elem()
 }
-

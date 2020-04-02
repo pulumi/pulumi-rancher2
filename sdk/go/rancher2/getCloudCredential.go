@@ -26,7 +26,6 @@ type LookupCloudCredentialArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getCloudCredential.
 type LookupCloudCredentialResult struct {
 	// (Computed) Annotations for the Cloud Credential (map)
@@ -35,6 +34,5 @@ type LookupCloudCredentialResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the Cloud Credential (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 }
-

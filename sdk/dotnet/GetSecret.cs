@@ -20,7 +20,22 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSecret.InvokeAsync() instead")]
         public static Task<GetSecretResult> GetSecret(GetSecretArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecret
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 secret.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 secrets:
+        /// - Project secret: Available to all namespaces in the `project_id`
+        /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
+        /// </summary>
+        public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -148,4 +148,3 @@ type BootstrapArgs struct {
 func (BootstrapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bootstrapArgs)(nil)).Elem()
 }
-

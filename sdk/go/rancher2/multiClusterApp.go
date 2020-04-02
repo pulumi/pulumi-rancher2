@@ -221,4 +221,3 @@ type MultiClusterAppArgs struct {
 func (MultiClusterAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*multiClusterAppArgs)(nil)).Elem()
 }
-

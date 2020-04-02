@@ -159,4 +159,3 @@ type ProjectAlertGroupArgs struct {
 func (ProjectAlertGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAlertGroupArgs)(nil)).Elem()
 }
-

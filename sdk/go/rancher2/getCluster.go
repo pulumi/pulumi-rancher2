@@ -26,7 +26,6 @@ type LookupClusterArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
 	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
@@ -56,8 +55,8 @@ type LookupClusterResult struct {
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver string `pulumi:"driver"`
 	// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	EksConfig GetClusterEksConfig `pulumi:"eksConfig"`
-	EnableClusterAlerting bool `pulumi:"enableClusterAlerting"`
+	EksConfig             GetClusterEksConfig `pulumi:"eksConfig"`
+	EnableClusterAlerting bool                `pulumi:"enableClusterAlerting"`
 	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring bool `pulumi:"enableClusterMonitoring"`
 	// (Computed) Enable project network isolation. Default `false` (bool)
@@ -72,11 +71,10 @@ type LookupClusterResult struct {
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
-	RkeConfig GetClusterRkeConfig `pulumi:"rkeConfig"`
+	RkeConfig             GetClusterRkeConfig              `pulumi:"rkeConfig"`
 	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
 }
-

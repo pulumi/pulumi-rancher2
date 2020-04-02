@@ -173,4 +173,3 @@ type TokenArgs struct {
 func (TokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenArgs)(nil)).Elem()
 }
-

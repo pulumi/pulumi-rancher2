@@ -18,7 +18,20 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusterTemplate.InvokeAsync() instead")]
         public static Task<GetClusterTemplateResult> GetClusterTemplate(GetClusterTemplateArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterTemplate
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster template.
+        /// 
+        /// Cluster Templates are available from Rancher v2.3.x and above.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
+        /// </summary>
+        public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -26,6 +39,10 @@ namespace Pulumi.Rancher2
     {
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
+
+        /// <summary>
+        /// (Computed) Annotations for the cluster template (map)
+        /// </summary>
         public Dictionary<string, object> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, object>());
@@ -37,6 +54,10 @@ namespace Pulumi.Rancher2
 
         [Input("labels")]
         private Dictionary<string, object>? _labels;
+
+        /// <summary>
+        /// (Computed) Labels for the cluster template (map)
+        /// </summary>
         public Dictionary<string, object> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, object>());

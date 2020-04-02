@@ -28,14 +28,13 @@ type LookupEtcdBackupArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getEtcdBackup.
 type LookupEtcdBackupResult struct {
 	// (Computed) Annotations for Etcd Backup object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// (Computed) Backup config for etcd backup (list maxitems:1)
 	BackupConfig GetEtcdBackupBackupConfig `pulumi:"backupConfig"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId    string                    `pulumi:"clusterId"`
 	// (Computed) Filename of the Etcd Backup (string)
 	Filename string `pulumi:"filename"`
 	// id is the provider-assigned unique ID for this managed resource.
@@ -43,9 +42,8 @@ type LookupEtcdBackupResult struct {
 	// (Computed) Labels for Etcd Backup object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
-	Manual bool `pulumi:"manual"`
-	Name string `pulumi:"name"`
+	Manual bool   `pulumi:"manual"`
+	Name   string `pulumi:"name"`
 	// (Computed) Description for the Etcd Backup (string)
 	NamespaceId string `pulumi:"namespaceId"`
 }
-

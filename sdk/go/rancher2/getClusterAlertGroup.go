@@ -28,12 +28,11 @@ type GetClusterAlertGroupArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getClusterAlertGroup.
 type GetClusterAlertGroupResult struct {
 	// (Computed) The cluster alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The cluster alert group description (string)
 	Description string `pulumi:"description"`
 	// (Computed) The cluster alert group interval seconds. Default: `180` (int)
@@ -44,10 +43,9 @@ type GetClusterAlertGroupResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) The cluster alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) The cluster alert group recipients (list)
 	Recipients []GetClusterAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
 }
-

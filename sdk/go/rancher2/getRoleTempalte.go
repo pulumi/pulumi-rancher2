@@ -28,7 +28,6 @@ type LookupRoleTempalteArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getRoleTempalte.
 type LookupRoleTempalteResult struct {
 	// (Computed) Administrative role template (bool)
@@ -36,7 +35,7 @@ type LookupRoleTempalteResult struct {
 	// (Computed) Annotations for role template object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// (Computed) Builtin role template (string)
-	Builtin bool `pulumi:"builtin"`
+	Builtin bool   `pulumi:"builtin"`
 	Context string `pulumi:"context"`
 	// (Computed) Default role template for new created cluster or project (bool)
 	DefaultRole bool `pulumi:"defaultRole"`
@@ -51,11 +50,10 @@ type LookupRoleTempalteResult struct {
 	// (Computed) Labels for role template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) Locked role template (bool)
-	Locked bool `pulumi:"locked"`
-	Name string `pulumi:"name"`
+	Locked bool   `pulumi:"locked"`
+	Name   string `pulumi:"name"`
 	// (Computed) Inherit role template IDs (list)
 	RoleTemplateIds []string `pulumi:"roleTemplateIds"`
 	// (Computed) Role template policy rules (list)
 	Rules []GetRoleTempalteRule `pulumi:"rules"`
 }
-

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
+// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
 //
 // `cluster` and `project` scopes are supported for role templates.
 //
@@ -193,4 +193,3 @@ type RoleTempalteArgs struct {
 func (RoleTempalteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleTempalteArgs)(nil)).Elem()
 }
-

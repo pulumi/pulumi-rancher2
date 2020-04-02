@@ -15,7 +15,7 @@ import (
 //
 // On create, if setting already exists, provider will import it and update its value.
 //
-// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
+// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
 type Setting struct {
@@ -113,4 +113,3 @@ type SettingArgs struct {
 func (SettingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingArgs)(nil)).Elem()
 }
-

@@ -26,13 +26,11 @@ type LookupSettingArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getSetting.
 type LookupSettingResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// the settting's value.
 	Value string `pulumi:"value"`
 }
-

@@ -129,4 +129,3 @@ type GlobalRoleBindingArgs struct {
 func (GlobalRoleBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalRoleBindingArgs)(nil)).Elem()
 }
-

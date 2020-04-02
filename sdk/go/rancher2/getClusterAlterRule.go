@@ -24,17 +24,17 @@ func LookupClusterAlterRule(ctx *pulumi.Context, args *LookupClusterAlterRuleArg
 type LookupClusterAlterRuleArgs struct {
 	// The cluster id where create cluster alert rule (string)
 	ClusterId string `pulumi:"clusterId"`
+	// (Computed) The cluster alert rule labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The cluster alert rule name (string)
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getClusterAlterRule.
 type LookupClusterAlterRuleResult struct {
 	// (Computed) The cluster alert rule annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	EventRule GetClusterAlterRuleEventRule `pulumi:"eventRule"`
 	// (Computed) The cluster alert rule alert group ID (string)
@@ -51,7 +51,7 @@ type LookupClusterAlterRuleResult struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule GetClusterAlterRuleMetricRule `pulumi:"metricRule"`
-	Name string `pulumi:"name"`
+	Name       string                        `pulumi:"name"`
 	// (Computed) The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
 	NodeRule GetClusterAlterRuleNodeRule `pulumi:"nodeRule"`
 	// (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
@@ -61,4 +61,3 @@ type LookupClusterAlterRuleResult struct {
 	// (Computed) The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
 	SystemServiceRule GetClusterAlterRuleSystemServiceRule `pulumi:"systemServiceRule"`
 }
-

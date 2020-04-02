@@ -34,7 +34,6 @@ type LookupRegistryArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getRegistry.
 type LookupRegistryResult struct {
 	// (Computed) Annotations for Registry object (map)
@@ -44,11 +43,10 @@ type LookupRegistryResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Registry object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	NamespaceId *string `pulumi:"namespaceId"`
-	ProjectId string `pulumi:"projectId"`
+	Labels      map[string]interface{} `pulumi:"labels"`
+	Name        string                 `pulumi:"name"`
+	NamespaceId *string                `pulumi:"namespaceId"`
+	ProjectId   string                 `pulumi:"projectId"`
 	// (Computed) Registries data for registry (list)
 	Registries []GetRegistryRegistry `pulumi:"registries"`
 }
-

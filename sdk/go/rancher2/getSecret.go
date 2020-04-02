@@ -34,7 +34,6 @@ type LookupSecretArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getSecret.
 type LookupSecretResult struct {
 	// (Computed) Annotations for secret object (map)
@@ -46,9 +45,8 @@ type LookupSecretResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for secret object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	NamespaceId *string `pulumi:"namespaceId"`
-	ProjectId string `pulumi:"projectId"`
+	Labels      map[string]interface{} `pulumi:"labels"`
+	Name        string                 `pulumi:"name"`
+	NamespaceId *string                `pulumi:"namespaceId"`
+	ProjectId   string                 `pulumi:"projectId"`
 }
-

@@ -159,4 +159,3 @@ type ClusterAlterGroupArgs struct {
 func (ClusterAlterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlterGroupArgs)(nil)).Elem()
 }
-

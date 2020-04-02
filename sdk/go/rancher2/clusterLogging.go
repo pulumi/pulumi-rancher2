@@ -222,4 +222,3 @@ type ClusterLoggingArgs struct {
 func (ClusterLoggingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterLoggingArgs)(nil)).Elem()
 }
-
