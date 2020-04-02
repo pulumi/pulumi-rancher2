@@ -2,11 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+---
+
+## 1.5.0 (2020-04-02)
 * Upgrade to pulumi-terraform-bridge v1.8.2
 * Upgrade to Pulumi v1.13.1
 * Change layout to support Go modules
-
----
 
 ## 1.4.0 (2020-03-31)
 * Upgrade to v1.8.0 of the Rancher2 Terraform Provider
