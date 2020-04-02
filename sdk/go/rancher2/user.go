@@ -20,8 +20,8 @@ type User struct {
 	pulumi.CustomResourceState
 
 	// Annotations for global role binding (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Annotations pulumi.MapOutput     `pulumi:"annotations"`
+	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The user full name (string)
@@ -70,7 +70,7 @@ func GetUser(ctx *pulumi.Context,
 type userState struct {
 	// Annotations for global role binding (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Enabled *bool `pulumi:"enabled"`
+	Enabled     *bool                  `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The user full name (string)
@@ -86,7 +86,7 @@ type userState struct {
 type UserState struct {
 	// Annotations for global role binding (map)
 	Annotations pulumi.MapInput
-	Enabled pulumi.BoolPtrInput
+	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
 	Labels pulumi.MapInput
 	// The user full name (string)
@@ -106,7 +106,7 @@ func (UserState) ElementType() reflect.Type {
 type userArgs struct {
 	// Annotations for global role binding (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Enabled *bool `pulumi:"enabled"`
+	Enabled     *bool                  `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The user full name (string)
@@ -121,7 +121,7 @@ type userArgs struct {
 type UserArgs struct {
 	// Annotations for global role binding (map)
 	Annotations pulumi.MapInput
-	Enabled pulumi.BoolPtrInput
+	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
 	Labels pulumi.MapInput
 	// The user full name (string)
@@ -135,4 +135,3 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
-

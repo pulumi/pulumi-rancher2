@@ -11,7 +11,13 @@ namespace Pulumi.Rancher2
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetProject.InvokeAsync() instead")]
         public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProject
+    {
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

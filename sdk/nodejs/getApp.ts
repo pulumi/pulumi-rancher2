@@ -46,6 +46,9 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getApp.
  */
 export interface GetAppArgs {
+    /**
+     * (Computed) Annotations for the catalog (map)
+     */
     readonly annotations?: {[key: string]: any};
     /**
      * The app name (string)

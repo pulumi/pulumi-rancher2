@@ -222,4 +222,3 @@ type ProjectLoggingArgs struct {
 func (ProjectLoggingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLoggingArgs)(nil)).Elem()
 }
-

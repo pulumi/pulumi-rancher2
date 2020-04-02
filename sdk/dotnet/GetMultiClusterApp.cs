@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
         /// </summary>
+        [Obsolete("Use GetMultiClusterApp.InvokeAsync() instead")]
         public static Task<GetMultiClusterAppResult> GetMultiClusterApp(GetMultiClusterAppArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMultiClusterApp
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
+        /// </summary>
+        public static Task<GetMultiClusterAppResult> InvokeAsync(GetMultiClusterAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

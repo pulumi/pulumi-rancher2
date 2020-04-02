@@ -185,4 +185,3 @@ type NodeDriverArgs struct {
 func (NodeDriverArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeDriverArgs)(nil)).Elem()
 }
-

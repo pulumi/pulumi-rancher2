@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
+// Use this data source to retrieve information about a Rancher v2 Node Driver resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
 func LookupNodeDriver(ctx *pulumi.Context, args *LookupNodeDriverArgs, opts ...pulumi.InvokeOption) (*LookupNodeDriverResult, error) {
@@ -28,7 +28,6 @@ type LookupNodeDriverArgs struct {
 	Url *string `pulumi:"url"`
 }
 
-
 // A collection of values returned by getNodeDriver.
 type LookupNodeDriverResult struct {
 	// (Computed) Specify if the node driver state (bool)
@@ -47,11 +46,10 @@ type LookupNodeDriverResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) The URL to load for customized Add Node screen for this driver (string)
 	UiUrl string `pulumi:"uiUrl"`
-	Url string `pulumi:"url"`
+	Url   string `pulumi:"url"`
 	// (Computed) Domains to whitelist for the ui (list)
 	WhitelistDomains []string `pulumi:"whitelistDomains"`
 }
-

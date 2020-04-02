@@ -24,9 +24,9 @@ func LookupNodeTemplate(ctx *pulumi.Context, args *LookupNodeTemplateArgs, opts 
 type LookupNodeTemplateArgs struct {
 	// The name of the Node Template (string)
 	Name string `pulumi:"name"`
+	// (Computed) Engine storage driver for the node template (bool)
 	UseInternalIpAddress *bool `pulumi:"useInternalIpAddress"`
 }
-
 
 // A collection of values returned by getNodeTemplate.
 type LookupNodeTemplateResult struct {
@@ -56,8 +56,7 @@ type LookupNodeTemplateResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) Engine storage driver for the node template (bool)
 	UseInternalIpAddress *bool `pulumi:"useInternalIpAddress"`
 }
-

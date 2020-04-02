@@ -19,22 +19,20 @@ func GetClusterScan(ctx *pulumi.Context, args *GetClusterScanArgs, opts ...pulum
 
 // A collection of arguments for invoking getClusterScan.
 type GetClusterScanArgs struct {
-	ClusterId string `pulumi:"clusterId"`
-	Name *string `pulumi:"name"`
+	ClusterId string  `pulumi:"clusterId"`
+	Name      *string `pulumi:"name"`
 }
-
 
 // A collection of values returned by getClusterScan.
 type GetClusterScanResult struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	RunType string `pulumi:"runType"`
+	Id         string                   `pulumi:"id"`
+	Labels     map[string]interface{}   `pulumi:"labels"`
+	Name       string                   `pulumi:"name"`
+	RunType    string                   `pulumi:"runType"`
 	ScanConfig GetClusterScanScanConfig `pulumi:"scanConfig"`
-	ScanType string `pulumi:"scanType"`
-	Status string `pulumi:"status"`
+	ScanType   string                   `pulumi:"scanType"`
+	Status     string                   `pulumi:"status"`
 }
-

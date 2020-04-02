@@ -26,15 +26,14 @@ type LookupProjectLoggingArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getProjectLogging.
 type LookupProjectLoggingResult struct {
 	// (Computed) Annotations for Cluster Logging object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations        map[string]interface{}              `pulumi:"annotations"`
 	CustomTargetConfig GetProjectLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
 	// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
 	ElasticsearchConfig GetProjectLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	EnableJsonParsing bool `pulumi:"enableJsonParsing"`
+	EnableJsonParsing   bool                                 `pulumi:"enableJsonParsing"`
 	// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
 	FluentdConfig GetProjectLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// id is the provider-assigned unique ID for this managed resource.
@@ -53,10 +52,9 @@ type LookupProjectLoggingResult struct {
 	OutputFlushInterval int `pulumi:"outputFlushInterval"`
 	// (computed) The output tags for Cluster Logging (map)
 	OutputTags map[string]interface{} `pulumi:"outputTags"`
-	ProjectId string `pulumi:"projectId"`
+	ProjectId  string                 `pulumi:"projectId"`
 	// (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
 	SplunkConfig GetProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
 	// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
 	SyslogConfig GetProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
-

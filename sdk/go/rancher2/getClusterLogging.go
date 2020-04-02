@@ -26,16 +26,15 @@ type LookupClusterLoggingArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 }
 
-
 // A collection of values returned by getClusterLogging.
 type LookupClusterLoggingResult struct {
 	// (Computed) Annotations for Cluster Logging object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	Annotations        map[string]interface{}              `pulumi:"annotations"`
+	ClusterId          string                              `pulumi:"clusterId"`
 	CustomTargetConfig GetClusterLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
 	// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
 	ElasticsearchConfig GetClusterLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	EnableJsonParsing bool `pulumi:"enableJsonParsing"`
+	EnableJsonParsing   bool                                 `pulumi:"enableJsonParsing"`
 	// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
 	FluentdConfig GetClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// id is the provider-assigned unique ID for this managed resource.
@@ -59,4 +58,3 @@ type LookupClusterLoggingResult struct {
 	// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
 	SyslogConfig GetClusterLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
-

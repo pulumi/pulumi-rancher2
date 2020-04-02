@@ -234,4 +234,3 @@ type AuthConfigOktaArgs struct {
 func (AuthConfigOktaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOktaArgs)(nil)).Elem()
 }
-

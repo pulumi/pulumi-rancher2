@@ -34,7 +34,6 @@ type LookupCertificateArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getCertificate.
 type LookupCertificateResult struct {
 	// (Computed) Annotations for certificate object (map)
@@ -46,9 +45,8 @@ type LookupCertificateResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for certificate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	NamespaceId *string `pulumi:"namespaceId"`
-	ProjectId string `pulumi:"projectId"`
+	Labels      map[string]interface{} `pulumi:"labels"`
+	Name        string                 `pulumi:"name"`
+	NamespaceId *string                `pulumi:"namespaceId"`
+	ProjectId   string                 `pulumi:"projectId"`
 }
-

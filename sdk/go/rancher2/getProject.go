@@ -25,12 +25,11 @@ type LookupProjectArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
 	// (Computed) Annotations of the rancher2 project (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) Default containers resource limits on project (List maxitem:1)
 	ContainerResourceLimit GetProjectContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// (Computed) The project's description (string)
@@ -41,7 +40,7 @@ type LookupProjectResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the rancher2 project (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) Default Pod Security Policy ID for the project (string)
 	PodSecurityPolicyTemplateId string `pulumi:"podSecurityPolicyTemplateId"`
 	// (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
@@ -49,4 +48,3 @@ type LookupProjectResult struct {
 	// (Computed) UUID of the project as stored by Rancher 2 (string)
 	Uuid string `pulumi:"uuid"`
 }
-

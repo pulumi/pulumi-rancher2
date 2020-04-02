@@ -163,4 +163,3 @@ type CloudCredentialArgs struct {
 func (CloudCredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudCredentialArgs)(nil)).Elem()
 }
-

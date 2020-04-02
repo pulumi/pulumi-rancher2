@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNotifier.InvokeAsync() instead")]
         public static Task<GetNotifierResult> GetNotifier(GetNotifierArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNotifier
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 notifier.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
+        /// </summary>
+        public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

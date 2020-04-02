@@ -11,7 +11,13 @@ namespace Pulumi.Rancher2
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetClusterScan.InvokeAsync() instead")]
         public static Task<GetClusterScanResult> GetClusterScan(GetClusterScanArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterScan
+    {
+        public static Task<GetClusterScanResult> InvokeAsync(GetClusterScanArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

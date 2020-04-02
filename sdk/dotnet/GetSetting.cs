@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/setting.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSetting.InvokeAsync() instead")]
         public static Task<GetSettingResult> GetSetting(GetSettingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSetting
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 setting.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/setting.html.markdown.
+        /// </summary>
+        public static Task<GetSettingResult> InvokeAsync(GetSettingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

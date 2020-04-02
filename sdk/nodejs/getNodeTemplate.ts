@@ -46,6 +46,9 @@ export interface GetNodeTemplateArgs {
      * The name of the Node Template (string)
      */
     readonly name: string;
+    /**
+     * (Computed) Engine storage driver for the node template (bool)
+     */
     readonly useInternalIpAddress?: boolean;
 }
 

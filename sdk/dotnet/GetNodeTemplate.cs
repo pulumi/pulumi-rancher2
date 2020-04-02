@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNodeTemplate.InvokeAsync() instead")]
         public static Task<GetNodeTemplateResult> GetNodeTemplate(GetNodeTemplateArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNodeTemplate
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
+        /// </summary>
+        public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -28,6 +39,9 @@ namespace Pulumi.Rancher2
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// (Computed) Engine storage driver for the node template (bool)
+        /// </summary>
         [Input("useInternalIpAddress")]
         public bool? UseInternalIpAddress { get; set; }
 

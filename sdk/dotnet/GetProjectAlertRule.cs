@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProjectAlertRule.InvokeAsync() instead")]
         public static Task<GetProjectAlertRuleResult> GetProjectAlertRule(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjectAlertRule
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 project alert rule.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
+        /// </summary>
+        public static Task<GetProjectAlertRuleResult> InvokeAsync(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -24,6 +35,10 @@ namespace Pulumi.Rancher2
     {
         [Input("labels")]
         private Dictionary<string, object>? _labels;
+
+        /// <summary>
+        /// (Computed) The project alert rule labels (map)
+        /// </summary>
         public Dictionary<string, object> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, object>());

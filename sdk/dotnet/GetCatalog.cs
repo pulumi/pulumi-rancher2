@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCatalog.InvokeAsync() instead")]
         public static Task<GetCatalogResult> GetCatalog(GetCatalogArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCatalog
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 catalog.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
+        /// </summary>
+        public static Task<GetCatalogResult> InvokeAsync(GetCatalogArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

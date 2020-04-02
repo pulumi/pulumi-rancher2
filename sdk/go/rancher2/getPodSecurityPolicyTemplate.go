@@ -48,7 +48,7 @@ type LookupPodSecurityPolicyTemplateArgs struct {
 	// (list maxitems:1)
 	FsGroup *GetPodSecurityPolicyTemplateFsGroup `pulumi:"fsGroup"`
 	// (bool)
-	HostIpc *bool `pulumi:"hostIpc"`
+	HostIpc     *bool `pulumi:"hostIpc"`
 	HostNetwork *bool `pulumi:"hostNetwork"`
 	// (bool)
 	HostPid *bool `pulumi:"hostPid"`
@@ -79,38 +79,36 @@ type LookupPodSecurityPolicyTemplateArgs struct {
 	Volumes []string `pulumi:"volumes"`
 }
 
-
 // A collection of values returned by getPodSecurityPolicyTemplate.
 type LookupPodSecurityPolicyTemplateResult struct {
-	AllowPrivilegeEscalation bool `pulumi:"allowPrivilegeEscalation"`
-	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
-	AllowedCsiDrivers []GetPodSecurityPolicyTemplateAllowedCsiDriver `pulumi:"allowedCsiDrivers"`
-	AllowedFlexVolumes []GetPodSecurityPolicyTemplateAllowedFlexVolume `pulumi:"allowedFlexVolumes"`
-	AllowedHostPaths []GetPodSecurityPolicyTemplateAllowedHostPath `pulumi:"allowedHostPaths"`
-	AllowedProcMountTypes []string `pulumi:"allowedProcMountTypes"`
-	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	DefaultAddCapabilities []string `pulumi:"defaultAddCapabilities"`
-	DefaultAllowPrivilegeEscalation *bool `pulumi:"defaultAllowPrivilegeEscalation"`
-	Description string `pulumi:"description"`
-	ForbiddenSysctls []string `pulumi:"forbiddenSysctls"`
-	FsGroup GetPodSecurityPolicyTemplateFsGroup `pulumi:"fsGroup"`
-	HostIpc bool `pulumi:"hostIpc"`
-	HostNetwork bool `pulumi:"hostNetwork"`
-	HostPid bool `pulumi:"hostPid"`
-	HostPorts []GetPodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
+	AllowPrivilegeEscalation        bool                                            `pulumi:"allowPrivilegeEscalation"`
+	AllowedCapabilities             []string                                        `pulumi:"allowedCapabilities"`
+	AllowedCsiDrivers               []GetPodSecurityPolicyTemplateAllowedCsiDriver  `pulumi:"allowedCsiDrivers"`
+	AllowedFlexVolumes              []GetPodSecurityPolicyTemplateAllowedFlexVolume `pulumi:"allowedFlexVolumes"`
+	AllowedHostPaths                []GetPodSecurityPolicyTemplateAllowedHostPath   `pulumi:"allowedHostPaths"`
+	AllowedProcMountTypes           []string                                        `pulumi:"allowedProcMountTypes"`
+	AllowedUnsafeSysctls            []string                                        `pulumi:"allowedUnsafeSysctls"`
+	Annotations                     map[string]interface{}                          `pulumi:"annotations"`
+	DefaultAddCapabilities          []string                                        `pulumi:"defaultAddCapabilities"`
+	DefaultAllowPrivilegeEscalation *bool                                           `pulumi:"defaultAllowPrivilegeEscalation"`
+	Description                     string                                          `pulumi:"description"`
+	ForbiddenSysctls                []string                                        `pulumi:"forbiddenSysctls"`
+	FsGroup                         GetPodSecurityPolicyTemplateFsGroup             `pulumi:"fsGroup"`
+	HostIpc                         bool                                            `pulumi:"hostIpc"`
+	HostNetwork                     bool                                            `pulumi:"hostNetwork"`
+	HostPid                         bool                                            `pulumi:"hostPid"`
+	HostPorts                       []GetPodSecurityPolicyTemplateHostPort          `pulumi:"hostPorts"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	Privileged bool `pulumi:"privileged"`
-	ReadOnlyRootFilesystem bool `pulumi:"readOnlyRootFilesystem"`
-	RequiredDropCapabilities []string `pulumi:"requiredDropCapabilities"`
-	RunAsGroup *GetPodSecurityPolicyTemplateRunAsGroup `pulumi:"runAsGroup"`
-	RunAsUser GetPodSecurityPolicyTemplateRunAsUser `pulumi:"runAsUser"`
-	RuntimeClass *GetPodSecurityPolicyTemplateRuntimeClass `pulumi:"runtimeClass"`
-	SeLinux GetPodSecurityPolicyTemplateSeLinux `pulumi:"seLinux"`
-	SupplementalGroup GetPodSecurityPolicyTemplateSupplementalGroup `pulumi:"supplementalGroup"`
-	Volumes []string `pulumi:"volumes"`
+	Id                       string                                        `pulumi:"id"`
+	Labels                   map[string]interface{}                        `pulumi:"labels"`
+	Name                     string                                        `pulumi:"name"`
+	Privileged               bool                                          `pulumi:"privileged"`
+	ReadOnlyRootFilesystem   bool                                          `pulumi:"readOnlyRootFilesystem"`
+	RequiredDropCapabilities []string                                      `pulumi:"requiredDropCapabilities"`
+	RunAsGroup               *GetPodSecurityPolicyTemplateRunAsGroup       `pulumi:"runAsGroup"`
+	RunAsUser                GetPodSecurityPolicyTemplateRunAsUser         `pulumi:"runAsUser"`
+	RuntimeClass             *GetPodSecurityPolicyTemplateRuntimeClass     `pulumi:"runtimeClass"`
+	SeLinux                  GetPodSecurityPolicyTemplateSeLinux           `pulumi:"seLinux"`
+	SupplementalGroup        GetPodSecurityPolicyTemplateSupplementalGroup `pulumi:"supplementalGroup"`
+	Volumes                  []string                                      `pulumi:"volumes"`
 }
-

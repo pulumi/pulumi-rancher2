@@ -80,6 +80,8 @@ def get_cluster_template(annotations=None,description=None,labels=None,name=None
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
 
 
+    :param dict annotations: (Computed) Annotations for the cluster template (map)
+    :param dict labels: (Computed) Labels for the cluster template (map)
     :param str name: The cluster template name (string)
     """
     __args__ = dict()

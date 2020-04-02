@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNodePool.InvokeAsync() instead")]
         public static Task<GetNodePoolResult> GetNodePool(GetNodePoolArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNodePool
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
+        /// </summary>
+        public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

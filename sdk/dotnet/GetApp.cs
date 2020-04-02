@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
         /// </summary>
+        [Obsolete("Use GetApp.InvokeAsync() instead")]
         public static Task<GetAppResult> GetApp(GetAppArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetApp
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 app.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
+        /// </summary>
+        public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -24,6 +35,10 @@ namespace Pulumi.Rancher2
     {
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
+
+        /// <summary>
+        /// (Computed) Annotations for the catalog (map)
+        /// </summary>
         public Dictionary<string, object> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, object>());

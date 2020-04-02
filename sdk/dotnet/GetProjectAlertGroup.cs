@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProjectAlertGroup.InvokeAsync() instead")]
         public static Task<GetProjectAlertGroupResult> GetProjectAlertGroup(GetProjectAlertGroupArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjectAlertGroup
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 project alert group.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
+        /// </summary>
+        public static Task<GetProjectAlertGroupResult> InvokeAsync(GetProjectAlertGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

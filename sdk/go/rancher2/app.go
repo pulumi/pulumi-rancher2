@@ -221,4 +221,3 @@ type AppArgs struct {
 func (AppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appArgs)(nil)).Elem()
 }
-

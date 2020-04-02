@@ -146,4 +146,3 @@ type EtcdBackupArgs struct {
 func (EtcdBackupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*etcdBackupArgs)(nil)).Elem()
 }
-

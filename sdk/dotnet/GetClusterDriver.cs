@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusterDriver.InvokeAsync() instead")]
         public static Task<GetClusterDriverResult> GetClusterDriver(GetClusterDriverArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterDriver
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
+        /// </summary>
+        public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -392,4 +392,3 @@ type ActiveDirectoryArgs struct {
 func (ActiveDirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeDirectoryArgs)(nil)).Elem()
 }
-

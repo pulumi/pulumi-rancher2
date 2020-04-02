@@ -120,6 +120,7 @@ def get_project_alert_rule(labels=None,name=None,project_id=None,opts=None):
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
 
 
+    :param dict labels: (Computed) The project alert rule labels (map)
     :param str name: The project alert rule name (string)
     :param str project_id: The project id where create project alert rule (string)
     """

@@ -28,7 +28,6 @@ type LookupNamespaceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getNamespace.
 type LookupNamespaceResult struct {
 	// (Computed) Annotations for Node Pool object (map)
@@ -40,10 +39,9 @@ type LookupNamespaceResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	ProjectId string `pulumi:"projectId"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	ProjectId string                 `pulumi:"projectId"`
 	// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota GetNamespaceResourceQuota `pulumi:"resourceQuota"`
 }
-

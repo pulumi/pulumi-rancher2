@@ -212,4 +212,3 @@ type ClusterAlterRuleArgs struct {
 func (ClusterAlterRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlterRuleArgs)(nil)).Elem()
 }
-

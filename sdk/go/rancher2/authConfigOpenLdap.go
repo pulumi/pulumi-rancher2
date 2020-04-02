@@ -372,4 +372,3 @@ type AuthConfigOpenLdapArgs struct {
 func (AuthConfigOpenLdapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOpenLdapArgs)(nil)).Elem()
 }
-

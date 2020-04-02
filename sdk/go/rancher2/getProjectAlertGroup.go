@@ -28,7 +28,6 @@ type LookupProjectAlertGroupArgs struct {
 	ProjectId string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getProjectAlertGroup.
 type LookupProjectAlertGroupResult struct {
 	// (Computed) The project alert group annotations (map)
@@ -42,12 +41,11 @@ type LookupProjectAlertGroupResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The project alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	ProjectId string `pulumi:"projectId"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	ProjectId string                 `pulumi:"projectId"`
 	// (Computed) The project alert group recipients (list)
 	Recipients []GetProjectAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
 }
-

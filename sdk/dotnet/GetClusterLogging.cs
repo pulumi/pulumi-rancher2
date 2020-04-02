@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusterLogging.InvokeAsync() instead")]
         public static Task<GetClusterLoggingResult> GetClusterLogging(GetClusterLoggingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusterLogging
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
+        /// </summary>
+        public static Task<GetClusterLoggingResult> InvokeAsync(GetClusterLoggingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

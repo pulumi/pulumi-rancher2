@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCloudCredential.InvokeAsync() instead")]
         public static Task<GetCloudCredentialResult> GetCloudCredential(GetCloudCredentialArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCloudCredential
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
+        /// </summary>
+        public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

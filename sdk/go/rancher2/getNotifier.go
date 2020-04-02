@@ -28,19 +28,18 @@ type LookupNotifierArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getNotifier.
 type LookupNotifierResult struct {
 	// (Computed) Annotations for notifier object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The notifier description (string)
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed) Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig GetNotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
 	// (Computed) Slack config for notifier (list maxitems:1)
@@ -52,4 +51,3 @@ type LookupNotifierResult struct {
 	// (Computed) Wechat config for notifier (list maxitems:1)
 	WechatConfig GetNotifierWechatConfig `pulumi:"wechatConfig"`
 }
-

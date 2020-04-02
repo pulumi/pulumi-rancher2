@@ -22,6 +22,7 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getApp.
 type LookupAppArgs struct {
+	// (Computed) Annotations for the catalog (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// The app name (string)
 	Name string `pulumi:"name"`
@@ -30,7 +31,6 @@ type LookupAppArgs struct {
 	// The namespace name where the app is deployed (string)
 	TargetNamespace *string `pulumi:"targetNamespace"`
 }
-
 
 // A collection of values returned by getApp.
 type LookupAppResult struct {
@@ -47,11 +47,11 @@ type LookupAppResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the catalog (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	ProjectId string `pulumi:"projectId"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	ProjectId string                 `pulumi:"projectId"`
 	// (Computed) Current revision id for the app (string)
-	RevisionId string `pulumi:"revisionId"`
+	RevisionId      string `pulumi:"revisionId"`
 	TargetNamespace string `pulumi:"targetNamespace"`
 	// (Computed) Template name of the app (string)
 	TemplateName string `pulumi:"templateName"`
@@ -60,4 +60,3 @@ type LookupAppResult struct {
 	// (Computed) values.yaml base64 encoded file content for the app (string)
 	ValuesYaml string `pulumi:"valuesYaml"`
 }
-

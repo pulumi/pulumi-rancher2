@@ -28,7 +28,6 @@ type LookupCatalogArgs struct {
 	Scope *string `pulumi:"scope"`
 }
 
-
 // A collection of values returned by getCatalog.
 type LookupCatalogResult struct {
 	// (Computed) Annotations for the catalog (map)
@@ -45,12 +44,12 @@ type LookupCatalogResult struct {
 	Kind string `pulumi:"kind"`
 	// (Computed) Labels for the catalog (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Name   string                 `pulumi:"name"`
 	// (Computed/Sensitive) The password to access the catalog if needed (string)
 	Password string `pulumi:"password"`
 	// (Computed) The project id of the catalog (string)
-	ProjectId string `pulumi:"projectId"`
-	Scope *string `pulumi:"scope"`
+	ProjectId string  `pulumi:"projectId"`
+	Scope     *string `pulumi:"scope"`
 	// (Computed) The url of the catalog repo (string)
 	Url string `pulumi:"url"`
 	// (Computed/Sensitive) The username to access the catalog if needed (string)
@@ -58,4 +57,3 @@ type LookupCatalogResult struct {
 	// (Computed) Helm version for the catalog (string)
 	Version string `pulumi:"version"`
 }
-

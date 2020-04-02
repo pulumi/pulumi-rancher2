@@ -16,7 +16,18 @@ namespace Pulumi.Rancher2
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNodeDriver.InvokeAsync() instead")]
         public static Task<GetNodeDriverResult> GetNodeDriver(GetNodeDriverArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNodeDriver
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
+        /// </summary>
+        public static Task<GetNodeDriverResult> InvokeAsync(GetNodeDriverArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

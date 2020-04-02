@@ -128,6 +128,7 @@ def get_cluster_alter_rule(cluster_id=None,labels=None,name=None,opts=None):
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)
+    :param dict labels: (Computed) The cluster alert rule labels (map)
     :param str name: The cluster alert rule name (string)
     """
     __args__ = dict()

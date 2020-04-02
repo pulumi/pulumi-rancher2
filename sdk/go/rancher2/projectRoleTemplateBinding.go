@@ -162,4 +162,3 @@ type ProjectRoleTemplateBindingArgs struct {
 func (ProjectRoleTemplateBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectRoleTemplateBindingArgs)(nil)).Elem()
 }
-
