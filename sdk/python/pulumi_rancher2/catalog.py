@@ -64,7 +64,7 @@ class Catalog(pulumi.CustomResource):
     """
     version: pulumi.Output[str]
     """
-    Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+    Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, branch=None, cluster_id=None, description=None, kind=None, labels=None, name=None, password=None, project_id=None, refresh=None, scope=None, url=None, username=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -87,7 +87,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
-        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,7 +150,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         :param pulumi.Input[str] url: The url of the catalog repo (string)
         :param pulumi.Input[str] username: The username to access the catalog if needed (string)
-        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

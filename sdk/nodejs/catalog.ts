@@ -111,9 +111,9 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     * Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -229,7 +229,7 @@ export interface CatalogState {
      */
     readonly username?: pulumi.Input<string>;
     /**
-     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     * Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -291,7 +291,7 @@ export interface CatalogArgs {
      */
     readonly username?: pulumi.Input<string>;
     /**
-     * Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+     * Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
      */
     readonly version?: pulumi.Input<string>;
 }

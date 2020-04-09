@@ -95,10 +95,10 @@ namespace Pulumi.Rancher2
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         /// </summary>
         [Output("version")]
-        public Output<string?> Version { get; private set; } = null!;
+        public Output<string> Version { get; private set; } = null!;
 
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` (default) and `helm_v3` (string)
+        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

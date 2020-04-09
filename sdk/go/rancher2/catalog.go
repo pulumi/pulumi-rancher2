@@ -43,8 +43,8 @@ type Catalog struct {
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The username to access the catalog if needed (string)
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ type catalogState struct {
 	Url *string `pulumi:"url"`
 	// The username to access the catalog if needed (string)
 	Username *string `pulumi:"username"`
-	// Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
 	Version *string `pulumi:"version"`
 }
 
@@ -135,7 +135,7 @@ type CatalogState struct {
 	Url pulumi.StringPtrInput
 	// The username to access the catalog if needed (string)
 	Username pulumi.StringPtrInput
-	// Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
 	Version pulumi.StringPtrInput
 }
 
@@ -170,7 +170,7 @@ type catalogArgs struct {
 	Url string `pulumi:"url"`
 	// The username to access the catalog if needed (string)
 	Username *string `pulumi:"username"`
-	// Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
 	Version *string `pulumi:"version"`
 }
 
@@ -202,7 +202,7 @@ type CatalogArgs struct {
 	Url pulumi.StringInput
 	// The username to access the catalog if needed (string)
 	Username pulumi.StringPtrInput
-	// Helm version for the catalog. Available options: `helmV2` (default) and `helmV3` (string)
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
 	Version pulumi.StringPtrInput
 }
 
