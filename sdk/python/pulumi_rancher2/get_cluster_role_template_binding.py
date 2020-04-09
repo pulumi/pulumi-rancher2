@@ -86,6 +86,8 @@ def get_cluster_role_template_binding(cluster_id=None,name=None,role_template_id
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
 
 

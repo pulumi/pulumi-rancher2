@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * There are 2 types of Rancher v2 certificates:
  * - Project certificate: Available to all namespaces in the `projectId`
  * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/certificate.html.markdown.
  */

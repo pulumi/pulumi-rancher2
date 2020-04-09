@@ -12,6 +12,8 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/podSecurityPolicyTemplate.html.markdown.
     /// </summary>
     public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource

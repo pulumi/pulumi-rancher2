@@ -16,6 +16,8 @@ namespace Pulumi.Rancher2
     /// - Project certificate: Available to all namespaces in the `project_id`
     /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/certificate.html.markdown.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource

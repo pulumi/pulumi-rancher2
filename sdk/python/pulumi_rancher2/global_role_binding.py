@@ -38,6 +38,8 @@ class GlobalRoleBinding(pulumi.CustomResource):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/globalRole.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -5,10 +5,12 @@
 package rancher2
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to retrieve information about a Rancher v2 project alert group.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
 func LookupProjectAlertGroup(ctx *pulumi.Context, args *LookupProjectAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertGroupResult, error) {

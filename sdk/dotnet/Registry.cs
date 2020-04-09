@@ -16,6 +16,8 @@ namespace Pulumi.Rancher2
     /// - Project registry: Available to all namespaces in the `project_id`
     /// - Namespaced regitry: Available to just `namespace_id` in the `project_id`
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/registry.html.markdown.
     /// </summary>
     public partial class Registry : Pulumi.CustomResource

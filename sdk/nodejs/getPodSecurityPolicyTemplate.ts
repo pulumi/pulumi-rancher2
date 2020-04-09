@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
  */
-export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> & GetPodSecurityPolicyTemplateResult {
+export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,7 +32,7 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetPodSecurityPolicyTemplateResult> = pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
+    return pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
         "allowPrivilegeEscalation": args.allowPrivilegeEscalation,
         "allowedCapabilities": args.allowedCapabilities,
         "allowedCsiDrivers": args.allowedCsiDrivers,
@@ -60,8 +62,6 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
         "supplementalGroup": args.supplementalGroup,
         "volumes": args.volumes,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

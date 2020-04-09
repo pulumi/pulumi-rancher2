@@ -12,6 +12,8 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeDriver.html.markdown.
     /// </summary>
     public partial class NodeDriver : Pulumi.CustomResource

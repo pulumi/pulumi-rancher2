@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterScanResult> & GetClusterScanResult {
+export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterScanResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,12 +14,10 @@ export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterScanResult> = pulumi.runtime.invoke("rancher2:index/getClusterScan:getClusterScan", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterScan:getClusterScan", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

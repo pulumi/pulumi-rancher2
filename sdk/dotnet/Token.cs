@@ -18,6 +18,8 @@ namespace Pulumi.Rancher2
     /// 
     /// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
     /// </summary>
     public partial class Token : Pulumi.CustomResource

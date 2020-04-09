@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -25,22 +27,10 @@ import * as utilities from "./utilities";
  *     projectId: "<project_id>",
  * });
  * ```
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Retrieve a rancher2 Namespaced Secret
- * const foo = rancher2.getSecret({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
  */
-export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
+export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     if (!opts) {
         opts = {}
     }
@@ -48,13 +38,11 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecretResult> = pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
+    return pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
         "name": args.name,
         "namespaceId": args.namespaceId,
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

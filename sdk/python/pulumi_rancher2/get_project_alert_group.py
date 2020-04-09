@@ -89,6 +89,8 @@ def get_project_alert_group(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert group.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
 
 

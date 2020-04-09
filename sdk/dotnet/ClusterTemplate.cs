@@ -14,6 +14,8 @@ namespace Pulumi.Rancher2
     /// 
     /// Cluster Templates are available from Rancher v2.3.x and above.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterTemplate.html.markdown.
     /// </summary>
     public partial class ClusterTemplate : Pulumi.CustomResource

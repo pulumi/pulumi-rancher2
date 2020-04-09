@@ -74,6 +74,8 @@ class RoleTempalte(pulumi.CustomResource):
 
         `cluster` and `project` scopes are supported for role templates.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/roleTemplate.html.markdown.
 
         :param str resource_name: The name of the resource.

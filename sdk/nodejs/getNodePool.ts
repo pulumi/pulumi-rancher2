@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
  */
-export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> & GetNodePoolResult {
+export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,13 +33,11 @@ export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNodePoolResult> = pulumi.runtime.invoke("rancher2:index/getNodePool:getNodePool", {
+    return pulumi.runtime.invoke("rancher2:index/getNodePool:getNodePool", {
         "clusterId": args.clusterId,
         "name": args.name,
         "nodeTemplateId": args.nodeTemplateId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

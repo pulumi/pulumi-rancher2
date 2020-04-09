@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
  */
-export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> & GetClusterLoggingResult {
+export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,11 +32,9 @@ export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterLoggingResult> = pulumi.runtime.invoke("rancher2:index/getClusterLogging:getClusterLogging", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterLogging:getClusterLogging", {
         "clusterId": args.clusterId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

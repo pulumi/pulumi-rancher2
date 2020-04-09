@@ -76,6 +76,8 @@ def get_certificate(name=None,namespace_id=None,project_id=None,opts=None):
     - Project certificate: Available to all namespaces in the `project_id`
     - Namespaced certificate: Available to just `namespace_id` in the `project_id`
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
 
 

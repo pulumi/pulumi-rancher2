@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
@@ -16,6 +16,8 @@ import (
 // There are 2 types of Rancher v2 certificates:
 // - Project certificate: Available to all namespaces in the `projectId`
 // - Namespaced certificate: Available to just `namespaceId` in the `projectId`
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/certificate.html.markdown.
 type Certificate struct {

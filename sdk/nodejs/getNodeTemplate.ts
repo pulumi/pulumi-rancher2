@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
  */
-export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> & GetNodeTemplateResult {
+export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,12 +32,10 @@ export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNodeTemplateResult> = pulumi.runtime.invoke("rancher2:index/getNodeTemplate:getNodeTemplate", {
+    return pulumi.runtime.invoke("rancher2:index/getNodeTemplate:getNodeTemplate", {
         "name": args.name,
         "useInternalIpAddress": args.useInternalIpAddress,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

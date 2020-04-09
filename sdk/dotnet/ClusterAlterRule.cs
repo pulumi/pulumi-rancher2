@@ -12,6 +12,8 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterAlertRule.html.markdown.
     /// </summary>
     public partial class ClusterAlterRule : Pulumi.CustomResource

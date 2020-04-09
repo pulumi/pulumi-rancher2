@@ -54,6 +54,8 @@ class ClusterDriver(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterDriver.html.markdown.
 
         :param str resource_name: The name of the resource.

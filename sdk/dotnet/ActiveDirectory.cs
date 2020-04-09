@@ -14,6 +14,8 @@ namespace Pulumi.Rancher2
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigActiveDirectory.html.markdown.
     /// </summary>
     public partial class ActiveDirectory : Pulumi.CustomResource

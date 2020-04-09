@@ -18,6 +18,8 @@ namespace Pulumi.Rancher2
         /// - Project secret: Available to all namespaces in the `project_id`
         /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
         /// </summary>
         [Obsolete("Use GetSecret.InvokeAsync() instead")]
@@ -32,6 +34,8 @@ namespace Pulumi.Rancher2
         /// Depending of the availability, there are 2 types of Rancher v2 secrets:
         /// - Project secret: Available to all namespaces in the `project_id`
         /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
         /// </summary>

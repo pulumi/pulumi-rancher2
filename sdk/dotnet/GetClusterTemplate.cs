@@ -16,6 +16,8 @@ namespace Pulumi.Rancher2
         /// 
         /// Cluster Templates are available from Rancher v2.3.x and above.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
         /// </summary>
         [Obsolete("Use GetClusterTemplate.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 cluster template.
         /// 
         /// Cluster Templates are available from Rancher v2.3.x and above.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
         /// </summary>

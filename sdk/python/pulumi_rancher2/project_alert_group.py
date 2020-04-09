@@ -55,6 +55,8 @@ class ProjectAlertGroup(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectAlertGroup.html.markdown.
 
         :param str resource_name: The name of the resource.

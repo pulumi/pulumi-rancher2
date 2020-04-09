@@ -128,6 +128,8 @@ def get_cluster_logging(cluster_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Logging.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
 
 

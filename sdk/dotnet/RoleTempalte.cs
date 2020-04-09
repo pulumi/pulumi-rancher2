@@ -14,6 +14,8 @@ namespace Pulumi.Rancher2
     /// 
     /// `cluster` and `project` scopes are supported for role templates.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/roleTemplate.html.markdown.
     /// </summary>
     public partial class RoleTempalte : Pulumi.CustomResource

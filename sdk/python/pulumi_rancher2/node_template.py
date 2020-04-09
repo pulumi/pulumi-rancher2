@@ -268,6 +268,8 @@ class NodeTemplate(pulumi.CustomResource):
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
 
         :param str resource_name: The name of the resource.

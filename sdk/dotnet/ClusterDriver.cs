@@ -12,6 +12,8 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterDriver.html.markdown.
     /// </summary>
     public partial class ClusterDriver : Pulumi.CustomResource

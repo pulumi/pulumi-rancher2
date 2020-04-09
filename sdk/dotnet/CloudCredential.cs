@@ -14,6 +14,8 @@ namespace Pulumi.Rancher2
     /// 
     /// amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloudCredential.html.markdown.
     /// </summary>
     public partial class CloudCredential : Pulumi.CustomResource

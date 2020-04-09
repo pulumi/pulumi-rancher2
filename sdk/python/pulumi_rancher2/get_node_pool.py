@@ -107,6 +107,8 @@ def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
 
 

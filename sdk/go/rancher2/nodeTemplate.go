@@ -7,7 +7,7 @@ package rancher2
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
@@ -15,6 +15,8 @@ import (
 // amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
 type NodeTemplate struct {

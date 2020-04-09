@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
  */
-export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> & GetClusterAlterRuleResult {
+export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,13 +33,11 @@ export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterAlterRuleResult> = pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
         "clusterId": args.clusterId,
         "labels": args.labels,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
