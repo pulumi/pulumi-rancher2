@@ -1166,6 +1166,12 @@ namespace Pulumi.Rancher2
             set => _answers = value;
         }
 
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public ClusterClusterMonitoringInputArgs()
         {
         }
@@ -1184,6 +1190,12 @@ namespace Pulumi.Rancher2
             get => _answers ?? (_answers = new InputMap<object>());
             set => _answers = value;
         }
+
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public ClusterClusterMonitoringInputGetArgs()
         {
@@ -2366,7 +2378,7 @@ namespace Pulumi.Rancher2
         public Input<ClusterK3sConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// K3S kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -2385,7 +2397,7 @@ namespace Pulumi.Rancher2
         public Input<ClusterK3sConfigUpgradeStrategyGetArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// K3S kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -7228,11 +7240,18 @@ namespace Pulumi.Rancher2
         /// Key/value answers for monitor input (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Answers;
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private ClusterClusterMonitoringInput(ImmutableDictionary<string, object>? answers)
+        private ClusterClusterMonitoringInput(
+            ImmutableDictionary<string, object>? answers,
+            string? version)
         {
             Answers = answers;
+            Version = version;
         }
     }
 
@@ -7819,7 +7838,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ClusterK3sConfigUpgradeStrategy UpgradeStrategy;
         /// <summary>
-        /// K3S kubernetes version (string)
+        /// rancher-monitoring chart version (string)
         /// </summary>
         public readonly string Version;
 

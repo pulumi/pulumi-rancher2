@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
  * 
- * amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
+ * amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
  * 
  * ## Example Usage
  * 
@@ -85,6 +85,10 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
+     * Linode config for the Cloud Credential (list maxitems:1)
+     */
+    public readonly linodeCredentialConfig!: pulumi.Output<outputs.CloudCredentialLinodeCredentialConfig | undefined>;
+    /**
      * The name of the Cloud Credential (string)
      */
     public readonly name!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
             inputs["driver"] = state ? state.driver : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["openstackCredentialConfig"] = state ? state.openstackCredentialConfig : undefined;
             inputs["vsphereCredentialConfig"] = state ? state.vsphereCredentialConfig : undefined;
@@ -127,6 +132,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["openstackCredentialConfig"] = args ? args.openstackCredentialConfig : undefined;
             inputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
@@ -176,6 +182,10 @@ export interface CloudCredentialState {
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Linode config for the Cloud Credential (list maxitems:1)
+     */
+    readonly linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
+    /**
      * The name of the Cloud Credential (string)
      */
     readonly name?: pulumi.Input<string>;
@@ -217,6 +227,10 @@ export interface CloudCredentialArgs {
      * Labels for Cloud Credential object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Linode config for the Cloud Credential (list maxitems:1)
+     */
+    readonly linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
     /**
      * The name of the Cloud Credential (string)
      */
