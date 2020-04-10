@@ -37,6 +37,13 @@ export interface CloudCredentialDigitaloceanCredentialConfig {
     accessToken: string;
 }
 
+export interface CloudCredentialLinodeCredentialConfig {
+    /**
+     * Linode API token (string)
+     */
+    token: string;
+}
+
 export interface CloudCredentialOpenstackCredentialConfig {
     /**
      * vSphere password (string)
@@ -317,6 +324,10 @@ export interface ClusterClusterMonitoringInput {
      * Key/value answers for monitor input (map)
      */
     answers?: {[key: string]: any};
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: string;
 }
 
 export interface ClusterClusterRegistrationToken {
@@ -689,7 +700,7 @@ export interface ClusterK3sConfig {
      */
     upgradeStrategy: outputs.ClusterK3sConfigUpgradeStrategy;
     /**
-     * K3S kubernetes version (string)
+     * rancher-monitoring chart version (string)
      */
     version: string;
 }
@@ -2903,6 +2914,7 @@ export interface GetClusterClusterAuthEndpoint {
 
 export interface GetClusterClusterMonitoringInput {
     answers?: {[key: string]: any};
+    version?: string;
 }
 
 export interface GetClusterClusterRegistrationToken {
@@ -4595,7 +4607,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     insecureTransport?: boolean;
     /**
-     * AWS instance type. Default `t2.micro` (string)
+     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
      */
     instanceType?: string;
     /**
@@ -4718,7 +4730,7 @@ export interface NodeTemplateAzureConfig {
      */
     dns?: string;
     /**
-     * Port number for Docker engine. Default `2376` (string)
+     * Docker Port. Default `2376` (string)
      */
     dockerPort?: string;
     /**
@@ -4728,7 +4740,7 @@ export interface NodeTemplateAzureConfig {
     environment?: string;
     faultDomainCount?: string;
     /**
-     * Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      */
     image?: string;
     /**
@@ -4807,7 +4819,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     backups?: boolean;
     /**
-     * Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
      */
     image?: string;
     /**
@@ -4854,6 +4866,73 @@ export interface NodeTemplateDigitaloceanConfig {
      * Path to file with cloud-init user-data (string)
      */
     userdata?: string;
+}
+
+export interface NodeTemplateLinodeConfig {
+    /**
+     * Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+     */
+    authorizedUsers?: string;
+    /**
+     * Create private IP for the instance. Default `false` (bool)
+     */
+    createPrivateIp?: boolean;
+    /**
+     * Docker Port. Default `2376` (string)
+     */
+    dockerPort?: string;
+    /**
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     */
+    image?: string;
+    /**
+     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+     */
+    instanceType?: string;
+    /**
+     * Linode Instance Label. (string)
+     */
+    label?: string;
+    /**
+     * OpenStack region name (string)
+     */
+    region?: string;
+    /**
+     * Root Password (string)
+     */
+    rootPass?: string;
+    /**
+     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     */
+    sshPort?: string;
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     */
+    sshUser?: string;
+    /**
+     * Specifies the Linode StackScript to use to create the instance. (string)
+     */
+    stackscript?: string;
+    /**
+     * A JSON string specifying data for the selected StackScript. (string)
+     */
+    stackscriptData?: string;
+    /**
+     * Linode Instance Swap Size (MB). Default `512` (string)
+     */
+    swapSize?: string;
+    /**
+     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     */
+    tags?: string;
+    /**
+     * Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     */
+    token?: string;
+    /**
+     * Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+     */
+    uaPrefix?: string;
 }
 
 export interface NodeTemplateOpennebulaConfig {
@@ -5751,6 +5830,10 @@ export interface ProjectProjectMonitoringInput {
      * Key/value answers for monitor input (map)
      */
     answers?: {[key: string]: any};
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: string;
 }
 
 export interface ProjectResourceQuota {

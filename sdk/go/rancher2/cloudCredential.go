@@ -12,7 +12,7 @@ import (
 
 // Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 //
-// amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
+// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloudCredential.html.markdown.
 type CloudCredential struct {
@@ -32,6 +32,8 @@ type CloudCredential struct {
 	Driver pulumi.StringOutput `pulumi:"driver"`
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrOutput `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
@@ -82,6 +84,8 @@ type cloudCredentialState struct {
 	Driver *string `pulumi:"driver"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name *string `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
@@ -105,6 +109,8 @@ type CloudCredentialState struct {
 	Driver pulumi.StringPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)
@@ -130,6 +136,8 @@ type cloudCredentialArgs struct {
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name *string `pulumi:"name"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
@@ -152,6 +160,8 @@ type CloudCredentialArgs struct {
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)

@@ -69,6 +69,7 @@ class Cluster(pulumi.CustomResource):
     Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
 
       * `answers` (`dict`) - Key/value answers for monitor input (map)
+      * `version` (`str`) - rancher-monitoring chart version (string)
     """
     cluster_registration_token: pulumi.Output[dict]
     """
@@ -246,7 +247,7 @@ class Cluster(pulumi.CustomResource):
         * `serverConcurrency` (`float`) - Server concurrency. Default: `1` (int)
         * `workerConcurrency` (`float`) - Worker concurrency. Default: `1` (int)
 
-      * `version` (`str`) - K3S kubernetes version (string)
+      * `version` (`str`) - rancher-monitoring chart version (string)
     """
     kube_config: pulumi.Output[str]
     """
@@ -680,6 +681,7 @@ class Cluster(pulumi.CustomResource):
         The **cluster_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **cluster_template_answers** object supports the following:
 
@@ -778,7 +780,7 @@ class Cluster(pulumi.CustomResource):
             * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
             * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
 
-          * `version` (`pulumi.Input[str]`) - K3S kubernetes version (string)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **rke_config** object supports the following:
 
@@ -1246,6 +1248,7 @@ class Cluster(pulumi.CustomResource):
         The **cluster_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **cluster_registration_token** object supports the following:
 
@@ -1358,7 +1361,7 @@ class Cluster(pulumi.CustomResource):
             * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
             * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
 
-          * `version` (`pulumi.Input[str]`) - K3S kubernetes version (string)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **rke_config** object supports the following:
 

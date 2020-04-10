@@ -52,6 +52,7 @@ class Project(pulumi.CustomResource):
     Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
 
       * `answers` (`dict`) - Key/value answers for monitor input (map)
+      * `version` (`str`) - rancher-monitoring chart version (string)
     """
     resource_quota: pulumi.Output[dict]
     """
@@ -121,6 +122,7 @@ class Project(pulumi.CustomResource):
         The **project_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **resource_quota** object supports the following:
 
@@ -221,6 +223,7 @@ class Project(pulumi.CustomResource):
         The **project_monitoring_input** object supports the following:
 
           * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
+          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
 
         The **resource_quota** object supports the following:
 

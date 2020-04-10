@@ -397,6 +397,120 @@ func (o CloudCredentialDigitaloceanCredentialConfigPtrOutput) AccessToken() pulu
 	return o.ApplyT(func(v CloudCredentialDigitaloceanCredentialConfig) string { return v.AccessToken }).(pulumi.StringOutput)
 }
 
+type CloudCredentialLinodeCredentialConfig struct {
+	// Linode API token (string)
+	Token string `pulumi:"token"`
+}
+
+type CloudCredentialLinodeCredentialConfigInput interface {
+	pulumi.Input
+
+	ToCloudCredentialLinodeCredentialConfigOutput() CloudCredentialLinodeCredentialConfigOutput
+	ToCloudCredentialLinodeCredentialConfigOutputWithContext(context.Context) CloudCredentialLinodeCredentialConfigOutput
+}
+
+type CloudCredentialLinodeCredentialConfigArgs struct {
+	// Linode API token (string)
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (CloudCredentialLinodeCredentialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredentialLinodeCredentialConfig)(nil)).Elem()
+}
+
+func (i CloudCredentialLinodeCredentialConfigArgs) ToCloudCredentialLinodeCredentialConfigOutput() CloudCredentialLinodeCredentialConfigOutput {
+	return i.ToCloudCredentialLinodeCredentialConfigOutputWithContext(context.Background())
+}
+
+func (i CloudCredentialLinodeCredentialConfigArgs) ToCloudCredentialLinodeCredentialConfigOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialLinodeCredentialConfigOutput)
+}
+
+func (i CloudCredentialLinodeCredentialConfigArgs) ToCloudCredentialLinodeCredentialConfigPtrOutput() CloudCredentialLinodeCredentialConfigPtrOutput {
+	return i.ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CloudCredentialLinodeCredentialConfigArgs) ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialLinodeCredentialConfigOutput).ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(ctx)
+}
+
+type CloudCredentialLinodeCredentialConfigPtrInput interface {
+	pulumi.Input
+
+	ToCloudCredentialLinodeCredentialConfigPtrOutput() CloudCredentialLinodeCredentialConfigPtrOutput
+	ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(context.Context) CloudCredentialLinodeCredentialConfigPtrOutput
+}
+
+type cloudCredentialLinodeCredentialConfigPtrType CloudCredentialLinodeCredentialConfigArgs
+
+func CloudCredentialLinodeCredentialConfigPtr(v *CloudCredentialLinodeCredentialConfigArgs) CloudCredentialLinodeCredentialConfigPtrInput {
+	return (*cloudCredentialLinodeCredentialConfigPtrType)(v)
+}
+
+func (*cloudCredentialLinodeCredentialConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudCredentialLinodeCredentialConfig)(nil)).Elem()
+}
+
+func (i *cloudCredentialLinodeCredentialConfigPtrType) ToCloudCredentialLinodeCredentialConfigPtrOutput() CloudCredentialLinodeCredentialConfigPtrOutput {
+	return i.ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudCredentialLinodeCredentialConfigPtrType) ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialLinodeCredentialConfigPtrOutput)
+}
+
+type CloudCredentialLinodeCredentialConfigOutput struct{ *pulumi.OutputState }
+
+func (CloudCredentialLinodeCredentialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredentialLinodeCredentialConfig)(nil)).Elem()
+}
+
+func (o CloudCredentialLinodeCredentialConfigOutput) ToCloudCredentialLinodeCredentialConfigOutput() CloudCredentialLinodeCredentialConfigOutput {
+	return o
+}
+
+func (o CloudCredentialLinodeCredentialConfigOutput) ToCloudCredentialLinodeCredentialConfigOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigOutput {
+	return o
+}
+
+func (o CloudCredentialLinodeCredentialConfigOutput) ToCloudCredentialLinodeCredentialConfigPtrOutput() CloudCredentialLinodeCredentialConfigPtrOutput {
+	return o.ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CloudCredentialLinodeCredentialConfigOutput) ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigPtrOutput {
+	return o.ApplyT(func(v CloudCredentialLinodeCredentialConfig) *CloudCredentialLinodeCredentialConfig {
+		return &v
+	}).(CloudCredentialLinodeCredentialConfigPtrOutput)
+}
+
+// Linode API token (string)
+func (o CloudCredentialLinodeCredentialConfigOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudCredentialLinodeCredentialConfig) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type CloudCredentialLinodeCredentialConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudCredentialLinodeCredentialConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudCredentialLinodeCredentialConfig)(nil)).Elem()
+}
+
+func (o CloudCredentialLinodeCredentialConfigPtrOutput) ToCloudCredentialLinodeCredentialConfigPtrOutput() CloudCredentialLinodeCredentialConfigPtrOutput {
+	return o
+}
+
+func (o CloudCredentialLinodeCredentialConfigPtrOutput) ToCloudCredentialLinodeCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialLinodeCredentialConfigPtrOutput {
+	return o
+}
+
+func (o CloudCredentialLinodeCredentialConfigPtrOutput) Elem() CloudCredentialLinodeCredentialConfigOutput {
+	return o.ApplyT(func(v *CloudCredentialLinodeCredentialConfig) CloudCredentialLinodeCredentialConfig { return *v }).(CloudCredentialLinodeCredentialConfigOutput)
+}
+
+// Linode API token (string)
+func (o CloudCredentialLinodeCredentialConfigPtrOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudCredentialLinodeCredentialConfig) string { return v.Token }).(pulumi.StringOutput)
+}
+
 type CloudCredentialOpenstackCredentialConfig struct {
 	// vSphere password (string)
 	Password string `pulumi:"password"`
@@ -2128,6 +2242,8 @@ func (o ClusterClusterAuthEndpointPtrOutput) Fqdn() pulumi.StringPtrOutput {
 type ClusterClusterMonitoringInput struct {
 	// Key/value answers for monitor input (map)
 	Answers map[string]interface{} `pulumi:"answers"`
+	// rancher-monitoring chart version (string)
+	Version *string `pulumi:"version"`
 }
 
 type ClusterClusterMonitoringInputInput interface {
@@ -2140,6 +2256,8 @@ type ClusterClusterMonitoringInputInput interface {
 type ClusterClusterMonitoringInputArgs struct {
 	// Key/value answers for monitor input (map)
 	Answers pulumi.MapInput `pulumi:"answers"`
+	// rancher-monitoring chart version (string)
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ClusterClusterMonitoringInputArgs) ElementType() reflect.Type {
@@ -2216,6 +2334,11 @@ func (o ClusterClusterMonitoringInputOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterClusterMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
 }
 
+// rancher-monitoring chart version (string)
+func (o ClusterClusterMonitoringInputOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterMonitoringInput) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type ClusterClusterMonitoringInputPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterMonitoringInputPtrOutput) ElementType() reflect.Type {
@@ -2237,6 +2360,11 @@ func (o ClusterClusterMonitoringInputPtrOutput) Elem() ClusterClusterMonitoringI
 // Key/value answers for monitor input (map)
 func (o ClusterClusterMonitoringInputPtrOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterClusterMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
+}
+
+// rancher-monitoring chart version (string)
+func (o ClusterClusterMonitoringInputPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterMonitoringInput) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterRegistrationToken struct {
@@ -3930,7 +4058,7 @@ func (o ClusterGkeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 type ClusterK3sConfig struct {
 	// K3S upgrade strategy (List maxitems: 1)
 	UpgradeStrategy *ClusterK3sConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
-	// K3S kubernetes version (string)
+	// rancher-monitoring chart version (string)
 	Version *string `pulumi:"version"`
 }
 
@@ -3944,7 +4072,7 @@ type ClusterK3sConfigInput interface {
 type ClusterK3sConfigArgs struct {
 	// K3S upgrade strategy (List maxitems: 1)
 	UpgradeStrategy ClusterK3sConfigUpgradeStrategyPtrInput `pulumi:"upgradeStrategy"`
-	// K3S kubernetes version (string)
+	// rancher-monitoring chart version (string)
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -4022,7 +4150,7 @@ func (o ClusterK3sConfigOutput) UpgradeStrategy() ClusterK3sConfigUpgradeStrateg
 	return o.ApplyT(func(v ClusterK3sConfig) *ClusterK3sConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterK3sConfigUpgradeStrategyPtrOutput)
 }
 
-// K3S kubernetes version (string)
+// rancher-monitoring chart version (string)
 func (o ClusterK3sConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterK3sConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -4050,7 +4178,7 @@ func (o ClusterK3sConfigPtrOutput) UpgradeStrategy() ClusterK3sConfigUpgradeStra
 	return o.ApplyT(func(v ClusterK3sConfig) *ClusterK3sConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterK3sConfigUpgradeStrategyPtrOutput)
 }
 
-// K3S kubernetes version (string)
+// rancher-monitoring chart version (string)
 func (o ClusterK3sConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterK3sConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -24242,7 +24370,7 @@ type NodeTemplateAmazonec2Config struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// Disable SSL when sending requests (bool)
 	InsecureTransport *bool `pulumi:"insecureTransport"`
-	// AWS instance type. Default `t2.micro` (string)
+	// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
 	InstanceType *string `pulumi:"instanceType"`
 	// OpenStack keypair to use to SSH to the instance (string)
 	KeypairName *string `pulumi:"keypairName"`
@@ -24314,7 +24442,7 @@ type NodeTemplateAmazonec2ConfigArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput `pulumi:"iamInstanceProfile"`
 	// Disable SSL when sending requests (bool)
 	InsecureTransport pulumi.BoolPtrInput `pulumi:"insecureTransport"`
-	// AWS instance type. Default `t2.micro` (string)
+	// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// OpenStack keypair to use to SSH to the instance (string)
 	KeypairName pulumi.StringPtrInput `pulumi:"keypairName"`
@@ -24468,7 +24596,7 @@ func (o NodeTemplateAmazonec2ConfigOutput) InsecureTransport() pulumi.BoolPtrOut
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *bool { return v.InsecureTransport }).(pulumi.BoolPtrOutput)
 }
 
-// AWS instance type. Default `t2.micro` (string)
+// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
 func (o NodeTemplateAmazonec2ConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -24641,7 +24769,7 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) InsecureTransport() pulumi.BoolPtr
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *bool { return v.InsecureTransport }).(pulumi.BoolPtrOutput)
 }
 
-// AWS instance type. Default `t2.micro` (string)
+// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
 func (o NodeTemplateAmazonec2ConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -24774,13 +24902,13 @@ type NodeTemplateAzureConfig struct {
 	DiskSize *string `pulumi:"diskSize"`
 	// A unique DNS label for the public IP adddress (string)
 	Dns *string `pulumi:"dns"`
-	// Port number for Docker engine. Default `2376` (string)
+	// Docker Port. Default `2376` (string)
 	DockerPort *string `pulumi:"dockerPort"`
 	// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
 	// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
 	Environment      *string `pulumi:"environment"`
 	FaultDomainCount *string `pulumi:"faultDomainCount"`
-	// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image *string `pulumi:"image"`
 	// Azure region to create the virtual machine. Default `westus` (string)
 	Location *string `pulumi:"location"`
@@ -24836,13 +24964,13 @@ type NodeTemplateAzureConfigArgs struct {
 	DiskSize pulumi.StringPtrInput `pulumi:"diskSize"`
 	// A unique DNS label for the public IP adddress (string)
 	Dns pulumi.StringPtrInput `pulumi:"dns"`
-	// Port number for Docker engine. Default `2376` (string)
+	// Docker Port. Default `2376` (string)
 	DockerPort pulumi.StringPtrInput `pulumi:"dockerPort"`
 	// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
 	// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
 	Environment      pulumi.StringPtrInput `pulumi:"environment"`
 	FaultDomainCount pulumi.StringPtrInput `pulumi:"faultDomainCount"`
-	// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Azure region to create the virtual machine. Default `westus` (string)
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -24977,7 +25105,7 @@ func (o NodeTemplateAzureConfigOutput) Dns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Dns }).(pulumi.StringPtrOutput)
 }
 
-// Port number for Docker engine. Default `2376` (string)
+// Docker Port. Default `2376` (string)
 func (o NodeTemplateAzureConfigOutput) DockerPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.DockerPort }).(pulumi.StringPtrOutput)
 }
@@ -24992,7 +25120,7 @@ func (o NodeTemplateAzureConfigOutput) FaultDomainCount() pulumi.StringPtrOutput
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.FaultDomainCount }).(pulumi.StringPtrOutput)
 }
 
-// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 func (o NodeTemplateAzureConfigOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -25125,7 +25253,7 @@ func (o NodeTemplateAzureConfigPtrOutput) Dns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Dns }).(pulumi.StringPtrOutput)
 }
 
-// Port number for Docker engine. Default `2376` (string)
+// Docker Port. Default `2376` (string)
 func (o NodeTemplateAzureConfigPtrOutput) DockerPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.DockerPort }).(pulumi.StringPtrOutput)
 }
@@ -25140,7 +25268,7 @@ func (o NodeTemplateAzureConfigPtrOutput) FaultDomainCount() pulumi.StringPtrOut
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.FaultDomainCount }).(pulumi.StringPtrOutput)
 }
 
-// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 func (o NodeTemplateAzureConfigPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -25230,7 +25358,7 @@ type NodeTemplateDigitaloceanConfig struct {
 	AccessToken *string `pulumi:"accessToken"`
 	// Enable backups for droplet. Default `false` (bool)
 	Backups *bool `pulumi:"backups"`
-	// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image *string `pulumi:"image"`
 	// Enable ipv6 for droplet. Default `false` (bool)
 	Ipv6 *bool `pulumi:"ipv6"`
@@ -25268,7 +25396,7 @@ type NodeTemplateDigitaloceanConfigArgs struct {
 	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Enable backups for droplet. Default `false` (bool)
 	Backups pulumi.BoolPtrInput `pulumi:"backups"`
-	// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Enable ipv6 for droplet. Default `false` (bool)
 	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
@@ -25373,7 +25501,7 @@ func (o NodeTemplateDigitaloceanConfigOutput) Backups() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *bool { return v.Backups }).(pulumi.BoolPtrOutput)
 }
 
-// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 func (o NodeTemplateDigitaloceanConfigOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -25461,7 +25589,7 @@ func (o NodeTemplateDigitaloceanConfigPtrOutput) Backups() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *bool { return v.Backups }).(pulumi.BoolPtrOutput)
 }
 
-// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 func (o NodeTemplateDigitaloceanConfigPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -25519,6 +25647,330 @@ func (o NodeTemplateDigitaloceanConfigPtrOutput) Tags() pulumi.StringPtrOutput {
 // Path to file with cloud-init user-data (string)
 func (o NodeTemplateDigitaloceanConfigPtrOutput) Userdata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *string { return v.Userdata }).(pulumi.StringPtrOutput)
+}
+
+type NodeTemplateLinodeConfig struct {
+	// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+	AuthorizedUsers *string `pulumi:"authorizedUsers"`
+	// Create private IP for the instance. Default `false` (bool)
+	CreatePrivateIp *bool `pulumi:"createPrivateIp"`
+	// Docker Port. Default `2376` (string)
+	DockerPort *string `pulumi:"dockerPort"`
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+	Image *string `pulumi:"image"`
+	// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+	InstanceType *string `pulumi:"instanceType"`
+	// Linode Instance Label. (string)
+	Label *string `pulumi:"label"`
+	// OpenStack region name (string)
+	Region *string `pulumi:"region"`
+	// Root Password (string)
+	RootPass *string `pulumi:"rootPass"`
+	// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+	SshPort *string `pulumi:"sshPort"`
+	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+	SshUser *string `pulumi:"sshUser"`
+	// Specifies the Linode StackScript to use to create the instance. (string)
+	Stackscript *string `pulumi:"stackscript"`
+	// A JSON string specifying data for the selected StackScript. (string)
+	StackscriptData *string `pulumi:"stackscriptData"`
+	// Linode Instance Swap Size (MB). Default `512` (string)
+	SwapSize *string `pulumi:"swapSize"`
+	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+	Tags *string `pulumi:"tags"`
+	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	Token *string `pulumi:"token"`
+	// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+	UaPrefix *string `pulumi:"uaPrefix"`
+}
+
+type NodeTemplateLinodeConfigInput interface {
+	pulumi.Input
+
+	ToNodeTemplateLinodeConfigOutput() NodeTemplateLinodeConfigOutput
+	ToNodeTemplateLinodeConfigOutputWithContext(context.Context) NodeTemplateLinodeConfigOutput
+}
+
+type NodeTemplateLinodeConfigArgs struct {
+	// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+	AuthorizedUsers pulumi.StringPtrInput `pulumi:"authorizedUsers"`
+	// Create private IP for the instance. Default `false` (bool)
+	CreatePrivateIp pulumi.BoolPtrInput `pulumi:"createPrivateIp"`
+	// Docker Port. Default `2376` (string)
+	DockerPort pulumi.StringPtrInput `pulumi:"dockerPort"`
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Linode Instance Label. (string)
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// OpenStack region name (string)
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Root Password (string)
+	RootPass pulumi.StringPtrInput `pulumi:"rootPass"`
+	// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+	SshPort pulumi.StringPtrInput `pulumi:"sshPort"`
+	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+	SshUser pulumi.StringPtrInput `pulumi:"sshUser"`
+	// Specifies the Linode StackScript to use to create the instance. (string)
+	Stackscript pulumi.StringPtrInput `pulumi:"stackscript"`
+	// A JSON string specifying data for the selected StackScript. (string)
+	StackscriptData pulumi.StringPtrInput `pulumi:"stackscriptData"`
+	// Linode Instance Swap Size (MB). Default `512` (string)
+	SwapSize pulumi.StringPtrInput `pulumi:"swapSize"`
+	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+	Tags pulumi.StringPtrInput `pulumi:"tags"`
+	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+	UaPrefix pulumi.StringPtrInput `pulumi:"uaPrefix"`
+}
+
+func (NodeTemplateLinodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateLinodeConfig)(nil)).Elem()
+}
+
+func (i NodeTemplateLinodeConfigArgs) ToNodeTemplateLinodeConfigOutput() NodeTemplateLinodeConfigOutput {
+	return i.ToNodeTemplateLinodeConfigOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateLinodeConfigArgs) ToNodeTemplateLinodeConfigOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateLinodeConfigOutput)
+}
+
+func (i NodeTemplateLinodeConfigArgs) ToNodeTemplateLinodeConfigPtrOutput() NodeTemplateLinodeConfigPtrOutput {
+	return i.ToNodeTemplateLinodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateLinodeConfigArgs) ToNodeTemplateLinodeConfigPtrOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateLinodeConfigOutput).ToNodeTemplateLinodeConfigPtrOutputWithContext(ctx)
+}
+
+type NodeTemplateLinodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeTemplateLinodeConfigPtrOutput() NodeTemplateLinodeConfigPtrOutput
+	ToNodeTemplateLinodeConfigPtrOutputWithContext(context.Context) NodeTemplateLinodeConfigPtrOutput
+}
+
+type nodeTemplateLinodeConfigPtrType NodeTemplateLinodeConfigArgs
+
+func NodeTemplateLinodeConfigPtr(v *NodeTemplateLinodeConfigArgs) NodeTemplateLinodeConfigPtrInput {
+	return (*nodeTemplateLinodeConfigPtrType)(v)
+}
+
+func (*nodeTemplateLinodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateLinodeConfig)(nil)).Elem()
+}
+
+func (i *nodeTemplateLinodeConfigPtrType) ToNodeTemplateLinodeConfigPtrOutput() NodeTemplateLinodeConfigPtrOutput {
+	return i.ToNodeTemplateLinodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeTemplateLinodeConfigPtrType) ToNodeTemplateLinodeConfigPtrOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateLinodeConfigPtrOutput)
+}
+
+type NodeTemplateLinodeConfigOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateLinodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateLinodeConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateLinodeConfigOutput) ToNodeTemplateLinodeConfigOutput() NodeTemplateLinodeConfigOutput {
+	return o
+}
+
+func (o NodeTemplateLinodeConfigOutput) ToNodeTemplateLinodeConfigOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigOutput {
+	return o
+}
+
+func (o NodeTemplateLinodeConfigOutput) ToNodeTemplateLinodeConfigPtrOutput() NodeTemplateLinodeConfigPtrOutput {
+	return o.ToNodeTemplateLinodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeTemplateLinodeConfigOutput) ToNodeTemplateLinodeConfigPtrOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *NodeTemplateLinodeConfig {
+		return &v
+	}).(NodeTemplateLinodeConfigPtrOutput)
+}
+
+// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+func (o NodeTemplateLinodeConfigOutput) AuthorizedUsers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.AuthorizedUsers }).(pulumi.StringPtrOutput)
+}
+
+// Create private IP for the instance. Default `false` (bool)
+func (o NodeTemplateLinodeConfigOutput) CreatePrivateIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *bool { return v.CreatePrivateIp }).(pulumi.BoolPtrOutput)
+}
+
+// Docker Port. Default `2376` (string)
+func (o NodeTemplateLinodeConfigOutput) DockerPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.DockerPort }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+func (o NodeTemplateLinodeConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+func (o NodeTemplateLinodeConfigOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Linode Instance Label. (string)
+func (o NodeTemplateLinodeConfigOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack region name (string)
+func (o NodeTemplateLinodeConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Root Password (string)
+func (o NodeTemplateLinodeConfigOutput) RootPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.RootPass }).(pulumi.StringPtrOutput)
+}
+
+// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+func (o NodeTemplateLinodeConfigOutput) SshPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SshPort }).(pulumi.StringPtrOutput)
+}
+
+// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+func (o NodeTemplateLinodeConfigOutput) SshUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SshUser }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode StackScript to use to create the instance. (string)
+func (o NodeTemplateLinodeConfigOutput) Stackscript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Stackscript }).(pulumi.StringPtrOutput)
+}
+
+// A JSON string specifying data for the selected StackScript. (string)
+func (o NodeTemplateLinodeConfigOutput) StackscriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.StackscriptData }).(pulumi.StringPtrOutput)
+}
+
+// Linode Instance Swap Size (MB). Default `512` (string)
+func (o NodeTemplateLinodeConfigOutput) SwapSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SwapSize }).(pulumi.StringPtrOutput)
+}
+
+// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+func (o NodeTemplateLinodeConfigOutput) Tags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Tags }).(pulumi.StringPtrOutput)
+}
+
+// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+func (o NodeTemplateLinodeConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+func (o NodeTemplateLinodeConfigOutput) UaPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.UaPrefix }).(pulumi.StringPtrOutput)
+}
+
+type NodeTemplateLinodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateLinodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateLinodeConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateLinodeConfigPtrOutput) ToNodeTemplateLinodeConfigPtrOutput() NodeTemplateLinodeConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateLinodeConfigPtrOutput) ToNodeTemplateLinodeConfigPtrOutputWithContext(ctx context.Context) NodeTemplateLinodeConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateLinodeConfigPtrOutput) Elem() NodeTemplateLinodeConfigOutput {
+	return o.ApplyT(func(v *NodeTemplateLinodeConfig) NodeTemplateLinodeConfig { return *v }).(NodeTemplateLinodeConfigOutput)
+}
+
+// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+func (o NodeTemplateLinodeConfigPtrOutput) AuthorizedUsers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.AuthorizedUsers }).(pulumi.StringPtrOutput)
+}
+
+// Create private IP for the instance. Default `false` (bool)
+func (o NodeTemplateLinodeConfigPtrOutput) CreatePrivateIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *bool { return v.CreatePrivateIp }).(pulumi.BoolPtrOutput)
+}
+
+// Docker Port. Default `2376` (string)
+func (o NodeTemplateLinodeConfigPtrOutput) DockerPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.DockerPort }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+func (o NodeTemplateLinodeConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+func (o NodeTemplateLinodeConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Linode Instance Label. (string)
+func (o NodeTemplateLinodeConfigPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack region name (string)
+func (o NodeTemplateLinodeConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Root Password (string)
+func (o NodeTemplateLinodeConfigPtrOutput) RootPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.RootPass }).(pulumi.StringPtrOutput)
+}
+
+// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+func (o NodeTemplateLinodeConfigPtrOutput) SshPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SshPort }).(pulumi.StringPtrOutput)
+}
+
+// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+func (o NodeTemplateLinodeConfigPtrOutput) SshUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SshUser }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode StackScript to use to create the instance. (string)
+func (o NodeTemplateLinodeConfigPtrOutput) Stackscript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Stackscript }).(pulumi.StringPtrOutput)
+}
+
+// A JSON string specifying data for the selected StackScript. (string)
+func (o NodeTemplateLinodeConfigPtrOutput) StackscriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.StackscriptData }).(pulumi.StringPtrOutput)
+}
+
+// Linode Instance Swap Size (MB). Default `512` (string)
+func (o NodeTemplateLinodeConfigPtrOutput) SwapSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.SwapSize }).(pulumi.StringPtrOutput)
+}
+
+// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+func (o NodeTemplateLinodeConfigPtrOutput) Tags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Tags }).(pulumi.StringPtrOutput)
+}
+
+// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+func (o NodeTemplateLinodeConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+func (o NodeTemplateLinodeConfigPtrOutput) UaPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.UaPrefix }).(pulumi.StringPtrOutput)
 }
 
 type NodeTemplateOpennebulaConfig struct {
@@ -31490,6 +31942,8 @@ func (o ProjectLoggingSyslogConfigPtrOutput) Token() pulumi.StringPtrOutput {
 type ProjectProjectMonitoringInput struct {
 	// Key/value answers for monitor input (map)
 	Answers map[string]interface{} `pulumi:"answers"`
+	// rancher-monitoring chart version (string)
+	Version *string `pulumi:"version"`
 }
 
 type ProjectProjectMonitoringInputInput interface {
@@ -31502,6 +31956,8 @@ type ProjectProjectMonitoringInputInput interface {
 type ProjectProjectMonitoringInputArgs struct {
 	// Key/value answers for monitor input (map)
 	Answers pulumi.MapInput `pulumi:"answers"`
+	// rancher-monitoring chart version (string)
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ProjectProjectMonitoringInputArgs) ElementType() reflect.Type {
@@ -31578,6 +32034,11 @@ func (o ProjectProjectMonitoringInputOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func(v ProjectProjectMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
 }
 
+// rancher-monitoring chart version (string)
+func (o ProjectProjectMonitoringInputOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProjectMonitoringInput) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type ProjectProjectMonitoringInputPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectProjectMonitoringInputPtrOutput) ElementType() reflect.Type {
@@ -31599,6 +32060,11 @@ func (o ProjectProjectMonitoringInputPtrOutput) Elem() ProjectProjectMonitoringI
 // Key/value answers for monitor input (map)
 func (o ProjectProjectMonitoringInputPtrOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func(v ProjectProjectMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
+}
+
+// rancher-monitoring chart version (string)
+func (o ProjectProjectMonitoringInputPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProjectMonitoringInput) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ProjectResourceQuota struct {
@@ -32929,6 +33395,7 @@ func (o GetClusterClusterAuthEndpointOutput) Fqdn() pulumi.StringPtrOutput {
 
 type GetClusterClusterMonitoringInput struct {
 	Answers map[string]interface{} `pulumi:"answers"`
+	Version *string                `pulumi:"version"`
 }
 
 type GetClusterClusterMonitoringInputInput interface {
@@ -32939,7 +33406,8 @@ type GetClusterClusterMonitoringInputInput interface {
 }
 
 type GetClusterClusterMonitoringInputArgs struct {
-	Answers pulumi.MapInput `pulumi:"answers"`
+	Answers pulumi.MapInput       `pulumi:"answers"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetClusterClusterMonitoringInputArgs) ElementType() reflect.Type {
@@ -32970,6 +33438,10 @@ func (o GetClusterClusterMonitoringInputOutput) ToGetClusterClusterMonitoringInp
 
 func (o GetClusterClusterMonitoringInputOutput) Answers() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterClusterMonitoringInput) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
+}
+
+func (o GetClusterClusterMonitoringInputOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterMonitoringInput) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type GetClusterClusterRegistrationToken struct {
@@ -49526,6 +49998,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudCredentialAzureCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialDigitaloceanCredentialConfigOutput{})
 	pulumi.RegisterOutputType(CloudCredentialDigitaloceanCredentialConfigPtrOutput{})
+	pulumi.RegisterOutputType(CloudCredentialLinodeCredentialConfigOutput{})
+	pulumi.RegisterOutputType(CloudCredentialLinodeCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialOpenstackCredentialConfigOutput{})
 	pulumi.RegisterOutputType(CloudCredentialOpenstackCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialVsphereCredentialConfigOutput{})
@@ -49801,6 +50275,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateAzureConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeTemplateLinodeConfigOutput{})
+	pulumi.RegisterOutputType(NodeTemplateLinodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpenstackConfigOutput{})
