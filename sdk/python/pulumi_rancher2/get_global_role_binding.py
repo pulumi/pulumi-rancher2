@@ -70,8 +70,6 @@ def get_global_role_binding(global_role_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
-
 
     :param str global_role_id: The global role id (string)
     :param str name: The name of the global role binding (string)

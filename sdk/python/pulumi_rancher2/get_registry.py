@@ -78,8 +78,6 @@ def get_registry(name=None,namespace_id=None,project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
-
 
     :param str name: The name of the registry (string)
     :param str namespace_id: The namespace id where to assign the namespaced registry (string)

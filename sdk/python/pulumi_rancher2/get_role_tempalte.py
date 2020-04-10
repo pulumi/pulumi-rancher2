@@ -119,8 +119,6 @@ def get_role_tempalte(context=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
-
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
     :param str name: The name of the Node Template (string)

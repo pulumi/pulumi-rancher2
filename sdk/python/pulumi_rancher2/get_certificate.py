@@ -78,8 +78,6 @@ def get_certificate(name=None,namespace_id=None,project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
-
 
     :param str name: The name of the certificate (string)
     :param str namespace_id: The namespace id where to assign the namespaced certificate (string)

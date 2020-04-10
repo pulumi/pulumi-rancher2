@@ -129,8 +129,6 @@ def get_node_template(name=None,use_internal_ip_address=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
-
 
     :param str name: The name of the Node Template (string)
     :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)

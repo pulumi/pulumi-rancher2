@@ -98,8 +98,6 @@ def get_cluster_driver(name=None,url=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
-
 
     :param str name: Name of the cluster driver (string)
     :param str url: The URL to download the machine driver binary for 64-bit Linux (string)

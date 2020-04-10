@@ -45,8 +45,6 @@ def get_setting(name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/setting.html.markdown.
-
 
     :param str name: The setting name.
     """

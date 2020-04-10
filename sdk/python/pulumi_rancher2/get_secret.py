@@ -78,8 +78,6 @@ def get_secret(name=None,namespace_id=None,project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
-
 
     :param str name: The name of the secret (string)
     :param str namespace_id: The namespace id where to assign the namespaced secret (string)

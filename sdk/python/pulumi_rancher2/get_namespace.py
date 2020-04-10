@@ -77,8 +77,6 @@ def get_namespace(name=None,project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
-
 
     :param str name: The name of the namespace (string)
     :param str project_id: The project id where namespace is assigned (string)

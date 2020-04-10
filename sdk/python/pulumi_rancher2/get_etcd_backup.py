@@ -84,8 +84,6 @@ def get_etcd_backup(cluster_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
-
 
     :param str cluster_id: Cluster ID to config Etcd Backup (string)
     :param str name: The name of the Etcd Backup (string)

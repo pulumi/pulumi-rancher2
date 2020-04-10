@@ -130,8 +130,6 @@ def get_project_logging(project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
-
 
     :param str project_id: The project id to configure logging (string)
     """

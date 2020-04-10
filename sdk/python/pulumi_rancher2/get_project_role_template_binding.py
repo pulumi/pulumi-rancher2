@@ -88,8 +88,6 @@ def get_project_role_template_binding(name=None,project_id=None,role_template_id
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
-
 
     :param str name: The name of the project role template binding (string)
     :param str project_id: The project id where bind project role template (string)

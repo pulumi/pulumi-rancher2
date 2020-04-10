@@ -109,8 +109,6 @@ def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
-
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)
     :param str name: The name of the Node Pool (string)

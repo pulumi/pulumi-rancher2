@@ -77,8 +77,6 @@ def get_user(is_external=None,name=None,username=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
-
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)
     :param str name: The name of the user (string)

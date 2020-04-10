@@ -98,8 +98,6 @@ def get_notifier(cluster_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
-
 
     :param str cluster_id: The cluster id where create notifier (string)
     :param str name: The name of the notifier (string)

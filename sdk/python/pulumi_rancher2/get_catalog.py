@@ -119,8 +119,6 @@ def get_catalog(name=None,scope=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
-
 
     :param str name: The catalog name.
     :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)

@@ -91,8 +91,6 @@ def get_project_alert_group(name=None,project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
-
 
     :param str name: The project alert group name (string)
     :param str project_id: The project id where create project alert group (string)

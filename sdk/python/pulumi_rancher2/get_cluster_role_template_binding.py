@@ -88,8 +88,6 @@ def get_cluster_role_template_binding(cluster_id=None,name=None,role_template_id
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
-
 
     :param str cluster_id: The cluster id where bind cluster role template (string)
     :param str name: The name of the cluster role template binding (string)
