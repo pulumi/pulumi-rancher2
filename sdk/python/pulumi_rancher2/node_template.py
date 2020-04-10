@@ -21,7 +21,7 @@ class NodeTemplate(pulumi.CustomResource):
       * `endpoint` (`str`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
       * `iamInstanceProfile` (`str`) - AWS IAM Instance Profile (string)
       * `insecureTransport` (`bool`) - Disable SSL when sending requests (bool)
-      * `instanceType` (`str`) - AWS instance type. Default `t2.micro` (string)
+      * `instanceType` (`str`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
       * `keypairName` (`str`) - OpenStack keypair to use to SSH to the instance (string)
       * `monitoring` (`bool`) - Enable monitoring for droplet. Default `false` (bool)
       * `openPorts` (`list`) - Make the specified port number accessible from the Internet. (list)
@@ -68,11 +68,11 @@ class NodeTemplate(pulumi.CustomResource):
       * `customData` (`str`) - Path to file with custom-data (string)
       * `diskSize` (`str`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
       * `dns` (`str`) - A unique DNS label for the public IP adddress (string)
-      * `dockerPort` (`str`) - Port number for Docker engine. Default `2376` (string)
+      * `dockerPort` (`str`) - Docker Port. Default `2376` (string)
       * `environment` (`str`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
         `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
       * `faultDomainCount` (`str`)
-      * `image` (`str`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
       * `location` (`str`) - Azure region to create the virtual machine. Default `westus` (string)
       * `managedDisks` (`bool`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
       * `noPublicIp` (`bool`) - Do not create a public IP address for the machine. Default `false` (bool)
@@ -104,7 +104,7 @@ class NodeTemplate(pulumi.CustomResource):
 
       * `accessToken` (`str`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
       * `backups` (`bool`) - Enable backups for droplet. Default `false` (bool)
-      * `image` (`str`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
       * `ipv6` (`bool`) - Enable ipv6 for droplet. Default `false` (bool)
       * `monitoring` (`bool`) - Enable monitoring for droplet. Default `false` (bool)
       * `privateNetworking` (`bool`) - Enable private networking for droplet. Default `false` (bool)
@@ -156,6 +156,27 @@ class NodeTemplate(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     """
     Labels for Node Template object (map)
+    """
+    linode_config: pulumi.Output[dict]
+    """
+    Linode config for the Node Template (list maxitems:1)
+
+      * `authorizedUsers` (`str`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+      * `createPrivateIp` (`bool`) - Create private IP for the instance. Default `false` (bool)
+      * `dockerPort` (`str`) - Docker Port. Default `2376` (string)
+      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+      * `instanceType` (`str`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+      * `label` (`str`) - Linode Instance Label. (string)
+      * `region` (`str`) - OpenStack region name (string)
+      * `rootPass` (`str`) - Root Password (string)
+      * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+      * `stackscript` (`str`) - Specifies the Linode StackScript to use to create the instance. (string)
+      * `stackscriptData` (`str`) - A JSON string specifying data for the selected StackScript. (string)
+      * `swapSize` (`str`) - Linode Instance Swap Size (MB). Default `512` (string)
+      * `tags` (`str`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+      * `token` (`str`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+      * `uaPrefix` (`str`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
     """
     name: pulumi.Output[str]
     """
@@ -260,11 +281,11 @@ class NodeTemplate(pulumi.CustomResource):
       * `vcenter` (`str`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
       * `vcenterPort` (`str`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
     """
-    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, linode_config=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 
-        amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
+        amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
@@ -291,6 +312,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[dict] labels: Labels for Node Template object (map)
+        :param pulumi.Input[dict] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
         :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
@@ -306,7 +328,7 @@ class NodeTemplate(pulumi.CustomResource):
           * `endpoint` (`pulumi.Input[str]`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
           * `iamInstanceProfile` (`pulumi.Input[str]`) - AWS IAM Instance Profile (string)
           * `insecureTransport` (`pulumi.Input[bool]`) - Disable SSL when sending requests (bool)
-          * `instanceType` (`pulumi.Input[str]`) - AWS instance type. Default `t2.micro` (string)
+          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
           * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
           * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
           * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
@@ -339,11 +361,11 @@ class NodeTemplate(pulumi.CustomResource):
           * `customData` (`pulumi.Input[str]`) - Path to file with custom-data (string)
           * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
           * `dns` (`pulumi.Input[str]`) - A unique DNS label for the public IP adddress (string)
-          * `dockerPort` (`pulumi.Input[str]`) - Port number for Docker engine. Default `2376` (string)
+          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
           * `environment` (`pulumi.Input[str]`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
             `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
           * `faultDomainCount` (`pulumi.Input[str]`)
-          * `image` (`pulumi.Input[str]`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
           * `location` (`pulumi.Input[str]`) - Azure region to create the virtual machine. Default `westus` (string)
           * `managedDisks` (`pulumi.Input[bool]`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
           * `noPublicIp` (`pulumi.Input[bool]`) - Do not create a public IP address for the machine. Default `false` (bool)
@@ -365,7 +387,7 @@ class NodeTemplate(pulumi.CustomResource):
 
           * `accessToken` (`pulumi.Input[str]`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
           * `backups` (`pulumi.Input[bool]`) - Enable backups for droplet. Default `false` (bool)
-          * `image` (`pulumi.Input[str]`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
           * `ipv6` (`pulumi.Input[bool]`) - Enable ipv6 for droplet. Default `false` (bool)
           * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
           * `privateNetworking` (`pulumi.Input[bool]`) - Enable private networking for droplet. Default `false` (bool)
@@ -377,6 +399,25 @@ class NodeTemplate(pulumi.CustomResource):
           * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
           * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
           * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
+
+        The **linode_config** object supports the following:
+
+          * `authorizedUsers` (`pulumi.Input[str]`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+          * `createPrivateIp` (`pulumi.Input[bool]`) - Create private IP for the instance. Default `false` (bool)
+          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+          * `label` (`pulumi.Input[str]`) - Linode Instance Label. (string)
+          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
+          * `rootPass` (`pulumi.Input[str]`) - Root Password (string)
+          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+          * `stackscript` (`pulumi.Input[str]`) - Specifies the Linode StackScript to use to create the instance. (string)
+          * `stackscriptData` (`pulumi.Input[str]`) - A JSON string specifying data for the selected StackScript. (string)
+          * `swapSize` (`pulumi.Input[str]`) - Linode Instance Swap Size (MB). Default `512` (string)
+          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+          * `token` (`pulumi.Input[str]`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+          * `uaPrefix` (`pulumi.Input[str]`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
 
         The **opennebula_config** object supports the following:
 
@@ -501,6 +542,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['engine_registry_mirrors'] = engine_registry_mirrors
             __props__['engine_storage_driver'] = engine_storage_driver
             __props__['labels'] = labels
+            __props__['linode_config'] = linode_config
             __props__['name'] = name
             __props__['opennebula_config'] = opennebula_config
             __props__['openstack_config'] = openstack_config
@@ -514,7 +556,7 @@ class NodeTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
+    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, linode_config=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -540,6 +582,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[list] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[dict] labels: Labels for Node Template object (map)
+        :param pulumi.Input[dict] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
         :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
@@ -555,7 +598,7 @@ class NodeTemplate(pulumi.CustomResource):
           * `endpoint` (`pulumi.Input[str]`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
           * `iamInstanceProfile` (`pulumi.Input[str]`) - AWS IAM Instance Profile (string)
           * `insecureTransport` (`pulumi.Input[bool]`) - Disable SSL when sending requests (bool)
-          * `instanceType` (`pulumi.Input[str]`) - AWS instance type. Default `t2.micro` (string)
+          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
           * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
           * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
           * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
@@ -588,11 +631,11 @@ class NodeTemplate(pulumi.CustomResource):
           * `customData` (`pulumi.Input[str]`) - Path to file with custom-data (string)
           * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
           * `dns` (`pulumi.Input[str]`) - A unique DNS label for the public IP adddress (string)
-          * `dockerPort` (`pulumi.Input[str]`) - Port number for Docker engine. Default `2376` (string)
+          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
           * `environment` (`pulumi.Input[str]`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
             `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
           * `faultDomainCount` (`pulumi.Input[str]`)
-          * `image` (`pulumi.Input[str]`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
           * `location` (`pulumi.Input[str]`) - Azure region to create the virtual machine. Default `westus` (string)
           * `managedDisks` (`pulumi.Input[bool]`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
           * `noPublicIp` (`pulumi.Input[bool]`) - Do not create a public IP address for the machine. Default `false` (bool)
@@ -614,7 +657,7 @@ class NodeTemplate(pulumi.CustomResource):
 
           * `accessToken` (`pulumi.Input[str]`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
           * `backups` (`pulumi.Input[bool]`) - Enable backups for droplet. Default `false` (bool)
-          * `image` (`pulumi.Input[str]`) - Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
           * `ipv6` (`pulumi.Input[bool]`) - Enable ipv6 for droplet. Default `false` (bool)
           * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
           * `privateNetworking` (`pulumi.Input[bool]`) - Enable private networking for droplet. Default `false` (bool)
@@ -626,6 +669,25 @@ class NodeTemplate(pulumi.CustomResource):
           * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
           * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
           * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
+
+        The **linode_config** object supports the following:
+
+          * `authorizedUsers` (`pulumi.Input[str]`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+          * `createPrivateIp` (`pulumi.Input[bool]`) - Create private IP for the instance. Default `false` (bool)
+          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
+          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+          * `label` (`pulumi.Input[str]`) - Linode Instance Label. (string)
+          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
+          * `rootPass` (`pulumi.Input[str]`) - Root Password (string)
+          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+          * `stackscript` (`pulumi.Input[str]`) - Specifies the Linode StackScript to use to create the instance. (string)
+          * `stackscriptData` (`pulumi.Input[str]`) - A JSON string specifying data for the selected StackScript. (string)
+          * `swapSize` (`pulumi.Input[str]`) - Linode Instance Swap Size (MB). Default `512` (string)
+          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+          * `token` (`pulumi.Input[str]`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+          * `uaPrefix` (`pulumi.Input[str]`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
 
         The **opennebula_config** object supports the following:
 
@@ -738,6 +800,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["engine_registry_mirrors"] = engine_registry_mirrors
         __props__["engine_storage_driver"] = engine_storage_driver
         __props__["labels"] = labels
+        __props__["linode_config"] = linode_config
         __props__["name"] = name
         __props__["opennebula_config"] = opennebula_config
         __props__["openstack_config"] = openstack_config

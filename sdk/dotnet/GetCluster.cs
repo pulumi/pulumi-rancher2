@@ -352,11 +352,15 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterClusterMonitoringInputResult
     {
         public readonly ImmutableDictionary<string, object>? Answers;
+        public readonly string? Version;
 
         [OutputConstructor]
-        private GetClusterClusterMonitoringInputResult(ImmutableDictionary<string, object>? answers)
+        private GetClusterClusterMonitoringInputResult(
+            ImmutableDictionary<string, object>? answers,
+            string? version)
         {
             Answers = answers;
+            Version = version;
         }
     }
 

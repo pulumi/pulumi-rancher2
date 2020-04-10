@@ -377,6 +377,12 @@ namespace Pulumi.Rancher2
             set => _answers = value;
         }
 
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public ProjectProjectMonitoringInputArgs()
         {
         }
@@ -395,6 +401,12 @@ namespace Pulumi.Rancher2
             get => _answers ?? (_answers = new InputMap<object>());
             set => _answers = value;
         }
+
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public ProjectProjectMonitoringInputGetArgs()
         {
@@ -812,11 +824,18 @@ namespace Pulumi.Rancher2
         /// Key/value answers for monitor input (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Answers;
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private ProjectProjectMonitoringInput(ImmutableDictionary<string, object>? answers)
+        private ProjectProjectMonitoringInput(
+            ImmutableDictionary<string, object>? answers,
+            string? version)
         {
             Answers = answers;
+            Version = version;
         }
     }
 

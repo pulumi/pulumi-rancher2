@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
+    /// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
     /// 
     /// 
     /// 
@@ -61,6 +61,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Linode config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Output("linodeCredentialConfig")]
+        public Output<Outputs.CloudCredentialLinodeCredentialConfig?> LinodeCredentialConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cloud Credential (string)
@@ -175,6 +181,12 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// Linode config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("linodeCredentialConfig")]
+        public Input<Inputs.CloudCredentialLinodeCredentialConfigArgs>? LinodeCredentialConfig { get; set; }
+
+        /// <summary>
         /// The name of the Cloud Credential (string)
         /// </summary>
         [Input("name")]
@@ -252,6 +264,12 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Linode config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("linodeCredentialConfig")]
+        public Input<Inputs.CloudCredentialLinodeCredentialConfigGetArgs>? LinodeCredentialConfig { get; set; }
 
         /// <summary>
         /// The name of the Cloud Credential (string)
@@ -389,6 +407,32 @@ namespace Pulumi.Rancher2
         public Input<string> AccessToken { get; set; } = null!;
 
         public CloudCredentialDigitaloceanCredentialConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class CloudCredentialLinodeCredentialConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode API token (string)
+        /// </summary>
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
+
+        public CloudCredentialLinodeCredentialConfigArgs()
+        {
+        }
+    }
+
+    public sealed class CloudCredentialLinodeCredentialConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode API token (string)
+        /// </summary>
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
+
+        public CloudCredentialLinodeCredentialConfigGetArgs()
         {
         }
     }
@@ -547,6 +591,21 @@ namespace Pulumi.Rancher2
         private CloudCredentialDigitaloceanCredentialConfig(string accessToken)
         {
             AccessToken = accessToken;
+        }
+    }
+
+    [OutputType]
+    public sealed class CloudCredentialLinodeCredentialConfig
+    {
+        /// <summary>
+        /// Linode API token (string)
+        /// </summary>
+        public readonly string Token;
+
+        [OutputConstructor]
+        private CloudCredentialLinodeCredentialConfig(string token)
+        {
+            Token = token;
         }
     }
 

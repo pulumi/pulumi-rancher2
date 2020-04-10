@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  * 
- * amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
  * 
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  * 
@@ -139,6 +139,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
+     * Linode config for the Node Template (list maxitems:1)
+     */
+    public readonly linodeConfig!: pulumi.Output<outputs.NodeTemplateLinodeConfig | undefined>;
+    /**
      * The name of the Node Template (string)
      */
     public readonly name!: pulumi.Output<string>;
@@ -189,6 +193,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
             inputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
             inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
@@ -213,6 +218,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
             inputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["linodeConfig"] = args ? args.linodeConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
             inputs["openstackConfig"] = args ? args.openstackConfig : undefined;
@@ -308,6 +314,10 @@ export interface NodeTemplateState {
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Linode config for the Node Template (list maxitems:1)
+     */
+    readonly linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
+    /**
      * The name of the Node Template (string)
      */
     readonly name?: pulumi.Input<string>;
@@ -401,6 +411,10 @@ export interface NodeTemplateArgs {
      * Labels for Node Template object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Linode config for the Node Template (list maxitems:1)
+     */
+    readonly linodeConfig?: pulumi.Input<inputs.NodeTemplateLinodeConfig>;
     /**
      * The name of the Node Template (string)
      */

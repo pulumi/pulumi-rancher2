@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
+    /// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
@@ -129,6 +129,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Linode config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Output("linodeConfig")]
+        public Output<Outputs.NodeTemplateLinodeConfig?> LinodeConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Node Template (string)
@@ -351,6 +357,12 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// Linode config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("linodeConfig")]
+        public Input<Inputs.NodeTemplateLinodeConfigArgs>? LinodeConfig { get; set; }
+
+        /// <summary>
         /// The name of the Node Template (string)
         /// </summary>
         [Input("name")]
@@ -538,6 +550,12 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// Linode config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("linodeConfig")]
+        public Input<Inputs.NodeTemplateLinodeConfigGetArgs>? LinodeConfig { get; set; }
+
+        /// <summary>
         /// The name of the Node Template (string)
         /// </summary>
         [Input("name")]
@@ -620,7 +638,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -825,7 +843,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1024,7 +1042,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Dns { get; set; }
 
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
@@ -1040,7 +1058,7 @@ namespace Pulumi.Rancher2
         public Input<string>? FaultDomainCount { get; set; }
 
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -1191,7 +1209,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Dns { get; set; }
 
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
@@ -1207,7 +1225,7 @@ namespace Pulumi.Rancher2
         public Input<string>? FaultDomainCount { get; set; }
 
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -1334,7 +1352,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -1425,7 +1443,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -1497,6 +1515,212 @@ namespace Pulumi.Rancher2
         public Input<string>? Userdata { get; set; }
 
         public NodeTemplateDigitaloceanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateLinodeConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        [Input("authorizedUsers")]
+        public Input<string>? AuthorizedUsers { get; set; }
+
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("createPrivateIp")]
+        public Input<bool>? CreatePrivateIp { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        [Input("rootPass")]
+        public Input<string>? RootPass { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        [Input("stackscript")]
+        public Input<string>? Stackscript { get; set; }
+
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        [Input("stackscriptData")]
+        public Input<string>? StackscriptData { get; set; }
+
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        [Input("swapSize")]
+        public Input<string>? SwapSize { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        [Input("uaPrefix")]
+        public Input<string>? UaPrefix { get; set; }
+
+        public NodeTemplateLinodeConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateLinodeConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        [Input("authorizedUsers")]
+        public Input<string>? AuthorizedUsers { get; set; }
+
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("createPrivateIp")]
+        public Input<bool>? CreatePrivateIp { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        [Input("rootPass")]
+        public Input<string>? RootPass { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        [Input("stackscript")]
+        public Input<string>? Stackscript { get; set; }
+
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        [Input("stackscriptData")]
+        public Input<string>? StackscriptData { get; set; }
+
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        [Input("swapSize")]
+        public Input<string>? SwapSize { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        [Input("uaPrefix")]
+        public Input<string>? UaPrefix { get; set; }
+
+        public NodeTemplateLinodeConfigGetArgs()
         {
         }
     }
@@ -2577,7 +2801,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool? InsecureTransport;
         /// <summary>
-        /// AWS instance type. Default `t2.micro` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -2769,7 +2993,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string? Dns;
         /// <summary>
-        /// Port number for Docker engine. Default `2376` (string)
+        /// Docker Port. Default `2376` (string)
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
@@ -2779,7 +3003,7 @@ namespace Pulumi.Rancher2
         public readonly string? Environment;
         public readonly string? FaultDomainCount;
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -2917,7 +3141,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool? Backups;
         /// <summary>
-        /// Digital Ocean Image. Default `ubuntu-16-04-x64` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         /// </summary>
         public readonly string? Image;
         /// <summary>
@@ -2996,6 +3220,112 @@ namespace Pulumi.Rancher2
             SshUser = sshUser;
             Tags = tags;
             Userdata = userdata;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateLinodeConfig
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        public readonly string? AuthorizedUsers;
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        public readonly bool? CreatePrivateIp;
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        public readonly string? DockerPort;
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        public readonly string? Image;
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        public readonly string? InstanceType;
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        public readonly string? Label;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        public readonly string? RootPass;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        public readonly string? Stackscript;
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        public readonly string? StackscriptData;
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        public readonly string? SwapSize;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public readonly string? Tags;
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Token;
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        public readonly string? UaPrefix;
+
+        [OutputConstructor]
+        private NodeTemplateLinodeConfig(
+            string? authorizedUsers,
+            bool? createPrivateIp,
+            string? dockerPort,
+            string? image,
+            string? instanceType,
+            string? label,
+            string? region,
+            string? rootPass,
+            string? sshPort,
+            string? sshUser,
+            string? stackscript,
+            string? stackscriptData,
+            string? swapSize,
+            string? tags,
+            string? token,
+            string? uaPrefix)
+        {
+            AuthorizedUsers = authorizedUsers;
+            CreatePrivateIp = createPrivateIp;
+            DockerPort = dockerPort;
+            Image = image;
+            InstanceType = instanceType;
+            Label = label;
+            Region = region;
+            RootPass = rootPass;
+            SshPort = sshPort;
+            SshUser = sshUser;
+            Stackscript = stackscript;
+            StackscriptData = stackscriptData;
+            SwapSize = swapSize;
+            Tags = tags;
+            Token = token;
+            UaPrefix = uaPrefix;
         }
     }
 

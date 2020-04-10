@@ -47,6 +47,12 @@ class CloudCredential(pulumi.CustomResource):
     """
     Labels for Cloud Credential object (map)
     """
+    linode_credential_config: pulumi.Output[dict]
+    """
+    Linode config for the Cloud Credential (list maxitems:1)
+
+      * `token` (`str`) - Linode API token (string)
+    """
     name: pulumi.Output[str]
     """
     The name of the Cloud Credential (string)
@@ -66,11 +72,11 @@ class CloudCredential(pulumi.CustomResource):
       * `vcenter` (`str`) - vSphere IP/hostname for vCenter (string)
       * `vcenterPort` (`str`) - vSphere Port for vCenter. Default `443` (string)
     """
-    def __init__(__self__, resource_name, opts=None, amazonec2_credential_config=None, annotations=None, azure_credential_config=None, description=None, digitalocean_credential_config=None, labels=None, name=None, openstack_credential_config=None, vsphere_credential_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, amazonec2_credential_config=None, annotations=None, azure_credential_config=None, description=None, digitalocean_credential_config=None, labels=None, linode_credential_config=None, name=None, openstack_credential_config=None, vsphere_credential_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 
-        amazonec2, azure, digitalocean, openstack and vsphere credentials config are supported for Cloud Credential.
+        amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 
 
 
@@ -84,6 +90,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
         :param pulumi.Input[dict] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[dict] labels: Labels for Cloud Credential object (map)
+        :param pulumi.Input[dict] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[dict] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[dict] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -102,6 +109,10 @@ class CloudCredential(pulumi.CustomResource):
         The **digitalocean_credential_config** object supports the following:
 
           * `accessToken` (`pulumi.Input[str]`) - DigitalOcean access token (string)
+
+        The **linode_credential_config** object supports the following:
+
+          * `token` (`pulumi.Input[str]`) - Linode API token (string)
 
         The **openstack_credential_config** object supports the following:
 
@@ -137,6 +148,7 @@ class CloudCredential(pulumi.CustomResource):
             __props__['description'] = description
             __props__['digitalocean_credential_config'] = digitalocean_credential_config
             __props__['labels'] = labels
+            __props__['linode_credential_config'] = linode_credential_config
             __props__['name'] = name
             __props__['openstack_credential_config'] = openstack_credential_config
             __props__['vsphere_credential_config'] = vsphere_credential_config
@@ -148,7 +160,7 @@ class CloudCredential(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, amazonec2_credential_config=None, annotations=None, azure_credential_config=None, description=None, digitalocean_credential_config=None, driver=None, labels=None, name=None, openstack_credential_config=None, vsphere_credential_config=None):
+    def get(resource_name, id, opts=None, amazonec2_credential_config=None, annotations=None, azure_credential_config=None, description=None, digitalocean_credential_config=None, driver=None, labels=None, linode_credential_config=None, name=None, openstack_credential_config=None, vsphere_credential_config=None):
         """
         Get an existing CloudCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,6 +175,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[dict] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the Cloud Credential (string)
         :param pulumi.Input[dict] labels: Labels for Cloud Credential object (map)
+        :param pulumi.Input[dict] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
         :param pulumi.Input[dict] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[dict] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -181,6 +194,10 @@ class CloudCredential(pulumi.CustomResource):
         The **digitalocean_credential_config** object supports the following:
 
           * `accessToken` (`pulumi.Input[str]`) - DigitalOcean access token (string)
+
+        The **linode_credential_config** object supports the following:
+
+          * `token` (`pulumi.Input[str]`) - Linode API token (string)
 
         The **openstack_credential_config** object supports the following:
 
@@ -204,6 +221,7 @@ class CloudCredential(pulumi.CustomResource):
         __props__["digitalocean_credential_config"] = digitalocean_credential_config
         __props__["driver"] = driver
         __props__["labels"] = labels
+        __props__["linode_credential_config"] = linode_credential_config
         __props__["name"] = name
         __props__["openstack_credential_config"] = openstack_credential_config
         __props__["vsphere_credential_config"] = vsphere_credential_config

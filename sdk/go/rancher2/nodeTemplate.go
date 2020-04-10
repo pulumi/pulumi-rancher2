@@ -12,7 +12,7 @@ import (
 
 // Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 //
-// amazonec2, azure, digitalocean, opennebula, openstack, and vsphere drivers are supported for node templates.
+// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 //
@@ -58,6 +58,8 @@ type NodeTemplate struct {
 	EngineStorageDriver pulumi.StringPtrOutput `pulumi:"engineStorageDriver"`
 	// Labels for Node Template object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Linode config for the Node Template (list maxitems:1)
+	LinodeConfig NodeTemplateLinodeConfigPtrOutput `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Opennebula config for the Node Template (list maxitems:1)
@@ -134,6 +136,8 @@ type nodeTemplateState struct {
 	EngineStorageDriver *string `pulumi:"engineStorageDriver"`
 	// Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Node Template (list maxitems:1)
+	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
 	// Opennebula config for the Node Template (list maxitems:1)
@@ -183,6 +187,8 @@ type NodeTemplateState struct {
 	EngineStorageDriver pulumi.StringPtrInput
 	// Labels for Node Template object (map)
 	Labels pulumi.MapInput
+	// Linode config for the Node Template (list maxitems:1)
+	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
 	// Opennebula config for the Node Template (list maxitems:1)
@@ -234,6 +240,8 @@ type nodeTemplateArgs struct {
 	EngineStorageDriver *string `pulumi:"engineStorageDriver"`
 	// Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Node Template (list maxitems:1)
+	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
 	// Opennebula config for the Node Template (list maxitems:1)
@@ -282,6 +290,8 @@ type NodeTemplateArgs struct {
 	EngineStorageDriver pulumi.StringPtrInput
 	// Labels for Node Template object (map)
 	Labels pulumi.MapInput
+	// Linode config for the Node Template (list maxitems:1)
+	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
 	// Opennebula config for the Node Template (list maxitems:1)

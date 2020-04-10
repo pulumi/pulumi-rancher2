@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.8.2 of the Rancher2 Terraform Provider
+* Upgrade to v1.8.3 of the Rancher2 Terraform Provider
 
 ---
 
