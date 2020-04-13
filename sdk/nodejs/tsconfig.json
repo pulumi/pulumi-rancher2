@@ -66,6 +66,7 @@
         "getProjectRoleTemplateBinding.ts",
         "getRegistry.ts",
         "getRoleTempalte.ts",
+        "getRoleTemplate.ts",
         "getSecret.ts",
         "getSetting.ts",
         "getUser.ts",

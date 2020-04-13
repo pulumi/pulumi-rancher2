@@ -335,13 +335,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{Source: "projectRole.html.markdown"},
 			},
 			"rancher2_registry": {Tok: makeDataSource(mainMod, "getRegistry")},
-			"rancher2_role_template": {
-				Tok:  makeDataSource(mainMod, "getRoleTempalte"),
-				Docs: &tfbridge.DocInfo{Source: "roleTemplate.html.markdown"},
-			},
-			"rancher2_secret":  {Tok: makeDataSource(mainMod, "getSecret")},
-			"rancher2_setting": {Tok: makeDataSource(mainMod, "getSetting")},
-			"rancher2_user":    {Tok: makeDataSource(mainMod, "getUser")},
+			"rancher2_secret":   {Tok: makeDataSource(mainMod, "getSecret")},
+			"rancher2_setting":  {Tok: makeDataSource(mainMod, "getSetting")},
+			"rancher2_user":     {Tok: makeDataSource(mainMod, "getUser")},
 			"rancher2_pod_security_policy_template": {
 				Tok:  makeDataSource(mainMod, "getPodSecurityPolicyTemplate"),
 				Docs: &tfbridge.DocInfo{Source: "podSecurityPolicyTemplate.html.markdown"},
@@ -372,6 +368,11 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
+
+	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
+		makeDataSource(mainMod, "getRoleTemplate"), mainMod, mainMod, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{Source: "roleTemplate.html.markdown"},
+		})
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

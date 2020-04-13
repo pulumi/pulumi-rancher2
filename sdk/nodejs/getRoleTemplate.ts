@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
  */
-export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> & GetRoleTempalteResult {
+export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> & GetRoleTemplateResult {
     if (!opts) {
         opts = {}
     }
@@ -30,7 +30,7 @@ export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRoleTempalteResult> = pulumi.runtime.invoke("rancher2:index/getRoleTempalte:getRoleTempalte", {
+    const promise: Promise<GetRoleTemplateResult> = pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,
         "name": args.name,
     }, opts);
@@ -39,9 +39,9 @@ export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeO
 }
 
 /**
- * A collection of arguments for invoking getRoleTempalte.
+ * A collection of arguments for invoking getRoleTemplate.
  */
-export interface GetRoleTempalteArgs {
+export interface GetRoleTemplateArgs {
     /**
      * Role template context. `cluster` and `project` values are supported (string)
      */
@@ -53,9 +53,9 @@ export interface GetRoleTempalteArgs {
 }
 
 /**
- * A collection of values returned by getRoleTempalte.
+ * A collection of values returned by getRoleTemplate.
  */
-export interface GetRoleTempalteResult {
+export interface GetRoleTemplateResult {
     /**
      * (Computed) Administrative role template (bool)
      */
@@ -101,7 +101,7 @@ export interface GetRoleTempalteResult {
     /**
      * (Computed) Role template policy rules (list)
      */
-    readonly rules: outputs.GetRoleTempalteRule[];
+    readonly rules: outputs.GetRoleTemplateRule[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */
