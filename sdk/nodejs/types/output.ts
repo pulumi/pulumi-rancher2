@@ -4413,6 +4413,14 @@ export interface GetRoleTempalteRule {
     verbs?: string[];
 }
 
+export interface GetRoleTemplateRule {
+    apiGroups?: string[];
+    nonResourceUrls?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs?: string[];
+}
+
 export interface MultiClusterAppAnswer {
     /**
      * Cluster ID for answer (string)

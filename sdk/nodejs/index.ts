@@ -53,6 +53,7 @@ export * from "./getProjectLogging";
 export * from "./getProjectRoleTemplateBinding";
 export * from "./getRegistry";
 export * from "./getRoleTempalte";
+export * from "./getRoleTemplate";
 export * from "./getSecret";
 export * from "./getSetting";
 export * from "./getUser";

@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.8.3 of the Rancher2 Terraform Provider
+* Rename datasource `getRoleTempalte` to `getRoleTemplate`
 
 ---
 

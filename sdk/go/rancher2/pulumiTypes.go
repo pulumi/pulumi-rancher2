@@ -49991,6 +49991,116 @@ func (o GetRoleTempalteRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTempalte
 	}).(GetRoleTempalteRuleOutput)
 }
 
+type GetRoleTemplateRule struct {
+	ApiGroups       []string `pulumi:"apiGroups"`
+	NonResourceUrls []string `pulumi:"nonResourceUrls"`
+	ResourceNames   []string `pulumi:"resourceNames"`
+	Resources       []string `pulumi:"resources"`
+	Verbs           []string `pulumi:"verbs"`
+}
+
+type GetRoleTemplateRuleInput interface {
+	pulumi.Input
+
+	ToGetRoleTemplateRuleOutput() GetRoleTemplateRuleOutput
+	ToGetRoleTemplateRuleOutputWithContext(context.Context) GetRoleTemplateRuleOutput
+}
+
+type GetRoleTemplateRuleArgs struct {
+	ApiGroups       pulumi.StringArrayInput `pulumi:"apiGroups"`
+	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
+	ResourceNames   pulumi.StringArrayInput `pulumi:"resourceNames"`
+	Resources       pulumi.StringArrayInput `pulumi:"resources"`
+	Verbs           pulumi.StringArrayInput `pulumi:"verbs"`
+}
+
+func (GetRoleTemplateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleTemplateRule)(nil)).Elem()
+}
+
+func (i GetRoleTemplateRuleArgs) ToGetRoleTemplateRuleOutput() GetRoleTemplateRuleOutput {
+	return i.ToGetRoleTemplateRuleOutputWithContext(context.Background())
+}
+
+func (i GetRoleTemplateRuleArgs) ToGetRoleTemplateRuleOutputWithContext(ctx context.Context) GetRoleTemplateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateRuleOutput)
+}
+
+type GetRoleTemplateRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRoleTemplateRuleArrayOutput() GetRoleTemplateRuleArrayOutput
+	ToGetRoleTemplateRuleArrayOutputWithContext(context.Context) GetRoleTemplateRuleArrayOutput
+}
+
+type GetRoleTemplateRuleArray []GetRoleTemplateRuleInput
+
+func (GetRoleTemplateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleTemplateRule)(nil)).Elem()
+}
+
+func (i GetRoleTemplateRuleArray) ToGetRoleTemplateRuleArrayOutput() GetRoleTemplateRuleArrayOutput {
+	return i.ToGetRoleTemplateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoleTemplateRuleArray) ToGetRoleTemplateRuleArrayOutputWithContext(ctx context.Context) GetRoleTemplateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateRuleArrayOutput)
+}
+
+type GetRoleTemplateRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRoleTemplateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleTemplateRule)(nil)).Elem()
+}
+
+func (o GetRoleTemplateRuleOutput) ToGetRoleTemplateRuleOutput() GetRoleTemplateRuleOutput {
+	return o
+}
+
+func (o GetRoleTemplateRuleOutput) ToGetRoleTemplateRuleOutputWithContext(ctx context.Context) GetRoleTemplateRuleOutput {
+	return o
+}
+
+func (o GetRoleTemplateRuleOutput) ApiGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoleTemplateRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoleTemplateRuleOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoleTemplateRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoleTemplateRuleOutput) Verbs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type GetRoleTemplateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoleTemplateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleTemplateRule)(nil)).Elem()
+}
+
+func (o GetRoleTemplateRuleArrayOutput) ToGetRoleTemplateRuleArrayOutput() GetRoleTemplateRuleArrayOutput {
+	return o
+}
+
+func (o GetRoleTemplateRuleArrayOutput) ToGetRoleTemplateRuleArrayOutputWithContext(ctx context.Context) GetRoleTemplateRuleArrayOutput {
+	return o
+}
+
+func (o GetRoleTemplateRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleTemplateRule {
+		return vs[0].([]GetRoleTemplateRule)[vs[1].(int)]
+	}).(GetRoleTemplateRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CloudCredentialAmazonec2CredentialConfigOutput{})
 	pulumi.RegisterOutputType(CloudCredentialAmazonec2CredentialConfigPtrOutput{})
@@ -50594,4 +50704,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRegistryRegistryArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleTempalteRuleOutput{})
 	pulumi.RegisterOutputType(GetRoleTempalteRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRoleTemplateRuleOutput{})
+	pulumi.RegisterOutputType(GetRoleTemplateRuleArrayOutput{})
 }
