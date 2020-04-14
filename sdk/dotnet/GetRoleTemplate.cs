@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 role template resource.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRoleTemplate.InvokeAsync() instead")]
-        public static Task<GetRoleTemplateResult> GetRoleTemplate(GetRoleTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRoleTemplate
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 role template resource.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleTemplateResult> InvokeAsync(GetRoleTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTemplateResult>("rancher2:index/getRoleTemplate:getRoleTemplate", args ?? new GetRoleTemplateArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRoleTemplateArgs : Pulumi.InvokeArgs
     {
@@ -49,6 +40,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetRoleTemplateResult
@@ -83,6 +75,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool Hidden;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels for role template object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -98,28 +94,37 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Role template policy rules (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRoleTemplateRulesResult> Rules;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetRoleTemplateRuleResult> Rules;
 
         [OutputConstructor]
         private GetRoleTemplateResult(
             bool administrative,
+
             ImmutableDictionary<string, object> annotations,
+
             bool builtin,
+
             string context,
+
             bool defaultRole,
+
             string description,
+
             bool external,
+
             bool hidden,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             bool locked,
+
             string name,
+
             ImmutableArray<string> roleTemplateIds,
-            ImmutableArray<Outputs.GetRoleTemplateRulesResult> rules,
-            string id)
+
+            ImmutableArray<Outputs.GetRoleTemplateRuleResult> rules)
         {
             Administrative = administrative;
             Annotations = annotations;
@@ -129,41 +134,12 @@ namespace Pulumi.Rancher2
             Description = description;
             External = external;
             Hidden = hidden;
+            Id = id;
             Labels = labels;
             Locked = locked;
             Name = name;
             RoleTemplateIds = roleTemplateIds;
             Rules = rules;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRoleTemplateRulesResult
-    {
-        public readonly ImmutableArray<string> ApiGroups;
-        public readonly ImmutableArray<string> NonResourceUrls;
-        public readonly ImmutableArray<string> ResourceNames;
-        public readonly ImmutableArray<string> Resources;
-        public readonly ImmutableArray<string> Verbs;
-
-        [OutputConstructor]
-        private GetRoleTemplateRulesResult(
-            ImmutableArray<string> apiGroups,
-            ImmutableArray<string> nonResourceUrls,
-            ImmutableArray<string> resourceNames,
-            ImmutableArray<string> resources,
-            ImmutableArray<string> verbs)
-        {
-            ApiGroups = apiGroups;
-            NonResourceUrls = nonResourceUrls;
-            ResourceNames = resourceNames;
-            Resources = resources;
-            Verbs = verbs;
-        }
-    }
     }
 }

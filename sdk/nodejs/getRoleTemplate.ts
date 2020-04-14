@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
  */
-export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> & GetRoleTemplateResult {
+export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,12 +32,10 @@ export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRoleTemplateResult> = pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
+    return pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

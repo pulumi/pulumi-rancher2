@@ -53704,6 +53704,11 @@ type GetRoleTemplateRule struct {
 	Verbs           []string `pulumi:"verbs"`
 }
 
+// GetRoleTemplateRuleInput is an input type that accepts GetRoleTemplateRuleArgs and GetRoleTemplateRuleOutput values.
+// You can construct a concrete instance of `GetRoleTemplateRuleInput` via:
+//
+// 		 GetRoleTemplateRuleArgs{...}
+//
 type GetRoleTemplateRuleInput interface {
 	pulumi.Input
 
@@ -53731,6 +53736,11 @@ func (i GetRoleTemplateRuleArgs) ToGetRoleTemplateRuleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateRuleOutput)
 }
 
+// GetRoleTemplateRuleArrayInput is an input type that accepts GetRoleTemplateRuleArray and GetRoleTemplateRuleArrayOutput values.
+// You can construct a concrete instance of `GetRoleTemplateRuleArrayInput` via:
+//
+// 		 GetRoleTemplateRuleArray{ GetRoleTemplateRuleArgs{...} }
+//
 type GetRoleTemplateRuleArrayInput interface {
 	pulumi.Input
 
