@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
  */
-export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> & GetClusterDriverResult {
+export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,12 +32,10 @@ export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterDriverResult> = pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,
         "url": args.url,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

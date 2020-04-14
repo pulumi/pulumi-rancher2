@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Cluster Logging.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusterLogging.InvokeAsync() instead")]
-        public static Task<GetClusterLoggingResult> GetClusterLogging(GetClusterLoggingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusterLogging
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Logging.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterLoggingResult> InvokeAsync(GetClusterLoggingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterLoggingResult>("rancher2:index/getClusterLogging:getClusterLogging", args ?? new GetClusterLoggingArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClusterLoggingArgs : Pulumi.InvokeArgs
     {
@@ -43,6 +34,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetClusterLoggingResult
@@ -62,6 +54,10 @@ namespace Pulumi.Rancher2
         /// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterLoggingFluentdConfigResult FluentdConfig;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
         /// </summary>
@@ -98,29 +94,40 @@ namespace Pulumi.Rancher2
         /// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterLoggingSyslogConfigResult SyslogConfig;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClusterLoggingResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             Outputs.GetClusterLoggingCustomTargetConfigResult customTargetConfig,
+
             Outputs.GetClusterLoggingElasticsearchConfigResult elasticsearchConfig,
+
             bool enableJsonParsing,
+
             Outputs.GetClusterLoggingFluentdConfigResult fluentdConfig,
+
+            string id,
+
             Outputs.GetClusterLoggingKafkaConfigResult kafkaConfig,
+
             string kind,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string namespaceId,
+
             int outputFlushInterval,
+
             ImmutableDictionary<string, object> outputTags,
+
             Outputs.GetClusterLoggingSplunkConfigResult splunkConfig,
-            Outputs.GetClusterLoggingSyslogConfigResult syslogConfig,
-            string id)
+
+            Outputs.GetClusterLoggingSyslogConfigResult syslogConfig)
         {
             Annotations = annotations;
             ClusterId = clusterId;
@@ -128,6 +135,7 @@ namespace Pulumi.Rancher2
             ElasticsearchConfig = elasticsearchConfig;
             EnableJsonParsing = enableJsonParsing;
             FluentdConfig = fluentdConfig;
+            Id = id;
             KafkaConfig = kafkaConfig;
             Kind = kind;
             Labels = labels;
@@ -137,231 +145,6 @@ namespace Pulumi.Rancher2
             OutputTags = outputTags;
             SplunkConfig = splunkConfig;
             SyslogConfig = syslogConfig;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetClusterLoggingCustomTargetConfigResult
-    {
-        public readonly string? Certificate;
-        public readonly string? ClientCert;
-        public readonly string? ClientKey;
-        public readonly string Content;
-
-        [OutputConstructor]
-        private GetClusterLoggingCustomTargetConfigResult(
-            string? certificate,
-            string? clientCert,
-            string? clientKey,
-            string content)
-        {
-            Certificate = certificate;
-            ClientCert = clientCert;
-            ClientKey = clientKey;
-            Content = content;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingElasticsearchConfigResult
-    {
-        public readonly string? AuthPassword;
-        public readonly string? AuthUsername;
-        public readonly string? Certificate;
-        public readonly string? ClientCert;
-        public readonly string? ClientKey;
-        public readonly string? ClientKeyPass;
-        public readonly string? DateFormat;
-        public readonly string Endpoint;
-        public readonly string? IndexPrefix;
-        public readonly bool SslVerify;
-        public readonly string? SslVersion;
-
-        [OutputConstructor]
-        private GetClusterLoggingElasticsearchConfigResult(
-            string? authPassword,
-            string? authUsername,
-            string? certificate,
-            string? clientCert,
-            string? clientKey,
-            string? clientKeyPass,
-            string? dateFormat,
-            string endpoint,
-            string? indexPrefix,
-            bool sslVerify,
-            string? sslVersion)
-        {
-            AuthPassword = authPassword;
-            AuthUsername = authUsername;
-            Certificate = certificate;
-            ClientCert = clientCert;
-            ClientKey = clientKey;
-            ClientKeyPass = clientKeyPass;
-            DateFormat = dateFormat;
-            Endpoint = endpoint;
-            IndexPrefix = indexPrefix;
-            SslVerify = sslVerify;
-            SslVersion = sslVersion;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingFluentdConfigFluentServersResult
-    {
-        public readonly string Endpoint;
-        public readonly string? Hostname;
-        public readonly string? Password;
-        public readonly string? SharedKey;
-        public readonly bool? Standby;
-        public readonly string? Username;
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private GetClusterLoggingFluentdConfigFluentServersResult(
-            string endpoint,
-            string? hostname,
-            string? password,
-            string? sharedKey,
-            bool? standby,
-            string? username,
-            int? weight)
-        {
-            Endpoint = endpoint;
-            Hostname = hostname;
-            Password = password;
-            SharedKey = sharedKey;
-            Standby = standby;
-            Username = username;
-            Weight = weight;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingFluentdConfigResult
-    {
-        public readonly string? Certificate;
-        public readonly bool? Compress;
-        public readonly bool? EnableTls;
-        public readonly ImmutableArray<GetClusterLoggingFluentdConfigFluentServersResult> FluentServers;
-
-        [OutputConstructor]
-        private GetClusterLoggingFluentdConfigResult(
-            string? certificate,
-            bool? compress,
-            bool? enableTls,
-            ImmutableArray<GetClusterLoggingFluentdConfigFluentServersResult> fluentServers)
-        {
-            Certificate = certificate;
-            Compress = compress;
-            EnableTls = enableTls;
-            FluentServers = fluentServers;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingKafkaConfigResult
-    {
-        public readonly ImmutableArray<string> BrokerEndpoints;
-        public readonly string? Certificate;
-        public readonly string? ClientCert;
-        public readonly string? ClientKey;
-        public readonly string Topic;
-        public readonly string? ZookeeperEndpoint;
-
-        [OutputConstructor]
-        private GetClusterLoggingKafkaConfigResult(
-            ImmutableArray<string> brokerEndpoints,
-            string? certificate,
-            string? clientCert,
-            string? clientKey,
-            string topic,
-            string? zookeeperEndpoint)
-        {
-            BrokerEndpoints = brokerEndpoints;
-            Certificate = certificate;
-            ClientCert = clientCert;
-            ClientKey = clientKey;
-            Topic = topic;
-            ZookeeperEndpoint = zookeeperEndpoint;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingSplunkConfigResult
-    {
-        public readonly string? Certificate;
-        public readonly string? ClientCert;
-        public readonly string? ClientKey;
-        public readonly string? ClientKeyPass;
-        public readonly string Endpoint;
-        public readonly string? Index;
-        public readonly string? Source;
-        public readonly bool SslVerify;
-        public readonly string Token;
-
-        [OutputConstructor]
-        private GetClusterLoggingSplunkConfigResult(
-            string? certificate,
-            string? clientCert,
-            string? clientKey,
-            string? clientKeyPass,
-            string endpoint,
-            string? index,
-            string? source,
-            bool sslVerify,
-            string token)
-        {
-            Certificate = certificate;
-            ClientCert = clientCert;
-            ClientKey = clientKey;
-            ClientKeyPass = clientKeyPass;
-            Endpoint = endpoint;
-            Index = index;
-            Source = source;
-            SslVerify = sslVerify;
-            Token = token;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterLoggingSyslogConfigResult
-    {
-        public readonly string? Certificate;
-        public readonly string? ClientCert;
-        public readonly string? ClientKey;
-        public readonly string Endpoint;
-        public readonly string? Program;
-        public readonly string? Protocol;
-        public readonly string? Severity;
-        public readonly bool SslVerify;
-        public readonly string? Token;
-
-        [OutputConstructor]
-        private GetClusterLoggingSyslogConfigResult(
-            string? certificate,
-            string? clientCert,
-            string? clientKey,
-            string endpoint,
-            string? program,
-            string? protocol,
-            string? severity,
-            bool sslVerify,
-            string? token)
-        {
-            Certificate = certificate;
-            ClientCert = clientCert;
-            ClientKey = clientKey;
-            Endpoint = endpoint;
-            Program = program;
-            Protocol = protocol;
-            Severity = severity;
-            SslVerify = sslVerify;
-            Token = token;
-        }
-    }
     }
 }

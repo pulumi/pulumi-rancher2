@@ -144,7 +144,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigActiveDirectory.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

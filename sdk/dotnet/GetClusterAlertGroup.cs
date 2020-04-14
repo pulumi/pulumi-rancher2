@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 cluster alert group.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusterAlertGroup.InvokeAsync() instead")]
-        public static Task<GetClusterAlertGroupResult> GetClusterAlertGroup(GetClusterAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusterAlertGroup
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster alert group.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlertGroupResult> InvokeAsync(GetClusterAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClusterAlertGroupArgs : Pulumi.InvokeArgs
     {
@@ -49,6 +40,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetClusterAlertGroupResult
@@ -71,6 +63,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly int GroupWaitSeconds;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) The cluster alert group labels (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -78,65 +74,44 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The cluster alert group recipients (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetClusterAlertGroupRecipientsResult> Recipients;
+        public readonly ImmutableArray<Outputs.GetClusterAlertGroupRecipientResult> Recipients;
         /// <summary>
         /// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
         /// </summary>
         public readonly int RepeatIntervalSeconds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClusterAlertGroupResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             string description,
+
             int groupIntervalSeconds,
+
             int groupWaitSeconds,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
-            ImmutableArray<Outputs.GetClusterAlertGroupRecipientsResult> recipients,
-            int repeatIntervalSeconds,
-            string id)
+
+            ImmutableArray<Outputs.GetClusterAlertGroupRecipientResult> recipients,
+
+            int repeatIntervalSeconds)
         {
             Annotations = annotations;
             ClusterId = clusterId;
             Description = description;
             GroupIntervalSeconds = groupIntervalSeconds;
             GroupWaitSeconds = groupWaitSeconds;
+            Id = id;
             Labels = labels;
             Name = name;
             Recipients = recipients;
             RepeatIntervalSeconds = repeatIntervalSeconds;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetClusterAlertGroupRecipientsResult
-    {
-        public readonly bool? DefaultRecipient;
-        public readonly string NotifierId;
-        public readonly string NotifierType;
-        public readonly string Recipient;
-
-        [OutputConstructor]
-        private GetClusterAlertGroupRecipientsResult(
-            bool? defaultRecipient,
-            string notifierId,
-            string notifierType,
-            string recipient)
-        {
-            DefaultRecipient = defaultRecipient;
-            NotifierId = notifierId;
-            NotifierType = notifierType;
-            Recipient = recipient;
-        }
-    }
     }
 }

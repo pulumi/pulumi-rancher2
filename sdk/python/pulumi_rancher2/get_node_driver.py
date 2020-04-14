@@ -103,7 +103,7 @@ def get_node_driver(name=None,url=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
+
 
 
     :param str name: Name of the node driver (string)

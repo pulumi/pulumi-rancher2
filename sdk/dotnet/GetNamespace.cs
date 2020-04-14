@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 namespace.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNamespace.InvokeAsync() instead")]
-        public static Task<GetNamespaceResult> GetNamespace(GetNamespaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNamespace
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 namespace.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespaceResult> InvokeAsync(GetNamespaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceResult>("rancher2:index/getNamespace:getNamespace", args ?? new GetNamespaceArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNamespaceArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +41,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetNamespaceResult
     {
@@ -66,6 +58,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -75,117 +71,33 @@ namespace Pulumi.Rancher2
         /// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetNamespaceResourceQuotaResult ResourceQuota;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNamespaceResult(
             ImmutableDictionary<string, object> annotations,
+
             Outputs.GetNamespaceContainerResourceLimitResult containerResourceLimit,
+
             string description,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string projectId,
-            Outputs.GetNamespaceResourceQuotaResult resourceQuota,
-            string id)
+
+            Outputs.GetNamespaceResourceQuotaResult resourceQuota)
         {
             Annotations = annotations;
             ContainerResourceLimit = containerResourceLimit;
             Description = description;
+            Id = id;
             Labels = labels;
             Name = name;
             ProjectId = projectId;
             ResourceQuota = resourceQuota;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNamespaceContainerResourceLimitResult
-    {
-        public readonly string? LimitsCpu;
-        public readonly string? LimitsMemory;
-        public readonly string? RequestsCpu;
-        public readonly string? RequestsMemory;
-
-        [OutputConstructor]
-        private GetNamespaceContainerResourceLimitResult(
-            string? limitsCpu,
-            string? limitsMemory,
-            string? requestsCpu,
-            string? requestsMemory)
-        {
-            LimitsCpu = limitsCpu;
-            LimitsMemory = limitsMemory;
-            RequestsCpu = requestsCpu;
-            RequestsMemory = requestsMemory;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNamespaceResourceQuotaLimitResult
-    {
-        public readonly string? ConfigMaps;
-        public readonly string? LimitsCpu;
-        public readonly string? LimitsMemory;
-        public readonly string? PersistentVolumeClaims;
-        public readonly string? Pods;
-        public readonly string? ReplicationControllers;
-        public readonly string? RequestsCpu;
-        public readonly string? RequestsMemory;
-        public readonly string? RequestsStorage;
-        public readonly string? Secrets;
-        public readonly string? Services;
-        public readonly string? ServicesLoadBalancers;
-        public readonly string? ServicesNodePorts;
-
-        [OutputConstructor]
-        private GetNamespaceResourceQuotaLimitResult(
-            string? configMaps,
-            string? limitsCpu,
-            string? limitsMemory,
-            string? persistentVolumeClaims,
-            string? pods,
-            string? replicationControllers,
-            string? requestsCpu,
-            string? requestsMemory,
-            string? requestsStorage,
-            string? secrets,
-            string? services,
-            string? servicesLoadBalancers,
-            string? servicesNodePorts)
-        {
-            ConfigMaps = configMaps;
-            LimitsCpu = limitsCpu;
-            LimitsMemory = limitsMemory;
-            PersistentVolumeClaims = persistentVolumeClaims;
-            Pods = pods;
-            ReplicationControllers = replicationControllers;
-            RequestsCpu = requestsCpu;
-            RequestsMemory = requestsMemory;
-            RequestsStorage = requestsStorage;
-            Secrets = secrets;
-            Services = services;
-            ServicesLoadBalancers = servicesLoadBalancers;
-            ServicesNodePorts = servicesNodePorts;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNamespaceResourceQuotaResult
-    {
-        public readonly GetNamespaceResourceQuotaLimitResult Limit;
-
-        [OutputConstructor]
-        private GetNamespaceResourceQuotaResult(GetNamespaceResourceQuotaLimitResult limit)
-        {
-            Limit = limit;
-        }
-    }
     }
 }

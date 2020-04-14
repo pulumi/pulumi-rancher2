@@ -198,7 +198,7 @@ def get_cluster(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster.html.markdown.
+
 
 
     :param str name: The name of the Cluster (string)

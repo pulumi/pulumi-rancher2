@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -25,22 +27,10 @@ import * as utilities from "./utilities";
  *     projectId: "<project_id>",
  * });
  * ```
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Retrieve a rancher2 Namespaced Registry
- * const foo = rancher2.getRegistry({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
  */
-export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> & GetRegistryResult {
+export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
     if (!opts) {
         opts = {}
     }
@@ -48,13 +38,11 @@ export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegistryResult> = pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
+    return pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
         "name": args.name,
         "namespaceId": args.namespaceId,
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

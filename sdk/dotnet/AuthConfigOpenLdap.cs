@@ -13,8 +13,6 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigOpenLdap.html.markdown.
     /// </summary>
     public partial class AuthConfigOpenLdap : Pulumi.CustomResource
     {
@@ -207,7 +205,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AuthConfigOpenLdap(string name, AuthConfigOpenLdapArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap", name, args ?? new AuthConfigOpenLdapArgs(), MakeResourceOptions(options, ""))
         {
         }
 

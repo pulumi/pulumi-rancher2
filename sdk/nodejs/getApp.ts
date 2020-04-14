@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
  */
-export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> & GetAppResult {
+export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,14 +34,12 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAppResult> = pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
+    return pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
         "annotations": args.annotations,
         "name": args.name,
         "projectId": args.projectId,
         "targetNamespace": args.targetNamespace,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

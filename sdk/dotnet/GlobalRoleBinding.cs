@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/globalRole.html.markdown.
     /// </summary>
     public partial class GlobalRoleBinding : Pulumi.CustomResource
     {
@@ -61,7 +59,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GlobalRoleBinding(string name, GlobalRoleBindingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, args ?? new GlobalRoleBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 

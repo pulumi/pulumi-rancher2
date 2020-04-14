@@ -127,7 +127,7 @@ def get_multi_cluster_app(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
+
 
 
     :param str name: The multi cluster app name (string)

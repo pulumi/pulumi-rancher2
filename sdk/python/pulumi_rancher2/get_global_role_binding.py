@@ -68,7 +68,7 @@ def get_global_role_binding(global_role_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 global role binding.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
+
 
 
     :param str global_role_id: The global role id (string)

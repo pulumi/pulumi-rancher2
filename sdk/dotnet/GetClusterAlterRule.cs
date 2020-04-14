@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusterAlterRule.InvokeAsync() instead")]
-        public static Task<GetClusterAlterRuleResult> GetClusterAlterRule(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusterAlterRule
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlterRuleResult> InvokeAsync(GetClusterAlterRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlterRuleResult>("rancher2:index/getClusterAlterRule:getClusterAlterRule", args ?? new GetClusterAlterRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClusterAlterRuleArgs : Pulumi.InvokeArgs
     {
@@ -62,6 +53,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetClusterAlterRuleResult
     {
@@ -86,6 +78,10 @@ namespace Pulumi.Rancher2
         /// (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         public readonly int GroupWaitSeconds;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) The cluster alert rule inherited. Default: `true` (bool)
         /// </summary>
@@ -115,28 +111,38 @@ namespace Pulumi.Rancher2
         /// (Computed) The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterAlterRuleSystemServiceRuleResult SystemServiceRule;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClusterAlterRuleResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             Outputs.GetClusterAlterRuleEventRuleResult eventRule,
+
             string groupId,
+
             int groupIntervalSeconds,
+
             int groupWaitSeconds,
+
+            string id,
+
             bool inherited,
+
             ImmutableDictionary<string, object>? labels,
+
             Outputs.GetClusterAlterRuleMetricRuleResult metricRule,
+
             string name,
+
             Outputs.GetClusterAlterRuleNodeRuleResult nodeRule,
+
             int repeatIntervalSeconds,
+
             string severity,
-            Outputs.GetClusterAlterRuleSystemServiceRuleResult systemServiceRule,
-            string id)
+
+            Outputs.GetClusterAlterRuleSystemServiceRuleResult systemServiceRule)
         {
             Annotations = annotations;
             ClusterId = clusterId;
@@ -144,6 +150,7 @@ namespace Pulumi.Rancher2
             GroupId = groupId;
             GroupIntervalSeconds = groupIntervalSeconds;
             GroupWaitSeconds = groupWaitSeconds;
+            Id = id;
             Inherited = inherited;
             Labels = labels;
             MetricRule = metricRule;
@@ -152,89 +159,6 @@ namespace Pulumi.Rancher2
             RepeatIntervalSeconds = repeatIntervalSeconds;
             Severity = severity;
             SystemServiceRule = systemServiceRule;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetClusterAlterRuleEventRuleResult
-    {
-        public readonly string? EventType;
-        public readonly string ResourceKind;
-
-        [OutputConstructor]
-        private GetClusterAlterRuleEventRuleResult(
-            string? eventType,
-            string resourceKind)
-        {
-            EventType = eventType;
-            ResourceKind = resourceKind;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterAlterRuleMetricRuleResult
-    {
-        public readonly string? Comparison;
-        public readonly string? Description;
-        public readonly string Duration;
-        public readonly string Expression;
-        public readonly double ThresholdValue;
-
-        [OutputConstructor]
-        private GetClusterAlterRuleMetricRuleResult(
-            string? comparison,
-            string? description,
-            string duration,
-            string expression,
-            double thresholdValue)
-        {
-            Comparison = comparison;
-            Description = description;
-            Duration = duration;
-            Expression = expression;
-            ThresholdValue = thresholdValue;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterAlterRuleNodeRuleResult
-    {
-        public readonly string? Condition;
-        public readonly int? CpuThreshold;
-        public readonly int? MemThreshold;
-        public readonly string? NodeId;
-        public readonly ImmutableDictionary<string, object>? Selector;
-
-        [OutputConstructor]
-        private GetClusterAlterRuleNodeRuleResult(
-            string? condition,
-            int? cpuThreshold,
-            int? memThreshold,
-            string? nodeId,
-            ImmutableDictionary<string, object>? selector)
-        {
-            Condition = condition;
-            CpuThreshold = cpuThreshold;
-            MemThreshold = memThreshold;
-            NodeId = nodeId;
-            Selector = selector;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClusterAlterRuleSystemServiceRuleResult
-    {
-        public readonly string? Condition;
-
-        [OutputConstructor]
-        private GetClusterAlterRuleSystemServiceRuleResult(string? condition)
-        {
-            Condition = condition;
-        }
-    }
     }
 }

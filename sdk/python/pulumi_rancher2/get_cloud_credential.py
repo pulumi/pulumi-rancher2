@@ -50,7 +50,7 @@ def get_cloud_credential(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
+
 
 
     :param str name: The Cloud Credential name.

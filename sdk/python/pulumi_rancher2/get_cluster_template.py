@@ -77,7 +77,7 @@ def get_cluster_template(annotations=None,description=None,labels=None,name=None
 
     Cluster Templates are available from Rancher v2.3.x and above.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
+
 
 
     :param dict annotations: (Computed) Annotations for the cluster template (map)

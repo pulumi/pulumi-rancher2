@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
  */
-export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> & GetNodeDriverResult {
+export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,12 +32,10 @@ export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNodeDriverResult> = pulumi.runtime.invoke("rancher2:index/getNodeDriver:getNodeDriver", {
+    return pulumi.runtime.invoke("rancher2:index/getNodeDriver:getNodeDriver", {
         "name": args.name,
         "url": args.url,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

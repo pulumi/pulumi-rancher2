@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
  */
-export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> & GetNamespaceResult {
+export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,12 +33,10 @@ export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNamespaceResult> = pulumi.runtime.invoke("rancher2:index/getNamespace:getNamespace", {
+    return pulumi.runtime.invoke("rancher2:index/getNamespace:getNamespace", {
         "name": args.name,
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

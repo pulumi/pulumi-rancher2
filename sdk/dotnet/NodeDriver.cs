@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeDriver.html.markdown.
     /// </summary>
     public partial class NodeDriver : Pulumi.CustomResource
     {
@@ -91,7 +89,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeDriver(string name, NodeDriverArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/nodeDriver:NodeDriver", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/nodeDriver:NodeDriver", name, args ?? new NodeDriverArgs(), MakeResourceOptions(options, ""))
         {
         }
 

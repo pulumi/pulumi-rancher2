@@ -8,7 +8,6 @@ namespace Pulumi.Rancher2
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("rancher2");
-
         /// <summary>
         /// API Key used to authenticate with the rancher server
         /// </summary>
@@ -25,8 +24,7 @@ namespace Pulumi.Rancher2
         public static bool? Bootstrap { get; set; } = __config.GetBoolean("bootstrap") ?? Utilities.GetEnvBoolean("RANCHER_BOOTSTRAP") ?? false;
 
         /// <summary>
-        /// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure
-        /// option false
+        /// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
         /// </summary>
         public static string? CaCerts { get; set; } = __config.Get("caCerts") ?? Utilities.GetEnv("RANCHER_CA_CERTS");
 
@@ -50,8 +48,5 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static string? TokenKey { get; set; } = __config.Get("tokenKey") ?? Utilities.GetEnv("RANCHER_TOKEN_KEY");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

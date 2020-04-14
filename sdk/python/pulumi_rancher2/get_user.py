@@ -75,7 +75,7 @@ def get_user(is_external=None,name=None,username=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 user
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
+
 
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)

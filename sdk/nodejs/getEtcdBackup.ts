@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
  */
-export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> & GetEtcdBackupResult {
+export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,12 +33,10 @@ export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEtcdBackupResult> = pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
+    return pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
  */
-export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> & GetClusterTemplateResult {
+export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,14 +34,12 @@ export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterTemplateResult> = pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
         "annotations": args.annotations,
         "description": args.description,
         "labels": args.labels,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

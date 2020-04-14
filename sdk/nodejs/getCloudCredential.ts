@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
  */
-export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> & GetCloudCredentialResult {
+export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
     if (!opts) {
         opts = {}
     }
@@ -30,11 +32,9 @@ export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCloudCredentialResult> = pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
+    return pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

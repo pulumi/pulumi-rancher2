@@ -144,7 +144,7 @@ def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_cap
     """
     Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
+
 
 
     :param list allowed_capabilities: (list)

@@ -78,7 +78,7 @@ class CloudCredential(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloudCredential.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

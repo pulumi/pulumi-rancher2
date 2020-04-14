@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
  */
-export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> & GetProjectAlertGroupResult {
+export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,12 +33,10 @@ export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectAlertGroupResult> = pulumi.runtime.invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", {
+    return pulumi.runtime.invoke("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", {
         "name": args.name,
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
  */
-export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> & GetProjectRoleTemplateBindingResult {
+export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,13 +33,11 @@ export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindin
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectRoleTemplateBindingResult> = pulumi.runtime.invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
+    return pulumi.runtime.invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
         "name": args.name,
         "projectId": args.projectId,
         "roleTemplateId": args.roleTemplateId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

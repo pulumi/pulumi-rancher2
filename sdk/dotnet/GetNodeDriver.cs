@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNodeDriver.InvokeAsync() instead")]
-        public static Task<GetNodeDriverResult> GetNodeDriver(GetNodeDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNodeDriver
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeDriverResult> InvokeAsync(GetNodeDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNodeDriverArgs : Pulumi.InvokeArgs
     {
@@ -49,6 +40,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetNodeDriverResult
@@ -78,6 +70,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -91,25 +87,32 @@ namespace Pulumi.Rancher2
         /// (Computed) Domains to whitelist for the ui (list)
         /// </summary>
         public readonly ImmutableArray<string> WhitelistDomains;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNodeDriverResult(
             bool active,
+
             ImmutableDictionary<string, object> annotations,
+
             bool builtin,
+
             string checksum,
+
             string description,
+
             string externalId,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string uiUrl,
+
             string url,
-            ImmutableArray<string> whitelistDomains,
-            string id)
+
+            ImmutableArray<string> whitelistDomains)
         {
             Active = active;
             Annotations = annotations;
@@ -117,12 +120,12 @@ namespace Pulumi.Rancher2
             Checksum = checksum;
             Description = description;
             ExternalId = externalId;
+            Id = id;
             Labels = labels;
             Name = name;
             UiUrl = uiUrl;
             Url = url;
             WhitelistDomains = whitelistDomains;
-            Id = id;
         }
     }
 }

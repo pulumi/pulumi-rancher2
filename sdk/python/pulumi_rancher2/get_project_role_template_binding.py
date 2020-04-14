@@ -86,7 +86,7 @@ def get_project_role_template_binding(name=None,project_id=None,role_template_id
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
+
 
 
     :param str name: The name of the project role template binding (string)

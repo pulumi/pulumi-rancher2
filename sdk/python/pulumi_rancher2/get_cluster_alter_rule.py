@@ -124,7 +124,7 @@ def get_cluster_alter_rule(cluster_id=None,labels=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert rule.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
+
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)

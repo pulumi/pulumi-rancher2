@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/catalog.html.markdown.
     /// </summary>
     public partial class Catalog : Pulumi.CustomResource
     {
@@ -109,7 +107,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Catalog(string name, CatalogArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/catalog:Catalog", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/catalog:Catalog", name, args ?? new CatalogArgs(), MakeResourceOptions(options, ""))
         {
         }
 

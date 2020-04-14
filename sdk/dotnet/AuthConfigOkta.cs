@@ -13,8 +13,6 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config OKTA resource. This can be used to configure and enable Auth Config OKTA for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigOKTA.html.markdown.
     /// </summary>
     public partial class AuthConfigOkta : Pulumi.CustomResource
     {
@@ -117,7 +115,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AuthConfigOkta(string name, AuthConfigOktaArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/authConfigOkta:AuthConfigOkta", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/authConfigOkta:AuthConfigOkta", name, args ?? new AuthConfigOktaArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -89,7 +89,7 @@ def get_cluster_alert_group(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert group.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
+
 
 
     :param str cluster_id: The cluster id where create cluster alert group (string)
