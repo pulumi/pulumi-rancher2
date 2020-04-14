@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.8.3 of the Rancher2 Terraform Provider
-* Rename datasource `getRoleTempalte` to `getRoleTemplate`
+_(none)_
 
 ---
+
+## 1.6.0 (2020-04-14)
+* Upgrade to v1.8.3 of the Rancher2 Terraform Provider
+* Rename datasource `getRoleTempalte` to `getRoleTemplate`
 
 ## 1.5.0 (2020-04-02)
 * Upgrade to pulumi-terraform-bridge v1.8.2
