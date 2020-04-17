@@ -4,9 +4,7 @@
         "@types/node": "^8.0.0"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^1.0.0"
-    },
-    "peerDependencies": {
-        "@pulumi/rancher2": "dev"
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/rancher2": "latest"
     }
 }
