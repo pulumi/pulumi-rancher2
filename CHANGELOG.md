@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.0.0
-* Upgrade to Pulumi v2.0.0
+_(none)_
 
 ---
+
+## 2.0.0 (2020-04-18)
+* Upgrade to pulumi-terraform-bridge v2.0.0
+* Upgrade to Pulumi v2.0.0
 
 ## 1.6.0 (2020-04-14)
 * Upgrade to v1.8.3 of the Rancher2 Terraform Provider
