@@ -35,7 +35,7 @@ type LookupProjectResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring bool `pulumi:"enableProjectMonitoring"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the rancher2 project (map)
 	Labels map[string]interface{} `pulumi:"labels"`

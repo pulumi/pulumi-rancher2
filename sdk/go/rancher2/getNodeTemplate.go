@@ -49,7 +49,7 @@ type LookupNodeTemplateResult struct {
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// (Computed) Engine storage driver for the node template (string)
 	EngineStorageDriver string `pulumi:"engineStorageDriver"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

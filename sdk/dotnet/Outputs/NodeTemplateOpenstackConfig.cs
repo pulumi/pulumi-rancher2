@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateOpenstackConfig
     {
+        /// <summary>
+        /// OpenStack active timeout Default `200` (string)
+        /// </summary>
         public readonly string? ActiveTimeout;
         /// <summary>
         /// OpenStack authentication URL (string)

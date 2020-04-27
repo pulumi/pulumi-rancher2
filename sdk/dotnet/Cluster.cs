@@ -136,7 +136,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
-        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Output("enableNetworkPolicy")]
         public Output<bool?> EnableNetworkPolicy { get; private set; } = null!;
@@ -178,7 +177,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster scheduled scan
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Output("scheduledClusterScan")]
         public Output<Outputs.ClusterScheduledClusterScan?> ScheduledClusterScan { get; private set; } = null!;
@@ -363,7 +362,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
-        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
@@ -405,7 +403,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
 
         /// <summary>
-        /// Cluster scheduled scan
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("scheduledClusterScan")]
         public Input<Inputs.ClusterScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
@@ -557,7 +555,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Enable project network isolation. Default `false` (bool)
-        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
@@ -605,7 +602,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
 
         /// <summary>
-        /// Cluster scheduled scan
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Input("scheduledClusterScan")]
         public Input<Inputs.ClusterScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }

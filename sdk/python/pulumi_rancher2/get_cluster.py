@@ -123,7 +123,7 @@ class GetClusterResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if k3s_config and not isinstance(k3s_config, dict):
             raise TypeError("Expected argument 'k3s_config' to be a dict")

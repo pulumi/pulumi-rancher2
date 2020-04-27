@@ -19,6 +19,7 @@ func LookupPodSecurityPolicyTemplate(ctx *pulumi.Context, args *LookupPodSecurit
 
 // A collection of arguments for invoking getPodSecurityPolicyTemplate.
 type LookupPodSecurityPolicyTemplateArgs struct {
+	// = (Optional)
 	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
 	// (list)
 	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
@@ -52,7 +53,6 @@ type LookupPodSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts []GetPodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name string `pulumi:"name"`
@@ -95,7 +95,7 @@ type LookupPodSecurityPolicyTemplateResult struct {
 	HostNetwork                     bool                                            `pulumi:"hostNetwork"`
 	HostPid                         bool                                            `pulumi:"hostPid"`
 	HostPorts                       []GetPodSecurityPolicyTemplateHostPort          `pulumi:"hostPorts"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                        `pulumi:"id"`
 	Labels                   map[string]interface{}                        `pulumi:"labels"`
 	Name                     string                                        `pulumi:"name"`

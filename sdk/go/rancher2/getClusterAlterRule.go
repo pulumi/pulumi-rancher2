@@ -40,7 +40,7 @@ type LookupClusterAlterRuleResult struct {
 	GroupIntervalSeconds int `pulumi:"groupIntervalSeconds"`
 	// (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds int `pulumi:"groupWaitSeconds"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The cluster alert rule inherited. Default: `true` (bool)
 	Inherited bool `pulumi:"inherited"`

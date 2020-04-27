@@ -30,7 +30,7 @@ class GetUserResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if is_external and not isinstance(is_external, bool):
             raise TypeError("Expected argument 'is_external' to be a bool")

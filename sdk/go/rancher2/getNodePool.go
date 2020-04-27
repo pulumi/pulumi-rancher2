@@ -40,7 +40,7 @@ type LookupNodePoolResult struct {
 	Etcd bool `pulumi:"etcd"`
 	// (Computed) The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix string `pulumi:"hostnamePrefix"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Pool object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

@@ -68,11 +68,13 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// Rancher Kubernetes Engine Config (list maxitems: 1)
-        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         /// </summary>
         [Input("rkeConfig", required: true)]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigGetArgs> RkeConfig { get; set; } = null!;
 
+        /// <summary>
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        /// </summary>
         [Input("scheduledClusterScan")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }
 

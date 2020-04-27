@@ -28,7 +28,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -52,7 +51,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.NotifierPagerdutyConfig?> PagerdutyConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Output("sendResolved")]
         public Output<bool?> SendResolved { get; private set; } = null!;
@@ -147,7 +146,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -177,7 +175,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NotifierPagerdutyConfigArgs>? PagerdutyConfig { get; set; }
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("sendResolved")]
         public Input<bool>? SendResolved { get; set; }
@@ -233,7 +231,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -263,7 +260,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NotifierPagerdutyConfigGetArgs>? PagerdutyConfig { get; set; }
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("sendResolved")]
         public Input<bool>? SendResolved { get; set; }

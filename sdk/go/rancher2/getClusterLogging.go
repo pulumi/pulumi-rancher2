@@ -34,7 +34,7 @@ type LookupClusterLoggingResult struct {
 	EnableJsonParsing   bool                                 `pulumi:"enableJsonParsing"`
 	// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
 	FluentdConfig GetClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
 	KafkaConfig GetClusterLoggingKafkaConfig `pulumi:"kafkaConfig"`

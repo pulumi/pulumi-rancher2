@@ -34,7 +34,7 @@ type LookupEtcdBackupResult struct {
 	ClusterId    string                    `pulumi:"clusterId"`
 	// (Computed) Filename of the Etcd Backup (string)
 	Filename string `pulumi:"filename"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Etcd Backup object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

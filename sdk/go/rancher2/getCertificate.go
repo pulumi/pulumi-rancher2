@@ -39,7 +39,7 @@ type LookupCertificateResult struct {
 	Certs string `pulumi:"certs"`
 	// (Computed) A certificate description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for certificate object (map)
 	Labels      map[string]interface{} `pulumi:"labels"`

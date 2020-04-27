@@ -43,9 +43,11 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? ImageName;
         /// <summary>
         /// Owner of the image to use as the VM OS (string)
-        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
         /// </summary>
         public readonly string? ImageOwner;
+        /// <summary>
+        /// Size of the memory for the VM in MB (string)
+        /// </summary>
         public readonly string? Memory;
         /// <summary>
         /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)

@@ -56,11 +56,13 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// Owner of the image to use as the VM OS (string)
-        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
         /// </summary>
         [Input("imageOwner")]
         public Input<string>? ImageOwner { get; set; }
 
+        /// <summary>
+        /// Size of the memory for the VM in MB (string)
+        /// </summary>
         [Input("memory")]
         public Input<string>? Memory { get; set; }
 

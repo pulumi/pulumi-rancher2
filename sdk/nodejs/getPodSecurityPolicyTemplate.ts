@@ -68,6 +68,9 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
  * A collection of arguments for invoking getPodSecurityPolicyTemplate.
  */
 export interface GetPodSecurityPolicyTemplateArgs {
+    /**
+     * = (Optional)
+     */
     readonly allowPrivilegeEscalation?: boolean;
     /**
      * (list)
@@ -132,7 +135,6 @@ export interface GetPodSecurityPolicyTemplateArgs {
     readonly hostPorts?: inputs.GetPodSecurityPolicyTemplateHostPort[];
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
-     * * `allowPrivilegeEscalation` = (Optional)
      */
     readonly labels?: {[key: string]: any};
     /**
@@ -210,7 +212,7 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly supplementalGroup: outputs.GetPodSecurityPolicyTemplateSupplementalGroup;
     readonly volumes: string[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

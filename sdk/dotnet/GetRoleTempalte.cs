@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    [Obsolete(@"rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate")]
     public static class GetRoleTempalte
     {
         /// <summary>
@@ -16,6 +17,8 @@ namespace Pulumi.Rancher2
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate
         /// </summary>
         public static Task<GetRoleTempalteResult> InvokeAsync(GetRoleTempalteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleTempalteResult>("rancher2:index/getRoleTempalte:getRoleTempalte", args ?? new GetRoleTempalteArgs(), options.WithVersion());
@@ -75,7 +78,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool Hidden;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

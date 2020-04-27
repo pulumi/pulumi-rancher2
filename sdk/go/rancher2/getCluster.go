@@ -60,7 +60,7 @@ type LookupClusterResult struct {
 	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
 	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig GetClusterK3sConfig `pulumi:"k3sConfig"`

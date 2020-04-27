@@ -41,7 +41,7 @@ type LookupAppResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) The URL of the helm catalog app (string)
 	ExternalId string `pulumi:"externalId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the catalog (map)
 	Labels    map[string]interface{} `pulumi:"labels"`

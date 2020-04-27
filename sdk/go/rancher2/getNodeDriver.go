@@ -39,7 +39,7 @@ type LookupNodeDriverResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) External ID (string)
 	ExternalId string `pulumi:"externalId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`

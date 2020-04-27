@@ -43,7 +43,6 @@ export class Notifier extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * The notifier description (string)
-     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -59,7 +58,7 @@ export class Notifier extends pulumi.CustomResource {
      */
     public readonly pagerdutyConfig!: pulumi.Output<outputs.NotifierPagerdutyConfig | undefined>;
     /**
-     * Notifier send resolved
+     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     public readonly sendResolved!: pulumi.Output<boolean | undefined>;
     /**
@@ -144,7 +143,6 @@ export interface NotifierState {
     readonly clusterId?: pulumi.Input<string>;
     /**
      * The notifier description (string)
-     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -160,7 +158,7 @@ export interface NotifierState {
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * Notifier send resolved
+     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly sendResolved?: pulumi.Input<boolean>;
     /**
@@ -195,7 +193,6 @@ export interface NotifierArgs {
     readonly clusterId: pulumi.Input<string>;
     /**
      * The notifier description (string)
-     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -211,7 +208,7 @@ export interface NotifierArgs {
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * Notifier send resolved
+     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly sendResolved?: pulumi.Input<boolean>;
     /**
