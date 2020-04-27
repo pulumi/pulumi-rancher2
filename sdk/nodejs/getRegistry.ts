@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
  * // Retrieve a rancher2 Project Registry
- * const foo = rancher2.getRegistry({
+ * const foo = pulumi.output(rancher2.getRegistry({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.

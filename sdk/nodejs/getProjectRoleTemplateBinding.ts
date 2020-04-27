@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * const foo = rancher2.getProjectRoleTemplateBinding({
+ * const foo = pulumi.output(rancher2.getProjectRoleTemplateBinding({
  *     name: "foo",
  *     projectId: "fooId",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.

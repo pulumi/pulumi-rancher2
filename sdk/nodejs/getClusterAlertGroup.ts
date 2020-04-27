@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * const foo = rancher2.getClusterAlertGroup({
+ * const foo = pulumi.output(rancher2.getClusterAlertGroup({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_group_name>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.

@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * const foo = rancher2.getEtcdBackup({
+ * const foo = pulumi.output(rancher2.getEtcdBackup({
  *     clusterId: "<CLUSTER_ID>",
  *     name: "foo",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.

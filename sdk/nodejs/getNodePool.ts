@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const foo = rancher2_cluster_foo_custom.id.apply(id => rancher2.getNodePool({
  *     clusterId: id,
  *     name: "foo",
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
