@@ -15,8 +15,7 @@ namespace Pulumi.Rancher2
     public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource
     {
         /// <summary>
-        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-        /// true.
+        /// = (Optional)
         /// </summary>
         [Output("allowPrivilegeEscalation")]
         public Output<bool> AllowPrivilegeEscalation { get; private set; } = null!;
@@ -119,7 +118,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
-        /// * `allow_privilege_escalation` = (Optional)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -231,8 +229,7 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityPolicyTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-        /// true.
+        /// = (Optional)
         /// </summary>
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
@@ -398,7 +395,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
-        /// * `allow_privilege_escalation` = (Optional)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -486,8 +482,7 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityPolicyTemplateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-        /// true.
+        /// = (Optional)
         /// </summary>
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
@@ -653,7 +648,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
-        /// * `allow_privilege_escalation` = (Optional)
         /// </summary>
         public InputMap<object> Labels
         {

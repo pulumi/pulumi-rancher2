@@ -42,7 +42,7 @@ type GetRoleTemplateResult struct {
 	External bool `pulumi:"external"`
 	// (Computed) Hidden role template (bool)
 	Hidden bool `pulumi:"hidden"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for role template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

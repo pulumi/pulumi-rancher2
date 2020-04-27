@@ -19,7 +19,6 @@ type Notifier struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The notifier description (string)
-	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
@@ -27,7 +26,7 @@ type Notifier struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrOutput `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrOutput `pulumi:"slackConfig"`
@@ -75,7 +74,6 @@ type notifierState struct {
 	// The cluster id where create notifier (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The notifier description (string)
-	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description *string `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -83,7 +81,7 @@ type notifierState struct {
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	SendResolved *bool `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
@@ -101,7 +99,6 @@ type NotifierState struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringPtrInput
 	// The notifier description (string)
-	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
@@ -109,7 +106,7 @@ type NotifierState struct {
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
-	// Notifier send resolved
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	SendResolved pulumi.BoolPtrInput
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrInput
@@ -131,7 +128,6 @@ type notifierArgs struct {
 	// The cluster id where create notifier (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The notifier description (string)
-	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description *string `pulumi:"description"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -139,7 +135,7 @@ type notifierArgs struct {
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	SendResolved *bool `pulumi:"sendResolved"`
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
@@ -158,7 +154,6 @@ type NotifierArgs struct {
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringInput
 	// The notifier description (string)
-	// * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	Description pulumi.StringPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
@@ -166,7 +161,7 @@ type NotifierArgs struct {
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
-	// Notifier send resolved
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
 	SendResolved pulumi.BoolPtrInput
 	// Slack config for notifier (list maxitems:1)
 	SlackConfig NotifierSlackConfigPtrInput

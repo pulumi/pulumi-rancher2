@@ -54,7 +54,6 @@ type Cluster struct {
 	// Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring pulumi.BoolPtrOutput `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation. Default `false` (bool)
-	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	EnableNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
@@ -68,7 +67,7 @@ type Cluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrOutput `pulumi:"scheduledClusterScan"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
@@ -145,7 +144,6 @@ type clusterState struct {
 	// Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation. Default `false` (bool)
-	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
@@ -159,7 +157,7 @@ type clusterState struct {
 	Name *string `pulumi:"name"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId *string `pulumi:"systemProjectId"`
@@ -209,7 +207,6 @@ type ClusterState struct {
 	// Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation. Default `false` (bool)
-	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
@@ -223,7 +220,7 @@ type ClusterState struct {
 	Name pulumi.StringPtrInput
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringPtrInput
@@ -273,7 +270,6 @@ type clusterArgs struct {
 	// Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation. Default `false` (bool)
-	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
@@ -285,7 +281,7 @@ type clusterArgs struct {
 	Name *string `pulumi:"name"`
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
 	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
@@ -330,7 +326,6 @@ type ClusterArgs struct {
 	// Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation. Default `false` (bool)
-	// * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
@@ -342,7 +337,7 @@ type ClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
 	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrInput

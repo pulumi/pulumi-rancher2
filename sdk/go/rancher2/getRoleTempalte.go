@@ -8,6 +8,10 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 role template resource.
+//
+//
+//
+// Deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate
 func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts ...pulumi.InvokeOption) (*LookupRoleTempalteResult, error) {
 	var rv LookupRoleTempalteResult
 	err := ctx.Invoke("rancher2:index/getRoleTempalte:getRoleTempalte", args, &rv, opts...)
@@ -42,7 +46,7 @@ type LookupRoleTempalteResult struct {
 	External bool `pulumi:"external"`
 	// (Computed) Hidden role template (bool)
 	Hidden bool `pulumi:"hidden"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for role template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

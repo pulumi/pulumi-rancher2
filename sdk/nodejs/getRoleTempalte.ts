@@ -17,14 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * const foo = rancher2.getRoleTemplate({
+ * const foo = pulumi.output(rancher2.getRoleTemplate({
  *     name: "foo",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
  */
+/** @deprecated rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate */
 export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> {
+    pulumi.log.warn("getRoleTempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate")
     if (!opts) {
         opts = {}
     }
@@ -103,7 +105,7 @@ export interface GetRoleTempalteResult {
      */
     readonly rules: outputs.GetRoleTempalteRule[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

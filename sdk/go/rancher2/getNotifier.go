@@ -32,7 +32,7 @@ type LookupNotifierResult struct {
 	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The notifier description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

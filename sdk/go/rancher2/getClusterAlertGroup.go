@@ -36,7 +36,7 @@ type GetClusterAlertGroupResult struct {
 	GroupIntervalSeconds int `pulumi:"groupIntervalSeconds"`
 	// (Computed) The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds int `pulumi:"groupWaitSeconds"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The cluster alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`

@@ -26,7 +26,7 @@ type GetClusterScanArgs struct {
 type GetClusterScanResult struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	ClusterId   string                 `pulumi:"clusterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string                   `pulumi:"id"`
 	Labels     map[string]interface{}   `pulumi:"labels"`
 	Name       string                   `pulumi:"name"`

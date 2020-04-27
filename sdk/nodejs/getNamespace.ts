@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const foo = rancher2_cluster_foo_custom.defaultProjectId.apply(defaultProjectId => rancher2.getNamespace({
  *     name: "foo",
  *     projectId: defaultProjectId,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/namespace.html.markdown.
@@ -80,7 +80,7 @@ export interface GetNamespaceResult {
      */
     readonly resourceQuota: outputs.GetNamespaceResourceQuota;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

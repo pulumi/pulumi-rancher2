@@ -37,7 +37,7 @@ type LookupRegistryResult struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// (Computed) A registry description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Registry object (map)
 	Labels      map[string]interface{} `pulumi:"labels"`

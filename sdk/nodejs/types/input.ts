@@ -2051,9 +2051,11 @@ export interface ClusterRkeConfigServicesKubelet {
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable or disable failing when swap on is not supported (bool)
-     * * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
      */
     failSwapOn?: pulumi.Input<boolean>;
+    /**
+     * [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+     */
     generateServingCertificate?: pulumi.Input<boolean>;
     /**
      * Docker image for scheduler service (string)
@@ -2294,9 +2296,11 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
     enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Rancher Kubernetes Engine Config (list maxitems: 1)
-     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
      */
     rkeConfig: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig>;
+    /**
+     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+     */
     scheduledClusterScan?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan>;
     /**
      * Windows prefered cluster. Default: `false` (bool)
@@ -3465,9 +3469,11 @@ export interface NodeTemplateOpennebulaConfig {
     imageName?: pulumi.Input<string>;
     /**
      * Owner of the image to use as the VM OS (string)
-     * * `memory`- (Optional) Size of the memory for the VM in MB (string)
      */
     imageOwner?: pulumi.Input<string>;
+    /**
+     * Size of the memory for the VM in MB (string)
+     */
     memory?: pulumi.Input<string>;
     /**
      * Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
@@ -3512,6 +3518,9 @@ export interface NodeTemplateOpennebulaConfig {
 }
 
 export interface NodeTemplateOpenstackConfig {
+    /**
+     * OpenStack active timeout Default `200` (string)
+     */
     activeTimeout?: pulumi.Input<string>;
     /**
      * OpenStack authentication URL (string)

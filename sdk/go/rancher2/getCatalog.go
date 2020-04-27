@@ -35,7 +35,7 @@ type LookupCatalogResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// (Computed) A catalog description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The kind of the catalog. Just helm by the moment (string)
 	Kind string `pulumi:"kind"`

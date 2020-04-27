@@ -24,6 +24,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetPodSecurityPolicyTemplateArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// = (Optional)
+        /// </summary>
         [Input("allowPrivilegeEscalation")]
         public bool? AllowPrivilegeEscalation { get; set; }
 
@@ -185,7 +188,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
-        /// * `allow_privilege_escalation` = (Optional)
         /// </summary>
         public Dictionary<string, object> Labels
         {
@@ -292,7 +294,7 @@ namespace Pulumi.Rancher2
         public readonly bool HostPid;
         public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateHostPortResult> HostPorts;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, object> Labels;

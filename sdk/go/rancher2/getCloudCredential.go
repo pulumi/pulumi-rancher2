@@ -27,7 +27,7 @@ type LookupCloudCredentialArgs struct {
 type LookupCloudCredentialResult struct {
 	// (Computed) Annotations for the Cloud Credential (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the Cloud Credential (map)
 	Labels map[string]interface{} `pulumi:"labels"`

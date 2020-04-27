@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NodeTemplateOpenstackConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// OpenStack active timeout Default `200` (string)
+        /// </summary>
         [Input("activeTimeout")]
         public Input<string>? ActiveTimeout { get; set; }
 

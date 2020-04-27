@@ -31,7 +31,7 @@ type LookupMultiClusterAppResult struct {
 	Answers []GetMultiClusterAppAnswer `pulumi:"answers"`
 	// (Computed) The multi cluster app catalog name (string)
 	CatalogName string `pulumi:"catalogName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for multi cluster app object (map)
 	Labels map[string]interface{} `pulumi:"labels"`

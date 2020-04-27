@@ -51,9 +51,11 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EnableNetworkPolicy;
         /// <summary>
         /// Rancher Kubernetes Engine Config (list maxitems: 1)
-        /// * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig RkeConfig;
+        /// <summary>
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan? ScheduledClusterScan;
         /// <summary>
         /// Windows prefered cluster. Default: `false` (bool)

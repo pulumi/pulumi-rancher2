@@ -13,8 +13,7 @@ import (
 type PodSecurityPolicyTemplate struct {
 	pulumi.CustomResourceState
 
-	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-	// true.
+	// = (Optional)
 	AllowPrivilegeEscalation pulumi.BoolOutput `pulumi:"allowPrivilegeEscalation"`
 	// (list)
 	AllowedCapabilities pulumi.StringArrayOutput `pulumi:"allowedCapabilities"`
@@ -49,7 +48,6 @@ type PodSecurityPolicyTemplate struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayOutput `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -101,8 +99,7 @@ func GetPodSecurityPolicyTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PodSecurityPolicyTemplate resources.
 type podSecurityPolicyTemplateState struct {
-	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-	// true.
+	// = (Optional)
 	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
 	// (list)
 	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
@@ -137,7 +134,6 @@ type podSecurityPolicyTemplateState struct {
 	// (list)
 	HostPorts []PodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name *string `pulumi:"name"`
@@ -162,8 +158,7 @@ type podSecurityPolicyTemplateState struct {
 }
 
 type PodSecurityPolicyTemplateState struct {
-	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-	// true.
+	// = (Optional)
 	AllowPrivilegeEscalation pulumi.BoolPtrInput
 	// (list)
 	AllowedCapabilities pulumi.StringArrayInput
@@ -198,7 +193,6 @@ type PodSecurityPolicyTemplateState struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayInput
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels pulumi.MapInput
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringPtrInput
@@ -227,8 +221,7 @@ func (PodSecurityPolicyTemplateState) ElementType() reflect.Type {
 }
 
 type podSecurityPolicyTemplateArgs struct {
-	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-	// true.
+	// = (Optional)
 	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
 	// (list)
 	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
@@ -263,7 +256,6 @@ type podSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts []PodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name *string `pulumi:"name"`
@@ -289,8 +281,7 @@ type podSecurityPolicyTemplateArgs struct {
 
 // The set of arguments for constructing a PodSecurityPolicyTemplate resource.
 type PodSecurityPolicyTemplateArgs struct {
-	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-	// true.
+	// = (Optional)
 	AllowPrivilegeEscalation pulumi.BoolPtrInput
 	// (list)
 	AllowedCapabilities pulumi.StringArrayInput
@@ -325,7 +316,6 @@ type PodSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayInput
 	// Labels for PodSecurityPolicyTemplate object (map)
-	// * `allowPrivilegeEscalation` = (Optional)
 	Labels pulumi.MapInput
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringPtrInput

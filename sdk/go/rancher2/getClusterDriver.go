@@ -37,7 +37,7 @@ type LookupClusterDriverResult struct {
 	Builtin bool `pulumi:"builtin"`
 	// (Computed) Verify that the downloaded driver matches the expected checksum (string)
 	Checksum string `pulumi:"checksum"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`

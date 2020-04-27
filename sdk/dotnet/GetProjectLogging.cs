@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetProjectLoggingFluentdConfigResult FluentdConfig;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

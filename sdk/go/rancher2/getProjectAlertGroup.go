@@ -35,7 +35,7 @@ type LookupProjectAlertGroupResult struct {
 	GroupIntervalSeconds int `pulumi:"groupIntervalSeconds"`
 	// (Computed) The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds int `pulumi:"groupWaitSeconds"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The project alert group labels (map)
 	Labels    map[string]interface{} `pulumi:"labels"`

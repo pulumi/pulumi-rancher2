@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
  * // Retrieve a rancher2 Project Secret
- * const foo = rancher2.getSecret({
+ * const foo = pulumi.output(rancher2.getSecret({
  *     name: "<name>",
  *     projectId: "<project_id>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
@@ -87,7 +87,7 @@ export interface GetSecretResult {
     readonly namespaceId?: string;
     readonly projectId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -35,9 +35,11 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<string> ExtraEnvs;
         /// <summary>
         /// Enable or disable failing when swap on is not supported (bool)
-        /// * `generate_serving_certificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
         /// </summary>
         public readonly bool? FailSwapOn;
+        /// <summary>
+        /// [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        /// </summary>
         public readonly bool? GenerateServingCertificate;
         /// <summary>
         /// Docker image for scheduler service (string)

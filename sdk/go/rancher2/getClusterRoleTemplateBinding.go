@@ -36,7 +36,7 @@ type LookupClusterRoleTemplateBindingResult struct {
 	GroupId string `pulumi:"groupId"`
 	// (Computed) The groupPrincipal ID to assign cluster role template binding (string)
 	GroupPrincipalId string `pulumi:"groupPrincipalId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
 	Labels         map[string]interface{} `pulumi:"labels"`

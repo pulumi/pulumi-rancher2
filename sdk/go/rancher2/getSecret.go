@@ -39,7 +39,7 @@ type LookupSecretResult struct {
 	Data map[string]interface{} `pulumi:"data"`
 	// (Computed) A secret description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for secret object (map)
 	Labels      map[string]interface{} `pulumi:"labels"`

@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  * 
- * const rancher2App = rancher2.getApp({
+ * const rancher2App = pulumi.output(rancher2.getApp({
  *     name: "foo",
  *     projectId: "<project_id>",
  *     targetNamespace: "<namespace_name>",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
@@ -112,7 +112,7 @@ export interface GetAppResult {
      */
     readonly valuesYaml: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

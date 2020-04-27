@@ -33,7 +33,7 @@ type LookupNamespaceResult struct {
 	ContainerResourceLimit GetNamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// (Computed) A namespace description (string)
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Pool object (map)
 	Labels    map[string]interface{} `pulumi:"labels"`
