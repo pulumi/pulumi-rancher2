@@ -178,6 +178,7 @@ class Cluster(pulumi.CustomResource):
     enable_network_policy: pulumi.Output[bool]
     """
     Enable project network isolation. Default `false` (bool)
+    * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
     """
     gke_config: pulumi.Output[dict]
     """
@@ -538,7 +539,8 @@ class Cluster(pulumi.CustomResource):
           * `extraBinds` (`list`) - Extra binds for scheduler service (list)
           * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
           * `failSwapOn` (`bool`) - Enable or disable failing when swap on is not supported (bool)
-          * `generateServingCertificate` (`bool`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+            * `generate_serving_certificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+          * `generateServingCertificate` (`bool`)
           * `image` (`str`) - Docker image for scheduler service (string)
           * `infraContainerImage` (`str`) - Infra container image for kubelet service (string)
 
@@ -571,7 +573,7 @@ class Cluster(pulumi.CustomResource):
     """
     scheduled_cluster_scan: pulumi.Output[dict]
     """
-    Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+    Cluster scheduled scan
 
       * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
       * `scanConfig` (`dict`) - Cluster scan config (List maxitems:1)
@@ -598,7 +600,7 @@ class Cluster(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 
-
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -621,12 +623,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
+               * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled scan
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
 
         The **aks_config** object supports the following:
@@ -1055,7 +1058,8 @@ class Cluster(pulumi.CustomResource):
               * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
               * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
               * `failSwapOn` (`pulumi.Input[bool]`) - Enable or disable failing when swap on is not supported (bool)
-              * `generateServingCertificate` (`pulumi.Input[bool]`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+                * `generate_serving_certificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+              * `generateServingCertificate` (`pulumi.Input[bool]`)
               * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
               * `infraContainerImage` (`pulumi.Input[str]`) - Infra container image for kubelet service (string)
 
@@ -1184,13 +1188,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
+               * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled scan
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
 
@@ -1634,7 +1639,8 @@ class Cluster(pulumi.CustomResource):
               * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
               * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
               * `failSwapOn` (`pulumi.Input[bool]`) - Enable or disable failing when swap on is not supported (bool)
-              * `generateServingCertificate` (`pulumi.Input[bool]`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+                * `generate_serving_certificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+              * `generateServingCertificate` (`pulumi.Input[bool]`)
               * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
               * `infraContainerImage` (`pulumi.Input[str]`) - Infra container image for kubelet service (string)
 

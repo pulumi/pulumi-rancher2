@@ -8,23 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getClusterDriver({
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
  */
-export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
+export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> & GetClusterDriverResult {
     if (!opts) {
         opts = {}
     }
@@ -32,10 +19,12 @@ export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
+    const promise: Promise<GetClusterDriverResult> = pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,
         "url": args.url,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -91,7 +80,7 @@ export interface GetClusterDriverResult {
      */
     readonly whitelistDomains: string[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

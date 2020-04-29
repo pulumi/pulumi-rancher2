@@ -42,7 +42,7 @@ class GetProjectLoggingResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if kafka_config and not isinstance(kafka_config, dict):
             raise TypeError("Expected argument 'kafka_config' to be a dict")
@@ -128,7 +128,7 @@ def get_project_logging(project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Project Logging.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
 
 
     :param str project_id: The project id to configure logging (string)

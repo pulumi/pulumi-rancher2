@@ -12,25 +12,10 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 docker registries:
  * - Project registry: Available to all namespaces in the `projectId`
  * - Namespaced registry: Available to just `namespaceId` in the `projectId`
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Retrieve a rancher2 Project Registry
- * const foo = pulumi.output(rancher2.getRegistry({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
  */
-export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
+export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> & GetRegistryResult {
     if (!opts) {
         opts = {}
     }
@@ -38,11 +23,13 @@ export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
+    const promise: Promise<GetRegistryResult> = pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
         "name": args.name,
         "namespaceId": args.namespaceId,
         "projectId": args.projectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -87,7 +74,7 @@ export interface GetRegistryResult {
      */
     readonly registries: outputs.GetRegistryRegistry[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

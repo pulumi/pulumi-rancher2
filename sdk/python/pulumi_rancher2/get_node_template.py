@@ -84,7 +84,7 @@ class GetNodeTemplateResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -127,7 +127,7 @@ def get_node_template(name=None,use_internal_ip_address=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
 
 
     :param str name: The name of the Node Template (string)

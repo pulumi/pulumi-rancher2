@@ -10,24 +10,6 @@ import * as utilities from "./utilities";
  * Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
  * 
  * amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 Cloud Credential
- * const foo = new rancher2.CloudCredential("foo", {
- *     amazonec2CredentialConfig: {
- *         accessKey: "<AWS_ACCESS_KEY>",
- *         secretKey: "<AWS_SECRET_KEY>",
- *     },
- *     description: "foo test",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cloudCredential.html.markdown.
  */

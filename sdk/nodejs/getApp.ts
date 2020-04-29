@@ -8,25 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 app.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const rancher2App = pulumi.output(rancher2.getApp({
- *     name: "foo",
- *     projectId: "<project_id>",
- *     targetNamespace: "<namespace_name>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
  */
-export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
+export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> & GetAppResult {
     if (!opts) {
         opts = {}
     }
@@ -34,12 +19,14 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
+    const promise: Promise<GetAppResult> = pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
         "annotations": args.annotations,
         "name": args.name,
         "projectId": args.projectId,
         "targetNamespace": args.targetNamespace,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -112,7 +99,7 @@ export interface GetAppResult {
      */
     readonly valuesYaml: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

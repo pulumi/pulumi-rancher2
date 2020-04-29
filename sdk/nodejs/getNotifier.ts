@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 notifier.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getNotifier({
- *     clusterId: "<cluster_id>",
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
  */
-export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions): Promise<GetNotifierResult> {
+export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions): Promise<GetNotifierResult> & GetNotifierResult {
     if (!opts) {
         opts = {}
     }
@@ -33,10 +19,12 @@ export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getNotifier:getNotifier", {
+    const promise: Promise<GetNotifierResult> = pulumi.runtime.invoke("rancher2:index/getNotifier:getNotifier", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -92,7 +80,7 @@ export interface GetNotifierResult {
      */
     readonly wechatConfig: outputs.GetNotifierWechatConfig;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

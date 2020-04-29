@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 etcd backup.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getEtcdBackup({
- *     clusterId: "<CLUSTER_ID>",
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
  */
-export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
+export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> & GetEtcdBackupResult {
     if (!opts) {
         opts = {}
     }
@@ -33,10 +19,12 @@ export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
+    const promise: Promise<GetEtcdBackupResult> = pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -84,7 +72,7 @@ export interface GetEtcdBackupResult {
      */
     readonly namespaceId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

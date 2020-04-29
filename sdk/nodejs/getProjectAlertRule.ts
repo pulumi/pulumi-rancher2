@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 project alert rule.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getProjectAlertRule({
- *     name: "<project_alert_rule_name>",
- *     projectId: "<project_id>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
  */
-export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> {
+export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> & GetProjectAlertRuleResult {
     if (!opts) {
         opts = {}
     }
@@ -33,11 +19,13 @@ export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getProjectAlertRule:getProjectAlertRule", {
+    const promise: Promise<GetProjectAlertRuleResult> = pulumi.runtime.invoke("rancher2:index/getProjectAlertRule:getProjectAlertRule", {
         "labels": args.labels,
         "name": args.name,
         "projectId": args.projectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -109,7 +97,7 @@ export interface GetProjectAlertRuleResult {
      */
     readonly workloadRule: outputs.GetProjectAlertRuleWorkloadRule;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

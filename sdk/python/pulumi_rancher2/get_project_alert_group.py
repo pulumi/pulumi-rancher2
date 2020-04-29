@@ -42,7 +42,7 @@ class GetProjectAlertGroupResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -89,7 +89,7 @@ def get_project_alert_group(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert group.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
 
 
     :param str name: The project alert group name (string)

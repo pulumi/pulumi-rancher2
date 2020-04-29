@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 global role binding.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getGlobalRoleBinding({
- *     globalRoleId: "fooId",
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
  */
-export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
+export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> & GetGlobalRoleBindingResult {
     if (!opts) {
         opts = {}
     }
@@ -33,10 +19,12 @@ export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
+    const promise: Promise<GetGlobalRoleBindingResult> = pulumi.runtime.invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
         "globalRoleId": args.globalRoleId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -76,7 +64,7 @@ export interface GetGlobalRoleBindingResult {
      */
     readonly userId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

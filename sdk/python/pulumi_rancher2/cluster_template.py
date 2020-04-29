@@ -58,6 +58,7 @@ class ClusterTemplate(pulumi.CustomResource):
         * `enable_cluster_monitoring` (`bool`) - Enable built-in cluster monitoring. Default: `false` (bool)
         * `enable_network_policy` (`bool`) - Enable project network isolation. Default: `false` (bool)
         * `rke_config` (`dict`) - Rancher Kubernetes Engine Config (list maxitems: 1)
+          * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
           * `addonJobTimeout` (`float`)
           * `addons` (`str`)
           * `addonsIncludes` (`list`)
@@ -363,7 +364,7 @@ class ClusterTemplate(pulumi.CustomResource):
             * `maxUnavailableControlplane` (`str`)
             * `maxUnavailableWorker` (`str`)
 
-        * `scheduled_cluster_scan` (`dict`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        * `scheduled_cluster_scan` (`dict`)
           * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
           * `scanConfig` (`dict`)
             * `cisScanConfig` (`dict`)
@@ -397,7 +398,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
         Cluster Templates are available from Rancher v2.3.x and above.
 
-
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterTemplate.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -432,6 +433,7 @@ class ClusterTemplate(pulumi.CustomResource):
             * `enable_cluster_monitoring` (`pulumi.Input[bool]`) - Enable built-in cluster monitoring. Default: `false` (bool)
             * `enable_network_policy` (`pulumi.Input[bool]`) - Enable project network isolation. Default: `false` (bool)
             * `rke_config` (`pulumi.Input[dict]`) - Rancher Kubernetes Engine Config (list maxitems: 1)
+              * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
               * `addonJobTimeout` (`pulumi.Input[float]`)
               * `addons` (`pulumi.Input[str]`)
               * `addonsIncludes` (`pulumi.Input[list]`)
@@ -737,7 +739,7 @@ class ClusterTemplate(pulumi.CustomResource):
                 * `maxUnavailableControlplane` (`pulumi.Input[str]`)
                 * `maxUnavailableWorker` (`pulumi.Input[str]`)
 
-            * `scheduled_cluster_scan` (`pulumi.Input[dict]`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+            * `scheduled_cluster_scan` (`pulumi.Input[dict]`)
               * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
               * `scanConfig` (`pulumi.Input[dict]`)
                 * `cisScanConfig` (`pulumi.Input[dict]`)
@@ -836,6 +838,7 @@ class ClusterTemplate(pulumi.CustomResource):
             * `enable_cluster_monitoring` (`pulumi.Input[bool]`) - Enable built-in cluster monitoring. Default: `false` (bool)
             * `enable_network_policy` (`pulumi.Input[bool]`) - Enable project network isolation. Default: `false` (bool)
             * `rke_config` (`pulumi.Input[dict]`) - Rancher Kubernetes Engine Config (list maxitems: 1)
+              * `scheduled_cluster_scan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
               * `addonJobTimeout` (`pulumi.Input[float]`)
               * `addons` (`pulumi.Input[str]`)
               * `addonsIncludes` (`pulumi.Input[list]`)
@@ -1141,7 +1144,7 @@ class ClusterTemplate(pulumi.CustomResource):
                 * `maxUnavailableControlplane` (`pulumi.Input[str]`)
                 * `maxUnavailableWorker` (`pulumi.Input[str]`)
 
-            * `scheduled_cluster_scan` (`pulumi.Input[dict]`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+            * `scheduled_cluster_scan` (`pulumi.Input[dict]`)
               * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
               * `scanConfig` (`pulumi.Input[dict]`)
                 * `cisScanConfig` (`pulumi.Input[dict]`)

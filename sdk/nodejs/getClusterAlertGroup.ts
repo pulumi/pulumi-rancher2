@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster alert group.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getClusterAlertGroup({
- *     clusterId: "<cluster_id>",
- *     name: "<cluster_alert_group_name>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
  */
-export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> {
+export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> & GetClusterAlertGroupResult {
     if (!opts) {
         opts = {}
     }
@@ -33,10 +19,12 @@ export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", {
+    const promise: Promise<GetClusterAlertGroupResult> = pulumi.runtime.invoke("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -88,7 +76,7 @@ export interface GetClusterAlertGroupResult {
      */
     readonly repeatIntervalSeconds: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

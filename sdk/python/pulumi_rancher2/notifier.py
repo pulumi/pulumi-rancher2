@@ -21,6 +21,7 @@ class Notifier(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
     The notifier description (string)
+    * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
     """
     labels: pulumi.Output[dict]
     """
@@ -39,7 +40,7 @@ class Notifier(pulumi.CustomResource):
     """
     send_resolved: pulumi.Output[bool]
     """
-    = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+    Notifier send resolved
     """
     slack_config: pulumi.Output[dict]
     """
@@ -83,17 +84,18 @@ class Notifier(pulumi.CustomResource):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
 
-
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/notifier.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+               * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         :param pulumi.Input[dict] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
-        :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+        :param pulumi.Input[bool] send_resolved: Notifier send resolved
         :param pulumi.Input[dict] slack_config: Slack config for notifier (list maxitems:1)
         :param pulumi.Input[dict] smtp_config: SMTP config for notifier (list maxitems:1)
         :param pulumi.Input[dict] webhook_config: Webhook config for notifier (list maxitems:1)
@@ -182,10 +184,11 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+               * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         :param pulumi.Input[dict] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
-        :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+        :param pulumi.Input[bool] send_resolved: Notifier send resolved
         :param pulumi.Input[dict] slack_config: Slack config for notifier (list maxitems:1)
         :param pulumi.Input[dict] smtp_config: SMTP config for notifier (list maxitems:1)
         :param pulumi.Input[dict] webhook_config: Webhook config for notifier (list maxitems:1)

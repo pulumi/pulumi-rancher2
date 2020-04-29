@@ -8,38 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Create a new rancher2 Project
- * const foo = new rancher2.Project("foo", {
- *     clusterId: "<CLUSTER_ID>",
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
- *         },
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project.html.markdown.
  */

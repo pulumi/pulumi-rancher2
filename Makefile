@@ -13,6 +13,9 @@ VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 WORKSPACE       := $(shell scripts/get-workspace)
 
+PYTHON ?= python3
+PIP ?= pip3
+
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
 
@@ -24,7 +27,7 @@ endif
 
 TESTPARALLELISM := 4
 
-build:: tfgen generate_schema provider build_node
+build:: tfgen generate_schema provider build_node build_python build_dotnet build_go
 
 tfgen::
 	cd provider && go build -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X github.com/${ORG}/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${TFGEN}

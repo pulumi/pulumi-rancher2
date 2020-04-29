@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/notifier.html.markdown.
+ */
 export class Notifier extends pulumi.CustomResource {
     /**
      * Get an existing Notifier resource's state with the given name, ID, and optional extra
@@ -43,6 +48,7 @@ export class Notifier extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -58,7 +64,7 @@ export class Notifier extends pulumi.CustomResource {
      */
     public readonly pagerdutyConfig!: pulumi.Output<outputs.NotifierPagerdutyConfig | undefined>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     public readonly sendResolved!: pulumi.Output<boolean | undefined>;
     /**
@@ -143,6 +149,7 @@ export interface NotifierState {
     readonly clusterId?: pulumi.Input<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -158,7 +165,7 @@ export interface NotifierState {
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     readonly sendResolved?: pulumi.Input<boolean>;
     /**
@@ -193,6 +200,7 @@ export interface NotifierArgs {
     readonly clusterId: pulumi.Input<string>;
     /**
      * The notifier description (string)
+     * * `sendResolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -208,7 +216,7 @@ export interface NotifierArgs {
      */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     readonly sendResolved?: pulumi.Input<boolean>;
     /**

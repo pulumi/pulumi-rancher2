@@ -6,6 +6,13 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
+ * 
+ * `cluster` and `project` scopes are supported for role templates.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/roleTemplate.html.markdown.
+ */
 export class RoleTempalte extends pulumi.CustomResource {
     /**
      * Get an existing RoleTempalte resource's state with the given name, ID, and optional extra

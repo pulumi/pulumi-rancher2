@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getClusterAlterRule({
- *     clusterId: "<cluster_id>",
- *     name: "<cluster_alert_rule_name>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
  */
-export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> {
+export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> & GetClusterAlterRuleResult {
     if (!opts) {
         opts = {}
     }
@@ -33,11 +19,13 @@ export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
+    const promise: Promise<GetClusterAlterRuleResult> = pulumi.runtime.invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", {
         "clusterId": args.clusterId,
         "labels": args.labels,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -113,7 +101,7 @@ export interface GetClusterAlterRuleResult {
      */
     readonly systemServiceRule: outputs.GetClusterAlterRuleSystemServiceRule;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

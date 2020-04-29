@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/podSecurityPolicyTemplate.html.markdown.
+ */
 export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     /**
      * Get an existing PodSecurityPolicyTemplate resource's state with the given name, ID, and optional extra
@@ -34,7 +39,8 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * = (Optional)
+     * allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+     * true.
      */
     public readonly allowPrivilegeEscalation!: pulumi.Output<boolean>;
     /**
@@ -103,6 +109,7 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     public readonly hostPorts!: pulumi.Output<outputs.PodSecurityPolicyTemplateHostPort[]>;
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
+     * * `allowPrivilegeEscalation` = (Optional)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -233,7 +240,8 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
  */
 export interface PodSecurityPolicyTemplateState {
     /**
-     * = (Optional)
+     * allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+     * true.
      */
     readonly allowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
@@ -302,6 +310,7 @@ export interface PodSecurityPolicyTemplateState {
     readonly hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
+     * * `allowPrivilegeEscalation` = (Optional)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -351,7 +360,8 @@ export interface PodSecurityPolicyTemplateState {
  */
 export interface PodSecurityPolicyTemplateArgs {
     /**
-     * = (Optional)
+     * allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+     * true.
      */
     readonly allowPrivilegeEscalation?: pulumi.Input<boolean>;
     /**
@@ -420,6 +430,7 @@ export interface PodSecurityPolicyTemplateArgs {
     readonly hostPorts?: pulumi.Input<pulumi.Input<inputs.PodSecurityPolicyTemplateHostPort>[]>;
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
+     * * `allowPrivilegeEscalation` = (Optional)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**

@@ -45,7 +45,7 @@ class GetClusterLoggingResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if kafka_config and not isinstance(kafka_config, dict):
             raise TypeError("Expected argument 'kafka_config' to be a dict")
@@ -128,7 +128,7 @@ def get_cluster_logging(cluster_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Logging.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
 
 
     :param str cluster_id: The cluster id to configure logging (string)

@@ -2051,11 +2051,9 @@ export interface ClusterRkeConfigServicesKubelet {
     extraEnvs?: string[];
     /**
      * Enable or disable failing when swap on is not supported (bool)
+     * * `generateServingCertificate` [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
      */
     failSwapOn: boolean;
-    /**
-     * [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-     */
     generateServingCertificate?: boolean;
     /**
      * Docker image for scheduler service (string)
@@ -2296,11 +2294,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
     enableNetworkPolicy?: boolean;
     /**
      * Rancher Kubernetes Engine Config (list maxitems: 1)
+     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
      */
     rkeConfig: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig;
-    /**
-     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-     */
     scheduledClusterScan?: outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan;
     /**
      * Windows prefered cluster. Default: `false` (bool)
@@ -4417,14 +4413,6 @@ export interface GetRoleTempalteRule {
     verbs?: string[];
 }
 
-export interface GetRoleTemplateRule {
-    apiGroups?: string[];
-    nonResourceUrls?: string[];
-    resourceNames?: string[];
-    resources?: string[];
-    verbs?: string[];
-}
-
 export interface MultiClusterAppAnswer {
     /**
      * Cluster ID for answer (string)
@@ -4978,11 +4966,9 @@ export interface NodeTemplateOpennebulaConfig {
     imageName?: string;
     /**
      * Owner of the image to use as the VM OS (string)
+     * * `memory`- (Optional) Size of the memory for the VM in MB (string)
      */
     imageOwner?: string;
-    /**
-     * Size of the memory for the VM in MB (string)
-     */
     memory?: string;
     /**
      * Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
@@ -5027,9 +5013,6 @@ export interface NodeTemplateOpennebulaConfig {
 }
 
 export interface NodeTemplateOpenstackConfig {
-    /**
-     * OpenStack active timeout Default `200` (string)
-     */
     activeTimeout?: string;
     /**
      * OpenStack authentication URL (string)

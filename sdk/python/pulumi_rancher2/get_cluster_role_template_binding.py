@@ -39,7 +39,7 @@ class GetClusterRoleTemplateBindingResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -86,7 +86,7 @@ def get_cluster_role_template_binding(cluster_id=None,name=None,role_template_id
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
 
 
     :param str cluster_id: The cluster id where bind cluster role template (string)

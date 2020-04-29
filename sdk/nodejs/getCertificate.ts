@@ -12,25 +12,10 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 certificates:
  * - Project certificate: Available to all namespaces in the `projectId`
  * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * // Retrieve a rancher2 Project Certificate
- * const foo = pulumi.output(rancher2.getCertificate({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
  */
-export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
+export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> & GetCertificateResult {
     if (!opts) {
         opts = {}
     }
@@ -38,11 +23,13 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getCertificate:getCertificate", {
+    const promise: Promise<GetCertificateResult> = pulumi.runtime.invoke("rancher2:index/getCertificate:getCertificate", {
         "name": args.name,
         "namespaceId": args.namespaceId,
         "projectId": args.projectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -87,7 +74,7 @@ export interface GetCertificateResult {
     readonly namespaceId?: string;
     readonly projectId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

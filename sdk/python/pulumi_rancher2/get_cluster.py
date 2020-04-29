@@ -123,7 +123,7 @@ class GetClusterResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if k3s_config and not isinstance(k3s_config, dict):
             raise TypeError("Expected argument 'k3s_config' to be a dict")
@@ -198,7 +198,7 @@ def get_cluster(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cluster.html.markdown.
 
 
     :param str name: The name of the Cluster (string)

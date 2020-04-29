@@ -10,23 +10,10 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher v2 cluster template.
  * 
  * Cluster Templates are available from Rancher v2.3.x and above.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getClusterTemplate({
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
  */
-export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
+export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> & GetClusterTemplateResult {
     if (!opts) {
         opts = {}
     }
@@ -34,12 +21,14 @@ export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
+    const promise: Promise<GetClusterTemplateResult> = pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
         "annotations": args.annotations,
         "description": args.description,
         "labels": args.labels,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -88,7 +77,7 @@ export interface GetClusterTemplateResult {
      */
     readonly templateRevisions: outputs.GetClusterTemplateTemplateRevision[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

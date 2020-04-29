@@ -61,7 +61,6 @@ from .get_project_logging import *
 from .get_project_role_template_binding import *
 from .get_registry import *
 from .get_role_tempalte import *
-from .get_role_template import *
 from .get_secret import *
 from .get_setting import *
 from .get_user import *

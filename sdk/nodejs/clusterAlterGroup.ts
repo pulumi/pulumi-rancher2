@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterAlertGroup.html.markdown.
+ */
 export class ClusterAlterGroup extends pulumi.CustomResource {
     /**
      * Get an existing ClusterAlterGroup resource's state with the given name, ID, and optional extra

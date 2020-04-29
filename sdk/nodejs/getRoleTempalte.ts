@@ -8,25 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 role template resource.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getRoleTemplate({
- *     name: "foo",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
  */
-/** @deprecated rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate */
-export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> {
-    pulumi.log.warn("getRoleTempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate")
+export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> & GetRoleTempalteResult {
     if (!opts) {
         opts = {}
     }
@@ -34,10 +19,12 @@ export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getRoleTempalte:getRoleTempalte", {
+    const promise: Promise<GetRoleTempalteResult> = pulumi.runtime.invoke("rancher2:index/getRoleTempalte:getRoleTempalte", {
         "context": args.context,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -105,7 +92,7 @@ export interface GetRoleTempalteResult {
      */
     readonly rules: outputs.GetRoleTempalteRule[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

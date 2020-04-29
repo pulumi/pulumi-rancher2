@@ -194,7 +194,8 @@ class NodeTemplate(pulumi.CustomResource):
       * `imageId` (`str`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
       * `imageName` (`str`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
       * `imageOwner` (`str`) - Owner of the image to use as the VM OS (string)
-      * `memory` (`str`) - Size of the memory for the VM in MB (string)
+        * `memory`- (Optional) Size of the memory for the VM in MB (string)
+      * `memory` (`str`)
       * `networkId` (`str`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
       * `networkName` (`str`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
       * `networkOwner` (`str`) - Opennebula user ID of the Network to connect the machine to (string)
@@ -210,7 +211,7 @@ class NodeTemplate(pulumi.CustomResource):
     """
     Openstack config for the Node Template (list maxitems:1)
 
-      * `activeTimeout` (`str`) - OpenStack active timeout Default `200` (string)
+      * `activeTimeout` (`str`)
       * `authUrl` (`str`) - OpenStack authentication URL (string)
       * `availabilityZone` (`str`) - OpenStack availability zone (string)
       * `cacert` (`str`) - CA certificate bundle to verify against (string)
@@ -288,7 +289,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
-
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -426,7 +427,8 @@ class NodeTemplate(pulumi.CustomResource):
           * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
           * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
           * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
-          * `memory` (`pulumi.Input[str]`) - Size of the memory for the VM in MB (string)
+            * `memory`- (Optional) Size of the memory for the VM in MB (string)
+          * `memory` (`pulumi.Input[str]`)
           * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
           * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
           * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
@@ -440,7 +442,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         The **openstack_config** object supports the following:
 
-          * `activeTimeout` (`pulumi.Input[str]`) - OpenStack active timeout Default `200` (string)
+          * `activeTimeout` (`pulumi.Input[str]`)
           * `authUrl` (`pulumi.Input[str]`) - OpenStack authentication URL (string)
           * `availabilityZone` (`pulumi.Input[str]`) - OpenStack availability zone (string)
           * `cacert` (`pulumi.Input[str]`) - CA certificate bundle to verify against (string)
@@ -695,7 +697,8 @@ class NodeTemplate(pulumi.CustomResource):
           * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
           * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
           * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
-          * `memory` (`pulumi.Input[str]`) - Size of the memory for the VM in MB (string)
+            * `memory`- (Optional) Size of the memory for the VM in MB (string)
+          * `memory` (`pulumi.Input[str]`)
           * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
           * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
           * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
@@ -709,7 +712,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         The **openstack_config** object supports the following:
 
-          * `activeTimeout` (`pulumi.Input[str]`) - OpenStack active timeout Default `200` (string)
+          * `activeTimeout` (`pulumi.Input[str]`)
           * `authUrl` (`pulumi.Input[str]`) - OpenStack authentication URL (string)
           * `availabilityZone` (`pulumi.Input[str]`) - OpenStack availability zone (string)
           * `cacert` (`pulumi.Input[str]`) - CA certificate bundle to verify against (string)

@@ -8,23 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const test = pulumi.output(rancher2.getCloudCredential({
- *     name: "test",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
  */
-export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
+export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> & GetCloudCredentialResult {
     if (!opts) {
         opts = {}
     }
@@ -32,9 +19,11 @@ export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
+    const promise: Promise<GetCloudCredentialResult> = pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -61,7 +50,7 @@ export interface GetCloudCredentialResult {
     readonly labels: {[key: string]: any};
     readonly name: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

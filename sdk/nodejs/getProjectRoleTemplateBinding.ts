@@ -8,24 +8,10 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 project role template binding.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- * 
- * const foo = pulumi.output(rancher2.getProjectRoleTemplateBinding({
- *     name: "foo",
- *     projectId: "fooId",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
  */
-export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
+export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> & GetProjectRoleTemplateBindingResult {
     if (!opts) {
         opts = {}
     }
@@ -33,11 +19,13 @@ export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindin
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
+    const promise: Promise<GetProjectRoleTemplateBindingResult> = pulumi.runtime.invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
         "name": args.name,
         "projectId": args.projectId,
         "roleTemplateId": args.roleTemplateId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -90,7 +78,7 @@ export interface GetProjectRoleTemplateBindingResult {
      */
     readonly userPrincipalId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

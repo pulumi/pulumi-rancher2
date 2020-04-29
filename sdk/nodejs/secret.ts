@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
- * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/secret.html.markdown.
  */

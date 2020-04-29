@@ -6,6 +6,13 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information. 
+ * 
+ * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterTemplate.html.markdown.
+ */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**
      * Get an existing ClusterTemplate resource's state with the given name, ID, and optional extra

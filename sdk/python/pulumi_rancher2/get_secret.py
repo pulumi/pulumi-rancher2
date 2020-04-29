@@ -36,7 +36,7 @@ class GetSecretResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        The provider-assigned unique ID for this managed resource.
+        id is the provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -76,7 +76,7 @@ def get_secret(name=None,namespace_id=None,project_id=None,opts=None):
     - Project secret: Available to all namespaces in the `project_id`
     - Namespaced secret: Available to just `namespace_id` in the `project_id`
 
-
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
 
 
     :param str name: The name of the secret (string)

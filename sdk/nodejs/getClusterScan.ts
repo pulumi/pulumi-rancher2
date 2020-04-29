@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterScanResult> {
+export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterScanResult> & GetClusterScanResult {
     if (!opts) {
         opts = {}
     }
@@ -14,10 +14,12 @@ export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("rancher2:index/getClusterScan:getClusterScan", {
+    const promise: Promise<GetClusterScanResult> = pulumi.runtime.invoke("rancher2:index/getClusterScan:getClusterScan", {
         "clusterId": args.clusterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -41,7 +43,7 @@ export interface GetClusterScanResult {
     readonly scanType: string;
     readonly status: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * id is the provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
