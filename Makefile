@@ -44,6 +44,24 @@ build_node::
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
+build_python::
+	cd provider && $(WORKSPACE)/bin/$(TFGEN) python --overlays overlays/python --out ../${PACKDIR}/python/
+	cd ${PACKDIR}/python/ && \
+        cp ../../README.md . && \
+        $(PYTHON) setup.py clean --all 2>/dev/null && \
+        rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+        sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
+        rm ./bin/setup.py.bak && \
+        cd ./bin && $(PYTHON) setup.py build sdist
+
+build_go::
+	cd provider && $(WORKSPACE)/bin/$(TFGEN) go --overlays overlays/go --out ../${PACKDIR}/go/
+
+build_dotnet::
+	cd provider && $(WORKSPACE)/bin/$(TFGEN) dotnet --overlays overlays/dotnet --out ../${PACKDIR}/dotnet/
+	cd ${PACKDIR}/dotnet/ && \
+        dotnet build /p:Version=${DOTNET_VERSION}
+
 # The travis_* targets are entrypoints for CI.
 .PHONY: travis_cron travis_push travis_pull_request travis_api
 travis_cron: ;
