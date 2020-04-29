@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterLogging.html.markdown.
     /// </summary>
     public partial class ClusterLogging : Pulumi.CustomResource
     {
@@ -113,7 +115,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterLogging(string name, ClusterLoggingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/clusterLogging:ClusterLogging", name, args ?? new ClusterLoggingArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/clusterLogging:ClusterLogging", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -376,5 +378,1105 @@ namespace Pulumi.Rancher2
         public ClusterLoggingState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ClusterLoggingCustomTargetConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
+
+        public ClusterLoggingCustomTargetConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingCustomTargetConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
+
+        public ClusterLoggingCustomTargetConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingElasticsearchConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// User password for the elascticsearch service (string)
+        /// </summary>
+        [Input("authPassword")]
+        public Input<string>? AuthPassword { get; set; }
+
+        /// <summary>
+        /// Username for the elascticsearch service (string)
+        /// </summary>
+        [Input("authUsername")]
+        public Input<string>? AuthUsername { get; set; }
+
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        [Input("clientKeyPass")]
+        public Input<string>? ClientKeyPass { get; set; }
+
+        /// <summary>
+        /// Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        /// </summary>
+        [Input("dateFormat")]
+        public Input<string>? DateFormat { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Index prefix for the elascticsearch logs. Default: `local` (string)
+        /// </summary>
+        [Input("indexPrefix")]
+        public Input<string>? IndexPrefix { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// SSL version for the elascticsearch service (string)
+        /// </summary>
+        [Input("sslVersion")]
+        public Input<string>? SslVersion { get; set; }
+
+        public ClusterLoggingElasticsearchConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingElasticsearchConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// User password for the elascticsearch service (string)
+        /// </summary>
+        [Input("authPassword")]
+        public Input<string>? AuthPassword { get; set; }
+
+        /// <summary>
+        /// Username for the elascticsearch service (string)
+        /// </summary>
+        [Input("authUsername")]
+        public Input<string>? AuthUsername { get; set; }
+
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        [Input("clientKeyPass")]
+        public Input<string>? ClientKeyPass { get; set; }
+
+        /// <summary>
+        /// Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        /// </summary>
+        [Input("dateFormat")]
+        public Input<string>? DateFormat { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Index prefix for the elascticsearch logs. Default: `local` (string)
+        /// </summary>
+        [Input("indexPrefix")]
+        public Input<string>? IndexPrefix { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// SSL version for the elascticsearch service (string)
+        /// </summary>
+        [Input("sslVersion")]
+        public Input<string>? SslVersion { get; set; }
+
+        public ClusterLoggingElasticsearchConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingFluentdConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// Compress data for the fluentd service (bool)
+        /// </summary>
+        [Input("compress")]
+        public Input<bool>? Compress { get; set; }
+
+        /// <summary>
+        /// Enable TLS for the fluentd service (bool)
+        /// </summary>
+        [Input("enableTls")]
+        public Input<bool>? EnableTls { get; set; }
+
+        [Input("fluentServers", required: true)]
+        private InputList<ClusterLoggingFluentdConfigFluentServersArgs>? _fluentServers;
+
+        /// <summary>
+        /// Servers for the fluentd service (list)
+        /// </summary>
+        public InputList<ClusterLoggingFluentdConfigFluentServersArgs> FluentServers
+        {
+            get => _fluentServers ?? (_fluentServers = new InputList<ClusterLoggingFluentdConfigFluentServersArgs>());
+            set => _fluentServers = value;
+        }
+
+        public ClusterLoggingFluentdConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingFluentdConfigFluentServersArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Hostname of the fluentd service (string)
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// User password of the fluentd service (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Shared key of the fluentd service (string)
+        /// </summary>
+        [Input("sharedKey")]
+        public Input<string>? SharedKey { get; set; }
+
+        /// <summary>
+        /// Standby server of the fluentd service (bool)
+        /// </summary>
+        [Input("standby")]
+        public Input<bool>? Standby { get; set; }
+
+        /// <summary>
+        /// Username of the fluentd service (string)
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Weight of the fluentd server (int)
+        /// </summary>
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
+
+        public ClusterLoggingFluentdConfigFluentServersArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingFluentdConfigFluentServersGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Hostname of the fluentd service (string)
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// User password of the fluentd service (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Shared key of the fluentd service (string)
+        /// </summary>
+        [Input("sharedKey")]
+        public Input<string>? SharedKey { get; set; }
+
+        /// <summary>
+        /// Standby server of the fluentd service (bool)
+        /// </summary>
+        [Input("standby")]
+        public Input<bool>? Standby { get; set; }
+
+        /// <summary>
+        /// Username of the fluentd service (string)
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Weight of the fluentd server (int)
+        /// </summary>
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
+
+        public ClusterLoggingFluentdConfigFluentServersGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingFluentdConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// Compress data for the fluentd service (bool)
+        /// </summary>
+        [Input("compress")]
+        public Input<bool>? Compress { get; set; }
+
+        /// <summary>
+        /// Enable TLS for the fluentd service (bool)
+        /// </summary>
+        [Input("enableTls")]
+        public Input<bool>? EnableTls { get; set; }
+
+        [Input("fluentServers", required: true)]
+        private InputList<ClusterLoggingFluentdConfigFluentServersGetArgs>? _fluentServers;
+
+        /// <summary>
+        /// Servers for the fluentd service (list)
+        /// </summary>
+        public InputList<ClusterLoggingFluentdConfigFluentServersGetArgs> FluentServers
+        {
+            get => _fluentServers ?? (_fluentServers = new InputList<ClusterLoggingFluentdConfigFluentServersGetArgs>());
+            set => _fluentServers = value;
+        }
+
+        public ClusterLoggingFluentdConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingKafkaConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("brokerEndpoints")]
+        private InputList<string>? _brokerEndpoints;
+
+        /// <summary>
+        /// Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        /// </summary>
+        public InputList<string> BrokerEndpoints
+        {
+            get => _brokerEndpoints ?? (_brokerEndpoints = new InputList<string>());
+            set => _brokerEndpoints = value;
+        }
+
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Topic to publish on the kafka service (string)
+        /// </summary>
+        [Input("topic", required: true)]
+        public Input<string> Topic { get; set; } = null!;
+
+        /// <summary>
+        /// Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        /// </summary>
+        [Input("zookeeperEndpoint")]
+        public Input<string>? ZookeeperEndpoint { get; set; }
+
+        public ClusterLoggingKafkaConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingKafkaConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("brokerEndpoints")]
+        private InputList<string>? _brokerEndpoints;
+
+        /// <summary>
+        /// Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        /// </summary>
+        public InputList<string> BrokerEndpoints
+        {
+            get => _brokerEndpoints ?? (_brokerEndpoints = new InputList<string>());
+            set => _brokerEndpoints = value;
+        }
+
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Topic to publish on the kafka service (string)
+        /// </summary>
+        [Input("topic", required: true)]
+        public Input<string> Topic { get; set; } = null!;
+
+        /// <summary>
+        /// Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        /// </summary>
+        [Input("zookeeperEndpoint")]
+        public Input<string>? ZookeeperEndpoint { get; set; }
+
+        public ClusterLoggingKafkaConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingSplunkConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        [Input("clientKeyPass")]
+        public Input<string>? ClientKeyPass { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Index prefix for the splunk logs (string)
+        /// </summary>
+        [Input("index")]
+        public Input<string>? Index { get; set; }
+
+        /// <summary>
+        /// Date format for the splunk logs (string)
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
+
+        public ClusterLoggingSplunkConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingSplunkConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        [Input("clientKeyPass")]
+        public Input<string>? ClientKeyPass { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Index prefix for the splunk logs (string)
+        /// </summary>
+        [Input("index")]
+        public Input<string>? Index { get; set; }
+
+        /// <summary>
+        /// Date format for the splunk logs (string)
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
+
+        public ClusterLoggingSplunkConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingSyslogConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Program for the syslog service (string)
+        /// </summary>
+        [Input("program")]
+        public Input<string>? Program { get; set; }
+
+        /// <summary>
+        /// Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        /// </summary>
+        [Input("severity")]
+        public Input<string>? Severity { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        public ClusterLoggingSyslogConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterLoggingSyslogConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
+
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Program for the syslog service (string)
+        /// </summary>
+        [Input("program")]
+        public Input<string>? Program { get; set; }
+
+        /// <summary>
+        /// Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        /// </summary>
+        [Input("severity")]
+        public Input<string>? Severity { get; set; }
+
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        [Input("sslVerify")]
+        public Input<bool>? SslVerify { get; set; }
+
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        public ClusterLoggingSyslogConfigGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ClusterLoggingCustomTargetConfig
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
+        public readonly string Content;
+
+        [OutputConstructor]
+        private ClusterLoggingCustomTargetConfig(
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string content)
+        {
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            Content = content;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingElasticsearchConfig
+    {
+        /// <summary>
+        /// User password for the elascticsearch service (string)
+        /// </summary>
+        public readonly string? AuthPassword;
+        /// <summary>
+        /// Username for the elascticsearch service (string)
+        /// </summary>
+        public readonly string? AuthUsername;
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        public readonly string? ClientKeyPass;
+        /// <summary>
+        /// Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        /// </summary>
+        public readonly string? DateFormat;
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
+        /// Index prefix for the elascticsearch logs. Default: `local` (string)
+        /// </summary>
+        public readonly string? IndexPrefix;
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        public readonly bool SslVerify;
+        /// <summary>
+        /// SSL version for the elascticsearch service (string)
+        /// </summary>
+        public readonly string? SslVersion;
+
+        [OutputConstructor]
+        private ClusterLoggingElasticsearchConfig(
+            string? authPassword,
+            string? authUsername,
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string? clientKeyPass,
+            string? dateFormat,
+            string endpoint,
+            string? indexPrefix,
+            bool sslVerify,
+            string? sslVersion)
+        {
+            AuthPassword = authPassword;
+            AuthUsername = authUsername;
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            ClientKeyPass = clientKeyPass;
+            DateFormat = dateFormat;
+            Endpoint = endpoint;
+            IndexPrefix = indexPrefix;
+            SslVerify = sslVerify;
+            SslVersion = sslVersion;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingFluentdConfig
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// Compress data for the fluentd service (bool)
+        /// </summary>
+        public readonly bool? Compress;
+        /// <summary>
+        /// Enable TLS for the fluentd service (bool)
+        /// </summary>
+        public readonly bool? EnableTls;
+        /// <summary>
+        /// Servers for the fluentd service (list)
+        /// </summary>
+        public readonly ImmutableArray<ClusterLoggingFluentdConfigFluentServers> FluentServers;
+
+        [OutputConstructor]
+        private ClusterLoggingFluentdConfig(
+            string? certificate,
+            bool? compress,
+            bool? enableTls,
+            ImmutableArray<ClusterLoggingFluentdConfigFluentServers> fluentServers)
+        {
+            Certificate = certificate;
+            Compress = compress;
+            EnableTls = enableTls;
+            FluentServers = fluentServers;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingFluentdConfigFluentServers
+    {
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
+        /// Hostname of the fluentd service (string)
+        /// </summary>
+        public readonly string? Hostname;
+        /// <summary>
+        /// User password of the fluentd service (string)
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// Shared key of the fluentd service (string)
+        /// </summary>
+        public readonly string? SharedKey;
+        /// <summary>
+        /// Standby server of the fluentd service (bool)
+        /// </summary>
+        public readonly bool? Standby;
+        /// <summary>
+        /// Username of the fluentd service (string)
+        /// </summary>
+        public readonly string? Username;
+        /// <summary>
+        /// Weight of the fluentd server (int)
+        /// </summary>
+        public readonly int? Weight;
+
+        [OutputConstructor]
+        private ClusterLoggingFluentdConfigFluentServers(
+            string endpoint,
+            string? hostname,
+            string? password,
+            string? sharedKey,
+            bool? standby,
+            string? username,
+            int? weight)
+        {
+            Endpoint = endpoint;
+            Hostname = hostname;
+            Password = password;
+            SharedKey = sharedKey;
+            Standby = standby;
+            Username = username;
+            Weight = weight;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingKafkaConfig
+    {
+        /// <summary>
+        /// Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        /// </summary>
+        public readonly ImmutableArray<string> BrokerEndpoints;
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// Topic to publish on the kafka service (string)
+        /// </summary>
+        public readonly string Topic;
+        /// <summary>
+        /// Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        /// </summary>
+        public readonly string? ZookeeperEndpoint;
+
+        [OutputConstructor]
+        private ClusterLoggingKafkaConfig(
+            ImmutableArray<string> brokerEndpoints,
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string topic,
+            string? zookeeperEndpoint)
+        {
+            BrokerEndpoints = brokerEndpoints;
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            Topic = topic;
+            ZookeeperEndpoint = zookeeperEndpoint;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingSplunkConfig
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
+        public readonly string? ClientKeyPass;
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
+        /// Index prefix for the splunk logs (string)
+        /// </summary>
+        public readonly string? Index;
+        /// <summary>
+        /// Date format for the splunk logs (string)
+        /// </summary>
+        public readonly string? Source;
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        public readonly bool SslVerify;
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        public readonly string Token;
+
+        [OutputConstructor]
+        private ClusterLoggingSplunkConfig(
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string? clientKeyPass,
+            string endpoint,
+            string? index,
+            string? source,
+            bool sslVerify,
+            string token)
+        {
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            ClientKeyPass = clientKeyPass;
+            Endpoint = endpoint;
+            Index = index;
+            Source = source;
+            SslVerify = sslVerify;
+            Token = token;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterLoggingSyslogConfig
+    {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
+        /// Program for the syslog service (string)
+        /// </summary>
+        public readonly string? Program;
+        /// <summary>
+        /// Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        /// </summary>
+        public readonly string? Protocol;
+        /// <summary>
+        /// Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        /// </summary>
+        public readonly string? Severity;
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
+        public readonly bool SslVerify;
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
+        public readonly string? Token;
+
+        [OutputConstructor]
+        private ClusterLoggingSyslogConfig(
+            string? certificate,
+            string? clientCert,
+            string? clientKey,
+            string endpoint,
+            string? program,
+            string? protocol,
+            string? severity,
+            bool sslVerify,
+            string? token)
+        {
+            Certificate = certificate;
+            ClientCert = clientCert;
+            ClientKey = clientKey;
+            Endpoint = endpoint;
+            Program = program;
+            Protocol = protocol;
+            Severity = severity;
+            SslVerify = sslVerify;
+            Token = token;
+        }
+    }
     }
 }

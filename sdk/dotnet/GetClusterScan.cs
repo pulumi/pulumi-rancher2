@@ -9,12 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        [Obsolete("Use GetClusterScan.InvokeAsync() instead")]
+        public static Task<GetClusterScanResult> GetClusterScan(GetClusterScanArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetClusterScan
     {
         public static Task<GetClusterScanResult> InvokeAsync(GetClusterScanArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetClusterScanArgs : Pulumi.InvokeArgs
     {
@@ -29,52 +34,84 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetClusterScanResult
     {
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly string RunType;
         public readonly Outputs.GetClusterScanScanConfigResult ScanConfig;
         public readonly string ScanType;
         public readonly string Status;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetClusterScanResult(
             ImmutableDictionary<string, object> annotations,
-
             string clusterId,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
             string runType,
-
             Outputs.GetClusterScanScanConfigResult scanConfig,
-
             string scanType,
-
-            string status)
+            string status,
+            string id)
         {
             Annotations = annotations;
             ClusterId = clusterId;
-            Id = id;
             Labels = labels;
             Name = name;
             RunType = runType;
             ScanConfig = scanConfig;
             ScanType = scanType;
             Status = status;
+            Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetClusterScanScanConfigCisScanConfigResult
+    {
+        public readonly bool? DebugMaster;
+        public readonly bool? DebugWorker;
+        public readonly string? OverrideBenchmarkVersion;
+        public readonly ImmutableArray<string> OverrideSkips;
+        public readonly string? Profile;
+
+        [OutputConstructor]
+        private GetClusterScanScanConfigCisScanConfigResult(
+            bool? debugMaster,
+            bool? debugWorker,
+            string? overrideBenchmarkVersion,
+            ImmutableArray<string> overrideSkips,
+            string? profile)
+        {
+            DebugMaster = debugMaster;
+            DebugWorker = debugWorker;
+            OverrideBenchmarkVersion = overrideBenchmarkVersion;
+            OverrideSkips = overrideSkips;
+            Profile = profile;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterScanScanConfigResult
+    {
+        public readonly GetClusterScanScanConfigCisScanConfigResult CisScanConfig;
+
+        [OutputConstructor]
+        private GetClusterScanScanConfigResult(GetClusterScanScanConfigCisScanConfigResult cisScanConfig)
+        {
+            CisScanConfig = cisScanConfig;
+        }
+    }
     }
 }

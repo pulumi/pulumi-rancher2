@@ -15,6 +15,8 @@ namespace Pulumi.Rancher2
     /// There are 2 types of Rancher v2 certificates:
     /// - Project certificate: Available to all namespaces in the `project_id`
     /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/certificate.html.markdown.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
@@ -75,7 +77,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Certificate(string name, CertificateArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/certificate:Certificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterAlertGroup.html.markdown.
     /// </summary>
     public partial class ClusterAlterGroup : Pulumi.CustomResource
     {
@@ -60,7 +62,7 @@ namespace Pulumi.Rancher2
         /// The cluster alert group recipients (list)
         /// </summary>
         [Output("recipients")]
-        public Output<ImmutableArray<Outputs.ClusterAlterGroupRecipient>> Recipients { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterAlterGroupRecipients>> Recipients { get; private set; } = null!;
 
         /// <summary>
         /// The cluster alert group wait seconds. Default: `3600` (int)
@@ -77,7 +79,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterAlterGroup(string name, ClusterAlterGroupArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/clusterAlterGroup:ClusterAlterGroup", name, args ?? new ClusterAlterGroupArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/clusterAlterGroup:ClusterAlterGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -169,14 +171,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("recipients")]
-        private InputList<Inputs.ClusterAlterGroupRecipientArgs>? _recipients;
+        private InputList<Inputs.ClusterAlterGroupRecipientsArgs>? _recipients;
 
         /// <summary>
         /// The cluster alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ClusterAlterGroupRecipientArgs> Recipients
+        public InputList<Inputs.ClusterAlterGroupRecipientsArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientsArgs>());
             set => _recipients = value;
         }
 
@@ -248,14 +250,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("recipients")]
-        private InputList<Inputs.ClusterAlterGroupRecipientGetArgs>? _recipients;
+        private InputList<Inputs.ClusterAlterGroupRecipientsGetArgs>? _recipients;
 
         /// <summary>
         /// The cluster alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ClusterAlterGroupRecipientGetArgs> Recipients
+        public InputList<Inputs.ClusterAlterGroupRecipientsGetArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientGetArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientsGetArgs>());
             set => _recipients = value;
         }
 
@@ -268,5 +270,109 @@ namespace Pulumi.Rancher2
         public ClusterAlterGroupState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ClusterAlterGroupRecipientsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        [Input("notifierId", required: true)]
+        public Input<string> NotifierId { get; set; } = null!;
+
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        [Input("notifierType")]
+        public Input<string>? NotifierType { get; set; }
+
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
+
+        public ClusterAlterGroupRecipientsArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterAlterGroupRecipientsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        [Input("notifierId", required: true)]
+        public Input<string> NotifierId { get; set; } = null!;
+
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        [Input("notifierType")]
+        public Input<string>? NotifierType { get; set; }
+
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
+
+        public ClusterAlterGroupRecipientsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ClusterAlterGroupRecipients
+    {
+        /// <summary>
+        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// </summary>
+        public readonly bool? DefaultRecipient;
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        public readonly string NotifierId;
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        public readonly string NotifierType;
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        public readonly string Recipient;
+
+        [OutputConstructor]
+        private ClusterAlterGroupRecipients(
+            bool? defaultRecipient,
+            string notifierId,
+            string notifierType,
+            string recipient)
+        {
+            DefaultRecipient = defaultRecipient;
+            NotifierId = notifierId;
+            NotifierType = notifierType;
+            Recipient = recipient;
+        }
+    }
     }
 }

@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetCloudCredential.InvokeAsync() instead")]
+        public static Task<GetCloudCredentialResult> GetCloudCredential(GetCloudCredentialArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetCloudCredential
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
         /// </summary>
         public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetCloudCredentialArgs : Pulumi.InvokeArgs
     {
@@ -35,7 +44,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetCloudCredentialResult
     {
@@ -44,29 +52,26 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels for the Cloud Credential (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetCloudCredentialResult(
             ImmutableDictionary<string, object> annotations,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
-            string name)
+            string name,
+            string id)
         {
             Annotations = annotations;
-            Id = id;
             Labels = labels;
             Name = name;
+            Id = id;
         }
     }
 }

@@ -40,7 +40,7 @@ provider:: generate_schema
 	cd provider && go build -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X github.com/${ORG}/pulumi-${PACK}/provider/v2/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${PROVIDER}
 
 build_node::
-	$(WORKSPACE)/bin/$(TFGEN) nodejs --overlays overlays/nodejs --out ${PACKDIR}/nodejs/
+	$(WORKSPACE)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out ${PACKDIR}/nodejs/
 	cd ${PACKDIR}/nodejs/ && \
         yarn install && \
         yarn run tsc && \
@@ -48,7 +48,7 @@ build_node::
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python::
-	$(WORKSPACE)/bin/$(TFGEN) python --overlays overlays/python --out ${PACKDIR}/python/
+	$(WORKSPACE)/bin/$(TFGEN) python --overlays provider/overlays/python --out ${PACKDIR}/python/
 	cd ${PACKDIR}/python/ && \
         cp ../../README.md . && \
         $(PYTHON) setup.py clean --all 2>/dev/null && \
@@ -58,11 +58,12 @@ build_python::
         cd ./bin && $(PYTHON) setup.py build sdist
 
 build_go::
-	$(WORKSPACE)/bin/$(TFGEN) go --overlays overlays/go --out ${PACKDIR}/go/
+	$(WORKSPACE)/bin/$(TFGEN) go --overlays provider/overlays/go --out ${PACKDIR}/go/
 
 build_dotnet::
-	$(WORKSPACE)/bin/$(TFGEN) dotnet --overlays overlays/dotnet --out ${PACKDIR}/dotnet/
+	$(WORKSPACE)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out ${PACKDIR}/dotnet/
 	cd ${PACKDIR}/dotnet/ && \
+		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
 # The travis_* targets are entrypoints for CI.

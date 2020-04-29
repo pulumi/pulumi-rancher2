@@ -9,6 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 docker registry.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
+        /// - Project registry: Available to all namespaces in the `project_id`
+        /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetRegistry.InvokeAsync() instead")]
+        public static Task<GetRegistryResult> GetRegistry(GetRegistryArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetRegistry
     {
         /// <summary>
@@ -18,13 +33,11 @@ namespace Pulumi.Rancher2
         /// - Project registry: Available to all namespaces in the `project_id`
         /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/registry.html.markdown.
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetRegistryArgs : Pulumi.InvokeArgs
     {
@@ -51,7 +64,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetRegistryResult
     {
@@ -64,10 +76,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels for Registry object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -77,34 +85,54 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Registries data for registry (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRegistryRegistryResult> Registries;
+        public readonly ImmutableArray<Outputs.GetRegistryRegistriesResult> Registries;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetRegistryResult(
             ImmutableDictionary<string, object> annotations,
-
             string description,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
             string? namespaceId,
-
             string projectId,
-
-            ImmutableArray<Outputs.GetRegistryRegistryResult> registries)
+            ImmutableArray<Outputs.GetRegistryRegistriesResult> registries,
+            string id)
         {
             Annotations = annotations;
             Description = description;
-            Id = id;
             Labels = labels;
             Name = name;
             NamespaceId = namespaceId;
             ProjectId = projectId;
             Registries = registries;
+            Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetRegistryRegistriesResult
+    {
+        public readonly string Address;
+        public readonly string? Password;
+        public readonly string? Username;
+
+        [OutputConstructor]
+        private GetRegistryRegistriesResult(
+            string address,
+            string? password,
+            string? username)
+        {
+            Address = address;
+            Password = password;
+            Username = username;
+        }
+    }
     }
 }

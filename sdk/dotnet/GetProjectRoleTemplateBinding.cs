@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 project role template binding.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetProjectRoleTemplateBinding.InvokeAsync() instead")]
+        public static Task<GetProjectRoleTemplateBindingResult> GetProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetProjectRoleTemplateBinding
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project role template binding.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectRole.html.markdown.
         /// </summary>
         public static Task<GetProjectRoleTemplateBindingResult> InvokeAsync(GetProjectRoleTemplateBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? new GetProjectRoleTemplateBindingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectRoleTemplateBindingResult>("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetProjectRoleTemplateBindingArgs : Pulumi.InvokeArgs
     {
@@ -47,7 +56,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetProjectRoleTemplateBindingResult
     {
@@ -64,10 +72,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string GroupPrincipalId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -82,39 +86,34 @@ namespace Pulumi.Rancher2
         /// (Computed) The user_principal ID to assign project role template binding (string)
         /// </summary>
         public readonly string UserPrincipalId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectRoleTemplateBindingResult(
             ImmutableDictionary<string, object> annotations,
-
             string groupId,
-
             string groupPrincipalId,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
             string projectId,
-
             string roleTemplateId,
-
             string userId,
-
-            string userPrincipalId)
+            string userPrincipalId,
+            string id)
         {
             Annotations = annotations;
             GroupId = groupId;
             GroupPrincipalId = groupPrincipalId;
-            Id = id;
             Labels = labels;
             Name = name;
             ProjectId = projectId;
             RoleTemplateId = roleTemplateId;
             UserId = userId;
             UserPrincipalId = userPrincipalId;
+            Id = id;
         }
     }
 }

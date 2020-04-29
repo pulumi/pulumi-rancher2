@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetNodeTemplate.InvokeAsync() instead")]
+        public static Task<GetNodeTemplateResult> GetNodeTemplate(GetNodeTemplateArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetNodeTemplate
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeTemplate.html.markdown.
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetNodeTemplateArgs : Pulumi.InvokeArgs
     {
@@ -40,7 +49,6 @@ namespace Pulumi.Rancher2
         {
         }
     }
-
 
     [OutputType]
     public sealed class GetNodeTemplateResult
@@ -90,10 +98,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string EngineStorageDriver;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels for Node Template object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -102,38 +106,28 @@ namespace Pulumi.Rancher2
         /// (Computed) Engine storage driver for the node template (bool)
         /// </summary>
         public readonly bool? UseInternalIpAddress;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetNodeTemplateResult(
             ImmutableDictionary<string, object> annotations,
-
             string cloudCredentialId,
-
             string description,
-
             string driver,
-
             ImmutableDictionary<string, object> engineEnv,
-
             ImmutableArray<string> engineInsecureRegistries,
-
             string engineInstallUrl,
-
             ImmutableDictionary<string, object> engineLabel,
-
             ImmutableDictionary<string, object> engineOpt,
-
             ImmutableArray<string> engineRegistryMirrors,
-
             string engineStorageDriver,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
-            bool? useInternalIpAddress)
+            bool? useInternalIpAddress,
+            string id)
         {
             Annotations = annotations;
             CloudCredentialId = cloudCredentialId;
@@ -146,10 +140,10 @@ namespace Pulumi.Rancher2
             EngineOpt = engineOpt;
             EngineRegistryMirrors = engineRegistryMirrors;
             EngineStorageDriver = engineStorageDriver;
-            Id = id;
             Labels = labels;
             Name = name;
             UseInternalIpAddress = useInternalIpAddress;
+            Id = id;
         }
     }
 }

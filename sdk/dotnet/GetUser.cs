@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 user
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetUser.InvokeAsync() instead")]
+        public static Task<GetUserResult> GetUser(GetUserArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("rancher2:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetUser
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 user
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("rancher2:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("rancher2:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
@@ -47,7 +56,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetUserResult
     {
@@ -59,10 +67,6 @@ namespace Pulumi.Rancher2
         /// (Computed) The user is enabled (bool)
         /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly bool? IsExternal;
         /// <summary>
         /// (Computed) Labels of the resource (map)
@@ -77,33 +81,30 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableArray<string> PrincipalIds;
         public readonly string Username;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetUserResult(
             ImmutableDictionary<string, object> annotations,
-
             bool enabled,
-
-            string id,
-
             bool? isExternal,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
             ImmutableArray<string> principalIds,
-
-            string username)
+            string username,
+            string id)
         {
             Annotations = annotations;
             Enabled = enabled;
-            Id = id;
             IsExternal = isExternal;
             Labels = labels;
             Name = name;
             PrincipalIds = principalIds;
             Username = username;
+            Id = id;
         }
     }
 }

@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 etcd backup.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetEtcdBackup.InvokeAsync() instead")]
+        public static Task<GetEtcdBackupResult> GetEtcdBackup(GetEtcdBackupArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetEtcdBackup
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 etcd backup.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/etcdBackup.html.markdown.
         /// </summary>
         public static Task<GetEtcdBackupResult> InvokeAsync(GetEtcdBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetEtcdBackupArgs : Pulumi.InvokeArgs
     {
@@ -41,7 +50,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetEtcdBackupResult
     {
@@ -59,10 +67,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Filename;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels for Etcd Backup object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -75,36 +79,92 @@ namespace Pulumi.Rancher2
         /// (Computed) Description for the Etcd Backup (string)
         /// </summary>
         public readonly string NamespaceId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetEtcdBackupResult(
             ImmutableDictionary<string, object> annotations,
-
             Outputs.GetEtcdBackupBackupConfigResult backupConfig,
-
             string clusterId,
-
             string filename,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             bool manual,
-
             string name,
-
-            string namespaceId)
+            string namespaceId,
+            string id)
         {
             Annotations = annotations;
             BackupConfig = backupConfig;
             ClusterId = clusterId;
             Filename = filename;
-            Id = id;
             Labels = labels;
             Manual = manual;
             Name = name;
             NamespaceId = namespaceId;
+            Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetEtcdBackupBackupConfigResult
+    {
+        public readonly bool? Enabled;
+        public readonly int? IntervalHours;
+        public readonly int? Retention;
+        public readonly GetEtcdBackupBackupConfigS3BackupConfigResult? S3BackupConfig;
+        public readonly bool? SafeTimestamp;
+
+        [OutputConstructor]
+        private GetEtcdBackupBackupConfigResult(
+            bool? enabled,
+            int? intervalHours,
+            int? retention,
+            GetEtcdBackupBackupConfigS3BackupConfigResult? s3BackupConfig,
+            bool? safeTimestamp)
+        {
+            Enabled = enabled;
+            IntervalHours = intervalHours;
+            Retention = retention;
+            S3BackupConfig = s3BackupConfig;
+            SafeTimestamp = safeTimestamp;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetEtcdBackupBackupConfigS3BackupConfigResult
+    {
+        public readonly string? AccessKey;
+        public readonly string BucketName;
+        public readonly string? CustomCa;
+        public readonly string Endpoint;
+        public readonly string? Folder;
+        public readonly string? Region;
+        public readonly string? SecretKey;
+
+        [OutputConstructor]
+        private GetEtcdBackupBackupConfigS3BackupConfigResult(
+            string? accessKey,
+            string bucketName,
+            string? customCa,
+            string endpoint,
+            string? folder,
+            string? region,
+            string? secretKey)
+        {
+            AccessKey = accessKey;
+            BucketName = bucketName;
+            CustomCa = customCa;
+            Endpoint = endpoint;
+            Folder = folder;
+            Region = region;
+            SecretKey = secretKey;
+        }
+    }
     }
 }

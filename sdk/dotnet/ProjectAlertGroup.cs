@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectAlertGroup.html.markdown.
     /// </summary>
     public partial class ProjectAlertGroup : Pulumi.CustomResource
     {
@@ -60,7 +62,7 @@ namespace Pulumi.Rancher2
         /// The project alert group recipients (list)
         /// </summary>
         [Output("recipients")]
-        public Output<ImmutableArray<Outputs.ProjectAlertGroupRecipient>> Recipients { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ProjectAlertGroupRecipients>> Recipients { get; private set; } = null!;
 
         /// <summary>
         /// The project alert group wait seconds. Default: `3600` (int)
@@ -77,7 +79,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectAlertGroup(string name, ProjectAlertGroupArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, args ?? new ProjectAlertGroupArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -169,14 +171,14 @@ namespace Pulumi.Rancher2
         public Input<string> ProjectId { get; set; } = null!;
 
         [Input("recipients")]
-        private InputList<Inputs.ProjectAlertGroupRecipientArgs>? _recipients;
+        private InputList<Inputs.ProjectAlertGroupRecipientsArgs>? _recipients;
 
         /// <summary>
         /// The project alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ProjectAlertGroupRecipientArgs> Recipients
+        public InputList<Inputs.ProjectAlertGroupRecipientsArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ProjectAlertGroupRecipientArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ProjectAlertGroupRecipientsArgs>());
             set => _recipients = value;
         }
 
@@ -248,14 +250,14 @@ namespace Pulumi.Rancher2
         public Input<string>? ProjectId { get; set; }
 
         [Input("recipients")]
-        private InputList<Inputs.ProjectAlertGroupRecipientGetArgs>? _recipients;
+        private InputList<Inputs.ProjectAlertGroupRecipientsGetArgs>? _recipients;
 
         /// <summary>
         /// The project alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ProjectAlertGroupRecipientGetArgs> Recipients
+        public InputList<Inputs.ProjectAlertGroupRecipientsGetArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ProjectAlertGroupRecipientGetArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ProjectAlertGroupRecipientsGetArgs>());
             set => _recipients = value;
         }
 
@@ -268,5 +270,100 @@ namespace Pulumi.Rancher2
         public ProjectAlertGroupState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ProjectAlertGroupRecipientsArgs : Pulumi.ResourceArgs
+    {
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        [Input("notifierId", required: true)]
+        public Input<string> NotifierId { get; set; } = null!;
+
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        [Input("notifierType")]
+        public Input<string>? NotifierType { get; set; }
+
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
+
+        public ProjectAlertGroupRecipientsArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectAlertGroupRecipientsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("defaultRecipient")]
+        public Input<bool>? DefaultRecipient { get; set; }
+
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        [Input("notifierId", required: true)]
+        public Input<string> NotifierId { get; set; } = null!;
+
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        [Input("notifierType")]
+        public Input<string>? NotifierType { get; set; }
+
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
+
+        public ProjectAlertGroupRecipientsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ProjectAlertGroupRecipients
+    {
+        public readonly bool? DefaultRecipient;
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
+        public readonly string NotifierId;
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
+        public readonly string NotifierType;
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
+        public readonly string Recipient;
+
+        [OutputConstructor]
+        private ProjectAlertGroupRecipients(
+            bool? defaultRecipient,
+            string notifierId,
+            string notifierType,
+            string recipient)
+        {
+            DefaultRecipient = defaultRecipient;
+            NotifierId = notifierId;
+            NotifierType = notifierType;
+            Recipient = recipient;
+        }
+    }
     }
 }

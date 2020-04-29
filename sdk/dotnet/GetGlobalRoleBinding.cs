@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 global role binding.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetGlobalRoleBinding.InvokeAsync() instead")]
+        public static Task<GetGlobalRoleBindingResult> GetGlobalRoleBinding(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetGlobalRoleBinding
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 global role binding.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/globalRole.html.markdown.
         /// </summary>
         public static Task<GetGlobalRoleBindingResult> InvokeAsync(GetGlobalRoleBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? new GetGlobalRoleBindingArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalRoleBindingResult>("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetGlobalRoleBindingArgs : Pulumi.InvokeArgs
     {
@@ -41,7 +50,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetGlobalRoleBindingResult
     {
@@ -55,10 +63,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string GroupPrincipalId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -67,30 +71,28 @@ namespace Pulumi.Rancher2
         /// (Computed) The user ID to assign global role binding (string)
         /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetGlobalRoleBindingResult(
             ImmutableDictionary<string, object> annotations,
-
             string globalRoleId,
-
             string groupPrincipalId,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
-            string userId)
+            string userId,
+            string id)
         {
             Annotations = annotations;
             GlobalRoleId = globalRoleId;
             GroupPrincipalId = groupPrincipalId;
-            Id = id;
             Labels = labels;
             Name = name;
             UserId = userId;
+            Id = id;
         }
     }
 }

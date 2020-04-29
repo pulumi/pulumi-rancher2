@@ -13,6 +13,8 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigActiveDirectory.html.markdown.
     /// </summary>
     public partial class ActiveDirectory : Pulumi.CustomResource
     {
@@ -217,7 +219,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ActiveDirectory(string name, ActiveDirectoryArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/activeDirectory:ActiveDirectory", name, args ?? new ActiveDirectoryArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/activeDirectory:ActiveDirectory", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

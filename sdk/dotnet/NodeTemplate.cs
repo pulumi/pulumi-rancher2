@@ -15,6 +15,8 @@ namespace Pulumi.Rancher2
     /// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {
@@ -171,7 +173,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeTemplate(string name, NodeTemplateArgs? args = null, CustomResourceOptions? options = null)
-            : base("rancher2:index/nodeTemplate:NodeTemplate", name, args ?? new NodeTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/nodeTemplate:NodeTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -584,5 +586,3244 @@ namespace Pulumi.Rancher2
         public NodeTemplateState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class NodeTemplateAmazonec2ConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
+
+        /// <summary>
+        /// AWS machine image (string)
+        /// </summary>
+        [Input("ami", required: true)]
+        public Input<string> Ami { get; set; } = null!;
+
+        /// <summary>
+        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        /// </summary>
+        [Input("blockDurationMinutes")]
+        public Input<string>? BlockDurationMinutes { get; set; }
+
+        /// <summary>
+        /// AWS root device name. Default `/dev/sda1` (string)
+        /// </summary>
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
+
+        /// <summary>
+        /// Optional endpoint URL (hostname only or fully qualified URI) (string)
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// AWS IAM Instance Profile (string)
+        /// </summary>
+        [Input("iamInstanceProfile")]
+        public Input<string>? IamInstanceProfile { get; set; }
+
+        /// <summary>
+        /// Disable SSL when sending requests (bool)
+        /// </summary>
+        [Input("insecureTransport")]
+        public Input<bool>? InsecureTransport { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        [Input("keypairName")]
+        public Input<string>? KeypairName { get; set; }
+
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("monitoring")]
+        public Input<bool>? Monitoring { get; set; }
+
+        [Input("openPorts")]
+        private InputList<string>? _openPorts;
+
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public InputList<string> OpenPorts
+        {
+            get => _openPorts ?? (_openPorts = new InputList<string>());
+            set => _openPorts = value;
+        }
+
+        /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        [Input("privateAddressOnly")]
+        public Input<bool>? PrivateAddressOnly { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Set this flag to request spot instance. Default `false` (bool)
+        /// </summary>
+        [Input("requestSpotInstance")]
+        public Input<bool>? RequestSpotInstance { get; set; }
+
+        /// <summary>
+        /// Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        /// </summary>
+        [Input("retries")]
+        public Input<string>? Retries { get; set; }
+
+        /// <summary>
+        /// AWS root disk size (in GB). Default `16` (string)
+        /// </summary>
+        [Input("rootSize")]
+        public Input<string>? RootSize { get; set; }
+
+        /// <summary>
+        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("secretKey")]
+        public Input<string>? SecretKey { get; set; }
+
+        [Input("securityGroups", required: true)]
+        private InputList<string>? _securityGroups;
+
+        /// <summary>
+        /// AWS VPC security group. (list)
+        /// </summary>
+        public InputList<string> SecurityGroups
+        {
+            get => _securityGroups ?? (_securityGroups = new InputList<string>());
+            set => _securityGroups = value;
+        }
+
+        /// <summary>
+        /// Skip adding default rules to security groups (bool)
+        /// </summary>
+        [Input("securityGroupReadonly")]
+        public Input<bool>? SecurityGroupReadonly { get; set; }
+
+        /// <summary>
+        /// AWS Session Token (string)
+        /// </summary>
+        [Input("sessionToken")]
+        public Input<string>? SessionToken { get; set; }
+
+        /// <summary>
+        /// AWS spot instance bid price (in dollar). Default `0.50` (string)
+        /// </summary>
+        [Input("spotPrice")]
+        public Input<string>? SpotPrice { get; set; }
+
+        /// <summary>
+        /// SSH Key for Instance (string)
+        /// </summary>
+        [Input("sshKeypath")]
+        public Input<string>? SshKeypath { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// AWS VPC subnet id (string)
+        /// </summary>
+        [Input("subnetId", required: true)]
+        public Input<string> SubnetId { get; set; } = null!;
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Create an EBS optimized instance. Default `false` (bool)
+        /// </summary>
+        [Input("useEbsOptimizedInstance")]
+        public Input<bool>? UseEbsOptimizedInstance { get; set; }
+
+        /// <summary>
+        /// Force the usage of private IP address. Default `false` (bool)
+        /// </summary>
+        [Input("usePrivateAddress")]
+        public Input<bool>? UsePrivateAddress { get; set; }
+
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        [Input("userdata")]
+        public Input<string>? Userdata { get; set; }
+
+        /// <summary>
+        /// Amazon EBS volume type. Default `gp2` (string)
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
+
+        /// <summary>
+        /// AWS VPC id. (string)
+        /// </summary>
+        [Input("vpcId", required: true)]
+        public Input<string> VpcId { get; set; } = null!;
+
+        /// <summary>
+        /// AWS zone for instance (i.e. a,b,c,d,e) (string)
+        /// </summary>
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public NodeTemplateAmazonec2ConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateAmazonec2ConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
+
+        /// <summary>
+        /// AWS machine image (string)
+        /// </summary>
+        [Input("ami", required: true)]
+        public Input<string> Ami { get; set; } = null!;
+
+        /// <summary>
+        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        /// </summary>
+        [Input("blockDurationMinutes")]
+        public Input<string>? BlockDurationMinutes { get; set; }
+
+        /// <summary>
+        /// AWS root device name. Default `/dev/sda1` (string)
+        /// </summary>
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
+
+        /// <summary>
+        /// Optional endpoint URL (hostname only or fully qualified URI) (string)
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// AWS IAM Instance Profile (string)
+        /// </summary>
+        [Input("iamInstanceProfile")]
+        public Input<string>? IamInstanceProfile { get; set; }
+
+        /// <summary>
+        /// Disable SSL when sending requests (bool)
+        /// </summary>
+        [Input("insecureTransport")]
+        public Input<bool>? InsecureTransport { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        [Input("keypairName")]
+        public Input<string>? KeypairName { get; set; }
+
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("monitoring")]
+        public Input<bool>? Monitoring { get; set; }
+
+        [Input("openPorts")]
+        private InputList<string>? _openPorts;
+
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public InputList<string> OpenPorts
+        {
+            get => _openPorts ?? (_openPorts = new InputList<string>());
+            set => _openPorts = value;
+        }
+
+        /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        [Input("privateAddressOnly")]
+        public Input<bool>? PrivateAddressOnly { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// Set this flag to request spot instance. Default `false` (bool)
+        /// </summary>
+        [Input("requestSpotInstance")]
+        public Input<bool>? RequestSpotInstance { get; set; }
+
+        /// <summary>
+        /// Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        /// </summary>
+        [Input("retries")]
+        public Input<string>? Retries { get; set; }
+
+        /// <summary>
+        /// AWS root disk size (in GB). Default `16` (string)
+        /// </summary>
+        [Input("rootSize")]
+        public Input<string>? RootSize { get; set; }
+
+        /// <summary>
+        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("secretKey")]
+        public Input<string>? SecretKey { get; set; }
+
+        [Input("securityGroups", required: true)]
+        private InputList<string>? _securityGroups;
+
+        /// <summary>
+        /// AWS VPC security group. (list)
+        /// </summary>
+        public InputList<string> SecurityGroups
+        {
+            get => _securityGroups ?? (_securityGroups = new InputList<string>());
+            set => _securityGroups = value;
+        }
+
+        /// <summary>
+        /// Skip adding default rules to security groups (bool)
+        /// </summary>
+        [Input("securityGroupReadonly")]
+        public Input<bool>? SecurityGroupReadonly { get; set; }
+
+        /// <summary>
+        /// AWS Session Token (string)
+        /// </summary>
+        [Input("sessionToken")]
+        public Input<string>? SessionToken { get; set; }
+
+        /// <summary>
+        /// AWS spot instance bid price (in dollar). Default `0.50` (string)
+        /// </summary>
+        [Input("spotPrice")]
+        public Input<string>? SpotPrice { get; set; }
+
+        /// <summary>
+        /// SSH Key for Instance (string)
+        /// </summary>
+        [Input("sshKeypath")]
+        public Input<string>? SshKeypath { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// AWS VPC subnet id (string)
+        /// </summary>
+        [Input("subnetId", required: true)]
+        public Input<string> SubnetId { get; set; } = null!;
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Create an EBS optimized instance. Default `false` (bool)
+        /// </summary>
+        [Input("useEbsOptimizedInstance")]
+        public Input<bool>? UseEbsOptimizedInstance { get; set; }
+
+        /// <summary>
+        /// Force the usage of private IP address. Default `false` (bool)
+        /// </summary>
+        [Input("usePrivateAddress")]
+        public Input<bool>? UsePrivateAddress { get; set; }
+
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        [Input("userdata")]
+        public Input<string>? Userdata { get; set; }
+
+        /// <summary>
+        /// Amazon EBS volume type. Default `gp2` (string)
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
+
+        /// <summary>
+        /// AWS VPC id. (string)
+        /// </summary>
+        [Input("vpcId", required: true)]
+        public Input<string> VpcId { get; set; } = null!;
+
+        /// <summary>
+        /// AWS zone for instance (i.e. a,b,c,d,e) (string)
+        /// </summary>
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
+
+        public NodeTemplateAmazonec2ConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateAzureConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        /// </summary>
+        [Input("availabilitySet")]
+        public Input<string>? AvailabilitySet { get; set; }
+
+        /// <summary>
+        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// Path to file with custom-data (string)
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        [Input("diskSize")]
+        public Input<string>? DiskSize { get; set; }
+
+        /// <summary>
+        /// A unique DNS label for the public IP adddress (string)
+        /// </summary>
+        [Input("dns")]
+        public Input<string>? Dns { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        /// `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
+        /// </summary>
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
+
+        [Input("faultDomainCount")]
+        public Input<string>? FaultDomainCount { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Azure region to create the virtual machine. Default `westus` (string)
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        /// </summary>
+        [Input("managedDisks")]
+        public Input<bool>? ManagedDisks { get; set; }
+
+        /// <summary>
+        /// Do not create a public IP address for the machine. Default `false` (bool)
+        /// </summary>
+        [Input("noPublicIp")]
+        public Input<bool>? NoPublicIp { get; set; }
+
+        [Input("openPorts")]
+        private InputList<string>? _openPorts;
+
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public InputList<string> OpenPorts
+        {
+            get => _openPorts ?? (_openPorts = new InputList<string>());
+            set => _openPorts = value;
+        }
+
+        /// <summary>
+        /// Specify a static private IP address for the machine. (string)
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        /// </summary>
+        [Input("resourceGroup")]
+        public Input<string>? ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Assign a static public IP address to the machine. Default `false` (bool)
+        /// </summary>
+        [Input("staticPublicIp")]
+        public Input<bool>? StaticPublicIp { get; set; }
+
+        /// <summary>
+        /// Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        /// </summary>
+        [Input("subnet")]
+        public Input<string>? Subnet { get; set; }
+
+        /// <summary>
+        /// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        /// </summary>
+        [Input("subnetPrefix")]
+        public Input<string>? SubnetPrefix { get; set; }
+
+        /// <summary>
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("subscriptionId")]
+        public Input<string>? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Update domain count to use for availability set. Default `5` (string)
+        /// </summary>
+        [Input("updateDomainCount")]
+        public Input<string>? UpdateDomainCount { get; set; }
+
+        /// <summary>
+        /// Use private IP address of the machine to connect. Default `false` (bool)
+        /// </summary>
+        [Input("usePrivateIp")]
+        public Input<bool>? UsePrivateIp { get; set; }
+
+        /// <summary>
+        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        /// </summary>
+        [Input("vnet")]
+        public Input<string>? Vnet { get; set; }
+
+        public NodeTemplateAzureConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateAzureConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        /// </summary>
+        [Input("availabilitySet")]
+        public Input<string>? AvailabilitySet { get; set; }
+
+        /// <summary>
+        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// Path to file with custom-data (string)
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        [Input("diskSize")]
+        public Input<string>? DiskSize { get; set; }
+
+        /// <summary>
+        /// A unique DNS label for the public IP adddress (string)
+        /// </summary>
+        [Input("dns")]
+        public Input<string>? Dns { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        /// `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
+        /// </summary>
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
+
+        [Input("faultDomainCount")]
+        public Input<string>? FaultDomainCount { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Azure region to create the virtual machine. Default `westus` (string)
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        /// </summary>
+        [Input("managedDisks")]
+        public Input<bool>? ManagedDisks { get; set; }
+
+        /// <summary>
+        /// Do not create a public IP address for the machine. Default `false` (bool)
+        /// </summary>
+        [Input("noPublicIp")]
+        public Input<bool>? NoPublicIp { get; set; }
+
+        [Input("openPorts")]
+        private InputList<string>? _openPorts;
+
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public InputList<string> OpenPorts
+        {
+            get => _openPorts ?? (_openPorts = new InputList<string>());
+            set => _openPorts = value;
+        }
+
+        /// <summary>
+        /// Specify a static private IP address for the machine. (string)
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        /// </summary>
+        [Input("resourceGroup")]
+        public Input<string>? ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Assign a static public IP address to the machine. Default `false` (bool)
+        /// </summary>
+        [Input("staticPublicIp")]
+        public Input<bool>? StaticPublicIp { get; set; }
+
+        /// <summary>
+        /// Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        /// </summary>
+        [Input("subnet")]
+        public Input<string>? Subnet { get; set; }
+
+        /// <summary>
+        /// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        /// </summary>
+        [Input("subnetPrefix")]
+        public Input<string>? SubnetPrefix { get; set; }
+
+        /// <summary>
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("subscriptionId")]
+        public Input<string>? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Update domain count to use for availability set. Default `5` (string)
+        /// </summary>
+        [Input("updateDomainCount")]
+        public Input<string>? UpdateDomainCount { get; set; }
+
+        /// <summary>
+        /// Use private IP address of the machine to connect. Default `false` (bool)
+        /// </summary>
+        [Input("usePrivateIp")]
+        public Input<bool>? UsePrivateIp { get; set; }
+
+        /// <summary>
+        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        /// </summary>
+        [Input("vnet")]
+        public Input<string>? Vnet { get; set; }
+
+        public NodeTemplateAzureConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateDigitaloceanConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("accessToken")]
+        public Input<string>? AccessToken { get; set; }
+
+        /// <summary>
+        /// Enable backups for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("backups")]
+        public Input<bool>? Backups { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Enable ipv6 for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("ipv6")]
+        public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("monitoring")]
+        public Input<bool>? Monitoring { get; set; }
+
+        /// <summary>
+        /// Enable private networking for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("privateNetworking")]
+        public Input<bool>? PrivateNetworking { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// SSH key fingerprint (string)
+        /// </summary>
+        [Input("sshKeyFingerprint")]
+        public Input<string>? SshKeyFingerprint { get; set; }
+
+        /// <summary>
+        /// SSH private key path (string)
+        /// </summary>
+        [Input("sshKeyPath")]
+        public Input<string>? SshKeyPath { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        [Input("userdata")]
+        public Input<string>? Userdata { get; set; }
+
+        public NodeTemplateDigitaloceanConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateDigitaloceanConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("accessToken")]
+        public Input<string>? AccessToken { get; set; }
+
+        /// <summary>
+        /// Enable backups for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("backups")]
+        public Input<bool>? Backups { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Enable ipv6 for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("ipv6")]
+        public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("monitoring")]
+        public Input<bool>? Monitoring { get; set; }
+
+        /// <summary>
+        /// Enable private networking for droplet. Default `false` (bool)
+        /// </summary>
+        [Input("privateNetworking")]
+        public Input<bool>? PrivateNetworking { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        [Input("size")]
+        public Input<string>? Size { get; set; }
+
+        /// <summary>
+        /// SSH key fingerprint (string)
+        /// </summary>
+        [Input("sshKeyFingerprint")]
+        public Input<string>? SshKeyFingerprint { get; set; }
+
+        /// <summary>
+        /// SSH private key path (string)
+        /// </summary>
+        [Input("sshKeyPath")]
+        public Input<string>? SshKeyPath { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        [Input("userdata")]
+        public Input<string>? Userdata { get; set; }
+
+        public NodeTemplateDigitaloceanConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateLinodeConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        [Input("authorizedUsers")]
+        public Input<string>? AuthorizedUsers { get; set; }
+
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("createPrivateIp")]
+        public Input<bool>? CreatePrivateIp { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        [Input("rootPass")]
+        public Input<string>? RootPass { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        [Input("stackscript")]
+        public Input<string>? Stackscript { get; set; }
+
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        [Input("stackscriptData")]
+        public Input<string>? StackscriptData { get; set; }
+
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        [Input("swapSize")]
+        public Input<string>? SwapSize { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        [Input("uaPrefix")]
+        public Input<string>? UaPrefix { get; set; }
+
+        public NodeTemplateLinodeConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateLinodeConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        [Input("authorizedUsers")]
+        public Input<string>? AuthorizedUsers { get; set; }
+
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("createPrivateIp")]
+        public Input<bool>? CreatePrivateIp { get; set; }
+
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        [Input("dockerPort")]
+        public Input<string>? DockerPort { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        [Input("rootPass")]
+        public Input<string>? RootPass { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        [Input("stackscript")]
+        public Input<string>? Stackscript { get; set; }
+
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        [Input("stackscriptData")]
+        public Input<string>? StackscriptData { get; set; }
+
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        [Input("swapSize")]
+        public Input<string>? SwapSize { get; set; }
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        [Input("uaPrefix")]
+        public Input<string>? UaPrefix { get; set; }
+
+        public NodeTemplateLinodeConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateOpennebulaConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        [Input("b2dSize")]
+        public Input<string>? B2dSize { get; set; }
+
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        [Input("cpu")]
+        public Input<string>? Cpu { get; set; }
+
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        [Input("devPrefix")]
+        public Input<string>? DevPrefix { get; set; }
+
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        [Input("disableVnc")]
+        public Input<bool>? DisableVnc { get; set; }
+
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        [Input("diskResize")]
+        public Input<string>? DiskResize { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        [Input("imageOwner")]
+        public Input<string>? ImageOwner { get; set; }
+
+        [Input("memory")]
+        public Input<string>? Memory { get; set; }
+
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        [Input("networkName")]
+        public Input<string>? NetworkName { get; set; }
+
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        [Input("networkOwner")]
+        public Input<string>? NetworkOwner { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        [Input("user", required: true)]
+        public Input<string> User { get; set; } = null!;
+
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        [Input("vcpu")]
+        public Input<string>? Vcpu { get; set; }
+
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        [Input("xmlRpcUrl", required: true)]
+        public Input<string> XmlRpcUrl { get; set; } = null!;
+
+        public NodeTemplateOpennebulaConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateOpennebulaConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        [Input("b2dSize")]
+        public Input<string>? B2dSize { get; set; }
+
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        [Input("cpu")]
+        public Input<string>? Cpu { get; set; }
+
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        [Input("devPrefix")]
+        public Input<string>? DevPrefix { get; set; }
+
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        [Input("disableVnc")]
+        public Input<bool>? DisableVnc { get; set; }
+
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        [Input("diskResize")]
+        public Input<string>? DiskResize { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        [Input("imageOwner")]
+        public Input<string>? ImageOwner { get; set; }
+
+        [Input("memory")]
+        public Input<string>? Memory { get; set; }
+
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        [Input("networkName")]
+        public Input<string>? NetworkName { get; set; }
+
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        [Input("networkOwner")]
+        public Input<string>? NetworkOwner { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        [Input("user", required: true)]
+        public Input<string> User { get; set; } = null!;
+
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        [Input("vcpu")]
+        public Input<string>? Vcpu { get; set; }
+
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        [Input("xmlRpcUrl", required: true)]
+        public Input<string> XmlRpcUrl { get; set; } = null!;
+
+        public NodeTemplateOpennebulaConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateOpenstackConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("activeTimeout")]
+        public Input<string>? ActiveTimeout { get; set; }
+
+        /// <summary>
+        /// OpenStack authentication URL (string)
+        /// </summary>
+        [Input("authUrl", required: true)]
+        public Input<string> AuthUrl { get; set; } = null!;
+
+        /// <summary>
+        /// OpenStack availability zone (string)
+        /// </summary>
+        [Input("availabilityZone", required: true)]
+        public Input<string> AvailabilityZone { get; set; } = null!;
+
+        /// <summary>
+        /// CA certificate bundle to verify against (string)
+        /// </summary>
+        [Input("cacert")]
+        public Input<string>? Cacert { get; set; }
+
+        /// <summary>
+        /// Enables the OpenStack config drive for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("configDrive")]
+        public Input<bool>? ConfigDrive { get; set; }
+
+        /// <summary>
+        /// OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
+        /// OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
+
+        /// <summary>
+        /// OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        /// </summary>
+        [Input("flavorName")]
+        public Input<string>? FlavorName { get; set; }
+
+        /// <summary>
+        /// OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        /// </summary>
+        [Input("floatingIpPool")]
+        public Input<string>? FloatingIpPool { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Disable TLS credential checking. Default `false` (bool)
+        /// </summary>
+        [Input("insecure")]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// OpenStack version of IP address assigned for the machine Default `4` (string)
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        [Input("keypairName")]
+        public Input<string>? KeypairName { get; set; }
+
+        /// <summary>
+        /// OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        /// </summary>
+        [Input("netId")]
+        public Input<string>? NetId { get; set; }
+
+        /// <summary>
+        /// OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        /// </summary>
+        [Input("netName")]
+        public Input<string>? NetName { get; set; }
+
+        /// <summary>
+        /// Use the nova networking services instead of neutron (string)
+        /// </summary>
+        [Input("novaNetwork")]
+        public Input<bool>? NovaNetwork { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Private key content to use for SSH (string)
+        /// </summary>
+        [Input("privateKeyFile")]
+        public Input<string>? PrivateKeyFile { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// OpenStack comma separated security groups for the machine (string)
+        /// </summary>
+        [Input("secGroups")]
+        public Input<string>? SecGroups { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// OpenStack tenant name. Conflicts with `tenant_id` (string)
+        /// </summary>
+        [Input("tenantName")]
+        public Input<string>? TenantName { get; set; }
+
+        /// <summary>
+        /// File containing an openstack userdata script (string)
+        /// </summary>
+        [Input("userDataFile")]
+        public Input<string>? UserDataFile { get; set; }
+
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public NodeTemplateOpenstackConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateOpenstackConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("activeTimeout")]
+        public Input<string>? ActiveTimeout { get; set; }
+
+        /// <summary>
+        /// OpenStack authentication URL (string)
+        /// </summary>
+        [Input("authUrl", required: true)]
+        public Input<string> AuthUrl { get; set; } = null!;
+
+        /// <summary>
+        /// OpenStack availability zone (string)
+        /// </summary>
+        [Input("availabilityZone", required: true)]
+        public Input<string> AvailabilityZone { get; set; } = null!;
+
+        /// <summary>
+        /// CA certificate bundle to verify against (string)
+        /// </summary>
+        [Input("cacert")]
+        public Input<string>? Cacert { get; set; }
+
+        /// <summary>
+        /// Enables the OpenStack config drive for the instance. Default `false` (bool)
+        /// </summary>
+        [Input("configDrive")]
+        public Input<bool>? ConfigDrive { get; set; }
+
+        /// <summary>
+        /// OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
+        /// OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
+
+        /// <summary>
+        /// OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        /// </summary>
+        [Input("flavorName")]
+        public Input<string>? FlavorName { get; set; }
+
+        /// <summary>
+        /// OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        /// </summary>
+        [Input("floatingIpPool")]
+        public Input<string>? FloatingIpPool { get; set; }
+
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Disable TLS credential checking. Default `false` (bool)
+        /// </summary>
+        [Input("insecure")]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// OpenStack version of IP address assigned for the machine Default `4` (string)
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        [Input("keypairName")]
+        public Input<string>? KeypairName { get; set; }
+
+        /// <summary>
+        /// OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        /// </summary>
+        [Input("netId")]
+        public Input<string>? NetId { get; set; }
+
+        /// <summary>
+        /// OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        /// </summary>
+        [Input("netName")]
+        public Input<string>? NetName { get; set; }
+
+        /// <summary>
+        /// Use the nova networking services instead of neutron (string)
+        /// </summary>
+        [Input("novaNetwork")]
+        public Input<bool>? NovaNetwork { get; set; }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Private key content to use for SSH (string)
+        /// </summary>
+        [Input("privateKeyFile")]
+        public Input<string>? PrivateKeyFile { get; set; }
+
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// OpenStack comma separated security groups for the machine (string)
+        /// </summary>
+        [Input("secGroups")]
+        public Input<string>? SecGroups { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// OpenStack tenant name. Conflicts with `tenant_id` (string)
+        /// </summary>
+        [Input("tenantName")]
+        public Input<string>? TenantName { get; set; }
+
+        /// <summary>
+        /// File containing an openstack userdata script (string)
+        /// </summary>
+        [Input("userDataFile")]
+        public Input<string>? UserDataFile { get; set; }
+
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public NodeTemplateOpenstackConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateVsphereConfigArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        /// </summary>
+        [Input("boot2dockerUrl")]
+        public Input<string>? Boot2dockerUrl { get; set; }
+
+        [Input("cfgparams")]
+        private InputList<string>? _cfgparams;
+
+        /// <summary>
+        /// vSphere vm configuration parameters (used for guestinfo) (list)
+        /// </summary>
+        public InputList<string> Cfgparams
+        {
+            get => _cfgparams ?? (_cfgparams = new InputList<string>());
+            set => _cfgparams = value;
+        }
+
+        /// <summary>
+        /// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("cloneFrom")]
+        public Input<string>? CloneFrom { get; set; }
+
+        /// <summary>
+        /// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("cloudConfig")]
+        public Input<string>? CloudConfig { get; set; }
+
+        /// <summary>
+        /// vSphere cloud-init file or url to set in the guestinfo (string)
+        /// </summary>
+        [Input("cloudinit")]
+        public Input<string>? Cloudinit { get; set; }
+
+        /// <summary>
+        /// If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("contentLibrary")]
+        public Input<string>? ContentLibrary { get; set; }
+
+        /// <summary>
+        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// </summary>
+        [Input("cpuCount")]
+        public Input<string>? CpuCount { get; set; }
+
+        /// <summary>
+        /// Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("creationType")]
+        public Input<string>? CreationType { get; set; }
+
+        [Input("customAttributes")]
+        private InputList<string>? _customAttributes;
+
+        /// <summary>
+        /// vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+        /// </summary>
+        public InputList<string> CustomAttributes
+        {
+            get => _customAttributes ?? (_customAttributes = new InputList<string>());
+            set => _customAttributes = value;
+        }
+
+        /// <summary>
+        /// vSphere datacenter for docker VM (string)
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// vSphere datastore for docker VM (string)
+        /// </summary>
+        [Input("datastore")]
+        public Input<string>? Datastore { get; set; }
+
+        /// <summary>
+        /// vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("datastoreCluster")]
+        public Input<string>? DatastoreCluster { get; set; }
+
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        [Input("diskSize")]
+        public Input<string>? DiskSize { get; set; }
+
+        /// <summary>
+        /// vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        /// </summary>
+        [Input("folder")]
+        public Input<string>? Folder { get; set; }
+
+        /// <summary>
+        /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        /// </summary>
+        [Input("hostsystem")]
+        public Input<string>? Hostsystem { get; set; }
+
+        /// <summary>
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// </summary>
+        [Input("memorySize")]
+        public Input<string>? MemorySize { get; set; }
+
+        [Input("networks")]
+        private InputList<string>? _networks;
+
+        /// <summary>
+        /// vSphere network where the docker VM will be attached (list)
+        /// </summary>
+        public InputList<string> Networks
+        {
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// vSphere resource pool for docker VM (string)
+        /// </summary>
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPassword")]
+        public Input<string>? SshPassword { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUserGroup")]
+        public Input<string>? SshUserGroup { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        /// </summary>
+        [Input("vappIpAllocationPolicy")]
+        public Input<string>? VappIpAllocationPolicy { get; set; }
+
+        /// <summary>
+        /// vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        /// </summary>
+        [Input("vappIpProtocol")]
+        public Input<string>? VappIpProtocol { get; set; }
+
+        [Input("vappProperties")]
+        private InputList<string>? _vappProperties;
+
+        /// <summary>
+        /// vSphere vApp properties (list)
+        /// </summary>
+        public InputList<string> VappProperties
+        {
+            get => _vappProperties ?? (_vappProperties = new InputList<string>());
+            set => _vappProperties = value;
+        }
+
+        /// <summary>
+        /// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        /// </summary>
+        [Input("vappTransport")]
+        public Input<string>? VappTransport { get; set; }
+
+        /// <summary>
+        /// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("vcenter")]
+        public Input<string>? Vcenter { get; set; }
+
+        /// <summary>
+        /// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        /// </summary>
+        [Input("vcenterPort")]
+        public Input<string>? VcenterPort { get; set; }
+
+        public NodeTemplateVsphereConfigArgs()
+        {
+        }
+    }
+
+    public sealed class NodeTemplateVsphereConfigGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        /// </summary>
+        [Input("boot2dockerUrl")]
+        public Input<string>? Boot2dockerUrl { get; set; }
+
+        [Input("cfgparams")]
+        private InputList<string>? _cfgparams;
+
+        /// <summary>
+        /// vSphere vm configuration parameters (used for guestinfo) (list)
+        /// </summary>
+        public InputList<string> Cfgparams
+        {
+            get => _cfgparams ?? (_cfgparams = new InputList<string>());
+            set => _cfgparams = value;
+        }
+
+        /// <summary>
+        /// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("cloneFrom")]
+        public Input<string>? CloneFrom { get; set; }
+
+        /// <summary>
+        /// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("cloudConfig")]
+        public Input<string>? CloudConfig { get; set; }
+
+        /// <summary>
+        /// vSphere cloud-init file or url to set in the guestinfo (string)
+        /// </summary>
+        [Input("cloudinit")]
+        public Input<string>? Cloudinit { get; set; }
+
+        /// <summary>
+        /// If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("contentLibrary")]
+        public Input<string>? ContentLibrary { get; set; }
+
+        /// <summary>
+        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// </summary>
+        [Input("cpuCount")]
+        public Input<string>? CpuCount { get; set; }
+
+        /// <summary>
+        /// Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("creationType")]
+        public Input<string>? CreationType { get; set; }
+
+        [Input("customAttributes")]
+        private InputList<string>? _customAttributes;
+
+        /// <summary>
+        /// vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+        /// </summary>
+        public InputList<string> CustomAttributes
+        {
+            get => _customAttributes ?? (_customAttributes = new InputList<string>());
+            set => _customAttributes = value;
+        }
+
+        /// <summary>
+        /// vSphere datacenter for docker VM (string)
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// vSphere datastore for docker VM (string)
+        /// </summary>
+        [Input("datastore")]
+        public Input<string>? Datastore { get; set; }
+
+        /// <summary>
+        /// vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("datastoreCluster")]
+        public Input<string>? DatastoreCluster { get; set; }
+
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        [Input("diskSize")]
+        public Input<string>? DiskSize { get; set; }
+
+        /// <summary>
+        /// vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        /// </summary>
+        [Input("folder")]
+        public Input<string>? Folder { get; set; }
+
+        /// <summary>
+        /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        /// </summary>
+        [Input("hostsystem")]
+        public Input<string>? Hostsystem { get; set; }
+
+        /// <summary>
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// </summary>
+        [Input("memorySize")]
+        public Input<string>? MemorySize { get; set; }
+
+        [Input("networks")]
+        private InputList<string>? _networks;
+
+        /// <summary>
+        /// vSphere network where the docker VM will be attached (list)
+        /// </summary>
+        public InputList<string> Networks
+        {
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// vSphere resource pool for docker VM (string)
+        /// </summary>
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPassword")]
+        public Input<string>? SshPassword { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshPort")]
+        public Input<string>? SshPort { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUser")]
+        public Input<string>? SshUser { get; set; }
+
+        /// <summary>
+        /// If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
+        /// </summary>
+        [Input("sshUserGroup")]
+        public Input<string>? SshUserGroup { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        /// </summary>
+        [Input("vappIpAllocationPolicy")]
+        public Input<string>? VappIpAllocationPolicy { get; set; }
+
+        /// <summary>
+        /// vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        /// </summary>
+        [Input("vappIpProtocol")]
+        public Input<string>? VappIpProtocol { get; set; }
+
+        [Input("vappProperties")]
+        private InputList<string>? _vappProperties;
+
+        /// <summary>
+        /// vSphere vApp properties (list)
+        /// </summary>
+        public InputList<string> VappProperties
+        {
+            get => _vappProperties ?? (_vappProperties = new InputList<string>());
+            set => _vappProperties = value;
+        }
+
+        /// <summary>
+        /// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        /// </summary>
+        [Input("vappTransport")]
+        public Input<string>? VappTransport { get; set; }
+
+        /// <summary>
+        /// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        [Input("vcenter")]
+        public Input<string>? Vcenter { get; set; }
+
+        /// <summary>
+        /// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        /// </summary>
+        [Input("vcenterPort")]
+        public Input<string>? VcenterPort { get; set; }
+
+        public NodeTemplateVsphereConfigGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class NodeTemplateAmazonec2Config
+    {
+        /// <summary>
+        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? AccessKey;
+        /// <summary>
+        /// AWS machine image (string)
+        /// </summary>
+        public readonly string Ami;
+        /// <summary>
+        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        /// </summary>
+        public readonly string? BlockDurationMinutes;
+        /// <summary>
+        /// AWS root device name. Default `/dev/sda1` (string)
+        /// </summary>
+        public readonly string? DeviceName;
+        /// <summary>
+        /// Optional endpoint URL (hostname only or fully qualified URI) (string)
+        /// </summary>
+        public readonly string? Endpoint;
+        /// <summary>
+        /// AWS IAM Instance Profile (string)
+        /// </summary>
+        public readonly string? IamInstanceProfile;
+        /// <summary>
+        /// Disable SSL when sending requests (bool)
+        /// </summary>
+        public readonly bool? InsecureTransport;
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        public readonly string? InstanceType;
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        public readonly string? KeypairName;
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        public readonly bool? Monitoring;
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public readonly ImmutableArray<string> OpenPorts;
+        /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
+        public readonly bool? PrivateAddressOnly;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
+        /// Set this flag to request spot instance. Default `false` (bool)
+        /// </summary>
+        public readonly bool? RequestSpotInstance;
+        /// <summary>
+        /// Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        /// </summary>
+        public readonly string? Retries;
+        /// <summary>
+        /// AWS root disk size (in GB). Default `16` (string)
+        /// </summary>
+        public readonly string? RootSize;
+        /// <summary>
+        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? SecretKey;
+        /// <summary>
+        /// AWS VPC security group. (list)
+        /// </summary>
+        public readonly ImmutableArray<string> SecurityGroups;
+        /// <summary>
+        /// Skip adding default rules to security groups (bool)
+        /// </summary>
+        public readonly bool? SecurityGroupReadonly;
+        /// <summary>
+        /// AWS Session Token (string)
+        /// </summary>
+        public readonly string? SessionToken;
+        /// <summary>
+        /// AWS spot instance bid price (in dollar). Default `0.50` (string)
+        /// </summary>
+        public readonly string? SpotPrice;
+        /// <summary>
+        /// SSH Key for Instance (string)
+        /// </summary>
+        public readonly string? SshKeypath;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// AWS VPC subnet id (string)
+        /// </summary>
+        public readonly string SubnetId;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public readonly string? Tags;
+        /// <summary>
+        /// Create an EBS optimized instance. Default `false` (bool)
+        /// </summary>
+        public readonly bool? UseEbsOptimizedInstance;
+        /// <summary>
+        /// Force the usage of private IP address. Default `false` (bool)
+        /// </summary>
+        public readonly bool? UsePrivateAddress;
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        public readonly string? Userdata;
+        /// <summary>
+        /// Amazon EBS volume type. Default `gp2` (string)
+        /// </summary>
+        public readonly string? VolumeType;
+        /// <summary>
+        /// AWS VPC id. (string)
+        /// </summary>
+        public readonly string VpcId;
+        /// <summary>
+        /// AWS zone for instance (i.e. a,b,c,d,e) (string)
+        /// </summary>
+        public readonly string Zone;
+
+        [OutputConstructor]
+        private NodeTemplateAmazonec2Config(
+            string? accessKey,
+            string ami,
+            string? blockDurationMinutes,
+            string? deviceName,
+            string? endpoint,
+            string? iamInstanceProfile,
+            bool? insecureTransport,
+            string? instanceType,
+            string? keypairName,
+            bool? monitoring,
+            ImmutableArray<string> openPorts,
+            bool? privateAddressOnly,
+            string region,
+            bool? requestSpotInstance,
+            string? retries,
+            string? rootSize,
+            string? secretKey,
+            ImmutableArray<string> securityGroups,
+            bool? securityGroupReadonly,
+            string? sessionToken,
+            string? spotPrice,
+            string? sshKeypath,
+            string? sshUser,
+            string subnetId,
+            string? tags,
+            bool? useEbsOptimizedInstance,
+            bool? usePrivateAddress,
+            string? userdata,
+            string? volumeType,
+            string vpcId,
+            string zone)
+        {
+            AccessKey = accessKey;
+            Ami = ami;
+            BlockDurationMinutes = blockDurationMinutes;
+            DeviceName = deviceName;
+            Endpoint = endpoint;
+            IamInstanceProfile = iamInstanceProfile;
+            InsecureTransport = insecureTransport;
+            InstanceType = instanceType;
+            KeypairName = keypairName;
+            Monitoring = monitoring;
+            OpenPorts = openPorts;
+            PrivateAddressOnly = privateAddressOnly;
+            Region = region;
+            RequestSpotInstance = requestSpotInstance;
+            Retries = retries;
+            RootSize = rootSize;
+            SecretKey = secretKey;
+            SecurityGroups = securityGroups;
+            SecurityGroupReadonly = securityGroupReadonly;
+            SessionToken = sessionToken;
+            SpotPrice = spotPrice;
+            SshKeypath = sshKeypath;
+            SshUser = sshUser;
+            SubnetId = subnetId;
+            Tags = tags;
+            UseEbsOptimizedInstance = useEbsOptimizedInstance;
+            UsePrivateAddress = usePrivateAddress;
+            Userdata = userdata;
+            VolumeType = volumeType;
+            VpcId = vpcId;
+            Zone = zone;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateAzureConfig
+    {
+        /// <summary>
+        /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        /// </summary>
+        public readonly string? AvailabilitySet;
+        /// <summary>
+        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? ClientId;
+        /// <summary>
+        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? ClientSecret;
+        /// <summary>
+        /// Path to file with custom-data (string)
+        /// </summary>
+        public readonly string? CustomData;
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        public readonly string? DiskSize;
+        /// <summary>
+        /// A unique DNS label for the public IP adddress (string)
+        /// </summary>
+        public readonly string? Dns;
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        public readonly string? DockerPort;
+        /// <summary>
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        /// `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
+        /// </summary>
+        public readonly string? Environment;
+        public readonly string? FaultDomainCount;
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        public readonly string? Image;
+        /// <summary>
+        /// Azure region to create the virtual machine. Default `westus` (string)
+        /// </summary>
+        public readonly string? Location;
+        /// <summary>
+        /// Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        /// </summary>
+        public readonly bool? ManagedDisks;
+        /// <summary>
+        /// Do not create a public IP address for the machine. Default `false` (bool)
+        /// </summary>
+        public readonly bool? NoPublicIp;
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
+        public readonly ImmutableArray<string> OpenPorts;
+        /// <summary>
+        /// Specify a static private IP address for the machine. (string)
+        /// </summary>
+        public readonly string? PrivateIpAddress;
+        /// <summary>
+        /// Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        /// </summary>
+        public readonly string? ResourceGroup;
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        public readonly string? Size;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// Assign a static public IP address to the machine. Default `false` (bool)
+        /// </summary>
+        public readonly bool? StaticPublicIp;
+        /// <summary>
+        /// Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        /// </summary>
+        public readonly string? StorageType;
+        /// <summary>
+        /// Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        /// </summary>
+        public readonly string? Subnet;
+        /// <summary>
+        /// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        /// </summary>
+        public readonly string? SubnetPrefix;
+        /// <summary>
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? SubscriptionId;
+        /// <summary>
+        /// Update domain count to use for availability set. Default `5` (string)
+        /// </summary>
+        public readonly string? UpdateDomainCount;
+        /// <summary>
+        /// Use private IP address of the machine to connect. Default `false` (bool)
+        /// </summary>
+        public readonly bool? UsePrivateIp;
+        /// <summary>
+        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        /// </summary>
+        public readonly string? Vnet;
+
+        [OutputConstructor]
+        private NodeTemplateAzureConfig(
+            string? availabilitySet,
+            string? clientId,
+            string? clientSecret,
+            string? customData,
+            string? diskSize,
+            string? dns,
+            string? dockerPort,
+            string? environment,
+            string? faultDomainCount,
+            string? image,
+            string? location,
+            bool? managedDisks,
+            bool? noPublicIp,
+            ImmutableArray<string> openPorts,
+            string? privateIpAddress,
+            string? resourceGroup,
+            string? size,
+            string? sshUser,
+            bool? staticPublicIp,
+            string? storageType,
+            string? subnet,
+            string? subnetPrefix,
+            string? subscriptionId,
+            string? updateDomainCount,
+            bool? usePrivateIp,
+            string? vnet)
+        {
+            AvailabilitySet = availabilitySet;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            CustomData = customData;
+            DiskSize = diskSize;
+            Dns = dns;
+            DockerPort = dockerPort;
+            Environment = environment;
+            FaultDomainCount = faultDomainCount;
+            Image = image;
+            Location = location;
+            ManagedDisks = managedDisks;
+            NoPublicIp = noPublicIp;
+            OpenPorts = openPorts;
+            PrivateIpAddress = privateIpAddress;
+            ResourceGroup = resourceGroup;
+            Size = size;
+            SshUser = sshUser;
+            StaticPublicIp = staticPublicIp;
+            StorageType = storageType;
+            Subnet = subnet;
+            SubnetPrefix = subnetPrefix;
+            SubscriptionId = subscriptionId;
+            UpdateDomainCount = updateDomainCount;
+            UsePrivateIp = usePrivateIp;
+            Vnet = vnet;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateDigitaloceanConfig
+    {
+        /// <summary>
+        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? AccessToken;
+        /// <summary>
+        /// Enable backups for droplet. Default `false` (bool)
+        /// </summary>
+        public readonly bool? Backups;
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        public readonly string? Image;
+        /// <summary>
+        /// Enable ipv6 for droplet. Default `false` (bool)
+        /// </summary>
+        public readonly bool? Ipv6;
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
+        public readonly bool? Monitoring;
+        /// <summary>
+        /// Enable private networking for droplet. Default `false` (bool)
+        /// </summary>
+        public readonly bool? PrivateNetworking;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
+        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// </summary>
+        public readonly string? Size;
+        /// <summary>
+        /// SSH key fingerprint (string)
+        /// </summary>
+        public readonly string? SshKeyFingerprint;
+        /// <summary>
+        /// SSH private key path (string)
+        /// </summary>
+        public readonly string? SshKeyPath;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public readonly string? Tags;
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
+        public readonly string? Userdata;
+
+        [OutputConstructor]
+        private NodeTemplateDigitaloceanConfig(
+            string? accessToken,
+            bool? backups,
+            string? image,
+            bool? ipv6,
+            bool? monitoring,
+            bool? privateNetworking,
+            string? region,
+            string? size,
+            string? sshKeyFingerprint,
+            string? sshKeyPath,
+            string? sshPort,
+            string? sshUser,
+            string? tags,
+            string? userdata)
+        {
+            AccessToken = accessToken;
+            Backups = backups;
+            Image = image;
+            Ipv6 = ipv6;
+            Monitoring = monitoring;
+            PrivateNetworking = privateNetworking;
+            Region = region;
+            Size = size;
+            SshKeyFingerprint = sshKeyFingerprint;
+            SshKeyPath = sshKeyPath;
+            SshPort = sshPort;
+            SshUser = sshUser;
+            Tags = tags;
+            Userdata = userdata;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateLinodeConfig
+    {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
+        public readonly string? AuthorizedUsers;
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
+        public readonly bool? CreatePrivateIp;
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
+        public readonly string? DockerPort;
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
+        public readonly string? Image;
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
+        public readonly string? InstanceType;
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
+        public readonly string? Label;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
+        public readonly string? RootPass;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
+        public readonly string? Stackscript;
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
+        public readonly string? StackscriptData;
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
+        public readonly string? SwapSize;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public readonly string? Tags;
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Token;
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
+        public readonly string? UaPrefix;
+
+        [OutputConstructor]
+        private NodeTemplateLinodeConfig(
+            string? authorizedUsers,
+            bool? createPrivateIp,
+            string? dockerPort,
+            string? image,
+            string? instanceType,
+            string? label,
+            string? region,
+            string? rootPass,
+            string? sshPort,
+            string? sshUser,
+            string? stackscript,
+            string? stackscriptData,
+            string? swapSize,
+            string? tags,
+            string? token,
+            string? uaPrefix)
+        {
+            AuthorizedUsers = authorizedUsers;
+            CreatePrivateIp = createPrivateIp;
+            DockerPort = dockerPort;
+            Image = image;
+            InstanceType = instanceType;
+            Label = label;
+            Region = region;
+            RootPass = rootPass;
+            SshPort = sshPort;
+            SshUser = sshUser;
+            Stackscript = stackscript;
+            StackscriptData = stackscriptData;
+            SwapSize = swapSize;
+            Tags = tags;
+            Token = token;
+            UaPrefix = uaPrefix;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateOpennebulaConfig
+    {
+        /// <summary>
+        /// Size of the Volatile disk in MB - only for b2d (string)
+        /// </summary>
+        public readonly string? B2dSize;
+        /// <summary>
+        /// CPU value for the VM (string)
+        /// </summary>
+        public readonly string? Cpu;
+        /// <summary>
+        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        /// </summary>
+        public readonly string? DevPrefix;
+        /// <summary>
+        /// VNC is enabled by default. Disable it with this flag (bool)
+        /// </summary>
+        public readonly bool? DisableVnc;
+        /// <summary>
+        /// Size of the disk for the VM in MB (string)
+        /// </summary>
+        public readonly string? DiskResize;
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        public readonly string? ImageId;
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        public readonly string? ImageName;
+        /// <summary>
+        /// Owner of the image to use as the VM OS (string)
+        /// * `memory`- (Optional) Size of the memory for the VM in MB (string)
+        /// </summary>
+        public readonly string? ImageOwner;
+        public readonly string? Memory;
+        /// <summary>
+        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// </summary>
+        public readonly string? NetworkId;
+        /// <summary>
+        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// </summary>
+        public readonly string? NetworkName;
+        /// <summary>
+        /// Opennebula user ID of the Network to connect the machine to (string)
+        /// </summary>
+        public readonly string? NetworkOwner;
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string Password;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// </summary>
+        public readonly string? TemplateId;
+        /// <summary>
+        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// </summary>
+        public readonly string? TemplateName;
+        /// <summary>
+        /// Set the user for the XML-RPC API authentication (string)
+        /// </summary>
+        public readonly string User;
+        /// <summary>
+        /// VCPUs for the VM (string)
+        /// </summary>
+        public readonly string? Vcpu;
+        /// <summary>
+        /// Set the url for the Opennebula XML-RPC API (string)
+        /// </summary>
+        public readonly string XmlRpcUrl;
+
+        [OutputConstructor]
+        private NodeTemplateOpennebulaConfig(
+            string? b2dSize,
+            string? cpu,
+            string? devPrefix,
+            bool? disableVnc,
+            string? diskResize,
+            string? imageId,
+            string? imageName,
+            string? imageOwner,
+            string? memory,
+            string? networkId,
+            string? networkName,
+            string? networkOwner,
+            string password,
+            string? sshUser,
+            string? templateId,
+            string? templateName,
+            string user,
+            string? vcpu,
+            string xmlRpcUrl)
+        {
+            B2dSize = b2dSize;
+            Cpu = cpu;
+            DevPrefix = devPrefix;
+            DisableVnc = disableVnc;
+            DiskResize = diskResize;
+            ImageId = imageId;
+            ImageName = imageName;
+            ImageOwner = imageOwner;
+            Memory = memory;
+            NetworkId = networkId;
+            NetworkName = networkName;
+            NetworkOwner = networkOwner;
+            Password = password;
+            SshUser = sshUser;
+            TemplateId = templateId;
+            TemplateName = templateName;
+            User = user;
+            Vcpu = vcpu;
+            XmlRpcUrl = xmlRpcUrl;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateOpenstackConfig
+    {
+        public readonly string? ActiveTimeout;
+        /// <summary>
+        /// OpenStack authentication URL (string)
+        /// </summary>
+        public readonly string AuthUrl;
+        /// <summary>
+        /// OpenStack availability zone (string)
+        /// </summary>
+        public readonly string AvailabilityZone;
+        /// <summary>
+        /// CA certificate bundle to verify against (string)
+        /// </summary>
+        public readonly string? Cacert;
+        /// <summary>
+        /// Enables the OpenStack config drive for the instance. Default `false` (bool)
+        /// </summary>
+        public readonly bool? ConfigDrive;
+        /// <summary>
+        /// OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        /// </summary>
+        public readonly string? DomainId;
+        /// <summary>
+        /// OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        /// </summary>
+        public readonly string? DomainName;
+        /// <summary>
+        /// OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        /// </summary>
+        public readonly string? EndpointType;
+        /// <summary>
+        /// OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        /// </summary>
+        public readonly string? FlavorId;
+        /// <summary>
+        /// OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        /// </summary>
+        public readonly string? FlavorName;
+        /// <summary>
+        /// OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        /// </summary>
+        public readonly string? FloatingIpPool;
+        /// <summary>
+        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// </summary>
+        public readonly string? ImageId;
+        /// <summary>
+        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// </summary>
+        public readonly string? ImageName;
+        /// <summary>
+        /// Disable TLS credential checking. Default `false` (bool)
+        /// </summary>
+        public readonly bool? Insecure;
+        /// <summary>
+        /// OpenStack version of IP address assigned for the machine Default `4` (string)
+        /// </summary>
+        public readonly string? IpVersion;
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
+        public readonly string? KeypairName;
+        /// <summary>
+        /// OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        /// </summary>
+        public readonly string? NetId;
+        /// <summary>
+        /// OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        /// </summary>
+        public readonly string? NetName;
+        /// <summary>
+        /// Use the nova networking services instead of neutron (string)
+        /// </summary>
+        public readonly bool? NovaNetwork;
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// Private key content to use for SSH (string)
+        /// </summary>
+        public readonly string? PrivateKeyFile;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
+        /// OpenStack comma separated security groups for the machine (string)
+        /// </summary>
+        public readonly string? SecGroups;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// </summary>
+        public readonly string? TenantId;
+        /// <summary>
+        /// OpenStack tenant name. Conflicts with `tenant_id` (string)
+        /// </summary>
+        public readonly string? TenantName;
+        /// <summary>
+        /// File containing an openstack userdata script (string)
+        /// </summary>
+        public readonly string? UserDataFile;
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string Username;
+
+        [OutputConstructor]
+        private NodeTemplateOpenstackConfig(
+            string? activeTimeout,
+            string authUrl,
+            string availabilityZone,
+            string? cacert,
+            bool? configDrive,
+            string? domainId,
+            string? domainName,
+            string? endpointType,
+            string? flavorId,
+            string? flavorName,
+            string? floatingIpPool,
+            string? imageId,
+            string? imageName,
+            bool? insecure,
+            string? ipVersion,
+            string? keypairName,
+            string? netId,
+            string? netName,
+            bool? novaNetwork,
+            string? password,
+            string? privateKeyFile,
+            string region,
+            string? secGroups,
+            string? sshPort,
+            string? sshUser,
+            string? tenantId,
+            string? tenantName,
+            string? userDataFile,
+            string username)
+        {
+            ActiveTimeout = activeTimeout;
+            AuthUrl = authUrl;
+            AvailabilityZone = availabilityZone;
+            Cacert = cacert;
+            ConfigDrive = configDrive;
+            DomainId = domainId;
+            DomainName = domainName;
+            EndpointType = endpointType;
+            FlavorId = flavorId;
+            FlavorName = flavorName;
+            FloatingIpPool = floatingIpPool;
+            ImageId = imageId;
+            ImageName = imageName;
+            Insecure = insecure;
+            IpVersion = ipVersion;
+            KeypairName = keypairName;
+            NetId = netId;
+            NetName = netName;
+            NovaNetwork = novaNetwork;
+            Password = password;
+            PrivateKeyFile = privateKeyFile;
+            Region = region;
+            SecGroups = secGroups;
+            SshPort = sshPort;
+            SshUser = sshUser;
+            TenantId = tenantId;
+            TenantName = tenantName;
+            UserDataFile = userDataFile;
+            Username = username;
+        }
+    }
+
+    [OutputType]
+    public sealed class NodeTemplateVsphereConfig
+    {
+        /// <summary>
+        /// vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        /// </summary>
+        public readonly string? Boot2dockerUrl;
+        /// <summary>
+        /// vSphere vm configuration parameters (used for guestinfo) (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Cfgparams;
+        /// <summary>
+        /// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? CloneFrom;
+        /// <summary>
+        /// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? CloudConfig;
+        /// <summary>
+        /// vSphere cloud-init file or url to set in the guestinfo (string)
+        /// </summary>
+        public readonly string? Cloudinit;
+        /// <summary>
+        /// If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? ContentLibrary;
+        /// <summary>
+        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// </summary>
+        public readonly string? CpuCount;
+        /// <summary>
+        /// Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? CreationType;
+        /// <summary>
+        /// vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+        /// </summary>
+        public readonly ImmutableArray<string> CustomAttributes;
+        /// <summary>
+        /// vSphere datacenter for docker VM (string)
+        /// </summary>
+        public readonly string? Datacenter;
+        /// <summary>
+        /// vSphere datastore for docker VM (string)
+        /// </summary>
+        public readonly string? Datastore;
+        /// <summary>
+        /// vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? DatastoreCluster;
+        /// <summary>
+        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// </summary>
+        public readonly string? DiskSize;
+        /// <summary>
+        /// vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        /// </summary>
+        public readonly string? Folder;
+        /// <summary>
+        /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        /// </summary>
+        public readonly string? Hostsystem;
+        /// <summary>
+        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// </summary>
+        public readonly string? MemorySize;
+        /// <summary>
+        /// vSphere network where the docker VM will be attached (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Networks;
+        /// <summary>
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// vSphere resource pool for docker VM (string)
+        /// </summary>
+        public readonly string? Pool;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPassword;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUser;
+        /// <summary>
+        /// If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
+        /// </summary>
+        public readonly string? SshUserGroup;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Username;
+        /// <summary>
+        /// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        /// </summary>
+        public readonly string? VappIpAllocationPolicy;
+        /// <summary>
+        /// vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        /// </summary>
+        public readonly string? VappIpProtocol;
+        /// <summary>
+        /// vSphere vApp properties (list)
+        /// </summary>
+        public readonly ImmutableArray<string> VappProperties;
+        /// <summary>
+        /// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        /// </summary>
+        public readonly string? VappTransport;
+        /// <summary>
+        /// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
+        public readonly string? Vcenter;
+        /// <summary>
+        /// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        /// </summary>
+        public readonly string? VcenterPort;
+
+        [OutputConstructor]
+        private NodeTemplateVsphereConfig(
+            string? boot2dockerUrl,
+            ImmutableArray<string> cfgparams,
+            string? cloneFrom,
+            string? cloudConfig,
+            string? cloudinit,
+            string? contentLibrary,
+            string? cpuCount,
+            string? creationType,
+            ImmutableArray<string> customAttributes,
+            string? datacenter,
+            string? datastore,
+            string? datastoreCluster,
+            string? diskSize,
+            string? folder,
+            string? hostsystem,
+            string? memorySize,
+            ImmutableArray<string> networks,
+            string? password,
+            string? pool,
+            string? sshPassword,
+            string? sshPort,
+            string? sshUser,
+            string? sshUserGroup,
+            ImmutableArray<string> tags,
+            string? username,
+            string? vappIpAllocationPolicy,
+            string? vappIpProtocol,
+            ImmutableArray<string> vappProperties,
+            string? vappTransport,
+            string? vcenter,
+            string? vcenterPort)
+        {
+            Boot2dockerUrl = boot2dockerUrl;
+            Cfgparams = cfgparams;
+            CloneFrom = cloneFrom;
+            CloudConfig = cloudConfig;
+            Cloudinit = cloudinit;
+            ContentLibrary = contentLibrary;
+            CpuCount = cpuCount;
+            CreationType = creationType;
+            CustomAttributes = customAttributes;
+            Datacenter = datacenter;
+            Datastore = datastore;
+            DatastoreCluster = datastoreCluster;
+            DiskSize = diskSize;
+            Folder = folder;
+            Hostsystem = hostsystem;
+            MemorySize = memorySize;
+            Networks = networks;
+            Password = password;
+            Pool = pool;
+            SshPassword = sshPassword;
+            SshPort = sshPort;
+            SshUser = sshUser;
+            SshUserGroup = sshUserGroup;
+            Tags = tags;
+            Username = username;
+            VappIpAllocationPolicy = vappIpAllocationPolicy;
+            VappIpProtocol = vappIpProtocol;
+            VappProperties = vappProperties;
+            VappTransport = vappTransport;
+            Vcenter = vcenter;
+            VcenterPort = vcenterPort;
+        }
+    }
     }
 }

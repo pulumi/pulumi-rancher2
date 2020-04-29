@@ -9,18 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    public static partial class Invokes
+    {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 app.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetApp.InvokeAsync() instead")]
+        public static Task<GetAppResult> GetApp(GetAppArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
     public static class GetApp
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 app.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/app.html.markdown.
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
-
 
     public sealed class GetAppArgs : Pulumi.InvokeArgs
     {
@@ -59,7 +68,6 @@ namespace Pulumi.Rancher2
         }
     }
 
-
     [OutputType]
     public sealed class GetAppResult
     {
@@ -84,10 +92,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// (Computed) Labels for the catalog (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -110,43 +114,33 @@ namespace Pulumi.Rancher2
         /// (Computed) values.yaml base64 encoded file content for the app (string)
         /// </summary>
         public readonly string ValuesYaml;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetAppResult(
             ImmutableDictionary<string, object> annotations,
-
             ImmutableDictionary<string, object> answers,
-
             string catalogName,
-
             string description,
-
             string externalId,
-
-            string id,
-
             ImmutableDictionary<string, object> labels,
-
             string name,
-
             string projectId,
-
             string revisionId,
-
             string targetNamespace,
-
             string templateName,
-
             string templateVersion,
-
-            string valuesYaml)
+            string valuesYaml,
+            string id)
         {
             Annotations = annotations;
             Answers = answers;
             CatalogName = catalogName;
             Description = description;
             ExternalId = externalId;
-            Id = id;
             Labels = labels;
             Name = name;
             ProjectId = projectId;
@@ -155,6 +149,7 @@ namespace Pulumi.Rancher2
             TemplateName = templateName;
             TemplateVersion = templateVersion;
             ValuesYaml = valuesYaml;
+            Id = id;
         }
     }
 }

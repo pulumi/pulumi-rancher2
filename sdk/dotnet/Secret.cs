@@ -15,6 +15,8 @@ namespace Pulumi.Rancher2
     /// Depending of the availability, there are 2 types of Rancher v2 secrets:
     /// - Project secret: Available to all namespaces in the `project_id`
     /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/secret.html.markdown.
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
@@ -69,7 +71,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Secret(string name, SecretArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/secret:Secret", name, args ?? new SecretArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/secret:Secret", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

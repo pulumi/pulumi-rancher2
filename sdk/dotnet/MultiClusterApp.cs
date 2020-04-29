@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2
         /// The multi cluster app answers (list)
         /// </summary>
         [Output("answers")]
-        public Output<ImmutableArray<Outputs.MultiClusterAppAnswer>> Answers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.MultiClusterAppAnswers>> Answers { get; private set; } = null!;
 
         /// <summary>
         /// The multi cluster app catalog name (string)
@@ -39,7 +39,7 @@ namespace Pulumi.Rancher2
         /// The multi cluster app answers (list)
         /// </summary>
         [Output("members")]
-        public Output<ImmutableArray<Outputs.MultiClusterAppMember>> Members { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.MultiClusterAppMembers>> Members { get; private set; } = null!;
 
         /// <summary>
         /// The multi cluster app name (string)
@@ -69,7 +69,7 @@ namespace Pulumi.Rancher2
         /// The multi cluster app target projects (list)
         /// </summary>
         [Output("targets")]
-        public Output<ImmutableArray<Outputs.MultiClusterAppTarget>> Targets { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.MultiClusterAppTargets>> Targets { get; private set; } = null!;
 
         /// <summary>
         /// The multi cluster app template name (string)
@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MultiClusterApp(string name, MultiClusterAppArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/multiClusterApp:MultiClusterApp", name, args ?? new MultiClusterAppArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/multiClusterApp:MultiClusterApp", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -160,14 +160,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("answers")]
-        private InputList<Inputs.MultiClusterAppAnswerArgs>? _answers;
+        private InputList<Inputs.MultiClusterAppAnswersArgs>? _answers;
 
         /// <summary>
         /// The multi cluster app answers (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppAnswerArgs> Answers
+        public InputList<Inputs.MultiClusterAppAnswersArgs> Answers
         {
-            get => _answers ?? (_answers = new InputList<Inputs.MultiClusterAppAnswerArgs>());
+            get => _answers ?? (_answers = new InputList<Inputs.MultiClusterAppAnswersArgs>());
             set => _answers = value;
         }
 
@@ -190,14 +190,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("members")]
-        private InputList<Inputs.MultiClusterAppMemberArgs>? _members;
+        private InputList<Inputs.MultiClusterAppMembersArgs>? _members;
 
         /// <summary>
         /// The multi cluster app answers (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppMemberArgs> Members
+        public InputList<Inputs.MultiClusterAppMembersArgs> Members
         {
-            get => _members ?? (_members = new InputList<Inputs.MultiClusterAppMemberArgs>());
+            get => _members ?? (_members = new InputList<Inputs.MultiClusterAppMembersArgs>());
             set => _members = value;
         }
 
@@ -232,14 +232,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("targets", required: true)]
-        private InputList<Inputs.MultiClusterAppTargetArgs>? _targets;
+        private InputList<Inputs.MultiClusterAppTargetsArgs>? _targets;
 
         /// <summary>
         /// The multi cluster app target projects (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppTargetArgs> Targets
+        public InputList<Inputs.MultiClusterAppTargetsArgs> Targets
         {
-            get => _targets ?? (_targets = new InputList<Inputs.MultiClusterAppTargetArgs>());
+            get => _targets ?? (_targets = new InputList<Inputs.MultiClusterAppTargetsArgs>());
             set => _targets = value;
         }
 
@@ -287,14 +287,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("answers")]
-        private InputList<Inputs.MultiClusterAppAnswerGetArgs>? _answers;
+        private InputList<Inputs.MultiClusterAppAnswersGetArgs>? _answers;
 
         /// <summary>
         /// The multi cluster app answers (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppAnswerGetArgs> Answers
+        public InputList<Inputs.MultiClusterAppAnswersGetArgs> Answers
         {
-            get => _answers ?? (_answers = new InputList<Inputs.MultiClusterAppAnswerGetArgs>());
+            get => _answers ?? (_answers = new InputList<Inputs.MultiClusterAppAnswersGetArgs>());
             set => _answers = value;
         }
 
@@ -317,14 +317,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("members")]
-        private InputList<Inputs.MultiClusterAppMemberGetArgs>? _members;
+        private InputList<Inputs.MultiClusterAppMembersGetArgs>? _members;
 
         /// <summary>
         /// The multi cluster app answers (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppMemberGetArgs> Members
+        public InputList<Inputs.MultiClusterAppMembersGetArgs> Members
         {
-            get => _members ?? (_members = new InputList<Inputs.MultiClusterAppMemberGetArgs>());
+            get => _members ?? (_members = new InputList<Inputs.MultiClusterAppMembersGetArgs>());
             set => _members = value;
         }
 
@@ -359,14 +359,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("targets")]
-        private InputList<Inputs.MultiClusterAppTargetGetArgs>? _targets;
+        private InputList<Inputs.MultiClusterAppTargetsGetArgs>? _targets;
 
         /// <summary>
         /// The multi cluster app target projects (list)
         /// </summary>
-        public InputList<Inputs.MultiClusterAppTargetGetArgs> Targets
+        public InputList<Inputs.MultiClusterAppTargetsGetArgs> Targets
         {
-            get => _targets ?? (_targets = new InputList<Inputs.MultiClusterAppTargetGetArgs>());
+            get => _targets ?? (_targets = new InputList<Inputs.MultiClusterAppTargetsGetArgs>());
             set => _targets = value;
         }
 
@@ -403,5 +403,378 @@ namespace Pulumi.Rancher2
         public MultiClusterAppState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class MultiClusterAppAnswersArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Cluster ID for answer (string)
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        [Input("values")]
+        private InputMap<object>? _values;
+
+        /// <summary>
+        /// Key/values for answer (map)
+        /// </summary>
+        public InputMap<object> Values
+        {
+            get => _values ?? (_values = new InputMap<object>());
+            set => _values = value;
+        }
+
+        public MultiClusterAppAnswersArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppAnswersGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Cluster ID for answer (string)
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        [Input("values")]
+        private InputMap<object>? _values;
+
+        /// <summary>
+        /// Key/values for answer (map)
+        /// </summary>
+        public InputMap<object> Values
+        {
+            get => _values ?? (_values = new InputMap<object>());
+            set => _values = value;
+        }
+
+        public MultiClusterAppAnswersGetArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppMembersArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        /// </summary>
+        [Input("accessType")]
+        public Input<string>? AccessType { get; set; }
+
+        /// <summary>
+        /// Member group principal id (string)
+        /// </summary>
+        [Input("groupPrincipalId")]
+        public Input<string>? GroupPrincipalId { get; set; }
+
+        /// <summary>
+        /// Member user principal id (string)
+        /// </summary>
+        [Input("userPrincipalId")]
+        public Input<string>? UserPrincipalId { get; set; }
+
+        public MultiClusterAppMembersArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppMembersGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        /// </summary>
+        [Input("accessType")]
+        public Input<string>? AccessType { get; set; }
+
+        /// <summary>
+        /// Member group principal id (string)
+        /// </summary>
+        [Input("groupPrincipalId")]
+        public Input<string>? GroupPrincipalId { get; set; }
+
+        /// <summary>
+        /// Member user principal id (string)
+        /// </summary>
+        [Input("userPrincipalId")]
+        public Input<string>? UserPrincipalId { get; set; }
+
+        public MultiClusterAppMembersGetArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppTargetsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// App ID for target (string)
+        /// </summary>
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        /// <summary>
+        /// App health state for target (string)
+        /// </summary>
+        [Input("healthState")]
+        public Input<string>? HealthState { get; set; }
+
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// App state for target (string)
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        public MultiClusterAppTargetsArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppTargetsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// App ID for target (string)
+        /// </summary>
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        /// <summary>
+        /// App health state for target (string)
+        /// </summary>
+        [Input("healthState")]
+        public Input<string>? HealthState { get; set; }
+
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// App state for target (string)
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        public MultiClusterAppTargetsGetArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppUpgradeStrategyArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Upgrade strategy rolling update (list MaxItems:1)
+        /// </summary>
+        [Input("rollingUpdate")]
+        public Input<MultiClusterAppUpgradeStrategyRollingUpdateArgs>? RollingUpdate { get; set; }
+
+        public MultiClusterAppUpgradeStrategyArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppUpgradeStrategyGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Upgrade strategy rolling update (list MaxItems:1)
+        /// </summary>
+        [Input("rollingUpdate")]
+        public Input<MultiClusterAppUpgradeStrategyRollingUpdateGetArgs>? RollingUpdate { get; set; }
+
+        public MultiClusterAppUpgradeStrategyGetArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppUpgradeStrategyRollingUpdateArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Rolling update batch size. Default `1` (int)
+        /// </summary>
+        [Input("batchSize")]
+        public Input<int>? BatchSize { get; set; }
+
+        /// <summary>
+        /// Rolling update interval. Default `1` (int)
+        /// </summary>
+        [Input("interval")]
+        public Input<int>? Interval { get; set; }
+
+        public MultiClusterAppUpgradeStrategyRollingUpdateArgs()
+        {
+        }
+    }
+
+    public sealed class MultiClusterAppUpgradeStrategyRollingUpdateGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Rolling update batch size. Default `1` (int)
+        /// </summary>
+        [Input("batchSize")]
+        public Input<int>? BatchSize { get; set; }
+
+        /// <summary>
+        /// Rolling update interval. Default `1` (int)
+        /// </summary>
+        [Input("interval")]
+        public Input<int>? Interval { get; set; }
+
+        public MultiClusterAppUpgradeStrategyRollingUpdateGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class MultiClusterAppAnswers
+    {
+        /// <summary>
+        /// Cluster ID for answer (string)
+        /// </summary>
+        public readonly string ClusterId;
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
+        /// Key/values for answer (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Values;
+
+        [OutputConstructor]
+        private MultiClusterAppAnswers(
+            string clusterId,
+            string projectId,
+            ImmutableDictionary<string, object> values)
+        {
+            ClusterId = clusterId;
+            ProjectId = projectId;
+            Values = values;
+        }
+    }
+
+    [OutputType]
+    public sealed class MultiClusterAppMembers
+    {
+        /// <summary>
+        /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        /// </summary>
+        public readonly string? AccessType;
+        /// <summary>
+        /// Member group principal id (string)
+        /// </summary>
+        public readonly string? GroupPrincipalId;
+        /// <summary>
+        /// Member user principal id (string)
+        /// </summary>
+        public readonly string? UserPrincipalId;
+
+        [OutputConstructor]
+        private MultiClusterAppMembers(
+            string? accessType,
+            string? groupPrincipalId,
+            string? userPrincipalId)
+        {
+            AccessType = accessType;
+            GroupPrincipalId = groupPrincipalId;
+            UserPrincipalId = userPrincipalId;
+        }
+    }
+
+    [OutputType]
+    public sealed class MultiClusterAppTargets
+    {
+        /// <summary>
+        /// App ID for target (string)
+        /// </summary>
+        public readonly string AppId;
+        /// <summary>
+        /// App health state for target (string)
+        /// </summary>
+        public readonly string HealthState;
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
+        /// App state for target (string)
+        /// </summary>
+        public readonly string State;
+
+        [OutputConstructor]
+        private MultiClusterAppTargets(
+            string appId,
+            string healthState,
+            string projectId,
+            string state)
+        {
+            AppId = appId;
+            HealthState = healthState;
+            ProjectId = projectId;
+            State = state;
+        }
+    }
+
+    [OutputType]
+    public sealed class MultiClusterAppUpgradeStrategy
+    {
+        /// <summary>
+        /// Upgrade strategy rolling update (list MaxItems:1)
+        /// </summary>
+        public readonly MultiClusterAppUpgradeStrategyRollingUpdate? RollingUpdate;
+
+        [OutputConstructor]
+        private MultiClusterAppUpgradeStrategy(MultiClusterAppUpgradeStrategyRollingUpdate? rollingUpdate)
+        {
+            RollingUpdate = rollingUpdate;
+        }
+    }
+
+    [OutputType]
+    public sealed class MultiClusterAppUpgradeStrategyRollingUpdate
+    {
+        /// <summary>
+        /// Rolling update batch size. Default `1` (int)
+        /// </summary>
+        public readonly int? BatchSize;
+        /// <summary>
+        /// Rolling update interval. Default `1` (int)
+        /// </summary>
+        public readonly int? Interval;
+
+        [OutputConstructor]
+        private MultiClusterAppUpgradeStrategyRollingUpdate(
+            int? batchSize,
+            int? interval)
+        {
+            BatchSize = batchSize;
+            Interval = interval;
+        }
+    }
     }
 }

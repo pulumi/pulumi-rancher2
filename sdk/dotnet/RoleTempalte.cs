@@ -13,6 +13,8 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
     /// 
     /// `cluster` and `project` scopes are supported for role templates.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/roleTemplate.html.markdown.
     /// </summary>
     public partial class RoleTempalte : Pulumi.CustomResource
     {
@@ -92,7 +94,7 @@ namespace Pulumi.Rancher2
         /// Role template policy rules (list)
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.RoleTempalteRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RoleTempalteRules>> Rules { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RoleTempalte(string name, RoleTempalteArgs? args = null, CustomResourceOptions? options = null)
-            : base("rancher2:index/roleTempalte:RoleTempalte", name, args ?? new RoleTempalteArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/roleTempalte:RoleTempalte", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -225,14 +227,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("rules")]
-        private InputList<Inputs.RoleTempalteRuleArgs>? _rules;
+        private InputList<Inputs.RoleTempalteRulesArgs>? _rules;
 
         /// <summary>
         /// Role template policy rules (list)
         /// </summary>
-        public InputList<Inputs.RoleTempalteRuleArgs> Rules
+        public InputList<Inputs.RoleTempalteRulesArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.RoleTempalteRuleArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.RoleTempalteRulesArgs>());
             set => _rules = value;
         }
 
@@ -334,19 +336,201 @@ namespace Pulumi.Rancher2
         }
 
         [Input("rules")]
-        private InputList<Inputs.RoleTempalteRuleGetArgs>? _rules;
+        private InputList<Inputs.RoleTempalteRulesGetArgs>? _rules;
 
         /// <summary>
         /// Role template policy rules (list)
         /// </summary>
-        public InputList<Inputs.RoleTempalteRuleGetArgs> Rules
+        public InputList<Inputs.RoleTempalteRulesGetArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.RoleTempalteRuleGetArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.RoleTempalteRulesGetArgs>());
             set => _rules = value;
         }
 
         public RoleTempalteState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class RoleTempalteRulesArgs : Pulumi.ResourceArgs
+    {
+        [Input("apiGroups")]
+        private InputList<string>? _apiGroups;
+
+        /// <summary>
+        /// Policy rule api groups (list)
+        /// </summary>
+        public InputList<string> ApiGroups
+        {
+            get => _apiGroups ?? (_apiGroups = new InputList<string>());
+            set => _apiGroups = value;
+        }
+
+        [Input("nonResourceUrls")]
+        private InputList<string>? _nonResourceUrls;
+
+        /// <summary>
+        /// Policy rule non resource urls (list)
+        /// </summary>
+        public InputList<string> NonResourceUrls
+        {
+            get => _nonResourceUrls ?? (_nonResourceUrls = new InputList<string>());
+            set => _nonResourceUrls = value;
+        }
+
+        [Input("resourceNames")]
+        private InputList<string>? _resourceNames;
+
+        /// <summary>
+        /// Policy rule resource names (list)
+        /// </summary>
+        public InputList<string> ResourceNames
+        {
+            get => _resourceNames ?? (_resourceNames = new InputList<string>());
+            set => _resourceNames = value;
+        }
+
+        [Input("resources")]
+        private InputList<string>? _resources;
+
+        /// <summary>
+        /// Policy rule resources (list)
+        /// </summary>
+        public InputList<string> Resources
+        {
+            get => _resources ?? (_resources = new InputList<string>());
+            set => _resources = value;
+        }
+
+        [Input("verbs")]
+        private InputList<string>? _verbs;
+
+        /// <summary>
+        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+        /// </summary>
+        public InputList<string> Verbs
+        {
+            get => _verbs ?? (_verbs = new InputList<string>());
+            set => _verbs = value;
+        }
+
+        public RoleTempalteRulesArgs()
+        {
+        }
+    }
+
+    public sealed class RoleTempalteRulesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("apiGroups")]
+        private InputList<string>? _apiGroups;
+
+        /// <summary>
+        /// Policy rule api groups (list)
+        /// </summary>
+        public InputList<string> ApiGroups
+        {
+            get => _apiGroups ?? (_apiGroups = new InputList<string>());
+            set => _apiGroups = value;
+        }
+
+        [Input("nonResourceUrls")]
+        private InputList<string>? _nonResourceUrls;
+
+        /// <summary>
+        /// Policy rule non resource urls (list)
+        /// </summary>
+        public InputList<string> NonResourceUrls
+        {
+            get => _nonResourceUrls ?? (_nonResourceUrls = new InputList<string>());
+            set => _nonResourceUrls = value;
+        }
+
+        [Input("resourceNames")]
+        private InputList<string>? _resourceNames;
+
+        /// <summary>
+        /// Policy rule resource names (list)
+        /// </summary>
+        public InputList<string> ResourceNames
+        {
+            get => _resourceNames ?? (_resourceNames = new InputList<string>());
+            set => _resourceNames = value;
+        }
+
+        [Input("resources")]
+        private InputList<string>? _resources;
+
+        /// <summary>
+        /// Policy rule resources (list)
+        /// </summary>
+        public InputList<string> Resources
+        {
+            get => _resources ?? (_resources = new InputList<string>());
+            set => _resources = value;
+        }
+
+        [Input("verbs")]
+        private InputList<string>? _verbs;
+
+        /// <summary>
+        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+        /// </summary>
+        public InputList<string> Verbs
+        {
+            get => _verbs ?? (_verbs = new InputList<string>());
+            set => _verbs = value;
+        }
+
+        public RoleTempalteRulesGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class RoleTempalteRules
+    {
+        /// <summary>
+        /// Policy rule api groups (list)
+        /// </summary>
+        public readonly ImmutableArray<string> ApiGroups;
+        /// <summary>
+        /// Policy rule non resource urls (list)
+        /// </summary>
+        public readonly ImmutableArray<string> NonResourceUrls;
+        /// <summary>
+        /// Policy rule resource names (list)
+        /// </summary>
+        public readonly ImmutableArray<string> ResourceNames;
+        /// <summary>
+        /// Policy rule resources (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+        /// </summary>
+        public readonly ImmutableArray<string> Verbs;
+
+        [OutputConstructor]
+        private RoleTempalteRules(
+            ImmutableArray<string> apiGroups,
+            ImmutableArray<string> nonResourceUrls,
+            ImmutableArray<string> resourceNames,
+            ImmutableArray<string> resources,
+            ImmutableArray<string> verbs)
+        {
+            ApiGroups = apiGroups;
+            NonResourceUrls = nonResourceUrls;
+            ResourceNames = resourceNames;
+            Resources = resources;
+            Verbs = verbs;
+        }
+    }
     }
 }

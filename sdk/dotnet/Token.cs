@@ -17,6 +17,8 @@ namespace Pulumi.Rancher2
     /// - scoped: valid for just a specific cluster (`cluster_id` should be provided).
     /// 
     /// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/token.html.markdown.
     /// </summary>
     public partial class Token : Pulumi.CustomResource
     {
@@ -107,7 +109,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Token(string name, TokenArgs? args = null, CustomResourceOptions? options = null)
-            : base("rancher2:index/token:Token", name, args ?? new TokenArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/token:Token", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

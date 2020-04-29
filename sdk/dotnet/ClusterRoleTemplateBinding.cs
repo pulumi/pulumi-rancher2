@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterRole.html.markdown.
     /// </summary>
     public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
     {
@@ -77,7 +79,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterRoleTemplateBinding(string name, ClusterRoleTemplateBindingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, args ?? new ClusterRoleTemplateBindingArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

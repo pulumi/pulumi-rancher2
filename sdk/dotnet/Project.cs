@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/project.html.markdown.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -89,7 +91,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -292,5 +294,739 @@ namespace Pulumi.Rancher2
         public ProjectState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ProjectContainerResourceLimitArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        public ProjectContainerResourceLimitArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectContainerResourceLimitGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        public ProjectContainerResourceLimitGetArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectProjectMonitoringInputArgs : Pulumi.ResourceArgs
+    {
+        [Input("answers")]
+        private InputMap<object>? _answers;
+
+        /// <summary>
+        /// Key/value answers for monitor input (map)
+        /// </summary>
+        public InputMap<object> Answers
+        {
+            get => _answers ?? (_answers = new InputMap<object>());
+            set => _answers = value;
+        }
+
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public ProjectProjectMonitoringInputArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectProjectMonitoringInputGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("answers")]
+        private InputMap<object>? _answers;
+
+        /// <summary>
+        /// Key/value answers for monitor input (map)
+        /// </summary>
+        public InputMap<object> Answers
+        {
+            get => _answers ?? (_answers = new InputMap<object>());
+            set => _answers = value;
+        }
+
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public ProjectProjectMonitoringInputGetArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Default resource quota limit for  namespaces in project (list maxitems:1)
+        /// </summary>
+        [Input("namespaceDefaultLimit", required: true)]
+        public Input<ProjectResourceQuotaNamespaceDefaultLimitArgs> NamespaceDefaultLimit { get; set; } = null!;
+
+        /// <summary>
+        /// Resource quota limit for project (list maxitems:1)
+        /// </summary>
+        [Input("projectLimit", required: true)]
+        public Input<ProjectResourceQuotaProjectLimitArgs> ProjectLimit { get; set; } = null!;
+
+        public ProjectResourceQuotaArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Default resource quota limit for  namespaces in project (list maxitems:1)
+        /// </summary>
+        [Input("namespaceDefaultLimit", required: true)]
+        public Input<ProjectResourceQuotaNamespaceDefaultLimitGetArgs> NamespaceDefaultLimit { get; set; } = null!;
+
+        /// <summary>
+        /// Resource quota limit for project (list maxitems:1)
+        /// </summary>
+        [Input("projectLimit", required: true)]
+        public Input<ProjectResourceQuotaProjectLimitGetArgs> ProjectLimit { get; set; } = null!;
+
+        public ProjectResourceQuotaGetArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaNamespaceDefaultLimitArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public ProjectResourceQuotaNamespaceDefaultLimitArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaNamespaceDefaultLimitGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public ProjectResourceQuotaNamespaceDefaultLimitGetArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaProjectLimitArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public ProjectResourceQuotaProjectLimitArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectResourceQuotaProjectLimitGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public ProjectResourceQuotaProjectLimitGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ProjectContainerResourceLimit
+    {
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        public readonly string? RequestsMemory;
+
+        [OutputConstructor]
+        private ProjectContainerResourceLimit(
+            string? limitsCpu,
+            string? limitsMemory,
+            string? requestsCpu,
+            string? requestsMemory)
+        {
+            LimitsCpu = limitsCpu;
+            LimitsMemory = limitsMemory;
+            RequestsCpu = requestsCpu;
+            RequestsMemory = requestsMemory;
+        }
+    }
+
+    [OutputType]
+    public sealed class ProjectProjectMonitoringInput
+    {
+        /// <summary>
+        /// Key/value answers for monitor input (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Answers;
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        public readonly string? Version;
+
+        [OutputConstructor]
+        private ProjectProjectMonitoringInput(
+            ImmutableDictionary<string, object>? answers,
+            string? version)
+        {
+            Answers = answers;
+            Version = version;
+        }
+    }
+
+    [OutputType]
+    public sealed class ProjectResourceQuota
+    {
+        /// <summary>
+        /// Default resource quota limit for  namespaces in project (list maxitems:1)
+        /// </summary>
+        public readonly ProjectResourceQuotaNamespaceDefaultLimit NamespaceDefaultLimit;
+        /// <summary>
+        /// Resource quota limit for project (list maxitems:1)
+        /// </summary>
+        public readonly ProjectResourceQuotaProjectLimit ProjectLimit;
+
+        [OutputConstructor]
+        private ProjectResourceQuota(
+            ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit,
+            ProjectResourceQuotaProjectLimit projectLimit)
+        {
+            NamespaceDefaultLimit = namespaceDefaultLimit;
+            ProjectLimit = projectLimit;
+        }
+    }
+
+    [OutputType]
+    public sealed class ProjectResourceQuotaNamespaceDefaultLimit
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        public readonly string? ConfigMaps;
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        public readonly string? PersistentVolumeClaims;
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        public readonly string? Pods;
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        public readonly string? ReplicationControllers;
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        public readonly string? RequestsMemory;
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        public readonly string? RequestsStorage;
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        public readonly string? Secrets;
+        public readonly string? Services;
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        public readonly string? ServicesLoadBalancers;
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        public readonly string? ServicesNodePorts;
+
+        [OutputConstructor]
+        private ProjectResourceQuotaNamespaceDefaultLimit(
+            string? configMaps,
+            string? limitsCpu,
+            string? limitsMemory,
+            string? persistentVolumeClaims,
+            string? pods,
+            string? replicationControllers,
+            string? requestsCpu,
+            string? requestsMemory,
+            string? requestsStorage,
+            string? secrets,
+            string? services,
+            string? servicesLoadBalancers,
+            string? servicesNodePorts)
+        {
+            ConfigMaps = configMaps;
+            LimitsCpu = limitsCpu;
+            LimitsMemory = limitsMemory;
+            PersistentVolumeClaims = persistentVolumeClaims;
+            Pods = pods;
+            ReplicationControllers = replicationControllers;
+            RequestsCpu = requestsCpu;
+            RequestsMemory = requestsMemory;
+            RequestsStorage = requestsStorage;
+            Secrets = secrets;
+            Services = services;
+            ServicesLoadBalancers = servicesLoadBalancers;
+            ServicesNodePorts = servicesNodePorts;
+        }
+    }
+
+    [OutputType]
+    public sealed class ProjectResourceQuotaProjectLimit
+    {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
+        public readonly string? ConfigMaps;
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
+        public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
+        public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
+        public readonly string? PersistentVolumeClaims;
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
+        public readonly string? Pods;
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
+        public readonly string? ReplicationControllers;
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
+        public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
+        public readonly string? RequestsMemory;
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
+        public readonly string? RequestsStorage;
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
+        public readonly string? Secrets;
+        public readonly string? Services;
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
+        public readonly string? ServicesLoadBalancers;
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
+        public readonly string? ServicesNodePorts;
+
+        [OutputConstructor]
+        private ProjectResourceQuotaProjectLimit(
+            string? configMaps,
+            string? limitsCpu,
+            string? limitsMemory,
+            string? persistentVolumeClaims,
+            string? pods,
+            string? replicationControllers,
+            string? requestsCpu,
+            string? requestsMemory,
+            string? requestsStorage,
+            string? secrets,
+            string? services,
+            string? servicesLoadBalancers,
+            string? servicesNodePorts)
+        {
+            ConfigMaps = configMaps;
+            LimitsCpu = limitsCpu;
+            LimitsMemory = limitsMemory;
+            PersistentVolumeClaims = persistentVolumeClaims;
+            Pods = pods;
+            ReplicationControllers = replicationControllers;
+            RequestsCpu = requestsCpu;
+            RequestsMemory = requestsMemory;
+            RequestsStorage = requestsStorage;
+            Secrets = secrets;
+            Services = services;
+            ServicesLoadBalancers = servicesLoadBalancers;
+            ServicesNodePorts = servicesNodePorts;
+        }
+    }
     }
 }

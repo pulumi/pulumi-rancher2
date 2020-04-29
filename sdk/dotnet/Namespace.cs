@@ -11,6 +11,8 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/namespace.html.markdown.
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {
@@ -71,7 +73,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Namespace(string name, NamespaceArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/namespace:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/namespace:Namespace", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -238,5 +240,399 @@ namespace Pulumi.Rancher2
         public NamespaceState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class NamespaceContainerResourceLimitArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        public NamespaceContainerResourceLimitArgs()
+        {
+        }
+    }
+
+    public sealed class NamespaceContainerResourceLimitGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        public NamespaceContainerResourceLimitGetArgs()
+        {
+        }
+    }
+
+    public sealed class NamespaceResourceQuotaArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Resource quota limit for namespace (list maxitems:1)
+        /// </summary>
+        [Input("limit", required: true)]
+        public Input<NamespaceResourceQuotaLimitArgs> Limit { get; set; } = null!;
+
+        public NamespaceResourceQuotaArgs()
+        {
+        }
+    }
+
+    public sealed class NamespaceResourceQuotaGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Resource quota limit for namespace (list maxitems:1)
+        /// </summary>
+        [Input("limit", required: true)]
+        public Input<NamespaceResourceQuotaLimitGetArgs> Limit { get; set; } = null!;
+
+        public NamespaceResourceQuotaGetArgs()
+        {
+        }
+    }
+
+    public sealed class NamespaceResourceQuotaLimitArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in namespace (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in namespace (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in namespace (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in namespace (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in namespace (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in namespace (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in namespace (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in namespace (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public NamespaceResourceQuotaLimitArgs()
+        {
+        }
+    }
+
+    public sealed class NamespaceResourceQuotaLimitGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Limit for config maps in namespace (string)
+        /// </summary>
+        [Input("configMaps")]
+        public Input<string>? ConfigMaps { get; set; }
+
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        [Input("limitsCpu")]
+        public Input<string>? LimitsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        [Input("limitsMemory")]
+        public Input<string>? LimitsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for persistent volume claims in namespace (string)
+        /// </summary>
+        [Input("persistentVolumeClaims")]
+        public Input<string>? PersistentVolumeClaims { get; set; }
+
+        /// <summary>
+        /// Limit for pods in namespace (string)
+        /// </summary>
+        [Input("pods")]
+        public Input<string>? Pods { get; set; }
+
+        /// <summary>
+        /// Limit for replication controllers in namespace (string)
+        /// </summary>
+        [Input("replicationControllers")]
+        public Input<string>? ReplicationControllers { get; set; }
+
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        [Input("requestsCpu")]
+        public Input<string>? RequestsCpu { get; set; }
+
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        [Input("requestsMemory")]
+        public Input<string>? RequestsMemory { get; set; }
+
+        /// <summary>
+        /// Limit for requests storage in namespace (string)
+        /// </summary>
+        [Input("requestsStorage")]
+        public Input<string>? RequestsStorage { get; set; }
+
+        /// <summary>
+        /// Limit for secrets in namespace (string)
+        /// </summary>
+        [Input("secrets")]
+        public Input<string>? Secrets { get; set; }
+
+        [Input("services")]
+        public Input<string>? Services { get; set; }
+
+        /// <summary>
+        /// Limit for services load balancers in namespace (string)
+        /// </summary>
+        [Input("servicesLoadBalancers")]
+        public Input<string>? ServicesLoadBalancers { get; set; }
+
+        /// <summary>
+        /// Limit for services node ports in namespace (string)
+        /// </summary>
+        [Input("servicesNodePorts")]
+        public Input<string>? ServicesNodePorts { get; set; }
+
+        public NamespaceResourceQuotaLimitGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class NamespaceContainerResourceLimit
+    {
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        public readonly string? RequestsMemory;
+
+        [OutputConstructor]
+        private NamespaceContainerResourceLimit(
+            string? limitsCpu,
+            string? limitsMemory,
+            string? requestsCpu,
+            string? requestsMemory)
+        {
+            LimitsCpu = limitsCpu;
+            LimitsMemory = limitsMemory;
+            RequestsCpu = requestsCpu;
+            RequestsMemory = requestsMemory;
+        }
+    }
+
+    [OutputType]
+    public sealed class NamespaceResourceQuota
+    {
+        /// <summary>
+        /// Resource quota limit for namespace (list maxitems:1)
+        /// </summary>
+        public readonly NamespaceResourceQuotaLimit Limit;
+
+        [OutputConstructor]
+        private NamespaceResourceQuota(NamespaceResourceQuotaLimit limit)
+        {
+            Limit = limit;
+        }
+    }
+
+    [OutputType]
+    public sealed class NamespaceResourceQuotaLimit
+    {
+        /// <summary>
+        /// Limit for config maps in namespace (string)
+        /// </summary>
+        public readonly string? ConfigMaps;
+        /// <summary>
+        /// Limit for limits cpu in namespace (string)
+        /// </summary>
+        public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in namespace (string)
+        /// </summary>
+        public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for persistent volume claims in namespace (string)
+        /// </summary>
+        public readonly string? PersistentVolumeClaims;
+        /// <summary>
+        /// Limit for pods in namespace (string)
+        /// </summary>
+        public readonly string? Pods;
+        /// <summary>
+        /// Limit for replication controllers in namespace (string)
+        /// </summary>
+        public readonly string? ReplicationControllers;
+        /// <summary>
+        /// Limit for requests cpu in namespace (string)
+        /// </summary>
+        public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in namespace (string)
+        /// </summary>
+        public readonly string? RequestsMemory;
+        /// <summary>
+        /// Limit for requests storage in namespace (string)
+        /// </summary>
+        public readonly string? RequestsStorage;
+        /// <summary>
+        /// Limit for secrets in namespace (string)
+        /// </summary>
+        public readonly string? Secrets;
+        public readonly string? Services;
+        /// <summary>
+        /// Limit for services load balancers in namespace (string)
+        /// </summary>
+        public readonly string? ServicesLoadBalancers;
+        /// <summary>
+        /// Limit for services node ports in namespace (string)
+        /// </summary>
+        public readonly string? ServicesNodePorts;
+
+        [OutputConstructor]
+        private NamespaceResourceQuotaLimit(
+            string? configMaps,
+            string? limitsCpu,
+            string? limitsMemory,
+            string? persistentVolumeClaims,
+            string? pods,
+            string? replicationControllers,
+            string? requestsCpu,
+            string? requestsMemory,
+            string? requestsStorage,
+            string? secrets,
+            string? services,
+            string? servicesLoadBalancers,
+            string? servicesNodePorts)
+        {
+            ConfigMaps = configMaps;
+            LimitsCpu = limitsCpu;
+            LimitsMemory = limitsMemory;
+            PersistentVolumeClaims = persistentVolumeClaims;
+            Pods = pods;
+            ReplicationControllers = replicationControllers;
+            RequestsCpu = requestsCpu;
+            RequestsMemory = requestsMemory;
+            RequestsStorage = requestsStorage;
+            Secrets = secrets;
+            Services = services;
+            ServicesLoadBalancers = servicesLoadBalancers;
+            ServicesNodePorts = servicesNodePorts;
+        }
+    }
     }
 }

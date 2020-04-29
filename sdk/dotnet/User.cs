@@ -13,6 +13,8 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
     /// 
     /// When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/user.html.markdown.
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
@@ -64,7 +66,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
+            : base("rancher2:index/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
