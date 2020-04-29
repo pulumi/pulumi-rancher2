@@ -45,7 +45,7 @@ build_node::
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python::
-	cd provider && $(WORKSPACE)/bin/$(TFGEN) python --overlays overlays/python --out ${PACKDIR}/python/
+	$(WORKSPACE)/bin/$(TFGEN) python --overlays overlays/python --out ${PACKDIR}/python/
 	cd ${PACKDIR}/python/ && \
         cp ../../README.md . && \
         $(PYTHON) setup.py clean --all 2>/dev/null && \
@@ -55,10 +55,10 @@ build_python::
         cd ./bin && $(PYTHON) setup.py build sdist
 
 build_go::
-	cd provider && $(WORKSPACE)/bin/$(TFGEN) go --overlays overlays/go --out ${PACKDIR}/go/
+	$(WORKSPACE)/bin/$(TFGEN) go --overlays overlays/go --out ${PACKDIR}/go/
 
 build_dotnet::
-	cd provider && $(WORKSPACE)/bin/$(TFGEN) dotnet --overlays overlays/dotnet --out ${PACKDIR}/dotnet/
+	$(WORKSPACE)/bin/$(TFGEN) dotnet --overlays overlays/dotnet --out ${PACKDIR}/dotnet/
 	cd ${PACKDIR}/dotnet/ && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
