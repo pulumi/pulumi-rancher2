@@ -12,6 +12,12 @@ env:
 
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # Insert more steps here!
   prerequisites:
     runs-on: ubuntu-latest
     steps:
@@ -33,4 +39,27 @@ jobs:
         with:
           name: pulumi-${{ env.PROVIDER}}
           path: ${{ github.workspace }}/bin
-  
+  nodejs:
+    runs-on: ubuntu-latest
+    needs: prerequisites
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Ensure dependencies
+        run: make ensure
+      - uses: actions/download-artifact@v1
+        with:
+          path: ${{ github.workspace }}/bin
+      - name: Restore binary perms
+        run: find ${{ github.workspace }}/bin -name 'pulumi-tfgen-rancher2' -name 'pulumi-resource-rancher2' -exec chmod +x {} \;
+      - name: Install tf2pulumi
+        uses: pulumi/action-install-tf2pulumi@releases/v1
+        with:
+          tf2pulumi-version: 0.7.0
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Build SDK
+        run: make build_node
