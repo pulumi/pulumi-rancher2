@@ -1,3 +1,7 @@
+run:
+  skip-files: 
+    - schema.go
+  #modules-download-mode: readonly
 linters:
   enable-all: false
   enable:
