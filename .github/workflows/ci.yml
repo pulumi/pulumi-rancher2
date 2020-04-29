@@ -50,7 +50,7 @@ jobs:
           name: pulumi-${{ env.PROVIDER }}
           path: ${{ github.workspace }}/bin
       - name: Restore binary perms
-        run: find ${{ github.workspace }}/bin -name 'pulumi-tfgen-rancher2' -name 'pulumi-resource-rancher2' -exec chmod +x {} \;
+        run: find ${{ github.workspace }}/bin -name 'pulumi-tfgen-rancher2' -or -name 'pulumi-resource-rancher2' -exec chmod +x {} \;
       - name: Install tf2pulumi
         uses: pulumi/action-install-tf2pulumi@releases/v1
         with:
