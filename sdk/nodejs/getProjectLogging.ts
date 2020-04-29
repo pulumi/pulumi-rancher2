@@ -8,10 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Project Logging.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getProjectLogging({
+ *     projectId: "<project_id>",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectLogging.html.markdown.
  */
-export function getProjectLogging(args: GetProjectLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectLoggingResult> & GetProjectLoggingResult {
+export function getProjectLogging(args: GetProjectLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectLoggingResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,11 +32,9 @@ export function getProjectLogging(args: GetProjectLoggingArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectLoggingResult> = pulumi.runtime.invoke("rancher2:index/getProjectLogging:getProjectLogging", {
+    return pulumi.runtime.invoke("rancher2:index/getProjectLogging:getProjectLogging", {
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -92,7 +103,7 @@ export interface GetProjectLoggingResult {
      */
     readonly syslogConfig: outputs.GetProjectLoggingSyslogConfig;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -45,7 +45,7 @@ class GetClusterAlertGroupResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -89,7 +89,7 @@ def get_cluster_alert_group(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert group.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertGroup.html.markdown.
+
 
 
     :param str cluster_id: The cluster id where create cluster alert group (string)

@@ -12,10 +12,25 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * // Retrieve a rancher2 Project Secret
+ * const foo = pulumi.output(rancher2.getSecret({
+ *     name: "<name>",
+ *     projectId: "<project_id>",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
  */
-export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> & GetSecretResult {
+export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     if (!opts) {
         opts = {}
     }
@@ -23,13 +38,11 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecretResult> = pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
+    return pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
         "name": args.name,
         "namespaceId": args.namespaceId,
         "projectId": args.projectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -74,7 +87,7 @@ export interface GetSecretResult {
     readonly namespaceId?: string;
     readonly projectId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -24,7 +24,7 @@ class GetCloudCredentialResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -50,7 +50,7 @@ def get_cloud_credential(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/cloudCredential.html.markdown.
+
 
 
     :param str name: The Cloud Credential name.

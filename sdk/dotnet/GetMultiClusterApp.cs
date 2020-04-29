@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetMultiClusterApp.InvokeAsync() instead")]
-        public static Task<GetMultiClusterAppResult> GetMultiClusterApp(GetMultiClusterAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetMultiClusterApp
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMultiClusterAppResult> InvokeAsync(GetMultiClusterAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppArgs(), options.WithVersion());
     }
+
 
     public sealed class GetMultiClusterAppArgs : Pulumi.InvokeArgs
     {
@@ -44,6 +35,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetMultiClusterAppResult
     {
@@ -54,11 +46,15 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The multi cluster app answers (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMultiClusterAppAnswersResult> Answers;
+        public readonly ImmutableArray<Outputs.GetMultiClusterAppAnswerResult> Answers;
         /// <summary>
         /// (Computed) The multi cluster app catalog name (string)
         /// </summary>
         public readonly string CatalogName;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) Labels for multi cluster app object (map)
         /// </summary>
@@ -66,7 +62,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The multi cluster app members (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMultiClusterAppMembersResult> Members;
+        public readonly ImmutableArray<Outputs.GetMultiClusterAppMemberResult> Members;
         public readonly string Name;
         /// <summary>
         /// (Computed) The multi cluster app revision history limit (int)
@@ -83,7 +79,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The multi cluster app target projects (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMultiClusterAppTargetsResult> Targets;
+        public readonly ImmutableArray<Outputs.GetMultiClusterAppTargetResult> Targets;
         /// <summary>
         /// (Computed) The multi cluster app template name (string)
         /// </summary>
@@ -99,33 +95,44 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The multi cluster app upgrade strategy (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMultiClusterAppUpgradeStrategiesResult> UpgradeStrategies;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetMultiClusterAppUpgradeStrategyResult> UpgradeStrategies;
 
         [OutputConstructor]
         private GetMultiClusterAppResult(
             ImmutableDictionary<string, object> annotations,
-            ImmutableArray<Outputs.GetMultiClusterAppAnswersResult> answers,
+
+            ImmutableArray<Outputs.GetMultiClusterAppAnswerResult> answers,
+
             string catalogName,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
-            ImmutableArray<Outputs.GetMultiClusterAppMembersResult> members,
+
+            ImmutableArray<Outputs.GetMultiClusterAppMemberResult> members,
+
             string name,
+
             int revisionHistoryLimit,
+
             string revisionId,
+
             ImmutableArray<string> roles,
-            ImmutableArray<Outputs.GetMultiClusterAppTargetsResult> targets,
+
+            ImmutableArray<Outputs.GetMultiClusterAppTargetResult> targets,
+
             string templateName,
+
             string templateVersion,
+
             string templateVersionId,
-            ImmutableArray<Outputs.GetMultiClusterAppUpgradeStrategiesResult> upgradeStrategies,
-            string id)
+
+            ImmutableArray<Outputs.GetMultiClusterAppUpgradeStrategyResult> upgradeStrategies)
         {
             Annotations = annotations;
             Answers = answers;
             CatalogName = catalogName;
+            Id = id;
             Labels = labels;
             Members = members;
             Name = name;
@@ -137,99 +144,6 @@ namespace Pulumi.Rancher2
             TemplateVersion = templateVersion;
             TemplateVersionId = templateVersionId;
             UpgradeStrategies = upgradeStrategies;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetMultiClusterAppAnswersResult
-    {
-        public readonly string ClusterId;
-        public readonly string ProjectId;
-        public readonly ImmutableDictionary<string, object> Values;
-
-        [OutputConstructor]
-        private GetMultiClusterAppAnswersResult(
-            string clusterId,
-            string projectId,
-            ImmutableDictionary<string, object> values)
-        {
-            ClusterId = clusterId;
-            ProjectId = projectId;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMultiClusterAppMembersResult
-    {
-        public readonly string? AccessType;
-        public readonly string? GroupPrincipalId;
-        public readonly string? UserPrincipalId;
-
-        [OutputConstructor]
-        private GetMultiClusterAppMembersResult(
-            string? accessType,
-            string? groupPrincipalId,
-            string? userPrincipalId)
-        {
-            AccessType = accessType;
-            GroupPrincipalId = groupPrincipalId;
-            UserPrincipalId = userPrincipalId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMultiClusterAppTargetsResult
-    {
-        public readonly string AppId;
-        public readonly string HealthState;
-        public readonly string ProjectId;
-        public readonly string State;
-
-        [OutputConstructor]
-        private GetMultiClusterAppTargetsResult(
-            string appId,
-            string healthState,
-            string projectId,
-            string state)
-        {
-            AppId = appId;
-            HealthState = healthState;
-            ProjectId = projectId;
-            State = state;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMultiClusterAppUpgradeStrategiesResult
-    {
-        public readonly GetMultiClusterAppUpgradeStrategiesRollingUpdateResult? RollingUpdate;
-
-        [OutputConstructor]
-        private GetMultiClusterAppUpgradeStrategiesResult(GetMultiClusterAppUpgradeStrategiesRollingUpdateResult? rollingUpdate)
-        {
-            RollingUpdate = rollingUpdate;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMultiClusterAppUpgradeStrategiesRollingUpdateResult
-    {
-        public readonly int? BatchSize;
-        public readonly int? Interval;
-
-        [OutputConstructor]
-        private GetMultiClusterAppUpgradeStrategiesRollingUpdateResult(
-            int? batchSize,
-            int? interval)
-        {
-            BatchSize = batchSize;
-            Interval = interval;
-        }
-    }
     }
 }

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 project alert group.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProjectAlertGroup.InvokeAsync() instead")]
-        public static Task<GetProjectAlertGroupResult> GetProjectAlertGroup(GetProjectAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProjectAlertGroup
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project alert group.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertGroup.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectAlertGroupResult> InvokeAsync(GetProjectAlertGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertGroupResult>("rancher2:index/getProjectAlertGroup:getProjectAlertGroup", args ?? new GetProjectAlertGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectAlertGroupArgs : Pulumi.InvokeArgs
     {
@@ -49,6 +40,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetProjectAlertGroupResult
@@ -70,6 +62,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly int GroupWaitSeconds;
         /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) The project alert group labels (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -78,65 +74,44 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The project alert group recipients (list)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectAlertGroupRecipientsResult> Recipients;
+        public readonly ImmutableArray<Outputs.GetProjectAlertGroupRecipientResult> Recipients;
         /// <summary>
         /// (Computed) The project alert group wait seconds. Default: `3600` (int)
         /// </summary>
         public readonly int RepeatIntervalSeconds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectAlertGroupResult(
             ImmutableDictionary<string, object> annotations,
+
             string description,
+
             int groupIntervalSeconds,
+
             int groupWaitSeconds,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string projectId,
-            ImmutableArray<Outputs.GetProjectAlertGroupRecipientsResult> recipients,
-            int repeatIntervalSeconds,
-            string id)
+
+            ImmutableArray<Outputs.GetProjectAlertGroupRecipientResult> recipients,
+
+            int repeatIntervalSeconds)
         {
             Annotations = annotations;
             Description = description;
             GroupIntervalSeconds = groupIntervalSeconds;
             GroupWaitSeconds = groupWaitSeconds;
+            Id = id;
             Labels = labels;
             Name = name;
             ProjectId = projectId;
             Recipients = recipients;
             RepeatIntervalSeconds = repeatIntervalSeconds;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectAlertGroupRecipientsResult
-    {
-        public readonly bool? DefaultRecipient;
-        public readonly string NotifierId;
-        public readonly string NotifierType;
-        public readonly string Recipient;
-
-        [OutputConstructor]
-        private GetProjectAlertGroupRecipientsResult(
-            bool? defaultRecipient,
-            string notifierId,
-            string notifierType,
-            string recipient)
-        {
-            DefaultRecipient = defaultRecipient;
-            NotifierId = notifierId;
-            NotifierType = notifierType;
-            Recipient = recipient;
-        }
-    }
     }
 }

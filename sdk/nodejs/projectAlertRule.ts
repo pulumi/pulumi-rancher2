@@ -6,11 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectAlertRule.html.markdown.
- */
 export class ProjectAlertRule extends pulumi.CustomResource {
     /**
      * Get an existing ProjectAlertRule resource's state with the given name, ID, and optional extra

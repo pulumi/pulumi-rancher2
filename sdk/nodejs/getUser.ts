@@ -8,10 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 user
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getUser({
+ *     username: "foo",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/user.html.markdown.
  */
-export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -20,13 +33,11 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUserResult> = pulumi.runtime.invoke("rancher2:index/getUser:getUser", {
+    return pulumi.runtime.invoke("rancher2:index/getUser:getUser", {
         "isExternal": args.isExternal,
         "name": args.name,
         "username": args.username,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -74,7 +85,7 @@ export interface GetUserResult {
     readonly principalIds: string[];
     readonly username: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

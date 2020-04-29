@@ -8,10 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getPodSecurityPolicyTemplate({
+ *     name: "foo",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
  */
-export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> & GetPodSecurityPolicyTemplateResult {
+export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityPolicyTemplateResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,7 +32,7 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetPodSecurityPolicyTemplateResult> = pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
+    return pulumi.runtime.invoke("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", {
         "allowPrivilegeEscalation": args.allowPrivilegeEscalation,
         "allowedCapabilities": args.allowedCapabilities,
         "allowedCsiDrivers": args.allowedCsiDrivers,
@@ -49,14 +62,15 @@ export function getPodSecurityPolicyTemplate(args: GetPodSecurityPolicyTemplateA
         "supplementalGroup": args.supplementalGroup,
         "volumes": args.volumes,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getPodSecurityPolicyTemplate.
  */
 export interface GetPodSecurityPolicyTemplateArgs {
+    /**
+     * = (Optional)
+     */
     readonly allowPrivilegeEscalation?: boolean;
     /**
      * (list)
@@ -121,7 +135,6 @@ export interface GetPodSecurityPolicyTemplateArgs {
     readonly hostPorts?: inputs.GetPodSecurityPolicyTemplateHostPort[];
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
-     * * `allowPrivilegeEscalation` = (Optional)
      */
     readonly labels?: {[key: string]: any};
     /**
@@ -199,7 +212,7 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly supplementalGroup: outputs.GetPodSecurityPolicyTemplateSupplementalGroup;
     readonly volumes: string[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

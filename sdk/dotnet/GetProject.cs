@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -39,6 +34,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetProjectResult
@@ -61,6 +57,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool EnableProjectMonitoring;
         /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels of the rancher2 project (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -77,176 +77,42 @@ namespace Pulumi.Rancher2
         /// (Computed) UUID of the project as stored by Rancher 2 (string)
         /// </summary>
         public readonly string Uuid;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             Outputs.GetProjectContainerResourceLimitResult containerResourceLimit,
+
             string description,
+
             bool enableProjectMonitoring,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string podSecurityPolicyTemplateId,
+
             Outputs.GetProjectResourceQuotaResult resourceQuota,
-            string uuid,
-            string id)
+
+            string uuid)
         {
             Annotations = annotations;
             ClusterId = clusterId;
             ContainerResourceLimit = containerResourceLimit;
             Description = description;
             EnableProjectMonitoring = enableProjectMonitoring;
+            Id = id;
             Labels = labels;
             Name = name;
             PodSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
             ResourceQuota = resourceQuota;
             Uuid = uuid;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectContainerResourceLimitResult
-    {
-        public readonly string? LimitsCpu;
-        public readonly string? LimitsMemory;
-        public readonly string? RequestsCpu;
-        public readonly string? RequestsMemory;
-
-        [OutputConstructor]
-        private GetProjectContainerResourceLimitResult(
-            string? limitsCpu,
-            string? limitsMemory,
-            string? requestsCpu,
-            string? requestsMemory)
-        {
-            LimitsCpu = limitsCpu;
-            LimitsMemory = limitsMemory;
-            RequestsCpu = requestsCpu;
-            RequestsMemory = requestsMemory;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectResourceQuotaNamespaceDefaultLimitResult
-    {
-        public readonly string? ConfigMaps;
-        public readonly string? LimitsCpu;
-        public readonly string? LimitsMemory;
-        public readonly string? PersistentVolumeClaims;
-        public readonly string? Pods;
-        public readonly string? ReplicationControllers;
-        public readonly string? RequestsCpu;
-        public readonly string? RequestsMemory;
-        public readonly string? RequestsStorage;
-        public readonly string? Secrets;
-        public readonly string? Services;
-        public readonly string? ServicesLoadBalancers;
-        public readonly string? ServicesNodePorts;
-
-        [OutputConstructor]
-        private GetProjectResourceQuotaNamespaceDefaultLimitResult(
-            string? configMaps,
-            string? limitsCpu,
-            string? limitsMemory,
-            string? persistentVolumeClaims,
-            string? pods,
-            string? replicationControllers,
-            string? requestsCpu,
-            string? requestsMemory,
-            string? requestsStorage,
-            string? secrets,
-            string? services,
-            string? servicesLoadBalancers,
-            string? servicesNodePorts)
-        {
-            ConfigMaps = configMaps;
-            LimitsCpu = limitsCpu;
-            LimitsMemory = limitsMemory;
-            PersistentVolumeClaims = persistentVolumeClaims;
-            Pods = pods;
-            ReplicationControllers = replicationControllers;
-            RequestsCpu = requestsCpu;
-            RequestsMemory = requestsMemory;
-            RequestsStorage = requestsStorage;
-            Secrets = secrets;
-            Services = services;
-            ServicesLoadBalancers = servicesLoadBalancers;
-            ServicesNodePorts = servicesNodePorts;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectResourceQuotaProjectLimitResult
-    {
-        public readonly string? ConfigMaps;
-        public readonly string? LimitsCpu;
-        public readonly string? LimitsMemory;
-        public readonly string? PersistentVolumeClaims;
-        public readonly string? Pods;
-        public readonly string? ReplicationControllers;
-        public readonly string? RequestsCpu;
-        public readonly string? RequestsMemory;
-        public readonly string? RequestsStorage;
-        public readonly string? Secrets;
-        public readonly string? Services;
-        public readonly string? ServicesLoadBalancers;
-        public readonly string? ServicesNodePorts;
-
-        [OutputConstructor]
-        private GetProjectResourceQuotaProjectLimitResult(
-            string? configMaps,
-            string? limitsCpu,
-            string? limitsMemory,
-            string? persistentVolumeClaims,
-            string? pods,
-            string? replicationControllers,
-            string? requestsCpu,
-            string? requestsMemory,
-            string? requestsStorage,
-            string? secrets,
-            string? services,
-            string? servicesLoadBalancers,
-            string? servicesNodePorts)
-        {
-            ConfigMaps = configMaps;
-            LimitsCpu = limitsCpu;
-            LimitsMemory = limitsMemory;
-            PersistentVolumeClaims = persistentVolumeClaims;
-            Pods = pods;
-            ReplicationControllers = replicationControllers;
-            RequestsCpu = requestsCpu;
-            RequestsMemory = requestsMemory;
-            RequestsStorage = requestsStorage;
-            Secrets = secrets;
-            Services = services;
-            ServicesLoadBalancers = servicesLoadBalancers;
-            ServicesNodePorts = servicesNodePorts;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectResourceQuotaResult
-    {
-        public readonly GetProjectResourceQuotaNamespaceDefaultLimitResult NamespaceDefaultLimit;
-        public readonly GetProjectResourceQuotaProjectLimitResult ProjectLimit;
-
-        [OutputConstructor]
-        private GetProjectResourceQuotaResult(
-            GetProjectResourceQuotaNamespaceDefaultLimitResult namespaceDefaultLimit,
-            GetProjectResourceQuotaProjectLimitResult projectLimit)
-        {
-            NamespaceDefaultLimit = namespaceDefaultLimit;
-            ProjectLimit = projectLimit;
-        }
-    }
     }
 }

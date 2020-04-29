@@ -12,8 +12,7 @@ from . import utilities, tables
 class PodSecurityPolicyTemplate(pulumi.CustomResource):
     allow_privilege_escalation: pulumi.Output[bool]
     """
-    allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-    true.
+    = (Optional)
     """
     allowed_capabilities: pulumi.Output[list]
     """
@@ -98,7 +97,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     """
     Labels for PodSecurityPolicyTemplate object (map)
-    * `allow_privilege_escalation` = (Optional)
     """
     name: pulumi.Output[str]
     """
@@ -172,12 +170,11 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         """
         Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/podSecurityPolicyTemplate.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_privilege_escalation: allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-               true.
+        :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
         :param pulumi.Input[list] allowed_capabilities: (list)
         :param pulumi.Input[list] allowed_csi_drivers: (list)
         :param pulumi.Input[list] allowed_flex_volumes: (list)
@@ -195,7 +192,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] host_pid: (bool)
         :param pulumi.Input[list] host_ports: (list)
         :param pulumi.Input[dict] labels: Labels for PodSecurityPolicyTemplate object (map)
-               * `allow_privilege_escalation` = (Optional)
         :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
         :param pulumi.Input[bool] privileged: (bool)
         :param pulumi.Input[bool] read_only_root_filesystem: (bool)
@@ -331,8 +327,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_privilege_escalation: allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-               true.
+        :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
         :param pulumi.Input[list] allowed_capabilities: (list)
         :param pulumi.Input[list] allowed_csi_drivers: (list)
         :param pulumi.Input[list] allowed_flex_volumes: (list)
@@ -350,7 +345,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] host_pid: (bool)
         :param pulumi.Input[list] host_ports: (list)
         :param pulumi.Input[dict] labels: Labels for PodSecurityPolicyTemplate object (map)
-               * `allow_privilege_escalation` = (Optional)
         :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
         :param pulumi.Input[bool] privileged: (bool)
         :param pulumi.Input[bool] read_only_root_filesystem: (bool)

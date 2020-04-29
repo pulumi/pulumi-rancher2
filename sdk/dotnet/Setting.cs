@@ -15,8 +15,6 @@ namespace Pulumi.Rancher2
     /// On create, if setting already exists, provider will import it and update its value.
     /// 
     /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/setting.html.markdown.
     /// </summary>
     public partial class Setting : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Setting(string name, SettingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/setting:Setting", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/setting:Setting", name, args ?? new SettingArgs(), MakeResourceOptions(options, ""))
         {
         }
 

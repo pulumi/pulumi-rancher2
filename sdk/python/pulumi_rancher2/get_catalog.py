@@ -42,7 +42,7 @@ class GetCatalogResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -117,7 +117,7 @@ def get_catalog(name=None,scope=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 catalog.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
+
 
 
     :param str name: The catalog name.

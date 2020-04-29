@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/notifier.html.markdown.
     /// </summary>
     public partial class Notifier : Pulumi.CustomResource
     {
@@ -30,7 +28,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -54,7 +51,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.NotifierPagerdutyConfig?> PagerdutyConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Output("sendResolved")]
         public Output<bool?> SendResolved { get; private set; } = null!;
@@ -92,7 +89,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Notifier(string name, NotifierArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/notifier:Notifier", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/notifier:Notifier", name, args ?? new NotifierArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -149,7 +146,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -179,7 +175,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NotifierPagerdutyConfigArgs>? PagerdutyConfig { get; set; }
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("sendResolved")]
         public Input<bool>? SendResolved { get; set; }
@@ -235,7 +231,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// The notifier description (string)
-        /// * `send_resolved` = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -265,7 +260,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NotifierPagerdutyConfigGetArgs>? PagerdutyConfig { get; set; }
 
         /// <summary>
-        /// Notifier send resolved
+        /// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         /// </summary>
         [Input("sendResolved")]
         public Input<bool>? SendResolved { get; set; }
@@ -297,493 +292,5 @@ namespace Pulumi.Rancher2
         public NotifierState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NotifierPagerdutyConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Pagerduty service key (string)
-        /// </summary>
-        [Input("serviceKey", required: true)]
-        public Input<string> ServiceKey { get; set; } = null!;
-
-        public NotifierPagerdutyConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierPagerdutyConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Pagerduty service key (string)
-        /// </summary>
-        [Input("serviceKey", required: true)]
-        public Input<string> ServiceKey { get; set; } = null!;
-
-        public NotifierPagerdutyConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierSlackConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public NotifierSlackConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierSlackConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public NotifierSlackConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierSmtpConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP host (string)
-        /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP password (string)
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// SMTP port (int)
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP sender (string)
-        /// </summary>
-        [Input("sender", required: true)]
-        public Input<string> Sender { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP tls. Default `true` (bool)
-        /// </summary>
-        [Input("tls")]
-        public Input<bool>? Tls { get; set; }
-
-        /// <summary>
-        /// SMTP username (string)
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public NotifierSmtpConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierSmtpConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP host (string)
-        /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP password (string)
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// SMTP port (int)
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP sender (string)
-        /// </summary>
-        [Input("sender", required: true)]
-        public Input<string> Sender { get; set; } = null!;
-
-        /// <summary>
-        /// SMTP tls. Default `true` (bool)
-        /// </summary>
-        [Input("tls")]
-        public Input<bool>? Tls { get; set; }
-
-        /// <summary>
-        /// SMTP username (string)
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public NotifierSmtpConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierWebhookConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public NotifierWebhookConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierWebhookConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public NotifierWebhookConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierWechatConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        [Input("agent", required: true)]
-        public Input<string> Agent { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat corporation ID (string)
-        /// </summary>
-        [Input("corp", required: true)]
-        public Input<string> Corp { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-        /// </summary>
-        [Input("recipientType")]
-        public Input<string>? RecipientType { get; set; }
-
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        [Input("secret", required: true)]
-        public Input<string> Secret { get; set; } = null!;
-
-        public NotifierWechatConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NotifierWechatConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        [Input("agent", required: true)]
-        public Input<string> Agent { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat corporation ID (string)
-        /// </summary>
-        [Input("corp", required: true)]
-        public Input<string> Corp { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        [Input("defaultRecipient", required: true)]
-        public Input<string> DefaultRecipient { get; set; } = null!;
-
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        [Input("proxyUrl")]
-        public Input<string>? ProxyUrl { get; set; }
-
-        /// <summary>
-        /// Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-        /// </summary>
-        [Input("recipientType")]
-        public Input<string>? RecipientType { get; set; }
-
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        [Input("secret", required: true)]
-        public Input<string> Secret { get; set; } = null!;
-
-        public NotifierWechatConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NotifierPagerdutyConfig
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        public readonly string? ProxyUrl;
-        /// <summary>
-        /// Pagerduty service key (string)
-        /// </summary>
-        public readonly string ServiceKey;
-
-        [OutputConstructor]
-        private NotifierPagerdutyConfig(
-            string? proxyUrl,
-            string serviceKey)
-        {
-            ProxyUrl = proxyUrl;
-            ServiceKey = serviceKey;
-        }
-    }
-
-    [OutputType]
-    public sealed class NotifierSlackConfig
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        public readonly string DefaultRecipient;
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        public readonly string? ProxyUrl;
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        public readonly string Url;
-
-        [OutputConstructor]
-        private NotifierSlackConfig(
-            string defaultRecipient,
-            string? proxyUrl,
-            string url)
-        {
-            DefaultRecipient = defaultRecipient;
-            ProxyUrl = proxyUrl;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class NotifierSmtpConfig
-    {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        public readonly string DefaultRecipient;
-        /// <summary>
-        /// SMTP host (string)
-        /// </summary>
-        public readonly string Host;
-        /// <summary>
-        /// SMTP password (string)
-        /// </summary>
-        public readonly string? Password;
-        /// <summary>
-        /// SMTP port (int)
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// SMTP sender (string)
-        /// </summary>
-        public readonly string Sender;
-        /// <summary>
-        /// SMTP tls. Default `true` (bool)
-        /// </summary>
-        public readonly bool? Tls;
-        /// <summary>
-        /// SMTP username (string)
-        /// </summary>
-        public readonly string? Username;
-
-        [OutputConstructor]
-        private NotifierSmtpConfig(
-            string defaultRecipient,
-            string host,
-            string? password,
-            int port,
-            string sender,
-            bool? tls,
-            string? username)
-        {
-            DefaultRecipient = defaultRecipient;
-            Host = host;
-            Password = password;
-            Port = port;
-            Sender = sender;
-            Tls = tls;
-            Username = username;
-        }
-    }
-
-    [OutputType]
-    public sealed class NotifierWebhookConfig
-    {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        public readonly string? ProxyUrl;
-        /// <summary>
-        /// Webhook url (string)
-        /// </summary>
-        public readonly string Url;
-
-        [OutputConstructor]
-        private NotifierWebhookConfig(
-            string? proxyUrl,
-            string url)
-        {
-            ProxyUrl = proxyUrl;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class NotifierWechatConfig
-    {
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        public readonly string Agent;
-        /// <summary>
-        /// Wechat corporation ID (string)
-        /// </summary>
-        public readonly string Corp;
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
-        public readonly string DefaultRecipient;
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
-        public readonly string? ProxyUrl;
-        /// <summary>
-        /// Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-        /// </summary>
-        public readonly string? RecipientType;
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
-        public readonly string Secret;
-
-        [OutputConstructor]
-        private NotifierWechatConfig(
-            string agent,
-            string corp,
-            string defaultRecipient,
-            string? proxyUrl,
-            string? recipientType,
-            string secret)
-        {
-            Agent = agent;
-            Corp = corp;
-            DefaultRecipient = defaultRecipient;
-            ProxyUrl = proxyUrl;
-            RecipientType = recipientType;
-            Secret = secret;
-        }
-    }
     }
 }

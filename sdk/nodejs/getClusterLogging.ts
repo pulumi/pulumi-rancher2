@@ -8,10 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getClusterLogging({
+ *     clusterId: "<cluster_id>",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterLogging.html.markdown.
  */
-export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> & GetClusterLoggingResult {
+export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,11 +32,9 @@ export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterLoggingResult> = pulumi.runtime.invoke("rancher2:index/getClusterLogging:getClusterLogging", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterLogging:getClusterLogging", {
         "clusterId": args.clusterId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -92,7 +103,7 @@ export interface GetClusterLoggingResult {
      */
     readonly syslogConfig: outputs.GetClusterLoggingSyslogConfig;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -9,30 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetPodSecurityPolicyTemplate.InvokeAsync() instead")]
-        public static Task<GetPodSecurityPolicyTemplateResult> GetPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPodSecurityPolicyTemplate
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPodSecurityPolicyTemplateArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// = (Optional)
+        /// </summary>
         [Input("allowPrivilegeEscalation")]
         public bool? AllowPrivilegeEscalation { get; set; }
 
@@ -49,38 +43,38 @@ namespace Pulumi.Rancher2
         }
 
         [Input("allowedCsiDrivers")]
-        private List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriversArgs>? _allowedCsiDrivers;
+        private List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs>? _allowedCsiDrivers;
 
         /// <summary>
         /// (list)
         /// </summary>
-        public List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriversArgs> AllowedCsiDrivers
+        public List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs> AllowedCsiDrivers
         {
-            get => _allowedCsiDrivers ?? (_allowedCsiDrivers = new List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriversArgs>());
+            get => _allowedCsiDrivers ?? (_allowedCsiDrivers = new List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs>());
             set => _allowedCsiDrivers = value;
         }
 
         [Input("allowedFlexVolumes")]
-        private List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumesArgs>? _allowedFlexVolumes;
+        private List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs>? _allowedFlexVolumes;
 
         /// <summary>
         /// (list)
         /// </summary>
-        public List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumesArgs> AllowedFlexVolumes
+        public List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs> AllowedFlexVolumes
         {
-            get => _allowedFlexVolumes ?? (_allowedFlexVolumes = new List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumesArgs>());
+            get => _allowedFlexVolumes ?? (_allowedFlexVolumes = new List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs>());
             set => _allowedFlexVolumes = value;
         }
 
         [Input("allowedHostPaths")]
-        private List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathsArgs>? _allowedHostPaths;
+        private List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs>? _allowedHostPaths;
 
         /// <summary>
         /// (list)
         /// </summary>
-        public List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathsArgs> AllowedHostPaths
+        public List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs> AllowedHostPaths
         {
-            get => _allowedHostPaths ?? (_allowedHostPaths = new List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathsArgs>());
+            get => _allowedHostPaths ?? (_allowedHostPaths = new List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs>());
             set => _allowedHostPaths = value;
         }
 
@@ -178,14 +172,14 @@ namespace Pulumi.Rancher2
         public bool? HostPid { get; set; }
 
         [Input("hostPorts")]
-        private List<Inputs.GetPodSecurityPolicyTemplateHostPortsArgs>? _hostPorts;
+        private List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs>? _hostPorts;
 
         /// <summary>
         /// (list)
         /// </summary>
-        public List<Inputs.GetPodSecurityPolicyTemplateHostPortsArgs> HostPorts
+        public List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs> HostPorts
         {
-            get => _hostPorts ?? (_hostPorts = new List<Inputs.GetPodSecurityPolicyTemplateHostPortsArgs>());
+            get => _hostPorts ?? (_hostPorts = new List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs>());
             set => _hostPorts = value;
         }
 
@@ -194,7 +188,6 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
-        /// * `allow_privilege_escalation` = (Optional)
         /// </summary>
         public Dictionary<string, object> Labels
         {
@@ -279,14 +272,15 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetPodSecurityPolicyTemplateResult
     {
         public readonly bool AllowPrivilegeEscalation;
         public readonly ImmutableArray<string> AllowedCapabilities;
-        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedCsiDriversResult> AllowedCsiDrivers;
-        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedFlexVolumesResult> AllowedFlexVolumes;
-        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedHostPathsResult> AllowedHostPaths;
+        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedCsiDriverResult> AllowedCsiDrivers;
+        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeResult> AllowedFlexVolumes;
+        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedHostPathResult> AllowedHostPaths;
         public readonly ImmutableArray<string> AllowedProcMountTypes;
         public readonly ImmutableArray<string> AllowedUnsafeSysctls;
         public readonly ImmutableDictionary<string, object> Annotations;
@@ -298,7 +292,11 @@ namespace Pulumi.Rancher2
         public readonly bool HostIpc;
         public readonly bool HostNetwork;
         public readonly bool HostPid;
-        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateHostPortsResult> HostPorts;
+        public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateHostPortResult> HostPorts;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly bool Privileged;
@@ -310,42 +308,66 @@ namespace Pulumi.Rancher2
         public readonly Outputs.GetPodSecurityPolicyTemplateSeLinuxResult SeLinux;
         public readonly Outputs.GetPodSecurityPolicyTemplateSupplementalGroupResult SupplementalGroup;
         public readonly ImmutableArray<string> Volumes;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetPodSecurityPolicyTemplateResult(
             bool allowPrivilegeEscalation,
+
             ImmutableArray<string> allowedCapabilities,
-            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedCsiDriversResult> allowedCsiDrivers,
-            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedFlexVolumesResult> allowedFlexVolumes,
-            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedHostPathsResult> allowedHostPaths,
+
+            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedCsiDriverResult> allowedCsiDrivers,
+
+            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeResult> allowedFlexVolumes,
+
+            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedHostPathResult> allowedHostPaths,
+
             ImmutableArray<string> allowedProcMountTypes,
+
             ImmutableArray<string> allowedUnsafeSysctls,
+
             ImmutableDictionary<string, object> annotations,
+
             ImmutableArray<string> defaultAddCapabilities,
+
             bool? defaultAllowPrivilegeEscalation,
+
             string description,
+
             ImmutableArray<string> forbiddenSysctls,
+
             Outputs.GetPodSecurityPolicyTemplateFsGroupResult fsGroup,
+
             bool hostIpc,
+
             bool hostNetwork,
+
             bool hostPid,
-            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateHostPortsResult> hostPorts,
+
+            ImmutableArray<Outputs.GetPodSecurityPolicyTemplateHostPortResult> hostPorts,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             bool privileged,
+
             bool readOnlyRootFilesystem,
+
             ImmutableArray<string> requiredDropCapabilities,
+
             Outputs.GetPodSecurityPolicyTemplateRunAsGroupResult? runAsGroup,
+
             Outputs.GetPodSecurityPolicyTemplateRunAsUserResult runAsUser,
+
             Outputs.GetPodSecurityPolicyTemplateRuntimeClassResult? runtimeClass,
+
             Outputs.GetPodSecurityPolicyTemplateSeLinuxResult seLinux,
+
             Outputs.GetPodSecurityPolicyTemplateSupplementalGroupResult supplementalGroup,
-            ImmutableArray<string> volumes,
-            string id)
+
+            ImmutableArray<string> volumes)
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             AllowedCapabilities = allowedCapabilities;
@@ -364,6 +386,7 @@ namespace Pulumi.Rancher2
             HostNetwork = hostNetwork;
             HostPid = hostPid;
             HostPorts = hostPorts;
+            Id = id;
             Labels = labels;
             Name = name;
             Privileged = privileged;
@@ -375,479 +398,6 @@ namespace Pulumi.Rancher2
             SeLinux = seLinux;
             SupplementalGroup = supplementalGroup;
             Volumes = volumes;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetPodSecurityPolicyTemplateAllowedCsiDriversArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        public GetPodSecurityPolicyTemplateAllowedCsiDriversArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateAllowedFlexVolumesArgs : Pulumi.InvokeArgs
-    {
-        [Input("driver", required: true)]
-        public string Driver { get; set; } = null!;
-
-        public GetPodSecurityPolicyTemplateAllowedFlexVolumesArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathsArgs : Pulumi.InvokeArgs
-    {
-        [Input("pathPrefix", required: true)]
-        public string PathPrefix { get; set; } = null!;
-
-        [Input("readOnly")]
-        public bool? ReadOnly { get; set; }
-
-        public GetPodSecurityPolicyTemplateAllowedHostPathsArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateFsGroupArgs : Pulumi.InvokeArgs
-    {
-        [Input("ranges")]
-        private List<GetPodSecurityPolicyTemplateFsGroupRangesArgs>? _ranges;
-        public List<GetPodSecurityPolicyTemplateFsGroupRangesArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new List<GetPodSecurityPolicyTemplateFsGroupRangesArgs>());
-            set => _ranges = value;
-        }
-
-        [Input("rule")]
-        public string? Rule { get; set; }
-
-        public GetPodSecurityPolicyTemplateFsGroupArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateFsGroupRangesArgs : Pulumi.InvokeArgs
-    {
-        [Input("max", required: true)]
-        public int Max { get; set; }
-
-        [Input("min", required: true)]
-        public int Min { get; set; }
-
-        public GetPodSecurityPolicyTemplateFsGroupRangesArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateHostPortsArgs : Pulumi.InvokeArgs
-    {
-        [Input("max", required: true)]
-        public int Max { get; set; }
-
-        [Input("min", required: true)]
-        public int Min { get; set; }
-
-        public GetPodSecurityPolicyTemplateHostPortsArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateRunAsGroupArgs : Pulumi.InvokeArgs
-    {
-        [Input("ranges")]
-        private List<GetPodSecurityPolicyTemplateRunAsGroupRangesArgs>? _ranges;
-        public List<GetPodSecurityPolicyTemplateRunAsGroupRangesArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new List<GetPodSecurityPolicyTemplateRunAsGroupRangesArgs>());
-            set => _ranges = value;
-        }
-
-        [Input("rule", required: true)]
-        public string Rule { get; set; } = null!;
-
-        public GetPodSecurityPolicyTemplateRunAsGroupArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateRunAsGroupRangesArgs : Pulumi.InvokeArgs
-    {
-        [Input("max", required: true)]
-        public int Max { get; set; }
-
-        [Input("min", required: true)]
-        public int Min { get; set; }
-
-        public GetPodSecurityPolicyTemplateRunAsGroupRangesArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateRunAsUserArgs : Pulumi.InvokeArgs
-    {
-        [Input("ranges")]
-        private List<GetPodSecurityPolicyTemplateRunAsUserRangesArgs>? _ranges;
-        public List<GetPodSecurityPolicyTemplateRunAsUserRangesArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new List<GetPodSecurityPolicyTemplateRunAsUserRangesArgs>());
-            set => _ranges = value;
-        }
-
-        [Input("rule", required: true)]
-        public string Rule { get; set; } = null!;
-
-        public GetPodSecurityPolicyTemplateRunAsUserArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateRunAsUserRangesArgs : Pulumi.InvokeArgs
-    {
-        [Input("max", required: true)]
-        public int Max { get; set; }
-
-        [Input("min", required: true)]
-        public int Min { get; set; }
-
-        public GetPodSecurityPolicyTemplateRunAsUserRangesArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateRuntimeClassArgs : Pulumi.InvokeArgs
-    {
-        [Input("allowedRuntimeClassNames", required: true)]
-        private List<string>? _allowedRuntimeClassNames;
-        public List<string> AllowedRuntimeClassNames
-        {
-            get => _allowedRuntimeClassNames ?? (_allowedRuntimeClassNames = new List<string>());
-            set => _allowedRuntimeClassNames = value;
-        }
-
-        [Input("defaultRuntimeClassName")]
-        public string? DefaultRuntimeClassName { get; set; }
-
-        public GetPodSecurityPolicyTemplateRuntimeClassArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxArgs : Pulumi.InvokeArgs
-    {
-        [Input("rule", required: true)]
-        public string Rule { get; set; } = null!;
-
-        [Input("seLinuxOption")]
-        public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs? SeLinuxOption { get; set; }
-
-        public GetPodSecurityPolicyTemplateSeLinuxArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs : Pulumi.InvokeArgs
-    {
-        [Input("level")]
-        public string? Level { get; set; }
-
-        [Input("role")]
-        public string? Role { get; set; }
-
-        [Input("type")]
-        public string? Type { get; set; }
-
-        [Input("user")]
-        public string? User { get; set; }
-
-        public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupArgs : Pulumi.InvokeArgs
-    {
-        [Input("ranges")]
-        private List<GetPodSecurityPolicyTemplateSupplementalGroupRangesArgs>? _ranges;
-        public List<GetPodSecurityPolicyTemplateSupplementalGroupRangesArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new List<GetPodSecurityPolicyTemplateSupplementalGroupRangesArgs>());
-            set => _ranges = value;
-        }
-
-        [Input("rule")]
-        public string? Rule { get; set; }
-
-        public GetPodSecurityPolicyTemplateSupplementalGroupArgs()
-        {
-        }
-    }
-
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupRangesArgs : Pulumi.InvokeArgs
-    {
-        [Input("max", required: true)]
-        public int Max { get; set; }
-
-        [Input("min", required: true)]
-        public int Min { get; set; }
-
-        public GetPodSecurityPolicyTemplateSupplementalGroupRangesArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateAllowedCsiDriversResult
-    {
-        /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateAllowedCsiDriversResult(string name)
-        {
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateAllowedFlexVolumesResult
-    {
-        public readonly string Driver;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateAllowedFlexVolumesResult(string driver)
-        {
-            Driver = driver;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateAllowedHostPathsResult
-    {
-        public readonly string PathPrefix;
-        public readonly bool? ReadOnly;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateAllowedHostPathsResult(
-            string pathPrefix,
-            bool? readOnly)
-        {
-            PathPrefix = pathPrefix;
-            ReadOnly = readOnly;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateFsGroupRangesResult
-    {
-        public readonly int Max;
-        public readonly int Min;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateFsGroupRangesResult(
-            int max,
-            int min)
-        {
-            Max = max;
-            Min = min;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateFsGroupResult
-    {
-        public readonly ImmutableArray<GetPodSecurityPolicyTemplateFsGroupRangesResult> Ranges;
-        public readonly string? Rule;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateFsGroupResult(
-            ImmutableArray<GetPodSecurityPolicyTemplateFsGroupRangesResult> ranges,
-            string? rule)
-        {
-            Ranges = ranges;
-            Rule = rule;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateHostPortsResult
-    {
-        public readonly int Max;
-        public readonly int Min;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateHostPortsResult(
-            int max,
-            int min)
-        {
-            Max = max;
-            Min = min;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateRunAsGroupRangesResult
-    {
-        public readonly int Max;
-        public readonly int Min;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateRunAsGroupRangesResult(
-            int max,
-            int min)
-        {
-            Max = max;
-            Min = min;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateRunAsGroupResult
-    {
-        public readonly ImmutableArray<GetPodSecurityPolicyTemplateRunAsGroupRangesResult> Ranges;
-        public readonly string Rule;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateRunAsGroupResult(
-            ImmutableArray<GetPodSecurityPolicyTemplateRunAsGroupRangesResult> ranges,
-            string rule)
-        {
-            Ranges = ranges;
-            Rule = rule;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateRunAsUserRangesResult
-    {
-        public readonly int Max;
-        public readonly int Min;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateRunAsUserRangesResult(
-            int max,
-            int min)
-        {
-            Max = max;
-            Min = min;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateRunAsUserResult
-    {
-        public readonly ImmutableArray<GetPodSecurityPolicyTemplateRunAsUserRangesResult> Ranges;
-        public readonly string Rule;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateRunAsUserResult(
-            ImmutableArray<GetPodSecurityPolicyTemplateRunAsUserRangesResult> ranges,
-            string rule)
-        {
-            Ranges = ranges;
-            Rule = rule;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateRuntimeClassResult
-    {
-        public readonly ImmutableArray<string> AllowedRuntimeClassNames;
-        public readonly string? DefaultRuntimeClassName;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateRuntimeClassResult(
-            ImmutableArray<string> allowedRuntimeClassNames,
-            string? defaultRuntimeClassName)
-        {
-            AllowedRuntimeClassNames = allowedRuntimeClassNames;
-            DefaultRuntimeClassName = defaultRuntimeClassName;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxResult
-    {
-        public readonly string Rule;
-        public readonly GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult? SeLinuxOption;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateSeLinuxResult(
-            string rule,
-            GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult? seLinuxOption)
-        {
-            Rule = rule;
-            SeLinuxOption = seLinuxOption;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult
-    {
-        public readonly string? Level;
-        public readonly string? Role;
-        public readonly string? Type;
-        public readonly string? User;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult(
-            string? level,
-            string? role,
-            string? type,
-            string? user)
-        {
-            Level = level;
-            Role = role;
-            Type = type;
-            User = user;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupRangesResult
-    {
-        public readonly int Max;
-        public readonly int Min;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateSupplementalGroupRangesResult(
-            int max,
-            int min)
-        {
-            Max = max;
-            Min = min;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetPodSecurityPolicyTemplateSupplementalGroupResult
-    {
-        public readonly ImmutableArray<GetPodSecurityPolicyTemplateSupplementalGroupRangesResult> Ranges;
-        public readonly string? Rule;
-
-        [OutputConstructor]
-        private GetPodSecurityPolicyTemplateSupplementalGroupResult(
-            ImmutableArray<GetPodSecurityPolicyTemplateSupplementalGroupRangesResult> ranges,
-            string? rule)
-        {
-            Ranges = ranges;
-            Rule = rule;
-        }
-    }
     }
 }

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+warnings.warn("rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate", DeprecationWarning)
 class GetRoleTempalteResult:
     """
     A collection of values returned by getRoleTempalte.
@@ -63,7 +64,7 @@ class GetRoleTempalteResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -117,12 +118,15 @@ def get_role_tempalte(context=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
+
+
+    Deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
     :param str name: The name of the Node Template (string)
     """
+    pulumi.log.warn("get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate")
     __args__ = dict()
 
 

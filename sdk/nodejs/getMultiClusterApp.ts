@@ -8,10 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 multi cluster app.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getMultiClusterApp({
+ *     name: "foo",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/multiClusterApp.html.markdown.
  */
-export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> & GetMultiClusterAppResult {
+export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,11 +32,9 @@ export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetMultiClusterAppResult> = pulumi.runtime.invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", {
+    return pulumi.runtime.invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -94,7 +105,7 @@ export interface GetMultiClusterAppResult {
      */
     readonly upgradeStrategies: outputs.GetMultiClusterAppUpgradeStrategy[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

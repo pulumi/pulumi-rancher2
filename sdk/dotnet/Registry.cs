@@ -15,8 +15,6 @@ namespace Pulumi.Rancher2
     /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
     /// - Project registry: Available to all namespaces in the `project_id`
     /// - Namespaced regitry: Available to just `namespace_id` in the `project_id`
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/registry.html.markdown.
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {
@@ -60,7 +58,7 @@ namespace Pulumi.Rancher2
         /// Registries data for registry (list)
         /// </summary>
         [Output("registries")]
-        public Output<ImmutableArray<Outputs.RegistryRegistries>> Registries { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RegistryRegistry>> Registries { get; private set; } = null!;
 
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Registry(string name, RegistryArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/registry:Registry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/registry:Registry", name, args ?? new RegistryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,14 +155,14 @@ namespace Pulumi.Rancher2
         public Input<string> ProjectId { get; set; } = null!;
 
         [Input("registries", required: true)]
-        private InputList<Inputs.RegistryRegistriesArgs>? _registries;
+        private InputList<Inputs.RegistryRegistryArgs>? _registries;
 
         /// <summary>
         /// Registries data for registry (list)
         /// </summary>
-        public InputList<Inputs.RegistryRegistriesArgs> Registries
+        public InputList<Inputs.RegistryRegistryArgs> Registries
         {
-            get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistriesArgs>());
+            get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistryArgs>());
             set => _registries = value;
         }
 
@@ -224,105 +222,19 @@ namespace Pulumi.Rancher2
         public Input<string>? ProjectId { get; set; }
 
         [Input("registries")]
-        private InputList<Inputs.RegistryRegistriesGetArgs>? _registries;
+        private InputList<Inputs.RegistryRegistryGetArgs>? _registries;
 
         /// <summary>
         /// Registries data for registry (list)
         /// </summary>
-        public InputList<Inputs.RegistryRegistriesGetArgs> Registries
+        public InputList<Inputs.RegistryRegistryGetArgs> Registries
         {
-            get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistriesGetArgs>());
+            get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistryGetArgs>());
             set => _registries = value;
         }
 
         public RegistryState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegistryRegistriesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Address for registry.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        /// <summary>
-        /// Password for the registry (string)
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// Username for the registry (string)
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public RegistryRegistriesArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryRegistriesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Address for registry.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        /// <summary>
-        /// Password for the registry (string)
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// Username for the registry (string)
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public RegistryRegistriesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegistryRegistries
-    {
-        /// <summary>
-        /// Address for registry.
-        /// </summary>
-        public readonly string Address;
-        /// <summary>
-        /// Password for the registry (string)
-        /// </summary>
-        public readonly string? Password;
-        /// <summary>
-        /// Username for the registry (string)
-        /// </summary>
-        public readonly string? Username;
-
-        [OutputConstructor]
-        private RegistryRegistries(
-            string address,
-            string? password,
-            string? username)
-        {
-            Address = address;
-            Password = password;
-            Username = username;
-        }
-    }
     }
 }

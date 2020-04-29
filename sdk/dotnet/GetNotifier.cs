@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 notifier.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNotifier.InvokeAsync() instead")]
-        public static Task<GetNotifierResult> GetNotifier(GetNotifierArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNotifier
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 notifier.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/notifier.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNotifierArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +41,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetNotifierResult
     {
@@ -62,6 +54,10 @@ namespace Pulumi.Rancher2
         /// (Computed) The notifier description (string)
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) Labels for notifier object (map)
         /// </summary>
@@ -87,28 +83,35 @@ namespace Pulumi.Rancher2
         /// (Computed) Wechat config for notifier (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetNotifierWechatConfigResult WechatConfig;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNotifierResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             string description,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             Outputs.GetNotifierPagerdutyConfigResult pagerdutyConfig,
+
             Outputs.GetNotifierSlackConfigResult slackConfig,
+
             Outputs.GetNotifierSmtpConfigResult smtpConfig,
+
             Outputs.GetNotifierWebhookConfigResult webhookConfig,
-            Outputs.GetNotifierWechatConfigResult wechatConfig,
-            string id)
+
+            Outputs.GetNotifierWechatConfigResult wechatConfig)
         {
             Annotations = annotations;
             ClusterId = clusterId;
             Description = description;
+            Id = id;
             Labels = labels;
             Name = name;
             PagerdutyConfig = pagerdutyConfig;
@@ -116,121 +119,6 @@ namespace Pulumi.Rancher2
             SmtpConfig = smtpConfig;
             WebhookConfig = webhookConfig;
             WechatConfig = wechatConfig;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNotifierPagerdutyConfigResult
-    {
-        public readonly string? ProxyUrl;
-        public readonly string ServiceKey;
-
-        [OutputConstructor]
-        private GetNotifierPagerdutyConfigResult(
-            string? proxyUrl,
-            string serviceKey)
-        {
-            ProxyUrl = proxyUrl;
-            ServiceKey = serviceKey;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNotifierSlackConfigResult
-    {
-        public readonly string DefaultRecipient;
-        public readonly string? ProxyUrl;
-        public readonly string Url;
-
-        [OutputConstructor]
-        private GetNotifierSlackConfigResult(
-            string defaultRecipient,
-            string? proxyUrl,
-            string url)
-        {
-            DefaultRecipient = defaultRecipient;
-            ProxyUrl = proxyUrl;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNotifierSmtpConfigResult
-    {
-        public readonly string DefaultRecipient;
-        public readonly string Host;
-        public readonly string? Password;
-        public readonly int Port;
-        public readonly string Sender;
-        public readonly bool? Tls;
-        public readonly string? Username;
-
-        [OutputConstructor]
-        private GetNotifierSmtpConfigResult(
-            string defaultRecipient,
-            string host,
-            string? password,
-            int port,
-            string sender,
-            bool? tls,
-            string? username)
-        {
-            DefaultRecipient = defaultRecipient;
-            Host = host;
-            Password = password;
-            Port = port;
-            Sender = sender;
-            Tls = tls;
-            Username = username;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNotifierWebhookConfigResult
-    {
-        public readonly string? ProxyUrl;
-        public readonly string Url;
-
-        [OutputConstructor]
-        private GetNotifierWebhookConfigResult(
-            string? proxyUrl,
-            string url)
-        {
-            ProxyUrl = proxyUrl;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNotifierWechatConfigResult
-    {
-        public readonly string Agent;
-        public readonly string Corp;
-        public readonly string DefaultRecipient;
-        public readonly string? ProxyUrl;
-        public readonly string? RecipientType;
-        public readonly string Secret;
-
-        [OutputConstructor]
-        private GetNotifierWechatConfigResult(
-            string agent,
-            string corp,
-            string defaultRecipient,
-            string? proxyUrl,
-            string? recipientType,
-            string secret)
-        {
-            Agent = agent;
-            Corp = corp;
-            DefaultRecipient = defaultRecipient;
-            ProxyUrl = proxyUrl;
-            RecipientType = recipientType;
-            Secret = secret;
-        }
-    }
     }
 }

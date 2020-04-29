@@ -8,10 +8,24 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * 
+ * const foo = pulumi.output(rancher2.getClusterRoleTemplateBinding({
+ *     clusterId: "fooId",
+ *     name: "foo",
+ * }, { async: true }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterRole.html.markdown.
  */
-export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> & GetClusterRoleTemplateBindingResult {
+export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,13 +33,11 @@ export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindin
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClusterRoleTemplateBindingResult> = pulumi.runtime.invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
+    return pulumi.runtime.invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
         "clusterId": args.clusterId,
         "name": args.name,
         "roleTemplateId": args.roleTemplateId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -78,7 +90,7 @@ export interface GetClusterRoleTemplateBindingResult {
      */
     readonly userPrincipalId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

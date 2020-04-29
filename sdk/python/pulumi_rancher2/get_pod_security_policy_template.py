@@ -69,7 +69,7 @@ class GetPodSecurityPolicyTemplateResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -144,9 +144,10 @@ def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_cap
     """
     Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/podSecurityPolicyTemplate.html.markdown.
 
 
+
+    :param bool allow_privilege_escalation: = (Optional)
     :param list allowed_capabilities: (list)
     :param list allowed_csi_drivers: (list)
     :param list allowed_flex_volumes: (list)
@@ -163,7 +164,6 @@ def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_cap
     :param bool host_pid: (bool)
     :param list host_ports: (list)
     :param dict labels: Labels for PodSecurityPolicyTemplate object (map)
-           * `allow_privilege_escalation` = (Optional)
     :param str name: The name of the PodSecurityPolicyTemplate (string)
     :param bool privileged: (bool)
     :param bool read_only_root_filesystem: (bool)

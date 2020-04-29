@@ -51,7 +51,7 @@ class GetNodePoolResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -107,7 +107,7 @@ def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
+
 
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)

@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/projectRole.html.markdown.
     /// </summary>
     public partial class ProjectRoleTemplateBinding : Pulumi.CustomResource
     {
@@ -79,7 +77,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectRoleTemplateBinding(string name, ProjectRoleTemplateBindingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, args ?? new ProjectRoleTemplateBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 

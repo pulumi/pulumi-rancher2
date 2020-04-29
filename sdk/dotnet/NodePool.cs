@@ -11,8 +11,6 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodePool.html.markdown.
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {
@@ -68,7 +66,7 @@ namespace Pulumi.Rancher2
         /// Node taints. For Rancher v2.3.3 or above (List)
         /// </summary>
         [Output("nodeTaints")]
-        public Output<ImmutableArray<Outputs.NodePoolNodeTaints>> NodeTaints { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NodePoolNodeTaint>> NodeTaints { get; private set; } = null!;
 
         /// <summary>
         /// The Node Template ID to use for node creation (string)
@@ -97,7 +95,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodePool(string name, NodePoolArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/nodePool:NodePool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/nodePool:NodePool", name, args ?? new NodePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -195,14 +193,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("nodeTaints")]
-        private InputList<Inputs.NodePoolNodeTaintsArgs>? _nodeTaints;
+        private InputList<Inputs.NodePoolNodeTaintArgs>? _nodeTaints;
 
         /// <summary>
         /// Node taints. For Rancher v2.3.3 or above (List)
         /// </summary>
-        public InputList<Inputs.NodePoolNodeTaintsArgs> NodeTaints
+        public InputList<Inputs.NodePoolNodeTaintArgs> NodeTaints
         {
-            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintsArgs>());
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintArgs>());
             set => _nodeTaints = value;
         }
 
@@ -292,14 +290,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("nodeTaints")]
-        private InputList<Inputs.NodePoolNodeTaintsGetArgs>? _nodeTaints;
+        private InputList<Inputs.NodePoolNodeTaintGetArgs>? _nodeTaints;
 
         /// <summary>
         /// Node taints. For Rancher v2.3.3 or above (List)
         /// </summary>
-        public InputList<Inputs.NodePoolNodeTaintsGetArgs> NodeTaints
+        public InputList<Inputs.NodePoolNodeTaintGetArgs> NodeTaints
         {
-            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintsGetArgs>());
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintGetArgs>());
             set => _nodeTaints = value;
         }
 
@@ -324,109 +322,5 @@ namespace Pulumi.Rancher2
         public NodePoolState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodePoolNodeTaintsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
-        /// </summary>
-        [Input("effect")]
-        public Input<string>? Effect { get; set; }
-
-        /// <summary>
-        /// Taint key (string)
-        /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
-
-        /// <summary>
-        /// Taint time added (string)
-        /// </summary>
-        [Input("timeAdded")]
-        public Input<string>? TimeAdded { get; set; }
-
-        /// <summary>
-        /// Taint value (string)
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public NodePoolNodeTaintsArgs()
-        {
-        }
-    }
-
-    public sealed class NodePoolNodeTaintsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
-        /// </summary>
-        [Input("effect")]
-        public Input<string>? Effect { get; set; }
-
-        /// <summary>
-        /// Taint key (string)
-        /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
-
-        /// <summary>
-        /// Taint time added (string)
-        /// </summary>
-        [Input("timeAdded")]
-        public Input<string>? TimeAdded { get; set; }
-
-        /// <summary>
-        /// Taint value (string)
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public NodePoolNodeTaintsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodePoolNodeTaints
-    {
-        /// <summary>
-        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
-        /// </summary>
-        public readonly string? Effect;
-        /// <summary>
-        /// Taint key (string)
-        /// </summary>
-        public readonly string Key;
-        /// <summary>
-        /// Taint time added (string)
-        /// </summary>
-        public readonly string TimeAdded;
-        /// <summary>
-        /// Taint value (string)
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private NodePoolNodeTaints(
-            string? effect,
-            string key,
-            string timeAdded,
-            string value)
-        {
-            Effect = effect;
-            Key = key;
-            TimeAdded = timeAdded;
-            Value = value;
-        }
-    }
     }
 }

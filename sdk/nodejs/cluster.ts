@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/cluster.html.markdown.
  */
@@ -120,7 +121,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly enableClusterMonitoring!: pulumi.Output<boolean | undefined>;
     /**
      * Enable project network isolation. Default `false` (bool)
-     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean | undefined>;
     /**
@@ -148,7 +148,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly rkeConfig!: pulumi.Output<outputs.ClusterRkeConfig>;
     /**
-     * Cluster scheduled scan
+     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     public readonly scheduledClusterScan!: pulumi.Output<outputs.ClusterScheduledClusterScan | undefined>;
     /**
@@ -332,7 +332,6 @@ export interface ClusterState {
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation. Default `false` (bool)
-     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
@@ -360,7 +359,7 @@ export interface ClusterState {
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
     /**
-     * Cluster scheduled scan
+     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
     /**
@@ -451,7 +450,6 @@ export interface ClusterArgs {
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation. Default `false` (bool)
-     * * `scheduledClusterScan`- (Optional) Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
@@ -475,7 +473,7 @@ export interface ClusterArgs {
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
     /**
-     * Cluster scheduled scan
+     * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
     readonly scheduledClusterScan?: pulumi.Input<inputs.ClusterScheduledClusterScan>;
     /**

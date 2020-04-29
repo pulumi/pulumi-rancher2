@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 project alert rule.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProjectAlertRule.InvokeAsync() instead")]
-        public static Task<GetProjectAlertRuleResult> GetProjectAlertRule(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProjectAlertRule
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 project alert rule.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/projectAlertRule.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectAlertRuleResult> InvokeAsync(GetProjectAlertRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectAlertRuleResult>("rancher2:index/getProjectAlertRule:getProjectAlertRule", args ?? new GetProjectAlertRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectAlertRuleArgs : Pulumi.InvokeArgs
     {
@@ -62,6 +53,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectAlertRuleResult
     {
@@ -81,6 +73,10 @@ namespace Pulumi.Rancher2
         /// (Computed) The project alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         public readonly int GroupWaitSeconds;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) The project alert rule inherited. Default: `true` (bool)
         /// </summary>
@@ -111,32 +107,42 @@ namespace Pulumi.Rancher2
         /// (Computed) The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         /// </summary>
         public readonly Outputs.GetProjectAlertRuleWorkloadRuleResult WorkloadRule;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectAlertRuleResult(
             ImmutableDictionary<string, object> annotations,
+
             string groupId,
+
             int groupIntervalSeconds,
+
             int groupWaitSeconds,
+
+            string id,
+
             bool inherited,
+
             ImmutableDictionary<string, object>? labels,
+
             Outputs.GetProjectAlertRuleMetricRuleResult metricRule,
+
             string name,
+
             Outputs.GetProjectAlertRulePodRuleResult podRule,
+
             string projectId,
+
             int repeatIntervalSeconds,
+
             string severity,
-            Outputs.GetProjectAlertRuleWorkloadRuleResult workloadRule,
-            string id)
+
+            Outputs.GetProjectAlertRuleWorkloadRuleResult workloadRule)
         {
             Annotations = annotations;
             GroupId = groupId;
             GroupIntervalSeconds = groupIntervalSeconds;
             GroupWaitSeconds = groupWaitSeconds;
+            Id = id;
             Inherited = inherited;
             Labels = labels;
             MetricRule = metricRule;
@@ -146,77 +152,6 @@ namespace Pulumi.Rancher2
             RepeatIntervalSeconds = repeatIntervalSeconds;
             Severity = severity;
             WorkloadRule = workloadRule;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectAlertRuleMetricRuleResult
-    {
-        public readonly string? Comparison;
-        public readonly string? Description;
-        public readonly string Duration;
-        public readonly string Expression;
-        public readonly double ThresholdValue;
-
-        [OutputConstructor]
-        private GetProjectAlertRuleMetricRuleResult(
-            string? comparison,
-            string? description,
-            string duration,
-            string expression,
-            double thresholdValue)
-        {
-            Comparison = comparison;
-            Description = description;
-            Duration = duration;
-            Expression = expression;
-            ThresholdValue = thresholdValue;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectAlertRulePodRuleResult
-    {
-        public readonly string? Condition;
-        public readonly string PodId;
-        public readonly int? RestartIntervalSeconds;
-        public readonly int? RestartTimes;
-
-        [OutputConstructor]
-        private GetProjectAlertRulePodRuleResult(
-            string? condition,
-            string podId,
-            int? restartIntervalSeconds,
-            int? restartTimes)
-        {
-            Condition = condition;
-            PodId = podId;
-            RestartIntervalSeconds = restartIntervalSeconds;
-            RestartTimes = restartTimes;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProjectAlertRuleWorkloadRuleResult
-    {
-        public readonly int? AvailablePercentage;
-        public readonly ImmutableDictionary<string, object>? Selector;
-        public readonly string? WorkloadId;
-
-        [OutputConstructor]
-        private GetProjectAlertRuleWorkloadRuleResult(
-            int? availablePercentage,
-            ImmutableDictionary<string, object>? selector,
-            string? workloadId)
-        {
-            AvailablePercentage = availablePercentage;
-            Selector = selector;
-            WorkloadId = workloadId;
-        }
-    }
     }
 }

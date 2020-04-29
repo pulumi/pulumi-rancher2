@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusterDriver.InvokeAsync() instead")]
-        public static Task<GetClusterDriverResult> GetClusterDriver(GetClusterDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusterDriver
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterDriver.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClusterDriverArgs : Pulumi.InvokeArgs
     {
@@ -49,6 +40,7 @@ namespace Pulumi.Rancher2
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetClusterDriverResult
@@ -74,6 +66,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Checksum;
         /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -87,36 +83,42 @@ namespace Pulumi.Rancher2
         /// (Computed) Domains to whitelist for the ui (list)
         /// </summary>
         public readonly ImmutableArray<string> WhitelistDomains;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClusterDriverResult(
             bool active,
+
             string actualUrl,
+
             ImmutableDictionary<string, object> annotations,
+
             bool builtin,
+
             string checksum,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string uiUrl,
+
             string url,
-            ImmutableArray<string> whitelistDomains,
-            string id)
+
+            ImmutableArray<string> whitelistDomains)
         {
             Active = active;
             ActualUrl = actualUrl;
             Annotations = annotations;
             Builtin = builtin;
             Checksum = checksum;
+            Id = id;
             Labels = labels;
             Name = name;
             UiUrl = uiUrl;
             Url = url;
             WhitelistDomains = whitelistDomains;
-            Id = id;
         }
     }
 }

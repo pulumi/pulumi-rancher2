@@ -33,7 +33,7 @@ class GetClusterTemplateResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -77,7 +77,7 @@ def get_cluster_template(annotations=None,description=None,labels=None,name=None
 
     Cluster Templates are available from Rancher v2.3.x and above.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterTemplate.html.markdown.
+
 
 
     :param dict annotations: (Computed) Annotations for the cluster template (map)

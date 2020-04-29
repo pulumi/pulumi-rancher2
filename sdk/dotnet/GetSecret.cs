@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 secret.
-        /// 
-        /// Depending of the availability, there are 2 types of Rancher v2 secrets:
-        /// - Project secret: Available to all namespaces in the `project_id`
-        /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSecret.InvokeAsync() instead")]
-        public static Task<GetSecretResult> GetSecret(GetSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSecret
     {
         /// <summary>
@@ -33,11 +18,13 @@ namespace Pulumi.Rancher2
         /// - Project secret: Available to all namespaces in the `project_id`
         /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSecretArgs : Pulumi.InvokeArgs
     {
@@ -64,6 +51,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetSecretResult
     {
@@ -80,36 +68,43 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels for secret object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly string? NamespaceId;
         public readonly string ProjectId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSecretResult(
             ImmutableDictionary<string, object> annotations,
+
             ImmutableDictionary<string, object> data,
+
             string description,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string? namespaceId,
-            string projectId,
-            string id)
+
+            string projectId)
         {
             Annotations = annotations;
             Data = data;
             Description = description;
+            Id = id;
             Labels = labels;
             Name = name;
             NamespaceId = namespaceId;
             ProjectId = projectId;
-            Id = id;
         }
     }
 }

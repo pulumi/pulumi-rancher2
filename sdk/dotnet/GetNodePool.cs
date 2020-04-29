@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNodePool.InvokeAsync() instead")]
-        public static Task<GetNodePoolResult> GetNodePool(GetNodePoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNodePool
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodePool.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNodePoolArgs : Pulumi.InvokeArgs
     {
@@ -56,6 +47,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetNodePoolResult
     {
@@ -81,6 +73,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string HostnamePrefix;
         /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -88,7 +84,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Node taints (List)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNodePoolNodeTaintsResult> NodeTaints;
+        public readonly ImmutableArray<Outputs.GetNodePoolNodeTaintResult> NodeTaints;
         public readonly string NodeTemplateId;
         /// <summary>
         /// (Computed) The number of nodes to create on Node Pool (int)
@@ -98,26 +94,34 @@ namespace Pulumi.Rancher2
         /// (Computed) RKE role role for created nodes (bool)
         /// </summary>
         public readonly bool Worker;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNodePoolResult(
             ImmutableDictionary<string, object> annotations,
+
             string clusterId,
+
             bool controlPlane,
+
             int deleteNotReadyAfterSecs,
+
             bool etcd,
+
             string hostnamePrefix,
+
+            string id,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
-            ImmutableArray<Outputs.GetNodePoolNodeTaintsResult> nodeTaints,
+
+            ImmutableArray<Outputs.GetNodePoolNodeTaintResult> nodeTaints,
+
             string nodeTemplateId,
+
             int quantity,
-            bool worker,
-            string id)
+
+            bool worker)
         {
             Annotations = annotations;
             ClusterId = clusterId;
@@ -125,39 +129,13 @@ namespace Pulumi.Rancher2
             DeleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
             Etcd = etcd;
             HostnamePrefix = hostnamePrefix;
+            Id = id;
             Labels = labels;
             Name = name;
             NodeTaints = nodeTaints;
             NodeTemplateId = nodeTemplateId;
             Quantity = quantity;
             Worker = worker;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNodePoolNodeTaintsResult
-    {
-        public readonly string? Effect;
-        public readonly string Key;
-        public readonly string TimeAdded;
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetNodePoolNodeTaintsResult(
-            string? effect,
-            string key,
-            string timeAdded,
-            string value)
-        {
-            Effect = effect;
-            Key = key;
-            TimeAdded = timeAdded;
-            Value = value;
-        }
-    }
     }
 }

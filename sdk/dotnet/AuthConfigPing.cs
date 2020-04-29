@@ -13,8 +13,6 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config Ping resource. This can be used to configure and enable Auth Config Ping for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/authConfigPing.html.markdown.
     /// </summary>
     public partial class AuthConfigPing : Pulumi.CustomResource
     {
@@ -117,7 +115,7 @@ namespace Pulumi.Rancher2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AuthConfigPing(string name, AuthConfigPingArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/authConfigPing:AuthConfigPing", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("rancher2:index/authConfigPing:AuthConfigPing", name, args ?? new AuthConfigPingArgs(), MakeResourceOptions(options, ""))
         {
         }
 

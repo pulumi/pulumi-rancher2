@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 catalog.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetCatalog.InvokeAsync() instead")]
-        public static Task<GetCatalogResult> GetCatalog(GetCatalogArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCatalog
     {
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 catalog.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCatalogResult> InvokeAsync(GetCatalogArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCatalogArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +41,7 @@ namespace Pulumi.Rancher2
         }
     }
 
+
     [OutputType]
     public sealed class GetCatalogResult
     {
@@ -69,6 +61,10 @@ namespace Pulumi.Rancher2
         /// (Computed) A catalog description (string)
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Computed) The kind of the catalog. Just helm by the moment (string)
         /// </summary>
@@ -99,32 +95,42 @@ namespace Pulumi.Rancher2
         /// (Computed) Helm version for the catalog (string)
         /// </summary>
         public readonly string Version;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetCatalogResult(
             ImmutableDictionary<string, object> annotations,
+
             string branch,
+
             string clusterId,
+
             string description,
+
+            string id,
+
             string kind,
+
             ImmutableDictionary<string, object> labels,
+
             string name,
+
             string password,
+
             string projectId,
+
             string? scope,
+
             string url,
+
             string username,
-            string version,
-            string id)
+
+            string version)
         {
             Annotations = annotations;
             Branch = branch;
             ClusterId = clusterId;
             Description = description;
+            Id = id;
             Kind = kind;
             Labels = labels;
             Name = name;
@@ -134,7 +140,6 @@ namespace Pulumi.Rancher2
             Url = url;
             Username = username;
             Version = version;
-            Id = id;
         }
     }
 }
