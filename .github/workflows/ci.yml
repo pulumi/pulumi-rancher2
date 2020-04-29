@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: pulumi-${{ env.PROVIDER}}
+          name: pulumi-${{ env.PROVIDER }}
           path: ${{ github.workspace }}/bin
   nodejs:
     runs-on: ubuntu-latest
@@ -47,6 +47,7 @@ jobs:
         uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
         with:
+          name: pulumi-${{ env.PROVIDER }}
           path: ${{ github.workspace }}/bin
       - name: Restore binary perms
         run: find ${{ github.workspace }}/bin -name 'pulumi-tfgen-rancher2' -name 'pulumi-resource-rancher2' -exec chmod +x {} \;
