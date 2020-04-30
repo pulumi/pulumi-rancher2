@@ -2,10 +2,12 @@ PROJECT_NAME := Rancher2 Package
 
 PACK             := rancher2
 PACKDIR          := sdk
-PROJECT          := github.com/pulumi/pulumi-${PACK}
+ORG              := pulumi
+PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}
-ORG              := pulumi
+PROVIDER_PATH    := provider/v2
+VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
@@ -30,14 +32,14 @@ TESTPARALLELISM := 4
 build:: tfgen generate_schema provider build_node build_python build_dotnet build_go
 
 tfgen::
-	cd provider && go build -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X github.com/${ORG}/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${TFGEN}
+	cd provider && go build -a -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
 
 generate_schema:: tfgen
 	$(WORKSPACE)/bin/${TFGEN} schema --out $(WORKSPACE)/provider/cmd/${PROVIDER}
 
 provider:: generate_schema
 	cd provider && go generate cmd/${PROVIDER}/main.go
-	cd provider && go build -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X github.com/${ORG}/pulumi-${PACK}/provider/v2/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${PROVIDER}
+	cd provider && go build -a -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
 build_node::
 	$(WORKSPACE)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out ${PACKDIR}/nodejs/
@@ -45,7 +47,7 @@ build_node::
         yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
+    	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python::
 	$(WORKSPACE)/bin/$(TFGEN) python --overlays provider/overlays/python --out ${PACKDIR}/python/
