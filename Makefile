@@ -1,5 +1,3 @@
-PROJECT_NAME := Rancher2 Package
-
 PACK             := rancher2
 ORG              := pulumi
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
@@ -13,9 +11,6 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 WORKSPACE       := $(shell scripts/get-workspace)
-
-PYTHON ?= python3
-PIP ?= pip3
 
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
@@ -52,11 +47,11 @@ build_python::
 	$(WORKSPACE)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
-        $(PYTHON) setup.py clean --all 2>/dev/null && \
+        python3 setup.py clean --all 2>/dev/null && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
         sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
         rm ./bin/setup.py.bak && \
-        cd ./bin && $(PYTHON) setup.py build sdist
+        cd ./bin && python3 setup.py build sdist
 
 build_go::
 	$(WORKSPACE)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
