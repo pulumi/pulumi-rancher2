@@ -23,7 +23,7 @@ endif
 
 TESTPARALLELISM := 4
 
-development:: tfgen generate_schema provider build_node build_python build_dotnet build_go # Build the provider & SDK for a development environment
+development:: lint_provider tfgen generate_schema provider build_node build_python build_dotnet build_go lint_sdk # Build the provider & SDK for a development environment
 
 tfgen:: # build the tfgen binary
 	cd provider && go build -a -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
