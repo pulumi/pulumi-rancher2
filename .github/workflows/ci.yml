@@ -26,8 +26,8 @@ jobs:
         uses: pulumi/action-install-tf2pulumi@releases/v1
         with:
           tf2pulumi-version: 0.7.0
-      - name: Generate schema
-        run: make generate_schema
+      - name: Generate provider
+        run: make generate_provider
       - name: Run golangci
         run: make lint_provider
         # Insert more steps here!
