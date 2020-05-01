@@ -23,7 +23,7 @@ endif
 
 TESTPARALLELISM := 4
 
-development:: lint_provider tfgen generate_schema provider build_node build_python build_dotnet build_go lint_sdk # Build the provider & SDK for a development environment
+development:: tfgen generate_schema provider build_node build_python build_dotnet build_go # Build the provider & SDK for a development environment
 
 tfgen:: # build the tfgen binary
 	cd provider && go build -a -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
@@ -65,13 +65,15 @@ build_dotnet:: # build the dotnet sdk
 lint_provider:: # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-lint_sdk:: # lint the generated sdk
-	cd sdk && golangci-lint run -c ../.golangci.yml
-
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
  	expand -t20
+
+.PHONY: clean
+clean::
+	rm -rf sdk/{dotnet,nodejs,go,python}
+
 
 # The travis_* targets are entrypoints for CI.
 .PHONY: travis_cron travis_push travis_pull_request travis_api
