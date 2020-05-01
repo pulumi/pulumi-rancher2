@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: '1.13.x'
+      - name: Generate schema
+        run: make generate_schema
       - name: Run golangci
         run: make lint_provider
         # Insert more steps here!
