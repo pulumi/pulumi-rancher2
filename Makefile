@@ -34,7 +34,9 @@ generate_schema:: tfgen # generate the provider schema
 generate_provider:: # generate the provider (go generate)
 	cd provider && go generate cmd/${PROVIDER}/main.go
 
-provider:: generate_schema generate_provider # build the provider binary
+generate:: generate_schema generate_provider # generate the schema and the provider
+
+provider:: generate # build the provider binary
 	cd provider && go build -a -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
 build_node:: # build the node sdk
@@ -64,7 +66,7 @@ build_dotnet:: # build the dotnet sdk
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-lint_provider:: # lint the provider code
+lint_provider:: generate # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
 help::
