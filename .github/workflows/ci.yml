@@ -65,7 +65,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           name: pulumi-${{ env.PROVIDER }}
           path: ${{ github.workspace }}/bin
@@ -107,7 +107,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           path: ${{ github.workspace }}
       - name: Run tests
