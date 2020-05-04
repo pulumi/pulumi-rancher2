@@ -12,6 +12,8 @@ VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 WORKSPACE       := $(shell scripts/get-workspace)
 
+TEST_TAGS       := all
+
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
 
@@ -72,10 +74,10 @@ lint_provider:: generate # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
 test_fast:: # Run fast tests
-	cd examples && $(GO_TEST_FAST) .
+	cd examples && go test -short -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
 
 test_all:: # Run all tests
-	cd examples && $(GO_TEST) .
+	cd examples && go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS)	.
 
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
