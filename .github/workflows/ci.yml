@@ -95,3 +95,8 @@ jobs:
           python-version: '3.x'
       - name: Build SDK
         run: make build_${{ matrix.language }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pulumi-${{ env.PROVIDER }}-${{ matrix.language  }}
+          path: ${{ github.workspace}}/sdk/${{ matrix.language }}/bin
