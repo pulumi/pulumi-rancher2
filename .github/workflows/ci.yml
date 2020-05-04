@@ -103,6 +103,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container: pulumi/pulumi:latest
+    needs: build_sdk
     steps:
       - name: Checkout
         uses: actions/checkout@v2
