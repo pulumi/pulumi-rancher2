@@ -55,90 +55,43 @@ jobs:
         with:
           name: pulumi-${{ env.PROVIDER }}
           path: ${{ github.workspace }}/bin
-  nodejs:
+  build_sdk:
     runs-on: ubuntu-latest
     needs: prerequisites
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
-        with:
-          name: pulumi-${{ env.PROVIDER }}
-          path: ${{ github.workspace }}/bin
-      - name: Restore binary perms
-        run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
-      - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
-        with:
-          tf2pulumi-version: 0.7.0
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '13.x'
-          registry-url: 'https://registry.npmjs.org'
-      - name: Build SDK
-        run: make build_node
-      - name: Upload NPM artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: pulumi-${{ env.PROVIDER }}-nodejs
-          path: ${{ github.workspace }}/sdk/nodejs/bin
-  python:
-    runs-on: ubuntu-latest
-    needs: prerequisites
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
-        with:
-          name: pulumi-${{ env.PROVIDER }}
-          path: ${{ github.workspace }}/bin
-      - name: Restore perms
-        run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER}}' -exec chmod +x {} \;
-      - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
-        with:
-          tf2pulumi-version: 0.7.0
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.x'
-      - name: Install Go 1.13 # Our get-py-version needs Go 1.13 :(
-        uses: actions/setup-go@v2
-        with:
-          go-version: '1.13.x'
-      - name: Build SDK
-        run: make build_python
-      - name: Upload Pypi artifacts
-        uses: actions/upload-artifacts@v2
-        with:
-          name: pulumi-${{ env.PROVIDER }}-python
-          path: sdk/python/bin/dist
-  dotnet:
-    runs-on: ubuntu-latest
-    needs: prerequisites
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
-        with:
-          name: pulumi-${{ env.PROVIDER }}
-          path: ${{ github.workspace }}/bin
-      - name: Restore perms
-        run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER}}' -exec chmod +x {} \;
-      - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
-        with:
-          tf2pulumi-version: 0.7.0
-      - name: Set up Dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.201'
-      - name: Build SDK
-        run: make build_dotnet
-      - name: Upload nuget artifacts
-        uses: actions/upload-artifacts@v2
-        with:
-          name: pulumi-${{ env.PROVIDER }}-dotnet
-          path: sdk/dotnet/bin/Debug
-
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ "nodejs", "python", "dotnet"]
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - uses: actions/download-artifact@v1
+          with:
+            name: pulumi-${{ env.PROVIDER }}
+            path: ${{ github.workspace }}/bin
+        - name: Restore binary perms
+          run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
+          # FIXME: if we use a container here, we don't need these setup steps
+        - name: Install Go 1.13
+          uses: actions/setup-go@v2
+          with:
+            go-version: '1.13.x'
+        - name: Install tf2pulumi
+          uses: pulumi/action-install-tf2pulumi@releases/v1
+          with:
+            tf2pulumi-version: 0.7.0
+        - name: Set up Node
+          uses: actions/setup-node@v1
+          with:
+            node-version: '13.x'
+            registry-url: 'https://registry.npmjs.org'
+        - name: Set up dotnet
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: '3.1.201'
+        - name: Set up Python
+          uses: actions/setup-python@v1
+          with:
+            python-version: '3.x'
+        - name: Build SDK
+          run: make build_${{ matrix.language }}
