@@ -79,6 +79,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Build SDK
         run: make build_node
+      - name: Upload NPM artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pulumi-${{ env.PROVIDER }}-nodejs
+          path: ${{ github.workspace }}/sdk/nodejs/bin
   python:
     runs-on: ubuntu-latest
     needs: prerequisites
