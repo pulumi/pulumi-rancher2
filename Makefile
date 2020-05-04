@@ -23,7 +23,7 @@ endif
 
 TESTPARALLELISM := 4
 
-development:: tfgen generate_schema provider build_node build_python build_dotnet build_go # Build the provider & SDK for a development environment
+development:: tfgen generate_schema provider build_nodejs build_python build_dotnet build_go # Build the provider & SDK for a development environment
 
 tfgen:: # build the tfgen binary
 	cd provider && go build -a -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
@@ -39,7 +39,7 @@ generate:: generate_schema generate_provider # generate the schema and the provi
 provider:: generate # build the provider binary
 	cd provider && go build -a -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
 
-build_node:: # build the node sdk
+build_nodejs:: # build the node sdk
 	$(WORKSPACE)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
         yarn install && \
