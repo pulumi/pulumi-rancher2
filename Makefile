@@ -71,6 +71,12 @@ build_dotnet:: # build the dotnet sdk
 lint_provider:: generate # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
+test_fast:: # Run fast tests
+	cd examples && $(GO_TEST_FAST) .
+
+test_all:: # Run all tests
+	cd examples && $(GO_TEST) .
+
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \

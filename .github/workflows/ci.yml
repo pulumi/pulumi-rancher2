@@ -100,3 +100,17 @@ jobs:
         with:
           name: pulumi-${{ env.PROVIDER }}-${{ matrix.language  }}
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}
+  test:
+    runs-on: ubuntu-latest
+    container: pulumi/pulumi:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/download-artifact@v1
+        with:
+          path: ${{ github.workspace }}
+      - name: Run tests
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        run: make test_all
+
