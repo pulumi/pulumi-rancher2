@@ -10,7 +10,6 @@ env:
   GO111MODULE: on
   PROVIDER: rancher2
 
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -102,20 +101,46 @@ jobs:
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}
   test:
     runs-on: ubuntu-latest
-    container: pulumi/pulumi:latest
     needs: build_sdk
     strategy:
       fail-fast: true
       matrix:
         language: [ "nodejs", "python", "dotnet"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          path: ${{ github.workspace }}
-      - name: Run tests
-        env:
-          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-        run: make test_all TEST_TAGS=${{ matrix.language }}
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2
+      with:
+        name: pulumi-${{ env.PROVIDER }}
+        path: ${{ github.workspace }}/bin
+    - name: Restore binary perms
+      run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
+      # FIXME: if we use a container here, we don't need these setup steps
+    - name: Install Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.13.x'
+    - name: Install tf2pulumi
+      uses: pulumi/action-install-tf2pulumi@releases/v1
+      with:
+        tf2pulumi-version: 0.7.0
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Set up dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.201'
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Run tests
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+      run: make test_all TEST_TAGS=${{ matrix.language }}
 
