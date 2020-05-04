@@ -64,7 +64,7 @@ build_dotnet:: # build the dotnet sdk
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-lint_provider:: generate_schema # lint the provider code
+lint_provider:: # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
 help::

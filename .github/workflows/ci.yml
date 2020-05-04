@@ -28,6 +28,8 @@ jobs:
           tf2pulumi-version: 0.7.0
       - name: Generate provider
         run: make generate_provider
+      - name: Generate schema
+        run: make generate_schema
       - name: Run golangci
         run: make lint_provider
         # Insert more steps here!
