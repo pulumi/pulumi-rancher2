@@ -23,6 +23,8 @@ endif
 
 TESTPARALLELISM := 4
 
+.PHONY: clean lint_provider build_dotnet build_go build_python build_nodejs provider generate generate_provider generate_schema tfgen development
+
 development:: tfgen generate_schema provider build_nodejs build_python build_dotnet build_go # Build the provider & SDK for a development environment
 
 tfgen:: # build the tfgen binary
@@ -74,14 +76,7 @@ help::
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
  	expand -t20
 
-.PHONY: clean
 clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
 
 
-# The travis_* targets are entrypoints for CI.
-.PHONY: travis_cron travis_push travis_pull_request travis_api
-travis_cron: ;
-travis_push: ;
-travis_pull_request: ;
-travis_api: ;
