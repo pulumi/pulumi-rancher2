@@ -153,6 +153,5 @@ jobs:
     - name: Run tests
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-        PATH: $PATH
       run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
 
