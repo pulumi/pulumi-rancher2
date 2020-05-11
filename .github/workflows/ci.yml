@@ -122,6 +122,8 @@ jobs:
     - name: Restore binary perms
       run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
       # FIXME: if we use a container here, we don't need these setup steps
+    - name: Update path
+      run: echo "::add-path::${{ github.workspace }}/bin"
     - name: Install Go 1.13
       uses: actions/setup-go@v2
       with:
@@ -151,5 +153,6 @@ jobs:
     - name: Run tests
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        PATH: $PATH
       run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
 
