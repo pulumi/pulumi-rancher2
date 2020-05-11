@@ -2,7 +2,6 @@
 set -ef -o pipefail
 
 WORKSPACE=$(./scripts/get-workspace)
-
+echo "Using workspace: ${WORKSPACE}"
 mkdir -p $WORKSPACE/nuget
-
-find . -name '*.nupkg' -exec cp -p {} ${WORKSPACE}/nuget \;
+find . -name '*.nupkg' -print -exec cp -p {} ${WORKSPACE}/nuget \;
