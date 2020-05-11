@@ -78,21 +78,6 @@ build_dotnet:: # build the dotnet sdk
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-install::
-	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
-	mkdir -p "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
-	cp -r sdk/nodejs/bin/. "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
-	rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)/node_modules"
-	rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)/tests"
-	cd "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" && \
-		yarn install --offline --production && \
-		(yarn unlink > /dev/null 2>&1 || true) && \
-		yarn link
-	echo "Copying ${NUGET_PKG_NAME} NuGet packages to ${PULUMI_NUGET}"
-	mkdir -p $(PULUMI_NUGET)
-	rm -rf "$(PULUMI_NUGET)/$(NUGET_PKG_NAME).*.nupkg"
-	find . -name '$(NUGET_PKG_NAME).*.nupkg' -exec cp -p {} ${PULUMI_NUGET} \;
-
 lint_provider:: generate # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
