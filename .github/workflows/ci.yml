@@ -111,7 +111,7 @@ jobs:
       uses: actions/checkout@v2
     - uses: actions/download-artifact@v2
     - name: Restore binary perms
-      run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
+      run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;
       # FIXME: if we use a container here, we don't need these setup steps
     - name: Install Go 1.13
       uses: actions/setup-go@v2
