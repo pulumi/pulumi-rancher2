@@ -84,7 +84,7 @@ lint_provider:: generate # lint the provider code
 test_fast:: install # Run fast tests
 	cd examples && go test -short -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
 
-test_all:: install # Run all tests
+test_all:: # Run all tests
 	cd examples && go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
 
 help::
