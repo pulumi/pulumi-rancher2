@@ -153,5 +153,10 @@ jobs:
     - name: Run tests
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        PULUMI_API: "https://api.pulumi-staging.io"
+        RANCHER_ACCESS_KEY: "token-74zzn"
+        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
+        RANCHER_INSECURE: true
+        RANCHER_URL: ${{ secrets.RANCHER_URL }}
       run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
 
