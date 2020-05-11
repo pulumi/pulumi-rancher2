@@ -23,6 +23,14 @@ else
 	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-$(strip ${DOTNET_SUFFIX})
 endif
 
+ifeq ($(PULUMI_ROOT),)
+	PULUMI_ROOT:=/opt/pulumi
+endif
+
+PULUMI_BIN          := $(PULUMI_ROOT)/bin
+PULUMI_NODE_MODULES := $(PULUMI_ROOT)/node_modules
+PULUMI_NUGET        := $(PULUMI_ROOT)/nuget
+
 TESTPARALLELISM := 4
 
 .PHONY: clean lint_provider build_dotnet build_go build_python build_nodejs provider generate generate_provider generate_schema tfgen development
@@ -70,14 +78,29 @@ build_dotnet:: # build the dotnet sdk
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
+install::
+	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
+	mkdir -p "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
+	cp -r sdk/nodejs/bin/. "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"
+	rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)/node_modules"
+	rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)/tests"
+	cd "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" && \
+		yarn install --offline --production && \
+		(yarn unlink > /dev/null 2>&1 || true) && \
+		yarn link
+	echo "Copying ${NUGET_PKG_NAME} NuGet packages to ${PULUMI_NUGET}"
+	mkdir -p $(PULUMI_NUGET)
+	rm -rf "$(PULUMI_NUGET)/$(NUGET_PKG_NAME).*.nupkg"
+	find . -name '$(NUGET_PKG_NAME).*.nupkg' -exec cp -p {} ${PULUMI_NUGET} \;
+
 lint_provider:: generate # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-test_fast:: # Run fast tests
+test_fast:: install # Run fast tests
 	cd examples && go test -short -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
 
-test_all:: # Run all tests
-	cd examples && go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS)	.
+test_all:: install # Run all tests
+	cd examples && go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
 
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
