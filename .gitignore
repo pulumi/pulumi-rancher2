@@ -12,3 +12,5 @@ sdk/nodejs/node_modules
 
 yarn.lock
 **/pulumiManifest.go
+
+**/nuget/

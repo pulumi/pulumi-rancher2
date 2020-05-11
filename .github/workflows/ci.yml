@@ -158,5 +158,6 @@ jobs:
         RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
         RANCHER_INSECURE: true
         RANCHER_URL: ${{ secrets.RANCHER_URL }}
+        PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
       run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
 
