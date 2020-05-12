@@ -30,15 +30,14 @@ jobs:
       - name: Run golangci
         run: make lint_provider
   prerequisites:
-    container: jaxxstorm/pulumi-build-container:optimize
+    container: 
+      image: jaxxstorm/pulumi-build-container:optimize
+      volumes:
+        - ${{ github.workspace}}:${{ github.workspace }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
-        with:
-          tf2pulumi-version: 0.7.0
       - name: Download dependencies
         run: |
           cd provider
