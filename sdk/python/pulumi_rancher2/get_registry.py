@@ -76,6 +76,17 @@ def get_registry(name=None,namespace_id=None,project_id=None,opts=None):
     - Project registry: Available to all namespaces in the `project_id`
     - Namespaced registry: Available to just `namespace_id` in the `project_id`
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_registry(name="<name>",
+        project_id="<project_id>")
+    ```
 
 
 

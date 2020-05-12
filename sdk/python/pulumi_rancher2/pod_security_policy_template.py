@@ -168,10 +168,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, allow_privilege_escalation=None, allowed_capabilities=None, allowed_csi_drivers=None, allowed_flex_volumes=None, allowed_host_paths=None, allowed_proc_mount_types=None, allowed_unsafe_sysctls=None, annotations=None, default_add_capabilities=None, default_allow_privilege_escalation=None, description=None, forbidden_sysctls=None, fs_group=None, host_ipc=None, host_network=None, host_pid=None, host_ports=None, labels=None, name=None, privileged=None, read_only_root_filesystem=None, required_drop_capabilities=None, run_as_group=None, run_as_user=None, runtime_class=None, se_linux=None, supplemental_group=None, volumes=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
-
-
-
+        Create a PodSecurityPolicyTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)

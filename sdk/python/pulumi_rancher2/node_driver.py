@@ -58,6 +58,25 @@ class NodeDriver(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Node Driver
+        foo = rancher2.NodeDriver("foo",
+            active=True,
+            builtin=False,
+            checksum="0x0",
+            description="Foo description",
+            external_id="foo_external",
+            ui_url="local://ui",
+            url="local://",
+            whitelist_domains=["*.foo.com"])
+        ```
 
 
         :param str resource_name: The name of the resource.

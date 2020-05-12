@@ -50,6 +50,20 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Role Template Binding
+        foo = rancher2.ClusterRoleTemplateBinding("foo",
+            cluster_id="<cluster_id>",
+            role_template_id="<role_template_id>",
+            user_id="<user_id>")
+        ```
 
 
         :param str resource_name: The name of the resource.

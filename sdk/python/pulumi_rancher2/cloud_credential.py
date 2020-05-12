@@ -78,6 +78,22 @@ class CloudCredential(pulumi.CustomResource):
 
         amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cloud Credential
+        foo = rancher2.CloudCredential("foo",
+            amazonec2_credential_config={
+                "accessKey": "<AWS_ACCESS_KEY>",
+                "secretKey": "<AWS_SECRET_KEY>",
+            },
+            description="foo test")
+        ```
 
 
         :param str resource_name: The name of the resource.

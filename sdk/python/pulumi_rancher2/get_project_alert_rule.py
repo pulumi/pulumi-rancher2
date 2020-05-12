@@ -117,6 +117,17 @@ def get_project_alert_rule(labels=None,name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert rule.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
+        project_id="<project_id>")
+    ```
 
 
 

@@ -75,6 +75,17 @@ def get_namespace(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 namespace.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_namespace(name="foo",
+        project_id=rancher2_cluster["foo-custom"]["default_project_id"])
+    ```
 
 
 
