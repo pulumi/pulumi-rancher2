@@ -345,7 +345,6 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_cluster_scan": {Tok: makeDataSource(mainMod, "getClusterScan")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",

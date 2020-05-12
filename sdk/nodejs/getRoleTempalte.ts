@@ -24,9 +24,9 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/roleTemplate.html.markdown.
  */
-/** @deprecated rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate */
+/** @deprecated rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate */
 export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> {
-    pulumi.log.warn("getRoleTempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate")
+    pulumi.log.warn("getRoleTempalte is deprecated: rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate")
     if (!opts) {
         opts = {}
     }

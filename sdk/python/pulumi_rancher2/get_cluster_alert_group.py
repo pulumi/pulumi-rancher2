@@ -89,6 +89,17 @@ def get_cluster_alert_group(cluster_id=None,name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 cluster alert group.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alert_group(cluster_id="<cluster_id>",
+        name="<cluster_alert_group_name>")
+    ```
 
 
 

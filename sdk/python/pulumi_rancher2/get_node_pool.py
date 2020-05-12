@@ -107,6 +107,17 @@ def get_node_pool(cluster_id=None,name=None,node_template_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
+        name="foo")
+    ```
 
 
 

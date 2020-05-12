@@ -89,6 +89,17 @@ def get_project_alert_group(name=None,project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 project alert group.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
+        project_id="<project_id>")
+    ```
 
 
 

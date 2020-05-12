@@ -81,10 +81,7 @@ class Notifier(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, send_resolved=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
-
-
-
+        Create a Notifier resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for notifier object (map)

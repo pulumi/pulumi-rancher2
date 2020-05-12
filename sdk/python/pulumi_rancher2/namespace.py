@@ -66,6 +66,32 @@ class Namespace(pulumi.CustomResource):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Namespace
+        foo = rancher2.Namespace("foo",
+            container_resource_limit={
+                "limitsCpu": "20m",
+                "limitsMemory": "20Mi",
+                "requestsCpu": "1m",
+                "requestsMemory": "1Mi",
+            },
+            description="foo namespace",
+            project_id="<PROJECT_ID>",
+            resource_quota={
+                "limit": {
+                    "limitsCpu": "100m",
+                    "limitsMemory": "100Mi",
+                    "requestsStorage": "1Gi",
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -103,6 +103,16 @@ def get_node_driver(name=None,url=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_driver(name="foo")
+    ```
 
 
 
