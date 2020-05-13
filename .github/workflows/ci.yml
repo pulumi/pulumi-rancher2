@@ -159,5 +159,5 @@ jobs:
         RANCHER_INSECURE: true
         RANCHER_URL: ${{ secrets.RANCHER_URL }}
         PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-      run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
+      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{matrix.langage}} -parallel ${TESTPARALLELISM} .
 
