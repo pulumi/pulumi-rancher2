@@ -27,7 +27,7 @@ development:: provider lint_provider build_sdks cleanup # Build the provider & S
 
 provider:: # build the provider binary
 	(cd provider && go build -a -o $(TMPDIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
-	$(TMPDIR)/bin/${TFGEN} schema --out $(TMPDIR)/provider/cmd/${PROVIDER}
+	$(TMPDIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && go generate cmd/${PROVIDER}/main.go)
 	(cd provider && go build -a -o $(TMPDIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
@@ -65,6 +65,8 @@ lint_provider:: provider # lint the provider code
 
 cleanup:: # cleans up the temporary directory
 	rm -r $(TMPDIR)
+	rm -f provider/cmd/${PROVIDER}/schema.go
+	rm -f provider/cmd/${PROVIDER}/schema.json
 
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
