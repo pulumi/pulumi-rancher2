@@ -31,6 +31,12 @@ provider:: # build the provider binary
 	(cd provider && go generate cmd/${PROVIDER}/main.go)
 	(cd provider && go build -a -o $(TMPDIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
+ci_provider:: provider # build the binary in ci
+	mkdir -p ${HOME}/bin
+    mv $(TMPDIR)/bin/${TFGEN} ${HOME}
+	mv $(TMPDIR)/bin/${PROVIDER} ${HOME}
+
+
 build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
 build_nodejs:: provider # build the node sdk

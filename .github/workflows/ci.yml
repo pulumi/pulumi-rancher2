@@ -40,18 +40,13 @@ jobs:
         uses: pulumi/action-install-tf2pulumi@releases/v1
         with:
           tf2pulumi-version: 0.7.0
-      - name: Download dependencies
-        run: |
-          cd provider
-          go mod tidy
-          go mod download
       - name: Build tfgen & provider binaries
-        run: make provider
+        run: make ci_provider
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: pulumi-${{ env.PROVIDER }}
-          path: ${{ github.workspace }}/bin
+          path: ${{ env.home }}/bin
   build_sdk:
     runs-on: ubuntu-latest
     needs: prerequisites
