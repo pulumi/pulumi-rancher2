@@ -10,9 +10,7 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
-WORKSPACE       := $(shell scripts/get-workspace)
-
-TEST_TAGS       := all
+TMPDIR          := $(shell mktemp -d)
 
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
@@ -23,44 +21,28 @@ else
 	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-$(strip ${DOTNET_SUFFIX})
 endif
 
-ifeq ($(PULUMI_ROOT),)
-	PULUMI_ROOT:=/opt/pulumi
-endif
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
 
-PULUMI_BIN          := $(PULUMI_ROOT)/bin
-PULUMI_NODE_MODULES := $(PULUMI_ROOT)/node_modules
-PULUMI_NUGET        := $(PULUMI_ROOT)/nuget
+development:: provider lint_provider build_sdks cleanup # Build the provider & SDKs for a development environment
 
-TESTPARALLELISM := 4
+provider:: # build the provider binary
+	(cd provider && go build -a -o $(TMPDIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
+	$(TMPDIR)/bin/${TFGEN} schema --out $(TMPDIR)/provider/cmd/${PROVIDER}
+	(cd provider && go generate cmd/${PROVIDER}/main.go)
+	(cd provider && go build -a -o $(TMPDIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-.PHONY: clean lint_provider build_dotnet build_go build_python build_nodejs provider generate generate_provider generate_schema tfgen development
+build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
-development:: tfgen generate_schema provider build_nodejs build_python build_dotnet build_go # Build the provider & SDK for a development environment
-
-tfgen:: # build the tfgen binary
-	cd provider && go build -a -o $(WORKSPACE)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN}
-
-generate_schema:: tfgen # generate the provider schema
-	$(WORKSPACE)/bin/${TFGEN} schema --out $(WORKSPACE)/provider/cmd/${PROVIDER}
-
-generate_provider:: # generate the provider (go generate)
-	cd provider && go generate cmd/${PROVIDER}/main.go
-
-generate:: generate_schema generate_provider # generate the schema and the provider
-
-provider:: generate # build the provider binary
-	cd provider && go build -a -o $(WORKSPACE)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER}
-
-build_nodejs:: # build the node sdk
-	$(WORKSPACE)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
+build_nodejs:: provider # build the node sdk
+	$(TMPDIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
         yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
     	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
-build_python:: # build the python sdk
-	$(WORKSPACE)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+build_python:: provider # build the python sdk
+	$(TMPDIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
         python3 setup.py clean --all 2>/dev/null && \
@@ -69,23 +51,20 @@ build_python:: # build the python sdk
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-build_go:: # build the go sdk
-	$(WORKSPACE)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
+build_go:: provider # build the go sdk
+	$(TMPDIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_dotnet:: # build the dotnet sdk
-	$(WORKSPACE)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+	$(TMPDIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-lint_provider:: generate # lint the provider code
+lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-test_fast:: install # Run fast tests
-	cd examples && go test -short -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
-
-test_all:: # Run all tests
-	cd examples && go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM} -tags=$(TEST_TAGS) .
+cleanup:: # cleans up the temporary directory
+	rm -r $(TMPDIR)
 
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
