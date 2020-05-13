@@ -50,6 +50,16 @@ def get_cloud_credential(name=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    test = rancher2.get_cloud_credential(name="test")
+    ```
 
 
 

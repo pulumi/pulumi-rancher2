@@ -130,6 +130,25 @@ class ProjectLogging(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Logging
+        foo = rancher2.ProjectLogging("foo",
+            kind="syslog",
+            project_id="<project_id>",
+            syslog_config={
+                "endpoint": "<syslog_endpoint>",
+                "protocol": "udp",
+                "severity": "notice",
+                "sslVerify": False,
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

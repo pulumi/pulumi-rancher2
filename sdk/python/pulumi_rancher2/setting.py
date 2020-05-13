@@ -34,6 +34,17 @@ class Setting(pulumi.CustomResource):
 
         On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Setting
+        foo = rancher2.Setting("foo", value="<VALUE>")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -75,6 +75,16 @@ def get_user(is_external=None,name=None,username=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 user
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_user(username="foo")
+    ```
 
 
 

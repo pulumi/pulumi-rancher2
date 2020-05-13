@@ -53,10 +53,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, description=None, group_interval_seconds=None, group_wait_seconds=None, labels=None, name=None, project_id=None, recipients=None, repeat_interval_seconds=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
-
-
-
+        Create a ProjectAlertGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: The project alert group annotations (map)

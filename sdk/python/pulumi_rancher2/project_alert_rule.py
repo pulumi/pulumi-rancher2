@@ -79,10 +79,7 @@ class ProjectAlertRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, pod_rule=None, project_id=None, repeat_interval_seconds=None, severity=None, workload_rule=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
-
-
-
+        Create a ProjectAlertRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: The project alert rule annotations (map)

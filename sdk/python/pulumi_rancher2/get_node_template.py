@@ -127,6 +127,16 @@ def get_node_template(name=None,use_internal_ip_address=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_node_template(name="foo")
+    ```
 
 
 

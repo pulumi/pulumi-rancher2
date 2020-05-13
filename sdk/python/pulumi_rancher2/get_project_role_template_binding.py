@@ -86,6 +86,17 @@ def get_project_role_template_binding(name=None,project_id=None,role_template_id
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_role_template_binding(name="foo",
+        project_id="foo_id")
+    ```
 
 
 

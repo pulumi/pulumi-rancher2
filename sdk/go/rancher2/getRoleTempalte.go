@@ -11,7 +11,7 @@ import (
 //
 //
 //
-// Deprecated: rancher2.getRoleTempalte has been deprecated in favour of rancher2.getRoleTemplate
+// Deprecated: rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate
 func LookupRoleTempalte(ctx *pulumi.Context, args *LookupRoleTempalteArgs, opts ...pulumi.InvokeOption) (*LookupRoleTempalteResult, error) {
 	var rv LookupRoleTempalteResult
 	err := ctx.Invoke("rancher2:index/getRoleTempalte:getRoleTempalte", args, &rv, opts...)

@@ -128,6 +128,16 @@ def get_project_logging(project_id=None,opts=None):
     """
     Use this data source to retrieve information about a Rancher v2 Project Logging.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_logging(project_id="<project_id>")
+    ```
 
 
 

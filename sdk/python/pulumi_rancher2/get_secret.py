@@ -76,6 +76,17 @@ def get_secret(name=None,namespace_id=None,project_id=None,opts=None):
     - Project secret: Available to all namespaces in the `project_id`
     - Namespaced secret: Available to just `namespace_id` in the `project_id`
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_secret(name="<name>",
+        project_id="<project_id>")
+    ```
 
 
 

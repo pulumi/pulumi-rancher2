@@ -65,10 +65,7 @@ class NodePool(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, control_plane=None, delete_not_ready_after_secs=None, etcd=None, hostname_prefix=None, labels=None, name=None, node_taints=None, node_template_id=None, quantity=None, worker=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
-
-
-
+        Create a NodePool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
