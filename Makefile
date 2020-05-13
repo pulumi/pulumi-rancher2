@@ -10,7 +10,8 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
-TMPDIR          := $(shell mktemp -d)
+
+WORKING_DIR     := $(shell pwd)
 
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
@@ -26,21 +27,15 @@ endif
 development:: provider lint_provider build_sdks cleanup # Build the provider & SDKs for a development environment
 
 provider:: # build the provider binary
-	(cd provider && go build -a -o $(TMPDIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
-	$(TMPDIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
+	(cd provider && go build -a -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
+	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && go generate cmd/${PROVIDER}/main.go)
-	(cd provider && go build -a -o $(TMPDIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
-
-ci_provider:: provider # build the binary in ci
-	mkdir -p ${HOME}/bin
-    mv $(TMPDIR)/bin/${TFGEN} ${HOME}
-	mv $(TMPDIR)/bin/${PROVIDER} ${HOME}
-
+	(cd provider && go build -a -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
 build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
 build_nodejs:: provider # build the node sdk
-	$(TMPDIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
+	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
         yarn install && \
         yarn run tsc && \
@@ -48,7 +43,7 @@ build_nodejs:: provider # build the node sdk
     	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python:: provider # build the python sdk
-	$(TMPDIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
         python3 setup.py clean --all 2>/dev/null && \
@@ -58,10 +53,10 @@ build_python:: provider # build the python sdk
         cd ./bin && python3 setup.py build sdist
 
 build_go:: provider # build the go sdk
-	$(TMPDIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
+	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_dotnet:: # build the dotnet sdk
-	$(TMPDIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${VERSION:v%=%}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
@@ -70,7 +65,7 @@ lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
 cleanup:: # cleans up the temporary directory
-	rm -r $(TMPDIR)
+	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
 	rm -f provider/cmd/${PROVIDER}/schema.json
 
