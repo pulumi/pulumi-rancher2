@@ -8,7 +8,16 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell pulumictl util get-version)
+VERSION         := $(shell scripts/get-version)
+
+DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
+DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
+
+ifeq ($(strip ${DOTNET_SUFFIX}),)
+	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})
+else
+	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-$(strip ${DOTNET_SUFFIX})
+endif
 
 WORKING_DIR     := $(shell pwd)
 
@@ -47,13 +56,12 @@ build_python:: # build the python sdk
 build_go:: # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
-build_dotnet:: VERSION := $(shell pulumictl util get-version --language dotnet)
 build_dotnet:: # build the dotnet sdk
-	echo ${VERSION}
+	echo ${DOTNET_VERSION}
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${VERSION:v%=%}" >version.txt && \
-        dotnet build /p:Version=${VERSION}
+        dotnet build /p:Version=${DOTNET_VERSION}
 
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
