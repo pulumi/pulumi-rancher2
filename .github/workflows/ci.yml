@@ -26,6 +26,11 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          version: 0.0.1-alpha.2
       - name: Run golangci
         run: make lint_provider
   prerequisites:
@@ -41,6 +46,11 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          version: 0.0.1-alpha.2
       - name: Build tfgen & provider binaries
         run: make provider
       - name: Upload artifacts
@@ -73,6 +83,11 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          version: 0.0.1-alpha.2
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
@@ -126,6 +141,11 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          version: 0.0.1-alpha.2
     - name: Set up Node
       uses: actions/setup-node@v1
       with:

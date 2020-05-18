@@ -8,19 +8,9 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell scripts/get-version)
-PYPI_VERSION    := $(shell scripts/get-py-version)
+VERSION         := $(shell pulumictl util get-version)
 
 WORKING_DIR     := $(shell pwd)
-
-DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
-DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
-
-ifeq ($(strip ${DOTNET_SUFFIX}),)
-	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})
-else
-	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-$(strip ${DOTNET_SUFFIX})
-endif
 
 .PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
 
@@ -34,6 +24,7 @@ provider:: # build the provider binary
 
 build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
+build_nodejs:: VERSION := $(shell pulumictl util get-version --language javascript)
 build_nodejs:: provider # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
@@ -42,6 +33,7 @@ build_nodejs:: provider # build the node sdk
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
     	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
+build_python:: PYPI_VERSION := $(shell pulumictl util get-version --language python)
 build_python:: provider # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
@@ -55,11 +47,12 @@ build_python:: provider # build the python sdk
 build_go:: provider # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
+build_dotnet:: VERSION := $(shell pulumictl util get-version --language dotnet)
 build_dotnet:: # build the dotnet sdk
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${VERSION:v%=%}" >version.txt && \
-        dotnet build /p:Version=${DOTNET_VERSION}
+        dotnet build /p:Version=${VERSION}
 
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
