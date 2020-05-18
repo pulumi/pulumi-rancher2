@@ -25,7 +25,7 @@ provider:: # build the provider binary
 build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl util get-version --language javascript)
-build_nodejs:: provider # build the node sdk
+build_nodejs:: # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
         yarn install && \
@@ -34,7 +34,7 @@ build_nodejs:: provider # build the node sdk
     	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python:: PYPI_VERSION := $(shell pulumictl util get-version --language python)
-build_python:: provider # build the python sdk
+build_python:: # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
@@ -44,7 +44,7 @@ build_python:: provider # build the python sdk
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-build_go:: provider # build the go sdk
+build_go:: # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_dotnet:: VERSION := $(shell pulumictl util get-version --language dotnet)
