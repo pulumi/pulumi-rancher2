@@ -9,6 +9,7 @@ on:
 env:
   GO111MODULE: on
   PROVIDER: rancher2
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint:
