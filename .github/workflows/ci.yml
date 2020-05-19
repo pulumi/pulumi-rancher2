@@ -190,7 +190,7 @@ jobs:
         aws-region: us-east-2
         role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
         role-external-id: "upload-pulumi-release"
-        role-duration-seconds: 360
+        role-duration-seconds: 3600
         role-session-name: ${{ env.PROVIDER}}@githubActions
     - name: Install AWS CLI
       uses: chrislennon/action-aws-cli@v1.1
