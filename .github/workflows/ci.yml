@@ -192,10 +192,10 @@ jobs:
         role-external-id: "upload-pulumi-release"
         role-duration-seconds: 360
         role-session-name: ${{ env.PROVIDER}}@githubActions
-    - name: Identity Check
-      uses: actions/aws/cli@master
-      with:
-        args: sts get-caller-identity
+    - name: Install AWS CLI
+      uses: chrislennon/action-aws-cli@v1.1
+    - name: Test role
+      run: aws sts get-caller-identity
 
 
 
