@@ -13,15 +13,20 @@ const base = {
     env: {
         GO111MODULE: "on",
         PROVIDER: "rancher2",
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     }
 }
 
 const runsOn = "ubuntu-latest"
 
-const setupSteps = [
+const baseSetupSteps = [
     {
         name: 'Checkout',
         uses: 'actions/checkout@v2',
+    },
+    {
+        name: "Unshallow clone",
+        run: "git fetch --prune --unshallow",
     },
     {
         name: 'Install Go 1.13',
@@ -32,25 +37,96 @@ const setupSteps = [
     },
     {
         name: 'Install tf2pulumi',
-        uses: 'pulumi/action-install-tf2pulumi@releases/v1',
+        uses: 'jaxxstorm/action-install-gh-release@release/v1-alpha',
         with: {
-            'tf2pulumi-version': '0.7.0',
+            'repo': 'pulumi/tf2pulumi',
+        }
+    },
+    {
+        name: 'Install pulumictl',
+        uses: 'jaxxstorm/action-install-gh-release@release/v1-alpha',
+        with: {
+            'repo': 'pulumi/pulumictl',
+            'tag': 'v0.0.1-alpha.2',
         }
     }
 ]
+
+const sdkSetupSteps = [
+    {
+        name: "Set up Node",
+        uses: "actions/setup-node@v1",
+        with: {
+            "node-version": "13.x",
+            "registry-url": "https://registry.npmjs.org",
+        }
+    },
+    {
+        name: "Set up dotnet",
+        uses: "actions/setup-dotnet@v1",
+        with: {
+            "dotnet-version": '3.1.201'
+        }
+    },
+    {
+        name: "Set up Python",
+        uses: "actions/setup-python@v1",
+        with: {
+            "python-version": '3.x',
+        },
+    }
+]
+
+const golangCiSteps = [...baseSetupSteps, {
+        name: "Run GolangCI",
+        run: "make lint_provider"
+}]
+
+const prereqSteps = [...baseSetupSteps, {
+        name: "Build tfgen & provider binaries",
+        run: "make provider"}, {
+        name: "Upload artifacts",
+        uses: "actions/upload-artifact@v2",
+        with: {
+            name: "pulumi-${{ env.PROVIDER }}",
+            path: "${{ github.workspace }}/bin",
+        }
+    }]
+
+const sdkSteps = [...baseSetupSteps, ...sdkSetupSteps,
+    {
+        name: "Build SDK",
+        run: "make build_${{ matrix.language }}",
+    }, {
+        name: "Upload artifacts",
+        uses: "actions/upload-artifact@v2",
+        with: {
+            name: "${{ matrix.language  }}-sdk",
+            path: "${{ github.workspace}}/sdk/${{ matrix.language }}"
+        }
+    }]
 
 const jobs = {
     jobs: {
         lint: {
             'runs-on': runsOn,
             'container': 'golangci/golangci-lint:v1.25.1',
-            steps: setupSteps,
+            steps: golangCiSteps
         },
         prerequisites: {
-            'runs-on': runsOn
+            'runs-on': runsOn,
+            steps: prereqSteps,
         },
         build_sdk: {
-            'runs-on': runsOn
+            'runs-on': runsOn,
+            needs: 'prerequisites',
+            strategy: {
+                'fail-fast': true,
+                matrix: {
+                    language: [ "nodejs", "python", "dotnet"]
+                }
+            },
+            steps: sdkSteps,
         },
         test: {
             'runs-on': runsOn

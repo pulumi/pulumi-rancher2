@@ -1,17 +1,100 @@
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
   PROVIDER: rancher2
 jobs:
   build_sdk:
+    needs: prerequisites
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.13.x
+    - name: Install tf2pulumi
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.1-alpha.2
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 13.x
+        registry-url: https://registry.npmjs.org
+    - name: Set up dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.201
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.x
+    - name: Build SDK
+      run: make build_${{ matrix.language }}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.language  }}-sdk
+        path: ${{ github.workspace}}/sdk/${{ matrix.language }}
+    strategy:
+      fail-fast: true
+      matrix:
+        language:
+        - nodejs
+        - python
+        - dotnet
   lint:
     container: golangci/golangci-lint:v1.25.1
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Install Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.13.x
+    - name: Install tf2pulumi
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.1-alpha.2
+    - name: Run GolangCI
+      runs: make lint_provider
   prerequisites:
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.13.x
+    - name: Install tf2pulumi
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.1-alpha.2
+    - name: Build tfgen & provider binaries
+      run: make provider
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: pulumi-${{ env.PROVIDER }}
+        path: ${{ github.workspace }}/bin
   test:
     runs-on: ubuntu-latest
 name: ci
