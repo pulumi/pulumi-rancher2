@@ -10,15 +10,6 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 
-DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
-DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
-
-ifeq ($(strip ${DOTNET_SUFFIX}),)
-	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})
-else
-	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-$(strip ${DOTNET_SUFFIX})
-endif
-
 WORKING_DIR     := $(shell pwd)
 
 .PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
@@ -58,7 +49,6 @@ build_go:: # build the go sdk
 
 build_dotnet:: DOTNET_VERSION := $(shell pulumictl util get-version --language dotnet)
 build_dotnet:: # build the dotnet sdk
-	echo ${DOTNET_VERSION}
 	pulumictl util get-version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
