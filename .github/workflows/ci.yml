@@ -30,7 +30,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/pulumictl
-          version: 0.0.1-alpha.2
+          tag: 0.0.1-alpha.2
       - name: Run golangci
         run: make lint_provider
   prerequisites:
@@ -50,7 +50,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/pulumictl
-          version: 0.0.1-alpha.2
+          tag: 0.0.1-alpha.2
       - name: Build tfgen & provider binaries
         run: make provider
       - name: Upload artifacts
@@ -89,7 +89,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
           repo: pulumi/pulumictl
-          version: 0.0.1-alpha.2
+          tag: 0.0.1-alpha.2
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
@@ -147,7 +147,7 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
-        version: 0.0.1-alpha.2
+        tag: 0.0.1-alpha.2
     - name: Set up Node
       uses: actions/setup-node@v1
       with:
@@ -162,7 +162,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: '3.x'
+        tag: '3.x'
     - uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: ./scripts/install-${{ matrix.language}}-sdk
