@@ -56,12 +56,13 @@ build_python:: # build the python sdk
 build_go:: # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
+build_dotnet:: DOTNET_VERSION := $(shell pulumictl util get-version --language dotnet)
 build_dotnet:: # build the dotnet sdk
 	echo ${DOTNET_VERSION}
 	pulumictl util get-version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
-		echo "${VERSION:v%=%}" >version.txt && \
+		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
 lint_provider:: provider # lint the provider code
