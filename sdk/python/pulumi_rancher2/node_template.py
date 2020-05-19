@@ -288,6 +288,28 @@ class NodeTemplate(pulumi.CustomResource):
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Node Template up to Rancher 2.1.x
+        foo = rancher2.NodeTemplate("foo",
+            amazonec2_config={
+                "accessKey": "AWS_ACCESS_KEY",
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "secretKey": "<AWS_SECRET_KEY>",
+                "securityGroup": ["<AWS_SECURITY_GROUP>"],
+                "subnetId": "<SUBNET_ID>",
+                "vpcId": "<VPC_ID>",
+                "zone": "<ZONE>",
+            },
+            description="foo test")
+        ```
 
 
         :param str resource_name: The name of the resource.

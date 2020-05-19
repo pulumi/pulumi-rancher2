@@ -70,12 +70,7 @@ class RoleTempalte(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, administrative=None, annotations=None, context=None, default_role=None, description=None, external=None, hidden=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
-
-        `cluster` and `project` scopes are supported for role templates.
-
-
-
+        Create a RoleTempalte resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)

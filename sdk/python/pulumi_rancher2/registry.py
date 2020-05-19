@@ -44,14 +44,7 @@ class Registry(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, description=None, labels=None, name=None, namespace_id=None, project_id=None, registries=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
-
-        Depending of the availability, there are 2 types of Rancher v2 docker registries:
-        - Project registry: Available to all namespaces in the `project_id`
-        - Namespaced regitry: Available to just `namespace_id` in the `project_id`
-
-
-
+        Create a Registry resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for Registry object (map)

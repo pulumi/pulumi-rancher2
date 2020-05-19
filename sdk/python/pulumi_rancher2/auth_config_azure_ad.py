@@ -76,6 +76,24 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Auth Config AzureAD
+        azuread = rancher2.AuthConfigAzureAd("azuread",
+            application_id="<AZUREAD_APP_ID>",
+            application_secret="<AZUREAD_APP_SECRET>",
+            auth_endpoint="<AZUREAD_AUTH_ENDPOINT>",
+            graph_endpoint="<AZUREAD_GRAPH_ENDPOINT>",
+            rancher_url="<RANCHER_URL>",
+            tenant_id="<AZUREAD_TENANT_ID>",
+            token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
+        ```
 
 
         :param str resource_name: The name of the resource.

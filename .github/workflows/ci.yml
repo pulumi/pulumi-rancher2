@@ -9,6 +9,7 @@ on:
 env:
   GO111MODULE: on
   PROVIDER: rancher2
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint:
@@ -22,11 +23,14 @@ jobs:
         with:
           go-version: '1.13.x'
       - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
-          tf2pulumi-version: 0.7.0
-      - name: Generate provider and schema
-        run: make generate
+          repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          tag: v0.0.1-alpha.2
       - name: Run golangci
         run: make lint_provider
   prerequisites:
@@ -39,14 +43,14 @@ jobs:
         with:
           go-version: '1.13.x'
       - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
-          tf2pulumi-version: 0.7.0
-      - name: Download dependencies
-        run: |
-          cd provider
-          go mod tidy
-          go mod download
+          repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          tag: v0.0.1-alpha.2
       - name: Build tfgen & provider binaries
         run: make provider
       - name: Upload artifacts
@@ -64,6 +68,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Unshallow
+        run: git fetch --prune --unshallow
       - uses: actions/download-artifact@v2
         with:
           name: pulumi-${{ env.PROVIDER }}
@@ -76,9 +82,14 @@ jobs:
         with:
           go-version: '1.13.x'
       - name: Install tf2pulumi
-        uses: pulumi/action-install-tf2pulumi@releases/v1
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
         with:
-          tf2pulumi-version: 0.7.0
+          repo: pulumi/tf2pulumi
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+          tag: v0.0.1-alpha.2
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
@@ -129,9 +140,14 @@ jobs:
       with:
         go-version: '1.13.x'
     - name: Install tf2pulumi
-      uses: pulumi/action-install-tf2pulumi@releases/v1
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
-        tf2pulumi-version: 0.7.0
+        repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.1-alpha.2
     - name: Set up Node
       uses: actions/setup-node@v1
       with:
@@ -146,7 +162,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: '3.x'
+        tag: '3.x'
     - uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: ./scripts/install-${{ matrix.language}}-sdk
@@ -159,5 +175,5 @@ jobs:
         RANCHER_INSECURE: true
         RANCHER_URL: ${{ secrets.RANCHER_URL }}
         PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-      run: make test_all TEST_TAGS=${{ matrix.language }} PULUMI_ROOT=${{ github.workspace }}
+      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.langage }} -parallel 4 .
 

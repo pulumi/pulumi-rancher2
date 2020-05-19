@@ -60,7 +60,7 @@ class Cluster(pulumi.CustomResource):
     """
     Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 
-      * `ca_certs` (`str`) - CA certs for the authorized cluster endpoint (string)
+      * `caCerts` (`str`) - CA certs for the authorized cluster endpoint (string)
       * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
       * `fqdn` (`str`) - FQDN for the authorized cluster endpoint (string)
     """
@@ -671,7 +671,7 @@ class Cluster(pulumi.CustomResource):
 
         The **cluster_auth_endpoint** object supports the following:
 
-          * `ca_certs` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
+          * `caCerts` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
           * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
           * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
 
@@ -1236,7 +1236,7 @@ class Cluster(pulumi.CustomResource):
 
         The **cluster_auth_endpoint** object supports the following:
 
-          * `ca_certs` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
+          * `caCerts` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
           * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
           * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
 

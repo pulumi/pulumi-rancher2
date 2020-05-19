@@ -130,6 +130,25 @@ class ClusterLogging(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Cluster Logging
+        foo = rancher2.ClusterLogging("foo",
+            cluster_id="<cluster_id>",
+            kind="syslog",
+            syslog_config={
+                "endpoint": "<syslog_endpoint>",
+                "protocol": "udp",
+                "severity": "notice",
+                "sslVerify": False,
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

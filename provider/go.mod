@@ -31,8 +31,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
-	github.com/pulumi/pulumi-rancher2/provider v0.0.0-20200410223011-e389894055bc // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.1.0
-	github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200424001829-090f390d7b1a
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.3.1
+	github.com/pulumi/pulumi/pkg/v2 v2.1.1-0.20200508232528-aa313aecf8a0 // indirect
+	github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200508232528-aa313aecf8a0
 	github.com/terraform-providers/terraform-provider-rancher2 v1.8.3
 )

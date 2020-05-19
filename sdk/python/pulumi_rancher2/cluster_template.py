@@ -45,7 +45,7 @@ class ClusterTemplate(pulumi.CustomResource):
       * `annotations` (`dict`) - Annotations for the cluster template revision (map)
       * `clusterConfig` (`dict`) - Cluster configuration (list maxitem: 1)
         * `cluster_auth_endpoint` (`dict`) - Local cluster auth endpoint (list maxitems: 1)
-          * `ca_certs` (`str`)
+          * `caCerts` (`str`)
           * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
           * `fqdn` (`str`)
 
@@ -393,12 +393,7 @@ class ClusterTemplate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, annotations=None, description=None, labels=None, members=None, name=None, template_revisions=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information. 
-
-        Cluster Templates are available from Rancher v2.3.x and above.
-
-
-
+        Create a ClusterTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: Annotations for the cluster template revision (map)
@@ -419,7 +414,7 @@ class ClusterTemplate(pulumi.CustomResource):
           * `annotations` (`pulumi.Input[dict]`) - Annotations for the cluster template revision (map)
           * `clusterConfig` (`pulumi.Input[dict]`) - Cluster configuration (list maxitem: 1)
             * `cluster_auth_endpoint` (`pulumi.Input[dict]`) - Local cluster auth endpoint (list maxitems: 1)
-              * `ca_certs` (`pulumi.Input[str]`)
+              * `caCerts` (`pulumi.Input[str]`)
               * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
               * `fqdn` (`pulumi.Input[str]`)
 
@@ -823,7 +818,7 @@ class ClusterTemplate(pulumi.CustomResource):
           * `annotations` (`pulumi.Input[dict]`) - Annotations for the cluster template revision (map)
           * `clusterConfig` (`pulumi.Input[dict]`) - Cluster configuration (list maxitem: 1)
             * `cluster_auth_endpoint` (`pulumi.Input[dict]`) - Local cluster auth endpoint (list maxitems: 1)
-              * `ca_certs` (`pulumi.Input[str]`)
+              * `caCerts` (`pulumi.Input[str]`)
               * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
               * `fqdn` (`pulumi.Input[str]`)
 
