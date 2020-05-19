@@ -58,6 +58,7 @@ build_go:: # build the go sdk
 
 build_dotnet:: # build the dotnet sdk
 	echo ${DOTNET_VERSION}
+	pulumictl util get-version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${VERSION:v%=%}" >version.txt && \
