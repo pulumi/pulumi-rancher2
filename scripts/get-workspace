@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# If the env var GITHUB_WORKSPACE exists, use that
-# if it doesn't, use the current working dir
-echo ${GITHUB_WORKSPACE:-$(pwd)}
