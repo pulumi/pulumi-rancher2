@@ -176,4 +176,28 @@ jobs:
         RANCHER_URL: ${{ secrets.RANCHER_URL }}
         PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.langage }} -parallel 4 .
+  publish:
+    runs-on: ubuntu-latest
+    #needs: test
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Assume Role
+        uses: youyo/awscredswrap@master
+        with:
+          role_arn: ${{ secrets.ROLE_ARN }}
+          duration_seconds: 3600
+          role_session_name: "${{ env.PROVIDER }}@githubActions"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ROLE_ARN: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
+          AWS_DEFAULT_REGION: 'us-west-2'
+      - name: Identity Check
+        uses: actions/aws/cli@master
+        with:
+          args: sts get-caller-identity
+
+
+
 
