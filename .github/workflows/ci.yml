@@ -182,17 +182,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Assume Role
-      uses: youyo/awscredswrap@master
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        role_arn: ${{ secrets.ROLE_ARN }}
-        duration_seconds: 3600
-        role_session_name: "${{ env.PROVIDER }}@githubActions"
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        ROLE_ARN: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
-        AWS_DEFAULT_REGION: 'us-west-2'
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+        role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
+        role-external-id: "upload-pulumi-release"
+        role-duration-seconds: 360
+        role-session-name: ${{ env.PROVIDER}}@githubActions
     - name: Identity Check
       uses: actions/aws/cli@master
       with:
