@@ -101,8 +101,6 @@ jobs:
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
-  test:
-    runs-on: ubuntu-latest
 name: ci
 "on":
   pull_request:

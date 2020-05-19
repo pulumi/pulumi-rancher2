@@ -1,4 +1,7 @@
 import * as std from '@jkcfg/std';
+import * as param from '@jkcfg/std/param';
+
+const provider = param.String('provider')
 
 const base = {
     name: "ci",
@@ -12,7 +15,7 @@ const base = {
     },
     env: {
         GO111MODULE: "on",
-        PROVIDER: "rancher2",
+        PROVIDER: provider,
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     }
 }
@@ -76,46 +79,28 @@ const sdkSetupSteps = [
         },
     }
 ]
-
-const golangCiSteps = [...baseSetupSteps, {
-        name: "Run GolangCI",
-        run: "make lint_provider"
-}]
-
-const prereqSteps = [...baseSetupSteps, {
-        name: "Build tfgen & provider binaries",
-        run: "make provider"}, {
-        name: "Upload artifacts",
-        uses: "actions/upload-artifact@v2",
-        with: {
-            name: "pulumi-${{ env.PROVIDER }}",
-            path: "${{ github.workspace }}/bin",
-        }
-    }]
-
-const sdkSteps = [...baseSetupSteps, ...sdkSetupSteps,
-    {
-        name: "Build SDK",
-        run: "make build_${{ matrix.language }}",
-    }, {
-        name: "Upload artifacts",
-        uses: "actions/upload-artifact@v2",
-        with: {
-            name: "${{ matrix.language  }}-sdk",
-            path: "${{ github.workspace}}/sdk/${{ matrix.language }}"
-        }
-    }]
-
 const jobs = {
     jobs: {
         lint: {
             'runs-on': runsOn,
             'container': 'golangci/golangci-lint:v1.25.1',
-            steps: golangCiSteps
+            steps: [...baseSetupSteps, {
+                name: "Run GolangCI",
+                run: "make lint_provider"
+            }]
         },
         prerequisites: {
             'runs-on': runsOn,
-            steps: prereqSteps,
+            steps: [...baseSetupSteps, {
+                name: "Build tfgen & provider binaries",
+                run: "make provider"}, {
+                name: "Upload artifacts",
+                uses: "actions/upload-artifact@v2",
+                with: {
+                    name: "pulumi-${{ env.PROVIDER }}",
+                    path: "${{ github.workspace }}/bin",
+                }
+            }]
         },
         build_sdk: {
             'runs-on': runsOn,
@@ -126,10 +111,18 @@ const jobs = {
                     language: [ "nodejs", "python", "dotnet"]
                 }
             },
-            steps: sdkSteps,
-        },
-        test: {
-            'runs-on': runsOn
+            steps: [...baseSetupSteps, ...sdkSetupSteps,
+                {
+                    name: "Build SDK",
+                    run: "make build_${{ matrix.language }}",
+                }, {
+                    name: "Upload artifacts",
+                    uses: "actions/upload-artifact@v2",
+                    with: {
+                        name: "${{ matrix.language  }}-sdk",
+                        path: "${{ github.workspace}}/sdk/${{ matrix.language }}"
+                    }
+                }]
         },
     },
 }

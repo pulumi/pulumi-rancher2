@@ -63,6 +63,10 @@ cleanup:: # cleans up the temporary directory
 	rm -f provider/cmd/${PROVIDER}/schema.go
 	rm -f provider/cmd/${PROVIDER}/schema.json
 
+ci::
+	(cd ci && npm ci)
+	jk run ci/index.ts -p provider=${PACK}
+
 help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
