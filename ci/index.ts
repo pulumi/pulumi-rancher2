@@ -80,8 +80,6 @@ const sdkSetupSteps = [
     }
 ]
 
-// https://github.com/jkcfg/jk/issues/182
-const binRunCmd =
 const binarySetupSteps = [
     {
         name: "Download binaries",

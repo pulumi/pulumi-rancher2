@@ -43,8 +43,8 @@ jobs:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: |
-        find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print -exec chmod +x {} \;`
+      run: find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print
+        -exec chmod +x {} \;
     - name: Build SDK
       run: make build_${{ matrix.language }}
     - name: Upload artifacts
@@ -149,8 +149,8 @@ jobs:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: |
-        find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print -exec chmod +x {} \;`
+      run: find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print
+        -exec chmod +x {} \;
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
