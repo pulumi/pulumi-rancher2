@@ -146,7 +146,7 @@ const baseJobs = {
             'runs-on': runsOn,
             needs: 'build_sdk',
             strategy: {
-                'fail-fest': true,
+                'fail-fast': true,
                 matrix: {
                     language: [ "nodejs", "python", "dotnet"]
                 }

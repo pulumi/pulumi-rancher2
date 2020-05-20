@@ -167,7 +167,7 @@ jobs:
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.langage
         }} -parallel 4 .
     strategy:
-      fail-fest: true
+      fail-fast: true
       matrix:
         language:
         - nodejs
