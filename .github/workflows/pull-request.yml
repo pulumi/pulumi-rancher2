@@ -37,6 +37,14 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.x
+    - name: Download binaries
+      uses: actions/download-artifact@v2
+      with:
+        name: pulumi-${{ env.PROVIDER }}
+        path: ${{ github.workspace }}/bin
+    - name: Restore binary perms
+      run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print
+        -exec chmod +x {} ;
     - name: Build SDK
       run: make build_${{ matrix.language }}
     - name: Upload artifacts
@@ -101,11 +109,75 @@ jobs:
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
-name: ci
+  test:
+    needs: build_sdk
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Unshallow clone
+      run: git fetch --prune --unshallow
+    - name: Install Go 1.13
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.13.x
+    - name: Install tf2pulumi
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/tf2pulumi
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.1-alpha.2
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 13.x
+        registry-url: https://registry.npmjs.org
+    - name: Set up dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.201
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.x
+    - name: Download binaries
+      uses: actions/download-artifact@v2
+      with:
+        name: pulumi-${{ env.PROVIDER }}
+        path: ${{ github.workspace }}/bin
+    - name: Restore binary perms
+      run: find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print
+        -exec chmod +x {} ;
+    - name: Install pipenv
+      uses: dschep/install-pipenv-action@v1
+    - name: Install dependencies
+      run: ./scripts/install-${{ matrix.language}}-sdk
+    - env:
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        PULUMI_API: https://api.pulumi-staging.io
+        PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+        RANCHER_ACCESS_KEY: token-74zzn
+        RANCHER_INSECURE: true
+        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
+        RANCHER_URL: ${{ secrets.RANCHER_URL }}
+      name: Run tests
+      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.langage
+        }} -parallel 4 .
+    strategy:
+      fail-fest: true
+      matrix:
+        language:
+        - nodejs
+        - python
+        - dotnet
+name: pull-request
 "on":
   pull_request:
     branches:
     - master
   push:
-    tags:
-    - v*
+    branches:
+    - master

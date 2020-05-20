@@ -4,13 +4,13 @@ import * as param from '@jkcfg/std/param';
 const provider = param.String('provider')
 
 const base = {
-    name: "ci",
+    name: "pull-request",
     on: {
         pull_request: {
-            branches: [ 'master' ]
+            branches: [ "master" ]
         },
         push: {
-            tags: [ "v*" ]
+            branches: [ "master" ]
         }
     },
     env: {
@@ -79,7 +79,24 @@ const sdkSetupSteps = [
         },
     }
 ]
-const jobs = {
+
+const binarySetupSteps = [
+    {
+        name: "Download binaries",
+        uses: "actions/download-artifact@v2",
+        with: {
+            name: "pulumi-${{ env.PROVIDER }}",
+            path: "${{ github.workspace }}/bin"
+        }
+    },
+    {
+        name: "Restore binary perms",
+        run: "find ${{ github.workspace }}/bin -name 'pulumi-*-${{ env.PROVIDER }}' -print -exec chmod +x {} \;"
+    }
+]
+
+// base jobs defines the jobs that run on every PR
+const baseJobs = {
     jobs: {
         lint: {
             'runs-on': runsOn,
@@ -111,11 +128,12 @@ const jobs = {
                     language: [ "nodejs", "python", "dotnet"]
                 }
             },
-            steps: [...baseSetupSteps, ...sdkSetupSteps,
+            steps: [...baseSetupSteps, ...sdkSetupSteps, ...binarySetupSteps,
                 {
                     name: "Build SDK",
                     run: "make build_${{ matrix.language }}",
-                }, {
+                },
+                {
                     name: "Upload artifacts",
                     uses: "actions/upload-artifact@v2",
                     with: {
@@ -124,14 +142,49 @@ const jobs = {
                     }
                 }]
         },
+        test: {
+            'runs-on': runsOn,
+            needs: 'build_sdk',
+            strategy: {
+                'fail-fest': true,
+                matrix: {
+                    language: [ "nodejs", "python", "dotnet"]
+                }
+            },
+            steps: [...baseSetupSteps, ...sdkSetupSteps, ...binarySetupSteps,
+                {
+                    name: "Install pipenv",
+                    uses: "dschep/install-pipenv-action@v1",
+                },
+                {
+                    name: "Install dependencies",
+                    run: "./scripts/install-${{ matrix.language}}-sdk"
+                },
+                {
+                    name: "Run tests",
+                    env: {
+                        PULUMI_ACCESS_TOKEN: "${{ secrets.PULUMI_ACCESS_TOKEN }}",
+                        PULUMI_API: "https://api.pulumi-staging.io",
+                        RANCHER_ACCESS_KEY: "token-74zzn",
+                        RANCHER_SECRET_KEY: "${{ secrets.RANCHER_SECRET_KEY }}",
+                        RANCHER_INSECURE: true,
+                        RANCHER_URL: "${{ secrets.RANCHER_URL }}",
+                        PULUMI_LOCAL_NUGET: "${{ github.workspace }}/nuget",
+                    },
+                    run: "cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.langage }} -parallel 4 .",
+                }
+            ]
+        }
     },
 }
 
-const manifest = {...base, ...jobs}
-
-const out = [
-    manifest
+// Build the pr manifest
+const prManifest = {...base, ...baseJobs}
+const pr = [
+    prManifest
 ]
+std.write(pr, `.github/workflows/pull-request.yml`, { format: std.Format.YAMLStream});
 
 
-std.write(out, `.github/workflows/ci.yaml`, { format: std.Format.YAMLStream});
+
+
