@@ -80,6 +80,8 @@ const sdkSetupSteps = [
     }
 ]
 
+// https://github.com/jkcfg/jk/issues/182
+const binRunCmd =
 const binarySetupSteps = [
     {
         name: "Download binaries",
@@ -91,7 +93,7 @@ const binarySetupSteps = [
     },
     {
         name: "Restore binary perms",
-        run: `find \${{ github.workspace }}/bin -name pulumi-*-\${{ env.PROVIDER }} -print -exec chmod +x {} \\;`
+        run: "find \${{ github.workspace }}/bin -name pulumi-*-\${{ env.PROVIDER }} -print -exec chmod +x {} \\;"
     }
 ]
 
