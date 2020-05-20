@@ -28,3 +28,6 @@ sdk/python/bin/
 ## Examples
 **.pyc
 **/venv
+
+## Goreleaser
+dist/
