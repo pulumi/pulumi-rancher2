@@ -80,12 +80,6 @@ const sdkSetupSteps = [
     }
 ]
 
-const binRunCmd = `find \
-\${{ github.workspace }}/bin \
--name pulumi-*-\${{ env.PROVIDER }} \
--print -exec chmod +x {} \\;\`
-`;
-
 const binarySetupSteps = [
     {
         name: "Download binaries",
@@ -97,7 +91,7 @@ const binarySetupSteps = [
     },
     {
         name: "Restore binary perms",
-        run: binRunCmd
+        run: `find \${{ github.workspace }}/bin -name pulumi-*-\${{ env.PROVIDER }} -print -exec chmod +x {} \\;`
     }
 ]
 
