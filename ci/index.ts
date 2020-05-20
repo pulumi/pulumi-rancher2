@@ -80,8 +80,11 @@ const sdkSetupSteps = [
     }
 ]
 
-// https://github.com/jkcfg/jk/issues/182
-const binRunCmd = `find \${{ github.workspace }}/bin -name pulumi-*-\${{ env.PROVIDER }} -print -exec chmod +x {} \\;`
+const binRunCmd = `find \
+\${{ github.workspace }}/bin \
+-name pulumi-*-\${{ env.PROVIDER }} \
+-print -exec chmod +x {} \\;\`
+`;
 
 const binarySetupSteps = [
     {
