@@ -4,14 +4,14 @@ env:
   PROVIDER: rancher2
 jobs:
   build_sdk:
+    name: build_sdk
     needs: prerequisites
-    runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout Repo
       uses: actions/checkout@v2
-    - name: Unshallow clone
+    - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
-    - name: Install Go 1.13
+    - name: Install Go
       uses: actions/setup-go@v2
       with:
         go-version: 1.13.x
@@ -23,30 +23,29 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
-        tag: v0.0.1-alpha.2
-    - name: Set up Node
+    - name: Setup Node
       uses: actions/setup-node@v1
       with:
         node-version: 13.x
-        registry-url: https://registry.npmjs.org
-    - name: Set up dotnet
+        'registry-url:': https://registry.npmjs.org
+    - name: Setup DotNet
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v1
       with:
         python-version: 3.x
-    - name: Download binaries
+    - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print
+      run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print
         -exec chmod +x {} \;
     - name: Build SDK
-      run: make build_${{ matrix.language }}
+      run: make build_${{ matrix.language }},
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -60,14 +59,13 @@ jobs:
         - python
         - dotnet
   lint:
-    container: golangci/golangci-lint:v1.25.1
-    runs-on: ubuntu-latest
+    name: lint
     steps:
-    - name: Checkout
+    - name: Checkout Repo
       uses: actions/checkout@v2
-    - name: Unshallow clone
+    - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
-    - name: Install Go 1.13
+    - name: Install Go
       uses: actions/setup-go@v2
       with:
         go-version: 1.13.x
@@ -79,17 +77,16 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
-        tag: v0.0.1-alpha.2
-    - name: Run GolangCI
+    - name: Run golangci
       run: make lint_provider
   prerequisites:
-    runs-on: ubuntu-latest
+    name: prerequisites
     steps:
-    - name: Checkout
+    - name: Checkout Repo
       uses: actions/checkout@v2
-    - name: Unshallow clone
+    - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
-    - name: Install Go 1.13
+    - name: Install Go
       uses: actions/setup-go@v2
       with:
         go-version: 1.13.x
@@ -101,23 +98,22 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
-        tag: v0.0.1-alpha.2
     - name: Build tfgen & provider binaries
       run: make provider
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifacts@v2
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
   test:
+    name: test
     needs: build_sdk
-    runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout Repo
       uses: actions/checkout@v2
-    - name: Unshallow clone
+    - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
-    - name: Install Go 1.13
+    - name: Install Go
       uses: actions/setup-go@v2
       with:
         go-version: 1.13.x
@@ -129,28 +125,36 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
-        tag: v0.0.1-alpha.2
-    - name: Set up Node
+    - name: Setup Node
       uses: actions/setup-node@v1
       with:
         node-version: 13.x
-        registry-url: https://registry.npmjs.org
-    - name: Set up dotnet
+        'registry-url:': https://registry.npmjs.org
+    - name: Setup DotNet
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v1
       with:
         python-version: 3.x
-    - name: Download binaries
+    - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: find ${{ github.workspace }}/bin -name pulumi-*-${{ env.PROVIDER }} -print
+      run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print
         -exec chmod +x {} \;
+    - name: Download SDK
+      uses: actions/download-artifact@v2
+      with:
+        name: ${{ matrix.language  }}-sdk
+        path: ${{ github.workspace}}/sdk/${{ matrix.language }}
+    - name: Update path
+      run: echo ::add-path::${{ github.workspace }}/bin
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
@@ -160,7 +164,7 @@ jobs:
         PULUMI_API: https://api.pulumi-staging.io
         PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
         RANCHER_ACCESS_KEY: token-74zzn
-        RANCHER_INSECURE: true
+        RANCHER_INSECURE: "true"
         RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
         RANCHER_URL: ${{ secrets.RANCHER_URL }}
       name: Run tests
@@ -176,8 +180,5 @@ jobs:
 name: pull-request
 "on":
   pull_request:
-    branches:
-    - master
-  push:
     branches:
     - master
