@@ -43,7 +43,7 @@ jobs:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print
+      run: find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print
         -exec chmod +x {} \;
     - name: Build SDK
       run: make build_${{ matrix.language }}
@@ -125,6 +125,17 @@ jobs:
         role-external-id: upload-pulumi-release
         role-session-name: ${{ env.PROVIDER}}@githubActions
         role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
+    - name: Setup Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.13.x
+    - env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      name: Run GoReleaser
+      uses: goreleaser/goreleaser-action@v2
+      with:
+        args: release --rm-dist
+        version: latest
   test:
     name: test
     needs: build_sdk
@@ -165,7 +176,7 @@ jobs:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
     - name: Restore binary perms
-      run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print
+      run: find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print
         -exec chmod +x {} \;
     - name: Download SDK
       uses: actions/download-artifact@v2
@@ -202,4 +213,4 @@ name: release
 "on":
   push:
     tags:
-    - v*
+    - v*.*.*-**
