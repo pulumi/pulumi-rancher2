@@ -59,4 +59,4 @@ The following configuration points are available for the `xyz` provider:
 
 ## Reference
 
-For further information, please visit [the Kong provider docs](https://www.pulumi.com/docs/intro/cloud-providers/kong) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/kong).
+For further information, please visit [the Rancher2 provider docs](https://www.pulumi.com/docs/intro/cloud-providers/rancher2) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/rancher2).
