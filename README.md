@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-rancher2/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Rancher2
+
 ## Configuration
 
 The following configuration points are available for the `xyz` provider:
@@ -53,7 +59,4 @@ The following configuration points are available for the `xyz` provider:
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://pulumi.io/reference/pkg/nodejs/pulumi/rancher2/
+For further information, please visit [the Kong provider docs](https://www.pulumi.com/docs/intro/cloud-providers/kong) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/kong).
