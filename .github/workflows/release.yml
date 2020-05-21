@@ -46,7 +46,7 @@ jobs:
       run: find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print
         -exec chmod +x {} \;
     - name: Build SDK
-      run: make build_${{ matrix.language }}
+      run: make -f Makefile.github build_${{ matrix.language }}
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -81,7 +81,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Run golangci
-      run: make lint_provider
+      run: make -f Makefile.github lint_provider
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Build tfgen & provider binaries
-      run: make provider
+      run: make  -f Makefile.github provider
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
