@@ -8,27 +8,25 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 secret.
- * 
+ *
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * // Retrieve a rancher2 Project Secret
  * const foo = pulumi.output(rancher2.getSecret({
  *     name: "<name>",
  *     projectId: "<project_id>",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/secret.html.markdown.
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     if (!opts) {

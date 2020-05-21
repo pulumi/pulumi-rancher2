@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 catalog.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * const library = pulumi.output(rancher2.getCatalog({
  *     name: "catalog",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/catalog.html.markdown.
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
     if (!opts) {
