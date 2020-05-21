@@ -8,18 +8,21 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell scripts/get-version)
+VERSION         := $(shell pulumictl util get-version)
+
+LATEST_RESOURCE_PROVIDER_VERSION := $(shell curl --silent "https://api.github.com/repos/pulumi/pulumi-${PACK}/tags" | jq ".[0]".name -r)
+PROVIDER_VERSION := ${LATEST_RESOURCE_PROVIDER_VERSION:v%=%}
 
 WORKING_DIR     := $(shell pwd)
 
 .PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
 
-development:: provider lint_provider build_sdks cleanup # Build the provider & SDKs for a development environment
+development:: install_plugins provider lint_provider build_sdks cleanup # Build the provider & SDKs for a development environment
 
 provider:: # build the provider binary
 	(cd provider && go build -a -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
-	(cd provider && go generate cmd/${PROVIDER}/main.go)
+	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 	(cd provider && go build -a -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
 build_sdks:: provider build_nodejs build_python build_go build_dotnet # build all the sdks
@@ -61,7 +64,6 @@ lint_provider:: provider # lint the provider code
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
-	rm -f provider/cmd/${PROVIDER}/schema.json
 
 ci::
 	(cd ci && npm ci)
@@ -74,5 +76,9 @@ help::
 
 clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
+
+install_plugins::
+	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
+	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
 
 
