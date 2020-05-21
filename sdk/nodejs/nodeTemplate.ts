@@ -8,19 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
- * 
+ *
  * amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
- * 
+ *
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * // Create a new rancher2 Node Template up to Rancher 2.1.x
  * const foo = new rancher2.NodeTemplate("foo", {
  *     amazonec2Config: {
@@ -36,8 +36,6 @@ import * as utilities from "./utilities";
  *     description: "foo test",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/nodeTemplate.html.markdown.
  */
 export class NodeTemplate extends pulumi.CustomResource {
     /**

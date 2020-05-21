@@ -17,7 +17,6 @@ yarn.lock
 
 ## Provider
 **schema.go
-**schema.json
 
 ## SDKs
 sdk/dotnet/version.txt

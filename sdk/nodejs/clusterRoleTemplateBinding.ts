@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * // Create a new Rancher2 Cluster Role Template Binding
  * const foo = new rancher2.ClusterRoleTemplateBinding("foo", {
  *     clusterId: "<cluster_id>",
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *     userId: "<user_id>",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/clusterRole.html.markdown.
  */
 export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**

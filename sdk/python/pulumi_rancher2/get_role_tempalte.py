@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-warnings.warn("rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate", DeprecationWarning)
+warnings.warn("rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate", DeprecationWarning)
 class GetRoleTempalteResult:
     """
     A collection of values returned by getRoleTempalte.
@@ -130,13 +130,11 @@ def get_role_tempalte(context=None,name=None,opts=None):
     ```
 
 
-    Deprecated: rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate
-
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
     :param str name: The name of the Node Template (string)
     """
-    pulumi.log.warn("get_role_tempalte is deprecated: rancher2.index.getRoleTempalte has been deprecated in favour of rancher2.index.getRoleTemplate")
+    pulumi.log.warn("get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate")
     __args__ = dict()
 
 
