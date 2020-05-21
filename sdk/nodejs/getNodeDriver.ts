@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * const foo = pulumi.output(rancher2.getNodeDriver({
  *     name: "foo",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/nodeDriver.html.markdown.
  */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
     if (!opts) {

@@ -8,27 +8,25 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 certificate.
- * 
+ *
  * Depending of the availability, there are 2 types of Rancher v2 certificates:
  * - Project certificate: Available to all namespaces in the `projectId`
  * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * // Retrieve a rancher2 Project Certificate
  * const foo = pulumi.output(rancher2.getCertificate({
  *     name: "<name>",
  *     projectId: "<project_id>",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/certificate.html.markdown.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {

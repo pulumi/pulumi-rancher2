@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * // Create a new rancher2 Namespace
  * const foo = new rancher2.Namespace("foo", {
  *     containerResourceLimit: {
@@ -36,8 +36,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/r/namespace.html.markdown.
  */
 export class Namespace extends pulumi.CustomResource {
     /**

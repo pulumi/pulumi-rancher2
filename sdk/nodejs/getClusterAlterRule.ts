@@ -8,22 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
- * 
+ *
  * const foo = pulumi.output(rancher2.getClusterAlterRule({
  *     clusterId: "<cluster_id>",
  *     name: "<cluster_alert_rule_name>",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-rancher2/blob/master/website/docs/d/clusterAlertRule.html.markdown.
  */
 export function getClusterAlterRule(args: GetClusterAlterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlterRuleResult> {
     if (!opts) {
