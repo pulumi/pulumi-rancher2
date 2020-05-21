@@ -46,7 +46,7 @@ jobs:
       run: find ${{ github.workspace }} -name 'pulumi-*-${{ env.PROVIDER }}' -print
         -exec chmod +x {} \;
     - name: Build SDK
-      run: make build_${{ matrix.language }},
+      run: make build_${{ matrix.language }}
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -60,6 +60,7 @@ jobs:
         - python
         - dotnet
   lint:
+    container: golangci/golangci-lint:v1.25.1
     name: lint
     runs-on: ubuntu-latest
     steps:
