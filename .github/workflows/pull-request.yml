@@ -6,6 +6,7 @@ jobs:
   build_sdk:
     name: build_sdk
     needs: prerequisites
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
@@ -60,6 +61,7 @@ jobs:
         - dotnet
   lint:
     name: lint
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
@@ -81,6 +83,7 @@ jobs:
       run: make lint_provider
   prerequisites:
     name: prerequisites
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
@@ -108,6 +111,7 @@ jobs:
   test:
     name: test
     needs: build_sdk
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
