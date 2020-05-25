@@ -9938,9 +9938,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput) B
 
 // (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput) IgnoreVolumeAz() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage) *bool {
-		return v.IgnoreVolumeAz
-	}).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage) *bool { return v.IgnoreVolumeAz }).(pulumi.BoolPtrOutput)
 }
 
 // (string)
@@ -10482,9 +10480,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput) M
 
 // Default `60s` (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput) MonitorDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer) *string {
-		return v.MonitorDelay
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer) *string { return v.MonitorDelay }).(pulumi.StringPtrOutput)
 }
 
 // Default 5 (int)
@@ -17221,9 +17217,7 @@ func (o ClusterScheduledClusterScanOutput) ScanConfig() ClusterScheduledClusterS
 
 // Cluster scan schedule config (list maxitems:1)
 func (o ClusterScheduledClusterScanOutput) ScheduleConfig() ClusterScheduledClusterScanScheduleConfigOutput {
-	return o.ApplyT(func(v ClusterScheduledClusterScan) ClusterScheduledClusterScanScheduleConfig {
-		return v.ScheduleConfig
-	}).(ClusterScheduledClusterScanScheduleConfigOutput)
+	return o.ApplyT(func(v ClusterScheduledClusterScan) ClusterScheduledClusterScanScheduleConfig { return v.ScheduleConfig }).(ClusterScheduledClusterScanScheduleConfigOutput)
 }
 
 type ClusterScheduledClusterScanPtrOutput struct{ *pulumi.OutputState }
@@ -18688,9 +18682,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutpu
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutput) Strategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication) *string {
-		return v.Strategy
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtrOutput struct{ *pulumi.OutputState }
@@ -24247,9 +24239,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutp
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry) *bool {
-		return v.IsDefault
-	}).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutput) Password() pulumi.StringPtrOutput {
@@ -24665,9 +24655,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput) ExtraEnvs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd) []string {
-		return v.ExtraEnvs
-	}).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd) []string { return v.ExtraEnvs }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput) Gid() pulumi.IntPtrOutput {
@@ -26890,9 +26878,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOu
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy) *string {
-		return v.Image
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrOutput struct{ *pulumi.OutputState }
@@ -27073,9 +27059,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOu
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler) *string {
-		return v.Image
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrOutput struct{ *pulumi.OutputState }
@@ -39850,9 +39834,7 @@ func (o ProjectResourceQuotaOutput) ToProjectResourceQuotaPtrOutputWithContext(c
 
 // Default resource quota limit for  namespaces in project (list maxitems:1)
 func (o ProjectResourceQuotaOutput) NamespaceDefaultLimit() ProjectResourceQuotaNamespaceDefaultLimitOutput {
-	return o.ApplyT(func(v ProjectResourceQuota) ProjectResourceQuotaNamespaceDefaultLimit {
-		return v.NamespaceDefaultLimit
-	}).(ProjectResourceQuotaNamespaceDefaultLimitOutput)
+	return o.ApplyT(func(v ProjectResourceQuota) ProjectResourceQuotaNamespaceDefaultLimit { return v.NamespaceDefaultLimit }).(ProjectResourceQuotaNamespaceDefaultLimitOutput)
 }
 
 // Resource quota limit for project (list maxitems:1)
@@ -44170,9 +44152,7 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) S
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) SigningMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) string {
-		return v.SigningMethod
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) string { return v.SigningMethod }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) SigningName() pulumi.StringOutput {
@@ -44180,9 +44160,7 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) S
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) SigningRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) string {
-		return v.SigningRegion
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) string { return v.SigningRegion }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) Url() pulumi.StringOutput {
@@ -44421,9 +44399,7 @@ func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) MaximumLoadBal
 }
 
 func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) PrimaryAvailabilitySetName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAzureCloudProvider) string {
-		return v.PrimaryAvailabilitySetName
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAzureCloudProvider) string { return v.PrimaryAvailabilitySetName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) PrimaryScaleSetName() pulumi.StringOutput {
@@ -45509,9 +45485,7 @@ func (o GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput
 }
 
 func (o GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput) LbProvider() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer) string {
-		return v.LbProvider
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer) string { return v.LbProvider }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput) LbVersion() pulumi.StringOutput {
@@ -46694,9 +46668,7 @@ func (o GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput) Datacenters() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter) string {
-		return v.Datacenters
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter) string { return v.Datacenters }).(pulumi.StringOutput)
 }
 
 // The name of the Cluster (string)
@@ -48092,9 +48064,7 @@ func (o GetClusterRkeConfigServicesOutput) KubeApi() GetClusterRkeConfigServices
 }
 
 func (o GetClusterRkeConfigServicesOutput) KubeController() GetClusterRkeConfigServicesKubeControllerOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServices) GetClusterRkeConfigServicesKubeController {
-		return v.KubeController
-	}).(GetClusterRkeConfigServicesKubeControllerOutput)
+	return o.ApplyT(func(v GetClusterRkeConfigServices) GetClusterRkeConfigServicesKubeController { return v.KubeController }).(GetClusterRkeConfigServicesKubeControllerOutput)
 }
 
 func (o GetClusterRkeConfigServicesOutput) Kubelet() GetClusterRkeConfigServicesKubeletOutput {
@@ -50884,9 +50854,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOu
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutput) Sans() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication) []string {
-		return v.Sans
-	}).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication) []string { return v.Sans }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutput) Strategy() pulumi.StringOutput {
@@ -55494,9 +55462,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeOutput) Host
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeOutput) InternalAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode) *string {
-		return v.InternalAddress
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode) *string { return v.InternalAddress }).(pulumi.StringPtrOutput)
 }
 
 // (Computed) Labels for the cluster template (map)
@@ -55649,9 +55615,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryO
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry) *string {
-		return v.User
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry) *string { return v.User }).(pulumi.StringPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayOutput struct{ *pulumi.OutputState }
@@ -55855,9 +55819,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutp
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput) Creation() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd) string {
-		return v.Creation
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd) string { return v.Creation }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput) ExternalUrls() pulumi.StringArrayOutput {
@@ -56343,9 +56305,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiO
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) string {
-		return v.Image
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi) string { return v.Image }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput) PodSecurityPolicy() pulumi.BoolPtrOutput {
@@ -57233,9 +57193,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletO
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) string {
-		return v.Image
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet) string { return v.Image }).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput) InfraContainerImage() pulumi.StringOutput {
