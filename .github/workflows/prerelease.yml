@@ -48,7 +48,7 @@ jobs:
     - name: Build SDK
       run: make -f Makefile.github build_${{ matrix.language }}
     - name: Check worktree clean
-      uses: jaxxstorm/action-check-worktree-clean@release/v1-alpha
+      uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -186,7 +186,7 @@ jobs:
         name: ${{ matrix.language  }}-sdk
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}
     - name: Check worktree clean
-      uses: jaxxstorm/action-check-worktree-clean@release/v1-alpha
+      uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
     - name: Install Pulumi CLI
