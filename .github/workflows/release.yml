@@ -47,7 +47,8 @@ jobs:
         -exec chmod +x {} \;
     - name: Build SDK
       run: make -f Makefile.github build_${{ matrix.language }}
-    - {}
+    - name: Check worktree clean
+      uses: jaxxstorm/action-check-worktree-clean@release/v1-alpha
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
