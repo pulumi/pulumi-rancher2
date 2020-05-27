@@ -212,8 +212,11 @@ jobs:
         - nodejs
         - python
         - dotnet
-name: pull-request
+name: branches
 "on":
   pull_request:
+    branches:
+    - master
+  push:
     branches:
     - master
