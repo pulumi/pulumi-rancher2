@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Scripts Repo
       uses: actions/checkout@v2
       with:
-        path: scripts
+        path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
@@ -53,7 +53,7 @@ jobs:
     - name: Build SDK
       run: make -f Makefile.github build_${{ matrix.language }}
     - name: Check worktree clean
-      run: ./scripts/ci/check-worktree-is-clean
+      run: ./ci-scripts/ci/check-worktree-is-clean
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -76,7 +76,7 @@ jobs:
     - name: Checkout Scripts Repo
       uses: actions/checkout@v2
       with:
-        path: scripts
+        path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
@@ -103,7 +103,7 @@ jobs:
     - name: Checkout Scripts Repo
       uses: actions/checkout@v2
       with:
-        path: scripts
+        path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
@@ -136,7 +136,7 @@ jobs:
     - name: Checkout Scripts Repo
       uses: actions/checkout@v2
       with:
-        path: scripts
+        path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
@@ -187,7 +187,7 @@ jobs:
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
-      run: ./scripts/install-${{ matrix.language}}-sdk
+      run: ./ci-scripts/install-${{ matrix.language}}-sdk
     - env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         PULUMI_API: https://api.pulumi-staging.io

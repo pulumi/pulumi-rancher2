@@ -30,3 +30,6 @@ sdk/python/bin/
 
 ## Goreleaser
 dist/
+
+## CI scripts
+ci-scripts
