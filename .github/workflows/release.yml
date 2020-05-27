@@ -29,6 +29,8 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -92,6 +94,8 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Run golangci
       run: make -f Makefile.github lint_provider
   prerequisites:
@@ -119,6 +123,8 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Build tfgen & provider binaries
       run: make  -f Makefile.github provider
     - name: Upload artifacts
@@ -179,6 +185,8 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -209,8 +217,6 @@ jobs:
       uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
