@@ -10,7 +10,7 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
-LATEST_RESOURCE_PROVIDER_VERSION := $(shell pulumictl get latest-plugin ${PACK})
+LATEST_RESOURCE_PROVIDER_VERSION := $(shell pulumictl get latest-plugin pulumi-${PACK})
 PROVIDER_VERSION := ${LATEST_RESOURCE_PROVIDER_VERSION:v%=%}
 
 WORKING_DIR     := $(shell pwd)
