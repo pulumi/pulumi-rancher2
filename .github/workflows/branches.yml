@@ -2,6 +2,13 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
   PROVIDER: rancher2
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  RANCHER_ACCESS_KEY: token-74zzn
+  RANCHER_INSECURE: "true"
+  RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
+  RANCHER_URL: ${{ secrets.RANCHER_URL }}
 jobs:
   build_sdk:
     name: build_sdk
@@ -69,7 +76,6 @@ jobs:
         - python
         - dotnet
   lint:
-    container: golangci/golangci-lint:v1.25.1
     name: lint
     runs-on: ubuntu-latest
     steps:
@@ -126,7 +132,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Build tfgen & provider binaries
-      run: make  -f Makefile.github provider
+      run: make -f Makefile.github provider
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -186,23 +192,13 @@ jobs:
       with:
         name: ${{ matrix.language  }}-sdk
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}
-    - name: Check worktree clean
-      uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: make -f Makefile.github install_${{ matrix.language}}_sdk
-    - env:
-        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-        PULUMI_API: https://api.pulumi-staging.io
-        PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-        RANCHER_ACCESS_KEY: token-74zzn
-        RANCHER_INSECURE: "true"
-        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
-        RANCHER_URL: ${{ secrets.RANCHER_URL }}
-      name: Run tests
+    - name: Run tests
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language
         }} -parallel 4 .
     strategy:
@@ -212,8 +208,11 @@ jobs:
         - nodejs
         - python
         - dotnet
-name: pull-request
+name: branches
 "on":
   pull_request:
+    branches:
+    - master
+  push:
     branches:
     - master
