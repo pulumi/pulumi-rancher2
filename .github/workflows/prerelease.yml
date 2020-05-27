@@ -10,6 +10,11 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: scripts
+        repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
     - name: Install Go
@@ -48,7 +53,7 @@ jobs:
     - name: Build SDK
       run: make -f Makefile.github build_${{ matrix.language }}
     - name: Check worktree clean
-      uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
+      run: ./scripts/ci/check-worktree-is-clean
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -68,6 +73,11 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: scripts
+        repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
     - name: Install Go
@@ -90,6 +100,11 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: scripts
+        repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
     - name: Install Go
@@ -145,6 +160,11 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: scripts
+        repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow
     - name: Install Go
