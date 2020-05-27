@@ -3,7 +3,7 @@
 **/bin/
 **/obj/
 Pulumi.*.yaml
-sdk/nodejs/node_modules
+**/node_modules
 
 **/command-output/
 
@@ -12,3 +12,24 @@ sdk/nodejs/node_modules
 
 yarn.lock
 **/pulumiManifest.go
+
+**/nuget/
+
+## Provider
+**schema.go
+
+## SDKs
+sdk/dotnet/version.txt
+sdk/nodejs/bin/
+sdk/nodejs/node_modules/
+sdk/python/bin/
+
+## Examples
+**.pyc
+**/venv
+
+## Goreleaser
+dist/
+
+## CI scripts
+ci-scripts
