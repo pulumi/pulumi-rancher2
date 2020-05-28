@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
-    /// </summary>
     public partial class Notifier : Pulumi.CustomResource
     {
         /// <summary>

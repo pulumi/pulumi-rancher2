@@ -15,6 +15,28 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNodePool.InvokeAsync(new Rancher2.GetNodePoolArgs
+        ///         {
+        ///             ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)

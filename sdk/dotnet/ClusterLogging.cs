@@ -11,6 +11,36 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Logging
+    ///         var foo = new Rancher2.ClusterLogging("foo", new Rancher2.ClusterLoggingArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Kind = "syslog",
+    ///             SyslogConfig = new Rancher2.Inputs.ClusterLoggingSyslogConfigArgs
+    ///             {
+    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
+    ///                 Protocol = "udp",
+    ///                 Severity = "notice",
+    ///                 SslVerify = false,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ClusterLogging : Pulumi.CustomResource
     {

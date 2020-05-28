@@ -11,6 +11,30 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Role Template Binding
+    ///         var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new Rancher2.ClusterRoleTemplateBindingArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             RoleTemplateId = "&lt;role_template_id&gt;",
+    ///             UserId = "&lt;user_id&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
     {

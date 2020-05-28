@@ -15,6 +15,42 @@ namespace Pulumi.Rancher2
     /// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Node Template up to Rancher 2.1.x
+    ///         var foo = new Rancher2.NodeTemplate("foo", new Rancher2.NodeTemplateArgs
+    ///         {
+    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///             {
+    ///                 AccessKey = "AWS_ACCESS_KEY",
+    ///                 Ami = "&lt;AMI_ID&gt;",
+    ///                 Region = "&lt;REGION&gt;",
+    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///                 SecurityGroup = 
+    ///                 {
+    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
+    ///                 },
+    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
+    ///                 VpcId = "&lt;VPC_ID&gt;",
+    ///                 Zone = "&lt;ZONE&gt;",
+    ///             },
+    ///             Description = "foo test",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {

@@ -15,6 +15,28 @@ namespace Pulumi.Rancher2
     /// On create, if setting already exists, provider will import it and update its value.
     /// 
     /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Setting
+    ///         var foo = new Rancher2.Setting("foo", new Rancher2.SettingArgs
+    ///         {
+    ///             Value = "&lt;VALUE&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Setting : Pulumi.CustomResource
     {

@@ -89,8 +89,8 @@ class CloudCredential(pulumi.CustomResource):
         # Create a new rancher2 Cloud Credential
         foo = rancher2.CloudCredential("foo",
             amazonec2_credential_config={
-                "accessKey": "<AWS_ACCESS_KEY>",
-                "secretKey": "<AWS_SECRET_KEY>",
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
             },
             description="foo test")
         ```

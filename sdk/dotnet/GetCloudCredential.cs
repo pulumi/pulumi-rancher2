@@ -15,6 +15,27 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Rancher2.GetCloudCredential.InvokeAsync(new Rancher2.GetCloudCredentialArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)

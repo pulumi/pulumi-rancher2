@@ -15,6 +15,28 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 cluster alert group.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterAlertGroup.InvokeAsync(new Rancher2.GetClusterAlertGroupArgs
+        ///         {
+        ///             ClusterId = "&lt;cluster_id&gt;",
+        ///             Name = "&lt;cluster_alert_group_name&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterAlertGroupResult> InvokeAsync(GetClusterAlertGroupArgs args, InvokeOptions? options = null)

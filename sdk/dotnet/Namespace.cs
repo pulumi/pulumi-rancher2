@@ -11,6 +11,45 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Namespace
+    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
+    ///         {
+    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             Description = "foo namespace",
+    ///             ProjectId = "&lt;PROJECT_ID&gt;",
+    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             {
+    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "100m",
+    ///                     LimitsMemory = "100Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {
