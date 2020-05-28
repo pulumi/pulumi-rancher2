@@ -11,6 +11,36 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Project Logging
+    ///         var foo = new Rancher2.ProjectLogging("foo", new Rancher2.ProjectLoggingArgs
+    ///         {
+    ///             Kind = "syslog",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             SyslogConfig = new Rancher2.Inputs.ProjectLoggingSyslogConfigArgs
+    ///             {
+    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
+    ///                 Protocol = "udp",
+    ///                 Severity = "notice",
+    ///                 SslVerify = false,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ProjectLogging : Pulumi.CustomResource
     {

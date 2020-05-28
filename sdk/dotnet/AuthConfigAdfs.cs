@@ -13,6 +13,35 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Auth Config ADFS
+    ///         var adfs = new Rancher2.AuthConfigAdfs("adfs", new Rancher2.AuthConfigAdfsArgs
+    ///         {
+    ///             DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
+    ///             GroupsField = "&lt;GROUPS_FIELD&gt;",
+    ///             IdpMetadataContent = "&lt;IDP_METADATA_CONTENT&gt;",
+    ///             RancherApiHost = "https://&lt;RANCHER_API_HOST&gt;",
+    ///             SpCert = "&lt;SP_CERT&gt;",
+    ///             SpKey = "&lt;SP_KEY&gt;",
+    ///             UidField = "&lt;UID_FIELD&gt;",
+    ///             UserNameField = "&lt;USER_NAME_FIELD&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AuthConfigAdfs : Pulumi.CustomResource
     {

@@ -17,6 +17,30 @@ namespace Pulumi.Rancher2
     /// - scoped: valid for just a specific cluster (`cluster_id` should be provided).
     /// 
     /// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Token scoped
+    ///         var foo = new Rancher2.Token("foo", new Rancher2.TokenArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster-id&gt;",
+    ///             Description = "foo token",
+    ///             Ttl = 1200,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Token : Pulumi.CustomResource
     {

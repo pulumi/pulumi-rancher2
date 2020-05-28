@@ -15,6 +15,27 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 setting.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var server_image = Output.Create(Rancher2.GetSetting.InvokeAsync(new Rancher2.GetSettingArgs
+        ///         {
+        ///             Name = "server-image",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSettingResult> InvokeAsync(GetSettingArgs args, InvokeOptions? options = null)

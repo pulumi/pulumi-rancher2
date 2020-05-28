@@ -13,6 +13,34 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Auth Config AzureAD
+    ///         var azuread = new Rancher2.AuthConfigAzureAd("azuread", new Rancher2.AuthConfigAzureAdArgs
+    ///         {
+    ///             ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
+    ///             ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",
+    ///             AuthEndpoint = "&lt;AZUREAD_AUTH_ENDPOINT&gt;",
+    ///             GraphEndpoint = "&lt;AZUREAD_GRAPH_ENDPOINT&gt;",
+    ///             RancherUrl = "&lt;RANCHER_URL&gt;",
+    ///             TenantId = "&lt;AZUREAD_TENANT_ID&gt;",
+    ///             TokenEndpoint = "&lt;AZUREAD_TOKEN_ENDPOINT&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AuthConfigAzureAd : Pulumi.CustomResource
     {

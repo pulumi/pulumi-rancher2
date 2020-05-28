@@ -299,10 +299,10 @@ class NodeTemplate(pulumi.CustomResource):
         # Create a new rancher2 Node Template up to Rancher 2.1.x
         foo = rancher2.NodeTemplate("foo",
             amazonec2_config={
-                "accessKey": "AWS_ACCESS_KEY",
+                "access_key": "AWS_ACCESS_KEY",
                 "ami": "<AMI_ID>",
                 "region": "<REGION>",
-                "secretKey": "<AWS_SECRET_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
                 "securityGroup": ["<AWS_SECURITY_GROUP>"],
                 "subnetId": "<SUBNET_ID>",
                 "vpcId": "<VPC_ID>",

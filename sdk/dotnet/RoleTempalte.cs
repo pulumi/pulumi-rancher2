@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. 
-    /// 
-    /// `cluster` and `project` scopes are supported for role templates.
-    /// </summary>
     public partial class RoleTempalte : Pulumi.CustomResource
     {
         /// <summary>
