@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information. 
-    /// 
-    /// Cluster Templates are available from Rancher v2.3.x and above.
-    /// </summary>
     public partial class ClusterTemplate : Pulumi.CustomResource
     {
         /// <summary>

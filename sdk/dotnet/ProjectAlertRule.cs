@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
-    /// </summary>
     public partial class ProjectAlertRule : Pulumi.CustomResource
     {
         /// <summary>

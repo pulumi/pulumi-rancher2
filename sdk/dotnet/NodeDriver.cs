@@ -11,6 +11,38 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Node Driver
+    ///         var foo = new Rancher2.NodeDriver("foo", new Rancher2.NodeDriverArgs
+    ///         {
+    ///             Active = true,
+    ///             Builtin = false,
+    ///             Checksum = "0x0",
+    ///             Description = "Foo description",
+    ///             ExternalId = "foo_external",
+    ///             UiUrl = "local://ui",
+    ///             Url = "local://",
+    ///             WhitelistDomains = 
+    ///             {
+    ///                 "*.foo.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeDriver : Pulumi.CustomResource
     {

@@ -13,6 +13,33 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
     /// 
     /// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Cloud Credential
+    ///         var foo = new Rancher2.CloudCredential("foo", new Rancher2.CloudCredentialArgs
+    ///         {
+    ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///             {
+    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             },
+    ///             Description = "foo test",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CloudCredential : Pulumi.CustomResource
     {

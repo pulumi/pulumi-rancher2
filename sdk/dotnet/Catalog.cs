@@ -11,6 +11,40 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Global Catalog
+    ///         var foo_global = new Rancher2.Catalog("foo-global", new Rancher2.CatalogArgs
+    ///         {
+    ///             Url = "https://&lt;CATALOG_URL&gt;",
+    ///         });
+    ///         // Create a new Rancher2 Cluster Catalog
+    ///         var foo_cluster = new Rancher2.Catalog("foo-cluster", new Rancher2.CatalogArgs
+    ///         {
+    ///             Scope = "cluster",
+    ///             Url = "https://&lt;CATALOG_URL&gt;",
+    ///         });
+    ///         // Create a new Rancher2 Project Catalog
+    ///         var foo_project = new Rancher2.Catalog("foo-project", new Rancher2.CatalogArgs
+    ///         {
+    ///             Scope = "project",
+    ///             Url = "https://&lt;CATALOG_URL&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Catalog : Pulumi.CustomResource
     {

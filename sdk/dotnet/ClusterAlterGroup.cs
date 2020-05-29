@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
-    /// </summary>
     public partial class ClusterAlterGroup : Pulumi.CustomResource
     {
         /// <summary>

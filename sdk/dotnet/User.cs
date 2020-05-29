@@ -13,6 +13,36 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
     /// 
     /// When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 User
+    ///         var fooUser = new Rancher2.User("fooUser", new Rancher2.UserArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Password = "changeme",
+    ///             Username = "foo",
+    ///         });
+    ///         // Create a new rancher2 global_role_binding for User
+    ///         var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new Rancher2.GlobalRoleBindingArgs
+    ///         {
+    ///             GlobalRoleId = "user-base",
+    ///             UserId = fooUser.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
