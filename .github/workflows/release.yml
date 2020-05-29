@@ -2,6 +2,13 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
   PROVIDER: rancher2
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  RANCHER_ACCESS_KEY: token-74zzn
+  RANCHER_INSECURE: "true"
+  RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
+  RANCHER_URL: ${{ secrets.RANCHER_URL }}
 jobs:
   build_sdk:
     name: build_sdk
@@ -20,11 +27,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.13.x
-    - name: Install tf2pulumi
-      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
-      with:
-        repo: pulumi/tf2pulumi
+        go-version: ${{ matrix.goversion }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
@@ -34,16 +37,16 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
-        node-version: 13.x
+        node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.201
+        dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
-        python-version: 3.x
+        python-version: ${{matrix.pythonversion}}
     - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
@@ -64,10 +67,18 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
+        dotnetversion:
+        - 3.1.201
+        goversion:
+        - 1.14.x
         language:
         - nodejs
         - python
         - dotnet
+        nodeversion:
+        - 13.x
+        pythonversion:
+        - "3.7"
   lint:
     container: golangci/golangci-lint:v1.25.1
     name: lint
@@ -85,11 +96,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.13.x
-    - name: Install tf2pulumi
-      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
-      with:
-        repo: pulumi/tf2pulumi
+        go-version: ${{ matrix.goversion }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
@@ -114,11 +121,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.13.x
-    - name: Install tf2pulumi
-      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
-      with:
-        repo: pulumi/tf2pulumi
+        go-version: ${{ matrix.goversion }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
@@ -126,18 +129,22 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Build tfgen & provider binaries
-      run: make  -f Makefile.github provider
+      run: make -f Makefile.github provider
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
   publish:
-    needs: test
-    runs-on: ubuntu-latest
+    needs: build_sdk
     steps:
-    - name: Checkout
+    - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: ci-scripts
+        repository: pulumi/scripts
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -151,10 +158,8 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.13.x
-    - env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      name: Run GoReleaser
+        go-version: ${{ matrix.goversion }}
+    - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2
       with:
         args: release --rm-dist
@@ -176,11 +181,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.13.x
-    - name: Install tf2pulumi
-      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
-      with:
-        repo: pulumi/tf2pulumi
+        go-version: ${{ matrix.goversion }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@release/v1-alpha
       with:
@@ -190,16 +191,16 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
-        node-version: 13.x
+        node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.201
+        dotnet-version: ${{matrix.dotnetverson}}
     - name: Setup Python
       uses: actions/setup-python@v1
       with:
-        python-version: 3.x
+        python-version: ${{matrix.pythonversion}}
     - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
@@ -213,34 +214,32 @@ jobs:
       with:
         name: ${{ matrix.language  }}-sdk
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}
-    - name: Check worktree clean
-      uses: jaxxstorm/action-git-worktree-clean@release/v1-alpha
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: make -f Makefile.github install_${{ matrix.language}}_sdk
-    - env:
-        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-        PULUMI_API: https://api.pulumi-staging.io
-        PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-        RANCHER_ACCESS_KEY: token-74zzn
-        RANCHER_INSECURE: "true"
-        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
-        RANCHER_URL: ${{ secrets.RANCHER_URL }}
-      name: Run tests
+    - name: Run tests
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language
         }} -parallel 4 .
     strategy:
       fail-fast: true
       matrix:
+        dotnetversion:
+        - 3.1.201
+        goversion:
+        - 1.14.x
         language:
         - nodejs
         - python
         - dotnet
+        nodeversion:
+        - 13.x
+        pythonversion:
+        - "3.7"
 name: release
 "on":
   push:
     tags:
-    - v*.*.*-**
+    - v*.*.*
