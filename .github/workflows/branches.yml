@@ -169,27 +169,23 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{matrix.pythonversion}}
-      - name: Download SDK
+      - name: Download Python SDK
         uses: actions/download-artifact@v2
         with:
-          path: ${{ github.workspace}}/sdk
+          name: python-sdk
+          path: ${{ github.workspace}}/sdk/python
+      - name: Download NodeJS SDK
+        uses: actions/download-artifact@v2
+        with:
+          name: nodejs-sdk
+          path: ${{ github.workspace}}/sdk/nodejs
+      - name: Download DotNet SDK
+        uses: actions/download-artifact@v2
+        with:
+          name: dotnet-sdk
+          path: ${{ github.workspace}}/sdk/dotnet
       - name: Publish SDK
         run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
-    strategy:
-      fail-fast: true
-      matrix:
-        dotnetversion:
-          - 3.1.201
-        goversion:
-          - 1.14.x
-        language:
-          - nodejs
-          - python
-          - dotnet
-        nodeversion:
-          - 13.x
-        pythonversion:
-          - "3.7"
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
