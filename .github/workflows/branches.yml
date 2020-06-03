@@ -132,6 +132,64 @@ jobs:
       uses: pulumi/action-install-pulumi-cli@releases/v1
     - name: Run golangci
       run: cd sdk/go/rancher2 && golangci-lint run -c ../../../.golangci.yml
+  publish_sdk:
+    name: publish_sdk
+    needs: build_sdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Checkout Scripts Repo
+        uses: actions/checkout@v2
+        with:
+          path: ci-scripts
+          repository: pulumi/scripts
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.goversion }}
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/action-install-pulumi-cli@releases/v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.nodeversion}}
+          registry-url: https://registry.npmjs.org
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{matrix.dotnetverson}}
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{matrix.pythonversion}}
+      - name: Download SDK
+        uses: actions/download-artifact@v2
+        with:
+          path: ${{ github.workspace}}/sdk
+      - name: Publish SDK
+        runs: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
+    strategy:
+      fail-fast: true
+      matrix:
+        dotnetversion:
+          - 3.1.201
+        goversion:
+          - 1.14.x
+        language:
+          - nodejs
+          - python
+          - dotnet
+        nodeversion:
+          - 13.x
+        pythonversion:
+          - "3.7"
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
