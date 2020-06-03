@@ -174,7 +174,7 @@ jobs:
         with:
           path: ${{ github.workspace}}/sdk
       - name: Publish SDK
-        runs: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
+        run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
     strategy:
       fail-fast: true
       matrix:
