@@ -1,3 +1,8 @@
+if [ -z "${RANCHER_URL}" ]; then
+  echo "Must set RANCHER_URL"
+  exit 2
+fi
+
 HEALTHCHECK_URI="${RANCHER_URL}/ping"
 
 printf "Waiting for local rancher2 to be ready"
