@@ -134,10 +134,8 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@releases/v1
-    - name: Check files
-      run: cd sdk/go/rancher2 && ls -alh .
     - name: Run golangci
-      run: cd sdk/go/rancher2 && golangci-lint run -v -c ../../../.golangci.yml
+      run: cd sdk/go/rancher2 && golangci-lint run -c ../../../.golangci.yml
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
