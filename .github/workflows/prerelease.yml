@@ -1,14 +1,17 @@
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GO111MODULE: "on"
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   PROVIDER: rancher2
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  RANCHER_ACCESS_KEY: token-74zzn
+  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   RANCHER_INSECURE: "true"
-  RANCHER_SECRET_KEY: ${{ secrets.RANCHER_SECRET_KEY }}
-  RANCHER_URL: ${{ secrets.RANCHER_URL }}
+  RANCHER_URL: https://localhost
+  TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
     name: build_sdk
@@ -75,6 +78,7 @@ jobs:
         - nodejs
         - python
         - dotnet
+        - go
         nodeversion:
         - 13.x
         pythonversion:
@@ -191,6 +195,60 @@ jobs:
       with:
         args: release --rm-dist --config=.goreleaser.prerelease.yaml
         version: latest
+  publish_sdk:
+    name: publish_sdk
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: ci-scripts
+        repository: pulumi/scripts
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.goversion }}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@release/v1-alpha
+      with:
+        repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@releases/v1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        always-auth: true
+        registry-url: https://registry.npmjs.org
+    - name: Setup DotNet
+      uses: actions/setup-dotnet@v1
+    - name: Setup Python
+      uses: actions/setup-python@v1
+    - name: Download Python SDK
+      uses: actions/download-artifact@v2
+      with:
+        name: python-sdk
+        path: ${{ github.workspace}}/sdk/python
+    - name: Install Twine
+      run: python -m pip install pip twine
+    - name: Download NodeJS SDK
+      uses: actions/download-artifact@v2
+      with:
+        name: nodejs-sdk
+        path: ${{ github.workspace}}/sdk/nodejs
+    - name: Download DotNet SDK
+      uses: actions/download-artifact@v2
+      with:
+        name: dotnet-sdk
+        path: ${{ github.workspace}}/sdk/dotnet
+    - env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      name: Publish SDKs
+      run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
   test:
     name: test
     needs: build_sdk
@@ -247,6 +305,10 @@ jobs:
       uses: dschep/install-pipenv-action@v1
     - name: Install dependencies
       run: make -f Makefile.github install_${{ matrix.language}}_sdk
+    - name: Run docker-compose
+      run: docker-compose -f testing/docker-compose.yml up --build -d
+    - name: Run setup script
+      run: testing/setup.sh
     - name: Run tests
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language
         }} -parallel 4 .
@@ -261,6 +323,7 @@ jobs:
         - nodejs
         - python
         - dotnet
+        - go
         nodeversion:
         - 13.x
         pythonversion:

@@ -1,0 +1,7 @@
+version: "3"
+services:
+  rancher2:
+    image: rancher/rancher:latest
+    ports:
+      - 80:80
+      - 443:443
