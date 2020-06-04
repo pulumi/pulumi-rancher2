@@ -18,6 +18,7 @@ linters:
   - varcheck
   enable-all: false
 run:
+  concurrency: 10
   skip-files:
   - schema.go
   - pulumiManifest.go
