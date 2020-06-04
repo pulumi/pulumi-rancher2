@@ -40,12 +40,8 @@ def main():
                   json={"username": "admin", "password": "admin"},
                   headers={'Content-Type': 'application/json'},
                   verify=False)
-    token = r.json()['token'].split(':')
-    if args.debug:
-        print(token)
-    os.environ['RANCHER_ACCESS_KEY'] = token[0]
-    os.environ['RANCHER_SECRET_KEY'] = token[1]
-
+    token = r.json()['token']
+    print(token)
 
 
 if __name__ == '__main__':

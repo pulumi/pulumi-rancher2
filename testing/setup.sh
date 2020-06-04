@@ -6,10 +6,11 @@ set -x -ef -o pipefail
 
 # install requirements
 pip install -r testing/requirements.txt
-# this python script sets environment variables
+# this python script returns a token
 # we use this python script because it hands retries for us if we get a 5xx response
-python testing/provision-rancher.py
+APIRESPONSE=$(python testing/provision-rancher.py)
 
-# set the env vars to be used across the GitHub jobs
+export RANCHER_ACCESS_KEY=$(echo $APIRESPONSE |cut -d ':' -f 1)
+export RANCHER_SECRET_KEY=$(echo $APIRESPONSE | cut -d ':' -f 2)
 echo "::set-env name=RANCHER_ACCESS_KEY::$RANCHER_ACCESS_KEY"
 echo "::set-env name=RANCHER_SECRET_KEY::$RANCHER_SECRET_KEY"
