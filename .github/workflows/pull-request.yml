@@ -84,7 +84,7 @@ jobs:
         pythonversion:
         - "3.7"
   lint:
-    container: golangci/golangci-lint:v1.25.1
+    container: golangci/golangci-lint:latest
     name: lint
     runs-on: ubuntu-latest
     steps:
