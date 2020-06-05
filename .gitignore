@@ -32,4 +32,5 @@ sdk/python/bin/
 dist/
 
 ## CI scripts
-ci-scripts
+**/ci-scripts
+**/nuget
