@@ -65,6 +65,10 @@ export interface GetClusterLoggingResult {
      */
     readonly fluentdConfig: outputs.GetClusterLoggingFluentdConfig;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
      */
     readonly kafkaConfig: outputs.GetClusterLoggingKafkaConfig;
@@ -100,8 +104,4 @@ export interface GetClusterLoggingResult {
      * (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
      */
     readonly syslogConfig: outputs.GetClusterLoggingSyslogConfig;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

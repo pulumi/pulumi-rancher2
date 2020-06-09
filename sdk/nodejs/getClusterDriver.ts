@@ -75,6 +75,10 @@ export interface GetClusterDriverResult {
      */
     readonly checksum: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels of the resource (map)
      */
     readonly labels: {[key: string]: any};
@@ -88,8 +92,4 @@ export interface GetClusterDriverResult {
      * (Computed) Domains to whitelist for the ui (list)
      */
     readonly whitelistDomains: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

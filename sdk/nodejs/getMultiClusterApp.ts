@@ -62,6 +62,10 @@ export interface GetMultiClusterAppResult {
      */
     readonly catalogName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for multi cluster app object (map)
      */
     readonly labels: {[key: string]: any};
@@ -102,8 +106,4 @@ export interface GetMultiClusterAppResult {
      * (Computed) The multi cluster app upgrade strategy (list)
      */
     readonly upgradeStrategies: outputs.GetMultiClusterAppUpgradeStrategy[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

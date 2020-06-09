@@ -82,6 +82,10 @@ export interface GetNodePoolResult {
      */
     readonly hostnamePrefix: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for Node Pool object (map)
      */
     readonly labels: {[key: string]: any};
@@ -99,8 +103,4 @@ export interface GetNodePoolResult {
      * (Computed) RKE role role for created nodes (bool)
      */
     readonly worker: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

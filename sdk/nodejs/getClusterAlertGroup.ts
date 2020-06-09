@@ -73,6 +73,10 @@ export interface GetClusterAlertGroupResult {
      */
     readonly groupWaitSeconds: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The cluster alert group labels (map)
      */
     readonly labels: {[key: string]: any};
@@ -85,8 +89,4 @@ export interface GetClusterAlertGroupResult {
      * (Computed) The cluster alert group wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -77,6 +77,10 @@ export interface GetProjectAlertRuleResult {
      */
     readonly groupWaitSeconds: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The project alert rule inherited. Default: `true` (bool)
      */
     readonly inherited: boolean;
@@ -106,8 +110,4 @@ export interface GetProjectAlertRuleResult {
      * (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
      */
     readonly workloadRule: outputs.GetProjectAlertRuleWorkloadRule;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

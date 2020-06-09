@@ -603,7 +603,26 @@
                 "tenantId",
                 "virtualNetwork",
                 "virtualNetworkResourceGroup"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agentDnsPrefix",
+                        "clientId",
+                        "clientSecret",
+                        "kubernetesVersion",
+                        "masterDnsPrefix",
+                        "resourceGroup",
+                        "sshPublicKeyContents",
+                        "subnet",
+                        "subscriptionId",
+                        "tag",
+                        "tenantId",
+                        "virtualNetwork",
+                        "virtualNetworkResourceGroup"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient": {
             "properties": {
@@ -647,7 +666,16 @@
             "type": "object",
             "required": [
                 "notifierId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "notifierId",
+                        "notifierType",
+                        "recipient"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterAlterRuleEventRule:ClusterAlterRuleEventRule": {
             "properties": {
@@ -963,7 +991,24 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "annotations",
+                        "clusterId",
+                        "command",
+                        "id",
+                        "insecureCommand",
+                        "labels",
+                        "manifestUrl",
+                        "name",
+                        "nodeCommand",
+                        "token",
+                        "windowsNodeCommand"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterClusterTemplateAnswers:ClusterClusterTemplateAnswers": {
             "properties": {
@@ -998,7 +1043,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterId",
+                        "projectId",
+                        "values"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterClusterTemplateQuestion:ClusterClusterTemplateQuestion": {
             "properties": {
@@ -1221,7 +1275,17 @@
                 "accessKey",
                 "kubernetesVersion",
                 "secretKey"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessKey",
+                        "kubernetesVersion",
+                        "secretKey",
+                        "userData"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterGkeConfig:ClusterGkeConfig": {
             "properties": {
@@ -1735,7 +1799,37 @@
                 "projectId",
                 "serviceAccount",
                 "subNetwork"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterIpv4Cidr",
+                        "credential",
+                        "diskType",
+                        "imageType",
+                        "ipPolicyClusterIpv4CidrBlock",
+                        "ipPolicyClusterSecondaryRangeName",
+                        "ipPolicyNodeIpv4CidrBlock",
+                        "ipPolicyServicesIpv4CidrBlock",
+                        "ipPolicyServicesSecondaryRangeName",
+                        "ipPolicySubnetworkName",
+                        "labels",
+                        "locations",
+                        "machineType",
+                        "maintenanceWindow",
+                        "masterIpv4CidrBlock",
+                        "masterVersion",
+                        "network",
+                        "nodePool",
+                        "nodeVersion",
+                        "oauthScopes",
+                        "projectId",
+                        "resourceLabels",
+                        "serviceAccount",
+                        "subNetwork"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterK3sConfig:ClusterK3sConfig": {
             "properties": {
@@ -1758,7 +1852,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "upgradeStrategy",
+                        "version"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterK3sConfigUpgradeStrategy:ClusterK3sConfigUpgradeStrategy": {
             "properties": {
@@ -1950,7 +2052,15 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterLoggingFluentdConfig:ClusterLoggingFluentdConfig": {
             "properties": {
@@ -2223,7 +2333,16 @@
             "required": [
                 "endpoint",
                 "token"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify",
+                        "token"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterLoggingSyslogConfig:ClusterLoggingSyslogConfig": {
             "properties": {
@@ -2312,7 +2431,15 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfig:ClusterRkeConfig": {
             "properties": {
@@ -2515,7 +2642,28 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "addonJobTimeout",
+                        "authentication",
+                        "authorization",
+                        "bastionHost",
+                        "cloudProvider",
+                        "dns",
+                        "ingress",
+                        "kubernetesVersion",
+                        "monitoring",
+                        "network",
+                        "prefixPath",
+                        "services",
+                        "sshCertPath",
+                        "sshKeyPath",
+                        "upgradeStrategy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigAuthentication:ClusterRkeConfigAuthentication": {
             "properties": {
@@ -2541,7 +2689,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "sans",
+                        "strategy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigAuthorization:ClusterRkeConfigAuthorization": {
             "properties": {
@@ -2567,7 +2723,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigBastionHost:ClusterRkeConfigBastionHost": {
             "properties": {
@@ -2630,7 +2793,17 @@
             "required": [
                 "address",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "sshKey",
+                        "sshKeyPath",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProvider:ClusterRkeConfigCloudProvider": {
             "properties": {
@@ -2689,7 +2862,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "customCloudProvider",
+                        "name"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderAwsCloudProvider:ClusterRkeConfigCloudProviderAwsCloudProvider": {
             "properties": {
@@ -2715,7 +2896,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "global"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderAwsCloudProviderGlobal:ClusterRkeConfigCloudProviderAwsCloudProviderGlobal": {
             "properties": {
@@ -2810,7 +2998,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "elbSecurityGroup",
+                        "kubernetesClusterId",
+                        "kubernetesClusterTag",
+                        "roleArn",
+                        "routeTableId",
+                        "subnetId",
+                        "vpc",
+                        "zone"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride:ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride": {
             "properties": {
@@ -2872,7 +3074,19 @@
             "type": "object",
             "required": [
                 "service"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "region",
+                        "service",
+                        "signingMethod",
+                        "signingName",
+                        "signingRegion",
+                        "url"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderAzureCloudProvider:ClusterRkeConfigCloudProviderAzureCloudProvider": {
             "properties": {
@@ -3135,7 +3349,41 @@
                 "aadClientSecret",
                 "subscriptionId",
                 "tenantId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "aadClientCertPassword",
+                        "aadClientCertPath",
+                        "aadClientId",
+                        "aadClientSecret",
+                        "cloud",
+                        "cloudProviderBackoff",
+                        "cloudProviderBackoffDuration",
+                        "cloudProviderBackoffExponent",
+                        "cloudProviderBackoffJitter",
+                        "cloudProviderBackoffRetries",
+                        "cloudProviderRateLimit",
+                        "cloudProviderRateLimitBucket",
+                        "cloudProviderRateLimitQps",
+                        "location",
+                        "maximumLoadBalancerRuleCount",
+                        "primaryAvailabilitySetName",
+                        "primaryScaleSetName",
+                        "resourceGroup",
+                        "routeTableName",
+                        "securityGroupName",
+                        "subnetName",
+                        "subscriptionId",
+                        "tenantId",
+                        "useInstanceMetadata",
+                        "useManagedIdentityExtension",
+                        "vmType",
+                        "vnetName",
+                        "vnetResourceGroup"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProvider:ClusterRkeConfigCloudProviderOpenstackCloudProvider": {
             "properties": {
@@ -3188,7 +3436,18 @@
             "type": "object",
             "required": [
                 "global"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "blockStorage",
+                        "global",
+                        "loadBalancer",
+                        "metadata",
+                        "route"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage:ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage": {
             "properties": {
@@ -3220,7 +3479,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bsVersion",
+                        "ignoreVolumeAz",
+                        "trustDevicePath"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal:ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal": {
             "properties": {
@@ -3320,7 +3588,23 @@
                 "authUrl",
                 "password",
                 "username"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authUrl",
+                        "caFile",
+                        "domainId",
+                        "domainName",
+                        "password",
+                        "region",
+                        "tenantId",
+                        "tenantName",
+                        "trustId",
+                        "username"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer:ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer": {
             "properties": {
@@ -3424,7 +3708,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createMonitor",
+                        "floatingNetworkId",
+                        "lbMethod",
+                        "lbProvider",
+                        "lbVersion",
+                        "manageSecurityGroups",
+                        "subnetId",
+                        "useOctavia"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata:ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata": {
             "properties": {
@@ -3447,7 +3745,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "requestTimeout",
+                        "searchOrder"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute:ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute": {
             "properties": {
@@ -3461,7 +3767,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "routerId"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProvider:ClusterRkeConfigCloudProviderVsphereCloudProvider": {
             "properties": {
@@ -3518,7 +3831,18 @@
             "required": [
                 "virtualCenters",
                 "workspace"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disk",
+                        "global",
+                        "network",
+                        "virtualCenters",
+                        "workspace"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProviderDisk:ClusterRkeConfigCloudProviderVsphereCloudProviderDisk": {
             "properties": {
@@ -3532,7 +3856,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "scsiControllerType"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal:ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal": {
             "properties": {
@@ -3591,7 +3922,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenters",
+                        "insecureFlag",
+                        "password",
+                        "port",
+                        "soapRoundtripCount",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork:ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork": {
             "properties": {
@@ -3605,7 +3948,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "publicNetwork"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter:ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter": {
             "properties": {
@@ -3670,7 +4020,19 @@
                 "name",
                 "password",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenters",
+                        "name",
+                        "password",
+                        "port",
+                        "soapRoundtripCount",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace:ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace": {
             "properties": {
@@ -3725,7 +4087,18 @@
                 "datacenter",
                 "folder",
                 "server"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenter",
+                        "defaultDatastore",
+                        "folder",
+                        "resourcepoolPath",
+                        "server"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigDns:ClusterRkeConfigDns": {
             "properties": {
@@ -3775,7 +4148,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "nodeSelector",
+                        "reverseCidrs",
+                        "upstreamNameservers"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigIngress:ClusterRkeConfigIngress": {
             "properties": {
@@ -3834,7 +4216,18 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dnsPolicy",
+                        "extraArgs",
+                        "nodeSelector",
+                        "options",
+                        "provider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigMonitoring:ClusterRkeConfigMonitoring": {
             "properties": {
@@ -3860,7 +4253,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options",
+                        "provider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigNetwork:ClusterRkeConfigNetwork": {
             "properties": {
@@ -3931,7 +4332,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options",
+                        "plugin"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigNetworkCalicoNetworkProvider:ClusterRkeConfigNetworkCalicoNetworkProvider": {
             "properties": {
@@ -3945,7 +4354,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cloudProvider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigNetworkCanalNetworkProvider:ClusterRkeConfigNetworkCanalNetworkProvider": {
             "properties": {
@@ -3959,7 +4375,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "iface"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigNetworkFlannelNetworkProvider:ClusterRkeConfigNetworkFlannelNetworkProvider": {
             "properties": {
@@ -3973,7 +4396,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "iface"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigNetworkWeaveNetworkProvider:ClusterRkeConfigNetworkWeaveNetworkProvider": {
             "properties": {
@@ -4114,7 +4544,19 @@
                 "address",
                 "roles",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "dockerSocket",
+                        "roles",
+                        "sshKey",
+                        "sshKeyPath",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigPrivateRegistry:ClusterRkeConfigPrivateRegistry": {
             "properties": {
@@ -4217,7 +4659,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "etcd",
+                        "kubeApi",
+                        "kubeController",
+                        "kubelet",
+                        "kubeproxy",
+                        "scheduler"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesEtcd:ClusterRkeConfigServicesEtcd": {
             "properties": {
@@ -4369,7 +4823,23 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "backupConfig",
+                        "caCert",
+                        "cert",
+                        "creation",
+                        "extraArgs",
+                        "image",
+                        "key",
+                        "path",
+                        "retention",
+                        "snapshot"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesEtcdBackupConfig:ClusterRkeConfigServicesEtcdBackupConfig": {
             "properties": {
@@ -4616,7 +5086,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image",
+                        "serviceClusterIpRange",
+                        "serviceNodePortRange"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesKubeApiAuditLog:ClusterRkeConfigServicesKubeApiAuditLog": {
             "properties": {
@@ -4639,7 +5119,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "configuration"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesKubeApiAuditLogConfiguration:ClusterRkeConfigServicesKubeApiAuditLogConfiguration": {
             "properties": {
@@ -4698,7 +5185,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "policy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesKubeApiEventRateLimit:ClusterRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
@@ -4818,7 +5312,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterCidr",
+                        "extraArgs",
+                        "image",
+                        "serviceClusterIpRange"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesKubelet:ClusterRkeConfigServicesKubelet": {
             "properties": {
@@ -4913,7 +5417,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterDnsServer",
+                        "clusterDomain",
+                        "extraArgs",
+                        "failSwapOn",
+                        "image",
+                        "infraContainerImage"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesKubeproxy:ClusterRkeConfigServicesKubeproxy": {
             "properties": {
@@ -4963,7 +5479,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigServicesScheduler:ClusterRkeConfigServicesScheduler": {
             "properties": {
@@ -5013,7 +5537,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigUpgradeStrategy:ClusterRkeConfigUpgradeStrategy": {
             "properties": {
@@ -5054,7 +5586,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "drainInput"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterRkeConfigUpgradeStrategyDrainInput:ClusterRkeConfigUpgradeStrategyDrainInput": {
             "properties": {
@@ -5154,7 +5693,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cisScanConfig"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterScheduledClusterScanScanConfigCisScanConfig:ClusterScheduledClusterScanScanConfigCisScanConfig": {
             "properties": {
@@ -5233,7 +5779,15 @@
             "type": "object",
             "required": [
                 "cronSchedule"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cronSchedule",
+                        "retention"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateMember:ClusterTemplateMember": {
             "properties": {
@@ -5364,7 +5918,19 @@
             "required": [
                 "clusterConfig",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "annotations",
+                        "clusterConfig",
+                        "clusterTemplateId",
+                        "id",
+                        "labels",
+                        "name"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfig:ClusterTemplateTemplateRevisionClusterConfig": {
             "properties": {
@@ -5480,7 +6046,20 @@
             "type": "object",
             "required": [
                 "rkeConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterAuthEndpoint",
+                        "defaultClusterRoleForProjectMembers",
+                        "defaultPodSecurityPolicyTemplateId",
+                        "desiredAgentImage",
+                        "desiredAuthImage",
+                        "dockerRootDir",
+                        "rkeConfig"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint:ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint": {
             "properties": {
@@ -5692,7 +6271,28 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "addonJobTimeout",
+                        "authentication",
+                        "authorization",
+                        "bastionHost",
+                        "cloudProvider",
+                        "dns",
+                        "ingress",
+                        "kubernetesVersion",
+                        "monitoring",
+                        "network",
+                        "prefixPath",
+                        "services",
+                        "sshCertPath",
+                        "sshKeyPath",
+                        "upgradeStrategy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication:ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication": {
             "properties": {
@@ -5716,7 +6316,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "sans",
+                        "strategy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization:ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization": {
             "properties": {
@@ -5740,7 +6348,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost:ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost": {
             "properties": {
@@ -5797,7 +6412,17 @@
             "required": [
                 "address",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "sshKey",
+                        "sshKeyPath",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider": {
             "properties": {
@@ -5851,7 +6476,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "customCloudProvider",
+                        "name"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider": {
             "properties": {
@@ -5875,7 +6508,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "global"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal": {
             "properties": {
@@ -5960,7 +6600,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "elbSecurityGroup",
+                        "kubernetesClusterId",
+                        "kubernetesClusterTag",
+                        "roleArn",
+                        "routeTableId",
+                        "subnetId",
+                        "vpc",
+                        "zone"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride": {
             "properties": {
@@ -6016,7 +6670,19 @@
             "type": "object",
             "required": [
                 "service"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "region",
+                        "service",
+                        "signingMethod",
+                        "signingName",
+                        "signingRegion",
+                        "url"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider": {
             "properties": {
@@ -6251,7 +6917,41 @@
                 "aadClientSecret",
                 "subscriptionId",
                 "tenantId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "aadClientCertPassword",
+                        "aadClientCertPath",
+                        "aadClientId",
+                        "aadClientSecret",
+                        "cloud",
+                        "cloudProviderBackoff",
+                        "cloudProviderBackoffDuration",
+                        "cloudProviderBackoffExponent",
+                        "cloudProviderBackoffJitter",
+                        "cloudProviderBackoffRetries",
+                        "cloudProviderRateLimit",
+                        "cloudProviderRateLimitBucket",
+                        "cloudProviderRateLimitQps",
+                        "location",
+                        "maximumLoadBalancerRuleCount",
+                        "primaryAvailabilitySetName",
+                        "primaryScaleSetName",
+                        "resourceGroup",
+                        "routeTableName",
+                        "securityGroupName",
+                        "subnetName",
+                        "subscriptionId",
+                        "tenantId",
+                        "useInstanceMetadata",
+                        "useManagedIdentityExtension",
+                        "vmType",
+                        "vnetName",
+                        "vnetResourceGroup"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider": {
             "properties": {
@@ -6299,7 +6999,18 @@
             "type": "object",
             "required": [
                 "global"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "blockStorage",
+                        "global",
+                        "loadBalancer",
+                        "metadata",
+                        "route"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage": {
             "properties": {
@@ -6328,7 +7039,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bsVersion",
+                        "ignoreVolumeAz",
+                        "trustDevicePath"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal": {
             "properties": {
@@ -6418,7 +7138,23 @@
                 "authUrl",
                 "password",
                 "username"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authUrl",
+                        "caFile",
+                        "domainId",
+                        "domainName",
+                        "password",
+                        "region",
+                        "tenantId",
+                        "tenantName",
+                        "trustId",
+                        "username"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer": {
             "properties": {
@@ -6511,7 +7247,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createMonitor",
+                        "floatingNetworkId",
+                        "lbMethod",
+                        "lbProvider",
+                        "lbVersion",
+                        "manageSecurityGroups",
+                        "subnetId",
+                        "useOctavia"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata": {
             "properties": {
@@ -6532,7 +7282,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "requestTimeout",
+                        "searchOrder"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute": {
             "properties": {
@@ -6545,7 +7303,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "routerId"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider": {
             "properties": {
@@ -6597,7 +7362,18 @@
             "required": [
                 "virtualCenters",
                 "workspace"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disk",
+                        "global",
+                        "network",
+                        "virtualCenters",
+                        "workspace"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk": {
             "properties": {
@@ -6610,7 +7386,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "scsiControllerType"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal": {
             "properties": {
@@ -6663,7 +7446,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenters",
+                        "insecureFlag",
+                        "password",
+                        "port",
+                        "soapRoundtripCount",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork": {
             "properties": {
@@ -6676,7 +7471,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "publicNetwork"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter": {
             "properties": {
@@ -6736,7 +7538,19 @@
                 "name",
                 "password",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenters",
+                        "name",
+                        "password",
+                        "port",
+                        "soapRoundtripCount",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace:ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace": {
             "properties": {
@@ -6786,7 +7600,18 @@
                 "datacenter",
                 "folder",
                 "server"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "datacenter",
+                        "defaultDatastore",
+                        "folder",
+                        "resourcepoolPath",
+                        "server"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns": {
             "properties": {
@@ -6832,7 +7657,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "nodeSelector",
+                        "reverseCidrs",
+                        "upstreamNameservers"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress:ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress": {
             "properties": {
@@ -6886,7 +7720,18 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dnsPolicy",
+                        "extraArgs",
+                        "nodeSelector",
+                        "options",
+                        "provider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring": {
             "properties": {
@@ -6910,7 +7755,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options",
+                        "provider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork": {
             "properties": {
@@ -6974,7 +7827,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "options",
+                        "plugin"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider": {
             "properties": {
@@ -6987,7 +7848,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cloudProvider"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider": {
             "properties": {
@@ -7000,7 +7868,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "iface"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider": {
             "properties": {
@@ -7013,7 +7888,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "iface"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider": {
             "properties": {
@@ -7142,7 +8024,19 @@
                 "address",
                 "roles",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "dockerSocket",
+                        "roles",
+                        "sshKey",
+                        "sshKeyPath",
+                        "user"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry:ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry": {
             "properties": {
@@ -7235,7 +8129,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "etcd",
+                        "kubeApi",
+                        "kubeController",
+                        "kubelet",
+                        "kubeproxy",
+                        "scheduler"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd": {
             "properties": {
@@ -7372,7 +8278,23 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "backupConfig",
+                        "caCert",
+                        "cert",
+                        "creation",
+                        "extraArgs",
+                        "image",
+                        "key",
+                        "path",
+                        "retention",
+                        "snapshot"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig": {
             "properties": {
@@ -7596,7 +8518,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image",
+                        "serviceClusterIpRange",
+                        "serviceNodePortRange"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog": {
             "properties": {
@@ -7618,7 +8550,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "configuration"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration": {
             "properties": {
@@ -7671,7 +8610,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "policy"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
@@ -7783,7 +8729,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterCidr",
+                        "extraArgs",
+                        "image",
+                        "serviceClusterIpRange"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet": {
             "properties": {
@@ -7869,7 +8825,19 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterDnsServer",
+                        "clusterDomain",
+                        "extraArgs",
+                        "failSwapOn",
+                        "image",
+                        "infraContainerImage"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy": {
             "properties": {
@@ -7915,7 +8883,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler": {
             "properties": {
@@ -7961,7 +8937,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "extraArgs",
+                        "image"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy": {
             "properties": {
@@ -7998,7 +8982,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "drainInput"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput:ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput": {
             "properties": {
@@ -8090,7 +9081,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cisScanConfig"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig:ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig": {
             "properties": {
@@ -8162,7 +9160,15 @@
             "type": "object",
             "required": [
                 "cronSchedule"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cronSchedule",
+                        "retention"
+                    ]
+                }
+            }
         },
         "rancher2:/ClusterTemplateTemplateRevisionQuestion:ClusterTemplateTemplateRevisionQuestion": {
             "properties": {
@@ -8363,7 +9369,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "clusterId",
+                        "projectId",
+                        "values"
+                    ]
+                }
+            }
         },
         "rancher2:/MultiClusterAppMember:MultiClusterAppMember": {
             "properties": {
@@ -8439,7 +9454,17 @@
             "type": "object",
             "required": [
                 "projectId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "appId",
+                        "healthState",
+                        "projectId",
+                        "state"
+                    ]
+                }
+            }
         },
         "rancher2:/MultiClusterAppUpgradeStrategy:MultiClusterAppUpgradeStrategy": {
             "properties": {
@@ -8700,7 +9725,16 @@
             "required": [
                 "key",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "key",
+                        "timeAdded",
+                        "value"
+                    ]
+                }
+            }
         },
         "rancher2:/NodeTemplateAmazonec2Config:NodeTemplateAmazonec2Config": {
             "properties": {
@@ -10583,7 +11617,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ranges"
+                    ]
+                }
+            }
         },
         "rancher2:/PodSecurityPolicyTemplateFsGroupRange:PodSecurityPolicyTemplateFsGroupRange": {
             "properties": {
@@ -10871,7 +11912,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ranges"
+                    ]
+                }
+            }
         },
         "rancher2:/PodSecurityPolicyTemplateSupplementalGroupRange:PodSecurityPolicyTemplateSupplementalGroupRange": {
             "properties": {
@@ -10941,7 +11989,16 @@
             "type": "object",
             "required": [
                 "notifierId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "notifierId",
+                        "notifierType",
+                        "recipient"
+                    ]
+                }
+            }
         },
         "rancher2:/ProjectAlertRuleMetricRule:ProjectAlertRuleMetricRule": {
             "properties": {
@@ -11267,7 +12324,15 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify"
+                    ]
+                }
+            }
         },
         "rancher2:/ProjectLoggingFluentdConfig:ProjectLoggingFluentdConfig": {
             "properties": {
@@ -11540,7 +12605,16 @@
             "required": [
                 "endpoint",
                 "token"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify",
+                        "token"
+                    ]
+                }
+            }
         },
         "rancher2:/ProjectLoggingSyslogConfig:ProjectLoggingSyslogConfig": {
             "properties": {
@@ -11629,7 +12703,15 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoint",
+                        "sslVerify"
+                    ]
+                }
+            }
         },
         "rancher2:/ProjectProjectMonitoringInput:ProjectProjectMonitoringInput": {
             "properties": {
@@ -12343,7 +13425,12 @@
                 "tenantId",
                 "virtualNetwork",
                 "virtualNetworkResourceGroup"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterAlertGroupRecipient:getClusterAlertGroupRecipient": {
             "properties": {
@@ -12385,7 +13472,12 @@
                 "notifierId",
                 "notifierType",
                 "recipient"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterAlterRuleEventRule:getClusterAlterRuleEventRule": {
             "properties": {
@@ -12409,7 +13501,12 @@
             "type": "object",
             "required": [
                 "resourceKind"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterAlterRuleMetricRule:getClusterAlterRuleMetricRule": {
             "properties": {
@@ -12459,7 +13556,12 @@
                 "duration",
                 "expression",
                 "thresholdValue"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterAlterRuleNodeRule:getClusterAlterRuleNodeRule": {
             "properties": {
@@ -12689,7 +13791,12 @@
                 "nodeCommand",
                 "token",
                 "windowsNodeCommand"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterClusterTemplateAnswers:getClusterClusterTemplateAnswers": {
             "properties": {
@@ -12726,7 +13833,12 @@
                 "clusterId",
                 "projectId",
                 "values"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterClusterTemplateQuestion:getClusterClusterTemplateQuestion": {
             "properties": {
@@ -12767,7 +13879,12 @@
             "required": [
                 "default",
                 "variable"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterEksConfig:getClusterEksConfig": {
             "properties": {
@@ -12928,7 +14045,12 @@
                 "kubernetesVersion",
                 "secretKey",
                 "userData"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterGkeConfig:getClusterGkeConfig": {
             "properties": {
@@ -13395,7 +14517,12 @@
                 "resourceLabels",
                 "serviceAccount",
                 "subNetwork"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterK3sConfig:getClusterK3sConfig": {
             "properties": {
@@ -13420,7 +14547,12 @@
             "required": [
                 "upgradeStrategy",
                 "version"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterK3sConfigUpgradeStrategy:getClusterK3sConfigUpgradeStrategy": {
             "properties": {
@@ -13497,7 +14629,12 @@
             "type": "object",
             "required": [
                 "content"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingElasticsearchConfig:getClusterLoggingElasticsearchConfig": {
             "properties": {
@@ -13594,7 +14731,12 @@
             "required": [
                 "endpoint",
                 "sslVerify"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingFluentdConfig:getClusterLoggingFluentdConfig": {
             "properties": {
@@ -13637,7 +14779,12 @@
             "type": "object",
             "required": [
                 "fluentServers"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingFluentdConfigFluentServer:getClusterLoggingFluentdConfigFluentServer": {
             "properties": {
@@ -13701,7 +14848,12 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingKafkaConfig:getClusterLoggingKafkaConfig": {
             "properties": {
@@ -13760,7 +14912,12 @@
             "type": "object",
             "required": [
                 "topic"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingSplunkConfig:getClusterLoggingSplunkConfig": {
             "properties": {
@@ -13842,7 +14999,12 @@
                 "endpoint",
                 "sslVerify",
                 "token"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterLoggingSyslogConfig:getClusterLoggingSyslogConfig": {
             "properties": {
@@ -13923,7 +15085,12 @@
             "required": [
                 "endpoint",
                 "sslVerify"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfig:getClusterRkeConfig": {
             "properties": {
@@ -14122,7 +15289,12 @@
                 "sshCertPath",
                 "sshKeyPath",
                 "upgradeStrategy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigAuthentication:getClusterRkeConfigAuthentication": {
             "properties": {
@@ -14150,7 +15322,12 @@
             "required": [
                 "sans",
                 "strategy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigAuthorization:getClusterRkeConfigAuthorization": {
             "properties": {
@@ -14177,7 +15354,12 @@
             "type": "object",
             "required": [
                 "options"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigBastionHost:getClusterRkeConfigBastionHost": {
             "properties": {
@@ -14236,7 +15418,12 @@
                 "sshKey",
                 "sshKeyPath",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProvider:getClusterRkeConfigCloudProvider": {
             "properties": {
@@ -14294,7 +15481,12 @@
             "required": [
                 "customCloudProvider",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderAwsCloudProvider:getClusterRkeConfigCloudProviderAwsCloudProvider": {
             "properties": {
@@ -14321,7 +15513,12 @@
             "type": "object",
             "required": [
                 "global"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderAwsCloudProviderGlobal:getClusterRkeConfigCloudProviderAwsCloudProviderGlobal": {
             "properties": {
@@ -14416,7 +15613,12 @@
                 "subnetId",
                 "vpc",
                 "zone"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride:getClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride": {
             "properties": {
@@ -14477,7 +15679,12 @@
                 "signingName",
                 "signingRegion",
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderAzureCloudProvider:getClusterRkeConfigCloudProviderAzureCloudProvider": {
             "properties": {
@@ -14736,7 +15943,12 @@
                 "vmType",
                 "vnetName",
                 "vnetResourceGroup"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProvider:getClusterRkeConfigCloudProviderOpenstackCloudProvider": {
             "properties": {
@@ -14788,7 +16000,12 @@
                 "loadBalancer",
                 "metadata",
                 "route"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage:getClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage": {
             "properties": {
@@ -14822,7 +16039,12 @@
                 "bsVersion",
                 "ignoreVolumeAz",
                 "trustDevicePath"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal:getClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal": {
             "properties": {
@@ -14919,7 +16141,12 @@
                 "tenantName",
                 "trustId",
                 "username"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer:getClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer": {
             "properties": {
@@ -15022,7 +16249,12 @@
                 "manageSecurityGroups",
                 "subnetId",
                 "useOctavia"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata:getClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata": {
             "properties": {
@@ -15047,7 +16279,12 @@
             "required": [
                 "requestTimeout",
                 "searchOrder"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderOpenstackCloudProviderRoute:getClusterRkeConfigCloudProviderOpenstackCloudProviderRoute": {
             "properties": {
@@ -15063,7 +16300,12 @@
             "type": "object",
             "required": [
                 "routerId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProvider:getClusterRkeConfigCloudProviderVsphereCloudProvider": {
             "properties": {
@@ -15118,7 +16360,12 @@
                 "network",
                 "virtualCenters",
                 "workspace"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProviderDisk:getClusterRkeConfigCloudProviderVsphereCloudProviderDisk": {
             "properties": {
@@ -15134,7 +16381,12 @@
             "type": "object",
             "required": [
                 "scsiControllerType"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProviderGlobal:getClusterRkeConfigCloudProviderVsphereCloudProviderGlobal": {
             "properties": {
@@ -15195,7 +16447,12 @@
                 "port",
                 "soapRoundtripCount",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProviderNetwork:getClusterRkeConfigCloudProviderVsphereCloudProviderNetwork": {
             "properties": {
@@ -15211,7 +16468,12 @@
             "type": "object",
             "required": [
                 "publicNetwork"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter:getClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter": {
             "properties": {
@@ -15273,7 +16535,12 @@
                 "port",
                 "soapRoundtripCount",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace:getClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace": {
             "properties": {
@@ -15325,7 +16592,12 @@
                 "folder",
                 "resourcepoolPath",
                 "server"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigDns:getClusterRkeConfigDns": {
             "properties": {
@@ -15376,7 +16648,12 @@
                 "nodeSelector",
                 "reverseCidrs",
                 "upstreamNameservers"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigIngress:getClusterRkeConfigIngress": {
             "properties": {
@@ -15437,7 +16714,12 @@
                 "nodeSelector",
                 "options",
                 "provider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigMonitoring:getClusterRkeConfigMonitoring": {
             "properties": {
@@ -15465,7 +16747,12 @@
             "required": [
                 "options",
                 "provider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNetwork:getClusterRkeConfigNetwork": {
             "properties": {
@@ -15533,7 +16820,12 @@
             "required": [
                 "options",
                 "plugin"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNetworkCalicoNetworkProvider:getClusterRkeConfigNetworkCalicoNetworkProvider": {
             "properties": {
@@ -15549,7 +16841,12 @@
             "type": "object",
             "required": [
                 "cloudProvider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNetworkCanalNetworkProvider:getClusterRkeConfigNetworkCanalNetworkProvider": {
             "properties": {
@@ -15565,7 +16862,12 @@
             "type": "object",
             "required": [
                 "iface"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNetworkFlannelNetworkProvider:getClusterRkeConfigNetworkFlannelNetworkProvider": {
             "properties": {
@@ -15581,7 +16883,12 @@
             "type": "object",
             "required": [
                 "iface"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNetworkWeaveNetworkProvider:getClusterRkeConfigNetworkWeaveNetworkProvider": {
             "properties": {
@@ -15597,7 +16904,12 @@
             "type": "object",
             "required": [
                 "password"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigNode:getClusterRkeConfigNode": {
             "properties": {
@@ -15713,7 +17025,12 @@
                 "sshKey",
                 "sshKeyPath",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigPrivateRegistry:getClusterRkeConfigPrivateRegistry": {
             "properties": {
@@ -15753,7 +17070,12 @@
             "type": "object",
             "required": [
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServices:getClusterRkeConfigServices": {
             "properties": {
@@ -15814,7 +17136,12 @@
                 "kubelet",
                 "kubeproxy",
                 "scheduler"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesEtcd:getClusterRkeConfigServicesEtcd": {
             "properties": {
@@ -15963,7 +17290,12 @@
                 "path",
                 "retention",
                 "snapshot"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesEtcdBackupConfig:getClusterRkeConfigServicesEtcdBackupConfig": {
             "properties": {
@@ -16073,7 +17405,12 @@
             "required": [
                 "bucketName",
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubeApi:getClusterRkeConfigServicesKubeApi": {
             "properties": {
@@ -16192,7 +17529,12 @@
                 "image",
                 "serviceClusterIpRange",
                 "serviceNodePortRange"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubeApiAuditLog:getClusterRkeConfigServicesKubeApiAuditLog": {
             "properties": {
@@ -16216,7 +17558,12 @@
             "type": "object",
             "required": [
                 "configuration"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubeApiAuditLogConfiguration:getClusterRkeConfigServicesKubeApiAuditLogConfiguration": {
             "properties": {
@@ -16272,7 +17619,12 @@
             "type": "object",
             "required": [
                 "policy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubeApiEventRateLimit:getClusterRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
@@ -16388,7 +17740,12 @@
                 "extraArgs",
                 "image",
                 "serviceClusterIpRange"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubelet:getClusterRkeConfigServicesKubelet": {
             "properties": {
@@ -16482,7 +17839,12 @@
                 "failSwapOn",
                 "image",
                 "infraContainerImage"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesKubeproxy:getClusterRkeConfigServicesKubeproxy": {
             "properties": {
@@ -16532,7 +17894,12 @@
             "required": [
                 "extraArgs",
                 "image"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigServicesScheduler:getClusterRkeConfigServicesScheduler": {
             "properties": {
@@ -16582,7 +17949,12 @@
             "required": [
                 "extraArgs",
                 "image"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigUpgradeStrategy:getClusterRkeConfigUpgradeStrategy": {
             "properties": {
@@ -16622,7 +17994,12 @@
             "type": "object",
             "required": [
                 "drainInput"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterRkeConfigUpgradeStrategyDrainInput:getClusterRkeConfigUpgradeStrategyDrainInput": {
             "properties": {
@@ -16683,7 +18060,12 @@
             "type": "object",
             "required": [
                 "cisScanConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterScanScanConfigCisScanConfig:getClusterScanScanConfigCisScanConfig": {
             "properties": {
@@ -16764,7 +18146,12 @@
             "required": [
                 "scanConfig",
                 "scheduleConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterScheduledClusterScanScanConfig:getClusterScheduledClusterScanScanConfig": {
             "properties": {
@@ -16780,7 +18167,12 @@
             "type": "object",
             "required": [
                 "cisScanConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterScheduledClusterScanScanConfigCisScanConfig:getClusterScheduledClusterScanScanConfigCisScanConfig": {
             "properties": {
@@ -16853,7 +18245,12 @@
             "required": [
                 "cronSchedule",
                 "retention"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateMember:getClusterTemplateMember": {
             "properties": {
@@ -16980,7 +18377,12 @@
                 "id",
                 "labels",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfig:getClusterTemplateTemplateRevisionClusterConfig": {
             "properties": {
@@ -17090,7 +18492,12 @@
                 "desiredAuthImage",
                 "dockerRootDir",
                 "rkeConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint:getClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint": {
             "properties": {
@@ -17318,7 +18725,12 @@
                 "sshCertPath",
                 "sshKeyPath",
                 "upgradeStrategy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication:getClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication": {
             "properties": {
@@ -17346,7 +18758,12 @@
             "required": [
                 "sans",
                 "strategy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization:getClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization": {
             "properties": {
@@ -17373,7 +18790,12 @@
             "type": "object",
             "required": [
                 "options"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost:getClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost": {
             "properties": {
@@ -17432,7 +18854,12 @@
                 "sshKey",
                 "sshKeyPath",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider": {
             "properties": {
@@ -17490,7 +18917,12 @@
             "required": [
                 "customCloudProvider",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider": {
             "properties": {
@@ -17517,7 +18949,12 @@
             "type": "object",
             "required": [
                 "global"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal": {
             "properties": {
@@ -17612,7 +19049,12 @@
                 "subnetId",
                 "vpc",
                 "zone"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride": {
             "properties": {
@@ -17673,7 +19115,12 @@
                 "signingName",
                 "signingRegion",
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider": {
             "properties": {
@@ -17932,7 +19379,12 @@
                 "vmType",
                 "vnetName",
                 "vnetResourceGroup"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider": {
             "properties": {
@@ -17984,7 +19436,12 @@
                 "loadBalancer",
                 "metadata",
                 "route"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage": {
             "properties": {
@@ -18018,7 +19475,12 @@
                 "bsVersion",
                 "ignoreVolumeAz",
                 "trustDevicePath"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal": {
             "properties": {
@@ -18115,7 +19577,12 @@
                 "tenantName",
                 "trustId",
                 "username"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer": {
             "properties": {
@@ -18218,7 +19685,12 @@
                 "manageSecurityGroups",
                 "subnetId",
                 "useOctavia"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata": {
             "properties": {
@@ -18243,7 +19715,12 @@
             "required": [
                 "requestTimeout",
                 "searchOrder"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute": {
             "properties": {
@@ -18259,7 +19736,12 @@
             "type": "object",
             "required": [
                 "routerId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider": {
             "properties": {
@@ -18314,7 +19796,12 @@
                 "network",
                 "virtualCenters",
                 "workspace"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk": {
             "properties": {
@@ -18330,7 +19817,12 @@
             "type": "object",
             "required": [
                 "scsiControllerType"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal": {
             "properties": {
@@ -18391,7 +19883,12 @@
                 "port",
                 "soapRoundtripCount",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork": {
             "properties": {
@@ -18407,7 +19904,12 @@
             "type": "object",
             "required": [
                 "publicNetwork"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter": {
             "properties": {
@@ -18469,7 +19971,12 @@
                 "port",
                 "soapRoundtripCount",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace:getClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace": {
             "properties": {
@@ -18521,7 +20028,12 @@
                 "folder",
                 "resourcepoolPath",
                 "server"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns": {
             "properties": {
@@ -18572,7 +20084,12 @@
                 "nodeSelector",
                 "reverseCidrs",
                 "upstreamNameservers"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress:getClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress": {
             "properties": {
@@ -18633,7 +20150,12 @@
                 "nodeSelector",
                 "options",
                 "provider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring": {
             "properties": {
@@ -18661,7 +20183,12 @@
             "required": [
                 "options",
                 "provider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork": {
             "properties": {
@@ -18729,7 +20256,12 @@
             "required": [
                 "options",
                 "plugin"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider": {
             "properties": {
@@ -18745,7 +20277,12 @@
             "type": "object",
             "required": [
                 "cloudProvider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider": {
             "properties": {
@@ -18761,7 +20298,12 @@
             "type": "object",
             "required": [
                 "iface"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider": {
             "properties": {
@@ -18777,7 +20319,12 @@
             "type": "object",
             "required": [
                 "iface"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider": {
             "properties": {
@@ -18793,7 +20340,12 @@
             "type": "object",
             "required": [
                 "password"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNode:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNode": {
             "properties": {
@@ -18909,7 +20461,12 @@
                 "sshKey",
                 "sshKeyPath",
                 "user"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry:getClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry": {
             "properties": {
@@ -18949,7 +20506,12 @@
             "type": "object",
             "required": [
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServices:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServices": {
             "properties": {
@@ -19010,7 +20572,12 @@
                 "kubelet",
                 "kubeproxy",
                 "scheduler"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd": {
             "properties": {
@@ -19159,7 +20726,12 @@
                 "path",
                 "retention",
                 "snapshot"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig": {
             "properties": {
@@ -19269,7 +20841,12 @@
             "required": [
                 "bucketName",
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi": {
             "properties": {
@@ -19388,7 +20965,12 @@
                 "image",
                 "serviceClusterIpRange",
                 "serviceNodePortRange"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog": {
             "properties": {
@@ -19412,7 +20994,12 @@
             "type": "object",
             "required": [
                 "configuration"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration": {
             "properties": {
@@ -19468,7 +21055,12 @@
             "type": "object",
             "required": [
                 "policy"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
@@ -19584,7 +21176,12 @@
                 "extraArgs",
                 "image",
                 "serviceClusterIpRange"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet": {
             "properties": {
@@ -19678,7 +21275,12 @@
                 "failSwapOn",
                 "image",
                 "infraContainerImage"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy": {
             "properties": {
@@ -19728,7 +21330,12 @@
             "required": [
                 "extraArgs",
                 "image"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler": {
             "properties": {
@@ -19778,7 +21385,12 @@
             "required": [
                 "extraArgs",
                 "image"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy": {
             "properties": {
@@ -19818,7 +21430,12 @@
             "type": "object",
             "required": [
                 "drainInput"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput:getClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput": {
             "properties": {
@@ -19896,7 +21513,12 @@
             "required": [
                 "scanConfig",
                 "scheduleConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig": {
             "properties": {
@@ -19912,7 +21534,12 @@
             "type": "object",
             "required": [
                 "cisScanConfig"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig:getClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig": {
             "properties": {
@@ -19985,7 +21612,12 @@
             "required": [
                 "cronSchedule",
                 "retention"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getClusterTemplateTemplateRevisionQuestion:getClusterTemplateTemplateRevisionQuestion": {
             "properties": {
@@ -20026,7 +21658,12 @@
             "required": [
                 "default",
                 "variable"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getEtcdBackupBackupConfig:getEtcdBackupBackupConfig": {
             "properties": {
@@ -20136,7 +21773,12 @@
             "required": [
                 "bucketName",
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getMultiClusterAppAnswer:getMultiClusterAppAnswer": {
             "properties": {
@@ -20173,7 +21815,12 @@
                 "clusterId",
                 "projectId",
                 "values"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getMultiClusterAppMember:getMultiClusterAppMember": {
             "properties": {
@@ -20245,7 +21892,12 @@
                 "healthState",
                 "projectId",
                 "state"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getMultiClusterAppUpgradeStrategy:getMultiClusterAppUpgradeStrategy": {
             "properties": {
@@ -20332,7 +21984,12 @@
             "type": "object",
             "required": [
                 "limit"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNamespaceResourceQuotaLimit:getNamespaceResourceQuotaLimit": {
             "properties": {
@@ -20483,7 +22140,12 @@
                 "key",
                 "timeAdded",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNotifierPagerdutyConfig:getNotifierPagerdutyConfig": {
             "properties": {
@@ -20507,7 +22169,12 @@
             "type": "object",
             "required": [
                 "serviceKey"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNotifierSlackConfig:getNotifierSlackConfig": {
             "properties": {
@@ -20540,7 +22207,12 @@
             "required": [
                 "defaultRecipient",
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNotifierSmtpConfig:getNotifierSmtpConfig": {
             "properties": {
@@ -20607,7 +22279,12 @@
                 "host",
                 "port",
                 "sender"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNotifierWebhookConfig:getNotifierWebhookConfig": {
             "properties": {
@@ -20631,7 +22308,12 @@
             "type": "object",
             "required": [
                 "url"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getNotifierWechatConfig:getNotifierWechatConfig": {
             "properties": {
@@ -20690,7 +22372,12 @@
                 "corp",
                 "defaultRecipient",
                 "secret"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getPodSecurityPolicyTemplateAllowedCsiDriver:getPodSecurityPolicyTemplateAllowedCsiDriver": {
             "properties": {
@@ -20774,7 +22461,12 @@
             "type": "object",
             "required": [
                 "ranges"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getPodSecurityPolicyTemplateFsGroupRange:getPodSecurityPolicyTemplateFsGroupRange": {
             "properties": {
@@ -21043,7 +22735,12 @@
             "type": "object",
             "required": [
                 "ranges"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getPodSecurityPolicyTemplateSupplementalGroupRange:getPodSecurityPolicyTemplateSupplementalGroupRange": {
             "properties": {
@@ -21110,7 +22807,12 @@
                 "notifierId",
                 "notifierType",
                 "recipient"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectAlertRuleMetricRule:getProjectAlertRuleMetricRule": {
             "properties": {
@@ -21160,7 +22862,12 @@
                 "duration",
                 "expression",
                 "thresholdValue"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectAlertRulePodRule:getProjectAlertRulePodRule": {
             "properties": {
@@ -21200,7 +22907,12 @@
             "type": "object",
             "required": [
                 "podId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectAlertRuleWorkloadRule:getProjectAlertRuleWorkloadRule": {
             "properties": {
@@ -21309,7 +23021,12 @@
             "type": "object",
             "required": [
                 "content"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingElasticsearchConfig:getProjectLoggingElasticsearchConfig": {
             "properties": {
@@ -21406,7 +23123,12 @@
             "required": [
                 "endpoint",
                 "sslVerify"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingFluentdConfig:getProjectLoggingFluentdConfig": {
             "properties": {
@@ -21449,7 +23171,12 @@
             "type": "object",
             "required": [
                 "fluentServers"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingFluentdConfigFluentServer:getProjectLoggingFluentdConfigFluentServer": {
             "properties": {
@@ -21513,7 +23240,12 @@
             "type": "object",
             "required": [
                 "endpoint"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingKafkaConfig:getProjectLoggingKafkaConfig": {
             "properties": {
@@ -21572,7 +23304,12 @@
             "type": "object",
             "required": [
                 "topic"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingSplunkConfig:getProjectLoggingSplunkConfig": {
             "properties": {
@@ -21654,7 +23391,12 @@
                 "endpoint",
                 "sslVerify",
                 "token"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectLoggingSyslogConfig:getProjectLoggingSyslogConfig": {
             "properties": {
@@ -21735,7 +23477,12 @@
             "required": [
                 "endpoint",
                 "sslVerify"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectResourceQuota:getProjectResourceQuota": {
             "properties": {
@@ -21760,7 +23507,12 @@
             "required": [
                 "namespaceDefaultLimit",
                 "projectLimit"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getProjectResourceQuotaNamespaceDefaultLimit:getProjectResourceQuotaNamespaceDefaultLimit": {
             "properties": {
@@ -22010,7 +23762,12 @@
             "type": "object",
             "required": [
                 "address"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:/getRoleTempalteRule:getRoleTempalteRule": {
             "properties": {
@@ -34339,8 +36096,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing rancher2 resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-rancher2)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-rancher2` repo](https://github.com/pulumi/pulumi-rancher2/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-rancher2` repo](https://github.com/terraform-providers/terraform-provider-rancher2/issues).",
             "typescriptVersion": ""
         },
         "python": {

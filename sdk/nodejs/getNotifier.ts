@@ -65,6 +65,10 @@ export interface GetNotifierResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for notifier object (map)
      */
     readonly labels: {[key: string]: any};
@@ -89,8 +93,4 @@ export interface GetNotifierResult {
      * (Computed) Wechat config for notifier (list maxitems:1)
      */
     readonly wechatConfig: outputs.GetNotifierWechatConfig;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("rancher2");
@@ -17,7 +19,7 @@ export let apiUrl: string | undefined = __config.get("apiUrl") || utilities.getE
 /**
  * Bootstrap rancher server
  */
-export let bootstrap: boolean | undefined = __config.getObject<boolean>("bootstrap") || (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
+export let bootstrap: boolean | undefined = __config.getObject<boolean>("bootstrap") || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false);
 /**
  * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
  */
@@ -25,7 +27,7 @@ export let caCerts: string | undefined = __config.get("caCerts") || utilities.ge
 /**
  * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
  */
-export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || (utilities.getEnvBoolean("RANCHER_INSECURE") || false);
+export let insecure: boolean | undefined = __config.getObject<boolean>("insecure") || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false);
 /**
  * Rancher connection retries
  */

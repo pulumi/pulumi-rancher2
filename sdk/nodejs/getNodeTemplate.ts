@@ -99,6 +99,10 @@ export interface GetNodeTemplateResult {
      */
     readonly engineStorageDriver: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for Node Template object (map)
      */
     readonly labels: {[key: string]: any};
@@ -107,8 +111,4 @@ export interface GetNodeTemplateResult {
      * (Computed) Engine storage driver for the node template (bool)
      */
     readonly useInternalIpAddress?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

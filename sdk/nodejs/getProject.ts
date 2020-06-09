@@ -56,6 +56,10 @@ export interface GetProjectResult {
      */
     readonly enableProjectMonitoring: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels of the rancher2 project (map)
      */
     readonly labels: {[key: string]: any};
@@ -72,8 +76,4 @@ export interface GetProjectResult {
      * (Computed) UUID of the project as stored by Rancher 2 (string)
      */
     readonly uuid: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

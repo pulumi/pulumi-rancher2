@@ -69,6 +69,10 @@ export interface GetEtcdBackupResult {
      */
     readonly filename: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for Etcd Backup object (map)
      */
     readonly labels: {[key: string]: any};
@@ -81,8 +85,4 @@ export interface GetEtcdBackupResult {
      * (Computed) Description for the Etcd Backup (string)
      */
     readonly namespaceId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -74,6 +74,10 @@ export interface GetClusterRoleTemplateBindingResult {
      */
     readonly groupPrincipalId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels of the resource (map)
      */
     readonly labels: {[key: string]: any};
@@ -87,8 +91,4 @@ export interface GetClusterRoleTemplateBindingResult {
      * (Computed) The userPrincipal ID to assign cluster role template binding (string)
      */
     readonly userPrincipalId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

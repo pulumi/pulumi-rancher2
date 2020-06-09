@@ -71,6 +71,10 @@ export interface GetCatalogResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The kind of the catalog. Just helm by the moment (string)
      */
     readonly kind: string;
@@ -100,8 +104,4 @@ export interface GetCatalogResult {
      * (Computed) Helm version for the catalog (string)
      */
     readonly version: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

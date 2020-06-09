@@ -68,6 +68,10 @@ export interface GetNamespaceResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for Node Pool object (map)
      */
     readonly labels: {[key: string]: any};
@@ -77,8 +81,4 @@ export interface GetNamespaceResult {
      * (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
     readonly resourceQuota: outputs.GetNamespaceResourceQuota;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

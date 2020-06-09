@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface CloudCredentialAmazonec2CredentialConfig {
@@ -4659,13 +4660,13 @@ export interface NodeTemplateAmazonec2Config {
      */
     secretKey?: string;
     /**
-     * AWS VPC security group. (list)
-     */
-    securityGroups: string[];
-    /**
      * Skip adding default rules to security groups (bool)
      */
     securityGroupReadonly?: boolean;
+    /**
+     * AWS VPC security group. (list)
+     */
+    securityGroups: string[];
     /**
      * AWS Session Token (string)
      */

@@ -87,6 +87,10 @@ export interface GetAppResult {
      */
     readonly externalId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for the catalog (map)
      */
     readonly labels: {[key: string]: any};
@@ -109,8 +113,4 @@ export interface GetAppResult {
      * (Computed) values.yaml base64 encoded file content for the app (string)
      */
     readonly valuesYaml: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

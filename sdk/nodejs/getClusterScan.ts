@@ -34,14 +34,14 @@ export interface GetClusterScanArgs {
 export interface GetClusterScanResult {
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly runType: string;
     readonly scanConfig: outputs.GetClusterScanScanConfig;
     readonly scanType: string;
     readonly status: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

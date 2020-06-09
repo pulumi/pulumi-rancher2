@@ -82,6 +82,10 @@ export interface GetClusterAlterRuleResult {
      */
     readonly groupWaitSeconds: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The cluster alert rule inherited. Default: `true` (bool)
      */
     readonly inherited: boolean;
@@ -110,8 +114,4 @@ export interface GetClusterAlterRuleResult {
      * (Computed) The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
      */
     readonly systemServiceRule: outputs.GetClusterAlterRuleSystemServiceRule;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
