@@ -78,14 +78,14 @@ export interface GetSecretResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for secret object (map)
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

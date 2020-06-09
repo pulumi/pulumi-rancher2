@@ -54,12 +54,12 @@ export interface GetCloudCredentialResult {
      */
     readonly annotations: {[key: string]: any};
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for the Cloud Credential (map)
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

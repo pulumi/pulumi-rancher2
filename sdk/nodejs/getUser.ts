@@ -68,6 +68,10 @@ export interface GetUserResult {
      * (Computed) The user is enabled (bool)
      */
     readonly enabled: boolean;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly isExternal?: boolean;
     /**
      * (Computed) Labels of the resource (map)
@@ -82,8 +86,4 @@ export interface GetUserResult {
      */
     readonly principalIds: string[];
     readonly username: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

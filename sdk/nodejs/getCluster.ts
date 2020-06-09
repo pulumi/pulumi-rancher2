@@ -119,6 +119,10 @@ export interface GetClusterResult {
      */
     readonly gkeConfig: outputs.GetClusterGkeConfig;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly k3sConfig: outputs.GetClusterK3sConfig;
@@ -140,8 +144,4 @@ export interface GetClusterResult {
      * (Computed) System project ID for the cluster (string)
      */
     readonly systemProjectId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

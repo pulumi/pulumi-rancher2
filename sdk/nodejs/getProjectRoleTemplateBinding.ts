@@ -73,6 +73,10 @@ export interface GetProjectRoleTemplateBindingResult {
      */
     readonly groupPrincipalId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels of the resource (map)
      */
     readonly labels: {[key: string]: any};
@@ -87,8 +91,4 @@ export interface GetProjectRoleTemplateBindingResult {
      * (Computed) The userPrincipal ID to assign project role template binding (string)
      */
     readonly userPrincipalId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

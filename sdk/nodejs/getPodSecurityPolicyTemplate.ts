@@ -198,6 +198,10 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly hostNetwork: boolean;
     readonly hostPid: boolean;
     readonly hostPorts: outputs.GetPodSecurityPolicyTemplateHostPort[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly privileged: boolean;
@@ -209,8 +213,4 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly seLinux: outputs.GetPodSecurityPolicyTemplateSeLinux;
     readonly supplementalGroup: outputs.GetPodSecurityPolicyTemplateSupplementalGroup;
     readonly volumes: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

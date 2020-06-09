@@ -84,6 +84,10 @@ export interface GetRoleTemplateResult {
      */
     readonly hidden: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for role template object (map)
      */
     readonly labels: {[key: string]: any};
@@ -100,8 +104,4 @@ export interface GetRoleTemplateResult {
      * (Computed) Role template policy rules (list)
      */
     readonly rules: outputs.GetRoleTemplateRule[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

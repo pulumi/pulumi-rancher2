@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Provides a Rancher v2 Auth Config FreeIpa resource. This can be used to configure and enable Auth Config FreeIpa for Rancher v2 RKE clusters and retrieve their information.
  *
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- *
  */
 export class AuthConfigFreeIpa extends pulumi.CustomResource {
     /**
@@ -18,6 +17,7 @@ export class AuthConfigFreeIpa extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AuthConfigFreeIpaState, opts?: pulumi.CustomResourceOptions): AuthConfigFreeIpa {
         return new AuthConfigFreeIpa(name, <any>state, { ...opts, id: id });

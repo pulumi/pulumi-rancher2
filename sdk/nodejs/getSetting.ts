@@ -49,13 +49,13 @@ export interface GetSettingArgs {
  * A collection of values returned by getSetting.
  */
 export interface GetSettingResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     /**
      * the settting's value.
      */
     readonly value: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

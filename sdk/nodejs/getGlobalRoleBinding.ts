@@ -65,6 +65,10 @@ export interface GetGlobalRoleBindingResult {
      */
     readonly groupPrincipalId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels of the resource (map)
      */
     readonly labels: {[key: string]: any};
@@ -73,8 +77,4 @@ export interface GetGlobalRoleBindingResult {
      * (Computed) The user ID to assign global role binding (string)
      */
     readonly userId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

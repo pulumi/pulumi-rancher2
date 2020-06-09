@@ -74,6 +74,10 @@ export interface GetRegistryResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for Registry object (map)
      */
     readonly labels: {[key: string]: any};
@@ -84,8 +88,4 @@ export interface GetRegistryResult {
      * (Computed) Registries data for registry (list)
      */
     readonly registries: outputs.GetRegistryRegistry[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

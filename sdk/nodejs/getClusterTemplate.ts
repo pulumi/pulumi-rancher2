@@ -73,6 +73,10 @@ export interface GetClusterTemplateResult {
     readonly defaultRevisionId: string;
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Labels for the cluster template (map)
      */
     readonly labels: {[key: string]: any};
@@ -85,8 +89,4 @@ export interface GetClusterTemplateResult {
      * (Computed) Cluster template revisions (list)
      */
     readonly templateRevisions: outputs.GetClusterTemplateTemplateRevision[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
