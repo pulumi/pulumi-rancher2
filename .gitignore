@@ -19,6 +19,7 @@ yarn.lock
 **schema.go
 
 ## SDKs
+**/node_modules
 sdk/dotnet/version.txt
 sdk/nodejs/bin/
 sdk/nodejs/node_modules/
