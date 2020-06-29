@@ -64,7 +64,7 @@ export class CloudCredential extends pulumi.CustomResource {
     /**
      * Annotations for Cloud Credential object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */

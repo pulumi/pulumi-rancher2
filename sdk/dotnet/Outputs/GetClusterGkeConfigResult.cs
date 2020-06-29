@@ -65,6 +65,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool? Preemptible;
         public readonly string ProjectId;
+        public readonly string? Region;
         public readonly ImmutableDictionary<string, object> ResourceLabels;
         public readonly string ServiceAccount;
         public readonly string SubNetwork;
@@ -166,6 +167,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string projectId,
 
+            string? region,
+
             ImmutableDictionary<string, object> resourceLabels,
 
             string serviceAccount,
@@ -224,6 +227,7 @@ namespace Pulumi.Rancher2.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ProjectId = projectId;
+            Region = region;
             ResourceLabels = resourceLabels;
             ServiceAccount = serviceAccount;
             SubNetwork = subNetwork;

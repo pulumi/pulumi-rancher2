@@ -113,6 +113,7 @@ class ClusterTemplate(pulumi.CustomResource):
               * `cloudProviderRateLimit` (`bool`)
               * `cloudProviderRateLimitBucket` (`float`)
               * `cloudProviderRateLimitQps` (`float`)
+              * `loadBalancerSku` (`str`)
               * `location` (`str`)
               * `maximumLoadBalancerRuleCount` (`float`)
               * `primaryAvailabilitySetName` (`str`)
@@ -201,6 +202,10 @@ class ClusterTemplate(pulumi.CustomResource):
 
           * `dns` (`dict`)
             * `nodeSelector` (`dict`)
+            * `nodelocal` (`dict`)
+              * `ipAddress` (`str`)
+              * `nodeSelector` (`dict`)
+
             * `provider` (`str`)
             * `reverseCidrs` (`list`)
             * `upstreamNameservers` (`list`)
@@ -215,8 +220,16 @@ class ClusterTemplate(pulumi.CustomResource):
 
           * `kubernetesVersion` (`str`)
           * `monitoring` (`dict`)
+            * `nodeSelector` (`dict`)
             * `options` (`dict`)
             * `provider` (`str`)
+            * `replicas` (`float`)
+            * `updateStrategy` (`dict`)
+              * `rollingUpdate` (`dict`)
+                * `maxSurge` (`float`)
+                * `maxUnavailable` (`float`)
+
+              * `strategy` (`str`)
 
           * `network` (`dict`)
             * `calicoNetworkProvider` (`dict`)
@@ -482,6 +495,7 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `cloudProviderRateLimit` (`pulumi.Input[bool]`)
                   * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`)
                   * `cloudProviderRateLimitQps` (`pulumi.Input[float]`)
+                  * `loadBalancerSku` (`pulumi.Input[str]`)
                   * `location` (`pulumi.Input[str]`)
                   * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`)
                   * `primaryAvailabilitySetName` (`pulumi.Input[str]`)
@@ -570,6 +584,10 @@ class ClusterTemplate(pulumi.CustomResource):
 
               * `dns` (`pulumi.Input[dict]`)
                 * `nodeSelector` (`pulumi.Input[dict]`)
+                * `nodelocal` (`pulumi.Input[dict]`)
+                  * `ipAddress` (`pulumi.Input[str]`)
+                  * `nodeSelector` (`pulumi.Input[dict]`)
+
                 * `provider` (`pulumi.Input[str]`)
                 * `reverseCidrs` (`pulumi.Input[list]`)
                 * `upstreamNameservers` (`pulumi.Input[list]`)
@@ -584,8 +602,16 @@ class ClusterTemplate(pulumi.CustomResource):
 
               * `kubernetesVersion` (`pulumi.Input[str]`)
               * `monitoring` (`pulumi.Input[dict]`)
+                * `nodeSelector` (`pulumi.Input[dict]`)
                 * `options` (`pulumi.Input[dict]`)
                 * `provider` (`pulumi.Input[str]`)
+                * `replicas` (`pulumi.Input[float]`)
+                * `updateStrategy` (`pulumi.Input[dict]`)
+                  * `rollingUpdate` (`pulumi.Input[dict]`)
+                    * `maxSurge` (`pulumi.Input[float]`)
+                    * `maxUnavailable` (`pulumi.Input[float]`)
+
+                  * `strategy` (`pulumi.Input[str]`)
 
               * `network` (`pulumi.Input[dict]`)
                 * `calicoNetworkProvider` (`pulumi.Input[dict]`)
@@ -886,6 +912,7 @@ class ClusterTemplate(pulumi.CustomResource):
                   * `cloudProviderRateLimit` (`pulumi.Input[bool]`)
                   * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`)
                   * `cloudProviderRateLimitQps` (`pulumi.Input[float]`)
+                  * `loadBalancerSku` (`pulumi.Input[str]`)
                   * `location` (`pulumi.Input[str]`)
                   * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`)
                   * `primaryAvailabilitySetName` (`pulumi.Input[str]`)
@@ -974,6 +1001,10 @@ class ClusterTemplate(pulumi.CustomResource):
 
               * `dns` (`pulumi.Input[dict]`)
                 * `nodeSelector` (`pulumi.Input[dict]`)
+                * `nodelocal` (`pulumi.Input[dict]`)
+                  * `ipAddress` (`pulumi.Input[str]`)
+                  * `nodeSelector` (`pulumi.Input[dict]`)
+
                 * `provider` (`pulumi.Input[str]`)
                 * `reverseCidrs` (`pulumi.Input[list]`)
                 * `upstreamNameservers` (`pulumi.Input[list]`)
@@ -988,8 +1019,16 @@ class ClusterTemplate(pulumi.CustomResource):
 
               * `kubernetesVersion` (`pulumi.Input[str]`)
               * `monitoring` (`pulumi.Input[dict]`)
+                * `nodeSelector` (`pulumi.Input[dict]`)
                 * `options` (`pulumi.Input[dict]`)
                 * `provider` (`pulumi.Input[str]`)
+                * `replicas` (`pulumi.Input[float]`)
+                * `updateStrategy` (`pulumi.Input[dict]`)
+                  * `rollingUpdate` (`pulumi.Input[dict]`)
+                    * `maxSurge` (`pulumi.Input[float]`)
+                    * `maxUnavailable` (`pulumi.Input[float]`)
+
+                  * `strategy` (`pulumi.Input[str]`)
 
               * `network` (`pulumi.Input[dict]`)
                 * `calicoNetworkProvider` (`pulumi.Input[dict]`)

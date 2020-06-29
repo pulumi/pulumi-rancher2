@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EnableLegacyAbac;
         public readonly bool? EnableMasterAuthorizedNetwork;
         /// <summary>
-        /// Enable stackdriver logging. Default `true` (bool)
+        /// Enable network policy config for the cluster. Default `true` (bool)
         /// </summary>
         public readonly bool? EnableNetworkPolicyConfig;
         /// <summary>
@@ -195,6 +195,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
+        /// GKE cluster region. Conflicts with `zone` (string)
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The map of Kubernetes labels to be applied to each cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ResourceLabels;
@@ -215,7 +219,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? UseIpAliases;
         /// <summary>
-        /// Zone GKE cluster (string)
+        /// GKE cluster zone. Conflicts with `region` (string)
         /// </summary>
         public readonly string? Zone;
 
@@ -313,6 +317,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string projectId,
 
+            string? region,
+
             ImmutableDictionary<string, object>? resourceLabels,
 
             string serviceAccount,
@@ -371,6 +377,7 @@ namespace Pulumi.Rancher2.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ProjectId = projectId;
+            Region = region;
             ResourceLabels = resourceLabels;
             ServiceAccount = serviceAccount;
             SubNetwork = subNetwork;

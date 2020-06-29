@@ -537,7 +537,7 @@ export interface ClusterEksConfig {
      */
     nodeVolumeSize?: number;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: string;
     /**
@@ -621,7 +621,7 @@ export interface ClusterGkeConfig {
     enableLegacyAbac?: boolean;
     enableMasterAuthorizedNetwork?: boolean;
     /**
-     * Enable stackdriver logging. Default `true` (bool)
+     * Enable network policy config for the cluster. Default `true` (bool)
      */
     enableNetworkPolicyConfig?: boolean;
     /**
@@ -753,6 +753,10 @@ export interface ClusterGkeConfig {
      */
     projectId: string;
     /**
+     * GKE cluster region. Conflicts with `zone` (string)
+     */
+    region?: string;
+    /**
      * The map of Kubernetes labels to be applied to each cluster (map)
      */
     resourceLabels: {[key: string]: any};
@@ -773,7 +777,7 @@ export interface ClusterGkeConfig {
      */
     useIpAliases?: boolean;
     /**
-     * Zone GKE cluster (string)
+     * GKE cluster zone. Conflicts with `region` (string)
      */
     zone?: string;
 }
@@ -1122,7 +1126,7 @@ export interface ClusterRkeConfigAuthentication {
      */
     sans: string[];
     /**
-     * RKE strategy for authentication (string)
+     * Monitoring deployment update strategy (string)
      */
     strategy: string;
 }
@@ -1175,7 +1179,7 @@ export interface ClusterRkeConfigCloudProvider {
      */
     azureCloudProvider?: outputs.ClusterRkeConfigCloudProviderAzureCloudProvider;
     /**
-     * RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+     * RKE Custom Cloud Provider config for Cloud Provider (string)
      */
     customCloudProvider: string;
     /**
@@ -1241,14 +1245,14 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     vpc: string;
     /**
-     * Zone GKE cluster (string)
+     * GKE cluster zone. Conflicts with `region` (string)
      */
     zone: string;
 }
 
 export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region: string;
     /**
@@ -1326,6 +1330,10 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      * (int)
      */
     cloudProviderRateLimitQps: number;
+    /**
+     * Allowed values: `basic` (default) `standard` (string)
+     */
+    loadBalancerSku?: string;
     /**
      * Azure Kubernetes cluster location. Default `eastus` (string)
      */
@@ -1448,7 +1456,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     password: string;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region: string;
     /**
@@ -1650,11 +1658,15 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 
 export interface ClusterRkeConfigDns {
     /**
-     * Node selector for RKE Ingress (map)
+     * RKE monitoring node selector (map)
      */
     nodeSelector: {[key: string]: any};
     /**
-     * Provider for RKE monitoring (string)
+     * Nodelocal dns config  (list Maxitem: 1)
+     */
+    nodelocal?: outputs.ClusterRkeConfigDnsNodelocal;
+    /**
+     * RKE monitoring provider (string)
      */
     provider?: string;
     /**
@@ -1667,6 +1679,17 @@ export interface ClusterRkeConfigDns {
     upstreamNameservers: string[];
 }
 
+export interface ClusterRkeConfigDnsNodelocal {
+    /**
+     * Nodelocal dns ip address (string)
+     */
+    ipAddress?: string;
+    /**
+     * RKE monitoring node selector (map)
+     */
+    nodeSelector?: {[key: string]: any};
+}
+
 export interface ClusterRkeConfigIngress {
     /**
      * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
@@ -1677,7 +1700,7 @@ export interface ClusterRkeConfigIngress {
      */
     extraArgs: {[key: string]: any};
     /**
-     * Node selector for RKE Ingress (map)
+     * RKE monitoring node selector (map)
      */
     nodeSelector: {[key: string]: any};
     /**
@@ -1685,20 +1708,54 @@ export interface ClusterRkeConfigIngress {
      */
     options: {[key: string]: any};
     /**
-     * Provider for RKE monitoring (string)
+     * RKE monitoring provider (string)
      */
     provider: string;
 }
 
 export interface ClusterRkeConfigMonitoring {
     /**
+     * RKE monitoring node selector (map)
+     */
+    nodeSelector?: {[key: string]: any};
+    /**
      * RKE options for network (map)
      */
     options: {[key: string]: any};
     /**
-     * Provider for RKE monitoring (string)
+     * RKE monitoring provider (string)
      */
     provider: string;
+    /**
+     * RKE monitoring replicas (int)
+     */
+    replicas: number;
+    /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: outputs.ClusterRkeConfigMonitoringUpdateStrategy;
+}
+
+export interface ClusterRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: string;
+}
+
+export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: number;
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: number;
 }
 
 export interface ClusterRkeConfigNetwork {
@@ -1965,7 +2022,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     folder?: string;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: string;
     /**
@@ -2497,6 +2554,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
     primaryAvailabilitySetName: string;
@@ -2611,9 +2669,15 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     nodeSelector: {[key: string]: any};
+    nodelocal?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
     upstreamNameservers: string[];
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+    ipAddress?: string;
+    nodeSelector?: {[key: string]: any};
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -2625,8 +2689,21 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
+    nodeSelector?: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    replicas: number;
+    updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
@@ -3118,6 +3195,7 @@ export interface GetClusterGkeConfig {
     oauthScopes: string[];
     preemptible?: boolean;
     projectId: string;
+    region?: string;
     resourceLabels: {[key: string]: any};
     serviceAccount: string;
     subNetwork: string;
@@ -3305,6 +3383,7 @@ export interface GetClusterRkeConfigCloudProviderAzureCloudProvider {
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
     primaryAvailabilitySetName: string;
@@ -3419,9 +3498,15 @@ export interface GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 
 export interface GetClusterRkeConfigDns {
     nodeSelector: {[key: string]: any};
+    nodelocal?: outputs.GetClusterRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
     upstreamNameservers: string[];
+}
+
+export interface GetClusterRkeConfigDnsNodelocal {
+    ipAddress?: string;
+    nodeSelector?: {[key: string]: any};
 }
 
 export interface GetClusterRkeConfigIngress {
@@ -3433,8 +3518,21 @@ export interface GetClusterRkeConfigIngress {
 }
 
 export interface GetClusterRkeConfigMonitoring {
+    nodeSelector?: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    replicas: number;
+    updateStrategy?: outputs.GetClusterRkeConfigMonitoringUpdateStrategy;
+}
+
+export interface GetClusterRkeConfigMonitoringUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface GetClusterRkeConfigNetwork {
@@ -3804,6 +3902,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
     primaryAvailabilitySetName: string;
@@ -3918,9 +4017,15 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     nodeSelector: {[key: string]: any};
+    nodelocal?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
     upstreamNameservers: string[];
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+    ipAddress?: string;
+    nodeSelector?: {[key: string]: any};
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -3932,8 +4037,21 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
+    nodeSelector?: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    replicas: number;
+    updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
@@ -4690,6 +4808,10 @@ export interface NodeTemplateAmazonec2Config {
      * AWS root device name. Default `/dev/sda1` (string)
      */
     deviceName?: string;
+    /**
+     * Encrypt EBS volume. Default `false` (bool)
+     */
+    encryptEbsVolume?: boolean;
     /**
      * Optional endpoint URL (hostname only or fully qualified URI) (string)
      */
@@ -6085,7 +6207,7 @@ export interface RoleTempalteRule {
      */
     resources?: string[];
     /**
-     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
      */
     verbs?: string[];
 }

@@ -37,6 +37,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
+        /// Encrypt EBS volume. Default `false` (bool)
+        /// </summary>
+        [Input("encryptEbsVolume")]
+        public Input<bool>? EncryptEbsVolume { get; set; }
+
+        /// <summary>
         /// Optional endpoint URL (hostname only or fully qualified URI) (string)
         /// </summary>
         [Input("endpoint")]

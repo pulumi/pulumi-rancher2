@@ -47,14 +47,14 @@ type Cluster struct {
 	Driver pulumi.StringOutput `pulumi:"driver"`
 	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting. Default `false` (bool)
-	EnableClusterAlerting pulumi.BoolPtrOutput `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
-	EnableClusterIstio pulumi.BoolPtrOutput `pulumi:"enableClusterIstio"`
-	// Enable built-in cluster monitoring. Default `false` (bool)
-	EnableClusterMonitoring pulumi.BoolPtrOutput `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation. Default `false` (bool)
-	EnableNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableNetworkPolicy"`
+	// Enable built-in cluster alerting (bool)
+	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
+	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
+	// Enable built-in cluster monitoring (bool)
+	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
+	// Enable project network isolation (bool)
+	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
@@ -68,7 +68,7 @@ type Cluster struct {
 	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-	ScheduledClusterScan ClusterScheduledClusterScanPtrOutput `pulumi:"scheduledClusterScan"`
+	ScheduledClusterScan ClusterScheduledClusterScanOutput `pulumi:"scheduledClusterScan"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
 	// Windows preferred cluster. Default: `false` (bool)
@@ -137,13 +137,13 @@ type clusterState struct {
 	Driver *string `pulumi:"driver"`
 	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting. Default `false` (bool)
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
-	// Enable built-in cluster monitoring. Default `false` (bool)
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation. Default `false` (bool)
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
@@ -200,13 +200,13 @@ type ClusterState struct {
 	Driver pulumi.StringPtrInput
 	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrInput
-	// Enable built-in cluster alerting. Default `false` (bool)
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
 	EnableClusterIstio pulumi.BoolPtrInput
-	// Enable built-in cluster monitoring. Default `false` (bool)
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
-	// Enable project network isolation. Default `false` (bool)
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
@@ -263,13 +263,13 @@ type clusterArgs struct {
 	Driver *string `pulumi:"driver"`
 	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting. Default `false` (bool)
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
-	// Enable built-in cluster monitoring. Default `false` (bool)
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation. Default `false` (bool)
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
@@ -319,13 +319,13 @@ type ClusterArgs struct {
 	Driver pulumi.StringPtrInput
 	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrInput
-	// Enable built-in cluster alerting. Default `false` (bool)
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
 	EnableClusterIstio pulumi.BoolPtrInput
-	// Enable built-in cluster monitoring. Default `false` (bool)
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
-	// Enable project network isolation. Default `false` (bool)
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput

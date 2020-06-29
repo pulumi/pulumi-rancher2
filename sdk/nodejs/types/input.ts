@@ -537,7 +537,7 @@ export interface ClusterEksConfig {
      */
     nodeVolumeSize?: pulumi.Input<number>;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -621,7 +621,7 @@ export interface ClusterGkeConfig {
     enableLegacyAbac?: pulumi.Input<boolean>;
     enableMasterAuthorizedNetwork?: pulumi.Input<boolean>;
     /**
-     * Enable stackdriver logging. Default `true` (bool)
+     * Enable network policy config for the cluster. Default `true` (bool)
      */
     enableNetworkPolicyConfig?: pulumi.Input<boolean>;
     /**
@@ -753,6 +753,10 @@ export interface ClusterGkeConfig {
      */
     projectId: pulumi.Input<string>;
     /**
+     * GKE cluster region. Conflicts with `zone` (string)
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The map of Kubernetes labels to be applied to each cluster (map)
      */
     resourceLabels?: pulumi.Input<{[key: string]: any}>;
@@ -773,7 +777,7 @@ export interface ClusterGkeConfig {
      */
     useIpAliases?: pulumi.Input<boolean>;
     /**
-     * Zone GKE cluster (string)
+     * GKE cluster zone. Conflicts with `region` (string)
      */
     zone?: pulumi.Input<string>;
 }
@@ -1122,7 +1126,7 @@ export interface ClusterRkeConfigAuthentication {
      */
     sans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * RKE strategy for authentication (string)
+     * Monitoring deployment update strategy (string)
      */
     strategy?: pulumi.Input<string>;
 }
@@ -1175,7 +1179,7 @@ export interface ClusterRkeConfigCloudProvider {
      */
     azureCloudProvider?: pulumi.Input<inputs.ClusterRkeConfigCloudProviderAzureCloudProvider>;
     /**
-     * RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+     * RKE Custom Cloud Provider config for Cloud Provider (string)
      */
     customCloudProvider?: pulumi.Input<string>;
     /**
@@ -1241,14 +1245,14 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     vpc?: pulumi.Input<string>;
     /**
-     * Zone GKE cluster (string)
+     * GKE cluster zone. Conflicts with `region` (string)
      */
     zone?: pulumi.Input<string>;
 }
 
 export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -1326,6 +1330,10 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      * (int)
      */
     cloudProviderRateLimitQps?: pulumi.Input<number>;
+    /**
+     * Allowed values: `basic` (default) `standard` (string)
+     */
+    loadBalancerSku?: pulumi.Input<string>;
     /**
      * Azure Kubernetes cluster location. Default `eastus` (string)
      */
@@ -1448,7 +1456,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     password: pulumi.Input<string>;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -1650,11 +1658,15 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 
 export interface ClusterRkeConfigDns {
     /**
-     * Node selector for RKE Ingress (map)
+     * RKE monitoring node selector (map)
      */
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Provider for RKE monitoring (string)
+     * Nodelocal dns config  (list Maxitem: 1)
+     */
+    nodelocal?: pulumi.Input<inputs.ClusterRkeConfigDnsNodelocal>;
+    /**
+     * RKE monitoring provider (string)
      */
     provider?: pulumi.Input<string>;
     /**
@@ -1667,6 +1679,17 @@ export interface ClusterRkeConfigDns {
     upstreamNameservers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ClusterRkeConfigDnsNodelocal {
+    /**
+     * Nodelocal dns ip address (string)
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * RKE monitoring node selector (map)
+     */
+    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+}
+
 export interface ClusterRkeConfigIngress {
     /**
      * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
@@ -1677,7 +1700,7 @@ export interface ClusterRkeConfigIngress {
      */
     extraArgs?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Node selector for RKE Ingress (map)
+     * RKE monitoring node selector (map)
      */
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -1685,20 +1708,54 @@ export interface ClusterRkeConfigIngress {
      */
     options?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Provider for RKE monitoring (string)
+     * RKE monitoring provider (string)
      */
     provider?: pulumi.Input<string>;
 }
 
 export interface ClusterRkeConfigMonitoring {
     /**
+     * RKE monitoring node selector (map)
+     */
+    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    /**
      * RKE options for network (map)
      */
     options?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Provider for RKE monitoring (string)
+     * RKE monitoring provider (string)
      */
     provider?: pulumi.Input<string>;
+    /**
+     * RKE monitoring replicas (int)
+     */
+    replicas?: pulumi.Input<number>;
+    /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: pulumi.Input<inputs.ClusterRkeConfigMonitoringUpdateStrategy>;
+}
+
+export interface ClusterRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: pulumi.Input<inputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate>;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: pulumi.Input<number>;
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterRkeConfigNetwork {
@@ -1965,7 +2022,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     folder?: pulumi.Input<string>;
     /**
-     * The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+     * GKE cluster region. Conflicts with `zone` (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -2497,6 +2554,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
     cloudProviderRateLimit?: pulumi.Input<boolean>;
     cloudProviderRateLimitBucket?: pulumi.Input<number>;
     cloudProviderRateLimitQps?: pulumi.Input<number>;
+    loadBalancerSku?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     maximumLoadBalancerRuleCount?: pulumi.Input<number>;
     primaryAvailabilitySetName?: pulumi.Input<string>;
@@ -2611,9 +2669,15 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodelocal?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal>;
     provider?: pulumi.Input<string>;
     reverseCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     upstreamNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+    ipAddress?: pulumi.Input<string>;
+    nodeSelector?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -2625,8 +2689,21 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
+    nodeSelector?: pulumi.Input<{[key: string]: any}>;
     options?: pulumi.Input<{[key: string]: any}>;
     provider?: pulumi.Input<string>;
+    replicas?: pulumi.Input<number>;
+    updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate>;
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    maxSurge?: pulumi.Input<number>;
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
@@ -3181,6 +3258,10 @@ export interface NodeTemplateAmazonec2Config {
      * AWS root device name. Default `/dev/sda1` (string)
      */
     deviceName?: pulumi.Input<string>;
+    /**
+     * Encrypt EBS volume. Default `false` (bool)
+     */
+    encryptEbsVolume?: pulumi.Input<boolean>;
     /**
      * Optional endpoint URL (hostname only or fully qualified URI) (string)
      */
@@ -4576,7 +4657,7 @@ export interface RoleTempalteRule {
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }

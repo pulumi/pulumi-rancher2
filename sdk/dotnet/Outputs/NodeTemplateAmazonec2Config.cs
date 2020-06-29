@@ -30,6 +30,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
+        /// Encrypt EBS volume. Default `false` (bool)
+        /// </summary>
+        public readonly bool? EncryptEbsVolume;
+        /// <summary>
         /// Optional endpoint URL (hostname only or fully qualified URI) (string)
         /// </summary>
         public readonly string? Endpoint;
@@ -148,6 +152,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? deviceName,
 
+            bool? encryptEbsVolume,
+
             string? endpoint,
 
             string? iamInstanceProfile,
@@ -206,6 +212,7 @@ namespace Pulumi.Rancher2.Outputs
             Ami = ami;
             BlockDurationMinutes = blockDurationMinutes;
             DeviceName = deviceName;
+            EncryptEbsVolume = encryptEbsVolume;
             Endpoint = endpoint;
             IamInstanceProfile = iamInstanceProfile;
             InsecureTransport = insecureTransport;

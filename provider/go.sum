@@ -300,6 +300,7 @@ github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813 h1:Uc+IZ7gYqAf/rSG
 github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813/go.mod h1:P+oSoE9yhSRvsmYyZsshflcR6ePWYLql6UU1amW13IM=
 github.com/getsentry/raven-go v0.1.2/go.mod h1:KungGk8q33+aIAZUIVWZDr2OfAEBsO49PX4NzFV5kcQ=
 github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
+github.com/ghodss/yaml v1.0.0 h1:wQHKEahhL6wmXdzwWG11gIVCkOv05bNOh+Rxn0yngAk=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 h1:Mn26/9ZMNWSw9C9ERFA1PUxfmGpolnw2v0bKOREu5ew=
 github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32/go.mod h1:GIjDIg/heH5DOkXY3YJ/wNhfHsQHoXGjl8G8amsYQ1I=
@@ -890,12 +891,21 @@ github.com/rancher/client-go v1.16.0-rancher.3/go.mod h1:J69/JveO6XESwVgG53q3Uz5
 github.com/rancher/norman v0.0.0-20200211155126-fc45a55d4dfd/go.mod h1:b+483H276jRBXYosdWrNKFpxH+JYMs3UIdlV60dhdg0=
 github.com/rancher/norman v0.0.0-20200321231028-b5f2e33b54fa h1:UFR4z0K74/tnqkNae9X+R8mLREVgYeXj8Tzat7BMqbI=
 github.com/rancher/norman v0.0.0-20200321231028-b5f2e33b54fa/go.mod h1:b+483H276jRBXYosdWrNKFpxH+JYMs3UIdlV60dhdg0=
+github.com/rancher/norman v0.0.0-20200520181341-ab75acb55410/go.mod h1:j0ffXOmInpTVfy/4M8zLrpgkUOwEe6YFBJ/tzkBss78=
+github.com/rancher/norman v0.0.0-20200609224801-7afd2e9bf37f h1:A88Zbs3ztrHMe3ZrFklkJ6Kp3oCkXVSpnTXrgLzgLvw=
+github.com/rancher/norman v0.0.0-20200609224801-7afd2e9bf37f/go.mod h1:j0ffXOmInpTVfy/4M8zLrpgkUOwEe6YFBJ/tzkBss78=
 github.com/rancher/types v0.0.0-20200326224903-b4612bd96d9b h1:nLJOQuk36vCXFQuD03L5Fh9xpF9n9U7/76WNGDjOjeY=
 github.com/rancher/types v0.0.0-20200326224903-b4612bd96d9b/go.mod h1:k5LoTlUpefw0eAzFSJsZI0gf+C4WE41yrc1jm/MS1nM=
+github.com/rancher/types v0.0.0-20200609171948-b18f4c194419 h1:UdhVgG4irjMaNVoZlJygXv1AD7eDYeS4srnLHjMezbg=
+github.com/rancher/types v0.0.0-20200609171948-b18f4c194419/go.mod h1:J6XqSEmTbADDyC4Dp6LLiceNtnlYvyHEcV4o7zG/0hg=
 github.com/rancher/wrangler v0.4.1/go.mod h1:1cR91WLhZgkZ+U4fV9nVuXqKurWbgXcIReU4wnQvTN8=
 github.com/rancher/wrangler v0.5.0 h1:zTchAfY9DzchLvXpRpQuNB0PbNfl/HSuvFL1wHN6mDU=
 github.com/rancher/wrangler v0.5.0/go.mod h1:txHSBkPtVgNH/0pUCvdP0Ak0HptAOc9ffBmFxQnL4z4=
+github.com/rancher/wrangler v0.5.4-0.20200326191509-4054411d9736/go.mod h1:L4HtjPeX8iqLgsxfJgz+JjKMcX2q3qbRXSeTlC/CSd4=
+github.com/rancher/wrangler v0.5.4-0.20200520040055-b8d49179cfc8 h1:gyboq5L4bx+iWyz4xHHFRqt7wyoou8+akRczPgVlFaQ=
+github.com/rancher/wrangler v0.5.4-0.20200520040055-b8d49179cfc8/go.mod h1:L4HtjPeX8iqLgsxfJgz+JjKMcX2q3qbRXSeTlC/CSd4=
 github.com/rancher/wrangler-api v0.5.0/go.mod h1:Ne7fjNRBDdUYPqltLUCW8eiaQwuKXIyAJH6wsuGK80w=
+github.com/rancher/wrangler-api v0.5.1-0.20200326194427-c13310506d04/go.mod h1:R3nemXoECcrDqXDSHdY7yJay4j42TeEkU79Hep0rdJ8=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/remyoudompheng/bigfft v0.0.0-20170806203942-52369c62f446/go.mod h1:uYEyJGbgTkfkS4+E/PavXkNJcbFIpEtjt2B0KDQ5+9M=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
@@ -986,6 +996,8 @@ github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18Cyd
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/terraform-providers/terraform-provider-rancher2 v1.8.3 h1:ahNznP0OkFnXXZ0bANKJSJknRehCrS4G35yZHhVYwA4=
 github.com/terraform-providers/terraform-provider-rancher2 v1.8.3/go.mod h1:SZ8VTQA+DiTor/GccPjKoYMuFdjk/BzdNea85hjeZdM=
+github.com/terraform-providers/terraform-provider-rancher2 v1.9.0 h1:YCMX4WJ9VV0FIqnl05viohvWNNUVII0OeRM8bBk7QiA=
+github.com/terraform-providers/terraform-provider-rancher2 v1.9.0/go.mod h1:Jw2JOWbjzJQ9eKFMY/j3TDZQQrlA8O7ScYe8mA1Z7XM=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/thanos-io/thanos v0.10.1/go.mod h1:usT/TxtJQ7DzinTt+G9kinDQmRS5sxwu0unVKZ9vdcw=
@@ -1438,6 +1450,7 @@ k8s.io/component-base v0.0.0-20190918160511-547f6c5d7090/go.mod h1:933PBGtQFJky3
 k8s.io/gengo v0.0.0-20190128074634-0689ccc1d7d6/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
 k8s.io/gengo v0.0.0-20190822140433-26a664648505/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
 k8s.io/gengo v0.0.0-20191120174120-e74f70b9b27e/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
+k8s.io/gengo v0.0.0-20200114144118-36b2048a9120/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
 k8s.io/klog v0.0.0-20181102134211-b9b56d5dfc92/go.mod h1:Gq+BEi5rUBO/HRz0bTSXDUcqjScdoY3a9IHpCEIOOfk=
 k8s.io/klog v0.1.0/go.mod h1:Gq+BEi5rUBO/HRz0bTSXDUcqjScdoY3a9IHpCEIOOfk=
 k8s.io/klog v0.3.0/go.mod h1:Gq+BEi5rUBO/HRz0bTSXDUcqjScdoY3a9IHpCEIOOfk=

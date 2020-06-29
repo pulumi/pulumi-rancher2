@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _nodeSelector;
 
         /// <summary>
-        /// Node selector for RKE Ingress (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public InputMap<object> NodeSelector
         {
@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Provider for RKE monitoring (string)
+        /// RKE monitoring provider (string)
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

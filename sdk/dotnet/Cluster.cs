@@ -117,28 +117,28 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterEksConfig?> EksConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster alerting. Default `false` (bool)
+        /// Enable built-in cluster alerting (bool)
         /// </summary>
         [Output("enableClusterAlerting")]
-        public Output<bool?> EnableClusterAlerting { get; private set; } = null!;
+        public Output<bool> EnableClusterAlerting { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         /// </summary>
         [Output("enableClusterIstio")]
-        public Output<bool?> EnableClusterIstio { get; private set; } = null!;
+        public Output<bool> EnableClusterIstio { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster monitoring. Default `false` (bool)
+        /// Enable built-in cluster monitoring (bool)
         /// </summary>
         [Output("enableClusterMonitoring")]
-        public Output<bool?> EnableClusterMonitoring { get; private set; } = null!;
+        public Output<bool> EnableClusterMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Enable project network isolation. Default `false` (bool)
+        /// Enable project network isolation (bool)
         /// </summary>
         [Output("enableNetworkPolicy")]
-        public Output<bool?> EnableNetworkPolicy { get; private set; } = null!;
+        public Output<bool> EnableNetworkPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
@@ -180,7 +180,7 @@ namespace Pulumi.Rancher2
         /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         /// </summary>
         [Output("scheduledClusterScan")]
-        public Output<Outputs.ClusterScheduledClusterScan?> ScheduledClusterScan { get; private set; } = null!;
+        public Output<Outputs.ClusterScheduledClusterScan> ScheduledClusterScan { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)
@@ -343,25 +343,25 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterEksConfigArgs>? EksConfig { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting. Default `false` (bool)
+        /// Enable built-in cluster alerting (bool)
         /// </summary>
         [Input("enableClusterAlerting")]
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster monitoring. Default `false` (bool)
+        /// Enable built-in cluster monitoring (bool)
         /// </summary>
         [Input("enableClusterMonitoring")]
         public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
-        /// Enable project network isolation. Default `false` (bool)
+        /// Enable project network isolation (bool)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
@@ -536,25 +536,25 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterEksConfigGetArgs>? EksConfig { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting. Default `false` (bool)
+        /// Enable built-in cluster alerting (bool)
         /// </summary>
         [Input("enableClusterAlerting")]
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster monitoring. Default `false` (bool)
+        /// Enable built-in cluster monitoring (bool)
         /// </summary>
         [Input("enableClusterMonitoring")]
         public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
-        /// Enable project network isolation. Default `false` (bool)
+        /// Enable project network isolation (bool)
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `c-XXXXX:&lt;name&gt;`
+        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
         /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
         /// </summary>
         [Output("catalogName")]
@@ -169,7 +169,7 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `c-XXXXX:&lt;name&gt;`
+        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
         /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
         /// </summary>
         [Input("catalogName", required: true)]
@@ -274,7 +274,7 @@ namespace Pulumi.Rancher2
 
         /// <summary>
         /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `c-XXXXX:&lt;name&gt;`
+        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
         /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
         /// </summary>
         [Input("catalogName")]

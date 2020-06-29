@@ -51,6 +51,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("cloudProviderRateLimitQps")]
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
+        [Input("loadBalancerSku")]
+        public Input<string>? LoadBalancerSku { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 

@@ -106,21 +106,21 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly eksConfig!: pulumi.Output<outputs.ClusterEksConfig | undefined>;
     /**
-     * Enable built-in cluster alerting. Default `false` (bool)
+     * Enable built-in cluster alerting (bool)
      */
-    public readonly enableClusterAlerting!: pulumi.Output<boolean | undefined>;
+    public readonly enableClusterAlerting!: pulumi.Output<boolean>;
     /**
-     * Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+     * Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
      */
-    public readonly enableClusterIstio!: pulumi.Output<boolean | undefined>;
+    public readonly enableClusterIstio!: pulumi.Output<boolean>;
     /**
-     * Enable built-in cluster monitoring. Default `false` (bool)
+     * Enable built-in cluster monitoring (bool)
      */
-    public readonly enableClusterMonitoring!: pulumi.Output<boolean | undefined>;
+    public readonly enableClusterMonitoring!: pulumi.Output<boolean>;
     /**
-     * Enable project network isolation. Default `false` (bool)
+     * Enable project network isolation (bool)
      */
-    public readonly enableNetworkPolicy!: pulumi.Output<boolean | undefined>;
+    public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
     /**
      * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
@@ -148,7 +148,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
      */
-    public readonly scheduledClusterScan!: pulumi.Output<outputs.ClusterScheduledClusterScan | undefined>;
+    public readonly scheduledClusterScan!: pulumi.Output<outputs.ClusterScheduledClusterScan>;
     /**
      * (Computed) System project ID for the cluster (string)
      */
@@ -317,19 +317,19 @@ export interface ClusterState {
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
-     * Enable built-in cluster alerting. Default `false` (bool)
+     * Enable built-in cluster alerting (bool)
      */
     readonly enableClusterAlerting?: pulumi.Input<boolean>;
     /**
-     * Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+     * Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
      */
     readonly enableClusterIstio?: pulumi.Input<boolean>;
     /**
-     * Enable built-in cluster monitoring. Default `false` (bool)
+     * Enable built-in cluster monitoring (bool)
      */
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
-     * Enable project network isolation. Default `false` (bool)
+     * Enable project network isolation (bool)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
@@ -435,19 +435,19 @@ export interface ClusterArgs {
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
-     * Enable built-in cluster alerting. Default `false` (bool)
+     * Enable built-in cluster alerting (bool)
      */
     readonly enableClusterAlerting?: pulumi.Input<boolean>;
     /**
-     * Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+     * Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
      */
     readonly enableClusterIstio?: pulumi.Input<boolean>;
     /**
-     * Enable built-in cluster monitoring. Default `false` (bool)
+     * Enable built-in cluster monitoring (bool)
      */
     readonly enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
-     * Enable project network isolation. Default `false` (bool)
+     * Enable project network isolation (bool)
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**

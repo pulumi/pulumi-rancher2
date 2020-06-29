@@ -4363,7 +4363,7 @@ type ClusterEksConfig struct {
 	MinimumNodes *int `pulumi:"minimumNodes"`
 	// The volume size for each node. Default `20` (int)
 	NodeVolumeSize *int `pulumi:"nodeVolumeSize"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region *string `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey string `pulumi:"secretKey"`
@@ -4414,7 +4414,7 @@ type ClusterEksConfigArgs struct {
 	MinimumNodes pulumi.IntPtrInput `pulumi:"minimumNodes"`
 	// The volume size for each node. Default `20` (int)
 	NodeVolumeSize pulumi.IntPtrInput `pulumi:"nodeVolumeSize"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
@@ -4560,7 +4560,7 @@ func (o ClusterEksConfigOutput) NodeVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *int { return v.NodeVolumeSize }).(pulumi.IntPtrOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterEksConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -4718,7 +4718,7 @@ func (o ClusterEksConfigPtrOutput) NodeVolumeSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterEksConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4824,7 +4824,7 @@ type ClusterGkeConfig struct {
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
 	EnableLegacyAbac              *bool `pulumi:"enableLegacyAbac"`
 	EnableMasterAuthorizedNetwork *bool `pulumi:"enableMasterAuthorizedNetwork"`
-	// Enable stackdriver logging. Default `true` (bool)
+	// Enable network policy config for the cluster. Default `true` (bool)
 	EnableNetworkPolicyConfig *bool `pulumi:"enableNetworkPolicyConfig"`
 	// Enable nodepool autoscaling. Default `false` (bool)
 	EnableNodepoolAutoscaling *bool `pulumi:"enableNodepoolAutoscaling"`
@@ -4890,6 +4890,8 @@ type ClusterGkeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// Project ID to apply answer (string)
 	ProjectId string `pulumi:"projectId"`
+	// GKE cluster region. Conflicts with `zone` (string)
+	Region *string `pulumi:"region"`
 	// The map of Kubernetes labels to be applied to each cluster (map)
 	ResourceLabels map[string]interface{} `pulumi:"resourceLabels"`
 	// The Google Cloud Platform Service Account to be used by the node VMs (string)
@@ -4900,7 +4902,7 @@ type ClusterGkeConfig struct {
 	Taints []string `pulumi:"taints"`
 	// Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
 	UseIpAliases *bool `pulumi:"useIpAliases"`
-	// Zone GKE cluster (string)
+	// GKE cluster zone. Conflicts with `region` (string)
 	Zone *string `pulumi:"zone"`
 }
 
@@ -4942,7 +4944,7 @@ type ClusterGkeConfigArgs struct {
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
 	EnableLegacyAbac              pulumi.BoolPtrInput `pulumi:"enableLegacyAbac"`
 	EnableMasterAuthorizedNetwork pulumi.BoolPtrInput `pulumi:"enableMasterAuthorizedNetwork"`
-	// Enable stackdriver logging. Default `true` (bool)
+	// Enable network policy config for the cluster. Default `true` (bool)
 	EnableNetworkPolicyConfig pulumi.BoolPtrInput `pulumi:"enableNetworkPolicyConfig"`
 	// Enable nodepool autoscaling. Default `false` (bool)
 	EnableNodepoolAutoscaling pulumi.BoolPtrInput `pulumi:"enableNodepoolAutoscaling"`
@@ -5008,6 +5010,8 @@ type ClusterGkeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Project ID to apply answer (string)
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GKE cluster region. Conflicts with `zone` (string)
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The map of Kubernetes labels to be applied to each cluster (map)
 	ResourceLabels pulumi.MapInput `pulumi:"resourceLabels"`
 	// The Google Cloud Platform Service Account to be used by the node VMs (string)
@@ -5018,7 +5022,7 @@ type ClusterGkeConfigArgs struct {
 	Taints pulumi.StringArrayInput `pulumi:"taints"`
 	// Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
 	UseIpAliases pulumi.BoolPtrInput `pulumi:"useIpAliases"`
-	// Zone GKE cluster (string)
+	// GKE cluster zone. Conflicts with `region` (string)
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -5164,7 +5168,7 @@ func (o ClusterGkeConfigOutput) EnableMasterAuthorizedNetwork() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableMasterAuthorizedNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// Enable stackdriver logging. Default `true` (bool)
+// Enable network policy config for the cluster. Default `true` (bool)
 func (o ClusterGkeConfigOutput) EnableNetworkPolicyConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableNetworkPolicyConfig }).(pulumi.BoolPtrOutput)
 }
@@ -5329,6 +5333,11 @@ func (o ClusterGkeConfigOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// GKE cluster region. Conflicts with `zone` (string)
+func (o ClusterGkeConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterGkeConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 // The map of Kubernetes labels to be applied to each cluster (map)
 func (o ClusterGkeConfigOutput) ResourceLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) map[string]interface{} { return v.ResourceLabels }).(pulumi.MapOutput)
@@ -5354,7 +5363,7 @@ func (o ClusterGkeConfigOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.UseIpAliases }).(pulumi.BoolPtrOutput)
 }
 
-// Zone GKE cluster (string)
+// GKE cluster zone. Conflicts with `region` (string)
 func (o ClusterGkeConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -5506,7 +5515,7 @@ func (o ClusterGkeConfigPtrOutput) EnableMasterAuthorizedNetwork() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable stackdriver logging. Default `true` (bool)
+// Enable network policy config for the cluster. Default `true` (bool)
 func (o ClusterGkeConfigPtrOutput) EnableNetworkPolicyConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *bool {
 		if v == nil {
@@ -5836,6 +5845,16 @@ func (o ClusterGkeConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// GKE cluster region. Conflicts with `zone` (string)
+func (o ClusterGkeConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterGkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
 // The map of Kubernetes labels to be applied to each cluster (map)
 func (o ClusterGkeConfigPtrOutput) ResourceLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) map[string]interface{} {
@@ -5886,7 +5905,7 @@ func (o ClusterGkeConfigPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Zone GKE cluster (string)
+// GKE cluster zone. Conflicts with `region` (string)
 func (o ClusterGkeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *string {
 		if v == nil {
@@ -8408,7 +8427,7 @@ func (o ClusterRkeConfigPtrOutput) UpgradeStrategy() ClusterRkeConfigUpgradeStra
 type ClusterRkeConfigAuthentication struct {
 	// RKE sans for authentication ([]string)
 	Sans []string `pulumi:"sans"`
-	// RKE strategy for authentication (string)
+	// Monitoring deployment update strategy (string)
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -8427,7 +8446,7 @@ type ClusterRkeConfigAuthenticationInput interface {
 type ClusterRkeConfigAuthenticationArgs struct {
 	// RKE sans for authentication ([]string)
 	Sans pulumi.StringArrayInput `pulumi:"sans"`
-	// RKE strategy for authentication (string)
+	// Monitoring deployment update strategy (string)
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
@@ -8514,7 +8533,7 @@ func (o ClusterRkeConfigAuthenticationOutput) Sans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterRkeConfigAuthentication) []string { return v.Sans }).(pulumi.StringArrayOutput)
 }
 
-// RKE strategy for authentication (string)
+// Monitoring deployment update strategy (string)
 func (o ClusterRkeConfigAuthenticationOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigAuthentication) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -8547,7 +8566,7 @@ func (o ClusterRkeConfigAuthenticationPtrOutput) Sans() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// RKE strategy for authentication (string)
+// Monitoring deployment update strategy (string)
 func (o ClusterRkeConfigAuthenticationPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigAuthentication) *string {
 		if v == nil {
@@ -8942,7 +8961,7 @@ type ClusterRkeConfigCloudProvider struct {
 	AwsCloudProvider *ClusterRkeConfigCloudProviderAwsCloudProvider `pulumi:"awsCloudProvider"`
 	// RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
 	AzureCloudProvider *ClusterRkeConfigCloudProviderAzureCloudProvider `pulumi:"azureCloudProvider"`
-	// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+	// RKE Custom Cloud Provider config for Cloud Provider (string)
 	CustomCloudProvider *string `pulumi:"customCloudProvider"`
 	// Name of cluster registration token (string)
 	Name *string `pulumi:"name"`
@@ -8969,7 +8988,7 @@ type ClusterRkeConfigCloudProviderArgs struct {
 	AwsCloudProvider ClusterRkeConfigCloudProviderAwsCloudProviderPtrInput `pulumi:"awsCloudProvider"`
 	// RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
 	AzureCloudProvider ClusterRkeConfigCloudProviderAzureCloudProviderPtrInput `pulumi:"azureCloudProvider"`
-	// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+	// RKE Custom Cloud Provider config for Cloud Provider (string)
 	CustomCloudProvider pulumi.StringPtrInput `pulumi:"customCloudProvider"`
 	// Name of cluster registration token (string)
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -9071,7 +9090,7 @@ func (o ClusterRkeConfigCloudProviderOutput) AzureCloudProvider() ClusterRkeConf
 	}).(ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput)
 }
 
-// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+// RKE Custom Cloud Provider config for Cloud Provider (string)
 func (o ClusterRkeConfigCloudProviderOutput) CustomCloudProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProvider) *string { return v.CustomCloudProvider }).(pulumi.StringPtrOutput)
 }
@@ -9133,7 +9152,7 @@ func (o ClusterRkeConfigCloudProviderPtrOutput) AzureCloudProvider() ClusterRkeC
 	}).(ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput)
 }
 
-// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+// RKE Custom Cloud Provider config for Cloud Provider (string)
 func (o ClusterRkeConfigCloudProviderPtrOutput) CustomCloudProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigCloudProvider) *string {
 		if v == nil {
@@ -9350,7 +9369,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderGlobal struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// (string)
 	Vpc *string `pulumi:"vpc"`
-	// Zone GKE cluster (string)
+	// GKE cluster zone. Conflicts with `region` (string)
 	Zone *string `pulumi:"zone"`
 }
 
@@ -9385,7 +9404,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs struct {
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 	// (string)
 	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
-	// Zone GKE cluster (string)
+	// GKE cluster zone. Conflicts with `region` (string)
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -9514,7 +9533,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) Vpc() pulumi.
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
-// Zone GKE cluster (string)
+// GKE cluster zone. Conflicts with `region` (string)
 func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -9629,7 +9648,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Vpc() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Zone GKE cluster (string)
+// GKE cluster zone. Conflicts with `region` (string)
 func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigCloudProviderAwsCloudProviderGlobal) *string {
 		if v == nil {
@@ -9640,7 +9659,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Zone() pul
 }
 
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride struct {
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region *string `pulumi:"region"`
 	// (string)
 	Service string `pulumi:"service"`
@@ -9667,7 +9686,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface
 }
 
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs struct {
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// (string)
 	Service pulumi.StringInput `pulumi:"service"`
@@ -9733,7 +9752,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) ToCl
 	return o
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -9810,6 +9829,8 @@ type ClusterRkeConfigCloudProviderAzureCloudProvider struct {
 	CloudProviderRateLimitBucket *int `pulumi:"cloudProviderRateLimitBucket"`
 	// (int)
 	CloudProviderRateLimitQps *int `pulumi:"cloudProviderRateLimitQps"`
+	// Allowed values: `basic` (default) `standard` (string)
+	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location *string `pulumi:"location"`
 	// (int)
@@ -9881,6 +9902,8 @@ type ClusterRkeConfigCloudProviderAzureCloudProviderArgs struct {
 	CloudProviderRateLimitBucket pulumi.IntPtrInput `pulumi:"cloudProviderRateLimitBucket"`
 	// (int)
 	CloudProviderRateLimitQps pulumi.IntPtrInput `pulumi:"cloudProviderRateLimitQps"`
+	// Allowed values: `basic` (default) `standard` (string)
+	LoadBalancerSku pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (int)
@@ -10054,6 +10077,11 @@ func (o ClusterRkeConfigCloudProviderAzureCloudProviderOutput) CloudProviderRate
 // (int)
 func (o ClusterRkeConfigCloudProviderAzureCloudProviderOutput) CloudProviderRateLimitQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAzureCloudProvider) *int { return v.CloudProviderRateLimitQps }).(pulumi.IntPtrOutput)
+}
+
+// Allowed values: `basic` (default) `standard` (string)
+func (o ClusterRkeConfigCloudProviderAzureCloudProviderOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAzureCloudProvider) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
 }
 
 // Azure Kubernetes cluster location. Default `eastus` (string)
@@ -10279,6 +10307,16 @@ func (o ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) CloudProviderR
 		}
 		return v.CloudProviderRateLimitQps
 	}).(pulumi.IntPtrOutput)
+}
+
+// Allowed values: `basic` (default) `standard` (string)
+func (o ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigCloudProviderAzureCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 // Azure Kubernetes cluster location. Default `eastus` (string)
@@ -10838,7 +10876,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal struct {
 	DomainName *string `pulumi:"domainName"`
 	// Registry password (string)
 	Password string `pulumi:"password"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region *string `pulumi:"region"`
 	// Azure tenant ID to use (string)
 	TenantId *string `pulumi:"tenantId"`
@@ -10873,7 +10911,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs struct {
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Registry password (string)
 	Password pulumi.StringInput `pulumi:"password"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Azure tenant ID to use (string)
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -10988,7 +11026,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput) Passwor
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -11083,7 +11121,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput) Pass
 	}).(pulumi.StringPtrOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) *string {
 		if v == nil {
@@ -12834,9 +12872,11 @@ func (o ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput) Ser
 }
 
 type ClusterRkeConfigDns struct {
-	// Node selector for RKE Ingress (map)
+	// RKE monitoring node selector (map)
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
-	// Provider for RKE monitoring (string)
+	// Nodelocal dns config  (list Maxitem: 1)
+	Nodelocal *ClusterRkeConfigDnsNodelocal `pulumi:"nodelocal"`
+	// RKE monitoring provider (string)
 	Provider *string `pulumi:"provider"`
 	// DNS add-on reverse cidr  (list)
 	ReverseCidrs []string `pulumi:"reverseCidrs"`
@@ -12857,9 +12897,11 @@ type ClusterRkeConfigDnsInput interface {
 }
 
 type ClusterRkeConfigDnsArgs struct {
-	// Node selector for RKE Ingress (map)
+	// RKE monitoring node selector (map)
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
-	// Provider for RKE monitoring (string)
+	// Nodelocal dns config  (list Maxitem: 1)
+	Nodelocal ClusterRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
+	// RKE monitoring provider (string)
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// DNS add-on reverse cidr  (list)
 	ReverseCidrs pulumi.StringArrayInput `pulumi:"reverseCidrs"`
@@ -12945,12 +12987,17 @@ func (o ClusterRkeConfigDnsOutput) ToClusterRkeConfigDnsPtrOutputWithContext(ctx
 	}).(ClusterRkeConfigDnsPtrOutput)
 }
 
-// Node selector for RKE Ingress (map)
+// RKE monitoring node selector (map)
 func (o ClusterRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigDns) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// Nodelocal dns config  (list Maxitem: 1)
+func (o ClusterRkeConfigDnsOutput) Nodelocal() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDns) *ClusterRkeConfigDnsNodelocal { return v.Nodelocal }).(ClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigDnsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigDns) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -12983,7 +13030,7 @@ func (o ClusterRkeConfigDnsPtrOutput) Elem() ClusterRkeConfigDnsOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigDns) ClusterRkeConfigDns { return *v }).(ClusterRkeConfigDnsOutput)
 }
 
-// Node selector for RKE Ingress (map)
+// RKE monitoring node selector (map)
 func (o ClusterRkeConfigDnsPtrOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigDns) map[string]interface{} {
 		if v == nil {
@@ -12993,7 +13040,17 @@ func (o ClusterRkeConfigDnsPtrOutput) NodeSelector() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// Nodelocal dns config  (list Maxitem: 1)
+func (o ClusterRkeConfigDnsPtrOutput) Nodelocal() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDns) *ClusterRkeConfigDnsNodelocal {
+		if v == nil {
+			return nil
+		}
+		return v.Nodelocal
+	}).(ClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigDnsPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigDns) *string {
 		if v == nil {
@@ -13023,16 +13080,168 @@ func (o ClusterRkeConfigDnsPtrOutput) UpstreamNameservers() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type ClusterRkeConfigDnsNodelocal struct {
+	// Nodelocal dns ip address (string)
+	IpAddress *string `pulumi:"ipAddress"`
+	// RKE monitoring node selector (map)
+	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
+}
+
+// ClusterRkeConfigDnsNodelocalInput is an input type that accepts ClusterRkeConfigDnsNodelocalArgs and ClusterRkeConfigDnsNodelocalOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsNodelocalInput` via:
+//
+// 		 ClusterRkeConfigDnsNodelocalArgs{...}
+//
+type ClusterRkeConfigDnsNodelocalInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsNodelocalOutput() ClusterRkeConfigDnsNodelocalOutput
+	ToClusterRkeConfigDnsNodelocalOutputWithContext(context.Context) ClusterRkeConfigDnsNodelocalOutput
+}
+
+type ClusterRkeConfigDnsNodelocalArgs struct {
+	// Nodelocal dns ip address (string)
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// RKE monitoring node selector (map)
+	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
+}
+
+func (ClusterRkeConfigDnsNodelocalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigDnsNodelocalArgs) ToClusterRkeConfigDnsNodelocalOutput() ClusterRkeConfigDnsNodelocalOutput {
+	return i.ToClusterRkeConfigDnsNodelocalOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsNodelocalArgs) ToClusterRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsNodelocalOutput)
+}
+
+func (i ClusterRkeConfigDnsNodelocalArgs) ToClusterRkeConfigDnsNodelocalPtrOutput() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return i.ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsNodelocalArgs) ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsNodelocalOutput).ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigDnsNodelocalPtrInput is an input type that accepts ClusterRkeConfigDnsNodelocalArgs, ClusterRkeConfigDnsNodelocalPtr and ClusterRkeConfigDnsNodelocalPtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsNodelocalPtrInput` via:
+//
+// 		 ClusterRkeConfigDnsNodelocalArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterRkeConfigDnsNodelocalPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsNodelocalPtrOutput() ClusterRkeConfigDnsNodelocalPtrOutput
+	ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Context) ClusterRkeConfigDnsNodelocalPtrOutput
+}
+
+type clusterRkeConfigDnsNodelocalPtrType ClusterRkeConfigDnsNodelocalArgs
+
+func ClusterRkeConfigDnsNodelocalPtr(v *ClusterRkeConfigDnsNodelocalArgs) ClusterRkeConfigDnsNodelocalPtrInput {
+	return (*clusterRkeConfigDnsNodelocalPtrType)(v)
+}
+
+func (*clusterRkeConfigDnsNodelocalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigDnsNodelocalPtrType) ToClusterRkeConfigDnsNodelocalPtrOutput() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return i.ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigDnsNodelocalPtrType) ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
+type ClusterRkeConfigDnsNodelocalOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsNodelocalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsNodelocalOutput) ToClusterRkeConfigDnsNodelocalOutput() ClusterRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsNodelocalOutput) ToClusterRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsNodelocalOutput) ToClusterRkeConfigDnsNodelocalPtrOutput() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigDnsNodelocalOutput) ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsNodelocal) *ClusterRkeConfigDnsNodelocal {
+		return &v
+	}).(ClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
+// Nodelocal dns ip address (string)
+func (o ClusterRkeConfigDnsNodelocalOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsNodelocal) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// RKE monitoring node selector (map)
+func (o ClusterRkeConfigDnsNodelocalOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsNodelocal) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
+}
+
+type ClusterRkeConfigDnsNodelocalPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsNodelocalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsNodelocalPtrOutput) ToClusterRkeConfigDnsNodelocalPtrOutput() ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsNodelocalPtrOutput) ToClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsNodelocalPtrOutput) Elem() ClusterRkeConfigDnsNodelocalOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsNodelocal) ClusterRkeConfigDnsNodelocal { return *v }).(ClusterRkeConfigDnsNodelocalOutput)
+}
+
+// Nodelocal dns ip address (string)
+func (o ClusterRkeConfigDnsNodelocalPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsNodelocal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// RKE monitoring node selector (map)
+func (o ClusterRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsNodelocal) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
 type ClusterRkeConfigIngress struct {
 	// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
 	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs map[string]interface{} `pulumi:"extraArgs"`
-	// Node selector for RKE Ingress (map)
+	// RKE monitoring node selector (map)
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	// RKE options for network (map)
 	Options map[string]interface{} `pulumi:"options"`
-	// Provider for RKE monitoring (string)
+	// RKE monitoring provider (string)
 	Provider *string `pulumi:"provider"`
 }
 
@@ -13053,11 +13262,11 @@ type ClusterRkeConfigIngressArgs struct {
 	DnsPolicy pulumi.StringPtrInput `pulumi:"dnsPolicy"`
 	// Extra arguments for scheduler service (map)
 	ExtraArgs pulumi.MapInput `pulumi:"extraArgs"`
-	// Node selector for RKE Ingress (map)
+	// RKE monitoring node selector (map)
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	// RKE options for network (map)
 	Options pulumi.MapInput `pulumi:"options"`
-	// Provider for RKE monitoring (string)
+	// RKE monitoring provider (string)
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -13149,7 +13358,7 @@ func (o ClusterRkeConfigIngressOutput) ExtraArgs() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigIngress) map[string]interface{} { return v.ExtraArgs }).(pulumi.MapOutput)
 }
 
-// Node selector for RKE Ingress (map)
+// RKE monitoring node selector (map)
 func (o ClusterRkeConfigIngressOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigIngress) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
 }
@@ -13159,7 +13368,7 @@ func (o ClusterRkeConfigIngressOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigIngress) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigIngressOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigIngress) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -13202,7 +13411,7 @@ func (o ClusterRkeConfigIngressPtrOutput) ExtraArgs() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
-// Node selector for RKE Ingress (map)
+// RKE monitoring node selector (map)
 func (o ClusterRkeConfigIngressPtrOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigIngress) map[string]interface{} {
 		if v == nil {
@@ -13222,7 +13431,7 @@ func (o ClusterRkeConfigIngressPtrOutput) Options() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigIngressPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigIngress) *string {
 		if v == nil {
@@ -13233,10 +13442,16 @@ func (o ClusterRkeConfigIngressPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type ClusterRkeConfigMonitoring struct {
+	// RKE monitoring node selector (map)
+	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	// RKE options for network (map)
 	Options map[string]interface{} `pulumi:"options"`
-	// Provider for RKE monitoring (string)
+	// RKE monitoring provider (string)
 	Provider *string `pulumi:"provider"`
+	// RKE monitoring replicas (int)
+	Replicas *int `pulumi:"replicas"`
+	// RKE monitoring update strategy (list Maxitems: 1)
+	UpdateStrategy *ClusterRkeConfigMonitoringUpdateStrategy `pulumi:"updateStrategy"`
 }
 
 // ClusterRkeConfigMonitoringInput is an input type that accepts ClusterRkeConfigMonitoringArgs and ClusterRkeConfigMonitoringOutput values.
@@ -13252,10 +13467,16 @@ type ClusterRkeConfigMonitoringInput interface {
 }
 
 type ClusterRkeConfigMonitoringArgs struct {
+	// RKE monitoring node selector (map)
+	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	// RKE options for network (map)
 	Options pulumi.MapInput `pulumi:"options"`
-	// Provider for RKE monitoring (string)
+	// RKE monitoring provider (string)
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// RKE monitoring replicas (int)
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// RKE monitoring update strategy (list Maxitems: 1)
+	UpdateStrategy ClusterRkeConfigMonitoringUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 }
 
 func (ClusterRkeConfigMonitoringArgs) ElementType() reflect.Type {
@@ -13336,14 +13557,29 @@ func (o ClusterRkeConfigMonitoringOutput) ToClusterRkeConfigMonitoringPtrOutputW
 	}).(ClusterRkeConfigMonitoringPtrOutput)
 }
 
+// RKE monitoring node selector (map)
+func (o ClusterRkeConfigMonitoringOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoring) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
+}
+
 // RKE options for network (map)
 func (o ClusterRkeConfigMonitoringOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigMonitoring) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigMonitoringOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigMonitoring) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// RKE monitoring replicas (int)
+func (o ClusterRkeConfigMonitoringOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoring) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// RKE monitoring update strategy (list Maxitems: 1)
+func (o ClusterRkeConfigMonitoringOutput) UpdateStrategy() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoring) *ClusterRkeConfigMonitoringUpdateStrategy { return v.UpdateStrategy }).(ClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
 }
 
 type ClusterRkeConfigMonitoringPtrOutput struct{ *pulumi.OutputState }
@@ -13364,6 +13600,16 @@ func (o ClusterRkeConfigMonitoringPtrOutput) Elem() ClusterRkeConfigMonitoringOu
 	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) ClusterRkeConfigMonitoring { return *v }).(ClusterRkeConfigMonitoringOutput)
 }
 
+// RKE monitoring node selector (map)
+func (o ClusterRkeConfigMonitoringPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
 // RKE options for network (map)
 func (o ClusterRkeConfigMonitoringPtrOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) map[string]interface{} {
@@ -13374,7 +13620,7 @@ func (o ClusterRkeConfigMonitoringPtrOutput) Options() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
-// Provider for RKE monitoring (string)
+// RKE monitoring provider (string)
 func (o ClusterRkeConfigMonitoringPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) *string {
 		if v == nil {
@@ -13382,6 +13628,334 @@ func (o ClusterRkeConfigMonitoringPtrOutput) Provider() pulumi.StringPtrOutput {
 		}
 		return v.Provider
 	}).(pulumi.StringPtrOutput)
+}
+
+// RKE monitoring replicas (int)
+func (o ClusterRkeConfigMonitoringPtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// RKE monitoring update strategy (list Maxitems: 1)
+func (o ClusterRkeConfigMonitoringPtrOutput) UpdateStrategy() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoring) *ClusterRkeConfigMonitoringUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateStrategy
+	}).(ClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategy struct {
+	// Monitoring deployment rolling update (list Maxitems: 1)
+	RollingUpdate *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	// Monitoring deployment update strategy (string)
+	Strategy *string `pulumi:"strategy"`
+}
+
+// ClusterRkeConfigMonitoringUpdateStrategyInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyArgs and ClusterRkeConfigMonitoringUpdateStrategyOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyInput` via:
+//
+// 		 ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+type ClusterRkeConfigMonitoringUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigMonitoringUpdateStrategyOutput() ClusterRkeConfigMonitoringUpdateStrategyOutput
+	ToClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Context) ClusterRkeConfigMonitoringUpdateStrategyOutput
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyArgs struct {
+	// Monitoring deployment rolling update (list Maxitems: 1)
+	RollingUpdate ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	// Monitoring deployment update strategy (string)
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+}
+
+func (ClusterRkeConfigMonitoringUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyArgs) ToClusterRkeConfigMonitoringUpdateStrategyOutput() ClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyArgs) ToClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyArgs) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyArgs) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyOutput).ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyArgs, ClusterRkeConfigMonitoringUpdateStrategyPtr and ClusterRkeConfigMonitoringUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyPtrInput` via:
+//
+// 		 ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterRkeConfigMonitoringUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput
+	ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Context) ClusterRkeConfigMonitoringUpdateStrategyPtrOutput
+}
+
+type clusterRkeConfigMonitoringUpdateStrategyPtrType ClusterRkeConfigMonitoringUpdateStrategyArgs
+
+func ClusterRkeConfigMonitoringUpdateStrategyPtr(v *ClusterRkeConfigMonitoringUpdateStrategyArgs) ClusterRkeConfigMonitoringUpdateStrategyPtrInput {
+	return (*clusterRkeConfigMonitoringUpdateStrategyPtrType)(v)
+}
+
+func (*clusterRkeConfigMonitoringUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigMonitoringUpdateStrategyPtrType) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigMonitoringUpdateStrategyPtrType) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigMonitoringUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) ToClusterRkeConfigMonitoringUpdateStrategyOutput() ClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) ToClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategy) *ClusterRkeConfigMonitoringUpdateStrategy {
+		return &v
+	}).(ClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+// Monitoring deployment rolling update (list Maxitems: 1)
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) RollingUpdate() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategy) *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment update strategy (string)
+func (o ClusterRkeConfigMonitoringUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategy) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ToClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) Elem() ClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategy) ClusterRkeConfigMonitoringUpdateStrategy { return *v }).(ClusterRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+// Monitoring deployment rolling update (list Maxitems: 1)
+func (o ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) RollingUpdate() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategy) *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment update strategy (string)
+func (o ClusterRkeConfigMonitoringUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
+	// Monitoring deployment rolling update max surge. Default: `1` (int)
+	MaxSurge *int `pulumi:"maxSurge"`
+	// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
+//
+// 		 ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+	ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs struct {
+	// Monitoring deployment rolling update max surge. Default: `1` (int)
+	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
+	// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput).ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
+//
+// 		 ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+	ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+}
+
+type clusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs
+
+func ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr(v *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput {
+	return (*clusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*clusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return &v
+	}).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment rolling update max surge. Default: `1` (int)
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) Elem() ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return *v
+	}).(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+// Monitoring deployment rolling update max surge. Default: `1` (int)
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+func (o ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterRkeConfigNetwork struct {
@@ -15352,7 +15926,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
 	Endpoint string `pulumi:"endpoint"`
 	// Folder for S3 service. Available from Rancher v2.2.7 (string)
 	Folder *string `pulumi:"folder"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region *string `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey *string `pulumi:"secretKey"`
@@ -15381,7 +15955,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Folder for S3 service. Available from Rancher v2.2.7 (string)
 	Folder pulumi.StringPtrInput `pulumi:"folder"`
-	// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+	// GKE cluster region. Conflicts with `zone` (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
@@ -15490,7 +16064,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput) Folder() p
 	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string { return v.Folder }).(pulumi.StringPtrOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -15570,7 +16144,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) Folder(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+// GKE cluster region. Conflicts with `zone` (string)
 func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string {
 		if v == nil {
@@ -20709,6 +21283,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClou
 	CloudProviderRateLimit       *bool   `pulumi:"cloudProviderRateLimit"`
 	CloudProviderRateLimitBucket *int    `pulumi:"cloudProviderRateLimitBucket"`
 	CloudProviderRateLimitQps    *int    `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              *string `pulumi:"loadBalancerSku"`
 	Location                     *string `pulumi:"location"`
 	MaximumLoadBalancerRuleCount *int    `pulumi:"maximumLoadBalancerRuleCount"`
 	PrimaryAvailabilitySetName   *string `pulumi:"primaryAvailabilitySetName"`
@@ -20752,6 +21327,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClou
 	CloudProviderRateLimit       pulumi.BoolPtrInput   `pulumi:"cloudProviderRateLimit"`
 	CloudProviderRateLimitBucket pulumi.IntPtrInput    `pulumi:"cloudProviderRateLimitBucket"`
 	CloudProviderRateLimitQps    pulumi.IntPtrInput    `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
 	Location                     pulumi.StringPtrInput `pulumi:"location"`
 	MaximumLoadBalancerRuleCount pulumi.IntPtrInput    `pulumi:"maximumLoadBalancerRuleCount"`
 	PrimaryAvailabilitySetName   pulumi.StringPtrInput `pulumi:"primaryAvailabilitySetName"`
@@ -20922,6 +21498,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureC
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) *int {
 		return v.CloudProviderRateLimitQps
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) *string {
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput) Location() pulumi.StringPtrOutput {
@@ -21149,6 +21731,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureC
 		}
 		return v.CloudProviderRateLimitQps
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput) Location() pulumi.StringPtrOutput {
@@ -23543,10 +24134,11 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
-	NodeSelector        map[string]interface{} `pulumi:"nodeSelector"`
-	Provider            *string                `pulumi:"provider"`
-	ReverseCidrs        []string               `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string               `pulumi:"upstreamNameservers"`
+	NodeSelector        map[string]interface{}                                             `pulumi:"nodeSelector"`
+	Nodelocal           *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal `pulumi:"nodelocal"`
+	Provider            *string                                                            `pulumi:"provider"`
+	ReverseCidrs        []string                                                           `pulumi:"reverseCidrs"`
+	UpstreamNameservers []string                                                           `pulumi:"upstreamNameservers"`
 }
 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
@@ -23562,10 +24154,11 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface {
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput         `pulumi:"nodeSelector"`
-	Provider            pulumi.StringPtrInput   `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput `pulumi:"upstreamNameservers"`
+	NodeSelector        pulumi.MapInput                                                           `pulumi:"nodeSelector"`
+	Nodelocal           ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
+	Provider            pulumi.StringPtrInput                                                     `pulumi:"provider"`
+	ReverseCidrs        pulumi.StringArrayInput                                                   `pulumi:"reverseCidrs"`
+	UpstreamNameservers pulumi.StringArrayInput                                                   `pulumi:"upstreamNameservers"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -23651,6 +24244,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) NodeSele
 	}).(pulumi.MapOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Nodelocal() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return v.Nodelocal
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -23694,6 +24293,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) NodeS
 	}).(pulumi.MapOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Nodelocal() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		if v == nil {
+			return nil
+		}
+		return v.Nodelocal
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *string {
 		if v == nil {
@@ -23719,6 +24327,153 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Upstr
 		}
 		return v.UpstreamNameservers
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct {
+	IpAddress    *string                `pulumi:"ipAddress"`
+	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs struct {
+	IpAddress    pulumi.StringPtrInput `pulumi:"ipAddress"`
+	NodeSelector pulumi.MapInput       `pulumi:"nodeSelector"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) map[string]interface{} {
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
@@ -23918,8 +24673,11 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput) P
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring struct {
-	Options  map[string]interface{} `pulumi:"options"`
-	Provider *string                `pulumi:"provider"`
+	NodeSelector   map[string]interface{}                                                         `pulumi:"nodeSelector"`
+	Options        map[string]interface{}                                                         `pulumi:"options"`
+	Provider       *string                                                                        `pulumi:"provider"`
+	Replicas       *int                                                                           `pulumi:"replicas"`
+	UpdateStrategy *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy `pulumi:"updateStrategy"`
 }
 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput values.
@@ -23935,8 +24693,11 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput interf
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs struct {
-	Options  pulumi.MapInput       `pulumi:"options"`
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	NodeSelector   pulumi.MapInput                                                                       `pulumi:"nodeSelector"`
+	Options        pulumi.MapInput                                                                       `pulumi:"options"`
+	Provider       pulumi.StringPtrInput                                                                 `pulumi:"provider"`
+	Replicas       pulumi.IntPtrInput                                                                    `pulumi:"replicas"`
+	UpdateStrategy ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs) ElementType() reflect.Type {
@@ -24016,6 +24777,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) T
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput)
 }
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
 		return v.Options
@@ -24024,6 +24791,16 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) O
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) UpdateStrategy() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return v.UpdateStrategy
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput struct{ *pulumi.OutputState }
@@ -24046,6 +24823,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
 		if v == nil {
@@ -24062,6 +24848,322 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput
 		}
 		return v.Provider
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput) UpdateStrategy() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateStrategy
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy struct {
+	RollingUpdate *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                                                                     `pulumi:"strategy"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs struct {
+	RollingUpdate ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                                                              `pulumi:"strategy"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) RollingUpdate() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *string {
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) RollingUpdate() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
+//
+// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
@@ -31020,6 +32122,8 @@ type NodeTemplateAmazonec2Config struct {
 	BlockDurationMinutes *string `pulumi:"blockDurationMinutes"`
 	// AWS root device name. Default `/dev/sda1` (string)
 	DeviceName *string `pulumi:"deviceName"`
+	// Encrypt EBS volume. Default `false` (bool)
+	EncryptEbsVolume *bool `pulumi:"encryptEbsVolume"`
 	// Optional endpoint URL (hostname only or fully qualified URI) (string)
 	Endpoint *string `pulumi:"endpoint"`
 	// AWS IAM Instance Profile (string)
@@ -31097,6 +32201,8 @@ type NodeTemplateAmazonec2ConfigArgs struct {
 	BlockDurationMinutes pulumi.StringPtrInput `pulumi:"blockDurationMinutes"`
 	// AWS root device name. Default `/dev/sda1` (string)
 	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// Encrypt EBS volume. Default `false` (bool)
+	EncryptEbsVolume pulumi.BoolPtrInput `pulumi:"encryptEbsVolume"`
 	// Optional endpoint URL (hostname only or fully qualified URI) (string)
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 	// AWS IAM Instance Profile (string)
@@ -31249,6 +32355,11 @@ func (o NodeTemplateAmazonec2ConfigOutput) BlockDurationMinutes() pulumi.StringP
 // AWS root device name. Default `/dev/sda1` (string)
 func (o NodeTemplateAmazonec2ConfigOutput) DeviceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+// Encrypt EBS volume. Default `false` (bool)
+func (o NodeTemplateAmazonec2ConfigOutput) EncryptEbsVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *bool { return v.EncryptEbsVolume }).(pulumi.BoolPtrOutput)
 }
 
 // Optional endpoint URL (hostname only or fully qualified URI) (string)
@@ -31442,6 +32553,16 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) DeviceName() pulumi.StringPtrOutpu
 		}
 		return v.DeviceName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Encrypt EBS volume. Default `false` (bool)
+func (o NodeTemplateAmazonec2ConfigPtrOutput) EncryptEbsVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptEbsVolume
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional endpoint URL (hostname only or fully qualified URI) (string)
@@ -41551,7 +42672,7 @@ type RoleTempalteRule struct {
 	ResourceNames []string `pulumi:"resourceNames"`
 	// Policy rule resources (list)
 	Resources []string `pulumi:"resources"`
-	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
 	Verbs []string `pulumi:"verbs"`
 }
 
@@ -41576,7 +42697,7 @@ type RoleTempalteRuleArgs struct {
 	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
 	// Policy rule resources (list)
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
-	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
 	Verbs pulumi.StringArrayInput `pulumi:"verbs"`
 }
 
@@ -41652,7 +42773,7 @@ func (o RoleTempalteRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RoleTempalteRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
 func (o RoleTempalteRuleOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RoleTempalteRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
 }
@@ -42928,6 +44049,7 @@ type GetClusterGkeConfig struct {
 	OauthScopes                       []string               `pulumi:"oauthScopes"`
 	Preemptible                       *bool                  `pulumi:"preemptible"`
 	ProjectId                         string                 `pulumi:"projectId"`
+	Region                            *string                `pulumi:"region"`
 	ResourceLabels                    map[string]interface{} `pulumi:"resourceLabels"`
 	ServiceAccount                    string                 `pulumi:"serviceAccount"`
 	SubNetwork                        string                 `pulumi:"subNetwork"`
@@ -42997,6 +44119,7 @@ type GetClusterGkeConfigArgs struct {
 	OauthScopes                       pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	Preemptible                       pulumi.BoolPtrInput     `pulumi:"preemptible"`
 	ProjectId                         pulumi.StringInput      `pulumi:"projectId"`
+	Region                            pulumi.StringPtrInput   `pulumi:"region"`
 	ResourceLabels                    pulumi.MapInput         `pulumi:"resourceLabels"`
 	ServiceAccount                    pulumi.StringInput      `pulumi:"serviceAccount"`
 	SubNetwork                        pulumi.StringInput      `pulumi:"subNetwork"`
@@ -43215,6 +44338,10 @@ func (o GetClusterGkeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 
 func (o GetClusterGkeConfigOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterGkeConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterGkeConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterGkeConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterGkeConfigOutput) ResourceLabels() pulumi.MapOutput {
@@ -45017,34 +46144,35 @@ func (o GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutp
 }
 
 type GetClusterRkeConfigCloudProviderAzureCloudProvider struct {
-	AadClientCertPassword        string `pulumi:"aadClientCertPassword"`
-	AadClientCertPath            string `pulumi:"aadClientCertPath"`
-	AadClientId                  string `pulumi:"aadClientId"`
-	AadClientSecret              string `pulumi:"aadClientSecret"`
-	Cloud                        string `pulumi:"cloud"`
-	CloudProviderBackoff         bool   `pulumi:"cloudProviderBackoff"`
-	CloudProviderBackoffDuration int    `pulumi:"cloudProviderBackoffDuration"`
-	CloudProviderBackoffExponent int    `pulumi:"cloudProviderBackoffExponent"`
-	CloudProviderBackoffJitter   int    `pulumi:"cloudProviderBackoffJitter"`
-	CloudProviderBackoffRetries  int    `pulumi:"cloudProviderBackoffRetries"`
-	CloudProviderRateLimit       bool   `pulumi:"cloudProviderRateLimit"`
-	CloudProviderRateLimitBucket int    `pulumi:"cloudProviderRateLimitBucket"`
-	CloudProviderRateLimitQps    int    `pulumi:"cloudProviderRateLimitQps"`
-	Location                     string `pulumi:"location"`
-	MaximumLoadBalancerRuleCount int    `pulumi:"maximumLoadBalancerRuleCount"`
-	PrimaryAvailabilitySetName   string `pulumi:"primaryAvailabilitySetName"`
-	PrimaryScaleSetName          string `pulumi:"primaryScaleSetName"`
-	ResourceGroup                string `pulumi:"resourceGroup"`
-	RouteTableName               string `pulumi:"routeTableName"`
-	SecurityGroupName            string `pulumi:"securityGroupName"`
-	SubnetName                   string `pulumi:"subnetName"`
-	SubscriptionId               string `pulumi:"subscriptionId"`
-	TenantId                     string `pulumi:"tenantId"`
-	UseInstanceMetadata          bool   `pulumi:"useInstanceMetadata"`
-	UseManagedIdentityExtension  bool   `pulumi:"useManagedIdentityExtension"`
-	VmType                       string `pulumi:"vmType"`
-	VnetName                     string `pulumi:"vnetName"`
-	VnetResourceGroup            string `pulumi:"vnetResourceGroup"`
+	AadClientCertPassword        string  `pulumi:"aadClientCertPassword"`
+	AadClientCertPath            string  `pulumi:"aadClientCertPath"`
+	AadClientId                  string  `pulumi:"aadClientId"`
+	AadClientSecret              string  `pulumi:"aadClientSecret"`
+	Cloud                        string  `pulumi:"cloud"`
+	CloudProviderBackoff         bool    `pulumi:"cloudProviderBackoff"`
+	CloudProviderBackoffDuration int     `pulumi:"cloudProviderBackoffDuration"`
+	CloudProviderBackoffExponent int     `pulumi:"cloudProviderBackoffExponent"`
+	CloudProviderBackoffJitter   int     `pulumi:"cloudProviderBackoffJitter"`
+	CloudProviderBackoffRetries  int     `pulumi:"cloudProviderBackoffRetries"`
+	CloudProviderRateLimit       bool    `pulumi:"cloudProviderRateLimit"`
+	CloudProviderRateLimitBucket int     `pulumi:"cloudProviderRateLimitBucket"`
+	CloudProviderRateLimitQps    int     `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              *string `pulumi:"loadBalancerSku"`
+	Location                     string  `pulumi:"location"`
+	MaximumLoadBalancerRuleCount int     `pulumi:"maximumLoadBalancerRuleCount"`
+	PrimaryAvailabilitySetName   string  `pulumi:"primaryAvailabilitySetName"`
+	PrimaryScaleSetName          string  `pulumi:"primaryScaleSetName"`
+	ResourceGroup                string  `pulumi:"resourceGroup"`
+	RouteTableName               string  `pulumi:"routeTableName"`
+	SecurityGroupName            string  `pulumi:"securityGroupName"`
+	SubnetName                   string  `pulumi:"subnetName"`
+	SubscriptionId               string  `pulumi:"subscriptionId"`
+	TenantId                     string  `pulumi:"tenantId"`
+	UseInstanceMetadata          bool    `pulumi:"useInstanceMetadata"`
+	UseManagedIdentityExtension  bool    `pulumi:"useManagedIdentityExtension"`
+	VmType                       string  `pulumi:"vmType"`
+	VnetName                     string  `pulumi:"vnetName"`
+	VnetResourceGroup            string  `pulumi:"vnetResourceGroup"`
 }
 
 // GetClusterRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderAzureCloudProviderArgs and GetClusterRkeConfigCloudProviderAzureCloudProviderOutput values.
@@ -45060,34 +46188,35 @@ type GetClusterRkeConfigCloudProviderAzureCloudProviderInput interface {
 }
 
 type GetClusterRkeConfigCloudProviderAzureCloudProviderArgs struct {
-	AadClientCertPassword        pulumi.StringInput `pulumi:"aadClientCertPassword"`
-	AadClientCertPath            pulumi.StringInput `pulumi:"aadClientCertPath"`
-	AadClientId                  pulumi.StringInput `pulumi:"aadClientId"`
-	AadClientSecret              pulumi.StringInput `pulumi:"aadClientSecret"`
-	Cloud                        pulumi.StringInput `pulumi:"cloud"`
-	CloudProviderBackoff         pulumi.BoolInput   `pulumi:"cloudProviderBackoff"`
-	CloudProviderBackoffDuration pulumi.IntInput    `pulumi:"cloudProviderBackoffDuration"`
-	CloudProviderBackoffExponent pulumi.IntInput    `pulumi:"cloudProviderBackoffExponent"`
-	CloudProviderBackoffJitter   pulumi.IntInput    `pulumi:"cloudProviderBackoffJitter"`
-	CloudProviderBackoffRetries  pulumi.IntInput    `pulumi:"cloudProviderBackoffRetries"`
-	CloudProviderRateLimit       pulumi.BoolInput   `pulumi:"cloudProviderRateLimit"`
-	CloudProviderRateLimitBucket pulumi.IntInput    `pulumi:"cloudProviderRateLimitBucket"`
-	CloudProviderRateLimitQps    pulumi.IntInput    `pulumi:"cloudProviderRateLimitQps"`
-	Location                     pulumi.StringInput `pulumi:"location"`
-	MaximumLoadBalancerRuleCount pulumi.IntInput    `pulumi:"maximumLoadBalancerRuleCount"`
-	PrimaryAvailabilitySetName   pulumi.StringInput `pulumi:"primaryAvailabilitySetName"`
-	PrimaryScaleSetName          pulumi.StringInput `pulumi:"primaryScaleSetName"`
-	ResourceGroup                pulumi.StringInput `pulumi:"resourceGroup"`
-	RouteTableName               pulumi.StringInput `pulumi:"routeTableName"`
-	SecurityGroupName            pulumi.StringInput `pulumi:"securityGroupName"`
-	SubnetName                   pulumi.StringInput `pulumi:"subnetName"`
-	SubscriptionId               pulumi.StringInput `pulumi:"subscriptionId"`
-	TenantId                     pulumi.StringInput `pulumi:"tenantId"`
-	UseInstanceMetadata          pulumi.BoolInput   `pulumi:"useInstanceMetadata"`
-	UseManagedIdentityExtension  pulumi.BoolInput   `pulumi:"useManagedIdentityExtension"`
-	VmType                       pulumi.StringInput `pulumi:"vmType"`
-	VnetName                     pulumi.StringInput `pulumi:"vnetName"`
-	VnetResourceGroup            pulumi.StringInput `pulumi:"vnetResourceGroup"`
+	AadClientCertPassword        pulumi.StringInput    `pulumi:"aadClientCertPassword"`
+	AadClientCertPath            pulumi.StringInput    `pulumi:"aadClientCertPath"`
+	AadClientId                  pulumi.StringInput    `pulumi:"aadClientId"`
+	AadClientSecret              pulumi.StringInput    `pulumi:"aadClientSecret"`
+	Cloud                        pulumi.StringInput    `pulumi:"cloud"`
+	CloudProviderBackoff         pulumi.BoolInput      `pulumi:"cloudProviderBackoff"`
+	CloudProviderBackoffDuration pulumi.IntInput       `pulumi:"cloudProviderBackoffDuration"`
+	CloudProviderBackoffExponent pulumi.IntInput       `pulumi:"cloudProviderBackoffExponent"`
+	CloudProviderBackoffJitter   pulumi.IntInput       `pulumi:"cloudProviderBackoffJitter"`
+	CloudProviderBackoffRetries  pulumi.IntInput       `pulumi:"cloudProviderBackoffRetries"`
+	CloudProviderRateLimit       pulumi.BoolInput      `pulumi:"cloudProviderRateLimit"`
+	CloudProviderRateLimitBucket pulumi.IntInput       `pulumi:"cloudProviderRateLimitBucket"`
+	CloudProviderRateLimitQps    pulumi.IntInput       `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
+	Location                     pulumi.StringInput    `pulumi:"location"`
+	MaximumLoadBalancerRuleCount pulumi.IntInput       `pulumi:"maximumLoadBalancerRuleCount"`
+	PrimaryAvailabilitySetName   pulumi.StringInput    `pulumi:"primaryAvailabilitySetName"`
+	PrimaryScaleSetName          pulumi.StringInput    `pulumi:"primaryScaleSetName"`
+	ResourceGroup                pulumi.StringInput    `pulumi:"resourceGroup"`
+	RouteTableName               pulumi.StringInput    `pulumi:"routeTableName"`
+	SecurityGroupName            pulumi.StringInput    `pulumi:"securityGroupName"`
+	SubnetName                   pulumi.StringInput    `pulumi:"subnetName"`
+	SubscriptionId               pulumi.StringInput    `pulumi:"subscriptionId"`
+	TenantId                     pulumi.StringInput    `pulumi:"tenantId"`
+	UseInstanceMetadata          pulumi.BoolInput      `pulumi:"useInstanceMetadata"`
+	UseManagedIdentityExtension  pulumi.BoolInput      `pulumi:"useManagedIdentityExtension"`
+	VmType                       pulumi.StringInput    `pulumi:"vmType"`
+	VnetName                     pulumi.StringInput    `pulumi:"vnetName"`
+	VnetResourceGroup            pulumi.StringInput    `pulumi:"vnetResourceGroup"`
 }
 
 func (GetClusterRkeConfigCloudProviderAzureCloudProviderArgs) ElementType() reflect.Type {
@@ -45217,6 +46346,10 @@ func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) CloudProviderR
 
 func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) CloudProviderRateLimitQps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAzureCloudProvider) int { return v.CloudProviderRateLimitQps }).(pulumi.IntOutput)
+}
+
+func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigCloudProviderAzureCloudProvider) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAzureCloudProviderOutput) Location() pulumi.StringOutput {
@@ -45414,6 +46547,15 @@ func (o GetClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) CloudProvid
 		}
 		return &v.CloudProviderRateLimitQps
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigCloudProviderAzureCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) Location() pulumi.StringPtrOutput {
@@ -47738,10 +48880,11 @@ func (o GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput) 
 }
 
 type GetClusterRkeConfigDns struct {
-	NodeSelector        map[string]interface{} `pulumi:"nodeSelector"`
-	Provider            *string                `pulumi:"provider"`
-	ReverseCidrs        []string               `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string               `pulumi:"upstreamNameservers"`
+	NodeSelector        map[string]interface{}           `pulumi:"nodeSelector"`
+	Nodelocal           *GetClusterRkeConfigDnsNodelocal `pulumi:"nodelocal"`
+	Provider            *string                          `pulumi:"provider"`
+	ReverseCidrs        []string                         `pulumi:"reverseCidrs"`
+	UpstreamNameservers []string                         `pulumi:"upstreamNameservers"`
 }
 
 // GetClusterRkeConfigDnsInput is an input type that accepts GetClusterRkeConfigDnsArgs and GetClusterRkeConfigDnsOutput values.
@@ -47757,10 +48900,11 @@ type GetClusterRkeConfigDnsInput interface {
 }
 
 type GetClusterRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput         `pulumi:"nodeSelector"`
-	Provider            pulumi.StringPtrInput   `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput `pulumi:"upstreamNameservers"`
+	NodeSelector        pulumi.MapInput                         `pulumi:"nodeSelector"`
+	Nodelocal           GetClusterRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
+	Provider            pulumi.StringPtrInput                   `pulumi:"provider"`
+	ReverseCidrs        pulumi.StringArrayInput                 `pulumi:"reverseCidrs"`
+	UpstreamNameservers pulumi.StringArrayInput                 `pulumi:"upstreamNameservers"`
 }
 
 func (GetClusterRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -47793,6 +48937,10 @@ func (o GetClusterRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
 }
 
+func (o GetClusterRkeConfigDnsOutput) Nodelocal() GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDns) *GetClusterRkeConfigDnsNodelocal { return v.Nodelocal }).(GetClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
 func (o GetClusterRkeConfigDnsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -47803,6 +48951,149 @@ func (o GetClusterRkeConfigDnsOutput) ReverseCidrs() pulumi.StringArrayOutput {
 
 func (o GetClusterRkeConfigDnsOutput) UpstreamNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) []string { return v.UpstreamNameservers }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterRkeConfigDnsNodelocal struct {
+	IpAddress    *string                `pulumi:"ipAddress"`
+	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
+}
+
+// GetClusterRkeConfigDnsNodelocalInput is an input type that accepts GetClusterRkeConfigDnsNodelocalArgs and GetClusterRkeConfigDnsNodelocalOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsNodelocalInput` via:
+//
+// 		 GetClusterRkeConfigDnsNodelocalArgs{...}
+//
+type GetClusterRkeConfigDnsNodelocalInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsNodelocalOutput() GetClusterRkeConfigDnsNodelocalOutput
+	ToGetClusterRkeConfigDnsNodelocalOutputWithContext(context.Context) GetClusterRkeConfigDnsNodelocalOutput
+}
+
+type GetClusterRkeConfigDnsNodelocalArgs struct {
+	IpAddress    pulumi.StringPtrInput `pulumi:"ipAddress"`
+	NodeSelector pulumi.MapInput       `pulumi:"nodeSelector"`
+}
+
+func (GetClusterRkeConfigDnsNodelocalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigDnsNodelocalArgs) ToGetClusterRkeConfigDnsNodelocalOutput() GetClusterRkeConfigDnsNodelocalOutput {
+	return i.ToGetClusterRkeConfigDnsNodelocalOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsNodelocalArgs) ToGetClusterRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsNodelocalOutput)
+}
+
+func (i GetClusterRkeConfigDnsNodelocalArgs) ToGetClusterRkeConfigDnsNodelocalPtrOutput() GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return i.ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsNodelocalArgs) ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsNodelocalOutput).ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigDnsNodelocalPtrInput is an input type that accepts GetClusterRkeConfigDnsNodelocalArgs, GetClusterRkeConfigDnsNodelocalPtr and GetClusterRkeConfigDnsNodelocalPtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsNodelocalPtrInput` via:
+//
+// 		 GetClusterRkeConfigDnsNodelocalArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterRkeConfigDnsNodelocalPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsNodelocalPtrOutput() GetClusterRkeConfigDnsNodelocalPtrOutput
+	ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Context) GetClusterRkeConfigDnsNodelocalPtrOutput
+}
+
+type getClusterRkeConfigDnsNodelocalPtrType GetClusterRkeConfigDnsNodelocalArgs
+
+func GetClusterRkeConfigDnsNodelocalPtr(v *GetClusterRkeConfigDnsNodelocalArgs) GetClusterRkeConfigDnsNodelocalPtrInput {
+	return (*getClusterRkeConfigDnsNodelocalPtrType)(v)
+}
+
+func (*getClusterRkeConfigDnsNodelocalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigDnsNodelocalPtrType) ToGetClusterRkeConfigDnsNodelocalPtrOutput() GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return i.ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigDnsNodelocalPtrType) ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsNodelocalPtrOutput)
+}
+
+type GetClusterRkeConfigDnsNodelocalOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsNodelocalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsNodelocalOutput) ToGetClusterRkeConfigDnsNodelocalOutput() GetClusterRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsNodelocalOutput) ToGetClusterRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsNodelocalOutput) ToGetClusterRkeConfigDnsNodelocalPtrOutput() GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigDnsNodelocalOutput) ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsNodelocal) *GetClusterRkeConfigDnsNodelocal {
+		return &v
+	}).(GetClusterRkeConfigDnsNodelocalPtrOutput)
+}
+func (o GetClusterRkeConfigDnsNodelocalOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsNodelocal) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsNodelocalOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsNodelocal) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
+}
+
+type GetClusterRkeConfigDnsNodelocalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsNodelocalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsNodelocalPtrOutput) ToGetClusterRkeConfigDnsNodelocalPtrOutput() GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsNodelocalPtrOutput) ToGetClusterRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsNodelocalPtrOutput) Elem() GetClusterRkeConfigDnsNodelocalOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsNodelocal) GetClusterRkeConfigDnsNodelocal { return *v }).(GetClusterRkeConfigDnsNodelocalOutput)
+}
+
+func (o GetClusterRkeConfigDnsNodelocalPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsNodelocal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsNodelocal) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
 }
 
 type GetClusterRkeConfigIngress struct {
@@ -47880,8 +49171,11 @@ func (o GetClusterRkeConfigIngressOutput) Provider() pulumi.StringOutput {
 }
 
 type GetClusterRkeConfigMonitoring struct {
-	Options  map[string]interface{} `pulumi:"options"`
-	Provider string                 `pulumi:"provider"`
+	NodeSelector   map[string]interface{}                       `pulumi:"nodeSelector"`
+	Options        map[string]interface{}                       `pulumi:"options"`
+	Provider       string                                       `pulumi:"provider"`
+	Replicas       int                                          `pulumi:"replicas"`
+	UpdateStrategy *GetClusterRkeConfigMonitoringUpdateStrategy `pulumi:"updateStrategy"`
 }
 
 // GetClusterRkeConfigMonitoringInput is an input type that accepts GetClusterRkeConfigMonitoringArgs and GetClusterRkeConfigMonitoringOutput values.
@@ -47897,8 +49191,11 @@ type GetClusterRkeConfigMonitoringInput interface {
 }
 
 type GetClusterRkeConfigMonitoringArgs struct {
-	Options  pulumi.MapInput    `pulumi:"options"`
-	Provider pulumi.StringInput `pulumi:"provider"`
+	NodeSelector   pulumi.MapInput                                     `pulumi:"nodeSelector"`
+	Options        pulumi.MapInput                                     `pulumi:"options"`
+	Provider       pulumi.StringInput                                  `pulumi:"provider"`
+	Replicas       pulumi.IntInput                                     `pulumi:"replicas"`
+	UpdateStrategy GetClusterRkeConfigMonitoringUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 }
 
 func (GetClusterRkeConfigMonitoringArgs) ElementType() reflect.Type {
@@ -47927,12 +49224,318 @@ func (o GetClusterRkeConfigMonitoringOutput) ToGetClusterRkeConfigMonitoringOutp
 	return o
 }
 
+func (o GetClusterRkeConfigMonitoringOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoring) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
+}
+
 func (o GetClusterRkeConfigMonitoringOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigMonitoring) map[string]interface{} { return v.Options }).(pulumi.MapOutput)
 }
 
 func (o GetClusterRkeConfigMonitoringOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigMonitoring) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringOutput) Replicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoring) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringOutput) UpdateStrategy() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoring) *GetClusterRkeConfigMonitoringUpdateStrategy {
+		return v.UpdateStrategy
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategy struct {
+	RollingUpdate *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                                   `pulumi:"strategy"`
+}
+
+// GetClusterRkeConfigMonitoringUpdateStrategyInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyArgs and GetClusterRkeConfigMonitoringUpdateStrategyOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyInput` via:
+//
+// 		 GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+type GetClusterRkeConfigMonitoringUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigMonitoringUpdateStrategyOutput() GetClusterRkeConfigMonitoringUpdateStrategyOutput
+	ToGetClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Context) GetClusterRkeConfigMonitoringUpdateStrategyOutput
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyArgs struct {
+	RollingUpdate GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                            `pulumi:"strategy"`
+}
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyOutput() GetClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyOutput).ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyArgs, GetClusterRkeConfigMonitoringUpdateStrategyPtr and GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyPtrInput` via:
+//
+// 		 GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterRkeConfigMonitoringUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput
+	ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Context) GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput
+}
+
+type getClusterRkeConfigMonitoringUpdateStrategyPtrType GetClusterRkeConfigMonitoringUpdateStrategyArgs
+
+func GetClusterRkeConfigMonitoringUpdateStrategyPtr(v *GetClusterRkeConfigMonitoringUpdateStrategyArgs) GetClusterRkeConfigMonitoringUpdateStrategyPtrInput {
+	return (*getClusterRkeConfigMonitoringUpdateStrategyPtrType)(v)
+}
+
+func (*getClusterRkeConfigMonitoringUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigMonitoringUpdateStrategyPtrType) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigMonitoringUpdateStrategyPtrType) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyOutput() GetClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategy) *GetClusterRkeConfigMonitoringUpdateStrategy {
+		return &v
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) RollingUpdate() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategy) *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategy) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) Elem() GetClusterRkeConfigMonitoringUpdateStrategyOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategy) GetClusterRkeConfigMonitoringUpdateStrategy {
+		return *v
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) RollingUpdate() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategy) *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
+//
+// 		 GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+	ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput).ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
+//
+// 		 GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+	ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+}
+
+type getClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs
+
+func GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr(v *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput {
+	return (*getClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*getClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return &v
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToGetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) Elem() GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return *v
+	}).(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetClusterRkeConfigNetwork struct {
@@ -52500,34 +54103,35 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider struct {
-	AadClientCertPassword        string `pulumi:"aadClientCertPassword"`
-	AadClientCertPath            string `pulumi:"aadClientCertPath"`
-	AadClientId                  string `pulumi:"aadClientId"`
-	AadClientSecret              string `pulumi:"aadClientSecret"`
-	Cloud                        string `pulumi:"cloud"`
-	CloudProviderBackoff         bool   `pulumi:"cloudProviderBackoff"`
-	CloudProviderBackoffDuration int    `pulumi:"cloudProviderBackoffDuration"`
-	CloudProviderBackoffExponent int    `pulumi:"cloudProviderBackoffExponent"`
-	CloudProviderBackoffJitter   int    `pulumi:"cloudProviderBackoffJitter"`
-	CloudProviderBackoffRetries  int    `pulumi:"cloudProviderBackoffRetries"`
-	CloudProviderRateLimit       bool   `pulumi:"cloudProviderRateLimit"`
-	CloudProviderRateLimitBucket int    `pulumi:"cloudProviderRateLimitBucket"`
-	CloudProviderRateLimitQps    int    `pulumi:"cloudProviderRateLimitQps"`
-	Location                     string `pulumi:"location"`
-	MaximumLoadBalancerRuleCount int    `pulumi:"maximumLoadBalancerRuleCount"`
-	PrimaryAvailabilitySetName   string `pulumi:"primaryAvailabilitySetName"`
-	PrimaryScaleSetName          string `pulumi:"primaryScaleSetName"`
-	ResourceGroup                string `pulumi:"resourceGroup"`
-	RouteTableName               string `pulumi:"routeTableName"`
-	SecurityGroupName            string `pulumi:"securityGroupName"`
-	SubnetName                   string `pulumi:"subnetName"`
-	SubscriptionId               string `pulumi:"subscriptionId"`
-	TenantId                     string `pulumi:"tenantId"`
-	UseInstanceMetadata          bool   `pulumi:"useInstanceMetadata"`
-	UseManagedIdentityExtension  bool   `pulumi:"useManagedIdentityExtension"`
-	VmType                       string `pulumi:"vmType"`
-	VnetName                     string `pulumi:"vnetName"`
-	VnetResourceGroup            string `pulumi:"vnetResourceGroup"`
+	AadClientCertPassword        string  `pulumi:"aadClientCertPassword"`
+	AadClientCertPath            string  `pulumi:"aadClientCertPath"`
+	AadClientId                  string  `pulumi:"aadClientId"`
+	AadClientSecret              string  `pulumi:"aadClientSecret"`
+	Cloud                        string  `pulumi:"cloud"`
+	CloudProviderBackoff         bool    `pulumi:"cloudProviderBackoff"`
+	CloudProviderBackoffDuration int     `pulumi:"cloudProviderBackoffDuration"`
+	CloudProviderBackoffExponent int     `pulumi:"cloudProviderBackoffExponent"`
+	CloudProviderBackoffJitter   int     `pulumi:"cloudProviderBackoffJitter"`
+	CloudProviderBackoffRetries  int     `pulumi:"cloudProviderBackoffRetries"`
+	CloudProviderRateLimit       bool    `pulumi:"cloudProviderRateLimit"`
+	CloudProviderRateLimitBucket int     `pulumi:"cloudProviderRateLimitBucket"`
+	CloudProviderRateLimitQps    int     `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              *string `pulumi:"loadBalancerSku"`
+	Location                     string  `pulumi:"location"`
+	MaximumLoadBalancerRuleCount int     `pulumi:"maximumLoadBalancerRuleCount"`
+	PrimaryAvailabilitySetName   string  `pulumi:"primaryAvailabilitySetName"`
+	PrimaryScaleSetName          string  `pulumi:"primaryScaleSetName"`
+	ResourceGroup                string  `pulumi:"resourceGroup"`
+	RouteTableName               string  `pulumi:"routeTableName"`
+	SecurityGroupName            string  `pulumi:"securityGroupName"`
+	SubnetName                   string  `pulumi:"subnetName"`
+	SubscriptionId               string  `pulumi:"subscriptionId"`
+	TenantId                     string  `pulumi:"tenantId"`
+	UseInstanceMetadata          bool    `pulumi:"useInstanceMetadata"`
+	UseManagedIdentityExtension  bool    `pulumi:"useManagedIdentityExtension"`
+	VmType                       string  `pulumi:"vmType"`
+	VnetName                     string  `pulumi:"vnetName"`
+	VnetResourceGroup            string  `pulumi:"vnetResourceGroup"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput values.
@@ -52543,34 +54147,35 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureC
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs struct {
-	AadClientCertPassword        pulumi.StringInput `pulumi:"aadClientCertPassword"`
-	AadClientCertPath            pulumi.StringInput `pulumi:"aadClientCertPath"`
-	AadClientId                  pulumi.StringInput `pulumi:"aadClientId"`
-	AadClientSecret              pulumi.StringInput `pulumi:"aadClientSecret"`
-	Cloud                        pulumi.StringInput `pulumi:"cloud"`
-	CloudProviderBackoff         pulumi.BoolInput   `pulumi:"cloudProviderBackoff"`
-	CloudProviderBackoffDuration pulumi.IntInput    `pulumi:"cloudProviderBackoffDuration"`
-	CloudProviderBackoffExponent pulumi.IntInput    `pulumi:"cloudProviderBackoffExponent"`
-	CloudProviderBackoffJitter   pulumi.IntInput    `pulumi:"cloudProviderBackoffJitter"`
-	CloudProviderBackoffRetries  pulumi.IntInput    `pulumi:"cloudProviderBackoffRetries"`
-	CloudProviderRateLimit       pulumi.BoolInput   `pulumi:"cloudProviderRateLimit"`
-	CloudProviderRateLimitBucket pulumi.IntInput    `pulumi:"cloudProviderRateLimitBucket"`
-	CloudProviderRateLimitQps    pulumi.IntInput    `pulumi:"cloudProviderRateLimitQps"`
-	Location                     pulumi.StringInput `pulumi:"location"`
-	MaximumLoadBalancerRuleCount pulumi.IntInput    `pulumi:"maximumLoadBalancerRuleCount"`
-	PrimaryAvailabilitySetName   pulumi.StringInput `pulumi:"primaryAvailabilitySetName"`
-	PrimaryScaleSetName          pulumi.StringInput `pulumi:"primaryScaleSetName"`
-	ResourceGroup                pulumi.StringInput `pulumi:"resourceGroup"`
-	RouteTableName               pulumi.StringInput `pulumi:"routeTableName"`
-	SecurityGroupName            pulumi.StringInput `pulumi:"securityGroupName"`
-	SubnetName                   pulumi.StringInput `pulumi:"subnetName"`
-	SubscriptionId               pulumi.StringInput `pulumi:"subscriptionId"`
-	TenantId                     pulumi.StringInput `pulumi:"tenantId"`
-	UseInstanceMetadata          pulumi.BoolInput   `pulumi:"useInstanceMetadata"`
-	UseManagedIdentityExtension  pulumi.BoolInput   `pulumi:"useManagedIdentityExtension"`
-	VmType                       pulumi.StringInput `pulumi:"vmType"`
-	VnetName                     pulumi.StringInput `pulumi:"vnetName"`
-	VnetResourceGroup            pulumi.StringInput `pulumi:"vnetResourceGroup"`
+	AadClientCertPassword        pulumi.StringInput    `pulumi:"aadClientCertPassword"`
+	AadClientCertPath            pulumi.StringInput    `pulumi:"aadClientCertPath"`
+	AadClientId                  pulumi.StringInput    `pulumi:"aadClientId"`
+	AadClientSecret              pulumi.StringInput    `pulumi:"aadClientSecret"`
+	Cloud                        pulumi.StringInput    `pulumi:"cloud"`
+	CloudProviderBackoff         pulumi.BoolInput      `pulumi:"cloudProviderBackoff"`
+	CloudProviderBackoffDuration pulumi.IntInput       `pulumi:"cloudProviderBackoffDuration"`
+	CloudProviderBackoffExponent pulumi.IntInput       `pulumi:"cloudProviderBackoffExponent"`
+	CloudProviderBackoffJitter   pulumi.IntInput       `pulumi:"cloudProviderBackoffJitter"`
+	CloudProviderBackoffRetries  pulumi.IntInput       `pulumi:"cloudProviderBackoffRetries"`
+	CloudProviderRateLimit       pulumi.BoolInput      `pulumi:"cloudProviderRateLimit"`
+	CloudProviderRateLimitBucket pulumi.IntInput       `pulumi:"cloudProviderRateLimitBucket"`
+	CloudProviderRateLimitQps    pulumi.IntInput       `pulumi:"cloudProviderRateLimitQps"`
+	LoadBalancerSku              pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
+	Location                     pulumi.StringInput    `pulumi:"location"`
+	MaximumLoadBalancerRuleCount pulumi.IntInput       `pulumi:"maximumLoadBalancerRuleCount"`
+	PrimaryAvailabilitySetName   pulumi.StringInput    `pulumi:"primaryAvailabilitySetName"`
+	PrimaryScaleSetName          pulumi.StringInput    `pulumi:"primaryScaleSetName"`
+	ResourceGroup                pulumi.StringInput    `pulumi:"resourceGroup"`
+	RouteTableName               pulumi.StringInput    `pulumi:"routeTableName"`
+	SecurityGroupName            pulumi.StringInput    `pulumi:"securityGroupName"`
+	SubnetName                   pulumi.StringInput    `pulumi:"subnetName"`
+	SubscriptionId               pulumi.StringInput    `pulumi:"subscriptionId"`
+	TenantId                     pulumi.StringInput    `pulumi:"tenantId"`
+	UseInstanceMetadata          pulumi.BoolInput      `pulumi:"useInstanceMetadata"`
+	UseManagedIdentityExtension  pulumi.BoolInput      `pulumi:"useManagedIdentityExtension"`
+	VmType                       pulumi.StringInput    `pulumi:"vmType"`
+	VnetName                     pulumi.StringInput    `pulumi:"vnetName"`
+	VnetResourceGroup            pulumi.StringInput    `pulumi:"vnetResourceGroup"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs) ElementType() reflect.Type {
@@ -52726,6 +54331,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzu
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) int {
 		return v.CloudProviderRateLimitQps
 	}).(pulumi.IntOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) *string {
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput) Location() pulumi.StringOutput {
@@ -52953,6 +54564,15 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzu
 		}
 		return &v.CloudProviderRateLimitQps
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSku
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput) Location() pulumi.StringPtrOutput {
@@ -55347,10 +56967,11 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
-	NodeSelector        map[string]interface{} `pulumi:"nodeSelector"`
-	Provider            *string                `pulumi:"provider"`
-	ReverseCidrs        []string               `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string               `pulumi:"upstreamNameservers"`
+	NodeSelector        map[string]interface{}                                                `pulumi:"nodeSelector"`
+	Nodelocal           *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal `pulumi:"nodelocal"`
+	Provider            *string                                                               `pulumi:"provider"`
+	ReverseCidrs        []string                                                              `pulumi:"reverseCidrs"`
+	UpstreamNameservers []string                                                              `pulumi:"upstreamNameservers"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
@@ -55366,10 +56987,11 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface 
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput         `pulumi:"nodeSelector"`
-	Provider            pulumi.StringPtrInput   `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput `pulumi:"upstreamNameservers"`
+	NodeSelector        pulumi.MapInput                                                              `pulumi:"nodeSelector"`
+	Nodelocal           GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
+	Provider            pulumi.StringPtrInput                                                        `pulumi:"provider"`
+	ReverseCidrs        pulumi.StringArrayInput                                                      `pulumi:"reverseCidrs"`
+	UpstreamNameservers pulumi.StringArrayInput                                                      `pulumi:"upstreamNameservers"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -55404,6 +57026,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) NodeS
 	}).(pulumi.MapOutput)
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Nodelocal() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return v.Nodelocal
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -55416,6 +57044,155 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Upstr
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) []string {
 		return v.UpstreamNameservers
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct {
+	IpAddress    *string                `pulumi:"ipAddress"`
+	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs struct {
+	IpAddress    pulumi.StringPtrInput `pulumi:"ipAddress"`
+	NodeSelector pulumi.MapInput       `pulumi:"nodeSelector"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *string {
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) map[string]interface{} {
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
@@ -55499,8 +57276,11 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput) P
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring struct {
-	Options  map[string]interface{} `pulumi:"options"`
-	Provider string                 `pulumi:"provider"`
+	NodeSelector   map[string]interface{}                                                            `pulumi:"nodeSelector"`
+	Options        map[string]interface{}                                                            `pulumi:"options"`
+	Provider       string                                                                            `pulumi:"provider"`
+	Replicas       int                                                                               `pulumi:"replicas"`
+	UpdateStrategy *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy `pulumi:"updateStrategy"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput values.
@@ -55516,8 +57296,11 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput int
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs struct {
-	Options  pulumi.MapInput    `pulumi:"options"`
-	Provider pulumi.StringInput `pulumi:"provider"`
+	NodeSelector   pulumi.MapInput                                                                          `pulumi:"nodeSelector"`
+	Options        pulumi.MapInput                                                                          `pulumi:"options"`
+	Provider       pulumi.StringInput                                                                       `pulumi:"provider"`
+	Replicas       pulumi.IntInput                                                                          `pulumi:"replicas"`
+	UpdateStrategy GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs) ElementType() reflect.Type {
@@ -55546,6 +57329,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput
 	return o
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) NodeSelector() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
+		return v.NodeSelector
+	}).(pulumi.MapOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) map[string]interface{} {
 		return v.Options
@@ -55554,6 +57343,314 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) Replicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput) UpdateStrategy() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return v.UpdateStrategy
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy struct {
+	RollingUpdate *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                                                                        `pulumi:"strategy"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs struct {
+	RollingUpdate GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                                                                 `pulumi:"strategy"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) RollingUpdate() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *string {
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) RollingUpdate() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
+//
+// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
@@ -63790,10 +65887,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsNodelocalOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsNodelocalPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigIngressPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigNetworkPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigNetworkCalicoNetworkProviderOutput{})
@@ -63896,10 +65999,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderOutput{})
@@ -64129,8 +66238,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigDnsOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsNodelocalOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsNodelocalPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigNetworkOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigNetworkCalicoNetworkProviderOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigNetworkCalicoNetworkProviderPtrOutput{})
@@ -64215,8 +66330,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrOutput{})

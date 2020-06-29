@@ -21,7 +21,7 @@ class App(pulumi.CustomResource):
     catalog_name: pulumi.Output[str]
     """
     Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-    * add cluster ID before name, `c-XXXXX:<name>`
+    * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
     * add project ID before name, `p-XXXXX:<name>`
     """
     description: pulumi.Output[str]
@@ -76,7 +76,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for App object (map)
         :param pulumi.Input[dict] answers: Answers for the app template. If modified, app will be upgraded (map)
         :param pulumi.Input[str] catalog_name: Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-               * add cluster ID before name, `c-XXXXX:<name>`
+               * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
                * add project ID before name, `p-XXXXX:<name>`
         :param pulumi.Input[str] description: Description for the app (string)
         :param pulumi.Input[bool] force_upgrade: Force app upgrade (string)
@@ -146,7 +146,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations for App object (map)
         :param pulumi.Input[dict] answers: Answers for the app template. If modified, app will be upgraded (map)
         :param pulumi.Input[str] catalog_name: Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-               * add cluster ID before name, `c-XXXXX:<name>`
+               * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
                * add project ID before name, `p-XXXXX:<name>`
         :param pulumi.Input[str] description: Description for the app (string)
         :param pulumi.Input[str] external_id: (Computed) The url of the app template on a catalog (string)

@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnableMasterAuthorizedNetwork { get; set; }
 
         /// <summary>
-        /// Enable stackdriver logging. Default `true` (bool)
+        /// Enable network policy config for the cluster. Default `true` (bool)
         /// </summary>
         [Input("enableNetworkPolicyConfig")]
         public Input<bool>? EnableNetworkPolicyConfig { get; set; }
@@ -309,6 +309,12 @@ namespace Pulumi.Rancher2.Inputs
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// GKE cluster region. Conflicts with `zone` (string)
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         [Input("resourceLabels")]
         private InputMap<object>? _resourceLabels;
 
@@ -352,7 +358,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? UseIpAliases { get; set; }
 
         /// <summary>
-        /// Zone GKE cluster (string)
+        /// GKE cluster zone. Conflicts with `region` (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

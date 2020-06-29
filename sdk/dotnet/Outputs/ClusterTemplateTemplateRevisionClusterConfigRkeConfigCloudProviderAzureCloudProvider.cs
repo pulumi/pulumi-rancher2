@@ -26,6 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? CloudProviderRateLimit;
         public readonly int? CloudProviderRateLimitBucket;
         public readonly int? CloudProviderRateLimitQps;
+        public readonly string? LoadBalancerSku;
         public readonly string? Location;
         public readonly int? MaximumLoadBalancerRuleCount;
         public readonly string? PrimaryAvailabilitySetName;
@@ -70,6 +71,8 @@ namespace Pulumi.Rancher2.Outputs
 
             int? cloudProviderRateLimitQps,
 
+            string? loadBalancerSku,
+
             string? location,
 
             int? maximumLoadBalancerRuleCount,
@@ -113,6 +116,7 @@ namespace Pulumi.Rancher2.Outputs
             CloudProviderRateLimit = cloudProviderRateLimit;
             CloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
             CloudProviderRateLimitQps = cloudProviderRateLimitQps;
+            LoadBalancerSku = loadBalancerSku;
             Location = location;
             MaximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
             PrimaryAvailabilitySetName = primaryAvailabilitySetName;
