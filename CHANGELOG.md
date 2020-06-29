@@ -2,9 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
-* Rename `openstack.ClusterAlterGroup` to be `openstack.ClusterAlertGroup`
-* Rename `openstack.ClusterAlterRule` to be `openstack.ClusterAlertRule`
+* Rename `rancher2.ClusterAlterGroup` to be `rancher2.ClusterAlertGroup`
+* Rename `rancher2.ClusterAlterRule` to be `rancher2.ClusterAlertRule`
+* Upgrade to v1.9.0 of the Rancher2 Terraform Provider
 
 ---
 
