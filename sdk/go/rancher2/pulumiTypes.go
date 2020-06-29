@@ -1741,6 +1741,835 @@ func (o ClusterAksConfigPtrOutput) VirtualNetworkResourceGroup() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterAlertGroupRecipient struct {
+	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
+	// Recipient notifier ID (string)
+	NotifierId string `pulumi:"notifierId"`
+	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+	NotifierType *string `pulumi:"notifierType"`
+	// Recipient (string)
+	Recipient *string `pulumi:"recipient"`
+}
+
+// ClusterAlertGroupRecipientInput is an input type that accepts ClusterAlertGroupRecipientArgs and ClusterAlertGroupRecipientOutput values.
+// You can construct a concrete instance of `ClusterAlertGroupRecipientInput` via:
+//
+// 		 ClusterAlertGroupRecipientArgs{...}
+//
+type ClusterAlertGroupRecipientInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupRecipientOutput() ClusterAlertGroupRecipientOutput
+	ToClusterAlertGroupRecipientOutputWithContext(context.Context) ClusterAlertGroupRecipientOutput
+}
+
+type ClusterAlertGroupRecipientArgs struct {
+	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
+	// Recipient notifier ID (string)
+	NotifierId pulumi.StringInput `pulumi:"notifierId"`
+	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+	NotifierType pulumi.StringPtrInput `pulumi:"notifierType"`
+	// Recipient (string)
+	Recipient pulumi.StringPtrInput `pulumi:"recipient"`
+}
+
+func (ClusterAlertGroupRecipientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertGroupRecipient)(nil)).Elem()
+}
+
+func (i ClusterAlertGroupRecipientArgs) ToClusterAlertGroupRecipientOutput() ClusterAlertGroupRecipientOutput {
+	return i.ToClusterAlertGroupRecipientOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertGroupRecipientArgs) ToClusterAlertGroupRecipientOutputWithContext(ctx context.Context) ClusterAlertGroupRecipientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupRecipientOutput)
+}
+
+// ClusterAlertGroupRecipientArrayInput is an input type that accepts ClusterAlertGroupRecipientArray and ClusterAlertGroupRecipientArrayOutput values.
+// You can construct a concrete instance of `ClusterAlertGroupRecipientArrayInput` via:
+//
+// 		 ClusterAlertGroupRecipientArray{ ClusterAlertGroupRecipientArgs{...} }
+//
+type ClusterAlertGroupRecipientArrayInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupRecipientArrayOutput() ClusterAlertGroupRecipientArrayOutput
+	ToClusterAlertGroupRecipientArrayOutputWithContext(context.Context) ClusterAlertGroupRecipientArrayOutput
+}
+
+type ClusterAlertGroupRecipientArray []ClusterAlertGroupRecipientInput
+
+func (ClusterAlertGroupRecipientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAlertGroupRecipient)(nil)).Elem()
+}
+
+func (i ClusterAlertGroupRecipientArray) ToClusterAlertGroupRecipientArrayOutput() ClusterAlertGroupRecipientArrayOutput {
+	return i.ToClusterAlertGroupRecipientArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertGroupRecipientArray) ToClusterAlertGroupRecipientArrayOutputWithContext(ctx context.Context) ClusterAlertGroupRecipientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupRecipientArrayOutput)
+}
+
+type ClusterAlertGroupRecipientOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertGroupRecipientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertGroupRecipient)(nil)).Elem()
+}
+
+func (o ClusterAlertGroupRecipientOutput) ToClusterAlertGroupRecipientOutput() ClusterAlertGroupRecipientOutput {
+	return o
+}
+
+func (o ClusterAlertGroupRecipientOutput) ToClusterAlertGroupRecipientOutputWithContext(ctx context.Context) ClusterAlertGroupRecipientOutput {
+	return o
+}
+
+// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+func (o ClusterAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterAlertGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
+}
+
+// Recipient notifier ID (string)
+func (o ClusterAlertGroupRecipientOutput) NotifierId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAlertGroupRecipient) string { return v.NotifierId }).(pulumi.StringOutput)
+}
+
+// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+func (o ClusterAlertGroupRecipientOutput) NotifierType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertGroupRecipient) *string { return v.NotifierType }).(pulumi.StringPtrOutput)
+}
+
+// Recipient (string)
+func (o ClusterAlertGroupRecipientOutput) Recipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertGroupRecipient) *string { return v.Recipient }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAlertGroupRecipientArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertGroupRecipientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAlertGroupRecipient)(nil)).Elem()
+}
+
+func (o ClusterAlertGroupRecipientArrayOutput) ToClusterAlertGroupRecipientArrayOutput() ClusterAlertGroupRecipientArrayOutput {
+	return o
+}
+
+func (o ClusterAlertGroupRecipientArrayOutput) ToClusterAlertGroupRecipientArrayOutputWithContext(ctx context.Context) ClusterAlertGroupRecipientArrayOutput {
+	return o
+}
+
+func (o ClusterAlertGroupRecipientArrayOutput) Index(i pulumi.IntInput) ClusterAlertGroupRecipientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlertGroupRecipient {
+		return vs[0].([]ClusterAlertGroupRecipient)[vs[1].(int)]
+	}).(ClusterAlertGroupRecipientOutput)
+}
+
+type ClusterAlertRuleEventRule struct {
+	// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+	EventType *string `pulumi:"eventType"`
+	// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+	ResourceKind string `pulumi:"resourceKind"`
+}
+
+// ClusterAlertRuleEventRuleInput is an input type that accepts ClusterAlertRuleEventRuleArgs and ClusterAlertRuleEventRuleOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleEventRuleInput` via:
+//
+// 		 ClusterAlertRuleEventRuleArgs{...}
+//
+type ClusterAlertRuleEventRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleEventRuleOutput() ClusterAlertRuleEventRuleOutput
+	ToClusterAlertRuleEventRuleOutputWithContext(context.Context) ClusterAlertRuleEventRuleOutput
+}
+
+type ClusterAlertRuleEventRuleArgs struct {
+	// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+	// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+	ResourceKind pulumi.StringInput `pulumi:"resourceKind"`
+}
+
+func (ClusterAlertRuleEventRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleEventRule)(nil)).Elem()
+}
+
+func (i ClusterAlertRuleEventRuleArgs) ToClusterAlertRuleEventRuleOutput() ClusterAlertRuleEventRuleOutput {
+	return i.ToClusterAlertRuleEventRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleEventRuleArgs) ToClusterAlertRuleEventRuleOutputWithContext(ctx context.Context) ClusterAlertRuleEventRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleEventRuleOutput)
+}
+
+func (i ClusterAlertRuleEventRuleArgs) ToClusterAlertRuleEventRulePtrOutput() ClusterAlertRuleEventRulePtrOutput {
+	return i.ToClusterAlertRuleEventRulePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleEventRuleArgs) ToClusterAlertRuleEventRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleEventRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleEventRuleOutput).ToClusterAlertRuleEventRulePtrOutputWithContext(ctx)
+}
+
+// ClusterAlertRuleEventRulePtrInput is an input type that accepts ClusterAlertRuleEventRuleArgs, ClusterAlertRuleEventRulePtr and ClusterAlertRuleEventRulePtrOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleEventRulePtrInput` via:
+//
+// 		 ClusterAlertRuleEventRuleArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAlertRuleEventRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleEventRulePtrOutput() ClusterAlertRuleEventRulePtrOutput
+	ToClusterAlertRuleEventRulePtrOutputWithContext(context.Context) ClusterAlertRuleEventRulePtrOutput
+}
+
+type clusterAlertRuleEventRulePtrType ClusterAlertRuleEventRuleArgs
+
+func ClusterAlertRuleEventRulePtr(v *ClusterAlertRuleEventRuleArgs) ClusterAlertRuleEventRulePtrInput {
+	return (*clusterAlertRuleEventRulePtrType)(v)
+}
+
+func (*clusterAlertRuleEventRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleEventRule)(nil)).Elem()
+}
+
+func (i *clusterAlertRuleEventRulePtrType) ToClusterAlertRuleEventRulePtrOutput() ClusterAlertRuleEventRulePtrOutput {
+	return i.ToClusterAlertRuleEventRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertRuleEventRulePtrType) ToClusterAlertRuleEventRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleEventRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleEventRulePtrOutput)
+}
+
+type ClusterAlertRuleEventRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleEventRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleEventRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleEventRuleOutput) ToClusterAlertRuleEventRuleOutput() ClusterAlertRuleEventRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleEventRuleOutput) ToClusterAlertRuleEventRuleOutputWithContext(ctx context.Context) ClusterAlertRuleEventRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleEventRuleOutput) ToClusterAlertRuleEventRulePtrOutput() ClusterAlertRuleEventRulePtrOutput {
+	return o.ToClusterAlertRuleEventRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertRuleEventRuleOutput) ToClusterAlertRuleEventRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleEventRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleEventRule) *ClusterAlertRuleEventRule {
+		return &v
+	}).(ClusterAlertRuleEventRulePtrOutput)
+}
+
+// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+func (o ClusterAlertRuleEventRuleOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleEventRule) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+func (o ClusterAlertRuleEventRuleOutput) ResourceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAlertRuleEventRule) string { return v.ResourceKind }).(pulumi.StringOutput)
+}
+
+type ClusterAlertRuleEventRulePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleEventRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleEventRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleEventRulePtrOutput) ToClusterAlertRuleEventRulePtrOutput() ClusterAlertRuleEventRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleEventRulePtrOutput) ToClusterAlertRuleEventRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleEventRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleEventRulePtrOutput) Elem() ClusterAlertRuleEventRuleOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleEventRule) ClusterAlertRuleEventRule { return *v }).(ClusterAlertRuleEventRuleOutput)
+}
+
+// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+func (o ClusterAlertRuleEventRulePtrOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleEventRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+func (o ClusterAlertRuleEventRulePtrOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleEventRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterAlertRuleMetricRule struct {
+	// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+	Comparison *string `pulumi:"comparison"`
+	// Metric rule description (string)
+	Description *string `pulumi:"description"`
+	// Metric rule duration (string)
+	Duration string `pulumi:"duration"`
+	// Metric rule expression (string)
+	Expression string `pulumi:"expression"`
+	// Metric rule threshold value (float64)
+	ThresholdValue float64 `pulumi:"thresholdValue"`
+}
+
+// ClusterAlertRuleMetricRuleInput is an input type that accepts ClusterAlertRuleMetricRuleArgs and ClusterAlertRuleMetricRuleOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleMetricRuleInput` via:
+//
+// 		 ClusterAlertRuleMetricRuleArgs{...}
+//
+type ClusterAlertRuleMetricRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleMetricRuleOutput() ClusterAlertRuleMetricRuleOutput
+	ToClusterAlertRuleMetricRuleOutputWithContext(context.Context) ClusterAlertRuleMetricRuleOutput
+}
+
+type ClusterAlertRuleMetricRuleArgs struct {
+	// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+	Comparison pulumi.StringPtrInput `pulumi:"comparison"`
+	// Metric rule description (string)
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Metric rule duration (string)
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Metric rule expression (string)
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Metric rule threshold value (float64)
+	ThresholdValue pulumi.Float64Input `pulumi:"thresholdValue"`
+}
+
+func (ClusterAlertRuleMetricRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleMetricRule)(nil)).Elem()
+}
+
+func (i ClusterAlertRuleMetricRuleArgs) ToClusterAlertRuleMetricRuleOutput() ClusterAlertRuleMetricRuleOutput {
+	return i.ToClusterAlertRuleMetricRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleMetricRuleArgs) ToClusterAlertRuleMetricRuleOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMetricRuleOutput)
+}
+
+func (i ClusterAlertRuleMetricRuleArgs) ToClusterAlertRuleMetricRulePtrOutput() ClusterAlertRuleMetricRulePtrOutput {
+	return i.ToClusterAlertRuleMetricRulePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleMetricRuleArgs) ToClusterAlertRuleMetricRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMetricRuleOutput).ToClusterAlertRuleMetricRulePtrOutputWithContext(ctx)
+}
+
+// ClusterAlertRuleMetricRulePtrInput is an input type that accepts ClusterAlertRuleMetricRuleArgs, ClusterAlertRuleMetricRulePtr and ClusterAlertRuleMetricRulePtrOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleMetricRulePtrInput` via:
+//
+// 		 ClusterAlertRuleMetricRuleArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAlertRuleMetricRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleMetricRulePtrOutput() ClusterAlertRuleMetricRulePtrOutput
+	ToClusterAlertRuleMetricRulePtrOutputWithContext(context.Context) ClusterAlertRuleMetricRulePtrOutput
+}
+
+type clusterAlertRuleMetricRulePtrType ClusterAlertRuleMetricRuleArgs
+
+func ClusterAlertRuleMetricRulePtr(v *ClusterAlertRuleMetricRuleArgs) ClusterAlertRuleMetricRulePtrInput {
+	return (*clusterAlertRuleMetricRulePtrType)(v)
+}
+
+func (*clusterAlertRuleMetricRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleMetricRule)(nil)).Elem()
+}
+
+func (i *clusterAlertRuleMetricRulePtrType) ToClusterAlertRuleMetricRulePtrOutput() ClusterAlertRuleMetricRulePtrOutput {
+	return i.ToClusterAlertRuleMetricRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertRuleMetricRulePtrType) ToClusterAlertRuleMetricRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMetricRulePtrOutput)
+}
+
+type ClusterAlertRuleMetricRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleMetricRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleMetricRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleMetricRuleOutput) ToClusterAlertRuleMetricRuleOutput() ClusterAlertRuleMetricRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMetricRuleOutput) ToClusterAlertRuleMetricRuleOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMetricRuleOutput) ToClusterAlertRuleMetricRulePtrOutput() ClusterAlertRuleMetricRulePtrOutput {
+	return o.ToClusterAlertRuleMetricRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertRuleMetricRuleOutput) ToClusterAlertRuleMetricRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) *ClusterAlertRuleMetricRule {
+		return &v
+	}).(ClusterAlertRuleMetricRulePtrOutput)
+}
+
+// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+func (o ClusterAlertRuleMetricRuleOutput) Comparison() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) *string { return v.Comparison }).(pulumi.StringPtrOutput)
+}
+
+// Metric rule description (string)
+func (o ClusterAlertRuleMetricRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Metric rule duration (string)
+func (o ClusterAlertRuleMetricRuleOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Metric rule expression (string)
+func (o ClusterAlertRuleMetricRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Metric rule threshold value (float64)
+func (o ClusterAlertRuleMetricRuleOutput) ThresholdValue() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterAlertRuleMetricRule) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
+}
+
+type ClusterAlertRuleMetricRulePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleMetricRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleMetricRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleMetricRulePtrOutput) ToClusterAlertRuleMetricRulePtrOutput() ClusterAlertRuleMetricRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMetricRulePtrOutput) ToClusterAlertRuleMetricRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleMetricRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMetricRulePtrOutput) Elem() ClusterAlertRuleMetricRuleOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) ClusterAlertRuleMetricRule { return *v }).(ClusterAlertRuleMetricRuleOutput)
+}
+
+// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+func (o ClusterAlertRuleMetricRulePtrOutput) Comparison() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comparison
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric rule description (string)
+func (o ClusterAlertRuleMetricRulePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric rule duration (string)
+func (o ClusterAlertRuleMetricRulePtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric rule expression (string)
+func (o ClusterAlertRuleMetricRulePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric rule threshold value (float64)
+func (o ClusterAlertRuleMetricRulePtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleMetricRule) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ClusterAlertRuleNodeRule struct {
+	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+	Condition *string `pulumi:"condition"`
+	// Node rule cpu threshold. Default: `70` (int)
+	CpuThreshold *int `pulumi:"cpuThreshold"`
+	// Node rule mem threshold. Default: `70` (int)
+	MemThreshold *int `pulumi:"memThreshold"`
+	// Node ID (string)
+	NodeId *string `pulumi:"nodeId"`
+	// Node rule selector (map)
+	Selector map[string]interface{} `pulumi:"selector"`
+}
+
+// ClusterAlertRuleNodeRuleInput is an input type that accepts ClusterAlertRuleNodeRuleArgs and ClusterAlertRuleNodeRuleOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleNodeRuleInput` via:
+//
+// 		 ClusterAlertRuleNodeRuleArgs{...}
+//
+type ClusterAlertRuleNodeRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleNodeRuleOutput() ClusterAlertRuleNodeRuleOutput
+	ToClusterAlertRuleNodeRuleOutputWithContext(context.Context) ClusterAlertRuleNodeRuleOutput
+}
+
+type ClusterAlertRuleNodeRuleArgs struct {
+	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// Node rule cpu threshold. Default: `70` (int)
+	CpuThreshold pulumi.IntPtrInput `pulumi:"cpuThreshold"`
+	// Node rule mem threshold. Default: `70` (int)
+	MemThreshold pulumi.IntPtrInput `pulumi:"memThreshold"`
+	// Node ID (string)
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// Node rule selector (map)
+	Selector pulumi.MapInput `pulumi:"selector"`
+}
+
+func (ClusterAlertRuleNodeRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleNodeRule)(nil)).Elem()
+}
+
+func (i ClusterAlertRuleNodeRuleArgs) ToClusterAlertRuleNodeRuleOutput() ClusterAlertRuleNodeRuleOutput {
+	return i.ToClusterAlertRuleNodeRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleNodeRuleArgs) ToClusterAlertRuleNodeRuleOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleNodeRuleOutput)
+}
+
+func (i ClusterAlertRuleNodeRuleArgs) ToClusterAlertRuleNodeRulePtrOutput() ClusterAlertRuleNodeRulePtrOutput {
+	return i.ToClusterAlertRuleNodeRulePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleNodeRuleArgs) ToClusterAlertRuleNodeRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleNodeRuleOutput).ToClusterAlertRuleNodeRulePtrOutputWithContext(ctx)
+}
+
+// ClusterAlertRuleNodeRulePtrInput is an input type that accepts ClusterAlertRuleNodeRuleArgs, ClusterAlertRuleNodeRulePtr and ClusterAlertRuleNodeRulePtrOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleNodeRulePtrInput` via:
+//
+// 		 ClusterAlertRuleNodeRuleArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAlertRuleNodeRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleNodeRulePtrOutput() ClusterAlertRuleNodeRulePtrOutput
+	ToClusterAlertRuleNodeRulePtrOutputWithContext(context.Context) ClusterAlertRuleNodeRulePtrOutput
+}
+
+type clusterAlertRuleNodeRulePtrType ClusterAlertRuleNodeRuleArgs
+
+func ClusterAlertRuleNodeRulePtr(v *ClusterAlertRuleNodeRuleArgs) ClusterAlertRuleNodeRulePtrInput {
+	return (*clusterAlertRuleNodeRulePtrType)(v)
+}
+
+func (*clusterAlertRuleNodeRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleNodeRule)(nil)).Elem()
+}
+
+func (i *clusterAlertRuleNodeRulePtrType) ToClusterAlertRuleNodeRulePtrOutput() ClusterAlertRuleNodeRulePtrOutput {
+	return i.ToClusterAlertRuleNodeRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertRuleNodeRulePtrType) ToClusterAlertRuleNodeRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleNodeRulePtrOutput)
+}
+
+type ClusterAlertRuleNodeRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleNodeRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleNodeRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleNodeRuleOutput) ToClusterAlertRuleNodeRuleOutput() ClusterAlertRuleNodeRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleNodeRuleOutput) ToClusterAlertRuleNodeRuleOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleNodeRuleOutput) ToClusterAlertRuleNodeRulePtrOutput() ClusterAlertRuleNodeRulePtrOutput {
+	return o.ToClusterAlertRuleNodeRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertRuleNodeRuleOutput) ToClusterAlertRuleNodeRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) *ClusterAlertRuleNodeRule {
+		return &v
+	}).(ClusterAlertRuleNodeRulePtrOutput)
+}
+
+// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+func (o ClusterAlertRuleNodeRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// Node rule cpu threshold. Default: `70` (int)
+func (o ClusterAlertRuleNodeRuleOutput) CpuThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) *int { return v.CpuThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Node rule mem threshold. Default: `70` (int)
+func (o ClusterAlertRuleNodeRuleOutput) MemThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) *int { return v.MemThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Node ID (string)
+func (o ClusterAlertRuleNodeRuleOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// Node rule selector (map)
+func (o ClusterAlertRuleNodeRuleOutput) Selector() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterAlertRuleNodeRule) map[string]interface{} { return v.Selector }).(pulumi.MapOutput)
+}
+
+type ClusterAlertRuleNodeRulePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleNodeRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleNodeRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleNodeRulePtrOutput) ToClusterAlertRuleNodeRulePtrOutput() ClusterAlertRuleNodeRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleNodeRulePtrOutput) ToClusterAlertRuleNodeRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleNodeRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleNodeRulePtrOutput) Elem() ClusterAlertRuleNodeRuleOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) ClusterAlertRuleNodeRule { return *v }).(ClusterAlertRuleNodeRuleOutput)
+}
+
+// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+func (o ClusterAlertRuleNodeRulePtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node rule cpu threshold. Default: `70` (int)
+func (o ClusterAlertRuleNodeRulePtrOutput) CpuThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node rule mem threshold. Default: `70` (int)
+func (o ClusterAlertRuleNodeRulePtrOutput) MemThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node ID (string)
+func (o ClusterAlertRuleNodeRulePtrOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node rule selector (map)
+func (o ClusterAlertRuleNodeRulePtrOutput) Selector() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleNodeRule) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(pulumi.MapOutput)
+}
+
+type ClusterAlertRuleSystemServiceRule struct {
+	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+	Condition *string `pulumi:"condition"`
+}
+
+// ClusterAlertRuleSystemServiceRuleInput is an input type that accepts ClusterAlertRuleSystemServiceRuleArgs and ClusterAlertRuleSystemServiceRuleOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleSystemServiceRuleInput` via:
+//
+// 		 ClusterAlertRuleSystemServiceRuleArgs{...}
+//
+type ClusterAlertRuleSystemServiceRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleSystemServiceRuleOutput() ClusterAlertRuleSystemServiceRuleOutput
+	ToClusterAlertRuleSystemServiceRuleOutputWithContext(context.Context) ClusterAlertRuleSystemServiceRuleOutput
+}
+
+type ClusterAlertRuleSystemServiceRuleArgs struct {
+	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+}
+
+func (ClusterAlertRuleSystemServiceRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleSystemServiceRule)(nil)).Elem()
+}
+
+func (i ClusterAlertRuleSystemServiceRuleArgs) ToClusterAlertRuleSystemServiceRuleOutput() ClusterAlertRuleSystemServiceRuleOutput {
+	return i.ToClusterAlertRuleSystemServiceRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleSystemServiceRuleArgs) ToClusterAlertRuleSystemServiceRuleOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleSystemServiceRuleOutput)
+}
+
+func (i ClusterAlertRuleSystemServiceRuleArgs) ToClusterAlertRuleSystemServiceRulePtrOutput() ClusterAlertRuleSystemServiceRulePtrOutput {
+	return i.ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleSystemServiceRuleArgs) ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleSystemServiceRuleOutput).ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(ctx)
+}
+
+// ClusterAlertRuleSystemServiceRulePtrInput is an input type that accepts ClusterAlertRuleSystemServiceRuleArgs, ClusterAlertRuleSystemServiceRulePtr and ClusterAlertRuleSystemServiceRulePtrOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleSystemServiceRulePtrInput` via:
+//
+// 		 ClusterAlertRuleSystemServiceRuleArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAlertRuleSystemServiceRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleSystemServiceRulePtrOutput() ClusterAlertRuleSystemServiceRulePtrOutput
+	ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(context.Context) ClusterAlertRuleSystemServiceRulePtrOutput
+}
+
+type clusterAlertRuleSystemServiceRulePtrType ClusterAlertRuleSystemServiceRuleArgs
+
+func ClusterAlertRuleSystemServiceRulePtr(v *ClusterAlertRuleSystemServiceRuleArgs) ClusterAlertRuleSystemServiceRulePtrInput {
+	return (*clusterAlertRuleSystemServiceRulePtrType)(v)
+}
+
+func (*clusterAlertRuleSystemServiceRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleSystemServiceRule)(nil)).Elem()
+}
+
+func (i *clusterAlertRuleSystemServiceRulePtrType) ToClusterAlertRuleSystemServiceRulePtrOutput() ClusterAlertRuleSystemServiceRulePtrOutput {
+	return i.ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertRuleSystemServiceRulePtrType) ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleSystemServiceRulePtrOutput)
+}
+
+type ClusterAlertRuleSystemServiceRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleSystemServiceRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleSystemServiceRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleSystemServiceRuleOutput) ToClusterAlertRuleSystemServiceRuleOutput() ClusterAlertRuleSystemServiceRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleSystemServiceRuleOutput) ToClusterAlertRuleSystemServiceRuleOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleSystemServiceRuleOutput) ToClusterAlertRuleSystemServiceRulePtrOutput() ClusterAlertRuleSystemServiceRulePtrOutput {
+	return o.ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertRuleSystemServiceRuleOutput) ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleSystemServiceRule) *ClusterAlertRuleSystemServiceRule {
+		return &v
+	}).(ClusterAlertRuleSystemServiceRulePtrOutput)
+}
+
+// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+func (o ClusterAlertRuleSystemServiceRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAlertRuleSystemServiceRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAlertRuleSystemServiceRulePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleSystemServiceRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRuleSystemServiceRule)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleSystemServiceRulePtrOutput) ToClusterAlertRuleSystemServiceRulePtrOutput() ClusterAlertRuleSystemServiceRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleSystemServiceRulePtrOutput) ToClusterAlertRuleSystemServiceRulePtrOutputWithContext(ctx context.Context) ClusterAlertRuleSystemServiceRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRuleSystemServiceRulePtrOutput) Elem() ClusterAlertRuleSystemServiceRuleOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleSystemServiceRule) ClusterAlertRuleSystemServiceRule { return *v }).(ClusterAlertRuleSystemServiceRuleOutput)
+}
+
+// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+func (o ClusterAlertRuleSystemServiceRulePtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAlertRuleSystemServiceRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterAlterGroupRecipient struct {
 	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
 	DefaultRecipient *bool `pulumi:"defaultRecipient"`
@@ -62865,6 +63694,16 @@ func init() {
 	pulumi.RegisterOutputType(CloudCredentialVsphereCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAksConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAksConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertGroupRecipientOutput{})
+	pulumi.RegisterOutputType(ClusterAlertGroupRecipientArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleEventRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleEventRulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleMetricRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleMetricRulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleNodeRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleNodeRulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleSystemServiceRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleSystemServiceRulePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAlterGroupRecipientOutput{})
 	pulumi.RegisterOutputType(ClusterAlterGroupRecipientArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAlterRuleEventRuleOutput{})

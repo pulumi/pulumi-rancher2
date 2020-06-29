@@ -25,6 +25,8 @@ from .catalog import *
 from .certificate import *
 from .cloud_credential import *
 from .cluster import *
+from .cluster_alert_group import *
+from .cluster_alert_rule import *
 from .cluster_alter_group import *
 from .cluster_alter_rule import *
 from .cluster_driver import *

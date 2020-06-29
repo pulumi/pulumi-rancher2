@@ -222,6 +222,89 @@ export interface ClusterAksConfig {
     virtualNetworkResourceGroup: string;
 }
 
+export interface ClusterAlertGroupRecipient {
+    /**
+     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     */
+    defaultRecipient?: boolean;
+    /**
+     * Recipient notifier ID (string)
+     */
+    notifierId: string;
+    /**
+     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+     */
+    notifierType: string;
+    /**
+     * Recipient (string)
+     */
+    recipient: string;
+}
+
+export interface ClusterAlertRuleEventRule {
+    /**
+     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+     */
+    eventType?: string;
+    /**
+     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+     */
+    resourceKind: string;
+}
+
+export interface ClusterAlertRuleMetricRule {
+    /**
+     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+     */
+    comparison?: string;
+    /**
+     * Metric rule description (string)
+     */
+    description?: string;
+    /**
+     * Metric rule duration (string)
+     */
+    duration: string;
+    /**
+     * Metric rule expression (string)
+     */
+    expression: string;
+    /**
+     * Metric rule threshold value (float64)
+     */
+    thresholdValue: number;
+}
+
+export interface ClusterAlertRuleNodeRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
+    condition?: string;
+    /**
+     * Node rule cpu threshold. Default: `70` (int)
+     */
+    cpuThreshold?: number;
+    /**
+     * Node rule mem threshold. Default: `70` (int)
+     */
+    memThreshold?: number;
+    /**
+     * Node ID (string)
+     */
+    nodeId?: string;
+    /**
+     * Node rule selector (map)
+     */
+    selector?: {[key: string]: any};
+}
+
+export interface ClusterAlertRuleSystemServiceRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
+    condition?: string;
+}
+
 export interface ClusterAlterGroupRecipient {
     /**
      * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)

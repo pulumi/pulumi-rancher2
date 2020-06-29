@@ -6,12 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule
- */
-export class ClusterAlterRule extends pulumi.CustomResource {
+export class ClusterAlertRule extends pulumi.CustomResource {
     /**
-     * Get an existing ClusterAlterRule resource's state with the given name, ID, and optional extra
+     * Get an existing ClusterAlertRule resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -19,23 +16,22 @@ export class ClusterAlterRule extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterAlterRuleState, opts?: pulumi.CustomResourceOptions): ClusterAlterRule {
-        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
-        return new ClusterAlterRule(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterAlertRuleState, opts?: pulumi.CustomResourceOptions): ClusterAlertRule {
+        return new ClusterAlertRule(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rancher2:index/clusterAlterRule:ClusterAlterRule';
+    public static readonly __pulumiType = 'rancher2:index/clusterAlertRule:ClusterAlertRule';
 
     /**
-     * Returns true if the given object is an instance of ClusterAlterRule.  This is designed to work even
+     * Returns true if the given object is an instance of ClusterAlertRule.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ClusterAlterRule {
+    public static isInstance(obj: any): obj is ClusterAlertRule {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ClusterAlterRule.__pulumiType;
+        return obj['__pulumiType'] === ClusterAlertRule.__pulumiType;
     }
 
     /**
@@ -49,7 +45,7 @@ export class ClusterAlterRule extends pulumi.CustomResource {
     /**
      * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    public readonly eventRule!: pulumi.Output<outputs.ClusterAlterRuleEventRule | undefined>;
+    public readonly eventRule!: pulumi.Output<outputs.ClusterAlertRuleEventRule | undefined>;
     /**
      * The cluster alert rule alert group ID (string)
      */
@@ -73,7 +69,7 @@ export class ClusterAlterRule extends pulumi.CustomResource {
     /**
      * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    public readonly metricRule!: pulumi.Output<outputs.ClusterAlterRuleMetricRule | undefined>;
+    public readonly metricRule!: pulumi.Output<outputs.ClusterAlertRuleMetricRule | undefined>;
     /**
      * The cluster alert rule name (string)
      */
@@ -81,7 +77,7 @@ export class ClusterAlterRule extends pulumi.CustomResource {
     /**
      * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    public readonly nodeRule!: pulumi.Output<outputs.ClusterAlterRuleNodeRule | undefined>;
+    public readonly nodeRule!: pulumi.Output<outputs.ClusterAlertRuleNodeRule | undefined>;
     /**
      * The cluster alert rule wait seconds. Default: `3600` (int)
      */
@@ -93,23 +89,20 @@ export class ClusterAlterRule extends pulumi.CustomResource {
     /**
      * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
      */
-    public readonly systemServiceRule!: pulumi.Output<outputs.ClusterAlterRuleSystemServiceRule | undefined>;
+    public readonly systemServiceRule!: pulumi.Output<outputs.ClusterAlertRuleSystemServiceRule | undefined>;
 
     /**
-     * Create a ClusterAlterRule resource with the given unique name, arguments, and options.
+     * Create a ClusterAlertRule resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule */
-    constructor(name: string, args: ClusterAlterRuleArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule */
-    constructor(name: string, argsOrState?: ClusterAlterRuleArgs | ClusterAlterRuleState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
+    constructor(name: string, args: ClusterAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ClusterAlertRuleArgs | ClusterAlertRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ClusterAlterRuleState | undefined;
+            const state = argsOrState as ClusterAlertRuleState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["eventRule"] = state ? state.eventRule : undefined;
@@ -125,7 +118,7 @@ export class ClusterAlterRule extends pulumi.CustomResource {
             inputs["severity"] = state ? state.severity : undefined;
             inputs["systemServiceRule"] = state ? state.systemServiceRule : undefined;
         } else {
-            const args = argsOrState as ClusterAlterRuleArgs | undefined;
+            const args = argsOrState as ClusterAlertRuleArgs | undefined;
             if (!args || args.clusterId === undefined) {
                 throw new Error("Missing required property 'clusterId'");
             }
@@ -154,14 +147,16 @@ export class ClusterAlterRule extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        super(ClusterAlterRule.__pulumiType, name, inputs, opts);
+        const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterRule:ClusterAlterRule" }] };
+        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        super(ClusterAlertRule.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ClusterAlterRule resources.
+ * Input properties used for looking up and filtering ClusterAlertRule resources.
  */
-export interface ClusterAlterRuleState {
+export interface ClusterAlertRuleState {
     /**
      * The cluster alert rule annotations (map)
      */
@@ -173,7 +168,7 @@ export interface ClusterAlterRuleState {
     /**
      * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
+    readonly eventRule?: pulumi.Input<inputs.ClusterAlertRuleEventRule>;
     /**
      * The cluster alert rule alert group ID (string)
      */
@@ -197,7 +192,7 @@ export interface ClusterAlterRuleState {
     /**
      * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
+    readonly metricRule?: pulumi.Input<inputs.ClusterAlertRuleMetricRule>;
     /**
      * The cluster alert rule name (string)
      */
@@ -205,7 +200,7 @@ export interface ClusterAlterRuleState {
     /**
      * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
+    readonly nodeRule?: pulumi.Input<inputs.ClusterAlertRuleNodeRule>;
     /**
      * The cluster alert rule wait seconds. Default: `3600` (int)
      */
@@ -217,13 +212,13 @@ export interface ClusterAlterRuleState {
     /**
      * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
      */
-    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
+    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }
 
 /**
- * The set of arguments for constructing a ClusterAlterRule resource.
+ * The set of arguments for constructing a ClusterAlertRule resource.
  */
-export interface ClusterAlterRuleArgs {
+export interface ClusterAlertRuleArgs {
     /**
      * The cluster alert rule annotations (map)
      */
@@ -235,7 +230,7 @@ export interface ClusterAlterRuleArgs {
     /**
      * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly eventRule?: pulumi.Input<inputs.ClusterAlterRuleEventRule>;
+    readonly eventRule?: pulumi.Input<inputs.ClusterAlertRuleEventRule>;
     /**
      * The cluster alert rule alert group ID (string)
      */
@@ -259,7 +254,7 @@ export interface ClusterAlterRuleArgs {
     /**
      * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly metricRule?: pulumi.Input<inputs.ClusterAlterRuleMetricRule>;
+    readonly metricRule?: pulumi.Input<inputs.ClusterAlertRuleMetricRule>;
     /**
      * The cluster alert rule name (string)
      */
@@ -267,7 +262,7 @@ export interface ClusterAlterRuleArgs {
     /**
      * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
-    readonly nodeRule?: pulumi.Input<inputs.ClusterAlterRuleNodeRule>;
+    readonly nodeRule?: pulumi.Input<inputs.ClusterAlertRuleNodeRule>;
     /**
      * The cluster alert rule wait seconds. Default: `3600` (int)
      */
@@ -279,5 +274,5 @@ export interface ClusterAlterRuleArgs {
     /**
      * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
      */
-    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlterRuleSystemServiceRule>;
+    readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }

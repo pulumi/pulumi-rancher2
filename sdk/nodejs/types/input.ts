@@ -222,6 +222,89 @@ export interface ClusterAksConfig {
     virtualNetworkResourceGroup: pulumi.Input<string>;
 }
 
+export interface ClusterAlertGroupRecipient {
+    /**
+     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     */
+    defaultRecipient?: pulumi.Input<boolean>;
+    /**
+     * Recipient notifier ID (string)
+     */
+    notifierId: pulumi.Input<string>;
+    /**
+     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+     */
+    notifierType?: pulumi.Input<string>;
+    /**
+     * Recipient (string)
+     */
+    recipient?: pulumi.Input<string>;
+}
+
+export interface ClusterAlertRuleEventRule {
+    /**
+     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+     */
+    eventType?: pulumi.Input<string>;
+    /**
+     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+     */
+    resourceKind: pulumi.Input<string>;
+}
+
+export interface ClusterAlertRuleMetricRule {
+    /**
+     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+     */
+    comparison?: pulumi.Input<string>;
+    /**
+     * Metric rule description (string)
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Metric rule duration (string)
+     */
+    duration: pulumi.Input<string>;
+    /**
+     * Metric rule expression (string)
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Metric rule threshold value (float64)
+     */
+    thresholdValue: pulumi.Input<number>;
+}
+
+export interface ClusterAlertRuleNodeRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
+    condition?: pulumi.Input<string>;
+    /**
+     * Node rule cpu threshold. Default: `70` (int)
+     */
+    cpuThreshold?: pulumi.Input<number>;
+    /**
+     * Node rule mem threshold. Default: `70` (int)
+     */
+    memThreshold?: pulumi.Input<number>;
+    /**
+     * Node ID (string)
+     */
+    nodeId?: pulumi.Input<string>;
+    /**
+     * Node rule selector (map)
+     */
+    selector?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface ClusterAlertRuleSystemServiceRule {
+    /**
+     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+     */
+    condition?: pulumi.Input<string>;
+}
+
 export interface ClusterAlterGroupRecipient {
     /**
      * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)

@@ -9,8 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-warnings.warn("rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule", DeprecationWarning)
-class ClusterAlterRule(pulumi.CustomResource):
+class ClusterAlertRule(pulumi.CustomResource):
     annotations: pulumi.Output[dict]
     """
     The cluster alert rule annotations (map)
@@ -84,10 +83,9 @@ class ClusterAlterRule(pulumi.CustomResource):
 
       * `condition` (`str`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
     """
-    warnings.warn("rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ClusterAlterRule resource with the given unique name, props, and options.
+        Create a ClusterAlertRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] annotations: The cluster alert rule annotations (map)
@@ -130,7 +128,6 @@ class ClusterAlterRule(pulumi.CustomResource):
 
           * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
         """
-        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -166,8 +163,10 @@ class ClusterAlterRule(pulumi.CustomResource):
             __props__['repeat_interval_seconds'] = repeat_interval_seconds
             __props__['severity'] = severity
             __props__['system_service_rule'] = system_service_rule
-        super(ClusterAlterRule, __self__).__init__(
-            'rancher2:index/clusterAlterRule:ClusterAlterRule',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/clusterAlterRule:ClusterAlterRule")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(ClusterAlertRule, __self__).__init__(
+            'rancher2:index/clusterAlertRule:ClusterAlertRule',
             resource_name,
             __props__,
             opts)
@@ -175,7 +174,7 @@ class ClusterAlterRule(pulumi.CustomResource):
     @staticmethod
     def get(resource_name, id, opts=None, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None):
         """
-        Get an existing ClusterAlterRule resource's state with the given name, id, and optional extra
+        Get an existing ClusterAlertRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -239,7 +238,7 @@ class ClusterAlterRule(pulumi.CustomResource):
         __props__["repeat_interval_seconds"] = repeat_interval_seconds
         __props__["severity"] = severity
         __props__["system_service_rule"] = system_service_rule
-        return ClusterAlterRule(resource_name, opts=opts, __props__=__props__)
+        return ClusterAlertRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

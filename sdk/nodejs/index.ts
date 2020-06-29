@@ -17,6 +17,8 @@ export * from "./catalog";
 export * from "./certificate";
 export * from "./cloudCredential";
 export * from "./cluster";
+export * from "./clusterAlertGroup";
+export * from "./clusterAlertRule";
 export * from "./clusterAlterGroup";
 export * from "./clusterAlterRule";
 export * from "./clusterDriver";

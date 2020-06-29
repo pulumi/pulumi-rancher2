@@ -6,12 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * @deprecated rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup
- */
-export class ClusterAlterGroup extends pulumi.CustomResource {
+export class ClusterAlertGroup extends pulumi.CustomResource {
     /**
-     * Get an existing ClusterAlterGroup resource's state with the given name, ID, and optional extra
+     * Get an existing ClusterAlertGroup resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -19,23 +16,22 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterAlterGroupState, opts?: pulumi.CustomResourceOptions): ClusterAlterGroup {
-        pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
-        return new ClusterAlterGroup(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterAlertGroupState, opts?: pulumi.CustomResourceOptions): ClusterAlertGroup {
+        return new ClusterAlertGroup(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rancher2:index/clusterAlterGroup:ClusterAlterGroup';
+    public static readonly __pulumiType = 'rancher2:index/clusterAlertGroup:ClusterAlertGroup';
 
     /**
-     * Returns true if the given object is an instance of ClusterAlterGroup.  This is designed to work even
+     * Returns true if the given object is an instance of ClusterAlertGroup.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ClusterAlterGroup {
+    public static isInstance(obj: any): obj is ClusterAlertGroup {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ClusterAlterGroup.__pulumiType;
+        return obj['__pulumiType'] === ClusterAlertGroup.__pulumiType;
     }
 
     /**
@@ -69,27 +65,24 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
     /**
      * The cluster alert group recipients (list)
      */
-    public readonly recipients!: pulumi.Output<outputs.ClusterAlterGroupRecipient[] | undefined>;
+    public readonly recipients!: pulumi.Output<outputs.ClusterAlertGroupRecipient[] | undefined>;
     /**
      * The cluster alert group wait seconds. Default: `3600` (int)
      */
     public readonly repeatIntervalSeconds!: pulumi.Output<number | undefined>;
 
     /**
-     * Create a ClusterAlterGroup resource with the given unique name, arguments, and options.
+     * Create a ClusterAlertGroup resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup */
-    constructor(name: string, args: ClusterAlterGroupArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup */
-    constructor(name: string, argsOrState?: ClusterAlterGroupArgs | ClusterAlterGroupState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
+    constructor(name: string, args: ClusterAlertGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ClusterAlertGroupArgs | ClusterAlertGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state = argsOrState as ClusterAlterGroupState | undefined;
+            const state = argsOrState as ClusterAlertGroupState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -100,7 +93,7 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
             inputs["recipients"] = state ? state.recipients : undefined;
             inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
-            const args = argsOrState as ClusterAlterGroupArgs | undefined;
+            const args = argsOrState as ClusterAlertGroupArgs | undefined;
             if (!args || args.clusterId === undefined) {
                 throw new Error("Missing required property 'clusterId'");
             }
@@ -121,14 +114,16 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
-        super(ClusterAlterGroup.__pulumiType, name, inputs, opts);
+        const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterGroup:ClusterAlterGroup" }] };
+        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        super(ClusterAlertGroup.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ClusterAlterGroup resources.
+ * Input properties used for looking up and filtering ClusterAlertGroup resources.
  */
-export interface ClusterAlterGroupState {
+export interface ClusterAlertGroupState {
     /**
      * The cluster alert group annotations (map)
      */
@@ -160,7 +155,7 @@ export interface ClusterAlterGroupState {
     /**
      * The cluster alert group recipients (list)
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
+    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
      * The cluster alert group wait seconds. Default: `3600` (int)
      */
@@ -168,9 +163,9 @@ export interface ClusterAlterGroupState {
 }
 
 /**
- * The set of arguments for constructing a ClusterAlterGroup resource.
+ * The set of arguments for constructing a ClusterAlertGroup resource.
  */
-export interface ClusterAlterGroupArgs {
+export interface ClusterAlertGroupArgs {
     /**
      * The cluster alert group annotations (map)
      */
@@ -202,7 +197,7 @@ export interface ClusterAlterGroupArgs {
     /**
      * The cluster alert group recipients (list)
      */
-    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlterGroupRecipient>[]>;
+    readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
      * The cluster alert group wait seconds. Default: `3600` (int)
      */

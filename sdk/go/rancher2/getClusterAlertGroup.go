@@ -8,8 +8,8 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster alert group.
-func GetClusterAlertGroup(ctx *pulumi.Context, args *GetClusterAlertGroupArgs, opts ...pulumi.InvokeOption) (*GetClusterAlertGroupResult, error) {
-	var rv GetClusterAlertGroupResult
+func LookupClusterAlertGroup(ctx *pulumi.Context, args *LookupClusterAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupClusterAlertGroupResult, error) {
+	var rv LookupClusterAlertGroupResult
 	err := ctx.Invoke("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -18,7 +18,7 @@ func GetClusterAlertGroup(ctx *pulumi.Context, args *GetClusterAlertGroupArgs, o
 }
 
 // A collection of arguments for invoking getClusterAlertGroup.
-type GetClusterAlertGroupArgs struct {
+type LookupClusterAlertGroupArgs struct {
 	// The cluster id where create cluster alert group (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The cluster alert group name (string)
@@ -26,7 +26,7 @@ type GetClusterAlertGroupArgs struct {
 }
 
 // A collection of values returned by getClusterAlertGroup.
-type GetClusterAlertGroupResult struct {
+type LookupClusterAlertGroupResult struct {
 	// (Computed) The cluster alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	ClusterId   string                 `pulumi:"clusterId"`

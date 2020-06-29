@@ -3,8 +3,11 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 _(none)_
+* Rename `openstack.ClusterAlterGroup` to be `openstack.ClusterAlertGroup`
+* Rename `openstack.ClusterAlterRule` to be `openstack.ClusterAlertRule`
 
 ---
+
 ## 2.1.3 (2020-06-10)
 * Switch to GitHub actions for build
 

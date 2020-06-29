@@ -9,8 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    [Obsolete(@"rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")]
-    public partial class ClusterAlterGroup : Pulumi.CustomResource
+    public partial class ClusterAlertGroup : Pulumi.CustomResource
     {
         /// <summary>
         /// The cluster alert group annotations (map)
@@ -58,7 +57,7 @@ namespace Pulumi.Rancher2
         /// The cluster alert group recipients (list)
         /// </summary>
         [Output("recipients")]
-        public Output<ImmutableArray<Outputs.ClusterAlterGroupRecipient>> Recipients { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterAlertGroupRecipient>> Recipients { get; private set; } = null!;
 
         /// <summary>
         /// The cluster alert group wait seconds. Default: `3600` (int)
@@ -68,19 +67,19 @@ namespace Pulumi.Rancher2
 
 
         /// <summary>
-        /// Create a ClusterAlterGroup resource with the given unique name, arguments, and options.
+        /// Create a ClusterAlertGroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ClusterAlterGroup(string name, ClusterAlterGroupArgs args, CustomResourceOptions? options = null)
-            : base("rancher2:index/clusterAlterGroup:ClusterAlterGroup", name, args ?? new ClusterAlterGroupArgs(), MakeResourceOptions(options, ""))
+        public ClusterAlertGroup(string name, ClusterAlertGroupArgs args, CustomResourceOptions? options = null)
+            : base("rancher2:index/clusterAlertGroup:ClusterAlertGroup", name, args ?? new ClusterAlertGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ClusterAlterGroup(string name, Input<string> id, ClusterAlterGroupState? state = null, CustomResourceOptions? options = null)
-            : base("rancher2:index/clusterAlterGroup:ClusterAlterGroup", name, state, MakeResourceOptions(options, id))
+        private ClusterAlertGroup(string name, Input<string> id, ClusterAlertGroupState? state = null, CustomResourceOptions? options = null)
+            : base("rancher2:index/clusterAlertGroup:ClusterAlertGroup", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -89,6 +88,10 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -96,7 +99,7 @@ namespace Pulumi.Rancher2
             return merged;
         }
         /// <summary>
-        /// Get an existing ClusterAlterGroup resource's state with the given name, ID, and optional extra
+        /// Get an existing ClusterAlertGroup resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -104,13 +107,13 @@ namespace Pulumi.Rancher2
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ClusterAlterGroup Get(string name, Input<string> id, ClusterAlterGroupState? state = null, CustomResourceOptions? options = null)
+        public static ClusterAlertGroup Get(string name, Input<string> id, ClusterAlertGroupState? state = null, CustomResourceOptions? options = null)
         {
-            return new ClusterAlterGroup(name, id, state, options);
+            return new ClusterAlertGroup(name, id, state, options);
         }
     }
 
-    public sealed class ClusterAlterGroupArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAlertGroupArgs : Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -167,14 +170,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("recipients")]
-        private InputList<Inputs.ClusterAlterGroupRecipientArgs>? _recipients;
+        private InputList<Inputs.ClusterAlertGroupRecipientArgs>? _recipients;
 
         /// <summary>
         /// The cluster alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ClusterAlterGroupRecipientArgs> Recipients
+        public InputList<Inputs.ClusterAlertGroupRecipientArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlertGroupRecipientArgs>());
             set => _recipients = value;
         }
 
@@ -184,12 +187,12 @@ namespace Pulumi.Rancher2
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
-        public ClusterAlterGroupArgs()
+        public ClusterAlertGroupArgs()
         {
         }
     }
 
-    public sealed class ClusterAlterGroupState : Pulumi.ResourceArgs
+    public sealed class ClusterAlertGroupState : Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -246,14 +249,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         [Input("recipients")]
-        private InputList<Inputs.ClusterAlterGroupRecipientGetArgs>? _recipients;
+        private InputList<Inputs.ClusterAlertGroupRecipientGetArgs>? _recipients;
 
         /// <summary>
         /// The cluster alert group recipients (list)
         /// </summary>
-        public InputList<Inputs.ClusterAlterGroupRecipientGetArgs> Recipients
+        public InputList<Inputs.ClusterAlertGroupRecipientGetArgs> Recipients
         {
-            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlterGroupRecipientGetArgs>());
+            get => _recipients ?? (_recipients = new InputList<Inputs.ClusterAlertGroupRecipientGetArgs>());
             set => _recipients = value;
         }
 
@@ -263,7 +266,7 @@ namespace Pulumi.Rancher2
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
-        public ClusterAlterGroupState()
+        public ClusterAlertGroupState()
         {
         }
     }

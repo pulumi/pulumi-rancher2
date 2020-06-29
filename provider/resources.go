@@ -166,14 +166,6 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{Source: "cloudCredential.html.markdown"},
 			},
 			"rancher2_cluster": {Tok: makeResource(mainMod, "Cluster")},
-			"rancher2_cluster_alert_group": {
-				Tok:  makeResource(mainMod, "ClusterAlterGroup"),
-				Docs: &tfbridge.DocInfo{Source: "clusterAlertGroup.html.markdown"},
-			},
-			"rancher2_cluster_alert_rule": {
-				Tok:  makeResource(mainMod, "ClusterAlterRule"),
-				Docs: &tfbridge.DocInfo{Source: "clusterAlertRule.html.markdown"},
-			},
 			"rancher2_cluster_driver": {
 				Tok:  makeResource(mainMod, "ClusterDriver"),
 				Docs: &tfbridge.DocInfo{Source: "clusterDriver.html.markdown"},
@@ -372,6 +364,15 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
 		makeDataSource(mainMod, "getRoleTemplate"), mainMod, mainMod, &tfbridge.DataSourceInfo{
 			Docs: &tfbridge.DocInfo{Source: "roleTemplate.html.markdown"},
+		})
+
+	prov.RenameResourceWithAlias("rancher2_cluster_alert_group", makeResource(mainMod, "ClusterAlterGroup"),
+		makeResource(mainMod, "ClusterAlertGroup"), mainMod, mainMod, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{Source: "clusterAlertGroup.html.markdown"},
+		})
+	prov.RenameResourceWithAlias("rancher2_cluster_alert_rule", makeResource(mainMod, "ClusterAlterRule"),
+		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{Source: "clusterAlertRule.html.markdown"},
 		})
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
