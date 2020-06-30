@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigCloudProviderAzureCloudProviderGetArgs>? AzureCloudProvider { get; set; }
 
         /// <summary>
-        /// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+        /// RKE Custom Cloud Provider config for Cloud Provider (string)
         /// </summary>
         [Input("customCloudProvider")]
         public Input<string>? CustomCloudProvider { get; set; }

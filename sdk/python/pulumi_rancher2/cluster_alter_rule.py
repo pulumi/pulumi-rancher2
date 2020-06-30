@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+warnings.warn("rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule", DeprecationWarning)
 class ClusterAlterRule(pulumi.CustomResource):
     annotations: pulumi.Output[dict]
     """
@@ -83,6 +84,7 @@ class ClusterAlterRule(pulumi.CustomResource):
 
       * `condition` (`str`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
     """
+    warnings.warn("rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, event_rule=None, group_id=None, group_interval_seconds=None, group_wait_seconds=None, inherited=None, labels=None, metric_rule=None, name=None, node_rule=None, repeat_interval_seconds=None, severity=None, system_service_rule=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ClusterAlterRule resource with the given unique name, props, and options.
@@ -128,6 +130,7 @@ class ClusterAlterRule(pulumi.CustomResource):
 
           * `condition` (`pulumi.Input[str]`) - System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
         """
+        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

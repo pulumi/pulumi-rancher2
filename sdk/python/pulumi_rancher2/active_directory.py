@@ -32,7 +32,7 @@ class ActiveDirectory(pulumi.CustomResource):
     """
     default_login_domain: pulumi.Output[str]
     """
-    ActiveDirectory defult lgoin domain (string)
+    ActiveDirectory defult login domain (string)
     """
     enabled: pulumi.Output[bool]
     """
@@ -153,7 +153,7 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[float] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
-        :param pulumi.Input[str] default_login_domain: ActiveDirectory defult lgoin domain (string)
+        :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `distinguishedName` (string)
         :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
@@ -256,7 +256,7 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[dict] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[float] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
-        :param pulumi.Input[str] default_login_domain: ActiveDirectory defult lgoin domain (string)
+        :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `distinguishedName` (string)
         :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)

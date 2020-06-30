@@ -12,6 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigMonitoringGetArgs : Pulumi.ResourceArgs
     {
+        [Input("nodeSelector")]
+        private InputMap<object>? _nodeSelector;
+
+        /// <summary>
+        /// RKE monitoring node selector (map)
+        /// </summary>
+        public InputMap<object> NodeSelector
+        {
+            get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
+            set => _nodeSelector = value;
+        }
+
         [Input("options")]
         private InputMap<object>? _options;
 
@@ -25,10 +37,22 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Provider for RKE monitoring (string)
+        /// RKE monitoring provider (string)
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
+
+        /// <summary>
+        /// RKE monitoring replicas (int)
+        /// </summary>
+        [Input("replicas")]
+        public Input<int>? Replicas { get; set; }
+
+        /// <summary>
+        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<Inputs.ClusterRkeConfigMonitoringUpdateStrategyGetArgs>? UpdateStrategy { get; set; }
 
         public ClusterRkeConfigMonitoringGetArgs()
         {

@@ -42,7 +42,7 @@ export class App extends pulumi.CustomResource {
     public readonly answers!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `c-XXXXX:<name>`
+     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
      * * add project ID before name, `p-XXXXX:<name>`
      */
     public readonly catalogName!: pulumi.Output<string>;
@@ -171,7 +171,7 @@ export interface AppState {
     readonly answers?: pulumi.Input<{[key: string]: any}>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `c-XXXXX:<name>`
+     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
      * * add project ID before name, `p-XXXXX:<name>`
      */
     readonly catalogName?: pulumi.Input<string>;
@@ -235,7 +235,7 @@ export interface AppArgs {
     readonly answers?: pulumi.Input<{[key: string]: any}>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `c-XXXXX:<name>`
+     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
      * * add project ID before name, `p-XXXXX:<name>`
      */
     readonly catalogName: pulumi.Input<string>;

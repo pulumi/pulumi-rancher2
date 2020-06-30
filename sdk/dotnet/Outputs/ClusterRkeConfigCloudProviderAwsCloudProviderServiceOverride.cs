@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride
     {
         /// <summary>
-        /// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+        /// GKE cluster region. Conflicts with `zone` (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>

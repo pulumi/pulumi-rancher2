@@ -66,6 +66,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? CloudProviderRateLimitQps;
         /// <summary>
+        /// Allowed values: `basic` (default) `standard` (string)
+        /// </summary>
+        public readonly string? LoadBalancerSku;
+        /// <summary>
         /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         public readonly string? Location;
@@ -154,6 +158,8 @@ namespace Pulumi.Rancher2.Outputs
 
             int? cloudProviderRateLimitQps,
 
+            string? loadBalancerSku,
+
             string? location,
 
             int? maximumLoadBalancerRuleCount,
@@ -197,6 +203,7 @@ namespace Pulumi.Rancher2.Outputs
             CloudProviderRateLimit = cloudProviderRateLimit;
             CloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
             CloudProviderRateLimitQps = cloudProviderRateLimitQps;
+            LoadBalancerSku = loadBalancerSku;
             Location = location;
             MaximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
             PrimaryAvailabilitySetName = primaryAvailabilitySetName;

@@ -20,6 +20,9 @@ namespace Pulumi.Rancher2.Inputs
             set => _nodeSelector = value;
         }
 
+        [Input("nodelocal")]
+        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalGetArgs>? Nodelocal { get; set; }
+
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 

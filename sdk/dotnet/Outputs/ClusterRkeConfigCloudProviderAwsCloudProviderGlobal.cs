@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Vpc;
         /// <summary>
-        /// Zone GKE cluster (string)
+        /// GKE cluster zone. Conflicts with `region` (string)
         /// </summary>
         public readonly string? Zone;
 

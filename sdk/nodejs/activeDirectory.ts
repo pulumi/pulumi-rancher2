@@ -58,7 +58,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
      */
     public readonly connectionTimeout!: pulumi.Output<number | undefined>;
     /**
-     * ActiveDirectory defult lgoin domain (string)
+     * ActiveDirectory defult login domain (string)
      */
     public readonly defaultLoginDomain!: pulumi.Output<string | undefined>;
     /**
@@ -293,7 +293,7 @@ export interface ActiveDirectoryState {
      */
     readonly connectionTimeout?: pulumi.Input<number>;
     /**
-     * ActiveDirectory defult lgoin domain (string)
+     * ActiveDirectory defult login domain (string)
      */
     readonly defaultLoginDomain?: pulumi.Input<string>;
     /**
@@ -427,7 +427,7 @@ export interface ActiveDirectoryArgs {
      */
     readonly connectionTimeout?: pulumi.Input<number>;
     /**
-     * ActiveDirectory defult lgoin domain (string)
+     * ActiveDirectory defult login domain (string)
      */
     readonly defaultLoginDomain?: pulumi.Input<string>;
     /**

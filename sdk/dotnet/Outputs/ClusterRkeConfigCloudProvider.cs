@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderAzureCloudProvider? AzureCloudProvider;
         /// <summary>
-        /// RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+        /// RKE Custom Cloud Provider config for Cloud Provider (string)
         /// </summary>
         public readonly string? CustomCloudProvider;
         /// <summary>

@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? NodeVolumeSize { get; set; }
 
         /// <summary>
-        /// The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+        /// GKE cluster region. Conflicts with `zone` (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

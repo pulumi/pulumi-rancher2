@@ -28,6 +28,8 @@
         "certificate.ts",
         "cloudCredential.ts",
         "cluster.ts",
+        "clusterAlertGroup.ts",
+        "clusterAlertRule.ts",
         "clusterAlterGroup.ts",
         "clusterAlterRule.ts",
         "clusterDriver.ts",

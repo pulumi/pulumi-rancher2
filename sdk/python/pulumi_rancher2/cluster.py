@@ -154,7 +154,7 @@ class Cluster(pulumi.CustomResource):
       * `maximumNodes` (`float`) - The maximum number of worker nodes. Default `3` (int)
       * `minimumNodes` (`float`) - The minimum number of worker nodes. Default `1` (int)
       * `nodeVolumeSize` (`float`) - The volume size for each node. Default `20` (int)
-      * `region` (`str`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+      * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
       * `secret_key` (`str`) - The AWS Client Secret associated with the Client ID (string)
       * `securityGroups` (`list`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
       * `serviceRole` (`str`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
@@ -165,19 +165,19 @@ class Cluster(pulumi.CustomResource):
     """
     enable_cluster_alerting: pulumi.Output[bool]
     """
-    Enable built-in cluster alerting. Default `false` (bool)
+    Enable built-in cluster alerting (bool)
     """
     enable_cluster_istio: pulumi.Output[bool]
     """
-    Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
+    Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
     """
     enable_cluster_monitoring: pulumi.Output[bool]
     """
-    Enable built-in cluster monitoring. Default `false` (bool)
+    Enable built-in cluster monitoring (bool)
     """
     enable_network_policy: pulumi.Output[bool]
     """
-    Enable project network isolation. Default `false` (bool)
+    Enable project network isolation (bool)
     """
     gke_config: pulumi.Output[dict]
     """
@@ -196,7 +196,7 @@ class Cluster(pulumi.CustomResource):
       * `enableKubernetesDashboard` (`bool`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
       * `enableLegacyAbac` (`bool`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
       * `enableMasterAuthorizedNetwork` (`bool`)
-      * `enableNetworkPolicyConfig` (`bool`) - Enable stackdriver logging. Default `true` (bool)
+      * `enableNetworkPolicyConfig` (`bool`) - Enable network policy config for the cluster. Default `true` (bool)
       * `enableNodepoolAutoscaling` (`bool`) - Enable nodepool autoscaling. Default `false` (bool)
       * `enablePrivateEndpoint` (`bool`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
       * `enablePrivateNodes` (`bool`) - Whether nodes have internal IP address only. Default `false` (bool)
@@ -229,12 +229,13 @@ class Cluster(pulumi.CustomResource):
       * `oauthScopes` (`list`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
       * `preemptible` (`bool`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
       * `project_id` (`str`) - Project ID to apply answer (string)
+      * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
       * `resourceLabels` (`dict`) - The map of Kubernetes labels to be applied to each cluster (map)
       * `serviceAccount` (`str`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
       * `subNetwork` (`str`) - Subnetwork for GKE cluster (string)
       * `taints` (`list`) - List of Kubernetes taints to be applied to each node (list)
       * `useIpAliases` (`bool`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-      * `zone` (`str`) - Zone GKE cluster (string)
+      * `zone` (`str`) - GKE cluster zone. Conflicts with `region` (string)
     """
     k3s_config: pulumi.Output[dict]
     """
@@ -269,7 +270,7 @@ class Cluster(pulumi.CustomResource):
       * `addonsIncludes` (`list`) - Addons yaml manifests to deploy on RKE cluster (list)
       * `authentication` (`dict`) - Kubernetes cluster authentication (list maxitems:1)
         * `sans` (`list`) - RKE sans for authentication ([]string)
-        * `strategy` (`str`) - RKE strategy for authentication (string)
+        * `strategy` (`str`) - Monitoring deployment update strategy (string)
 
       * `authorization` (`dict`) - Kubernetes cluster authorization (list maxitems:1)
         * `mode` (`str`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
@@ -295,10 +296,10 @@ class Cluster(pulumi.CustomResource):
             * `routeTableId` (`str`) - (string)
             * `subnetId` (`str`) - (string)
             * `vpc` (`str`) - (string)
-            * `zone` (`str`) - Zone GKE cluster (string)
+            * `zone` (`str`) - GKE cluster zone. Conflicts with `region` (string)
 
           * `serviceOverrides` (`list`) - (list)
-            * `region` (`str`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+            * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
             * `service` (`str`) - (string)
             * `signingMethod` (`str`) - (string)
             * `signingName` (`str`) - (string)
@@ -319,6 +320,7 @@ class Cluster(pulumi.CustomResource):
           * `cloudProviderRateLimit` (`bool`) - (bool)
           * `cloudProviderRateLimitBucket` (`float`) - (int)
           * `cloudProviderRateLimitQps` (`float`) - (int)
+          * `loadBalancerSku` (`str`) - Allowed values: `basic` (default) `standard` (string)
           * `location` (`str`) - Azure Kubernetes cluster location. Default `eastus` (string)
           * `maximumLoadBalancerRuleCount` (`float`) - (int)
           * `primaryAvailabilitySetName` (`str`) - (string)
@@ -335,7 +337,7 @@ class Cluster(pulumi.CustomResource):
           * `vnetName` (`str`) - (string)
           * `vnetResourceGroup` (`str`) - (string)
 
-        * `customCloudProvider` (`str`) - RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+        * `customCloudProvider` (`str`) - RKE Custom Cloud Provider config for Cloud Provider (string)
         * `name` (`str`) - Name of cluster registration token (string)
         * `openstackCloudProvider` (`dict`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
           * `blockStorage` (`dict`) - (list maxitems:1)
@@ -349,7 +351,7 @@ class Cluster(pulumi.CustomResource):
             * `domainId` (`str`) - Required if `domain_name` not provided. (string)
             * `domainName` (`str`) - Required if `domain_id` not provided. (string)
             * `password` (`str`) - Registry password (string)
-            * `region` (`str`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+            * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
             * `tenant_id` (`str`) - Azure tenant ID to use (string)
             * `tenantName` (`str`) - Required if `tenant_id` not provided. (string)
             * `trustId` (`str`) - (string)
@@ -406,8 +408,12 @@ class Cluster(pulumi.CustomResource):
             * `server` (`str`) - (string)
 
       * `dns` (`dict`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-        * `nodeSelector` (`dict`) - Node selector for RKE Ingress (map)
-        * `provider` (`str`) - Provider for RKE monitoring (string)
+        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
+        * `nodelocal` (`dict`) - Nodelocal dns config  (list Maxitem: 1)
+          * `ipAddress` (`str`) - Nodelocal dns ip address (string)
+          * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
+
+        * `provider` (`str`) - RKE monitoring provider (string)
         * `reverseCidrs` (`list`) - DNS add-on reverse cidr  (list)
         * `upstreamNameservers` (`list`) - DNS add-on upstream nameservers  (list)
 
@@ -415,14 +421,22 @@ class Cluster(pulumi.CustomResource):
       * `ingress` (`dict`) - Kubernetes ingress configuration (list maxitems:1)
         * `dnsPolicy` (`str`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
         * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-        * `nodeSelector` (`dict`) - Node selector for RKE Ingress (map)
+        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
         * `options` (`dict`) - RKE options for network (map)
-        * `provider` (`str`) - Provider for RKE monitoring (string)
+        * `provider` (`str`) - RKE monitoring provider (string)
 
       * `kubernetesVersion` (`str`) - The Kubernetes master version (string)
       * `monitoring` (`dict`) - Kubernetes cluster monitoring (list maxitems:1)
+        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
         * `options` (`dict`) - RKE options for network (map)
-        * `provider` (`str`) - Provider for RKE monitoring (string)
+        * `provider` (`str`) - RKE monitoring provider (string)
+        * `replicas` (`float`) - RKE monitoring replicas (int)
+        * `updateStrategy` (`dict`) - RKE monitoring update strategy (list Maxitems: 1)
+          * `rollingUpdate` (`dict`) - Monitoring deployment rolling update (list Maxitems: 1)
+            * `maxSurge` (`float`) - Monitoring deployment rolling update max surge. Default: `1` (int)
+            * `maxUnavailable` (`float`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
+
+          * `strategy` (`str`) - Monitoring deployment update strategy (string)
 
       * `network` (`dict`) - Network for GKE cluster (string)
         * `calicoNetworkProvider` (`dict`) - Calico provider config for RKE network (list maxitems:1)
@@ -473,7 +487,7 @@ class Cluster(pulumi.CustomResource):
               * `customCa` (`str`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
               * `endpoint` (`str`) - Endpoint for S3 service (string)
               * `folder` (`str`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-              * `region` (`str`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+              * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
               * `secret_key` (`str`) - The AWS Client Secret associated with the Client ID (string)
 
             * `safeTimestamp` (`bool`) - Safe timestamp for etcd backup. Default: `false` (bool)
@@ -617,10 +631,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting. Default `false` (bool)
-        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
-        :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
-        :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
+        :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
+        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
+        :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
@@ -705,7 +719,7 @@ class Cluster(pulumi.CustomResource):
           * `maximumNodes` (`pulumi.Input[float]`) - The maximum number of worker nodes. Default `3` (int)
           * `minimumNodes` (`pulumi.Input[float]`) - The minimum number of worker nodes. Default `1` (int)
           * `nodeVolumeSize` (`pulumi.Input[float]`) - The volume size for each node. Default `20` (int)
-          * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
           * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
           * `securityGroups` (`pulumi.Input[list]`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
           * `serviceRole` (`pulumi.Input[str]`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
@@ -729,7 +743,7 @@ class Cluster(pulumi.CustomResource):
           * `enableKubernetesDashboard` (`pulumi.Input[bool]`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
           * `enableLegacyAbac` (`pulumi.Input[bool]`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
           * `enableMasterAuthorizedNetwork` (`pulumi.Input[bool]`)
-          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable stackdriver logging. Default `true` (bool)
+          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable network policy config for the cluster. Default `true` (bool)
           * `enableNodepoolAutoscaling` (`pulumi.Input[bool]`) - Enable nodepool autoscaling. Default `false` (bool)
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
           * `enablePrivateNodes` (`pulumi.Input[bool]`) - Whether nodes have internal IP address only. Default `false` (bool)
@@ -762,12 +776,13 @@ class Cluster(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
           * `preemptible` (`pulumi.Input[bool]`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
           * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
+          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
           * `resourceLabels` (`pulumi.Input[dict]`) - The map of Kubernetes labels to be applied to each cluster (map)
           * `serviceAccount` (`pulumi.Input[str]`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
           * `subNetwork` (`pulumi.Input[str]`) - Subnetwork for GKE cluster (string)
           * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
           * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-          * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+          * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
 
         The **k3s_config** object supports the following:
 
@@ -786,7 +801,7 @@ class Cluster(pulumi.CustomResource):
           * `addonsIncludes` (`pulumi.Input[list]`) - Addons yaml manifests to deploy on RKE cluster (list)
           * `authentication` (`pulumi.Input[dict]`) - Kubernetes cluster authentication (list maxitems:1)
             * `sans` (`pulumi.Input[list]`) - RKE sans for authentication ([]string)
-            * `strategy` (`pulumi.Input[str]`) - RKE strategy for authentication (string)
+            * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
 
           * `authorization` (`pulumi.Input[dict]`) - Kubernetes cluster authorization (list maxitems:1)
             * `mode` (`pulumi.Input[str]`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
@@ -812,10 +827,10 @@ class Cluster(pulumi.CustomResource):
                 * `routeTableId` (`pulumi.Input[str]`) - (string)
                 * `subnetId` (`pulumi.Input[str]`) - (string)
                 * `vpc` (`pulumi.Input[str]`) - (string)
-                * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+                * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
 
               * `serviceOverrides` (`pulumi.Input[list]`) - (list)
-                * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                 * `service` (`pulumi.Input[str]`) - (string)
                 * `signingMethod` (`pulumi.Input[str]`) - (string)
                 * `signingName` (`pulumi.Input[str]`) - (string)
@@ -836,6 +851,7 @@ class Cluster(pulumi.CustomResource):
               * `cloudProviderRateLimit` (`pulumi.Input[bool]`) - (bool)
               * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`) - (int)
               * `cloudProviderRateLimitQps` (`pulumi.Input[float]`) - (int)
+              * `loadBalancerSku` (`pulumi.Input[str]`) - Allowed values: `basic` (default) `standard` (string)
               * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
               * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`) - (int)
               * `primaryAvailabilitySetName` (`pulumi.Input[str]`) - (string)
@@ -852,7 +868,7 @@ class Cluster(pulumi.CustomResource):
               * `vnetName` (`pulumi.Input[str]`) - (string)
               * `vnetResourceGroup` (`pulumi.Input[str]`) - (string)
 
-            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string)
             * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
             * `openstackCloudProvider` (`pulumi.Input[dict]`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
               * `blockStorage` (`pulumi.Input[dict]`) - (list maxitems:1)
@@ -866,7 +882,7 @@ class Cluster(pulumi.CustomResource):
                 * `domainId` (`pulumi.Input[str]`) - Required if `domain_name` not provided. (string)
                 * `domainName` (`pulumi.Input[str]`) - Required if `domain_id` not provided. (string)
                 * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                 * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
                 * `tenantName` (`pulumi.Input[str]`) - Required if `tenant_id` not provided. (string)
                 * `trustId` (`pulumi.Input[str]`) - (string)
@@ -923,8 +939,12 @@ class Cluster(pulumi.CustomResource):
                 * `server` (`pulumi.Input[str]`) - (string)
 
           * `dns` (`pulumi.Input[dict]`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - Node selector for RKE Ingress (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
+            * `nodelocal` (`pulumi.Input[dict]`) - Nodelocal dns config  (list Maxitem: 1)
+              * `ipAddress` (`pulumi.Input[str]`) - Nodelocal dns ip address (string)
+              * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
+
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
             * `reverseCidrs` (`pulumi.Input[list]`) - DNS add-on reverse cidr  (list)
             * `upstreamNameservers` (`pulumi.Input[list]`) - DNS add-on upstream nameservers  (list)
 
@@ -932,14 +952,22 @@ class Cluster(pulumi.CustomResource):
           * `ingress` (`pulumi.Input[dict]`) - Kubernetes ingress configuration (list maxitems:1)
             * `dnsPolicy` (`pulumi.Input[str]`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
             * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-            * `nodeSelector` (`pulumi.Input[dict]`) - Node selector for RKE Ingress (map)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
 
           * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
           * `monitoring` (`pulumi.Input[dict]`) - Kubernetes cluster monitoring (list maxitems:1)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
+            * `replicas` (`pulumi.Input[float]`) - RKE monitoring replicas (int)
+            * `updateStrategy` (`pulumi.Input[dict]`) - RKE monitoring update strategy (list Maxitems: 1)
+              * `rollingUpdate` (`pulumi.Input[dict]`) - Monitoring deployment rolling update (list Maxitems: 1)
+                * `maxSurge` (`pulumi.Input[float]`) - Monitoring deployment rolling update max surge. Default: `1` (int)
+                * `maxUnavailable` (`pulumi.Input[float]`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
+
+              * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
 
           * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
             * `calicoNetworkProvider` (`pulumi.Input[dict]`) - Calico provider config for RKE network (list maxitems:1)
@@ -990,7 +1018,7 @@ class Cluster(pulumi.CustomResource):
                   * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
                   * `endpoint` (`pulumi.Input[str]`) - Endpoint for S3 service (string)
                   * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                  * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                  * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                   * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
 
                 * `safeTimestamp` (`pulumi.Input[bool]`) - Safe timestamp for etcd backup. Default: `false` (bool)
@@ -1180,10 +1208,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting. Default `false` (bool)
-        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)
-        :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring. Default `false` (bool)
-        :param pulumi.Input[bool] enable_network_policy: Enable project network isolation. Default `false` (bool)
+        :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
+        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
+        :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -1284,7 +1312,7 @@ class Cluster(pulumi.CustomResource):
           * `maximumNodes` (`pulumi.Input[float]`) - The maximum number of worker nodes. Default `3` (int)
           * `minimumNodes` (`pulumi.Input[float]`) - The minimum number of worker nodes. Default `1` (int)
           * `nodeVolumeSize` (`pulumi.Input[float]`) - The volume size for each node. Default `20` (int)
-          * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
           * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
           * `securityGroups` (`pulumi.Input[list]`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
           * `serviceRole` (`pulumi.Input[str]`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
@@ -1308,7 +1336,7 @@ class Cluster(pulumi.CustomResource):
           * `enableKubernetesDashboard` (`pulumi.Input[bool]`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
           * `enableLegacyAbac` (`pulumi.Input[bool]`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
           * `enableMasterAuthorizedNetwork` (`pulumi.Input[bool]`)
-          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable stackdriver logging. Default `true` (bool)
+          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable network policy config for the cluster. Default `true` (bool)
           * `enableNodepoolAutoscaling` (`pulumi.Input[bool]`) - Enable nodepool autoscaling. Default `false` (bool)
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
           * `enablePrivateNodes` (`pulumi.Input[bool]`) - Whether nodes have internal IP address only. Default `false` (bool)
@@ -1341,12 +1369,13 @@ class Cluster(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
           * `preemptible` (`pulumi.Input[bool]`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
           * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
+          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
           * `resourceLabels` (`pulumi.Input[dict]`) - The map of Kubernetes labels to be applied to each cluster (map)
           * `serviceAccount` (`pulumi.Input[str]`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
           * `subNetwork` (`pulumi.Input[str]`) - Subnetwork for GKE cluster (string)
           * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
           * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-          * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+          * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
 
         The **k3s_config** object supports the following:
 
@@ -1365,7 +1394,7 @@ class Cluster(pulumi.CustomResource):
           * `addonsIncludes` (`pulumi.Input[list]`) - Addons yaml manifests to deploy on RKE cluster (list)
           * `authentication` (`pulumi.Input[dict]`) - Kubernetes cluster authentication (list maxitems:1)
             * `sans` (`pulumi.Input[list]`) - RKE sans for authentication ([]string)
-            * `strategy` (`pulumi.Input[str]`) - RKE strategy for authentication (string)
+            * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
 
           * `authorization` (`pulumi.Input[dict]`) - Kubernetes cluster authorization (list maxitems:1)
             * `mode` (`pulumi.Input[str]`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
@@ -1391,10 +1420,10 @@ class Cluster(pulumi.CustomResource):
                 * `routeTableId` (`pulumi.Input[str]`) - (string)
                 * `subnetId` (`pulumi.Input[str]`) - (string)
                 * `vpc` (`pulumi.Input[str]`) - (string)
-                * `zone` (`pulumi.Input[str]`) - Zone GKE cluster (string)
+                * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
 
               * `serviceOverrides` (`pulumi.Input[list]`) - (list)
-                * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                 * `service` (`pulumi.Input[str]`) - (string)
                 * `signingMethod` (`pulumi.Input[str]`) - (string)
                 * `signingName` (`pulumi.Input[str]`) - (string)
@@ -1415,6 +1444,7 @@ class Cluster(pulumi.CustomResource):
               * `cloudProviderRateLimit` (`pulumi.Input[bool]`) - (bool)
               * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`) - (int)
               * `cloudProviderRateLimitQps` (`pulumi.Input[float]`) - (int)
+              * `loadBalancerSku` (`pulumi.Input[str]`) - Allowed values: `basic` (default) `standard` (string)
               * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
               * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`) - (int)
               * `primaryAvailabilitySetName` (`pulumi.Input[str]`) - (string)
@@ -1431,7 +1461,7 @@ class Cluster(pulumi.CustomResource):
               * `vnetName` (`pulumi.Input[str]`) - (string)
               * `vnetResourceGroup` (`pulumi.Input[str]`) - (string)
 
-            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string) (string)
+            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string)
             * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
             * `openstackCloudProvider` (`pulumi.Input[dict]`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
               * `blockStorage` (`pulumi.Input[dict]`) - (list maxitems:1)
@@ -1445,7 +1475,7 @@ class Cluster(pulumi.CustomResource):
                 * `domainId` (`pulumi.Input[str]`) - Required if `domain_name` not provided. (string)
                 * `domainName` (`pulumi.Input[str]`) - Required if `domain_id` not provided. (string)
                 * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                 * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
                 * `tenantName` (`pulumi.Input[str]`) - Required if `tenant_id` not provided. (string)
                 * `trustId` (`pulumi.Input[str]`) - (string)
@@ -1502,8 +1532,12 @@ class Cluster(pulumi.CustomResource):
                 * `server` (`pulumi.Input[str]`) - (string)
 
           * `dns` (`pulumi.Input[dict]`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - Node selector for RKE Ingress (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
+            * `nodelocal` (`pulumi.Input[dict]`) - Nodelocal dns config  (list Maxitem: 1)
+              * `ipAddress` (`pulumi.Input[str]`) - Nodelocal dns ip address (string)
+              * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
+
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
             * `reverseCidrs` (`pulumi.Input[list]`) - DNS add-on reverse cidr  (list)
             * `upstreamNameservers` (`pulumi.Input[list]`) - DNS add-on upstream nameservers  (list)
 
@@ -1511,14 +1545,22 @@ class Cluster(pulumi.CustomResource):
           * `ingress` (`pulumi.Input[dict]`) - Kubernetes ingress configuration (list maxitems:1)
             * `dnsPolicy` (`pulumi.Input[str]`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
             * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-            * `nodeSelector` (`pulumi.Input[dict]`) - Node selector for RKE Ingress (map)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
 
           * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
           * `monitoring` (`pulumi.Input[dict]`) - Kubernetes cluster monitoring (list maxitems:1)
+            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
             * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - Provider for RKE monitoring (string)
+            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
+            * `replicas` (`pulumi.Input[float]`) - RKE monitoring replicas (int)
+            * `updateStrategy` (`pulumi.Input[dict]`) - RKE monitoring update strategy (list Maxitems: 1)
+              * `rollingUpdate` (`pulumi.Input[dict]`) - Monitoring deployment rolling update (list Maxitems: 1)
+                * `maxSurge` (`pulumi.Input[float]`) - Monitoring deployment rolling update max surge. Default: `1` (int)
+                * `maxUnavailable` (`pulumi.Input[float]`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
+
+              * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
 
           * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
             * `calicoNetworkProvider` (`pulumi.Input[dict]`) - Calico provider config for RKE network (list maxitems:1)
@@ -1569,7 +1611,7 @@ class Cluster(pulumi.CustomResource):
                   * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
                   * `endpoint` (`pulumi.Input[str]`) - Endpoint for S3 service (string)
                   * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                  * `region` (`pulumi.Input[str]`) - The AWS Region to create the EKS cluster in. Default `us-west-2` (string)
+                  * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
                   * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
 
                 * `safeTimestamp` (`pulumi.Input[bool]`) - Safe timestamp for etcd backup. Default: `false` (bool)

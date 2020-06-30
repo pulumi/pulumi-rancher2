@@ -66,7 +66,7 @@ class RoleTempalte(pulumi.CustomResource):
       * `nonResourceUrls` (`list`) - Policy rule non resource urls (list)
       * `resourceNames` (`list`) - Policy rule resource names (list)
       * `resources` (`list`) - Policy rule resources (list)
-      * `verbs` (`list`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+      * `verbs` (`list`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
     """
     def __init__(__self__, resource_name, opts=None, administrative=None, annotations=None, context=None, default_role=None, description=None, external=None, hidden=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -92,7 +92,7 @@ class RoleTempalte(pulumi.CustomResource):
           * `nonResourceUrls` (`pulumi.Input[list]`) - Policy rule non resource urls (list)
           * `resourceNames` (`pulumi.Input[list]`) - Policy rule resource names (list)
           * `resources` (`pulumi.Input[list]`) - Policy rule resources (list)
-          * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+          * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -159,7 +159,7 @@ class RoleTempalte(pulumi.CustomResource):
           * `nonResourceUrls` (`pulumi.Input[list]`) - Policy rule non resource urls (list)
           * `resourceNames` (`pulumi.Input[list]`) - Policy rule resource names (list)
           * `resources` (`pulumi.Input[list]`) - Policy rule resources (list)
-          * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)
+          * `verbs` (`pulumi.Input[list]`) - Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

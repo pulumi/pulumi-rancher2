@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule
+ */
 export class ClusterAlterRule extends pulumi.CustomResource {
     /**
      * Get an existing ClusterAlterRule resource's state with the given name, ID, and optional extra
@@ -17,6 +20,7 @@ export class ClusterAlterRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterAlterRuleState, opts?: pulumi.CustomResourceOptions): ClusterAlterRule {
+        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
         return new ClusterAlterRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -98,8 +102,11 @@ export class ClusterAlterRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule */
     constructor(name: string, args: ClusterAlterRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule */
     constructor(name: string, argsOrState?: ClusterAlterRuleArgs | ClusterAlterRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ClusterAlterRuleState | undefined;

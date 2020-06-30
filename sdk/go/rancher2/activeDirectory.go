@@ -26,7 +26,7 @@ type ActiveDirectory struct {
 	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
 	ConnectionTimeout pulumi.IntPtrOutput `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult lgoin domain (string)
+	// ActiveDirectory defult login domain (string)
 	DefaultLoginDomain pulumi.StringPtrOutput `pulumi:"defaultLoginDomain"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -132,7 +132,7 @@ type activeDirectoryState struct {
 	Certificate *string `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
 	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult lgoin domain (string)
+	// ActiveDirectory defult login domain (string)
 	DefaultLoginDomain *string `pulumi:"defaultLoginDomain"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
@@ -199,7 +199,7 @@ type ActiveDirectoryState struct {
 	Certificate pulumi.StringPtrInput
 	// ActiveDirectory connection timeout. Default `5000` (int)
 	ConnectionTimeout pulumi.IntPtrInput
-	// ActiveDirectory defult lgoin domain (string)
+	// ActiveDirectory defult login domain (string)
 	DefaultLoginDomain pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput
@@ -270,7 +270,7 @@ type activeDirectoryArgs struct {
 	Certificate *string `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
 	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult lgoin domain (string)
+	// ActiveDirectory defult login domain (string)
 	DefaultLoginDomain *string `pulumi:"defaultLoginDomain"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
@@ -334,7 +334,7 @@ type ActiveDirectoryArgs struct {
 	Certificate pulumi.StringPtrInput
 	// ActiveDirectory connection timeout. Default `5000` (int)
 	ConnectionTimeout pulumi.IntPtrInput
-	// ActiveDirectory defult lgoin domain (string)
+	// ActiveDirectory defult login domain (string)
 	DefaultLoginDomain pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput

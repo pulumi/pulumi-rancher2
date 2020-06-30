@@ -11,6 +11,8 @@ import (
 )
 
 // Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+//
+// Deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule
 type ClusterAlterRule struct {
 	pulumi.CustomResourceState
 

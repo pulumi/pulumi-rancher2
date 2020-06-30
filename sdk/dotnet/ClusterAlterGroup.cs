@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    [Obsolete(@"rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")]
     public partial class ClusterAlterGroup : Pulumi.CustomResource
     {
         /// <summary>

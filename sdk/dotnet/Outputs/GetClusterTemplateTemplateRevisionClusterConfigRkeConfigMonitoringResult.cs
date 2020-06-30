@@ -13,17 +13,29 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult
     {
+        public readonly ImmutableDictionary<string, object>? NodeSelector;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Provider;
+        public readonly int Replicas;
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult? UpdateStrategy;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult(
+            ImmutableDictionary<string, object>? nodeSelector,
+
             ImmutableDictionary<string, object> options,
 
-            string provider)
+            string provider,
+
+            int replicas,
+
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult? updateStrategy)
         {
+            NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
+            Replicas = replicas;
+            UpdateStrategy = updateStrategy;
         }
     }
 }

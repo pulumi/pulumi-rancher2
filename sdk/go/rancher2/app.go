@@ -18,7 +18,7 @@ type App struct {
 	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapOutput `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-	// * add cluster ID before name, `c-XXXXX:<name>`
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// Description for the app (string)
@@ -90,7 +90,7 @@ type appState struct {
 	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers map[string]interface{} `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-	// * add cluster ID before name, `c-XXXXX:<name>`
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName *string `pulumi:"catalogName"`
 	// Description for the app (string)
@@ -123,7 +123,7 @@ type AppState struct {
 	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapInput
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-	// * add cluster ID before name, `c-XXXXX:<name>`
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringPtrInput
 	// Description for the app (string)
@@ -160,7 +160,7 @@ type appArgs struct {
 	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers map[string]interface{} `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-	// * add cluster ID before name, `c-XXXXX:<name>`
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName string `pulumi:"catalogName"`
 	// Description for the app (string)
@@ -192,7 +192,7 @@ type AppArgs struct {
 	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapInput
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-	// * add cluster ID before name, `c-XXXXX:<name>`
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringInput
 	// Description for the app (string)

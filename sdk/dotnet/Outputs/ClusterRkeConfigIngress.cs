@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
         /// <summary>
-        /// Node selector for RKE Ingress (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
         /// <summary>
-        /// Provider for RKE monitoring (string)
+        /// RKE monitoring provider (string)
         /// </summary>
         public readonly string? Provider;
 

@@ -53,7 +53,7 @@ namespace Pulumi.Rancher2
         /// Annotations for Cloud Credential object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>?> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Azure config for the Cloud Credential (list maxitems:1)

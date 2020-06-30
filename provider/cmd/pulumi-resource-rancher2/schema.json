@@ -624,6 +624,207 @@
                 }
             }
         },
+        "rancher2:/ClusterAlertGroupRecipient:ClusterAlertGroupRecipient": {
+            "properties": {
+                "defaultRecipient": {
+                    "type": "boolean",
+                    "description": "Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notifierId": {
+                    "type": "string",
+                    "description": "Recipient notifier ID (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notifierType": {
+                    "type": "string",
+                    "description": "Recipient notifier ID. Supported values : `\"pagerduty\" | \"slack\" | \"email\" | \"webhook\" | \"wechat\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "notifierId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "notifierId",
+                        "notifierType",
+                        "recipient"
+                    ]
+                }
+            }
+        },
+        "rancher2:/ClusterAlertRuleEventRule:ClusterAlertRuleEventRule": {
+            "properties": {
+                "eventType": {
+                    "type": "string",
+                    "description": "Event type. Supported values : `\"Warning\" | \"Normal\"`. Default: `Warning` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceKind": {
+                    "type": "string",
+                    "description": "Resource kind. Supported values : `\"DaemonSet\" | \"Deployment\" | \"Node\" | \"Pod\" | \"StatefulSet\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "resourceKind"
+            ]
+        },
+        "rancher2:/ClusterAlertRuleMetricRule:ClusterAlertRuleMetricRule": {
+            "properties": {
+                "comparison": {
+                    "type": "string",
+                    "description": "Metric rule comparison. Supported values : `\"equal\" | \"greater-or-equal\" | \"greater-than\" | \"less-or-equal\" | \"less-than\" | \"not-equal\" | \"has-value\"`. Default: `equal`  (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Metric rule description (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Metric rule duration (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Metric rule expression (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "thresholdValue": {
+                    "type": "number",
+                    "description": "Metric rule threshold value (float64)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "expression",
+                "thresholdValue"
+            ]
+        },
+        "rancher2:/ClusterAlertRuleNodeRule:ClusterAlertRuleNodeRule": {
+            "properties": {
+                "condition": {
+                    "type": "string",
+                    "description": "System service rule condition. Supported values : `\"controller-manager\" | \"etcd\" | \"scheduler\"`. Default: `scheduler` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cpuThreshold": {
+                    "type": "integer",
+                    "description": "Node rule cpu threshold. Default: `70` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memThreshold": {
+                    "type": "integer",
+                    "description": "Node rule mem threshold. Default: `70` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeId": {
+                    "type": "string",
+                    "description": "Node ID (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "selector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Node rule selector (map)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:/ClusterAlertRuleSystemServiceRule:ClusterAlertRuleSystemServiceRule": {
+            "properties": {
+                "condition": {
+                    "type": "string",
+                    "description": "System service rule condition. Supported values : `\"controller-manager\" | \"etcd\" | \"scheduler\"`. Default: `scheduler` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient": {
             "properties": {
                 "defaultRecipient": {
@@ -1193,7 +1394,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The AWS Region to create the EKS cluster in. Default `us-west-2` (string)\n",
+                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1407,7 +1608,7 @@
                 },
                 "enableNetworkPolicyConfig": {
                     "type": "boolean",
-                    "description": "Enable stackdriver logging. Default `true` (bool)\n",
+                    "description": "Enable network policy config for the cluster. Default `true` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1714,6 +1915,15 @@
                         }
                     }
                 },
+                "region": {
+                    "type": "string",
+                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "resourceLabels": {
                     "type": "object",
                     "additionalProperties": {
@@ -1767,7 +1977,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "Zone GKE cluster (string)\n",
+                    "description": "GKE cluster zone. Conflicts with `region` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2681,7 +2891,7 @@
                 },
                 "strategy": {
                     "type": "string",
-                    "description": "RKE strategy for authentication (string)\n",
+                    "description": "Monitoring deployment update strategy (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2827,7 +3037,7 @@
                 },
                 "customCloudProvider": {
                     "type": "string",
-                    "description": "RKE Custom Cloud Provider config for Cloud Provider (string) (string)\n",
+                    "description": "RKE Custom Cloud Provider config for Cloud Provider (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2990,7 +3200,7 @@
                 },
                 "zone": {
                     "type": "string",
-                    "description": "Zone GKE cluster (string)\n",
+                    "description": "GKE cluster zone. Conflicts with `region` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3018,7 +3228,7 @@
             "properties": {
                 "region": {
                     "type": "string",
-                    "description": "The AWS Region to create the EKS cluster in. Default `us-west-2` (string)\n",
+                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3201,6 +3411,15 @@
                 "cloudProviderRateLimitQps": {
                     "type": "integer",
                     "description": "(int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "description": "Allowed values: `basic` (default) `standard` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3539,7 +3758,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The AWS Region to create the EKS cluster in. Default `us-west-2` (string)\n",
+                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4107,7 +4326,16 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Node selector for RKE Ingress (map)\n",
+                    "description": "RKE monitoring node selector (map)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodelocal": {
+                    "$ref": "#/types/rancher2:/ClusterRkeConfigDnsNodelocal:ClusterRkeConfigDnsNodelocal",
+                    "description": "Nodelocal dns config  (list Maxitem: 1)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4116,7 +4344,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider for RKE monitoring (string)\n",
+                    "description": "RKE monitoring provider (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4159,6 +4387,32 @@
                 }
             }
         },
+        "rancher2:/ClusterRkeConfigDnsNodelocal:ClusterRkeConfigDnsNodelocal": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "description": "Nodelocal dns ip address (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "RKE monitoring node selector (map)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:/ClusterRkeConfigIngress:ClusterRkeConfigIngress": {
             "properties": {
                 "dnsPolicy": {
@@ -4187,7 +4441,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Node selector for RKE Ingress (map)\n",
+                    "description": "RKE monitoring node selector (map)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4208,7 +4462,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider for RKE monitoring (string)\n",
+                    "description": "RKE monitoring provider (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4231,6 +4485,18 @@
         },
         "rancher2:/ClusterRkeConfigMonitoring:ClusterRkeConfigMonitoring": {
             "properties": {
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "RKE monitoring node selector (map)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "options": {
                     "type": "object",
                     "additionalProperties": {
@@ -4245,7 +4511,25 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider for RKE monitoring (string)\n",
+                    "description": "RKE monitoring provider (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "replicas": {
+                    "type": "integer",
+                    "description": "RKE monitoring replicas (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:/ClusterRkeConfigMonitoringUpdateStrategy:ClusterRkeConfigMonitoringUpdateStrategy",
+                    "description": "RKE monitoring update strategy (list Maxitems: 1)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4258,10 +4542,57 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "options",
-                        "provider"
+                        "provider",
+                        "replicas"
                     ]
                 }
             }
+        },
+        "rancher2:/ClusterRkeConfigMonitoringUpdateStrategy:ClusterRkeConfigMonitoringUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:/ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate:ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate",
+                    "description": "Monitoring deployment rolling update (list Maxitems: 1)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Monitoring deployment update strategy (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:/ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate:ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "description": "Monitoring deployment rolling update max surge. Default: `1` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "description": "Monitoring deployment rolling update max unavailable. Default: `1` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/ClusterRkeConfigNetwork:ClusterRkeConfigNetwork": {
             "properties": {
@@ -4940,7 +5271,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The AWS Region to create the EKS cluster in. Default `us-west-2` (string)\n",
+                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6790,6 +7121,14 @@
                         }
                     }
                 },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "location": {
                     "type": "string",
                     "language": {
@@ -7626,6 +7965,14 @@
                         }
                     }
                 },
+                "nodelocal": {
+                    "$ref": "#/types/rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "provider": {
                     "type": "string",
                     "language": {
@@ -7667,6 +8014,30 @@
                     ]
                 }
             }
+        },
+        "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress:ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress": {
             "properties": {
@@ -7735,6 +8106,17 @@
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring": {
             "properties": {
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "options": {
                     "type": "object",
                     "additionalProperties": {
@@ -7753,6 +8135,22 @@
                             "mapCase": false
                         }
                     }
+                },
+                "replicas": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -7760,10 +8158,53 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "options",
-                        "provider"
+                        "provider",
+                        "replicas"
                     ]
                 }
             }
+        },
+        "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate:ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork:ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork": {
             "properties": {
@@ -9768,6 +10209,15 @@
                 "deviceName": {
                     "type": "string",
                     "description": "AWS root device name. Default `/dev/sda1` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptEbsVolume": {
+                    "type": "boolean",
+                    "description": "Encrypt EBS volume. Default `false` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13098,7 +13548,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `watch` and `*` values are supported (list)\n",
+                    "description": "Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14429,6 +14879,14 @@
                     }
                 },
                 "projectId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15792,6 +16250,14 @@
                         }
                     }
                 },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "location": {
                     "type": "string",
                     "language": {
@@ -16612,6 +17078,14 @@
                         }
                     }
                 },
+                "nodelocal": {
+                    "$ref": "#/types/rancher2:/getClusterRkeConfigDnsNodelocal:getClusterRkeConfigDnsNodelocal",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "provider": {
                     "type": "string",
                     "language": {
@@ -16654,6 +17128,30 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:/getClusterRkeConfigDnsNodelocal:getClusterRkeConfigDnsNodelocal": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/getClusterRkeConfigIngress:getClusterRkeConfigIngress": {
             "properties": {
@@ -16723,6 +17221,17 @@
         },
         "rancher2:/getClusterRkeConfigMonitoring:getClusterRkeConfigMonitoring": {
             "properties": {
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "options": {
                     "type": "object",
                     "additionalProperties": {
@@ -16741,18 +17250,77 @@
                             "mapCase": false
                         }
                     }
+                },
+                "replicas": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:/getClusterRkeConfigMonitoringUpdateStrategy:getClusterRkeConfigMonitoringUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "options",
-                "provider"
+                "provider",
+                "replicas"
             ],
             "language": {
                 "nodejs": {
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:/getClusterRkeConfigMonitoringUpdateStrategy:getClusterRkeConfigMonitoringUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:/getClusterRkeConfigMonitoringUpdateStrategyRollingUpdate:getClusterRkeConfigMonitoringUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:/getClusterRkeConfigMonitoringUpdateStrategyRollingUpdate:getClusterRkeConfigMonitoringUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/getClusterRkeConfigNetwork:getClusterRkeConfigNetwork": {
             "properties": {
@@ -19228,6 +19796,14 @@
                         }
                     }
                 },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "location": {
                     "type": "string",
                     "language": {
@@ -20048,6 +20624,14 @@
                         }
                     }
                 },
+                "nodelocal": {
+                    "$ref": "#/types/rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "provider": {
                     "type": "string",
                     "language": {
@@ -20090,6 +20674,30 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress:getClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress": {
             "properties": {
@@ -20159,6 +20767,17 @@
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring": {
             "properties": {
+                "nodeSelector": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "options": {
                     "type": "object",
                     "additionalProperties": {
@@ -20177,18 +20796,77 @@
                             "mapCase": false
                         }
                     }
+                },
+                "replicas": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "options",
-                "provider"
+                "provider",
+                "replicas"
             ],
             "language": {
                 "nodejs": {
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate:getClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork:getClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork": {
             "properties": {
@@ -23996,7 +24674,7 @@
                 },
                 "defaultLoginDomain": {
                     "type": "string",
-                    "description": "ActiveDirectory defult lgoin domain (string)\n"
+                    "description": "ActiveDirectory defult login domain (string)\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -24164,7 +24842,7 @@
                 },
                 "defaultLoginDomain": {
                     "type": "string",
-                    "description": "ActiveDirectory defult lgoin domain (string)\n"
+                    "description": "ActiveDirectory defult login domain (string)\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -24306,7 +24984,7 @@
                     },
                     "defaultLoginDomain": {
                         "type": "string",
-                        "description": "ActiveDirectory defult lgoin domain (string)\n"
+                        "description": "ActiveDirectory defult login domain (string)\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -24440,7 +25118,7 @@
                 },
                 "catalogName": {
                     "type": "string",
-                    "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
+                    "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `local:\u003cname\u003e` or `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
                 },
                 "description": {
                     "type": "string",
@@ -24520,7 +25198,7 @@
                 },
                 "catalogName": {
                     "type": "string",
-                    "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
+                    "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `local:\u003cname\u003e` or `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
                 },
                 "description": {
                     "type": "string",
@@ -24591,7 +25269,7 @@
                     },
                     "catalogName": {
                         "type": "string",
-                        "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
+                        "description": "Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:\n* add cluster ID before name, `local:\u003cname\u003e` or `c-XXXXX:\u003cname\u003e`\n* add project ID before name, `p-XXXXX:\u003cname\u003e`\n"
                     },
                     "description": {
                         "type": "string",
@@ -27398,6 +28076,7 @@
                 }
             },
             "required": [
+                "annotations",
                 "driver",
                 "labels",
                 "name"
@@ -27586,19 +28265,19 @@
                 },
                 "enableClusterAlerting": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster alerting. Default `false` (bool)\n"
+                    "description": "Enable built-in cluster alerting (bool)\n"
                 },
                 "enableClusterIstio": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)\n"
+                    "description": "Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)\n"
                 },
                 "enableClusterMonitoring": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster monitoring. Default `false` (bool)\n"
+                    "description": "Enable built-in cluster monitoring (bool)\n"
                 },
                 "enableNetworkPolicy": {
                     "type": "boolean",
-                    "description": "Enable project network isolation. Default `false` (bool)\n"
+                    "description": "Enable project network isolation (bool)\n"
                 },
                 "gkeConfig": {
                     "$ref": "#/types/rancher2:/ClusterGkeConfig:ClusterGkeConfig",
@@ -27652,11 +28331,16 @@
                 "desiredAuthImage",
                 "dockerRootDir",
                 "driver",
+                "enableClusterAlerting",
+                "enableClusterIstio",
+                "enableClusterMonitoring",
+                "enableNetworkPolicy",
                 "k3sConfig",
                 "kubeConfig",
                 "labels",
                 "name",
                 "rkeConfig",
+                "scheduledClusterScan",
                 "systemProjectId"
             ],
             "inputProperties": {
@@ -27728,19 +28412,19 @@
                 },
                 "enableClusterAlerting": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster alerting. Default `false` (bool)\n"
+                    "description": "Enable built-in cluster alerting (bool)\n"
                 },
                 "enableClusterIstio": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)\n"
+                    "description": "Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)\n"
                 },
                 "enableClusterMonitoring": {
                     "type": "boolean",
-                    "description": "Enable built-in cluster monitoring. Default `false` (bool)\n"
+                    "description": "Enable built-in cluster monitoring (bool)\n"
                 },
                 "enableNetworkPolicy": {
                     "type": "boolean",
-                    "description": "Enable project network isolation. Default `false` (bool)\n"
+                    "description": "Enable project network isolation (bool)\n"
                 },
                 "gkeConfig": {
                     "$ref": "#/types/rancher2:/ClusterGkeConfig:ClusterGkeConfig",
@@ -27853,19 +28537,19 @@
                     },
                     "enableClusterAlerting": {
                         "type": "boolean",
-                        "description": "Enable built-in cluster alerting. Default `false` (bool)\n"
+                        "description": "Enable built-in cluster alerting (bool)\n"
                     },
                     "enableClusterIstio": {
                         "type": "boolean",
-                        "description": "Enable built-in cluster istio. Default `false`. Just for Rancher v2.3.x and above (bool)\n"
+                        "description": "Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)\n"
                     },
                     "enableClusterMonitoring": {
                         "type": "boolean",
-                        "description": "Enable built-in cluster monitoring. Default `false` (bool)\n"
+                        "description": "Enable built-in cluster monitoring (bool)\n"
                     },
                     "enableNetworkPolicy": {
                         "type": "boolean",
-                        "description": "Enable project network isolation. Default `false` (bool)\n"
+                        "description": "Enable project network isolation (bool)\n"
                     },
                     "gkeConfig": {
                         "$ref": "#/types/rancher2:/ClusterGkeConfig:ClusterGkeConfig",
@@ -27909,6 +28593,381 @@
                 },
                 "type": "object"
             }
+        },
+        "rancher2:index/clusterAlertGroup:ClusterAlertGroup": {
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert group annotations (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id where create cluster alert group (string)\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The cluster alert group description (string)\n"
+                },
+                "groupIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
+                },
+                "groupWaitSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert group labels (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster alert group name (string)\n"
+                },
+                "recipients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:/ClusterAlertGroupRecipient:ClusterAlertGroupRecipient"
+                    },
+                    "description": "The cluster alert group recipients (list)\n"
+                },
+                "repeatIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "clusterId",
+                "labels",
+                "name"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert group annotations (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id where create cluster alert group (string)\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The cluster alert group description (string)\n"
+                },
+                "groupIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
+                },
+                "groupWaitSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert group labels (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster alert group name (string)\n"
+                },
+                "recipients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:/ClusterAlertGroupRecipient:ClusterAlertGroupRecipient"
+                    },
+                    "description": "The cluster alert group recipients (list)\n"
+                },
+                "repeatIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ClusterAlertGroup resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The cluster alert group annotations (map)\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id where create cluster alert group (string)\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The cluster alert group description (string)\n"
+                    },
+                    "groupIntervalSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert group interval seconds. Default: `180` (int)\n"
+                    },
+                    "groupWaitSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert group wait seconds. Default: `180` (int)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The cluster alert group labels (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The cluster alert group name (string)\n"
+                    },
+                    "recipients": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:/ClusterAlertGroupRecipient:ClusterAlertGroupRecipient"
+                        },
+                        "description": "The cluster alert group recipients (list)\n"
+                    },
+                    "repeatIntervalSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert group wait seconds. Default: `3600` (int)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "rancher2:index/clusterAlterGroup:ClusterAlterGroup"
+                }
+            ]
+        },
+        "rancher2:index/clusterAlertRule:ClusterAlertRule": {
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert rule annotations (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id where create cluster alert rule (string)\n"
+                },
+                "eventRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleEventRule:ClusterAlertRuleEventRule",
+                    "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The cluster alert rule alert group ID (string)\n"
+                },
+                "groupIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
+                },
+                "groupWaitSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
+                },
+                "inherited": {
+                    "type": "boolean",
+                    "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert rule labels (map)\n"
+                },
+                "metricRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleMetricRule:ClusterAlertRuleMetricRule",
+                    "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster alert rule name (string)\n"
+                },
+                "nodeRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleNodeRule:ClusterAlertRuleNodeRule",
+                    "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "repeatIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
+                },
+                "systemServiceRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleSystemServiceRule:ClusterAlertRuleSystemServiceRule",
+                    "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"`` (list Maxitems:1)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "clusterId",
+                "groupId",
+                "labels",
+                "name"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert rule annotations (map)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id where create cluster alert rule (string)\n"
+                },
+                "eventRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleEventRule:ClusterAlertRuleEventRule",
+                    "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The cluster alert rule alert group ID (string)\n"
+                },
+                "groupIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
+                },
+                "groupWaitSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
+                },
+                "inherited": {
+                    "type": "boolean",
+                    "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The cluster alert rule labels (map)\n"
+                },
+                "metricRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleMetricRule:ClusterAlertRuleMetricRule",
+                    "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster alert rule name (string)\n"
+                },
+                "nodeRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleNodeRule:ClusterAlertRuleNodeRule",
+                    "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                },
+                "repeatIntervalSeconds": {
+                    "type": "integer",
+                    "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
+                },
+                "systemServiceRule": {
+                    "$ref": "#/types/rancher2:/ClusterAlertRuleSystemServiceRule:ClusterAlertRuleSystemServiceRule",
+                    "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"`` (list Maxitems:1)\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "groupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ClusterAlertRule resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The cluster alert rule annotations (map)\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id where create cluster alert rule (string)\n"
+                    },
+                    "eventRule": {
+                        "$ref": "#/types/rancher2:/ClusterAlertRuleEventRule:ClusterAlertRuleEventRule",
+                        "description": "The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The cluster alert rule alert group ID (string)\n"
+                    },
+                    "groupIntervalSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert rule group interval seconds. Default: `180` (int)\n"
+                    },
+                    "groupWaitSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert rule group wait seconds. Default: `180` (int)\n"
+                    },
+                    "inherited": {
+                        "type": "boolean",
+                        "description": "The cluster alert rule inherited. Default: `true` (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The cluster alert rule labels (map)\n"
+                    },
+                    "metricRule": {
+                        "$ref": "#/types/rancher2:/ClusterAlertRuleMetricRule:ClusterAlertRuleMetricRule",
+                        "description": "The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The cluster alert rule name (string)\n"
+                    },
+                    "nodeRule": {
+                        "$ref": "#/types/rancher2:/ClusterAlertRuleNodeRule:ClusterAlertRuleNodeRule",
+                        "description": "The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
+                    },
+                    "repeatIntervalSeconds": {
+                        "type": "integer",
+                        "description": "The cluster alert rule wait seconds. Default: `3600` (int)\n"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
+                    },
+                    "systemServiceRule": {
+                        "$ref": "#/types/rancher2:/ClusterAlertRuleSystemServiceRule:ClusterAlertRuleSystemServiceRule",
+                        "description": "The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"`` (list Maxitems:1)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "rancher2:index/clusterAlterRule:ClusterAlterRule"
+                }
+            ]
         },
         "rancher2:index/clusterAlterGroup:ClusterAlterGroup": {
             "properties": {
@@ -28064,7 +29123,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup"
         },
         "rancher2:index/clusterAlterRule:ClusterAlterRule": {
             "properties": {
@@ -28273,7 +29333,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule"
         },
         "rancher2:index/clusterDriver:ClusterDriver": {
             "description": "Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.\n\n{{% examples %}}\n{{% /examples %}}\n",

@@ -47,7 +47,7 @@ namespace Pulumi.Rancher2
         public Output<int?> ConnectionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// ActiveDirectory defult lgoin domain (string)
+        /// ActiveDirectory defult login domain (string)
         /// </summary>
         [Output("defaultLoginDomain")]
         public Output<string?> DefaultLoginDomain { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.Rancher2
         public Input<int>? ConnectionTimeout { get; set; }
 
         /// <summary>
-        /// ActiveDirectory defult lgoin domain (string)
+        /// ActiveDirectory defult login domain (string)
         /// </summary>
         [Input("defaultLoginDomain")]
         public Input<string>? DefaultLoginDomain { get; set; }
@@ -508,7 +508,7 @@ namespace Pulumi.Rancher2
         public Input<int>? ConnectionTimeout { get; set; }
 
         /// <summary>
-        /// ActiveDirectory defult lgoin domain (string)
+        /// ActiveDirectory defult login domain (string)
         /// </summary>
         [Input("defaultLoginDomain")]
         public Input<string>? DefaultLoginDomain { get; set; }

@@ -91,6 +91,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
         /// <summary>
+        /// Allowed values: `basic` (default) `standard` (string)
+        /// </summary>
+        [Input("loadBalancerSku")]
+        public Input<string>? LoadBalancerSku { get; set; }
+
+        /// <summary>
         /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         [Input("location")]

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+warnings.warn("rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup", DeprecationWarning)
 class ClusterAlterGroup(pulumi.CustomResource):
     annotations: pulumi.Output[dict]
     """
@@ -51,6 +52,7 @@ class ClusterAlterGroup(pulumi.CustomResource):
     """
     The cluster alert group wait seconds. Default: `3600` (int)
     """
+    warnings.warn("rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, group_interval_seconds=None, group_wait_seconds=None, labels=None, name=None, recipients=None, repeat_interval_seconds=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ClusterAlterGroup resource with the given unique name, props, and options.
@@ -73,6 +75,7 @@ class ClusterAlterGroup(pulumi.CustomResource):
           * `notifierType` (`pulumi.Input[str]`) - Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
           * `recipient` (`pulumi.Input[str]`) - Recipient (string)
         """
+        pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

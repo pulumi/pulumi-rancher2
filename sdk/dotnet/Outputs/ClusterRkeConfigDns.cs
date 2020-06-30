@@ -14,11 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigDns
     {
         /// <summary>
-        /// Node selector for RKE Ingress (map)
+        /// RKE monitoring node selector (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         /// <summary>
-        /// Provider for RKE monitoring (string)
+        /// Nodelocal dns config  (list Maxitem: 1)
+        /// </summary>
+        public readonly Outputs.ClusterRkeConfigDnsNodelocal? Nodelocal;
+        /// <summary>
+        /// RKE monitoring provider (string)
         /// </summary>
         public readonly string? Provider;
         /// <summary>
@@ -34,6 +38,8 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterRkeConfigDns(
             ImmutableDictionary<string, object>? nodeSelector,
 
+            Outputs.ClusterRkeConfigDnsNodelocal? nodelocal,
+
             string? provider,
 
             ImmutableArray<string> reverseCidrs,
@@ -41,6 +47,7 @@ namespace Pulumi.Rancher2.Outputs
             ImmutableArray<string> upstreamNameservers)
         {
             NodeSelector = nodeSelector;
+            Nodelocal = nodelocal;
             Provider = provider;
             ReverseCidrs = reverseCidrs;
             UpstreamNameservers = upstreamNameservers;
