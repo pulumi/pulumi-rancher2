@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.2.0 (2020-06-30)
 * Rename `rancher2.ClusterAlterGroup` to be `rancher2.ClusterAlertGroup`
 * Rename `rancher2.ClusterAlterRule` to be `rancher2.ClusterAlertRule`
 * Upgrade to v1.9.0 of the Rancher2 Terraform Provider
-
----
 
 ## 2.1.3 (2020-06-10)
 * Switch to GitHub actions for build
