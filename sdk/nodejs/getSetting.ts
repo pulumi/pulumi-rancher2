@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const serverImage = pulumi.output(rancher2.getSetting({
+ * const server_image = pulumi.output(rancher2.getSetting({
  *     name: "server-image",
  * }, { async: true }));
  * ```

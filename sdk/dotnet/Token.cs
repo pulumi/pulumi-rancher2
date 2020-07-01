@@ -20,8 +20,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;

@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkOwner;
         /// <summary>
-        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string Password;
         /// <summary>

@@ -14,8 +14,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
@@ -34,6 +32,71 @@ namespace Pulumi.Rancher2
     ///                 LimitsMemory = "20Mi",
     ///                 RequestsCpu = "1m",
     ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Project enabling and customizing monitoring
+    ///         var foo = new Rancher2.Project("foo", new Rancher2.ProjectArgs
+    ///         {
+    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             EnableProjectMonitoring = true,
+    ///             ProjectMonitoringInput = new Rancher2.Inputs.ProjectProjectMonitoringInputArgs
+    ///             {
+    ///                 Answers = 
+    ///                 {
+    ///                     { "exporter-kubelets.https", true },
+    ///                     { "exporter-node.enabled", true },
+    ///                     { "exporter-node.ports.metrics.port", 9796 },
+    ///                     { "exporter-node.resources.limits.cpu", "200m" },
+    ///                     { "exporter-node.resources.limits.memory", "200Mi" },
+    ///                     { "grafana.persistence.enabled", false },
+    ///                     { "grafana.persistence.size", "10Gi" },
+    ///                     { "grafana.persistence.storageClass", "default" },
+    ///                     { "operator.resources.limits.memory", "500Mi" },
+    ///                     { "prometheus.persistence.enabled", "false" },
+    ///                     { "prometheus.persistence.size", "50Gi" },
+    ///                     { "prometheus.persistence.storageClass", "default" },
+    ///                     { "prometheus.persistent.useReleaseName", "true" },
+    ///                     { "prometheus.resources.core.limits.cpu", "1000m" },
+    ///                     { "prometheus.resources.core.limits.memory", "1500Mi" },
+    ///                     { "prometheus.resources.core.requests.cpu", "750m" },
+    ///                     { "prometheus.resources.core.requests.memory", "750Mi" },
+    ///                     { "prometheus.retention", "12h" },
+    ///                 },
     ///             },
     ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///             {

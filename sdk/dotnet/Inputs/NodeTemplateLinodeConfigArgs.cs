@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

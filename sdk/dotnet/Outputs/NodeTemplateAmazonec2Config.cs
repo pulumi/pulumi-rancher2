@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateAmazonec2Config
     {
         /// <summary>
-        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootSize;
         /// <summary>
-        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>

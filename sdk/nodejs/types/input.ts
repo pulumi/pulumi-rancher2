@@ -3243,7 +3243,7 @@ export interface NodePoolNodeTaint {
 
 export interface NodeTemplateAmazonec2Config {
     /**
-     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -3311,7 +3311,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     rootSize?: pulumi.Input<string>;
     /**
-     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     secretKey?: pulumi.Input<string>;
     /**
@@ -3378,11 +3378,11 @@ export interface NodeTemplateAzureConfig {
      */
     availabilitySet?: pulumi.Input<string>;
     /**
-     * Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     clientId?: pulumi.Input<string>;
     /**
-     * Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     clientSecret?: pulumi.Input<string>;
     /**
@@ -3460,7 +3460,7 @@ export interface NodeTemplateAzureConfig {
      */
     subnetPrefix?: pulumi.Input<string>;
     /**
-     * Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     subscriptionId?: pulumi.Input<string>;
     /**
@@ -3479,7 +3479,7 @@ export interface NodeTemplateAzureConfig {
 
 export interface NodeTemplateDigitaloceanConfig {
     /**
-     * Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     accessToken?: pulumi.Input<string>;
     /**
@@ -3594,7 +3594,7 @@ export interface NodeTemplateLinodeConfig {
      */
     tags?: pulumi.Input<string>;
     /**
-     * Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     token?: pulumi.Input<string>;
     /**
@@ -3653,7 +3653,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     networkOwner?: pulumi.Input<string>;
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     password: pulumi.Input<string>;
     /**
@@ -3760,7 +3760,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     novaNetwork?: pulumi.Input<boolean>;
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     password?: pulumi.Input<string>;
     /**
@@ -3796,7 +3796,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     userDataFile?: pulumi.Input<string>;
     /**
-     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     username: pulumi.Input<string>;
 }
@@ -3871,7 +3871,7 @@ export interface NodeTemplateVsphereConfig {
      */
     networks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     password?: pulumi.Input<string>;
     /**
@@ -3899,7 +3899,7 @@ export interface NodeTemplateVsphereConfig {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     username?: pulumi.Input<string>;
     /**
@@ -3919,11 +3919,11 @@ export interface NodeTemplateVsphereConfig {
      */
     vappTransport?: pulumi.Input<string>;
     /**
-     * vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+     * vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     vcenter?: pulumi.Input<string>;
     /**
-     * vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x. Default `443` (string)
+     * vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
      */
     vcenterPort?: pulumi.Input<string>;
 }

@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupClusterRoleTemplateBinding(ctx, &rancher2.LookupClusterRoleTemplateBindingArgs{
+// 			ClusterId: "foo_id",
+// 			Name:      "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupClusterRoleTemplateBinding(ctx *pulumi.Context, args *LookupClusterRoleTemplateBindingArgs, opts ...pulumi.InvokeOption) (*LookupClusterRoleTemplateBindingResult, error) {
 	var rv LookupClusterRoleTemplateBindingResult
 	err := ctx.Invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args, &rv, opts...)

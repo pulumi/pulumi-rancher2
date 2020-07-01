@@ -85,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NetworkOwner { get; set; }
 
         /// <summary>
-        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;

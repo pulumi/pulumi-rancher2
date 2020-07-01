@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = pulumi.output(rancher2.getGlobalRoleBinding({
- *     globalRoleId: "fooId",
+ *     globalRoleId: "foo_id",
  *     name: "foo",
  * }, { async: true }));
  * ```

@@ -8,6 +8,30 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupNodePool(ctx, &rancher2.LookupNodePoolArgs{
+// 			ClusterId: rancher2_cluster.Foo - custom.Id,
+// 			Name:      "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupNodePoolResult, error) {
 	var rv LookupNodePoolResult
 	err := ctx.Invoke("rancher2:index/getNodePool:getNodePool", args, &rv, opts...)

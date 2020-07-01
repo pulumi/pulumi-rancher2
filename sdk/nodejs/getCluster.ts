@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const fooCustom = pulumi.output(rancher2.getCluster({
+ * const foo_custom = pulumi.output(rancher2.getCluster({
  *     name: "foo-custom",
  * }, { async: true }));
  * ```

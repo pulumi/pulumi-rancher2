@@ -9,18 +9,16 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Create a new rancher2 Global Role Binding using userId
+ * // Create a new rancher2 Global Role Binding using user_id
  * const foo = new rancher2.GlobalRoleBinding("foo", {
  *     globalRoleId: "admin",
  *     userId: "user-XXXXX",
  * });
- * // Create a new rancher2 Global Role Binding using groupPrincipalId
+ * // Create a new rancher2 Global Role Binding using group_principal_id
  * const foo2 = new rancher2.GlobalRoleBinding("foo2", {
  *     globalRoleId: "admin",
  *     groupPrincipalId: "local://g-XXXXX",

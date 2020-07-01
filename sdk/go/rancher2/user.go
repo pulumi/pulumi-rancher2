@@ -13,6 +13,38 @@ import (
 // Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
 //
 // When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
+// 			Enabled:  pulumi.Bool(true),
+// 			Password: pulumi.String("changeme"),
+// 			Username: pulumi.String("foo"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
+// 			GlobalRoleId: pulumi.String("user-base"),
+// 			UserId:       fooUser.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

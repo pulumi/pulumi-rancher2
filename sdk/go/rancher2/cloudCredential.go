@@ -12,6 +12,33 @@ import (
 // Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 //
 // amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 			},
+// 			Description: pulumi.String("foo test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type CloudCredential struct {
 	pulumi.CustomResourceState
 

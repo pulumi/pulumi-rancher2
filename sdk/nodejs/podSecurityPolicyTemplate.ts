@@ -6,6 +6,116 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 PodSecurityPolicyTemplate
+ * const foo = new rancher2.PodSecurityPolicyTemplate("foo", {
+ *     allowPrivilegeEscalation: false,
+ *     allowedCsiDrivers: [
+ *         {
+ *             name: "something",
+ *         },
+ *         {
+ *             name: "something-else",
+ *         },
+ *     ],
+ *     allowedFlexVolumes: [
+ *         {
+ *             driver: "something",
+ *         },
+ *         {
+ *             driver: "something-else",
+ *         },
+ *     ],
+ *     allowedHostPaths: [
+ *         {
+ *             pathPrefix: "/",
+ *             readOnly: true,
+ *         },
+ *         {
+ *             pathPrefix: "//",
+ *             readOnly: false,
+ *         },
+ *     ],
+ *     allowedProcMountTypes: ["Default"],
+ *     defaultAllowPrivilegeEscalation: false,
+ *     description: "Terraform PodSecurityPolicyTemplate acceptance test - update",
+ *     fsGroup: {
+ *         ranges: [
+ *             {
+ *                 max: 100,
+ *                 min: 0,
+ *             },
+ *             {
+ *                 max: 100,
+ *                 min: 0,
+ *             },
+ *         ],
+ *         rule: "MustRunAs",
+ *     },
+ *     hostIpc: false,
+ *     hostNetwork: false,
+ *     hostPid: false,
+ *     hostPorts: [
+ *         {
+ *             max: 65535,
+ *             min: 0,
+ *         },
+ *         {
+ *             max: 8080,
+ *             min: 1024,
+ *         },
+ *     ],
+ *     privileged: false,
+ *     readOnlyRootFilesystem: false,
+ *     requiredDropCapabilities: ["something"],
+ *     runAsGroup: {
+ *         ranges: [
+ *             {
+ *                 max: 100,
+ *                 min: 1,
+ *             },
+ *             {
+ *                 max: 1024,
+ *                 min: 2,
+ *             },
+ *         ],
+ *         rule: "MustRunAs",
+ *     },
+ *     runAsUser: {
+ *         ranges: [
+ *             {
+ *                 max: 100,
+ *                 min: 1,
+ *             },
+ *             {
+ *                 max: 1024,
+ *                 min: 2,
+ *             },
+ *         ],
+ *         rule: "MustRunAs",
+ *     },
+ *     runtimeClass: {
+ *         allowedRuntimeClassNames: ["something"],
+ *         defaultRuntimeClassName: "something",
+ *     },
+ *     seLinux: {
+ *         rule: "RunAsAny",
+ *     },
+ *     supplementalGroup: {
+ *         rule: "RunAsAny",
+ *     },
+ *     volumes: ["azureFile"],
+ * });
+ * ```
+ */
 export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     /**
      * Get an existing PodSecurityPolicyTemplate resource's state with the given name, ID, and optional extra

@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? Token;
         /// <summary>

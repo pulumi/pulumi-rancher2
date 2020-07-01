@@ -9,6 +9,89 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
+    /// 
+    /// `cluster` and `project` scopes are supported for role templates.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 cluster Role Template
+    ///         var foo = new Rancher2.RoleTempalte("foo", new Rancher2.RoleTempalteArgs
+    ///         {
+    ///             Context = "cluster",
+    ///             DefaultRole = true,
+    ///             Description = "Terraform role template acceptance test",
+    ///             Rules = 
+    ///             {
+    ///                 new Rancher2.Inputs.RoleTempalteRuleArgs
+    ///                 {
+    ///                     ApiGroups = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     Resources = 
+    ///                     {
+    ///                         "secrets",
+    ///                     },
+    ///                     Verbs = 
+    ///                     {
+    ///                         "create",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 project Role Template
+    ///         var foo = new Rancher2.RoleTempalte("foo", new Rancher2.RoleTempalteArgs
+    ///         {
+    ///             Context = "project",
+    ///             DefaultRole = true,
+    ///             Description = "Terraform role template acceptance test",
+    ///             Rules = 
+    ///             {
+    ///                 new Rancher2.Inputs.RoleTempalteRuleArgs
+    ///                 {
+    ///                     ApiGroups = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     Resources = 
+    ///                     {
+    ///                         "secrets",
+    ///                     },
+    ///                     Verbs = 
+    ///                     {
+    ///                         "create",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class RoleTempalte : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,6 +11,36 @@ import (
 )
 
 // Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewProjectLogging(ctx, "foo", &rancher2.ProjectLoggingArgs{
+// 			Kind:      pulumi.String("syslog"),
+// 			ProjectId: pulumi.String("<project_id>"),
+// 			SyslogConfig: &rancher2.ProjectLoggingSyslogConfigArgs{
+// 				Endpoint:  pulumi.String("<syslog_endpoint>"),
+// 				Protocol:  pulumi.String("udp"),
+// 				Severity:  pulumi.String("notice"),
+// 				SslVerify: pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectLogging struct {
 	pulumi.CustomResourceState
 

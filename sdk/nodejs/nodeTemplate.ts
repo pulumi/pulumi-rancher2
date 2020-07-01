@@ -15,8 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -33,6 +31,32 @@ import * as utilities from "./utilities";
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
  *     },
+ *     description: "foo test",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Node Template from Rancher 2.2.x
+ * const fooCloudCredential = new rancher2.CloudCredential("foo", {
+ *     amazonec2CredentialConfig: {
+ *         accessKey: "<AWS_ACCESS_KEY>",
+ *         secretKey: "<AWS_SECRET_KEY>",
+ *     },
+ *     description: "foo test",
+ * });
+ * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
+ *     amazonec2Config: {
+ *         ami: "<AMI_ID>",
+ *         region: "<REGION>",
+ *         securityGroups: ["<AWS_SECURITY_GROUP>"],
+ *         subnetId: "<SUBNET_ID>",
+ *         vpcId: "<VPC_ID>",
+ *         zone: "<ZONE>",
+ *     },
+ *     cloudCredentialId: fooCloudCredential.id,
  *     description: "foo test",
  * });
  * ```

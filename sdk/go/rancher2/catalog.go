@@ -11,6 +11,43 @@ import (
 )
 
 // Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewCatalog(ctx, "foo_global", &rancher2.CatalogArgs{
+// 			Url: pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCatalog(ctx, "foo_cluster", &rancher2.CatalogArgs{
+// 			Scope: pulumi.String("cluster"),
+// 			Url:   pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCatalog(ctx, "foo_project", &rancher2.CatalogArgs{
+// 			Scope: pulumi.String("project"),
+// 			Url:   pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Catalog struct {
 	pulumi.CustomResourceState
 

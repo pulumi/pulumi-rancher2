@@ -9,6 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Alert Group
+    ///         var foo = new Rancher2.ClusterAlertGroup("foo", new Rancher2.ClusterAlertGroupArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform cluster alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ClusterAlertGroup : Pulumi.CustomResource
     {
         /// <summary>

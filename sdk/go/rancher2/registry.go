@@ -15,6 +15,67 @@ import (
 // Depending of the availability, there are 2 types of Rancher v2 docker registries:
 // - Project registry: Available to all namespaces in the `projectId`
 // - Namespaced regitry: Available to just `namespaceId` in the `projectId`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+// 			Description: pulumi.String("Terraform registry foo"),
+// 			ProjectId:   pulumi.String("<project_id>"),
+// 			Registries: rancher2.RegistryRegistryArray{
+// 				&rancher2.RegistryRegistryArgs{
+// 					Address:  pulumi.String("test.io"),
+// 					Password: pulumi.String("pass"),
+// 					Username: pulumi.String("user"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+// 			Description: pulumi.String("Terraform registry foo"),
+// 			NamespaceId: pulumi.String("<namespace_id>"),
+// 			ProjectId:   pulumi.String("<project_id>"),
+// 			Registries: rancher2.RegistryRegistryArray{
+// 				&rancher2.RegistryRegistryArgs{
+// 					Address:  pulumi.String("test.io"),
+// 					Password: pulumi.String("pass"),
+// 					Username: pulumi.String("user2"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Registry struct {
 	pulumi.CustomResourceState
 
