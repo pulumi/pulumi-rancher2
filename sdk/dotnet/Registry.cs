@@ -9,6 +9,72 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
+    /// 
+    /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
+    /// - Project registry: Available to all namespaces in the `project_id`
+    /// - Namespaced regitry: Available to just `namespace_id` in the `project_id`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Project Registry
+    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
+    ///         {
+    ///             Description = "Terraform registry foo",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             Registries = 
+    ///             {
+    ///                 new Rancher2.Inputs.RegistryRegistryArgs
+    ///                 {
+    ///                     Address = "test.io",
+    ///                     Password = "pass",
+    ///                     Username = "user",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Namespaced Registry
+    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
+    ///         {
+    ///             Description = "Terraform registry foo",
+    ///             NamespaceId = "&lt;namespace_id&gt;",
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             Registries = 
+    ///             {
+    ///                 new Rancher2.Inputs.RegistryRegistryArgs
+    ///                 {
+    ///                     Address = "test.io",
+    ///                     Password = "pass",
+    ///                     Username = "user2",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

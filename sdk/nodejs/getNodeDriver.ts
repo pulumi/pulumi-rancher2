@@ -7,11 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
+ * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

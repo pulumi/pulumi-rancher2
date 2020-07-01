@@ -11,6 +11,109 @@ import (
 )
 
 // Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+// 			ClusterId: pulumi.String("<CLUSTER_ID>"),
+// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
+// 			},
+// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("2000Mi"),
+// 					RequestsStorage: pulumi.String("2Gi"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+// 			ClusterId: pulumi.String("<CLUSTER_ID>"),
+// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
+// 			},
+// 			EnableProjectMonitoring: pulumi.Bool(true),
+// 			ProjectMonitoringInput: &rancher2.ProjectProjectMonitoringInputArgs{
+// 				Answers: pulumi.Map{
+// 					"exporter-kubelets.https":                   pulumi.Bool(true),
+// 					"exporter-node.enabled":                     pulumi.Bool(true),
+// 					"exporter-node.ports.metrics.port":          pulumi.Float64(9796),
+// 					"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
+// 					"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
+// 					"grafana.persistence.enabled":               pulumi.Bool(false),
+// 					"grafana.persistence.size":                  pulumi.String("10Gi"),
+// 					"grafana.persistence.storageClass":          pulumi.String("default"),
+// 					"operator.resources.limits.memory":          pulumi.String("500Mi"),
+// 					"prometheus.persistence.enabled":            pulumi.String("false"),
+// 					"prometheus.persistence.size":               pulumi.String("50Gi"),
+// 					"prometheus.persistence.storageClass":       pulumi.String("default"),
+// 					"prometheus.persistent.useReleaseName":      pulumi.String("true"),
+// 					"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
+// 					"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
+// 					"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
+// 					"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
+// 					"prometheus.retention":                      pulumi.String("12h"),
+// 				},
+// 			},
+// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("2000Mi"),
+// 					RequestsStorage: pulumi.String("2Gi"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 

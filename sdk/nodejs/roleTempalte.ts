@@ -6,6 +6,47 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
+ *
+ * `cluster` and `project` scopes are supported for role templates.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 cluster Role Template
+ * const foo = new rancher2.RoleTempalte("foo", {
+ *     context: "cluster",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
+ *     rules: [{
+ *         apiGroups: ["*"],
+ *         resources: ["secrets"],
+ *         verbs: ["create"],
+ *     }],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 project Role Template
+ * const foo = new rancher2.RoleTempalte("foo", {
+ *     context: "project",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
+ *     rules: [{
+ *         apiGroups: ["*"],
+ *         resources: ["secrets"],
+ *         verbs: ["create"],
+ *     }],
+ * });
+ * ```
+ */
 export class RoleTempalte extends pulumi.CustomResource {
     /**
      * Get an existing RoleTempalte resource's state with the given name, ID, and optional extra

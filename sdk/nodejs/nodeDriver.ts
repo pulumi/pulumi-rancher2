@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +19,7 @@ import * as utilities from "./utilities";
  *     builtin: false,
  *     checksum: "0x0",
  *     description: "Foo description",
- *     externalId: "fooExternal",
+ *     externalId: "foo_external",
  *     uiUrl: "local://ui",
  *     url: "local://",
  *     whitelistDomains: ["*.foo.com"],

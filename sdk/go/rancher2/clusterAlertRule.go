@@ -11,6 +11,41 @@ import (
 )
 
 // Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooClusterAlertGroup, err := rancher2.NewClusterAlertGroup(ctx, "fooClusterAlertGroup", &rancher2.ClusterAlertGroupArgs{
+// 			ClusterId:             pulumi.String("<cluster_id>"),
+// 			Description:           pulumi.String("Terraform cluster alert group"),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
+// 			RepeatIntervalSeconds: pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewClusterAlertRule(ctx, "fooClusterAlertRule", &rancher2.ClusterAlertRuleArgs{
+// 			ClusterId:             fooClusterAlertGroup.ClusterId,
+// 			GroupId:               fooClusterAlertGroup.ID(),
+// 			GroupIntervalSeconds:  pulumi.Int(600),
+// 			RepeatIntervalSeconds: pulumi.Int(6000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ClusterAlertRule struct {
 	pulumi.CustomResourceState
 

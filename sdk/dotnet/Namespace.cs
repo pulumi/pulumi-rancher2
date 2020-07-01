@@ -14,8 +14,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
@@ -36,6 +34,53 @@ namespace Pulumi.Rancher2
     ///             },
     ///             Description = "foo namespace",
     ///             ProjectId = "&lt;PROJECT_ID&gt;",
+    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             {
+    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "100m",
+    ///                     LimitsMemory = "100Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Cluster 
+    ///         var foo_custom = new Rancher2.Cluster("foo-custom", new Rancher2.ClusterArgs
+    ///         {
+    ///             Description = "Foo rancher2 custom cluster",
+    ///             RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///             {
+    ///                 Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///                 {
+    ///                     Plugin = "canal",
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Namespace assigned to default cluster project
+    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
+    ///         {
+    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             Description = "foo namespace",
+    ///             ProjectId = foo_custom.DefaultProjectId,
     ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
     ///             {
     ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs

@@ -11,6 +11,66 @@ import (
 )
 
 // Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+// 			ClusterId: pulumi.String("<cluster_id>"),
+// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
+// 			},
+// 			Description: pulumi.String("Terraform project "),
+// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("500m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("2000Mi"),
+// 					RequestsStorage: pulumi.String("2Gi"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
+// 			Description:           pulumi.String("Terraform project alert group"),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
+// 			ProjectId:             fooProject.ID(),
+// 			RepeatIntervalSeconds: pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
+// 			GroupId:               fooProjectAlertGroup.ID(),
+// 			GroupIntervalSeconds:  pulumi.Int(600),
+// 			ProjectId:             fooProjectAlertGroup.ProjectId,
+// 			RepeatIntervalSeconds: pulumi.Int(6000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectAlertRule struct {
 	pulumi.CustomResourceState
 

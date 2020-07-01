@@ -11,15 +11,13 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = pulumi.output(rancher2.getProjectRoleTemplateBinding({
  *     name: "foo",
- *     projectId: "fooId",
+ *     projectId: "foo_id",
  * }, { async: true }));
  * ```
  */

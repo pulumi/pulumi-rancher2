@@ -6,6 +6,48 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
+ *
+ * Depending of the availability, there are 2 types of Rancher v2 docker registries:
+ * - Project registry: Available to all namespaces in the `projectId`
+ * - Namespaced regitry: Available to just `namespaceId` in the `projectId`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Project Registry
+ * const foo = new rancher2.Registry("foo", {
+ *     description: "Terraform registry foo",
+ *     projectId: "<project_id>",
+ *     registries: [{
+ *         address: "test.io",
+ *         password: "pass",
+ *         username: "user",
+ *     }],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Namespaced Registry
+ * const foo = new rancher2.Registry("foo", {
+ *     description: "Terraform registry foo",
+ *     namespaceId: "<namespace_id>",
+ *     projectId: "<project_id>",
+ *     registries: [{
+ *         address: "test.io",
+ *         password: "pass",
+ *         username: "user2",
+ *     }],
+ * });
+ * ```
+ */
 export class Registry extends pulumi.CustomResource {
     /**
      * Get an existing Registry resource's state with the given name, ID, and optional extra

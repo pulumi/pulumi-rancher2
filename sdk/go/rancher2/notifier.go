@@ -11,6 +11,35 @@ import (
 )
 
 // Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
+// 			ClusterId:   pulumi.String("<cluster_id>"),
+// 			Description: pulumi.String("Terraform notifier acceptance test"),
+// 			PagerdutyConfig: &rancher2.NotifierPagerdutyConfigArgs{
+// 				ProxyUrl:   pulumi.String("http://proxy.test.io"),
+// 				ServiceKey: pulumi.String("XXXXXXXX"),
+// 			},
+// 			SendResolved: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Notifier struct {
 	pulumi.CustomResourceState
 

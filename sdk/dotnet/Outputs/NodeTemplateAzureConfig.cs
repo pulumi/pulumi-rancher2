@@ -18,11 +18,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? AvailabilitySet;
         /// <summary>
-        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SubnetPrefix;
         /// <summary>
-        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? SubscriptionId;
         /// <summary>

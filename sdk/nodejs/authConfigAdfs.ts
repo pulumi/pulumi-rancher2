@@ -7,11 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
  *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time. 
+ * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

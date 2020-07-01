@@ -8,6 +8,29 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupCloudCredential(ctx, &rancher2.LookupCloudCredentialArgs{
+// 			Name: "test",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupCloudCredential(ctx *pulumi.Context, args *LookupCloudCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCloudCredentialResult, error) {
 	var rv LookupCloudCredentialResult
 	err := ctx.Invoke("rancher2:index/getCloudCredential:getCloudCredential", args, &rv, opts...)

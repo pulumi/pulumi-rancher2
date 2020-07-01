@@ -9,6 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Alert Group
+    ///         var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new Rancher2.ClusterAlertGroupArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform cluster alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///         // Create a new Rancher2 Cluster Alert Rule
+    ///         var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new Rancher2.ClusterAlertRuleArgs
+    ///         {
+    ///             ClusterId = fooClusterAlertGroup.ClusterId,
+    ///             GroupId = fooClusterAlertGroup.Id,
+    ///             GroupIntervalSeconds = 600,
+    ///             RepeatIntervalSeconds = 6000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Obsolete(@"rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")]
     public partial class ClusterAlterRule : Pulumi.CustomResource
     {

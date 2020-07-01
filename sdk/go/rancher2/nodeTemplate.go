@@ -14,6 +14,83 @@ import (
 // amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+// 			Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
+// 				AccessKey: pulumi.String("AWS_ACCESS_KEY"),
+// 				Ami:       pulumi.String("<AMI_ID>"),
+// 				Region:    pulumi.String("<REGION>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 				SecurityGroups: pulumi.StringArray{
+// 					pulumi.String("<AWS_SECURITY_GROUP>"),
+// 				},
+// 				SubnetId: pulumi.String("<SUBNET_ID>"),
+// 				VpcId:    pulumi.String("<VPC_ID>"),
+// 				Zone:     pulumi.String("<ZONE>"),
+// 			},
+// 			Description: pulumi.String("foo test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 			},
+// 			Description: pulumi.String("foo test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+// 			Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
+// 				Ami:    pulumi.String("<AMI_ID>"),
+// 				Region: pulumi.String("<REGION>"),
+// 				SecurityGroups: pulumi.StringArray{
+// 					pulumi.String("<AWS_SECURITY_GROUP>"),
+// 				},
+// 				SubnetId: pulumi.String("<SUBNET_ID>"),
+// 				VpcId:    pulumi.String("<VPC_ID>"),
+// 				Zone:     pulumi.String("<ZONE>"),
+// 			},
+// 			CloudCredentialId: fooCloudCredential.ID(),
+// 			Description:       pulumi.String("foo test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 

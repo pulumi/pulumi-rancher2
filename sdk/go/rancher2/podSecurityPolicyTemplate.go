@@ -10,6 +10,132 @@ import (
 )
 
 // Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewPodSecurityPolicyTemplate(ctx, "foo", &rancher2.PodSecurityPolicyTemplateArgs{
+// 			AllowPrivilegeEscalation: pulumi.Bool(false),
+// 			AllowedCsiDrivers: rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArray{
+// 				&rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+// 					Name: pulumi.String("something"),
+// 				},
+// 				&rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs{
+// 					Name: pulumi.String("something-else"),
+// 				},
+// 			},
+// 			AllowedFlexVolumes: rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArray{
+// 				&rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+// 					Driver: pulumi.String("something"),
+// 				},
+// 				&rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs{
+// 					Driver: pulumi.String("something-else"),
+// 				},
+// 			},
+// 			AllowedHostPaths: rancher2.PodSecurityPolicyTemplateAllowedHostPathArray{
+// 				&rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs{
+// 					PathPrefix: pulumi.String("/"),
+// 					ReadOnly:   pulumi.Bool(true),
+// 				},
+// 				&rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs{
+// 					PathPrefix: pulumi.String("//"),
+// 					ReadOnly:   pulumi.Bool(false),
+// 				},
+// 			},
+// 			AllowedProcMountTypes: pulumi.StringArray{
+// 				pulumi.String("Default"),
+// 			},
+// 			DefaultAllowPrivilegeEscalation: pulumi.Bool(false),
+// 			Description:                     pulumi.String("Terraform PodSecurityPolicyTemplate acceptance test - update"),
+// 			FsGroup: &rancher2.PodSecurityPolicyTemplateFsGroupArgs{
+// 				Ranges: rancher2.PodSecurityPolicyTemplateFsGroupRangeArray{
+// 					&rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs{
+// 						Max: pulumi.Int(100),
+// 						Min: pulumi.Int(0),
+// 					},
+// 					&rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs{
+// 						Max: pulumi.Int(100),
+// 						Min: pulumi.Int(0),
+// 					},
+// 				},
+// 				Rule: pulumi.String("MustRunAs"),
+// 			},
+// 			HostIpc:     pulumi.Bool(false),
+// 			HostNetwork: pulumi.Bool(false),
+// 			HostPid:     pulumi.Bool(false),
+// 			HostPorts: rancher2.PodSecurityPolicyTemplateHostPortArray{
+// 				&rancher2.PodSecurityPolicyTemplateHostPortArgs{
+// 					Max: pulumi.Int(65535),
+// 					Min: pulumi.Int(0),
+// 				},
+// 				&rancher2.PodSecurityPolicyTemplateHostPortArgs{
+// 					Max: pulumi.Int(8080),
+// 					Min: pulumi.Int(1024),
+// 				},
+// 			},
+// 			Privileged:             pulumi.Bool(false),
+// 			ReadOnlyRootFilesystem: pulumi.Bool(false),
+// 			RequiredDropCapabilities: pulumi.StringArray{
+// 				pulumi.String("something"),
+// 			},
+// 			RunAsGroup: &rancher2.PodSecurityPolicyTemplateRunAsGroupArgs{
+// 				Ranges: rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArray{
+// 					&rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+// 						Max: pulumi.Int(100),
+// 						Min: pulumi.Int(1),
+// 					},
+// 					&rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs{
+// 						Max: pulumi.Int(1024),
+// 						Min: pulumi.Int(2),
+// 					},
+// 				},
+// 				Rule: pulumi.String("MustRunAs"),
+// 			},
+// 			RunAsUser: &rancher2.PodSecurityPolicyTemplateRunAsUserArgs{
+// 				Ranges: rancher2.PodSecurityPolicyTemplateRunAsUserRangeArray{
+// 					&rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs{
+// 						Max: pulumi.Int(100),
+// 						Min: pulumi.Int(1),
+// 					},
+// 					&rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs{
+// 						Max: pulumi.Int(1024),
+// 						Min: pulumi.Int(2),
+// 					},
+// 				},
+// 				Rule: pulumi.String("MustRunAs"),
+// 			},
+// 			RuntimeClass: &rancher2.PodSecurityPolicyTemplateRuntimeClassArgs{
+// 				AllowedRuntimeClassNames: pulumi.StringArray{
+// 					pulumi.String("something"),
+// 				},
+// 				DefaultRuntimeClassName: pulumi.String("something"),
+// 			},
+// 			SeLinux: &rancher2.PodSecurityPolicyTemplateSeLinuxArgs{
+// 				Rule: pulumi.String("RunAsAny"),
+// 			},
+// 			SupplementalGroup: &rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs{
+// 				Rule: pulumi.String("RunAsAny"),
+// 			},
+// 			Volumes: pulumi.StringArray{
+// 				pulumi.String("azureFile"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type PodSecurityPolicyTemplate struct {
 	pulumi.CustomResourceState
 

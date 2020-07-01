@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class NodeTemplateDigitaloceanConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("accessToken")]
         public Input<string>? AccessToken { get; set; }

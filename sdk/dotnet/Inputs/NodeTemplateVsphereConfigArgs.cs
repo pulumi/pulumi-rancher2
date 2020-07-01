@@ -133,7 +133,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -217,13 +217,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? VappTransport { get; set; }
 
         /// <summary>
-        /// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         [Input("vcenter")]
         public Input<string>? Vcenter { get; set; }
 
         /// <summary>
-        /// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2..CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        /// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
         /// </summary>
         [Input("vcenterPort")]
         public Input<string>? VcenterPort { get; set; }

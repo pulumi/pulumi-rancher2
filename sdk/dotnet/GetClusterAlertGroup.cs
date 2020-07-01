@@ -35,7 +35,6 @@ namespace Pulumi.Rancher2
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

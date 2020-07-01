@@ -12,6 +12,80 @@ import (
 // Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
 //
 // `cluster` and `project` scopes are supported for role templates.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewRoleTempalte(ctx, "foo", &rancher2.RoleTempalteArgs{
+// 			Context:     pulumi.String("cluster"),
+// 			DefaultRole: pulumi.Bool(true),
+// 			Description: pulumi.String("Terraform role template acceptance test"),
+// 			Rules: rancher2.RoleTempalteRuleArray{
+// 				&rancher2.RoleTempalteRuleArgs{
+// 					ApiGroups: pulumi.StringArray{
+// 						pulumi.String("*"),
+// 					},
+// 					Resources: pulumi.StringArray{
+// 						pulumi.String("secrets"),
+// 					},
+// 					Verbs: pulumi.StringArray{
+// 						pulumi.String("create"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewRoleTempalte(ctx, "foo", &rancher2.RoleTempalteArgs{
+// 			Context:     pulumi.String("project"),
+// 			DefaultRole: pulumi.Bool(true),
+// 			Description: pulumi.String("Terraform role template acceptance test"),
+// 			Rules: rancher2.RoleTempalteRuleArray{
+// 				&rancher2.RoleTempalteRuleArgs{
+// 					ApiGroups: pulumi.StringArray{
+// 						pulumi.String("*"),
+// 					},
+// 					Resources: pulumi.StringArray{
+// 						pulumi.String("secrets"),
+// 					},
+// 					Verbs: pulumi.StringArray{
+// 						pulumi.String("create"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RoleTempalte struct {
 	pulumi.CustomResourceState
 

@@ -14,11 +14,9 @@ namespace Pulumi.Rancher2
     /// 
     /// On create, if setting already exists, provider will import it and update its value.
     /// 
-    /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate. 
+    /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

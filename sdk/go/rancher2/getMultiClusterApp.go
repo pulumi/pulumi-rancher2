@@ -8,6 +8,29 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 multi cluster app.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupMultiClusterApp(ctx, &rancher2.LookupMultiClusterAppArgs{
+// 			Name: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupMultiClusterApp(ctx *pulumi.Context, args *LookupMultiClusterAppArgs, opts ...pulumi.InvokeOption) (*LookupMultiClusterAppResult, error) {
 	var rv LookupMultiClusterAppResult
 	err := ctx.Invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", args, &rv, opts...)

@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +21,7 @@ import * as utilities from "./utilities";
  *     password: "changeme",
  *     username: "foo",
  * });
- * // Create a new rancher2 globalRoleBinding for User
+ * // Create a new rancher2 global_role_binding for User
  * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("foo", {
  *     globalRoleId: "user-base",
  *     userId: fooUser.id,

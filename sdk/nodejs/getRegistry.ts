@@ -15,8 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -24,6 +22,18 @@ import * as utilities from "./utilities";
  * // Retrieve a rancher2 Project Registry
  * const foo = pulumi.output(rancher2.getRegistry({
  *     name: "<name>",
+ *     projectId: "<project_id>",
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Retrieve a rancher2 Namespaced Registry
+ * const foo = pulumi.output(rancher2.getRegistry({
+ *     name: "<name>",
+ *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
  * }, { async: true }));
  * ```

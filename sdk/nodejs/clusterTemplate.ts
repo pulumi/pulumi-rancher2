@@ -6,6 +6,127 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information.
+ *
+ * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Cluster Template
+ * const foo = new rancher2.ClusterTemplate("foo", {
+ *     description: "Terraform cluster template foo",
+ *     members: [{
+ *         accessType: "owner",
+ *         userPrincipalId: "local://user-XXXXX",
+ *     }],
+ *     templateRevisions: [{
+ *         clusterConfig: {
+ *             rkeConfig: {
+ *                 network: {
+ *                     plugin: "canal",
+ *                 },
+ *                 services: {
+ *                     etcd: {
+ *                         creation: "6h",
+ *                         retention: "24h",
+ *                     },
+ *                 },
+ *             },
+ *         },
+ *         default: true,
+ *         name: "V1",
+ *     }],
+ * });
+ * ```
+ *
+ * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Cluster Template
+ * const foo = new rancher2.ClusterTemplate("foo", {
+ *     description: "Terraform cluster template foo",
+ *     members: [{
+ *         accessType: "owner",
+ *         userPrincipalId: "local://user-XXXXX",
+ *     }],
+ *     templateRevisions: [{
+ *         clusterConfig: {
+ *             rkeConfig: {
+ *                 network: {
+ *                     plugin: "canal",
+ *                 },
+ *                 services: {
+ *                     etcd: {
+ *                         creation: "6h",
+ *                         retention: "24h",
+ *                     },
+ *                 },
+ *                 upgradeStrategy: {
+ *                     drain: true,
+ *                     maxUnavailableWorker: "20%",
+ *                 },
+ *             },
+ *         },
+ *         default: true,
+ *         name: "V1",
+ *     }],
+ * });
+ * ```
+ *
+ * Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Cluster Template
+ * const foo = new rancher2.ClusterTemplate("foo", {
+ *     description: "Terraform cluster template foo",
+ *     members: [{
+ *         accessType: "owner",
+ *         userPrincipalId: "local://user-XXXXX",
+ *     }],
+ *     templateRevisions: [{
+ *         clusterConfig: {
+ *             rkeConfig: {
+ *                 network: {
+ *                     plugin: "canal",
+ *                 },
+ *                 services: {
+ *                     etcd: {
+ *                         creation: "6h",
+ *                         retention: "24h",
+ *                     },
+ *                 },
+ *             },
+ *             scheduledClusterScan: {
+ *                 enabled: true,
+ *                 scanConfig: {
+ *                     cisScanConfig: {
+ *                         debugMaster: true,
+ *                         debugWorker: true,
+ *                     },
+ *                 },
+ *                 scheduleConfig: {
+ *                     cronSchedule: "30 * * * *",
+ *                     retention: 5,
+ *                 },
+ *             },
+ *         },
+ *         default: true,
+ *         name: "V1",
+ *     }],
+ * });
+ * ```
+ */
 export class ClusterTemplate extends pulumi.CustomResource {
     /**
      * Get an existing ClusterTemplate resource's state with the given name, ID, and optional extra

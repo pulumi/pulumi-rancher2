@@ -9,6 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Project Alert Group
+    ///         var foo = new Rancher2.ProjectAlertGroup("foo", new Rancher2.ProjectAlertGroupArgs
+    ///         {
+    ///             Description = "Terraform project alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectAlertGroup : Pulumi.CustomResource
     {
         /// <summary>

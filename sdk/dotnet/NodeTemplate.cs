@@ -18,8 +18,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
@@ -37,7 +35,7 @@ namespace Pulumi.Rancher2
     ///                 Ami = "&lt;AMI_ID&gt;",
     ///                 Region = "&lt;REGION&gt;",
     ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
-    ///                 SecurityGroup = 
+    ///                 SecurityGroups = 
     ///                 {
     ///                     "&lt;AWS_SECURITY_GROUP&gt;",
     ///                 },
@@ -45,6 +43,46 @@ namespace Pulumi.Rancher2
     ///                 VpcId = "&lt;VPC_ID&gt;",
     ///                 Zone = "&lt;ZONE&gt;",
     ///             },
+    ///             Description = "foo test",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Node Template from Rancher 2.2.x
+    ///         var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new Rancher2.CloudCredentialArgs
+    ///         {
+    ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///             {
+    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             },
+    ///             Description = "foo test",
+    ///         });
+    ///         var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new Rancher2.NodeTemplateArgs
+    ///         {
+    ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///             {
+    ///                 Ami = "&lt;AMI_ID&gt;",
+    ///                 Region = "&lt;REGION&gt;",
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
+    ///                 },
+    ///                 SubnetId = "&lt;SUBNET_ID&gt;",
+    ///                 VpcId = "&lt;VPC_ID&gt;",
+    ///                 Zone = "&lt;ZONE&gt;",
+    ///             },
+    ///             CloudCredentialId = fooCloudCredential.Id,
     ///             Description = "foo test",
     ///         });
     ///     }

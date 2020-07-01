@@ -20,8 +20,7 @@ type CloudCredentialAmazonec2CredentialConfig struct {
 // CloudCredentialAmazonec2CredentialConfigInput is an input type that accepts CloudCredentialAmazonec2CredentialConfigArgs and CloudCredentialAmazonec2CredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialAmazonec2CredentialConfigInput` via:
 //
-// 		 CloudCredentialAmazonec2CredentialConfigArgs{...}
-//
+//          CloudCredentialAmazonec2CredentialConfigArgs{...}
 type CloudCredentialAmazonec2CredentialConfigInput interface {
 	pulumi.Input
 
@@ -59,12 +58,11 @@ func (i CloudCredentialAmazonec2CredentialConfigArgs) ToCloudCredentialAmazonec2
 // CloudCredentialAmazonec2CredentialConfigPtrInput is an input type that accepts CloudCredentialAmazonec2CredentialConfigArgs, CloudCredentialAmazonec2CredentialConfigPtr and CloudCredentialAmazonec2CredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialAmazonec2CredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialAmazonec2CredentialConfigArgs{...}
+//          CloudCredentialAmazonec2CredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialAmazonec2CredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -174,8 +172,7 @@ type CloudCredentialAzureCredentialConfig struct {
 // CloudCredentialAzureCredentialConfigInput is an input type that accepts CloudCredentialAzureCredentialConfigArgs and CloudCredentialAzureCredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialAzureCredentialConfigInput` via:
 //
-// 		 CloudCredentialAzureCredentialConfigArgs{...}
-//
+//          CloudCredentialAzureCredentialConfigArgs{...}
 type CloudCredentialAzureCredentialConfigInput interface {
 	pulumi.Input
 
@@ -215,12 +212,11 @@ func (i CloudCredentialAzureCredentialConfigArgs) ToCloudCredentialAzureCredenti
 // CloudCredentialAzureCredentialConfigPtrInput is an input type that accepts CloudCredentialAzureCredentialConfigArgs, CloudCredentialAzureCredentialConfigPtr and CloudCredentialAzureCredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialAzureCredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialAzureCredentialConfigArgs{...}
+//          CloudCredentialAzureCredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialAzureCredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -341,8 +337,7 @@ type CloudCredentialDigitaloceanCredentialConfig struct {
 // CloudCredentialDigitaloceanCredentialConfigInput is an input type that accepts CloudCredentialDigitaloceanCredentialConfigArgs and CloudCredentialDigitaloceanCredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialDigitaloceanCredentialConfigInput` via:
 //
-// 		 CloudCredentialDigitaloceanCredentialConfigArgs{...}
-//
+//          CloudCredentialDigitaloceanCredentialConfigArgs{...}
 type CloudCredentialDigitaloceanCredentialConfigInput interface {
 	pulumi.Input
 
@@ -378,12 +373,11 @@ func (i CloudCredentialDigitaloceanCredentialConfigArgs) ToCloudCredentialDigita
 // CloudCredentialDigitaloceanCredentialConfigPtrInput is an input type that accepts CloudCredentialDigitaloceanCredentialConfigArgs, CloudCredentialDigitaloceanCredentialConfigPtr and CloudCredentialDigitaloceanCredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialDigitaloceanCredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialDigitaloceanCredentialConfigArgs{...}
+//          CloudCredentialDigitaloceanCredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialDigitaloceanCredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -476,8 +470,7 @@ type CloudCredentialLinodeCredentialConfig struct {
 // CloudCredentialLinodeCredentialConfigInput is an input type that accepts CloudCredentialLinodeCredentialConfigArgs and CloudCredentialLinodeCredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialLinodeCredentialConfigInput` via:
 //
-// 		 CloudCredentialLinodeCredentialConfigArgs{...}
-//
+//          CloudCredentialLinodeCredentialConfigArgs{...}
 type CloudCredentialLinodeCredentialConfigInput interface {
 	pulumi.Input
 
@@ -513,12 +506,11 @@ func (i CloudCredentialLinodeCredentialConfigArgs) ToCloudCredentialLinodeCreden
 // CloudCredentialLinodeCredentialConfigPtrInput is an input type that accepts CloudCredentialLinodeCredentialConfigArgs, CloudCredentialLinodeCredentialConfigPtr and CloudCredentialLinodeCredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialLinodeCredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialLinodeCredentialConfigArgs{...}
+//          CloudCredentialLinodeCredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialLinodeCredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -609,8 +601,7 @@ type CloudCredentialOpenstackCredentialConfig struct {
 // CloudCredentialOpenstackCredentialConfigInput is an input type that accepts CloudCredentialOpenstackCredentialConfigArgs and CloudCredentialOpenstackCredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialOpenstackCredentialConfigInput` via:
 //
-// 		 CloudCredentialOpenstackCredentialConfigArgs{...}
-//
+//          CloudCredentialOpenstackCredentialConfigArgs{...}
 type CloudCredentialOpenstackCredentialConfigInput interface {
 	pulumi.Input
 
@@ -646,12 +637,11 @@ func (i CloudCredentialOpenstackCredentialConfigArgs) ToCloudCredentialOpenstack
 // CloudCredentialOpenstackCredentialConfigPtrInput is an input type that accepts CloudCredentialOpenstackCredentialConfigArgs, CloudCredentialOpenstackCredentialConfigPtr and CloudCredentialOpenstackCredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialOpenstackCredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialOpenstackCredentialConfigArgs{...}
+//          CloudCredentialOpenstackCredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialOpenstackCredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -748,8 +738,7 @@ type CloudCredentialVsphereCredentialConfig struct {
 // CloudCredentialVsphereCredentialConfigInput is an input type that accepts CloudCredentialVsphereCredentialConfigArgs and CloudCredentialVsphereCredentialConfigOutput values.
 // You can construct a concrete instance of `CloudCredentialVsphereCredentialConfigInput` via:
 //
-// 		 CloudCredentialVsphereCredentialConfigArgs{...}
-//
+//          CloudCredentialVsphereCredentialConfigArgs{...}
 type CloudCredentialVsphereCredentialConfigInput interface {
 	pulumi.Input
 
@@ -791,12 +780,11 @@ func (i CloudCredentialVsphereCredentialConfigArgs) ToCloudCredentialVsphereCred
 // CloudCredentialVsphereCredentialConfigPtrInput is an input type that accepts CloudCredentialVsphereCredentialConfigArgs, CloudCredentialVsphereCredentialConfigPtr and CloudCredentialVsphereCredentialConfigPtrOutput values.
 // You can construct a concrete instance of `CloudCredentialVsphereCredentialConfigPtrInput` via:
 //
-// 		 CloudCredentialVsphereCredentialConfigArgs{...}
+//          CloudCredentialVsphereCredentialConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type CloudCredentialVsphereCredentialConfigPtrInput interface {
 	pulumi.Input
 
@@ -1004,8 +992,7 @@ type ClusterAksConfig struct {
 // ClusterAksConfigInput is an input type that accepts ClusterAksConfigArgs and ClusterAksConfigOutput values.
 // You can construct a concrete instance of `ClusterAksConfigInput` via:
 //
-// 		 ClusterAksConfigArgs{...}
-//
+//          ClusterAksConfigArgs{...}
 type ClusterAksConfigInput interface {
 	pulumi.Input
 
@@ -1113,12 +1100,11 @@ func (i ClusterAksConfigArgs) ToClusterAksConfigPtrOutputWithContext(ctx context
 // ClusterAksConfigPtrInput is an input type that accepts ClusterAksConfigArgs, ClusterAksConfigPtr and ClusterAksConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterAksConfigPtrInput` via:
 //
-// 		 ClusterAksConfigArgs{...}
+//          ClusterAksConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAksConfigPtrInput interface {
 	pulumi.Input
 
@@ -1755,8 +1741,7 @@ type ClusterAlertGroupRecipient struct {
 // ClusterAlertGroupRecipientInput is an input type that accepts ClusterAlertGroupRecipientArgs and ClusterAlertGroupRecipientOutput values.
 // You can construct a concrete instance of `ClusterAlertGroupRecipientInput` via:
 //
-// 		 ClusterAlertGroupRecipientArgs{...}
-//
+//          ClusterAlertGroupRecipientArgs{...}
 type ClusterAlertGroupRecipientInput interface {
 	pulumi.Input
 
@@ -1790,8 +1775,7 @@ func (i ClusterAlertGroupRecipientArgs) ToClusterAlertGroupRecipientOutputWithCo
 // ClusterAlertGroupRecipientArrayInput is an input type that accepts ClusterAlertGroupRecipientArray and ClusterAlertGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `ClusterAlertGroupRecipientArrayInput` via:
 //
-// 		 ClusterAlertGroupRecipientArray{ ClusterAlertGroupRecipientArgs{...} }
-//
+//          ClusterAlertGroupRecipientArray{ ClusterAlertGroupRecipientArgs{...} }
 type ClusterAlertGroupRecipientArrayInput interface {
 	pulumi.Input
 
@@ -1877,8 +1861,7 @@ type ClusterAlertRuleEventRule struct {
 // ClusterAlertRuleEventRuleInput is an input type that accepts ClusterAlertRuleEventRuleArgs and ClusterAlertRuleEventRuleOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleEventRuleInput` via:
 //
-// 		 ClusterAlertRuleEventRuleArgs{...}
-//
+//          ClusterAlertRuleEventRuleArgs{...}
 type ClusterAlertRuleEventRuleInput interface {
 	pulumi.Input
 
@@ -1916,12 +1899,11 @@ func (i ClusterAlertRuleEventRuleArgs) ToClusterAlertRuleEventRulePtrOutputWithC
 // ClusterAlertRuleEventRulePtrInput is an input type that accepts ClusterAlertRuleEventRuleArgs, ClusterAlertRuleEventRulePtr and ClusterAlertRuleEventRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleEventRulePtrInput` via:
 //
-// 		 ClusterAlertRuleEventRuleArgs{...}
+//          ClusterAlertRuleEventRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlertRuleEventRulePtrInput interface {
 	pulumi.Input
 
@@ -2035,8 +2017,7 @@ type ClusterAlertRuleMetricRule struct {
 // ClusterAlertRuleMetricRuleInput is an input type that accepts ClusterAlertRuleMetricRuleArgs and ClusterAlertRuleMetricRuleOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleMetricRuleInput` via:
 //
-// 		 ClusterAlertRuleMetricRuleArgs{...}
-//
+//          ClusterAlertRuleMetricRuleArgs{...}
 type ClusterAlertRuleMetricRuleInput interface {
 	pulumi.Input
 
@@ -2080,12 +2061,11 @@ func (i ClusterAlertRuleMetricRuleArgs) ToClusterAlertRuleMetricRulePtrOutputWit
 // ClusterAlertRuleMetricRulePtrInput is an input type that accepts ClusterAlertRuleMetricRuleArgs, ClusterAlertRuleMetricRulePtr and ClusterAlertRuleMetricRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleMetricRulePtrInput` via:
 //
-// 		 ClusterAlertRuleMetricRuleArgs{...}
+//          ClusterAlertRuleMetricRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlertRuleMetricRulePtrInput interface {
 	pulumi.Input
 
@@ -2244,8 +2224,7 @@ type ClusterAlertRuleNodeRule struct {
 // ClusterAlertRuleNodeRuleInput is an input type that accepts ClusterAlertRuleNodeRuleArgs and ClusterAlertRuleNodeRuleOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleNodeRuleInput` via:
 //
-// 		 ClusterAlertRuleNodeRuleArgs{...}
-//
+//          ClusterAlertRuleNodeRuleArgs{...}
 type ClusterAlertRuleNodeRuleInput interface {
 	pulumi.Input
 
@@ -2289,12 +2268,11 @@ func (i ClusterAlertRuleNodeRuleArgs) ToClusterAlertRuleNodeRulePtrOutputWithCon
 // ClusterAlertRuleNodeRulePtrInput is an input type that accepts ClusterAlertRuleNodeRuleArgs, ClusterAlertRuleNodeRulePtr and ClusterAlertRuleNodeRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleNodeRulePtrInput` via:
 //
-// 		 ClusterAlertRuleNodeRuleArgs{...}
+//          ClusterAlertRuleNodeRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlertRuleNodeRulePtrInput interface {
 	pulumi.Input
 
@@ -2445,8 +2423,7 @@ type ClusterAlertRuleSystemServiceRule struct {
 // ClusterAlertRuleSystemServiceRuleInput is an input type that accepts ClusterAlertRuleSystemServiceRuleArgs and ClusterAlertRuleSystemServiceRuleOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleSystemServiceRuleInput` via:
 //
-// 		 ClusterAlertRuleSystemServiceRuleArgs{...}
-//
+//          ClusterAlertRuleSystemServiceRuleArgs{...}
 type ClusterAlertRuleSystemServiceRuleInput interface {
 	pulumi.Input
 
@@ -2482,12 +2459,11 @@ func (i ClusterAlertRuleSystemServiceRuleArgs) ToClusterAlertRuleSystemServiceRu
 // ClusterAlertRuleSystemServiceRulePtrInput is an input type that accepts ClusterAlertRuleSystemServiceRuleArgs, ClusterAlertRuleSystemServiceRulePtr and ClusterAlertRuleSystemServiceRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlertRuleSystemServiceRulePtrInput` via:
 //
-// 		 ClusterAlertRuleSystemServiceRuleArgs{...}
+//          ClusterAlertRuleSystemServiceRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlertRuleSystemServiceRulePtrInput interface {
 	pulumi.Input
 
@@ -2584,8 +2560,7 @@ type ClusterAlterGroupRecipient struct {
 // ClusterAlterGroupRecipientInput is an input type that accepts ClusterAlterGroupRecipientArgs and ClusterAlterGroupRecipientOutput values.
 // You can construct a concrete instance of `ClusterAlterGroupRecipientInput` via:
 //
-// 		 ClusterAlterGroupRecipientArgs{...}
-//
+//          ClusterAlterGroupRecipientArgs{...}
 type ClusterAlterGroupRecipientInput interface {
 	pulumi.Input
 
@@ -2619,8 +2594,7 @@ func (i ClusterAlterGroupRecipientArgs) ToClusterAlterGroupRecipientOutputWithCo
 // ClusterAlterGroupRecipientArrayInput is an input type that accepts ClusterAlterGroupRecipientArray and ClusterAlterGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `ClusterAlterGroupRecipientArrayInput` via:
 //
-// 		 ClusterAlterGroupRecipientArray{ ClusterAlterGroupRecipientArgs{...} }
-//
+//          ClusterAlterGroupRecipientArray{ ClusterAlterGroupRecipientArgs{...} }
 type ClusterAlterGroupRecipientArrayInput interface {
 	pulumi.Input
 
@@ -2706,8 +2680,7 @@ type ClusterAlterRuleEventRule struct {
 // ClusterAlterRuleEventRuleInput is an input type that accepts ClusterAlterRuleEventRuleArgs and ClusterAlterRuleEventRuleOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleEventRuleInput` via:
 //
-// 		 ClusterAlterRuleEventRuleArgs{...}
-//
+//          ClusterAlterRuleEventRuleArgs{...}
 type ClusterAlterRuleEventRuleInput interface {
 	pulumi.Input
 
@@ -2745,12 +2718,11 @@ func (i ClusterAlterRuleEventRuleArgs) ToClusterAlterRuleEventRulePtrOutputWithC
 // ClusterAlterRuleEventRulePtrInput is an input type that accepts ClusterAlterRuleEventRuleArgs, ClusterAlterRuleEventRulePtr and ClusterAlterRuleEventRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleEventRulePtrInput` via:
 //
-// 		 ClusterAlterRuleEventRuleArgs{...}
+//          ClusterAlterRuleEventRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlterRuleEventRulePtrInput interface {
 	pulumi.Input
 
@@ -2864,8 +2836,7 @@ type ClusterAlterRuleMetricRule struct {
 // ClusterAlterRuleMetricRuleInput is an input type that accepts ClusterAlterRuleMetricRuleArgs and ClusterAlterRuleMetricRuleOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleMetricRuleInput` via:
 //
-// 		 ClusterAlterRuleMetricRuleArgs{...}
-//
+//          ClusterAlterRuleMetricRuleArgs{...}
 type ClusterAlterRuleMetricRuleInput interface {
 	pulumi.Input
 
@@ -2909,12 +2880,11 @@ func (i ClusterAlterRuleMetricRuleArgs) ToClusterAlterRuleMetricRulePtrOutputWit
 // ClusterAlterRuleMetricRulePtrInput is an input type that accepts ClusterAlterRuleMetricRuleArgs, ClusterAlterRuleMetricRulePtr and ClusterAlterRuleMetricRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleMetricRulePtrInput` via:
 //
-// 		 ClusterAlterRuleMetricRuleArgs{...}
+//          ClusterAlterRuleMetricRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlterRuleMetricRulePtrInput interface {
 	pulumi.Input
 
@@ -3073,8 +3043,7 @@ type ClusterAlterRuleNodeRule struct {
 // ClusterAlterRuleNodeRuleInput is an input type that accepts ClusterAlterRuleNodeRuleArgs and ClusterAlterRuleNodeRuleOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleNodeRuleInput` via:
 //
-// 		 ClusterAlterRuleNodeRuleArgs{...}
-//
+//          ClusterAlterRuleNodeRuleArgs{...}
 type ClusterAlterRuleNodeRuleInput interface {
 	pulumi.Input
 
@@ -3118,12 +3087,11 @@ func (i ClusterAlterRuleNodeRuleArgs) ToClusterAlterRuleNodeRulePtrOutputWithCon
 // ClusterAlterRuleNodeRulePtrInput is an input type that accepts ClusterAlterRuleNodeRuleArgs, ClusterAlterRuleNodeRulePtr and ClusterAlterRuleNodeRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleNodeRulePtrInput` via:
 //
-// 		 ClusterAlterRuleNodeRuleArgs{...}
+//          ClusterAlterRuleNodeRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlterRuleNodeRulePtrInput interface {
 	pulumi.Input
 
@@ -3274,8 +3242,7 @@ type ClusterAlterRuleSystemServiceRule struct {
 // ClusterAlterRuleSystemServiceRuleInput is an input type that accepts ClusterAlterRuleSystemServiceRuleArgs and ClusterAlterRuleSystemServiceRuleOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleSystemServiceRuleInput` via:
 //
-// 		 ClusterAlterRuleSystemServiceRuleArgs{...}
-//
+//          ClusterAlterRuleSystemServiceRuleArgs{...}
 type ClusterAlterRuleSystemServiceRuleInput interface {
 	pulumi.Input
 
@@ -3311,12 +3278,11 @@ func (i ClusterAlterRuleSystemServiceRuleArgs) ToClusterAlterRuleSystemServiceRu
 // ClusterAlterRuleSystemServiceRulePtrInput is an input type that accepts ClusterAlterRuleSystemServiceRuleArgs, ClusterAlterRuleSystemServiceRulePtr and ClusterAlterRuleSystemServiceRulePtrOutput values.
 // You can construct a concrete instance of `ClusterAlterRuleSystemServiceRulePtrInput` via:
 //
-// 		 ClusterAlterRuleSystemServiceRuleArgs{...}
+//          ClusterAlterRuleSystemServiceRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterAlterRuleSystemServiceRulePtrInput interface {
 	pulumi.Input
 
@@ -3411,8 +3377,7 @@ type ClusterClusterAuthEndpoint struct {
 // ClusterClusterAuthEndpointInput is an input type that accepts ClusterClusterAuthEndpointArgs and ClusterClusterAuthEndpointOutput values.
 // You can construct a concrete instance of `ClusterClusterAuthEndpointInput` via:
 //
-// 		 ClusterClusterAuthEndpointArgs{...}
-//
+//          ClusterClusterAuthEndpointArgs{...}
 type ClusterClusterAuthEndpointInput interface {
 	pulumi.Input
 
@@ -3452,12 +3417,11 @@ func (i ClusterClusterAuthEndpointArgs) ToClusterClusterAuthEndpointPtrOutputWit
 // ClusterClusterAuthEndpointPtrInput is an input type that accepts ClusterClusterAuthEndpointArgs, ClusterClusterAuthEndpointPtr and ClusterClusterAuthEndpointPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterAuthEndpointPtrInput` via:
 //
-// 		 ClusterClusterAuthEndpointArgs{...}
+//          ClusterClusterAuthEndpointArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterClusterAuthEndpointPtrInput interface {
 	pulumi.Input
 
@@ -3580,8 +3544,7 @@ type ClusterClusterMonitoringInput struct {
 // ClusterClusterMonitoringInputInput is an input type that accepts ClusterClusterMonitoringInputArgs and ClusterClusterMonitoringInputOutput values.
 // You can construct a concrete instance of `ClusterClusterMonitoringInputInput` via:
 //
-// 		 ClusterClusterMonitoringInputArgs{...}
-//
+//          ClusterClusterMonitoringInputArgs{...}
 type ClusterClusterMonitoringInputInput interface {
 	pulumi.Input
 
@@ -3619,12 +3582,11 @@ func (i ClusterClusterMonitoringInputArgs) ToClusterClusterMonitoringInputPtrOut
 // ClusterClusterMonitoringInputPtrInput is an input type that accepts ClusterClusterMonitoringInputArgs, ClusterClusterMonitoringInputPtr and ClusterClusterMonitoringInputPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterMonitoringInputPtrInput` via:
 //
-// 		 ClusterClusterMonitoringInputArgs{...}
+//          ClusterClusterMonitoringInputArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterClusterMonitoringInputPtrInput interface {
 	pulumi.Input
 
@@ -3750,8 +3712,7 @@ type ClusterClusterRegistrationToken struct {
 // ClusterClusterRegistrationTokenInput is an input type that accepts ClusterClusterRegistrationTokenArgs and ClusterClusterRegistrationTokenOutput values.
 // You can construct a concrete instance of `ClusterClusterRegistrationTokenInput` via:
 //
-// 		 ClusterClusterRegistrationTokenArgs{...}
-//
+//          ClusterClusterRegistrationTokenArgs{...}
 type ClusterClusterRegistrationTokenInput interface {
 	pulumi.Input
 
@@ -3807,12 +3768,11 @@ func (i ClusterClusterRegistrationTokenArgs) ToClusterClusterRegistrationTokenPt
 // ClusterClusterRegistrationTokenPtrInput is an input type that accepts ClusterClusterRegistrationTokenArgs, ClusterClusterRegistrationTokenPtr and ClusterClusterRegistrationTokenPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterRegistrationTokenPtrInput` via:
 //
-// 		 ClusterClusterRegistrationTokenArgs{...}
+//          ClusterClusterRegistrationTokenArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterClusterRegistrationTokenPtrInput interface {
 	pulumi.Input
 
@@ -4057,8 +4017,7 @@ type ClusterClusterTemplateAnswers struct {
 // ClusterClusterTemplateAnswersInput is an input type that accepts ClusterClusterTemplateAnswersArgs and ClusterClusterTemplateAnswersOutput values.
 // You can construct a concrete instance of `ClusterClusterTemplateAnswersInput` via:
 //
-// 		 ClusterClusterTemplateAnswersArgs{...}
-//
+//          ClusterClusterTemplateAnswersArgs{...}
 type ClusterClusterTemplateAnswersInput interface {
 	pulumi.Input
 
@@ -4098,12 +4057,11 @@ func (i ClusterClusterTemplateAnswersArgs) ToClusterClusterTemplateAnswersPtrOut
 // ClusterClusterTemplateAnswersPtrInput is an input type that accepts ClusterClusterTemplateAnswersArgs, ClusterClusterTemplateAnswersPtr and ClusterClusterTemplateAnswersPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterTemplateAnswersPtrInput` via:
 //
-// 		 ClusterClusterTemplateAnswersArgs{...}
+//          ClusterClusterTemplateAnswersArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterClusterTemplateAnswersPtrInput interface {
 	pulumi.Input
 
@@ -4230,8 +4188,7 @@ type ClusterClusterTemplateQuestion struct {
 // ClusterClusterTemplateQuestionInput is an input type that accepts ClusterClusterTemplateQuestionArgs and ClusterClusterTemplateQuestionOutput values.
 // You can construct a concrete instance of `ClusterClusterTemplateQuestionInput` via:
 //
-// 		 ClusterClusterTemplateQuestionArgs{...}
-//
+//          ClusterClusterTemplateQuestionArgs{...}
 type ClusterClusterTemplateQuestionInput interface {
 	pulumi.Input
 
@@ -4265,8 +4222,7 @@ func (i ClusterClusterTemplateQuestionArgs) ToClusterClusterTemplateQuestionOutp
 // ClusterClusterTemplateQuestionArrayInput is an input type that accepts ClusterClusterTemplateQuestionArray and ClusterClusterTemplateQuestionArrayOutput values.
 // You can construct a concrete instance of `ClusterClusterTemplateQuestionArrayInput` via:
 //
-// 		 ClusterClusterTemplateQuestionArray{ ClusterClusterTemplateQuestionArgs{...} }
-//
+//          ClusterClusterTemplateQuestionArray{ ClusterClusterTemplateQuestionArgs{...} }
 type ClusterClusterTemplateQuestionArrayInput interface {
 	pulumi.Input
 
@@ -4384,8 +4340,7 @@ type ClusterEksConfig struct {
 // ClusterEksConfigInput is an input type that accepts ClusterEksConfigArgs and ClusterEksConfigOutput values.
 // You can construct a concrete instance of `ClusterEksConfigInput` via:
 //
-// 		 ClusterEksConfigArgs{...}
-//
+//          ClusterEksConfigArgs{...}
 type ClusterEksConfigInput interface {
 	pulumi.Input
 
@@ -4455,12 +4410,11 @@ func (i ClusterEksConfigArgs) ToClusterEksConfigPtrOutputWithContext(ctx context
 // ClusterEksConfigPtrInput is an input type that accepts ClusterEksConfigArgs, ClusterEksConfigPtr and ClusterEksConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterEksConfigPtrInput` via:
 //
-// 		 ClusterEksConfigArgs{...}
+//          ClusterEksConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterEksConfigPtrInput interface {
 	pulumi.Input
 
@@ -4909,8 +4863,7 @@ type ClusterGkeConfig struct {
 // ClusterGkeConfigInput is an input type that accepts ClusterGkeConfigArgs and ClusterGkeConfigOutput values.
 // You can construct a concrete instance of `ClusterGkeConfigInput` via:
 //
-// 		 ClusterGkeConfigArgs{...}
-//
+//          ClusterGkeConfigArgs{...}
 type ClusterGkeConfigInput interface {
 	pulumi.Input
 
@@ -5049,12 +5002,11 @@ func (i ClusterGkeConfigArgs) ToClusterGkeConfigPtrOutputWithContext(ctx context
 // ClusterGkeConfigPtrInput is an input type that accepts ClusterGkeConfigArgs, ClusterGkeConfigPtr and ClusterGkeConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterGkeConfigPtrInput` via:
 //
-// 		 ClusterGkeConfigArgs{...}
+//          ClusterGkeConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterGkeConfigPtrInput interface {
 	pulumi.Input
 
@@ -5925,8 +5877,7 @@ type ClusterK3sConfig struct {
 // ClusterK3sConfigInput is an input type that accepts ClusterK3sConfigArgs and ClusterK3sConfigOutput values.
 // You can construct a concrete instance of `ClusterK3sConfigInput` via:
 //
-// 		 ClusterK3sConfigArgs{...}
-//
+//          ClusterK3sConfigArgs{...}
 type ClusterK3sConfigInput interface {
 	pulumi.Input
 
@@ -5964,12 +5915,11 @@ func (i ClusterK3sConfigArgs) ToClusterK3sConfigPtrOutputWithContext(ctx context
 // ClusterK3sConfigPtrInput is an input type that accepts ClusterK3sConfigArgs, ClusterK3sConfigPtr and ClusterK3sConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterK3sConfigPtrInput` via:
 //
-// 		 ClusterK3sConfigArgs{...}
+//          ClusterK3sConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterK3sConfigPtrInput interface {
 	pulumi.Input
 
@@ -6081,8 +6031,7 @@ type ClusterK3sConfigUpgradeStrategy struct {
 // ClusterK3sConfigUpgradeStrategyInput is an input type that accepts ClusterK3sConfigUpgradeStrategyArgs and ClusterK3sConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `ClusterK3sConfigUpgradeStrategyInput` via:
 //
-// 		 ClusterK3sConfigUpgradeStrategyArgs{...}
-//
+//          ClusterK3sConfigUpgradeStrategyArgs{...}
 type ClusterK3sConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -6124,12 +6073,11 @@ func (i ClusterK3sConfigUpgradeStrategyArgs) ToClusterK3sConfigUpgradeStrategyPt
 // ClusterK3sConfigUpgradeStrategyPtrInput is an input type that accepts ClusterK3sConfigUpgradeStrategyArgs, ClusterK3sConfigUpgradeStrategyPtr and ClusterK3sConfigUpgradeStrategyPtrOutput values.
 // You can construct a concrete instance of `ClusterK3sConfigUpgradeStrategyPtrInput` via:
 //
-// 		 ClusterK3sConfigUpgradeStrategyArgs{...}
+//          ClusterK3sConfigUpgradeStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterK3sConfigUpgradeStrategyPtrInput interface {
 	pulumi.Input
 
@@ -6271,8 +6219,7 @@ type ClusterLoggingCustomTargetConfig struct {
 // ClusterLoggingCustomTargetConfigInput is an input type that accepts ClusterLoggingCustomTargetConfigArgs and ClusterLoggingCustomTargetConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingCustomTargetConfigInput` via:
 //
-// 		 ClusterLoggingCustomTargetConfigArgs{...}
-//
+//          ClusterLoggingCustomTargetConfigArgs{...}
 type ClusterLoggingCustomTargetConfigInput interface {
 	pulumi.Input
 
@@ -6314,12 +6261,11 @@ func (i ClusterLoggingCustomTargetConfigArgs) ToClusterLoggingCustomTargetConfig
 // ClusterLoggingCustomTargetConfigPtrInput is an input type that accepts ClusterLoggingCustomTargetConfigArgs, ClusterLoggingCustomTargetConfigPtr and ClusterLoggingCustomTargetConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingCustomTargetConfigPtrInput` via:
 //
-// 		 ClusterLoggingCustomTargetConfigArgs{...}
+//          ClusterLoggingCustomTargetConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingCustomTargetConfigPtrInput interface {
 	pulumi.Input
 
@@ -6475,8 +6421,7 @@ type ClusterLoggingElasticsearchConfig struct {
 // ClusterLoggingElasticsearchConfigInput is an input type that accepts ClusterLoggingElasticsearchConfigArgs and ClusterLoggingElasticsearchConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingElasticsearchConfigInput` via:
 //
-// 		 ClusterLoggingElasticsearchConfigArgs{...}
-//
+//          ClusterLoggingElasticsearchConfigArgs{...}
 type ClusterLoggingElasticsearchConfigInput interface {
 	pulumi.Input
 
@@ -6532,12 +6477,11 @@ func (i ClusterLoggingElasticsearchConfigArgs) ToClusterLoggingElasticsearchConf
 // ClusterLoggingElasticsearchConfigPtrInput is an input type that accepts ClusterLoggingElasticsearchConfigArgs, ClusterLoggingElasticsearchConfigPtr and ClusterLoggingElasticsearchConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingElasticsearchConfigPtrInput` via:
 //
-// 		 ClusterLoggingElasticsearchConfigArgs{...}
+//          ClusterLoggingElasticsearchConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingElasticsearchConfigPtrInput interface {
 	pulumi.Input
 
@@ -6784,8 +6728,7 @@ type ClusterLoggingFluentdConfig struct {
 // ClusterLoggingFluentdConfigInput is an input type that accepts ClusterLoggingFluentdConfigArgs and ClusterLoggingFluentdConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingFluentdConfigInput` via:
 //
-// 		 ClusterLoggingFluentdConfigArgs{...}
-//
+//          ClusterLoggingFluentdConfigArgs{...}
 type ClusterLoggingFluentdConfigInput interface {
 	pulumi.Input
 
@@ -6827,12 +6770,11 @@ func (i ClusterLoggingFluentdConfigArgs) ToClusterLoggingFluentdConfigPtrOutputW
 // ClusterLoggingFluentdConfigPtrInput is an input type that accepts ClusterLoggingFluentdConfigArgs, ClusterLoggingFluentdConfigPtr and ClusterLoggingFluentdConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingFluentdConfigPtrInput` via:
 //
-// 		 ClusterLoggingFluentdConfigArgs{...}
+//          ClusterLoggingFluentdConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingFluentdConfigPtrInput interface {
 	pulumi.Input
 
@@ -6980,8 +6922,7 @@ type ClusterLoggingFluentdConfigFluentServer struct {
 // ClusterLoggingFluentdConfigFluentServerInput is an input type that accepts ClusterLoggingFluentdConfigFluentServerArgs and ClusterLoggingFluentdConfigFluentServerOutput values.
 // You can construct a concrete instance of `ClusterLoggingFluentdConfigFluentServerInput` via:
 //
-// 		 ClusterLoggingFluentdConfigFluentServerArgs{...}
-//
+//          ClusterLoggingFluentdConfigFluentServerArgs{...}
 type ClusterLoggingFluentdConfigFluentServerInput interface {
 	pulumi.Input
 
@@ -7021,8 +6962,7 @@ func (i ClusterLoggingFluentdConfigFluentServerArgs) ToClusterLoggingFluentdConf
 // ClusterLoggingFluentdConfigFluentServerArrayInput is an input type that accepts ClusterLoggingFluentdConfigFluentServerArray and ClusterLoggingFluentdConfigFluentServerArrayOutput values.
 // You can construct a concrete instance of `ClusterLoggingFluentdConfigFluentServerArrayInput` via:
 //
-// 		 ClusterLoggingFluentdConfigFluentServerArray{ ClusterLoggingFluentdConfigFluentServerArgs{...} }
-//
+//          ClusterLoggingFluentdConfigFluentServerArray{ ClusterLoggingFluentdConfigFluentServerArgs{...} }
 type ClusterLoggingFluentdConfigFluentServerArrayInput interface {
 	pulumi.Input
 
@@ -7131,8 +7071,7 @@ type ClusterLoggingKafkaConfig struct {
 // ClusterLoggingKafkaConfigInput is an input type that accepts ClusterLoggingKafkaConfigArgs and ClusterLoggingKafkaConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingKafkaConfigInput` via:
 //
-// 		 ClusterLoggingKafkaConfigArgs{...}
-//
+//          ClusterLoggingKafkaConfigArgs{...}
 type ClusterLoggingKafkaConfigInput interface {
 	pulumi.Input
 
@@ -7178,12 +7117,11 @@ func (i ClusterLoggingKafkaConfigArgs) ToClusterLoggingKafkaConfigPtrOutputWithC
 // ClusterLoggingKafkaConfigPtrInput is an input type that accepts ClusterLoggingKafkaConfigArgs, ClusterLoggingKafkaConfigPtr and ClusterLoggingKafkaConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingKafkaConfigPtrInput` via:
 //
-// 		 ClusterLoggingKafkaConfigArgs{...}
+//          ClusterLoggingKafkaConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingKafkaConfigPtrInput interface {
 	pulumi.Input
 
@@ -7365,8 +7303,7 @@ type ClusterLoggingSplunkConfig struct {
 // ClusterLoggingSplunkConfigInput is an input type that accepts ClusterLoggingSplunkConfigArgs and ClusterLoggingSplunkConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingSplunkConfigInput` via:
 //
-// 		 ClusterLoggingSplunkConfigArgs{...}
-//
+//          ClusterLoggingSplunkConfigArgs{...}
 type ClusterLoggingSplunkConfigInput interface {
 	pulumi.Input
 
@@ -7418,12 +7355,11 @@ func (i ClusterLoggingSplunkConfigArgs) ToClusterLoggingSplunkConfigPtrOutputWit
 // ClusterLoggingSplunkConfigPtrInput is an input type that accepts ClusterLoggingSplunkConfigArgs, ClusterLoggingSplunkConfigPtr and ClusterLoggingSplunkConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingSplunkConfigPtrInput` via:
 //
-// 		 ClusterLoggingSplunkConfigArgs{...}
+//          ClusterLoggingSplunkConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingSplunkConfigPtrInput interface {
 	pulumi.Input
 
@@ -7650,8 +7586,7 @@ type ClusterLoggingSyslogConfig struct {
 // ClusterLoggingSyslogConfigInput is an input type that accepts ClusterLoggingSyslogConfigArgs and ClusterLoggingSyslogConfigOutput values.
 // You can construct a concrete instance of `ClusterLoggingSyslogConfigInput` via:
 //
-// 		 ClusterLoggingSyslogConfigArgs{...}
-//
+//          ClusterLoggingSyslogConfigArgs{...}
 type ClusterLoggingSyslogConfigInput interface {
 	pulumi.Input
 
@@ -7703,12 +7638,11 @@ func (i ClusterLoggingSyslogConfigArgs) ToClusterLoggingSyslogConfigPtrOutputWit
 // ClusterLoggingSyslogConfigPtrInput is an input type that accepts ClusterLoggingSyslogConfigArgs, ClusterLoggingSyslogConfigPtr and ClusterLoggingSyslogConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterLoggingSyslogConfigPtrInput` via:
 //
-// 		 ClusterLoggingSyslogConfigArgs{...}
+//          ClusterLoggingSyslogConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterLoggingSyslogConfigPtrInput interface {
 	pulumi.Input
 
@@ -7959,8 +7893,7 @@ type ClusterRkeConfig struct {
 // ClusterRkeConfigInput is an input type that accepts ClusterRkeConfigArgs and ClusterRkeConfigOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigInput` via:
 //
-// 		 ClusterRkeConfigArgs{...}
-//
+//          ClusterRkeConfigArgs{...}
 type ClusterRkeConfigInput interface {
 	pulumi.Input
 
@@ -8036,12 +7969,11 @@ func (i ClusterRkeConfigArgs) ToClusterRkeConfigPtrOutputWithContext(ctx context
 // ClusterRkeConfigPtrInput is an input type that accepts ClusterRkeConfigArgs, ClusterRkeConfigPtr and ClusterRkeConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigPtrInput` via:
 //
-// 		 ClusterRkeConfigArgs{...}
+//          ClusterRkeConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigPtrInput interface {
 	pulumi.Input
 
@@ -8434,8 +8366,7 @@ type ClusterRkeConfigAuthentication struct {
 // ClusterRkeConfigAuthenticationInput is an input type that accepts ClusterRkeConfigAuthenticationArgs and ClusterRkeConfigAuthenticationOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigAuthenticationInput` via:
 //
-// 		 ClusterRkeConfigAuthenticationArgs{...}
-//
+//          ClusterRkeConfigAuthenticationArgs{...}
 type ClusterRkeConfigAuthenticationInput interface {
 	pulumi.Input
 
@@ -8473,12 +8404,11 @@ func (i ClusterRkeConfigAuthenticationArgs) ToClusterRkeConfigAuthenticationPtrO
 // ClusterRkeConfigAuthenticationPtrInput is an input type that accepts ClusterRkeConfigAuthenticationArgs, ClusterRkeConfigAuthenticationPtr and ClusterRkeConfigAuthenticationPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigAuthenticationPtrInput` via:
 //
-// 		 ClusterRkeConfigAuthenticationArgs{...}
+//          ClusterRkeConfigAuthenticationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigAuthenticationPtrInput interface {
 	pulumi.Input
 
@@ -8586,8 +8516,7 @@ type ClusterRkeConfigAuthorization struct {
 // ClusterRkeConfigAuthorizationInput is an input type that accepts ClusterRkeConfigAuthorizationArgs and ClusterRkeConfigAuthorizationOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigAuthorizationInput` via:
 //
-// 		 ClusterRkeConfigAuthorizationArgs{...}
-//
+//          ClusterRkeConfigAuthorizationArgs{...}
 type ClusterRkeConfigAuthorizationInput interface {
 	pulumi.Input
 
@@ -8625,12 +8554,11 @@ func (i ClusterRkeConfigAuthorizationArgs) ToClusterRkeConfigAuthorizationPtrOut
 // ClusterRkeConfigAuthorizationPtrInput is an input type that accepts ClusterRkeConfigAuthorizationArgs, ClusterRkeConfigAuthorizationPtr and ClusterRkeConfigAuthorizationPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigAuthorizationPtrInput` via:
 //
-// 		 ClusterRkeConfigAuthorizationArgs{...}
+//          ClusterRkeConfigAuthorizationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigAuthorizationPtrInput interface {
 	pulumi.Input
 
@@ -8746,8 +8674,7 @@ type ClusterRkeConfigBastionHost struct {
 // ClusterRkeConfigBastionHostInput is an input type that accepts ClusterRkeConfigBastionHostArgs and ClusterRkeConfigBastionHostOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigBastionHostInput` via:
 //
-// 		 ClusterRkeConfigBastionHostArgs{...}
-//
+//          ClusterRkeConfigBastionHostArgs{...}
 type ClusterRkeConfigBastionHostInput interface {
 	pulumi.Input
 
@@ -8793,12 +8720,11 @@ func (i ClusterRkeConfigBastionHostArgs) ToClusterRkeConfigBastionHostPtrOutputW
 // ClusterRkeConfigBastionHostPtrInput is an input type that accepts ClusterRkeConfigBastionHostArgs, ClusterRkeConfigBastionHostPtr and ClusterRkeConfigBastionHostPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigBastionHostPtrInput` via:
 //
-// 		 ClusterRkeConfigBastionHostArgs{...}
+//          ClusterRkeConfigBastionHostArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigBastionHostPtrInput interface {
 	pulumi.Input
 
@@ -8974,8 +8900,7 @@ type ClusterRkeConfigCloudProvider struct {
 // ClusterRkeConfigCloudProviderInput is an input type that accepts ClusterRkeConfigCloudProviderArgs and ClusterRkeConfigCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderArgs{...}
-//
+//          ClusterRkeConfigCloudProviderArgs{...}
 type ClusterRkeConfigCloudProviderInput interface {
 	pulumi.Input
 
@@ -9021,12 +8946,11 @@ func (i ClusterRkeConfigCloudProviderArgs) ToClusterRkeConfigCloudProviderPtrOut
 // ClusterRkeConfigCloudProviderPtrInput is an input type that accepts ClusterRkeConfigCloudProviderArgs, ClusterRkeConfigCloudProviderPtr and ClusterRkeConfigCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderArgs{...}
+//          ClusterRkeConfigCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -9202,8 +9126,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProvider struct {
 // ClusterRkeConfigCloudProviderAwsCloudProviderInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderArgs and ClusterRkeConfigCloudProviderAwsCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
-//
+//          ClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
 type ClusterRkeConfigCloudProviderAwsCloudProviderInput interface {
 	pulumi.Input
 
@@ -9241,12 +9164,11 @@ func (i ClusterRkeConfigCloudProviderAwsCloudProviderArgs) ToClusterRkeConfigClo
 // ClusterRkeConfigCloudProviderAwsCloudProviderPtrInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderArgs, ClusterRkeConfigCloudProviderAwsCloudProviderPtr and ClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
+//          ClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderAwsCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -9376,8 +9298,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderGlobal struct {
 // ClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs and ClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
-//
+//          ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 type ClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -9431,12 +9352,11 @@ func (i ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToClusterRkeCon
 // ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs, ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtr and ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
+//          ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -9676,8 +9596,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride struct {
 // ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs and ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
-//
+//          ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface {
 	pulumi.Input
 
@@ -9715,8 +9634,7 @@ func (i ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs) ToClus
 // ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput is an input type that accepts ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray and ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
-//
+//          ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput interface {
 	pulumi.Input
 
@@ -9866,8 +9784,7 @@ type ClusterRkeConfigCloudProviderAzureCloudProvider struct {
 // ClusterRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts ClusterRkeConfigCloudProviderAzureCloudProviderArgs and ClusterRkeConfigCloudProviderAzureCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAzureCloudProviderInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
-//
+//          ClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
 type ClusterRkeConfigCloudProviderAzureCloudProviderInput interface {
 	pulumi.Input
 
@@ -9959,12 +9876,11 @@ func (i ClusterRkeConfigCloudProviderAzureCloudProviderArgs) ToClusterRkeConfigC
 // ClusterRkeConfigCloudProviderAzureCloudProviderPtrInput is an input type that accepts ClusterRkeConfigCloudProviderAzureCloudProviderArgs, ClusterRkeConfigCloudProviderAzureCloudProviderPtr and ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderAzureCloudProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
+//          ClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderAzureCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -10485,8 +10401,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProvider struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderInput interface {
 	pulumi.Input
 
@@ -10530,12 +10445,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs) ToClusterRkeCon
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderPtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -10702,8 +10616,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput interface {
 	pulumi.Input
 
@@ -10743,12 +10656,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs) ToC
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput interface {
 	pulumi.Input
 
@@ -10891,8 +10803,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -10946,12 +10857,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs) ToCluster
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -11199,8 +11109,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput interface {
 	pulumi.Input
 
@@ -11256,12 +11165,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs) ToC
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput interface {
 	pulumi.Input
 
@@ -11514,8 +11422,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput interface {
 	pulumi.Input
 
@@ -11553,12 +11460,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs) ToClust
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput interface {
 	pulumi.Input
 
@@ -11666,8 +11572,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute struct {
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs and ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
-//
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput interface {
 	pulumi.Input
 
@@ -11703,12 +11608,11 @@ func (i ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs) ToClusterR
 // ClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput is an input type that accepts ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs, ClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtr and ClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
+//          ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput interface {
 	pulumi.Input
 
@@ -11809,8 +11713,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProvider struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderInput interface {
 	pulumi.Input
 
@@ -11854,12 +11757,11 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderArgs) ToClusterRkeConfi
 // ClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderArgs, ClusterRkeConfigCloudProviderVsphereCloudProviderPtr and ClusterRkeConfigCloudProviderVsphereCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -12022,8 +11924,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProviderDisk struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderDiskOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput interface {
 	pulumi.Input
 
@@ -12059,12 +11960,11 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs) ToClusterRkeC
 // ClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs, ClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtr and ClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput interface {
 	pulumi.Input
 
@@ -12167,8 +12067,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -12214,12 +12113,11 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs) ToClusterRk
 // ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs, ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtr and ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -12387,8 +12285,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput interface {
 	pulumi.Input
 
@@ -12424,12 +12321,11 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs) ToClusterR
 // ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs, ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtr and ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput interface {
 	pulumi.Input
 
@@ -12532,8 +12428,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput interface {
 	pulumi.Input
 
@@ -12571,8 +12466,7 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs) ToCl
 // ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray and ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
 type ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput interface {
 	pulumi.Input
 
@@ -12676,8 +12570,7 @@ type ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace struct {
 // ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs and ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
-//
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 type ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput interface {
 	pulumi.Input
 
@@ -12721,12 +12614,11 @@ func (i ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs) ToCluste
 // ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput is an input type that accepts ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs, ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtr and ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput` via:
 //
-// 		 ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
+//          ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput interface {
 	pulumi.Input
 
@@ -12887,8 +12779,7 @@ type ClusterRkeConfigDns struct {
 // ClusterRkeConfigDnsInput is an input type that accepts ClusterRkeConfigDnsArgs and ClusterRkeConfigDnsOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigDnsInput` via:
 //
-// 		 ClusterRkeConfigDnsArgs{...}
-//
+//          ClusterRkeConfigDnsArgs{...}
 type ClusterRkeConfigDnsInput interface {
 	pulumi.Input
 
@@ -12932,12 +12823,11 @@ func (i ClusterRkeConfigDnsArgs) ToClusterRkeConfigDnsPtrOutputWithContext(ctx c
 // ClusterRkeConfigDnsPtrInput is an input type that accepts ClusterRkeConfigDnsArgs, ClusterRkeConfigDnsPtr and ClusterRkeConfigDnsPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigDnsPtrInput` via:
 //
-// 		 ClusterRkeConfigDnsArgs{...}
+//          ClusterRkeConfigDnsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigDnsPtrInput interface {
 	pulumi.Input
 
@@ -13090,8 +12980,7 @@ type ClusterRkeConfigDnsNodelocal struct {
 // ClusterRkeConfigDnsNodelocalInput is an input type that accepts ClusterRkeConfigDnsNodelocalArgs and ClusterRkeConfigDnsNodelocalOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigDnsNodelocalInput` via:
 //
-// 		 ClusterRkeConfigDnsNodelocalArgs{...}
-//
+//          ClusterRkeConfigDnsNodelocalArgs{...}
 type ClusterRkeConfigDnsNodelocalInput interface {
 	pulumi.Input
 
@@ -13129,12 +13018,11 @@ func (i ClusterRkeConfigDnsNodelocalArgs) ToClusterRkeConfigDnsNodelocalPtrOutpu
 // ClusterRkeConfigDnsNodelocalPtrInput is an input type that accepts ClusterRkeConfigDnsNodelocalArgs, ClusterRkeConfigDnsNodelocalPtr and ClusterRkeConfigDnsNodelocalPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigDnsNodelocalPtrInput` via:
 //
-// 		 ClusterRkeConfigDnsNodelocalArgs{...}
+//          ClusterRkeConfigDnsNodelocalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigDnsNodelocalPtrInput interface {
 	pulumi.Input
 
@@ -13248,8 +13136,7 @@ type ClusterRkeConfigIngress struct {
 // ClusterRkeConfigIngressInput is an input type that accepts ClusterRkeConfigIngressArgs and ClusterRkeConfigIngressOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigIngressInput` via:
 //
-// 		 ClusterRkeConfigIngressArgs{...}
-//
+//          ClusterRkeConfigIngressArgs{...}
 type ClusterRkeConfigIngressInput interface {
 	pulumi.Input
 
@@ -13293,12 +13180,11 @@ func (i ClusterRkeConfigIngressArgs) ToClusterRkeConfigIngressPtrOutputWithConte
 // ClusterRkeConfigIngressPtrInput is an input type that accepts ClusterRkeConfigIngressArgs, ClusterRkeConfigIngressPtr and ClusterRkeConfigIngressPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigIngressPtrInput` via:
 //
-// 		 ClusterRkeConfigIngressArgs{...}
+//          ClusterRkeConfigIngressArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigIngressPtrInput interface {
 	pulumi.Input
 
@@ -13457,8 +13343,7 @@ type ClusterRkeConfigMonitoring struct {
 // ClusterRkeConfigMonitoringInput is an input type that accepts ClusterRkeConfigMonitoringArgs and ClusterRkeConfigMonitoringOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringInput` via:
 //
-// 		 ClusterRkeConfigMonitoringArgs{...}
-//
+//          ClusterRkeConfigMonitoringArgs{...}
 type ClusterRkeConfigMonitoringInput interface {
 	pulumi.Input
 
@@ -13502,12 +13387,11 @@ func (i ClusterRkeConfigMonitoringArgs) ToClusterRkeConfigMonitoringPtrOutputWit
 // ClusterRkeConfigMonitoringPtrInput is an input type that accepts ClusterRkeConfigMonitoringArgs, ClusterRkeConfigMonitoringPtr and ClusterRkeConfigMonitoringPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringPtrInput` via:
 //
-// 		 ClusterRkeConfigMonitoringArgs{...}
+//          ClusterRkeConfigMonitoringArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigMonitoringPtrInput interface {
 	pulumi.Input
 
@@ -13660,8 +13544,7 @@ type ClusterRkeConfigMonitoringUpdateStrategy struct {
 // ClusterRkeConfigMonitoringUpdateStrategyInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyArgs and ClusterRkeConfigMonitoringUpdateStrategyOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyInput` via:
 //
-// 		 ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
-//
+//          ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
 type ClusterRkeConfigMonitoringUpdateStrategyInput interface {
 	pulumi.Input
 
@@ -13699,12 +13582,11 @@ func (i ClusterRkeConfigMonitoringUpdateStrategyArgs) ToClusterRkeConfigMonitori
 // ClusterRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyArgs, ClusterRkeConfigMonitoringUpdateStrategyPtr and ClusterRkeConfigMonitoringUpdateStrategyPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyPtrInput` via:
 //
-// 		 ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//          ClusterRkeConfigMonitoringUpdateStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigMonitoringUpdateStrategyPtrInput interface {
 	pulumi.Input
 
@@ -13814,8 +13696,7 @@ type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
 // ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
 //
-// 		 ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
-//
+//          ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -13853,12 +13734,11 @@ func (i ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToClusterRkeC
 // ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
 //
-// 		 ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//          ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -13978,8 +13858,7 @@ type ClusterRkeConfigNetwork struct {
 // ClusterRkeConfigNetworkInput is an input type that accepts ClusterRkeConfigNetworkArgs and ClusterRkeConfigNetworkOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkInput` via:
 //
-// 		 ClusterRkeConfigNetworkArgs{...}
-//
+//          ClusterRkeConfigNetworkArgs{...}
 type ClusterRkeConfigNetworkInput interface {
 	pulumi.Input
 
@@ -14027,12 +13906,11 @@ func (i ClusterRkeConfigNetworkArgs) ToClusterRkeConfigNetworkPtrOutputWithConte
 // ClusterRkeConfigNetworkPtrInput is an input type that accepts ClusterRkeConfigNetworkArgs, ClusterRkeConfigNetworkPtr and ClusterRkeConfigNetworkPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkPtrInput` via:
 //
-// 		 ClusterRkeConfigNetworkArgs{...}
+//          ClusterRkeConfigNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigNetworkPtrInput interface {
 	pulumi.Input
 
@@ -14221,8 +14099,7 @@ type ClusterRkeConfigNetworkCalicoNetworkProvider struct {
 // ClusterRkeConfigNetworkCalicoNetworkProviderInput is an input type that accepts ClusterRkeConfigNetworkCalicoNetworkProviderArgs and ClusterRkeConfigNetworkCalicoNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkCalicoNetworkProviderInput` via:
 //
-// 		 ClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
-//
+//          ClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
 type ClusterRkeConfigNetworkCalicoNetworkProviderInput interface {
 	pulumi.Input
 
@@ -14258,12 +14135,11 @@ func (i ClusterRkeConfigNetworkCalicoNetworkProviderArgs) ToClusterRkeConfigNetw
 // ClusterRkeConfigNetworkCalicoNetworkProviderPtrInput is an input type that accepts ClusterRkeConfigNetworkCalicoNetworkProviderArgs, ClusterRkeConfigNetworkCalicoNetworkProviderPtr and ClusterRkeConfigNetworkCalicoNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkCalicoNetworkProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
+//          ClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigNetworkCalicoNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -14356,8 +14232,7 @@ type ClusterRkeConfigNetworkCanalNetworkProvider struct {
 // ClusterRkeConfigNetworkCanalNetworkProviderInput is an input type that accepts ClusterRkeConfigNetworkCanalNetworkProviderArgs and ClusterRkeConfigNetworkCanalNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkCanalNetworkProviderInput` via:
 //
-// 		 ClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
-//
+//          ClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
 type ClusterRkeConfigNetworkCanalNetworkProviderInput interface {
 	pulumi.Input
 
@@ -14393,12 +14268,11 @@ func (i ClusterRkeConfigNetworkCanalNetworkProviderArgs) ToClusterRkeConfigNetwo
 // ClusterRkeConfigNetworkCanalNetworkProviderPtrInput is an input type that accepts ClusterRkeConfigNetworkCanalNetworkProviderArgs, ClusterRkeConfigNetworkCanalNetworkProviderPtr and ClusterRkeConfigNetworkCanalNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkCanalNetworkProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
+//          ClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigNetworkCanalNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -14491,8 +14365,7 @@ type ClusterRkeConfigNetworkFlannelNetworkProvider struct {
 // ClusterRkeConfigNetworkFlannelNetworkProviderInput is an input type that accepts ClusterRkeConfigNetworkFlannelNetworkProviderArgs and ClusterRkeConfigNetworkFlannelNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkFlannelNetworkProviderInput` via:
 //
-// 		 ClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
-//
+//          ClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
 type ClusterRkeConfigNetworkFlannelNetworkProviderInput interface {
 	pulumi.Input
 
@@ -14528,12 +14401,11 @@ func (i ClusterRkeConfigNetworkFlannelNetworkProviderArgs) ToClusterRkeConfigNet
 // ClusterRkeConfigNetworkFlannelNetworkProviderPtrInput is an input type that accepts ClusterRkeConfigNetworkFlannelNetworkProviderArgs, ClusterRkeConfigNetworkFlannelNetworkProviderPtr and ClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkFlannelNetworkProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
+//          ClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigNetworkFlannelNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -14626,8 +14498,7 @@ type ClusterRkeConfigNetworkWeaveNetworkProvider struct {
 // ClusterRkeConfigNetworkWeaveNetworkProviderInput is an input type that accepts ClusterRkeConfigNetworkWeaveNetworkProviderArgs and ClusterRkeConfigNetworkWeaveNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkWeaveNetworkProviderInput` via:
 //
-// 		 ClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
-//
+//          ClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
 type ClusterRkeConfigNetworkWeaveNetworkProviderInput interface {
 	pulumi.Input
 
@@ -14663,12 +14534,11 @@ func (i ClusterRkeConfigNetworkWeaveNetworkProviderArgs) ToClusterRkeConfigNetwo
 // ClusterRkeConfigNetworkWeaveNetworkProviderPtrInput is an input type that accepts ClusterRkeConfigNetworkWeaveNetworkProviderArgs, ClusterRkeConfigNetworkWeaveNetworkProviderPtr and ClusterRkeConfigNetworkWeaveNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNetworkWeaveNetworkProviderPtrInput` via:
 //
-// 		 ClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
+//          ClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigNetworkWeaveNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -14783,8 +14653,7 @@ type ClusterRkeConfigNode struct {
 // ClusterRkeConfigNodeInput is an input type that accepts ClusterRkeConfigNodeArgs and ClusterRkeConfigNodeOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNodeInput` via:
 //
-// 		 ClusterRkeConfigNodeArgs{...}
-//
+//          ClusterRkeConfigNodeArgs{...}
 type ClusterRkeConfigNodeInput interface {
 	pulumi.Input
 
@@ -14834,8 +14703,7 @@ func (i ClusterRkeConfigNodeArgs) ToClusterRkeConfigNodeOutputWithContext(ctx co
 // ClusterRkeConfigNodeArrayInput is an input type that accepts ClusterRkeConfigNodeArray and ClusterRkeConfigNodeArrayOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigNodeArrayInput` via:
 //
-// 		 ClusterRkeConfigNodeArray{ ClusterRkeConfigNodeArgs{...} }
-//
+//          ClusterRkeConfigNodeArray{ ClusterRkeConfigNodeArgs{...} }
 type ClusterRkeConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -14965,8 +14833,7 @@ type ClusterRkeConfigPrivateRegistry struct {
 // ClusterRkeConfigPrivateRegistryInput is an input type that accepts ClusterRkeConfigPrivateRegistryArgs and ClusterRkeConfigPrivateRegistryOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigPrivateRegistryInput` via:
 //
-// 		 ClusterRkeConfigPrivateRegistryArgs{...}
-//
+//          ClusterRkeConfigPrivateRegistryArgs{...}
 type ClusterRkeConfigPrivateRegistryInput interface {
 	pulumi.Input
 
@@ -15000,8 +14867,7 @@ func (i ClusterRkeConfigPrivateRegistryArgs) ToClusterRkeConfigPrivateRegistryOu
 // ClusterRkeConfigPrivateRegistryArrayInput is an input type that accepts ClusterRkeConfigPrivateRegistryArray and ClusterRkeConfigPrivateRegistryArrayOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigPrivateRegistryArrayInput` via:
 //
-// 		 ClusterRkeConfigPrivateRegistryArray{ ClusterRkeConfigPrivateRegistryArgs{...} }
-//
+//          ClusterRkeConfigPrivateRegistryArray{ ClusterRkeConfigPrivateRegistryArgs{...} }
 type ClusterRkeConfigPrivateRegistryArrayInput interface {
 	pulumi.Input
 
@@ -15095,8 +14961,7 @@ type ClusterRkeConfigServices struct {
 // ClusterRkeConfigServicesInput is an input type that accepts ClusterRkeConfigServicesArgs and ClusterRkeConfigServicesOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesInput` via:
 //
-// 		 ClusterRkeConfigServicesArgs{...}
-//
+//          ClusterRkeConfigServicesArgs{...}
 type ClusterRkeConfigServicesInput interface {
 	pulumi.Input
 
@@ -15142,12 +15007,11 @@ func (i ClusterRkeConfigServicesArgs) ToClusterRkeConfigServicesPtrOutputWithCon
 // ClusterRkeConfigServicesPtrInput is an input type that accepts ClusterRkeConfigServicesArgs, ClusterRkeConfigServicesPtr and ClusterRkeConfigServicesPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesArgs{...}
+//          ClusterRkeConfigServicesArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesPtrInput interface {
 	pulumi.Input
 
@@ -15341,8 +15205,7 @@ type ClusterRkeConfigServicesEtcd struct {
 // ClusterRkeConfigServicesEtcdInput is an input type that accepts ClusterRkeConfigServicesEtcdArgs and ClusterRkeConfigServicesEtcdOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdArgs{...}
-//
+//          ClusterRkeConfigServicesEtcdArgs{...}
 type ClusterRkeConfigServicesEtcdInput interface {
 	pulumi.Input
 
@@ -15406,12 +15269,11 @@ func (i ClusterRkeConfigServicesEtcdArgs) ToClusterRkeConfigServicesEtcdPtrOutpu
 // ClusterRkeConfigServicesEtcdPtrInput is an input type that accepts ClusterRkeConfigServicesEtcdArgs, ClusterRkeConfigServicesEtcdPtr and ClusterRkeConfigServicesEtcdPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdArgs{...}
+//          ClusterRkeConfigServicesEtcdArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesEtcdPtrInput interface {
 	pulumi.Input
 
@@ -15720,8 +15582,7 @@ type ClusterRkeConfigServicesEtcdBackupConfig struct {
 // ClusterRkeConfigServicesEtcdBackupConfigInput is an input type that accepts ClusterRkeConfigServicesEtcdBackupConfigArgs and ClusterRkeConfigServicesEtcdBackupConfigOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdBackupConfigInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdBackupConfigArgs{...}
-//
+//          ClusterRkeConfigServicesEtcdBackupConfigArgs{...}
 type ClusterRkeConfigServicesEtcdBackupConfigInput interface {
 	pulumi.Input
 
@@ -15765,12 +15626,11 @@ func (i ClusterRkeConfigServicesEtcdBackupConfigArgs) ToClusterRkeConfigServices
 // ClusterRkeConfigServicesEtcdBackupConfigPtrInput is an input type that accepts ClusterRkeConfigServicesEtcdBackupConfigArgs, ClusterRkeConfigServicesEtcdBackupConfigPtr and ClusterRkeConfigServicesEtcdBackupConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdBackupConfigPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdBackupConfigArgs{...}
+//          ClusterRkeConfigServicesEtcdBackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesEtcdBackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -15935,8 +15795,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
 // ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput is an input type that accepts ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs and ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
-//
+//          ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -15984,12 +15843,11 @@ func (i ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs) ToClusterRke
 // ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput is an input type that accepts ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs, ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtr and ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
+//          ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -16194,8 +16052,7 @@ type ClusterRkeConfigServicesKubeApi struct {
 // ClusterRkeConfigServicesKubeApiInput is an input type that accepts ClusterRkeConfigServicesKubeApiArgs and ClusterRkeConfigServicesKubeApiOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiArgs{...}
-//
+//          ClusterRkeConfigServicesKubeApiArgs{...}
 type ClusterRkeConfigServicesKubeApiInput interface {
 	pulumi.Input
 
@@ -16253,12 +16110,11 @@ func (i ClusterRkeConfigServicesKubeApiArgs) ToClusterRkeConfigServicesKubeApiPt
 // ClusterRkeConfigServicesKubeApiPtrInput is an input type that accepts ClusterRkeConfigServicesKubeApiArgs, ClusterRkeConfigServicesKubeApiPtr and ClusterRkeConfigServicesKubeApiPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiArgs{...}
+//          ClusterRkeConfigServicesKubeApiArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeApiPtrInput interface {
 	pulumi.Input
 
@@ -16520,8 +16376,7 @@ type ClusterRkeConfigServicesKubeApiAuditLog struct {
 // ClusterRkeConfigServicesKubeApiAuditLogInput is an input type that accepts ClusterRkeConfigServicesKubeApiAuditLogArgs and ClusterRkeConfigServicesKubeApiAuditLogOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiAuditLogInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiAuditLogArgs{...}
-//
+//          ClusterRkeConfigServicesKubeApiAuditLogArgs{...}
 type ClusterRkeConfigServicesKubeApiAuditLogInput interface {
 	pulumi.Input
 
@@ -16559,12 +16414,11 @@ func (i ClusterRkeConfigServicesKubeApiAuditLogArgs) ToClusterRkeConfigServicesK
 // ClusterRkeConfigServicesKubeApiAuditLogPtrInput is an input type that accepts ClusterRkeConfigServicesKubeApiAuditLogArgs, ClusterRkeConfigServicesKubeApiAuditLogPtr and ClusterRkeConfigServicesKubeApiAuditLogPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiAuditLogPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiAuditLogArgs{...}
+//          ClusterRkeConfigServicesKubeApiAuditLogArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeApiAuditLogPtrInput interface {
 	pulumi.Input
 
@@ -16682,8 +16536,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
 // ClusterRkeConfigServicesKubeApiAuditLogConfigurationInput is an input type that accepts ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs and ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiAuditLogConfigurationInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
-//
+//          ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 type ClusterRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
 	pulumi.Input
 
@@ -16729,12 +16582,11 @@ func (i ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToClusterRkeCo
 // ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput is an input type that accepts ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs, ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtr and ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
+//          ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -16904,8 +16756,7 @@ type ClusterRkeConfigServicesKubeApiEventRateLimit struct {
 // ClusterRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts ClusterRkeConfigServicesKubeApiEventRateLimitArgs and ClusterRkeConfigServicesKubeApiEventRateLimitOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiEventRateLimitInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
-//
+//          ClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
 type ClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 	pulumi.Input
 
@@ -16943,12 +16794,11 @@ func (i ClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToClusterRkeConfigSer
 // ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput is an input type that accepts ClusterRkeConfigServicesKubeApiEventRateLimitArgs, ClusterRkeConfigServicesKubeApiEventRateLimitPtr and ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
+//          ClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
 	pulumi.Input
 
@@ -17058,8 +16908,7 @@ type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
 // ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
-//
+//          ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -17097,12 +16946,11 @@ func (i ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToClusterRke
 // ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput is an input type that accepts ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs, ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtr and ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
+//          ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -17222,8 +17070,7 @@ type ClusterRkeConfigServicesKubeController struct {
 // ClusterRkeConfigServicesKubeControllerInput is an input type that accepts ClusterRkeConfigServicesKubeControllerArgs and ClusterRkeConfigServicesKubeControllerOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeControllerInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeControllerArgs{...}
-//
+//          ClusterRkeConfigServicesKubeControllerArgs{...}
 type ClusterRkeConfigServicesKubeControllerInput interface {
 	pulumi.Input
 
@@ -17269,12 +17116,11 @@ func (i ClusterRkeConfigServicesKubeControllerArgs) ToClusterRkeConfigServicesKu
 // ClusterRkeConfigServicesKubeControllerPtrInput is an input type that accepts ClusterRkeConfigServicesKubeControllerArgs, ClusterRkeConfigServicesKubeControllerPtr and ClusterRkeConfigServicesKubeControllerPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeControllerPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeControllerArgs{...}
+//          ClusterRkeConfigServicesKubeControllerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeControllerPtrInput interface {
 	pulumi.Input
 
@@ -17456,8 +17302,7 @@ type ClusterRkeConfigServicesKubelet struct {
 // ClusterRkeConfigServicesKubeletInput is an input type that accepts ClusterRkeConfigServicesKubeletArgs and ClusterRkeConfigServicesKubeletOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeletInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeletArgs{...}
-//
+//          ClusterRkeConfigServicesKubeletArgs{...}
 type ClusterRkeConfigServicesKubeletInput interface {
 	pulumi.Input
 
@@ -17509,12 +17354,11 @@ func (i ClusterRkeConfigServicesKubeletArgs) ToClusterRkeConfigServicesKubeletPt
 // ClusterRkeConfigServicesKubeletPtrInput is an input type that accepts ClusterRkeConfigServicesKubeletArgs, ClusterRkeConfigServicesKubeletPtr and ClusterRkeConfigServicesKubeletPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeletPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeletArgs{...}
+//          ClusterRkeConfigServicesKubeletArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeletPtrInput interface {
 	pulumi.Input
 
@@ -17731,8 +17575,7 @@ type ClusterRkeConfigServicesKubeproxy struct {
 // ClusterRkeConfigServicesKubeproxyInput is an input type that accepts ClusterRkeConfigServicesKubeproxyArgs and ClusterRkeConfigServicesKubeproxyOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeproxyInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeproxyArgs{...}
-//
+//          ClusterRkeConfigServicesKubeproxyArgs{...}
 type ClusterRkeConfigServicesKubeproxyInput interface {
 	pulumi.Input
 
@@ -17774,12 +17617,11 @@ func (i ClusterRkeConfigServicesKubeproxyArgs) ToClusterRkeConfigServicesKubepro
 // ClusterRkeConfigServicesKubeproxyPtrInput is an input type that accepts ClusterRkeConfigServicesKubeproxyArgs, ClusterRkeConfigServicesKubeproxyPtr and ClusterRkeConfigServicesKubeproxyPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesKubeproxyPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesKubeproxyArgs{...}
+//          ClusterRkeConfigServicesKubeproxyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesKubeproxyPtrInput interface {
 	pulumi.Input
 
@@ -17921,8 +17763,7 @@ type ClusterRkeConfigServicesScheduler struct {
 // ClusterRkeConfigServicesSchedulerInput is an input type that accepts ClusterRkeConfigServicesSchedulerArgs and ClusterRkeConfigServicesSchedulerOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesSchedulerInput` via:
 //
-// 		 ClusterRkeConfigServicesSchedulerArgs{...}
-//
+//          ClusterRkeConfigServicesSchedulerArgs{...}
 type ClusterRkeConfigServicesSchedulerInput interface {
 	pulumi.Input
 
@@ -17964,12 +17805,11 @@ func (i ClusterRkeConfigServicesSchedulerArgs) ToClusterRkeConfigServicesSchedul
 // ClusterRkeConfigServicesSchedulerPtrInput is an input type that accepts ClusterRkeConfigServicesSchedulerArgs, ClusterRkeConfigServicesSchedulerPtr and ClusterRkeConfigServicesSchedulerPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigServicesSchedulerPtrInput` via:
 //
-// 		 ClusterRkeConfigServicesSchedulerArgs{...}
+//          ClusterRkeConfigServicesSchedulerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigServicesSchedulerPtrInput interface {
 	pulumi.Input
 
@@ -18111,8 +17951,7 @@ type ClusterRkeConfigUpgradeStrategy struct {
 // ClusterRkeConfigUpgradeStrategyInput is an input type that accepts ClusterRkeConfigUpgradeStrategyArgs and ClusterRkeConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigUpgradeStrategyInput` via:
 //
-// 		 ClusterRkeConfigUpgradeStrategyArgs{...}
-//
+//          ClusterRkeConfigUpgradeStrategyArgs{...}
 type ClusterRkeConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -18154,12 +17993,11 @@ func (i ClusterRkeConfigUpgradeStrategyArgs) ToClusterRkeConfigUpgradeStrategyPt
 // ClusterRkeConfigUpgradeStrategyPtrInput is an input type that accepts ClusterRkeConfigUpgradeStrategyArgs, ClusterRkeConfigUpgradeStrategyPtr and ClusterRkeConfigUpgradeStrategyPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigUpgradeStrategyPtrInput` via:
 //
-// 		 ClusterRkeConfigUpgradeStrategyArgs{...}
+//          ClusterRkeConfigUpgradeStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigUpgradeStrategyPtrInput interface {
 	pulumi.Input
 
@@ -18305,8 +18143,7 @@ type ClusterRkeConfigUpgradeStrategyDrainInput struct {
 // ClusterRkeConfigUpgradeStrategyDrainInputInput is an input type that accepts ClusterRkeConfigUpgradeStrategyDrainInputArgs and ClusterRkeConfigUpgradeStrategyDrainInputOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigUpgradeStrategyDrainInputInput` via:
 //
-// 		 ClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
-//
+//          ClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
 type ClusterRkeConfigUpgradeStrategyDrainInputInput interface {
 	pulumi.Input
 
@@ -18350,12 +18187,11 @@ func (i ClusterRkeConfigUpgradeStrategyDrainInputArgs) ToClusterRkeConfigUpgrade
 // ClusterRkeConfigUpgradeStrategyDrainInputPtrInput is an input type that accepts ClusterRkeConfigUpgradeStrategyDrainInputArgs, ClusterRkeConfigUpgradeStrategyDrainInputPtr and ClusterRkeConfigUpgradeStrategyDrainInputPtrOutput values.
 // You can construct a concrete instance of `ClusterRkeConfigUpgradeStrategyDrainInputPtrInput` via:
 //
-// 		 ClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
+//          ClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterRkeConfigUpgradeStrategyDrainInputPtrInput interface {
 	pulumi.Input
 
@@ -18512,8 +18348,7 @@ type ClusterScheduledClusterScan struct {
 // ClusterScheduledClusterScanInput is an input type that accepts ClusterScheduledClusterScanArgs and ClusterScheduledClusterScanOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanInput` via:
 //
-// 		 ClusterScheduledClusterScanArgs{...}
-//
+//          ClusterScheduledClusterScanArgs{...}
 type ClusterScheduledClusterScanInput interface {
 	pulumi.Input
 
@@ -18553,12 +18388,11 @@ func (i ClusterScheduledClusterScanArgs) ToClusterScheduledClusterScanPtrOutputW
 // ClusterScheduledClusterScanPtrInput is an input type that accepts ClusterScheduledClusterScanArgs, ClusterScheduledClusterScanPtr and ClusterScheduledClusterScanPtrOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanPtrInput` via:
 //
-// 		 ClusterScheduledClusterScanArgs{...}
+//          ClusterScheduledClusterScanArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterScheduledClusterScanPtrInput interface {
 	pulumi.Input
 
@@ -18679,8 +18513,7 @@ type ClusterScheduledClusterScanScanConfig struct {
 // ClusterScheduledClusterScanScanConfigInput is an input type that accepts ClusterScheduledClusterScanScanConfigArgs and ClusterScheduledClusterScanScanConfigOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScanConfigInput` via:
 //
-// 		 ClusterScheduledClusterScanScanConfigArgs{...}
-//
+//          ClusterScheduledClusterScanScanConfigArgs{...}
 type ClusterScheduledClusterScanScanConfigInput interface {
 	pulumi.Input
 
@@ -18716,12 +18549,11 @@ func (i ClusterScheduledClusterScanScanConfigArgs) ToClusterScheduledClusterScan
 // ClusterScheduledClusterScanScanConfigPtrInput is an input type that accepts ClusterScheduledClusterScanScanConfigArgs, ClusterScheduledClusterScanScanConfigPtr and ClusterScheduledClusterScanScanConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScanConfigPtrInput` via:
 //
-// 		 ClusterScheduledClusterScanScanConfigArgs{...}
+//          ClusterScheduledClusterScanScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterScheduledClusterScanScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -18822,8 +18654,7 @@ type ClusterScheduledClusterScanScanConfigCisScanConfig struct {
 // ClusterScheduledClusterScanScanConfigCisScanConfigInput is an input type that accepts ClusterScheduledClusterScanScanConfigCisScanConfigArgs and ClusterScheduledClusterScanScanConfigCisScanConfigOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScanConfigCisScanConfigInput` via:
 //
-// 		 ClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
-//
+//          ClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
 type ClusterScheduledClusterScanScanConfigCisScanConfigInput interface {
 	pulumi.Input
 
@@ -18867,12 +18698,11 @@ func (i ClusterScheduledClusterScanScanConfigCisScanConfigArgs) ToClusterSchedul
 // ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput is an input type that accepts ClusterScheduledClusterScanScanConfigCisScanConfigArgs, ClusterScheduledClusterScanScanConfigCisScanConfigPtr and ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput` via:
 //
-// 		 ClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
+//          ClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterScheduledClusterScanScanConfigCisScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -19027,8 +18857,7 @@ type ClusterScheduledClusterScanScheduleConfig struct {
 // ClusterScheduledClusterScanScheduleConfigInput is an input type that accepts ClusterScheduledClusterScanScheduleConfigArgs and ClusterScheduledClusterScanScheduleConfigOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScheduleConfigInput` via:
 //
-// 		 ClusterScheduledClusterScanScheduleConfigArgs{...}
-//
+//          ClusterScheduledClusterScanScheduleConfigArgs{...}
 type ClusterScheduledClusterScanScheduleConfigInput interface {
 	pulumi.Input
 
@@ -19066,12 +18895,11 @@ func (i ClusterScheduledClusterScanScheduleConfigArgs) ToClusterScheduledCluster
 // ClusterScheduledClusterScanScheduleConfigPtrInput is an input type that accepts ClusterScheduledClusterScanScheduleConfigArgs, ClusterScheduledClusterScanScheduleConfigPtr and ClusterScheduledClusterScanScheduleConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterScheduledClusterScanScheduleConfigPtrInput` via:
 //
-// 		 ClusterScheduledClusterScanScheduleConfigArgs{...}
+//          ClusterScheduledClusterScanScheduleConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterScheduledClusterScanScheduleConfigPtrInput interface {
 	pulumi.Input
 
@@ -19183,8 +19011,7 @@ type ClusterTemplateMember struct {
 // ClusterTemplateMemberInput is an input type that accepts ClusterTemplateMemberArgs and ClusterTemplateMemberOutput values.
 // You can construct a concrete instance of `ClusterTemplateMemberInput` via:
 //
-// 		 ClusterTemplateMemberArgs{...}
-//
+//          ClusterTemplateMemberArgs{...}
 type ClusterTemplateMemberInput interface {
 	pulumi.Input
 
@@ -19216,8 +19043,7 @@ func (i ClusterTemplateMemberArgs) ToClusterTemplateMemberOutputWithContext(ctx 
 // ClusterTemplateMemberArrayInput is an input type that accepts ClusterTemplateMemberArray and ClusterTemplateMemberArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateMemberArrayInput` via:
 //
-// 		 ClusterTemplateMemberArray{ ClusterTemplateMemberArgs{...} }
-//
+//          ClusterTemplateMemberArray{ ClusterTemplateMemberArgs{...} }
 type ClusterTemplateMemberArrayInput interface {
 	pulumi.Input
 
@@ -19312,8 +19138,7 @@ type ClusterTemplateTemplateRevision struct {
 // ClusterTemplateTemplateRevisionInput is an input type that accepts ClusterTemplateTemplateRevisionArgs and ClusterTemplateTemplateRevisionOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionArgs{...}
-//
+//          ClusterTemplateTemplateRevisionArgs{...}
 type ClusterTemplateTemplateRevisionInput interface {
 	pulumi.Input
 
@@ -19357,8 +19182,7 @@ func (i ClusterTemplateTemplateRevisionArgs) ToClusterTemplateTemplateRevisionOu
 // ClusterTemplateTemplateRevisionArrayInput is an input type that accepts ClusterTemplateTemplateRevisionArray and ClusterTemplateTemplateRevisionArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionArray{ ClusterTemplateTemplateRevisionArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionArray{ ClusterTemplateTemplateRevisionArgs{...} }
 type ClusterTemplateTemplateRevisionArrayInput interface {
 	pulumi.Input
 
@@ -19491,8 +19315,7 @@ type ClusterTemplateTemplateRevisionClusterConfig struct {
 // ClusterTemplateTemplateRevisionClusterConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigArgs and ClusterTemplateTemplateRevisionClusterConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigInput interface {
 	pulumi.Input
 
@@ -19633,8 +19456,7 @@ type ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint struct {
 // ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs and ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput interface {
 	pulumi.Input
 
@@ -19672,12 +19494,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs) ToC
 // ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs, ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointPtr and ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointPtrInput interface {
 	pulumi.Input
 
@@ -19814,8 +19635,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput interface {
 	pulumi.Input
 
@@ -19989,8 +19809,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication struct 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput interface {
 	pulumi.Input
 
@@ -20026,12 +19845,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs)
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationPtrInput interface {
 	pulumi.Input
 
@@ -20134,8 +19952,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput interface {
 	pulumi.Input
 
@@ -20171,12 +19988,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs) 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationPtrInput interface {
 	pulumi.Input
 
@@ -20285,8 +20101,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput interface {
 	pulumi.Input
 
@@ -20326,12 +20141,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs) To
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostPtrInput interface {
 	pulumi.Input
 
@@ -20491,8 +20305,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput interface {
 	pulumi.Input
 
@@ -20533,12 +20346,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs) 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -20705,8 +20517,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudP
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput interface {
 	pulumi.Input
 
@@ -20742,12 +20553,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -20862,8 +20672,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudP
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -20907,12 +20716,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -21143,8 +20951,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudP
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface {
 	pulumi.Input
 
@@ -21176,8 +20983,7 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput interface {
 	pulumi.Input
 
@@ -21304,8 +21110,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClou
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput interface {
 	pulumi.Input
 
@@ -21368,12 +21173,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureC
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -21888,8 +21692,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput interface {
 	pulumi.Input
 
@@ -21928,12 +21731,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -22086,8 +21888,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput interface {
 	pulumi.Input
 
@@ -22124,12 +21925,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput interface {
 	pulumi.Input
 
@@ -22259,8 +22059,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -22304,12 +22103,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -22545,8 +22343,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput interface {
 	pulumi.Input
 
@@ -22591,12 +22388,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput interface {
 	pulumi.Input
 
@@ -22838,8 +22634,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput interface {
 	pulumi.Input
 
@@ -22875,12 +22670,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput interface {
 	pulumi.Input
 
@@ -22986,8 +22780,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstack
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput interface {
 	pulumi.Input
 
@@ -23022,12 +22815,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput interface {
 	pulumi.Input
 
@@ -23122,8 +22914,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput interface {
 	pulumi.Input
 
@@ -23162,12 +22953,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -23318,8 +23108,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput interface {
 	pulumi.Input
 
@@ -23354,12 +23143,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput interface {
 	pulumi.Input
 
@@ -23455,8 +23243,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -23496,12 +23283,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -23667,8 +23453,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput interface {
 	pulumi.Input
 
@@ -23703,12 +23488,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput interface {
 	pulumi.Input
 
@@ -23805,8 +23589,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput interface {
 	pulumi.Input
 
@@ -23839,8 +23622,7 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput interface {
 	pulumi.Input
 
@@ -23944,8 +23726,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput interface {
 	pulumi.Input
 
@@ -23984,12 +23765,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput interface {
 	pulumi.Input
 
@@ -24144,8 +23924,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface {
 	pulumi.Input
 
@@ -24184,12 +23963,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs) ToClusterT
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrInput interface {
 	pulumi.Input
 
@@ -24337,8 +24115,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput interface {
 	pulumi.Input
 
@@ -24374,12 +24151,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs) T
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput interface {
 	pulumi.Input
 
@@ -24487,8 +24263,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput interface {
 	pulumi.Input
 
@@ -24527,12 +24302,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs) ToClus
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrInput interface {
 	pulumi.Input
 
@@ -24683,8 +24457,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput interface {
 	pulumi.Input
 
@@ -24723,12 +24496,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs) ToC
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringPtrInput interface {
 	pulumi.Input
 
@@ -24876,8 +24648,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrate
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput interface {
 	pulumi.Input
 
@@ -24913,12 +24684,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput interface {
 	pulumi.Input
 
@@ -25025,8 +24795,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrate
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -25062,12 +24831,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -25179,8 +24947,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput interface {
 	pulumi.Input
 
@@ -25221,12 +24988,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs) ToClus
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkPtrInput interface {
 	pulumi.Input
 
@@ -25403,8 +25169,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkPr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput interface {
 	pulumi.Input
 
@@ -25439,12 +25204,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetwor
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -25535,8 +25299,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkPro
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput interface {
 	pulumi.Input
 
@@ -25571,12 +25334,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetwork
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -25667,8 +25429,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkP
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput interface {
 	pulumi.Input
 
@@ -25703,12 +25464,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -25799,8 +25559,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkPro
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput interface {
 	pulumi.Input
 
@@ -25835,12 +25594,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetwork
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -25943,8 +25701,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput interface {
 	pulumi.Input
 
@@ -25983,8 +25740,7 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs) ToCluster
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray and ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...} }
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -26101,8 +25857,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry struct
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput interface {
 	pulumi.Input
 
@@ -26132,8 +25887,7 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray and ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray{ ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...} }
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput interface {
 	pulumi.Input
 
@@ -26219,8 +25973,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput interface {
 	pulumi.Input
 
@@ -26260,12 +26013,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs) ToClu
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesPtrInput interface {
 	pulumi.Input
 
@@ -26445,8 +26197,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd struct {
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput interface {
 	pulumi.Input
 
@@ -26495,12 +26246,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs) T
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdPtrInput interface {
 	pulumi.Input
 
@@ -26784,8 +26534,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput interface {
 	pulumi.Input
 
@@ -26825,12 +26574,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -26990,8 +26738,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -27032,12 +26779,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -27229,8 +26975,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi struct
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput interface {
 	pulumi.Input
 
@@ -27276,12 +27021,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiPtrInput interface {
 	pulumi.Input
 
@@ -27537,8 +27281,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput interface {
 	pulumi.Input
 
@@ -27575,12 +27318,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput interface {
 	pulumi.Input
 
@@ -27693,8 +27435,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLo
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
 	pulumi.Input
 
@@ -27734,12 +27475,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -27907,8 +27647,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRa
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput interface {
 	pulumi.Input
 
@@ -27945,12 +27684,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
 	pulumi.Input
 
@@ -28060,8 +27798,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecrets
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -28098,12 +27835,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -28216,8 +27952,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput interface {
 	pulumi.Input
 
@@ -28257,12 +27992,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControl
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerPtrInput interface {
 	pulumi.Input
 
@@ -28436,8 +28170,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet struct
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput interface {
 	pulumi.Input
 
@@ -28480,12 +28213,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletPtrInput interface {
 	pulumi.Input
 
@@ -28697,8 +28429,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy stru
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput interface {
 	pulumi.Input
 
@@ -28736,12 +28467,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyAr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyPtrInput interface {
 	pulumi.Input
 
@@ -28878,8 +28608,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler stru
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput interface {
 	pulumi.Input
 
@@ -28917,12 +28646,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerAr
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerPtrInput interface {
 	pulumi.Input
 
@@ -29059,8 +28787,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy struct
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -29098,12 +28825,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput interface {
 	pulumi.Input
 
@@ -29241,8 +28967,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainIn
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput interface {
 	pulumi.Input
 
@@ -29281,12 +29006,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrai
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputPtrInput interface {
 	pulumi.Input
 
@@ -29440,8 +29164,7 @@ type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan struct {
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput interface {
 	pulumi.Input
 
@@ -29479,12 +29202,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs) To
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs, ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtr and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput interface {
 	pulumi.Input
 
@@ -29606,8 +29328,7 @@ type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig 
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput interface {
 	pulumi.Input
 
@@ -29642,12 +29363,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConf
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs, ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtr and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -29742,8 +29462,7 @@ type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigC
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput interface {
 	pulumi.Input
 
@@ -29782,12 +29501,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConf
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs, ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtr and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -29939,8 +29657,7 @@ type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleCon
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
-//
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput interface {
 	pulumi.Input
 
@@ -29976,12 +29693,11 @@ func (i ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanSchedule
 // ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs, ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtr and ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
+//          ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput interface {
 	pulumi.Input
 
@@ -30094,8 +29810,7 @@ type ClusterTemplateTemplateRevisionQuestion struct {
 // ClusterTemplateTemplateRevisionQuestionInput is an input type that accepts ClusterTemplateTemplateRevisionQuestionArgs and ClusterTemplateTemplateRevisionQuestionOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionQuestionInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionQuestionArgs{...}
-//
+//          ClusterTemplateTemplateRevisionQuestionArgs{...}
 type ClusterTemplateTemplateRevisionQuestionInput interface {
 	pulumi.Input
 
@@ -30129,8 +29844,7 @@ func (i ClusterTemplateTemplateRevisionQuestionArgs) ToClusterTemplateTemplateRe
 // ClusterTemplateTemplateRevisionQuestionArrayInput is an input type that accepts ClusterTemplateTemplateRevisionQuestionArray and ClusterTemplateTemplateRevisionQuestionArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateTemplateRevisionQuestionArrayInput` via:
 //
-// 		 ClusterTemplateTemplateRevisionQuestionArray{ ClusterTemplateTemplateRevisionQuestionArgs{...} }
-//
+//          ClusterTemplateTemplateRevisionQuestionArray{ ClusterTemplateTemplateRevisionQuestionArgs{...} }
 type ClusterTemplateTemplateRevisionQuestionArrayInput interface {
 	pulumi.Input
 
@@ -30221,8 +29935,7 @@ type EtcdBackupBackupConfig struct {
 // EtcdBackupBackupConfigInput is an input type that accepts EtcdBackupBackupConfigArgs and EtcdBackupBackupConfigOutput values.
 // You can construct a concrete instance of `EtcdBackupBackupConfigInput` via:
 //
-// 		 EtcdBackupBackupConfigArgs{...}
-//
+//          EtcdBackupBackupConfigArgs{...}
 type EtcdBackupBackupConfigInput interface {
 	pulumi.Input
 
@@ -30265,12 +29978,11 @@ func (i EtcdBackupBackupConfigArgs) ToEtcdBackupBackupConfigPtrOutputWithContext
 // EtcdBackupBackupConfigPtrInput is an input type that accepts EtcdBackupBackupConfigArgs, EtcdBackupBackupConfigPtr and EtcdBackupBackupConfigPtrOutput values.
 // You can construct a concrete instance of `EtcdBackupBackupConfigPtrInput` via:
 //
-// 		 EtcdBackupBackupConfigArgs{...}
+//          EtcdBackupBackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EtcdBackupBackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -30431,8 +30143,7 @@ type EtcdBackupBackupConfigS3BackupConfig struct {
 // EtcdBackupBackupConfigS3BackupConfigInput is an input type that accepts EtcdBackupBackupConfigS3BackupConfigArgs and EtcdBackupBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `EtcdBackupBackupConfigS3BackupConfigInput` via:
 //
-// 		 EtcdBackupBackupConfigS3BackupConfigArgs{...}
-//
+//          EtcdBackupBackupConfigS3BackupConfigArgs{...}
 type EtcdBackupBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -30480,12 +30191,11 @@ func (i EtcdBackupBackupConfigS3BackupConfigArgs) ToEtcdBackupBackupConfigS3Back
 // EtcdBackupBackupConfigS3BackupConfigPtrInput is an input type that accepts EtcdBackupBackupConfigS3BackupConfigArgs, EtcdBackupBackupConfigS3BackupConfigPtr and EtcdBackupBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `EtcdBackupBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 EtcdBackupBackupConfigS3BackupConfigArgs{...}
+//          EtcdBackupBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EtcdBackupBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -30670,8 +30380,7 @@ type MultiClusterAppAnswer struct {
 // MultiClusterAppAnswerInput is an input type that accepts MultiClusterAppAnswerArgs and MultiClusterAppAnswerOutput values.
 // You can construct a concrete instance of `MultiClusterAppAnswerInput` via:
 //
-// 		 MultiClusterAppAnswerArgs{...}
-//
+//          MultiClusterAppAnswerArgs{...}
 type MultiClusterAppAnswerInput interface {
 	pulumi.Input
 
@@ -30703,8 +30412,7 @@ func (i MultiClusterAppAnswerArgs) ToMultiClusterAppAnswerOutputWithContext(ctx 
 // MultiClusterAppAnswerArrayInput is an input type that accepts MultiClusterAppAnswerArray and MultiClusterAppAnswerArrayOutput values.
 // You can construct a concrete instance of `MultiClusterAppAnswerArrayInput` via:
 //
-// 		 MultiClusterAppAnswerArray{ MultiClusterAppAnswerArgs{...} }
-//
+//          MultiClusterAppAnswerArray{ MultiClusterAppAnswerArgs{...} }
 type MultiClusterAppAnswerArrayInput interface {
 	pulumi.Input
 
@@ -30787,8 +30495,7 @@ type MultiClusterAppMember struct {
 // MultiClusterAppMemberInput is an input type that accepts MultiClusterAppMemberArgs and MultiClusterAppMemberOutput values.
 // You can construct a concrete instance of `MultiClusterAppMemberInput` via:
 //
-// 		 MultiClusterAppMemberArgs{...}
-//
+//          MultiClusterAppMemberArgs{...}
 type MultiClusterAppMemberInput interface {
 	pulumi.Input
 
@@ -30820,8 +30527,7 @@ func (i MultiClusterAppMemberArgs) ToMultiClusterAppMemberOutputWithContext(ctx 
 // MultiClusterAppMemberArrayInput is an input type that accepts MultiClusterAppMemberArray and MultiClusterAppMemberArrayOutput values.
 // You can construct a concrete instance of `MultiClusterAppMemberArrayInput` via:
 //
-// 		 MultiClusterAppMemberArray{ MultiClusterAppMemberArgs{...} }
-//
+//          MultiClusterAppMemberArray{ MultiClusterAppMemberArgs{...} }
 type MultiClusterAppMemberArrayInput interface {
 	pulumi.Input
 
@@ -30906,8 +30612,7 @@ type MultiClusterAppTarget struct {
 // MultiClusterAppTargetInput is an input type that accepts MultiClusterAppTargetArgs and MultiClusterAppTargetOutput values.
 // You can construct a concrete instance of `MultiClusterAppTargetInput` via:
 //
-// 		 MultiClusterAppTargetArgs{...}
-//
+//          MultiClusterAppTargetArgs{...}
 type MultiClusterAppTargetInput interface {
 	pulumi.Input
 
@@ -30941,8 +30646,7 @@ func (i MultiClusterAppTargetArgs) ToMultiClusterAppTargetOutputWithContext(ctx 
 // MultiClusterAppTargetArrayInput is an input type that accepts MultiClusterAppTargetArray and MultiClusterAppTargetArrayOutput values.
 // You can construct a concrete instance of `MultiClusterAppTargetArrayInput` via:
 //
-// 		 MultiClusterAppTargetArray{ MultiClusterAppTargetArgs{...} }
-//
+//          MultiClusterAppTargetArray{ MultiClusterAppTargetArgs{...} }
 type MultiClusterAppTargetArrayInput interface {
 	pulumi.Input
 
@@ -31026,8 +30730,7 @@ type MultiClusterAppUpgradeStrategy struct {
 // MultiClusterAppUpgradeStrategyInput is an input type that accepts MultiClusterAppUpgradeStrategyArgs and MultiClusterAppUpgradeStrategyOutput values.
 // You can construct a concrete instance of `MultiClusterAppUpgradeStrategyInput` via:
 //
-// 		 MultiClusterAppUpgradeStrategyArgs{...}
-//
+//          MultiClusterAppUpgradeStrategyArgs{...}
 type MultiClusterAppUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -31063,12 +30766,11 @@ func (i MultiClusterAppUpgradeStrategyArgs) ToMultiClusterAppUpgradeStrategyPtrO
 // MultiClusterAppUpgradeStrategyPtrInput is an input type that accepts MultiClusterAppUpgradeStrategyArgs, MultiClusterAppUpgradeStrategyPtr and MultiClusterAppUpgradeStrategyPtrOutput values.
 // You can construct a concrete instance of `MultiClusterAppUpgradeStrategyPtrInput` via:
 //
-// 		 MultiClusterAppUpgradeStrategyArgs{...}
+//          MultiClusterAppUpgradeStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type MultiClusterAppUpgradeStrategyPtrInput interface {
 	pulumi.Input
 
@@ -31163,8 +30865,7 @@ type MultiClusterAppUpgradeStrategyRollingUpdate struct {
 // MultiClusterAppUpgradeStrategyRollingUpdateInput is an input type that accepts MultiClusterAppUpgradeStrategyRollingUpdateArgs and MultiClusterAppUpgradeStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `MultiClusterAppUpgradeStrategyRollingUpdateInput` via:
 //
-// 		 MultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
-//
+//          MultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
 type MultiClusterAppUpgradeStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -31202,12 +30903,11 @@ func (i MultiClusterAppUpgradeStrategyRollingUpdateArgs) ToMultiClusterAppUpgrad
 // MultiClusterAppUpgradeStrategyRollingUpdatePtrInput is an input type that accepts MultiClusterAppUpgradeStrategyRollingUpdateArgs, MultiClusterAppUpgradeStrategyRollingUpdatePtr and MultiClusterAppUpgradeStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `MultiClusterAppUpgradeStrategyRollingUpdatePtrInput` via:
 //
-// 		 MultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
+//          MultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type MultiClusterAppUpgradeStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -31321,8 +31021,7 @@ type NamespaceContainerResourceLimit struct {
 // NamespaceContainerResourceLimitInput is an input type that accepts NamespaceContainerResourceLimitArgs and NamespaceContainerResourceLimitOutput values.
 // You can construct a concrete instance of `NamespaceContainerResourceLimitInput` via:
 //
-// 		 NamespaceContainerResourceLimitArgs{...}
-//
+//          NamespaceContainerResourceLimitArgs{...}
 type NamespaceContainerResourceLimitInput interface {
 	pulumi.Input
 
@@ -31364,12 +31063,11 @@ func (i NamespaceContainerResourceLimitArgs) ToNamespaceContainerResourceLimitPt
 // NamespaceContainerResourceLimitPtrInput is an input type that accepts NamespaceContainerResourceLimitArgs, NamespaceContainerResourceLimitPtr and NamespaceContainerResourceLimitPtrOutput values.
 // You can construct a concrete instance of `NamespaceContainerResourceLimitPtrInput` via:
 //
-// 		 NamespaceContainerResourceLimitArgs{...}
+//          NamespaceContainerResourceLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NamespaceContainerResourceLimitPtrInput interface {
 	pulumi.Input
 
@@ -31505,8 +31203,7 @@ type NamespaceResourceQuota struct {
 // NamespaceResourceQuotaInput is an input type that accepts NamespaceResourceQuotaArgs and NamespaceResourceQuotaOutput values.
 // You can construct a concrete instance of `NamespaceResourceQuotaInput` via:
 //
-// 		 NamespaceResourceQuotaArgs{...}
-//
+//          NamespaceResourceQuotaArgs{...}
 type NamespaceResourceQuotaInput interface {
 	pulumi.Input
 
@@ -31542,12 +31239,11 @@ func (i NamespaceResourceQuotaArgs) ToNamespaceResourceQuotaPtrOutputWithContext
 // NamespaceResourceQuotaPtrInput is an input type that accepts NamespaceResourceQuotaArgs, NamespaceResourceQuotaPtr and NamespaceResourceQuotaPtrOutput values.
 // You can construct a concrete instance of `NamespaceResourceQuotaPtrInput` via:
 //
-// 		 NamespaceResourceQuotaArgs{...}
+//          NamespaceResourceQuotaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NamespaceResourceQuotaPtrInput interface {
 	pulumi.Input
 
@@ -31661,8 +31357,7 @@ type NamespaceResourceQuotaLimit struct {
 // NamespaceResourceQuotaLimitInput is an input type that accepts NamespaceResourceQuotaLimitArgs and NamespaceResourceQuotaLimitOutput values.
 // You can construct a concrete instance of `NamespaceResourceQuotaLimitInput` via:
 //
-// 		 NamespaceResourceQuotaLimitArgs{...}
-//
+//          NamespaceResourceQuotaLimitArgs{...}
 type NamespaceResourceQuotaLimitInput interface {
 	pulumi.Input
 
@@ -31721,12 +31416,11 @@ func (i NamespaceResourceQuotaLimitArgs) ToNamespaceResourceQuotaLimitPtrOutputW
 // NamespaceResourceQuotaLimitPtrInput is an input type that accepts NamespaceResourceQuotaLimitArgs, NamespaceResourceQuotaLimitPtr and NamespaceResourceQuotaLimitPtrOutput values.
 // You can construct a concrete instance of `NamespaceResourceQuotaLimitPtrInput` via:
 //
-// 		 NamespaceResourceQuotaLimitArgs{...}
+//          NamespaceResourceQuotaLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NamespaceResourceQuotaLimitPtrInput interface {
 	pulumi.Input
 
@@ -32001,8 +31695,7 @@ type NodePoolNodeTaint struct {
 // NodePoolNodeTaintInput is an input type that accepts NodePoolNodeTaintArgs and NodePoolNodeTaintOutput values.
 // You can construct a concrete instance of `NodePoolNodeTaintInput` via:
 //
-// 		 NodePoolNodeTaintArgs{...}
-//
+//          NodePoolNodeTaintArgs{...}
 type NodePoolNodeTaintInput interface {
 	pulumi.Input
 
@@ -32036,8 +31729,7 @@ func (i NodePoolNodeTaintArgs) ToNodePoolNodeTaintOutputWithContext(ctx context.
 // NodePoolNodeTaintArrayInput is an input type that accepts NodePoolNodeTaintArray and NodePoolNodeTaintArrayOutput values.
 // You can construct a concrete instance of `NodePoolNodeTaintArrayInput` via:
 //
-// 		 NodePoolNodeTaintArray{ NodePoolNodeTaintArgs{...} }
-//
+//          NodePoolNodeTaintArray{ NodePoolNodeTaintArgs{...} }
 type NodePoolNodeTaintArrayInput interface {
 	pulumi.Input
 
@@ -32114,7 +31806,7 @@ func (o NodePoolNodeTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNodeTaint
 }
 
 type NodeTemplateAmazonec2Config struct {
-	// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	AccessKey *string `pulumi:"accessKey"`
 	// AWS machine image (string)
 	Ami string `pulumi:"ami"`
@@ -32148,7 +31840,7 @@ type NodeTemplateAmazonec2Config struct {
 	Retries *string `pulumi:"retries"`
 	// AWS root disk size (in GB). Default `16` (string)
 	RootSize *string `pulumi:"rootSize"`
-	// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	SecretKey *string `pulumi:"secretKey"`
 	// Skip adding default rules to security groups (bool)
 	SecurityGroupReadonly *bool `pulumi:"securityGroupReadonly"`
@@ -32183,8 +31875,7 @@ type NodeTemplateAmazonec2Config struct {
 // NodeTemplateAmazonec2ConfigInput is an input type that accepts NodeTemplateAmazonec2ConfigArgs and NodeTemplateAmazonec2ConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateAmazonec2ConfigInput` via:
 //
-// 		 NodeTemplateAmazonec2ConfigArgs{...}
-//
+//          NodeTemplateAmazonec2ConfigArgs{...}
 type NodeTemplateAmazonec2ConfigInput interface {
 	pulumi.Input
 
@@ -32193,7 +31884,7 @@ type NodeTemplateAmazonec2ConfigInput interface {
 }
 
 type NodeTemplateAmazonec2ConfigArgs struct {
-	// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
 	// AWS machine image (string)
 	Ami pulumi.StringInput `pulumi:"ami"`
@@ -32227,7 +31918,7 @@ type NodeTemplateAmazonec2ConfigArgs struct {
 	Retries pulumi.StringPtrInput `pulumi:"retries"`
 	// AWS root disk size (in GB). Default `16` (string)
 	RootSize pulumi.StringPtrInput `pulumi:"rootSize"`
-	// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 	// Skip adding default rules to security groups (bool)
 	SecurityGroupReadonly pulumi.BoolPtrInput `pulumi:"securityGroupReadonly"`
@@ -32282,12 +31973,11 @@ func (i NodeTemplateAmazonec2ConfigArgs) ToNodeTemplateAmazonec2ConfigPtrOutputW
 // NodeTemplateAmazonec2ConfigPtrInput is an input type that accepts NodeTemplateAmazonec2ConfigArgs, NodeTemplateAmazonec2ConfigPtr and NodeTemplateAmazonec2ConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateAmazonec2ConfigPtrInput` via:
 //
-// 		 NodeTemplateAmazonec2ConfigArgs{...}
+//          NodeTemplateAmazonec2ConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateAmazonec2ConfigPtrInput interface {
 	pulumi.Input
 
@@ -32337,7 +32027,7 @@ func (o NodeTemplateAmazonec2ConfigOutput) ToNodeTemplateAmazonec2ConfigPtrOutpu
 	}).(NodeTemplateAmazonec2ConfigPtrOutput)
 }
 
-// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAmazonec2ConfigOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -32422,7 +32112,7 @@ func (o NodeTemplateAmazonec2ConfigOutput) RootSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.RootSize }).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAmazonec2ConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -32515,7 +32205,7 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) Elem() NodeTemplateAmazonec2Config
 	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) NodeTemplateAmazonec2Config { return *v }).(NodeTemplateAmazonec2ConfigOutput)
 }
 
-// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAmazonec2ConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) *string {
 		if v == nil {
@@ -32685,7 +32375,7 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) RootSize() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAmazonec2ConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) *string {
 		if v == nil {
@@ -32838,9 +32528,9 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 type NodeTemplateAzureConfig struct {
 	// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
 	AvailabilitySet *string `pulumi:"availabilitySet"`
-	// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	ClientId *string `pulumi:"clientId"`
-	// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Path to file with custom-data (string)
 	CustomData *string `pulumi:"customData"`
@@ -32880,7 +32570,7 @@ type NodeTemplateAzureConfig struct {
 	Subnet *string `pulumi:"subnet"`
 	// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
 	SubnetPrefix *string `pulumi:"subnetPrefix"`
-	// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Update domain count to use for availability set. Default `5` (string)
 	UpdateDomainCount *string `pulumi:"updateDomainCount"`
@@ -32893,8 +32583,7 @@ type NodeTemplateAzureConfig struct {
 // NodeTemplateAzureConfigInput is an input type that accepts NodeTemplateAzureConfigArgs and NodeTemplateAzureConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateAzureConfigInput` via:
 //
-// 		 NodeTemplateAzureConfigArgs{...}
-//
+//          NodeTemplateAzureConfigArgs{...}
 type NodeTemplateAzureConfigInput interface {
 	pulumi.Input
 
@@ -32905,9 +32594,9 @@ type NodeTemplateAzureConfigInput interface {
 type NodeTemplateAzureConfigArgs struct {
 	// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
 	AvailabilitySet pulumi.StringPtrInput `pulumi:"availabilitySet"`
-	// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Path to file with custom-data (string)
 	CustomData pulumi.StringPtrInput `pulumi:"customData"`
@@ -32947,7 +32636,7 @@ type NodeTemplateAzureConfigArgs struct {
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
 	SubnetPrefix pulumi.StringPtrInput `pulumi:"subnetPrefix"`
-	// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 	// Update domain count to use for availability set. Default `5` (string)
 	UpdateDomainCount pulumi.StringPtrInput `pulumi:"updateDomainCount"`
@@ -32980,12 +32669,11 @@ func (i NodeTemplateAzureConfigArgs) ToNodeTemplateAzureConfigPtrOutputWithConte
 // NodeTemplateAzureConfigPtrInput is an input type that accepts NodeTemplateAzureConfigArgs, NodeTemplateAzureConfigPtr and NodeTemplateAzureConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateAzureConfigPtrInput` via:
 //
-// 		 NodeTemplateAzureConfigArgs{...}
+//          NodeTemplateAzureConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateAzureConfigPtrInput interface {
 	pulumi.Input
 
@@ -33040,12 +32728,12 @@ func (o NodeTemplateAzureConfigOutput) AvailabilitySet() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.AvailabilitySet }).(pulumi.StringPtrOutput)
 }
 
-// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -33145,7 +32833,7 @@ func (o NodeTemplateAzureConfigOutput) SubnetPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.SubnetPrefix }).(pulumi.StringPtrOutput)
 }
 
-// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
@@ -33193,7 +32881,7 @@ func (o NodeTemplateAzureConfigPtrOutput) AvailabilitySet() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
 		if v == nil {
@@ -33203,7 +32891,7 @@ func (o NodeTemplateAzureConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
 		if v == nil {
@@ -33403,7 +33091,7 @@ func (o NodeTemplateAzureConfigPtrOutput) SubnetPrefix() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateAzureConfigPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
 		if v == nil {
@@ -33444,7 +33132,7 @@ func (o NodeTemplateAzureConfigPtrOutput) Vnet() pulumi.StringPtrOutput {
 }
 
 type NodeTemplateDigitaloceanConfig struct {
-	// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	AccessToken *string `pulumi:"accessToken"`
 	// Enable backups for droplet. Default `false` (bool)
 	Backups *bool `pulumi:"backups"`
@@ -33477,8 +33165,7 @@ type NodeTemplateDigitaloceanConfig struct {
 // NodeTemplateDigitaloceanConfigInput is an input type that accepts NodeTemplateDigitaloceanConfigArgs and NodeTemplateDigitaloceanConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateDigitaloceanConfigInput` via:
 //
-// 		 NodeTemplateDigitaloceanConfigArgs{...}
-//
+//          NodeTemplateDigitaloceanConfigArgs{...}
 type NodeTemplateDigitaloceanConfigInput interface {
 	pulumi.Input
 
@@ -33487,7 +33174,7 @@ type NodeTemplateDigitaloceanConfigInput interface {
 }
 
 type NodeTemplateDigitaloceanConfigArgs struct {
-	// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
 	// Enable backups for droplet. Default `false` (bool)
 	Backups pulumi.BoolPtrInput `pulumi:"backups"`
@@ -33540,12 +33227,11 @@ func (i NodeTemplateDigitaloceanConfigArgs) ToNodeTemplateDigitaloceanConfigPtrO
 // NodeTemplateDigitaloceanConfigPtrInput is an input type that accepts NodeTemplateDigitaloceanConfigArgs, NodeTemplateDigitaloceanConfigPtr and NodeTemplateDigitaloceanConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateDigitaloceanConfigPtrInput` via:
 //
-// 		 NodeTemplateDigitaloceanConfigArgs{...}
+//          NodeTemplateDigitaloceanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateDigitaloceanConfigPtrInput interface {
 	pulumi.Input
 
@@ -33595,7 +33281,7 @@ func (o NodeTemplateDigitaloceanConfigOutput) ToNodeTemplateDigitaloceanConfigPt
 	}).(NodeTemplateDigitaloceanConfigPtrOutput)
 }
 
-// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateDigitaloceanConfigOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateDigitaloceanConfig) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
@@ -33683,7 +33369,7 @@ func (o NodeTemplateDigitaloceanConfigPtrOutput) Elem() NodeTemplateDigitalocean
 	return o.ApplyT(func(v *NodeTemplateDigitaloceanConfig) NodeTemplateDigitaloceanConfig { return *v }).(NodeTemplateDigitaloceanConfigOutput)
 }
 
-// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateDigitaloceanConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateDigitaloceanConfig) *string {
 		if v == nil {
@@ -33852,7 +33538,7 @@ type NodeTemplateLinodeConfig struct {
 	SwapSize *string `pulumi:"swapSize"`
 	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
 	Tags *string `pulumi:"tags"`
-	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Token *string `pulumi:"token"`
 	// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
 	UaPrefix *string `pulumi:"uaPrefix"`
@@ -33861,8 +33547,7 @@ type NodeTemplateLinodeConfig struct {
 // NodeTemplateLinodeConfigInput is an input type that accepts NodeTemplateLinodeConfigArgs and NodeTemplateLinodeConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateLinodeConfigInput` via:
 //
-// 		 NodeTemplateLinodeConfigArgs{...}
-//
+//          NodeTemplateLinodeConfigArgs{...}
 type NodeTemplateLinodeConfigInput interface {
 	pulumi.Input
 
@@ -33899,7 +33584,7 @@ type NodeTemplateLinodeConfigArgs struct {
 	SwapSize pulumi.StringPtrInput `pulumi:"swapSize"`
 	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
 	Tags pulumi.StringPtrInput `pulumi:"tags"`
-	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
 	UaPrefix pulumi.StringPtrInput `pulumi:"uaPrefix"`
@@ -33928,12 +33613,11 @@ func (i NodeTemplateLinodeConfigArgs) ToNodeTemplateLinodeConfigPtrOutputWithCon
 // NodeTemplateLinodeConfigPtrInput is an input type that accepts NodeTemplateLinodeConfigArgs, NodeTemplateLinodeConfigPtr and NodeTemplateLinodeConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateLinodeConfigPtrInput` via:
 //
-// 		 NodeTemplateLinodeConfigArgs{...}
+//          NodeTemplateLinodeConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateLinodeConfigPtrInput interface {
 	pulumi.Input
 
@@ -34053,7 +33737,7 @@ func (o NodeTemplateLinodeConfigOutput) Tags() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Tags }).(pulumi.StringPtrOutput)
 }
 
-// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateLinodeConfigOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateLinodeConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -34221,7 +33905,7 @@ func (o NodeTemplateLinodeConfigPtrOutput) Tags() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateLinodeConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateLinodeConfig) *string {
 		if v == nil {
@@ -34266,7 +33950,7 @@ type NodeTemplateOpennebulaConfig struct {
 	NetworkName *string `pulumi:"networkName"`
 	// Opennebula user ID of the Network to connect the machine to (string)
 	NetworkOwner *string `pulumi:"networkOwner"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password string `pulumi:"password"`
 	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
 	SshUser *string `pulumi:"sshUser"`
@@ -34285,8 +33969,7 @@ type NodeTemplateOpennebulaConfig struct {
 // NodeTemplateOpennebulaConfigInput is an input type that accepts NodeTemplateOpennebulaConfigArgs and NodeTemplateOpennebulaConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateOpennebulaConfigInput` via:
 //
-// 		 NodeTemplateOpennebulaConfigArgs{...}
-//
+//          NodeTemplateOpennebulaConfigArgs{...}
 type NodeTemplateOpennebulaConfigInput interface {
 	pulumi.Input
 
@@ -34319,7 +34002,7 @@ type NodeTemplateOpennebulaConfigArgs struct {
 	NetworkName pulumi.StringPtrInput `pulumi:"networkName"`
 	// Opennebula user ID of the Network to connect the machine to (string)
 	NetworkOwner pulumi.StringPtrInput `pulumi:"networkOwner"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password pulumi.StringInput `pulumi:"password"`
 	// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
 	SshUser pulumi.StringPtrInput `pulumi:"sshUser"`
@@ -34358,12 +34041,11 @@ func (i NodeTemplateOpennebulaConfigArgs) ToNodeTemplateOpennebulaConfigPtrOutpu
 // NodeTemplateOpennebulaConfigPtrInput is an input type that accepts NodeTemplateOpennebulaConfigArgs, NodeTemplateOpennebulaConfigPtr and NodeTemplateOpennebulaConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateOpennebulaConfigPtrInput` via:
 //
-// 		 NodeTemplateOpennebulaConfigArgs{...}
+//          NodeTemplateOpennebulaConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateOpennebulaConfigPtrInput interface {
 	pulumi.Input
 
@@ -34473,7 +34155,7 @@ func (o NodeTemplateOpennebulaConfigOutput) NetworkOwner() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v NodeTemplateOpennebulaConfig) *string { return v.NetworkOwner }).(pulumi.StringPtrOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpennebulaConfigOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTemplateOpennebulaConfig) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -34646,7 +34328,7 @@ func (o NodeTemplateOpennebulaConfigPtrOutput) NetworkOwner() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpennebulaConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateOpennebulaConfig) *string {
 		if v == nil {
@@ -34755,7 +34437,7 @@ type NodeTemplateOpenstackConfig struct {
 	NetName *string `pulumi:"netName"`
 	// Use the nova networking services instead of neutron (string)
 	NovaNetwork *bool `pulumi:"novaNetwork"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password *string `pulumi:"password"`
 	// Private key content to use for SSH (string)
 	PrivateKeyFile *string `pulumi:"privateKeyFile"`
@@ -34773,15 +34455,14 @@ type NodeTemplateOpenstackConfig struct {
 	TenantName *string `pulumi:"tenantName"`
 	// File containing an openstack userdata script (string)
 	UserDataFile *string `pulumi:"userDataFile"`
-	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username string `pulumi:"username"`
 }
 
 // NodeTemplateOpenstackConfigInput is an input type that accepts NodeTemplateOpenstackConfigArgs and NodeTemplateOpenstackConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateOpenstackConfigInput` via:
 //
-// 		 NodeTemplateOpenstackConfigArgs{...}
-//
+//          NodeTemplateOpenstackConfigArgs{...}
 type NodeTemplateOpenstackConfigInput interface {
 	pulumi.Input
 
@@ -34828,7 +34509,7 @@ type NodeTemplateOpenstackConfigArgs struct {
 	NetName pulumi.StringPtrInput `pulumi:"netName"`
 	// Use the nova networking services instead of neutron (string)
 	NovaNetwork pulumi.BoolPtrInput `pulumi:"novaNetwork"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Private key content to use for SSH (string)
 	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
@@ -34846,7 +34527,7 @@ type NodeTemplateOpenstackConfigArgs struct {
 	TenantName pulumi.StringPtrInput `pulumi:"tenantName"`
 	// File containing an openstack userdata script (string)
 	UserDataFile pulumi.StringPtrInput `pulumi:"userDataFile"`
-	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -34873,12 +34554,11 @@ func (i NodeTemplateOpenstackConfigArgs) ToNodeTemplateOpenstackConfigPtrOutputW
 // NodeTemplateOpenstackConfigPtrInput is an input type that accepts NodeTemplateOpenstackConfigArgs, NodeTemplateOpenstackConfigPtr and NodeTemplateOpenstackConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateOpenstackConfigPtrInput` via:
 //
-// 		 NodeTemplateOpenstackConfigArgs{...}
+//          NodeTemplateOpenstackConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateOpenstackConfigPtrInput interface {
 	pulumi.Input
 
@@ -35023,7 +34703,7 @@ func (o NodeTemplateOpenstackConfigOutput) NovaNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *bool { return v.NovaNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpenstackConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -35068,7 +34748,7 @@ func (o NodeTemplateOpenstackConfigOutput) UserDataFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.UserDataFile }).(pulumi.StringPtrOutput)
 }
 
-// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpenstackConfigOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -35281,7 +34961,7 @@ func (o NodeTemplateOpenstackConfigPtrOutput) NovaNetwork() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpenstackConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
 		if v == nil {
@@ -35371,7 +35051,7 @@ func (o NodeTemplateOpenstackConfigPtrOutput) UserDataFile() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateOpenstackConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
 		if v == nil {
@@ -35416,7 +35096,7 @@ type NodeTemplateVsphereConfig struct {
 	MemorySize *string `pulumi:"memorySize"`
 	// vSphere network where the docker VM will be attached (list)
 	Networks []string `pulumi:"networks"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password *string `pulumi:"password"`
 	// vSphere resource pool for docker VM (string)
 	Pool *string `pulumi:"pool"`
@@ -35430,7 +35110,7 @@ type NodeTemplateVsphereConfig struct {
 	SshUserGroup *string `pulumi:"sshUserGroup"`
 	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
 	Tags []string `pulumi:"tags"`
-	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username *string `pulumi:"username"`
 	// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
 	VappIpAllocationPolicy *string `pulumi:"vappIpAllocationPolicy"`
@@ -35440,17 +35120,16 @@ type NodeTemplateVsphereConfig struct {
 	VappProperties []string `pulumi:"vappProperties"`
 	// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
 	VappTransport *string `pulumi:"vappTransport"`
-	// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Vcenter *string `pulumi:"vcenter"`
-	// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+	// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
 	VcenterPort *string `pulumi:"vcenterPort"`
 }
 
 // NodeTemplateVsphereConfigInput is an input type that accepts NodeTemplateVsphereConfigArgs and NodeTemplateVsphereConfigOutput values.
 // You can construct a concrete instance of `NodeTemplateVsphereConfigInput` via:
 //
-// 		 NodeTemplateVsphereConfigArgs{...}
-//
+//          NodeTemplateVsphereConfigArgs{...}
 type NodeTemplateVsphereConfigInput interface {
 	pulumi.Input
 
@@ -35493,7 +35172,7 @@ type NodeTemplateVsphereConfigArgs struct {
 	MemorySize pulumi.StringPtrInput `pulumi:"memorySize"`
 	// vSphere network where the docker VM will be attached (list)
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
-	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// vSphere resource pool for docker VM (string)
 	Pool pulumi.StringPtrInput `pulumi:"pool"`
@@ -35507,7 +35186,7 @@ type NodeTemplateVsphereConfigArgs struct {
 	SshUserGroup pulumi.StringPtrInput `pulumi:"sshUserGroup"`
 	// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
 	VappIpAllocationPolicy pulumi.StringPtrInput `pulumi:"vappIpAllocationPolicy"`
@@ -35517,9 +35196,9 @@ type NodeTemplateVsphereConfigArgs struct {
 	VappProperties pulumi.StringArrayInput `pulumi:"vappProperties"`
 	// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
 	VappTransport pulumi.StringPtrInput `pulumi:"vappTransport"`
-	// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+	// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Vcenter pulumi.StringPtrInput `pulumi:"vcenter"`
-	// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+	// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
 	VcenterPort pulumi.StringPtrInput `pulumi:"vcenterPort"`
 }
 
@@ -35546,12 +35225,11 @@ func (i NodeTemplateVsphereConfigArgs) ToNodeTemplateVsphereConfigPtrOutputWithC
 // NodeTemplateVsphereConfigPtrInput is an input type that accepts NodeTemplateVsphereConfigArgs, NodeTemplateVsphereConfigPtr and NodeTemplateVsphereConfigPtrOutput values.
 // You can construct a concrete instance of `NodeTemplateVsphereConfigPtrInput` via:
 //
-// 		 NodeTemplateVsphereConfigArgs{...}
+//          NodeTemplateVsphereConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NodeTemplateVsphereConfigPtrInput interface {
 	pulumi.Input
 
@@ -35686,7 +35364,7 @@ func (o NodeTemplateVsphereConfigOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -35721,7 +35399,7 @@ func (o NodeTemplateVsphereConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -35746,12 +35424,12 @@ func (o NodeTemplateVsphereConfigOutput) VappTransport() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.VappTransport }).(pulumi.StringPtrOutput)
 }
 
-// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigOutput) Vcenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.Vcenter }).(pulumi.StringPtrOutput)
 }
 
-// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
 func (o NodeTemplateVsphereConfigOutput) VcenterPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.VcenterPort }).(pulumi.StringPtrOutput)
 }
@@ -35944,7 +35622,7 @@ func (o NodeTemplateVsphereConfigPtrOutput) Networks() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateVsphereConfig) *string {
 		if v == nil {
@@ -36014,7 +35692,7 @@ func (o NodeTemplateVsphereConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateVsphereConfig) *string {
 		if v == nil {
@@ -36064,7 +35742,7 @@ func (o NodeTemplateVsphereConfigPtrOutput) VappTransport() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x (string)
+// vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 func (o NodeTemplateVsphereConfigPtrOutput) Vcenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateVsphereConfig) *string {
 		if v == nil {
@@ -36074,7 +35752,7 @@ func (o NodeTemplateVsphereConfigPtrOutput) Vcenter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+// vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
 func (o NodeTemplateVsphereConfigPtrOutput) VcenterPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateVsphereConfig) *string {
 		if v == nil {
@@ -36094,8 +35772,7 @@ type NotifierPagerdutyConfig struct {
 // NotifierPagerdutyConfigInput is an input type that accepts NotifierPagerdutyConfigArgs and NotifierPagerdutyConfigOutput values.
 // You can construct a concrete instance of `NotifierPagerdutyConfigInput` via:
 //
-// 		 NotifierPagerdutyConfigArgs{...}
-//
+//          NotifierPagerdutyConfigArgs{...}
 type NotifierPagerdutyConfigInput interface {
 	pulumi.Input
 
@@ -36133,12 +35810,11 @@ func (i NotifierPagerdutyConfigArgs) ToNotifierPagerdutyConfigPtrOutputWithConte
 // NotifierPagerdutyConfigPtrInput is an input type that accepts NotifierPagerdutyConfigArgs, NotifierPagerdutyConfigPtr and NotifierPagerdutyConfigPtrOutput values.
 // You can construct a concrete instance of `NotifierPagerdutyConfigPtrInput` via:
 //
-// 		 NotifierPagerdutyConfigArgs{...}
+//          NotifierPagerdutyConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NotifierPagerdutyConfigPtrInput interface {
 	pulumi.Input
 
@@ -36248,8 +35924,7 @@ type NotifierSlackConfig struct {
 // NotifierSlackConfigInput is an input type that accepts NotifierSlackConfigArgs and NotifierSlackConfigOutput values.
 // You can construct a concrete instance of `NotifierSlackConfigInput` via:
 //
-// 		 NotifierSlackConfigArgs{...}
-//
+//          NotifierSlackConfigArgs{...}
 type NotifierSlackConfigInput interface {
 	pulumi.Input
 
@@ -36289,12 +35964,11 @@ func (i NotifierSlackConfigArgs) ToNotifierSlackConfigPtrOutputWithContext(ctx c
 // NotifierSlackConfigPtrInput is an input type that accepts NotifierSlackConfigArgs, NotifierSlackConfigPtr and NotifierSlackConfigPtrOutput values.
 // You can construct a concrete instance of `NotifierSlackConfigPtrInput` via:
 //
-// 		 NotifierSlackConfigArgs{...}
+//          NotifierSlackConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NotifierSlackConfigPtrInput interface {
 	pulumi.Input
 
@@ -36427,8 +36101,7 @@ type NotifierSmtpConfig struct {
 // NotifierSmtpConfigInput is an input type that accepts NotifierSmtpConfigArgs and NotifierSmtpConfigOutput values.
 // You can construct a concrete instance of `NotifierSmtpConfigInput` via:
 //
-// 		 NotifierSmtpConfigArgs{...}
-//
+//          NotifierSmtpConfigArgs{...}
 type NotifierSmtpConfigInput interface {
 	pulumi.Input
 
@@ -36476,12 +36149,11 @@ func (i NotifierSmtpConfigArgs) ToNotifierSmtpConfigPtrOutputWithContext(ctx con
 // NotifierSmtpConfigPtrInput is an input type that accepts NotifierSmtpConfigArgs, NotifierSmtpConfigPtr and NotifierSmtpConfigPtrOutput values.
 // You can construct a concrete instance of `NotifierSmtpConfigPtrInput` via:
 //
-// 		 NotifierSmtpConfigArgs{...}
+//          NotifierSmtpConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NotifierSmtpConfigPtrInput interface {
 	pulumi.Input
 
@@ -36664,8 +36336,7 @@ type NotifierWebhookConfig struct {
 // NotifierWebhookConfigInput is an input type that accepts NotifierWebhookConfigArgs and NotifierWebhookConfigOutput values.
 // You can construct a concrete instance of `NotifierWebhookConfigInput` via:
 //
-// 		 NotifierWebhookConfigArgs{...}
-//
+//          NotifierWebhookConfigArgs{...}
 type NotifierWebhookConfigInput interface {
 	pulumi.Input
 
@@ -36703,12 +36374,11 @@ func (i NotifierWebhookConfigArgs) ToNotifierWebhookConfigPtrOutputWithContext(c
 // NotifierWebhookConfigPtrInput is an input type that accepts NotifierWebhookConfigArgs, NotifierWebhookConfigPtr and NotifierWebhookConfigPtrOutput values.
 // You can construct a concrete instance of `NotifierWebhookConfigPtrInput` via:
 //
-// 		 NotifierWebhookConfigArgs{...}
+//          NotifierWebhookConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NotifierWebhookConfigPtrInput interface {
 	pulumi.Input
 
@@ -36824,8 +36494,7 @@ type NotifierWechatConfig struct {
 // NotifierWechatConfigInput is an input type that accepts NotifierWechatConfigArgs and NotifierWechatConfigOutput values.
 // You can construct a concrete instance of `NotifierWechatConfigInput` via:
 //
-// 		 NotifierWechatConfigArgs{...}
-//
+//          NotifierWechatConfigArgs{...}
 type NotifierWechatConfigInput interface {
 	pulumi.Input
 
@@ -36871,12 +36540,11 @@ func (i NotifierWechatConfigArgs) ToNotifierWechatConfigPtrOutputWithContext(ctx
 // NotifierWechatConfigPtrInput is an input type that accepts NotifierWechatConfigArgs, NotifierWechatConfigPtr and NotifierWechatConfigPtrOutput values.
 // You can construct a concrete instance of `NotifierWechatConfigPtrInput` via:
 //
-// 		 NotifierWechatConfigArgs{...}
+//          NotifierWechatConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type NotifierWechatConfigPtrInput interface {
 	pulumi.Input
 
@@ -37042,8 +36710,7 @@ type PodSecurityPolicyTemplateAllowedCsiDriver struct {
 // PodSecurityPolicyTemplateAllowedCsiDriverInput is an input type that accepts PodSecurityPolicyTemplateAllowedCsiDriverArgs and PodSecurityPolicyTemplateAllowedCsiDriverOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedCsiDriverInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedCsiDriverArgs{...}
-//
+//          PodSecurityPolicyTemplateAllowedCsiDriverArgs{...}
 type PodSecurityPolicyTemplateAllowedCsiDriverInput interface {
 	pulumi.Input
 
@@ -37071,8 +36738,7 @@ func (i PodSecurityPolicyTemplateAllowedCsiDriverArgs) ToPodSecurityPolicyTempla
 // PodSecurityPolicyTemplateAllowedCsiDriverArrayInput is an input type that accepts PodSecurityPolicyTemplateAllowedCsiDriverArray and PodSecurityPolicyTemplateAllowedCsiDriverArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedCsiDriverArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedCsiDriverArray{ PodSecurityPolicyTemplateAllowedCsiDriverArgs{...} }
-//
+//          PodSecurityPolicyTemplateAllowedCsiDriverArray{ PodSecurityPolicyTemplateAllowedCsiDriverArgs{...} }
 type PodSecurityPolicyTemplateAllowedCsiDriverArrayInput interface {
 	pulumi.Input
 
@@ -37140,8 +36806,7 @@ type PodSecurityPolicyTemplateAllowedFlexVolume struct {
 // PodSecurityPolicyTemplateAllowedFlexVolumeInput is an input type that accepts PodSecurityPolicyTemplateAllowedFlexVolumeArgs and PodSecurityPolicyTemplateAllowedFlexVolumeOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedFlexVolumeInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedFlexVolumeArgs{...}
-//
+//          PodSecurityPolicyTemplateAllowedFlexVolumeArgs{...}
 type PodSecurityPolicyTemplateAllowedFlexVolumeInput interface {
 	pulumi.Input
 
@@ -37168,8 +36833,7 @@ func (i PodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToPodSecurityPolicyTempl
 // PodSecurityPolicyTemplateAllowedFlexVolumeArrayInput is an input type that accepts PodSecurityPolicyTemplateAllowedFlexVolumeArray and PodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedFlexVolumeArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedFlexVolumeArray{ PodSecurityPolicyTemplateAllowedFlexVolumeArgs{...} }
-//
+//          PodSecurityPolicyTemplateAllowedFlexVolumeArray{ PodSecurityPolicyTemplateAllowedFlexVolumeArgs{...} }
 type PodSecurityPolicyTemplateAllowedFlexVolumeArrayInput interface {
 	pulumi.Input
 
@@ -37239,8 +36903,7 @@ type PodSecurityPolicyTemplateAllowedHostPath struct {
 // PodSecurityPolicyTemplateAllowedHostPathInput is an input type that accepts PodSecurityPolicyTemplateAllowedHostPathArgs and PodSecurityPolicyTemplateAllowedHostPathOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedHostPathInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedHostPathArgs{...}
-//
+//          PodSecurityPolicyTemplateAllowedHostPathArgs{...}
 type PodSecurityPolicyTemplateAllowedHostPathInput interface {
 	pulumi.Input
 
@@ -37270,8 +36933,7 @@ func (i PodSecurityPolicyTemplateAllowedHostPathArgs) ToPodSecurityPolicyTemplat
 // PodSecurityPolicyTemplateAllowedHostPathArrayInput is an input type that accepts PodSecurityPolicyTemplateAllowedHostPathArray and PodSecurityPolicyTemplateAllowedHostPathArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateAllowedHostPathArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateAllowedHostPathArray{ PodSecurityPolicyTemplateAllowedHostPathArgs{...} }
-//
+//          PodSecurityPolicyTemplateAllowedHostPathArray{ PodSecurityPolicyTemplateAllowedHostPathArgs{...} }
 type PodSecurityPolicyTemplateAllowedHostPathArrayInput interface {
 	pulumi.Input
 
@@ -37347,8 +37009,7 @@ type PodSecurityPolicyTemplateFsGroup struct {
 // PodSecurityPolicyTemplateFsGroupInput is an input type that accepts PodSecurityPolicyTemplateFsGroupArgs and PodSecurityPolicyTemplateFsGroupOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateFsGroupInput` via:
 //
-// 		 PodSecurityPolicyTemplateFsGroupArgs{...}
-//
+//          PodSecurityPolicyTemplateFsGroupArgs{...}
 type PodSecurityPolicyTemplateFsGroupInput interface {
 	pulumi.Input
 
@@ -37386,12 +37047,11 @@ func (i PodSecurityPolicyTemplateFsGroupArgs) ToPodSecurityPolicyTemplateFsGroup
 // PodSecurityPolicyTemplateFsGroupPtrInput is an input type that accepts PodSecurityPolicyTemplateFsGroupArgs, PodSecurityPolicyTemplateFsGroupPtr and PodSecurityPolicyTemplateFsGroupPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateFsGroupPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateFsGroupArgs{...}
+//          PodSecurityPolicyTemplateFsGroupArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateFsGroupPtrInput interface {
 	pulumi.Input
 
@@ -37499,8 +37159,7 @@ type PodSecurityPolicyTemplateFsGroupRange struct {
 // PodSecurityPolicyTemplateFsGroupRangeInput is an input type that accepts PodSecurityPolicyTemplateFsGroupRangeArgs and PodSecurityPolicyTemplateFsGroupRangeOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateFsGroupRangeInput` via:
 //
-// 		 PodSecurityPolicyTemplateFsGroupRangeArgs{...}
-//
+//          PodSecurityPolicyTemplateFsGroupRangeArgs{...}
 type PodSecurityPolicyTemplateFsGroupRangeInput interface {
 	pulumi.Input
 
@@ -37530,8 +37189,7 @@ func (i PodSecurityPolicyTemplateFsGroupRangeArgs) ToPodSecurityPolicyTemplateFs
 // PodSecurityPolicyTemplateFsGroupRangeArrayInput is an input type that accepts PodSecurityPolicyTemplateFsGroupRangeArray and PodSecurityPolicyTemplateFsGroupRangeArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateFsGroupRangeArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateFsGroupRangeArray{ PodSecurityPolicyTemplateFsGroupRangeArgs{...} }
-//
+//          PodSecurityPolicyTemplateFsGroupRangeArray{ PodSecurityPolicyTemplateFsGroupRangeArgs{...} }
 type PodSecurityPolicyTemplateFsGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -37607,8 +37265,7 @@ type PodSecurityPolicyTemplateHostPort struct {
 // PodSecurityPolicyTemplateHostPortInput is an input type that accepts PodSecurityPolicyTemplateHostPortArgs and PodSecurityPolicyTemplateHostPortOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateHostPortInput` via:
 //
-// 		 PodSecurityPolicyTemplateHostPortArgs{...}
-//
+//          PodSecurityPolicyTemplateHostPortArgs{...}
 type PodSecurityPolicyTemplateHostPortInput interface {
 	pulumi.Input
 
@@ -37638,8 +37295,7 @@ func (i PodSecurityPolicyTemplateHostPortArgs) ToPodSecurityPolicyTemplateHostPo
 // PodSecurityPolicyTemplateHostPortArrayInput is an input type that accepts PodSecurityPolicyTemplateHostPortArray and PodSecurityPolicyTemplateHostPortArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateHostPortArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateHostPortArray{ PodSecurityPolicyTemplateHostPortArgs{...} }
-//
+//          PodSecurityPolicyTemplateHostPortArray{ PodSecurityPolicyTemplateHostPortArgs{...} }
 type PodSecurityPolicyTemplateHostPortArrayInput interface {
 	pulumi.Input
 
@@ -37715,8 +37371,7 @@ type PodSecurityPolicyTemplateRunAsGroup struct {
 // PodSecurityPolicyTemplateRunAsGroupInput is an input type that accepts PodSecurityPolicyTemplateRunAsGroupArgs and PodSecurityPolicyTemplateRunAsGroupOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsGroupInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsGroupArgs{...}
-//
+//          PodSecurityPolicyTemplateRunAsGroupArgs{...}
 type PodSecurityPolicyTemplateRunAsGroupInput interface {
 	pulumi.Input
 
@@ -37754,12 +37409,11 @@ func (i PodSecurityPolicyTemplateRunAsGroupArgs) ToPodSecurityPolicyTemplateRunA
 // PodSecurityPolicyTemplateRunAsGroupPtrInput is an input type that accepts PodSecurityPolicyTemplateRunAsGroupArgs, PodSecurityPolicyTemplateRunAsGroupPtr and PodSecurityPolicyTemplateRunAsGroupPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsGroupPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsGroupArgs{...}
+//          PodSecurityPolicyTemplateRunAsGroupArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateRunAsGroupPtrInput interface {
 	pulumi.Input
 
@@ -37869,8 +37523,7 @@ type PodSecurityPolicyTemplateRunAsGroupRange struct {
 // PodSecurityPolicyTemplateRunAsGroupRangeInput is an input type that accepts PodSecurityPolicyTemplateRunAsGroupRangeArgs and PodSecurityPolicyTemplateRunAsGroupRangeOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsGroupRangeInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsGroupRangeArgs{...}
-//
+//          PodSecurityPolicyTemplateRunAsGroupRangeArgs{...}
 type PodSecurityPolicyTemplateRunAsGroupRangeInput interface {
 	pulumi.Input
 
@@ -37900,8 +37553,7 @@ func (i PodSecurityPolicyTemplateRunAsGroupRangeArgs) ToPodSecurityPolicyTemplat
 // PodSecurityPolicyTemplateRunAsGroupRangeArrayInput is an input type that accepts PodSecurityPolicyTemplateRunAsGroupRangeArray and PodSecurityPolicyTemplateRunAsGroupRangeArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsGroupRangeArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsGroupRangeArray{ PodSecurityPolicyTemplateRunAsGroupRangeArgs{...} }
-//
+//          PodSecurityPolicyTemplateRunAsGroupRangeArray{ PodSecurityPolicyTemplateRunAsGroupRangeArgs{...} }
 type PodSecurityPolicyTemplateRunAsGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -37977,8 +37629,7 @@ type PodSecurityPolicyTemplateRunAsUser struct {
 // PodSecurityPolicyTemplateRunAsUserInput is an input type that accepts PodSecurityPolicyTemplateRunAsUserArgs and PodSecurityPolicyTemplateRunAsUserOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsUserInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsUserArgs{...}
-//
+//          PodSecurityPolicyTemplateRunAsUserArgs{...}
 type PodSecurityPolicyTemplateRunAsUserInput interface {
 	pulumi.Input
 
@@ -38016,12 +37667,11 @@ func (i PodSecurityPolicyTemplateRunAsUserArgs) ToPodSecurityPolicyTemplateRunAs
 // PodSecurityPolicyTemplateRunAsUserPtrInput is an input type that accepts PodSecurityPolicyTemplateRunAsUserArgs, PodSecurityPolicyTemplateRunAsUserPtr and PodSecurityPolicyTemplateRunAsUserPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsUserPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsUserArgs{...}
+//          PodSecurityPolicyTemplateRunAsUserArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateRunAsUserPtrInput interface {
 	pulumi.Input
 
@@ -38129,8 +37779,7 @@ type PodSecurityPolicyTemplateRunAsUserRange struct {
 // PodSecurityPolicyTemplateRunAsUserRangeInput is an input type that accepts PodSecurityPolicyTemplateRunAsUserRangeArgs and PodSecurityPolicyTemplateRunAsUserRangeOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsUserRangeInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsUserRangeArgs{...}
-//
+//          PodSecurityPolicyTemplateRunAsUserRangeArgs{...}
 type PodSecurityPolicyTemplateRunAsUserRangeInput interface {
 	pulumi.Input
 
@@ -38160,8 +37809,7 @@ func (i PodSecurityPolicyTemplateRunAsUserRangeArgs) ToPodSecurityPolicyTemplate
 // PodSecurityPolicyTemplateRunAsUserRangeArrayInput is an input type that accepts PodSecurityPolicyTemplateRunAsUserRangeArray and PodSecurityPolicyTemplateRunAsUserRangeArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRunAsUserRangeArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateRunAsUserRangeArray{ PodSecurityPolicyTemplateRunAsUserRangeArgs{...} }
-//
+//          PodSecurityPolicyTemplateRunAsUserRangeArray{ PodSecurityPolicyTemplateRunAsUserRangeArgs{...} }
 type PodSecurityPolicyTemplateRunAsUserRangeArrayInput interface {
 	pulumi.Input
 
@@ -38237,8 +37885,7 @@ type PodSecurityPolicyTemplateRuntimeClass struct {
 // PodSecurityPolicyTemplateRuntimeClassInput is an input type that accepts PodSecurityPolicyTemplateRuntimeClassArgs and PodSecurityPolicyTemplateRuntimeClassOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRuntimeClassInput` via:
 //
-// 		 PodSecurityPolicyTemplateRuntimeClassArgs{...}
-//
+//          PodSecurityPolicyTemplateRuntimeClassArgs{...}
 type PodSecurityPolicyTemplateRuntimeClassInput interface {
 	pulumi.Input
 
@@ -38276,12 +37923,11 @@ func (i PodSecurityPolicyTemplateRuntimeClassArgs) ToPodSecurityPolicyTemplateRu
 // PodSecurityPolicyTemplateRuntimeClassPtrInput is an input type that accepts PodSecurityPolicyTemplateRuntimeClassArgs, PodSecurityPolicyTemplateRuntimeClassPtr and PodSecurityPolicyTemplateRuntimeClassPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateRuntimeClassPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateRuntimeClassArgs{...}
+//          PodSecurityPolicyTemplateRuntimeClassArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateRuntimeClassPtrInput interface {
 	pulumi.Input
 
@@ -38389,8 +38035,7 @@ type PodSecurityPolicyTemplateSeLinux struct {
 // PodSecurityPolicyTemplateSeLinuxInput is an input type that accepts PodSecurityPolicyTemplateSeLinuxArgs and PodSecurityPolicyTemplateSeLinuxOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSeLinuxInput` via:
 //
-// 		 PodSecurityPolicyTemplateSeLinuxArgs{...}
-//
+//          PodSecurityPolicyTemplateSeLinuxArgs{...}
 type PodSecurityPolicyTemplateSeLinuxInput interface {
 	pulumi.Input
 
@@ -38428,12 +38073,11 @@ func (i PodSecurityPolicyTemplateSeLinuxArgs) ToPodSecurityPolicyTemplateSeLinux
 // PodSecurityPolicyTemplateSeLinuxPtrInput is an input type that accepts PodSecurityPolicyTemplateSeLinuxArgs, PodSecurityPolicyTemplateSeLinuxPtr and PodSecurityPolicyTemplateSeLinuxPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSeLinuxPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateSeLinuxArgs{...}
+//          PodSecurityPolicyTemplateSeLinuxArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateSeLinuxPtrInput interface {
 	pulumi.Input
 
@@ -38547,8 +38191,7 @@ type PodSecurityPolicyTemplateSeLinuxSeLinuxOption struct {
 // PodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput is an input type that accepts PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs and PodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput` via:
 //
-// 		 PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
-//
+//          PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
 type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput interface {
 	pulumi.Input
 
@@ -38590,12 +38233,11 @@ func (i PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToPodSecurityPolicyTe
 // PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput is an input type that accepts PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs, PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtr and PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
+//          PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput interface {
 	pulumi.Input
 
@@ -38735,8 +38377,7 @@ type PodSecurityPolicyTemplateSupplementalGroup struct {
 // PodSecurityPolicyTemplateSupplementalGroupInput is an input type that accepts PodSecurityPolicyTemplateSupplementalGroupArgs and PodSecurityPolicyTemplateSupplementalGroupOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSupplementalGroupInput` via:
 //
-// 		 PodSecurityPolicyTemplateSupplementalGroupArgs{...}
-//
+//          PodSecurityPolicyTemplateSupplementalGroupArgs{...}
 type PodSecurityPolicyTemplateSupplementalGroupInput interface {
 	pulumi.Input
 
@@ -38774,12 +38415,11 @@ func (i PodSecurityPolicyTemplateSupplementalGroupArgs) ToPodSecurityPolicyTempl
 // PodSecurityPolicyTemplateSupplementalGroupPtrInput is an input type that accepts PodSecurityPolicyTemplateSupplementalGroupArgs, PodSecurityPolicyTemplateSupplementalGroupPtr and PodSecurityPolicyTemplateSupplementalGroupPtrOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSupplementalGroupPtrInput` via:
 //
-// 		 PodSecurityPolicyTemplateSupplementalGroupArgs{...}
+//          PodSecurityPolicyTemplateSupplementalGroupArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PodSecurityPolicyTemplateSupplementalGroupPtrInput interface {
 	pulumi.Input
 
@@ -38891,8 +38531,7 @@ type PodSecurityPolicyTemplateSupplementalGroupRange struct {
 // PodSecurityPolicyTemplateSupplementalGroupRangeInput is an input type that accepts PodSecurityPolicyTemplateSupplementalGroupRangeArgs and PodSecurityPolicyTemplateSupplementalGroupRangeOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSupplementalGroupRangeInput` via:
 //
-// 		 PodSecurityPolicyTemplateSupplementalGroupRangeArgs{...}
-//
+//          PodSecurityPolicyTemplateSupplementalGroupRangeArgs{...}
 type PodSecurityPolicyTemplateSupplementalGroupRangeInput interface {
 	pulumi.Input
 
@@ -38922,8 +38561,7 @@ func (i PodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToPodSecurityPolicy
 // PodSecurityPolicyTemplateSupplementalGroupRangeArrayInput is an input type that accepts PodSecurityPolicyTemplateSupplementalGroupRangeArray and PodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput values.
 // You can construct a concrete instance of `PodSecurityPolicyTemplateSupplementalGroupRangeArrayInput` via:
 //
-// 		 PodSecurityPolicyTemplateSupplementalGroupRangeArray{ PodSecurityPolicyTemplateSupplementalGroupRangeArgs{...} }
-//
+//          PodSecurityPolicyTemplateSupplementalGroupRangeArray{ PodSecurityPolicyTemplateSupplementalGroupRangeArgs{...} }
 type PodSecurityPolicyTemplateSupplementalGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -39002,8 +38640,7 @@ type ProjectAlertGroupRecipient struct {
 // ProjectAlertGroupRecipientInput is an input type that accepts ProjectAlertGroupRecipientArgs and ProjectAlertGroupRecipientOutput values.
 // You can construct a concrete instance of `ProjectAlertGroupRecipientInput` via:
 //
-// 		 ProjectAlertGroupRecipientArgs{...}
-//
+//          ProjectAlertGroupRecipientArgs{...}
 type ProjectAlertGroupRecipientInput interface {
 	pulumi.Input
 
@@ -39036,8 +38673,7 @@ func (i ProjectAlertGroupRecipientArgs) ToProjectAlertGroupRecipientOutputWithCo
 // ProjectAlertGroupRecipientArrayInput is an input type that accepts ProjectAlertGroupRecipientArray and ProjectAlertGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `ProjectAlertGroupRecipientArrayInput` via:
 //
-// 		 ProjectAlertGroupRecipientArray{ ProjectAlertGroupRecipientArgs{...} }
-//
+//          ProjectAlertGroupRecipientArray{ ProjectAlertGroupRecipientArgs{...} }
 type ProjectAlertGroupRecipientArrayInput interface {
 	pulumi.Input
 
@@ -39128,8 +38764,7 @@ type ProjectAlertRuleMetricRule struct {
 // ProjectAlertRuleMetricRuleInput is an input type that accepts ProjectAlertRuleMetricRuleArgs and ProjectAlertRuleMetricRuleOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleMetricRuleInput` via:
 //
-// 		 ProjectAlertRuleMetricRuleArgs{...}
-//
+//          ProjectAlertRuleMetricRuleArgs{...}
 type ProjectAlertRuleMetricRuleInput interface {
 	pulumi.Input
 
@@ -39173,12 +38808,11 @@ func (i ProjectAlertRuleMetricRuleArgs) ToProjectAlertRuleMetricRulePtrOutputWit
 // ProjectAlertRuleMetricRulePtrInput is an input type that accepts ProjectAlertRuleMetricRuleArgs, ProjectAlertRuleMetricRulePtr and ProjectAlertRuleMetricRulePtrOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleMetricRulePtrInput` via:
 //
-// 		 ProjectAlertRuleMetricRuleArgs{...}
+//          ProjectAlertRuleMetricRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectAlertRuleMetricRulePtrInput interface {
 	pulumi.Input
 
@@ -39335,8 +38969,7 @@ type ProjectAlertRulePodRule struct {
 // ProjectAlertRulePodRuleInput is an input type that accepts ProjectAlertRulePodRuleArgs and ProjectAlertRulePodRuleOutput values.
 // You can construct a concrete instance of `ProjectAlertRulePodRuleInput` via:
 //
-// 		 ProjectAlertRulePodRuleArgs{...}
-//
+//          ProjectAlertRulePodRuleArgs{...}
 type ProjectAlertRulePodRuleInput interface {
 	pulumi.Input
 
@@ -39378,12 +39011,11 @@ func (i ProjectAlertRulePodRuleArgs) ToProjectAlertRulePodRulePtrOutputWithConte
 // ProjectAlertRulePodRulePtrInput is an input type that accepts ProjectAlertRulePodRuleArgs, ProjectAlertRulePodRulePtr and ProjectAlertRulePodRulePtrOutput values.
 // You can construct a concrete instance of `ProjectAlertRulePodRulePtrInput` via:
 //
-// 		 ProjectAlertRulePodRuleArgs{...}
+//          ProjectAlertRulePodRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectAlertRulePodRulePtrInput interface {
 	pulumi.Input
 
@@ -39523,8 +39155,7 @@ type ProjectAlertRuleWorkloadRule struct {
 // ProjectAlertRuleWorkloadRuleInput is an input type that accepts ProjectAlertRuleWorkloadRuleArgs and ProjectAlertRuleWorkloadRuleOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleWorkloadRuleInput` via:
 //
-// 		 ProjectAlertRuleWorkloadRuleArgs{...}
-//
+//          ProjectAlertRuleWorkloadRuleArgs{...}
 type ProjectAlertRuleWorkloadRuleInput interface {
 	pulumi.Input
 
@@ -39564,12 +39195,11 @@ func (i ProjectAlertRuleWorkloadRuleArgs) ToProjectAlertRuleWorkloadRulePtrOutpu
 // ProjectAlertRuleWorkloadRulePtrInput is an input type that accepts ProjectAlertRuleWorkloadRuleArgs, ProjectAlertRuleWorkloadRulePtr and ProjectAlertRuleWorkloadRulePtrOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleWorkloadRulePtrInput` via:
 //
-// 		 ProjectAlertRuleWorkloadRuleArgs{...}
+//          ProjectAlertRuleWorkloadRuleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectAlertRuleWorkloadRulePtrInput interface {
 	pulumi.Input
 
@@ -39696,8 +39326,7 @@ type ProjectContainerResourceLimit struct {
 // ProjectContainerResourceLimitInput is an input type that accepts ProjectContainerResourceLimitArgs and ProjectContainerResourceLimitOutput values.
 // You can construct a concrete instance of `ProjectContainerResourceLimitInput` via:
 //
-// 		 ProjectContainerResourceLimitArgs{...}
-//
+//          ProjectContainerResourceLimitArgs{...}
 type ProjectContainerResourceLimitInput interface {
 	pulumi.Input
 
@@ -39739,12 +39368,11 @@ func (i ProjectContainerResourceLimitArgs) ToProjectContainerResourceLimitPtrOut
 // ProjectContainerResourceLimitPtrInput is an input type that accepts ProjectContainerResourceLimitArgs, ProjectContainerResourceLimitPtr and ProjectContainerResourceLimitPtrOutput values.
 // You can construct a concrete instance of `ProjectContainerResourceLimitPtrInput` via:
 //
-// 		 ProjectContainerResourceLimitArgs{...}
+//          ProjectContainerResourceLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectContainerResourceLimitPtrInput interface {
 	pulumi.Input
 
@@ -39886,8 +39514,7 @@ type ProjectLoggingCustomTargetConfig struct {
 // ProjectLoggingCustomTargetConfigInput is an input type that accepts ProjectLoggingCustomTargetConfigArgs and ProjectLoggingCustomTargetConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingCustomTargetConfigInput` via:
 //
-// 		 ProjectLoggingCustomTargetConfigArgs{...}
-//
+//          ProjectLoggingCustomTargetConfigArgs{...}
 type ProjectLoggingCustomTargetConfigInput interface {
 	pulumi.Input
 
@@ -39929,12 +39556,11 @@ func (i ProjectLoggingCustomTargetConfigArgs) ToProjectLoggingCustomTargetConfig
 // ProjectLoggingCustomTargetConfigPtrInput is an input type that accepts ProjectLoggingCustomTargetConfigArgs, ProjectLoggingCustomTargetConfigPtr and ProjectLoggingCustomTargetConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingCustomTargetConfigPtrInput` via:
 //
-// 		 ProjectLoggingCustomTargetConfigArgs{...}
+//          ProjectLoggingCustomTargetConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingCustomTargetConfigPtrInput interface {
 	pulumi.Input
 
@@ -40090,8 +39716,7 @@ type ProjectLoggingElasticsearchConfig struct {
 // ProjectLoggingElasticsearchConfigInput is an input type that accepts ProjectLoggingElasticsearchConfigArgs and ProjectLoggingElasticsearchConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingElasticsearchConfigInput` via:
 //
-// 		 ProjectLoggingElasticsearchConfigArgs{...}
-//
+//          ProjectLoggingElasticsearchConfigArgs{...}
 type ProjectLoggingElasticsearchConfigInput interface {
 	pulumi.Input
 
@@ -40147,12 +39772,11 @@ func (i ProjectLoggingElasticsearchConfigArgs) ToProjectLoggingElasticsearchConf
 // ProjectLoggingElasticsearchConfigPtrInput is an input type that accepts ProjectLoggingElasticsearchConfigArgs, ProjectLoggingElasticsearchConfigPtr and ProjectLoggingElasticsearchConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingElasticsearchConfigPtrInput` via:
 //
-// 		 ProjectLoggingElasticsearchConfigArgs{...}
+//          ProjectLoggingElasticsearchConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingElasticsearchConfigPtrInput interface {
 	pulumi.Input
 
@@ -40399,8 +40023,7 @@ type ProjectLoggingFluentdConfig struct {
 // ProjectLoggingFluentdConfigInput is an input type that accepts ProjectLoggingFluentdConfigArgs and ProjectLoggingFluentdConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingFluentdConfigInput` via:
 //
-// 		 ProjectLoggingFluentdConfigArgs{...}
-//
+//          ProjectLoggingFluentdConfigArgs{...}
 type ProjectLoggingFluentdConfigInput interface {
 	pulumi.Input
 
@@ -40442,12 +40065,11 @@ func (i ProjectLoggingFluentdConfigArgs) ToProjectLoggingFluentdConfigPtrOutputW
 // ProjectLoggingFluentdConfigPtrInput is an input type that accepts ProjectLoggingFluentdConfigArgs, ProjectLoggingFluentdConfigPtr and ProjectLoggingFluentdConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingFluentdConfigPtrInput` via:
 //
-// 		 ProjectLoggingFluentdConfigArgs{...}
+//          ProjectLoggingFluentdConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingFluentdConfigPtrInput interface {
 	pulumi.Input
 
@@ -40595,8 +40217,7 @@ type ProjectLoggingFluentdConfigFluentServer struct {
 // ProjectLoggingFluentdConfigFluentServerInput is an input type that accepts ProjectLoggingFluentdConfigFluentServerArgs and ProjectLoggingFluentdConfigFluentServerOutput values.
 // You can construct a concrete instance of `ProjectLoggingFluentdConfigFluentServerInput` via:
 //
-// 		 ProjectLoggingFluentdConfigFluentServerArgs{...}
-//
+//          ProjectLoggingFluentdConfigFluentServerArgs{...}
 type ProjectLoggingFluentdConfigFluentServerInput interface {
 	pulumi.Input
 
@@ -40636,8 +40257,7 @@ func (i ProjectLoggingFluentdConfigFluentServerArgs) ToProjectLoggingFluentdConf
 // ProjectLoggingFluentdConfigFluentServerArrayInput is an input type that accepts ProjectLoggingFluentdConfigFluentServerArray and ProjectLoggingFluentdConfigFluentServerArrayOutput values.
 // You can construct a concrete instance of `ProjectLoggingFluentdConfigFluentServerArrayInput` via:
 //
-// 		 ProjectLoggingFluentdConfigFluentServerArray{ ProjectLoggingFluentdConfigFluentServerArgs{...} }
-//
+//          ProjectLoggingFluentdConfigFluentServerArray{ ProjectLoggingFluentdConfigFluentServerArgs{...} }
 type ProjectLoggingFluentdConfigFluentServerArrayInput interface {
 	pulumi.Input
 
@@ -40746,8 +40366,7 @@ type ProjectLoggingKafkaConfig struct {
 // ProjectLoggingKafkaConfigInput is an input type that accepts ProjectLoggingKafkaConfigArgs and ProjectLoggingKafkaConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingKafkaConfigInput` via:
 //
-// 		 ProjectLoggingKafkaConfigArgs{...}
-//
+//          ProjectLoggingKafkaConfigArgs{...}
 type ProjectLoggingKafkaConfigInput interface {
 	pulumi.Input
 
@@ -40793,12 +40412,11 @@ func (i ProjectLoggingKafkaConfigArgs) ToProjectLoggingKafkaConfigPtrOutputWithC
 // ProjectLoggingKafkaConfigPtrInput is an input type that accepts ProjectLoggingKafkaConfigArgs, ProjectLoggingKafkaConfigPtr and ProjectLoggingKafkaConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingKafkaConfigPtrInput` via:
 //
-// 		 ProjectLoggingKafkaConfigArgs{...}
+//          ProjectLoggingKafkaConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingKafkaConfigPtrInput interface {
 	pulumi.Input
 
@@ -40980,8 +40598,7 @@ type ProjectLoggingSplunkConfig struct {
 // ProjectLoggingSplunkConfigInput is an input type that accepts ProjectLoggingSplunkConfigArgs and ProjectLoggingSplunkConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingSplunkConfigInput` via:
 //
-// 		 ProjectLoggingSplunkConfigArgs{...}
-//
+//          ProjectLoggingSplunkConfigArgs{...}
 type ProjectLoggingSplunkConfigInput interface {
 	pulumi.Input
 
@@ -41033,12 +40650,11 @@ func (i ProjectLoggingSplunkConfigArgs) ToProjectLoggingSplunkConfigPtrOutputWit
 // ProjectLoggingSplunkConfigPtrInput is an input type that accepts ProjectLoggingSplunkConfigArgs, ProjectLoggingSplunkConfigPtr and ProjectLoggingSplunkConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingSplunkConfigPtrInput` via:
 //
-// 		 ProjectLoggingSplunkConfigArgs{...}
+//          ProjectLoggingSplunkConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingSplunkConfigPtrInput interface {
 	pulumi.Input
 
@@ -41265,8 +40881,7 @@ type ProjectLoggingSyslogConfig struct {
 // ProjectLoggingSyslogConfigInput is an input type that accepts ProjectLoggingSyslogConfigArgs and ProjectLoggingSyslogConfigOutput values.
 // You can construct a concrete instance of `ProjectLoggingSyslogConfigInput` via:
 //
-// 		 ProjectLoggingSyslogConfigArgs{...}
-//
+//          ProjectLoggingSyslogConfigArgs{...}
 type ProjectLoggingSyslogConfigInput interface {
 	pulumi.Input
 
@@ -41318,12 +40933,11 @@ func (i ProjectLoggingSyslogConfigArgs) ToProjectLoggingSyslogConfigPtrOutputWit
 // ProjectLoggingSyslogConfigPtrInput is an input type that accepts ProjectLoggingSyslogConfigArgs, ProjectLoggingSyslogConfigPtr and ProjectLoggingSyslogConfigPtrOutput values.
 // You can construct a concrete instance of `ProjectLoggingSyslogConfigPtrInput` via:
 //
-// 		 ProjectLoggingSyslogConfigArgs{...}
+//          ProjectLoggingSyslogConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectLoggingSyslogConfigPtrInput interface {
 	pulumi.Input
 
@@ -41536,8 +41150,7 @@ type ProjectProjectMonitoringInput struct {
 // ProjectProjectMonitoringInputInput is an input type that accepts ProjectProjectMonitoringInputArgs and ProjectProjectMonitoringInputOutput values.
 // You can construct a concrete instance of `ProjectProjectMonitoringInputInput` via:
 //
-// 		 ProjectProjectMonitoringInputArgs{...}
-//
+//          ProjectProjectMonitoringInputArgs{...}
 type ProjectProjectMonitoringInputInput interface {
 	pulumi.Input
 
@@ -41575,12 +41188,11 @@ func (i ProjectProjectMonitoringInputArgs) ToProjectProjectMonitoringInputPtrOut
 // ProjectProjectMonitoringInputPtrInput is an input type that accepts ProjectProjectMonitoringInputArgs, ProjectProjectMonitoringInputPtr and ProjectProjectMonitoringInputPtrOutput values.
 // You can construct a concrete instance of `ProjectProjectMonitoringInputPtrInput` via:
 //
-// 		 ProjectProjectMonitoringInputArgs{...}
+//          ProjectProjectMonitoringInputArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectProjectMonitoringInputPtrInput interface {
 	pulumi.Input
 
@@ -41688,8 +41300,7 @@ type ProjectResourceQuota struct {
 // ProjectResourceQuotaInput is an input type that accepts ProjectResourceQuotaArgs and ProjectResourceQuotaOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaInput` via:
 //
-// 		 ProjectResourceQuotaArgs{...}
-//
+//          ProjectResourceQuotaArgs{...}
 type ProjectResourceQuotaInput interface {
 	pulumi.Input
 
@@ -41727,12 +41338,11 @@ func (i ProjectResourceQuotaArgs) ToProjectResourceQuotaPtrOutputWithContext(ctx
 // ProjectResourceQuotaPtrInput is an input type that accepts ProjectResourceQuotaArgs, ProjectResourceQuotaPtr and ProjectResourceQuotaPtrOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaPtrInput` via:
 //
-// 		 ProjectResourceQuotaArgs{...}
+//          ProjectResourceQuotaArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectResourceQuotaPtrInput interface {
 	pulumi.Input
 
@@ -41861,8 +41471,7 @@ type ProjectResourceQuotaNamespaceDefaultLimit struct {
 // ProjectResourceQuotaNamespaceDefaultLimitInput is an input type that accepts ProjectResourceQuotaNamespaceDefaultLimitArgs and ProjectResourceQuotaNamespaceDefaultLimitOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaNamespaceDefaultLimitInput` via:
 //
-// 		 ProjectResourceQuotaNamespaceDefaultLimitArgs{...}
-//
+//          ProjectResourceQuotaNamespaceDefaultLimitArgs{...}
 type ProjectResourceQuotaNamespaceDefaultLimitInput interface {
 	pulumi.Input
 
@@ -41921,12 +41530,11 @@ func (i ProjectResourceQuotaNamespaceDefaultLimitArgs) ToProjectResourceQuotaNam
 // ProjectResourceQuotaNamespaceDefaultLimitPtrInput is an input type that accepts ProjectResourceQuotaNamespaceDefaultLimitArgs, ProjectResourceQuotaNamespaceDefaultLimitPtr and ProjectResourceQuotaNamespaceDefaultLimitPtrOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaNamespaceDefaultLimitPtrInput` via:
 //
-// 		 ProjectResourceQuotaNamespaceDefaultLimitArgs{...}
+//          ProjectResourceQuotaNamespaceDefaultLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectResourceQuotaNamespaceDefaultLimitPtrInput interface {
 	pulumi.Input
 
@@ -42220,8 +41828,7 @@ type ProjectResourceQuotaProjectLimit struct {
 // ProjectResourceQuotaProjectLimitInput is an input type that accepts ProjectResourceQuotaProjectLimitArgs and ProjectResourceQuotaProjectLimitOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaProjectLimitInput` via:
 //
-// 		 ProjectResourceQuotaProjectLimitArgs{...}
-//
+//          ProjectResourceQuotaProjectLimitArgs{...}
 type ProjectResourceQuotaProjectLimitInput interface {
 	pulumi.Input
 
@@ -42280,12 +41887,11 @@ func (i ProjectResourceQuotaProjectLimitArgs) ToProjectResourceQuotaProjectLimit
 // ProjectResourceQuotaProjectLimitPtrInput is an input type that accepts ProjectResourceQuotaProjectLimitArgs, ProjectResourceQuotaProjectLimitPtr and ProjectResourceQuotaProjectLimitPtrOutput values.
 // You can construct a concrete instance of `ProjectResourceQuotaProjectLimitPtrInput` via:
 //
-// 		 ProjectResourceQuotaProjectLimitArgs{...}
+//          ProjectResourceQuotaProjectLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProjectResourceQuotaProjectLimitPtrInput interface {
 	pulumi.Input
 
@@ -42558,8 +42164,7 @@ type RegistryRegistry struct {
 // RegistryRegistryInput is an input type that accepts RegistryRegistryArgs and RegistryRegistryOutput values.
 // You can construct a concrete instance of `RegistryRegistryInput` via:
 //
-// 		 RegistryRegistryArgs{...}
-//
+//          RegistryRegistryArgs{...}
 type RegistryRegistryInput interface {
 	pulumi.Input
 
@@ -42591,8 +42196,7 @@ func (i RegistryRegistryArgs) ToRegistryRegistryOutputWithContext(ctx context.Co
 // RegistryRegistryArrayInput is an input type that accepts RegistryRegistryArray and RegistryRegistryArrayOutput values.
 // You can construct a concrete instance of `RegistryRegistryArrayInput` via:
 //
-// 		 RegistryRegistryArray{ RegistryRegistryArgs{...} }
-//
+//          RegistryRegistryArray{ RegistryRegistryArgs{...} }
 type RegistryRegistryArrayInput interface {
 	pulumi.Input
 
@@ -42679,8 +42283,7 @@ type RoleTempalteRule struct {
 // RoleTempalteRuleInput is an input type that accepts RoleTempalteRuleArgs and RoleTempalteRuleOutput values.
 // You can construct a concrete instance of `RoleTempalteRuleInput` via:
 //
-// 		 RoleTempalteRuleArgs{...}
-//
+//          RoleTempalteRuleArgs{...}
 type RoleTempalteRuleInput interface {
 	pulumi.Input
 
@@ -42716,8 +42319,7 @@ func (i RoleTempalteRuleArgs) ToRoleTempalteRuleOutputWithContext(ctx context.Co
 // RoleTempalteRuleArrayInput is an input type that accepts RoleTempalteRuleArray and RoleTempalteRuleArrayOutput values.
 // You can construct a concrete instance of `RoleTempalteRuleArrayInput` via:
 //
-// 		 RoleTempalteRuleArray{ RoleTempalteRuleArgs{...} }
-//
+//          RoleTempalteRuleArray{ RoleTempalteRuleArgs{...} }
 type RoleTempalteRuleArrayInput interface {
 	pulumi.Input
 
@@ -42841,8 +42443,7 @@ type GetClusterAksConfig struct {
 // GetClusterAksConfigInput is an input type that accepts GetClusterAksConfigArgs and GetClusterAksConfigOutput values.
 // You can construct a concrete instance of `GetClusterAksConfigInput` via:
 //
-// 		 GetClusterAksConfigArgs{...}
-//
+//          GetClusterAksConfigArgs{...}
 type GetClusterAksConfigInput interface {
 	pulumi.Input
 
@@ -43074,8 +42675,7 @@ type GetClusterAlertGroupRecipient struct {
 // GetClusterAlertGroupRecipientInput is an input type that accepts GetClusterAlertGroupRecipientArgs and GetClusterAlertGroupRecipientOutput values.
 // You can construct a concrete instance of `GetClusterAlertGroupRecipientInput` via:
 //
-// 		 GetClusterAlertGroupRecipientArgs{...}
-//
+//          GetClusterAlertGroupRecipientArgs{...}
 type GetClusterAlertGroupRecipientInput interface {
 	pulumi.Input
 
@@ -43105,8 +42705,7 @@ func (i GetClusterAlertGroupRecipientArgs) ToGetClusterAlertGroupRecipientOutput
 // GetClusterAlertGroupRecipientArrayInput is an input type that accepts GetClusterAlertGroupRecipientArray and GetClusterAlertGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `GetClusterAlertGroupRecipientArrayInput` via:
 //
-// 		 GetClusterAlertGroupRecipientArray{ GetClusterAlertGroupRecipientArgs{...} }
-//
+//          GetClusterAlertGroupRecipientArray{ GetClusterAlertGroupRecipientArgs{...} }
 type GetClusterAlertGroupRecipientArrayInput interface {
 	pulumi.Input
 
@@ -43186,8 +42785,7 @@ type GetClusterAlterRuleEventRule struct {
 // GetClusterAlterRuleEventRuleInput is an input type that accepts GetClusterAlterRuleEventRuleArgs and GetClusterAlterRuleEventRuleOutput values.
 // You can construct a concrete instance of `GetClusterAlterRuleEventRuleInput` via:
 //
-// 		 GetClusterAlterRuleEventRuleArgs{...}
-//
+//          GetClusterAlterRuleEventRuleArgs{...}
 type GetClusterAlterRuleEventRuleInput interface {
 	pulumi.Input
 
@@ -43245,8 +42843,7 @@ type GetClusterAlterRuleMetricRule struct {
 // GetClusterAlterRuleMetricRuleInput is an input type that accepts GetClusterAlterRuleMetricRuleArgs and GetClusterAlterRuleMetricRuleOutput values.
 // You can construct a concrete instance of `GetClusterAlterRuleMetricRuleInput` via:
 //
-// 		 GetClusterAlterRuleMetricRuleArgs{...}
-//
+//          GetClusterAlterRuleMetricRuleArgs{...}
 type GetClusterAlterRuleMetricRuleInput interface {
 	pulumi.Input
 
@@ -43319,8 +42916,7 @@ type GetClusterAlterRuleNodeRule struct {
 // GetClusterAlterRuleNodeRuleInput is an input type that accepts GetClusterAlterRuleNodeRuleArgs and GetClusterAlterRuleNodeRuleOutput values.
 // You can construct a concrete instance of `GetClusterAlterRuleNodeRuleInput` via:
 //
-// 		 GetClusterAlterRuleNodeRuleArgs{...}
-//
+//          GetClusterAlterRuleNodeRuleArgs{...}
 type GetClusterAlterRuleNodeRuleInput interface {
 	pulumi.Input
 
@@ -43389,8 +42985,7 @@ type GetClusterAlterRuleSystemServiceRule struct {
 // GetClusterAlterRuleSystemServiceRuleInput is an input type that accepts GetClusterAlterRuleSystemServiceRuleArgs and GetClusterAlterRuleSystemServiceRuleOutput values.
 // You can construct a concrete instance of `GetClusterAlterRuleSystemServiceRuleInput` via:
 //
-// 		 GetClusterAlterRuleSystemServiceRuleArgs{...}
-//
+//          GetClusterAlterRuleSystemServiceRuleArgs{...}
 type GetClusterAlterRuleSystemServiceRuleInput interface {
 	pulumi.Input
 
@@ -43441,8 +43036,7 @@ type GetClusterClusterAuthEndpoint struct {
 // GetClusterClusterAuthEndpointInput is an input type that accepts GetClusterClusterAuthEndpointArgs and GetClusterClusterAuthEndpointOutput values.
 // You can construct a concrete instance of `GetClusterClusterAuthEndpointInput` via:
 //
-// 		 GetClusterClusterAuthEndpointArgs{...}
-//
+//          GetClusterClusterAuthEndpointArgs{...}
 type GetClusterClusterAuthEndpointInput interface {
 	pulumi.Input
 
@@ -43502,8 +43096,7 @@ type GetClusterClusterMonitoringInput struct {
 // GetClusterClusterMonitoringInputInput is an input type that accepts GetClusterClusterMonitoringInputArgs and GetClusterClusterMonitoringInputOutput values.
 // You can construct a concrete instance of `GetClusterClusterMonitoringInputInput` via:
 //
-// 		 GetClusterClusterMonitoringInputArgs{...}
-//
+//          GetClusterClusterMonitoringInputArgs{...}
 type GetClusterClusterMonitoringInputInput interface {
 	pulumi.Input
 
@@ -43571,8 +43164,7 @@ type GetClusterClusterRegistrationToken struct {
 // GetClusterClusterRegistrationTokenInput is an input type that accepts GetClusterClusterRegistrationTokenArgs and GetClusterClusterRegistrationTokenOutput values.
 // You can construct a concrete instance of `GetClusterClusterRegistrationTokenInput` via:
 //
-// 		 GetClusterClusterRegistrationTokenArgs{...}
-//
+//          GetClusterClusterRegistrationTokenArgs{...}
 type GetClusterClusterRegistrationTokenInput interface {
 	pulumi.Input
 
@@ -43681,8 +43273,7 @@ type GetClusterClusterTemplateAnswers struct {
 // GetClusterClusterTemplateAnswersInput is an input type that accepts GetClusterClusterTemplateAnswersArgs and GetClusterClusterTemplateAnswersOutput values.
 // You can construct a concrete instance of `GetClusterClusterTemplateAnswersInput` via:
 //
-// 		 GetClusterClusterTemplateAnswersArgs{...}
-//
+//          GetClusterClusterTemplateAnswersArgs{...}
 type GetClusterClusterTemplateAnswersInput interface {
 	pulumi.Input
 
@@ -43744,8 +43335,7 @@ type GetClusterClusterTemplateQuestion struct {
 // GetClusterClusterTemplateQuestionInput is an input type that accepts GetClusterClusterTemplateQuestionArgs and GetClusterClusterTemplateQuestionOutput values.
 // You can construct a concrete instance of `GetClusterClusterTemplateQuestionInput` via:
 //
-// 		 GetClusterClusterTemplateQuestionArgs{...}
-//
+//          GetClusterClusterTemplateQuestionArgs{...}
 type GetClusterClusterTemplateQuestionInput interface {
 	pulumi.Input
 
@@ -43775,8 +43365,7 @@ func (i GetClusterClusterTemplateQuestionArgs) ToGetClusterClusterTemplateQuesti
 // GetClusterClusterTemplateQuestionArrayInput is an input type that accepts GetClusterClusterTemplateQuestionArray and GetClusterClusterTemplateQuestionArrayOutput values.
 // You can construct a concrete instance of `GetClusterClusterTemplateQuestionArrayInput` via:
 //
-// 		 GetClusterClusterTemplateQuestionArray{ GetClusterClusterTemplateQuestionArgs{...} }
-//
+//          GetClusterClusterTemplateQuestionArray{ GetClusterClusterTemplateQuestionArgs{...} }
 type GetClusterClusterTemplateQuestionArrayInput interface {
 	pulumi.Input
 
@@ -43872,8 +43461,7 @@ type GetClusterEksConfig struct {
 // GetClusterEksConfigInput is an input type that accepts GetClusterEksConfigArgs and GetClusterEksConfigOutput values.
 // You can construct a concrete instance of `GetClusterEksConfigInput` via:
 //
-// 		 GetClusterEksConfigArgs{...}
-//
+//          GetClusterEksConfigArgs{...}
 type GetClusterEksConfigInput interface {
 	pulumi.Input
 
@@ -44061,8 +43649,7 @@ type GetClusterGkeConfig struct {
 // GetClusterGkeConfigInput is an input type that accepts GetClusterGkeConfigArgs and GetClusterGkeConfigOutput values.
 // You can construct a concrete instance of `GetClusterGkeConfigInput` via:
 //
-// 		 GetClusterGkeConfigArgs{...}
-//
+//          GetClusterGkeConfigArgs{...}
 type GetClusterGkeConfigInput interface {
 	pulumi.Input
 
@@ -44376,8 +43963,7 @@ type GetClusterK3sConfig struct {
 // GetClusterK3sConfigInput is an input type that accepts GetClusterK3sConfigArgs and GetClusterK3sConfigOutput values.
 // You can construct a concrete instance of `GetClusterK3sConfigInput` via:
 //
-// 		 GetClusterK3sConfigArgs{...}
-//
+//          GetClusterK3sConfigArgs{...}
 type GetClusterK3sConfigInput interface {
 	pulumi.Input
 
@@ -44434,8 +44020,7 @@ type GetClusterK3sConfigUpgradeStrategy struct {
 // GetClusterK3sConfigUpgradeStrategyInput is an input type that accepts GetClusterK3sConfigUpgradeStrategyArgs and GetClusterK3sConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `GetClusterK3sConfigUpgradeStrategyInput` via:
 //
-// 		 GetClusterK3sConfigUpgradeStrategyArgs{...}
-//
+//          GetClusterK3sConfigUpgradeStrategyArgs{...}
 type GetClusterK3sConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -44502,8 +44087,7 @@ type GetClusterLoggingCustomTargetConfig struct {
 // GetClusterLoggingCustomTargetConfigInput is an input type that accepts GetClusterLoggingCustomTargetConfigArgs and GetClusterLoggingCustomTargetConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingCustomTargetConfigInput` via:
 //
-// 		 GetClusterLoggingCustomTargetConfigArgs{...}
-//
+//          GetClusterLoggingCustomTargetConfigArgs{...}
 type GetClusterLoggingCustomTargetConfigInput interface {
 	pulumi.Input
 
@@ -44577,8 +44161,7 @@ type GetClusterLoggingElasticsearchConfig struct {
 // GetClusterLoggingElasticsearchConfigInput is an input type that accepts GetClusterLoggingElasticsearchConfigArgs and GetClusterLoggingElasticsearchConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingElasticsearchConfigInput` via:
 //
-// 		 GetClusterLoggingElasticsearchConfigArgs{...}
-//
+//          GetClusterLoggingElasticsearchConfigArgs{...}
 type GetClusterLoggingElasticsearchConfigInput interface {
 	pulumi.Input
 
@@ -44680,8 +44263,7 @@ type GetClusterLoggingFluentdConfig struct {
 // GetClusterLoggingFluentdConfigInput is an input type that accepts GetClusterLoggingFluentdConfigArgs and GetClusterLoggingFluentdConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingFluentdConfigInput` via:
 //
-// 		 GetClusterLoggingFluentdConfigArgs{...}
-//
+//          GetClusterLoggingFluentdConfigArgs{...}
 type GetClusterLoggingFluentdConfigInput interface {
 	pulumi.Input
 
@@ -44753,8 +44335,7 @@ type GetClusterLoggingFluentdConfigFluentServer struct {
 // GetClusterLoggingFluentdConfigFluentServerInput is an input type that accepts GetClusterLoggingFluentdConfigFluentServerArgs and GetClusterLoggingFluentdConfigFluentServerOutput values.
 // You can construct a concrete instance of `GetClusterLoggingFluentdConfigFluentServerInput` via:
 //
-// 		 GetClusterLoggingFluentdConfigFluentServerArgs{...}
-//
+//          GetClusterLoggingFluentdConfigFluentServerArgs{...}
 type GetClusterLoggingFluentdConfigFluentServerInput interface {
 	pulumi.Input
 
@@ -44787,8 +44368,7 @@ func (i GetClusterLoggingFluentdConfigFluentServerArgs) ToGetClusterLoggingFluen
 // GetClusterLoggingFluentdConfigFluentServerArrayInput is an input type that accepts GetClusterLoggingFluentdConfigFluentServerArray and GetClusterLoggingFluentdConfigFluentServerArrayOutput values.
 // You can construct a concrete instance of `GetClusterLoggingFluentdConfigFluentServerArrayInput` via:
 //
-// 		 GetClusterLoggingFluentdConfigFluentServerArray{ GetClusterLoggingFluentdConfigFluentServerArgs{...} }
-//
+//          GetClusterLoggingFluentdConfigFluentServerArray{ GetClusterLoggingFluentdConfigFluentServerArgs{...} }
 type GetClusterLoggingFluentdConfigFluentServerArrayInput interface {
 	pulumi.Input
 
@@ -44884,8 +44464,7 @@ type GetClusterLoggingKafkaConfig struct {
 // GetClusterLoggingKafkaConfigInput is an input type that accepts GetClusterLoggingKafkaConfigArgs and GetClusterLoggingKafkaConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingKafkaConfigInput` via:
 //
-// 		 GetClusterLoggingKafkaConfigArgs{...}
-//
+//          GetClusterLoggingKafkaConfigArgs{...}
 type GetClusterLoggingKafkaConfigInput interface {
 	pulumi.Input
 
@@ -44967,8 +44546,7 @@ type GetClusterLoggingSplunkConfig struct {
 // GetClusterLoggingSplunkConfigInput is an input type that accepts GetClusterLoggingSplunkConfigArgs and GetClusterLoggingSplunkConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingSplunkConfigInput` via:
 //
-// 		 GetClusterLoggingSplunkConfigArgs{...}
-//
+//          GetClusterLoggingSplunkConfigArgs{...}
 type GetClusterLoggingSplunkConfigInput interface {
 	pulumi.Input
 
@@ -45065,8 +44643,7 @@ type GetClusterLoggingSyslogConfig struct {
 // GetClusterLoggingSyslogConfigInput is an input type that accepts GetClusterLoggingSyslogConfigArgs and GetClusterLoggingSyslogConfigOutput values.
 // You can construct a concrete instance of `GetClusterLoggingSyslogConfigInput` via:
 //
-// 		 GetClusterLoggingSyslogConfigArgs{...}
-//
+//          GetClusterLoggingSyslogConfigArgs{...}
 type GetClusterLoggingSyslogConfigInput interface {
 	pulumi.Input
 
@@ -45175,8 +44752,7 @@ type GetClusterRkeConfig struct {
 // GetClusterRkeConfigInput is an input type that accepts GetClusterRkeConfigArgs and GetClusterRkeConfigOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigInput` via:
 //
-// 		 GetClusterRkeConfigArgs{...}
-//
+//          GetClusterRkeConfigArgs{...}
 type GetClusterRkeConfigInput interface {
 	pulumi.Input
 
@@ -45326,8 +44902,7 @@ type GetClusterRkeConfigAuthentication struct {
 // GetClusterRkeConfigAuthenticationInput is an input type that accepts GetClusterRkeConfigAuthenticationArgs and GetClusterRkeConfigAuthenticationOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigAuthenticationInput` via:
 //
-// 		 GetClusterRkeConfigAuthenticationArgs{...}
-//
+//          GetClusterRkeConfigAuthenticationArgs{...}
 type GetClusterRkeConfigAuthenticationInput interface {
 	pulumi.Input
 
@@ -45382,8 +44957,7 @@ type GetClusterRkeConfigAuthorization struct {
 // GetClusterRkeConfigAuthorizationInput is an input type that accepts GetClusterRkeConfigAuthorizationArgs and GetClusterRkeConfigAuthorizationOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigAuthorizationInput` via:
 //
-// 		 GetClusterRkeConfigAuthorizationArgs{...}
-//
+//          GetClusterRkeConfigAuthorizationArgs{...}
 type GetClusterRkeConfigAuthorizationInput interface {
 	pulumi.Input
 
@@ -45442,8 +45016,7 @@ type GetClusterRkeConfigBastionHost struct {
 // GetClusterRkeConfigBastionHostInput is an input type that accepts GetClusterRkeConfigBastionHostArgs and GetClusterRkeConfigBastionHostOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigBastionHostInput` via:
 //
-// 		 GetClusterRkeConfigBastionHostArgs{...}
-//
+//          GetClusterRkeConfigBastionHostArgs{...}
 type GetClusterRkeConfigBastionHostInput interface {
 	pulumi.Input
 
@@ -45523,8 +45096,7 @@ type GetClusterRkeConfigCloudProvider struct {
 // GetClusterRkeConfigCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderArgs and GetClusterRkeConfigCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderArgs{...}
 type GetClusterRkeConfigCloudProviderInput interface {
 	pulumi.Input
 
@@ -45609,8 +45181,7 @@ type GetClusterRkeConfigCloudProviderAwsCloudProvider struct {
 // GetClusterRkeConfigCloudProviderAwsCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderArgs and GetClusterRkeConfigCloudProviderAwsCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
 type GetClusterRkeConfigCloudProviderAwsCloudProviderInput interface {
 	pulumi.Input
 
@@ -45646,12 +45217,11 @@ func (i GetClusterRkeConfigCloudProviderAwsCloudProviderArgs) ToGetClusterRkeCon
 // GetClusterRkeConfigCloudProviderAwsCloudProviderPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderArgs, GetClusterRkeConfigCloudProviderAwsCloudProviderPtr and GetClusterRkeConfigCloudProviderAwsCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderAwsCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -45766,8 +45336,7 @@ type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal struct {
 // GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs and GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -45811,12 +45380,11 @@ func (i GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs) ToGetCluster
 // GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs, GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtr and GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -46029,8 +45597,7 @@ type GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride struct {
 // GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs and GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
 type GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface {
 	pulumi.Input
 
@@ -46062,8 +45629,7 @@ func (i GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs) ToG
 // GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput is an input type that accepts GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray and GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
-//
+//          GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
 type GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput interface {
 	pulumi.Input
 
@@ -46178,8 +45744,7 @@ type GetClusterRkeConfigCloudProviderAzureCloudProvider struct {
 // GetClusterRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderAzureCloudProviderArgs and GetClusterRkeConfigCloudProviderAzureCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAzureCloudProviderInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
 type GetClusterRkeConfigCloudProviderAzureCloudProviderInput interface {
 	pulumi.Input
 
@@ -46242,12 +45807,11 @@ func (i GetClusterRkeConfigCloudProviderAzureCloudProviderArgs) ToGetClusterRkeC
 // GetClusterRkeConfigCloudProviderAzureCloudProviderPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderAzureCloudProviderArgs, GetClusterRkeConfigCloudProviderAzureCloudProviderPtr and GetClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderAzureCloudProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
+//          GetClusterRkeConfigCloudProviderAzureCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderAzureCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -46704,8 +46268,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProvider struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderInput interface {
 	pulumi.Input
 
@@ -46744,12 +46307,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs) ToGetCluster
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderPtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -46902,8 +46464,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput interface {
 	pulumi.Input
 
@@ -46940,12 +46501,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs) 
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput interface {
 	pulumi.Input
 
@@ -47073,8 +46633,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -47118,12 +46677,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs) ToGetC
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -47339,8 +46897,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput interface {
 	pulumi.Input
 
@@ -47385,12 +46942,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs) 
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput interface {
 	pulumi.Input
 
@@ -47622,8 +47178,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataInput interface {
 	pulumi.Input
 
@@ -47659,12 +47214,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs) ToGe
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput interface {
 	pulumi.Input
 
@@ -47766,8 +47320,7 @@ type GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute struct {
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs and GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteInput interface {
 	pulumi.Input
 
@@ -47802,12 +47355,11 @@ func (i GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs) ToGetCl
 // GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput is an input type that accepts GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs, GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtr and GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
+//          GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput interface {
 	pulumi.Input
 
@@ -47900,8 +47452,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProvider struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderInput interface {
 	pulumi.Input
 
@@ -47940,12 +47491,11 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs) ToGetClusterRk
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs, GetClusterRkeConfigCloudProviderVsphereCloudProviderPtr and GetClusterRkeConfigCloudProviderVsphereCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -48096,8 +47646,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskInput interface {
 	pulumi.Input
 
@@ -48132,12 +47681,11 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs) ToGetClust
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs, GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtr and GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput interface {
 	pulumi.Input
 
@@ -48231,8 +47779,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -48272,12 +47819,11 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs) ToGetClu
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs, GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtr and GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -48431,8 +47977,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkInput interface {
 	pulumi.Input
 
@@ -48467,12 +48012,11 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs) ToGetCl
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs, GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtr and GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput interface {
 	pulumi.Input
 
@@ -48567,8 +48111,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput interface {
 	pulumi.Input
 
@@ -48601,8 +48144,7 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs) T
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray and GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput interface {
 	pulumi.Input
 
@@ -48696,8 +48238,7 @@ type GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace struct {
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs and GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
-//
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput interface {
 	pulumi.Input
 
@@ -48736,12 +48277,11 @@ func (i GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs) ToGet
 // GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput is an input type that accepts GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs, GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtr and GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput` via:
 //
-// 		 GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
+//          GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput interface {
 	pulumi.Input
 
@@ -48890,8 +48430,7 @@ type GetClusterRkeConfigDns struct {
 // GetClusterRkeConfigDnsInput is an input type that accepts GetClusterRkeConfigDnsArgs and GetClusterRkeConfigDnsOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigDnsInput` via:
 //
-// 		 GetClusterRkeConfigDnsArgs{...}
-//
+//          GetClusterRkeConfigDnsArgs{...}
 type GetClusterRkeConfigDnsInput interface {
 	pulumi.Input
 
@@ -48961,8 +48500,7 @@ type GetClusterRkeConfigDnsNodelocal struct {
 // GetClusterRkeConfigDnsNodelocalInput is an input type that accepts GetClusterRkeConfigDnsNodelocalArgs and GetClusterRkeConfigDnsNodelocalOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigDnsNodelocalInput` via:
 //
-// 		 GetClusterRkeConfigDnsNodelocalArgs{...}
-//
+//          GetClusterRkeConfigDnsNodelocalArgs{...}
 type GetClusterRkeConfigDnsNodelocalInput interface {
 	pulumi.Input
 
@@ -48998,12 +48536,11 @@ func (i GetClusterRkeConfigDnsNodelocalArgs) ToGetClusterRkeConfigDnsNodelocalPt
 // GetClusterRkeConfigDnsNodelocalPtrInput is an input type that accepts GetClusterRkeConfigDnsNodelocalArgs, GetClusterRkeConfigDnsNodelocalPtr and GetClusterRkeConfigDnsNodelocalPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigDnsNodelocalPtrInput` via:
 //
-// 		 GetClusterRkeConfigDnsNodelocalArgs{...}
+//          GetClusterRkeConfigDnsNodelocalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigDnsNodelocalPtrInput interface {
 	pulumi.Input
 
@@ -49107,8 +48644,7 @@ type GetClusterRkeConfigIngress struct {
 // GetClusterRkeConfigIngressInput is an input type that accepts GetClusterRkeConfigIngressArgs and GetClusterRkeConfigIngressOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigIngressInput` via:
 //
-// 		 GetClusterRkeConfigIngressArgs{...}
-//
+//          GetClusterRkeConfigIngressArgs{...}
 type GetClusterRkeConfigIngressInput interface {
 	pulumi.Input
 
@@ -49181,8 +48717,7 @@ type GetClusterRkeConfigMonitoring struct {
 // GetClusterRkeConfigMonitoringInput is an input type that accepts GetClusterRkeConfigMonitoringArgs and GetClusterRkeConfigMonitoringOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigMonitoringInput` via:
 //
-// 		 GetClusterRkeConfigMonitoringArgs{...}
-//
+//          GetClusterRkeConfigMonitoringArgs{...}
 type GetClusterRkeConfigMonitoringInput interface {
 	pulumi.Input
 
@@ -49254,8 +48789,7 @@ type GetClusterRkeConfigMonitoringUpdateStrategy struct {
 // GetClusterRkeConfigMonitoringUpdateStrategyInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyArgs and GetClusterRkeConfigMonitoringUpdateStrategyOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyInput` via:
 //
-// 		 GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
-//
+//          GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
 type GetClusterRkeConfigMonitoringUpdateStrategyInput interface {
 	pulumi.Input
 
@@ -49291,12 +48825,11 @@ func (i GetClusterRkeConfigMonitoringUpdateStrategyArgs) ToGetClusterRkeConfigMo
 // GetClusterRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyArgs, GetClusterRkeConfigMonitoringUpdateStrategyPtr and GetClusterRkeConfigMonitoringUpdateStrategyPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyPtrInput` via:
 //
-// 		 GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
+//          GetClusterRkeConfigMonitoringUpdateStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigMonitoringUpdateStrategyPtrInput interface {
 	pulumi.Input
 
@@ -49401,8 +48934,7 @@ type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate struct {
 // GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
 //
-// 		 GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
-//
+//          GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -49438,12 +48970,11 @@ func (i GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs) ToGetClust
 // GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
 //
-// 		 GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//          GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -49551,8 +49082,7 @@ type GetClusterRkeConfigNetwork struct {
 // GetClusterRkeConfigNetworkInput is an input type that accepts GetClusterRkeConfigNetworkArgs and GetClusterRkeConfigNetworkOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkInput` via:
 //
-// 		 GetClusterRkeConfigNetworkArgs{...}
-//
+//          GetClusterRkeConfigNetworkArgs{...}
 type GetClusterRkeConfigNetworkInput interface {
 	pulumi.Input
 
@@ -49639,8 +49169,7 @@ type GetClusterRkeConfigNetworkCalicoNetworkProvider struct {
 // GetClusterRkeConfigNetworkCalicoNetworkProviderInput is an input type that accepts GetClusterRkeConfigNetworkCalicoNetworkProviderArgs and GetClusterRkeConfigNetworkCalicoNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkCalicoNetworkProviderInput` via:
 //
-// 		 GetClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
-//
+//          GetClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
 type GetClusterRkeConfigNetworkCalicoNetworkProviderInput interface {
 	pulumi.Input
 
@@ -49675,12 +49204,11 @@ func (i GetClusterRkeConfigNetworkCalicoNetworkProviderArgs) ToGetClusterRkeConf
 // GetClusterRkeConfigNetworkCalicoNetworkProviderPtrInput is an input type that accepts GetClusterRkeConfigNetworkCalicoNetworkProviderArgs, GetClusterRkeConfigNetworkCalicoNetworkProviderPtr and GetClusterRkeConfigNetworkCalicoNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkCalicoNetworkProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
+//          GetClusterRkeConfigNetworkCalicoNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigNetworkCalicoNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -49769,8 +49297,7 @@ type GetClusterRkeConfigNetworkCanalNetworkProvider struct {
 // GetClusterRkeConfigNetworkCanalNetworkProviderInput is an input type that accepts GetClusterRkeConfigNetworkCanalNetworkProviderArgs and GetClusterRkeConfigNetworkCanalNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkCanalNetworkProviderInput` via:
 //
-// 		 GetClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
-//
+//          GetClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
 type GetClusterRkeConfigNetworkCanalNetworkProviderInput interface {
 	pulumi.Input
 
@@ -49805,12 +49332,11 @@ func (i GetClusterRkeConfigNetworkCanalNetworkProviderArgs) ToGetClusterRkeConfi
 // GetClusterRkeConfigNetworkCanalNetworkProviderPtrInput is an input type that accepts GetClusterRkeConfigNetworkCanalNetworkProviderArgs, GetClusterRkeConfigNetworkCanalNetworkProviderPtr and GetClusterRkeConfigNetworkCanalNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkCanalNetworkProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
+//          GetClusterRkeConfigNetworkCanalNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigNetworkCanalNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -49899,8 +49425,7 @@ type GetClusterRkeConfigNetworkFlannelNetworkProvider struct {
 // GetClusterRkeConfigNetworkFlannelNetworkProviderInput is an input type that accepts GetClusterRkeConfigNetworkFlannelNetworkProviderArgs and GetClusterRkeConfigNetworkFlannelNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkFlannelNetworkProviderInput` via:
 //
-// 		 GetClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
-//
+//          GetClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
 type GetClusterRkeConfigNetworkFlannelNetworkProviderInput interface {
 	pulumi.Input
 
@@ -49935,12 +49460,11 @@ func (i GetClusterRkeConfigNetworkFlannelNetworkProviderArgs) ToGetClusterRkeCon
 // GetClusterRkeConfigNetworkFlannelNetworkProviderPtrInput is an input type that accepts GetClusterRkeConfigNetworkFlannelNetworkProviderArgs, GetClusterRkeConfigNetworkFlannelNetworkProviderPtr and GetClusterRkeConfigNetworkFlannelNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkFlannelNetworkProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
+//          GetClusterRkeConfigNetworkFlannelNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigNetworkFlannelNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -50029,8 +49553,7 @@ type GetClusterRkeConfigNetworkWeaveNetworkProvider struct {
 // GetClusterRkeConfigNetworkWeaveNetworkProviderInput is an input type that accepts GetClusterRkeConfigNetworkWeaveNetworkProviderArgs and GetClusterRkeConfigNetworkWeaveNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkWeaveNetworkProviderInput` via:
 //
-// 		 GetClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
-//
+//          GetClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
 type GetClusterRkeConfigNetworkWeaveNetworkProviderInput interface {
 	pulumi.Input
 
@@ -50065,12 +49588,11 @@ func (i GetClusterRkeConfigNetworkWeaveNetworkProviderArgs) ToGetClusterRkeConfi
 // GetClusterRkeConfigNetworkWeaveNetworkProviderPtrInput is an input type that accepts GetClusterRkeConfigNetworkWeaveNetworkProviderArgs, GetClusterRkeConfigNetworkWeaveNetworkProviderPtr and GetClusterRkeConfigNetworkWeaveNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNetworkWeaveNetworkProviderPtrInput` via:
 //
-// 		 GetClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
+//          GetClusterRkeConfigNetworkWeaveNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigNetworkWeaveNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -50171,8 +49693,7 @@ type GetClusterRkeConfigNode struct {
 // GetClusterRkeConfigNodeInput is an input type that accepts GetClusterRkeConfigNodeArgs and GetClusterRkeConfigNodeOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNodeInput` via:
 //
-// 		 GetClusterRkeConfigNodeArgs{...}
-//
+//          GetClusterRkeConfigNodeArgs{...}
 type GetClusterRkeConfigNodeInput interface {
 	pulumi.Input
 
@@ -50211,8 +49732,7 @@ func (i GetClusterRkeConfigNodeArgs) ToGetClusterRkeConfigNodeOutputWithContext(
 // GetClusterRkeConfigNodeArrayInput is an input type that accepts GetClusterRkeConfigNodeArray and GetClusterRkeConfigNodeArrayOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigNodeArrayInput` via:
 //
-// 		 GetClusterRkeConfigNodeArray{ GetClusterRkeConfigNodeArgs{...} }
-//
+//          GetClusterRkeConfigNodeArray{ GetClusterRkeConfigNodeArgs{...} }
 type GetClusterRkeConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -50327,8 +49847,7 @@ type GetClusterRkeConfigPrivateRegistry struct {
 // GetClusterRkeConfigPrivateRegistryInput is an input type that accepts GetClusterRkeConfigPrivateRegistryArgs and GetClusterRkeConfigPrivateRegistryOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigPrivateRegistryInput` via:
 //
-// 		 GetClusterRkeConfigPrivateRegistryArgs{...}
-//
+//          GetClusterRkeConfigPrivateRegistryArgs{...}
 type GetClusterRkeConfigPrivateRegistryInput interface {
 	pulumi.Input
 
@@ -50358,8 +49877,7 @@ func (i GetClusterRkeConfigPrivateRegistryArgs) ToGetClusterRkeConfigPrivateRegi
 // GetClusterRkeConfigPrivateRegistryArrayInput is an input type that accepts GetClusterRkeConfigPrivateRegistryArray and GetClusterRkeConfigPrivateRegistryArrayOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigPrivateRegistryArrayInput` via:
 //
-// 		 GetClusterRkeConfigPrivateRegistryArray{ GetClusterRkeConfigPrivateRegistryArgs{...} }
-//
+//          GetClusterRkeConfigPrivateRegistryArray{ GetClusterRkeConfigPrivateRegistryArgs{...} }
 type GetClusterRkeConfigPrivateRegistryArrayInput interface {
 	pulumi.Input
 
@@ -50443,8 +49961,7 @@ type GetClusterRkeConfigServices struct {
 // GetClusterRkeConfigServicesInput is an input type that accepts GetClusterRkeConfigServicesArgs and GetClusterRkeConfigServicesOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesInput` via:
 //
-// 		 GetClusterRkeConfigServicesArgs{...}
-//
+//          GetClusterRkeConfigServicesArgs{...}
 type GetClusterRkeConfigServicesInput interface {
 	pulumi.Input
 
@@ -50532,8 +50049,7 @@ type GetClusterRkeConfigServicesEtcd struct {
 // GetClusterRkeConfigServicesEtcdInput is an input type that accepts GetClusterRkeConfigServicesEtcdArgs and GetClusterRkeConfigServicesEtcdOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesEtcdInput` via:
 //
-// 		 GetClusterRkeConfigServicesEtcdArgs{...}
-//
+//          GetClusterRkeConfigServicesEtcdArgs{...}
 type GetClusterRkeConfigServicesEtcdInput interface {
 	pulumi.Input
 
@@ -50658,8 +50174,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfig struct {
 // GetClusterRkeConfigServicesEtcdBackupConfigInput is an input type that accepts GetClusterRkeConfigServicesEtcdBackupConfigArgs and GetClusterRkeConfigServicesEtcdBackupConfigOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesEtcdBackupConfigInput` via:
 //
-// 		 GetClusterRkeConfigServicesEtcdBackupConfigArgs{...}
-//
+//          GetClusterRkeConfigServicesEtcdBackupConfigArgs{...}
 type GetClusterRkeConfigServicesEtcdBackupConfigInput interface {
 	pulumi.Input
 
@@ -50736,8 +50251,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
 // GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput is an input type that accepts GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs and GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput` via:
 //
-// 		 GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
-//
+//          GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 type GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -50778,12 +50292,11 @@ func (i GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs) ToGetClus
 // GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput is an input type that accepts GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs, GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtr and GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
+//          GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -50961,8 +50474,7 @@ type GetClusterRkeConfigServicesKubeApi struct {
 // GetClusterRkeConfigServicesKubeApiInput is an input type that accepts GetClusterRkeConfigServicesKubeApiArgs and GetClusterRkeConfigServicesKubeApiOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeApiArgs{...}
 type GetClusterRkeConfigServicesKubeApiInput interface {
 	pulumi.Input
 
@@ -51073,8 +50585,7 @@ type GetClusterRkeConfigServicesKubeApiAuditLog struct {
 // GetClusterRkeConfigServicesKubeApiAuditLogInput is an input type that accepts GetClusterRkeConfigServicesKubeApiAuditLogArgs and GetClusterRkeConfigServicesKubeApiAuditLogOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiAuditLogInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiAuditLogArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeApiAuditLogArgs{...}
 type GetClusterRkeConfigServicesKubeApiAuditLogInput interface {
 	pulumi.Input
 
@@ -51110,12 +50621,11 @@ func (i GetClusterRkeConfigServicesKubeApiAuditLogArgs) ToGetClusterRkeConfigSer
 // GetClusterRkeConfigServicesKubeApiAuditLogPtrInput is an input type that accepts GetClusterRkeConfigServicesKubeApiAuditLogArgs, GetClusterRkeConfigServicesKubeApiAuditLogPtr and GetClusterRkeConfigServicesKubeApiAuditLogPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiAuditLogPtrInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiAuditLogArgs{...}
+//          GetClusterRkeConfigServicesKubeApiAuditLogArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigServicesKubeApiAuditLogPtrInput interface {
 	pulumi.Input
 
@@ -51224,8 +50734,7 @@ type GetClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
 // GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput is an input type that accepts GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs and GetClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
 	pulumi.Input
 
@@ -51265,12 +50774,11 @@ func (i GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs) ToGetCluste
 // GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput is an input type that accepts GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs, GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtr and GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
+//          GetClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -51425,8 +50933,7 @@ type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
 // GetClusterRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterRkeConfigServicesKubeApiEventRateLimitOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiEventRateLimitInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
 type GetClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 	pulumi.Input
 
@@ -51462,12 +50969,11 @@ func (i GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ToGetClusterRkeCon
 // GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput is an input type that accepts GetClusterRkeConfigServicesKubeApiEventRateLimitArgs, GetClusterRkeConfigServicesKubeApiEventRateLimitPtr and GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
+//          GetClusterRkeConfigServicesKubeApiEventRateLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
 	pulumi.Input
 
@@ -51572,8 +51078,7 @@ type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
 // GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -51609,12 +51114,11 @@ func (i GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ToGetClus
 // GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput is an input type that accepts GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs, GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtr and GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
+//          GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -51723,8 +51227,7 @@ type GetClusterRkeConfigServicesKubeController struct {
 // GetClusterRkeConfigServicesKubeControllerInput is an input type that accepts GetClusterRkeConfigServicesKubeControllerArgs and GetClusterRkeConfigServicesKubeControllerOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeControllerInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeControllerArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeControllerArgs{...}
 type GetClusterRkeConfigServicesKubeControllerInput interface {
 	pulumi.Input
 
@@ -51806,8 +51309,7 @@ type GetClusterRkeConfigServicesKubelet struct {
 // GetClusterRkeConfigServicesKubeletInput is an input type that accepts GetClusterRkeConfigServicesKubeletArgs and GetClusterRkeConfigServicesKubeletOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeletInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeletArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeletArgs{...}
 type GetClusterRkeConfigServicesKubeletInput interface {
 	pulumi.Input
 
@@ -51899,8 +51401,7 @@ type GetClusterRkeConfigServicesKubeproxy struct {
 // GetClusterRkeConfigServicesKubeproxyInput is an input type that accepts GetClusterRkeConfigServicesKubeproxyArgs and GetClusterRkeConfigServicesKubeproxyOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesKubeproxyInput` via:
 //
-// 		 GetClusterRkeConfigServicesKubeproxyArgs{...}
-//
+//          GetClusterRkeConfigServicesKubeproxyArgs{...}
 type GetClusterRkeConfigServicesKubeproxyInput interface {
 	pulumi.Input
 
@@ -51967,8 +51468,7 @@ type GetClusterRkeConfigServicesScheduler struct {
 // GetClusterRkeConfigServicesSchedulerInput is an input type that accepts GetClusterRkeConfigServicesSchedulerArgs and GetClusterRkeConfigServicesSchedulerOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigServicesSchedulerInput` via:
 //
-// 		 GetClusterRkeConfigServicesSchedulerArgs{...}
-//
+//          GetClusterRkeConfigServicesSchedulerArgs{...}
 type GetClusterRkeConfigServicesSchedulerInput interface {
 	pulumi.Input
 
@@ -52035,8 +51535,7 @@ type GetClusterRkeConfigUpgradeStrategy struct {
 // GetClusterRkeConfigUpgradeStrategyInput is an input type that accepts GetClusterRkeConfigUpgradeStrategyArgs and GetClusterRkeConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigUpgradeStrategyInput` via:
 //
-// 		 GetClusterRkeConfigUpgradeStrategyArgs{...}
-//
+//          GetClusterRkeConfigUpgradeStrategyArgs{...}
 type GetClusterRkeConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -52106,8 +51605,7 @@ type GetClusterRkeConfigUpgradeStrategyDrainInput struct {
 // GetClusterRkeConfigUpgradeStrategyDrainInputInput is an input type that accepts GetClusterRkeConfigUpgradeStrategyDrainInputArgs and GetClusterRkeConfigUpgradeStrategyDrainInputOutput values.
 // You can construct a concrete instance of `GetClusterRkeConfigUpgradeStrategyDrainInputInput` via:
 //
-// 		 GetClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
-//
+//          GetClusterRkeConfigUpgradeStrategyDrainInputArgs{...}
 type GetClusterRkeConfigUpgradeStrategyDrainInputInput interface {
 	pulumi.Input
 
@@ -52176,8 +51674,7 @@ type GetClusterScanScanConfig struct {
 // GetClusterScanScanConfigInput is an input type that accepts GetClusterScanScanConfigArgs and GetClusterScanScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterScanScanConfigInput` via:
 //
-// 		 GetClusterScanScanConfigArgs{...}
-//
+//          GetClusterScanScanConfigArgs{...}
 type GetClusterScanScanConfigInput interface {
 	pulumi.Input
 
@@ -52230,8 +51727,7 @@ type GetClusterScanScanConfigCisScanConfig struct {
 // GetClusterScanScanConfigCisScanConfigInput is an input type that accepts GetClusterScanScanConfigCisScanConfigArgs and GetClusterScanScanConfigCisScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterScanScanConfigCisScanConfigInput` via:
 //
-// 		 GetClusterScanScanConfigCisScanConfigArgs{...}
-//
+//          GetClusterScanScanConfigCisScanConfigArgs{...}
 type GetClusterScanScanConfigCisScanConfigInput interface {
 	pulumi.Input
 
@@ -52302,8 +51798,7 @@ type GetClusterScheduledClusterScan struct {
 // GetClusterScheduledClusterScanInput is an input type that accepts GetClusterScheduledClusterScanArgs and GetClusterScheduledClusterScanOutput values.
 // You can construct a concrete instance of `GetClusterScheduledClusterScanInput` via:
 //
-// 		 GetClusterScheduledClusterScanArgs{...}
-//
+//          GetClusterScheduledClusterScanArgs{...}
 type GetClusterScheduledClusterScanInput interface {
 	pulumi.Input
 
@@ -52332,8 +51827,7 @@ func (i GetClusterScheduledClusterScanArgs) ToGetClusterScheduledClusterScanOutp
 // GetClusterScheduledClusterScanArrayInput is an input type that accepts GetClusterScheduledClusterScanArray and GetClusterScheduledClusterScanArrayOutput values.
 // You can construct a concrete instance of `GetClusterScheduledClusterScanArrayInput` via:
 //
-// 		 GetClusterScheduledClusterScanArray{ GetClusterScheduledClusterScanArgs{...} }
-//
+//          GetClusterScheduledClusterScanArray{ GetClusterScheduledClusterScanArgs{...} }
 type GetClusterScheduledClusterScanArrayInput interface {
 	pulumi.Input
 
@@ -52410,8 +51904,7 @@ type GetClusterScheduledClusterScanScanConfig struct {
 // GetClusterScheduledClusterScanScanConfigInput is an input type that accepts GetClusterScheduledClusterScanScanConfigArgs and GetClusterScheduledClusterScanScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterScheduledClusterScanScanConfigInput` via:
 //
-// 		 GetClusterScheduledClusterScanScanConfigArgs{...}
-//
+//          GetClusterScheduledClusterScanScanConfigArgs{...}
 type GetClusterScheduledClusterScanScanConfigInput interface {
 	pulumi.Input
 
@@ -52466,8 +51959,7 @@ type GetClusterScheduledClusterScanScanConfigCisScanConfig struct {
 // GetClusterScheduledClusterScanScanConfigCisScanConfigInput is an input type that accepts GetClusterScheduledClusterScanScanConfigCisScanConfigArgs and GetClusterScheduledClusterScanScanConfigCisScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterScheduledClusterScanScanConfigCisScanConfigInput` via:
 //
-// 		 GetClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
-//
+//          GetClusterScheduledClusterScanScanConfigCisScanConfigArgs{...}
 type GetClusterScheduledClusterScanScanConfigCisScanConfigInput interface {
 	pulumi.Input
 
@@ -52539,8 +52031,7 @@ type GetClusterScheduledClusterScanScheduleConfig struct {
 // GetClusterScheduledClusterScanScheduleConfigInput is an input type that accepts GetClusterScheduledClusterScanScheduleConfigArgs and GetClusterScheduledClusterScanScheduleConfigOutput values.
 // You can construct a concrete instance of `GetClusterScheduledClusterScanScheduleConfigInput` via:
 //
-// 		 GetClusterScheduledClusterScanScheduleConfigArgs{...}
-//
+//          GetClusterScheduledClusterScanScheduleConfigArgs{...}
 type GetClusterScheduledClusterScanScheduleConfigInput interface {
 	pulumi.Input
 
@@ -52596,8 +52087,7 @@ type GetClusterTemplateMember struct {
 // GetClusterTemplateMemberInput is an input type that accepts GetClusterTemplateMemberArgs and GetClusterTemplateMemberOutput values.
 // You can construct a concrete instance of `GetClusterTemplateMemberInput` via:
 //
-// 		 GetClusterTemplateMemberArgs{...}
-//
+//          GetClusterTemplateMemberArgs{...}
 type GetClusterTemplateMemberInput interface {
 	pulumi.Input
 
@@ -52626,8 +52116,7 @@ func (i GetClusterTemplateMemberArgs) ToGetClusterTemplateMemberOutputWithContex
 // GetClusterTemplateMemberArrayInput is an input type that accepts GetClusterTemplateMemberArray and GetClusterTemplateMemberArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateMemberArrayInput` via:
 //
-// 		 GetClusterTemplateMemberArray{ GetClusterTemplateMemberArgs{...} }
-//
+//          GetClusterTemplateMemberArray{ GetClusterTemplateMemberArgs{...} }
 type GetClusterTemplateMemberArrayInput interface {
 	pulumi.Input
 
@@ -52714,8 +52203,7 @@ type GetClusterTemplateTemplateRevision struct {
 // GetClusterTemplateTemplateRevisionInput is an input type that accepts GetClusterTemplateTemplateRevisionArgs and GetClusterTemplateTemplateRevisionOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionArgs{...}
 type GetClusterTemplateTemplateRevisionInput interface {
 	pulumi.Input
 
@@ -52754,8 +52242,7 @@ func (i GetClusterTemplateTemplateRevisionArgs) ToGetClusterTemplateTemplateRevi
 // GetClusterTemplateTemplateRevisionArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionArray and GetClusterTemplateTemplateRevisionArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionArray{ GetClusterTemplateTemplateRevisionArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionArray{ GetClusterTemplateTemplateRevisionArgs{...} }
 type GetClusterTemplateTemplateRevisionArrayInput interface {
 	pulumi.Input
 
@@ -52873,8 +52360,7 @@ type GetClusterTemplateTemplateRevisionClusterConfig struct {
 // GetClusterTemplateTemplateRevisionClusterConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigInput interface {
 	pulumi.Input
 
@@ -52990,8 +52476,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint struct {
 // GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs and GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointInput interface {
 	pulumi.Input
 
@@ -53070,8 +52555,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput interface {
 	pulumi.Input
 
@@ -53245,8 +52729,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication stru
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationInput interface {
 	pulumi.Input
 
@@ -53303,8 +52786,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization struc
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationInput interface {
 	pulumi.Input
 
@@ -53365,8 +52847,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost struct 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostInput interface {
 	pulumi.Input
 
@@ -53450,8 +52931,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider struc
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderInput interface {
 	pulumi.Input
 
@@ -53538,8 +53018,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderInput interface {
 	pulumi.Input
 
@@ -53575,12 +53054,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -53695,8 +53173,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -53740,12 +53217,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -53976,8 +53452,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsClo
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface {
 	pulumi.Input
 
@@ -54009,8 +53484,7 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAws
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs{...} }
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArrayInput interface {
 	pulumi.Input
 
@@ -54137,8 +53611,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureC
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderInput interface {
 	pulumi.Input
 
@@ -54201,12 +53674,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzu
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -54721,8 +54193,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderInput interface {
 	pulumi.Input
 
@@ -54761,12 +54232,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -54919,8 +54389,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageInput interface {
 	pulumi.Input
 
@@ -54957,12 +54426,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStoragePtrInput interface {
 	pulumi.Input
 
@@ -55092,8 +54560,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -55137,12 +54604,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -55378,8 +54844,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerInput interface {
 	pulumi.Input
 
@@ -55424,12 +54889,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerPtrInput interface {
 	pulumi.Input
 
@@ -55671,8 +55135,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataInput interface {
 	pulumi.Input
 
@@ -55708,12 +55171,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataPtrInput interface {
 	pulumi.Input
 
@@ -55819,8 +55281,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenst
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteInput interface {
 	pulumi.Input
 
@@ -55855,12 +55316,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoutePtrInput interface {
 	pulumi.Input
 
@@ -55955,8 +55415,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderInput interface {
 	pulumi.Input
 
@@ -55995,12 +55454,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderPtrInput interface {
 	pulumi.Input
 
@@ -56151,8 +55609,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskInput interface {
 	pulumi.Input
 
@@ -56187,12 +55644,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskPtrInput interface {
 	pulumi.Input
 
@@ -56288,8 +55744,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalInput interface {
 	pulumi.Input
 
@@ -56329,12 +55784,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalPtrInput interface {
 	pulumi.Input
 
@@ -56500,8 +55954,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkInput interface {
 	pulumi.Input
 
@@ -56536,12 +55989,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkPtrInput interface {
 	pulumi.Input
 
@@ -56638,8 +56090,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterInput interface {
 	pulumi.Input
 
@@ -56672,8 +56123,7 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs{...} }
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArrayInput interface {
 	pulumi.Input
 
@@ -56777,8 +56227,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceInput interface {
 	pulumi.Input
 
@@ -56817,12 +56266,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrInput interface {
 	pulumi.Input
 
@@ -56977,8 +56425,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface {
 	pulumi.Input
 
@@ -57054,8 +56501,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalInput interface {
 	pulumi.Input
 
@@ -57091,12 +56537,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput interface {
 	pulumi.Input
 
@@ -57206,8 +56651,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressInput interface {
 	pulumi.Input
 
@@ -57286,8 +56730,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringInput interface {
 	pulumi.Input
 
@@ -57363,8 +56806,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStr
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyInput interface {
 	pulumi.Input
 
@@ -57400,12 +56842,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdate
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyPtrInput interface {
 	pulumi.Input
 
@@ -57512,8 +56953,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStr
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -57549,12 +56989,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdate
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -57666,8 +57105,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkInput interface {
 	pulumi.Input
 
@@ -57756,8 +57194,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetwor
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderInput interface {
 	pulumi.Input
 
@@ -57792,12 +57229,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNet
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -57888,8 +57324,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetwork
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderInput interface {
 	pulumi.Input
 
@@ -57924,12 +57359,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetw
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -58020,8 +57454,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwo
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderInput interface {
 	pulumi.Input
 
@@ -58056,12 +57489,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNe
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -58152,8 +57584,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetwork
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderInput interface {
 	pulumi.Input
 
@@ -58188,12 +57619,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetw
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderPtrInput interface {
 	pulumi.Input
 
@@ -58296,8 +57726,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeInput interface {
 	pulumi.Input
 
@@ -58336,8 +57765,7 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs) ToGetC
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs{...} }
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -58456,8 +57884,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry str
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryInput interface {
 	pulumi.Input
 
@@ -58487,8 +57914,7 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryA
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArray{ GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs{...} }
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArrayInput interface {
 	pulumi.Input
 
@@ -58576,8 +58002,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices struct {
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesInput interface {
 	pulumi.Input
 
@@ -58677,8 +58102,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd struct
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdInput interface {
 	pulumi.Input
 
@@ -58813,8 +58237,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput interface {
 	pulumi.Input
 
@@ -58899,8 +58322,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -58941,12 +58363,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBack
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -59138,8 +58559,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi str
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiInput interface {
 	pulumi.Input
 
@@ -59266,8 +58686,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogInput interface {
 	pulumi.Input
 
@@ -59303,12 +58722,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogPtrInput interface {
 	pulumi.Input
 
@@ -59419,8 +58837,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationInput interface {
 	pulumi.Input
 
@@ -59460,12 +58877,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -59632,8 +59048,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput interface {
 	pulumi.Input
 
@@ -59669,12 +59084,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrInput interface {
 	pulumi.Input
 
@@ -59781,8 +59195,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -59818,12 +59231,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -59934,8 +59346,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControl
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerInput interface {
 	pulumi.Input
 
@@ -60029,8 +59440,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet str
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletInput interface {
 	pulumi.Input
 
@@ -60138,8 +59548,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy s
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyInput interface {
 	pulumi.Input
 
@@ -60214,8 +59623,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler s
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerInput interface {
 	pulumi.Input
 
@@ -60290,8 +59698,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy str
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -60365,8 +59772,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrai
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputInput interface {
 	pulumi.Input
 
@@ -60447,8 +59853,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan struct 
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanInput interface {
 	pulumi.Input
 
@@ -60485,12 +59890,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs)
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs, GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtr and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanPtrInput interface {
 	pulumi.Input
 
@@ -60609,8 +60013,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConf
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigInput interface {
 	pulumi.Input
 
@@ -60645,12 +60048,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanC
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs, GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtr and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -60745,8 +60147,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConf
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigInput interface {
 	pulumi.Input
 
@@ -60785,12 +60186,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanC
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs, GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtr and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigPtrInput interface {
 	pulumi.Input
 
@@ -60942,8 +60342,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanSchedule
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigInput interface {
 	pulumi.Input
 
@@ -60979,12 +60378,11 @@ func (i GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanSched
 // GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs, GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtr and GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
+//          GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigPtrInput interface {
 	pulumi.Input
 
@@ -61093,8 +60491,7 @@ type GetClusterTemplateTemplateRevisionQuestion struct {
 // GetClusterTemplateTemplateRevisionQuestionInput is an input type that accepts GetClusterTemplateTemplateRevisionQuestionArgs and GetClusterTemplateTemplateRevisionQuestionOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionQuestionInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionQuestionArgs{...}
-//
+//          GetClusterTemplateTemplateRevisionQuestionArgs{...}
 type GetClusterTemplateTemplateRevisionQuestionInput interface {
 	pulumi.Input
 
@@ -61124,8 +60521,7 @@ func (i GetClusterTemplateTemplateRevisionQuestionArgs) ToGetClusterTemplateTemp
 // GetClusterTemplateTemplateRevisionQuestionArrayInput is an input type that accepts GetClusterTemplateTemplateRevisionQuestionArray and GetClusterTemplateTemplateRevisionQuestionArrayOutput values.
 // You can construct a concrete instance of `GetClusterTemplateTemplateRevisionQuestionArrayInput` via:
 //
-// 		 GetClusterTemplateTemplateRevisionQuestionArray{ GetClusterTemplateTemplateRevisionQuestionArgs{...} }
-//
+//          GetClusterTemplateTemplateRevisionQuestionArray{ GetClusterTemplateTemplateRevisionQuestionArgs{...} }
 type GetClusterTemplateTemplateRevisionQuestionArrayInput interface {
 	pulumi.Input
 
@@ -61208,8 +60604,7 @@ type GetEtcdBackupBackupConfig struct {
 // GetEtcdBackupBackupConfigInput is an input type that accepts GetEtcdBackupBackupConfigArgs and GetEtcdBackupBackupConfigOutput values.
 // You can construct a concrete instance of `GetEtcdBackupBackupConfigInput` via:
 //
-// 		 GetEtcdBackupBackupConfigArgs{...}
-//
+//          GetEtcdBackupBackupConfigArgs{...}
 type GetEtcdBackupBackupConfigInput interface {
 	pulumi.Input
 
@@ -61284,8 +60679,7 @@ type GetEtcdBackupBackupConfigS3BackupConfig struct {
 // GetEtcdBackupBackupConfigS3BackupConfigInput is an input type that accepts GetEtcdBackupBackupConfigS3BackupConfigArgs and GetEtcdBackupBackupConfigS3BackupConfigOutput values.
 // You can construct a concrete instance of `GetEtcdBackupBackupConfigS3BackupConfigInput` via:
 //
-// 		 GetEtcdBackupBackupConfigS3BackupConfigArgs{...}
-//
+//          GetEtcdBackupBackupConfigS3BackupConfigArgs{...}
 type GetEtcdBackupBackupConfigS3BackupConfigInput interface {
 	pulumi.Input
 
@@ -61326,12 +60720,11 @@ func (i GetEtcdBackupBackupConfigS3BackupConfigArgs) ToGetEtcdBackupBackupConfig
 // GetEtcdBackupBackupConfigS3BackupConfigPtrInput is an input type that accepts GetEtcdBackupBackupConfigS3BackupConfigArgs, GetEtcdBackupBackupConfigS3BackupConfigPtr and GetEtcdBackupBackupConfigS3BackupConfigPtrOutput values.
 // You can construct a concrete instance of `GetEtcdBackupBackupConfigS3BackupConfigPtrInput` via:
 //
-// 		 GetEtcdBackupBackupConfigS3BackupConfigArgs{...}
+//          GetEtcdBackupBackupConfigS3BackupConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetEtcdBackupBackupConfigS3BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -61498,8 +60891,7 @@ type GetMultiClusterAppAnswer struct {
 // GetMultiClusterAppAnswerInput is an input type that accepts GetMultiClusterAppAnswerArgs and GetMultiClusterAppAnswerOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppAnswerInput` via:
 //
-// 		 GetMultiClusterAppAnswerArgs{...}
-//
+//          GetMultiClusterAppAnswerArgs{...}
 type GetMultiClusterAppAnswerInput interface {
 	pulumi.Input
 
@@ -61528,8 +60920,7 @@ func (i GetMultiClusterAppAnswerArgs) ToGetMultiClusterAppAnswerOutputWithContex
 // GetMultiClusterAppAnswerArrayInput is an input type that accepts GetMultiClusterAppAnswerArray and GetMultiClusterAppAnswerArrayOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppAnswerArrayInput` via:
 //
-// 		 GetMultiClusterAppAnswerArray{ GetMultiClusterAppAnswerArgs{...} }
-//
+//          GetMultiClusterAppAnswerArray{ GetMultiClusterAppAnswerArgs{...} }
 type GetMultiClusterAppAnswerArrayInput interface {
 	pulumi.Input
 
@@ -61606,8 +60997,7 @@ type GetMultiClusterAppMember struct {
 // GetMultiClusterAppMemberInput is an input type that accepts GetMultiClusterAppMemberArgs and GetMultiClusterAppMemberOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppMemberInput` via:
 //
-// 		 GetMultiClusterAppMemberArgs{...}
-//
+//          GetMultiClusterAppMemberArgs{...}
 type GetMultiClusterAppMemberInput interface {
 	pulumi.Input
 
@@ -61636,8 +61026,7 @@ func (i GetMultiClusterAppMemberArgs) ToGetMultiClusterAppMemberOutputWithContex
 // GetMultiClusterAppMemberArrayInput is an input type that accepts GetMultiClusterAppMemberArray and GetMultiClusterAppMemberArrayOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppMemberArrayInput` via:
 //
-// 		 GetMultiClusterAppMemberArray{ GetMultiClusterAppMemberArgs{...} }
-//
+//          GetMultiClusterAppMemberArray{ GetMultiClusterAppMemberArgs{...} }
 type GetMultiClusterAppMemberArrayInput interface {
 	pulumi.Input
 
@@ -61715,8 +61104,7 @@ type GetMultiClusterAppTarget struct {
 // GetMultiClusterAppTargetInput is an input type that accepts GetMultiClusterAppTargetArgs and GetMultiClusterAppTargetOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppTargetInput` via:
 //
-// 		 GetMultiClusterAppTargetArgs{...}
-//
+//          GetMultiClusterAppTargetArgs{...}
 type GetMultiClusterAppTargetInput interface {
 	pulumi.Input
 
@@ -61746,8 +61134,7 @@ func (i GetMultiClusterAppTargetArgs) ToGetMultiClusterAppTargetOutputWithContex
 // GetMultiClusterAppTargetArrayInput is an input type that accepts GetMultiClusterAppTargetArray and GetMultiClusterAppTargetArrayOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppTargetArrayInput` via:
 //
-// 		 GetMultiClusterAppTargetArray{ GetMultiClusterAppTargetArgs{...} }
-//
+//          GetMultiClusterAppTargetArray{ GetMultiClusterAppTargetArgs{...} }
 type GetMultiClusterAppTargetArrayInput interface {
 	pulumi.Input
 
@@ -61826,8 +61213,7 @@ type GetMultiClusterAppUpgradeStrategy struct {
 // GetMultiClusterAppUpgradeStrategyInput is an input type that accepts GetMultiClusterAppUpgradeStrategyArgs and GetMultiClusterAppUpgradeStrategyOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppUpgradeStrategyInput` via:
 //
-// 		 GetMultiClusterAppUpgradeStrategyArgs{...}
-//
+//          GetMultiClusterAppUpgradeStrategyArgs{...}
 type GetMultiClusterAppUpgradeStrategyInput interface {
 	pulumi.Input
 
@@ -61854,8 +61240,7 @@ func (i GetMultiClusterAppUpgradeStrategyArgs) ToGetMultiClusterAppUpgradeStrate
 // GetMultiClusterAppUpgradeStrategyArrayInput is an input type that accepts GetMultiClusterAppUpgradeStrategyArray and GetMultiClusterAppUpgradeStrategyArrayOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppUpgradeStrategyArrayInput` via:
 //
-// 		 GetMultiClusterAppUpgradeStrategyArray{ GetMultiClusterAppUpgradeStrategyArgs{...} }
-//
+//          GetMultiClusterAppUpgradeStrategyArray{ GetMultiClusterAppUpgradeStrategyArgs{...} }
 type GetMultiClusterAppUpgradeStrategyArrayInput interface {
 	pulumi.Input
 
@@ -61925,8 +61310,7 @@ type GetMultiClusterAppUpgradeStrategyRollingUpdate struct {
 // GetMultiClusterAppUpgradeStrategyRollingUpdateInput is an input type that accepts GetMultiClusterAppUpgradeStrategyRollingUpdateArgs and GetMultiClusterAppUpgradeStrategyRollingUpdateOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppUpgradeStrategyRollingUpdateInput` via:
 //
-// 		 GetMultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
-//
+//          GetMultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
 type GetMultiClusterAppUpgradeStrategyRollingUpdateInput interface {
 	pulumi.Input
 
@@ -61962,12 +61346,11 @@ func (i GetMultiClusterAppUpgradeStrategyRollingUpdateArgs) ToGetMultiClusterApp
 // GetMultiClusterAppUpgradeStrategyRollingUpdatePtrInput is an input type that accepts GetMultiClusterAppUpgradeStrategyRollingUpdateArgs, GetMultiClusterAppUpgradeStrategyRollingUpdatePtr and GetMultiClusterAppUpgradeStrategyRollingUpdatePtrOutput values.
 // You can construct a concrete instance of `GetMultiClusterAppUpgradeStrategyRollingUpdatePtrInput` via:
 //
-// 		 GetMultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
+//          GetMultiClusterAppUpgradeStrategyRollingUpdateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetMultiClusterAppUpgradeStrategyRollingUpdatePtrInput interface {
 	pulumi.Input
 
@@ -62072,8 +61455,7 @@ type GetNamespaceContainerResourceLimit struct {
 // GetNamespaceContainerResourceLimitInput is an input type that accepts GetNamespaceContainerResourceLimitArgs and GetNamespaceContainerResourceLimitOutput values.
 // You can construct a concrete instance of `GetNamespaceContainerResourceLimitInput` via:
 //
-// 		 GetNamespaceContainerResourceLimitArgs{...}
-//
+//          GetNamespaceContainerResourceLimitArgs{...}
 type GetNamespaceContainerResourceLimitInput interface {
 	pulumi.Input
 
@@ -62137,8 +61519,7 @@ type GetNamespaceResourceQuota struct {
 // GetNamespaceResourceQuotaInput is an input type that accepts GetNamespaceResourceQuotaArgs and GetNamespaceResourceQuotaOutput values.
 // You can construct a concrete instance of `GetNamespaceResourceQuotaInput` via:
 //
-// 		 GetNamespaceResourceQuotaArgs{...}
-//
+//          GetNamespaceResourceQuotaArgs{...}
 type GetNamespaceResourceQuotaInput interface {
 	pulumi.Input
 
@@ -62199,8 +61580,7 @@ type GetNamespaceResourceQuotaLimit struct {
 // GetNamespaceResourceQuotaLimitInput is an input type that accepts GetNamespaceResourceQuotaLimitArgs and GetNamespaceResourceQuotaLimitOutput values.
 // You can construct a concrete instance of `GetNamespaceResourceQuotaLimitInput` via:
 //
-// 		 GetNamespaceResourceQuotaLimitArgs{...}
-//
+//          GetNamespaceResourceQuotaLimitArgs{...}
 type GetNamespaceResourceQuotaLimitInput interface {
 	pulumi.Input
 
@@ -62312,8 +61692,7 @@ type GetNodePoolNodeTaint struct {
 // GetNodePoolNodeTaintInput is an input type that accepts GetNodePoolNodeTaintArgs and GetNodePoolNodeTaintOutput values.
 // You can construct a concrete instance of `GetNodePoolNodeTaintInput` via:
 //
-// 		 GetNodePoolNodeTaintArgs{...}
-//
+//          GetNodePoolNodeTaintArgs{...}
 type GetNodePoolNodeTaintInput interface {
 	pulumi.Input
 
@@ -62343,8 +61722,7 @@ func (i GetNodePoolNodeTaintArgs) ToGetNodePoolNodeTaintOutputWithContext(ctx co
 // GetNodePoolNodeTaintArrayInput is an input type that accepts GetNodePoolNodeTaintArray and GetNodePoolNodeTaintArrayOutput values.
 // You can construct a concrete instance of `GetNodePoolNodeTaintArrayInput` via:
 //
-// 		 GetNodePoolNodeTaintArray{ GetNodePoolNodeTaintArgs{...} }
-//
+//          GetNodePoolNodeTaintArray{ GetNodePoolNodeTaintArgs{...} }
 type GetNodePoolNodeTaintArrayInput interface {
 	pulumi.Input
 
@@ -62424,8 +61802,7 @@ type GetNotifierPagerdutyConfig struct {
 // GetNotifierPagerdutyConfigInput is an input type that accepts GetNotifierPagerdutyConfigArgs and GetNotifierPagerdutyConfigOutput values.
 // You can construct a concrete instance of `GetNotifierPagerdutyConfigInput` via:
 //
-// 		 GetNotifierPagerdutyConfigArgs{...}
-//
+//          GetNotifierPagerdutyConfigArgs{...}
 type GetNotifierPagerdutyConfigInput interface {
 	pulumi.Input
 
@@ -62481,8 +61858,7 @@ type GetNotifierSlackConfig struct {
 // GetNotifierSlackConfigInput is an input type that accepts GetNotifierSlackConfigArgs and GetNotifierSlackConfigOutput values.
 // You can construct a concrete instance of `GetNotifierSlackConfigInput` via:
 //
-// 		 GetNotifierSlackConfigArgs{...}
-//
+//          GetNotifierSlackConfigArgs{...}
 type GetNotifierSlackConfigInput interface {
 	pulumi.Input
 
@@ -62547,8 +61923,7 @@ type GetNotifierSmtpConfig struct {
 // GetNotifierSmtpConfigInput is an input type that accepts GetNotifierSmtpConfigArgs and GetNotifierSmtpConfigOutput values.
 // You can construct a concrete instance of `GetNotifierSmtpConfigInput` via:
 //
-// 		 GetNotifierSmtpConfigArgs{...}
-//
+//          GetNotifierSmtpConfigArgs{...}
 type GetNotifierSmtpConfigInput interface {
 	pulumi.Input
 
@@ -62628,8 +62003,7 @@ type GetNotifierWebhookConfig struct {
 // GetNotifierWebhookConfigInput is an input type that accepts GetNotifierWebhookConfigArgs and GetNotifierWebhookConfigOutput values.
 // You can construct a concrete instance of `GetNotifierWebhookConfigInput` via:
 //
-// 		 GetNotifierWebhookConfigArgs{...}
-//
+//          GetNotifierWebhookConfigArgs{...}
 type GetNotifierWebhookConfigInput interface {
 	pulumi.Input
 
@@ -62688,8 +62062,7 @@ type GetNotifierWechatConfig struct {
 // GetNotifierWechatConfigInput is an input type that accepts GetNotifierWechatConfigArgs and GetNotifierWechatConfigOutput values.
 // You can construct a concrete instance of `GetNotifierWechatConfigInput` via:
 //
-// 		 GetNotifierWechatConfigArgs{...}
-//
+//          GetNotifierWechatConfigArgs{...}
 type GetNotifierWechatConfigInput interface {
 	pulumi.Input
 
@@ -62764,8 +62137,7 @@ type GetPodSecurityPolicyTemplateAllowedCsiDriver struct {
 // GetPodSecurityPolicyTemplateAllowedCsiDriverInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedCsiDriverArgs and GetPodSecurityPolicyTemplateAllowedCsiDriverOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedCsiDriverInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...}
-//
+//          GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...}
 type GetPodSecurityPolicyTemplateAllowedCsiDriverInput interface {
 	pulumi.Input
 
@@ -62793,8 +62165,7 @@ func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ToGetPodSecurityPolicy
 // GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedCsiDriverArray and GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedCsiDriverArray{ GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateAllowedCsiDriverArray{ GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...} }
 type GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput interface {
 	pulumi.Input
 
@@ -62862,8 +62233,7 @@ type GetPodSecurityPolicyTemplateAllowedFlexVolume struct {
 // GetPodSecurityPolicyTemplateAllowedFlexVolumeInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs and GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedFlexVolumeInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...}
-//
+//          GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...}
 type GetPodSecurityPolicyTemplateAllowedFlexVolumeInput interface {
 	pulumi.Input
 
@@ -62890,8 +62260,7 @@ func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToGetPodSecurityPolic
 // GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedFlexVolumeArray and GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedFlexVolumeArray{ GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateAllowedFlexVolumeArray{ GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...} }
 type GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput interface {
 	pulumi.Input
 
@@ -62959,8 +62328,7 @@ type GetPodSecurityPolicyTemplateAllowedHostPath struct {
 // GetPodSecurityPolicyTemplateAllowedHostPathInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedHostPathArgs and GetPodSecurityPolicyTemplateAllowedHostPathOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedHostPathInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedHostPathArgs{...}
-//
+//          GetPodSecurityPolicyTemplateAllowedHostPathArgs{...}
 type GetPodSecurityPolicyTemplateAllowedHostPathInput interface {
 	pulumi.Input
 
@@ -62988,8 +62356,7 @@ func (i GetPodSecurityPolicyTemplateAllowedHostPathArgs) ToGetPodSecurityPolicyT
 // GetPodSecurityPolicyTemplateAllowedHostPathArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedHostPathArray and GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedHostPathArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateAllowedHostPathArray{ GetPodSecurityPolicyTemplateAllowedHostPathArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateAllowedHostPathArray{ GetPodSecurityPolicyTemplateAllowedHostPathArgs{...} }
 type GetPodSecurityPolicyTemplateAllowedHostPathArrayInput interface {
 	pulumi.Input
 
@@ -63061,8 +62428,7 @@ type GetPodSecurityPolicyTemplateFsGroup struct {
 // GetPodSecurityPolicyTemplateFsGroupInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupArgs and GetPodSecurityPolicyTemplateFsGroupOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateFsGroupArgs{...}
-//
+//          GetPodSecurityPolicyTemplateFsGroupArgs{...}
 type GetPodSecurityPolicyTemplateFsGroupInput interface {
 	pulumi.Input
 
@@ -63119,8 +62485,7 @@ type GetPodSecurityPolicyTemplateFsGroupRange struct {
 // GetPodSecurityPolicyTemplateFsGroupRangeInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupRangeArgs and GetPodSecurityPolicyTemplateFsGroupRangeOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupRangeInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateFsGroupRangeArgs{...}
-//
+//          GetPodSecurityPolicyTemplateFsGroupRangeArgs{...}
 type GetPodSecurityPolicyTemplateFsGroupRangeInput interface {
 	pulumi.Input
 
@@ -63148,8 +62513,7 @@ func (i GetPodSecurityPolicyTemplateFsGroupRangeArgs) ToGetPodSecurityPolicyTemp
 // GetPodSecurityPolicyTemplateFsGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupRangeArray and GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupRangeArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateFsGroupRangeArray{ GetPodSecurityPolicyTemplateFsGroupRangeArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateFsGroupRangeArray{ GetPodSecurityPolicyTemplateFsGroupRangeArgs{...} }
 type GetPodSecurityPolicyTemplateFsGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -63221,8 +62585,7 @@ type GetPodSecurityPolicyTemplateHostPort struct {
 // GetPodSecurityPolicyTemplateHostPortInput is an input type that accepts GetPodSecurityPolicyTemplateHostPortArgs and GetPodSecurityPolicyTemplateHostPortOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateHostPortInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateHostPortArgs{...}
-//
+//          GetPodSecurityPolicyTemplateHostPortArgs{...}
 type GetPodSecurityPolicyTemplateHostPortInput interface {
 	pulumi.Input
 
@@ -63250,8 +62613,7 @@ func (i GetPodSecurityPolicyTemplateHostPortArgs) ToGetPodSecurityPolicyTemplate
 // GetPodSecurityPolicyTemplateHostPortArrayInput is an input type that accepts GetPodSecurityPolicyTemplateHostPortArray and GetPodSecurityPolicyTemplateHostPortArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateHostPortArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateHostPortArray{ GetPodSecurityPolicyTemplateHostPortArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateHostPortArray{ GetPodSecurityPolicyTemplateHostPortArgs{...} }
 type GetPodSecurityPolicyTemplateHostPortArrayInput interface {
 	pulumi.Input
 
@@ -63323,8 +62685,7 @@ type GetPodSecurityPolicyTemplateRunAsGroup struct {
 // GetPodSecurityPolicyTemplateRunAsGroupInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupArgs and GetPodSecurityPolicyTemplateRunAsGroupOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsGroupArgs{...}
-//
+//          GetPodSecurityPolicyTemplateRunAsGroupArgs{...}
 type GetPodSecurityPolicyTemplateRunAsGroupInput interface {
 	pulumi.Input
 
@@ -63381,8 +62742,7 @@ type GetPodSecurityPolicyTemplateRunAsGroupRange struct {
 // GetPodSecurityPolicyTemplateRunAsGroupRangeInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupRangeArgs and GetPodSecurityPolicyTemplateRunAsGroupRangeOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupRangeInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...}
-//
+//          GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...}
 type GetPodSecurityPolicyTemplateRunAsGroupRangeInput interface {
 	pulumi.Input
 
@@ -63410,8 +62770,7 @@ func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ToGetPodSecurityPolicyT
 // GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupRangeArray and GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsGroupRangeArray{ GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateRunAsGroupRangeArray{ GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...} }
 type GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -63483,8 +62842,7 @@ type GetPodSecurityPolicyTemplateRunAsUser struct {
 // GetPodSecurityPolicyTemplateRunAsUserInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserArgs and GetPodSecurityPolicyTemplateRunAsUserOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsUserArgs{...}
-//
+//          GetPodSecurityPolicyTemplateRunAsUserArgs{...}
 type GetPodSecurityPolicyTemplateRunAsUserInput interface {
 	pulumi.Input
 
@@ -63541,8 +62899,7 @@ type GetPodSecurityPolicyTemplateRunAsUserRange struct {
 // GetPodSecurityPolicyTemplateRunAsUserRangeInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserRangeArgs and GetPodSecurityPolicyTemplateRunAsUserRangeOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserRangeInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsUserRangeArgs{...}
-//
+//          GetPodSecurityPolicyTemplateRunAsUserRangeArgs{...}
 type GetPodSecurityPolicyTemplateRunAsUserRangeInput interface {
 	pulumi.Input
 
@@ -63570,8 +62927,7 @@ func (i GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ToGetPodSecurityPolicyTe
 // GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserRangeArray and GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRunAsUserRangeArray{ GetPodSecurityPolicyTemplateRunAsUserRangeArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateRunAsUserRangeArray{ GetPodSecurityPolicyTemplateRunAsUserRangeArgs{...} }
 type GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput interface {
 	pulumi.Input
 
@@ -63643,8 +62999,7 @@ type GetPodSecurityPolicyTemplateRuntimeClass struct {
 // GetPodSecurityPolicyTemplateRuntimeClassInput is an input type that accepts GetPodSecurityPolicyTemplateRuntimeClassArgs and GetPodSecurityPolicyTemplateRuntimeClassOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRuntimeClassInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateRuntimeClassArgs{...}
-//
+//          GetPodSecurityPolicyTemplateRuntimeClassArgs{...}
 type GetPodSecurityPolicyTemplateRuntimeClassInput interface {
 	pulumi.Input
 
@@ -63699,8 +63054,7 @@ type GetPodSecurityPolicyTemplateSeLinux struct {
 // GetPodSecurityPolicyTemplateSeLinuxInput is an input type that accepts GetPodSecurityPolicyTemplateSeLinuxArgs and GetPodSecurityPolicyTemplateSeLinuxOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSeLinuxInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSeLinuxArgs{...}
-//
+//          GetPodSecurityPolicyTemplateSeLinuxArgs{...}
 type GetPodSecurityPolicyTemplateSeLinuxInput interface {
 	pulumi.Input
 
@@ -63759,8 +63113,7 @@ type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption struct {
 // GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput is an input type that accepts GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs and GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
-//
+//          GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
 type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput interface {
 	pulumi.Input
 
@@ -63798,12 +63151,11 @@ func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPo
 // GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput is an input type that accepts GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs, GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtr and GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
+//          GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput interface {
 	pulumi.Input
 
@@ -63932,8 +63284,7 @@ type GetPodSecurityPolicyTemplateSupplementalGroup struct {
 // GetPodSecurityPolicyTemplateSupplementalGroupInput is an input type that accepts GetPodSecurityPolicyTemplateSupplementalGroupArgs and GetPodSecurityPolicyTemplateSupplementalGroupOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSupplementalGroupInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSupplementalGroupArgs{...}
-//
+//          GetPodSecurityPolicyTemplateSupplementalGroupArgs{...}
 type GetPodSecurityPolicyTemplateSupplementalGroupInput interface {
 	pulumi.Input
 
@@ -63990,8 +63341,7 @@ type GetPodSecurityPolicyTemplateSupplementalGroupRange struct {
 // GetPodSecurityPolicyTemplateSupplementalGroupRangeInput is an input type that accepts GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs and GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSupplementalGroupRangeInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs{...}
-//
+//          GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs{...}
 type GetPodSecurityPolicyTemplateSupplementalGroupRangeInput interface {
 	pulumi.Input
 
@@ -64019,8 +63369,7 @@ func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToGetPodSecurity
 // GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateSupplementalGroupRangeArray and GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput` via:
 //
-// 		 GetPodSecurityPolicyTemplateSupplementalGroupRangeArray{ GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs{...} }
-//
+//          GetPodSecurityPolicyTemplateSupplementalGroupRangeArray{ GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs{...} }
 type GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput interface {
 	pulumi.Input
 
@@ -64094,8 +63443,7 @@ type GetProjectAlertGroupRecipient struct {
 // GetProjectAlertGroupRecipientInput is an input type that accepts GetProjectAlertGroupRecipientArgs and GetProjectAlertGroupRecipientOutput values.
 // You can construct a concrete instance of `GetProjectAlertGroupRecipientInput` via:
 //
-// 		 GetProjectAlertGroupRecipientArgs{...}
-//
+//          GetProjectAlertGroupRecipientArgs{...}
 type GetProjectAlertGroupRecipientInput interface {
 	pulumi.Input
 
@@ -64125,8 +63473,7 @@ func (i GetProjectAlertGroupRecipientArgs) ToGetProjectAlertGroupRecipientOutput
 // GetProjectAlertGroupRecipientArrayInput is an input type that accepts GetProjectAlertGroupRecipientArray and GetProjectAlertGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `GetProjectAlertGroupRecipientArrayInput` via:
 //
-// 		 GetProjectAlertGroupRecipientArray{ GetProjectAlertGroupRecipientArgs{...} }
-//
+//          GetProjectAlertGroupRecipientArray{ GetProjectAlertGroupRecipientArgs{...} }
 type GetProjectAlertGroupRecipientArrayInput interface {
 	pulumi.Input
 
@@ -64209,8 +63556,7 @@ type GetProjectAlertRuleMetricRule struct {
 // GetProjectAlertRuleMetricRuleInput is an input type that accepts GetProjectAlertRuleMetricRuleArgs and GetProjectAlertRuleMetricRuleOutput values.
 // You can construct a concrete instance of `GetProjectAlertRuleMetricRuleInput` via:
 //
-// 		 GetProjectAlertRuleMetricRuleArgs{...}
-//
+//          GetProjectAlertRuleMetricRuleArgs{...}
 type GetProjectAlertRuleMetricRuleInput interface {
 	pulumi.Input
 
@@ -64282,8 +63628,7 @@ type GetProjectAlertRulePodRule struct {
 // GetProjectAlertRulePodRuleInput is an input type that accepts GetProjectAlertRulePodRuleArgs and GetProjectAlertRulePodRuleOutput values.
 // You can construct a concrete instance of `GetProjectAlertRulePodRuleInput` via:
 //
-// 		 GetProjectAlertRulePodRuleArgs{...}
-//
+//          GetProjectAlertRulePodRuleArgs{...}
 type GetProjectAlertRulePodRuleInput interface {
 	pulumi.Input
 
@@ -64349,8 +63694,7 @@ type GetProjectAlertRuleWorkloadRule struct {
 // GetProjectAlertRuleWorkloadRuleInput is an input type that accepts GetProjectAlertRuleWorkloadRuleArgs and GetProjectAlertRuleWorkloadRuleOutput values.
 // You can construct a concrete instance of `GetProjectAlertRuleWorkloadRuleInput` via:
 //
-// 		 GetProjectAlertRuleWorkloadRuleArgs{...}
-//
+//          GetProjectAlertRuleWorkloadRuleArgs{...}
 type GetProjectAlertRuleWorkloadRuleInput interface {
 	pulumi.Input
 
@@ -64412,8 +63756,7 @@ type GetProjectContainerResourceLimit struct {
 // GetProjectContainerResourceLimitInput is an input type that accepts GetProjectContainerResourceLimitArgs and GetProjectContainerResourceLimitOutput values.
 // You can construct a concrete instance of `GetProjectContainerResourceLimitInput` via:
 //
-// 		 GetProjectContainerResourceLimitArgs{...}
-//
+//          GetProjectContainerResourceLimitArgs{...}
 type GetProjectContainerResourceLimitInput interface {
 	pulumi.Input
 
@@ -64480,8 +63823,7 @@ type GetProjectLoggingCustomTargetConfig struct {
 // GetProjectLoggingCustomTargetConfigInput is an input type that accepts GetProjectLoggingCustomTargetConfigArgs and GetProjectLoggingCustomTargetConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingCustomTargetConfigInput` via:
 //
-// 		 GetProjectLoggingCustomTargetConfigArgs{...}
-//
+//          GetProjectLoggingCustomTargetConfigArgs{...}
 type GetProjectLoggingCustomTargetConfigInput interface {
 	pulumi.Input
 
@@ -64555,8 +63897,7 @@ type GetProjectLoggingElasticsearchConfig struct {
 // GetProjectLoggingElasticsearchConfigInput is an input type that accepts GetProjectLoggingElasticsearchConfigArgs and GetProjectLoggingElasticsearchConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingElasticsearchConfigInput` via:
 //
-// 		 GetProjectLoggingElasticsearchConfigArgs{...}
-//
+//          GetProjectLoggingElasticsearchConfigArgs{...}
 type GetProjectLoggingElasticsearchConfigInput interface {
 	pulumi.Input
 
@@ -64658,8 +63999,7 @@ type GetProjectLoggingFluentdConfig struct {
 // GetProjectLoggingFluentdConfigInput is an input type that accepts GetProjectLoggingFluentdConfigArgs and GetProjectLoggingFluentdConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingFluentdConfigInput` via:
 //
-// 		 GetProjectLoggingFluentdConfigArgs{...}
-//
+//          GetProjectLoggingFluentdConfigArgs{...}
 type GetProjectLoggingFluentdConfigInput interface {
 	pulumi.Input
 
@@ -64731,8 +64071,7 @@ type GetProjectLoggingFluentdConfigFluentServer struct {
 // GetProjectLoggingFluentdConfigFluentServerInput is an input type that accepts GetProjectLoggingFluentdConfigFluentServerArgs and GetProjectLoggingFluentdConfigFluentServerOutput values.
 // You can construct a concrete instance of `GetProjectLoggingFluentdConfigFluentServerInput` via:
 //
-// 		 GetProjectLoggingFluentdConfigFluentServerArgs{...}
-//
+//          GetProjectLoggingFluentdConfigFluentServerArgs{...}
 type GetProjectLoggingFluentdConfigFluentServerInput interface {
 	pulumi.Input
 
@@ -64765,8 +64104,7 @@ func (i GetProjectLoggingFluentdConfigFluentServerArgs) ToGetProjectLoggingFluen
 // GetProjectLoggingFluentdConfigFluentServerArrayInput is an input type that accepts GetProjectLoggingFluentdConfigFluentServerArray and GetProjectLoggingFluentdConfigFluentServerArrayOutput values.
 // You can construct a concrete instance of `GetProjectLoggingFluentdConfigFluentServerArrayInput` via:
 //
-// 		 GetProjectLoggingFluentdConfigFluentServerArray{ GetProjectLoggingFluentdConfigFluentServerArgs{...} }
-//
+//          GetProjectLoggingFluentdConfigFluentServerArray{ GetProjectLoggingFluentdConfigFluentServerArgs{...} }
 type GetProjectLoggingFluentdConfigFluentServerArrayInput interface {
 	pulumi.Input
 
@@ -64862,8 +64200,7 @@ type GetProjectLoggingKafkaConfig struct {
 // GetProjectLoggingKafkaConfigInput is an input type that accepts GetProjectLoggingKafkaConfigArgs and GetProjectLoggingKafkaConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingKafkaConfigInput` via:
 //
-// 		 GetProjectLoggingKafkaConfigArgs{...}
-//
+//          GetProjectLoggingKafkaConfigArgs{...}
 type GetProjectLoggingKafkaConfigInput interface {
 	pulumi.Input
 
@@ -64945,8 +64282,7 @@ type GetProjectLoggingSplunkConfig struct {
 // GetProjectLoggingSplunkConfigInput is an input type that accepts GetProjectLoggingSplunkConfigArgs and GetProjectLoggingSplunkConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingSplunkConfigInput` via:
 //
-// 		 GetProjectLoggingSplunkConfigArgs{...}
-//
+//          GetProjectLoggingSplunkConfigArgs{...}
 type GetProjectLoggingSplunkConfigInput interface {
 	pulumi.Input
 
@@ -65043,8 +64379,7 @@ type GetProjectLoggingSyslogConfig struct {
 // GetProjectLoggingSyslogConfigInput is an input type that accepts GetProjectLoggingSyslogConfigArgs and GetProjectLoggingSyslogConfigOutput values.
 // You can construct a concrete instance of `GetProjectLoggingSyslogConfigInput` via:
 //
-// 		 GetProjectLoggingSyslogConfigArgs{...}
-//
+//          GetProjectLoggingSyslogConfigArgs{...}
 type GetProjectLoggingSyslogConfigInput interface {
 	pulumi.Input
 
@@ -65134,8 +64469,7 @@ type GetProjectResourceQuota struct {
 // GetProjectResourceQuotaInput is an input type that accepts GetProjectResourceQuotaArgs and GetProjectResourceQuotaOutput values.
 // You can construct a concrete instance of `GetProjectResourceQuotaInput` via:
 //
-// 		 GetProjectResourceQuotaArgs{...}
-//
+//          GetProjectResourceQuotaArgs{...}
 type GetProjectResourceQuotaInput interface {
 	pulumi.Input
 
@@ -65203,8 +64537,7 @@ type GetProjectResourceQuotaNamespaceDefaultLimit struct {
 // GetProjectResourceQuotaNamespaceDefaultLimitInput is an input type that accepts GetProjectResourceQuotaNamespaceDefaultLimitArgs and GetProjectResourceQuotaNamespaceDefaultLimitOutput values.
 // You can construct a concrete instance of `GetProjectResourceQuotaNamespaceDefaultLimitInput` via:
 //
-// 		 GetProjectResourceQuotaNamespaceDefaultLimitArgs{...}
-//
+//          GetProjectResourceQuotaNamespaceDefaultLimitArgs{...}
 type GetProjectResourceQuotaNamespaceDefaultLimitInput interface {
 	pulumi.Input
 
@@ -65325,8 +64658,7 @@ type GetProjectResourceQuotaProjectLimit struct {
 // GetProjectResourceQuotaProjectLimitInput is an input type that accepts GetProjectResourceQuotaProjectLimitArgs and GetProjectResourceQuotaProjectLimitOutput values.
 // You can construct a concrete instance of `GetProjectResourceQuotaProjectLimitInput` via:
 //
-// 		 GetProjectResourceQuotaProjectLimitArgs{...}
-//
+//          GetProjectResourceQuotaProjectLimitArgs{...}
 type GetProjectResourceQuotaProjectLimitInput interface {
 	pulumi.Input
 
@@ -65437,8 +64769,7 @@ type GetRegistryRegistry struct {
 // GetRegistryRegistryInput is an input type that accepts GetRegistryRegistryArgs and GetRegistryRegistryOutput values.
 // You can construct a concrete instance of `GetRegistryRegistryInput` via:
 //
-// 		 GetRegistryRegistryArgs{...}
-//
+//          GetRegistryRegistryArgs{...}
 type GetRegistryRegistryInput interface {
 	pulumi.Input
 
@@ -65467,8 +64798,7 @@ func (i GetRegistryRegistryArgs) ToGetRegistryRegistryOutputWithContext(ctx cont
 // GetRegistryRegistryArrayInput is an input type that accepts GetRegistryRegistryArray and GetRegistryRegistryArrayOutput values.
 // You can construct a concrete instance of `GetRegistryRegistryArrayInput` via:
 //
-// 		 GetRegistryRegistryArray{ GetRegistryRegistryArgs{...} }
-//
+//          GetRegistryRegistryArray{ GetRegistryRegistryArgs{...} }
 type GetRegistryRegistryArrayInput interface {
 	pulumi.Input
 
@@ -65547,8 +64877,7 @@ type GetRoleTempalteRule struct {
 // GetRoleTempalteRuleInput is an input type that accepts GetRoleTempalteRuleArgs and GetRoleTempalteRuleOutput values.
 // You can construct a concrete instance of `GetRoleTempalteRuleInput` via:
 //
-// 		 GetRoleTempalteRuleArgs{...}
-//
+//          GetRoleTempalteRuleArgs{...}
 type GetRoleTempalteRuleInput interface {
 	pulumi.Input
 
@@ -65579,8 +64908,7 @@ func (i GetRoleTempalteRuleArgs) ToGetRoleTempalteRuleOutputWithContext(ctx cont
 // GetRoleTempalteRuleArrayInput is an input type that accepts GetRoleTempalteRuleArray and GetRoleTempalteRuleArrayOutput values.
 // You can construct a concrete instance of `GetRoleTempalteRuleArrayInput` via:
 //
-// 		 GetRoleTempalteRuleArray{ GetRoleTempalteRuleArgs{...} }
-//
+//          GetRoleTempalteRuleArray{ GetRoleTempalteRuleArgs{...} }
 type GetRoleTempalteRuleArrayInput interface {
 	pulumi.Input
 
@@ -65667,8 +64995,7 @@ type GetRoleTemplateRule struct {
 // GetRoleTemplateRuleInput is an input type that accepts GetRoleTemplateRuleArgs and GetRoleTemplateRuleOutput values.
 // You can construct a concrete instance of `GetRoleTemplateRuleInput` via:
 //
-// 		 GetRoleTemplateRuleArgs{...}
-//
+//          GetRoleTemplateRuleArgs{...}
 type GetRoleTemplateRuleInput interface {
 	pulumi.Input
 
@@ -65699,8 +65026,7 @@ func (i GetRoleTemplateRuleArgs) ToGetRoleTemplateRuleOutputWithContext(ctx cont
 // GetRoleTemplateRuleArrayInput is an input type that accepts GetRoleTemplateRuleArray and GetRoleTemplateRuleArrayOutput values.
 // You can construct a concrete instance of `GetRoleTemplateRuleArrayInput` via:
 //
-// 		 GetRoleTemplateRuleArray{ GetRoleTemplateRuleArgs{...} }
-//
+//          GetRoleTemplateRuleArray{ GetRoleTemplateRuleArgs{...} }
 type GetRoleTemplateRuleArrayInput interface {
 	pulumi.Input
 

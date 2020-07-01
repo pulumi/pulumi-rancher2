@@ -8,6 +8,29 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupNodeDriver(ctx, &rancher2.LookupNodeDriverArgs{
+// 			Name: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNodeDriver(ctx *pulumi.Context, args *LookupNodeDriverArgs, opts ...pulumi.InvokeOption) (*LookupNodeDriverResult, error) {
 	var rv LookupNodeDriverResult
 	err := ctx.Invoke("rancher2:index/getNodeDriver:getNodeDriver", args, &rv, opts...)

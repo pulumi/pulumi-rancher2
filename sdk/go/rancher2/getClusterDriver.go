@@ -8,6 +8,29 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupClusterDriver(ctx, &rancher2.LookupClusterDriverArgs{
+// 			Name: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupClusterDriver(ctx *pulumi.Context, args *LookupClusterDriverArgs, opts ...pulumi.InvokeOption) (*LookupClusterDriverResult, error) {
 	var rv LookupClusterDriverResult
 	err := ctx.Invoke("rancher2:index/getClusterDriver:getClusterDriver", args, &rv, opts...)
