@@ -1,7 +1,0 @@
-#!/bin/bash
-set -ef -o pipefail
-
-WORKSPACE=$(pwd)
-echo "Using workspace: ${WORKSPACE}"
-mkdir -p $WORKSPACE/nuget
-find . -name '*.nupkg' -print -exec cp -p {} ${WORKSPACE}/nuget \;
