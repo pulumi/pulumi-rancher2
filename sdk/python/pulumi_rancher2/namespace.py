@@ -5,64 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Namespace']
 
 
 class Namespace(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for Node Pool object (map)
-    """
-    container_resource_limit: pulumi.Output[dict]
-    """
-    Default containers resource limits on namespace (List maxitem:1)
-
-      * `limitsCpu` (`str`) - Limit for limits cpu in namespace (string)
-      * `limitsMemory` (`str`) - Limit for limits memory in namespace (string)
-      * `requestsCpu` (`str`) - Limit for requests cpu in namespace (string)
-      * `requestsMemory` (`str`) - Limit for requests memory in namespace (string)
-    """
-    description: pulumi.Output[str]
-    """
-    A namespace description (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for Node Pool object (map)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the namespace (string)
-    """
-    project_id: pulumi.Output[str]
-    """
-    The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-    """
-    resource_quota: pulumi.Output[dict]
-    """
-    Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-
-      * `limit` (`dict`) - Resource quota limit for namespace (list maxitems:1)
-        * `configMaps` (`str`) - Limit for config maps in namespace (string)
-        * `limitsCpu` (`str`) - Limit for limits cpu in namespace (string)
-        * `limitsMemory` (`str`) - Limit for limits memory in namespace (string)
-        * `persistentVolumeClaims` (`str`) - Limit for persistent volume claims in namespace (string)
-        * `pods` (`str`) - Limit for pods in namespace (string)
-        * `replicationControllers` (`str`) - Limit for replication controllers in namespace (string)
-        * `requestsCpu` (`str`) - Limit for requests cpu in namespace (string)
-        * `requestsMemory` (`str`) - Limit for requests memory in namespace (string)
-        * `requestsStorage` (`str`) - Limit for requests storage in namespace (string)
-        * `secrets` (`str`) - Limit for secrets in namespace (string)
-        * `services` (`str`)
-        * `servicesLoadBalancers` (`str`) - Limit for services load balancers in namespace (string)
-        * `servicesNodePorts` (`str`) - Limit for services node ports in namespace (string)
-    """
-    wait_for_cluster: pulumi.Output[bool]
-    """
-    Wait for cluster becomes active. Default `false` (bool)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, container_resource_limit=None, description=None, labels=None, name=None, project_id=None, resource_quota=None, wait_for_cluster=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 container_resource_limit: Optional[pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 resource_quota: Optional[pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']]] = None,
+                 wait_for_cluster: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
 
@@ -74,21 +39,21 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Namespace
         foo = rancher2.Namespace("foo",
-            container_resource_limit={
-                "limitsCpu": "20m",
-                "limitsMemory": "20Mi",
-                "requestsCpu": "1m",
-                "requestsMemory": "1Mi",
-            },
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
             description="foo namespace",
             project_id="<PROJECT_ID>",
-            resource_quota={
-                "limit": {
-                    "limitsCpu": "100m",
-                    "limitsMemory": "100Mi",
-                    "requestsStorage": "1Gi",
-                },
-            })
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
         ```
 
         ```python
@@ -98,64 +63,40 @@ class Namespace(pulumi.CustomResource):
         # Create a new rancher2 Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
             description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ))
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
-            container_resource_limit={
-                "limitsCpu": "20m",
-                "limitsMemory": "20Mi",
-                "requestsCpu": "1m",
-                "requestsMemory": "1Mi",
-            },
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
             description="foo namespace",
             project_id=foo_custom.default_project_id,
-            resource_quota={
-                "limit": {
-                    "limitsCpu": "100m",
-                    "limitsMemory": "100Mi",
-                    "requestsStorage": "1Gi",
-                },
-            })
+            resource_quota=rancher2.NamespaceResourceQuotaArgs(
+                limit=rancher2.NamespaceResourceQuotaLimitArgs(
+                    limits_cpu="100m",
+                    limits_memory="100Mi",
+                    requests_storage="1Gi",
+                ),
+            ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
-        :param pulumi.Input[dict] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-        :param pulumi.Input[dict] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-
-        The **container_resource_limit** object supports the following:
-
-          * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
-          * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
-          * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
-          * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-
-        The **resource_quota** object supports the following:
-
-          * `limit` (`pulumi.Input[dict]`) - Resource quota limit for namespace (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in namespace (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in namespace (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in namespace (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in namespace (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in namespace (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in namespace (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in namespace (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in namespace (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -168,7 +109,7 @@ class Namespace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -191,46 +132,32 @@ class Namespace(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, container_resource_limit=None, description=None, labels=None, name=None, project_id=None, resource_quota=None, wait_for_cluster=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            container_resource_limit: Optional[pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
+            resource_quota: Optional[pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']]] = None,
+            wait_for_cluster: Optional[pulumi.Input[bool]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
-        :param pulumi.Input[dict] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-        :param pulumi.Input[dict] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-
-        The **container_resource_limit** object supports the following:
-
-          * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
-          * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
-          * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
-          * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-
-        The **resource_quota** object supports the following:
-
-          * `limit` (`pulumi.Input[dict]`) - Resource quota limit for namespace (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in namespace (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in namespace (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in namespace (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in namespace (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in namespace (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in namespace (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in namespace (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in namespace (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in namespace (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in namespace (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in namespace (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in namespace (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,8 +173,73 @@ class Namespace(pulumi.CustomResource):
         __props__["wait_for_cluster"] = wait_for_cluster
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for Node Pool object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="containerResourceLimit")
+    def container_resource_limit(self) -> Optional['outputs.NamespaceContainerResourceLimit']:
+        """
+        Default containers resource limits on namespace (List maxitem:1)
+        """
+        return pulumi.get(self, "container_resource_limit")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A namespace description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the namespace (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="resourceQuota")
+    def resource_quota(self) -> Optional['outputs.NamespaceResourceQuota']:
+        """
+        Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        """
+        return pulumi.get(self, "resource_quota")
+
+    @property
+    @pulumi.getter(name="waitForCluster")
+    def wait_for_cluster(self) -> Optional[bool]:
+        """
+        Wait for cluster becomes active. Default `false` (bool)
+        """
+        return pulumi.get(self, "wait_for_cluster")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

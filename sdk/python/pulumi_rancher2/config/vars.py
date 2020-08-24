@@ -5,32 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'access_key',
+    'api_url',
+    'bootstrap',
+    'ca_certs',
+    'insecure',
+    'retries',
+    'secret_key',
+    'token_key',
+]
 
 __config__ = pulumi.Config('rancher2')
 
-access_key = __config__.get('accessKey') or utilities.get_env('RANCHER_ACCESS_KEY')
+access_key = __config__.get('accessKey') or _utilities.get_env('RANCHER_ACCESS_KEY')
 """
 API Key used to authenticate with the rancher server
 """
 
-api_url = __config__.get('apiUrl') or utilities.get_env('RANCHER_URL')
+api_url = __config__.get('apiUrl') or _utilities.get_env('RANCHER_URL')
 """
 The URL to the rancher API
 """
 
-bootstrap = __config__.get('bootstrap') or (utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
+bootstrap = __config__.get('bootstrap') or (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
 """
 Bootstrap rancher server
 """
 
-ca_certs = __config__.get('caCerts') or utilities.get_env('RANCHER_CA_CERTS')
+ca_certs = __config__.get('caCerts') or _utilities.get_env('RANCHER_CA_CERTS')
 """
 CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 """
 
-insecure = __config__.get('insecure') or (utilities.get_env_bool('RANCHER_INSECURE') or False)
+insecure = __config__.get('insecure') or (_utilities.get_env_bool('RANCHER_INSECURE') or False)
 """
 Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 """
@@ -40,12 +51,12 @@ retries = __config__.get('retries')
 Rancher connection retries
 """
 
-secret_key = __config__.get('secretKey') or utilities.get_env('RANCHER_SECRET_KEY')
+secret_key = __config__.get('secretKey') or _utilities.get_env('RANCHER_SECRET_KEY')
 """
 API secret used to authenticate with the rancher server
 """
 
-token_key = __config__.get('tokenKey') or utilities.get_env('RANCHER_TOKEN_KEY')
+token_key = __config__.get('tokenKey') or _utilities.get_env('RANCHER_TOKEN_KEY')
 """
 API token used to authenticate with the rancher server
 """

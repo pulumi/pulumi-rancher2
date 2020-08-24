@@ -6,12 +6,27 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_key=None, api_url=None, bootstrap=None, ca_certs=None, insecure=None, retries=None, secret_key=None, token_key=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
+                 bootstrap: Optional[pulumi.Input[bool]] = None,
+                 ca_certs: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[float]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 token_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the rancher2 package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -40,33 +55,33 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             if access_key is None:
-                access_key = utilities.get_env('RANCHER_ACCESS_KEY')
+                access_key = _utilities.get_env('RANCHER_ACCESS_KEY')
             __props__['access_key'] = access_key
             if api_url is None:
-                api_url = utilities.get_env('RANCHER_URL')
+                api_url = _utilities.get_env('RANCHER_URL')
             __props__['api_url'] = api_url
             if bootstrap is None:
-                bootstrap = (utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
+                bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
             __props__['bootstrap'] = pulumi.Output.from_input(bootstrap).apply(json.dumps) if bootstrap is not None else None
             if ca_certs is None:
-                ca_certs = utilities.get_env('RANCHER_CA_CERTS')
+                ca_certs = _utilities.get_env('RANCHER_CA_CERTS')
             __props__['ca_certs'] = ca_certs
             if insecure is None:
-                insecure = (utilities.get_env_bool('RANCHER_INSECURE') or False)
+                insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(json.dumps) if insecure is not None else None
             __props__['retries'] = pulumi.Output.from_input(retries).apply(json.dumps) if retries is not None else None
             if secret_key is None:
-                secret_key = utilities.get_env('RANCHER_SECRET_KEY')
+                secret_key = _utilities.get_env('RANCHER_SECRET_KEY')
             __props__['secret_key'] = secret_key
             if token_key is None:
-                token_key = utilities.get_env('RANCHER_TOKEN_KEY')
+                token_key = _utilities.get_env('RANCHER_TOKEN_KEY')
             __props__['token_key'] = token_key
         super(Provider, __self__).__init__(
             'rancher2',
@@ -75,7 +90,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

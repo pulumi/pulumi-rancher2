@@ -5,72 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['AuthConfigOkta']
 
 
 class AuthConfigOkta(pulumi.CustomResource):
-    access_mode: pulumi.Output[str]
-    """
-    Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-    """
-    allowed_principal_ids: pulumi.Output[list]
-    """
-    Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
-    """
-    annotations: pulumi.Output[dict]
-    """
-    Annotations of the resource (map)
-    """
-    display_name_field: pulumi.Output[str]
-    """
-    OKTA display name field (string)
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Enable auth config provider. Default `true` (bool)
-    """
-    groups_field: pulumi.Output[str]
-    """
-    OKTA group field (string)
-    """
-    idp_metadata_content: pulumi.Output[str]
-    """
-    OKTA IDP metadata content (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels of the resource (map)
-    """
-    name: pulumi.Output[str]
-    """
-    (Computed) The name of the resource (string)
-    """
-    rancher_api_host: pulumi.Output[str]
-    """
-    Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-    """
-    sp_cert: pulumi.Output[str]
-    """
-    OKTA SP cert (string)
-    """
-    sp_key: pulumi.Output[str]
-    """
-    OKTA SP key (string)
-    """
-    type: pulumi.Output[str]
-    """
-    (Computed) The type of the resource (string)
-    """
-    uid_field: pulumi.Output[str]
-    """
-    OKTA UID field (string)
-    """
-    user_name_field: pulumi.Output[str]
-    """
-    OKTA user name field (string)
-    """
-    def __init__(__self__, resource_name, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, display_name_field=None, enabled=None, groups_field=None, idp_metadata_content=None, labels=None, rancher_api_host=None, sp_cert=None, sp_key=None, uid_field=None, user_name_field=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[str]] = None,
+                 allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 display_name_field: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 groups_field: Optional[pulumi.Input[str]] = None,
+                 idp_metadata_content: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 rancher_api_host: Optional[pulumi.Input[str]] = None,
+                 sp_cert: Optional[pulumi.Input[str]] = None,
+                 sp_key: Optional[pulumi.Input[str]] = None,
+                 uid_field: Optional[pulumi.Input[str]] = None,
+                 user_name_field: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Auth Config OKTA resource. This can be used to configure and enable Auth Config OKTA for Rancher v2 RKE clusters and retrieve their information.
 
@@ -97,13 +57,13 @@ class AuthConfigOkta(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[list] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
-        :param pulumi.Input[dict] annotations: Annotations of the resource (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: OKTA display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] groups_field: OKTA group field (string)
         :param pulumi.Input[str] idp_metadata_content: OKTA IDP metadata content (string)
-        :param pulumi.Input[dict] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: OKTA SP cert (string)
         :param pulumi.Input[str] sp_key: OKTA SP key (string)
@@ -121,7 +81,7 @@ class AuthConfigOkta(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -165,22 +125,39 @@ class AuthConfigOkta(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, display_name_field=None, enabled=None, groups_field=None, idp_metadata_content=None, labels=None, name=None, rancher_api_host=None, sp_cert=None, sp_key=None, type=None, uid_field=None, user_name_field=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: Optional[pulumi.Input[str]] = None,
+            allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            display_name_field: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            groups_field: Optional[pulumi.Input[str]] = None,
+            idp_metadata_content: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            rancher_api_host: Optional[pulumi.Input[str]] = None,
+            sp_cert: Optional[pulumi.Input[str]] = None,
+            sp_key: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            uid_field: Optional[pulumi.Input[str]] = None,
+            user_name_field: Optional[pulumi.Input[str]] = None) -> 'AuthConfigOkta':
         """
         Get an existing AuthConfigOkta resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[list] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
-        :param pulumi.Input[dict] annotations: Annotations of the resource (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: OKTA display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] groups_field: OKTA group field (string)
         :param pulumi.Input[str] idp_metadata_content: OKTA IDP metadata content (string)
-        :param pulumi.Input[dict] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: OKTA SP cert (string)
@@ -210,8 +187,129 @@ class AuthConfigOkta(pulumi.CustomResource):
         __props__["user_name_field"] = user_name_field
         return AuthConfigOkta(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[str]:
+        """
+        Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        """
+        return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter(name="allowedPrincipalIds")
+    def allowed_principal_ids(self) -> Optional[List[str]]:
+        """
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
+        """
+        return pulumi.get(self, "allowed_principal_ids")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations of the resource (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="displayNameField")
+    def display_name_field(self) -> str:
+        """
+        OKTA display name field (string)
+        """
+        return pulumi.get(self, "display_name_field")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable auth config provider. Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupsField")
+    def groups_field(self) -> str:
+        """
+        OKTA group field (string)
+        """
+        return pulumi.get(self, "groups_field")
+
+    @property
+    @pulumi.getter(name="idpMetadataContent")
+    def idp_metadata_content(self) -> str:
+        """
+        OKTA IDP metadata content (string)
+        """
+        return pulumi.get(self, "idp_metadata_content")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels of the resource (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        (Computed) The name of the resource (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rancherApiHost")
+    def rancher_api_host(self) -> str:
+        """
+        Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+        """
+        return pulumi.get(self, "rancher_api_host")
+
+    @property
+    @pulumi.getter(name="spCert")
+    def sp_cert(self) -> str:
+        """
+        OKTA SP cert (string)
+        """
+        return pulumi.get(self, "sp_cert")
+
+    @property
+    @pulumi.getter(name="spKey")
+    def sp_key(self) -> str:
+        """
+        OKTA SP key (string)
+        """
+        return pulumi.get(self, "sp_key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        (Computed) The type of the resource (string)
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="uidField")
+    def uid_field(self) -> str:
+        """
+        OKTA UID field (string)
+        """
+        return pulumi.get(self, "uid_field")
+
+    @property
+    @pulumi.getter(name="userNameField")
+    def user_name_field(self) -> str:
+        """
+        OKTA user name field (string)
+        """
+        return pulumi.get(self, "user_name_field")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetCertificateResult',
+    'AwaitableGetCertificateResult',
+    'get_certificate',
+]
+
+@pulumi.output_type
 class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
@@ -15,43 +22,85 @@ class GetCertificateResult:
     def __init__(__self__, annotations=None, certs=None, description=None, id=None, labels=None, name=None, namespace_id=None, project_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if certs and not isinstance(certs, str):
+            raise TypeError("Expected argument 'certs' to be a str")
+        pulumi.set(__self__, "certs", certs)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if namespace_id and not isinstance(namespace_id, str):
+            raise TypeError("Expected argument 'namespace_id' to be a str")
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for certificate object (map)
         """
-        if certs and not isinstance(certs, str):
-            raise TypeError("Expected argument 'certs' to be a str")
-        __self__.certs = certs
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def certs(self) -> str:
         """
         (Computed) Base64 encoded certs (string)
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "certs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) A certificate description (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for certificate object (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if namespace_id and not isinstance(namespace_id, str):
-            raise TypeError("Expected argument 'namespace_id' to be a str")
-        __self__.namespace_id = namespace_id
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[str]:
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +116,11 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             namespace_id=self.namespace_id,
             project_id=self.project_id)
 
-def get_certificate(name=None,namespace_id=None,project_id=None,opts=None):
+
+def get_certificate(name: Optional[str] = None,
+                    namespace_id: Optional[str] = None,
+                    project_id: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Use this data source to retrieve information about a Rancher v2 certificate.
 
@@ -100,23 +153,21 @@ def get_certificate(name=None,namespace_id=None,project_id=None,opts=None):
     :param str project_id: The project id where to assign the certificate (string)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceId'] = namespace_id
     __args__['projectId'] = project_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getCertificate:getCertificate', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        annotations=__ret__.get('annotations'),
-        certs=__ret__.get('certs'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        namespace_id=__ret__.get('namespaceId'),
-        project_id=__ret__.get('projectId'))
+        annotations=__ret__.annotations,
+        certs=__ret__.certs,
+        description=__ret__.description,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        namespace_id=__ret__.namespace_id,
+        project_id=__ret__.project_id)

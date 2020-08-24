@@ -5,140 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ActiveDirectory']
 
 
 class ActiveDirectory(pulumi.CustomResource):
-    access_mode: pulumi.Output[str]
-    """
-    Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-    """
-    allowed_principal_ids: pulumi.Output[list]
-    """
-    Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
-    """
-    annotations: pulumi.Output[dict]
-    """
-    Annotations of the resource (map)
-    """
-    certificate: pulumi.Output[str]
-    """
-    CA certificate for TLS if selfsigned (string)
-    """
-    connection_timeout: pulumi.Output[float]
-    """
-    ActiveDirectory connection timeout. Default `5000` (int)
-    """
-    default_login_domain: pulumi.Output[str]
-    """
-    ActiveDirectory defult login domain (string)
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Enable auth config provider. Default `true` (bool)
-    """
-    group_dn_attribute: pulumi.Output[str]
-    """
-    Group DN attribute. Default `distinguishedName` (string)
-    """
-    group_member_mapping_attribute: pulumi.Output[str]
-    """
-    Group member mapping attribute. Default `member` (string)
-    """
-    group_member_user_attribute: pulumi.Output[str]
-    """
-    Group member user attribute. Default `distinguishedName` (string)
-    """
-    group_name_attribute: pulumi.Output[str]
-    """
-    Group name attribute. Default `name` (string)
-    """
-    group_object_class: pulumi.Output[str]
-    """
-    Group object class. Default `group` (string)
-    """
-    group_search_attribute: pulumi.Output[str]
-    """
-    Group search attribute. Default `sAMAccountName` (string)
-    """
-    group_search_base: pulumi.Output[str]
-    """
-    Group search base (string)
-    """
-    group_search_filter: pulumi.Output[str]
-    """
-    Group search filter (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels of the resource (map)
-    """
-    name: pulumi.Output[str]
-    """
-    (Computed) The name of the resource (string)
-    """
-    nested_group_membership_enabled: pulumi.Output[bool]
-    """
-    Nested group membership enable. Default `false` (bool)
-    """
-    port: pulumi.Output[float]
-    """
-    ActiveDirectory port. Default `389` (int)
-    """
-    servers: pulumi.Output[list]
-    """
-    ActiveDirectory servers list (list)
-    """
-    service_account_password: pulumi.Output[str]
-    """
-    Service account password for access ActiveDirectory service (string)
-    """
-    service_account_username: pulumi.Output[str]
-    """
-    Service account DN for access ActiveDirectory service (string)
-    """
-    tls: pulumi.Output[bool]
-    """
-    Enable TLS connection (bool)
-    """
-    type: pulumi.Output[str]
-    """
-    (Computed) The type of the resource (string)
-    """
-    user_disabled_bit_mask: pulumi.Output[float]
-    """
-    User disabled bit mask. Default `2` (int)
-    """
-    user_enabled_attribute: pulumi.Output[str]
-    """
-    User enable attribute (string)
-    """
-    user_login_attribute: pulumi.Output[str]
-    """
-    User login attribute. Default `sAMAccountName` (string)
-    """
-    user_name_attribute: pulumi.Output[str]
-    """
-    User name attribute. Default `name` (string)
-    """
-    user_object_class: pulumi.Output[str]
-    """
-    User object class. Default `person` (string)
-    """
-    user_search_attribute: pulumi.Output[str]
-    """
-    User search attribute. Default `sAMAccountName|sn|givenName` (string)
-    """
-    user_search_base: pulumi.Output[str]
-    """
-    User search base DN (string)
-    """
-    user_search_filter: pulumi.Output[str]
-    """
-    User search filter (string)
-    """
-    def __init__(__self__, resource_name, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, certificate=None, connection_timeout=None, default_login_domain=None, enabled=None, group_dn_attribute=None, group_member_mapping_attribute=None, group_member_user_attribute=None, group_name_attribute=None, group_object_class=None, group_search_attribute=None, group_search_base=None, group_search_filter=None, labels=None, nested_group_membership_enabled=None, port=None, servers=None, service_account_password=None, service_account_username=None, tls=None, user_disabled_bit_mask=None, user_enabled_attribute=None, user_login_attribute=None, user_name_attribute=None, user_object_class=None, user_search_attribute=None, user_search_base=None, user_search_filter=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[str]] = None,
+                 allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 connection_timeout: Optional[pulumi.Input[float]] = None,
+                 default_login_domain: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 group_dn_attribute: Optional[pulumi.Input[str]] = None,
+                 group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
+                 group_member_user_attribute: Optional[pulumi.Input[str]] = None,
+                 group_name_attribute: Optional[pulumi.Input[str]] = None,
+                 group_object_class: Optional[pulumi.Input[str]] = None,
+                 group_search_attribute: Optional[pulumi.Input[str]] = None,
+                 group_search_base: Optional[pulumi.Input[str]] = None,
+                 group_search_filter: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 service_account_password: Optional[pulumi.Input[str]] = None,
+                 service_account_username: Optional[pulumi.Input[str]] = None,
+                 tls: Optional[pulumi.Input[bool]] = None,
+                 user_disabled_bit_mask: Optional[pulumi.Input[float]] = None,
+                 user_enabled_attribute: Optional[pulumi.Input[str]] = None,
+                 user_login_attribute: Optional[pulumi.Input[str]] = None,
+                 user_name_attribute: Optional[pulumi.Input[str]] = None,
+                 user_object_class: Optional[pulumi.Input[str]] = None,
+                 user_search_attribute: Optional[pulumi.Input[str]] = None,
+                 user_search_base: Optional[pulumi.Input[str]] = None,
+                 user_search_filter: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
 
@@ -147,8 +56,8 @@ class ActiveDirectory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[list] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
-        :param pulumi.Input[dict] annotations: Annotations of the resource (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[float] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -161,10 +70,10 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[dict] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[float] port: ActiveDirectory port. Default `389` (int)
-        :param pulumi.Input[list] servers: ActiveDirectory servers list (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[str] service_account_username: Service account DN for access ActiveDirectory service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -188,7 +97,7 @@ class ActiveDirectory(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -241,17 +150,51 @@ class ActiveDirectory(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_mode=None, allowed_principal_ids=None, annotations=None, certificate=None, connection_timeout=None, default_login_domain=None, enabled=None, group_dn_attribute=None, group_member_mapping_attribute=None, group_member_user_attribute=None, group_name_attribute=None, group_object_class=None, group_search_attribute=None, group_search_base=None, group_search_filter=None, labels=None, name=None, nested_group_membership_enabled=None, port=None, servers=None, service_account_password=None, service_account_username=None, tls=None, type=None, user_disabled_bit_mask=None, user_enabled_attribute=None, user_login_attribute=None, user_name_attribute=None, user_object_class=None, user_search_attribute=None, user_search_base=None, user_search_filter=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: Optional[pulumi.Input[str]] = None,
+            allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            certificate: Optional[pulumi.Input[str]] = None,
+            connection_timeout: Optional[pulumi.Input[float]] = None,
+            default_login_domain: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            group_dn_attribute: Optional[pulumi.Input[str]] = None,
+            group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
+            group_member_user_attribute: Optional[pulumi.Input[str]] = None,
+            group_name_attribute: Optional[pulumi.Input[str]] = None,
+            group_object_class: Optional[pulumi.Input[str]] = None,
+            group_search_attribute: Optional[pulumi.Input[str]] = None,
+            group_search_base: Optional[pulumi.Input[str]] = None,
+            group_search_filter: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            service_account_password: Optional[pulumi.Input[str]] = None,
+            service_account_username: Optional[pulumi.Input[str]] = None,
+            tls: Optional[pulumi.Input[bool]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            user_disabled_bit_mask: Optional[pulumi.Input[float]] = None,
+            user_enabled_attribute: Optional[pulumi.Input[str]] = None,
+            user_login_attribute: Optional[pulumi.Input[str]] = None,
+            user_name_attribute: Optional[pulumi.Input[str]] = None,
+            user_object_class: Optional[pulumi.Input[str]] = None,
+            user_search_attribute: Optional[pulumi.Input[str]] = None,
+            user_search_base: Optional[pulumi.Input[str]] = None,
+            user_search_filter: Optional[pulumi.Input[str]] = None) -> 'ActiveDirectory':
         """
         Get an existing ActiveDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[list] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
-        :param pulumi.Input[dict] annotations: Annotations of the resource (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[float] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -264,11 +207,11 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[dict] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[float] port: ActiveDirectory port. Default `389` (int)
-        :param pulumi.Input[list] servers: ActiveDirectory servers list (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[str] service_account_username: Service account DN for access ActiveDirectory service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -320,8 +263,265 @@ class ActiveDirectory(pulumi.CustomResource):
         __props__["user_search_filter"] = user_search_filter
         return ActiveDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[str]:
+        """
+        Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        """
+        return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter(name="allowedPrincipalIds")
+    def allowed_principal_ids(self) -> Optional[List[str]]:
+        """
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        """
+        return pulumi.get(self, "allowed_principal_ids")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations of the resource (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[str]:
+        """
+        CA certificate for TLS if selfsigned (string)
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="connectionTimeout")
+    def connection_timeout(self) -> Optional[float]:
+        """
+        ActiveDirectory connection timeout. Default `5000` (int)
+        """
+        return pulumi.get(self, "connection_timeout")
+
+    @property
+    @pulumi.getter(name="defaultLoginDomain")
+    def default_login_domain(self) -> Optional[str]:
+        """
+        ActiveDirectory defult login domain (string)
+        """
+        return pulumi.get(self, "default_login_domain")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable auth config provider. Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupDnAttribute")
+    def group_dn_attribute(self) -> str:
+        """
+        Group DN attribute. Default `distinguishedName` (string)
+        """
+        return pulumi.get(self, "group_dn_attribute")
+
+    @property
+    @pulumi.getter(name="groupMemberMappingAttribute")
+    def group_member_mapping_attribute(self) -> str:
+        """
+        Group member mapping attribute. Default `member` (string)
+        """
+        return pulumi.get(self, "group_member_mapping_attribute")
+
+    @property
+    @pulumi.getter(name="groupMemberUserAttribute")
+    def group_member_user_attribute(self) -> str:
+        """
+        Group member user attribute. Default `distinguishedName` (string)
+        """
+        return pulumi.get(self, "group_member_user_attribute")
+
+    @property
+    @pulumi.getter(name="groupNameAttribute")
+    def group_name_attribute(self) -> str:
+        """
+        Group name attribute. Default `name` (string)
+        """
+        return pulumi.get(self, "group_name_attribute")
+
+    @property
+    @pulumi.getter(name="groupObjectClass")
+    def group_object_class(self) -> str:
+        """
+        Group object class. Default `group` (string)
+        """
+        return pulumi.get(self, "group_object_class")
+
+    @property
+    @pulumi.getter(name="groupSearchAttribute")
+    def group_search_attribute(self) -> str:
+        """
+        Group search attribute. Default `sAMAccountName` (string)
+        """
+        return pulumi.get(self, "group_search_attribute")
+
+    @property
+    @pulumi.getter(name="groupSearchBase")
+    def group_search_base(self) -> str:
+        """
+        Group search base (string)
+        """
+        return pulumi.get(self, "group_search_base")
+
+    @property
+    @pulumi.getter(name="groupSearchFilter")
+    def group_search_filter(self) -> str:
+        """
+        Group search filter (string)
+        """
+        return pulumi.get(self, "group_search_filter")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels of the resource (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        (Computed) The name of the resource (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nestedGroupMembershipEnabled")
+    def nested_group_membership_enabled(self) -> bool:
+        """
+        Nested group membership enable. Default `false` (bool)
+        """
+        return pulumi.get(self, "nested_group_membership_enabled")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        """
+        ActiveDirectory port. Default `389` (int)
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def servers(self) -> List[str]:
+        """
+        ActiveDirectory servers list (list)
+        """
+        return pulumi.get(self, "servers")
+
+    @property
+    @pulumi.getter(name="serviceAccountPassword")
+    def service_account_password(self) -> str:
+        """
+        Service account password for access ActiveDirectory service (string)
+        """
+        return pulumi.get(self, "service_account_password")
+
+    @property
+    @pulumi.getter(name="serviceAccountUsername")
+    def service_account_username(self) -> str:
+        """
+        Service account DN for access ActiveDirectory service (string)
+        """
+        return pulumi.get(self, "service_account_username")
+
+    @property
+    @pulumi.getter
+    def tls(self) -> bool:
+        """
+        Enable TLS connection (bool)
+        """
+        return pulumi.get(self, "tls")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        (Computed) The type of the resource (string)
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userDisabledBitMask")
+    def user_disabled_bit_mask(self) -> Optional[float]:
+        """
+        User disabled bit mask. Default `2` (int)
+        """
+        return pulumi.get(self, "user_disabled_bit_mask")
+
+    @property
+    @pulumi.getter(name="userEnabledAttribute")
+    def user_enabled_attribute(self) -> str:
+        """
+        User enable attribute (string)
+        """
+        return pulumi.get(self, "user_enabled_attribute")
+
+    @property
+    @pulumi.getter(name="userLoginAttribute")
+    def user_login_attribute(self) -> str:
+        """
+        User login attribute. Default `sAMAccountName` (string)
+        """
+        return pulumi.get(self, "user_login_attribute")
+
+    @property
+    @pulumi.getter(name="userNameAttribute")
+    def user_name_attribute(self) -> str:
+        """
+        User name attribute. Default `name` (string)
+        """
+        return pulumi.get(self, "user_name_attribute")
+
+    @property
+    @pulumi.getter(name="userObjectClass")
+    def user_object_class(self) -> str:
+        """
+        User object class. Default `person` (string)
+        """
+        return pulumi.get(self, "user_object_class")
+
+    @property
+    @pulumi.getter(name="userSearchAttribute")
+    def user_search_attribute(self) -> str:
+        """
+        User search attribute. Default `sAMAccountName|sn|givenName` (string)
+        """
+        return pulumi.get(self, "user_search_attribute")
+
+    @property
+    @pulumi.getter(name="userSearchBase")
+    def user_search_base(self) -> str:
+        """
+        User search base DN (string)
+        """
+        return pulumi.get(self, "user_search_base")
+
+    @property
+    @pulumi.getter(name="userSearchFilter")
+    def user_search_filter(self) -> str:
+        """
+        User search filter (string)
+        """
+        return pulumi.get(self, "user_search_filter")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

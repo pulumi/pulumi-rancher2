@@ -1,4 +1,10 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-rancher2.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-rancher2)
+[![Actions Status](https://github.com/pulumi/pulumi-rancher2/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-rancher2/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Francher2.svg)](https://www.npmjs.com/package/@pulumi/rancher2)
+[![Python version](https://badge.fury.io/py/pulumi-rancher2.svg)](https://pypi.org/project/pulumi-rancher2)
+[![NuGet version](https://badge.fury.io/nu/pulumi.rancher2.svg)](https://badge.fury.io/nu/pulumi.rancher2)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-rancher2/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-rancher2/sdk/v2/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-rancher2/blob/master/LICENSE)
 
 # Rancher2 Resource Provider
 

@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetPodSecurityPolicyTemplateResult',
+    'AwaitableGetPodSecurityPolicyTemplateResult',
+    'get_pod_security_policy_template',
+]
+
+@pulumi.output_type
 class GetPodSecurityPolicyTemplateResult:
     """
     A collection of values returned by getPodSecurityPolicyTemplate.
@@ -15,94 +24,241 @@ class GetPodSecurityPolicyTemplateResult:
     def __init__(__self__, allow_privilege_escalation=None, allowed_capabilities=None, allowed_csi_drivers=None, allowed_flex_volumes=None, allowed_host_paths=None, allowed_proc_mount_types=None, allowed_unsafe_sysctls=None, annotations=None, default_add_capabilities=None, default_allow_privilege_escalation=None, description=None, forbidden_sysctls=None, fs_group=None, host_ipc=None, host_network=None, host_pid=None, host_ports=None, id=None, labels=None, name=None, privileged=None, read_only_root_filesystem=None, required_drop_capabilities=None, run_as_group=None, run_as_user=None, runtime_class=None, se_linux=None, supplemental_group=None, volumes=None):
         if allow_privilege_escalation and not isinstance(allow_privilege_escalation, bool):
             raise TypeError("Expected argument 'allow_privilege_escalation' to be a bool")
-        __self__.allow_privilege_escalation = allow_privilege_escalation
+        pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
         if allowed_capabilities and not isinstance(allowed_capabilities, list):
             raise TypeError("Expected argument 'allowed_capabilities' to be a list")
-        __self__.allowed_capabilities = allowed_capabilities
+        pulumi.set(__self__, "allowed_capabilities", allowed_capabilities)
         if allowed_csi_drivers and not isinstance(allowed_csi_drivers, list):
             raise TypeError("Expected argument 'allowed_csi_drivers' to be a list")
-        __self__.allowed_csi_drivers = allowed_csi_drivers
+        pulumi.set(__self__, "allowed_csi_drivers", allowed_csi_drivers)
         if allowed_flex_volumes and not isinstance(allowed_flex_volumes, list):
             raise TypeError("Expected argument 'allowed_flex_volumes' to be a list")
-        __self__.allowed_flex_volumes = allowed_flex_volumes
+        pulumi.set(__self__, "allowed_flex_volumes", allowed_flex_volumes)
         if allowed_host_paths and not isinstance(allowed_host_paths, list):
             raise TypeError("Expected argument 'allowed_host_paths' to be a list")
-        __self__.allowed_host_paths = allowed_host_paths
+        pulumi.set(__self__, "allowed_host_paths", allowed_host_paths)
         if allowed_proc_mount_types and not isinstance(allowed_proc_mount_types, list):
             raise TypeError("Expected argument 'allowed_proc_mount_types' to be a list")
-        __self__.allowed_proc_mount_types = allowed_proc_mount_types
+        pulumi.set(__self__, "allowed_proc_mount_types", allowed_proc_mount_types)
         if allowed_unsafe_sysctls and not isinstance(allowed_unsafe_sysctls, list):
             raise TypeError("Expected argument 'allowed_unsafe_sysctls' to be a list")
-        __self__.allowed_unsafe_sysctls = allowed_unsafe_sysctls
+        pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
         if default_add_capabilities and not isinstance(default_add_capabilities, list):
             raise TypeError("Expected argument 'default_add_capabilities' to be a list")
-        __self__.default_add_capabilities = default_add_capabilities
+        pulumi.set(__self__, "default_add_capabilities", default_add_capabilities)
         if default_allow_privilege_escalation and not isinstance(default_allow_privilege_escalation, bool):
             raise TypeError("Expected argument 'default_allow_privilege_escalation' to be a bool")
-        __self__.default_allow_privilege_escalation = default_allow_privilege_escalation
+        pulumi.set(__self__, "default_allow_privilege_escalation", default_allow_privilege_escalation)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if forbidden_sysctls and not isinstance(forbidden_sysctls, list):
             raise TypeError("Expected argument 'forbidden_sysctls' to be a list")
-        __self__.forbidden_sysctls = forbidden_sysctls
+        pulumi.set(__self__, "forbidden_sysctls", forbidden_sysctls)
         if fs_group and not isinstance(fs_group, dict):
             raise TypeError("Expected argument 'fs_group' to be a dict")
-        __self__.fs_group = fs_group
+        pulumi.set(__self__, "fs_group", fs_group)
         if host_ipc and not isinstance(host_ipc, bool):
             raise TypeError("Expected argument 'host_ipc' to be a bool")
-        __self__.host_ipc = host_ipc
+        pulumi.set(__self__, "host_ipc", host_ipc)
         if host_network and not isinstance(host_network, bool):
             raise TypeError("Expected argument 'host_network' to be a bool")
-        __self__.host_network = host_network
+        pulumi.set(__self__, "host_network", host_network)
         if host_pid and not isinstance(host_pid, bool):
             raise TypeError("Expected argument 'host_pid' to be a bool")
-        __self__.host_pid = host_pid
+        pulumi.set(__self__, "host_pid", host_pid)
         if host_ports and not isinstance(host_ports, list):
             raise TypeError("Expected argument 'host_ports' to be a list")
-        __self__.host_ports = host_ports
+        pulumi.set(__self__, "host_ports", host_ports)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if privileged and not isinstance(privileged, bool):
+            raise TypeError("Expected argument 'privileged' to be a bool")
+        pulumi.set(__self__, "privileged", privileged)
+        if read_only_root_filesystem and not isinstance(read_only_root_filesystem, bool):
+            raise TypeError("Expected argument 'read_only_root_filesystem' to be a bool")
+        pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
+        if required_drop_capabilities and not isinstance(required_drop_capabilities, list):
+            raise TypeError("Expected argument 'required_drop_capabilities' to be a list")
+        pulumi.set(__self__, "required_drop_capabilities", required_drop_capabilities)
+        if run_as_group and not isinstance(run_as_group, dict):
+            raise TypeError("Expected argument 'run_as_group' to be a dict")
+        pulumi.set(__self__, "run_as_group", run_as_group)
+        if run_as_user and not isinstance(run_as_user, dict):
+            raise TypeError("Expected argument 'run_as_user' to be a dict")
+        pulumi.set(__self__, "run_as_user", run_as_user)
+        if runtime_class and not isinstance(runtime_class, dict):
+            raise TypeError("Expected argument 'runtime_class' to be a dict")
+        pulumi.set(__self__, "runtime_class", runtime_class)
+        if se_linux and not isinstance(se_linux, dict):
+            raise TypeError("Expected argument 'se_linux' to be a dict")
+        pulumi.set(__self__, "se_linux", se_linux)
+        if supplemental_group and not isinstance(supplemental_group, dict):
+            raise TypeError("Expected argument 'supplemental_group' to be a dict")
+        pulumi.set(__self__, "supplemental_group", supplemental_group)
+        if volumes and not isinstance(volumes, list):
+            raise TypeError("Expected argument 'volumes' to be a list")
+        pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter(name="allowPrivilegeEscalation")
+    def allow_privilege_escalation(self) -> bool:
+        return pulumi.get(self, "allow_privilege_escalation")
+
+    @property
+    @pulumi.getter(name="allowedCapabilities")
+    def allowed_capabilities(self) -> Optional[List[str]]:
+        return pulumi.get(self, "allowed_capabilities")
+
+    @property
+    @pulumi.getter(name="allowedCsiDrivers")
+    def allowed_csi_drivers(self) -> Optional[List['outputs.GetPodSecurityPolicyTemplateAllowedCsiDriverResult']]:
+        return pulumi.get(self, "allowed_csi_drivers")
+
+    @property
+    @pulumi.getter(name="allowedFlexVolumes")
+    def allowed_flex_volumes(self) -> Optional[List['outputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeResult']]:
+        return pulumi.get(self, "allowed_flex_volumes")
+
+    @property
+    @pulumi.getter(name="allowedHostPaths")
+    def allowed_host_paths(self) -> Optional[List['outputs.GetPodSecurityPolicyTemplateAllowedHostPathResult']]:
+        return pulumi.get(self, "allowed_host_paths")
+
+    @property
+    @pulumi.getter(name="allowedProcMountTypes")
+    def allowed_proc_mount_types(self) -> Optional[List[str]]:
+        return pulumi.get(self, "allowed_proc_mount_types")
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Optional[List[str]]:
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="defaultAddCapabilities")
+    def default_add_capabilities(self) -> Optional[List[str]]:
+        return pulumi.get(self, "default_add_capabilities")
+
+    @property
+    @pulumi.getter(name="defaultAllowPrivilegeEscalation")
+    def default_allow_privilege_escalation(self) -> Optional[bool]:
+        return pulumi.get(self, "default_allow_privilege_escalation")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="forbiddenSysctls")
+    def forbidden_sysctls(self) -> Optional[List[str]]:
+        return pulumi.get(self, "forbidden_sysctls")
+
+    @property
+    @pulumi.getter(name="fsGroup")
+    def fs_group(self) -> 'outputs.GetPodSecurityPolicyTemplateFsGroupResult':
+        return pulumi.get(self, "fs_group")
+
+    @property
+    @pulumi.getter(name="hostIpc")
+    def host_ipc(self) -> bool:
+        return pulumi.get(self, "host_ipc")
+
+    @property
+    @pulumi.getter(name="hostNetwork")
+    def host_network(self) -> bool:
+        return pulumi.get(self, "host_network")
+
+    @property
+    @pulumi.getter(name="hostPid")
+    def host_pid(self) -> bool:
+        return pulumi.get(self, "host_pid")
+
+    @property
+    @pulumi.getter(name="hostPorts")
+    def host_ports(self) -> List['outputs.GetPodSecurityPolicyTemplateHostPortResult']:
+        return pulumi.get(self, "host_ports")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if privileged and not isinstance(privileged, bool):
-            raise TypeError("Expected argument 'privileged' to be a bool")
-        __self__.privileged = privileged
-        if read_only_root_filesystem and not isinstance(read_only_root_filesystem, bool):
-            raise TypeError("Expected argument 'read_only_root_filesystem' to be a bool")
-        __self__.read_only_root_filesystem = read_only_root_filesystem
-        if required_drop_capabilities and not isinstance(required_drop_capabilities, list):
-            raise TypeError("Expected argument 'required_drop_capabilities' to be a list")
-        __self__.required_drop_capabilities = required_drop_capabilities
-        if run_as_group and not isinstance(run_as_group, dict):
-            raise TypeError("Expected argument 'run_as_group' to be a dict")
-        __self__.run_as_group = run_as_group
-        if run_as_user and not isinstance(run_as_user, dict):
-            raise TypeError("Expected argument 'run_as_user' to be a dict")
-        __self__.run_as_user = run_as_user
-        if runtime_class and not isinstance(runtime_class, dict):
-            raise TypeError("Expected argument 'runtime_class' to be a dict")
-        __self__.runtime_class = runtime_class
-        if se_linux and not isinstance(se_linux, dict):
-            raise TypeError("Expected argument 'se_linux' to be a dict")
-        __self__.se_linux = se_linux
-        if supplemental_group and not isinstance(supplemental_group, dict):
-            raise TypeError("Expected argument 'supplemental_group' to be a dict")
-        __self__.supplemental_group = supplemental_group
-        if volumes and not isinstance(volumes, list):
-            raise TypeError("Expected argument 'volumes' to be a list")
-        __self__.volumes = volumes
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> bool:
+        return pulumi.get(self, "privileged")
+
+    @property
+    @pulumi.getter(name="readOnlyRootFilesystem")
+    def read_only_root_filesystem(self) -> bool:
+        return pulumi.get(self, "read_only_root_filesystem")
+
+    @property
+    @pulumi.getter(name="requiredDropCapabilities")
+    def required_drop_capabilities(self) -> Optional[List[str]]:
+        return pulumi.get(self, "required_drop_capabilities")
+
+    @property
+    @pulumi.getter(name="runAsGroup")
+    def run_as_group(self) -> Optional['outputs.GetPodSecurityPolicyTemplateRunAsGroupResult']:
+        return pulumi.get(self, "run_as_group")
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> 'outputs.GetPodSecurityPolicyTemplateRunAsUserResult':
+        return pulumi.get(self, "run_as_user")
+
+    @property
+    @pulumi.getter(name="runtimeClass")
+    def runtime_class(self) -> Optional['outputs.GetPodSecurityPolicyTemplateRuntimeClassResult']:
+        return pulumi.get(self, "runtime_class")
+
+    @property
+    @pulumi.getter(name="seLinux")
+    def se_linux(self) -> 'outputs.GetPodSecurityPolicyTemplateSeLinuxResult':
+        return pulumi.get(self, "se_linux")
+
+    @property
+    @pulumi.getter(name="supplementalGroup")
+    def supplemental_group(self) -> 'outputs.GetPodSecurityPolicyTemplateSupplementalGroupResult':
+        return pulumi.get(self, "supplemental_group")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> List[str]:
+        return pulumi.get(self, "volumes")
+
+
 class AwaitableGetPodSecurityPolicyTemplateResult(GetPodSecurityPolicyTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -139,7 +295,36 @@ class AwaitableGetPodSecurityPolicyTemplateResult(GetPodSecurityPolicyTemplateRe
             supplemental_group=self.supplemental_group,
             volumes=self.volumes)
 
-def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_capabilities=None,allowed_csi_drivers=None,allowed_flex_volumes=None,allowed_host_paths=None,allowed_proc_mount_types=None,allowed_unsafe_sysctls=None,annotations=None,default_add_capabilities=None,default_allow_privilege_escalation=None,description=None,forbidden_sysctls=None,fs_group=None,host_ipc=None,host_network=None,host_pid=None,host_ports=None,labels=None,name=None,privileged=None,read_only_root_filesystem=None,required_drop_capabilities=None,run_as_group=None,run_as_user=None,runtime_class=None,se_linux=None,supplemental_group=None,volumes=None,opts=None):
+
+def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] = None,
+                                     allowed_capabilities: Optional[List[str]] = None,
+                                     allowed_csi_drivers: Optional[List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedCsiDriverArgs']]] = None,
+                                     allowed_flex_volumes: Optional[List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs']]] = None,
+                                     allowed_host_paths: Optional[List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedHostPathArgs']]] = None,
+                                     allowed_proc_mount_types: Optional[List[str]] = None,
+                                     allowed_unsafe_sysctls: Optional[List[str]] = None,
+                                     annotations: Optional[Mapping[str, Any]] = None,
+                                     default_add_capabilities: Optional[List[str]] = None,
+                                     default_allow_privilege_escalation: Optional[bool] = None,
+                                     description: Optional[str] = None,
+                                     forbidden_sysctls: Optional[List[str]] = None,
+                                     fs_group: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateFsGroupArgs']] = None,
+                                     host_ipc: Optional[bool] = None,
+                                     host_network: Optional[bool] = None,
+                                     host_pid: Optional[bool] = None,
+                                     host_ports: Optional[List[pulumi.InputType['GetPodSecurityPolicyTemplateHostPortArgs']]] = None,
+                                     labels: Optional[Mapping[str, Any]] = None,
+                                     name: Optional[str] = None,
+                                     privileged: Optional[bool] = None,
+                                     read_only_root_filesystem: Optional[bool] = None,
+                                     required_drop_capabilities: Optional[List[str]] = None,
+                                     run_as_group: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateRunAsGroupArgs']] = None,
+                                     run_as_user: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateRunAsUserArgs']] = None,
+                                     runtime_class: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateRuntimeClassArgs']] = None,
+                                     se_linux: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateSeLinuxArgs']] = None,
+                                     supplemental_group: Optional[pulumi.InputType['GetPodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
+                                     volumes: Optional[List[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPodSecurityPolicyTemplateResult:
     """
     Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
 
@@ -154,100 +339,34 @@ def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_cap
 
 
     :param bool allow_privilege_escalation: = (Optional)
-    :param list allowed_capabilities: (list)
-    :param list allowed_csi_drivers: (list)
-    :param list allowed_flex_volumes: (list)
-    :param list allowed_host_paths: (list)
-    :param list allowed_proc_mount_types: (list)
-    :param list allowed_unsafe_sysctls: (list)
-    :param dict annotations: Annotations for PodSecurityPolicyTemplate object (map)
-    :param list default_add_capabilities: (list)
+    :param List[str] allowed_capabilities: (list)
+    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedCsiDriverArgs']] allowed_csi_drivers: (list)
+    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs']] allowed_flex_volumes: (list)
+    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedHostPathArgs']] allowed_host_paths: (list)
+    :param List[str] allowed_proc_mount_types: (list)
+    :param List[str] allowed_unsafe_sysctls: (list)
+    :param Mapping[str, Any] annotations: Annotations for PodSecurityPolicyTemplate object (map)
+    :param List[str] default_add_capabilities: (list)
     :param bool default_allow_privilege_escalation: (list)
     :param str description: The PodSecurityPolicyTemplate description (string)
-    :param list forbidden_sysctls: (list)
-    :param dict fs_group: (list maxitems:1)
+    :param List[str] forbidden_sysctls: (list)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateFsGroupArgs'] fs_group: (list maxitems:1)
     :param bool host_ipc: (bool)
     :param bool host_pid: (bool)
-    :param list host_ports: (list)
-    :param dict labels: Labels for PodSecurityPolicyTemplate object (map)
+    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateHostPortArgs']] host_ports: (list)
+    :param Mapping[str, Any] labels: Labels for PodSecurityPolicyTemplate object (map)
     :param str name: The name of the PodSecurityPolicyTemplate (string)
     :param bool privileged: (bool)
     :param bool read_only_root_filesystem: (bool)
-    :param list required_drop_capabilities: (list)
-    :param dict run_as_group: (list maxitems:1)
-    :param dict run_as_user: (list maxitems:1)
-    :param dict runtime_class: (list maxitems:1)
-    :param dict se_linux: (list maxitems:1)
-    :param dict supplemental_group: (list maxitems:1)
-    :param list volumes: (list)
-
-    The **allowed_csi_drivers** object supports the following:
-
-      * `name` (`str`) - The name of the PodSecurityPolicyTemplate (string)
-
-    The **allowed_flex_volumes** object supports the following:
-
-      * `driver` (`str`)
-
-    The **allowed_host_paths** object supports the following:
-
-      * `pathPrefix` (`str`)
-      * `readOnly` (`bool`)
-
-    The **fs_group** object supports the following:
-
-      * `ranges` (`list`)
-        * `max` (`float`)
-        * `min` (`float`)
-
-      * `rule` (`str`)
-
-    The **host_ports** object supports the following:
-
-      * `max` (`float`)
-      * `min` (`float`)
-
-    The **run_as_group** object supports the following:
-
-      * `ranges` (`list`)
-        * `max` (`float`)
-        * `min` (`float`)
-
-      * `rule` (`str`)
-
-    The **run_as_user** object supports the following:
-
-      * `ranges` (`list`)
-        * `max` (`float`)
-        * `min` (`float`)
-
-      * `rule` (`str`)
-
-    The **runtime_class** object supports the following:
-
-      * `allowedRuntimeClassNames` (`list`)
-      * `defaultRuntimeClassName` (`str`)
-
-    The **se_linux** object supports the following:
-
-      * `rule` (`str`)
-      * `seLinuxOption` (`dict`)
-        * `level` (`str`)
-        * `role` (`str`)
-        * `type` (`str`)
-        * `user` (`str`)
-
-    The **supplemental_group** object supports the following:
-
-      * `ranges` (`list`)
-        * `max` (`float`)
-        * `min` (`float`)
-
-      * `rule` (`str`)
+    :param List[str] required_drop_capabilities: (list)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateRunAsGroupArgs'] run_as_group: (list maxitems:1)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateRunAsUserArgs'] run_as_user: (list maxitems:1)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateRuntimeClassArgs'] runtime_class: (list maxitems:1)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateSeLinuxArgs'] se_linux: (list maxitems:1)
+    :param pulumi.InputType['GetPodSecurityPolicyTemplateSupplementalGroupArgs'] supplemental_group: (list maxitems:1)
+    :param List[str] volumes: (list)
     """
     __args__ = dict()
-
-
     __args__['allowPrivilegeEscalation'] = allow_privilege_escalation
     __args__['allowedCapabilities'] = allowed_capabilities
     __args__['allowedCsiDrivers'] = allowed_csi_drivers
@@ -279,36 +398,36 @@ def get_pod_security_policy_template(allow_privilege_escalation=None,allowed_cap
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate', __args__, opts=opts, typ=GetPodSecurityPolicyTemplateResult).value
 
     return AwaitableGetPodSecurityPolicyTemplateResult(
-        allow_privilege_escalation=__ret__.get('allowPrivilegeEscalation'),
-        allowed_capabilities=__ret__.get('allowedCapabilities'),
-        allowed_csi_drivers=__ret__.get('allowedCsiDrivers'),
-        allowed_flex_volumes=__ret__.get('allowedFlexVolumes'),
-        allowed_host_paths=__ret__.get('allowedHostPaths'),
-        allowed_proc_mount_types=__ret__.get('allowedProcMountTypes'),
-        allowed_unsafe_sysctls=__ret__.get('allowedUnsafeSysctls'),
-        annotations=__ret__.get('annotations'),
-        default_add_capabilities=__ret__.get('defaultAddCapabilities'),
-        default_allow_privilege_escalation=__ret__.get('defaultAllowPrivilegeEscalation'),
-        description=__ret__.get('description'),
-        forbidden_sysctls=__ret__.get('forbiddenSysctls'),
-        fs_group=__ret__.get('fsGroup'),
-        host_ipc=__ret__.get('hostIpc'),
-        host_network=__ret__.get('hostNetwork'),
-        host_pid=__ret__.get('hostPid'),
-        host_ports=__ret__.get('hostPorts'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        privileged=__ret__.get('privileged'),
-        read_only_root_filesystem=__ret__.get('readOnlyRootFilesystem'),
-        required_drop_capabilities=__ret__.get('requiredDropCapabilities'),
-        run_as_group=__ret__.get('runAsGroup'),
-        run_as_user=__ret__.get('runAsUser'),
-        runtime_class=__ret__.get('runtimeClass'),
-        se_linux=__ret__.get('seLinux'),
-        supplemental_group=__ret__.get('supplementalGroup'),
-        volumes=__ret__.get('volumes'))
+        allow_privilege_escalation=__ret__.allow_privilege_escalation,
+        allowed_capabilities=__ret__.allowed_capabilities,
+        allowed_csi_drivers=__ret__.allowed_csi_drivers,
+        allowed_flex_volumes=__ret__.allowed_flex_volumes,
+        allowed_host_paths=__ret__.allowed_host_paths,
+        allowed_proc_mount_types=__ret__.allowed_proc_mount_types,
+        allowed_unsafe_sysctls=__ret__.allowed_unsafe_sysctls,
+        annotations=__ret__.annotations,
+        default_add_capabilities=__ret__.default_add_capabilities,
+        default_allow_privilege_escalation=__ret__.default_allow_privilege_escalation,
+        description=__ret__.description,
+        forbidden_sysctls=__ret__.forbidden_sysctls,
+        fs_group=__ret__.fs_group,
+        host_ipc=__ret__.host_ipc,
+        host_network=__ret__.host_network,
+        host_pid=__ret__.host_pid,
+        host_ports=__ret__.host_ports,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        privileged=__ret__.privileged,
+        read_only_root_filesystem=__ret__.read_only_root_filesystem,
+        required_drop_capabilities=__ret__.required_drop_capabilities,
+        run_as_group=__ret__.run_as_group,
+        run_as_user=__ret__.run_as_user,
+        runtime_class=__ret__.runtime_class,
+        se_linux=__ret__.se_linux,
+        supplemental_group=__ret__.supplemental_group,
+        volumes=__ret__.volumes)

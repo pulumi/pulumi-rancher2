@@ -5,283 +5,44 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['NodeTemplate']
 
 
 class NodeTemplate(pulumi.CustomResource):
-    amazonec2_config: pulumi.Output[dict]
-    """
-    AWS config for the Node Template (list maxitems:1)
-
-      * `access_key` (`str`) - AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `ami` (`str`) - AWS machine image (string)
-      * `blockDurationMinutes` (`str`) - AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
-      * `deviceName` (`str`) - AWS root device name. Default `/dev/sda1` (string)
-      * `encryptEbsVolume` (`bool`) - Encrypt EBS volume. Default `false` (bool)
-      * `endpoint` (`str`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
-      * `iamInstanceProfile` (`str`) - AWS IAM Instance Profile (string)
-      * `insecureTransport` (`bool`) - Disable SSL when sending requests (bool)
-      * `instanceType` (`str`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-      * `keypairName` (`str`) - OpenStack keypair to use to SSH to the instance (string)
-      * `monitoring` (`bool`) - Enable monitoring for droplet. Default `false` (bool)
-      * `openPorts` (`list`) - Make the specified port number accessible from the Internet. (list)
-      * `privateAddressOnly` (`bool`) - Only use a private IP address. Default `false` (bool)
-      * `region` (`str`) - OpenStack region name (string)
-      * `requestSpotInstance` (`bool`) - Set this flag to request spot instance. Default `false` (bool)
-      * `retries` (`str`) - Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
-      * `rootSize` (`str`) - AWS root disk size (in GB). Default `16` (string)
-      * `secret_key` (`str`) - AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `securityGroupReadonly` (`bool`) - Skip adding default rules to security groups (bool)
-      * `securityGroups` (`list`) - AWS VPC security group. (list)
-      * `sessionToken` (`str`) - AWS Session Token (string)
-      * `spotPrice` (`str`) - AWS spot instance bid price (in dollar). Default `0.50` (string)
-      * `sshKeypath` (`str`) - SSH Key for Instance (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `subnetId` (`str`) - AWS VPC subnet id (string)
-      * `tags` (`str`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-      * `useEbsOptimizedInstance` (`bool`) - Create an EBS optimized instance. Default `false` (bool)
-      * `usePrivateAddress` (`bool`) - Force the usage of private IP address. Default `false` (bool)
-      * `userdata` (`str`) - Path to file with cloud-init user-data (string)
-      * `volumeType` (`str`) - Amazon EBS volume type. Default `gp2` (string)
-      * `vpcId` (`str`) - AWS VPC id. (string)
-      * `zone` (`str`) - AWS zone for instance (i.e. a,b,c,d,e) (string)
-    """
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for Node Template object (map)
-    """
-    auth_certificate_authority: pulumi.Output[str]
-    """
-    Auth certificate authority for the Node Template (string)
-    """
-    auth_key: pulumi.Output[str]
-    """
-    Auth key for the Node Template (string)
-    """
-    azure_config: pulumi.Output[dict]
-    """
-    Azure config for the Node Template (list maxitems:1)
-
-      * `availabilitySet` (`str`) - Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
-      * `client_id` (`str`) - Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `client_secret` (`str`) - Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `customData` (`str`) - Path to file with custom-data (string)
-      * `diskSize` (`str`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-      * `dns` (`str`) - A unique DNS label for the public IP adddress (string)
-      * `dockerPort` (`str`) - Docker Port. Default `2376` (string)
-      * `environment` (`str`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-        `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
-      * `faultDomainCount` (`str`)
-      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-      * `location` (`str`) - Azure region to create the virtual machine. Default `westus` (string)
-      * `managedDisks` (`bool`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
-      * `noPublicIp` (`bool`) - Do not create a public IP address for the machine. Default `false` (bool)
-      * `openPorts` (`list`) - Make the specified port number accessible from the Internet. (list)
-      * `privateIpAddress` (`str`) - Specify a static private IP address for the machine. (string)
-      * `resourceGroup` (`str`) - Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
-      * `size` (`str`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `staticPublicIp` (`bool`) - Assign a static public IP address to the machine. Default `false` (bool)
-      * `storageType` (`str`) - Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
-      * `subnet` (`str`) - Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
-      * `subnetPrefix` (`str`) - Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
-      * `subscriptionId` (`str`) - Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `updateDomainCount` (`str`) - Update domain count to use for availability set. Default `5` (string)
-      * `usePrivateIp` (`bool`) - Use private IP address of the machine to connect. Default `false` (bool)
-      * `vnet` (`str`) - Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
-    """
-    cloud_credential_id: pulumi.Output[str]
-    """
-    Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
-    """
-    description: pulumi.Output[str]
-    """
-    Description for the Node Template (string)
-    """
-    digitalocean_config: pulumi.Output[dict]
-    """
-    Digitalocean config for the Node Template (list maxitems:1)
-
-      * `accessToken` (`str`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `backups` (`bool`) - Enable backups for droplet. Default `false` (bool)
-      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-      * `ipv6` (`bool`) - Enable ipv6 for droplet. Default `false` (bool)
-      * `monitoring` (`bool`) - Enable monitoring for droplet. Default `false` (bool)
-      * `privateNetworking` (`bool`) - Enable private networking for droplet. Default `false` (bool)
-      * `region` (`str`) - OpenStack region name (string)
-      * `size` (`str`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-      * `sshKeyFingerprint` (`str`) - SSH key fingerprint (string)
-      * `sshKeyPath` (`str`) - SSH private key path (string)
-      * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `tags` (`str`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-      * `userdata` (`str`) - Path to file with cloud-init user-data (string)
-    """
-    driver: pulumi.Output[str]
-    """
-    (Computed) The driver of the node template (string)
-    """
-    driver_id: pulumi.Output[str]
-    """
-    The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-    """
-    engine_env: pulumi.Output[dict]
-    """
-    Engine environment for the node template (string)
-    """
-    engine_insecure_registries: pulumi.Output[list]
-    """
-    Insecure registry for the node template (list)
-    """
-    engine_install_url: pulumi.Output[str]
-    """
-    Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-    """
-    engine_label: pulumi.Output[dict]
-    """
-    Engine label for the node template (string)
-    """
-    engine_opt: pulumi.Output[dict]
-    """
-    Engine options for the node template (map)
-    """
-    engine_registry_mirrors: pulumi.Output[list]
-    """
-    Engine registry mirror for the node template (list)
-    """
-    engine_storage_driver: pulumi.Output[str]
-    """
-    Engine storage driver for the node template (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for Node Template object (map)
-    """
-    linode_config: pulumi.Output[dict]
-    """
-    Linode config for the Node Template (list maxitems:1)
-
-      * `authorizedUsers` (`str`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
-      * `createPrivateIp` (`bool`) - Create private IP for the instance. Default `false` (bool)
-      * `dockerPort` (`str`) - Docker Port. Default `2376` (string)
-      * `image` (`str`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-      * `instanceType` (`str`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-      * `label` (`str`) - Linode Instance Label. (string)
-      * `region` (`str`) - OpenStack region name (string)
-      * `rootPass` (`str`) - Root Password (string)
-      * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `stackscript` (`str`) - Specifies the Linode StackScript to use to create the instance. (string)
-      * `stackscriptData` (`str`) - A JSON string specifying data for the selected StackScript. (string)
-      * `swapSize` (`str`) - Linode Instance Swap Size (MB). Default `512` (string)
-      * `tags` (`str`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-      * `token` (`str`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `uaPrefix` (`str`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the Node Template (string)
-    """
-    opennebula_config: pulumi.Output[dict]
-    """
-    Opennebula config for the Node Template (list maxitems:1)
-
-      * `b2dSize` (`str`) - Size of the Volatile disk in MB - only for b2d (string)
-      * `cpu` (`str`) - CPU value for the VM (string)
-      * `devPrefix` (`str`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
-      * `disableVnc` (`bool`) - VNC is enabled by default. Disable it with this flag (bool)
-      * `diskResize` (`str`) - Size of the disk for the VM in MB (string)
-      * `imageId` (`str`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-      * `imageName` (`str`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-      * `imageOwner` (`str`) - Owner of the image to use as the VM OS (string)
-      * `memory` (`str`) - Size of the memory for the VM in MB (string)
-      * `networkId` (`str`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-      * `networkName` (`str`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
-      * `networkOwner` (`str`) - Opennebula user ID of the Network to connect the machine to (string)
-      * `password` (`str`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `templateId` (`str`) - Opennebula template ID to use. Conflicts with `template_name` (string)
-      * `template_name` (`str`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
-      * `user` (`str`) - Set the user for the XML-RPC API authentication (string)
-      * `vcpu` (`str`) - VCPUs for the VM (string)
-      * `xmlRpcUrl` (`str`) - Set the url for the Opennebula XML-RPC API (string)
-    """
-    openstack_config: pulumi.Output[dict]
-    """
-    Openstack config for the Node Template (list maxitems:1)
-
-      * `activeTimeout` (`str`) - OpenStack active timeout Default `200` (string)
-      * `authUrl` (`str`) - OpenStack authentication URL (string)
-      * `availabilityZone` (`str`) - OpenStack availability zone (string)
-      * `cacert` (`str`) - CA certificate bundle to verify against (string)
-      * `configDrive` (`bool`) - Enables the OpenStack config drive for the instance. Default `false` (bool)
-      * `domainId` (`str`) - OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
-      * `domainName` (`str`) - OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
-      * `endpointType` (`str`) - OpenStack endpoint type. adminURL, internalURL or publicURL (string)
-      * `flavorId` (`str`) - OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
-      * `flavorName` (`str`) - OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
-      * `floatingIpPool` (`str`) - OpenStack floating IP pool to get an IP from to assign to the instance (string)
-      * `imageId` (`str`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-      * `imageName` (`str`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-      * `insecure` (`bool`) - Disable TLS credential checking. Default `false` (bool)
-      * `ipVersion` (`str`) - OpenStack version of IP address assigned for the machine Default `4` (string)
-      * `keypairName` (`str`) - OpenStack keypair to use to SSH to the instance (string)
-      * `netId` (`str`) - OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
-      * `netName` (`str`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
-      * `novaNetwork` (`bool`) - Use the nova networking services instead of neutron (string)
-      * `password` (`str`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `privateKeyFile` (`str`) - Private key content to use for SSH (string)
-      * `region` (`str`) - OpenStack region name (string)
-      * `secGroups` (`str`) - OpenStack comma separated security groups for the machine (string)
-      * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `tenant_id` (`str`) - OpenStack tenant id. Conflicts with `tenant_name` (string)
-      * `tenantName` (`str`) - OpenStack tenant name. Conflicts with `tenant_id` (string)
-      * `userDataFile` (`str`) - File containing an openstack userdata script (string)
-      * `username` (`str`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-    """
-    use_internal_ip_address: pulumi.Output[bool]
-    """
-    Engine storage driver for the node template (bool)
-    """
-    vsphere_config: pulumi.Output[dict]
-    """
-    vSphere config for the Node Template (list maxitems:1)
-
-      * `boot2dockerUrl` (`str`) - vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
-      * `cfgparams` (`list`) - vSphere vm configuration parameters (used for guestinfo) (list)
-      * `cloneFrom` (`str`) - If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
-      * `cloudConfig` (`str`) - Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
-      * `cloudinit` (`str`) - vSphere cloud-init file or url to set in the guestinfo (string)
-      * `contentLibrary` (`str`) - If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
-      * `cpuCount` (`str`) - vSphere CPU number for docker VM. Default `2` (string)
-      * `creationType` (`str`) - Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
-      * `customAttributes` (`list`) - vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
-      * `datacenter` (`str`) - vSphere datacenter for docker VM (string)
-      * `datastore` (`str`) - vSphere datastore for docker VM (string)
-      * `datastoreCluster` (`str`) - vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
-      * `diskSize` (`str`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-      * `folder` (`str`) - vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
-      * `hostsystem` (`str`) - vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
-      * `memorySize` (`str`) - vSphere size of memory for docker VM (in MB). Default `2048` (string)
-      * `networks` (`list`) - vSphere network where the docker VM will be attached (list)
-      * `password` (`str`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `pool` (`str`) - vSphere resource pool for docker VM (string)
-      * `sshPassword` (`str`) - If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
-      * `sshPort` (`str`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-      * `sshUser` (`str`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-      * `sshUserGroup` (`str`) - If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
-      * `tags` (`list`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-      * `username` (`str`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `vappIpAllocationPolicy` (`str`) - vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
-      * `vappIpProtocol` (`str`) - vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
-      * `vappProperties` (`list`) - vSphere vApp properties (list)
-      * `vappTransport` (`str`) - vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
-      * `vcenter` (`str`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-      * `vcenterPort` (`str`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
-    """
-    def __init__(__self__, resource_name, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, linode_config=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 auth_certificate_authority: Optional[pulumi.Input[str]] = None,
+                 auth_key: Optional[pulumi.Input[str]] = None,
+                 azure_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']]] = None,
+                 cloud_credential_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
+                 driver_id: Optional[pulumi.Input[str]] = None,
+                 engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_insecure_registries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 engine_install_url: Optional[pulumi.Input[str]] = None,
+                 engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_registry_mirrors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 engine_storage_driver: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
+                 openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
+                 use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
+                 vsphere_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 
@@ -297,16 +58,16 @@ class NodeTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Node Template up to Rancher 2.1.x
         foo = rancher2.NodeTemplate("foo",
-            amazonec2_config={
-                "access_key": "AWS_ACCESS_KEY",
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "secret_key": "<AWS_SECRET_KEY>",
-                "securityGroups": ["<AWS_SECURITY_GROUP>"],
-                "subnetId": "<SUBNET_ID>",
-                "vpcId": "<VPC_ID>",
-                "zone": "<ZONE>",
-            },
+            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
+                access_key="AWS_ACCESS_KEY",
+                ami="<AMI_ID>",
+                region="<REGION>",
+                secret_key="<AWS_SECRET_KEY>",
+                security_groups=["<AWS_SECURITY_GROUP>"],
+                subnet_id="<SUBNET_ID>",
+                vpc_id="<VPC_ID>",
+                zone="<ZONE>",
+            ),
             description="foo test")
         ```
 
@@ -316,238 +77,49 @@ class NodeTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Node Template from Rancher 2.2.x
         foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            amazonec2_credential_config={
-                "access_key": "<AWS_ACCESS_KEY>",
-                "secret_key": "<AWS_SECRET_KEY>",
-            },
+            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
+                access_key="<AWS_ACCESS_KEY>",
+                secret_key="<AWS_SECRET_KEY>",
+            ),
             description="foo test")
         foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
-            amazonec2_config={
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "securityGroups": ["<AWS_SECURITY_GROUP>"],
-                "subnetId": "<SUBNET_ID>",
-                "vpcId": "<VPC_ID>",
-                "zone": "<ZONE>",
-            },
+            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
+                ami="<AMI_ID>",
+                region="<REGION>",
+                security_groups=["<AWS_SECURITY_GROUP>"],
+                subnet_id="<SUBNET_ID>",
+                vpc_id="<VPC_ID>",
+                zone="<ZONE>",
+            ),
             cloud_credential_id=foo_cloud_credential.id,
             description="foo test")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[dict] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
-        :param pulumi.Input[dict] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         :param pulumi.Input[str] description: Description for the Node Template (string)
-        :param pulumi.Input[dict] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[dict] engine_env: Engine environment for the node template (string)
-        :param pulumi.Input[list] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[dict] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[dict] engine_opt: Engine options for the node template (map)
-        :param pulumi.Input[list] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
-        :param pulumi.Input[dict] labels: Labels for Node Template object (map)
-        :param pulumi.Input[dict] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
-        :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
-        :param pulumi.Input[dict] vsphere_config: vSphere config for the Node Template (list maxitems:1)
-
-        The **amazonec2_config** object supports the following:
-
-          * `access_key` (`pulumi.Input[str]`) - AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `ami` (`pulumi.Input[str]`) - AWS machine image (string)
-          * `blockDurationMinutes` (`pulumi.Input[str]`) - AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
-          * `deviceName` (`pulumi.Input[str]`) - AWS root device name. Default `/dev/sda1` (string)
-          * `encryptEbsVolume` (`pulumi.Input[bool]`) - Encrypt EBS volume. Default `false` (bool)
-          * `endpoint` (`pulumi.Input[str]`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
-          * `iamInstanceProfile` (`pulumi.Input[str]`) - AWS IAM Instance Profile (string)
-          * `insecureTransport` (`pulumi.Input[bool]`) - Disable SSL when sending requests (bool)
-          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-          * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
-          * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
-          * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
-          * `privateAddressOnly` (`pulumi.Input[bool]`) - Only use a private IP address. Default `false` (bool)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `requestSpotInstance` (`pulumi.Input[bool]`) - Set this flag to request spot instance. Default `false` (bool)
-          * `retries` (`pulumi.Input[str]`) - Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
-          * `rootSize` (`pulumi.Input[str]`) - AWS root disk size (in GB). Default `16` (string)
-          * `secret_key` (`pulumi.Input[str]`) - AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `securityGroupReadonly` (`pulumi.Input[bool]`) - Skip adding default rules to security groups (bool)
-          * `securityGroups` (`pulumi.Input[list]`) - AWS VPC security group. (list)
-          * `sessionToken` (`pulumi.Input[str]`) - AWS Session Token (string)
-          * `spotPrice` (`pulumi.Input[str]`) - AWS spot instance bid price (in dollar). Default `0.50` (string)
-          * `sshKeypath` (`pulumi.Input[str]`) - SSH Key for Instance (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `subnetId` (`pulumi.Input[str]`) - AWS VPC subnet id (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `useEbsOptimizedInstance` (`pulumi.Input[bool]`) - Create an EBS optimized instance. Default `false` (bool)
-          * `usePrivateAddress` (`pulumi.Input[bool]`) - Force the usage of private IP address. Default `false` (bool)
-          * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
-          * `volumeType` (`pulumi.Input[str]`) - Amazon EBS volume type. Default `gp2` (string)
-          * `vpcId` (`pulumi.Input[str]`) - AWS VPC id. (string)
-          * `zone` (`pulumi.Input[str]`) - AWS zone for instance (i.e. a,b,c,d,e) (string)
-
-        The **azure_config** object supports the following:
-
-          * `availabilitySet` (`pulumi.Input[str]`) - Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
-          * `client_id` (`pulumi.Input[str]`) - Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `client_secret` (`pulumi.Input[str]`) - Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `customData` (`pulumi.Input[str]`) - Path to file with custom-data (string)
-          * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-          * `dns` (`pulumi.Input[str]`) - A unique DNS label for the public IP adddress (string)
-          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
-          * `environment` (`pulumi.Input[str]`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-            `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
-          * `faultDomainCount` (`pulumi.Input[str]`)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `location` (`pulumi.Input[str]`) - Azure region to create the virtual machine. Default `westus` (string)
-          * `managedDisks` (`pulumi.Input[bool]`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
-          * `noPublicIp` (`pulumi.Input[bool]`) - Do not create a public IP address for the machine. Default `false` (bool)
-          * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
-          * `privateIpAddress` (`pulumi.Input[str]`) - Specify a static private IP address for the machine. (string)
-          * `resourceGroup` (`pulumi.Input[str]`) - Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
-          * `size` (`pulumi.Input[str]`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `staticPublicIp` (`pulumi.Input[bool]`) - Assign a static public IP address to the machine. Default `false` (bool)
-          * `storageType` (`pulumi.Input[str]`) - Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
-          * `subnet` (`pulumi.Input[str]`) - Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
-          * `subnetPrefix` (`pulumi.Input[str]`) - Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
-          * `subscriptionId` (`pulumi.Input[str]`) - Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `updateDomainCount` (`pulumi.Input[str]`) - Update domain count to use for availability set. Default `5` (string)
-          * `usePrivateIp` (`pulumi.Input[bool]`) - Use private IP address of the machine to connect. Default `false` (bool)
-          * `vnet` (`pulumi.Input[str]`) - Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
-
-        The **digitalocean_config** object supports the following:
-
-          * `accessToken` (`pulumi.Input[str]`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `backups` (`pulumi.Input[bool]`) - Enable backups for droplet. Default `false` (bool)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `ipv6` (`pulumi.Input[bool]`) - Enable ipv6 for droplet. Default `false` (bool)
-          * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
-          * `privateNetworking` (`pulumi.Input[bool]`) - Enable private networking for droplet. Default `false` (bool)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `size` (`pulumi.Input[str]`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-          * `sshKeyFingerprint` (`pulumi.Input[str]`) - SSH key fingerprint (string)
-          * `sshKeyPath` (`pulumi.Input[str]`) - SSH private key path (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
-
-        The **linode_config** object supports the following:
-
-          * `authorizedUsers` (`pulumi.Input[str]`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
-          * `createPrivateIp` (`pulumi.Input[bool]`) - Create private IP for the instance. Default `false` (bool)
-          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-          * `label` (`pulumi.Input[str]`) - Linode Instance Label. (string)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `rootPass` (`pulumi.Input[str]`) - Root Password (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `stackscript` (`pulumi.Input[str]`) - Specifies the Linode StackScript to use to create the instance. (string)
-          * `stackscriptData` (`pulumi.Input[str]`) - A JSON string specifying data for the selected StackScript. (string)
-          * `swapSize` (`pulumi.Input[str]`) - Linode Instance Swap Size (MB). Default `512` (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `token` (`pulumi.Input[str]`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `uaPrefix` (`pulumi.Input[str]`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
-
-        The **opennebula_config** object supports the following:
-
-          * `b2dSize` (`pulumi.Input[str]`) - Size of the Volatile disk in MB - only for b2d (string)
-          * `cpu` (`pulumi.Input[str]`) - CPU value for the VM (string)
-          * `devPrefix` (`pulumi.Input[str]`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
-          * `disableVnc` (`pulumi.Input[bool]`) - VNC is enabled by default. Disable it with this flag (bool)
-          * `diskResize` (`pulumi.Input[str]`) - Size of the disk for the VM in MB (string)
-          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-          * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
-          * `memory` (`pulumi.Input[str]`) - Size of the memory for the VM in MB (string)
-          * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-          * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
-          * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `templateId` (`pulumi.Input[str]`) - Opennebula template ID to use. Conflicts with `template_name` (string)
-          * `template_name` (`pulumi.Input[str]`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
-          * `user` (`pulumi.Input[str]`) - Set the user for the XML-RPC API authentication (string)
-          * `vcpu` (`pulumi.Input[str]`) - VCPUs for the VM (string)
-          * `xmlRpcUrl` (`pulumi.Input[str]`) - Set the url for the Opennebula XML-RPC API (string)
-
-        The **openstack_config** object supports the following:
-
-          * `activeTimeout` (`pulumi.Input[str]`) - OpenStack active timeout Default `200` (string)
-          * `authUrl` (`pulumi.Input[str]`) - OpenStack authentication URL (string)
-          * `availabilityZone` (`pulumi.Input[str]`) - OpenStack availability zone (string)
-          * `cacert` (`pulumi.Input[str]`) - CA certificate bundle to verify against (string)
-          * `configDrive` (`pulumi.Input[bool]`) - Enables the OpenStack config drive for the instance. Default `false` (bool)
-          * `domainId` (`pulumi.Input[str]`) - OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
-          * `domainName` (`pulumi.Input[str]`) - OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
-          * `endpointType` (`pulumi.Input[str]`) - OpenStack endpoint type. adminURL, internalURL or publicURL (string)
-          * `flavorId` (`pulumi.Input[str]`) - OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
-          * `flavorName` (`pulumi.Input[str]`) - OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
-          * `floatingIpPool` (`pulumi.Input[str]`) - OpenStack floating IP pool to get an IP from to assign to the instance (string)
-          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-          * `insecure` (`pulumi.Input[bool]`) - Disable TLS credential checking. Default `false` (bool)
-          * `ipVersion` (`pulumi.Input[str]`) - OpenStack version of IP address assigned for the machine Default `4` (string)
-          * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
-          * `netId` (`pulumi.Input[str]`) - OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
-          * `netName` (`pulumi.Input[str]`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
-          * `novaNetwork` (`pulumi.Input[bool]`) - Use the nova networking services instead of neutron (string)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `privateKeyFile` (`pulumi.Input[str]`) - Private key content to use for SSH (string)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `secGroups` (`pulumi.Input[str]`) - OpenStack comma separated security groups for the machine (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `tenant_id` (`pulumi.Input[str]`) - OpenStack tenant id. Conflicts with `tenant_name` (string)
-          * `tenantName` (`pulumi.Input[str]`) - OpenStack tenant name. Conflicts with `tenant_id` (string)
-          * `userDataFile` (`pulumi.Input[str]`) - File containing an openstack userdata script (string)
-          * `username` (`pulumi.Input[str]`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-
-        The **vsphere_config** object supports the following:
-
-          * `boot2dockerUrl` (`pulumi.Input[str]`) - vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
-          * `cfgparams` (`pulumi.Input[list]`) - vSphere vm configuration parameters (used for guestinfo) (list)
-          * `cloneFrom` (`pulumi.Input[str]`) - If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
-          * `cloudConfig` (`pulumi.Input[str]`) - Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
-          * `cloudinit` (`pulumi.Input[str]`) - vSphere cloud-init file or url to set in the guestinfo (string)
-          * `contentLibrary` (`pulumi.Input[str]`) - If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
-          * `cpuCount` (`pulumi.Input[str]`) - vSphere CPU number for docker VM. Default `2` (string)
-          * `creationType` (`pulumi.Input[str]`) - Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
-          * `customAttributes` (`pulumi.Input[list]`) - vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
-          * `datacenter` (`pulumi.Input[str]`) - vSphere datacenter for docker VM (string)
-          * `datastore` (`pulumi.Input[str]`) - vSphere datastore for docker VM (string)
-          * `datastoreCluster` (`pulumi.Input[str]`) - vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
-          * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-          * `folder` (`pulumi.Input[str]`) - vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
-          * `hostsystem` (`pulumi.Input[str]`) - vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
-          * `memorySize` (`pulumi.Input[str]`) - vSphere size of memory for docker VM (in MB). Default `2048` (string)
-          * `networks` (`pulumi.Input[list]`) - vSphere network where the docker VM will be attached (list)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `pool` (`pulumi.Input[str]`) - vSphere resource pool for docker VM (string)
-          * `sshPassword` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `sshUserGroup` (`pulumi.Input[str]`) - If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
-          * `tags` (`pulumi.Input[list]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `username` (`pulumi.Input[str]`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `vappIpAllocationPolicy` (`pulumi.Input[str]`) - vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
-          * `vappIpProtocol` (`pulumi.Input[str]`) - vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
-          * `vappProperties` (`pulumi.Input[list]`) - vSphere vApp properties (list)
-          * `vappTransport` (`pulumi.Input[str]`) - vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
-          * `vcenter` (`pulumi.Input[str]`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `vcenterPort` (`pulumi.Input[str]`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -560,7 +132,7 @@ class NodeTemplate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -597,227 +169,64 @@ class NodeTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, amazonec2_config=None, annotations=None, auth_certificate_authority=None, auth_key=None, azure_config=None, cloud_credential_id=None, description=None, digitalocean_config=None, driver=None, driver_id=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, labels=None, linode_config=None, name=None, opennebula_config=None, openstack_config=None, use_internal_ip_address=None, vsphere_config=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            auth_certificate_authority: Optional[pulumi.Input[str]] = None,
+            auth_key: Optional[pulumi.Input[str]] = None,
+            azure_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']]] = None,
+            cloud_credential_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
+            driver: Optional[pulumi.Input[str]] = None,
+            driver_id: Optional[pulumi.Input[str]] = None,
+            engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            engine_insecure_registries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            engine_install_url: Optional[pulumi.Input[str]] = None,
+            engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            engine_registry_mirrors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            engine_storage_driver: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
+            openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
+            use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
+            vsphere_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']]] = None) -> 'NodeTemplate':
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[dict] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
-        :param pulumi.Input[dict] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         :param pulumi.Input[str] description: Description for the Node Template (string)
-        :param pulumi.Input[dict] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[dict] engine_env: Engine environment for the node template (string)
-        :param pulumi.Input[list] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[dict] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[dict] engine_opt: Engine options for the node template (map)
-        :param pulumi.Input[list] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
-        :param pulumi.Input[dict] labels: Labels for Node Template object (map)
-        :param pulumi.Input[dict] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[dict] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
-        :param pulumi.Input[dict] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
-        :param pulumi.Input[dict] vsphere_config: vSphere config for the Node Template (list maxitems:1)
-
-        The **amazonec2_config** object supports the following:
-
-          * `access_key` (`pulumi.Input[str]`) - AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `ami` (`pulumi.Input[str]`) - AWS machine image (string)
-          * `blockDurationMinutes` (`pulumi.Input[str]`) - AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
-          * `deviceName` (`pulumi.Input[str]`) - AWS root device name. Default `/dev/sda1` (string)
-          * `encryptEbsVolume` (`pulumi.Input[bool]`) - Encrypt EBS volume. Default `false` (bool)
-          * `endpoint` (`pulumi.Input[str]`) - Optional endpoint URL (hostname only or fully qualified URI) (string)
-          * `iamInstanceProfile` (`pulumi.Input[str]`) - AWS IAM Instance Profile (string)
-          * `insecureTransport` (`pulumi.Input[bool]`) - Disable SSL when sending requests (bool)
-          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-          * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
-          * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
-          * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
-          * `privateAddressOnly` (`pulumi.Input[bool]`) - Only use a private IP address. Default `false` (bool)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `requestSpotInstance` (`pulumi.Input[bool]`) - Set this flag to request spot instance. Default `false` (bool)
-          * `retries` (`pulumi.Input[str]`) - Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
-          * `rootSize` (`pulumi.Input[str]`) - AWS root disk size (in GB). Default `16` (string)
-          * `secret_key` (`pulumi.Input[str]`) - AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `securityGroupReadonly` (`pulumi.Input[bool]`) - Skip adding default rules to security groups (bool)
-          * `securityGroups` (`pulumi.Input[list]`) - AWS VPC security group. (list)
-          * `sessionToken` (`pulumi.Input[str]`) - AWS Session Token (string)
-          * `spotPrice` (`pulumi.Input[str]`) - AWS spot instance bid price (in dollar). Default `0.50` (string)
-          * `sshKeypath` (`pulumi.Input[str]`) - SSH Key for Instance (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `subnetId` (`pulumi.Input[str]`) - AWS VPC subnet id (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `useEbsOptimizedInstance` (`pulumi.Input[bool]`) - Create an EBS optimized instance. Default `false` (bool)
-          * `usePrivateAddress` (`pulumi.Input[bool]`) - Force the usage of private IP address. Default `false` (bool)
-          * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
-          * `volumeType` (`pulumi.Input[str]`) - Amazon EBS volume type. Default `gp2` (string)
-          * `vpcId` (`pulumi.Input[str]`) - AWS VPC id. (string)
-          * `zone` (`pulumi.Input[str]`) - AWS zone for instance (i.e. a,b,c,d,e) (string)
-
-        The **azure_config** object supports the following:
-
-          * `availabilitySet` (`pulumi.Input[str]`) - Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
-          * `client_id` (`pulumi.Input[str]`) - Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `client_secret` (`pulumi.Input[str]`) - Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `customData` (`pulumi.Input[str]`) - Path to file with custom-data (string)
-          * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-          * `dns` (`pulumi.Input[str]`) - A unique DNS label for the public IP adddress (string)
-          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
-          * `environment` (`pulumi.Input[str]`) - Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-            `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
-          * `faultDomainCount` (`pulumi.Input[str]`)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `location` (`pulumi.Input[str]`) - Azure region to create the virtual machine. Default `westus` (string)
-          * `managedDisks` (`pulumi.Input[bool]`) - Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
-          * `noPublicIp` (`pulumi.Input[bool]`) - Do not create a public IP address for the machine. Default `false` (bool)
-          * `openPorts` (`pulumi.Input[list]`) - Make the specified port number accessible from the Internet. (list)
-          * `privateIpAddress` (`pulumi.Input[str]`) - Specify a static private IP address for the machine. (string)
-          * `resourceGroup` (`pulumi.Input[str]`) - Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
-          * `size` (`pulumi.Input[str]`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `staticPublicIp` (`pulumi.Input[bool]`) - Assign a static public IP address to the machine. Default `false` (bool)
-          * `storageType` (`pulumi.Input[str]`) - Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
-          * `subnet` (`pulumi.Input[str]`) - Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
-          * `subnetPrefix` (`pulumi.Input[str]`) - Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
-          * `subscriptionId` (`pulumi.Input[str]`) - Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `updateDomainCount` (`pulumi.Input[str]`) - Update domain count to use for availability set. Default `5` (string)
-          * `usePrivateIp` (`pulumi.Input[bool]`) - Use private IP address of the machine to connect. Default `false` (bool)
-          * `vnet` (`pulumi.Input[str]`) - Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
-
-        The **digitalocean_config** object supports the following:
-
-          * `accessToken` (`pulumi.Input[str]`) - Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `backups` (`pulumi.Input[bool]`) - Enable backups for droplet. Default `false` (bool)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `ipv6` (`pulumi.Input[bool]`) - Enable ipv6 for droplet. Default `false` (bool)
-          * `monitoring` (`pulumi.Input[bool]`) - Enable monitoring for droplet. Default `false` (bool)
-          * `privateNetworking` (`pulumi.Input[bool]`) - Enable private networking for droplet. Default `false` (bool)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `size` (`pulumi.Input[str]`) - Digital Ocean size. Default `s-1vcpu-1gb` (string)
-          * `sshKeyFingerprint` (`pulumi.Input[str]`) - SSH key fingerprint (string)
-          * `sshKeyPath` (`pulumi.Input[str]`) - SSH private key path (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `userdata` (`pulumi.Input[str]`) - Path to file with cloud-init user-data (string)
-
-        The **linode_config** object supports the following:
-
-          * `authorizedUsers` (`pulumi.Input[str]`) - Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
-          * `createPrivateIp` (`pulumi.Input[bool]`) - Create private IP for the instance. Default `false` (bool)
-          * `dockerPort` (`pulumi.Input[str]`) - Docker Port. Default `2376` (string)
-          * `image` (`pulumi.Input[str]`) - Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-          * `instanceType` (`pulumi.Input[str]`) - Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
-          * `label` (`pulumi.Input[str]`) - Linode Instance Label. (string)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `rootPass` (`pulumi.Input[str]`) - Root Password (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `stackscript` (`pulumi.Input[str]`) - Specifies the Linode StackScript to use to create the instance. (string)
-          * `stackscriptData` (`pulumi.Input[str]`) - A JSON string specifying data for the selected StackScript. (string)
-          * `swapSize` (`pulumi.Input[str]`) - Linode Instance Swap Size (MB). Default `512` (string)
-          * `tags` (`pulumi.Input[str]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `token` (`pulumi.Input[str]`) - Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `uaPrefix` (`pulumi.Input[str]`) - Prefix the User-Agent in Linode API calls with some 'product/version' (string)
-
-        The **opennebula_config** object supports the following:
-
-          * `b2dSize` (`pulumi.Input[str]`) - Size of the Volatile disk in MB - only for b2d (string)
-          * `cpu` (`pulumi.Input[str]`) - CPU value for the VM (string)
-          * `devPrefix` (`pulumi.Input[str]`) - Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
-          * `disableVnc` (`pulumi.Input[bool]`) - VNC is enabled by default. Disable it with this flag (bool)
-          * `diskResize` (`pulumi.Input[str]`) - Size of the disk for the VM in MB (string)
-          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-          * `imageOwner` (`pulumi.Input[str]`) - Owner of the image to use as the VM OS (string)
-          * `memory` (`pulumi.Input[str]`) - Size of the memory for the VM in MB (string)
-          * `networkId` (`pulumi.Input[str]`) - Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-          * `networkName` (`pulumi.Input[str]`) - Opennebula network to connect the machine to. Conflicts with `network_id` (string)
-          * `networkOwner` (`pulumi.Input[str]`) - Opennebula user ID of the Network to connect the machine to (string)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `templateId` (`pulumi.Input[str]`) - Opennebula template ID to use. Conflicts with `template_name` (string)
-          * `template_name` (`pulumi.Input[str]`) - Name of the Opennbula template to use. Conflicts with `template_id` (string)
-          * `user` (`pulumi.Input[str]`) - Set the user for the XML-RPC API authentication (string)
-          * `vcpu` (`pulumi.Input[str]`) - VCPUs for the VM (string)
-          * `xmlRpcUrl` (`pulumi.Input[str]`) - Set the url for the Opennebula XML-RPC API (string)
-
-        The **openstack_config** object supports the following:
-
-          * `activeTimeout` (`pulumi.Input[str]`) - OpenStack active timeout Default `200` (string)
-          * `authUrl` (`pulumi.Input[str]`) - OpenStack authentication URL (string)
-          * `availabilityZone` (`pulumi.Input[str]`) - OpenStack availability zone (string)
-          * `cacert` (`pulumi.Input[str]`) - CA certificate bundle to verify against (string)
-          * `configDrive` (`pulumi.Input[bool]`) - Enables the OpenStack config drive for the instance. Default `false` (bool)
-          * `domainId` (`pulumi.Input[str]`) - OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
-          * `domainName` (`pulumi.Input[str]`) - OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
-          * `endpointType` (`pulumi.Input[str]`) - OpenStack endpoint type. adminURL, internalURL or publicURL (string)
-          * `flavorId` (`pulumi.Input[str]`) - OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
-          * `flavorName` (`pulumi.Input[str]`) - OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
-          * `floatingIpPool` (`pulumi.Input[str]`) - OpenStack floating IP pool to get an IP from to assign to the instance (string)
-          * `imageId` (`pulumi.Input[str]`) - OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-          * `imageName` (`pulumi.Input[str]`) - OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-          * `insecure` (`pulumi.Input[bool]`) - Disable TLS credential checking. Default `false` (bool)
-          * `ipVersion` (`pulumi.Input[str]`) - OpenStack version of IP address assigned for the machine Default `4` (string)
-          * `keypairName` (`pulumi.Input[str]`) - OpenStack keypair to use to SSH to the instance (string)
-          * `netId` (`pulumi.Input[str]`) - OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
-          * `netName` (`pulumi.Input[str]`) - OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
-          * `novaNetwork` (`pulumi.Input[bool]`) - Use the nova networking services instead of neutron (string)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `privateKeyFile` (`pulumi.Input[str]`) - Private key content to use for SSH (string)
-          * `region` (`pulumi.Input[str]`) - OpenStack region name (string)
-          * `secGroups` (`pulumi.Input[str]`) - OpenStack comma separated security groups for the machine (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `tenant_id` (`pulumi.Input[str]`) - OpenStack tenant id. Conflicts with `tenant_name` (string)
-          * `tenantName` (`pulumi.Input[str]`) - OpenStack tenant name. Conflicts with `tenant_id` (string)
-          * `userDataFile` (`pulumi.Input[str]`) - File containing an openstack userdata script (string)
-          * `username` (`pulumi.Input[str]`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-
-        The **vsphere_config** object supports the following:
-
-          * `boot2dockerUrl` (`pulumi.Input[str]`) - vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
-          * `cfgparams` (`pulumi.Input[list]`) - vSphere vm configuration parameters (used for guestinfo) (list)
-          * `cloneFrom` (`pulumi.Input[str]`) - If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
-          * `cloudConfig` (`pulumi.Input[str]`) - Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
-          * `cloudinit` (`pulumi.Input[str]`) - vSphere cloud-init file or url to set in the guestinfo (string)
-          * `contentLibrary` (`pulumi.Input[str]`) - If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
-          * `cpuCount` (`pulumi.Input[str]`) - vSphere CPU number for docker VM. Default `2` (string)
-          * `creationType` (`pulumi.Input[str]`) - Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
-          * `customAttributes` (`pulumi.Input[list]`) - vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
-          * `datacenter` (`pulumi.Input[str]`) - vSphere datacenter for docker VM (string)
-          * `datastore` (`pulumi.Input[str]`) - vSphere datastore for docker VM (string)
-          * `datastoreCluster` (`pulumi.Input[str]`) - vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
-          * `diskSize` (`pulumi.Input[str]`) - vSphere size of disk for docker VM (in MB). Default `20480` (string)
-          * `folder` (`pulumi.Input[str]`) - vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
-          * `hostsystem` (`pulumi.Input[str]`) - vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
-          * `memorySize` (`pulumi.Input[str]`) - vSphere size of memory for docker VM (in MB). Default `2048` (string)
-          * `networks` (`pulumi.Input[list]`) - vSphere network where the docker VM will be attached (list)
-          * `password` (`pulumi.Input[str]`) - vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `pool` (`pulumi.Input[str]`) - vSphere resource pool for docker VM (string)
-          * `sshPassword` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
-          * `sshPort` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-          * `sshUser` (`pulumi.Input[str]`) - If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-          * `sshUserGroup` (`pulumi.Input[str]`) - If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
-          * `tags` (`pulumi.Input[list]`) - vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-          * `username` (`pulumi.Input[str]`) - vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `vappIpAllocationPolicy` (`pulumi.Input[str]`) - vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
-          * `vappIpProtocol` (`pulumi.Input[str]`) - vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
-          * `vappProperties` (`pulumi.Input[list]`) - vSphere vApp properties (list)
-          * `vappTransport` (`pulumi.Input[str]`) - vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
-          * `vcenter` (`pulumi.Input[str]`) - vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-          * `vcenterPort` (`pulumi.Input[str]`) - vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -849,8 +258,201 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["vsphere_config"] = vsphere_config
         return NodeTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="amazonec2Config")
+    def amazonec2_config(self) -> Optional['outputs.NodeTemplateAmazonec2Config']:
+        """
+        AWS config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "amazonec2_config")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for Node Template object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="authCertificateAuthority")
+    def auth_certificate_authority(self) -> Optional[str]:
+        """
+        Auth certificate authority for the Node Template (string)
+        """
+        return pulumi.get(self, "auth_certificate_authority")
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[str]:
+        """
+        Auth key for the Node Template (string)
+        """
+        return pulumi.get(self, "auth_key")
+
+    @property
+    @pulumi.getter(name="azureConfig")
+    def azure_config(self) -> Optional['outputs.NodeTemplateAzureConfig']:
+        """
+        Azure config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "azure_config")
+
+    @property
+    @pulumi.getter(name="cloudCredentialId")
+    def cloud_credential_id(self) -> Optional[str]:
+        """
+        Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "cloud_credential_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description for the Node Template (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="digitaloceanConfig")
+    def digitalocean_config(self) -> Optional['outputs.NodeTemplateDigitaloceanConfig']:
+        """
+        Digitalocean config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "digitalocean_config")
+
+    @property
+    @pulumi.getter
+    def driver(self) -> str:
+        """
+        (Computed) The driver of the node template (string)
+        """
+        return pulumi.get(self, "driver")
+
+    @property
+    @pulumi.getter(name="driverId")
+    def driver_id(self) -> str:
+        """
+        The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        """
+        return pulumi.get(self, "driver_id")
+
+    @property
+    @pulumi.getter(name="engineEnv")
+    def engine_env(self) -> Optional[Mapping[str, Any]]:
+        """
+        Engine environment for the node template (string)
+        """
+        return pulumi.get(self, "engine_env")
+
+    @property
+    @pulumi.getter(name="engineInsecureRegistries")
+    def engine_insecure_registries(self) -> Optional[List[str]]:
+        """
+        Insecure registry for the node template (list)
+        """
+        return pulumi.get(self, "engine_insecure_registries")
+
+    @property
+    @pulumi.getter(name="engineInstallUrl")
+    def engine_install_url(self) -> Optional[str]:
+        """
+        Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        """
+        return pulumi.get(self, "engine_install_url")
+
+    @property
+    @pulumi.getter(name="engineLabel")
+    def engine_label(self) -> Optional[Mapping[str, Any]]:
+        """
+        Engine label for the node template (string)
+        """
+        return pulumi.get(self, "engine_label")
+
+    @property
+    @pulumi.getter(name="engineOpt")
+    def engine_opt(self) -> Optional[Mapping[str, Any]]:
+        """
+        Engine options for the node template (map)
+        """
+        return pulumi.get(self, "engine_opt")
+
+    @property
+    @pulumi.getter(name="engineRegistryMirrors")
+    def engine_registry_mirrors(self) -> Optional[List[str]]:
+        """
+        Engine registry mirror for the node template (list)
+        """
+        return pulumi.get(self, "engine_registry_mirrors")
+
+    @property
+    @pulumi.getter(name="engineStorageDriver")
+    def engine_storage_driver(self) -> Optional[str]:
+        """
+        Engine storage driver for the node template (string)
+        """
+        return pulumi.get(self, "engine_storage_driver")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for Node Template object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linodeConfig")
+    def linode_config(self) -> Optional['outputs.NodeTemplateLinodeConfig']:
+        """
+        Linode config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "linode_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Node Template (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="opennebulaConfig")
+    def opennebula_config(self) -> Optional['outputs.NodeTemplateOpennebulaConfig']:
+        """
+        Opennebula config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "opennebula_config")
+
+    @property
+    @pulumi.getter(name="openstackConfig")
+    def openstack_config(self) -> Optional['outputs.NodeTemplateOpenstackConfig']:
+        """
+        Openstack config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "openstack_config")
+
+    @property
+    @pulumi.getter(name="useInternalIpAddress")
+    def use_internal_ip_address(self) -> Optional[bool]:
+        """
+        Engine storage driver for the node template (bool)
+        """
+        return pulumi.get(self, "use_internal_ip_address")
+
+    @property
+    @pulumi.getter(name="vsphereConfig")
+    def vsphere_config(self) -> Optional['outputs.NodeTemplateVsphereConfig']:
+        """
+        vSphere config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "vsphere_config")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

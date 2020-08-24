@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetEtcdBackupResult',
+    'AwaitableGetEtcdBackupResult',
+    'get_etcd_backup',
+]
+
+@pulumi.output_type
 class GetEtcdBackupResult:
     """
     A collection of values returned by getEtcdBackup.
@@ -15,52 +23,99 @@ class GetEtcdBackupResult:
     def __init__(__self__, annotations=None, backup_config=None, cluster_id=None, filename=None, id=None, labels=None, manual=None, name=None, namespace_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if backup_config and not isinstance(backup_config, dict):
+            raise TypeError("Expected argument 'backup_config' to be a dict")
+        pulumi.set(__self__, "backup_config", backup_config)
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError("Expected argument 'cluster_id' to be a str")
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if filename and not isinstance(filename, str):
+            raise TypeError("Expected argument 'filename' to be a str")
+        pulumi.set(__self__, "filename", filename)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if manual and not isinstance(manual, bool):
+            raise TypeError("Expected argument 'manual' to be a bool")
+        pulumi.set(__self__, "manual", manual)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if namespace_id and not isinstance(namespace_id, str):
+            raise TypeError("Expected argument 'namespace_id' to be a str")
+        pulumi.set(__self__, "namespace_id", namespace_id)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for Etcd Backup object (map)
         """
-        if backup_config and not isinstance(backup_config, dict):
-            raise TypeError("Expected argument 'backup_config' to be a dict")
-        __self__.backup_config = backup_config
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="backupConfig")
+    def backup_config(self) -> 'outputs.GetEtcdBackupBackupConfigResult':
         """
         (Computed) Backup config for etcd backup (list maxitems:1)
         """
-        if cluster_id and not isinstance(cluster_id, str):
-            raise TypeError("Expected argument 'cluster_id' to be a str")
-        __self__.cluster_id = cluster_id
-        if filename and not isinstance(filename, str):
-            raise TypeError("Expected argument 'filename' to be a str")
-        __self__.filename = filename
+        return pulumi.get(self, "backup_config")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def filename(self) -> str:
         """
         (Computed) Filename of the Etcd Backup (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "filename")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for Etcd Backup object (map)
         """
-        if manual and not isinstance(manual, bool):
-            raise TypeError("Expected argument 'manual' to be a bool")
-        __self__.manual = manual
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def manual(self) -> bool:
         """
         (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if namespace_id and not isinstance(namespace_id, str):
-            raise TypeError("Expected argument 'namespace_id' to be a str")
-        __self__.namespace_id = namespace_id
+        return pulumi.get(self, "manual")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
         """
         (Computed) Description for the Etcd Backup (string)
         """
+        return pulumi.get(self, "namespace_id")
+
+
 class AwaitableGetEtcdBackupResult(GetEtcdBackupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +132,10 @@ class AwaitableGetEtcdBackupResult(GetEtcdBackupResult):
             name=self.name,
             namespace_id=self.namespace_id)
 
-def get_etcd_backup(cluster_id=None,name=None,opts=None):
+
+def get_etcd_backup(cluster_id: Optional[str] = None,
+                    name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEtcdBackupResult:
     """
     Use this data source to retrieve information about a Rancher v2 etcd backup.
 
@@ -96,23 +154,21 @@ def get_etcd_backup(cluster_id=None,name=None,opts=None):
     :param str name: The name of the Etcd Backup (string)
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getEtcdBackup:getEtcdBackup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getEtcdBackup:getEtcdBackup', __args__, opts=opts, typ=GetEtcdBackupResult).value
 
     return AwaitableGetEtcdBackupResult(
-        annotations=__ret__.get('annotations'),
-        backup_config=__ret__.get('backupConfig'),
-        cluster_id=__ret__.get('clusterId'),
-        filename=__ret__.get('filename'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        manual=__ret__.get('manual'),
-        name=__ret__.get('name'),
-        namespace_id=__ret__.get('namespaceId'))
+        annotations=__ret__.annotations,
+        backup_config=__ret__.backup_config,
+        cluster_id=__ret__.cluster_id,
+        filename=__ret__.filename,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        manual=__ret__.manual,
+        name=__ret__.name,
+        namespace_id=__ret__.namespace_id)

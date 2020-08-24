@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
+@pulumi.output_type
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -15,151 +23,283 @@ class GetClusterResult:
     def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
-        __self__.aks_config = aks_config
+        pulumi.set(__self__, "aks_config", aks_config)
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
+        if cluster_auth_endpoint and not isinstance(cluster_auth_endpoint, dict):
+            raise TypeError("Expected argument 'cluster_auth_endpoint' to be a dict")
+        pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
+        if cluster_monitoring_input and not isinstance(cluster_monitoring_input, dict):
+            raise TypeError("Expected argument 'cluster_monitoring_input' to be a dict")
+        pulumi.set(__self__, "cluster_monitoring_input", cluster_monitoring_input)
+        if cluster_registration_token and not isinstance(cluster_registration_token, dict):
+            raise TypeError("Expected argument 'cluster_registration_token' to be a dict")
+        pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
+        if cluster_template_answers and not isinstance(cluster_template_answers, dict):
+            raise TypeError("Expected argument 'cluster_template_answers' to be a dict")
+        pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
+        if cluster_template_id and not isinstance(cluster_template_id, str):
+            raise TypeError("Expected argument 'cluster_template_id' to be a str")
+        pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+        if cluster_template_questions and not isinstance(cluster_template_questions, list):
+            raise TypeError("Expected argument 'cluster_template_questions' to be a list")
+        pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
+        if cluster_template_revision_id and not isinstance(cluster_template_revision_id, str):
+            raise TypeError("Expected argument 'cluster_template_revision_id' to be a str")
+        pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
+        if default_pod_security_policy_template_id and not isinstance(default_pod_security_policy_template_id, str):
+            raise TypeError("Expected argument 'default_pod_security_policy_template_id' to be a str")
+        pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
+        if default_project_id and not isinstance(default_project_id, str):
+            raise TypeError("Expected argument 'default_project_id' to be a str")
+        pulumi.set(__self__, "default_project_id", default_project_id)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if driver and not isinstance(driver, str):
+            raise TypeError("Expected argument 'driver' to be a str")
+        pulumi.set(__self__, "driver", driver)
+        if eks_config and not isinstance(eks_config, dict):
+            raise TypeError("Expected argument 'eks_config' to be a dict")
+        pulumi.set(__self__, "eks_config", eks_config)
+        if enable_cluster_alerting and not isinstance(enable_cluster_alerting, bool):
+            raise TypeError("Expected argument 'enable_cluster_alerting' to be a bool")
+        pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
+        if enable_cluster_monitoring and not isinstance(enable_cluster_monitoring, bool):
+            raise TypeError("Expected argument 'enable_cluster_monitoring' to be a bool")
+        pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
+        if enable_network_policy and not isinstance(enable_network_policy, bool):
+            raise TypeError("Expected argument 'enable_network_policy' to be a bool")
+        pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+        if gke_config and not isinstance(gke_config, dict):
+            raise TypeError("Expected argument 'gke_config' to be a dict")
+        pulumi.set(__self__, "gke_config", gke_config)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if k3s_config and not isinstance(k3s_config, dict):
+            raise TypeError("Expected argument 'k3s_config' to be a dict")
+        pulumi.set(__self__, "k3s_config", k3s_config)
+        if kube_config and not isinstance(kube_config, str):
+            raise TypeError("Expected argument 'kube_config' to be a str")
+        pulumi.set(__self__, "kube_config", kube_config)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if rke_config and not isinstance(rke_config, dict):
+            raise TypeError("Expected argument 'rke_config' to be a dict")
+        pulumi.set(__self__, "rke_config", rke_config)
+        if scheduled_cluster_scans and not isinstance(scheduled_cluster_scans, list):
+            raise TypeError("Expected argument 'scheduled_cluster_scans' to be a list")
+        pulumi.set(__self__, "scheduled_cluster_scans", scheduled_cluster_scans)
+        if system_project_id and not isinstance(system_project_id, str):
+            raise TypeError("Expected argument 'system_project_id' to be a str")
+        pulumi.set(__self__, "system_project_id", system_project_id)
+
+    @property
+    @pulumi.getter(name="aksConfig")
+    def aks_config(self) -> 'outputs.GetClusterAksConfigResult':
         """
         (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         """
-        if annotations and not isinstance(annotations, dict):
-            raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        return pulumi.get(self, "aks_config")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for Node Pool object (map)
         """
-        if cluster_auth_endpoint and not isinstance(cluster_auth_endpoint, dict):
-            raise TypeError("Expected argument 'cluster_auth_endpoint' to be a dict")
-        __self__.cluster_auth_endpoint = cluster_auth_endpoint
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterAuthEndpoint")
+    def cluster_auth_endpoint(self) -> 'outputs.GetClusterClusterAuthEndpointResult':
         """
         (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         """
-        if cluster_monitoring_input and not isinstance(cluster_monitoring_input, dict):
-            raise TypeError("Expected argument 'cluster_monitoring_input' to be a dict")
-        __self__.cluster_monitoring_input = cluster_monitoring_input
+        return pulumi.get(self, "cluster_auth_endpoint")
+
+    @property
+    @pulumi.getter(name="clusterMonitoringInput")
+    def cluster_monitoring_input(self) -> 'outputs.GetClusterClusterMonitoringInputResult':
         """
         (Computed) Cluster monitoring config (list maxitems:1)
         """
-        if cluster_registration_token and not isinstance(cluster_registration_token, dict):
-            raise TypeError("Expected argument 'cluster_registration_token' to be a dict")
-        __self__.cluster_registration_token = cluster_registration_token
+        return pulumi.get(self, "cluster_monitoring_input")
+
+    @property
+    @pulumi.getter(name="clusterRegistrationToken")
+    def cluster_registration_token(self) -> 'outputs.GetClusterClusterRegistrationTokenResult':
         """
         (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         """
-        if cluster_template_answers and not isinstance(cluster_template_answers, dict):
-            raise TypeError("Expected argument 'cluster_template_answers' to be a dict")
-        __self__.cluster_template_answers = cluster_template_answers
+        return pulumi.get(self, "cluster_registration_token")
+
+    @property
+    @pulumi.getter(name="clusterTemplateAnswers")
+    def cluster_template_answers(self) -> 'outputs.GetClusterClusterTemplateAnswersResult':
         """
         (Computed) Cluster template answers (list maxitems:1)
         """
-        if cluster_template_id and not isinstance(cluster_template_id, str):
-            raise TypeError("Expected argument 'cluster_template_id' to be a str")
-        __self__.cluster_template_id = cluster_template_id
+        return pulumi.get(self, "cluster_template_answers")
+
+    @property
+    @pulumi.getter(name="clusterTemplateId")
+    def cluster_template_id(self) -> str:
         """
         (Computed) Cluster template ID (string)
         """
-        if cluster_template_questions and not isinstance(cluster_template_questions, list):
-            raise TypeError("Expected argument 'cluster_template_questions' to be a list")
-        __self__.cluster_template_questions = cluster_template_questions
+        return pulumi.get(self, "cluster_template_id")
+
+    @property
+    @pulumi.getter(name="clusterTemplateQuestions")
+    def cluster_template_questions(self) -> List['outputs.GetClusterClusterTemplateQuestionResult']:
         """
         (Computed) Cluster template questions (list)
         """
-        if cluster_template_revision_id and not isinstance(cluster_template_revision_id, str):
-            raise TypeError("Expected argument 'cluster_template_revision_id' to be a str")
-        __self__.cluster_template_revision_id = cluster_template_revision_id
+        return pulumi.get(self, "cluster_template_questions")
+
+    @property
+    @pulumi.getter(name="clusterTemplateRevisionId")
+    def cluster_template_revision_id(self) -> str:
         """
         (Computed) Cluster template revision ID (string)
         """
-        if default_pod_security_policy_template_id and not isinstance(default_pod_security_policy_template_id, str):
-            raise TypeError("Expected argument 'default_pod_security_policy_template_id' to be a str")
-        __self__.default_pod_security_policy_template_id = default_pod_security_policy_template_id
+        return pulumi.get(self, "cluster_template_revision_id")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
+    def default_pod_security_policy_template_id(self) -> str:
         """
         (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         """
-        if default_project_id and not isinstance(default_project_id, str):
-            raise TypeError("Expected argument 'default_project_id' to be a str")
-        __self__.default_project_id = default_project_id
+        return pulumi.get(self, "default_pod_security_policy_template_id")
+
+    @property
+    @pulumi.getter(name="defaultProjectId")
+    def default_project_id(self) -> str:
         """
         (Computed) Default project ID for the cluster (string)
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "default_project_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) The description for Cluster (string)
         """
-        if driver and not isinstance(driver, str):
-            raise TypeError("Expected argument 'driver' to be a str")
-        __self__.driver = driver
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def driver(self) -> str:
         """
         (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         """
-        if eks_config and not isinstance(eks_config, dict):
-            raise TypeError("Expected argument 'eks_config' to be a dict")
-        __self__.eks_config = eks_config
+        return pulumi.get(self, "driver")
+
+    @property
+    @pulumi.getter(name="eksConfig")
+    def eks_config(self) -> 'outputs.GetClusterEksConfigResult':
         """
         (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
         """
-        if enable_cluster_alerting and not isinstance(enable_cluster_alerting, bool):
-            raise TypeError("Expected argument 'enable_cluster_alerting' to be a bool")
-        __self__.enable_cluster_alerting = enable_cluster_alerting
-        if enable_cluster_monitoring and not isinstance(enable_cluster_monitoring, bool):
-            raise TypeError("Expected argument 'enable_cluster_monitoring' to be a bool")
-        __self__.enable_cluster_monitoring = enable_cluster_monitoring
+        return pulumi.get(self, "eks_config")
+
+    @property
+    @pulumi.getter(name="enableClusterAlerting")
+    def enable_cluster_alerting(self) -> bool:
+        return pulumi.get(self, "enable_cluster_alerting")
+
+    @property
+    @pulumi.getter(name="enableClusterMonitoring")
+    def enable_cluster_monitoring(self) -> bool:
         """
         (Computed) Enable built-in cluster monitoring. Default `false` (bool)
         """
-        if enable_network_policy and not isinstance(enable_network_policy, bool):
-            raise TypeError("Expected argument 'enable_network_policy' to be a bool")
-        __self__.enable_network_policy = enable_network_policy
+        return pulumi.get(self, "enable_cluster_monitoring")
+
+    @property
+    @pulumi.getter(name="enableNetworkPolicy")
+    def enable_network_policy(self) -> bool:
         """
         (Computed) Enable project network isolation. Default `false` (bool)
         """
-        if gke_config and not isinstance(gke_config, dict):
-            raise TypeError("Expected argument 'gke_config' to be a dict")
-        __self__.gke_config = gke_config
+        return pulumi.get(self, "enable_network_policy")
+
+    @property
+    @pulumi.getter(name="gkeConfig")
+    def gke_config(self) -> 'outputs.GetClusterGkeConfigResult':
         """
         (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "gke_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if k3s_config and not isinstance(k3s_config, dict):
-            raise TypeError("Expected argument 'k3s_config' to be a dict")
-        __self__.k3s_config = k3s_config
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="k3sConfig")
+    def k3s_config(self) -> 'outputs.GetClusterK3sConfigResult':
         """
         (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         """
-        if kube_config and not isinstance(kube_config, str):
-            raise TypeError("Expected argument 'kube_config' to be a str")
-        __self__.kube_config = kube_config
+        return pulumi.get(self, "k3s_config")
+
+    @property
+    @pulumi.getter(name="kubeConfig")
+    def kube_config(self) -> str:
         """
         (Computed) Kube Config generated for the cluster (string)
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for Node Pool object (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if rke_config and not isinstance(rke_config, dict):
-            raise TypeError("Expected argument 'rke_config' to be a dict")
-        __self__.rke_config = rke_config
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rkeConfig")
+    def rke_config(self) -> 'outputs.GetClusterRkeConfigResult':
         """
         (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
         """
-        if scheduled_cluster_scans and not isinstance(scheduled_cluster_scans, list):
-            raise TypeError("Expected argument 'scheduled_cluster_scans' to be a list")
-        __self__.scheduled_cluster_scans = scheduled_cluster_scans
-        if system_project_id and not isinstance(system_project_id, str):
-            raise TypeError("Expected argument 'system_project_id' to be a str")
-        __self__.system_project_id = system_project_id
+        return pulumi.get(self, "rke_config")
+
+    @property
+    @pulumi.getter(name="scheduledClusterScans")
+    def scheduled_cluster_scans(self) -> List['outputs.GetClusterScheduledClusterScanResult']:
+        return pulumi.get(self, "scheduled_cluster_scans")
+
+    @property
+    @pulumi.getter(name="systemProjectId")
+    def system_project_id(self) -> str:
         """
         (Computed) System project ID for the cluster (string)
         """
+        return pulumi.get(self, "system_project_id")
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -193,7 +333,9 @@ class AwaitableGetClusterResult(GetClusterResult):
             scheduled_cluster_scans=self.scheduled_cluster_scans,
             system_project_id=self.system_project_id)
 
-def get_cluster(name=None,opts=None):
+
+def get_cluster(name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
 
@@ -210,39 +352,37 @@ def get_cluster(name=None,opts=None):
     :param str name: The name of the Cluster (string)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        aks_config=__ret__.get('aksConfig'),
-        annotations=__ret__.get('annotations'),
-        cluster_auth_endpoint=__ret__.get('clusterAuthEndpoint'),
-        cluster_monitoring_input=__ret__.get('clusterMonitoringInput'),
-        cluster_registration_token=__ret__.get('clusterRegistrationToken'),
-        cluster_template_answers=__ret__.get('clusterTemplateAnswers'),
-        cluster_template_id=__ret__.get('clusterTemplateId'),
-        cluster_template_questions=__ret__.get('clusterTemplateQuestions'),
-        cluster_template_revision_id=__ret__.get('clusterTemplateRevisionId'),
-        default_pod_security_policy_template_id=__ret__.get('defaultPodSecurityPolicyTemplateId'),
-        default_project_id=__ret__.get('defaultProjectId'),
-        description=__ret__.get('description'),
-        driver=__ret__.get('driver'),
-        eks_config=__ret__.get('eksConfig'),
-        enable_cluster_alerting=__ret__.get('enableClusterAlerting'),
-        enable_cluster_monitoring=__ret__.get('enableClusterMonitoring'),
-        enable_network_policy=__ret__.get('enableNetworkPolicy'),
-        gke_config=__ret__.get('gkeConfig'),
-        id=__ret__.get('id'),
-        k3s_config=__ret__.get('k3sConfig'),
-        kube_config=__ret__.get('kubeConfig'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        rke_config=__ret__.get('rkeConfig'),
-        scheduled_cluster_scans=__ret__.get('scheduledClusterScans'),
-        system_project_id=__ret__.get('systemProjectId'))
+        aks_config=__ret__.aks_config,
+        annotations=__ret__.annotations,
+        cluster_auth_endpoint=__ret__.cluster_auth_endpoint,
+        cluster_monitoring_input=__ret__.cluster_monitoring_input,
+        cluster_registration_token=__ret__.cluster_registration_token,
+        cluster_template_answers=__ret__.cluster_template_answers,
+        cluster_template_id=__ret__.cluster_template_id,
+        cluster_template_questions=__ret__.cluster_template_questions,
+        cluster_template_revision_id=__ret__.cluster_template_revision_id,
+        default_pod_security_policy_template_id=__ret__.default_pod_security_policy_template_id,
+        default_project_id=__ret__.default_project_id,
+        description=__ret__.description,
+        driver=__ret__.driver,
+        eks_config=__ret__.eks_config,
+        enable_cluster_alerting=__ret__.enable_cluster_alerting,
+        enable_cluster_monitoring=__ret__.enable_cluster_monitoring,
+        enable_network_policy=__ret__.enable_network_policy,
+        gke_config=__ret__.gke_config,
+        id=__ret__.id,
+        k3s_config=__ret__.k3s_config,
+        kube_config=__ret__.kube_config,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        rke_config=__ret__.rke_config,
+        scheduled_cluster_scans=__ret__.scheduled_cluster_scans,
+        system_project_id=__ret__.system_project_id)

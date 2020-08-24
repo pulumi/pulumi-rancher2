@@ -5,622 +5,59 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Cluster']
 
 
 class Cluster(pulumi.CustomResource):
-    aks_config: pulumi.Output[dict]
-    """
-    The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-
-      * `aadServerAppSecret` (`str`) - The secret of an Azure Active Directory server application (string)
-      * `aadTenantId` (`str`) - The ID of an Azure Active Directory tenant (string)
-      * `addClientAppId` (`str`) - The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
-      * `addServerAppId` (`str`) - The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
-      * `adminUsername` (`str`) - The administrator username to use for Linux hosts. Default `azureuser` (string)
-      * `agentDnsPrefix` (`str`) - DNS prefix to be used to create the FQDN for the agent pool (string)
-      * `agentOsDiskSize` (`float`) - GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \"agent vm size\" specified. Default `0` (int)
-      * `agentPoolName` (`str`) - Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
-      * `agentStorageProfile` (`str`) - Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
-      * `agentVmSize` (`str`) - Size of machine in the agent pool. Default `Standard_D1_v2` (string)
-      * `authBaseUrl` (`str`) - Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
-      * `baseUrl` (`str`) - Different resource management API url to use. Default `https://management.azure.com/` (string)
-      * `client_id` (`str`) - Azure client ID to use (string)
-      * `client_secret` (`str`) - Azure client secret associated with the \"client id\" (string)
-      * `count` (`float`) - Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
-      * `dnsServiceIp` (`str`) - An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
-      * `dockerBridgeCidr` (`str`) - A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
-      * `enableHttpApplicationRouting` (`bool`) - Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
-      * `enableMonitoring` (`bool`) - Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
-      * `kubernetesVersion` (`str`) - The Kubernetes master version (string)
-      * `location` (`str`) - Azure Kubernetes cluster location. Default `eastus` (string)
-      * `logAnalyticsWorkspace` (`str`) - The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
-      * `logAnalyticsWorkspaceResourceGroup` (`str`) - The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
-      * `masterDnsPrefix` (`str`) - DNS prefix to use the Kubernetes cluster control pane (string)
-      * `maxPods` (`float`) - Maximum number of pods that can run on a node. Default `110` (int)
-      * `networkPlugin` (`str`) - Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
-      * `networkPolicy` (`str`) - Network policy used for building Kubernetes network. Chooses from `calico` (string)
-      * `podCidr` (`str`) - A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
-      * `resourceGroup` (`str`) - The name of the Cluster resource group (string)
-      * `serviceCidr` (`str`) - A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
-      * `sshPublicKeyContents` (`str`) - Contents of the SSH public key used to authenticate with Linux hosts (string)
-      * `subnet` (`str`) - The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
-      * `subscriptionId` (`str`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-      * `tag` (`dict`) - Tags for Kubernetes cluster. For example, foo=bar (map)
-      * `tenant_id` (`str`) - Azure tenant ID to use (string)
-      * `virtualNetwork` (`str`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-      * `virtualNetworkResourceGroup` (`str`) - The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
-    """
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for cluster registration token object (map)
-    """
-    cluster_auth_endpoint: pulumi.Output[dict]
-    """
-    Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-
-      * `caCerts` (`str`) - CA certs for the authorized cluster endpoint (string)
-      * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-      * `fqdn` (`str`) - FQDN for the authorized cluster endpoint (string)
-    """
-    cluster_monitoring_input: pulumi.Output[dict]
-    """
-    Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-
-      * `answers` (`dict`) - Key/value answers for monitor input (map)
-      * `version` (`str`) - rancher-monitoring chart version (string)
-    """
-    cluster_registration_token: pulumi.Output[dict]
-    """
-    (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-
-      * `annotations` (`dict`) - Annotations for cluster registration token object (map)
-      * `cluster_id` (`str`) - Cluster ID (string)
-      * `command` (`str`) - Command to execute in a imported k8s cluster (string)
-      * `id` (`str`) - (Computed) The ID of the resource (string)
-      * `insecureCommand` (`str`) - Insecure command to execute in a imported k8s cluster (string)
-      * `labels` (`dict`) - Labels for cluster registration token object (map)
-      * `manifestUrl` (`str`) - K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-      * `name` (`str`) - Name of cluster registration token (string)
-      * `nodeCommand` (`str`) - Node command to execute in linux nodes for custom k8s cluster (string)
-      * `token` (`str`) - Token for cluster registration token object (string)
-      * `windowsNodeCommand` (`str`) - Node command to execute in windows nodes for custom k8s cluster (string)
-    """
-    cluster_template_answers: pulumi.Output[dict]
-    """
-    Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
-
-      * `cluster_id` (`str`) - Cluster ID (string)
-      * `project_id` (`str`) - Project ID to apply answer (string)
-      * `values` (`dict`) - Key/values for answer (map)
-    """
-    cluster_template_id: pulumi.Output[str]
-    """
-    Cluster template ID. Just for Rancher v2.3.x and above (string)
-    """
-    cluster_template_questions: pulumi.Output[list]
-    """
-    Cluster template questions. Just for Rancher v2.3.x and above (list)
-
-      * `default` (`str`) - Default variable value (string)
-      * `required` (`bool`) - Required variable. Default `false` (bool)
-      * `type` (`str`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-      * `variable` (`str`) - Variable name (string)
-    """
-    cluster_template_revision_id: pulumi.Output[str]
-    """
-    Cluster template revision ID. Just for Rancher v2.3.x and above (string)
-    """
-    default_pod_security_policy_template_id: pulumi.Output[str]
-    """
-    [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-    """
-    default_project_id: pulumi.Output[str]
-    """
-    (Computed) Default project ID for the cluster (string)
-    """
-    description: pulumi.Output[str]
-    """
-    An optional description of this cluster (string)
-    """
-    desired_agent_image: pulumi.Output[str]
-    """
-    Desired agent image. Just for Rancher v2.3.x and above (string)
-    """
-    desired_auth_image: pulumi.Output[str]
-    """
-    Desired auth image. Just for Rancher v2.3.x and above (string)
-    """
-    docker_root_dir: pulumi.Output[str]
-    """
-    Desired auth image. Just for Rancher v2.3.x and above (string)
-    """
-    driver: pulumi.Output[str]
-    """
-    (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-    """
-    eks_config: pulumi.Output[dict]
-    """
-    The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-
-      * `access_key` (`str`) - The AWS Client ID to use (string)
-      * `ami` (`str`) - AMI ID to use for the worker nodes instead of the default (string)
-      * `associateWorkerNodePublicIp` (`bool`) - Associate public ip EKS worker nodes. Default `true` (bool)
-      * `desiredNodes` (`float`) - The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-      * `instanceType` (`str`) - The type of machine to use for worker nodes. Default `t2.medium` (string)
-      * `keyPairName` (`str`) - Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
-      * `kubernetesVersion` (`str`) - The Kubernetes master version (string)
-      * `maximumNodes` (`float`) - The maximum number of worker nodes. Default `3` (int)
-      * `minimumNodes` (`float`) - The minimum number of worker nodes. Default `1` (int)
-      * `nodeVolumeSize` (`float`) - The volume size for each node. Default `20` (int)
-      * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
-      * `secret_key` (`str`) - The AWS Client Secret associated with the Client ID (string)
-      * `securityGroups` (`list`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
-      * `serviceRole` (`str`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
-      * `sessionToken` (`str`) - A session token to use with the client key and secret if applicable (string)
-      * `subnets` (`list`) - List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
-      * `userData` (`str`) - Pass user-data to the nodes to perform automated configuration tasks (string)
-      * `virtualNetwork` (`str`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-    """
-    enable_cluster_alerting: pulumi.Output[bool]
-    """
-    Enable built-in cluster alerting (bool)
-    """
-    enable_cluster_istio: pulumi.Output[bool]
-    """
-    Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
-    """
-    enable_cluster_monitoring: pulumi.Output[bool]
-    """
-    Enable built-in cluster monitoring (bool)
-    """
-    enable_network_policy: pulumi.Output[bool]
-    """
-    Enable project network isolation (bool)
-    """
-    gke_config: pulumi.Output[dict]
-    """
-    The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-
-      * `clusterIpv4Cidr` (`str`) - The IP address range of the container pods (string)
-      * `credential` (`str`) - The contents of the GC credential file (string)
-      * `description` (`str`) - An optional description of this cluster (string)
-      * `diskSizeGb` (`float`) - Size of the disk attached to each node. Default `100` (int)
-      * `diskType` (`str`) - Type of the disk attached to each node (string)
-      * `enableAlphaFeature` (`bool`) - To enable Kubernetes alpha feature. Default `true` (bool)
-      * `enableAutoRepair` (`bool`) - Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
-      * `enableAutoUpgrade` (`bool`) - Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
-      * `enableHorizontalPodAutoscaling` (`bool`) - Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
-      * `enableHttpLoadBalancing` (`bool`) - Enable HTTP load balancing on GKE cluster. Default `true` (bool)
-      * `enableKubernetesDashboard` (`bool`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
-      * `enableLegacyAbac` (`bool`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
-      * `enableMasterAuthorizedNetwork` (`bool`)
-      * `enableNetworkPolicyConfig` (`bool`) - Enable network policy config for the cluster. Default `true` (bool)
-      * `enableNodepoolAutoscaling` (`bool`) - Enable nodepool autoscaling. Default `false` (bool)
-      * `enablePrivateEndpoint` (`bool`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
-      * `enablePrivateNodes` (`bool`) - Whether nodes have internal IP address only. Default `false` (bool)
-      * `enableStackdriverLogging` (`bool`) - Enable stackdriver monitoring. Default `true` (bool)
-      * `enableStackdriverMonitoring` (`bool`) - Enable stackdriver monitoring on GKE cluster (bool)
-      * `imageType` (`str`) - The image to use for the worker nodes (string)
-      * `ipPolicyClusterIpv4CidrBlock` (`str`) - The IP address range for the cluster pod IPs (string)
-      * `ipPolicyClusterSecondaryRangeName` (`str`) - The name of the secondary range to be used for the cluster CIDR block (string)
-      * `ipPolicyCreateSubnetwork` (`bool`) - Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
-      * `ipPolicyNodeIpv4CidrBlock` (`str`) - The IP address range of the instance IPs in this cluster (string)
-      * `ipPolicyServicesIpv4CidrBlock` (`str`) - The IP address range of the services IPs in this cluster (string)
-      * `ipPolicyServicesSecondaryRangeName` (`str`) - The name of the secondary range to be used for the services CIDR block (string)
-      * `ipPolicySubnetworkName` (`str`) - A custom subnetwork name to be used if createSubnetwork is true (string)
-      * `issueClientCertificate` (`bool`) - Issue a client certificate. Default `false` (bool)
-      * `kubernetesDashboard` (`bool`) - Enable the Kubernetes dashboard. Default `false` (bool)
-      * `labels` (`dict`) - Labels for cluster registration token object (map)
-      * `localSsdCount` (`float`) - The number of local SSD disks to be attached to the node. Default `0` (int)
-      * `locations` (`list`) - Locations for GKE cluster (list)
-      * `machineType` (`str`) - Machine type for GKE cluster (string)
-      * `maintenanceWindow` (`str`) - Maintenance window for GKE cluster (string)
-      * `masterAuthorizedNetworkCidrBlocks` (`list`) - Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
-      * `masterIpv4CidrBlock` (`str`) - The IP range in CIDR notation to use for the hosted master network (string)
-      * `masterVersion` (`str`) - Master version for GKE cluster (string)
-      * `maxNodeCount` (`float`) - Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
-      * `minNodeCount` (`float`) - Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
-      * `network` (`str`) - Network for GKE cluster (string)
-      * `nodeCount` (`float`) - Node count for GKE cluster. Default `3` (int)
-      * `nodePool` (`str`) - The ID of the cluster node pool (string)
-      * `nodeVersion` (`str`) - Node version for GKE cluster (string)
-      * `oauthScopes` (`list`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
-      * `preemptible` (`bool`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
-      * `project_id` (`str`) - Project ID to apply answer (string)
-      * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
-      * `resourceLabels` (`dict`) - The map of Kubernetes labels to be applied to each cluster (map)
-      * `serviceAccount` (`str`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
-      * `subNetwork` (`str`) - Subnetwork for GKE cluster (string)
-      * `taints` (`list`) - List of Kubernetes taints to be applied to each node (list)
-      * `useIpAliases` (`bool`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-      * `zone` (`str`) - GKE cluster zone. Conflicts with `region` (string)
-    """
-    k3s_config: pulumi.Output[dict]
-    """
-    The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-
-      * `upgrade_strategy` (`dict`) - K3S upgrade strategy (List maxitems: 1)
-        * `drainServerNodes` (`bool`) - Drain server nodes. Default: `false` (bool)
-        * `drainWorkerNodes` (`bool`) - Drain worker nodes. Default: `false` (bool)
-        * `serverConcurrency` (`float`) - Server concurrency. Default: `1` (int)
-        * `workerConcurrency` (`float`) - Worker concurrency. Default: `1` (int)
-
-      * `version` (`str`) - rancher-monitoring chart version (string)
-    """
-    kube_config: pulumi.Output[str]
-    """
-    (Computed/Sensitive) Kube Config generated for the cluster (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for cluster registration token object (map)
-    """
-    name: pulumi.Output[str]
-    """
-    Name of cluster registration token (string)
-    """
-    rke_config: pulumi.Output[dict]
-    """
-    The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-
-      * `addonJobTimeout` (`float`) - Duration in seconds of addon job (int)
-      * `addons` (`str`) - Addons descripton to deploy on RKE cluster.
-      * `addonsIncludes` (`list`) - Addons yaml manifests to deploy on RKE cluster (list)
-      * `authentication` (`dict`) - Kubernetes cluster authentication (list maxitems:1)
-        * `sans` (`list`) - RKE sans for authentication ([]string)
-        * `strategy` (`str`) - Monitoring deployment update strategy (string)
-
-      * `authorization` (`dict`) - Kubernetes cluster authorization (list maxitems:1)
-        * `mode` (`str`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
-        * `options` (`dict`) - RKE options for network (map)
-
-      * `bastionHost` (`dict`) - RKE bastion host (list maxitems:1)
-        * `address` (`str`) - Address ip for node (string)
-        * `port` (`str`) - Port for node. Default `22` (string)
-        * `sshAgentAuth` (`bool`) - Use ssh agent auth. Default `false` (bool)
-        * `sshKey` (`str`) - Node SSH private key (string)
-        * `sshKeyPath` (`str`) - Node SSH private key path (string)
-        * `user` (`str`) - Registry user (string)
-
-      * `cloudProvider` (`dict`) - RKE options for Calico network provider (string)
-        * `awsCloudProvider` (`dict`) - RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
-          * `global` (`dict`) - (list maxitems:1)
-            * `disableSecurityGroupIngress` (`bool`) - Default `false` (bool)
-            * `disableStrictZoneCheck` (`bool`) - Default `false` (bool)
-            * `elbSecurityGroup` (`str`) - (string)
-            * `kubernetesClusterId` (`str`) - (string)
-            * `kubernetesClusterTag` (`str`) - (string)
-            * `roleArn` (`str`) - (string)
-            * `routeTableId` (`str`) - (string)
-            * `subnetId` (`str`) - (string)
-            * `vpc` (`str`) - (string)
-            * `zone` (`str`) - GKE cluster zone. Conflicts with `region` (string)
-
-          * `serviceOverrides` (`list`) - (list)
-            * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
-            * `service` (`str`) - (string)
-            * `signingMethod` (`str`) - (string)
-            * `signingName` (`str`) - (string)
-            * `signingRegion` (`str`) - (string)
-            * `url` (`str`) - Registry URL (string)
-
-        * `azureCloudProvider` (`dict`) - RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
-          * `aadClientCertPassword` (`str`) - (string)
-          * `aadClientCertPath` (`str`) - (string)
-          * `aadClientId` (`str`) - (string)
-          * `aadClientSecret` (`str`) - (string)
-          * `cloud` (`str`) - (string)
-          * `cloudProviderBackoff` (`bool`) - (bool)
-          * `cloudProviderBackoffDuration` (`float`) - (int)
-          * `cloudProviderBackoffExponent` (`float`) - (int)
-          * `cloudProviderBackoffJitter` (`float`) - (int)
-          * `cloudProviderBackoffRetries` (`float`) - (int)
-          * `cloudProviderRateLimit` (`bool`) - (bool)
-          * `cloudProviderRateLimitBucket` (`float`) - (int)
-          * `cloudProviderRateLimitQps` (`float`) - (int)
-          * `loadBalancerSku` (`str`) - Allowed values: `basic` (default) `standard` (string)
-          * `location` (`str`) - Azure Kubernetes cluster location. Default `eastus` (string)
-          * `maximumLoadBalancerRuleCount` (`float`) - (int)
-          * `primaryAvailabilitySetName` (`str`) - (string)
-          * `primaryScaleSetName` (`str`) - (string)
-          * `resourceGroup` (`str`) - The name of the Cluster resource group (string)
-          * `routeTableName` (`str`) - (string)
-          * `securityGroupName` (`str`) - (string)
-          * `subnetName` (`str`) - (string)
-          * `subscriptionId` (`str`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-          * `tenant_id` (`str`) - Azure tenant ID to use (string)
-          * `useInstanceMetadata` (`bool`) - (bool)
-          * `useManagedIdentityExtension` (`bool`) - (bool)
-          * `vmType` (`str`) - (string)
-          * `vnetName` (`str`) - (string)
-          * `vnetResourceGroup` (`str`) - (string)
-
-        * `customCloudProvider` (`str`) - RKE Custom Cloud Provider config for Cloud Provider (string)
-        * `name` (`str`) - Name of cluster registration token (string)
-        * `openstackCloudProvider` (`dict`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
-          * `blockStorage` (`dict`) - (list maxitems:1)
-            * `bsVersion` (`str`) - (string)
-            * `ignoreVolumeAz` (`bool`) - (string)
-            * `trustDevicePath` (`bool`) - (string)
-
-          * `global` (`dict`) - (list maxitems:1)
-            * `authUrl` (`str`) - (string)
-            * `caFile` (`str`) - (string)
-            * `domainId` (`str`) - Required if `domain_name` not provided. (string)
-            * `domainName` (`str`) - Required if `domain_id` not provided. (string)
-            * `password` (`str`) - Registry password (string)
-            * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
-            * `tenant_id` (`str`) - Azure tenant ID to use (string)
-            * `tenantName` (`str`) - Required if `tenant_id` not provided. (string)
-            * `trustId` (`str`) - (string)
-            * `username` (`str`) - (string)
-
-          * `loadBalancer` (`dict`) - (list maxitems:1)
-            * `createMonitor` (`bool`) - (bool)
-            * `floatingNetworkId` (`str`) - (string)
-            * `lbMethod` (`str`) - (string)
-            * `lbProvider` (`str`) - (string)
-            * `lbVersion` (`str`) - (string)
-            * `manageSecurityGroups` (`bool`) - (bool)
-            * `monitorDelay` (`str`) - Default `60s` (string)
-            * `monitorMaxRetries` (`float`) - Default 5 (int)
-            * `monitorTimeout` (`str`) - Default `30s` (string)
-            * `subnetId` (`str`) - (string)
-            * `useOctavia` (`bool`) - (bool)
-
-          * `metadata` (`dict`) - (list maxitems:1)
-            * `requestTimeout` (`float`) - (int)
-            * `searchOrder` (`str`) - (string)
-
-          * `route` (`dict`) - (list maxitems:1)
-            * `routerId` (`str`) - (string)
-
-        * `vsphereCloudProvider` (`dict`) - RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
-          * `disk` (`dict`) - (list maxitems:1)
-            * `scsiControllerType` (`str`) - (string)
-
-          * `global` (`dict`) - (list maxitems:1)
-            * `datacenters` (`str`) - (string)
-            * `insecureFlag` (`bool`) - (bool)
-            * `password` (`str`) - Registry password (string)
-            * `port` (`str`) - Port for node. Default `22` (string)
-            * `soapRoundtripCount` (`float`) - (int)
-            * `user` (`str`) - Registry user (string)
-
-          * `network` (`dict`) - Network for GKE cluster (string)
-            * `publicNetwork` (`str`) - (string)
-
-          * `virtualCenters` (`list`) - (List)
-            * `datacenters` (`str`) - (string)
-            * `name` (`str`) - Name of cluster registration token (string)
-            * `password` (`str`) - Registry password (string)
-            * `port` (`str`) - Port for node. Default `22` (string)
-            * `soapRoundtripCount` (`float`) - (int)
-            * `user` (`str`) - Registry user (string)
-
-          * `workspace` (`dict`) - (list maxitems:1)
-            * `datacenter` (`str`) - (string)
-            * `defaultDatastore` (`str`) - (string)
-            * `folder` (`str`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-            * `resourcepoolPath` (`str`) - (string)
-            * `server` (`str`) - (string)
-
-      * `dns` (`dict`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
-        * `nodelocal` (`dict`) - Nodelocal dns config  (list Maxitem: 1)
-          * `ipAddress` (`str`) - Nodelocal dns ip address (string)
-          * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
-
-        * `provider` (`str`) - RKE monitoring provider (string)
-        * `reverseCidrs` (`list`) - DNS add-on reverse cidr  (list)
-        * `upstreamNameservers` (`list`) - DNS add-on upstream nameservers  (list)
-
-      * `ignoreDockerVersion` (`bool`) - Ignore docker version. Default `true` (bool)
-      * `ingress` (`dict`) - Kubernetes ingress configuration (list maxitems:1)
-        * `dnsPolicy` (`str`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-        * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
-        * `options` (`dict`) - RKE options for network (map)
-        * `provider` (`str`) - RKE monitoring provider (string)
-
-      * `kubernetesVersion` (`str`) - The Kubernetes master version (string)
-      * `monitoring` (`dict`) - Kubernetes cluster monitoring (list maxitems:1)
-        * `nodeSelector` (`dict`) - RKE monitoring node selector (map)
-        * `options` (`dict`) - RKE options for network (map)
-        * `provider` (`str`) - RKE monitoring provider (string)
-        * `replicas` (`float`) - RKE monitoring replicas (int)
-        * `updateStrategy` (`dict`) - RKE monitoring update strategy (list Maxitems: 1)
-          * `rollingUpdate` (`dict`) - Monitoring deployment rolling update (list Maxitems: 1)
-            * `maxSurge` (`float`) - Monitoring deployment rolling update max surge. Default: `1` (int)
-            * `maxUnavailable` (`float`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
-
-          * `strategy` (`str`) - Monitoring deployment update strategy (string)
-
-      * `network` (`dict`) - Network for GKE cluster (string)
-        * `calicoNetworkProvider` (`dict`) - Calico provider config for RKE network (list maxitems:1)
-          * `cloudProvider` (`str`) - RKE options for Calico network provider (string)
-
-        * `canalNetworkProvider` (`dict`) - Canal provider config for RKE network (list maxitems:1)
-          * `iface` (`str`) - Iface config Flannel network provider (string)
-
-        * `flannelNetworkProvider` (`dict`) - Flannel provider config for RKE network (list maxitems:1)
-          * `iface` (`str`) - Iface config Flannel network provider (string)
-
-        * `mtu` (`float`) - Network provider MTU. Default `0` (int)
-        * `options` (`dict`) - RKE options for network (map)
-        * `plugin` (`str`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-        * `weaveNetworkProvider` (`dict`) - Weave provider config for RKE network (list maxitems:1)
-          * `password` (`str`) - Registry password (string)
-
-      * `nodes` (`list`) - RKE cluster nodes (list)
-        * `address` (`str`) - Address ip for node (string)
-        * `dockerSocket` (`str`) - Docker socket for node (string)
-        * `hostnameOverride` (`str`) - Hostname override for node (string)
-        * `internalAddress` (`str`) - Internal ip for node (string)
-        * `labels` (`dict`) - Labels for cluster registration token object (map)
-        * `nodeId` (`str`) - Id for the node (string)
-        * `port` (`str`) - Port for node. Default `22` (string)
-        * `roles` (`list`) - Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-        * `sshAgentAuth` (`bool`) - Use ssh agent auth. Default `false` (bool)
-        * `sshKey` (`str`) - Node SSH private key (string)
-        * `sshKeyPath` (`str`) - Node SSH private key path (string)
-        * `user` (`str`) - Registry user (string)
-
-      * `prefixPath` (`str`) - Prefix to customize Kubernetes path (string)
-      * `privateRegistries` (`list`) - private registries for docker images (list)
-        * `isDefault` (`bool`) - Set as default registry. Default `false` (bool)
-        * `password` (`str`) - Registry password (string)
-        * `url` (`str`) - Registry URL (string)
-        * `user` (`str`) - Registry user (string)
-
-      * `services` (`dict`) - Kubernetes cluster services (list maxitems:1)
-        * `etcd` (`dict`) - Etcd options for RKE services (list maxitems:1)
-          * `backup_config` (`dict`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-            * `intervalHours` (`float`) - Interval hours for etcd backup. Default `12` (int)
-            * `retention` (`float`) - Retention for etcd backup. Default `6` (int)
-            * `s3BackupConfig` (`dict`) - S3 config options for etcd backup (list maxitems:1)
-              * `access_key` (`str`) - The AWS Client ID to use (string)
-              * `bucketName` (`str`) - Bucket name for S3 service (string)
-              * `customCa` (`str`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
-              * `endpoint` (`str`) - Endpoint for S3 service (string)
-              * `folder` (`str`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-              * `region` (`str`) - GKE cluster region. Conflicts with `zone` (string)
-              * `secret_key` (`str`) - The AWS Client Secret associated with the Client ID (string)
-
-            * `safeTimestamp` (`bool`) - Safe timestamp for etcd backup. Default: `false` (bool)
-
-          * `caCert` (`str`) - TLS CA certificate for etcd service (string)
-          * `cert` (`str`) - TLS certificate for etcd service (string)
-          * `creation` (`str`) - Creation option for etcd service (string)
-          * `externalUrls` (`list`) - External urls for etcd service (list)
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `gid` (`float`) - Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
-          * `image` (`str`) - Docker image for scheduler service (string)
-          * `key` (`str`) - TLS key for etcd service (string)
-          * `path` (`str`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-          * `retention` (`str`) - Retention for etcd backup. Default `6` (int)
-          * `snapshot` (`bool`) - Snapshot option for etcd service (bool)
-          * `uid` (`float`) - Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
-
-        * `kubeApi` (`dict`) - Kube API options for RKE services (list maxitems:1)
-          * `admissionConfiguration` (`dict`) - Admission configuration (map)
-          * `alwaysPullImages` (`bool`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-          * `auditLog` (`dict`) - K8s audit log configuration. (list maxitems: 1)
-            * `configuration` (`dict`) - Event rate limit configuration. (map)
-              * `format` (`str`) - Audit log format. Default: 'json' (string)
-              * `maxAge` (`float`) - Audit log max age. Default: `30` (int)
-              * `maxBackup` (`float`) - Audit log max backup. Default: `10` (int)
-              * `maxSize` (`float`) - Audit log max size. Default: `100` (int)
-              * `path` (`str`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-              * `policy` (`str`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
-
-            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-          * `eventRateLimit` (`dict`) - K8s event rate limit configuration. (list maxitems: 1)
-            * `configuration` (`dict`) - Event rate limit configuration. (map)
-            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `image` (`str`) - Docker image for scheduler service (string)
-          * `podSecurityPolicy` (`bool`) - Pod Security Policy option for kube API service. Default `false` (bool)
-          * `secretsEncryptionConfig` (`dict`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
-            * `customConfig` (`dict`) - Secrets encryption configuration. (map)
-            * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-          * `serviceClusterIpRange` (`str`) - Service Cluster ip Range option for kube controller service (string)
-          * `serviceNodePortRange` (`str`) - Service Node Port Range option for kube API service (string)
-
-        * `kubeController` (`dict`) - Kube Controller options for RKE services (list maxitems:1)
-          * `clusterCidr` (`str`) - Cluster CIDR option for kube controller service (string)
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `image` (`str`) - Docker image for scheduler service (string)
-          * `serviceClusterIpRange` (`str`) - Service Cluster ip Range option for kube controller service (string)
-
-        * `kubelet` (`dict`) - Kubelet options for RKE services (list maxitems:1)
-          * `clusterDnsServer` (`str`) - Cluster DNS Server option for kubelet service (string)
-          * `clusterDomain` (`str`) - Cluster Domain option for kubelet service (string)
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `failSwapOn` (`bool`) - Enable or disable failing when swap on is not supported (bool)
-          * `generateServingCertificate` (`bool`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-          * `image` (`str`) - Docker image for scheduler service (string)
-          * `infraContainerImage` (`str`) - Infra container image for kubelet service (string)
-
-        * `kubeproxy` (`dict`) - Kubeproxy options for RKE services (list maxitems:1)
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `image` (`str`) - Docker image for scheduler service (string)
-
-        * `scheduler` (`dict`) - Scheduler options for RKE services (list maxitems:1)
-          * `extraArgs` (`dict`) - Extra arguments for scheduler service (map)
-          * `extraBinds` (`list`) - Extra binds for scheduler service (list)
-          * `extraEnvs` (`list`) - Extra environment for scheduler service (list)
-          * `image` (`str`) - Docker image for scheduler service (string)
-
-      * `sshAgentAuth` (`bool`) - Use ssh agent auth. Default `false` (bool)
-      * `sshCertPath` (`str`) - Cluster level SSH certificate path (string)
-      * `sshKeyPath` (`str`) - Node SSH private key path (string)
-      * `upgrade_strategy` (`dict`) - K3S upgrade strategy (List maxitems: 1)
-        * `drain` (`bool`) - RKE drain nodes. Default: `false` (bool)
-        * `drainInput` (`dict`) - RKE drain node input (list Maxitems: 1)
-          * `deleteLocalData` (`bool`) - Delete RKE node local data. Default: `false` (bool)
-          * `force` (`bool`) - Force RKE node drain. Default: `false` (bool)
-          * `gracePeriod` (`float`) - RKE node drain grace period. Default: `-1` (int)
-          * `ignoreDaemonSets` (`bool`) - Ignore RKE daemon sets. Default: `true` (bool)
-          * `timeout` (`float`) - RKE node drain timeout. Default: `60` (int)
-
-        * `maxUnavailableControlplane` (`str`) - RKE max unavailable controlplane nodes. Default: `1` (string)
-        * `maxUnavailableWorker` (`str`) - RKE max unavailable worker nodes. Default: `10%` (string)
-    """
-    scheduled_cluster_scan: pulumi.Output[dict]
-    """
-    Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
-
-      * `enabled` (`bool`) - Enable scheduled cluster scan. Default: `false` (bool)
-      * `scanConfig` (`dict`) - Cluster scan config (List maxitems:1)
-        * `cisScanConfig` (`dict`) - Cluster Cis Scan config (List maxitems:1)
-          * `debugMaster` (`bool`) - Debug master. Default: `false` (bool)
-          * `debugWorker` (`bool`) - Debug worker. Default: `false` (bool)
-          * `overrideBenchmarkVersion` (`str`) - Override benchmark version (string)
-          * `overrideSkips` (`list`) - Override skip (string)
-          * `profile` (`str`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-
-      * `scheduleConfig` (`dict`) - Cluster scan schedule config (list maxitems:1)
-        * `cronSchedule` (`str`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-        * `retention` (`float`) - Retention for etcd backup. Default `6` (int)
-    """
-    system_project_id: pulumi.Output[str]
-    """
-    (Computed) System project ID for the cluster (string)
-    """
-    windows_prefered_cluster: pulumi.Output[bool]
-    """
-    Windows preferred cluster. Default: `false` (bool)
-    """
-    def __init__(__self__, resource_name, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, k3s_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scan=None, windows_prefered_cluster=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
+                 cluster_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']]] = None,
+                 cluster_template_answers: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']]] = None,
+                 cluster_template_id: Optional[pulumi.Input[str]] = None,
+                 cluster_template_questions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]]] = None,
+                 cluster_template_revision_id: Optional[pulumi.Input[str]] = None,
+                 default_pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_agent_image: Optional[pulumi.Input[str]] = None,
+                 desired_auth_image: Optional[pulumi.Input[str]] = None,
+                 docker_root_dir: Optional[pulumi.Input[str]] = None,
+                 driver: Optional[pulumi.Input[str]] = None,
+                 eks_config: Optional[pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']]] = None,
+                 enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
+                 enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
+                 enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_network_policy: Optional[pulumi.Input[bool]] = None,
+                 gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
+                 k3s_config: Optional[pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']]] = None,
+                 scheduled_cluster_scan: Optional[pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']]] = None,
+                 windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[dict] annotations: Annotations for cluster registration token object (map)
-        :param pulumi.Input[dict] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        :param pulumi.Input[dict] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        :param pulumi.Input[dict] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
         :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[list] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
         :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] description: An optional description of this cluster (string)
@@ -628,504 +65,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
-
-        The **aks_config** object supports the following:
-
-          * `aadServerAppSecret` (`pulumi.Input[str]`) - The secret of an Azure Active Directory server application (string)
-          * `aadTenantId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory tenant (string)
-          * `addClientAppId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
-          * `addServerAppId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
-          * `adminUsername` (`pulumi.Input[str]`) - The administrator username to use for Linux hosts. Default `azureuser` (string)
-          * `agentDnsPrefix` (`pulumi.Input[str]`) - DNS prefix to be used to create the FQDN for the agent pool (string)
-          * `agentOsDiskSize` (`pulumi.Input[float]`) - GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \"agent vm size\" specified. Default `0` (int)
-          * `agentPoolName` (`pulumi.Input[str]`) - Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
-          * `agentStorageProfile` (`pulumi.Input[str]`) - Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
-          * `agentVmSize` (`pulumi.Input[str]`) - Size of machine in the agent pool. Default `Standard_D1_v2` (string)
-          * `authBaseUrl` (`pulumi.Input[str]`) - Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
-          * `baseUrl` (`pulumi.Input[str]`) - Different resource management API url to use. Default `https://management.azure.com/` (string)
-          * `client_id` (`pulumi.Input[str]`) - Azure client ID to use (string)
-          * `client_secret` (`pulumi.Input[str]`) - Azure client secret associated with the \"client id\" (string)
-          * `count` (`pulumi.Input[float]`) - Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
-          * `dnsServiceIp` (`pulumi.Input[str]`) - An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
-          * `dockerBridgeCidr` (`pulumi.Input[str]`) - A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
-          * `enableHttpApplicationRouting` (`pulumi.Input[bool]`) - Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
-          * `enableMonitoring` (`pulumi.Input[bool]`) - Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
-          * `logAnalyticsWorkspace` (`pulumi.Input[str]`) - The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
-          * `logAnalyticsWorkspaceResourceGroup` (`pulumi.Input[str]`) - The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
-          * `masterDnsPrefix` (`pulumi.Input[str]`) - DNS prefix to use the Kubernetes cluster control pane (string)
-          * `maxPods` (`pulumi.Input[float]`) - Maximum number of pods that can run on a node. Default `110` (int)
-          * `networkPlugin` (`pulumi.Input[str]`) - Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
-          * `networkPolicy` (`pulumi.Input[str]`) - Network policy used for building Kubernetes network. Chooses from `calico` (string)
-          * `podCidr` (`pulumi.Input[str]`) - A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
-          * `resourceGroup` (`pulumi.Input[str]`) - The name of the Cluster resource group (string)
-          * `serviceCidr` (`pulumi.Input[str]`) - A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
-          * `sshPublicKeyContents` (`pulumi.Input[str]`) - Contents of the SSH public key used to authenticate with Linux hosts (string)
-          * `subnet` (`pulumi.Input[str]`) - The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
-          * `subscriptionId` (`pulumi.Input[str]`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-          * `tag` (`pulumi.Input[dict]`) - Tags for Kubernetes cluster. For example, foo=bar (map)
-          * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-          * `virtualNetwork` (`pulumi.Input[str]`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-          * `virtualNetworkResourceGroup` (`pulumi.Input[str]`) - The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
-
-        The **cluster_auth_endpoint** object supports the following:
-
-          * `caCerts` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-          * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
-
-        The **cluster_monitoring_input** object supports the following:
-
-          * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **cluster_template_answers** object supports the following:
-
-          * `cluster_id` (`pulumi.Input[str]`) - Cluster ID (string)
-          * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
-          * `values` (`pulumi.Input[dict]`) - Key/values for answer (map)
-
-        The **cluster_template_questions** object supports the following:
-
-          * `default` (`pulumi.Input[str]`) - Default variable value (string)
-          * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
-          * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-          * `variable` (`pulumi.Input[str]`) - Variable name (string)
-
-        The **eks_config** object supports the following:
-
-          * `access_key` (`pulumi.Input[str]`) - The AWS Client ID to use (string)
-          * `ami` (`pulumi.Input[str]`) - AMI ID to use for the worker nodes instead of the default (string)
-          * `associateWorkerNodePublicIp` (`pulumi.Input[bool]`) - Associate public ip EKS worker nodes. Default `true` (bool)
-          * `desiredNodes` (`pulumi.Input[float]`) - The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-          * `instanceType` (`pulumi.Input[str]`) - The type of machine to use for worker nodes. Default `t2.medium` (string)
-          * `keyPairName` (`pulumi.Input[str]`) - Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `maximumNodes` (`pulumi.Input[float]`) - The maximum number of worker nodes. Default `3` (int)
-          * `minimumNodes` (`pulumi.Input[float]`) - The minimum number of worker nodes. Default `1` (int)
-          * `nodeVolumeSize` (`pulumi.Input[float]`) - The volume size for each node. Default `20` (int)
-          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-          * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
-          * `securityGroups` (`pulumi.Input[list]`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
-          * `serviceRole` (`pulumi.Input[str]`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
-          * `sessionToken` (`pulumi.Input[str]`) - A session token to use with the client key and secret if applicable (string)
-          * `subnets` (`pulumi.Input[list]`) - List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
-          * `userData` (`pulumi.Input[str]`) - Pass user-data to the nodes to perform automated configuration tasks (string)
-          * `virtualNetwork` (`pulumi.Input[str]`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-
-        The **gke_config** object supports the following:
-
-          * `clusterIpv4Cidr` (`pulumi.Input[str]`) - The IP address range of the container pods (string)
-          * `credential` (`pulumi.Input[str]`) - The contents of the GC credential file (string)
-          * `description` (`pulumi.Input[str]`) - An optional description of this cluster (string)
-          * `diskSizeGb` (`pulumi.Input[float]`) - Size of the disk attached to each node. Default `100` (int)
-          * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node (string)
-          * `enableAlphaFeature` (`pulumi.Input[bool]`) - To enable Kubernetes alpha feature. Default `true` (bool)
-          * `enableAutoRepair` (`pulumi.Input[bool]`) - Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
-          * `enableAutoUpgrade` (`pulumi.Input[bool]`) - Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
-          * `enableHorizontalPodAutoscaling` (`pulumi.Input[bool]`) - Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
-          * `enableHttpLoadBalancing` (`pulumi.Input[bool]`) - Enable HTTP load balancing on GKE cluster. Default `true` (bool)
-          * `enableKubernetesDashboard` (`pulumi.Input[bool]`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
-          * `enableLegacyAbac` (`pulumi.Input[bool]`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
-          * `enableMasterAuthorizedNetwork` (`pulumi.Input[bool]`)
-          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable network policy config for the cluster. Default `true` (bool)
-          * `enableNodepoolAutoscaling` (`pulumi.Input[bool]`) - Enable nodepool autoscaling. Default `false` (bool)
-          * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
-          * `enablePrivateNodes` (`pulumi.Input[bool]`) - Whether nodes have internal IP address only. Default `false` (bool)
-          * `enableStackdriverLogging` (`pulumi.Input[bool]`) - Enable stackdriver monitoring. Default `true` (bool)
-          * `enableStackdriverMonitoring` (`pulumi.Input[bool]`) - Enable stackdriver monitoring on GKE cluster (bool)
-          * `imageType` (`pulumi.Input[str]`) - The image to use for the worker nodes (string)
-          * `ipPolicyClusterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range for the cluster pod IPs (string)
-          * `ipPolicyClusterSecondaryRangeName` (`pulumi.Input[str]`) - The name of the secondary range to be used for the cluster CIDR block (string)
-          * `ipPolicyCreateSubnetwork` (`pulumi.Input[bool]`) - Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
-          * `ipPolicyNodeIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the instance IPs in this cluster (string)
-          * `ipPolicyServicesIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the services IPs in this cluster (string)
-          * `ipPolicyServicesSecondaryRangeName` (`pulumi.Input[str]`) - The name of the secondary range to be used for the services CIDR block (string)
-          * `ipPolicySubnetworkName` (`pulumi.Input[str]`) - A custom subnetwork name to be used if createSubnetwork is true (string)
-          * `issueClientCertificate` (`pulumi.Input[bool]`) - Issue a client certificate. Default `false` (bool)
-          * `kubernetesDashboard` (`pulumi.Input[bool]`) - Enable the Kubernetes dashboard. Default `false` (bool)
-          * `labels` (`pulumi.Input[dict]`) - Labels for cluster registration token object (map)
-          * `localSsdCount` (`pulumi.Input[float]`) - The number of local SSD disks to be attached to the node. Default `0` (int)
-          * `locations` (`pulumi.Input[list]`) - Locations for GKE cluster (list)
-          * `machineType` (`pulumi.Input[str]`) - Machine type for GKE cluster (string)
-          * `maintenanceWindow` (`pulumi.Input[str]`) - Maintenance window for GKE cluster (string)
-          * `masterAuthorizedNetworkCidrBlocks` (`pulumi.Input[list]`) - Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
-          * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the hosted master network (string)
-          * `masterVersion` (`pulumi.Input[str]`) - Master version for GKE cluster (string)
-          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
-          * `minNodeCount` (`pulumi.Input[float]`) - Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
-          * `network` (`pulumi.Input[str]`) - Network for GKE cluster (string)
-          * `nodeCount` (`pulumi.Input[float]`) - Node count for GKE cluster. Default `3` (int)
-          * `nodePool` (`pulumi.Input[str]`) - The ID of the cluster node pool (string)
-          * `nodeVersion` (`pulumi.Input[str]`) - Node version for GKE cluster (string)
-          * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
-          * `preemptible` (`pulumi.Input[bool]`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
-          * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
-          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-          * `resourceLabels` (`pulumi.Input[dict]`) - The map of Kubernetes labels to be applied to each cluster (map)
-          * `serviceAccount` (`pulumi.Input[str]`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
-          * `subNetwork` (`pulumi.Input[str]`) - Subnetwork for GKE cluster (string)
-          * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
-          * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-          * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
-
-        The **k3s_config** object supports the following:
-
-          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
-            * `drainServerNodes` (`pulumi.Input[bool]`) - Drain server nodes. Default: `false` (bool)
-            * `drainWorkerNodes` (`pulumi.Input[bool]`) - Drain worker nodes. Default: `false` (bool)
-            * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
-            * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
-
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **rke_config** object supports the following:
-
-          * `addonJobTimeout` (`pulumi.Input[float]`) - Duration in seconds of addon job (int)
-          * `addons` (`pulumi.Input[str]`) - Addons descripton to deploy on RKE cluster.
-          * `addonsIncludes` (`pulumi.Input[list]`) - Addons yaml manifests to deploy on RKE cluster (list)
-          * `authentication` (`pulumi.Input[dict]`) - Kubernetes cluster authentication (list maxitems:1)
-            * `sans` (`pulumi.Input[list]`) - RKE sans for authentication ([]string)
-            * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
-
-          * `authorization` (`pulumi.Input[dict]`) - Kubernetes cluster authorization (list maxitems:1)
-            * `mode` (`pulumi.Input[str]`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-
-          * `bastionHost` (`pulumi.Input[dict]`) - RKE bastion host (list maxitems:1)
-            * `address` (`pulumi.Input[str]`) - Address ip for node (string)
-            * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-            * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-            * `sshKey` (`pulumi.Input[str]`) - Node SSH private key (string)
-            * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `cloudProvider` (`pulumi.Input[dict]`) - RKE options for Calico network provider (string)
-            * `awsCloudProvider` (`pulumi.Input[dict]`) - RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `disableSecurityGroupIngress` (`pulumi.Input[bool]`) - Default `false` (bool)
-                * `disableStrictZoneCheck` (`pulumi.Input[bool]`) - Default `false` (bool)
-                * `elbSecurityGroup` (`pulumi.Input[str]`) - (string)
-                * `kubernetesClusterId` (`pulumi.Input[str]`) - (string)
-                * `kubernetesClusterTag` (`pulumi.Input[str]`) - (string)
-                * `roleArn` (`pulumi.Input[str]`) - (string)
-                * `routeTableId` (`pulumi.Input[str]`) - (string)
-                * `subnetId` (`pulumi.Input[str]`) - (string)
-                * `vpc` (`pulumi.Input[str]`) - (string)
-                * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
-
-              * `serviceOverrides` (`pulumi.Input[list]`) - (list)
-                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                * `service` (`pulumi.Input[str]`) - (string)
-                * `signingMethod` (`pulumi.Input[str]`) - (string)
-                * `signingName` (`pulumi.Input[str]`) - (string)
-                * `signingRegion` (`pulumi.Input[str]`) - (string)
-                * `url` (`pulumi.Input[str]`) - Registry URL (string)
-
-            * `azureCloudProvider` (`pulumi.Input[dict]`) - RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
-              * `aadClientCertPassword` (`pulumi.Input[str]`) - (string)
-              * `aadClientCertPath` (`pulumi.Input[str]`) - (string)
-              * `aadClientId` (`pulumi.Input[str]`) - (string)
-              * `aadClientSecret` (`pulumi.Input[str]`) - (string)
-              * `cloud` (`pulumi.Input[str]`) - (string)
-              * `cloudProviderBackoff` (`pulumi.Input[bool]`) - (bool)
-              * `cloudProviderBackoffDuration` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffExponent` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffJitter` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffRetries` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderRateLimit` (`pulumi.Input[bool]`) - (bool)
-              * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderRateLimitQps` (`pulumi.Input[float]`) - (int)
-              * `loadBalancerSku` (`pulumi.Input[str]`) - Allowed values: `basic` (default) `standard` (string)
-              * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
-              * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`) - (int)
-              * `primaryAvailabilitySetName` (`pulumi.Input[str]`) - (string)
-              * `primaryScaleSetName` (`pulumi.Input[str]`) - (string)
-              * `resourceGroup` (`pulumi.Input[str]`) - The name of the Cluster resource group (string)
-              * `routeTableName` (`pulumi.Input[str]`) - (string)
-              * `securityGroupName` (`pulumi.Input[str]`) - (string)
-              * `subnetName` (`pulumi.Input[str]`) - (string)
-              * `subscriptionId` (`pulumi.Input[str]`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-              * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-              * `useInstanceMetadata` (`pulumi.Input[bool]`) - (bool)
-              * `useManagedIdentityExtension` (`pulumi.Input[bool]`) - (bool)
-              * `vmType` (`pulumi.Input[str]`) - (string)
-              * `vnetName` (`pulumi.Input[str]`) - (string)
-              * `vnetResourceGroup` (`pulumi.Input[str]`) - (string)
-
-            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string)
-            * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
-            * `openstackCloudProvider` (`pulumi.Input[dict]`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
-              * `blockStorage` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `bsVersion` (`pulumi.Input[str]`) - (string)
-                * `ignoreVolumeAz` (`pulumi.Input[bool]`) - (string)
-                * `trustDevicePath` (`pulumi.Input[bool]`) - (string)
-
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `authUrl` (`pulumi.Input[str]`) - (string)
-                * `caFile` (`pulumi.Input[str]`) - (string)
-                * `domainId` (`pulumi.Input[str]`) - Required if `domain_name` not provided. (string)
-                * `domainName` (`pulumi.Input[str]`) - Required if `domain_id` not provided. (string)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-                * `tenantName` (`pulumi.Input[str]`) - Required if `tenant_id` not provided. (string)
-                * `trustId` (`pulumi.Input[str]`) - (string)
-                * `username` (`pulumi.Input[str]`) - (string)
-
-              * `loadBalancer` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `createMonitor` (`pulumi.Input[bool]`) - (bool)
-                * `floatingNetworkId` (`pulumi.Input[str]`) - (string)
-                * `lbMethod` (`pulumi.Input[str]`) - (string)
-                * `lbProvider` (`pulumi.Input[str]`) - (string)
-                * `lbVersion` (`pulumi.Input[str]`) - (string)
-                * `manageSecurityGroups` (`pulumi.Input[bool]`) - (bool)
-                * `monitorDelay` (`pulumi.Input[str]`) - Default `60s` (string)
-                * `monitorMaxRetries` (`pulumi.Input[float]`) - Default 5 (int)
-                * `monitorTimeout` (`pulumi.Input[str]`) - Default `30s` (string)
-                * `subnetId` (`pulumi.Input[str]`) - (string)
-                * `useOctavia` (`pulumi.Input[bool]`) - (bool)
-
-              * `metadata` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `requestTimeout` (`pulumi.Input[float]`) - (int)
-                * `searchOrder` (`pulumi.Input[str]`) - (string)
-
-              * `route` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `routerId` (`pulumi.Input[str]`) - (string)
-
-            * `vsphereCloudProvider` (`pulumi.Input[dict]`) - RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
-              * `disk` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `scsiControllerType` (`pulumi.Input[str]`) - (string)
-
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `datacenters` (`pulumi.Input[str]`) - (string)
-                * `insecureFlag` (`pulumi.Input[bool]`) - (bool)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-                * `soapRoundtripCount` (`pulumi.Input[float]`) - (int)
-                * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-              * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
-                * `publicNetwork` (`pulumi.Input[str]`) - (string)
-
-              * `virtualCenters` (`pulumi.Input[list]`) - (List)
-                * `datacenters` (`pulumi.Input[str]`) - (string)
-                * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-                * `soapRoundtripCount` (`pulumi.Input[float]`) - (int)
-                * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-              * `workspace` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `datacenter` (`pulumi.Input[str]`) - (string)
-                * `defaultDatastore` (`pulumi.Input[str]`) - (string)
-                * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                * `resourcepoolPath` (`pulumi.Input[str]`) - (string)
-                * `server` (`pulumi.Input[str]`) - (string)
-
-          * `dns` (`pulumi.Input[dict]`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `nodelocal` (`pulumi.Input[dict]`) - Nodelocal dns config  (list Maxitem: 1)
-              * `ipAddress` (`pulumi.Input[str]`) - Nodelocal dns ip address (string)
-              * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-            * `reverseCidrs` (`pulumi.Input[list]`) - DNS add-on reverse cidr  (list)
-            * `upstreamNameservers` (`pulumi.Input[list]`) - DNS add-on upstream nameservers  (list)
-
-          * `ignoreDockerVersion` (`pulumi.Input[bool]`) - Ignore docker version. Default `true` (bool)
-          * `ingress` (`pulumi.Input[dict]`) - Kubernetes ingress configuration (list maxitems:1)
-            * `dnsPolicy` (`pulumi.Input[str]`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-            * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `monitoring` (`pulumi.Input[dict]`) - Kubernetes cluster monitoring (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-            * `replicas` (`pulumi.Input[float]`) - RKE monitoring replicas (int)
-            * `updateStrategy` (`pulumi.Input[dict]`) - RKE monitoring update strategy (list Maxitems: 1)
-              * `rollingUpdate` (`pulumi.Input[dict]`) - Monitoring deployment rolling update (list Maxitems: 1)
-                * `maxSurge` (`pulumi.Input[float]`) - Monitoring deployment rolling update max surge. Default: `1` (int)
-                * `maxUnavailable` (`pulumi.Input[float]`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
-
-              * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
-
-          * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
-            * `calicoNetworkProvider` (`pulumi.Input[dict]`) - Calico provider config for RKE network (list maxitems:1)
-              * `cloudProvider` (`pulumi.Input[str]`) - RKE options for Calico network provider (string)
-
-            * `canalNetworkProvider` (`pulumi.Input[dict]`) - Canal provider config for RKE network (list maxitems:1)
-              * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
-
-            * `flannelNetworkProvider` (`pulumi.Input[dict]`) - Flannel provider config for RKE network (list maxitems:1)
-              * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
-
-            * `mtu` (`pulumi.Input[float]`) - Network provider MTU. Default `0` (int)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-            * `weaveNetworkProvider` (`pulumi.Input[dict]`) - Weave provider config for RKE network (list maxitems:1)
-              * `password` (`pulumi.Input[str]`) - Registry password (string)
-
-          * `nodes` (`pulumi.Input[list]`) - RKE cluster nodes (list)
-            * `address` (`pulumi.Input[str]`) - Address ip for node (string)
-            * `dockerSocket` (`pulumi.Input[str]`) - Docker socket for node (string)
-            * `hostnameOverride` (`pulumi.Input[str]`) - Hostname override for node (string)
-            * `internalAddress` (`pulumi.Input[str]`) - Internal ip for node (string)
-            * `labels` (`pulumi.Input[dict]`) - Labels for cluster registration token object (map)
-            * `nodeId` (`pulumi.Input[str]`) - Id for the node (string)
-            * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-            * `roles` (`pulumi.Input[list]`) - Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-            * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-            * `sshKey` (`pulumi.Input[str]`) - Node SSH private key (string)
-            * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `prefixPath` (`pulumi.Input[str]`) - Prefix to customize Kubernetes path (string)
-          * `privateRegistries` (`pulumi.Input[list]`) - private registries for docker images (list)
-            * `isDefault` (`pulumi.Input[bool]`) - Set as default registry. Default `false` (bool)
-            * `password` (`pulumi.Input[str]`) - Registry password (string)
-            * `url` (`pulumi.Input[str]`) - Registry URL (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `services` (`pulumi.Input[dict]`) - Kubernetes cluster services (list maxitems:1)
-            * `etcd` (`pulumi.Input[dict]`) - Etcd options for RKE services (list maxitems:1)
-              * `backup_config` (`pulumi.Input[dict]`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-                * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
-                * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
-                * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup (list maxitems:1)
-                  * `access_key` (`pulumi.Input[str]`) - The AWS Client ID to use (string)
-                  * `bucketName` (`pulumi.Input[str]`) - Bucket name for S3 service (string)
-                  * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
-                  * `endpoint` (`pulumi.Input[str]`) - Endpoint for S3 service (string)
-                  * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                  * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                  * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
-
-                * `safeTimestamp` (`pulumi.Input[bool]`) - Safe timestamp for etcd backup. Default: `false` (bool)
-
-              * `caCert` (`pulumi.Input[str]`) - TLS CA certificate for etcd service (string)
-              * `cert` (`pulumi.Input[str]`) - TLS certificate for etcd service (string)
-              * `creation` (`pulumi.Input[str]`) - Creation option for etcd service (string)
-              * `externalUrls` (`pulumi.Input[list]`) - External urls for etcd service (list)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `gid` (`pulumi.Input[float]`) - Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `key` (`pulumi.Input[str]`) - TLS key for etcd service (string)
-              * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-              * `retention` (`pulumi.Input[str]`) - Retention for etcd backup. Default `6` (int)
-              * `snapshot` (`pulumi.Input[bool]`) - Snapshot option for etcd service (bool)
-              * `uid` (`pulumi.Input[float]`) - Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
-
-            * `kubeApi` (`pulumi.Input[dict]`) - Kube API options for RKE services (list maxitems:1)
-              * `admissionConfiguration` (`pulumi.Input[dict]`) - Admission configuration (map)
-              * `alwaysPullImages` (`pulumi.Input[bool]`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitems: 1)
-                * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                  * `format` (`pulumi.Input[str]`) - Audit log format. Default: 'json' (string)
-                  * `maxAge` (`pulumi.Input[float]`) - Audit log max age. Default: `30` (int)
-                  * `maxBackup` (`pulumi.Input[float]`) - Audit log max backup. Default: `10` (int)
-                  * `maxSize` (`pulumi.Input[float]`) - Audit log max size. Default: `100` (int)
-                  * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-                  * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
-
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitems: 1)
-                * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `podSecurityPolicy` (`pulumi.Input[bool]`) - Pod Security Policy option for kube API service. Default `false` (bool)
-              * `secretsEncryptionConfig` (`pulumi.Input[dict]`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
-                * `customConfig` (`pulumi.Input[dict]`) - Secrets encryption configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
-              * `serviceNodePortRange` (`pulumi.Input[str]`) - Service Node Port Range option for kube API service (string)
-
-            * `kubeController` (`pulumi.Input[dict]`) - Kube Controller options for RKE services (list maxitems:1)
-              * `clusterCidr` (`pulumi.Input[str]`) - Cluster CIDR option for kube controller service (string)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
-
-            * `kubelet` (`pulumi.Input[dict]`) - Kubelet options for RKE services (list maxitems:1)
-              * `clusterDnsServer` (`pulumi.Input[str]`) - Cluster DNS Server option for kubelet service (string)
-              * `clusterDomain` (`pulumi.Input[str]`) - Cluster Domain option for kubelet service (string)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `failSwapOn` (`pulumi.Input[bool]`) - Enable or disable failing when swap on is not supported (bool)
-              * `generateServingCertificate` (`pulumi.Input[bool]`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `infraContainerImage` (`pulumi.Input[str]`) - Infra container image for kubelet service (string)
-
-            * `kubeproxy` (`pulumi.Input[dict]`) - Kubeproxy options for RKE services (list maxitems:1)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-
-            * `scheduler` (`pulumi.Input[dict]`) - Scheduler options for RKE services (list maxitems:1)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-
-          * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-          * `sshCertPath` (`pulumi.Input[str]`) - Cluster level SSH certificate path (string)
-          * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
-            * `drain` (`pulumi.Input[bool]`) - RKE drain nodes. Default: `false` (bool)
-            * `drainInput` (`pulumi.Input[dict]`) - RKE drain node input (list Maxitems: 1)
-              * `deleteLocalData` (`pulumi.Input[bool]`) - Delete RKE node local data. Default: `false` (bool)
-              * `force` (`pulumi.Input[bool]`) - Force RKE node drain. Default: `false` (bool)
-              * `gracePeriod` (`pulumi.Input[float]`) - RKE node drain grace period. Default: `-1` (int)
-              * `ignoreDaemonSets` (`pulumi.Input[bool]`) - Ignore RKE daemon sets. Default: `true` (bool)
-              * `timeout` (`pulumi.Input[float]`) - RKE node drain timeout. Default: `60` (int)
-
-            * `maxUnavailableControlplane` (`pulumi.Input[str]`) - RKE max unavailable controlplane nodes. Default: `1` (string)
-            * `maxUnavailableWorker` (`pulumi.Input[str]`) - RKE max unavailable worker nodes. Default: `10%` (string)
-
-        The **scheduled_cluster_scan** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-          * `scanConfig` (`pulumi.Input[dict]`) - Cluster scan config (List maxitems:1)
-            * `cisScanConfig` (`pulumi.Input[dict]`) - Cluster Cis Scan config (List maxitems:1)
-              * `debugMaster` (`pulumi.Input[bool]`) - Debug master. Default: `false` (bool)
-              * `debugWorker` (`pulumi.Input[bool]`) - Debug worker. Default: `false` (bool)
-              * `overrideBenchmarkVersion` (`pulumi.Input[str]`) - Override benchmark version (string)
-              * `overrideSkips` (`pulumi.Input[list]`) - Override skip (string)
-              * `profile` (`pulumi.Input[str]`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-
-          * `scheduleConfig` (`pulumi.Input[dict]`) - Cluster scan schedule config (list maxitems:1)
-            * `cronSchedule` (`pulumi.Input[str]`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-            * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -1138,7 +89,7 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -1181,22 +132,54 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, desired_agent_image=None, desired_auth_image=None, docker_root_dir=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_istio=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, k3s_config=None, kube_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scan=None, system_project_id=None, windows_prefered_cluster=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
+            cluster_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']]] = None,
+            cluster_registration_token: Optional[pulumi.Input[pulumi.InputType['ClusterClusterRegistrationTokenArgs']]] = None,
+            cluster_template_answers: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']]] = None,
+            cluster_template_id: Optional[pulumi.Input[str]] = None,
+            cluster_template_questions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]]] = None,
+            cluster_template_revision_id: Optional[pulumi.Input[str]] = None,
+            default_pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+            default_project_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            desired_agent_image: Optional[pulumi.Input[str]] = None,
+            desired_auth_image: Optional[pulumi.Input[str]] = None,
+            docker_root_dir: Optional[pulumi.Input[str]] = None,
+            driver: Optional[pulumi.Input[str]] = None,
+            eks_config: Optional[pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']]] = None,
+            enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
+            enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
+            enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
+            enable_network_policy: Optional[pulumi.Input[bool]] = None,
+            gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
+            k3s_config: Optional[pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']]] = None,
+            kube_config: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            rke_config: Optional[pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']]] = None,
+            scheduled_cluster_scan: Optional[pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']]] = None,
+            system_project_id: Optional[pulumi.Input[str]] = None,
+            windows_prefered_cluster: Optional[pulumi.Input[bool]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[dict] annotations: Annotations for cluster registration token object (map)
-        :param pulumi.Input[dict] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        :param pulumi.Input[dict] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        :param pulumi.Input[dict] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        :param pulumi.Input[dict] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterRegistrationTokenArgs']] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterClusterTemplateAnswersArgs']] cluster_template_answers: Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
         :param pulumi.Input[str] cluster_template_id: Cluster template ID. Just for Rancher v2.3.x and above (string)
-        :param pulumi.Input[list] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterClusterTemplateQuestionArgs']]]] cluster_template_questions: Cluster template questions. Just for Rancher v2.3.x and above (list)
         :param pulumi.Input[str] cluster_template_revision_id: Cluster template revision ID. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] default_pod_security_policy_template_id: [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster (string)
@@ -1205,520 +188,20 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[dict] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[dict] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[dict] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
-        :param pulumi.Input[dict] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[dict] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        :param pulumi.Input[dict] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
-
-        The **aks_config** object supports the following:
-
-          * `aadServerAppSecret` (`pulumi.Input[str]`) - The secret of an Azure Active Directory server application (string)
-          * `aadTenantId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory tenant (string)
-          * `addClientAppId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
-          * `addServerAppId` (`pulumi.Input[str]`) - The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
-          * `adminUsername` (`pulumi.Input[str]`) - The administrator username to use for Linux hosts. Default `azureuser` (string)
-          * `agentDnsPrefix` (`pulumi.Input[str]`) - DNS prefix to be used to create the FQDN for the agent pool (string)
-          * `agentOsDiskSize` (`pulumi.Input[float]`) - GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \"agent vm size\" specified. Default `0` (int)
-          * `agentPoolName` (`pulumi.Input[str]`) - Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
-          * `agentStorageProfile` (`pulumi.Input[str]`) - Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
-          * `agentVmSize` (`pulumi.Input[str]`) - Size of machine in the agent pool. Default `Standard_D1_v2` (string)
-          * `authBaseUrl` (`pulumi.Input[str]`) - Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
-          * `baseUrl` (`pulumi.Input[str]`) - Different resource management API url to use. Default `https://management.azure.com/` (string)
-          * `client_id` (`pulumi.Input[str]`) - Azure client ID to use (string)
-          * `client_secret` (`pulumi.Input[str]`) - Azure client secret associated with the \"client id\" (string)
-          * `count` (`pulumi.Input[float]`) - Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
-          * `dnsServiceIp` (`pulumi.Input[str]`) - An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
-          * `dockerBridgeCidr` (`pulumi.Input[str]`) - A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
-          * `enableHttpApplicationRouting` (`pulumi.Input[bool]`) - Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
-          * `enableMonitoring` (`pulumi.Input[bool]`) - Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
-          * `logAnalyticsWorkspace` (`pulumi.Input[str]`) - The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
-          * `logAnalyticsWorkspaceResourceGroup` (`pulumi.Input[str]`) - The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
-          * `masterDnsPrefix` (`pulumi.Input[str]`) - DNS prefix to use the Kubernetes cluster control pane (string)
-          * `maxPods` (`pulumi.Input[float]`) - Maximum number of pods that can run on a node. Default `110` (int)
-          * `networkPlugin` (`pulumi.Input[str]`) - Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
-          * `networkPolicy` (`pulumi.Input[str]`) - Network policy used for building Kubernetes network. Chooses from `calico` (string)
-          * `podCidr` (`pulumi.Input[str]`) - A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
-          * `resourceGroup` (`pulumi.Input[str]`) - The name of the Cluster resource group (string)
-          * `serviceCidr` (`pulumi.Input[str]`) - A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
-          * `sshPublicKeyContents` (`pulumi.Input[str]`) - Contents of the SSH public key used to authenticate with Linux hosts (string)
-          * `subnet` (`pulumi.Input[str]`) - The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
-          * `subscriptionId` (`pulumi.Input[str]`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-          * `tag` (`pulumi.Input[dict]`) - Tags for Kubernetes cluster. For example, foo=bar (map)
-          * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-          * `virtualNetwork` (`pulumi.Input[str]`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-          * `virtualNetworkResourceGroup` (`pulumi.Input[str]`) - The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
-
-        The **cluster_auth_endpoint** object supports the following:
-
-          * `caCerts` (`pulumi.Input[str]`) - CA certs for the authorized cluster endpoint (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-          * `fqdn` (`pulumi.Input[str]`) - FQDN for the authorized cluster endpoint (string)
-
-        The **cluster_monitoring_input** object supports the following:
-
-          * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **cluster_registration_token** object supports the following:
-
-          * `annotations` (`pulumi.Input[dict]`) - Annotations for cluster registration token object (map)
-          * `cluster_id` (`pulumi.Input[str]`) - Cluster ID (string)
-          * `command` (`pulumi.Input[str]`) - Command to execute in a imported k8s cluster (string)
-          * `id` (`pulumi.Input[str]`) - (Computed) The ID of the resource (string)
-          * `insecureCommand` (`pulumi.Input[str]`) - Insecure command to execute in a imported k8s cluster (string)
-          * `labels` (`pulumi.Input[dict]`) - Labels for cluster registration token object (map)
-          * `manifestUrl` (`pulumi.Input[str]`) - K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-          * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
-          * `nodeCommand` (`pulumi.Input[str]`) - Node command to execute in linux nodes for custom k8s cluster (string)
-          * `token` (`pulumi.Input[str]`) - Token for cluster registration token object (string)
-          * `windowsNodeCommand` (`pulumi.Input[str]`) - Node command to execute in windows nodes for custom k8s cluster (string)
-
-        The **cluster_template_answers** object supports the following:
-
-          * `cluster_id` (`pulumi.Input[str]`) - Cluster ID (string)
-          * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
-          * `values` (`pulumi.Input[dict]`) - Key/values for answer (map)
-
-        The **cluster_template_questions** object supports the following:
-
-          * `default` (`pulumi.Input[str]`) - Default variable value (string)
-          * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
-          * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-          * `variable` (`pulumi.Input[str]`) - Variable name (string)
-
-        The **eks_config** object supports the following:
-
-          * `access_key` (`pulumi.Input[str]`) - The AWS Client ID to use (string)
-          * `ami` (`pulumi.Input[str]`) - AMI ID to use for the worker nodes instead of the default (string)
-          * `associateWorkerNodePublicIp` (`pulumi.Input[bool]`) - Associate public ip EKS worker nodes. Default `true` (bool)
-          * `desiredNodes` (`pulumi.Input[float]`) - The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-          * `instanceType` (`pulumi.Input[str]`) - The type of machine to use for worker nodes. Default `t2.medium` (string)
-          * `keyPairName` (`pulumi.Input[str]`) - Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `maximumNodes` (`pulumi.Input[float]`) - The maximum number of worker nodes. Default `3` (int)
-          * `minimumNodes` (`pulumi.Input[float]`) - The minimum number of worker nodes. Default `1` (int)
-          * `nodeVolumeSize` (`pulumi.Input[float]`) - The volume size for each node. Default `20` (int)
-          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-          * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
-          * `securityGroups` (`pulumi.Input[list]`) - List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
-          * `serviceRole` (`pulumi.Input[str]`) - The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
-          * `sessionToken` (`pulumi.Input[str]`) - A session token to use with the client key and secret if applicable (string)
-          * `subnets` (`pulumi.Input[list]`) - List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
-          * `userData` (`pulumi.Input[str]`) - Pass user-data to the nodes to perform automated configuration tasks (string)
-          * `virtualNetwork` (`pulumi.Input[str]`) - The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-
-        The **gke_config** object supports the following:
-
-          * `clusterIpv4Cidr` (`pulumi.Input[str]`) - The IP address range of the container pods (string)
-          * `credential` (`pulumi.Input[str]`) - The contents of the GC credential file (string)
-          * `description` (`pulumi.Input[str]`) - An optional description of this cluster (string)
-          * `diskSizeGb` (`pulumi.Input[float]`) - Size of the disk attached to each node. Default `100` (int)
-          * `diskType` (`pulumi.Input[str]`) - Type of the disk attached to each node (string)
-          * `enableAlphaFeature` (`pulumi.Input[bool]`) - To enable Kubernetes alpha feature. Default `true` (bool)
-          * `enableAutoRepair` (`pulumi.Input[bool]`) - Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
-          * `enableAutoUpgrade` (`pulumi.Input[bool]`) - Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
-          * `enableHorizontalPodAutoscaling` (`pulumi.Input[bool]`) - Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
-          * `enableHttpLoadBalancing` (`pulumi.Input[bool]`) - Enable HTTP load balancing on GKE cluster. Default `true` (bool)
-          * `enableKubernetesDashboard` (`pulumi.Input[bool]`) - Whether to enable the Kubernetes dashboard. Default `false` (bool)
-          * `enableLegacyAbac` (`pulumi.Input[bool]`) - Whether to enable legacy abac on the cluster. Default `false` (bool)
-          * `enableMasterAuthorizedNetwork` (`pulumi.Input[bool]`)
-          * `enableNetworkPolicyConfig` (`pulumi.Input[bool]`) - Enable network policy config for the cluster. Default `true` (bool)
-          * `enableNodepoolAutoscaling` (`pulumi.Input[bool]`) - Enable nodepool autoscaling. Default `false` (bool)
-          * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
-          * `enablePrivateNodes` (`pulumi.Input[bool]`) - Whether nodes have internal IP address only. Default `false` (bool)
-          * `enableStackdriverLogging` (`pulumi.Input[bool]`) - Enable stackdriver monitoring. Default `true` (bool)
-          * `enableStackdriverMonitoring` (`pulumi.Input[bool]`) - Enable stackdriver monitoring on GKE cluster (bool)
-          * `imageType` (`pulumi.Input[str]`) - The image to use for the worker nodes (string)
-          * `ipPolicyClusterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range for the cluster pod IPs (string)
-          * `ipPolicyClusterSecondaryRangeName` (`pulumi.Input[str]`) - The name of the secondary range to be used for the cluster CIDR block (string)
-          * `ipPolicyCreateSubnetwork` (`pulumi.Input[bool]`) - Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
-          * `ipPolicyNodeIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the instance IPs in this cluster (string)
-          * `ipPolicyServicesIpv4CidrBlock` (`pulumi.Input[str]`) - The IP address range of the services IPs in this cluster (string)
-          * `ipPolicyServicesSecondaryRangeName` (`pulumi.Input[str]`) - The name of the secondary range to be used for the services CIDR block (string)
-          * `ipPolicySubnetworkName` (`pulumi.Input[str]`) - A custom subnetwork name to be used if createSubnetwork is true (string)
-          * `issueClientCertificate` (`pulumi.Input[bool]`) - Issue a client certificate. Default `false` (bool)
-          * `kubernetesDashboard` (`pulumi.Input[bool]`) - Enable the Kubernetes dashboard. Default `false` (bool)
-          * `labels` (`pulumi.Input[dict]`) - Labels for cluster registration token object (map)
-          * `localSsdCount` (`pulumi.Input[float]`) - The number of local SSD disks to be attached to the node. Default `0` (int)
-          * `locations` (`pulumi.Input[list]`) - Locations for GKE cluster (list)
-          * `machineType` (`pulumi.Input[str]`) - Machine type for GKE cluster (string)
-          * `maintenanceWindow` (`pulumi.Input[str]`) - Maintenance window for GKE cluster (string)
-          * `masterAuthorizedNetworkCidrBlocks` (`pulumi.Input[list]`) - Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
-          * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the hosted master network (string)
-          * `masterVersion` (`pulumi.Input[str]`) - Master version for GKE cluster (string)
-          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
-          * `minNodeCount` (`pulumi.Input[float]`) - Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
-          * `network` (`pulumi.Input[str]`) - Network for GKE cluster (string)
-          * `nodeCount` (`pulumi.Input[float]`) - Node count for GKE cluster. Default `3` (int)
-          * `nodePool` (`pulumi.Input[str]`) - The ID of the cluster node pool (string)
-          * `nodeVersion` (`pulumi.Input[str]`) - Node version for GKE cluster (string)
-          * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
-          * `preemptible` (`pulumi.Input[bool]`) - Whether the nodes are created as preemptible VM instances. Default `false` (bool)
-          * `project_id` (`pulumi.Input[str]`) - Project ID to apply answer (string)
-          * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-          * `resourceLabels` (`pulumi.Input[dict]`) - The map of Kubernetes labels to be applied to each cluster (map)
-          * `serviceAccount` (`pulumi.Input[str]`) - The Google Cloud Platform Service Account to be used by the node VMs (string)
-          * `subNetwork` (`pulumi.Input[str]`) - Subnetwork for GKE cluster (string)
-          * `taints` (`pulumi.Input[list]`) - List of Kubernetes taints to be applied to each node (list)
-          * `useIpAliases` (`pulumi.Input[bool]`) - Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-          * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
-
-        The **k3s_config** object supports the following:
-
-          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
-            * `drainServerNodes` (`pulumi.Input[bool]`) - Drain server nodes. Default: `false` (bool)
-            * `drainWorkerNodes` (`pulumi.Input[bool]`) - Drain worker nodes. Default: `false` (bool)
-            * `serverConcurrency` (`pulumi.Input[float]`) - Server concurrency. Default: `1` (int)
-            * `workerConcurrency` (`pulumi.Input[float]`) - Worker concurrency. Default: `1` (int)
-
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **rke_config** object supports the following:
-
-          * `addonJobTimeout` (`pulumi.Input[float]`) - Duration in seconds of addon job (int)
-          * `addons` (`pulumi.Input[str]`) - Addons descripton to deploy on RKE cluster.
-          * `addonsIncludes` (`pulumi.Input[list]`) - Addons yaml manifests to deploy on RKE cluster (list)
-          * `authentication` (`pulumi.Input[dict]`) - Kubernetes cluster authentication (list maxitems:1)
-            * `sans` (`pulumi.Input[list]`) - RKE sans for authentication ([]string)
-            * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
-
-          * `authorization` (`pulumi.Input[dict]`) - Kubernetes cluster authorization (list maxitems:1)
-            * `mode` (`pulumi.Input[str]`) - RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-
-          * `bastionHost` (`pulumi.Input[dict]`) - RKE bastion host (list maxitems:1)
-            * `address` (`pulumi.Input[str]`) - Address ip for node (string)
-            * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-            * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-            * `sshKey` (`pulumi.Input[str]`) - Node SSH private key (string)
-            * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `cloudProvider` (`pulumi.Input[dict]`) - RKE options for Calico network provider (string)
-            * `awsCloudProvider` (`pulumi.Input[dict]`) - RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `disableSecurityGroupIngress` (`pulumi.Input[bool]`) - Default `false` (bool)
-                * `disableStrictZoneCheck` (`pulumi.Input[bool]`) - Default `false` (bool)
-                * `elbSecurityGroup` (`pulumi.Input[str]`) - (string)
-                * `kubernetesClusterId` (`pulumi.Input[str]`) - (string)
-                * `kubernetesClusterTag` (`pulumi.Input[str]`) - (string)
-                * `roleArn` (`pulumi.Input[str]`) - (string)
-                * `routeTableId` (`pulumi.Input[str]`) - (string)
-                * `subnetId` (`pulumi.Input[str]`) - (string)
-                * `vpc` (`pulumi.Input[str]`) - (string)
-                * `zone` (`pulumi.Input[str]`) - GKE cluster zone. Conflicts with `region` (string)
-
-              * `serviceOverrides` (`pulumi.Input[list]`) - (list)
-                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                * `service` (`pulumi.Input[str]`) - (string)
-                * `signingMethod` (`pulumi.Input[str]`) - (string)
-                * `signingName` (`pulumi.Input[str]`) - (string)
-                * `signingRegion` (`pulumi.Input[str]`) - (string)
-                * `url` (`pulumi.Input[str]`) - Registry URL (string)
-
-            * `azureCloudProvider` (`pulumi.Input[dict]`) - RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
-              * `aadClientCertPassword` (`pulumi.Input[str]`) - (string)
-              * `aadClientCertPath` (`pulumi.Input[str]`) - (string)
-              * `aadClientId` (`pulumi.Input[str]`) - (string)
-              * `aadClientSecret` (`pulumi.Input[str]`) - (string)
-              * `cloud` (`pulumi.Input[str]`) - (string)
-              * `cloudProviderBackoff` (`pulumi.Input[bool]`) - (bool)
-              * `cloudProviderBackoffDuration` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffExponent` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffJitter` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderBackoffRetries` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderRateLimit` (`pulumi.Input[bool]`) - (bool)
-              * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`) - (int)
-              * `cloudProviderRateLimitQps` (`pulumi.Input[float]`) - (int)
-              * `loadBalancerSku` (`pulumi.Input[str]`) - Allowed values: `basic` (default) `standard` (string)
-              * `location` (`pulumi.Input[str]`) - Azure Kubernetes cluster location. Default `eastus` (string)
-              * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`) - (int)
-              * `primaryAvailabilitySetName` (`pulumi.Input[str]`) - (string)
-              * `primaryScaleSetName` (`pulumi.Input[str]`) - (string)
-              * `resourceGroup` (`pulumi.Input[str]`) - The name of the Cluster resource group (string)
-              * `routeTableName` (`pulumi.Input[str]`) - (string)
-              * `securityGroupName` (`pulumi.Input[str]`) - (string)
-              * `subnetName` (`pulumi.Input[str]`) - (string)
-              * `subscriptionId` (`pulumi.Input[str]`) - Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-              * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-              * `useInstanceMetadata` (`pulumi.Input[bool]`) - (bool)
-              * `useManagedIdentityExtension` (`pulumi.Input[bool]`) - (bool)
-              * `vmType` (`pulumi.Input[str]`) - (string)
-              * `vnetName` (`pulumi.Input[str]`) - (string)
-              * `vnetResourceGroup` (`pulumi.Input[str]`) - (string)
-
-            * `customCloudProvider` (`pulumi.Input[str]`) - RKE Custom Cloud Provider config for Cloud Provider (string)
-            * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
-            * `openstackCloudProvider` (`pulumi.Input[dict]`) - RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
-              * `blockStorage` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `bsVersion` (`pulumi.Input[str]`) - (string)
-                * `ignoreVolumeAz` (`pulumi.Input[bool]`) - (string)
-                * `trustDevicePath` (`pulumi.Input[bool]`) - (string)
-
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `authUrl` (`pulumi.Input[str]`) - (string)
-                * `caFile` (`pulumi.Input[str]`) - (string)
-                * `domainId` (`pulumi.Input[str]`) - Required if `domain_name` not provided. (string)
-                * `domainName` (`pulumi.Input[str]`) - Required if `domain_id` not provided. (string)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                * `tenant_id` (`pulumi.Input[str]`) - Azure tenant ID to use (string)
-                * `tenantName` (`pulumi.Input[str]`) - Required if `tenant_id` not provided. (string)
-                * `trustId` (`pulumi.Input[str]`) - (string)
-                * `username` (`pulumi.Input[str]`) - (string)
-
-              * `loadBalancer` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `createMonitor` (`pulumi.Input[bool]`) - (bool)
-                * `floatingNetworkId` (`pulumi.Input[str]`) - (string)
-                * `lbMethod` (`pulumi.Input[str]`) - (string)
-                * `lbProvider` (`pulumi.Input[str]`) - (string)
-                * `lbVersion` (`pulumi.Input[str]`) - (string)
-                * `manageSecurityGroups` (`pulumi.Input[bool]`) - (bool)
-                * `monitorDelay` (`pulumi.Input[str]`) - Default `60s` (string)
-                * `monitorMaxRetries` (`pulumi.Input[float]`) - Default 5 (int)
-                * `monitorTimeout` (`pulumi.Input[str]`) - Default `30s` (string)
-                * `subnetId` (`pulumi.Input[str]`) - (string)
-                * `useOctavia` (`pulumi.Input[bool]`) - (bool)
-
-              * `metadata` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `requestTimeout` (`pulumi.Input[float]`) - (int)
-                * `searchOrder` (`pulumi.Input[str]`) - (string)
-
-              * `route` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `routerId` (`pulumi.Input[str]`) - (string)
-
-            * `vsphereCloudProvider` (`pulumi.Input[dict]`) - RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
-              * `disk` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `scsiControllerType` (`pulumi.Input[str]`) - (string)
-
-              * `global` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `datacenters` (`pulumi.Input[str]`) - (string)
-                * `insecureFlag` (`pulumi.Input[bool]`) - (bool)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-                * `soapRoundtripCount` (`pulumi.Input[float]`) - (int)
-                * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-              * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
-                * `publicNetwork` (`pulumi.Input[str]`) - (string)
-
-              * `virtualCenters` (`pulumi.Input[list]`) - (List)
-                * `datacenters` (`pulumi.Input[str]`) - (string)
-                * `name` (`pulumi.Input[str]`) - Name of cluster registration token (string)
-                * `password` (`pulumi.Input[str]`) - Registry password (string)
-                * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-                * `soapRoundtripCount` (`pulumi.Input[float]`) - (int)
-                * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-              * `workspace` (`pulumi.Input[dict]`) - (list maxitems:1)
-                * `datacenter` (`pulumi.Input[str]`) - (string)
-                * `defaultDatastore` (`pulumi.Input[str]`) - (string)
-                * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                * `resourcepoolPath` (`pulumi.Input[str]`) - (string)
-                * `server` (`pulumi.Input[str]`) - (string)
-
-          * `dns` (`pulumi.Input[dict]`) - RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `nodelocal` (`pulumi.Input[dict]`) - Nodelocal dns config  (list Maxitem: 1)
-              * `ipAddress` (`pulumi.Input[str]`) - Nodelocal dns ip address (string)
-              * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-            * `reverseCidrs` (`pulumi.Input[list]`) - DNS add-on reverse cidr  (list)
-            * `upstreamNameservers` (`pulumi.Input[list]`) - DNS add-on upstream nameservers  (list)
-
-          * `ignoreDockerVersion` (`pulumi.Input[bool]`) - Ignore docker version. Default `true` (bool)
-          * `ingress` (`pulumi.Input[dict]`) - Kubernetes ingress configuration (list maxitems:1)
-            * `dnsPolicy` (`pulumi.Input[str]`) - Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-            * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-
-          * `kubernetesVersion` (`pulumi.Input[str]`) - The Kubernetes master version (string)
-          * `monitoring` (`pulumi.Input[dict]`) - Kubernetes cluster monitoring (list maxitems:1)
-            * `nodeSelector` (`pulumi.Input[dict]`) - RKE monitoring node selector (map)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `provider` (`pulumi.Input[str]`) - RKE monitoring provider (string)
-            * `replicas` (`pulumi.Input[float]`) - RKE monitoring replicas (int)
-            * `updateStrategy` (`pulumi.Input[dict]`) - RKE monitoring update strategy (list Maxitems: 1)
-              * `rollingUpdate` (`pulumi.Input[dict]`) - Monitoring deployment rolling update (list Maxitems: 1)
-                * `maxSurge` (`pulumi.Input[float]`) - Monitoring deployment rolling update max surge. Default: `1` (int)
-                * `maxUnavailable` (`pulumi.Input[float]`) - Monitoring deployment rolling update max unavailable. Default: `1` (int)
-
-              * `strategy` (`pulumi.Input[str]`) - Monitoring deployment update strategy (string)
-
-          * `network` (`pulumi.Input[dict]`) - Network for GKE cluster (string)
-            * `calicoNetworkProvider` (`pulumi.Input[dict]`) - Calico provider config for RKE network (list maxitems:1)
-              * `cloudProvider` (`pulumi.Input[str]`) - RKE options for Calico network provider (string)
-
-            * `canalNetworkProvider` (`pulumi.Input[dict]`) - Canal provider config for RKE network (list maxitems:1)
-              * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
-
-            * `flannelNetworkProvider` (`pulumi.Input[dict]`) - Flannel provider config for RKE network (list maxitems:1)
-              * `iface` (`pulumi.Input[str]`) - Iface config Flannel network provider (string)
-
-            * `mtu` (`pulumi.Input[float]`) - Network provider MTU. Default `0` (int)
-            * `options` (`pulumi.Input[dict]`) - RKE options for network (map)
-            * `plugin` (`pulumi.Input[str]`) - Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-            * `weaveNetworkProvider` (`pulumi.Input[dict]`) - Weave provider config for RKE network (list maxitems:1)
-              * `password` (`pulumi.Input[str]`) - Registry password (string)
-
-          * `nodes` (`pulumi.Input[list]`) - RKE cluster nodes (list)
-            * `address` (`pulumi.Input[str]`) - Address ip for node (string)
-            * `dockerSocket` (`pulumi.Input[str]`) - Docker socket for node (string)
-            * `hostnameOverride` (`pulumi.Input[str]`) - Hostname override for node (string)
-            * `internalAddress` (`pulumi.Input[str]`) - Internal ip for node (string)
-            * `labels` (`pulumi.Input[dict]`) - Labels for cluster registration token object (map)
-            * `nodeId` (`pulumi.Input[str]`) - Id for the node (string)
-            * `port` (`pulumi.Input[str]`) - Port for node. Default `22` (string)
-            * `roles` (`pulumi.Input[list]`) - Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-            * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-            * `sshKey` (`pulumi.Input[str]`) - Node SSH private key (string)
-            * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `prefixPath` (`pulumi.Input[str]`) - Prefix to customize Kubernetes path (string)
-          * `privateRegistries` (`pulumi.Input[list]`) - private registries for docker images (list)
-            * `isDefault` (`pulumi.Input[bool]`) - Set as default registry. Default `false` (bool)
-            * `password` (`pulumi.Input[str]`) - Registry password (string)
-            * `url` (`pulumi.Input[str]`) - Registry URL (string)
-            * `user` (`pulumi.Input[str]`) - Registry user (string)
-
-          * `services` (`pulumi.Input[dict]`) - Kubernetes cluster services (list maxitems:1)
-            * `etcd` (`pulumi.Input[dict]`) - Etcd options for RKE services (list maxitems:1)
-              * `backup_config` (`pulumi.Input[dict]`) - Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-                * `intervalHours` (`pulumi.Input[float]`) - Interval hours for etcd backup. Default `12` (int)
-                * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
-                * `s3BackupConfig` (`pulumi.Input[dict]`) - S3 config options for etcd backup (list maxitems:1)
-                  * `access_key` (`pulumi.Input[str]`) - The AWS Client ID to use (string)
-                  * `bucketName` (`pulumi.Input[str]`) - Bucket name for S3 service (string)
-                  * `customCa` (`pulumi.Input[str]`) - Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
-                  * `endpoint` (`pulumi.Input[str]`) - Endpoint for S3 service (string)
-                  * `folder` (`pulumi.Input[str]`) - Folder for S3 service. Available from Rancher v2.2.7 (string)
-                  * `region` (`pulumi.Input[str]`) - GKE cluster region. Conflicts with `zone` (string)
-                  * `secret_key` (`pulumi.Input[str]`) - The AWS Client Secret associated with the Client ID (string)
-
-                * `safeTimestamp` (`pulumi.Input[bool]`) - Safe timestamp for etcd backup. Default: `false` (bool)
-
-              * `caCert` (`pulumi.Input[str]`) - TLS CA certificate for etcd service (string)
-              * `cert` (`pulumi.Input[str]`) - TLS certificate for etcd service (string)
-              * `creation` (`pulumi.Input[str]`) - Creation option for etcd service (string)
-              * `externalUrls` (`pulumi.Input[list]`) - External urls for etcd service (list)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `gid` (`pulumi.Input[float]`) - Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `key` (`pulumi.Input[str]`) - TLS key for etcd service (string)
-              * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-              * `retention` (`pulumi.Input[str]`) - Retention for etcd backup. Default `6` (int)
-              * `snapshot` (`pulumi.Input[bool]`) - Snapshot option for etcd service (bool)
-              * `uid` (`pulumi.Input[float]`) - Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
-
-            * `kubeApi` (`pulumi.Input[dict]`) - Kube API options for RKE services (list maxitems:1)
-              * `admissionConfiguration` (`pulumi.Input[dict]`) - Admission configuration (map)
-              * `alwaysPullImages` (`pulumi.Input[bool]`) - Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-              * `auditLog` (`pulumi.Input[dict]`) - K8s audit log configuration. (list maxitems: 1)
-                * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                  * `format` (`pulumi.Input[str]`) - Audit log format. Default: 'json' (string)
-                  * `maxAge` (`pulumi.Input[float]`) - Audit log max age. Default: `30` (int)
-                  * `maxBackup` (`pulumi.Input[float]`) - Audit log max backup. Default: `10` (int)
-                  * `maxSize` (`pulumi.Input[float]`) - Audit log max size. Default: `100` (int)
-                  * `path` (`pulumi.Input[str]`) - (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-                  * `policy` (`pulumi.Input[str]`) - Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
-
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `eventRateLimit` (`pulumi.Input[dict]`) - K8s event rate limit configuration. (list maxitems: 1)
-                * `configuration` (`pulumi.Input[dict]`) - Event rate limit configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `podSecurityPolicy` (`pulumi.Input[bool]`) - Pod Security Policy option for kube API service. Default `false` (bool)
-              * `secretsEncryptionConfig` (`pulumi.Input[dict]`) - [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
-                * `customConfig` (`pulumi.Input[dict]`) - Secrets encryption configuration. (map)
-                * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-
-              * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
-              * `serviceNodePortRange` (`pulumi.Input[str]`) - Service Node Port Range option for kube API service (string)
-
-            * `kubeController` (`pulumi.Input[dict]`) - Kube Controller options for RKE services (list maxitems:1)
-              * `clusterCidr` (`pulumi.Input[str]`) - Cluster CIDR option for kube controller service (string)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `serviceClusterIpRange` (`pulumi.Input[str]`) - Service Cluster ip Range option for kube controller service (string)
-
-            * `kubelet` (`pulumi.Input[dict]`) - Kubelet options for RKE services (list maxitems:1)
-              * `clusterDnsServer` (`pulumi.Input[str]`) - Cluster DNS Server option for kubelet service (string)
-              * `clusterDomain` (`pulumi.Input[str]`) - Cluster Domain option for kubelet service (string)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `failSwapOn` (`pulumi.Input[bool]`) - Enable or disable failing when swap on is not supported (bool)
-              * `generateServingCertificate` (`pulumi.Input[bool]`) - [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-              * `infraContainerImage` (`pulumi.Input[str]`) - Infra container image for kubelet service (string)
-
-            * `kubeproxy` (`pulumi.Input[dict]`) - Kubeproxy options for RKE services (list maxitems:1)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-
-            * `scheduler` (`pulumi.Input[dict]`) - Scheduler options for RKE services (list maxitems:1)
-              * `extraArgs` (`pulumi.Input[dict]`) - Extra arguments for scheduler service (map)
-              * `extraBinds` (`pulumi.Input[list]`) - Extra binds for scheduler service (list)
-              * `extraEnvs` (`pulumi.Input[list]`) - Extra environment for scheduler service (list)
-              * `image` (`pulumi.Input[str]`) - Docker image for scheduler service (string)
-
-          * `sshAgentAuth` (`pulumi.Input[bool]`) - Use ssh agent auth. Default `false` (bool)
-          * `sshCertPath` (`pulumi.Input[str]`) - Cluster level SSH certificate path (string)
-          * `sshKeyPath` (`pulumi.Input[str]`) - Node SSH private key path (string)
-          * `upgrade_strategy` (`pulumi.Input[dict]`) - K3S upgrade strategy (List maxitems: 1)
-            * `drain` (`pulumi.Input[bool]`) - RKE drain nodes. Default: `false` (bool)
-            * `drainInput` (`pulumi.Input[dict]`) - RKE drain node input (list Maxitems: 1)
-              * `deleteLocalData` (`pulumi.Input[bool]`) - Delete RKE node local data. Default: `false` (bool)
-              * `force` (`pulumi.Input[bool]`) - Force RKE node drain. Default: `false` (bool)
-              * `gracePeriod` (`pulumi.Input[float]`) - RKE node drain grace period. Default: `-1` (int)
-              * `ignoreDaemonSets` (`pulumi.Input[bool]`) - Ignore RKE daemon sets. Default: `true` (bool)
-              * `timeout` (`pulumi.Input[float]`) - RKE node drain timeout. Default: `60` (int)
-
-            * `maxUnavailableControlplane` (`pulumi.Input[str]`) - RKE max unavailable controlplane nodes. Default: `1` (string)
-            * `maxUnavailableWorker` (`pulumi.Input[str]`) - RKE max unavailable worker nodes. Default: `10%` (string)
-
-        The **scheduled_cluster_scan** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Enable scheduled cluster scan. Default: `false` (bool)
-          * `scanConfig` (`pulumi.Input[dict]`) - Cluster scan config (List maxitems:1)
-            * `cisScanConfig` (`pulumi.Input[dict]`) - Cluster Cis Scan config (List maxitems:1)
-              * `debugMaster` (`pulumi.Input[bool]`) - Debug master. Default: `false` (bool)
-              * `debugWorker` (`pulumi.Input[bool]`) - Debug worker. Default: `false` (bool)
-              * `overrideBenchmarkVersion` (`pulumi.Input[str]`) - Override benchmark version (string)
-              * `overrideSkips` (`pulumi.Input[list]`) - Override skip (string)
-              * `profile` (`pulumi.Input[str]`) - Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-
-          * `scheduleConfig` (`pulumi.Input[dict]`) - Cluster scan schedule config (list maxitems:1)
-            * `cronSchedule` (`pulumi.Input[str]`) - Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
-            * `retention` (`pulumi.Input[float]`) - Retention for etcd backup. Default `6` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1756,8 +239,249 @@ class Cluster(pulumi.CustomResource):
         __props__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="aksConfig")
+    def aks_config(self) -> Optional['outputs.ClusterAksConfig']:
+        """
+        The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "aks_config")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for cluster registration token object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterAuthEndpoint")
+    def cluster_auth_endpoint(self) -> 'outputs.ClusterClusterAuthEndpoint':
+        """
+        Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
+        """
+        return pulumi.get(self, "cluster_auth_endpoint")
+
+    @property
+    @pulumi.getter(name="clusterMonitoringInput")
+    def cluster_monitoring_input(self) -> 'outputs.ClusterClusterMonitoringInput':
+        """
+        Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        """
+        return pulumi.get(self, "cluster_monitoring_input")
+
+    @property
+    @pulumi.getter(name="clusterRegistrationToken")
+    def cluster_registration_token(self) -> 'outputs.ClusterClusterRegistrationToken':
+        """
+        (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+        """
+        return pulumi.get(self, "cluster_registration_token")
+
+    @property
+    @pulumi.getter(name="clusterTemplateAnswers")
+    def cluster_template_answers(self) -> 'outputs.ClusterClusterTemplateAnswers':
+        """
+        Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        """
+        return pulumi.get(self, "cluster_template_answers")
+
+    @property
+    @pulumi.getter(name="clusterTemplateId")
+    def cluster_template_id(self) -> Optional[str]:
+        """
+        Cluster template ID. Just for Rancher v2.3.x and above (string)
+        """
+        return pulumi.get(self, "cluster_template_id")
+
+    @property
+    @pulumi.getter(name="clusterTemplateQuestions")
+    def cluster_template_questions(self) -> Optional[List['outputs.ClusterClusterTemplateQuestion']]:
+        """
+        Cluster template questions. Just for Rancher v2.3.x and above (list)
+        """
+        return pulumi.get(self, "cluster_template_questions")
+
+    @property
+    @pulumi.getter(name="clusterTemplateRevisionId")
+    def cluster_template_revision_id(self) -> Optional[str]:
+        """
+        Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        """
+        return pulumi.get(self, "cluster_template_revision_id")
+
+    @property
+    @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
+    def default_pod_security_policy_template_id(self) -> str:
+        """
+        [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+        """
+        return pulumi.get(self, "default_pod_security_policy_template_id")
+
+    @property
+    @pulumi.getter(name="defaultProjectId")
+    def default_project_id(self) -> str:
+        """
+        (Computed) Default project ID for the cluster (string)
+        """
+        return pulumi.get(self, "default_project_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this cluster (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="desiredAgentImage")
+    def desired_agent_image(self) -> str:
+        """
+        Desired agent image. Just for Rancher v2.3.x and above (string)
+        """
+        return pulumi.get(self, "desired_agent_image")
+
+    @property
+    @pulumi.getter(name="desiredAuthImage")
+    def desired_auth_image(self) -> str:
+        """
+        Desired auth image. Just for Rancher v2.3.x and above (string)
+        """
+        return pulumi.get(self, "desired_auth_image")
+
+    @property
+    @pulumi.getter(name="dockerRootDir")
+    def docker_root_dir(self) -> str:
+        """
+        Desired auth image. Just for Rancher v2.3.x and above (string)
+        """
+        return pulumi.get(self, "docker_root_dir")
+
+    @property
+    @pulumi.getter
+    def driver(self) -> str:
+        """
+        (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+        """
+        return pulumi.get(self, "driver")
+
+    @property
+    @pulumi.getter(name="eksConfig")
+    def eks_config(self) -> Optional['outputs.ClusterEksConfig']:
+        """
+        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "eks_config")
+
+    @property
+    @pulumi.getter(name="enableClusterAlerting")
+    def enable_cluster_alerting(self) -> bool:
+        """
+        Enable built-in cluster alerting (bool)
+        """
+        return pulumi.get(self, "enable_cluster_alerting")
+
+    @property
+    @pulumi.getter(name="enableClusterIstio")
+    def enable_cluster_istio(self) -> bool:
+        """
+        Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        """
+        return pulumi.get(self, "enable_cluster_istio")
+
+    @property
+    @pulumi.getter(name="enableClusterMonitoring")
+    def enable_cluster_monitoring(self) -> bool:
+        """
+        Enable built-in cluster monitoring (bool)
+        """
+        return pulumi.get(self, "enable_cluster_monitoring")
+
+    @property
+    @pulumi.getter(name="enableNetworkPolicy")
+    def enable_network_policy(self) -> bool:
+        """
+        Enable project network isolation (bool)
+        """
+        return pulumi.get(self, "enable_network_policy")
+
+    @property
+    @pulumi.getter(name="gkeConfig")
+    def gke_config(self) -> Optional['outputs.ClusterGkeConfig']:
+        """
+        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "gke_config")
+
+    @property
+    @pulumi.getter(name="k3sConfig")
+    def k3s_config(self) -> 'outputs.ClusterK3sConfig':
+        """
+        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "k3s_config")
+
+    @property
+    @pulumi.getter(name="kubeConfig")
+    def kube_config(self) -> str:
+        """
+        (Computed/Sensitive) Kube Config generated for the cluster (string)
+        """
+        return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rkeConfig")
+    def rke_config(self) -> 'outputs.ClusterRkeConfig':
+        """
+        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "rke_config")
+
+    @property
+    @pulumi.getter(name="scheduledClusterScan")
+    def scheduled_cluster_scan(self) -> 'outputs.ClusterScheduledClusterScan':
+        """
+        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        """
+        return pulumi.get(self, "scheduled_cluster_scan")
+
+    @property
+    @pulumi.getter(name="systemProjectId")
+    def system_project_id(self) -> str:
+        """
+        (Computed) System project ID for the cluster (string)
+        """
+        return pulumi.get(self, "system_project_id")
+
+    @property
+    @pulumi.getter(name="windowsPreferedCluster")
+    def windows_prefered_cluster(self) -> Optional[bool]:
+        """
+        Windows preferred cluster. Default: `false` (bool)
+        """
+        return pulumi.get(self, "windows_prefered_cluster")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

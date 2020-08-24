@@ -5,10 +5,19 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetRoleTempalteResult',
+    'AwaitableGetRoleTempalteResult',
+    'get_role_tempalte',
+]
 
 warnings.warn("rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate", DeprecationWarning)
+
+@pulumi.output_type
 class GetRoleTempalteResult:
     """
     A collection of values returned by getRoleTempalte.
@@ -16,82 +25,154 @@ class GetRoleTempalteResult:
     def __init__(__self__, administrative=None, annotations=None, builtin=None, context=None, default_role=None, description=None, external=None, hidden=None, id=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None):
         if administrative and not isinstance(administrative, bool):
             raise TypeError("Expected argument 'administrative' to be a bool")
-        __self__.administrative = administrative
+        pulumi.set(__self__, "administrative", administrative)
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
+        if builtin and not isinstance(builtin, bool):
+            raise TypeError("Expected argument 'builtin' to be a bool")
+        pulumi.set(__self__, "builtin", builtin)
+        if context and not isinstance(context, str):
+            raise TypeError("Expected argument 'context' to be a str")
+        pulumi.set(__self__, "context", context)
+        if default_role and not isinstance(default_role, bool):
+            raise TypeError("Expected argument 'default_role' to be a bool")
+        pulumi.set(__self__, "default_role", default_role)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if external and not isinstance(external, bool):
+            raise TypeError("Expected argument 'external' to be a bool")
+        pulumi.set(__self__, "external", external)
+        if hidden and not isinstance(hidden, bool):
+            raise TypeError("Expected argument 'hidden' to be a bool")
+        pulumi.set(__self__, "hidden", hidden)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if locked and not isinstance(locked, bool):
+            raise TypeError("Expected argument 'locked' to be a bool")
+        pulumi.set(__self__, "locked", locked)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if role_template_ids and not isinstance(role_template_ids, list):
+            raise TypeError("Expected argument 'role_template_ids' to be a list")
+        pulumi.set(__self__, "role_template_ids", role_template_ids)
+        if rules and not isinstance(rules, list):
+            raise TypeError("Expected argument 'rules' to be a list")
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def administrative(self) -> bool:
         """
         (Computed) Administrative role template (bool)
         """
-        if annotations and not isinstance(annotations, dict):
-            raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        return pulumi.get(self, "administrative")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for role template object (map)
         """
-        if builtin and not isinstance(builtin, bool):
-            raise TypeError("Expected argument 'builtin' to be a bool")
-        __self__.builtin = builtin
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def builtin(self) -> bool:
         """
         (Computed) Builtin role template (string)
         """
-        if context and not isinstance(context, str):
-            raise TypeError("Expected argument 'context' to be a str")
-        __self__.context = context
-        if default_role and not isinstance(default_role, bool):
-            raise TypeError("Expected argument 'default_role' to be a bool")
-        __self__.default_role = default_role
+        return pulumi.get(self, "builtin")
+
+    @property
+    @pulumi.getter
+    def context(self) -> str:
+        return pulumi.get(self, "context")
+
+    @property
+    @pulumi.getter(name="defaultRole")
+    def default_role(self) -> bool:
         """
         (Computed) Default role template for new created cluster or project (bool)
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "default_role")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) Role template description (string)
         """
-        if external and not isinstance(external, bool):
-            raise TypeError("Expected argument 'external' to be a bool")
-        __self__.external = external
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def external(self) -> bool:
         """
         (Computed) External role template (bool)
         """
-        if hidden and not isinstance(hidden, bool):
-            raise TypeError("Expected argument 'hidden' to be a bool")
-        __self__.hidden = hidden
+        return pulumi.get(self, "external")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> bool:
         """
         (Computed) Hidden role template (bool)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for role template object (map)
         """
-        if locked and not isinstance(locked, bool):
-            raise TypeError("Expected argument 'locked' to be a bool")
-        __self__.locked = locked
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> bool:
         """
         (Computed) Locked role template (bool)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if role_template_ids and not isinstance(role_template_ids, list):
-            raise TypeError("Expected argument 'role_template_ids' to be a list")
-        __self__.role_template_ids = role_template_ids
+        return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="roleTemplateIds")
+    def role_template_ids(self) -> List[str]:
         """
         (Computed) Inherit role template IDs (list)
         """
-        if rules and not isinstance(rules, list):
-            raise TypeError("Expected argument 'rules' to be a list")
-        __self__.rules = rules
+        return pulumi.get(self, "role_template_ids")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> List['outputs.GetRoleTempalteRuleResult']:
         """
         (Computed) Role template policy rules (list)
         """
+        return pulumi.get(self, "rules")
+
+
 class AwaitableGetRoleTempalteResult(GetRoleTempalteResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -113,7 +194,10 @@ class AwaitableGetRoleTempalteResult(GetRoleTempalteResult):
             role_template_ids=self.role_template_ids,
             rules=self.rules)
 
-def get_role_tempalte(context=None,name=None,opts=None):
+
+def get_role_tempalte(context: Optional[str] = None,
+                      name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleTempalteResult:
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
 
@@ -132,28 +216,26 @@ def get_role_tempalte(context=None,name=None,opts=None):
     """
     pulumi.log.warn("get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate")
     __args__ = dict()
-
-
     __args__['context'] = context
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getRoleTempalte:getRoleTempalte', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getRoleTempalte:getRoleTempalte', __args__, opts=opts, typ=GetRoleTempalteResult).value
 
     return AwaitableGetRoleTempalteResult(
-        administrative=__ret__.get('administrative'),
-        annotations=__ret__.get('annotations'),
-        builtin=__ret__.get('builtin'),
-        context=__ret__.get('context'),
-        default_role=__ret__.get('defaultRole'),
-        description=__ret__.get('description'),
-        external=__ret__.get('external'),
-        hidden=__ret__.get('hidden'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        locked=__ret__.get('locked'),
-        name=__ret__.get('name'),
-        role_template_ids=__ret__.get('roleTemplateIds'),
-        rules=__ret__.get('rules'))
+        administrative=__ret__.administrative,
+        annotations=__ret__.annotations,
+        builtin=__ret__.builtin,
+        context=__ret__.context,
+        default_role=__ret__.default_role,
+        description=__ret__.description,
+        external=__ret__.external,
+        hidden=__ret__.hidden,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        locked=__ret__.locked,
+        name=__ret__.name,
+        role_template_ids=__ret__.role_template_ids,
+        rules=__ret__.rules)

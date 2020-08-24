@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetProjectResult',
+    'AwaitableGetProjectResult',
+    'get_project',
+]
+
+@pulumi.output_type
 class GetProjectResult:
     """
     A collection of values returned by getProject.
@@ -15,64 +23,121 @@ class GetProjectResult:
     def __init__(__self__, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, id=None, labels=None, name=None, pod_security_policy_template_id=None, resource_quota=None, uuid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError("Expected argument 'cluster_id' to be a str")
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if container_resource_limit and not isinstance(container_resource_limit, dict):
+            raise TypeError("Expected argument 'container_resource_limit' to be a dict")
+        pulumi.set(__self__, "container_resource_limit", container_resource_limit)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if enable_project_monitoring and not isinstance(enable_project_monitoring, bool):
+            raise TypeError("Expected argument 'enable_project_monitoring' to be a bool")
+        pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if pod_security_policy_template_id and not isinstance(pod_security_policy_template_id, str):
+            raise TypeError("Expected argument 'pod_security_policy_template_id' to be a str")
+        pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
+        if resource_quota and not isinstance(resource_quota, dict):
+            raise TypeError("Expected argument 'resource_quota' to be a dict")
+        pulumi.set(__self__, "resource_quota", resource_quota)
+        if uuid and not isinstance(uuid, str):
+            raise TypeError("Expected argument 'uuid' to be a str")
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations of the rancher2 project (map)
         """
-        if cluster_id and not isinstance(cluster_id, str):
-            raise TypeError("Expected argument 'cluster_id' to be a str")
-        __self__.cluster_id = cluster_id
-        if container_resource_limit and not isinstance(container_resource_limit, dict):
-            raise TypeError("Expected argument 'container_resource_limit' to be a dict")
-        __self__.container_resource_limit = container_resource_limit
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="containerResourceLimit")
+    def container_resource_limit(self) -> 'outputs.GetProjectContainerResourceLimitResult':
         """
         (Computed) Default containers resource limits on project (List maxitem:1)
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "container_resource_limit")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) The project's description (string)
         """
-        if enable_project_monitoring and not isinstance(enable_project_monitoring, bool):
-            raise TypeError("Expected argument 'enable_project_monitoring' to be a bool")
-        __self__.enable_project_monitoring = enable_project_monitoring
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableProjectMonitoring")
+    def enable_project_monitoring(self) -> bool:
         """
         (Computed) Enable built-in project monitoring. Default `false` (bool)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "enable_project_monitoring")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels of the rancher2 project (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if pod_security_policy_template_id and not isinstance(pod_security_policy_template_id, str):
-            raise TypeError("Expected argument 'pod_security_policy_template_id' to be a str")
-        __self__.pod_security_policy_template_id = pod_security_policy_template_id
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="podSecurityPolicyTemplateId")
+    def pod_security_policy_template_id(self) -> str:
         """
         (Computed) Default Pod Security Policy ID for the project (string)
         """
-        if resource_quota and not isinstance(resource_quota, dict):
-            raise TypeError("Expected argument 'resource_quota' to be a dict")
-        __self__.resource_quota = resource_quota
+        return pulumi.get(self, "pod_security_policy_template_id")
+
+    @property
+    @pulumi.getter(name="resourceQuota")
+    def resource_quota(self) -> 'outputs.GetProjectResourceQuotaResult':
         """
         (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         """
-        if uuid and not isinstance(uuid, str):
-            raise TypeError("Expected argument 'uuid' to be a str")
-        __self__.uuid = uuid
+        return pulumi.get(self, "resource_quota")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
         """
         (Computed) UUID of the project as stored by Rancher 2 (string)
         """
+        return pulumi.get(self, "uuid")
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +156,10 @@ class AwaitableGetProjectResult(GetProjectResult):
             resource_quota=self.resource_quota,
             uuid=self.uuid)
 
-def get_project(cluster_id=None,name=None,opts=None):
+
+def get_project(cluster_id: Optional[str] = None,
+                name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     Use this data source to access information about an existing resource.
 
@@ -99,25 +167,23 @@ def get_project(cluster_id=None,name=None,opts=None):
     :param str name: The project name (string)
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getProject:getProject', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        annotations=__ret__.get('annotations'),
-        cluster_id=__ret__.get('clusterId'),
-        container_resource_limit=__ret__.get('containerResourceLimit'),
-        description=__ret__.get('description'),
-        enable_project_monitoring=__ret__.get('enableProjectMonitoring'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        pod_security_policy_template_id=__ret__.get('podSecurityPolicyTemplateId'),
-        resource_quota=__ret__.get('resourceQuota'),
-        uuid=__ret__.get('uuid'))
+        annotations=__ret__.annotations,
+        cluster_id=__ret__.cluster_id,
+        container_resource_limit=__ret__.container_resource_limit,
+        description=__ret__.description,
+        enable_project_monitoring=__ret__.enable_project_monitoring,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        pod_security_policy_template_id=__ret__.pod_security_policy_template_id,
+        resource_quota=__ret__.resource_quota,
+        uuid=__ret__.uuid)

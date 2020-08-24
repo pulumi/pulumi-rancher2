@@ -35,14 +35,16 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["accessKey"] = (args ? args.accessKey : undefined) || utilities.getEnv("RANCHER_ACCESS_KEY");
-        inputs["apiUrl"] = (args ? args.apiUrl : undefined) || utilities.getEnv("RANCHER_URL");
-        inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
-        inputs["caCerts"] = (args ? args.caCerts : undefined) || utilities.getEnv("RANCHER_CA_CERTS");
-        inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
-        inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
-        inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("RANCHER_SECRET_KEY");
-        inputs["tokenKey"] = (args ? args.tokenKey : undefined) || utilities.getEnv("RANCHER_TOKEN_KEY");
+        {
+            inputs["accessKey"] = (args ? args.accessKey : undefined) || utilities.getEnv("RANCHER_ACCESS_KEY");
+            inputs["apiUrl"] = (args ? args.apiUrl : undefined) || utilities.getEnv("RANCHER_URL");
+            inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
+            inputs["caCerts"] = (args ? args.caCerts : undefined) || utilities.getEnv("RANCHER_CA_CERTS");
+            inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
+            inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
+            inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("RANCHER_SECRET_KEY");
+            inputs["tokenKey"] = (args ? args.tokenKey : undefined) || utilities.getEnv("RANCHER_TOKEN_KEY");
+        }
         if (!opts) {
             opts = {}
         }
