@@ -5,36 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['GlobalRoleBinding']
 
 
 class GlobalRoleBinding(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for global role binding (map)
-    """
-    global_role_id: pulumi.Output[str]
-    """
-    The role id from create global role binding (string)
-    """
-    group_principal_id: pulumi.Output[str]
-    """
-    The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for global role binding (map)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the global role binding (string)
-    """
-    user_id: pulumi.Output[str]
-    """
-    The user ID to assign global role binding (string)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, global_role_id=None, group_principal_id=None, labels=None, name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 global_role_id: Optional[pulumi.Input[str]] = None,
+                 group_principal_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
 
@@ -56,10 +45,10 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[str] global_role_id: The role id from create global role binding (string)
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-        :param pulumi.Input[dict] labels: Labels for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -74,7 +63,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -95,18 +84,26 @@ class GlobalRoleBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, global_role_id=None, group_principal_id=None, labels=None, name=None, user_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            global_role_id: Optional[pulumi.Input[str]] = None,
+            group_principal_id: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None) -> 'GlobalRoleBinding':
         """
         Get an existing GlobalRoleBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[str] global_role_id: The role id from create global role binding (string)
         :param pulumi.Input[str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-        :param pulumi.Input[dict] labels: Labels for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
@@ -122,8 +119,57 @@ class GlobalRoleBinding(pulumi.CustomResource):
         __props__["user_id"] = user_id
         return GlobalRoleBinding(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for global role binding (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="globalRoleId")
+    def global_role_id(self) -> str:
+        """
+        The role id from create global role binding (string)
+        """
+        return pulumi.get(self, "global_role_id")
+
+    @property
+    @pulumi.getter(name="groupPrincipalId")
+    def group_principal_id(self) -> str:
+        """
+        The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+        """
+        return pulumi.get(self, "group_principal_id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for global role binding (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the global role binding (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user ID to assign global role binding (string)
+        """
+        return pulumi.get(self, "user_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

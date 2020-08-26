@@ -5,43 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ClusterSync']
 
 
 class ClusterSync(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
-    """
-    The cluster ID that is syncing (string)
-    """
-    default_project_id: pulumi.Output[str]
-    """
-    (Computed) Default project ID for the cluster sync (string)
-    """
-    kube_config: pulumi.Output[str]
-    """
-    (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-    """
-    node_pool_ids: pulumi.Output[list]
-    """
-    The node pool IDs used by the cluster id (list)
-    """
-    synced: pulumi.Output[bool]
-    system_project_id: pulumi.Output[str]
-    """
-    (Computed) System project ID for the cluster sync (string)
-    """
-    wait_monitoring: pulumi.Output[bool]
-    """
-    Wait until monitoring is up and running. Default: `false` (bool)
-    """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, node_pool_ids=None, synced=None, wait_monitoring=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 synced: Optional[pulumi.Input[bool]] = None,
+                 wait_monitoring: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ClusterSync resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
-        :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         if __name__ is not None:
@@ -55,7 +41,7 @@ class ClusterSync(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,18 +63,27 @@ class ClusterSync(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, default_project_id=None, kube_config=None, node_pool_ids=None, synced=None, system_project_id=None, wait_monitoring=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            default_project_id: Optional[pulumi.Input[str]] = None,
+            kube_config: Optional[pulumi.Input[str]] = None,
+            node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            synced: Optional[pulumi.Input[bool]] = None,
+            system_project_id: Optional[pulumi.Input[str]] = None,
+            wait_monitoring: Optional[pulumi.Input[bool]] = None) -> 'ClusterSync':
         """
         Get an existing ClusterSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        :param pulumi.Input[list] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
@@ -105,8 +100,62 @@ class ClusterSync(pulumi.CustomResource):
         __props__["wait_monitoring"] = wait_monitoring
         return ClusterSync(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The cluster ID that is syncing (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="defaultProjectId")
+    def default_project_id(self) -> str:
+        """
+        (Computed) Default project ID for the cluster sync (string)
+        """
+        return pulumi.get(self, "default_project_id")
+
+    @property
+    @pulumi.getter(name="kubeConfig")
+    def kube_config(self) -> str:
+        """
+        (Computed/Sensitive) Kube Config generated for the cluster sync (string)
+        """
+        return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter(name="nodePoolIds")
+    def node_pool_ids(self) -> Optional[List[str]]:
+        """
+        The node pool IDs used by the cluster id (list)
+        """
+        return pulumi.get(self, "node_pool_ids")
+
+    @property
+    @pulumi.getter
+    def synced(self) -> Optional[bool]:
+        return pulumi.get(self, "synced")
+
+    @property
+    @pulumi.getter(name="systemProjectId")
+    def system_project_id(self) -> str:
+        """
+        (Computed) System project ID for the cluster sync (string)
+        """
+        return pulumi.get(self, "system_project_id")
+
+    @property
+    @pulumi.getter(name="waitMonitoring")
+    def wait_monitoring(self) -> Optional[bool]:
+        """
+        Wait until monitoring is up and running. Default: `false` (bool)
+        """
+        return pulumi.get(self, "wait_monitoring")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

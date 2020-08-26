@@ -5,406 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ClusterTemplate']
 
 
 class ClusterTemplate(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for the cluster template revision (map)
-    """
-    default_revision_id: pulumi.Output[str]
-    """
-    (Computed) Default cluster template revision ID (string)
-    """
-    description: pulumi.Output[str]
-    """
-    Cluster template description
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for the cluster template revision (map)
-    """
-    members: pulumi.Output[list]
-    """
-    Cluster template members (list)
-
-      * `accessType` (`str`) - Member access type. Valid values: `["read-only" | "owner"]` (string)
-      * `group_principal_id` (`str`) - Member group principal id (string)
-      * `user_principal_id` (`str`) - Member user principal id (string)
-    """
-    name: pulumi.Output[str]
-    """
-    The cluster template revision name (string)
-    """
-    template_revisions: pulumi.Output[list]
-    """
-    Cluster template revisions (list)
-
-      * `annotations` (`dict`) - Annotations for the cluster template revision (map)
-      * `clusterConfig` (`dict`) - Cluster configuration (list maxitem: 1)
-        * `cluster_auth_endpoint` (`dict`) - Local cluster auth endpoint (list maxitems: 1)
-          * `caCerts` (`str`)
-          * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-          * `fqdn` (`str`)
-
-        * `defaultClusterRoleForProjectMembers` (`str`) - Default cluster role for project members (string)
-        * `default_pod_security_policy_template_id` (`str`) - Default pod security policy template ID (string)
-        * `desired_agent_image` (`str`) - Desired agent image (string)
-        * `desired_auth_image` (`str`) - Desired auth image (string)
-        * `docker_root_dir` (`str`) - Desired auth image (string)
-        * `enable_cluster_alerting` (`bool`) - Enable built-in cluster alerting. Default: `false` (bool)
-        * `enable_cluster_monitoring` (`bool`) - Enable built-in cluster monitoring. Default: `false` (bool)
-        * `enable_network_policy` (`bool`) - Enable project network isolation. Default: `false` (bool)
-        * `rke_config` (`dict`) - Rancher Kubernetes Engine Config (list maxitems: 1)
-          * `addonJobTimeout` (`float`)
-          * `addons` (`str`)
-          * `addonsIncludes` (`list`)
-          * `authentication` (`dict`)
-            * `sans` (`list`)
-            * `strategy` (`str`)
-
-          * `authorization` (`dict`)
-            * `mode` (`str`)
-            * `options` (`dict`)
-
-          * `bastionHost` (`dict`)
-            * `address` (`str`)
-            * `port` (`str`)
-            * `sshAgentAuth` (`bool`)
-            * `sshKey` (`str`)
-            * `sshKeyPath` (`str`)
-            * `user` (`str`)
-
-          * `cloudProvider` (`dict`)
-            * `awsCloudProvider` (`dict`)
-              * `global` (`dict`)
-                * `disableSecurityGroupIngress` (`bool`)
-                * `disableStrictZoneCheck` (`bool`)
-                * `elbSecurityGroup` (`str`)
-                * `kubernetesClusterId` (`str`)
-                * `kubernetesClusterTag` (`str`)
-                * `roleArn` (`str`)
-                * `routeTableId` (`str`)
-                * `subnetId` (`str`)
-                * `vpc` (`str`)
-                * `zone` (`str`)
-
-              * `serviceOverrides` (`list`)
-                * `region` (`str`)
-                * `service` (`str`)
-                * `signingMethod` (`str`)
-                * `signingName` (`str`)
-                * `signingRegion` (`str`)
-                * `url` (`str`)
-
-            * `azureCloudProvider` (`dict`)
-              * `aadClientCertPassword` (`str`)
-              * `aadClientCertPath` (`str`)
-              * `aadClientId` (`str`)
-              * `aadClientSecret` (`str`)
-              * `cloud` (`str`)
-              * `cloudProviderBackoff` (`bool`)
-              * `cloudProviderBackoffDuration` (`float`)
-              * `cloudProviderBackoffExponent` (`float`)
-              * `cloudProviderBackoffJitter` (`float`)
-              * `cloudProviderBackoffRetries` (`float`)
-              * `cloudProviderRateLimit` (`bool`)
-              * `cloudProviderRateLimitBucket` (`float`)
-              * `cloudProviderRateLimitQps` (`float`)
-              * `loadBalancerSku` (`str`)
-              * `location` (`str`)
-              * `maximumLoadBalancerRuleCount` (`float`)
-              * `primaryAvailabilitySetName` (`str`)
-              * `primaryScaleSetName` (`str`)
-              * `resourceGroup` (`str`)
-              * `routeTableName` (`str`)
-              * `securityGroupName` (`str`)
-              * `subnetName` (`str`)
-              * `subscriptionId` (`str`)
-              * `tenant_id` (`str`)
-              * `useInstanceMetadata` (`bool`)
-              * `useManagedIdentityExtension` (`bool`)
-              * `vmType` (`str`)
-              * `vnetName` (`str`)
-              * `vnetResourceGroup` (`str`)
-
-            * `customCloudProvider` (`str`)
-            * `name` (`str`) - The cluster template revision name (string)
-            * `openstackCloudProvider` (`dict`)
-              * `blockStorage` (`dict`)
-                * `bsVersion` (`str`)
-                * `ignoreVolumeAz` (`bool`)
-                * `trustDevicePath` (`bool`)
-
-              * `global` (`dict`)
-                * `authUrl` (`str`)
-                * `caFile` (`str`)
-                * `domainId` (`str`)
-                * `domainName` (`str`)
-                * `password` (`str`)
-                * `region` (`str`)
-                * `tenant_id` (`str`)
-                * `tenantName` (`str`)
-                * `trustId` (`str`)
-                * `username` (`str`)
-
-              * `loadBalancer` (`dict`)
-                * `createMonitor` (`bool`)
-                * `floatingNetworkId` (`str`)
-                * `lbMethod` (`str`)
-                * `lbProvider` (`str`)
-                * `lbVersion` (`str`)
-                * `manageSecurityGroups` (`bool`)
-                * `monitorDelay` (`str`)
-                * `monitorMaxRetries` (`float`)
-                * `monitorTimeout` (`str`)
-                * `subnetId` (`str`)
-                * `useOctavia` (`bool`)
-
-              * `metadata` (`dict`)
-                * `requestTimeout` (`float`)
-                * `searchOrder` (`str`)
-
-              * `route` (`dict`)
-                * `routerId` (`str`)
-
-            * `vsphereCloudProvider` (`dict`)
-              * `disk` (`dict`)
-                * `scsiControllerType` (`str`)
-
-              * `global` (`dict`)
-                * `datacenters` (`str`)
-                * `insecureFlag` (`bool`)
-                * `password` (`str`)
-                * `port` (`str`)
-                * `soapRoundtripCount` (`float`)
-                * `user` (`str`)
-
-              * `network` (`dict`)
-                * `publicNetwork` (`str`)
-
-              * `virtualCenters` (`list`)
-                * `datacenters` (`str`)
-                * `name` (`str`) - The cluster template revision name (string)
-                * `password` (`str`)
-                * `port` (`str`)
-                * `soapRoundtripCount` (`float`)
-                * `user` (`str`)
-
-              * `workspace` (`dict`)
-                * `datacenter` (`str`)
-                * `defaultDatastore` (`str`)
-                * `folder` (`str`)
-                * `resourcepoolPath` (`str`)
-                * `server` (`str`)
-
-          * `dns` (`dict`)
-            * `nodeSelector` (`dict`)
-            * `nodelocal` (`dict`)
-              * `ipAddress` (`str`)
-              * `nodeSelector` (`dict`)
-
-            * `provider` (`str`)
-            * `reverseCidrs` (`list`)
-            * `upstreamNameservers` (`list`)
-
-          * `ignoreDockerVersion` (`bool`)
-          * `ingress` (`dict`)
-            * `dnsPolicy` (`str`)
-            * `extraArgs` (`dict`)
-            * `nodeSelector` (`dict`)
-            * `options` (`dict`)
-            * `provider` (`str`)
-
-          * `kubernetesVersion` (`str`)
-          * `monitoring` (`dict`)
-            * `nodeSelector` (`dict`)
-            * `options` (`dict`)
-            * `provider` (`str`)
-            * `replicas` (`float`)
-            * `updateStrategy` (`dict`)
-              * `rollingUpdate` (`dict`)
-                * `maxSurge` (`float`)
-                * `maxUnavailable` (`float`)
-
-              * `strategy` (`str`)
-
-          * `network` (`dict`)
-            * `calicoNetworkProvider` (`dict`)
-              * `cloudProvider` (`str`)
-
-            * `canalNetworkProvider` (`dict`)
-              * `iface` (`str`)
-
-            * `flannelNetworkProvider` (`dict`)
-              * `iface` (`str`)
-
-            * `mtu` (`float`)
-            * `options` (`dict`)
-            * `plugin` (`str`)
-            * `weaveNetworkProvider` (`dict`)
-              * `password` (`str`)
-
-          * `nodes` (`list`)
-            * `address` (`str`)
-            * `dockerSocket` (`str`)
-            * `hostnameOverride` (`str`)
-            * `internalAddress` (`str`)
-            * `labels` (`dict`) - Labels for the cluster template revision (map)
-            * `nodeId` (`str`)
-            * `port` (`str`)
-            * `roles` (`list`)
-            * `sshAgentAuth` (`bool`)
-            * `sshKey` (`str`)
-            * `sshKeyPath` (`str`)
-            * `user` (`str`)
-
-          * `prefixPath` (`str`)
-          * `privateRegistries` (`list`)
-            * `isDefault` (`bool`)
-            * `password` (`str`)
-            * `url` (`str`)
-            * `user` (`str`)
-
-          * `services` (`dict`)
-            * `etcd` (`dict`)
-              * `backup_config` (`dict`)
-                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-                * `intervalHours` (`float`)
-                * `retention` (`float`)
-                * `s3BackupConfig` (`dict`)
-                  * `access_key` (`str`)
-                  * `bucketName` (`str`)
-                  * `customCa` (`str`)
-                  * `endpoint` (`str`)
-                  * `folder` (`str`)
-                  * `region` (`str`)
-                  * `secret_key` (`str`)
-
-                * `safeTimestamp` (`bool`)
-
-              * `caCert` (`str`)
-              * `cert` (`str`)
-              * `creation` (`str`)
-              * `externalUrls` (`list`)
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `gid` (`float`)
-              * `image` (`str`)
-              * `key` (`str`)
-              * `path` (`str`)
-              * `retention` (`str`)
-              * `snapshot` (`bool`)
-              * `uid` (`float`)
-
-            * `kubeApi` (`dict`)
-              * `admissionConfiguration` (`dict`)
-              * `alwaysPullImages` (`bool`)
-              * `auditLog` (`dict`)
-                * `configuration` (`dict`)
-                  * `format` (`str`)
-                  * `maxAge` (`float`)
-                  * `maxBackup` (`float`)
-                  * `maxSize` (`float`)
-                  * `path` (`str`)
-                  * `policy` (`str`)
-
-                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-
-              * `eventRateLimit` (`dict`)
-                * `configuration` (`dict`)
-                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `image` (`str`)
-              * `podSecurityPolicy` (`bool`)
-              * `secretsEncryptionConfig` (`dict`)
-                * `customConfig` (`dict`)
-                * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-
-              * `serviceClusterIpRange` (`str`)
-              * `serviceNodePortRange` (`str`)
-
-            * `kubeController` (`dict`)
-              * `clusterCidr` (`str`)
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `image` (`str`)
-              * `serviceClusterIpRange` (`str`)
-
-            * `kubelet` (`dict`)
-              * `clusterDnsServer` (`str`)
-              * `clusterDomain` (`str`)
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `failSwapOn` (`bool`)
-              * `generateServingCertificate` (`bool`)
-              * `image` (`str`)
-              * `infraContainerImage` (`str`)
-
-            * `kubeproxy` (`dict`)
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `image` (`str`)
-
-            * `scheduler` (`dict`)
-              * `extraArgs` (`dict`)
-              * `extraBinds` (`list`)
-              * `extraEnvs` (`list`)
-              * `image` (`str`)
-
-          * `sshAgentAuth` (`bool`)
-          * `sshCertPath` (`str`)
-          * `sshKeyPath` (`str`)
-          * `upgrade_strategy` (`dict`)
-            * `drain` (`bool`)
-            * `drainInput` (`dict`)
-              * `deleteLocalData` (`bool`)
-              * `force` (`bool`)
-              * `gracePeriod` (`float`)
-              * `ignoreDaemonSets` (`bool`)
-              * `timeout` (`float`)
-
-            * `maxUnavailableControlplane` (`str`)
-            * `maxUnavailableWorker` (`str`)
-
-        * `scheduled_cluster_scan` (`dict`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-          * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-          * `scanConfig` (`dict`)
-            * `cisScanConfig` (`dict`)
-              * `debugMaster` (`bool`)
-              * `debugWorker` (`bool`)
-              * `overrideBenchmarkVersion` (`str`)
-              * `overrideSkips` (`list`)
-              * `profile` (`str`)
-
-          * `scheduleConfig` (`dict`)
-            * `cronSchedule` (`str`)
-            * `retention` (`float`)
-
-        * `windows_prefered_cluster` (`bool`) - Windows prefered cluster. Default: `false` (bool)
-
-      * `cluster_template_id` (`str`) - Cluster template ID (string)
-      * `default` (`bool`) - Default variable value (string)
-      * `enabled` (`bool`) - Enable cluster template revision. Default `true` (bool)
-      * `id` (`str`) - The cluster template revision ID (string)
-      * `labels` (`dict`) - Labels for the cluster template revision (map)
-      * `name` (`str`) - The cluster template revision name (string)
-      * `questions` (`list`) - Cluster template questions (list)
-        * `default` (`str`) - Default variable value (string)
-        * `required` (`bool`) - Required variable. Default `false` (bool)
-        * `type` (`str`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-        * `variable` (`str`) - Variable name (string)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, description=None, labels=None, members=None, name=None, template_revisions=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 template_revisions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information.
 
@@ -419,13 +40,13 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             description="Terraform cluster template foo",
-            members=[{
-                "accessType": "owner",
-                "user_principal_id": "local://user-XXXXX",
-            }],
-            template_revisions=[{
-                "clusterConfig": {
-                    "rke_config": {
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
                         "network": {
                             "plugin": "canal",
                         },
@@ -436,10 +57,10 @@ class ClusterTemplate(pulumi.CustomResource):
                             },
                         },
                     },
-                },
-                "default": True,
-                "name": "V1",
-            }])
+                ),
+                default=True,
+                name="V1",
+            )])
         ```
 
         Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
@@ -451,13 +72,13 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             description="Terraform cluster template foo",
-            members=[{
-                "accessType": "owner",
-                "user_principal_id": "local://user-XXXXX",
-            }],
-            template_revisions=[{
-                "clusterConfig": {
-                    "rke_config": {
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
                         "network": {
                             "plugin": "canal",
                         },
@@ -472,10 +93,10 @@ class ClusterTemplate(pulumi.CustomResource):
                             "maxUnavailableWorker": "20%",
                         },
                     },
-                },
-                "default": True,
-                "name": "V1",
-            }])
+                ),
+                default=True,
+                name="V1",
+            )])
         ```
 
         Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
@@ -487,13 +108,13 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             description="Terraform cluster template foo",
-            members=[{
-                "accessType": "owner",
-                "user_principal_id": "local://user-XXXXX",
-            }],
-            template_revisions=[{
-                "clusterConfig": {
-                    "rke_config": {
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
                         "network": {
                             "plugin": "canal",
                         },
@@ -504,7 +125,7 @@ class ClusterTemplate(pulumi.CustomResource):
                             },
                         },
                     },
-                    "scheduled_cluster_scan": {
+                    scheduled_cluster_scan={
                         "enabled": True,
                         "scanConfig": {
                             "cisScanConfig": {
@@ -517,390 +138,20 @@ class ClusterTemplate(pulumi.CustomResource):
                             "retention": 5,
                         },
                     },
-                },
-                "default": True,
-                "name": "V1",
-            }])
+                ),
+                default=True,
+                name="V1",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for the cluster template revision (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[dict] labels: Labels for the cluster template revision (map)
-        :param pulumi.Input[list] members: Cluster template members (list)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template revision name (string)
-        :param pulumi.Input[list] template_revisions: Cluster template revisions (list)
-
-        The **members** object supports the following:
-
-          * `accessType` (`pulumi.Input[str]`) - Member access type. Valid values: `["read-only" | "owner"]` (string)
-          * `group_principal_id` (`pulumi.Input[str]`) - Member group principal id (string)
-          * `user_principal_id` (`pulumi.Input[str]`) - Member user principal id (string)
-
-        The **template_revisions** object supports the following:
-
-          * `annotations` (`pulumi.Input[dict]`) - Annotations for the cluster template revision (map)
-          * `clusterConfig` (`pulumi.Input[dict]`) - Cluster configuration (list maxitem: 1)
-            * `cluster_auth_endpoint` (`pulumi.Input[dict]`) - Local cluster auth endpoint (list maxitems: 1)
-              * `caCerts` (`pulumi.Input[str]`)
-              * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-              * `fqdn` (`pulumi.Input[str]`)
-
-            * `defaultClusterRoleForProjectMembers` (`pulumi.Input[str]`) - Default cluster role for project members (string)
-            * `default_pod_security_policy_template_id` (`pulumi.Input[str]`) - Default pod security policy template ID (string)
-            * `desired_agent_image` (`pulumi.Input[str]`) - Desired agent image (string)
-            * `desired_auth_image` (`pulumi.Input[str]`) - Desired auth image (string)
-            * `docker_root_dir` (`pulumi.Input[str]`) - Desired auth image (string)
-            * `enable_cluster_alerting` (`pulumi.Input[bool]`) - Enable built-in cluster alerting. Default: `false` (bool)
-            * `enable_cluster_monitoring` (`pulumi.Input[bool]`) - Enable built-in cluster monitoring. Default: `false` (bool)
-            * `enable_network_policy` (`pulumi.Input[bool]`) - Enable project network isolation. Default: `false` (bool)
-            * `rke_config` (`pulumi.Input[dict]`) - Rancher Kubernetes Engine Config (list maxitems: 1)
-              * `addonJobTimeout` (`pulumi.Input[float]`)
-              * `addons` (`pulumi.Input[str]`)
-              * `addonsIncludes` (`pulumi.Input[list]`)
-              * `authentication` (`pulumi.Input[dict]`)
-                * `sans` (`pulumi.Input[list]`)
-                * `strategy` (`pulumi.Input[str]`)
-
-              * `authorization` (`pulumi.Input[dict]`)
-                * `mode` (`pulumi.Input[str]`)
-                * `options` (`pulumi.Input[dict]`)
-
-              * `bastionHost` (`pulumi.Input[dict]`)
-                * `address` (`pulumi.Input[str]`)
-                * `port` (`pulumi.Input[str]`)
-                * `sshAgentAuth` (`pulumi.Input[bool]`)
-                * `sshKey` (`pulumi.Input[str]`)
-                * `sshKeyPath` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `cloudProvider` (`pulumi.Input[dict]`)
-                * `awsCloudProvider` (`pulumi.Input[dict]`)
-                  * `global` (`pulumi.Input[dict]`)
-                    * `disableSecurityGroupIngress` (`pulumi.Input[bool]`)
-                    * `disableStrictZoneCheck` (`pulumi.Input[bool]`)
-                    * `elbSecurityGroup` (`pulumi.Input[str]`)
-                    * `kubernetesClusterId` (`pulumi.Input[str]`)
-                    * `kubernetesClusterTag` (`pulumi.Input[str]`)
-                    * `roleArn` (`pulumi.Input[str]`)
-                    * `routeTableId` (`pulumi.Input[str]`)
-                    * `subnetId` (`pulumi.Input[str]`)
-                    * `vpc` (`pulumi.Input[str]`)
-                    * `zone` (`pulumi.Input[str]`)
-
-                  * `serviceOverrides` (`pulumi.Input[list]`)
-                    * `region` (`pulumi.Input[str]`)
-                    * `service` (`pulumi.Input[str]`)
-                    * `signingMethod` (`pulumi.Input[str]`)
-                    * `signingName` (`pulumi.Input[str]`)
-                    * `signingRegion` (`pulumi.Input[str]`)
-                    * `url` (`pulumi.Input[str]`)
-
-                * `azureCloudProvider` (`pulumi.Input[dict]`)
-                  * `aadClientCertPassword` (`pulumi.Input[str]`)
-                  * `aadClientCertPath` (`pulumi.Input[str]`)
-                  * `aadClientId` (`pulumi.Input[str]`)
-                  * `aadClientSecret` (`pulumi.Input[str]`)
-                  * `cloud` (`pulumi.Input[str]`)
-                  * `cloudProviderBackoff` (`pulumi.Input[bool]`)
-                  * `cloudProviderBackoffDuration` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffExponent` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffJitter` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffRetries` (`pulumi.Input[float]`)
-                  * `cloudProviderRateLimit` (`pulumi.Input[bool]`)
-                  * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`)
-                  * `cloudProviderRateLimitQps` (`pulumi.Input[float]`)
-                  * `loadBalancerSku` (`pulumi.Input[str]`)
-                  * `location` (`pulumi.Input[str]`)
-                  * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`)
-                  * `primaryAvailabilitySetName` (`pulumi.Input[str]`)
-                  * `primaryScaleSetName` (`pulumi.Input[str]`)
-                  * `resourceGroup` (`pulumi.Input[str]`)
-                  * `routeTableName` (`pulumi.Input[str]`)
-                  * `securityGroupName` (`pulumi.Input[str]`)
-                  * `subnetName` (`pulumi.Input[str]`)
-                  * `subscriptionId` (`pulumi.Input[str]`)
-                  * `tenant_id` (`pulumi.Input[str]`)
-                  * `useInstanceMetadata` (`pulumi.Input[bool]`)
-                  * `useManagedIdentityExtension` (`pulumi.Input[bool]`)
-                  * `vmType` (`pulumi.Input[str]`)
-                  * `vnetName` (`pulumi.Input[str]`)
-                  * `vnetResourceGroup` (`pulumi.Input[str]`)
-
-                * `customCloudProvider` (`pulumi.Input[str]`)
-                * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-                * `openstackCloudProvider` (`pulumi.Input[dict]`)
-                  * `blockStorage` (`pulumi.Input[dict]`)
-                    * `bsVersion` (`pulumi.Input[str]`)
-                    * `ignoreVolumeAz` (`pulumi.Input[bool]`)
-                    * `trustDevicePath` (`pulumi.Input[bool]`)
-
-                  * `global` (`pulumi.Input[dict]`)
-                    * `authUrl` (`pulumi.Input[str]`)
-                    * `caFile` (`pulumi.Input[str]`)
-                    * `domainId` (`pulumi.Input[str]`)
-                    * `domainName` (`pulumi.Input[str]`)
-                    * `password` (`pulumi.Input[str]`)
-                    * `region` (`pulumi.Input[str]`)
-                    * `tenant_id` (`pulumi.Input[str]`)
-                    * `tenantName` (`pulumi.Input[str]`)
-                    * `trustId` (`pulumi.Input[str]`)
-                    * `username` (`pulumi.Input[str]`)
-
-                  * `loadBalancer` (`pulumi.Input[dict]`)
-                    * `createMonitor` (`pulumi.Input[bool]`)
-                    * `floatingNetworkId` (`pulumi.Input[str]`)
-                    * `lbMethod` (`pulumi.Input[str]`)
-                    * `lbProvider` (`pulumi.Input[str]`)
-                    * `lbVersion` (`pulumi.Input[str]`)
-                    * `manageSecurityGroups` (`pulumi.Input[bool]`)
-                    * `monitorDelay` (`pulumi.Input[str]`)
-                    * `monitorMaxRetries` (`pulumi.Input[float]`)
-                    * `monitorTimeout` (`pulumi.Input[str]`)
-                    * `subnetId` (`pulumi.Input[str]`)
-                    * `useOctavia` (`pulumi.Input[bool]`)
-
-                  * `metadata` (`pulumi.Input[dict]`)
-                    * `requestTimeout` (`pulumi.Input[float]`)
-                    * `searchOrder` (`pulumi.Input[str]`)
-
-                  * `route` (`pulumi.Input[dict]`)
-                    * `routerId` (`pulumi.Input[str]`)
-
-                * `vsphereCloudProvider` (`pulumi.Input[dict]`)
-                  * `disk` (`pulumi.Input[dict]`)
-                    * `scsiControllerType` (`pulumi.Input[str]`)
-
-                  * `global` (`pulumi.Input[dict]`)
-                    * `datacenters` (`pulumi.Input[str]`)
-                    * `insecureFlag` (`pulumi.Input[bool]`)
-                    * `password` (`pulumi.Input[str]`)
-                    * `port` (`pulumi.Input[str]`)
-                    * `soapRoundtripCount` (`pulumi.Input[float]`)
-                    * `user` (`pulumi.Input[str]`)
-
-                  * `network` (`pulumi.Input[dict]`)
-                    * `publicNetwork` (`pulumi.Input[str]`)
-
-                  * `virtualCenters` (`pulumi.Input[list]`)
-                    * `datacenters` (`pulumi.Input[str]`)
-                    * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-                    * `password` (`pulumi.Input[str]`)
-                    * `port` (`pulumi.Input[str]`)
-                    * `soapRoundtripCount` (`pulumi.Input[float]`)
-                    * `user` (`pulumi.Input[str]`)
-
-                  * `workspace` (`pulumi.Input[dict]`)
-                    * `datacenter` (`pulumi.Input[str]`)
-                    * `defaultDatastore` (`pulumi.Input[str]`)
-                    * `folder` (`pulumi.Input[str]`)
-                    * `resourcepoolPath` (`pulumi.Input[str]`)
-                    * `server` (`pulumi.Input[str]`)
-
-              * `dns` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `nodelocal` (`pulumi.Input[dict]`)
-                  * `ipAddress` (`pulumi.Input[str]`)
-                  * `nodeSelector` (`pulumi.Input[dict]`)
-
-                * `provider` (`pulumi.Input[str]`)
-                * `reverseCidrs` (`pulumi.Input[list]`)
-                * `upstreamNameservers` (`pulumi.Input[list]`)
-
-              * `ignoreDockerVersion` (`pulumi.Input[bool]`)
-              * `ingress` (`pulumi.Input[dict]`)
-                * `dnsPolicy` (`pulumi.Input[str]`)
-                * `extraArgs` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `provider` (`pulumi.Input[str]`)
-
-              * `kubernetesVersion` (`pulumi.Input[str]`)
-              * `monitoring` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `provider` (`pulumi.Input[str]`)
-                * `replicas` (`pulumi.Input[float]`)
-                * `updateStrategy` (`pulumi.Input[dict]`)
-                  * `rollingUpdate` (`pulumi.Input[dict]`)
-                    * `maxSurge` (`pulumi.Input[float]`)
-                    * `maxUnavailable` (`pulumi.Input[float]`)
-
-                  * `strategy` (`pulumi.Input[str]`)
-
-              * `network` (`pulumi.Input[dict]`)
-                * `calicoNetworkProvider` (`pulumi.Input[dict]`)
-                  * `cloudProvider` (`pulumi.Input[str]`)
-
-                * `canalNetworkProvider` (`pulumi.Input[dict]`)
-                  * `iface` (`pulumi.Input[str]`)
-
-                * `flannelNetworkProvider` (`pulumi.Input[dict]`)
-                  * `iface` (`pulumi.Input[str]`)
-
-                * `mtu` (`pulumi.Input[float]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `plugin` (`pulumi.Input[str]`)
-                * `weaveNetworkProvider` (`pulumi.Input[dict]`)
-                  * `password` (`pulumi.Input[str]`)
-
-              * `nodes` (`pulumi.Input[list]`)
-                * `address` (`pulumi.Input[str]`)
-                * `dockerSocket` (`pulumi.Input[str]`)
-                * `hostnameOverride` (`pulumi.Input[str]`)
-                * `internalAddress` (`pulumi.Input[str]`)
-                * `labels` (`pulumi.Input[dict]`) - Labels for the cluster template revision (map)
-                * `nodeId` (`pulumi.Input[str]`)
-                * `port` (`pulumi.Input[str]`)
-                * `roles` (`pulumi.Input[list]`)
-                * `sshAgentAuth` (`pulumi.Input[bool]`)
-                * `sshKey` (`pulumi.Input[str]`)
-                * `sshKeyPath` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `prefixPath` (`pulumi.Input[str]`)
-              * `privateRegistries` (`pulumi.Input[list]`)
-                * `isDefault` (`pulumi.Input[bool]`)
-                * `password` (`pulumi.Input[str]`)
-                * `url` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `services` (`pulumi.Input[dict]`)
-                * `etcd` (`pulumi.Input[dict]`)
-                  * `backup_config` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-                    * `intervalHours` (`pulumi.Input[float]`)
-                    * `retention` (`pulumi.Input[float]`)
-                    * `s3BackupConfig` (`pulumi.Input[dict]`)
-                      * `access_key` (`pulumi.Input[str]`)
-                      * `bucketName` (`pulumi.Input[str]`)
-                      * `customCa` (`pulumi.Input[str]`)
-                      * `endpoint` (`pulumi.Input[str]`)
-                      * `folder` (`pulumi.Input[str]`)
-                      * `region` (`pulumi.Input[str]`)
-                      * `secret_key` (`pulumi.Input[str]`)
-
-                    * `safeTimestamp` (`pulumi.Input[bool]`)
-
-                  * `caCert` (`pulumi.Input[str]`)
-                  * `cert` (`pulumi.Input[str]`)
-                  * `creation` (`pulumi.Input[str]`)
-                  * `externalUrls` (`pulumi.Input[list]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `gid` (`pulumi.Input[float]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `key` (`pulumi.Input[str]`)
-                  * `path` (`pulumi.Input[str]`)
-                  * `retention` (`pulumi.Input[str]`)
-                  * `snapshot` (`pulumi.Input[bool]`)
-                  * `uid` (`pulumi.Input[float]`)
-
-                * `kubeApi` (`pulumi.Input[dict]`)
-                  * `admissionConfiguration` (`pulumi.Input[dict]`)
-                  * `alwaysPullImages` (`pulumi.Input[bool]`)
-                  * `auditLog` (`pulumi.Input[dict]`)
-                    * `configuration` (`pulumi.Input[dict]`)
-                      * `format` (`pulumi.Input[str]`)
-                      * `maxAge` (`pulumi.Input[float]`)
-                      * `maxBackup` (`pulumi.Input[float]`)
-                      * `maxSize` (`pulumi.Input[float]`)
-                      * `path` (`pulumi.Input[str]`)
-                      * `policy` (`pulumi.Input[str]`)
-
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `eventRateLimit` (`pulumi.Input[dict]`)
-                    * `configuration` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `podSecurityPolicy` (`pulumi.Input[bool]`)
-                  * `secretsEncryptionConfig` (`pulumi.Input[dict]`)
-                    * `customConfig` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `serviceClusterIpRange` (`pulumi.Input[str]`)
-                  * `serviceNodePortRange` (`pulumi.Input[str]`)
-
-                * `kubeController` (`pulumi.Input[dict]`)
-                  * `clusterCidr` (`pulumi.Input[str]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `serviceClusterIpRange` (`pulumi.Input[str]`)
-
-                * `kubelet` (`pulumi.Input[dict]`)
-                  * `clusterDnsServer` (`pulumi.Input[str]`)
-                  * `clusterDomain` (`pulumi.Input[str]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `failSwapOn` (`pulumi.Input[bool]`)
-                  * `generateServingCertificate` (`pulumi.Input[bool]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `infraContainerImage` (`pulumi.Input[str]`)
-
-                * `kubeproxy` (`pulumi.Input[dict]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-
-                * `scheduler` (`pulumi.Input[dict]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-
-              * `sshAgentAuth` (`pulumi.Input[bool]`)
-              * `sshCertPath` (`pulumi.Input[str]`)
-              * `sshKeyPath` (`pulumi.Input[str]`)
-              * `upgrade_strategy` (`pulumi.Input[dict]`)
-                * `drain` (`pulumi.Input[bool]`)
-                * `drainInput` (`pulumi.Input[dict]`)
-                  * `deleteLocalData` (`pulumi.Input[bool]`)
-                  * `force` (`pulumi.Input[bool]`)
-                  * `gracePeriod` (`pulumi.Input[float]`)
-                  * `ignoreDaemonSets` (`pulumi.Input[bool]`)
-                  * `timeout` (`pulumi.Input[float]`)
-
-                * `maxUnavailableControlplane` (`pulumi.Input[str]`)
-                * `maxUnavailableWorker` (`pulumi.Input[str]`)
-
-            * `scheduled_cluster_scan` (`pulumi.Input[dict]`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-              * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-              * `scanConfig` (`pulumi.Input[dict]`)
-                * `cisScanConfig` (`pulumi.Input[dict]`)
-                  * `debugMaster` (`pulumi.Input[bool]`)
-                  * `debugWorker` (`pulumi.Input[bool]`)
-                  * `overrideBenchmarkVersion` (`pulumi.Input[str]`)
-                  * `overrideSkips` (`pulumi.Input[list]`)
-                  * `profile` (`pulumi.Input[str]`)
-
-              * `scheduleConfig` (`pulumi.Input[dict]`)
-                * `cronSchedule` (`pulumi.Input[str]`)
-                * `retention` (`pulumi.Input[float]`)
-
-            * `windows_prefered_cluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
-
-          * `cluster_template_id` (`pulumi.Input[str]`) - Cluster template ID (string)
-          * `default` (`pulumi.Input[bool]`) - Default variable value (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-          * `id` (`pulumi.Input[str]`) - The cluster template revision ID (string)
-          * `labels` (`pulumi.Input[dict]`) - Labels for the cluster template revision (map)
-          * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-          * `questions` (`pulumi.Input[list]`) - Cluster template questions (list)
-            * `default` (`pulumi.Input[str]`) - Default variable value (string)
-            * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
-            * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-            * `variable` (`pulumi.Input[str]`) - Variable name (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -913,7 +164,7 @@ class ClusterTemplate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -933,391 +184,30 @@ class ClusterTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, default_revision_id=None, description=None, labels=None, members=None, name=None, template_revisions=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            default_revision_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            template_revisions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None) -> 'ClusterTemplate':
         """
         Get an existing ClusterTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for the cluster template revision (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)
         :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[dict] labels: Labels for the cluster template revision (map)
-        :param pulumi.Input[list] members: Cluster template members (list)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template revision name (string)
-        :param pulumi.Input[list] template_revisions: Cluster template revisions (list)
-
-        The **members** object supports the following:
-
-          * `accessType` (`pulumi.Input[str]`) - Member access type. Valid values: `["read-only" | "owner"]` (string)
-          * `group_principal_id` (`pulumi.Input[str]`) - Member group principal id (string)
-          * `user_principal_id` (`pulumi.Input[str]`) - Member user principal id (string)
-
-        The **template_revisions** object supports the following:
-
-          * `annotations` (`pulumi.Input[dict]`) - Annotations for the cluster template revision (map)
-          * `clusterConfig` (`pulumi.Input[dict]`) - Cluster configuration (list maxitem: 1)
-            * `cluster_auth_endpoint` (`pulumi.Input[dict]`) - Local cluster auth endpoint (list maxitems: 1)
-              * `caCerts` (`pulumi.Input[str]`)
-              * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-              * `fqdn` (`pulumi.Input[str]`)
-
-            * `defaultClusterRoleForProjectMembers` (`pulumi.Input[str]`) - Default cluster role for project members (string)
-            * `default_pod_security_policy_template_id` (`pulumi.Input[str]`) - Default pod security policy template ID (string)
-            * `desired_agent_image` (`pulumi.Input[str]`) - Desired agent image (string)
-            * `desired_auth_image` (`pulumi.Input[str]`) - Desired auth image (string)
-            * `docker_root_dir` (`pulumi.Input[str]`) - Desired auth image (string)
-            * `enable_cluster_alerting` (`pulumi.Input[bool]`) - Enable built-in cluster alerting. Default: `false` (bool)
-            * `enable_cluster_monitoring` (`pulumi.Input[bool]`) - Enable built-in cluster monitoring. Default: `false` (bool)
-            * `enable_network_policy` (`pulumi.Input[bool]`) - Enable project network isolation. Default: `false` (bool)
-            * `rke_config` (`pulumi.Input[dict]`) - Rancher Kubernetes Engine Config (list maxitems: 1)
-              * `addonJobTimeout` (`pulumi.Input[float]`)
-              * `addons` (`pulumi.Input[str]`)
-              * `addonsIncludes` (`pulumi.Input[list]`)
-              * `authentication` (`pulumi.Input[dict]`)
-                * `sans` (`pulumi.Input[list]`)
-                * `strategy` (`pulumi.Input[str]`)
-
-              * `authorization` (`pulumi.Input[dict]`)
-                * `mode` (`pulumi.Input[str]`)
-                * `options` (`pulumi.Input[dict]`)
-
-              * `bastionHost` (`pulumi.Input[dict]`)
-                * `address` (`pulumi.Input[str]`)
-                * `port` (`pulumi.Input[str]`)
-                * `sshAgentAuth` (`pulumi.Input[bool]`)
-                * `sshKey` (`pulumi.Input[str]`)
-                * `sshKeyPath` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `cloudProvider` (`pulumi.Input[dict]`)
-                * `awsCloudProvider` (`pulumi.Input[dict]`)
-                  * `global` (`pulumi.Input[dict]`)
-                    * `disableSecurityGroupIngress` (`pulumi.Input[bool]`)
-                    * `disableStrictZoneCheck` (`pulumi.Input[bool]`)
-                    * `elbSecurityGroup` (`pulumi.Input[str]`)
-                    * `kubernetesClusterId` (`pulumi.Input[str]`)
-                    * `kubernetesClusterTag` (`pulumi.Input[str]`)
-                    * `roleArn` (`pulumi.Input[str]`)
-                    * `routeTableId` (`pulumi.Input[str]`)
-                    * `subnetId` (`pulumi.Input[str]`)
-                    * `vpc` (`pulumi.Input[str]`)
-                    * `zone` (`pulumi.Input[str]`)
-
-                  * `serviceOverrides` (`pulumi.Input[list]`)
-                    * `region` (`pulumi.Input[str]`)
-                    * `service` (`pulumi.Input[str]`)
-                    * `signingMethod` (`pulumi.Input[str]`)
-                    * `signingName` (`pulumi.Input[str]`)
-                    * `signingRegion` (`pulumi.Input[str]`)
-                    * `url` (`pulumi.Input[str]`)
-
-                * `azureCloudProvider` (`pulumi.Input[dict]`)
-                  * `aadClientCertPassword` (`pulumi.Input[str]`)
-                  * `aadClientCertPath` (`pulumi.Input[str]`)
-                  * `aadClientId` (`pulumi.Input[str]`)
-                  * `aadClientSecret` (`pulumi.Input[str]`)
-                  * `cloud` (`pulumi.Input[str]`)
-                  * `cloudProviderBackoff` (`pulumi.Input[bool]`)
-                  * `cloudProviderBackoffDuration` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffExponent` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffJitter` (`pulumi.Input[float]`)
-                  * `cloudProviderBackoffRetries` (`pulumi.Input[float]`)
-                  * `cloudProviderRateLimit` (`pulumi.Input[bool]`)
-                  * `cloudProviderRateLimitBucket` (`pulumi.Input[float]`)
-                  * `cloudProviderRateLimitQps` (`pulumi.Input[float]`)
-                  * `loadBalancerSku` (`pulumi.Input[str]`)
-                  * `location` (`pulumi.Input[str]`)
-                  * `maximumLoadBalancerRuleCount` (`pulumi.Input[float]`)
-                  * `primaryAvailabilitySetName` (`pulumi.Input[str]`)
-                  * `primaryScaleSetName` (`pulumi.Input[str]`)
-                  * `resourceGroup` (`pulumi.Input[str]`)
-                  * `routeTableName` (`pulumi.Input[str]`)
-                  * `securityGroupName` (`pulumi.Input[str]`)
-                  * `subnetName` (`pulumi.Input[str]`)
-                  * `subscriptionId` (`pulumi.Input[str]`)
-                  * `tenant_id` (`pulumi.Input[str]`)
-                  * `useInstanceMetadata` (`pulumi.Input[bool]`)
-                  * `useManagedIdentityExtension` (`pulumi.Input[bool]`)
-                  * `vmType` (`pulumi.Input[str]`)
-                  * `vnetName` (`pulumi.Input[str]`)
-                  * `vnetResourceGroup` (`pulumi.Input[str]`)
-
-                * `customCloudProvider` (`pulumi.Input[str]`)
-                * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-                * `openstackCloudProvider` (`pulumi.Input[dict]`)
-                  * `blockStorage` (`pulumi.Input[dict]`)
-                    * `bsVersion` (`pulumi.Input[str]`)
-                    * `ignoreVolumeAz` (`pulumi.Input[bool]`)
-                    * `trustDevicePath` (`pulumi.Input[bool]`)
-
-                  * `global` (`pulumi.Input[dict]`)
-                    * `authUrl` (`pulumi.Input[str]`)
-                    * `caFile` (`pulumi.Input[str]`)
-                    * `domainId` (`pulumi.Input[str]`)
-                    * `domainName` (`pulumi.Input[str]`)
-                    * `password` (`pulumi.Input[str]`)
-                    * `region` (`pulumi.Input[str]`)
-                    * `tenant_id` (`pulumi.Input[str]`)
-                    * `tenantName` (`pulumi.Input[str]`)
-                    * `trustId` (`pulumi.Input[str]`)
-                    * `username` (`pulumi.Input[str]`)
-
-                  * `loadBalancer` (`pulumi.Input[dict]`)
-                    * `createMonitor` (`pulumi.Input[bool]`)
-                    * `floatingNetworkId` (`pulumi.Input[str]`)
-                    * `lbMethod` (`pulumi.Input[str]`)
-                    * `lbProvider` (`pulumi.Input[str]`)
-                    * `lbVersion` (`pulumi.Input[str]`)
-                    * `manageSecurityGroups` (`pulumi.Input[bool]`)
-                    * `monitorDelay` (`pulumi.Input[str]`)
-                    * `monitorMaxRetries` (`pulumi.Input[float]`)
-                    * `monitorTimeout` (`pulumi.Input[str]`)
-                    * `subnetId` (`pulumi.Input[str]`)
-                    * `useOctavia` (`pulumi.Input[bool]`)
-
-                  * `metadata` (`pulumi.Input[dict]`)
-                    * `requestTimeout` (`pulumi.Input[float]`)
-                    * `searchOrder` (`pulumi.Input[str]`)
-
-                  * `route` (`pulumi.Input[dict]`)
-                    * `routerId` (`pulumi.Input[str]`)
-
-                * `vsphereCloudProvider` (`pulumi.Input[dict]`)
-                  * `disk` (`pulumi.Input[dict]`)
-                    * `scsiControllerType` (`pulumi.Input[str]`)
-
-                  * `global` (`pulumi.Input[dict]`)
-                    * `datacenters` (`pulumi.Input[str]`)
-                    * `insecureFlag` (`pulumi.Input[bool]`)
-                    * `password` (`pulumi.Input[str]`)
-                    * `port` (`pulumi.Input[str]`)
-                    * `soapRoundtripCount` (`pulumi.Input[float]`)
-                    * `user` (`pulumi.Input[str]`)
-
-                  * `network` (`pulumi.Input[dict]`)
-                    * `publicNetwork` (`pulumi.Input[str]`)
-
-                  * `virtualCenters` (`pulumi.Input[list]`)
-                    * `datacenters` (`pulumi.Input[str]`)
-                    * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-                    * `password` (`pulumi.Input[str]`)
-                    * `port` (`pulumi.Input[str]`)
-                    * `soapRoundtripCount` (`pulumi.Input[float]`)
-                    * `user` (`pulumi.Input[str]`)
-
-                  * `workspace` (`pulumi.Input[dict]`)
-                    * `datacenter` (`pulumi.Input[str]`)
-                    * `defaultDatastore` (`pulumi.Input[str]`)
-                    * `folder` (`pulumi.Input[str]`)
-                    * `resourcepoolPath` (`pulumi.Input[str]`)
-                    * `server` (`pulumi.Input[str]`)
-
-              * `dns` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `nodelocal` (`pulumi.Input[dict]`)
-                  * `ipAddress` (`pulumi.Input[str]`)
-                  * `nodeSelector` (`pulumi.Input[dict]`)
-
-                * `provider` (`pulumi.Input[str]`)
-                * `reverseCidrs` (`pulumi.Input[list]`)
-                * `upstreamNameservers` (`pulumi.Input[list]`)
-
-              * `ignoreDockerVersion` (`pulumi.Input[bool]`)
-              * `ingress` (`pulumi.Input[dict]`)
-                * `dnsPolicy` (`pulumi.Input[str]`)
-                * `extraArgs` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `provider` (`pulumi.Input[str]`)
-
-              * `kubernetesVersion` (`pulumi.Input[str]`)
-              * `monitoring` (`pulumi.Input[dict]`)
-                * `nodeSelector` (`pulumi.Input[dict]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `provider` (`pulumi.Input[str]`)
-                * `replicas` (`pulumi.Input[float]`)
-                * `updateStrategy` (`pulumi.Input[dict]`)
-                  * `rollingUpdate` (`pulumi.Input[dict]`)
-                    * `maxSurge` (`pulumi.Input[float]`)
-                    * `maxUnavailable` (`pulumi.Input[float]`)
-
-                  * `strategy` (`pulumi.Input[str]`)
-
-              * `network` (`pulumi.Input[dict]`)
-                * `calicoNetworkProvider` (`pulumi.Input[dict]`)
-                  * `cloudProvider` (`pulumi.Input[str]`)
-
-                * `canalNetworkProvider` (`pulumi.Input[dict]`)
-                  * `iface` (`pulumi.Input[str]`)
-
-                * `flannelNetworkProvider` (`pulumi.Input[dict]`)
-                  * `iface` (`pulumi.Input[str]`)
-
-                * `mtu` (`pulumi.Input[float]`)
-                * `options` (`pulumi.Input[dict]`)
-                * `plugin` (`pulumi.Input[str]`)
-                * `weaveNetworkProvider` (`pulumi.Input[dict]`)
-                  * `password` (`pulumi.Input[str]`)
-
-              * `nodes` (`pulumi.Input[list]`)
-                * `address` (`pulumi.Input[str]`)
-                * `dockerSocket` (`pulumi.Input[str]`)
-                * `hostnameOverride` (`pulumi.Input[str]`)
-                * `internalAddress` (`pulumi.Input[str]`)
-                * `labels` (`pulumi.Input[dict]`) - Labels for the cluster template revision (map)
-                * `nodeId` (`pulumi.Input[str]`)
-                * `port` (`pulumi.Input[str]`)
-                * `roles` (`pulumi.Input[list]`)
-                * `sshAgentAuth` (`pulumi.Input[bool]`)
-                * `sshKey` (`pulumi.Input[str]`)
-                * `sshKeyPath` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `prefixPath` (`pulumi.Input[str]`)
-              * `privateRegistries` (`pulumi.Input[list]`)
-                * `isDefault` (`pulumi.Input[bool]`)
-                * `password` (`pulumi.Input[str]`)
-                * `url` (`pulumi.Input[str]`)
-                * `user` (`pulumi.Input[str]`)
-
-              * `services` (`pulumi.Input[dict]`)
-                * `etcd` (`pulumi.Input[dict]`)
-                  * `backup_config` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-                    * `intervalHours` (`pulumi.Input[float]`)
-                    * `retention` (`pulumi.Input[float]`)
-                    * `s3BackupConfig` (`pulumi.Input[dict]`)
-                      * `access_key` (`pulumi.Input[str]`)
-                      * `bucketName` (`pulumi.Input[str]`)
-                      * `customCa` (`pulumi.Input[str]`)
-                      * `endpoint` (`pulumi.Input[str]`)
-                      * `folder` (`pulumi.Input[str]`)
-                      * `region` (`pulumi.Input[str]`)
-                      * `secret_key` (`pulumi.Input[str]`)
-
-                    * `safeTimestamp` (`pulumi.Input[bool]`)
-
-                  * `caCert` (`pulumi.Input[str]`)
-                  * `cert` (`pulumi.Input[str]`)
-                  * `creation` (`pulumi.Input[str]`)
-                  * `externalUrls` (`pulumi.Input[list]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `gid` (`pulumi.Input[float]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `key` (`pulumi.Input[str]`)
-                  * `path` (`pulumi.Input[str]`)
-                  * `retention` (`pulumi.Input[str]`)
-                  * `snapshot` (`pulumi.Input[bool]`)
-                  * `uid` (`pulumi.Input[float]`)
-
-                * `kubeApi` (`pulumi.Input[dict]`)
-                  * `admissionConfiguration` (`pulumi.Input[dict]`)
-                  * `alwaysPullImages` (`pulumi.Input[bool]`)
-                  * `auditLog` (`pulumi.Input[dict]`)
-                    * `configuration` (`pulumi.Input[dict]`)
-                      * `format` (`pulumi.Input[str]`)
-                      * `maxAge` (`pulumi.Input[float]`)
-                      * `maxBackup` (`pulumi.Input[float]`)
-                      * `maxSize` (`pulumi.Input[float]`)
-                      * `path` (`pulumi.Input[str]`)
-                      * `policy` (`pulumi.Input[str]`)
-
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `eventRateLimit` (`pulumi.Input[dict]`)
-                    * `configuration` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `podSecurityPolicy` (`pulumi.Input[bool]`)
-                  * `secretsEncryptionConfig` (`pulumi.Input[dict]`)
-                    * `customConfig` (`pulumi.Input[dict]`)
-                    * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-
-                  * `serviceClusterIpRange` (`pulumi.Input[str]`)
-                  * `serviceNodePortRange` (`pulumi.Input[str]`)
-
-                * `kubeController` (`pulumi.Input[dict]`)
-                  * `clusterCidr` (`pulumi.Input[str]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `serviceClusterIpRange` (`pulumi.Input[str]`)
-
-                * `kubelet` (`pulumi.Input[dict]`)
-                  * `clusterDnsServer` (`pulumi.Input[str]`)
-                  * `clusterDomain` (`pulumi.Input[str]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `failSwapOn` (`pulumi.Input[bool]`)
-                  * `generateServingCertificate` (`pulumi.Input[bool]`)
-                  * `image` (`pulumi.Input[str]`)
-                  * `infraContainerImage` (`pulumi.Input[str]`)
-
-                * `kubeproxy` (`pulumi.Input[dict]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-
-                * `scheduler` (`pulumi.Input[dict]`)
-                  * `extraArgs` (`pulumi.Input[dict]`)
-                  * `extraBinds` (`pulumi.Input[list]`)
-                  * `extraEnvs` (`pulumi.Input[list]`)
-                  * `image` (`pulumi.Input[str]`)
-
-              * `sshAgentAuth` (`pulumi.Input[bool]`)
-              * `sshCertPath` (`pulumi.Input[str]`)
-              * `sshKeyPath` (`pulumi.Input[str]`)
-              * `upgrade_strategy` (`pulumi.Input[dict]`)
-                * `drain` (`pulumi.Input[bool]`)
-                * `drainInput` (`pulumi.Input[dict]`)
-                  * `deleteLocalData` (`pulumi.Input[bool]`)
-                  * `force` (`pulumi.Input[bool]`)
-                  * `gracePeriod` (`pulumi.Input[float]`)
-                  * `ignoreDaemonSets` (`pulumi.Input[bool]`)
-                  * `timeout` (`pulumi.Input[float]`)
-
-                * `maxUnavailableControlplane` (`pulumi.Input[str]`)
-                * `maxUnavailableWorker` (`pulumi.Input[str]`)
-
-            * `scheduled_cluster_scan` (`pulumi.Input[dict]`) - Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
-              * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-              * `scanConfig` (`pulumi.Input[dict]`)
-                * `cisScanConfig` (`pulumi.Input[dict]`)
-                  * `debugMaster` (`pulumi.Input[bool]`)
-                  * `debugWorker` (`pulumi.Input[bool]`)
-                  * `overrideBenchmarkVersion` (`pulumi.Input[str]`)
-                  * `overrideSkips` (`pulumi.Input[list]`)
-                  * `profile` (`pulumi.Input[str]`)
-
-              * `scheduleConfig` (`pulumi.Input[dict]`)
-                * `cronSchedule` (`pulumi.Input[str]`)
-                * `retention` (`pulumi.Input[float]`)
-
-            * `windows_prefered_cluster` (`pulumi.Input[bool]`) - Windows prefered cluster. Default: `false` (bool)
-
-          * `cluster_template_id` (`pulumi.Input[str]`) - Cluster template ID (string)
-          * `default` (`pulumi.Input[bool]`) - Default variable value (string)
-          * `enabled` (`pulumi.Input[bool]`) - Enable cluster template revision. Default `true` (bool)
-          * `id` (`pulumi.Input[str]`) - The cluster template revision ID (string)
-          * `labels` (`pulumi.Input[dict]`) - Labels for the cluster template revision (map)
-          * `name` (`pulumi.Input[str]`) - The cluster template revision name (string)
-          * `questions` (`pulumi.Input[list]`) - Cluster template questions (list)
-            * `default` (`pulumi.Input[str]`) - Default variable value (string)
-            * `required` (`pulumi.Input[bool]`) - Required variable. Default `false` (bool)
-            * `type` (`pulumi.Input[str]`) - Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-            * `variable` (`pulumi.Input[str]`) - Variable name (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1332,8 +222,65 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__["template_revisions"] = template_revisions
         return ClusterTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for the cluster template revision (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="defaultRevisionId")
+    def default_revision_id(self) -> str:
+        """
+        (Computed) Default cluster template revision ID (string)
+        """
+        return pulumi.get(self, "default_revision_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Cluster template description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for the cluster template revision (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[List['outputs.ClusterTemplateMember']]:
+        """
+        Cluster template members (list)
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The cluster template revision name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="templateRevisions")
+    def template_revisions(self) -> List['outputs.ClusterTemplateTemplateRevision']:
+        """
+        Cluster template revisions (list)
+        """
+        return pulumi.get(self, "template_revisions")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

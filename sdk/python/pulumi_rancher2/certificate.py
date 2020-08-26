@@ -5,44 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Certificate']
 
 
 class Certificate(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for certificate object (map)
-    """
-    certs: pulumi.Output[str]
-    """
-    Base64 encoded public certs (string)
-    """
-    description: pulumi.Output[str]
-    """
-    A certificate description (string)
-    """
-    key: pulumi.Output[str]
-    """
-    Base64 encoded private key (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for certificate object (map)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the certificate (string)
-    """
-    namespace_id: pulumi.Output[str]
-    """
-    The namespace id where the namespaced certificate should be created (string)
-    """
-    project_id: pulumi.Output[str]
-    """
-    The project id where the certificate should be created  (string)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, certs=None, description=None, key=None, labels=None, name=None, namespace_id=None, project_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 certs: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
 
@@ -52,11 +35,11 @@ class Certificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] description: A certificate description (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[dict] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
@@ -72,7 +55,7 @@ class Certificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -99,19 +82,29 @@ class Certificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, certs=None, description=None, key=None, labels=None, name=None, namespace_id=None, project_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            certs: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace_id: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] description: A certificate description (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[dict] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
@@ -130,8 +123,73 @@ class Certificate(pulumi.CustomResource):
         __props__["project_id"] = project_id
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for certificate object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def certs(self) -> str:
+        """
+        Base64 encoded public certs (string)
+        """
+        return pulumi.get(self, "certs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A certificate description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Base64 encoded private key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for certificate object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the certificate (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[str]:
+        """
+        The namespace id where the namespaced certificate should be created (string)
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The project id where the certificate should be created  (string)
+        """
+        return pulumi.get(self, "project_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

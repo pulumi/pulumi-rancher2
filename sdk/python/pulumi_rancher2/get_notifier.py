@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetNotifierResult',
+    'AwaitableGetNotifierResult',
+    'get_notifier',
+]
+
+@pulumi.output_type
 class GetNotifierResult:
     """
     A collection of values returned by getNotifier.
@@ -15,64 +23,121 @@ class GetNotifierResult:
     def __init__(__self__, annotations=None, cluster_id=None, description=None, id=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError("Expected argument 'cluster_id' to be a str")
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if pagerduty_config and not isinstance(pagerduty_config, dict):
+            raise TypeError("Expected argument 'pagerduty_config' to be a dict")
+        pulumi.set(__self__, "pagerduty_config", pagerduty_config)
+        if slack_config and not isinstance(slack_config, dict):
+            raise TypeError("Expected argument 'slack_config' to be a dict")
+        pulumi.set(__self__, "slack_config", slack_config)
+        if smtp_config and not isinstance(smtp_config, dict):
+            raise TypeError("Expected argument 'smtp_config' to be a dict")
+        pulumi.set(__self__, "smtp_config", smtp_config)
+        if webhook_config and not isinstance(webhook_config, dict):
+            raise TypeError("Expected argument 'webhook_config' to be a dict")
+        pulumi.set(__self__, "webhook_config", webhook_config)
+        if wechat_config and not isinstance(wechat_config, dict):
+            raise TypeError("Expected argument 'wechat_config' to be a dict")
+        pulumi.set(__self__, "wechat_config", wechat_config)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for notifier object (map)
         """
-        if cluster_id and not isinstance(cluster_id, str):
-            raise TypeError("Expected argument 'cluster_id' to be a str")
-        __self__.cluster_id = cluster_id
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) The notifier description (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for notifier object (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if pagerduty_config and not isinstance(pagerduty_config, dict):
-            raise TypeError("Expected argument 'pagerduty_config' to be a dict")
-        __self__.pagerduty_config = pagerduty_config
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pagerdutyConfig")
+    def pagerduty_config(self) -> 'outputs.GetNotifierPagerdutyConfigResult':
         """
         (Computed) Pagerduty config for notifier (list maxitems:1)
         """
-        if slack_config and not isinstance(slack_config, dict):
-            raise TypeError("Expected argument 'slack_config' to be a dict")
-        __self__.slack_config = slack_config
+        return pulumi.get(self, "pagerduty_config")
+
+    @property
+    @pulumi.getter(name="slackConfig")
+    def slack_config(self) -> 'outputs.GetNotifierSlackConfigResult':
         """
         (Computed) Slack config for notifier (list maxitems:1)
         """
-        if smtp_config and not isinstance(smtp_config, dict):
-            raise TypeError("Expected argument 'smtp_config' to be a dict")
-        __self__.smtp_config = smtp_config
+        return pulumi.get(self, "slack_config")
+
+    @property
+    @pulumi.getter(name="smtpConfig")
+    def smtp_config(self) -> 'outputs.GetNotifierSmtpConfigResult':
         """
         (Computed) SMTP config for notifier (list maxitems:1)
         """
-        if webhook_config and not isinstance(webhook_config, dict):
-            raise TypeError("Expected argument 'webhook_config' to be a dict")
-        __self__.webhook_config = webhook_config
+        return pulumi.get(self, "smtp_config")
+
+    @property
+    @pulumi.getter(name="webhookConfig")
+    def webhook_config(self) -> 'outputs.GetNotifierWebhookConfigResult':
         """
         (Computed) Webhook config for notifier (list maxitems:1)
         """
-        if wechat_config and not isinstance(wechat_config, dict):
-            raise TypeError("Expected argument 'wechat_config' to be a dict")
-        __self__.wechat_config = wechat_config
+        return pulumi.get(self, "webhook_config")
+
+    @property
+    @pulumi.getter(name="wechatConfig")
+    def wechat_config(self) -> 'outputs.GetNotifierWechatConfigResult':
         """
         (Computed) Wechat config for notifier (list maxitems:1)
         """
+        return pulumi.get(self, "wechat_config")
+
+
 class AwaitableGetNotifierResult(GetNotifierResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +156,10 @@ class AwaitableGetNotifierResult(GetNotifierResult):
             webhook_config=self.webhook_config,
             wechat_config=self.wechat_config)
 
-def get_notifier(cluster_id=None,name=None,opts=None):
+
+def get_notifier(cluster_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotifierResult:
     """
     Use this data source to retrieve information about a Rancher v2 notifier.
 
@@ -110,25 +178,23 @@ def get_notifier(cluster_id=None,name=None,opts=None):
     :param str name: The name of the notifier (string)
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getNotifier:getNotifier', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getNotifier:getNotifier', __args__, opts=opts, typ=GetNotifierResult).value
 
     return AwaitableGetNotifierResult(
-        annotations=__ret__.get('annotations'),
-        cluster_id=__ret__.get('clusterId'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        pagerduty_config=__ret__.get('pagerdutyConfig'),
-        slack_config=__ret__.get('slackConfig'),
-        smtp_config=__ret__.get('smtpConfig'),
-        webhook_config=__ret__.get('webhookConfig'),
-        wechat_config=__ret__.get('wechatConfig'))
+        annotations=__ret__.annotations,
+        cluster_id=__ret__.cluster_id,
+        description=__ret__.description,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        pagerduty_config=__ret__.pagerduty_config,
+        slack_config=__ret__.slack_config,
+        smtp_config=__ret__.smtp_config,
+        webhook_config=__ret__.webhook_config,
+        wechat_config=__ret__.wechat_config)

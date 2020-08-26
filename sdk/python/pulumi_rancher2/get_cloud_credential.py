@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetCloudCredentialResult',
+    'AwaitableGetCloudCredentialResult',
+    'get_cloud_credential',
+]
+
+@pulumi.output_type
 class GetCloudCredentialResult:
     """
     A collection of values returned by getCloudCredential.
@@ -15,25 +22,47 @@ class GetCloudCredentialResult:
     def __init__(__self__, annotations=None, id=None, labels=None, name=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for the Cloud Credential (map)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for the Cloud Credential (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
 class AwaitableGetCloudCredentialResult(GetCloudCredentialResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +74,9 @@ class AwaitableGetCloudCredentialResult(GetCloudCredentialResult):
             labels=self.labels,
             name=self.name)
 
-def get_cloud_credential(name=None,opts=None):
+
+def get_cloud_credential(name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudCredentialResult:
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.
 
@@ -62,17 +93,15 @@ def get_cloud_credential(name=None,opts=None):
     :param str name: The Cloud Credential name.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getCloudCredential:getCloudCredential', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getCloudCredential:getCloudCredential', __args__, opts=opts, typ=GetCloudCredentialResult).value
 
     return AwaitableGetCloudCredentialResult(
-        annotations=__ret__.get('annotations'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'))
+        annotations=__ret__.annotations,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name)

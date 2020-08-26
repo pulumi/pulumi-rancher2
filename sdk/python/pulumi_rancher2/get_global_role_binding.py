@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetGlobalRoleBindingResult',
+    'AwaitableGetGlobalRoleBindingResult',
+    'get_global_role_binding',
+]
+
+@pulumi.output_type
 class GetGlobalRoleBindingResult:
     """
     A collection of values returned by getGlobalRoleBinding.
@@ -15,40 +22,77 @@ class GetGlobalRoleBindingResult:
     def __init__(__self__, annotations=None, global_role_id=None, group_principal_id=None, id=None, labels=None, name=None, user_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if global_role_id and not isinstance(global_role_id, str):
+            raise TypeError("Expected argument 'global_role_id' to be a str")
+        pulumi.set(__self__, "global_role_id", global_role_id)
+        if group_principal_id and not isinstance(group_principal_id, str):
+            raise TypeError("Expected argument 'group_principal_id' to be a str")
+        pulumi.set(__self__, "group_principal_id", group_principal_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if user_id and not isinstance(user_id, str):
+            raise TypeError("Expected argument 'user_id' to be a str")
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations of the resource (map)
         """
-        if global_role_id and not isinstance(global_role_id, str):
-            raise TypeError("Expected argument 'global_role_id' to be a str")
-        __self__.global_role_id = global_role_id
-        if group_principal_id and not isinstance(group_principal_id, str):
-            raise TypeError("Expected argument 'group_principal_id' to be a str")
-        __self__.group_principal_id = group_principal_id
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="globalRoleId")
+    def global_role_id(self) -> str:
+        return pulumi.get(self, "global_role_id")
+
+    @property
+    @pulumi.getter(name="groupPrincipalId")
+    def group_principal_id(self) -> str:
         """
         (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "group_principal_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels of the resource (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if user_id and not isinstance(user_id, str):
-            raise TypeError("Expected argument 'user_id' to be a str")
-        __self__.user_id = user_id
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
         """
         (Computed) The user ID to assign global role binding (string)
         """
+        return pulumi.get(self, "user_id")
+
+
 class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +107,10 @@ class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
             name=self.name,
             user_id=self.user_id)
 
-def get_global_role_binding(global_role_id=None,name=None,opts=None):
+
+def get_global_role_binding(global_role_id: Optional[str] = None,
+                            name: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalRoleBindingResult:
     """
     Use this data source to retrieve information about a Rancher v2 global role binding.
 
@@ -82,21 +129,19 @@ def get_global_role_binding(global_role_id=None,name=None,opts=None):
     :param str name: The name of the global role binding (string)
     """
     __args__ = dict()
-
-
     __args__['globalRoleId'] = global_role_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding', __args__, opts=opts, typ=GetGlobalRoleBindingResult).value
 
     return AwaitableGetGlobalRoleBindingResult(
-        annotations=__ret__.get('annotations'),
-        global_role_id=__ret__.get('globalRoleId'),
-        group_principal_id=__ret__.get('groupPrincipalId'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        user_id=__ret__.get('userId'))
+        annotations=__ret__.annotations,
+        global_role_id=__ret__.global_role_id,
+        group_principal_id=__ret__.group_principal_id,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        user_id=__ret__.user_id)

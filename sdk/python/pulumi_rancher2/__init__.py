@@ -80,3 +80,10 @@ from .secret import *
 from .setting import *
 from .token import *
 from .user import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

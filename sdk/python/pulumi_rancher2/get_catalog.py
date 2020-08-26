@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetCatalogResult',
+    'AwaitableGetCatalogResult',
+    'get_catalog',
+]
+
+@pulumi.output_type
 class GetCatalogResult:
     """
     A collection of values returned by getCatalog.
@@ -15,82 +22,154 @@ class GetCatalogResult:
     def __init__(__self__, annotations=None, branch=None, cluster_id=None, description=None, id=None, kind=None, labels=None, name=None, password=None, project_id=None, scope=None, url=None, username=None, version=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if branch and not isinstance(branch, str):
+            raise TypeError("Expected argument 'branch' to be a str")
+        pulumi.set(__self__, "branch", branch)
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError("Expected argument 'cluster_id' to be a str")
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if kind and not isinstance(kind, str):
+            raise TypeError("Expected argument 'kind' to be a str")
+        pulumi.set(__self__, "kind", kind)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
+        if scope and not isinstance(scope, str):
+            raise TypeError("Expected argument 'scope' to be a str")
+        pulumi.set(__self__, "scope", scope)
+        if url and not isinstance(url, str):
+            raise TypeError("Expected argument 'url' to be a str")
+        pulumi.set(__self__, "url", url)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for the catalog (map)
         """
-        if branch and not isinstance(branch, str):
-            raise TypeError("Expected argument 'branch' to be a str")
-        __self__.branch = branch
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
         """
         (Computed) The branch of the catalog repo to use (string)
         """
-        if cluster_id and not isinstance(cluster_id, str):
-            raise TypeError("Expected argument 'cluster_id' to be a str")
-        __self__.cluster_id = cluster_id
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
         """
         (Computed) The cluster id of the catalog (string)
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         (Computed) A catalog description (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if kind and not isinstance(kind, str):
-            raise TypeError("Expected argument 'kind' to be a str")
-        __self__.kind = kind
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
         """
         (Computed) The kind of the catalog. Just helm by the moment (string)
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for the catalog (map)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if password and not isinstance(password, str):
-            raise TypeError("Expected argument 'password' to be a str")
-        __self__.password = password
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
         """
         (Computed/Sensitive) The password to access the catalog if needed (string)
         """
-        if project_id and not isinstance(project_id, str):
-            raise TypeError("Expected argument 'project_id' to be a str")
-        __self__.project_id = project_id
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         """
         (Computed) The project id of the catalog (string)
         """
-        if scope and not isinstance(scope, str):
-            raise TypeError("Expected argument 'scope' to be a str")
-        __self__.scope = scope
-        if url and not isinstance(url, str):
-            raise TypeError("Expected argument 'url' to be a str")
-        __self__.url = url
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
         """
         (Computed) The url of the catalog repo (string)
         """
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        __self__.username = username
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
         """
         (Computed/Sensitive) The username to access the catalog if needed (string)
         """
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         """
         (Computed) Helm version for the catalog (string)
         """
+        return pulumi.get(self, "version")
+
+
 class AwaitableGetCatalogResult(GetCatalogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -112,7 +191,10 @@ class AwaitableGetCatalogResult(GetCatalogResult):
             username=self.username,
             version=self.version)
 
-def get_catalog(name=None,scope=None,opts=None):
+
+def get_catalog(name: Optional[str] = None,
+                scope: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
     Use this data source to retrieve information about a Rancher v2 catalog.
 
@@ -130,28 +212,26 @@ def get_catalog(name=None,scope=None,opts=None):
     :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['scope'] = scope
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getCatalog:getCatalog', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult).value
 
     return AwaitableGetCatalogResult(
-        annotations=__ret__.get('annotations'),
-        branch=__ret__.get('branch'),
-        cluster_id=__ret__.get('clusterId'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        kind=__ret__.get('kind'),
-        labels=__ret__.get('labels'),
-        name=__ret__.get('name'),
-        password=__ret__.get('password'),
-        project_id=__ret__.get('projectId'),
-        scope=__ret__.get('scope'),
-        url=__ret__.get('url'),
-        username=__ret__.get('username'),
-        version=__ret__.get('version'))
+        annotations=__ret__.annotations,
+        branch=__ret__.branch,
+        cluster_id=__ret__.cluster_id,
+        description=__ret__.description,
+        id=__ret__.id,
+        kind=__ret__.kind,
+        labels=__ret__.labels,
+        name=__ret__.name,
+        password=__ret__.password,
+        project_id=__ret__.project_id,
+        scope=__ret__.scope,
+        url=__ret__.url,
+        username=__ret__.username,
+        version=__ret__.version)

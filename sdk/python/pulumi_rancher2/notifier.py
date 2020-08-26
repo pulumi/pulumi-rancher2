@@ -5,81 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Notifier']
 
 
 class Notifier(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for notifier object (map)
-    """
-    cluster_id: pulumi.Output[str]
-    """
-    The cluster id where create notifier (string)
-    """
-    description: pulumi.Output[str]
-    """
-    The notifier description (string)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for notifier object (map)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the notifier (string)
-    """
-    pagerduty_config: pulumi.Output[dict]
-    """
-    Pagerduty config for notifier (list maxitems:1)
-
-      * `proxyUrl` (`str`) - Wechat proxy url (string)
-      * `serviceKey` (`str`) - Pagerduty service key (string)
-    """
-    send_resolved: pulumi.Output[bool]
-    """
-    = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
-    """
-    slack_config: pulumi.Output[dict]
-    """
-    Slack config for notifier (list maxitems:1)
-
-      * `defaultRecipient` (`str`) - Wechat default recipient (string)
-      * `proxyUrl` (`str`) - Wechat proxy url (string)
-      * `url` (`str`) - Webhook url (string)
-    """
-    smtp_config: pulumi.Output[dict]
-    """
-    SMTP config for notifier (list maxitems:1)
-
-      * `defaultRecipient` (`str`) - Wechat default recipient (string)
-      * `host` (`str`) - SMTP host (string)
-      * `password` (`str`) - SMTP password (string)
-      * `port` (`float`) - SMTP port (int)
-      * `sender` (`str`) - SMTP sender (string)
-      * `tls` (`bool`) - SMTP tls. Default `true` (bool)
-      * `username` (`str`) - SMTP username (string)
-    """
-    webhook_config: pulumi.Output[dict]
-    """
-    Webhook config for notifier (list maxitems:1)
-
-      * `proxyUrl` (`str`) - Wechat proxy url (string)
-      * `url` (`str`) - Webhook url (string)
-    """
-    wechat_config: pulumi.Output[dict]
-    """
-    Wechat config for notifier (list maxitems:1)
-
-      * `agent` (`str`) - Wechat agent ID (string)
-      * `corp` (`str`) - Wechat corporation ID (string)
-      * `defaultRecipient` (`str`) - Wechat default recipient (string)
-      * `proxyUrl` (`str`) - Wechat proxy url (string)
-      * `recipientType` (`str`) - Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-      * `secret` (`str`) - Wechat agent ID (string)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, send_resolved=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
+                 smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
+                 webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
+                 wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
 
@@ -93,61 +44,26 @@ class Notifier(pulumi.CustomResource):
         foo = rancher2.Notifier("foo",
             cluster_id="<cluster_id>",
             description="Terraform notifier acceptance test",
-            pagerduty_config={
-                "proxyUrl": "http://proxy.test.io",
-                "serviceKey": "XXXXXXXX",
-            },
-            send_resolved="true")
+            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
+                proxy_url="http://proxy.test.io",
+                service_key="XXXXXXXX",
+            ),
+            send_resolved=True)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
-        :param pulumi.Input[dict] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
-        :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
-        :param pulumi.Input[dict] slack_config: Slack config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] smtp_config: SMTP config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] webhook_config: Webhook config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] wechat_config: Wechat config for notifier (list maxitems:1)
-
-        The **pagerduty_config** object supports the following:
-
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `serviceKey` (`pulumi.Input[str]`) - Pagerduty service key (string)
-
-        The **slack_config** object supports the following:
-
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `url` (`pulumi.Input[str]`) - Webhook url (string)
-
-        The **smtp_config** object supports the following:
-
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `host` (`pulumi.Input[str]`) - SMTP host (string)
-          * `password` (`pulumi.Input[str]`) - SMTP password (string)
-          * `port` (`pulumi.Input[float]`) - SMTP port (int)
-          * `sender` (`pulumi.Input[str]`) - SMTP sender (string)
-          * `tls` (`pulumi.Input[bool]`) - SMTP tls. Default `true` (bool)
-          * `username` (`pulumi.Input[str]`) - SMTP username (string)
-
-        The **webhook_config** object supports the following:
-
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `url` (`pulumi.Input[str]`) - Webhook url (string)
-
-        The **wechat_config** object supports the following:
-
-          * `agent` (`pulumi.Input[str]`) - Wechat agent ID (string)
-          * `corp` (`pulumi.Input[str]`) - Wechat corporation ID (string)
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `recipientType` (`pulumi.Input[str]`) - Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-          * `secret` (`pulumi.Input[str]`) - Wechat agent ID (string)
+        :param pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']] slack_config: Slack config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']] smtp_config: SMTP config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']] webhook_config: Webhook config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']] wechat_config: Wechat config for notifier (list maxitems:1)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -160,7 +76,7 @@ class Notifier(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -186,60 +102,38 @@ class Notifier(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, description=None, labels=None, name=None, pagerduty_config=None, send_resolved=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+            send_resolved: Optional[pulumi.Input[bool]] = None,
+            slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
+            smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
+            webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
+            wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None) -> 'Notifier':
         """
         Get an existing Notifier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
-        :param pulumi.Input[dict] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
         :param pulumi.Input[str] name: The name of the notifier (string)
-        :param pulumi.Input[dict] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
-        :param pulumi.Input[dict] slack_config: Slack config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] smtp_config: SMTP config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] webhook_config: Webhook config for notifier (list maxitems:1)
-        :param pulumi.Input[dict] wechat_config: Wechat config for notifier (list maxitems:1)
-
-        The **pagerduty_config** object supports the following:
-
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `serviceKey` (`pulumi.Input[str]`) - Pagerduty service key (string)
-
-        The **slack_config** object supports the following:
-
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `url` (`pulumi.Input[str]`) - Webhook url (string)
-
-        The **smtp_config** object supports the following:
-
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `host` (`pulumi.Input[str]`) - SMTP host (string)
-          * `password` (`pulumi.Input[str]`) - SMTP password (string)
-          * `port` (`pulumi.Input[float]`) - SMTP port (int)
-          * `sender` (`pulumi.Input[str]`) - SMTP sender (string)
-          * `tls` (`pulumi.Input[bool]`) - SMTP tls. Default `true` (bool)
-          * `username` (`pulumi.Input[str]`) - SMTP username (string)
-
-        The **webhook_config** object supports the following:
-
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `url` (`pulumi.Input[str]`) - Webhook url (string)
-
-        The **wechat_config** object supports the following:
-
-          * `agent` (`pulumi.Input[str]`) - Wechat agent ID (string)
-          * `corp` (`pulumi.Input[str]`) - Wechat corporation ID (string)
-          * `defaultRecipient` (`pulumi.Input[str]`) - Wechat default recipient (string)
-          * `proxyUrl` (`pulumi.Input[str]`) - Wechat proxy url (string)
-          * `recipientType` (`pulumi.Input[str]`) - Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-          * `secret` (`pulumi.Input[str]`) - Wechat agent ID (string)
+        :param pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']] slack_config: Slack config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']] smtp_config: SMTP config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']] webhook_config: Webhook config for notifier (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']] wechat_config: Wechat config for notifier (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -258,8 +152,97 @@ class Notifier(pulumi.CustomResource):
         __props__["wechat_config"] = wechat_config
         return Notifier(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for notifier object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The cluster id where create notifier (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The notifier description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for notifier object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the notifier (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pagerdutyConfig")
+    def pagerduty_config(self) -> Optional['outputs.NotifierPagerdutyConfig']:
+        """
+        Pagerduty config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "pagerduty_config")
+
+    @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> Optional[bool]:
+        """
+        = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @property
+    @pulumi.getter(name="slackConfig")
+    def slack_config(self) -> Optional['outputs.NotifierSlackConfig']:
+        """
+        Slack config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "slack_config")
+
+    @property
+    @pulumi.getter(name="smtpConfig")
+    def smtp_config(self) -> Optional['outputs.NotifierSmtpConfig']:
+        """
+        SMTP config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "smtp_config")
+
+    @property
+    @pulumi.getter(name="webhookConfig")
+    def webhook_config(self) -> Optional['outputs.NotifierWebhookConfig']:
+        """
+        Webhook config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "webhook_config")
+
+    @property
+    @pulumi.getter(name="wechatConfig")
+    def wechat_config(self) -> Optional['outputs.NotifierWechatConfig']:
+        """
+        Wechat config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "wechat_config")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

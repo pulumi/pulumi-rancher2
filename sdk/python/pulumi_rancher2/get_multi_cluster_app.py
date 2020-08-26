@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetMultiClusterAppResult',
+    'AwaitableGetMultiClusterAppResult',
+    'get_multi_cluster_app',
+]
+
+@pulumi.output_type
 class GetMultiClusterAppResult:
     """
     A collection of values returned by getMultiClusterApp.
@@ -15,91 +23,168 @@ class GetMultiClusterAppResult:
     def __init__(__self__, annotations=None, answers=None, catalog_name=None, id=None, labels=None, members=None, name=None, revision_history_limit=None, revision_id=None, roles=None, targets=None, template_name=None, template_version=None, template_version_id=None, upgrade_strategies=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
-        __self__.annotations = annotations
+        pulumi.set(__self__, "annotations", annotations)
+        if answers and not isinstance(answers, list):
+            raise TypeError("Expected argument 'answers' to be a list")
+        pulumi.set(__self__, "answers", answers)
+        if catalog_name and not isinstance(catalog_name, str):
+            raise TypeError("Expected argument 'catalog_name' to be a str")
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
+        if members and not isinstance(members, list):
+            raise TypeError("Expected argument 'members' to be a list")
+        pulumi.set(__self__, "members", members)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if revision_history_limit and not isinstance(revision_history_limit, float):
+            raise TypeError("Expected argument 'revision_history_limit' to be a float")
+        pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+        if revision_id and not isinstance(revision_id, str):
+            raise TypeError("Expected argument 'revision_id' to be a str")
+        pulumi.set(__self__, "revision_id", revision_id)
+        if roles and not isinstance(roles, list):
+            raise TypeError("Expected argument 'roles' to be a list")
+        pulumi.set(__self__, "roles", roles)
+        if targets and not isinstance(targets, list):
+            raise TypeError("Expected argument 'targets' to be a list")
+        pulumi.set(__self__, "targets", targets)
+        if template_name and not isinstance(template_name, str):
+            raise TypeError("Expected argument 'template_name' to be a str")
+        pulumi.set(__self__, "template_name", template_name)
+        if template_version and not isinstance(template_version, str):
+            raise TypeError("Expected argument 'template_version' to be a str")
+        pulumi.set(__self__, "template_version", template_version)
+        if template_version_id and not isinstance(template_version_id, str):
+            raise TypeError("Expected argument 'template_version_id' to be a str")
+        pulumi.set(__self__, "template_version_id", template_version_id)
+        if upgrade_strategies and not isinstance(upgrade_strategies, list):
+            raise TypeError("Expected argument 'upgrade_strategies' to be a list")
+        pulumi.set(__self__, "upgrade_strategies", upgrade_strategies)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
         """
         (Computed) Annotations for multi cluster app object (map)
         """
-        if answers and not isinstance(answers, list):
-            raise TypeError("Expected argument 'answers' to be a list")
-        __self__.answers = answers
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def answers(self) -> List['outputs.GetMultiClusterAppAnswerResult']:
         """
         (Computed) The multi cluster app answers (list)
         """
-        if catalog_name and not isinstance(catalog_name, str):
-            raise TypeError("Expected argument 'catalog_name' to be a str")
-        __self__.catalog_name = catalog_name
+        return pulumi.get(self, "answers")
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> str:
         """
         (Computed) The multi cluster app catalog name (string)
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if labels and not isinstance(labels, dict):
-            raise TypeError("Expected argument 'labels' to be a dict")
-        __self__.labels = labels
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
         """
         (Computed) Labels for multi cluster app object (map)
         """
-        if members and not isinstance(members, list):
-            raise TypeError("Expected argument 'members' to be a list")
-        __self__.members = members
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List['outputs.GetMultiClusterAppMemberResult']:
         """
         (Computed) The multi cluster app members (list)
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if revision_history_limit and not isinstance(revision_history_limit, float):
-            raise TypeError("Expected argument 'revision_history_limit' to be a float")
-        __self__.revision_history_limit = revision_history_limit
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="revisionHistoryLimit")
+    def revision_history_limit(self) -> float:
         """
         (Computed) The multi cluster app revision history limit (int)
         """
-        if revision_id and not isinstance(revision_id, str):
-            raise TypeError("Expected argument 'revision_id' to be a str")
-        __self__.revision_id = revision_id
+        return pulumi.get(self, "revision_history_limit")
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> str:
         """
         (Computed) Current revision id for the multi cluster app (string)
         """
-        if roles and not isinstance(roles, list):
-            raise TypeError("Expected argument 'roles' to be a list")
-        __self__.roles = roles
+        return pulumi.get(self, "revision_id")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> List[str]:
         """
         (Computed) The multi cluster app roles (list)
         """
-        if targets and not isinstance(targets, list):
-            raise TypeError("Expected argument 'targets' to be a list")
-        __self__.targets = targets
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> List['outputs.GetMultiClusterAppTargetResult']:
         """
         (Computed) The multi cluster app target projects (list)
         """
-        if template_name and not isinstance(template_name, str):
-            raise TypeError("Expected argument 'template_name' to be a str")
-        __self__.template_name = template_name
+        return pulumi.get(self, "targets")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
         """
         (Computed) The multi cluster app template name (string)
         """
-        if template_version and not isinstance(template_version, str):
-            raise TypeError("Expected argument 'template_version' to be a str")
-        __self__.template_version = template_version
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> str:
         """
         (Computed) The multi cluster app template version (string)
         """
-        if template_version_id and not isinstance(template_version_id, str):
-            raise TypeError("Expected argument 'template_version_id' to be a str")
-        __self__.template_version_id = template_version_id
+        return pulumi.get(self, "template_version")
+
+    @property
+    @pulumi.getter(name="templateVersionId")
+    def template_version_id(self) -> str:
         """
         (Computed) The multi cluster app template version ID (string)
         """
-        if upgrade_strategies and not isinstance(upgrade_strategies, list):
-            raise TypeError("Expected argument 'upgrade_strategies' to be a list")
-        __self__.upgrade_strategies = upgrade_strategies
+        return pulumi.get(self, "template_version_id")
+
+    @property
+    @pulumi.getter(name="upgradeStrategies")
+    def upgrade_strategies(self) -> List['outputs.GetMultiClusterAppUpgradeStrategyResult']:
         """
         (Computed) The multi cluster app upgrade strategy (list)
         """
+        return pulumi.get(self, "upgrade_strategies")
+
+
 class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +207,9 @@ class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
             template_version_id=self.template_version_id,
             upgrade_strategies=self.upgrade_strategies)
 
-def get_multi_cluster_app(name=None,opts=None):
+
+def get_multi_cluster_app(name: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMultiClusterAppResult:
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
 
@@ -139,28 +226,26 @@ def get_multi_cluster_app(name=None,opts=None):
     :param str name: The multi cluster app name (string)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('rancher2:index/getMultiClusterApp:getMultiClusterApp', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('rancher2:index/getMultiClusterApp:getMultiClusterApp', __args__, opts=opts, typ=GetMultiClusterAppResult).value
 
     return AwaitableGetMultiClusterAppResult(
-        annotations=__ret__.get('annotations'),
-        answers=__ret__.get('answers'),
-        catalog_name=__ret__.get('catalogName'),
-        id=__ret__.get('id'),
-        labels=__ret__.get('labels'),
-        members=__ret__.get('members'),
-        name=__ret__.get('name'),
-        revision_history_limit=__ret__.get('revisionHistoryLimit'),
-        revision_id=__ret__.get('revisionId'),
-        roles=__ret__.get('roles'),
-        targets=__ret__.get('targets'),
-        template_name=__ret__.get('templateName'),
-        template_version=__ret__.get('templateVersion'),
-        template_version_id=__ret__.get('templateVersionId'),
-        upgrade_strategies=__ret__.get('upgradeStrategies'))
+        annotations=__ret__.annotations,
+        answers=__ret__.answers,
+        catalog_name=__ret__.catalog_name,
+        id=__ret__.id,
+        labels=__ret__.labels,
+        members=__ret__.members,
+        name=__ret__.name,
+        revision_history_limit=__ret__.revision_history_limit,
+        revision_id=__ret__.revision_id,
+        roles=__ret__.roles,
+        targets=__ret__.targets,
+        template_name=__ret__.template_name,
+        template_version=__ret__.template_version,
+        template_version_id=__ret__.template_version_id,
+        upgrade_strategies=__ret__.upgrade_strategies)

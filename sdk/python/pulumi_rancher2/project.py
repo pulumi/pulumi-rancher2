@@ -5,94 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Project']
 
 
 class Project(pulumi.CustomResource):
-    annotations: pulumi.Output[dict]
-    """
-    Annotations for Node Pool object (map)
-    """
-    cluster_id: pulumi.Output[str]
-    """
-    The cluster id where create project (string)
-    """
-    container_resource_limit: pulumi.Output[dict]
-    """
-    Default containers resource limits on project (List maxitem:1)
-
-      * `limitsCpu` (`str`) - Limit for limits cpu in project (string)
-      * `limitsMemory` (`str`) - Limit for limits memory in project (string)
-      * `requestsCpu` (`str`) - Limit for requests cpu in project (string)
-      * `requestsMemory` (`str`) - Limit for requests memory in project (string)
-    """
-    description: pulumi.Output[str]
-    """
-    A project description (string)
-    """
-    enable_project_monitoring: pulumi.Output[bool]
-    """
-    Enable built-in project monitoring. Default `false` (bool)
-    """
-    labels: pulumi.Output[dict]
-    """
-    Labels for Node Pool object (map)
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the project (string)
-    """
-    pod_security_policy_template_id: pulumi.Output[str]
-    """
-    Default Pod Security Policy ID for the project (string)
-    """
-    project_monitoring_input: pulumi.Output[dict]
-    """
-    Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-
-      * `answers` (`dict`) - Key/value answers for monitor input (map)
-      * `version` (`str`) - rancher-monitoring chart version (string)
-    """
-    resource_quota: pulumi.Output[dict]
-    """
-    Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
-
-      * `namespaceDefaultLimit` (`dict`) - Default resource quota limit for  namespaces in project (list maxitems:1)
-        * `configMaps` (`str`) - Limit for config maps in project (string)
-        * `limitsCpu` (`str`) - Limit for limits cpu in project (string)
-        * `limitsMemory` (`str`) - Limit for limits memory in project (string)
-        * `persistentVolumeClaims` (`str`) - Limit for persistent volume claims in project (string)
-        * `pods` (`str`) - Limit for pods in project (string)
-        * `replicationControllers` (`str`) - Limit for replication controllers in project (string)
-        * `requestsCpu` (`str`) - Limit for requests cpu in project (string)
-        * `requestsMemory` (`str`) - Limit for requests memory in project (string)
-        * `requestsStorage` (`str`) - Limit for requests storage in project (string)
-        * `secrets` (`str`) - Limit for secrets in project (string)
-        * `services` (`str`)
-        * `servicesLoadBalancers` (`str`) - Limit for services load balancers in project (string)
-        * `servicesNodePorts` (`str`) - Limit for services node ports in project (string)
-
-      * `projectLimit` (`dict`) - Resource quota limit for project (list maxitems:1)
-        * `configMaps` (`str`) - Limit for config maps in project (string)
-        * `limitsCpu` (`str`) - Limit for limits cpu in project (string)
-        * `limitsMemory` (`str`) - Limit for limits memory in project (string)
-        * `persistentVolumeClaims` (`str`) - Limit for persistent volume claims in project (string)
-        * `pods` (`str`) - Limit for pods in project (string)
-        * `replicationControllers` (`str`) - Limit for replication controllers in project (string)
-        * `requestsCpu` (`str`) - Limit for requests cpu in project (string)
-        * `requestsMemory` (`str`) - Limit for requests memory in project (string)
-        * `requestsStorage` (`str`) - Limit for requests storage in project (string)
-        * `secrets` (`str`) - Limit for secrets in project (string)
-        * `services` (`str`)
-        * `servicesLoadBalancers` (`str`) - Limit for services load balancers in project (string)
-        * `servicesNodePorts` (`str`) - Limit for services node ports in project (string)
-    """
-    wait_for_cluster: pulumi.Output[bool]
-    """
-    Wait for cluster becomes active. Default `false` (bool)
-    """
-    def __init__(__self__, resource_name, opts=None, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, labels=None, name=None, pod_security_policy_template_id=None, project_monitoring_input=None, resource_quota=None, wait_for_cluster=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 container_resource_limit: Optional[pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+                 project_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']]] = None,
+                 resource_quota: Optional[pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']]] = None,
+                 wait_for_cluster: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
 
@@ -105,24 +43,24 @@ class Project(pulumi.CustomResource):
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
             cluster_id="<CLUSTER_ID>",
-            container_resource_limit={
-                "limitsCpu": "20m",
-                "limitsMemory": "20Mi",
-                "requestsCpu": "1m",
-                "requestsMemory": "1Mi",
-            },
-            resource_quota={
-                "namespaceDefaultLimit": {
-                    "limitsCpu": "2000m",
-                    "limitsMemory": "500Mi",
-                    "requestsStorage": "1Gi",
-                },
-                "projectLimit": {
-                    "limitsCpu": "2000m",
-                    "limitsMemory": "2000Mi",
-                    "requestsStorage": "2Gi",
-                },
-            })
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
         ```
 
         ```python
@@ -132,15 +70,15 @@ class Project(pulumi.CustomResource):
         # Create a new rancher2 Project enabling and customizing monitoring
         foo = rancher2.Project("foo",
             cluster_id="<CLUSTER_ID>",
-            container_resource_limit={
-                "limitsCpu": "20m",
-                "limitsMemory": "20Mi",
-                "requestsCpu": "1m",
-                "requestsMemory": "1Mi",
-            },
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
+            ),
             enable_project_monitoring=True,
-            project_monitoring_input={
-                "answers": {
+            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
+                answers={
                     "exporter-kubelets.https": True,
                     "exporter-node.enabled": True,
                     "exporter-node.ports.metrics.port": 9796,
@@ -160,78 +98,34 @@ class Project(pulumi.CustomResource):
                     "prometheus.resources.core.requests.memory": "750Mi",
                     "prometheus.retention": "12h",
                 },
-            },
-            resource_quota={
-                "namespaceDefaultLimit": {
-                    "limitsCpu": "2000m",
-                    "limitsMemory": "500Mi",
-                    "requestsStorage": "1Gi",
-                },
-                "projectLimit": {
-                    "limitsCpu": "2000m",
-                    "limitsMemory": "2000Mi",
-                    "requestsStorage": "2Gi",
-                },
-            })
+            ),
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+            ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[dict] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[dict] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        :param pulumi.Input[dict] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-
-        The **container_resource_limit** object supports the following:
-
-          * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-          * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-          * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-          * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-
-        The **project_monitoring_input** object supports the following:
-
-          * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **resource_quota** object supports the following:
-
-          * `namespaceDefaultLimit` (`pulumi.Input[dict]`) - Default resource quota limit for  namespaces in project (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in project (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in project (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in project (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in project (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in project (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in project (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in project (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in project (string)
-
-          * `projectLimit` (`pulumi.Input[dict]`) - Resource quota limit for project (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in project (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in project (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in project (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in project (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in project (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in project (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in project (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in project (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -244,7 +138,7 @@ class Project(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -270,69 +164,38 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, labels=None, name=None, pod_security_policy_template_id=None, project_monitoring_input=None, resource_quota=None, wait_for_cluster=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            container_resource_limit: Optional[pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+            project_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']]] = None,
+            resource_quota: Optional[pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']]] = None,
+            wait_for_cluster: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[dict] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[dict] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[dict] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        :param pulumi.Input[dict] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
-
-        The **container_resource_limit** object supports the following:
-
-          * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-          * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-          * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-          * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-
-        The **project_monitoring_input** object supports the following:
-
-          * `answers` (`pulumi.Input[dict]`) - Key/value answers for monitor input (map)
-          * `version` (`pulumi.Input[str]`) - rancher-monitoring chart version (string)
-
-        The **resource_quota** object supports the following:
-
-          * `namespaceDefaultLimit` (`pulumi.Input[dict]`) - Default resource quota limit for  namespaces in project (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in project (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in project (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in project (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in project (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in project (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in project (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in project (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in project (string)
-
-          * `projectLimit` (`pulumi.Input[dict]`) - Resource quota limit for project (list maxitems:1)
-            * `configMaps` (`pulumi.Input[str]`) - Limit for config maps in project (string)
-            * `limitsCpu` (`pulumi.Input[str]`) - Limit for limits cpu in project (string)
-            * `limitsMemory` (`pulumi.Input[str]`) - Limit for limits memory in project (string)
-            * `persistentVolumeClaims` (`pulumi.Input[str]`) - Limit for persistent volume claims in project (string)
-            * `pods` (`pulumi.Input[str]`) - Limit for pods in project (string)
-            * `replicationControllers` (`pulumi.Input[str]`) - Limit for replication controllers in project (string)
-            * `requestsCpu` (`pulumi.Input[str]`) - Limit for requests cpu in project (string)
-            * `requestsMemory` (`pulumi.Input[str]`) - Limit for requests memory in project (string)
-            * `requestsStorage` (`pulumi.Input[str]`) - Limit for requests storage in project (string)
-            * `secrets` (`pulumi.Input[str]`) - Limit for secrets in project (string)
-            * `services` (`pulumi.Input[str]`)
-            * `servicesLoadBalancers` (`pulumi.Input[str]`) - Limit for services load balancers in project (string)
-            * `servicesNodePorts` (`pulumi.Input[str]`) - Limit for services node ports in project (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,8 +214,97 @@ class Project(pulumi.CustomResource):
         __props__["wait_for_cluster"] = wait_for_cluster
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        """
+        Annotations for Node Pool object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The cluster id where create project (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="containerResourceLimit")
+    def container_resource_limit(self) -> Optional['outputs.ProjectContainerResourceLimit']:
+        """
+        Default containers resource limits on project (List maxitem:1)
+        """
+        return pulumi.get(self, "container_resource_limit")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A project description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableProjectMonitoring")
+    def enable_project_monitoring(self) -> Optional[bool]:
+        """
+        Enable built-in project monitoring. Default `false` (bool)
+        """
+        return pulumi.get(self, "enable_project_monitoring")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the project (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="podSecurityPolicyTemplateId")
+    def pod_security_policy_template_id(self) -> Optional[str]:
+        """
+        Default Pod Security Policy ID for the project (string)
+        """
+        return pulumi.get(self, "pod_security_policy_template_id")
+
+    @property
+    @pulumi.getter(name="projectMonitoringInput")
+    def project_monitoring_input(self) -> 'outputs.ProjectProjectMonitoringInput':
+        """
+        Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+        """
+        return pulumi.get(self, "project_monitoring_input")
+
+    @property
+    @pulumi.getter(name="resourceQuota")
+    def resource_quota(self) -> Optional['outputs.ProjectResourceQuota']:
+        """
+        Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        """
+        return pulumi.get(self, "resource_quota")
+
+    @property
+    @pulumi.getter(name="waitForCluster")
+    def wait_for_cluster(self) -> Optional[bool]:
+        """
+        Wait for cluster becomes active. Default `false` (bool)
+        """
+        return pulumi.get(self, "wait_for_cluster")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
