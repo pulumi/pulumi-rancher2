@@ -13,7 +13,7 @@ __all__ = ['AuthConfigAzureAd']
 
 class AuthConfigAzureAd(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -186,7 +186,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[str]:
+    def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
@@ -194,7 +194,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[List[str]]:
+    def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
         """
@@ -202,7 +202,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -210,7 +210,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         AzureAD auth application ID (string)
         """
@@ -218,7 +218,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationSecret")
-    def application_secret(self) -> str:
+    def application_secret(self) -> pulumi.Output[str]:
         """
         AzureAD auth application secret (string)
         """
@@ -226,7 +226,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> str:
+    def auth_endpoint(self) -> pulumi.Output[str]:
         """
         AzureAD auth endpoint (string)
         """
@@ -234,7 +234,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
@@ -242,7 +242,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> Optional[str]:
+    def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
         AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
         """
@@ -250,7 +250,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="graphEndpoint")
-    def graph_endpoint(self) -> str:
+    def graph_endpoint(self) -> pulumi.Output[str]:
         """
         AzureAD graph endpoint (string)
         """
@@ -258,7 +258,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -266,7 +266,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         (Computed) The name of the resource (string)
         """
@@ -274,7 +274,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rancherUrl")
-    def rancher_url(self) -> str:
+    def rancher_url(self) -> pulumi.Output[str]:
         """
         Rancher URL (string). "<rancher_url>/verify-auth-azure"
         """
@@ -282,7 +282,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         AzureAD tenant ID (string)
         """
@@ -290,7 +290,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> str:
+    def token_endpoint(self) -> pulumi.Output[str]:
         """
         AzureAD token endpoint (string)
         """
@@ -298,7 +298,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         (Computed) The type of the resource (string)
         """

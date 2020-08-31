@@ -13,7 +13,7 @@ __all__ = ['Setting']
 
 class Setting(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -107,7 +107,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for setting object (map)
         """
@@ -115,7 +115,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for setting object (map)
         """
@@ -123,7 +123,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the setting (string)
         """
@@ -131,7 +131,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the setting (string)
         """

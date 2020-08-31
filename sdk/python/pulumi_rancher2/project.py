@@ -15,7 +15,7 @@ __all__ = ['Project']
 
 class Project(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Node Pool object (map)
         """
@@ -224,7 +224,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster id where create project (string)
         """
@@ -232,7 +232,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerResourceLimit")
-    def container_resource_limit(self) -> Optional['outputs.ProjectContainerResourceLimit']:
+    def container_resource_limit(self) -> pulumi.Output[Optional['outputs.ProjectContainerResourceLimit']]:
         """
         Default containers resource limits on project (List maxitem:1)
         """
@@ -240,7 +240,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A project description (string)
         """
@@ -248,7 +248,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableProjectMonitoring")
-    def enable_project_monitoring(self) -> Optional[bool]:
+    def enable_project_monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable built-in project monitoring. Default `false` (bool)
         """
@@ -256,7 +256,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Node Pool object (map)
         """
@@ -264,7 +264,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the project (string)
         """
@@ -272,7 +272,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="podSecurityPolicyTemplateId")
-    def pod_security_policy_template_id(self) -> Optional[str]:
+    def pod_security_policy_template_id(self) -> pulumi.Output[Optional[str]]:
         """
         Default Pod Security Policy ID for the project (string)
         """
@@ -280,7 +280,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectMonitoringInput")
-    def project_monitoring_input(self) -> 'outputs.ProjectProjectMonitoringInput':
+    def project_monitoring_input(self) -> pulumi.Output['outputs.ProjectProjectMonitoringInput']:
         """
         Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         """
@@ -288,7 +288,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> Optional['outputs.ProjectResourceQuota']:
+    def resource_quota(self) -> pulumi.Output[Optional['outputs.ProjectResourceQuota']]:
         """
         Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         """
@@ -296,7 +296,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForCluster")
-    def wait_for_cluster(self) -> Optional[bool]:
+    def wait_for_cluster(self) -> pulumi.Output[Optional[bool]]:
         """
         Wait for cluster becomes active. Default `false` (bool)
         """

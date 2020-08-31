@@ -15,7 +15,7 @@ __all__ = ['Registry']
 
 class Registry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -152,7 +152,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Registry object (map)
         """
@@ -160,7 +160,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A registry description (string)
         """
@@ -168,7 +168,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Registry object (map)
         """
@@ -176,7 +176,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the registry (string)
         """
@@ -184,7 +184,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[str]:
+    def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace id where to assign the namespaced registry (string)
         """
@@ -192,7 +192,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where to assign the registry (string)
         """
@@ -200,7 +200,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def registries(self) -> List['outputs.RegistryRegistry']:
+    def registries(self) -> pulumi.Output[List['outputs.RegistryRegistry']]:
         """
         Registries data for registry (list)
         """

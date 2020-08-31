@@ -13,7 +13,7 @@ __all__ = ['NodeDriver']
 
 class NodeDriver(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -157,7 +157,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> bool:
+    def active(self) -> pulumi.Output[bool]:
         """
         Specify if the node driver state (bool)
         """
@@ -165,7 +165,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -173,7 +173,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def builtin(self) -> bool:
+    def builtin(self) -> pulumi.Output[bool]:
         """
         Specify wheter the node driver is an internal node driver or not (bool)
         """
@@ -181,7 +181,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def checksum(self) -> Optional[str]:
+    def checksum(self) -> pulumi.Output[Optional[str]]:
         """
         Verify that the downloaded driver matches the expected checksum (string)
         """
@@ -189,7 +189,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the node driver (string)
         """
@@ -197,7 +197,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[str]:
+    def external_id(self) -> pulumi.Output[Optional[str]]:
         """
         External ID (string)
         """
@@ -205,7 +205,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -213,7 +213,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the node driver (string)
         """
@@ -221,7 +221,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uiUrl")
-    def ui_url(self) -> Optional[str]:
+    def ui_url(self) -> pulumi.Output[Optional[str]]:
         """
         The URL to load for customized Add Nodes screen for this driver (string)
         """
@@ -229,7 +229,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The URL to download the machine driver binary for 64-bit Linux (string)
         """
@@ -237,7 +237,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="whitelistDomains")
-    def whitelist_domains(self) -> Optional[List[str]]:
+    def whitelist_domains(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Domains to whitelist for the ui (list)
         """

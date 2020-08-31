@@ -15,7 +15,7 @@ __all__ = ['EtcdBackup']
 
 class EtcdBackup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  backup_config: Optional[pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']]] = None,
@@ -118,7 +118,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Etcd Backup object (map)
         """
@@ -126,7 +126,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backupConfig")
-    def backup_config(self) -> 'outputs.EtcdBackupBackupConfig':
+    def backup_config(self) -> pulumi.Output['outputs.EtcdBackupBackupConfig']:
         """
         Backup config for etcd backup (list maxitems:1)
         """
@@ -134,7 +134,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         Cluster ID to config Etcd Backup (string)
         """
@@ -142,7 +142,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filename(self) -> str:
+    def filename(self) -> pulumi.Output[str]:
         """
         Filename of the Etcd Backup (string)
         """
@@ -150,7 +150,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Etcd Backup object (map)
         """
@@ -158,7 +158,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def manual(self) -> Optional[bool]:
+    def manual(self) -> pulumi.Output[Optional[bool]]:
         """
         Manual execution of the Etcd Backup. Default `false` (bool)
         """
@@ -166,7 +166,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Etcd Backup (string)
         """
@@ -174,7 +174,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> str:
+    def namespace_id(self) -> pulumi.Output[str]:
         """
         Description for the Etcd Backup (string)
         """

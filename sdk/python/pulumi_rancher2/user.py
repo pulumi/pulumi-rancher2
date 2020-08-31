@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -128,7 +128,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for global role binding (map)
         """
@@ -136,12 +136,12 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for global role binding (map)
         """
@@ -149,7 +149,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The user full name (string)
         """
@@ -157,7 +157,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         The user password (string)
         """
@@ -165,7 +165,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="principalIds")
-    def principal_ids(self) -> List[str]:
+    def principal_ids(self) -> pulumi.Output[List[str]]:
         """
         (Computed) The user principal IDs (list)
         """
@@ -173,7 +173,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         The user username (string)
         """

@@ -15,7 +15,7 @@ __all__ = ['MultiClusterApp']
 
 class MultiClusterApp(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  answers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
@@ -164,7 +164,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for multi cluster app object (map)
         """
@@ -172,7 +172,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def answers(self) -> List['outputs.MultiClusterAppAnswer']:
+    def answers(self) -> pulumi.Output[List['outputs.MultiClusterAppAnswer']]:
         """
         The multi cluster app answers (list)
         """
@@ -180,7 +180,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> str:
+    def catalog_name(self) -> pulumi.Output[str]:
         """
         The multi cluster app catalog name (string)
         """
@@ -188,7 +188,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for multi cluster app object (map)
         """
@@ -196,7 +196,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List['outputs.MultiClusterAppMember']]:
+    def members(self) -> pulumi.Output[Optional[List['outputs.MultiClusterAppMember']]]:
         """
         The multi cluster app answers (list)
         """
@@ -204,7 +204,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The multi cluster app name (string)
         """
@@ -212,7 +212,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionHistoryLimit")
-    def revision_history_limit(self) -> Optional[float]:
+    def revision_history_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The multi cluster app revision history limit. Default `10` (int)
         """
@@ -220,7 +220,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> str:
+    def revision_id(self) -> pulumi.Output[str]:
         """
         Current revision id for the multi cluster app (string)
         """
@@ -228,7 +228,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> List[str]:
+    def roles(self) -> pulumi.Output[List[str]]:
         """
         The multi cluster app roles (list)
         """
@@ -236,7 +236,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def targets(self) -> List['outputs.MultiClusterAppTarget']:
+    def targets(self) -> pulumi.Output[List['outputs.MultiClusterAppTarget']]:
         """
         The multi cluster app target projects (list)
         """
@@ -244,7 +244,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> str:
+    def template_name(self) -> pulumi.Output[str]:
         """
         The multi cluster app template name (string)
         """
@@ -252,7 +252,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> str:
+    def template_version(self) -> pulumi.Output[str]:
         """
         The multi cluster app template version. Default: `latest` (string)
         """
@@ -260,7 +260,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateVersionId")
-    def template_version_id(self) -> str:
+    def template_version_id(self) -> pulumi.Output[str]:
         """
         (Computed) The multi cluster app template version ID (string)
         """
@@ -268,7 +268,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upgradeStrategy")
-    def upgrade_strategy(self) -> 'outputs.MultiClusterAppUpgradeStrategy':
+    def upgrade_strategy(self) -> pulumi.Output['outputs.MultiClusterAppUpgradeStrategy']:
         """
         The multi cluster app upgrade strategy (list MaxItems:1)
         """
@@ -276,7 +276,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wait(self) -> Optional[bool]:
+    def wait(self) -> pulumi.Output[Optional[bool]]:
         """
         Wait until the multi cluster app is active. Default `true` (bool)
         """

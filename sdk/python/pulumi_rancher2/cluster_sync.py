@@ -13,7 +13,7 @@ __all__ = ['ClusterSync']
 
 class ClusterSync(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -102,7 +102,7 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster ID that is syncing (string)
         """
@@ -110,7 +110,7 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> str:
+    def default_project_id(self) -> pulumi.Output[str]:
         """
         (Computed) Default project ID for the cluster sync (string)
         """
@@ -118,7 +118,7 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> str:
+    def kube_config(self) -> pulumi.Output[str]:
         """
         (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         """
@@ -126,7 +126,7 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> Optional[List[str]]:
+    def node_pool_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The node pool IDs used by the cluster id (list)
         """
@@ -134,12 +134,12 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def synced(self) -> Optional[bool]:
+    def synced(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "synced")
 
     @property
     @pulumi.getter(name="systemProjectId")
-    def system_project_id(self) -> str:
+    def system_project_id(self) -> pulumi.Output[str]:
         """
         (Computed) System project ID for the cluster sync (string)
         """
@@ -147,7 +147,7 @@ class ClusterSync(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitMonitoring")
-    def wait_monitoring(self) -> Optional[bool]:
+    def wait_monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Wait until monitoring is up and running. Default: `false` (bool)
         """

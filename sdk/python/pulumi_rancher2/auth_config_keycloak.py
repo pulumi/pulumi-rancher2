@@ -13,7 +13,7 @@ __all__ = ['AuthConfigKeycloak']
 
 class AuthConfigKeycloak(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -189,7 +189,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[str]:
+    def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
@@ -197,7 +197,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[List[str]]:
+    def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
         """
@@ -205,7 +205,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -213,7 +213,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayNameField")
-    def display_name_field(self) -> str:
+    def display_name_field(self) -> pulumi.Output[str]:
         """
         KeyCloak display name field (string)
         """
@@ -221,7 +221,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
@@ -229,7 +229,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupsField")
-    def groups_field(self) -> str:
+    def groups_field(self) -> pulumi.Output[str]:
         """
         KeyCloak group field (string)
         """
@@ -237,7 +237,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idpMetadataContent")
-    def idp_metadata_content(self) -> str:
+    def idp_metadata_content(self) -> pulumi.Output[str]:
         """
         KeyCloak IDP metadata content (string)
         """
@@ -245,7 +245,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -253,7 +253,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         (Computed) The name of the resource (string)
         """
@@ -261,7 +261,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rancherApiHost")
-    def rancher_api_host(self) -> str:
+    def rancher_api_host(self) -> pulumi.Output[str]:
         """
         Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
         """
@@ -269,7 +269,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spCert")
-    def sp_cert(self) -> str:
+    def sp_cert(self) -> pulumi.Output[str]:
         """
         KeyCloak SP cert (string)
         """
@@ -277,7 +277,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spKey")
-    def sp_key(self) -> str:
+    def sp_key(self) -> pulumi.Output[str]:
         """
         KeyCloak SP key (string)
         """
@@ -285,7 +285,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         (Computed) The type of the resource (string)
         """
@@ -293,7 +293,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uidField")
-    def uid_field(self) -> str:
+    def uid_field(self) -> pulumi.Output[str]:
         """
         KeyCloak UID field (string)
         """
@@ -301,7 +301,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userNameField")
-    def user_name_field(self) -> str:
+    def user_name_field(self) -> pulumi.Output[str]:
         """
         KeyCloak user name field (string)
         """

@@ -15,7 +15,7 @@ __all__ = ['ProjectAlertGroup']
 
 class ProjectAlertGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -139,7 +139,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The project alert group annotations (map)
         """
@@ -147,7 +147,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The project alert group description (string)
         """
@@ -155,7 +155,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> Optional[float]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert group interval seconds. Default: `180` (int)
         """
@@ -163,7 +163,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> Optional[float]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert group wait seconds. Default: `180` (int)
         """
@@ -171,7 +171,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The project alert group labels (map)
         """
@@ -179,7 +179,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The project alert group name (string)
         """
@@ -187,7 +187,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where create project alert group (string)
         """
@@ -195,7 +195,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipients(self) -> Optional[List['outputs.ProjectAlertGroupRecipient']]:
+    def recipients(self) -> pulumi.Output[Optional[List['outputs.ProjectAlertGroupRecipient']]]:
         """
         The project alert group recipients (list)
         """
@@ -203,7 +203,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> Optional[float]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert group wait seconds. Default: `3600` (int)
         """

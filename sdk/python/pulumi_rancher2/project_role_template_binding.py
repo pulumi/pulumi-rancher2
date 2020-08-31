@@ -13,7 +13,7 @@ __all__ = ['ProjectRoleTemplateBinding']
 
 class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -146,7 +146,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The group ID to assign project role template binding (string)
         """
@@ -154,7 +154,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> str:
+    def group_principal_id(self) -> pulumi.Output[str]:
         """
         The group_principal ID to assign project role template binding (string)
         """
@@ -162,7 +162,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -170,7 +170,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the project role template binding (string)
         """
@@ -178,7 +178,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where bind project role template (string)
         """
@@ -186,7 +186,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleTemplateId")
-    def role_template_id(self) -> str:
+    def role_template_id(self) -> pulumi.Output[str]:
         """
         The role template id from create project role template binding (string)
         """
@@ -194,7 +194,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[str]:
+    def user_id(self) -> pulumi.Output[Optional[str]]:
         """
         The user ID to assign project role template binding (string)
         """
@@ -202,7 +202,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userPrincipalId")
-    def user_principal_id(self) -> str:
+    def user_principal_id(self) -> pulumi.Output[str]:
         """
         The user_principal ID to assign project role template binding (string)
         """

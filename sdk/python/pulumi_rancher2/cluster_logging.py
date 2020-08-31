@@ -15,7 +15,7 @@ __all__ = ['ClusterLogging']
 
 class ClusterLogging(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Cluster Logging object (map)
         """
@@ -189,7 +189,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster id to configure logging (string)
         """
@@ -197,7 +197,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customTargetConfig")
-    def custom_target_config(self) -> Optional['outputs.ClusterLoggingCustomTargetConfig']:
+    def custom_target_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingCustomTargetConfig']]:
         """
         The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         """
@@ -205,7 +205,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticsearchConfig")
-    def elasticsearch_config(self) -> Optional['outputs.ClusterLoggingElasticsearchConfig']:
+    def elasticsearch_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingElasticsearchConfig']]:
         """
         The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         """
@@ -213,7 +213,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableJsonParsing")
-    def enable_json_parsing(self) -> Optional[bool]:
+    def enable_json_parsing(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable json log parsing. Default: `false` (bool)
         """
@@ -221,7 +221,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fluentdConfig")
-    def fluentd_config(self) -> Optional['outputs.ClusterLoggingFluentdConfig']:
+    def fluentd_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingFluentdConfig']]:
         """
         The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         """
@@ -229,7 +229,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kafkaConfig")
-    def kafka_config(self) -> Optional['outputs.ClusterLoggingKafkaConfig']:
+    def kafka_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingKafkaConfig']]:
         """
         The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
         """
@@ -237,7 +237,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
         """
@@ -245,7 +245,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Cluster Logging object (map)
         """
@@ -253,7 +253,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the cluster logging config (string)
         """
@@ -261,7 +261,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[str]:
+    def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace id from cluster logging (string)
         """
@@ -269,7 +269,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputFlushInterval")
-    def output_flush_interval(self) -> Optional[float]:
+    def output_flush_interval(self) -> pulumi.Output[Optional[float]]:
         """
         How often buffered logs would be flushed. Default: `3` seconds (int)
         """
@@ -277,7 +277,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputTags")
-    def output_tags(self) -> Mapping[str, Any]:
+    def output_tags(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The output tags for Cluster Logging (map)
         """
@@ -285,7 +285,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="splunkConfig")
-    def splunk_config(self) -> Optional['outputs.ClusterLoggingSplunkConfig']:
+    def splunk_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingSplunkConfig']]:
         """
         The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         """
@@ -293,7 +293,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="syslogConfig")
-    def syslog_config(self) -> Optional['outputs.ClusterLoggingSyslogConfig']:
+    def syslog_config(self) -> pulumi.Output[Optional['outputs.ClusterLoggingSyslogConfig']]:
         """
         The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         """

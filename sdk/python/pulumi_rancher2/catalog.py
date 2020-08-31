@@ -13,7 +13,7 @@ __all__ = ['Catalog']
 
 class Catalog(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for the catalog (map)
         """
@@ -179,7 +179,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def branch(self) -> Optional[str]:
+    def branch(self) -> pulumi.Output[Optional[str]]:
         """
         The branch of the catalog repo to use. Default `master` (string)
         """
@@ -187,7 +187,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[str]:
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         The cluster id of the catalog. Mandatory if `scope = cluster` (string)
         """
@@ -195,7 +195,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A catalog description (string)
         """
@@ -203,7 +203,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[str]:
+    def kind(self) -> pulumi.Output[Optional[str]]:
         """
         The kind of the catalog. Just helm by the moment (string)
         """
@@ -211,7 +211,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for the catalog (map)
         """
@@ -219,7 +219,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the catalog (string)
         """
@@ -227,7 +227,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password to access the catalog if needed (string)
         """
@@ -235,7 +235,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
+    def project_id(self) -> pulumi.Output[Optional[str]]:
         """
         The project id of the catalog. Mandatory if `scope = project` (string)
         """
@@ -243,7 +243,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def refresh(self) -> Optional[bool]:
+    def refresh(self) -> pulumi.Output[Optional[bool]]:
         """
         Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
         """
@@ -251,7 +251,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> Optional[str]:
+    def scope(self) -> pulumi.Output[Optional[str]]:
         """
         The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
         """
@@ -259,7 +259,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The url of the catalog repo (string)
         """
@@ -267,7 +267,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
         The username to access the catalog if needed (string)
         """
@@ -275,7 +275,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         """

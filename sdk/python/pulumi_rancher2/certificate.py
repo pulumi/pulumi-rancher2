@@ -13,7 +13,7 @@ __all__ = ['Certificate']
 
 class Certificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  certs: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for certificate object (map)
         """
@@ -133,7 +133,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certs(self) -> str:
+    def certs(self) -> pulumi.Output[str]:
         """
         Base64 encoded public certs (string)
         """
@@ -141,7 +141,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A certificate description (string)
         """
@@ -149,7 +149,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         Base64 encoded private key (string)
         """
@@ -157,7 +157,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for certificate object (map)
         """
@@ -165,7 +165,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the certificate (string)
         """
@@ -173,7 +173,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[str]:
+    def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace id where the namespaced certificate should be created (string)
         """
@@ -181,7 +181,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where the certificate should be created  (string)
         """

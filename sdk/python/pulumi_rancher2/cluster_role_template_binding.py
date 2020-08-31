@@ -13,7 +13,7 @@ __all__ = ['ClusterRoleTemplateBinding']
 
 class ClusterRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for cluster role template binding (map)
         """
@@ -146,7 +146,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster id where bind cluster role template binding (string)
         """
@@ -154,7 +154,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
+    def group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The group ID to assign cluster role template binding (string)
         """
@@ -162,7 +162,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> str:
+    def group_principal_id(self) -> pulumi.Output[str]:
         """
         The group_principal ID to assign cluster role template binding (string)
         """
@@ -170,7 +170,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for cluster role template binding (map)
         """
@@ -178,7 +178,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the cluster role template binding (string)
         """
@@ -186,7 +186,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleTemplateId")
-    def role_template_id(self) -> str:
+    def role_template_id(self) -> pulumi.Output[str]:
         """
         The role template id from create cluster role template binding (string)
         """
@@ -194,7 +194,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[str]:
+    def user_id(self) -> pulumi.Output[Optional[str]]:
         """
         The user ID to assign cluster role template binding (string)
         """
@@ -202,7 +202,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userPrincipalId")
-    def user_principal_id(self) -> str:
+    def user_principal_id(self) -> pulumi.Output[str]:
         """
         The user_principal ID to assign cluster role template binding (string)
         """

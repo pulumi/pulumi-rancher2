@@ -13,7 +13,7 @@ __all__ = ['Bootstrap']
 
 class Bootstrap(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  current_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="currentPassword")
-    def current_password(self) -> str:
+    def current_password(self) -> pulumi.Output[str]:
         """
         Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
         """
@@ -128,7 +128,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password for Admin user or random generated if empty (string)
         """
@@ -136,7 +136,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def telemetry(self) -> Optional[bool]:
+    def telemetry(self) -> pulumi.Output[Optional[bool]]:
         """
         Send telemetry anonymous data. Default: `false` (bool)
         """
@@ -144,7 +144,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tempToken")
-    def temp_token(self) -> str:
+    def temp_token(self) -> pulumi.Output[str]:
         """
         (Computed) Generated API temporary token as helper. Should be empty (string)
         """
@@ -152,7 +152,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tempTokenId")
-    def temp_token_id(self) -> str:
+    def temp_token_id(self) -> pulumi.Output[str]:
         """
         (Computed) Generated API temporary token id as helper. Should be empty (string)
         """
@@ -160,7 +160,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         """
         (Computed) Generated API token for Admin User (string)
         """
@@ -168,7 +168,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> str:
+    def token_id(self) -> pulumi.Output[str]:
         """
         (Computed) Generated API token id for Admin User (string)
         """
@@ -176,7 +176,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[float]:
+    def token_ttl(self) -> pulumi.Output[Optional[float]]:
         """
         TTL in seconds for generated admin token. Default: `0`  (int)
         """
@@ -184,7 +184,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenUpdate")
-    def token_update(self) -> Optional[bool]:
+    def token_update(self) -> pulumi.Output[Optional[bool]]:
         """
         Regenerate admin token. Default: `false` (bool)
         """
@@ -192,7 +192,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         (Computed) URL set as server-url (string)
         """
@@ -200,7 +200,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         (Computed) Admin username (string)
         """

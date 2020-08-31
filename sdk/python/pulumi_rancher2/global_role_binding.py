@@ -13,7 +13,7 @@ __all__ = ['GlobalRoleBinding']
 
 class GlobalRoleBinding(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  global_role_id: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for global role binding (map)
         """
@@ -129,7 +129,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="globalRoleId")
-    def global_role_id(self) -> str:
+    def global_role_id(self) -> pulumi.Output[str]:
         """
         The role id from create global role binding (string)
         """
@@ -137,7 +137,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> str:
+    def group_principal_id(self) -> pulumi.Output[str]:
         """
         The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
         """
@@ -145,7 +145,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for global role binding (map)
         """
@@ -153,7 +153,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the global role binding (string)
         """
@@ -161,7 +161,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> pulumi.Output[str]:
         """
         The user ID to assign global role binding (string)
         """

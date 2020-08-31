@@ -13,7 +13,7 @@ __all__ = ['AuthConfigGithub']
 
 class AuthConfigGithub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -147,7 +147,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[str]:
+    def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
@@ -155,7 +155,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[List[str]]:
+    def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
         """
@@ -163,7 +163,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -171,7 +171,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         Github auth Client ID (string)
         """
@@ -179,7 +179,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         """
         Github auth Client secret (string)
         """
@@ -187,7 +187,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
@@ -195,7 +195,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> Optional[str]:
+    def hostname(self) -> pulumi.Output[Optional[str]]:
         """
         Github hostname to connect. Default `github.com` (string)
         """
@@ -203,7 +203,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -211,7 +211,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         (Computed) The name of the resource (string)
         """
@@ -219,7 +219,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tls(self) -> Optional[bool]:
+    def tls(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable TLS connection. Default `true` (bool)
         """
@@ -227,7 +227,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         (Computed) The type of the resource (string)
         """
