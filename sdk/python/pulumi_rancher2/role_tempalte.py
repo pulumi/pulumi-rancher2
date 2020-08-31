@@ -15,7 +15,7 @@ __all__ = ['RoleTempalte']
 
 class RoleTempalte(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administrative: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -181,7 +181,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def administrative(self) -> Optional[bool]:
+    def administrative(self) -> pulumi.Output[Optional[bool]]:
         """
         Administrative role template. Default `false` (bool)
         """
@@ -189,7 +189,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for role template object (map)
         """
@@ -197,7 +197,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def builtin(self) -> bool:
+    def builtin(self) -> pulumi.Output[bool]:
         """
         (Computed) Builtin role template (string)
         """
@@ -205,7 +205,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def context(self) -> Optional[str]:
+    def context(self) -> pulumi.Output[Optional[str]]:
         """
         Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
@@ -213,7 +213,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRole")
-    def default_role(self) -> Optional[bool]:
+    def default_role(self) -> pulumi.Output[Optional[bool]]:
         """
         Default role template for new created cluster or project. Default `false` (bool)
         """
@@ -221,7 +221,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Role template description (string)
         """
@@ -229,7 +229,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def external(self) -> Optional[bool]:
+    def external(self) -> pulumi.Output[Optional[bool]]:
         """
         External role template. Default `false` (bool)
         """
@@ -237,7 +237,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hidden(self) -> Optional[bool]:
+    def hidden(self) -> pulumi.Output[Optional[bool]]:
         """
         Hidden role template. Default `false` (bool)
         """
@@ -245,7 +245,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for role template object (map)
         """
@@ -253,7 +253,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def locked(self) -> Optional[bool]:
+    def locked(self) -> pulumi.Output[Optional[bool]]:
         """
         Locked role template. Default `false` (bool)
         """
@@ -261,7 +261,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Role template name (string)
         """
@@ -269,7 +269,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleTemplateIds")
-    def role_template_ids(self) -> List[str]:
+    def role_template_ids(self) -> pulumi.Output[List[str]]:
         """
         Inherit role template IDs (list)
         """
@@ -277,7 +277,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.RoleTempalteRule']:
+    def rules(self) -> pulumi.Output[List['outputs.RoleTempalteRule']]:
         """
         Role template policy rules (list)
         """

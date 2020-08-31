@@ -13,7 +13,7 @@ __all__ = ['ClusterDriver']
 
 class ClusterDriver(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  actual_url: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def active(self) -> bool:
+    def active(self) -> pulumi.Output[bool]:
         """
         Specify the cluster driver state (bool)
         """
@@ -141,7 +141,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="actualUrl")
-    def actual_url(self) -> Optional[str]:
+    def actual_url(self) -> pulumi.Output[Optional[str]]:
         """
         Actual url of the cluster driver (string)
         """
@@ -149,7 +149,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -157,7 +157,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def builtin(self) -> bool:
+    def builtin(self) -> pulumi.Output[bool]:
         """
         Specify whether the cluster driver is an internal cluster driver or not (bool)
         """
@@ -165,7 +165,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def checksum(self) -> Optional[str]:
+    def checksum(self) -> pulumi.Output[Optional[str]]:
         """
         Verify that the downloaded driver matches the expected checksum (string)
         """
@@ -173,7 +173,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -181,7 +181,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the cluster driver (string)
         """
@@ -189,7 +189,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uiUrl")
-    def ui_url(self) -> Optional[str]:
+    def ui_url(self) -> pulumi.Output[Optional[str]]:
         """
         The URL to load for customized Add Clusters screen for this driver (string)
         """
@@ -197,7 +197,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The URL to download the machine driver binary for 64-bit Linux (string)
         """
@@ -205,7 +205,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="whitelistDomains")
-    def whitelist_domains(self) -> Optional[List[str]]:
+    def whitelist_domains(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Domains to whitelist for the ui (list)
         """

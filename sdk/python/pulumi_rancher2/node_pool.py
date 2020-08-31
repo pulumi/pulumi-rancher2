@@ -15,7 +15,7 @@ __all__ = ['NodePool']
 
 class NodePool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Node Pool object (map)
         """
@@ -155,7 +155,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The RKE cluster id to use Node Pool (string)
         """
@@ -163,7 +163,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[bool]:
+    def control_plane(self) -> pulumi.Output[Optional[bool]]:
         """
         RKE control plane role for created nodes (bool)
         """
@@ -171,7 +171,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteNotReadyAfterSecs")
-    def delete_not_ready_after_secs(self) -> Optional[float]:
+    def delete_not_ready_after_secs(self) -> pulumi.Output[Optional[float]]:
         """
         Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
         """
@@ -179,7 +179,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def etcd(self) -> Optional[bool]:
+    def etcd(self) -> pulumi.Output[Optional[bool]]:
         """
         RKE etcd role for created nodes (bool)
         """
@@ -187,7 +187,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostnamePrefix")
-    def hostname_prefix(self) -> str:
+    def hostname_prefix(self) -> pulumi.Output[str]:
         """
         The prefix for created nodes of the Node Pool (string)
         """
@@ -195,7 +195,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Node Pool object (map)
         """
@@ -203,7 +203,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Node Pool (string)
         """
@@ -211,7 +211,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTaints")
-    def node_taints(self) -> Optional[List['outputs.NodePoolNodeTaint']]:
+    def node_taints(self) -> pulumi.Output[Optional[List['outputs.NodePoolNodeTaint']]]:
         """
         Node taints. For Rancher v2.3.3 or above (List)
         """
@@ -219,7 +219,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTemplateId")
-    def node_template_id(self) -> str:
+    def node_template_id(self) -> pulumi.Output[str]:
         """
         The Node Template ID to use for node creation (string)
         """
@@ -227,7 +227,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def quantity(self) -> Optional[float]:
+    def quantity(self) -> pulumi.Output[Optional[float]]:
         """
         The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         """
@@ -235,7 +235,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def worker(self) -> Optional[bool]:
+    def worker(self) -> pulumi.Output[Optional[bool]]:
         """
         RKE role role for created nodes (bool)
         """

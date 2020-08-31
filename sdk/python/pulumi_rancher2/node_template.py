@@ -15,7 +15,7 @@ __all__ = ['NodeTemplate']
 
 class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -260,7 +260,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="amazonec2Config")
-    def amazonec2_config(self) -> Optional['outputs.NodeTemplateAmazonec2Config']:
+    def amazonec2_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateAmazonec2Config']]:
         """
         AWS config for the Node Template (list maxitems:1)
         """
@@ -268,7 +268,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Node Template object (map)
         """
@@ -276,7 +276,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authCertificateAuthority")
-    def auth_certificate_authority(self) -> Optional[str]:
+    def auth_certificate_authority(self) -> pulumi.Output[Optional[str]]:
         """
         Auth certificate authority for the Node Template (string)
         """
@@ -284,7 +284,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authKey")
-    def auth_key(self) -> Optional[str]:
+    def auth_key(self) -> pulumi.Output[Optional[str]]:
         """
         Auth key for the Node Template (string)
         """
@@ -292,7 +292,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="azureConfig")
-    def azure_config(self) -> Optional['outputs.NodeTemplateAzureConfig']:
+    def azure_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateAzureConfig']]:
         """
         Azure config for the Node Template (list maxitems:1)
         """
@@ -300,7 +300,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cloudCredentialId")
-    def cloud_credential_id(self) -> Optional[str]:
+    def cloud_credential_id(self) -> pulumi.Output[Optional[str]]:
         """
         Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         """
@@ -308,7 +308,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description for the Node Template (string)
         """
@@ -316,7 +316,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="digitaloceanConfig")
-    def digitalocean_config(self) -> Optional['outputs.NodeTemplateDigitaloceanConfig']:
+    def digitalocean_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateDigitaloceanConfig']]:
         """
         Digitalocean config for the Node Template (list maxitems:1)
         """
@@ -324,7 +324,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def driver(self) -> str:
+    def driver(self) -> pulumi.Output[str]:
         """
         (Computed) The driver of the node template (string)
         """
@@ -332,7 +332,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="driverId")
-    def driver_id(self) -> str:
+    def driver_id(self) -> pulumi.Output[str]:
         """
         The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         """
@@ -340,7 +340,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineEnv")
-    def engine_env(self) -> Optional[Mapping[str, Any]]:
+    def engine_env(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Engine environment for the node template (string)
         """
@@ -348,7 +348,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineInsecureRegistries")
-    def engine_insecure_registries(self) -> Optional[List[str]]:
+    def engine_insecure_registries(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Insecure registry for the node template (list)
         """
@@ -356,7 +356,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineInstallUrl")
-    def engine_install_url(self) -> Optional[str]:
+    def engine_install_url(self) -> pulumi.Output[Optional[str]]:
         """
         Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         """
@@ -364,7 +364,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineLabel")
-    def engine_label(self) -> Optional[Mapping[str, Any]]:
+    def engine_label(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Engine label for the node template (string)
         """
@@ -372,7 +372,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineOpt")
-    def engine_opt(self) -> Optional[Mapping[str, Any]]:
+    def engine_opt(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Engine options for the node template (map)
         """
@@ -380,7 +380,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineRegistryMirrors")
-    def engine_registry_mirrors(self) -> Optional[List[str]]:
+    def engine_registry_mirrors(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Engine registry mirror for the node template (list)
         """
@@ -388,7 +388,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineStorageDriver")
-    def engine_storage_driver(self) -> Optional[str]:
+    def engine_storage_driver(self) -> pulumi.Output[Optional[str]]:
         """
         Engine storage driver for the node template (string)
         """
@@ -396,7 +396,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Node Template object (map)
         """
@@ -404,7 +404,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeConfig")
-    def linode_config(self) -> Optional['outputs.NodeTemplateLinodeConfig']:
+    def linode_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateLinodeConfig']]:
         """
         Linode config for the Node Template (list maxitems:1)
         """
@@ -412,7 +412,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Node Template (string)
         """
@@ -420,7 +420,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="opennebulaConfig")
-    def opennebula_config(self) -> Optional['outputs.NodeTemplateOpennebulaConfig']:
+    def opennebula_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateOpennebulaConfig']]:
         """
         Opennebula config for the Node Template (list maxitems:1)
         """
@@ -428,7 +428,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="openstackConfig")
-    def openstack_config(self) -> Optional['outputs.NodeTemplateOpenstackConfig']:
+    def openstack_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateOpenstackConfig']]:
         """
         Openstack config for the Node Template (list maxitems:1)
         """
@@ -436,7 +436,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useInternalIpAddress")
-    def use_internal_ip_address(self) -> Optional[bool]:
+    def use_internal_ip_address(self) -> pulumi.Output[Optional[bool]]:
         """
         Engine storage driver for the node template (bool)
         """
@@ -444,7 +444,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsphereConfig")
-    def vsphere_config(self) -> Optional['outputs.NodeTemplateVsphereConfig']:
+    def vsphere_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateVsphereConfig']]:
         """
         vSphere config for the Node Template (list maxitems:1)
         """

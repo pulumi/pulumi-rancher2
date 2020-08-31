@@ -15,7 +15,7 @@ __all__ = ['ClusterAlertGroup']
 
 class ClusterAlertGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The cluster alert group annotations (map)
         """
@@ -149,7 +149,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster id where create cluster alert group (string)
         """
@@ -157,7 +157,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The cluster alert group description (string)
         """
@@ -165,7 +165,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> Optional[float]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The cluster alert group interval seconds. Default: `180` (int)
         """
@@ -173,7 +173,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> Optional[float]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The cluster alert group wait seconds. Default: `180` (int)
         """
@@ -181,7 +181,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The cluster alert group labels (map)
         """
@@ -189,7 +189,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The cluster alert group name (string)
         """
@@ -197,7 +197,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipients(self) -> Optional[List['outputs.ClusterAlertGroupRecipient']]:
+    def recipients(self) -> pulumi.Output[Optional[List['outputs.ClusterAlertGroupRecipient']]]:
         """
         The cluster alert group recipients (list)
         """
@@ -205,7 +205,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> Optional[float]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The cluster alert group wait seconds. Default: `3600` (int)
         """

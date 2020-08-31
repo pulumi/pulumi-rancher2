@@ -15,7 +15,7 @@ __all__ = ['PodSecurityPolicyTemplate']
 
 class PodSecurityPolicyTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
                  allowed_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -343,7 +343,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowPrivilegeEscalation")
-    def allow_privilege_escalation(self) -> bool:
+    def allow_privilege_escalation(self) -> pulumi.Output[bool]:
         """
         = (Optional)
         """
@@ -351,7 +351,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCapabilities")
-    def allowed_capabilities(self) -> Optional[List[str]]:
+    def allowed_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -359,7 +359,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCsiDrivers")
-    def allowed_csi_drivers(self) -> Optional[List['outputs.PodSecurityPolicyTemplateAllowedCsiDriver']]:
+    def allowed_csi_drivers(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedCsiDriver']]]:
         """
         (list)
         """
@@ -367,7 +367,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedFlexVolumes")
-    def allowed_flex_volumes(self) -> Optional[List['outputs.PodSecurityPolicyTemplateAllowedFlexVolume']]:
+    def allowed_flex_volumes(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedFlexVolume']]]:
         """
         (list)
         """
@@ -375,7 +375,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedHostPaths")
-    def allowed_host_paths(self) -> Optional[List['outputs.PodSecurityPolicyTemplateAllowedHostPath']]:
+    def allowed_host_paths(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedHostPath']]]:
         """
         (list)
         """
@@ -383,7 +383,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedProcMountTypes")
-    def allowed_proc_mount_types(self) -> Optional[List[str]]:
+    def allowed_proc_mount_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -391,7 +391,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedUnsafeSysctls")
-    def allowed_unsafe_sysctls(self) -> Optional[List[str]]:
+    def allowed_unsafe_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -399,7 +399,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for PodSecurityPolicyTemplate object (map)
         """
@@ -407,7 +407,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAddCapabilities")
-    def default_add_capabilities(self) -> Optional[List[str]]:
+    def default_add_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -415,7 +415,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAllowPrivilegeEscalation")
-    def default_allow_privilege_escalation(self) -> Optional[bool]:
+    def default_allow_privilege_escalation(self) -> pulumi.Output[Optional[bool]]:
         """
         (list)
         """
@@ -423,7 +423,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The PodSecurityPolicyTemplate description (string)
         """
@@ -431,7 +431,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forbiddenSysctls")
-    def forbidden_sysctls(self) -> Optional[List[str]]:
+    def forbidden_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -439,7 +439,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fsGroup")
-    def fs_group(self) -> 'outputs.PodSecurityPolicyTemplateFsGroup':
+    def fs_group(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateFsGroup']:
         """
         (list maxitems:1)
         """
@@ -447,7 +447,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostIpc")
-    def host_ipc(self) -> bool:
+    def host_ipc(self) -> pulumi.Output[bool]:
         """
         (bool)
         """
@@ -455,7 +455,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostNetwork")
-    def host_network(self) -> bool:
+    def host_network(self) -> pulumi.Output[bool]:
         """
         hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
         """
@@ -463,7 +463,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostPid")
-    def host_pid(self) -> bool:
+    def host_pid(self) -> pulumi.Output[bool]:
         """
         (bool)
         """
@@ -471,7 +471,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostPorts")
-    def host_ports(self) -> List['outputs.PodSecurityPolicyTemplateHostPort']:
+    def host_ports(self) -> pulumi.Output[List['outputs.PodSecurityPolicyTemplateHostPort']]:
         """
         (list)
         """
@@ -479,7 +479,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for PodSecurityPolicyTemplate object (map)
         """
@@ -487,7 +487,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the PodSecurityPolicyTemplate (string)
         """
@@ -495,7 +495,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileged(self) -> bool:
+    def privileged(self) -> pulumi.Output[bool]:
         """
         (bool)
         """
@@ -503,7 +503,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readOnlyRootFilesystem")
-    def read_only_root_filesystem(self) -> bool:
+    def read_only_root_filesystem(self) -> pulumi.Output[bool]:
         """
         (bool)
         """
@@ -511,7 +511,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiredDropCapabilities")
-    def required_drop_capabilities(self) -> Optional[List[str]]:
+    def required_drop_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
         (list)
         """
@@ -519,7 +519,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> Optional['outputs.PodSecurityPolicyTemplateRunAsGroup']:
+    def run_as_group(self) -> pulumi.Output[Optional['outputs.PodSecurityPolicyTemplateRunAsGroup']]:
         """
         (list maxitems:1)
         """
@@ -527,7 +527,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> 'outputs.PodSecurityPolicyTemplateRunAsUser':
+    def run_as_user(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateRunAsUser']:
         """
         (list maxitems:1)
         """
@@ -535,7 +535,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runtimeClass")
-    def runtime_class(self) -> Optional['outputs.PodSecurityPolicyTemplateRuntimeClass']:
+    def runtime_class(self) -> pulumi.Output[Optional['outputs.PodSecurityPolicyTemplateRuntimeClass']]:
         """
         (list maxitems:1)
         """
@@ -543,7 +543,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="seLinux")
-    def se_linux(self) -> 'outputs.PodSecurityPolicyTemplateSeLinux':
+    def se_linux(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateSeLinux']:
         """
         (list maxitems:1)
         """
@@ -551,7 +551,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supplementalGroup")
-    def supplemental_group(self) -> 'outputs.PodSecurityPolicyTemplateSupplementalGroup':
+    def supplemental_group(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateSupplementalGroup']:
         """
         (list maxitems:1)
         """
@@ -559,7 +559,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def volumes(self) -> List[str]:
+    def volumes(self) -> pulumi.Output[List[str]]:
         """
         (list)
         """

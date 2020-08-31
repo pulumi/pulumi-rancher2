@@ -13,7 +13,7 @@ __all__ = ['ActiveDirectory']
 
 class ActiveDirectory(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -265,7 +265,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[str]:
+    def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
@@ -273,7 +273,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[List[str]]:
+    def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
         """
@@ -281,7 +281,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the resource (map)
         """
@@ -289,7 +289,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certificate(self) -> Optional[str]:
+    def certificate(self) -> pulumi.Output[Optional[str]]:
         """
         CA certificate for TLS if selfsigned (string)
         """
@@ -297,7 +297,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionTimeout")
-    def connection_timeout(self) -> Optional[float]:
+    def connection_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         ActiveDirectory connection timeout. Default `5000` (int)
         """
@@ -305,7 +305,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultLoginDomain")
-    def default_login_domain(self) -> Optional[str]:
+    def default_login_domain(self) -> pulumi.Output[Optional[str]]:
         """
         ActiveDirectory defult login domain (string)
         """
@@ -313,7 +313,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
@@ -321,7 +321,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupDnAttribute")
-    def group_dn_attribute(self) -> str:
+    def group_dn_attribute(self) -> pulumi.Output[str]:
         """
         Group DN attribute. Default `distinguishedName` (string)
         """
@@ -329,7 +329,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupMemberMappingAttribute")
-    def group_member_mapping_attribute(self) -> str:
+    def group_member_mapping_attribute(self) -> pulumi.Output[str]:
         """
         Group member mapping attribute. Default `member` (string)
         """
@@ -337,7 +337,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupMemberUserAttribute")
-    def group_member_user_attribute(self) -> str:
+    def group_member_user_attribute(self) -> pulumi.Output[str]:
         """
         Group member user attribute. Default `distinguishedName` (string)
         """
@@ -345,7 +345,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupNameAttribute")
-    def group_name_attribute(self) -> str:
+    def group_name_attribute(self) -> pulumi.Output[str]:
         """
         Group name attribute. Default `name` (string)
         """
@@ -353,7 +353,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupObjectClass")
-    def group_object_class(self) -> str:
+    def group_object_class(self) -> pulumi.Output[str]:
         """
         Group object class. Default `group` (string)
         """
@@ -361,7 +361,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupSearchAttribute")
-    def group_search_attribute(self) -> str:
+    def group_search_attribute(self) -> pulumi.Output[str]:
         """
         Group search attribute. Default `sAMAccountName` (string)
         """
@@ -369,7 +369,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupSearchBase")
-    def group_search_base(self) -> str:
+    def group_search_base(self) -> pulumi.Output[str]:
         """
         Group search base (string)
         """
@@ -377,7 +377,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupSearchFilter")
-    def group_search_filter(self) -> str:
+    def group_search_filter(self) -> pulumi.Output[str]:
         """
         Group search filter (string)
         """
@@ -385,7 +385,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the resource (map)
         """
@@ -393,7 +393,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         (Computed) The name of the resource (string)
         """
@@ -401,7 +401,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nestedGroupMembershipEnabled")
-    def nested_group_membership_enabled(self) -> bool:
+    def nested_group_membership_enabled(self) -> pulumi.Output[bool]:
         """
         Nested group membership enable. Default `false` (bool)
         """
@@ -409,7 +409,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         ActiveDirectory port. Default `389` (int)
         """
@@ -417,7 +417,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> List[str]:
+    def servers(self) -> pulumi.Output[List[str]]:
         """
         ActiveDirectory servers list (list)
         """
@@ -425,7 +425,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountPassword")
-    def service_account_password(self) -> str:
+    def service_account_password(self) -> pulumi.Output[str]:
         """
         Service account password for access ActiveDirectory service (string)
         """
@@ -433,7 +433,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountUsername")
-    def service_account_username(self) -> str:
+    def service_account_username(self) -> pulumi.Output[str]:
         """
         Service account DN for access ActiveDirectory service (string)
         """
@@ -441,7 +441,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tls(self) -> bool:
+    def tls(self) -> pulumi.Output[bool]:
         """
         Enable TLS connection (bool)
         """
@@ -449,7 +449,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         (Computed) The type of the resource (string)
         """
@@ -457,7 +457,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDisabledBitMask")
-    def user_disabled_bit_mask(self) -> Optional[float]:
+    def user_disabled_bit_mask(self) -> pulumi.Output[Optional[float]]:
         """
         User disabled bit mask. Default `2` (int)
         """
@@ -465,7 +465,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userEnabledAttribute")
-    def user_enabled_attribute(self) -> str:
+    def user_enabled_attribute(self) -> pulumi.Output[str]:
         """
         User enable attribute (string)
         """
@@ -473,7 +473,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userLoginAttribute")
-    def user_login_attribute(self) -> str:
+    def user_login_attribute(self) -> pulumi.Output[str]:
         """
         User login attribute. Default `sAMAccountName` (string)
         """
@@ -481,7 +481,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userNameAttribute")
-    def user_name_attribute(self) -> str:
+    def user_name_attribute(self) -> pulumi.Output[str]:
         """
         User name attribute. Default `name` (string)
         """
@@ -489,7 +489,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userObjectClass")
-    def user_object_class(self) -> str:
+    def user_object_class(self) -> pulumi.Output[str]:
         """
         User object class. Default `person` (string)
         """
@@ -497,7 +497,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSearchAttribute")
-    def user_search_attribute(self) -> str:
+    def user_search_attribute(self) -> pulumi.Output[str]:
         """
         User search attribute. Default `sAMAccountName|sn|givenName` (string)
         """
@@ -505,7 +505,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSearchBase")
-    def user_search_base(self) -> str:
+    def user_search_base(self) -> pulumi.Output[str]:
         """
         User search base DN (string)
         """
@@ -513,7 +513,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userSearchFilter")
-    def user_search_filter(self) -> str:
+    def user_search_filter(self) -> pulumi.Output[str]:
         """
         User search filter (string)
         """

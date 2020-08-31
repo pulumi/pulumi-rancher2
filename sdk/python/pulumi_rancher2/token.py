@@ -13,7 +13,7 @@ __all__ = ['Token']
 
 class Token(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
+    def access_key(self) -> pulumi.Output[str]:
         """
         (Computed) Token access key part (string)
         """
@@ -158,7 +158,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations of the token (map)
         """
@@ -166,7 +166,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[str]:
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster ID for scoped token (string)
         """
@@ -174,7 +174,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Token description (string)
         """
@@ -182,7 +182,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         (Computed) Token is enabled (bool)
         """
@@ -190,7 +190,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expired(self) -> bool:
+    def expired(self) -> pulumi.Output[bool]:
         """
         (Computed) Token is expired (bool)
         """
@@ -198,7 +198,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels of the token (map)
         """
@@ -206,7 +206,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         (Computed) Token name (string)
         """
@@ -214,7 +214,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def renew(self) -> Optional[bool]:
+    def renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Renew expired or disabled token
         """
@@ -222,7 +222,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
+    def secret_key(self) -> pulumi.Output[str]:
         """
         (Computed/Sensitive) Token secret key part (string)
         """
@@ -230,7 +230,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> str:
+    def token(self) -> pulumi.Output[str]:
         """
         (Computed/Sensitive) Token value (string)
         """
@@ -238,7 +238,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> pulumi.Output[Optional[float]]:
         """
         Token time to live in seconds. Default `0` (int)
         """
@@ -246,7 +246,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> pulumi.Output[str]:
         """
         (Computed) Token user ID (string)
         """

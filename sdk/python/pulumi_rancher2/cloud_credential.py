@@ -15,7 +15,7 @@ __all__ = ['CloudCredential']
 
 class CloudCredential(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amazonec2_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -150,7 +150,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="amazonec2CredentialConfig")
-    def amazonec2_credential_config(self) -> Optional['outputs.CloudCredentialAmazonec2CredentialConfig']:
+    def amazonec2_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialAmazonec2CredentialConfig']]:
         """
         AWS config for the Cloud Credential (list maxitems:1)
         """
@@ -158,7 +158,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for Cloud Credential object (map)
         """
@@ -166,7 +166,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="azureCredentialConfig")
-    def azure_credential_config(self) -> Optional['outputs.CloudCredentialAzureCredentialConfig']:
+    def azure_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialAzureCredentialConfig']]:
         """
         Azure config for the Cloud Credential (list maxitems:1)
         """
@@ -174,7 +174,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description for the Cloud Credential (string)
         """
@@ -182,7 +182,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="digitaloceanCredentialConfig")
-    def digitalocean_credential_config(self) -> Optional['outputs.CloudCredentialDigitaloceanCredentialConfig']:
+    def digitalocean_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialDigitaloceanCredentialConfig']]:
         """
         DigitalOcean config for the Cloud Credential (list maxitems:1)
         """
@@ -190,7 +190,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def driver(self) -> str:
+    def driver(self) -> pulumi.Output[str]:
         """
         (Computed) The driver of the Cloud Credential (string)
         """
@@ -198,7 +198,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for Cloud Credential object (map)
         """
@@ -206,7 +206,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linodeCredentialConfig")
-    def linode_credential_config(self) -> Optional['outputs.CloudCredentialLinodeCredentialConfig']:
+    def linode_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialLinodeCredentialConfig']]:
         """
         Linode config for the Cloud Credential (list maxitems:1)
         """
@@ -214,7 +214,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Cloud Credential (string)
         """
@@ -222,7 +222,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="openstackCredentialConfig")
-    def openstack_credential_config(self) -> Optional['outputs.CloudCredentialOpenstackCredentialConfig']:
+    def openstack_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialOpenstackCredentialConfig']]:
         """
         OpenStack config for the Cloud Credential (list maxitems:1)
         """
@@ -230,7 +230,7 @@ class CloudCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsphereCredentialConfig")
-    def vsphere_credential_config(self) -> Optional['outputs.CloudCredentialVsphereCredentialConfig']:
+    def vsphere_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialVsphereCredentialConfig']]:
         """
         vSphere config for the Cloud Credential (list maxitems:1)
         """

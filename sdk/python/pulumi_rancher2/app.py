@@ -13,7 +13,7 @@ __all__ = ['App']
 
 class App(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -160,7 +160,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for App object (map)
         """
@@ -168,7 +168,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def answers(self) -> Optional[Mapping[str, Any]]:
+    def answers(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Answers for the app template. If modified, app will be upgraded (map)
         """
@@ -176,7 +176,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> str:
+    def catalog_name(self) -> pulumi.Output[str]:
         """
         Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
         * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
@@ -186,7 +186,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         Description for the app (string)
         """
@@ -194,7 +194,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> str:
+    def external_id(self) -> pulumi.Output[str]:
         """
         (Computed) The url of the app template on a catalog (string)
         """
@@ -202,7 +202,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceUpgrade")
-    def force_upgrade(self) -> Optional[bool]:
+    def force_upgrade(self) -> pulumi.Output[Optional[bool]]:
         """
         Force app upgrade (string)
         """
@@ -210,7 +210,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for App object (map)
         """
@@ -218,7 +218,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the app (string)
         """
@@ -226,7 +226,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where the app will be installed (string)
         """
@@ -234,7 +234,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> str:
+    def revision_id(self) -> pulumi.Output[str]:
         """
         Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
         """
@@ -242,7 +242,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetNamespace")
-    def target_namespace(self) -> str:
+    def target_namespace(self) -> pulumi.Output[str]:
         """
         The namespace name where the app will be installed (string)
         """
@@ -250,7 +250,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> str:
+    def template_name(self) -> pulumi.Output[str]:
         """
         Template name of the app. If modified, app will be upgraded (string)
         """
@@ -258,7 +258,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> str:
+    def template_version(self) -> pulumi.Output[str]:
         """
         Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
         """
@@ -266,7 +266,7 @@ class App(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valuesYaml")
-    def values_yaml(self) -> Optional[str]:
+    def values_yaml(self) -> pulumi.Output[Optional[str]]:
         """
         values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
         """

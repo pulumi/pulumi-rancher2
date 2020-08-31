@@ -15,7 +15,7 @@ __all__ = ['ProjectAlertRule']
 
 class ProjectAlertRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The project alert rule annotations (map)
         """
@@ -201,7 +201,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The project alert rule alert group ID (string)
         """
@@ -209,7 +209,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> Optional[float]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert rule group interval seconds. Default: `180` (int)
         """
@@ -217,7 +217,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> Optional[float]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert rule group wait seconds. Default: `180` (int)
         """
@@ -225,7 +225,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inherited(self) -> Optional[bool]:
+    def inherited(self) -> pulumi.Output[Optional[bool]]:
         """
         The project alert rule inherited. Default: `true` (bool)
         """
@@ -233,7 +233,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The project alert rule labels (map)
         """
@@ -241,7 +241,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="metricRule")
-    def metric_rule(self) -> Optional['outputs.ProjectAlertRuleMetricRule']:
+    def metric_rule(self) -> pulumi.Output[Optional['outputs.ProjectAlertRuleMetricRule']]:
         """
         The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         """
@@ -249,7 +249,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The project alert rule name (string)
         """
@@ -257,7 +257,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="podRule")
-    def pod_rule(self) -> Optional['outputs.ProjectAlertRulePodRule']:
+    def pod_rule(self) -> pulumi.Output[Optional['outputs.ProjectAlertRulePodRule']]:
         """
         The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         """
@@ -265,7 +265,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where create project alert rule (string)
         """
@@ -273,7 +273,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> Optional[float]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         The project alert rule wait seconds. Default: `3600` (int)
         """
@@ -281,7 +281,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[str]:
+    def severity(self) -> pulumi.Output[Optional[str]]:
         """
         The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         """
@@ -289,7 +289,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workloadRule")
-    def workload_rule(self) -> Optional['outputs.ProjectAlertRuleWorkloadRule']:
+    def workload_rule(self) -> pulumi.Output[Optional['outputs.ProjectAlertRuleWorkloadRule']]:
         """
         The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """

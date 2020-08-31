@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -241,7 +241,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aksConfig")
-    def aks_config(self) -> Optional['outputs.ClusterAksConfig']:
+    def aks_config(self) -> pulumi.Output[Optional['outputs.ClusterAksConfig']]:
         """
         The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
@@ -249,7 +249,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for cluster registration token object (map)
         """
@@ -257,7 +257,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterAuthEndpoint")
-    def cluster_auth_endpoint(self) -> 'outputs.ClusterClusterAuthEndpoint':
+    def cluster_auth_endpoint(self) -> pulumi.Output['outputs.ClusterClusterAuthEndpoint']:
         """
         Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         """
@@ -265,7 +265,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterMonitoringInput")
-    def cluster_monitoring_input(self) -> 'outputs.ClusterClusterMonitoringInput':
+    def cluster_monitoring_input(self) -> pulumi.Output['outputs.ClusterClusterMonitoringInput']:
         """
         Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
         """
@@ -273,7 +273,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterRegistrationToken")
-    def cluster_registration_token(self) -> 'outputs.ClusterClusterRegistrationToken':
+    def cluster_registration_token(self) -> pulumi.Output['outputs.ClusterClusterRegistrationToken']:
         """
         (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         """
@@ -281,7 +281,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> 'outputs.ClusterClusterTemplateAnswers':
+    def cluster_template_answers(self) -> pulumi.Output['outputs.ClusterClusterTemplateAnswers']:
         """
         Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
         """
@@ -289,7 +289,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> Optional[str]:
+    def cluster_template_id(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster template ID. Just for Rancher v2.3.x and above (string)
         """
@@ -297,7 +297,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> Optional[List['outputs.ClusterClusterTemplateQuestion']]:
+    def cluster_template_questions(self) -> pulumi.Output[Optional[List['outputs.ClusterClusterTemplateQuestion']]]:
         """
         Cluster template questions. Just for Rancher v2.3.x and above (list)
         """
@@ -305,7 +305,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> Optional[str]:
+    def cluster_template_revision_id(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster template revision ID. Just for Rancher v2.3.x and above (string)
         """
@@ -313,7 +313,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
-    def default_pod_security_policy_template_id(self) -> str:
+    def default_pod_security_policy_template_id(self) -> pulumi.Output[str]:
         """
         [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
         """
@@ -321,7 +321,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> str:
+    def default_project_id(self) -> pulumi.Output[str]:
         """
         (Computed) Default project ID for the cluster (string)
         """
@@ -329,7 +329,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description of this cluster (string)
         """
@@ -337,7 +337,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredAgentImage")
-    def desired_agent_image(self) -> str:
+    def desired_agent_image(self) -> pulumi.Output[str]:
         """
         Desired agent image. Just for Rancher v2.3.x and above (string)
         """
@@ -345,7 +345,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredAuthImage")
-    def desired_auth_image(self) -> str:
+    def desired_auth_image(self) -> pulumi.Output[str]:
         """
         Desired auth image. Just for Rancher v2.3.x and above (string)
         """
@@ -353,7 +353,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dockerRootDir")
-    def docker_root_dir(self) -> str:
+    def docker_root_dir(self) -> pulumi.Output[str]:
         """
         Desired auth image. Just for Rancher v2.3.x and above (string)
         """
@@ -361,7 +361,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def driver(self) -> str:
+    def driver(self) -> pulumi.Output[str]:
         """
         (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         """
@@ -369,7 +369,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eksConfig")
-    def eks_config(self) -> Optional['outputs.ClusterEksConfig']:
+    def eks_config(self) -> pulumi.Output[Optional['outputs.ClusterEksConfig']]:
         """
         The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
@@ -377,7 +377,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableClusterAlerting")
-    def enable_cluster_alerting(self) -> bool:
+    def enable_cluster_alerting(self) -> pulumi.Output[bool]:
         """
         Enable built-in cluster alerting (bool)
         """
@@ -385,7 +385,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableClusterIstio")
-    def enable_cluster_istio(self) -> bool:
+    def enable_cluster_istio(self) -> pulumi.Output[bool]:
         """
         Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         """
@@ -393,7 +393,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableClusterMonitoring")
-    def enable_cluster_monitoring(self) -> bool:
+    def enable_cluster_monitoring(self) -> pulumi.Output[bool]:
         """
         Enable built-in cluster monitoring (bool)
         """
@@ -401,7 +401,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")
-    def enable_network_policy(self) -> bool:
+    def enable_network_policy(self) -> pulumi.Output[bool]:
         """
         Enable project network isolation (bool)
         """
@@ -409,7 +409,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gkeConfig")
-    def gke_config(self) -> Optional['outputs.ClusterGkeConfig']:
+    def gke_config(self) -> pulumi.Output[Optional['outputs.ClusterGkeConfig']]:
         """
         The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
@@ -417,7 +417,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="k3sConfig")
-    def k3s_config(self) -> 'outputs.ClusterK3sConfig':
+    def k3s_config(self) -> pulumi.Output['outputs.ClusterK3sConfig']:
         """
         The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         """
@@ -425,7 +425,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> str:
+    def kube_config(self) -> pulumi.Output[str]:
         """
         (Computed/Sensitive) Kube Config generated for the cluster (string)
         """
@@ -433,7 +433,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for cluster registration token object (map)
         """
@@ -441,7 +441,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of cluster registration token (string)
         """
@@ -449,7 +449,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> 'outputs.ClusterRkeConfig':
+    def rke_config(self) -> pulumi.Output['outputs.ClusterRkeConfig']:
         """
         The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
         """
@@ -457,7 +457,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledClusterScan")
-    def scheduled_cluster_scan(self) -> 'outputs.ClusterScheduledClusterScan':
+    def scheduled_cluster_scan(self) -> pulumi.Output['outputs.ClusterScheduledClusterScan']:
         """
         Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         """
@@ -465,7 +465,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemProjectId")
-    def system_project_id(self) -> str:
+    def system_project_id(self) -> pulumi.Output[str]:
         """
         (Computed) System project ID for the cluster (string)
         """
@@ -473,7 +473,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="windowsPreferedCluster")
-    def windows_prefered_cluster(self) -> Optional[bool]:
+    def windows_prefered_cluster(self) -> pulumi.Output[Optional[bool]]:
         """
         Windows preferred cluster. Default: `false` (bool)
         """

@@ -15,7 +15,7 @@ __all__ = ['ClusterTemplate']
 
 class ClusterTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -224,7 +224,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for the cluster template revision (map)
         """
@@ -232,7 +232,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRevisionId")
-    def default_revision_id(self) -> str:
+    def default_revision_id(self) -> pulumi.Output[str]:
         """
         (Computed) Default cluster template revision ID (string)
         """
@@ -240,7 +240,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Cluster template description
         """
@@ -248,7 +248,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for the cluster template revision (map)
         """
@@ -256,7 +256,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List['outputs.ClusterTemplateMember']]:
+    def members(self) -> pulumi.Output[Optional[List['outputs.ClusterTemplateMember']]]:
         """
         Cluster template members (list)
         """
@@ -264,7 +264,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The cluster template revision name (string)
         """
@@ -272,7 +272,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateRevisions")
-    def template_revisions(self) -> List['outputs.ClusterTemplateTemplateRevision']:
+    def template_revisions(self) -> pulumi.Output[List['outputs.ClusterTemplateTemplateRevision']]:
         """
         Cluster template revisions (list)
         """

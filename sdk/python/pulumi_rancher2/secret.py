@@ -13,7 +13,7 @@ __all__ = ['Secret']
 
 class Secret(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -117,7 +117,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for secret object (map)
         """
@@ -125,7 +125,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Secret key/value data. Base64 encoding required for values (map)
         """
@@ -133,7 +133,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A secret description (string)
         """
@@ -141,7 +141,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for secret object (map)
         """
@@ -149,7 +149,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the secret (string)
         """
@@ -157,7 +157,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[str]:
+    def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace id where to assign the namespaced secret (string)
         """
@@ -165,7 +165,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> pulumi.Output[str]:
         """
         The project id where to assign the secret (string)
         """

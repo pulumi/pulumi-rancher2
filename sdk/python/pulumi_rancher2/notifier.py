@@ -15,7 +15,7 @@ __all__ = ['Notifier']
 
 class Notifier(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Annotations for notifier object (map)
         """
@@ -162,7 +162,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The cluster id where create notifier (string)
         """
@@ -170,7 +170,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The notifier description (string)
         """
@@ -178,7 +178,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for notifier object (map)
         """
@@ -186,7 +186,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the notifier (string)
         """
@@ -194,7 +194,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pagerdutyConfig")
-    def pagerduty_config(self) -> Optional['outputs.NotifierPagerdutyConfig']:
+    def pagerduty_config(self) -> pulumi.Output[Optional['outputs.NotifierPagerdutyConfig']]:
         """
         Pagerduty config for notifier (list maxitems:1)
         """
@@ -202,7 +202,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sendResolved")
-    def send_resolved(self) -> Optional[bool]:
+    def send_resolved(self) -> pulumi.Output[Optional[bool]]:
         """
         = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
         """
@@ -210,7 +210,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slackConfig")
-    def slack_config(self) -> Optional['outputs.NotifierSlackConfig']:
+    def slack_config(self) -> pulumi.Output[Optional['outputs.NotifierSlackConfig']]:
         """
         Slack config for notifier (list maxitems:1)
         """
@@ -218,7 +218,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smtpConfig")
-    def smtp_config(self) -> Optional['outputs.NotifierSmtpConfig']:
+    def smtp_config(self) -> pulumi.Output[Optional['outputs.NotifierSmtpConfig']]:
         """
         SMTP config for notifier (list maxitems:1)
         """
@@ -226,7 +226,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webhookConfig")
-    def webhook_config(self) -> Optional['outputs.NotifierWebhookConfig']:
+    def webhook_config(self) -> pulumi.Output[Optional['outputs.NotifierWebhookConfig']]:
         """
         Webhook config for notifier (list maxitems:1)
         """
@@ -234,7 +234,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wechatConfig")
-    def wechat_config(self) -> Optional['outputs.NotifierWechatConfig']:
+    def wechat_config(self) -> pulumi.Output[Optional['outputs.NotifierWechatConfig']]:
         """
         Wechat config for notifier (list maxitems:1)
         """
