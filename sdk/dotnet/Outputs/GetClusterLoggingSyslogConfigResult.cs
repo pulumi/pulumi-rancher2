@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? Certificate;
         public readonly string? ClientCert;
         public readonly string? ClientKey;
+        public readonly bool? EnableTls;
         public readonly string Endpoint;
         public readonly string? Program;
         public readonly string? Protocol;
@@ -30,6 +31,8 @@ namespace Pulumi.Rancher2.Outputs
             string? clientCert,
 
             string? clientKey,
+
+            bool? enableTls,
 
             string endpoint,
 
@@ -46,6 +49,7 @@ namespace Pulumi.Rancher2.Outputs
             Certificate = certificate;
             ClientCert = clientCert;
             ClientKey = clientKey;
+            EnableTls = enableTls;
             Endpoint = endpoint;
             Program = program;
             Protocol = protocol;

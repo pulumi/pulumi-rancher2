@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateRuntimeClass
     {
-        /// <summary>
-        /// (list)
-        /// </summary>
         public readonly ImmutableArray<string> AllowedRuntimeClassNames;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? DefaultRuntimeClassName;
 
         [OutputConstructor]

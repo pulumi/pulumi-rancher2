@@ -14,19 +14,12 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("ranges")]
         private InputList<Inputs.PodSecurityPolicyTemplateRunAsUserRangeGetArgs>? _ranges;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateRunAsUserRangeGetArgs> Ranges
         {
             get => _ranges ?? (_ranges = new InputList<Inputs.PodSecurityPolicyTemplateRunAsUserRangeGetArgs>());
             set => _ranges = value;
         }
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 

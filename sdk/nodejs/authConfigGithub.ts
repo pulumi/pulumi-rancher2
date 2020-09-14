@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
- *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Auth Config Github
- * const github = new rancher2.AuthConfigGithub("github", {
- *     clientId: "<GITHUB_CLIENT_ID>",
- *     clientSecret: "<GITHUB_CLIENT_SECRET>",
- * });
- * ```
- */
 export class AuthConfigGithub extends pulumi.CustomResource {
     /**
      * Get an existing AuthConfigGithub resource's state with the given name, ID, and optional extra
@@ -50,49 +32,22 @@ export class AuthConfigGithub extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthConfigGithub.__pulumiType;
     }
 
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     public readonly accessMode!: pulumi.Output<string | undefined>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
-     */
     public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Github auth Client ID (string)
-     */
     public readonly clientId!: pulumi.Output<string>;
-    /**
-     * Github auth Client secret (string)
-     */
     public readonly clientSecret!: pulumi.Output<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Github hostname to connect. Default `github.com` (string)
-     */
     public readonly hostname!: pulumi.Output<string | undefined>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * Enable TLS connection. Default `true` (bool)
-     */
     public readonly tls!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -153,49 +108,22 @@ export class AuthConfigGithub extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthConfigGithub resources.
  */
 export interface AuthConfigGithubState {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Github auth Client ID (string)
-     */
     readonly clientId?: pulumi.Input<string>;
-    /**
-     * Github auth Client secret (string)
-     */
     readonly clientSecret?: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Github hostname to connect. Default `github.com` (string)
-     */
     readonly hostname?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Enable TLS connection. Default `true` (bool)
-     */
     readonly tls?: pulumi.Input<boolean>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -203,40 +131,19 @@ export interface AuthConfigGithubState {
  * The set of arguments for constructing a AuthConfigGithub resource.
  */
 export interface AuthConfigGithubArgs {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Github auth Client ID (string)
-     */
     readonly clientId: pulumi.Input<string>;
-    /**
-     * Github auth Client secret (string)
-     */
     readonly clientSecret: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Github hostname to connect. Default `github.com` (string)
-     */
     readonly hostname?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Enable TLS connection. Default `true` (bool)
-     */
     readonly tls?: pulumi.Input<boolean>;
 }

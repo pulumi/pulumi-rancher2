@@ -11,33 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetNodePool
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodePool.InvokeAsync(new Rancher2.GetNodePoolArgs
-        ///         {
-        ///             ClusterId = rancher2_cluster.Foo_custom.Id,
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolArgs(), options.WithVersion());
     }
@@ -45,21 +18,12 @@ namespace Pulumi.Rancher2
 
     public sealed class GetNodePoolArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The RKE cluster id to use Node Pool (string)
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the Node Pool (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The Node Template ID to use for node creation (string)
-        /// </summary>
         [Input("nodeTemplateId")]
         public string? NodeTemplateId { get; set; }
 
@@ -72,48 +36,21 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetNodePoolResult
     {
-        /// <summary>
-        /// (Computed) Annotations for Node Pool object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
-        /// <summary>
-        /// (Computed) RKE control plane role for created nodes (bool)
-        /// </summary>
         public readonly bool ControlPlane;
-        /// <summary>
-        /// (Computed) Delete not ready node after secs. Default `0` (int)
-        /// </summary>
         public readonly int DeleteNotReadyAfterSecs;
-        /// <summary>
-        /// (Computed) RKE etcd role for created nodes (bool)
-        /// </summary>
         public readonly bool Etcd;
-        /// <summary>
-        /// (Computed) The prefix for created nodes of the Node Pool (string)
-        /// </summary>
         public readonly string HostnamePrefix;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels for Node Pool object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) Node taints (List)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodePoolNodeTaintResult> NodeTaints;
         public readonly string NodeTemplateId;
-        /// <summary>
-        /// (Computed) The number of nodes to create on Node Pool (int)
-        /// </summary>
         public readonly int Quantity;
-        /// <summary>
-        /// (Computed) RKE role role for created nodes (bool)
-        /// </summary>
         public readonly bool Worker;
 
         [OutputConstructor]

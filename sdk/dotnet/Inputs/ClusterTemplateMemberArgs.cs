@@ -12,21 +12,12 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateMemberArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Member access type. Valid values: `["read-only" | "owner"]` (string)
-        /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
-        /// <summary>
-        /// Member group principal id (string)
-        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
-        /// <summary>
-        /// Member user principal id (string)
-        /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }
 

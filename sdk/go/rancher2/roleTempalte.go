@@ -9,111 +9,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
-//
-// `cluster` and `project` scopes are supported for role templates.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRoleTempalte(ctx, "foo", &rancher2.RoleTempalteArgs{
-// 			Context:     pulumi.String("cluster"),
-// 			DefaultRole: pulumi.Bool(true),
-// 			Description: pulumi.String("Terraform role template acceptance test"),
-// 			Rules: rancher2.RoleTempalteRuleArray{
-// 				&rancher2.RoleTempalteRuleArgs{
-// 					ApiGroups: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						pulumi.String("secrets"),
-// 					},
-// 					Verbs: pulumi.StringArray{
-// 						pulumi.String("create"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRoleTempalte(ctx, "foo", &rancher2.RoleTempalteArgs{
-// 			Context:     pulumi.String("project"),
-// 			DefaultRole: pulumi.Bool(true),
-// 			Description: pulumi.String("Terraform role template acceptance test"),
-// 			Rules: rancher2.RoleTempalteRuleArray{
-// 				&rancher2.RoleTempalteRuleArgs{
-// 					ApiGroups: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						pulumi.String("secrets"),
-// 					},
-// 					Verbs: pulumi.StringArray{
-// 						pulumi.String("create"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RoleTempalte struct {
 	pulumi.CustomResourceState
 
-	// Administrative role template. Default `false` (bool)
+	// Administrative role template
 	Administrative pulumi.BoolPtrOutput `pulumi:"administrative"`
-	// Annotations for role template object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// (Computed) Builtin role template (string)
+	// Builtin role template
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
-	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+	// Context role template
 	Context pulumi.StringPtrOutput `pulumi:"context"`
-	// Default role template for new created cluster or project. Default `false` (bool)
+	// Default role template for new created cluster or project
 	DefaultRole pulumi.BoolPtrOutput `pulumi:"defaultRole"`
-	// Role template description (string)
+	// Role template policy description
 	Description pulumi.StringOutput `pulumi:"description"`
-	// External role template. Default `false` (bool)
+	// External role template
 	External pulumi.BoolPtrOutput `pulumi:"external"`
-	// Hidden role template. Default `false` (bool)
+	// Hidden role template
 	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
-	// Labels for role template object (map)
+	// Labels of the resource
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Locked role template. Default `false` (bool)
+	// Locked role template
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
-	// Role template name (string)
+	// Role template policy name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Inherit role template IDs (list)
+	// Inherit role template IDs
 	RoleTemplateIds pulumi.StringArrayOutput `pulumi:"roleTemplateIds"`
-	// Role template policy rules (list)
+	// Role template policy rules
 	Rules RoleTempalteRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -145,60 +68,60 @@ func GetRoleTempalte(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoleTempalte resources.
 type roleTempalteState struct {
-	// Administrative role template. Default `false` (bool)
+	// Administrative role template
 	Administrative *bool `pulumi:"administrative"`
-	// Annotations for role template object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Builtin role template (string)
+	// Builtin role template
 	Builtin *bool `pulumi:"builtin"`
-	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+	// Context role template
 	Context *string `pulumi:"context"`
-	// Default role template for new created cluster or project. Default `false` (bool)
+	// Default role template for new created cluster or project
 	DefaultRole *bool `pulumi:"defaultRole"`
-	// Role template description (string)
+	// Role template policy description
 	Description *string `pulumi:"description"`
-	// External role template. Default `false` (bool)
+	// External role template
 	External *bool `pulumi:"external"`
-	// Hidden role template. Default `false` (bool)
+	// Hidden role template
 	Hidden *bool `pulumi:"hidden"`
-	// Labels for role template object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Locked role template. Default `false` (bool)
+	// Locked role template
 	Locked *bool `pulumi:"locked"`
-	// Role template name (string)
+	// Role template policy name
 	Name *string `pulumi:"name"`
-	// Inherit role template IDs (list)
+	// Inherit role template IDs
 	RoleTemplateIds []string `pulumi:"roleTemplateIds"`
-	// Role template policy rules (list)
+	// Role template policy rules
 	Rules []RoleTempalteRule `pulumi:"rules"`
 }
 
 type RoleTempalteState struct {
-	// Administrative role template. Default `false` (bool)
+	// Administrative role template
 	Administrative pulumi.BoolPtrInput
-	// Annotations for role template object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// (Computed) Builtin role template (string)
+	// Builtin role template
 	Builtin pulumi.BoolPtrInput
-	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+	// Context role template
 	Context pulumi.StringPtrInput
-	// Default role template for new created cluster or project. Default `false` (bool)
+	// Default role template for new created cluster or project
 	DefaultRole pulumi.BoolPtrInput
-	// Role template description (string)
+	// Role template policy description
 	Description pulumi.StringPtrInput
-	// External role template. Default `false` (bool)
+	// External role template
 	External pulumi.BoolPtrInput
-	// Hidden role template. Default `false` (bool)
+	// Hidden role template
 	Hidden pulumi.BoolPtrInput
-	// Labels for role template object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// Locked role template. Default `false` (bool)
+	// Locked role template
 	Locked pulumi.BoolPtrInput
-	// Role template name (string)
+	// Role template policy name
 	Name pulumi.StringPtrInput
-	// Inherit role template IDs (list)
+	// Inherit role template IDs
 	RoleTemplateIds pulumi.StringArrayInput
-	// Role template policy rules (list)
+	// Role template policy rules
 	Rules RoleTempalteRuleArrayInput
 }
 
@@ -207,57 +130,57 @@ func (RoleTempalteState) ElementType() reflect.Type {
 }
 
 type roleTempalteArgs struct {
-	// Administrative role template. Default `false` (bool)
+	// Administrative role template
 	Administrative *bool `pulumi:"administrative"`
-	// Annotations for role template object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+	// Context role template
 	Context *string `pulumi:"context"`
-	// Default role template for new created cluster or project. Default `false` (bool)
+	// Default role template for new created cluster or project
 	DefaultRole *bool `pulumi:"defaultRole"`
-	// Role template description (string)
+	// Role template policy description
 	Description *string `pulumi:"description"`
-	// External role template. Default `false` (bool)
+	// External role template
 	External *bool `pulumi:"external"`
-	// Hidden role template. Default `false` (bool)
+	// Hidden role template
 	Hidden *bool `pulumi:"hidden"`
-	// Labels for role template object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Locked role template. Default `false` (bool)
+	// Locked role template
 	Locked *bool `pulumi:"locked"`
-	// Role template name (string)
+	// Role template policy name
 	Name *string `pulumi:"name"`
-	// Inherit role template IDs (list)
+	// Inherit role template IDs
 	RoleTemplateIds []string `pulumi:"roleTemplateIds"`
-	// Role template policy rules (list)
+	// Role template policy rules
 	Rules []RoleTempalteRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a RoleTempalte resource.
 type RoleTempalteArgs struct {
-	// Administrative role template. Default `false` (bool)
+	// Administrative role template
 	Administrative pulumi.BoolPtrInput
-	// Annotations for role template object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+	// Context role template
 	Context pulumi.StringPtrInput
-	// Default role template for new created cluster or project. Default `false` (bool)
+	// Default role template for new created cluster or project
 	DefaultRole pulumi.BoolPtrInput
-	// Role template description (string)
+	// Role template policy description
 	Description pulumi.StringPtrInput
-	// External role template. Default `false` (bool)
+	// External role template
 	External pulumi.BoolPtrInput
-	// Hidden role template. Default `false` (bool)
+	// Hidden role template
 	Hidden pulumi.BoolPtrInput
-	// Labels for role template object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// Locked role template. Default `false` (bool)
+	// Locked role template
 	Locked pulumi.BoolPtrInput
-	// Role template name (string)
+	// Role template policy name
 	Name pulumi.StringPtrInput
-	// Inherit role template IDs (list)
+	// Inherit role template IDs
 	RoleTemplateIds pulumi.StringArrayInput
-	// Role template policy rules (list)
+	// Role template policy rules
 	Rules RoleTempalteRuleArrayInput
 }
 

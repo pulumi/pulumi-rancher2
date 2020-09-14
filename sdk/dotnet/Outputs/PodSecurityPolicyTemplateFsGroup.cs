@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateFsGroup
     {
-        /// <summary>
-        /// (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.PodSecurityPolicyTemplateFsGroupRange> Ranges;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Rule;
 
         [OutputConstructor]

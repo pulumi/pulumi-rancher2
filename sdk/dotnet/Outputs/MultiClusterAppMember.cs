@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class MultiClusterAppMember
     {
-        /// <summary>
-        /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
-        /// </summary>
         public readonly string? AccessType;
-        /// <summary>
-        /// Member group principal id (string)
-        /// </summary>
         public readonly string? GroupPrincipalId;
-        /// <summary>
-        /// Member user principal id (string)
-        /// </summary>
         public readonly string? UserPrincipalId;
 
         [OutputConstructor]

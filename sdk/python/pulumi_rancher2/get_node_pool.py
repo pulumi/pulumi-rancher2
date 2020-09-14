@@ -64,9 +64,6 @@ class GetNodePoolResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for Node Pool object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -77,33 +74,21 @@ class GetNodePoolResult:
     @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> bool:
-        """
-        (Computed) RKE control plane role for created nodes (bool)
-        """
         return pulumi.get(self, "control_plane")
 
     @property
     @pulumi.getter(name="deleteNotReadyAfterSecs")
     def delete_not_ready_after_secs(self) -> float:
-        """
-        (Computed) Delete not ready node after secs. Default `0` (int)
-        """
         return pulumi.get(self, "delete_not_ready_after_secs")
 
     @property
     @pulumi.getter
     def etcd(self) -> bool:
-        """
-        (Computed) RKE etcd role for created nodes (bool)
-        """
         return pulumi.get(self, "etcd")
 
     @property
     @pulumi.getter(name="hostnamePrefix")
     def hostname_prefix(self) -> str:
-        """
-        (Computed) The prefix for created nodes of the Node Pool (string)
-        """
         return pulumi.get(self, "hostname_prefix")
 
     @property
@@ -117,9 +102,6 @@ class GetNodePoolResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for Node Pool object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -130,9 +112,6 @@ class GetNodePoolResult:
     @property
     @pulumi.getter(name="nodeTaints")
     def node_taints(self) -> List['outputs.GetNodePoolNodeTaintResult']:
-        """
-        (Computed) Node taints (List)
-        """
         return pulumi.get(self, "node_taints")
 
     @property
@@ -143,17 +122,11 @@ class GetNodePoolResult:
     @property
     @pulumi.getter
     def quantity(self) -> float:
-        """
-        (Computed) The number of nodes to create on Node Pool (int)
-        """
         return pulumi.get(self, "quantity")
 
     @property
     @pulumi.getter
     def worker(self) -> bool:
-        """
-        (Computed) RKE role role for created nodes (bool)
-        """
         return pulumi.get(self, "worker")
 
 
@@ -183,22 +156,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
                   node_template_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodePoolResult:
     """
-    Use this data source to retrieve information about a Rancher v2 Node Pool resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
-        name="foo")
-    ```
-
-
-    :param str cluster_id: The RKE cluster id to use Node Pool (string)
-    :param str name: The name of the Node Pool (string)
-    :param str node_template_id: The Node Template ID to use for node creation (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

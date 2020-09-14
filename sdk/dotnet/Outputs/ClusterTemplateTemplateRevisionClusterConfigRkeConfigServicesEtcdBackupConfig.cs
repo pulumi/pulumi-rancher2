@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig
     {
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         public readonly bool? Enabled;
         public readonly int? IntervalHours;
         public readonly int? Retention;

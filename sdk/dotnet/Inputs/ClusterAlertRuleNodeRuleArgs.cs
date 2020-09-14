@@ -12,36 +12,20 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlertRuleNodeRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
-        /// <summary>
-        /// Node rule cpu threshold. Default: `70` (int)
-        /// </summary>
         [Input("cpuThreshold")]
         public Input<int>? CpuThreshold { get; set; }
 
-        /// <summary>
-        /// Node rule mem threshold. Default: `70` (int)
-        /// </summary>
         [Input("memThreshold")]
         public Input<int>? MemThreshold { get; set; }
 
-        /// <summary>
-        /// Node ID (string)
-        /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         [Input("selector")]
         private InputMap<object>? _selector;
-
-        /// <summary>
-        /// Node rule selector (map)
-        /// </summary>
         public InputMap<object> Selector
         {
             get => _selector ?? (_selector = new InputMap<object>());

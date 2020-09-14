@@ -10,53 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewProjectRoleTemplateBinding(ctx, "foo", &rancher2.ProjectRoleTemplateBindingArgs{
-// 			ProjectId:      pulumi.String("<project_id>"),
-// 			RoleTemplateId: pulumi.String("<role_template_id>"),
-// 			UserId:         pulumi.String("<user_id>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ProjectRoleTemplateBinding struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// The group ID to assign project role template binding (string)
-	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
-	// The groupPrincipal ID to assign project role template binding (string)
-	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the project role template binding (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The project id where bind project role template (string)
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The role template id from create project role template binding (string)
-	RoleTemplateId pulumi.StringOutput `pulumi:"roleTemplateId"`
-	// The user ID to assign project role template binding (string)
-	UserId pulumi.StringPtrOutput `pulumi:"userId"`
-	// The userPrincipal ID to assign project role template binding (string)
-	UserPrincipalId pulumi.StringOutput `pulumi:"userPrincipalId"`
+	// Annotations of the resource
+	Annotations      pulumi.MapOutput       `pulumi:"annotations"`
+	GroupId          pulumi.StringPtrOutput `pulumi:"groupId"`
+	GroupPrincipalId pulumi.StringOutput    `pulumi:"groupPrincipalId"`
+	// Labels of the resource
+	Labels          pulumi.MapOutput       `pulumi:"labels"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	ProjectId       pulumi.StringOutput    `pulumi:"projectId"`
+	RoleTemplateId  pulumi.StringOutput    `pulumi:"roleTemplateId"`
+	UserId          pulumi.StringPtrOutput `pulumi:"userId"`
+	UserPrincipalId pulumi.StringOutput    `pulumi:"userPrincipalId"`
 }
 
 // NewProjectRoleTemplateBinding registers a new resource with the given unique name, arguments, and options.
@@ -93,44 +60,30 @@ func GetProjectRoleTemplateBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectRoleTemplateBinding resources.
 type projectRoleTemplateBindingState struct {
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The group ID to assign project role template binding (string)
-	GroupId *string `pulumi:"groupId"`
-	// The groupPrincipal ID to assign project role template binding (string)
-	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the project role template binding (string)
-	Name *string `pulumi:"name"`
-	// The project id where bind project role template (string)
-	ProjectId *string `pulumi:"projectId"`
-	// The role template id from create project role template binding (string)
-	RoleTemplateId *string `pulumi:"roleTemplateId"`
-	// The user ID to assign project role template binding (string)
-	UserId *string `pulumi:"userId"`
-	// The userPrincipal ID to assign project role template binding (string)
-	UserPrincipalId *string `pulumi:"userPrincipalId"`
+	// Annotations of the resource
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	GroupId          *string                `pulumi:"groupId"`
+	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
+	// Labels of the resource
+	Labels          map[string]interface{} `pulumi:"labels"`
+	Name            *string                `pulumi:"name"`
+	ProjectId       *string                `pulumi:"projectId"`
+	RoleTemplateId  *string                `pulumi:"roleTemplateId"`
+	UserId          *string                `pulumi:"userId"`
+	UserPrincipalId *string                `pulumi:"userPrincipalId"`
 }
 
 type ProjectRoleTemplateBindingState struct {
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// The group ID to assign project role template binding (string)
-	GroupId pulumi.StringPtrInput
-	// The groupPrincipal ID to assign project role template binding (string)
+	// Annotations of the resource
+	Annotations      pulumi.MapInput
+	GroupId          pulumi.StringPtrInput
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// The name of the project role template binding (string)
-	Name pulumi.StringPtrInput
-	// The project id where bind project role template (string)
-	ProjectId pulumi.StringPtrInput
-	// The role template id from create project role template binding (string)
-	RoleTemplateId pulumi.StringPtrInput
-	// The user ID to assign project role template binding (string)
-	UserId pulumi.StringPtrInput
-	// The userPrincipal ID to assign project role template binding (string)
+	// Labels of the resource
+	Labels          pulumi.MapInput
+	Name            pulumi.StringPtrInput
+	ProjectId       pulumi.StringPtrInput
+	RoleTemplateId  pulumi.StringPtrInput
+	UserId          pulumi.StringPtrInput
 	UserPrincipalId pulumi.StringPtrInput
 }
 
@@ -139,45 +92,31 @@ func (ProjectRoleTemplateBindingState) ElementType() reflect.Type {
 }
 
 type projectRoleTemplateBindingArgs struct {
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The group ID to assign project role template binding (string)
-	GroupId *string `pulumi:"groupId"`
-	// The groupPrincipal ID to assign project role template binding (string)
-	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the project role template binding (string)
-	Name *string `pulumi:"name"`
-	// The project id where bind project role template (string)
-	ProjectId string `pulumi:"projectId"`
-	// The role template id from create project role template binding (string)
-	RoleTemplateId string `pulumi:"roleTemplateId"`
-	// The user ID to assign project role template binding (string)
-	UserId *string `pulumi:"userId"`
-	// The userPrincipal ID to assign project role template binding (string)
-	UserPrincipalId *string `pulumi:"userPrincipalId"`
+	// Annotations of the resource
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	GroupId          *string                `pulumi:"groupId"`
+	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
+	// Labels of the resource
+	Labels          map[string]interface{} `pulumi:"labels"`
+	Name            *string                `pulumi:"name"`
+	ProjectId       string                 `pulumi:"projectId"`
+	RoleTemplateId  string                 `pulumi:"roleTemplateId"`
+	UserId          *string                `pulumi:"userId"`
+	UserPrincipalId *string                `pulumi:"userPrincipalId"`
 }
 
 // The set of arguments for constructing a ProjectRoleTemplateBinding resource.
 type ProjectRoleTemplateBindingArgs struct {
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// The group ID to assign project role template binding (string)
-	GroupId pulumi.StringPtrInput
-	// The groupPrincipal ID to assign project role template binding (string)
+	// Annotations of the resource
+	Annotations      pulumi.MapInput
+	GroupId          pulumi.StringPtrInput
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// The name of the project role template binding (string)
-	Name pulumi.StringPtrInput
-	// The project id where bind project role template (string)
-	ProjectId pulumi.StringInput
-	// The role template id from create project role template binding (string)
-	RoleTemplateId pulumi.StringInput
-	// The user ID to assign project role template binding (string)
-	UserId pulumi.StringPtrInput
-	// The userPrincipal ID to assign project role template binding (string)
+	// Labels of the resource
+	Labels          pulumi.MapInput
+	Name            pulumi.StringPtrInput
+	ProjectId       pulumi.StringInput
+	RoleTemplateId  pulumi.StringInput
+	UserId          pulumi.StringPtrInput
 	UserPrincipalId pulumi.StringPtrInput
 }
 

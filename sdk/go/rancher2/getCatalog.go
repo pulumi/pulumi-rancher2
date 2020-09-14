@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 catalog.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupCatalog(ctx, &rancher2.LookupCatalogArgs{
-// 			Name: "catalog",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	var rv LookupCatalogResult
 	err := ctx.Invoke("rancher2:index/getCatalog:getCatalog", args, &rv, opts...)
@@ -42,38 +18,25 @@ func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCatalog.
 type LookupCatalogArgs struct {
-	// The catalog name.
-	Name string `pulumi:"name"`
-	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Name  string  `pulumi:"name"`
 	Scope *string `pulumi:"scope"`
 }
 
 // A collection of values returned by getCatalog.
 type LookupCatalogResult struct {
-	// (Computed) Annotations for the catalog (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) The branch of the catalog repo to use (string)
-	Branch string `pulumi:"branch"`
-	// (Computed) The cluster id of the catalog (string)
-	ClusterId string `pulumi:"clusterId"`
-	// (Computed) A catalog description (string)
-	Description string `pulumi:"description"`
+	Branch      string                 `pulumi:"branch"`
+	ClusterId   string                 `pulumi:"clusterId"`
+	Description string                 `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) The kind of the catalog. Just helm by the moment (string)
-	Kind string `pulumi:"kind"`
-	// (Computed) Labels for the catalog (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
-	// (Computed/Sensitive) The password to access the catalog if needed (string)
-	Password string `pulumi:"password"`
-	// (Computed) The project id of the catalog (string)
-	ProjectId string  `pulumi:"projectId"`
-	Scope     *string `pulumi:"scope"`
-	// (Computed) The url of the catalog repo (string)
-	Url string `pulumi:"url"`
-	// (Computed/Sensitive) The username to access the catalog if needed (string)
-	Username string `pulumi:"username"`
-	// (Computed) Helm version for the catalog (string)
-	Version string `pulumi:"version"`
+	Id        string                 `pulumi:"id"`
+	Kind      string                 `pulumi:"kind"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	Password  string                 `pulumi:"password"`
+	ProjectId string                 `pulumi:"projectId"`
+	Scope     *string                `pulumi:"scope"`
+	Url       string                 `pulumi:"url"`
+	Username  string                 `pulumi:"username"`
+	Version   string                 `pulumi:"version"`
 }

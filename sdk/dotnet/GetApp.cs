@@ -11,34 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetApp
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 app.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var rancher2 = Output.Create(Rancher2.GetApp.InvokeAsync(new Rancher2.GetAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///             ProjectId = "&lt;project_id&gt;",
-        ///             TargetNamespace = "&lt;namespace_name&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("rancher2:index/getApp:getApp", args ?? new GetAppArgs(), options.WithVersion());
     }
@@ -48,31 +20,18 @@ namespace Pulumi.Rancher2
     {
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
-
-        /// <summary>
-        /// (Computed) Annotations for the catalog (map)
-        /// </summary>
         public Dictionary<string, object> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, object>());
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The app name (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the project where the app is deployed (string)
-        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// The namespace name where the app is deployed (string)
-        /// </summary>
         [Input("targetNamespace")]
         public string? TargetNamespace { get; set; }
 
@@ -85,52 +44,22 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetAppResult
     {
-        /// <summary>
-        /// (Computed) Annotations for the catalog (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
-        /// <summary>
-        /// (Computed) Answers for the app (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Answers;
-        /// <summary>
-        /// (Computed) Catalog name of the app (string)
-        /// </summary>
         public readonly string CatalogName;
-        /// <summary>
-        /// (Computed) Description for the app (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed) The URL of the helm catalog app (string)
-        /// </summary>
         public readonly string ExternalId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels for the catalog (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly string ProjectId;
-        /// <summary>
-        /// (Computed) Current revision id for the app (string)
-        /// </summary>
         public readonly string RevisionId;
         public readonly string TargetNamespace;
-        /// <summary>
-        /// (Computed) Template name of the app (string)
-        /// </summary>
         public readonly string TemplateName;
-        /// <summary>
-        /// (Computed) Template version of the app (string)
-        /// </summary>
         public readonly string TemplateVersion;
-        /// <summary>
-        /// (Computed) values.yaml base64 encoded file content for the app (string)
-        /// </summary>
         public readonly string ValuesYaml;
 
         [OutputConstructor]

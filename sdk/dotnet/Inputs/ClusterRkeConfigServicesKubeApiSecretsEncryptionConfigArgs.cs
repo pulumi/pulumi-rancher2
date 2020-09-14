@@ -13,20 +13,8 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs : Pulumi.ResourceArgs
     {
         [Input("customConfig")]
-        private InputMap<object>? _customConfig;
+        public Input<string>? CustomConfig { get; set; }
 
-        /// <summary>
-        /// Secrets encryption configuration. (map)
-        /// </summary>
-        public InputMap<object> CustomConfig
-        {
-            get => _customConfig ?? (_customConfig = new InputMap<object>());
-            set => _customConfig = value;
-        }
-
-        /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

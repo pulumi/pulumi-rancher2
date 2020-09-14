@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 namespace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupNamespace(ctx, &rancher2.LookupNamespaceArgs{
-// 			Name:      "foo",
-// 			ProjectId: rancher2_cluster.Foo - custom.Default_project_id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("rancher2:index/getNamespace:getNamespace", args, &rv, opts...)
@@ -43,26 +18,19 @@ func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pul
 
 // A collection of arguments for invoking getNamespace.
 type LookupNamespaceArgs struct {
-	// The name of the namespace (string)
-	Name string `pulumi:"name"`
-	// The project id where namespace is assigned (string)
+	Name      string `pulumi:"name"`
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getNamespace.
 type LookupNamespaceResult struct {
-	// (Computed) Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Default containers resource limits on namespace (List maxitem:1)
+	Annotations            map[string]interface{}             `pulumi:"annotations"`
 	ContainerResourceLimit GetNamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
-	// (Computed) A namespace description (string)
-	Description string `pulumi:"description"`
+	Description            string                             `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels for Node Pool object (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	ProjectId string                 `pulumi:"projectId"`
-	// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+	Id            string                    `pulumi:"id"`
+	Labels        map[string]interface{}    `pulumi:"labels"`
+	Name          string                    `pulumi:"name"`
+	ProjectId     string                    `pulumi:"projectId"`
 	ResourceQuota GetNamespaceResourceQuota `pulumi:"resourceQuota"`
 }

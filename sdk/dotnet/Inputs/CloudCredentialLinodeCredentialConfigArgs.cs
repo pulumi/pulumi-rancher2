@@ -12,9 +12,6 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialLinodeCredentialConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Linode API token (string)
-        /// </summary>
         [Input("token", required: true)]
         public Input<string> Token { get; set; } = null!;
 

@@ -10,29 +10,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
 type ClusterDriver struct {
 	pulumi.CustomResourceState
 
-	// Specify the cluster driver state (bool)
-	Active pulumi.BoolOutput `pulumi:"active"`
-	// Actual url of the cluster driver (string)
+	Active    pulumi.BoolOutput      `pulumi:"active"`
 	ActualUrl pulumi.StringPtrOutput `pulumi:"actualUrl"`
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin pulumi.BoolOutput `pulumi:"builtin"`
-	// Verify that the downloaded driver matches the expected checksum (string)
-	Checksum pulumi.StringPtrOutput `pulumi:"checksum"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Name of the cluster driver (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl pulumi.StringPtrOutput `pulumi:"uiUrl"`
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url pulumi.StringOutput `pulumi:"url"`
-	// Domains to whitelist for the ui (list)
+	// Annotations of the resource
+	Annotations pulumi.MapOutput       `pulumi:"annotations"`
+	Builtin     pulumi.BoolOutput      `pulumi:"builtin"`
+	Checksum    pulumi.StringPtrOutput `pulumi:"checksum"`
+	// Labels of the resource
+	Labels           pulumi.MapOutput         `pulumi:"labels"`
+	Name             pulumi.StringOutput      `pulumi:"name"`
+	UiUrl            pulumi.StringPtrOutput   `pulumi:"uiUrl"`
+	Url              pulumi.StringOutput      `pulumi:"url"`
 	WhitelistDomains pulumi.StringArrayOutput `pulumi:"whitelistDomains"`
 }
 
@@ -73,48 +64,32 @@ func GetClusterDriver(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterDriver resources.
 type clusterDriverState struct {
-	// Specify the cluster driver state (bool)
-	Active *bool `pulumi:"active"`
-	// Actual url of the cluster driver (string)
+	Active    *bool   `pulumi:"active"`
 	ActualUrl *string `pulumi:"actualUrl"`
-	// Annotations of the resource (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin *bool `pulumi:"builtin"`
-	// Verify that the downloaded driver matches the expected checksum (string)
-	Checksum *string `pulumi:"checksum"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of the cluster driver (string)
-	Name *string `pulumi:"name"`
-	// The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl *string `pulumi:"uiUrl"`
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url *string `pulumi:"url"`
-	// Domains to whitelist for the ui (list)
-	WhitelistDomains []string `pulumi:"whitelistDomains"`
+	Builtin     *bool                  `pulumi:"builtin"`
+	Checksum    *string                `pulumi:"checksum"`
+	// Labels of the resource
+	Labels           map[string]interface{} `pulumi:"labels"`
+	Name             *string                `pulumi:"name"`
+	UiUrl            *string                `pulumi:"uiUrl"`
+	Url              *string                `pulumi:"url"`
+	WhitelistDomains []string               `pulumi:"whitelistDomains"`
 }
 
 type ClusterDriverState struct {
-	// Specify the cluster driver state (bool)
-	Active pulumi.BoolPtrInput
-	// Actual url of the cluster driver (string)
+	Active    pulumi.BoolPtrInput
 	ActualUrl pulumi.StringPtrInput
-	// Annotations of the resource (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin pulumi.BoolPtrInput
-	// Verify that the downloaded driver matches the expected checksum (string)
-	Checksum pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Name of the cluster driver (string)
-	Name pulumi.StringPtrInput
-	// The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl pulumi.StringPtrInput
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url pulumi.StringPtrInput
-	// Domains to whitelist for the ui (list)
+	Builtin     pulumi.BoolPtrInput
+	Checksum    pulumi.StringPtrInput
+	// Labels of the resource
+	Labels           pulumi.MapInput
+	Name             pulumi.StringPtrInput
+	UiUrl            pulumi.StringPtrInput
+	Url              pulumi.StringPtrInput
 	WhitelistDomains pulumi.StringArrayInput
 }
 
@@ -123,49 +98,33 @@ func (ClusterDriverState) ElementType() reflect.Type {
 }
 
 type clusterDriverArgs struct {
-	// Specify the cluster driver state (bool)
-	Active bool `pulumi:"active"`
-	// Actual url of the cluster driver (string)
+	Active    bool    `pulumi:"active"`
 	ActualUrl *string `pulumi:"actualUrl"`
-	// Annotations of the resource (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin bool `pulumi:"builtin"`
-	// Verify that the downloaded driver matches the expected checksum (string)
-	Checksum *string `pulumi:"checksum"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of the cluster driver (string)
-	Name *string `pulumi:"name"`
-	// The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl *string `pulumi:"uiUrl"`
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url string `pulumi:"url"`
-	// Domains to whitelist for the ui (list)
-	WhitelistDomains []string `pulumi:"whitelistDomains"`
+	Builtin     bool                   `pulumi:"builtin"`
+	Checksum    *string                `pulumi:"checksum"`
+	// Labels of the resource
+	Labels           map[string]interface{} `pulumi:"labels"`
+	Name             *string                `pulumi:"name"`
+	UiUrl            *string                `pulumi:"uiUrl"`
+	Url              string                 `pulumi:"url"`
+	WhitelistDomains []string               `pulumi:"whitelistDomains"`
 }
 
 // The set of arguments for constructing a ClusterDriver resource.
 type ClusterDriverArgs struct {
-	// Specify the cluster driver state (bool)
-	Active pulumi.BoolInput
-	// Actual url of the cluster driver (string)
+	Active    pulumi.BoolInput
 	ActualUrl pulumi.StringPtrInput
-	// Annotations of the resource (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin pulumi.BoolInput
-	// Verify that the downloaded driver matches the expected checksum (string)
-	Checksum pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Name of the cluster driver (string)
-	Name pulumi.StringPtrInput
-	// The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl pulumi.StringPtrInput
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url pulumi.StringInput
-	// Domains to whitelist for the ui (list)
+	Builtin     pulumi.BoolInput
+	Checksum    pulumi.StringPtrInput
+	// Labels of the resource
+	Labels           pulumi.MapInput
+	Name             pulumi.StringPtrInput
+	UiUrl            pulumi.StringPtrInput
+	Url              pulumi.StringInput
 	WhitelistDomains pulumi.StringArrayInput
 }
 

@@ -66,41 +66,26 @@ class GetAppResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for the catalog (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def answers(self) -> Mapping[str, Any]:
-        """
-        (Computed) Answers for the app (map)
-        """
         return pulumi.get(self, "answers")
 
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> str:
-        """
-        (Computed) Catalog name of the app (string)
-        """
         return pulumi.get(self, "catalog_name")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) Description for the app (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
-        """
-        (Computed) The URL of the helm catalog app (string)
-        """
         return pulumi.get(self, "external_id")
 
     @property
@@ -114,9 +99,6 @@ class GetAppResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for the catalog (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -132,9 +114,6 @@ class GetAppResult:
     @property
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> str:
-        """
-        (Computed) Current revision id for the app (string)
-        """
         return pulumi.get(self, "revision_id")
 
     @property
@@ -145,25 +124,16 @@ class GetAppResult:
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> str:
-        """
-        (Computed) Template name of the app (string)
-        """
         return pulumi.get(self, "template_name")
 
     @property
     @pulumi.getter(name="templateVersion")
     def template_version(self) -> str:
-        """
-        (Computed) Template version of the app (string)
-        """
         return pulumi.get(self, "template_version")
 
     @property
     @pulumi.getter(name="valuesYaml")
     def values_yaml(self) -> str:
-        """
-        (Computed) values.yaml base64 encoded file content for the app (string)
-        """
         return pulumi.get(self, "values_yaml")
 
 
@@ -195,24 +165,7 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
             target_namespace: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
-    Use this data source to retrieve information about a Rancher v2 app.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    rancher2 = rancher2.get_app(name="foo",
-        project_id="<project_id>",
-        target_namespace="<namespace_name>")
-    ```
-
-
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
-    :param str name: The app name (string)
-    :param str project_id: The id of the project where the app is deployed (string)
-    :param str target_namespace: The namespace name where the app is deployed (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['annotations'] = annotations

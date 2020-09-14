@@ -49,17 +49,11 @@ class GetClusterTemplateResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for the cluster template (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="defaultRevisionId")
     def default_revision_id(self) -> str:
-        """
-        (Computed) Default cluster template revision ID (string)
-        """
         return pulumi.get(self, "default_revision_id")
 
     @property
@@ -78,17 +72,11 @@ class GetClusterTemplateResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for the cluster template (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def members(self) -> List['outputs.GetClusterTemplateMemberResult']:
-        """
-        (Computed) Cluster template members (list)
-        """
         return pulumi.get(self, "members")
 
     @property
@@ -99,9 +87,6 @@ class GetClusterTemplateResult:
     @property
     @pulumi.getter(name="templateRevisions")
     def template_revisions(self) -> List['outputs.GetClusterTemplateTemplateRevisionResult']:
-        """
-        (Computed) Cluster template revisions (list)
-        """
         return pulumi.get(self, "template_revisions")
 
 
@@ -127,23 +112,7 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
                          name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterTemplateResult:
     """
-    Use this data source to retrieve information about a Rancher v2 cluster template.
-
-    Cluster Templates are available from Rancher v2.3.x and above.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_template(name="foo")
-    ```
-
-
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
-    :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
-    :param str name: The cluster template name (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['annotations'] = annotations

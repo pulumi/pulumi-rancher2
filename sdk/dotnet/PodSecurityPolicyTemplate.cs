@@ -9,245 +9,103 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 PodSecurityPolicyTemplate
-    ///         var foo = new Rancher2.PodSecurityPolicyTemplate("foo", new Rancher2.PodSecurityPolicyTemplateArgs
-    ///         {
-    ///             AllowPrivilegeEscalation = false,
-    ///             AllowedCsiDrivers = 
-    ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
-    ///                 {
-    ///                     Name = "something",
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs
-    ///                 {
-    ///                     Name = "something-else",
-    ///                 },
-    ///             },
-    ///             AllowedFlexVolumes = 
-    ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
-    ///                 {
-    ///                     Driver = "something",
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs
-    ///                 {
-    ///                     Driver = "something-else",
-    ///                 },
-    ///             },
-    ///             AllowedHostPaths = 
-    ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
-    ///                 {
-    ///                     PathPrefix = "/",
-    ///                     ReadOnly = true,
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs
-    ///                 {
-    ///                     PathPrefix = "//",
-    ///                     ReadOnly = false,
-    ///                 },
-    ///             },
-    ///             AllowedProcMountTypes = 
-    ///             {
-    ///                 "Default",
-    ///             },
-    ///             DefaultAllowPrivilegeEscalation = false,
-    ///             Description = "Terraform PodSecurityPolicyTemplate acceptance test - update",
-    ///             FsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupArgs
-    ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 0,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateFsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 0,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
-    ///             },
-    ///             HostIpc = false,
-    ///             HostNetwork = false,
-    ///             HostPid = false,
-    ///             HostPorts = 
-    ///             {
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
-    ///                 {
-    ///                     Max = 65535,
-    ///                     Min = 0,
-    ///                 },
-    ///                 new Rancher2.Inputs.PodSecurityPolicyTemplateHostPortArgs
-    ///                 {
-    ///                     Max = 8080,
-    ///                     Min = 1024,
-    ///                 },
-    ///             },
-    ///             Privileged = false,
-    ///             ReadOnlyRootFilesystem = false,
-    ///             RequiredDropCapabilities = 
-    ///             {
-    ///                 "something",
-    ///             },
-    ///             RunAsGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupArgs
-    ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 1,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsGroupRangeArgs
-    ///                     {
-    ///                         Max = 1024,
-    ///                         Min = 2,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
-    ///             },
-    ///             RunAsUser = new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserArgs
-    ///             {
-    ///                 Ranges = 
-    ///                 {
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
-    ///                     {
-    ///                         Max = 100,
-    ///                         Min = 1,
-    ///                     },
-    ///                     new Rancher2.Inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs
-    ///                     {
-    ///                         Max = 1024,
-    ///                         Min = 2,
-    ///                     },
-    ///                 },
-    ///                 Rule = "MustRunAs",
-    ///             },
-    ///             RuntimeClass = new Rancher2.Inputs.PodSecurityPolicyTemplateRuntimeClassArgs
-    ///             {
-    ///                 AllowedRuntimeClassNames = 
-    ///                 {
-    ///                     "something",
-    ///                 },
-    ///                 DefaultRuntimeClassName = "something",
-    ///             },
-    ///             SeLinux = new Rancher2.Inputs.PodSecurityPolicyTemplateSeLinuxArgs
-    ///             {
-    ///                 Rule = "RunAsAny",
-    ///             },
-    ///             SupplementalGroup = new Rancher2.Inputs.PodSecurityPolicyTemplateSupplementalGroupArgs
-    ///             {
-    ///                 Rule = "RunAsAny",
-    ///             },
-    ///             Volumes = 
-    ///             {
-    ///                 "azureFile",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource
     {
         /// <summary>
-        /// = (Optional)
+        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+        /// true.
         /// </summary>
         [Output("allowPrivilegeEscalation")]
         public Output<bool> AllowPrivilegeEscalation { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
+        /// may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
+        /// requiredDropCapabilities.
         /// </summary>
         [Output("allowedCapabilities")]
         public Output<ImmutableArray<string>> AllowedCapabilities { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
+        /// empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
+        /// honored if the API server enables the CSIInlineVolume feature gate.
         /// </summary>
         [Output("allowedCsiDrivers")]
         public Output<ImmutableArray<Outputs.PodSecurityPolicyTemplateAllowedCsiDriver>> AllowedCsiDrivers { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
+        /// parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
         /// </summary>
         [Output("allowedFlexVolumes")]
         public Output<ImmutableArray<Outputs.PodSecurityPolicyTemplateAllowedFlexVolume>> AllowedFlexVolumes { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
         /// </summary>
         [Output("allowedHostPaths")]
         public Output<ImmutableArray<Outputs.PodSecurityPolicyTemplateAllowedHostPath>> AllowedHostPaths { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
+        /// DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
         /// </summary>
         [Output("allowedProcMountTypes")]
         public Output<ImmutableArray<string>> AllowedProcMountTypes { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
+        /// sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
+        /// sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
         /// </summary>
         [Output("allowedUnsafeSysctls")]
         public Output<ImmutableArray<string>> AllowedUnsafeSysctls { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for PodSecurityPolicyTemplate object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
+        /// specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
+        /// requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
+        /// allowedCapabilities list.
         /// </summary>
         [Output("defaultAddCapabilities")]
         public Output<ImmutableArray<string>> DefaultAddCapabilities { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
+        /// parent process.
         /// </summary>
         [Output("defaultAllowPrivilegeEscalation")]
         public Output<bool?> DefaultAllowPrivilegeEscalation { get; private set; } = null!;
 
         /// <summary>
-        /// The PodSecurityPolicyTemplate description (string)
+        /// Pod Security Policy template policy description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
+        /// or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
+        /// forbidden.
         /// </summary>
         [Output("forbiddenSysctls")]
         public Output<ImmutableArray<string>> ForbiddenSysctls { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
         /// </summary>
         [Output("fsGroup")]
         public Output<Outputs.PodSecurityPolicyTemplateFsGroup> FsGroup { get; private set; } = null!;
 
         /// <summary>
-        /// (bool)
+        /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
         /// </summary>
         [Output("hostIpc")]
         public Output<bool> HostIpc { get; private set; } = null!;
@@ -259,79 +117,86 @@ namespace Pulumi.Rancher2
         public Output<bool> HostNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// (bool)
+        /// hostPID determines if the policy allows the use of HostPID in the pod spec.
         /// </summary>
         [Output("hostPid")]
         public Output<bool> HostPid { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// hostPorts determines which host port ranges are allowed to be exposed.
         /// </summary>
         [Output("hostPorts")]
         public Output<ImmutableArray<Outputs.PodSecurityPolicyTemplateHostPort>> HostPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for PodSecurityPolicyTemplate object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
+        /// Pod Security Policy template policy name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (bool)
+        /// privileged determines if a pod can request to be run as privileged.
         /// </summary>
         [Output("privileged")]
         public Output<bool> Privileged { get; private set; } = null!;
 
         /// <summary>
-        /// (bool)
+        /// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
+        /// specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
+        /// container may run with a read only root file system if it wishes but it will not be forced to.
         /// </summary>
         [Output("readOnlyRootFilesystem")]
         public Output<bool> ReadOnlyRootFilesystem { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
+        /// and cannot be added.
         /// </summary>
         [Output("requiredDropCapabilities")]
         public Output<ImmutableArray<string>> RequiredDropCapabilities { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
+        /// the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
         /// </summary>
         [Output("runAsGroup")]
         public Output<Outputs.PodSecurityPolicyTemplateRunAsGroup?> RunAsGroup { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
         /// </summary>
         [Output("runAsUser")]
         public Output<Outputs.PodSecurityPolicyTemplateRunAsUser> RunAsUser { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
+        /// pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
+        /// enabled.
         /// </summary>
         [Output("runtimeClass")]
         public Output<Outputs.PodSecurityPolicyTemplateRuntimeClass?> RuntimeClass { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// seLinux is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
         [Output("seLinux")]
         public Output<Outputs.PodSecurityPolicyTemplateSeLinux> SeLinux { get; private set; } = null!;
 
         /// <summary>
-        /// (list maxitems:1)
+        /// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
         /// </summary>
         [Output("supplementalGroup")]
         public Output<Outputs.PodSecurityPolicyTemplateSupplementalGroup> SupplementalGroup { get; private set; } = null!;
 
         /// <summary>
-        /// (list)
+        /// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
+        /// may use '*'
         /// </summary>
         [Output("volumes")]
         public Output<ImmutableArray<string>> Volumes { get; private set; } = null!;
@@ -383,7 +248,8 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityPolicyTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// = (Optional)
+        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+        /// true.
         /// </summary>
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
@@ -392,7 +258,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedCapabilities;
 
         /// <summary>
-        /// (list)
+        /// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
+        /// may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
+        /// requiredDropCapabilities.
         /// </summary>
         public InputList<string> AllowedCapabilities
         {
@@ -404,7 +272,9 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs>? _allowedCsiDrivers;
 
         /// <summary>
-        /// (list)
+        /// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
+        /// empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
+        /// honored if the API server enables the CSIInlineVolume feature gate.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedCsiDriverArgs> AllowedCsiDrivers
         {
@@ -416,7 +286,8 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs>? _allowedFlexVolumes;
 
         /// <summary>
-        /// (list)
+        /// allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
+        /// parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeArgs> AllowedFlexVolumes
         {
@@ -428,7 +299,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs>? _allowedHostPaths;
 
         /// <summary>
-        /// (list)
+        /// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedHostPathArgs> AllowedHostPaths
         {
@@ -440,7 +311,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedProcMountTypes;
 
         /// <summary>
-        /// (list)
+        /// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
+        /// DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
         /// </summary>
         public InputList<string> AllowedProcMountTypes
         {
@@ -452,7 +324,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedUnsafeSysctls;
 
         /// <summary>
-        /// (list)
+        /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
+        /// sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
+        /// sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
         /// </summary>
         public InputList<string> AllowedUnsafeSysctls
         {
@@ -464,7 +338,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for PodSecurityPolicyTemplate object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -476,7 +350,10 @@ namespace Pulumi.Rancher2
         private InputList<string>? _defaultAddCapabilities;
 
         /// <summary>
-        /// (list)
+        /// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
+        /// specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
+        /// requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
+        /// allowedCapabilities list.
         /// </summary>
         public InputList<string> DefaultAddCapabilities
         {
@@ -485,13 +362,14 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list)
+        /// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
+        /// parent process.
         /// </summary>
         [Input("defaultAllowPrivilegeEscalation")]
         public Input<bool>? DefaultAllowPrivilegeEscalation { get; set; }
 
         /// <summary>
-        /// The PodSecurityPolicyTemplate description (string)
+        /// Pod Security Policy template policy description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -500,7 +378,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _forbiddenSysctls;
 
         /// <summary>
-        /// (list)
+        /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
+        /// or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
+        /// forbidden.
         /// </summary>
         public InputList<string> ForbiddenSysctls
         {
@@ -509,13 +389,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
         /// </summary>
         [Input("fsGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateFsGroupArgs>? FsGroup { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
         /// </summary>
         [Input("hostIpc")]
         public Input<bool>? HostIpc { get; set; }
@@ -527,7 +407,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? HostNetwork { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// hostPID determines if the policy allows the use of HostPID in the pod spec.
         /// </summary>
         [Input("hostPid")]
         public Input<bool>? HostPid { get; set; }
@@ -536,7 +416,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateHostPortArgs>? _hostPorts;
 
         /// <summary>
-        /// (list)
+        /// hostPorts determines which host port ranges are allowed to be exposed.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateHostPortArgs> HostPorts
         {
@@ -548,7 +428,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for PodSecurityPolicyTemplate object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -557,19 +437,21 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
+        /// Pod Security Policy template policy name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// privileged determines if a pod can request to be run as privileged.
         /// </summary>
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
+        /// specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
+        /// container may run with a read only root file system if it wishes but it will not be forced to.
         /// </summary>
         [Input("readOnlyRootFilesystem")]
         public Input<bool>? ReadOnlyRootFilesystem { get; set; }
@@ -578,7 +460,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _requiredDropCapabilities;
 
         /// <summary>
-        /// (list)
+        /// requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
+        /// and cannot be added.
         /// </summary>
         public InputList<string> RequiredDropCapabilities
         {
@@ -587,31 +470,34 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
+        /// the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
         /// </summary>
         [Input("runAsGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateRunAsGroupArgs>? RunAsGroup { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
         /// </summary>
         [Input("runAsUser")]
         public Input<Inputs.PodSecurityPolicyTemplateRunAsUserArgs>? RunAsUser { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
+        /// pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
+        /// enabled.
         /// </summary>
         [Input("runtimeClass")]
         public Input<Inputs.PodSecurityPolicyTemplateRuntimeClassArgs>? RuntimeClass { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// seLinux is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
         [Input("seLinux")]
         public Input<Inputs.PodSecurityPolicyTemplateSeLinuxArgs>? SeLinux { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
         /// </summary>
         [Input("supplementalGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateSupplementalGroupArgs>? SupplementalGroup { get; set; }
@@ -620,7 +506,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _volumes;
 
         /// <summary>
-        /// (list)
+        /// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
+        /// may use '*'
         /// </summary>
         public InputList<string> Volumes
         {
@@ -636,7 +523,8 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityPolicyTemplateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// = (Optional)
+        /// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
+        /// true.
         /// </summary>
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
@@ -645,7 +533,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedCapabilities;
 
         /// <summary>
-        /// (list)
+        /// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
+        /// may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
+        /// requiredDropCapabilities.
         /// </summary>
         public InputList<string> AllowedCapabilities
         {
@@ -657,7 +547,9 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedCsiDriverGetArgs>? _allowedCsiDrivers;
 
         /// <summary>
-        /// (list)
+        /// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
+        /// empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
+        /// honored if the API server enables the CSIInlineVolume feature gate.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedCsiDriverGetArgs> AllowedCsiDrivers
         {
@@ -669,7 +561,8 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeGetArgs>? _allowedFlexVolumes;
 
         /// <summary>
-        /// (list)
+        /// allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
+        /// parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedFlexVolumeGetArgs> AllowedFlexVolumes
         {
@@ -681,7 +574,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateAllowedHostPathGetArgs>? _allowedHostPaths;
 
         /// <summary>
-        /// (list)
+        /// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateAllowedHostPathGetArgs> AllowedHostPaths
         {
@@ -693,7 +586,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedProcMountTypes;
 
         /// <summary>
-        /// (list)
+        /// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
+        /// DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
         /// </summary>
         public InputList<string> AllowedProcMountTypes
         {
@@ -705,7 +599,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedUnsafeSysctls;
 
         /// <summary>
-        /// (list)
+        /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
+        /// sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
+        /// sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
         /// </summary>
         public InputList<string> AllowedUnsafeSysctls
         {
@@ -717,7 +613,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for PodSecurityPolicyTemplate object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -729,7 +625,10 @@ namespace Pulumi.Rancher2
         private InputList<string>? _defaultAddCapabilities;
 
         /// <summary>
-        /// (list)
+        /// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
+        /// specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
+        /// requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
+        /// allowedCapabilities list.
         /// </summary>
         public InputList<string> DefaultAddCapabilities
         {
@@ -738,13 +637,14 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list)
+        /// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
+        /// parent process.
         /// </summary>
         [Input("defaultAllowPrivilegeEscalation")]
         public Input<bool>? DefaultAllowPrivilegeEscalation { get; set; }
 
         /// <summary>
-        /// The PodSecurityPolicyTemplate description (string)
+        /// Pod Security Policy template policy description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -753,7 +653,9 @@ namespace Pulumi.Rancher2
         private InputList<string>? _forbiddenSysctls;
 
         /// <summary>
-        /// (list)
+        /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
+        /// or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
+        /// forbidden.
         /// </summary>
         public InputList<string> ForbiddenSysctls
         {
@@ -762,13 +664,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
         /// </summary>
         [Input("fsGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateFsGroupGetArgs>? FsGroup { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
         /// </summary>
         [Input("hostIpc")]
         public Input<bool>? HostIpc { get; set; }
@@ -780,7 +682,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? HostNetwork { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// hostPID determines if the policy allows the use of HostPID in the pod spec.
         /// </summary>
         [Input("hostPid")]
         public Input<bool>? HostPid { get; set; }
@@ -789,7 +691,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.PodSecurityPolicyTemplateHostPortGetArgs>? _hostPorts;
 
         /// <summary>
-        /// (list)
+        /// hostPorts determines which host port ranges are allowed to be exposed.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateHostPortGetArgs> HostPorts
         {
@@ -801,7 +703,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for PodSecurityPolicyTemplate object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -810,19 +712,21 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
+        /// Pod Security Policy template policy name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// privileged determines if a pod can request to be run as privileged.
         /// </summary>
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
 
         /// <summary>
-        /// (bool)
+        /// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
+        /// specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
+        /// container may run with a read only root file system if it wishes but it will not be forced to.
         /// </summary>
         [Input("readOnlyRootFilesystem")]
         public Input<bool>? ReadOnlyRootFilesystem { get; set; }
@@ -831,7 +735,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _requiredDropCapabilities;
 
         /// <summary>
-        /// (list)
+        /// requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
+        /// and cannot be added.
         /// </summary>
         public InputList<string> RequiredDropCapabilities
         {
@@ -840,31 +745,34 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
+        /// the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
         /// </summary>
         [Input("runAsGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateRunAsGroupGetArgs>? RunAsGroup { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
         /// </summary>
         [Input("runAsUser")]
         public Input<Inputs.PodSecurityPolicyTemplateRunAsUserGetArgs>? RunAsUser { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
+        /// pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
+        /// enabled.
         /// </summary>
         [Input("runtimeClass")]
         public Input<Inputs.PodSecurityPolicyTemplateRuntimeClassGetArgs>? RuntimeClass { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// seLinux is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
         [Input("seLinux")]
         public Input<Inputs.PodSecurityPolicyTemplateSeLinuxGetArgs>? SeLinux { get; set; }
 
         /// <summary>
-        /// (list maxitems:1)
+        /// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
         /// </summary>
         [Input("supplementalGroup")]
         public Input<Inputs.PodSecurityPolicyTemplateSupplementalGroupGetArgs>? SupplementalGroup { get; set; }
@@ -873,7 +781,8 @@ namespace Pulumi.Rancher2
         private InputList<string>? _volumes;
 
         /// <summary>
-        /// (list)
+        /// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
+        /// may use '*'
         /// </summary>
         public InputList<string> Volumes
         {

@@ -32,43 +32,11 @@ class AuthConfigKeycloak(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
-
-        In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config KeyCloak
-        keycloak = rancher2.AuthConfigKeycloak("keycloak",
-            display_name_field="<DISPLAY_NAME_FIELD>",
-            groups_field="<GROUPS_FIELD>",
-            idp_metadata_content="<IDP_METADATA_CONTENT>",
-            rancher_api_host="https://<RANCHER_API_HOST>",
-            sp_cert="<SP_CERT>",
-            sp_key="<SP_KEY>",
-            uid_field="<UID_FIELD>",
-            user_name_field="<USER_NAME_FIELD>")
-        ```
-
+        Create a AuthConfigKeycloak resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[str] display_name_field: KeyCloak display name field (string)
-        :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
-        :param pulumi.Input[str] groups_field: KeyCloak group field (string)
-        :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
-        :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-        :param pulumi.Input[str] sp_cert: KeyCloak SP cert (string)
-        :param pulumi.Input[str] sp_key: KeyCloak SP key (string)
-        :param pulumi.Input[str] uid_field: KeyCloak UID field (string)
-        :param pulumi.Input[str] user_name_field: KeyCloak user name field (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,21 +118,8 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[str] display_name_field: KeyCloak display name field (string)
-        :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
-        :param pulumi.Input[str] groups_field: KeyCloak group field (string)
-        :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
-        :param pulumi.Input[str] name: (Computed) The name of the resource (string)
-        :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-        :param pulumi.Input[str] sp_cert: KeyCloak SP cert (string)
-        :param pulumi.Input[str] sp_key: KeyCloak SP key (string)
-        :param pulumi.Input[str] type: (Computed) The type of the resource (string)
-        :param pulumi.Input[str] uid_field: KeyCloak UID field (string)
-        :param pulumi.Input[str] user_name_field: KeyCloak user name field (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -190,121 +145,82 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        """
         return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
     def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
-        """
         return pulumi.get(self, "allowed_principal_ids")
 
     @property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="displayNameField")
     def display_name_field(self) -> pulumi.Output[str]:
-        """
-        KeyCloak display name field (string)
-        """
         return pulumi.get(self, "display_name_field")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable auth config provider. Default `true` (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="groupsField")
     def groups_field(self) -> pulumi.Output[str]:
-        """
-        KeyCloak group field (string)
-        """
         return pulumi.get(self, "groups_field")
 
     @property
     @pulumi.getter(name="idpMetadataContent")
     def idp_metadata_content(self) -> pulumi.Output[str]:
-        """
-        KeyCloak IDP metadata content (string)
-        """
         return pulumi.get(self, "idp_metadata_content")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        (Computed) The name of the resource (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="rancherApiHost")
     def rancher_api_host(self) -> pulumi.Output[str]:
-        """
-        Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-        """
         return pulumi.get(self, "rancher_api_host")
 
     @property
     @pulumi.getter(name="spCert")
     def sp_cert(self) -> pulumi.Output[str]:
-        """
-        KeyCloak SP cert (string)
-        """
         return pulumi.get(self, "sp_cert")
 
     @property
     @pulumi.getter(name="spKey")
     def sp_key(self) -> pulumi.Output[str]:
-        """
-        KeyCloak SP key (string)
-        """
         return pulumi.get(self, "sp_key")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        (Computed) The type of the resource (string)
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="uidField")
     def uid_field(self) -> pulumi.Output[str]:
-        """
-        KeyCloak UID field (string)
-        """
         return pulumi.get(self, "uid_field")
 
     @property
     @pulumi.getter(name="userNameField")
     def user_name_field(self) -> pulumi.Output[str]:
-        """
-        KeyCloak user name field (string)
-        """
         return pulumi.get(self, "user_name_field")
 
     def translate_output_property(self, prop):

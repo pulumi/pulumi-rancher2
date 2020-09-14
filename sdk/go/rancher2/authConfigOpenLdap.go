@@ -10,72 +10,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
-//
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 type AuthConfigOpenLdap struct {
 	pulumi.CustomResourceState
 
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
-	// OpenLdap connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrOutput `pulumi:"connectionTimeout"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Group DN attribute. Default `entryDN` (string)
-	GroupDnAttribute pulumi.StringOutput `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute pulumi.StringOutput `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `entryDN` (string)
-	GroupMemberUserAttribute pulumi.StringOutput `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `cn` (string)
-	GroupNameAttribute pulumi.StringOutput `pulumi:"groupNameAttribute"`
-	// Group object class. Default `groupOfNames` (string)
-	GroupObjectClass pulumi.StringOutput `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `cn` (string)
-	GroupSearchAttribute pulumi.StringOutput `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase pulumi.StringOutput `pulumi:"groupSearchBase"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled pulumi.BoolOutput `pulumi:"nestedGroupMembershipEnabled"`
-	// OpenLdap port. Default `389` (int)
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// OpenLdap servers list (list)
-	Servers pulumi.StringArrayOutput `pulumi:"servers"`
-	// Service account DN for access OpenLdap service (string)
-	ServiceAccountDistinguishedName pulumi.StringOutput `pulumi:"serviceAccountDistinguishedName"`
-	// Service account password for access OpenLdap service (string)
-	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolOutput `pulumi:"tls"`
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringOutput `pulumi:"type"`
-	// User disabled bit mask (int)
-	UserDisabledBitMask pulumi.IntOutput `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringOutput `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `uid` (string)
-	UserLoginAttribute pulumi.StringOutput `pulumi:"userLoginAttribute"`
-	// User member attribute. Default `memberOf` (string)
-	UserMemberAttribute pulumi.StringOutput `pulumi:"userMemberAttribute"`
-	// User name attribute. Default `givenName` (string)
-	UserNameAttribute pulumi.StringOutput `pulumi:"userNameAttribute"`
-	// User object class. Default `inetorgperson` (string)
-	UserObjectClass pulumi.StringOutput `pulumi:"userObjectClass"`
-	// User search attribute. Default `uid|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringOutput `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase pulumi.StringOutput `pulumi:"userSearchBase"`
+	// Annotations of the resource
+	Annotations                 pulumi.MapOutput       `pulumi:"annotations"`
+	Certificate                 pulumi.StringPtrOutput `pulumi:"certificate"`
+	ConnectionTimeout           pulumi.IntPtrOutput    `pulumi:"connectionTimeout"`
+	Enabled                     pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	GroupDnAttribute            pulumi.StringOutput    `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute pulumi.StringOutput    `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    pulumi.StringOutput    `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          pulumi.StringOutput    `pulumi:"groupNameAttribute"`
+	GroupObjectClass            pulumi.StringOutput    `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        pulumi.StringOutput    `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             pulumi.StringOutput    `pulumi:"groupSearchBase"`
+	// Labels of the resource
+	Labels                          pulumi.MapOutput         `pulumi:"labels"`
+	Name                            pulumi.StringOutput      `pulumi:"name"`
+	NestedGroupMembershipEnabled    pulumi.BoolOutput        `pulumi:"nestedGroupMembershipEnabled"`
+	Port                            pulumi.IntPtrOutput      `pulumi:"port"`
+	Servers                         pulumi.StringArrayOutput `pulumi:"servers"`
+	ServiceAccountDistinguishedName pulumi.StringOutput      `pulumi:"serviceAccountDistinguishedName"`
+	ServiceAccountPassword          pulumi.StringOutput      `pulumi:"serviceAccountPassword"`
+	Tls                             pulumi.BoolOutput        `pulumi:"tls"`
+	Type                            pulumi.StringOutput      `pulumi:"type"`
+	UserDisabledBitMask             pulumi.IntOutput         `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute            pulumi.StringOutput      `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute              pulumi.StringOutput      `pulumi:"userLoginAttribute"`
+	UserMemberAttribute             pulumi.StringOutput      `pulumi:"userMemberAttribute"`
+	UserNameAttribute               pulumi.StringOutput      `pulumi:"userNameAttribute"`
+	UserObjectClass                 pulumi.StringOutput      `pulumi:"userObjectClass"`
+	UserSearchAttribute             pulumi.StringOutput      `pulumi:"userSearchAttribute"`
+	UserSearchBase                  pulumi.StringOutput      `pulumi:"userSearchBase"`
 }
 
 // NewAuthConfigOpenLdap registers a new resource with the given unique name, arguments, and options.
@@ -118,129 +87,73 @@ func GetAuthConfigOpenLdap(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigOpenLdap resources.
 type authConfigOpenLdapState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-	Certificate *string `pulumi:"certificate"`
-	// OpenLdap connection timeout. Default `5000` (int)
-	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Group DN attribute. Default `entryDN` (string)
-	GroupDnAttribute *string `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute *string `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `entryDN` (string)
-	GroupMemberUserAttribute *string `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `cn` (string)
-	GroupNameAttribute *string `pulumi:"groupNameAttribute"`
-	// Group object class. Default `groupOfNames` (string)
-	GroupObjectClass *string `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `cn` (string)
-	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name *string `pulumi:"name"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
-	// OpenLdap port. Default `389` (int)
-	Port *int `pulumi:"port"`
-	// OpenLdap servers list (list)
-	Servers []string `pulumi:"servers"`
-	// Service account DN for access OpenLdap service (string)
-	ServiceAccountDistinguishedName *string `pulumi:"serviceAccountDistinguishedName"`
-	// Service account password for access OpenLdap service (string)
-	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
-	// Enable TLS connection (bool)
-	Tls *bool `pulumi:"tls"`
-	// (Computed) The type of the resource (string)
-	Type *string `pulumi:"type"`
-	// User disabled bit mask (int)
-	UserDisabledBitMask *int `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute *string `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `uid` (string)
-	UserLoginAttribute *string `pulumi:"userLoginAttribute"`
-	// User member attribute. Default `memberOf` (string)
-	UserMemberAttribute *string `pulumi:"userMemberAttribute"`
-	// User name attribute. Default `givenName` (string)
-	UserNameAttribute *string `pulumi:"userNameAttribute"`
-	// User object class. Default `inetorgperson` (string)
-	UserObjectClass *string `pulumi:"userObjectClass"`
-	// User search attribute. Default `uid|sn|givenName` (string)
-	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase *string `pulumi:"userSearchBase"`
+	// Annotations of the resource
+	Annotations                 map[string]interface{} `pulumi:"annotations"`
+	Certificate                 *string                `pulumi:"certificate"`
+	ConnectionTimeout           *int                   `pulumi:"connectionTimeout"`
+	Enabled                     *bool                  `pulumi:"enabled"`
+	GroupDnAttribute            *string                `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute *string                `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    *string                `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          *string                `pulumi:"groupNameAttribute"`
+	GroupObjectClass            *string                `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        *string                `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             *string                `pulumi:"groupSearchBase"`
+	// Labels of the resource
+	Labels                          map[string]interface{} `pulumi:"labels"`
+	Name                            *string                `pulumi:"name"`
+	NestedGroupMembershipEnabled    *bool                  `pulumi:"nestedGroupMembershipEnabled"`
+	Port                            *int                   `pulumi:"port"`
+	Servers                         []string               `pulumi:"servers"`
+	ServiceAccountDistinguishedName *string                `pulumi:"serviceAccountDistinguishedName"`
+	ServiceAccountPassword          *string                `pulumi:"serviceAccountPassword"`
+	Tls                             *bool                  `pulumi:"tls"`
+	Type                            *string                `pulumi:"type"`
+	UserDisabledBitMask             *int                   `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute            *string                `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute              *string                `pulumi:"userLoginAttribute"`
+	UserMemberAttribute             *string                `pulumi:"userMemberAttribute"`
+	UserNameAttribute               *string                `pulumi:"userNameAttribute"`
+	UserObjectClass                 *string                `pulumi:"userObjectClass"`
+	UserSearchAttribute             *string                `pulumi:"userSearchAttribute"`
+	UserSearchBase                  *string                `pulumi:"userSearchBase"`
 }
 
 type AuthConfigOpenLdapState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-	Certificate pulumi.StringPtrInput
-	// OpenLdap connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Group DN attribute. Default `entryDN` (string)
-	GroupDnAttribute pulumi.StringPtrInput
-	// Group member mapping attribute. Default `member` (string)
+	// Annotations of the resource
+	Annotations                 pulumi.MapInput
+	Certificate                 pulumi.StringPtrInput
+	ConnectionTimeout           pulumi.IntPtrInput
+	Enabled                     pulumi.BoolPtrInput
+	GroupDnAttribute            pulumi.StringPtrInput
 	GroupMemberMappingAttribute pulumi.StringPtrInput
-	// Group member user attribute. Default `entryDN` (string)
-	GroupMemberUserAttribute pulumi.StringPtrInput
-	// Group name attribute. Default `cn` (string)
-	GroupNameAttribute pulumi.StringPtrInput
-	// Group object class. Default `groupOfNames` (string)
-	GroupObjectClass pulumi.StringPtrInput
-	// Group search attribute. Default `cn` (string)
-	GroupSearchAttribute pulumi.StringPtrInput
-	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringPtrInput
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled pulumi.BoolPtrInput
-	// OpenLdap port. Default `389` (int)
-	Port pulumi.IntPtrInput
-	// OpenLdap servers list (list)
-	Servers pulumi.StringArrayInput
-	// Service account DN for access OpenLdap service (string)
+	GroupMemberUserAttribute    pulumi.StringPtrInput
+	GroupNameAttribute          pulumi.StringPtrInput
+	GroupObjectClass            pulumi.StringPtrInput
+	GroupSearchAttribute        pulumi.StringPtrInput
+	GroupSearchBase             pulumi.StringPtrInput
+	// Labels of the resource
+	Labels                          pulumi.MapInput
+	Name                            pulumi.StringPtrInput
+	NestedGroupMembershipEnabled    pulumi.BoolPtrInput
+	Port                            pulumi.IntPtrInput
+	Servers                         pulumi.StringArrayInput
 	ServiceAccountDistinguishedName pulumi.StringPtrInput
-	// Service account password for access OpenLdap service (string)
-	ServiceAccountPassword pulumi.StringPtrInput
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolPtrInput
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringPtrInput
-	// User disabled bit mask (int)
-	UserDisabledBitMask pulumi.IntPtrInput
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringPtrInput
-	// User login attribute. Default `uid` (string)
-	UserLoginAttribute pulumi.StringPtrInput
-	// User member attribute. Default `memberOf` (string)
-	UserMemberAttribute pulumi.StringPtrInput
-	// User name attribute. Default `givenName` (string)
-	UserNameAttribute pulumi.StringPtrInput
-	// User object class. Default `inetorgperson` (string)
-	UserObjectClass pulumi.StringPtrInput
-	// User search attribute. Default `uid|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringPtrInput
-	// User search base DN (string)
-	UserSearchBase pulumi.StringPtrInput
+	ServiceAccountPassword          pulumi.StringPtrInput
+	Tls                             pulumi.BoolPtrInput
+	Type                            pulumi.StringPtrInput
+	UserDisabledBitMask             pulumi.IntPtrInput
+	UserEnabledAttribute            pulumi.StringPtrInput
+	UserLoginAttribute              pulumi.StringPtrInput
+	UserMemberAttribute             pulumi.StringPtrInput
+	UserNameAttribute               pulumi.StringPtrInput
+	UserObjectClass                 pulumi.StringPtrInput
+	UserSearchAttribute             pulumi.StringPtrInput
+	UserSearchBase                  pulumi.StringPtrInput
 }
 
 func (AuthConfigOpenLdapState) ElementType() reflect.Type {
@@ -248,122 +161,70 @@ func (AuthConfigOpenLdapState) ElementType() reflect.Type {
 }
 
 type authConfigOpenLdapArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-	Certificate *string `pulumi:"certificate"`
-	// OpenLdap connection timeout. Default `5000` (int)
-	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Group DN attribute. Default `entryDN` (string)
-	GroupDnAttribute *string `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute *string `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `entryDN` (string)
-	GroupMemberUserAttribute *string `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `cn` (string)
-	GroupNameAttribute *string `pulumi:"groupNameAttribute"`
-	// Group object class. Default `groupOfNames` (string)
-	GroupObjectClass *string `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `cn` (string)
-	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
-	// OpenLdap port. Default `389` (int)
-	Port *int `pulumi:"port"`
-	// OpenLdap servers list (list)
-	Servers []string `pulumi:"servers"`
-	// Service account DN for access OpenLdap service (string)
-	ServiceAccountDistinguishedName string `pulumi:"serviceAccountDistinguishedName"`
-	// Service account password for access OpenLdap service (string)
-	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
-	// Enable TLS connection (bool)
-	Tls *bool `pulumi:"tls"`
-	// User disabled bit mask (int)
-	UserDisabledBitMask *int `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute *string `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `uid` (string)
-	UserLoginAttribute *string `pulumi:"userLoginAttribute"`
-	// User member attribute. Default `memberOf` (string)
-	UserMemberAttribute *string `pulumi:"userMemberAttribute"`
-	// User name attribute. Default `givenName` (string)
-	UserNameAttribute *string `pulumi:"userNameAttribute"`
-	// User object class. Default `inetorgperson` (string)
-	UserObjectClass *string `pulumi:"userObjectClass"`
-	// User search attribute. Default `uid|sn|givenName` (string)
-	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase string `pulumi:"userSearchBase"`
+	// Annotations of the resource
+	Annotations                 map[string]interface{} `pulumi:"annotations"`
+	Certificate                 *string                `pulumi:"certificate"`
+	ConnectionTimeout           *int                   `pulumi:"connectionTimeout"`
+	Enabled                     *bool                  `pulumi:"enabled"`
+	GroupDnAttribute            *string                `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute *string                `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    *string                `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          *string                `pulumi:"groupNameAttribute"`
+	GroupObjectClass            *string                `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        *string                `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             *string                `pulumi:"groupSearchBase"`
+	// Labels of the resource
+	Labels                          map[string]interface{} `pulumi:"labels"`
+	NestedGroupMembershipEnabled    *bool                  `pulumi:"nestedGroupMembershipEnabled"`
+	Port                            *int                   `pulumi:"port"`
+	Servers                         []string               `pulumi:"servers"`
+	ServiceAccountDistinguishedName string                 `pulumi:"serviceAccountDistinguishedName"`
+	ServiceAccountPassword          string                 `pulumi:"serviceAccountPassword"`
+	Tls                             *bool                  `pulumi:"tls"`
+	UserDisabledBitMask             *int                   `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute            *string                `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute              *string                `pulumi:"userLoginAttribute"`
+	UserMemberAttribute             *string                `pulumi:"userMemberAttribute"`
+	UserNameAttribute               *string                `pulumi:"userNameAttribute"`
+	UserObjectClass                 *string                `pulumi:"userObjectClass"`
+	UserSearchAttribute             *string                `pulumi:"userSearchAttribute"`
+	UserSearchBase                  string                 `pulumi:"userSearchBase"`
 }
 
 // The set of arguments for constructing a AuthConfigOpenLdap resource.
 type AuthConfigOpenLdapArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-	Certificate pulumi.StringPtrInput
-	// OpenLdap connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Group DN attribute. Default `entryDN` (string)
-	GroupDnAttribute pulumi.StringPtrInput
-	// Group member mapping attribute. Default `member` (string)
+	// Annotations of the resource
+	Annotations                 pulumi.MapInput
+	Certificate                 pulumi.StringPtrInput
+	ConnectionTimeout           pulumi.IntPtrInput
+	Enabled                     pulumi.BoolPtrInput
+	GroupDnAttribute            pulumi.StringPtrInput
 	GroupMemberMappingAttribute pulumi.StringPtrInput
-	// Group member user attribute. Default `entryDN` (string)
-	GroupMemberUserAttribute pulumi.StringPtrInput
-	// Group name attribute. Default `cn` (string)
-	GroupNameAttribute pulumi.StringPtrInput
-	// Group object class. Default `groupOfNames` (string)
-	GroupObjectClass pulumi.StringPtrInput
-	// Group search attribute. Default `cn` (string)
-	GroupSearchAttribute pulumi.StringPtrInput
-	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled pulumi.BoolPtrInput
-	// OpenLdap port. Default `389` (int)
-	Port pulumi.IntPtrInput
-	// OpenLdap servers list (list)
-	Servers pulumi.StringArrayInput
-	// Service account DN for access OpenLdap service (string)
+	GroupMemberUserAttribute    pulumi.StringPtrInput
+	GroupNameAttribute          pulumi.StringPtrInput
+	GroupObjectClass            pulumi.StringPtrInput
+	GroupSearchAttribute        pulumi.StringPtrInput
+	GroupSearchBase             pulumi.StringPtrInput
+	// Labels of the resource
+	Labels                          pulumi.MapInput
+	NestedGroupMembershipEnabled    pulumi.BoolPtrInput
+	Port                            pulumi.IntPtrInput
+	Servers                         pulumi.StringArrayInput
 	ServiceAccountDistinguishedName pulumi.StringInput
-	// Service account password for access OpenLdap service (string)
-	ServiceAccountPassword pulumi.StringInput
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolPtrInput
-	// User disabled bit mask (int)
-	UserDisabledBitMask pulumi.IntPtrInput
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringPtrInput
-	// User login attribute. Default `uid` (string)
-	UserLoginAttribute pulumi.StringPtrInput
-	// User member attribute. Default `memberOf` (string)
-	UserMemberAttribute pulumi.StringPtrInput
-	// User name attribute. Default `givenName` (string)
-	UserNameAttribute pulumi.StringPtrInput
-	// User object class. Default `inetorgperson` (string)
-	UserObjectClass pulumi.StringPtrInput
-	// User search attribute. Default `uid|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringPtrInput
-	// User search base DN (string)
-	UserSearchBase pulumi.StringInput
+	ServiceAccountPassword          pulumi.StringInput
+	Tls                             pulumi.BoolPtrInput
+	UserDisabledBitMask             pulumi.IntPtrInput
+	UserEnabledAttribute            pulumi.StringPtrInput
+	UserLoginAttribute              pulumi.StringPtrInput
+	UserMemberAttribute             pulumi.StringPtrInput
+	UserNameAttribute               pulumi.StringPtrInput
+	UserObjectClass                 pulumi.StringPtrInput
+	UserSearchAttribute             pulumi.StringPtrInput
+	UserSearchBase                  pulumi.StringInput
 }
 
 func (AuthConfigOpenLdapArgs) ElementType() reflect.Type {

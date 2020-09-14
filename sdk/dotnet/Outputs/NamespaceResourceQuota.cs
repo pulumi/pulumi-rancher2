@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NamespaceResourceQuota
     {
-        /// <summary>
-        /// Resource quota limit for namespace (list maxitems:1)
-        /// </summary>
         public readonly Outputs.NamespaceResourceQuotaLimit Limit;
 
         [OutputConstructor]

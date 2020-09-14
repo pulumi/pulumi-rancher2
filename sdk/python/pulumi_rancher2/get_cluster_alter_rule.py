@@ -70,9 +70,6 @@ class GetClusterAlterRuleResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) The cluster alert rule annotations (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -83,33 +80,21 @@ class GetClusterAlterRuleResult:
     @property
     @pulumi.getter(name="eventRule")
     def event_rule(self) -> 'outputs.GetClusterAlterRuleEventRuleResult':
-        """
-        (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "event_rule")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
-        """
-        (Computed) The cluster alert rule alert group ID (string)
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
     def group_interval_seconds(self) -> float:
-        """
-        (Computed) The cluster alert rule group interval seconds. Default: `180` (int)
-        """
         return pulumi.get(self, "group_interval_seconds")
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
     def group_wait_seconds(self) -> float:
-        """
-        (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
-        """
         return pulumi.get(self, "group_wait_seconds")
 
     @property
@@ -123,25 +108,16 @@ class GetClusterAlterRuleResult:
     @property
     @pulumi.getter
     def inherited(self) -> bool:
-        """
-        (Computed) The cluster alert rule inherited. Default: `true` (bool)
-        """
         return pulumi.get(self, "inherited")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
-        """
-        (Computed) The cluster alert rule labels (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="metricRule")
     def metric_rule(self) -> 'outputs.GetClusterAlterRuleMetricRuleResult':
-        """
-        (Computed) The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "metric_rule")
 
     @property
@@ -152,33 +128,21 @@ class GetClusterAlterRuleResult:
     @property
     @pulumi.getter(name="nodeRule")
     def node_rule(self) -> 'outputs.GetClusterAlterRuleNodeRuleResult':
-        """
-        (Computed) The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "node_rule")
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
     def repeat_interval_seconds(self) -> float:
-        """
-        (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
-        """
         return pulumi.get(self, "repeat_interval_seconds")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
-        """
-        (Computed) The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="systemServiceRule")
     def system_service_rule(self) -> 'outputs.GetClusterAlterRuleSystemServiceRuleResult':
-        """
-        (Computed) The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "system_service_rule")
 
 
@@ -210,22 +174,7 @@ def get_cluster_alter_rule(cluster_id: Optional[str] = None,
                            name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterAlterRuleResult:
     """
-    Use this data source to retrieve information about a Rancher v2 cluster alert rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_alter_rule(cluster_id="<cluster_id>",
-        name="<cluster_alert_rule_name>")
-    ```
-
-
-    :param str cluster_id: The cluster id where create cluster alert rule (string)
-    :param Mapping[str, Any] labels: (Computed) The cluster alert rule labels (map)
-    :param str name: The cluster alert rule name (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

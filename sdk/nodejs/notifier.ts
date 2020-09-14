@@ -6,27 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Notifier
- * const foo = new rancher2.Notifier("foo", {
- *     clusterId: "<cluster_id>",
- *     description: "Terraform notifier acceptance test",
- *     pagerdutyConfig: {
- *         proxyUrl: "http://proxy.test.io",
- *         serviceKey: "XXXXXXXX",
- *     },
- *     sendResolved: true,
- * });
- * ```
- */
 export class Notifier extends pulumi.CustomResource {
     /**
      * Get an existing Notifier resource's state with the given name, ID, and optional extra
@@ -56,48 +35,33 @@ export class Notifier extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for notifier object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The cluster id where create notifier (string)
+     * Notifier cluster ID
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * The notifier description (string)
+     * Notifier description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Labels for notifier object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the notifier (string)
+     * Notifier name
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Pagerduty config for notifier (list maxitems:1)
-     */
     public readonly pagerdutyConfig!: pulumi.Output<outputs.NotifierPagerdutyConfig | undefined>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     public readonly sendResolved!: pulumi.Output<boolean | undefined>;
-    /**
-     * Slack config for notifier (list maxitems:1)
-     */
     public readonly slackConfig!: pulumi.Output<outputs.NotifierSlackConfig | undefined>;
-    /**
-     * SMTP config for notifier (list maxitems:1)
-     */
     public readonly smtpConfig!: pulumi.Output<outputs.NotifierSmtpConfig | undefined>;
-    /**
-     * Webhook config for notifier (list maxitems:1)
-     */
     public readonly webhookConfig!: pulumi.Output<outputs.NotifierWebhookConfig | undefined>;
-    /**
-     * Wechat config for notifier (list maxitems:1)
-     */
     public readonly wechatConfig!: pulumi.Output<outputs.NotifierWechatConfig | undefined>;
 
     /**
@@ -156,48 +120,33 @@ export class Notifier extends pulumi.CustomResource {
  */
 export interface NotifierState {
     /**
-     * Annotations for notifier object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The cluster id where create notifier (string)
+     * Notifier cluster ID
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * The notifier description (string)
+     * Notifier description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for notifier object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the notifier (string)
+     * Notifier name
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Pagerduty config for notifier (list maxitems:1)
-     */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     readonly sendResolved?: pulumi.Input<boolean>;
-    /**
-     * Slack config for notifier (list maxitems:1)
-     */
     readonly slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
-    /**
-     * SMTP config for notifier (list maxitems:1)
-     */
     readonly smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
-    /**
-     * Webhook config for notifier (list maxitems:1)
-     */
     readonly webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
-    /**
-     * Wechat config for notifier (list maxitems:1)
-     */
     readonly wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
 }
 
@@ -206,47 +155,32 @@ export interface NotifierState {
  */
 export interface NotifierArgs {
     /**
-     * Annotations for notifier object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The cluster id where create notifier (string)
+     * Notifier cluster ID
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * The notifier description (string)
+     * Notifier description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for notifier object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the notifier (string)
+     * Notifier name
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Pagerduty config for notifier (list maxitems:1)
-     */
     readonly pagerdutyConfig?: pulumi.Input<inputs.NotifierPagerdutyConfig>;
     /**
-     * = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+     * Notifier send resolved
      */
     readonly sendResolved?: pulumi.Input<boolean>;
-    /**
-     * Slack config for notifier (list maxitems:1)
-     */
     readonly slackConfig?: pulumi.Input<inputs.NotifierSlackConfig>;
-    /**
-     * SMTP config for notifier (list maxitems:1)
-     */
     readonly smtpConfig?: pulumi.Input<inputs.NotifierSmtpConfig>;
-    /**
-     * Webhook config for notifier (list maxitems:1)
-     */
     readonly webhookConfig?: pulumi.Input<inputs.NotifierWebhookConfig>;
-    /**
-     * Wechat config for notifier (list maxitems:1)
-     */
     readonly wechatConfig?: pulumi.Input<inputs.NotifierWechatConfig>;
 }

@@ -14,9 +14,6 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult
     {
         public readonly string Datacenters;
-        /// <summary>
-        /// The name of the Cluster (string)
-        /// </summary>
         public readonly string Name;
         public readonly string Password;
         public readonly string Port;

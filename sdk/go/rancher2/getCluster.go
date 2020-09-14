@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupCluster(ctx, &rancher2.LookupClusterArgs{
-// 			Name: "foo-custom",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("rancher2:index/getCluster:getCluster", args, &rv, opts...)
@@ -42,59 +18,36 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
-	// The name of the Cluster (string)
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	AksConfig GetClusterAksConfig `pulumi:"aksConfig"`
-	// (Computed) Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-	ClusterAuthEndpoint GetClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
-	// (Computed) Cluster monitoring config (list maxitems:1)
-	ClusterMonitoringInput GetClusterClusterMonitoringInput `pulumi:"clusterMonitoringInput"`
-	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-	ClusterRegistrationToken GetClusterClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
-	// (Computed) Cluster template answers (list maxitems:1)
-	ClusterTemplateAnswers GetClusterClusterTemplateAnswers `pulumi:"clusterTemplateAnswers"`
-	// (Computed) Cluster template ID (string)
-	ClusterTemplateId string `pulumi:"clusterTemplateId"`
-	// (Computed) Cluster template questions (list)
-	ClusterTemplateQuestions []GetClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
-	// (Computed) Cluster template revision ID (string)
-	ClusterTemplateRevisionId string `pulumi:"clusterTemplateRevisionId"`
-	// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-	DefaultPodSecurityPolicyTemplateId string `pulumi:"defaultPodSecurityPolicyTemplateId"`
-	// (Computed) Default project ID for the cluster (string)
-	DefaultProjectId string `pulumi:"defaultProjectId"`
-	// (Computed) The description for Cluster (string)
-	Description string `pulumi:"description"`
-	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-	Driver string `pulumi:"driver"`
-	// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	EksConfig             GetClusterEksConfig `pulumi:"eksConfig"`
-	EnableClusterAlerting bool                `pulumi:"enableClusterAlerting"`
-	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-	EnableClusterMonitoring bool `pulumi:"enableClusterMonitoring"`
-	// (Computed) Enable project network isolation. Default `false` (bool)
-	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
-	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
-	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
+	AksConfig                          GetClusterAksConfig                 `pulumi:"aksConfig"`
+	Annotations                        map[string]interface{}              `pulumi:"annotations"`
+	ClusterAuthEndpoint                GetClusterClusterAuthEndpoint       `pulumi:"clusterAuthEndpoint"`
+	ClusterMonitoringInput             GetClusterClusterMonitoringInput    `pulumi:"clusterMonitoringInput"`
+	ClusterRegistrationToken           GetClusterClusterRegistrationToken  `pulumi:"clusterRegistrationToken"`
+	ClusterTemplateAnswers             GetClusterClusterTemplateAnswers    `pulumi:"clusterTemplateAnswers"`
+	ClusterTemplateId                  string                              `pulumi:"clusterTemplateId"`
+	ClusterTemplateQuestions           []GetClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
+	ClusterTemplateRevisionId          string                              `pulumi:"clusterTemplateRevisionId"`
+	DefaultPodSecurityPolicyTemplateId string                              `pulumi:"defaultPodSecurityPolicyTemplateId"`
+	DefaultProjectId                   string                              `pulumi:"defaultProjectId"`
+	Description                        string                              `pulumi:"description"`
+	Driver                             string                              `pulumi:"driver"`
+	EksConfig                          GetClusterEksConfig                 `pulumi:"eksConfig"`
+	EnableClusterAlerting              bool                                `pulumi:"enableClusterAlerting"`
+	EnableClusterMonitoring            bool                                `pulumi:"enableClusterMonitoring"`
+	EnableNetworkPolicy                bool                                `pulumi:"enableNetworkPolicy"`
+	GkeConfig                          GetClusterGkeConfig                 `pulumi:"gkeConfig"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	K3sConfig GetClusterK3sConfig `pulumi:"k3sConfig"`
-	// (Computed) Kube Config generated for the cluster (string)
-	KubeConfig string `pulumi:"kubeConfig"`
-	// (Computed) Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
-	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
+	Id                    string                           `pulumi:"id"`
+	K3sConfig             GetClusterK3sConfig              `pulumi:"k3sConfig"`
+	KubeConfig            string                           `pulumi:"kubeConfig"`
+	Labels                map[string]interface{}           `pulumi:"labels"`
+	Name                  string                           `pulumi:"name"`
 	RkeConfig             GetClusterRkeConfig              `pulumi:"rkeConfig"`
 	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
-	// (Computed) System project ID for the cluster (string)
-	SystemProjectId string `pulumi:"systemProjectId"`
+	SystemProjectId       string                           `pulumi:"systemProjectId"`
 }

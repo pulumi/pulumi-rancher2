@@ -12,39 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigServicesGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Etcd options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("etcd")]
         public Input<Inputs.ClusterRkeConfigServicesEtcdGetArgs>? Etcd { get; set; }
 
-        /// <summary>
-        /// Kube API options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("kubeApi")]
         public Input<Inputs.ClusterRkeConfigServicesKubeApiGetArgs>? KubeApi { get; set; }
 
-        /// <summary>
-        /// Kube Controller options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("kubeController")]
         public Input<Inputs.ClusterRkeConfigServicesKubeControllerGetArgs>? KubeController { get; set; }
 
-        /// <summary>
-        /// Kubelet options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("kubelet")]
         public Input<Inputs.ClusterRkeConfigServicesKubeletGetArgs>? Kubelet { get; set; }
 
-        /// <summary>
-        /// Kubeproxy options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("kubeproxy")]
         public Input<Inputs.ClusterRkeConfigServicesKubeproxyGetArgs>? Kubeproxy { get; set; }
 
-        /// <summary>
-        /// Scheduler options for RKE services (list maxitems:1)
-        /// </summary>
         [Input("scheduler")]
         public Input<Inputs.ClusterRkeConfigServicesSchedulerGetArgs>? Scheduler { get; set; }
 

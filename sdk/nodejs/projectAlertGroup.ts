@@ -6,24 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 Project Alert Group
- * const foo = new rancher2.ProjectAlertGroup("foo", {
- *     description: "Terraform project alert group",
- *     groupIntervalSeconds: 300,
- *     projectId: "<project_id>",
- *     repeatIntervalSeconds: 3600,
- * });
- * ```
- */
 export class ProjectAlertGroup extends pulumi.CustomResource {
     /**
      * Get an existing ProjectAlertGroup resource's state with the given name, ID, and optional extra
@@ -53,39 +35,39 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The project alert group annotations (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The project alert group description (string)
+     * Alert group description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The project alert group interval seconds. Default: `180` (int)
+     * Alert group interval seconds
      */
     public readonly groupIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * The project alert group wait seconds. Default: `180` (int)
+     * Alert group wait seconds
      */
     public readonly groupWaitSeconds!: pulumi.Output<number | undefined>;
     /**
-     * The project alert group labels (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The project alert group name (string)
+     * Alert group name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project id where create project alert group (string)
+     * Alert group Project ID
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * The project alert group recipients (list)
+     * Alert group recipients
      */
     public readonly recipients!: pulumi.Output<outputs.ProjectAlertGroupRecipient[] | undefined>;
     /**
-     * The project alert group wait seconds. Default: `3600` (int)
+     * Alert group repeat interval seconds
      */
     public readonly repeatIntervalSeconds!: pulumi.Output<number | undefined>;
 
@@ -141,39 +123,39 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
  */
 export interface ProjectAlertGroupState {
     /**
-     * The project alert group annotations (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The project alert group description (string)
+     * Alert group description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The project alert group interval seconds. Default: `180` (int)
+     * Alert group interval seconds
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * The project alert group wait seconds. Default: `180` (int)
+     * Alert group wait seconds
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * The project alert group labels (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The project alert group name (string)
+     * Alert group name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project id where create project alert group (string)
+     * Alert group Project ID
      */
     readonly projectId?: pulumi.Input<string>;
     /**
-     * The project alert group recipients (list)
+     * Alert group recipients
      */
     readonly recipients?: pulumi.Input<pulumi.Input<inputs.ProjectAlertGroupRecipient>[]>;
     /**
-     * The project alert group wait seconds. Default: `3600` (int)
+     * Alert group repeat interval seconds
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
 }
@@ -183,39 +165,39 @@ export interface ProjectAlertGroupState {
  */
 export interface ProjectAlertGroupArgs {
     /**
-     * The project alert group annotations (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The project alert group description (string)
+     * Alert group description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The project alert group interval seconds. Default: `180` (int)
+     * Alert group interval seconds
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * The project alert group wait seconds. Default: `180` (int)
+     * Alert group wait seconds
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * The project alert group labels (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The project alert group name (string)
+     * Alert group name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project id where create project alert group (string)
+     * Alert group Project ID
      */
     readonly projectId: pulumi.Input<string>;
     /**
-     * The project alert group recipients (list)
+     * Alert group recipients
      */
     readonly recipients?: pulumi.Input<pulumi.Input<inputs.ProjectAlertGroupRecipient>[]>;
     /**
-     * The project alert group wait seconds. Default: `3600` (int)
+     * Alert group repeat interval seconds
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
 }

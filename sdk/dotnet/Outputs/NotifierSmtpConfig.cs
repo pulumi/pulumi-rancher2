@@ -13,33 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NotifierSmtpConfig
     {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
         public readonly string DefaultRecipient;
-        /// <summary>
-        /// SMTP host (string)
-        /// </summary>
         public readonly string Host;
-        /// <summary>
-        /// SMTP password (string)
-        /// </summary>
         public readonly string? Password;
-        /// <summary>
-        /// SMTP port (int)
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// SMTP sender (string)
-        /// </summary>
         public readonly string Sender;
-        /// <summary>
-        /// SMTP tls. Default `true` (bool)
-        /// </summary>
         public readonly bool? Tls;
-        /// <summary>
-        /// SMTP username (string)
-        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

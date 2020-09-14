@@ -12,9 +12,6 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialDigitaloceanCredentialConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// DigitalOcean access token (string)
-        /// </summary>
         [Input("accessToken", required: true)]
         public Input<string> AccessToken { get; set; } = null!;
 

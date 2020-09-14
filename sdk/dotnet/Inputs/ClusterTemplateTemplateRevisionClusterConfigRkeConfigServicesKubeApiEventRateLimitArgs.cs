@@ -13,16 +13,8 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs : Pulumi.ResourceArgs
     {
         [Input("configuration")]
-        private InputMap<object>? _configuration;
-        public InputMap<object> Configuration
-        {
-            get => _configuration ?? (_configuration = new InputMap<object>());
-            set => _configuration = value;
-        }
+        public Input<string>? Configuration { get; set; }
 
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

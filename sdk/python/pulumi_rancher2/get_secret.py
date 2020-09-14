@@ -48,25 +48,16 @@ class GetSecretResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for secret object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def data(self) -> Mapping[str, Any]:
-        """
-        (Computed) Secret key/value data. Base64 encoding required for values (map)
-        """
         return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) A secret description (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -80,9 +71,6 @@ class GetSecretResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for secret object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -122,35 +110,7 @@ def get_secret(name: Optional[str] = None,
                project_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
-    Use this data source to retrieve information about a Rancher v2 secret.
-
-    Depending of the availability, there are 2 types of Rancher v2 secrets:
-    - Project secret: Available to all namespaces in the `project_id`
-    - Namespaced secret: Available to just `namespace_id` in the `project_id`
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_secret(name="<name>",
-        project_id="<project_id>")
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_secret(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
-    ```
-
-
-    :param str name: The name of the secret (string)
-    :param str namespace_id: The namespace id where to assign the namespaced secret (string)
-    :param str project_id: The project id where to assign the secret (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

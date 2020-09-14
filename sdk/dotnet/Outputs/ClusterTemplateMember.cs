@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateMember
     {
-        /// <summary>
-        /// Member access type. Valid values: `["read-only" | "owner"]` (string)
-        /// </summary>
         public readonly string? AccessType;
-        /// <summary>
-        /// Member group principal id (string)
-        /// </summary>
         public readonly string? GroupPrincipalId;
-        /// <summary>
-        /// Member user principal id (string)
-        /// </summary>
         public readonly string? UserPrincipalId;
 
         [OutputConstructor]

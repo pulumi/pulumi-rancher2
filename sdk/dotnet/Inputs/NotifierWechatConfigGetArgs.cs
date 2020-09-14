@@ -12,39 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NotifierWechatConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
         [Input("agent", required: true)]
         public Input<string> Agent { get; set; } = null!;
 
-        /// <summary>
-        /// Wechat corporation ID (string)
-        /// </summary>
         [Input("corp", required: true)]
         public Input<string> Corp { get; set; } = null!;
 
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
-        /// <summary>
-        /// Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
-        /// </summary>
         [Input("recipientType")]
         public Input<string>? RecipientType { get; set; }
 
-        /// <summary>
-        /// Wechat agent ID (string)
-        /// </summary>
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 

@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a Rancher v2 Cluster Logging.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = pulumi.output(rancher2.getClusterLogging({
- *     clusterId: "<cluster_id>",
- * }, { async: true }));
- * ```
- */
 export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterLoggingResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getClusterLogging(args: GetClusterLoggingArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getClusterLogging.
  */
 export interface GetClusterLoggingArgs {
-    /**
-     * The cluster id to configure logging (string)
-     */
     readonly clusterId: string;
 }
 
@@ -47,59 +30,23 @@ export interface GetClusterLoggingArgs {
  * A collection of values returned by getClusterLogging.
  */
 export interface GetClusterLoggingResult {
-    /**
-     * (Computed) Annotations for Cluster Logging object (map)
-     */
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
     readonly customTargetConfig: outputs.GetClusterLoggingCustomTargetConfig;
-    /**
-     * (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
-     */
     readonly elasticsearchConfig: outputs.GetClusterLoggingElasticsearchConfig;
     readonly enableJsonParsing: boolean;
-    /**
-     * (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
-     */
     readonly fluentdConfig: outputs.GetClusterLoggingFluentdConfig;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
-     */
     readonly kafkaConfig: outputs.GetClusterLoggingKafkaConfig;
-    /**
-     * (Computed) The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
-     */
     readonly kind: string;
-    /**
-     * (Computed) Labels for Cluster Logging object (map)
-     */
     readonly labels: {[key: string]: any};
-    /**
-     * (Computed) The name of the cluster logging config (string)
-     */
     readonly name: string;
-    /**
-     * (Computed) The namespace id from cluster logging (string)
-     */
     readonly namespaceId: string;
-    /**
-     * (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
-     */
     readonly outputFlushInterval: number;
-    /**
-     * (computed) The output tags for Cluster Logging (map)
-     */
     readonly outputTags: {[key: string]: any};
-    /**
-     * (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
-     */
     readonly splunkConfig: outputs.GetClusterLoggingSplunkConfig;
-    /**
-     * (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
-     */
     readonly syslogConfig: outputs.GetClusterLoggingSyslogConfig;
 }

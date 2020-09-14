@@ -13,25 +13,10 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigMonitoring
     {
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         public readonly string? Provider;
-        /// <summary>
-        /// RKE monitoring replicas (int)
-        /// </summary>
         public readonly int? Replicas;
-        /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoringUpdateStrategy? UpdateStrategy;
 
         [OutputConstructor]

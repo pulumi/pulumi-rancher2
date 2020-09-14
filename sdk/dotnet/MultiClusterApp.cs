@@ -12,91 +12,91 @@ namespace Pulumi.Rancher2
     public partial class MultiClusterApp : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for multi cluster app object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app answers
         /// </summary>
         [Output("answers")]
         public Output<ImmutableArray<Outputs.MultiClusterAppAnswer>> Answers { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app catalog name (string)
+        /// Multi cluster app catalog name
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for multi cluster app object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app members
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<Outputs.MultiClusterAppMember>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app name (string)
+        /// Multi cluster app name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app revision history limit. Default `10` (int)
+        /// Multi cluster app revision history limit
         /// </summary>
         [Output("revisionHistoryLimit")]
         public Output<int?> RevisionHistoryLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Current revision id for the multi cluster app (string)
+        /// Multi cluster app revision name
         /// </summary>
         [Output("revisionId")]
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app roles (list)
+        /// Multi cluster app roles
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app target projects (list)
+        /// Multi cluster app targets
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.MultiClusterAppTarget>> Targets { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app template name (string)
+        /// Multi cluster app template name
         /// </summary>
         [Output("templateName")]
         public Output<string> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app template version. Default: `latest` (string)
+        /// Multi cluster app template version
         /// </summary>
         [Output("templateVersion")]
         public Output<string> TemplateVersion { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The multi cluster app template version ID (string)
+        /// Multi cluster app template version ID
         /// </summary>
         [Output("templateVersionId")]
         public Output<string> TemplateVersionId { get; private set; } = null!;
 
         /// <summary>
-        /// The multi cluster app upgrade strategy (list MaxItems:1)
+        /// Multi cluster app upgrade strategy
         /// </summary>
         [Output("upgradeStrategy")]
         public Output<Outputs.MultiClusterAppUpgradeStrategy> UpgradeStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until the multi cluster app is active. Default `true` (bool)
+        /// Wait until multi cluster app is active
         /// </summary>
         [Output("wait")]
         public Output<bool?> Wait { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for multi cluster app object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -163,7 +163,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppAnswerArgs>? _answers;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app answers
         /// </summary>
         public InputList<Inputs.MultiClusterAppAnswerArgs> Answers
         {
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app catalog name (string)
+        /// Multi cluster app catalog name
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for multi cluster app object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppMemberArgs>? _members;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app members
         /// </summary>
         public InputList<Inputs.MultiClusterAppMemberArgs> Members
         {
@@ -202,19 +202,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app name (string)
+        /// Multi cluster app name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The multi cluster app revision history limit. Default `10` (int)
+        /// Multi cluster app revision history limit
         /// </summary>
         [Input("revisionHistoryLimit")]
         public Input<int>? RevisionHistoryLimit { get; set; }
 
         /// <summary>
-        /// Current revision id for the multi cluster app (string)
+        /// Multi cluster app revision name
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The multi cluster app roles (list)
+        /// Multi cluster app roles
         /// </summary>
         public InputList<string> Roles
         {
@@ -235,7 +235,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppTargetArgs>? _targets;
 
         /// <summary>
-        /// The multi cluster app target projects (list)
+        /// Multi cluster app targets
         /// </summary>
         public InputList<Inputs.MultiClusterAppTargetArgs> Targets
         {
@@ -244,25 +244,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app template name (string)
+        /// Multi cluster app template name
         /// </summary>
         [Input("templateName", required: true)]
         public Input<string> TemplateName { get; set; } = null!;
 
         /// <summary>
-        /// The multi cluster app template version. Default: `latest` (string)
+        /// Multi cluster app template version
         /// </summary>
         [Input("templateVersion")]
         public Input<string>? TemplateVersion { get; set; }
 
         /// <summary>
-        /// The multi cluster app upgrade strategy (list MaxItems:1)
+        /// Multi cluster app upgrade strategy
         /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.MultiClusterAppUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// Wait until the multi cluster app is active. Default `true` (bool)
+        /// Wait until multi cluster app is active
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for multi cluster app object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -290,7 +290,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppAnswerGetArgs>? _answers;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app answers
         /// </summary>
         public InputList<Inputs.MultiClusterAppAnswerGetArgs> Answers
         {
@@ -299,7 +299,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app catalog name (string)
+        /// Multi cluster app catalog name
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for multi cluster app object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -320,7 +320,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppMemberGetArgs>? _members;
 
         /// <summary>
-        /// The multi cluster app answers (list)
+        /// Multi cluster app members
         /// </summary>
         public InputList<Inputs.MultiClusterAppMemberGetArgs> Members
         {
@@ -329,19 +329,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app name (string)
+        /// Multi cluster app name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The multi cluster app revision history limit. Default `10` (int)
+        /// Multi cluster app revision history limit
         /// </summary>
         [Input("revisionHistoryLimit")]
         public Input<int>? RevisionHistoryLimit { get; set; }
 
         /// <summary>
-        /// Current revision id for the multi cluster app (string)
+        /// Multi cluster app revision name
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The multi cluster app roles (list)
+        /// Multi cluster app roles
         /// </summary>
         public InputList<string> Roles
         {
@@ -362,7 +362,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.MultiClusterAppTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The multi cluster app target projects (list)
+        /// Multi cluster app targets
         /// </summary>
         public InputList<Inputs.MultiClusterAppTargetGetArgs> Targets
         {
@@ -371,31 +371,31 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The multi cluster app template name (string)
+        /// Multi cluster app template name
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// The multi cluster app template version. Default: `latest` (string)
+        /// Multi cluster app template version
         /// </summary>
         [Input("templateVersion")]
         public Input<string>? TemplateVersion { get; set; }
 
         /// <summary>
-        /// (Computed) The multi cluster app template version ID (string)
+        /// Multi cluster app template version ID
         /// </summary>
         [Input("templateVersionId")]
         public Input<string>? TemplateVersionId { get; set; }
 
         /// <summary>
-        /// The multi cluster app upgrade strategy (list MaxItems:1)
+        /// Multi cluster app upgrade strategy
         /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.MultiClusterAppUpgradeStrategyGetArgs>? UpgradeStrategy { get; set; }
 
         /// <summary>
-        /// Wait until the multi cluster app is active. Default `true` (bool)
+        /// Wait until multi cluster app is active
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }

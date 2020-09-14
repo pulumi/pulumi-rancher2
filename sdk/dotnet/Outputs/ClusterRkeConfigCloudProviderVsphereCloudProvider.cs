@@ -13,25 +13,10 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProvider
     {
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDisk? Disk;
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal? Global;
-        /// <summary>
-        /// Network for GKE cluster (string)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork? Network;
-        /// <summary>
-        /// (List)
-        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> VirtualCenters;
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace Workspace;
 
         [OutputConstructor]

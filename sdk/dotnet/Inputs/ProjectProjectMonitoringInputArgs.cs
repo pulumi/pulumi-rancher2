@@ -14,19 +14,12 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("answers")]
         private InputMap<object>? _answers;
-
-        /// <summary>
-        /// Key/value answers for monitor input (map)
-        /// </summary>
         public InputMap<object> Answers
         {
             get => _answers ?? (_answers = new InputMap<object>());
             set => _answers = value;
         }
 
-        /// <summary>
-        /// rancher-monitoring chart version (string)
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

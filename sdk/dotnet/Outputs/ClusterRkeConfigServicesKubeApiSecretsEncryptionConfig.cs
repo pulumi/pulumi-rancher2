@@ -13,18 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig
     {
-        /// <summary>
-        /// Secrets encryption configuration. (map)
-        /// </summary>
-        public readonly ImmutableDictionary<string, object>? CustomConfig;
-        /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
-        /// </summary>
+        public readonly string? CustomConfig;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(
-            ImmutableDictionary<string, object>? customConfig,
+            string? customConfig,
 
             bool? enabled)
         {

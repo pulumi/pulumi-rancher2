@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterAlertRuleSystemServiceRule
     {
-        /// <summary>
-        /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        /// </summary>
         public readonly string? Condition;
 
         [OutputConstructor]

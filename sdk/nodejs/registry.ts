@@ -6,48 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
- *
- * Depending of the availability, there are 2 types of Rancher v2 docker registries:
- * - Project registry: Available to all namespaces in the `projectId`
- * - Namespaced regitry: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Project Registry
- * const foo = new rancher2.Registry("foo", {
- *     description: "Terraform registry foo",
- *     projectId: "<project_id>",
- *     registries: [{
- *         address: "test.io",
- *         password: "pass",
- *         username: "user",
- *     }],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Namespaced Registry
- * const foo = new rancher2.Registry("foo", {
- *     description: "Terraform registry foo",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- *     registries: [{
- *         address: "test.io",
- *         password: "pass",
- *         username: "user2",
- *     }],
- * });
- * ```
- */
 export class Registry extends pulumi.CustomResource {
     /**
      * Get an existing Registry resource's state with the given name, ID, and optional extra
@@ -77,32 +35,29 @@ export class Registry extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for Registry object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * A registry description (string)
+     * Description of the docker registry
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Labels for Registry object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the registry (string)
+     * Name of the docker registry
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The namespace id where to assign the namespaced registry (string)
+     * Namespace ID to add docker registry
      */
     public readonly namespaceId!: pulumi.Output<string | undefined>;
     /**
-     * The project id where to assign the registry (string)
+     * Project ID to add docker registry
      */
     public readonly projectId!: pulumi.Output<string>;
-    /**
-     * Registries data for registry (list)
-     */
     public readonly registries!: pulumi.Output<outputs.RegistryRegistry[]>;
 
     /**
@@ -156,32 +111,29 @@ export class Registry extends pulumi.CustomResource {
  */
 export interface RegistryState {
     /**
-     * Annotations for Registry object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A registry description (string)
+     * Description of the docker registry
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for Registry object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the registry (string)
+     * Name of the docker registry
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where to assign the namespaced registry (string)
+     * Namespace ID to add docker registry
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where to assign the registry (string)
+     * Project ID to add docker registry
      */
     readonly projectId?: pulumi.Input<string>;
-    /**
-     * Registries data for registry (list)
-     */
     readonly registries?: pulumi.Input<pulumi.Input<inputs.RegistryRegistry>[]>;
 }
 
@@ -190,31 +142,28 @@ export interface RegistryState {
  */
 export interface RegistryArgs {
     /**
-     * Annotations for Registry object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A registry description (string)
+     * Description of the docker registry
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for Registry object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the registry (string)
+     * Name of the docker registry
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where to assign the namespaced registry (string)
+     * Namespace ID to add docker registry
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where to assign the registry (string)
+     * Project ID to add docker registry
      */
     readonly projectId: pulumi.Input<string>;
-    /**
-     * Registries data for registry (list)
-     */
     readonly registries: pulumi.Input<pulumi.Input<inputs.RegistryRegistry>[]>;
 }

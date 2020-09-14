@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateAllowedCsiDriver
     {
-        /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

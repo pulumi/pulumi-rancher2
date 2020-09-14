@@ -13,25 +13,10 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterScheduledClusterScanScanConfigCisScanConfig
     {
-        /// <summary>
-        /// Debug master. Default: `false` (bool)
-        /// </summary>
         public readonly bool? DebugMaster;
-        /// <summary>
-        /// Debug worker. Default: `false` (bool)
-        /// </summary>
         public readonly bool? DebugWorker;
-        /// <summary>
-        /// Override benchmark version (string)
-        /// </summary>
         public readonly string? OverrideBenchmarkVersion;
-        /// <summary>
-        /// Override skip (string)
-        /// </summary>
         public readonly ImmutableArray<string> OverrideSkips;
-        /// <summary>
-        /// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
-        /// </summary>
         public readonly string? Profile;
 
         [OutputConstructor]

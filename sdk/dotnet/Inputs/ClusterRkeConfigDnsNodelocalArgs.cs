@@ -12,18 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigDnsNodelocalArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Nodelocal dns ip address (string)
-        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());

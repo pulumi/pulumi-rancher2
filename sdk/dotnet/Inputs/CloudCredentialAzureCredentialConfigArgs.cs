@@ -12,21 +12,12 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialAzureCredentialConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Azure Service Principal Account ID (string)
-        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
-        /// <summary>
-        /// Azure Service Principal Account password (string)
-        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
-        /// <summary>
-        /// Azure Subscription ID (string)
-        /// </summary>
         [Input("subscriptionId", required: true)]
         public Input<string> SubscriptionId { get; set; } = null!;
 

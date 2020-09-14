@@ -18,15 +18,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the Rancher 2 cluster (string)
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The project name (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -39,43 +33,19 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetProjectResult
     {
-        /// <summary>
-        /// (Computed) Annotations of the rancher2 project (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
-        /// <summary>
-        /// (Computed) Default containers resource limits on project (List maxitem:1)
-        /// </summary>
         public readonly Outputs.GetProjectContainerResourceLimitResult ContainerResourceLimit;
-        /// <summary>
-        /// (Computed) The project's description (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed) Enable built-in project monitoring. Default `false` (bool)
-        /// </summary>
         public readonly bool EnableProjectMonitoring;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels of the rancher2 project (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) Default Pod Security Policy ID for the project (string)
-        /// </summary>
         public readonly string PodSecurityPolicyTemplateId;
-        /// <summary>
-        /// (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetProjectResourceQuotaResult ResourceQuota;
-        /// <summary>
-        /// (Computed) UUID of the project as stored by Rancher 2 (string)
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

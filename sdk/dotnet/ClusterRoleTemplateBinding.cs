@@ -9,84 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new Rancher2 Cluster Role Template Binding
-    ///         var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new Rancher2.ClusterRoleTemplateBindingArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster_id&gt;",
-    ///             RoleTemplateId = "&lt;role_template_id&gt;",
-    ///             UserId = "&lt;user_id&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for cluster role template binding (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// The cluster id where bind cluster role template binding (string)
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// The group ID to assign cluster role template binding (string)
-        /// </summary>
         [Output("groupId")]
         public Output<string?> GroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The group_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Output("groupPrincipalId")]
         public Output<string> GroupPrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for cluster role template binding (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the cluster role template binding (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The role template id from create cluster role template binding (string)
-        /// </summary>
         [Output("roleTemplateId")]
         public Output<string> RoleTemplateId { get; private set; } = null!;
 
-        /// <summary>
-        /// The user ID to assign cluster role template binding (string)
-        /// </summary>
         [Output("userId")]
         public Output<string?> UserId { get; private set; } = null!;
 
-        /// <summary>
-        /// The user_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Output("userPrincipalId")]
         public Output<string> UserPrincipalId { get; private set; } = null!;
 
@@ -140,7 +94,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster role template binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -148,21 +102,12 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The cluster id where bind cluster role template binding (string)
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The group ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        /// <summary>
-        /// The group_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
@@ -170,7 +115,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster role template binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -178,27 +123,15 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the cluster role template binding (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The role template id from create cluster role template binding (string)
-        /// </summary>
         [Input("roleTemplateId", required: true)]
         public Input<string> RoleTemplateId { get; set; } = null!;
 
-        /// <summary>
-        /// The user ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
-        /// <summary>
-        /// The user_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }
 
@@ -213,7 +146,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster role template binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -221,21 +154,12 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The cluster id where bind cluster role template binding (string)
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// The group ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        /// <summary>
-        /// The group_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
@@ -243,7 +167,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster role template binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -251,27 +175,15 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the cluster role template binding (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The role template id from create cluster role template binding (string)
-        /// </summary>
         [Input("roleTemplateId")]
         public Input<string>? RoleTemplateId { get; set; }
 
-        /// <summary>
-        /// The user ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
-        /// <summary>
-        /// The user_principal ID to assign cluster role template binding (string)
-        /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }
 

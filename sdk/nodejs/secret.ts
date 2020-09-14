@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
- *
- * Depending of the availability, there are 2 types of Rancher v2 secrets:
- * - Project secret: Available to all namespaces in the `projectId`
- * - Namespaced secret: Available to just `namespaceId` in the `projectId`
- */
 export class Secret extends pulumi.CustomResource {
     /**
      * Get an existing Secret resource's state with the given name, ID, and optional extra
@@ -40,31 +33,31 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for secret object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Secret key/value data. Base64 encoding required for values (map)
+     * Secret data base64 encoded
      */
     public readonly data!: pulumi.Output<{[key: string]: any}>;
     /**
-     * A secret description (string)
+     * Secret description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Labels for secret object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the secret (string)
+     * Secret name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The namespace id where to assign the namespaced secret (string)
+     * Namespace ID to add secret
      */
     public readonly namespaceId!: pulumi.Output<string | undefined>;
     /**
-     * The project id where to assign the secret (string)
+     * Project ID to add secret
      */
     public readonly projectId!: pulumi.Output<string>;
 
@@ -119,31 +112,31 @@ export class Secret extends pulumi.CustomResource {
  */
 export interface SecretState {
     /**
-     * Annotations for secret object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Secret key/value data. Base64 encoding required for values (map)
+     * Secret data base64 encoded
      */
     readonly data?: pulumi.Input<{[key: string]: any}>;
     /**
-     * A secret description (string)
+     * Secret description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for secret object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the secret (string)
+     * Secret name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where to assign the namespaced secret (string)
+     * Namespace ID to add secret
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where to assign the secret (string)
+     * Project ID to add secret
      */
     readonly projectId?: pulumi.Input<string>;
 }
@@ -153,31 +146,31 @@ export interface SecretState {
  */
 export interface SecretArgs {
     /**
-     * Annotations for secret object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Secret key/value data. Base64 encoding required for values (map)
+     * Secret data base64 encoded
      */
     readonly data: pulumi.Input<{[key: string]: any}>;
     /**
-     * A secret description (string)
+     * Secret description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels for secret object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the secret (string)
+     * Secret name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where to assign the namespaced secret (string)
+     * Namespace ID to add secret
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where to assign the secret (string)
+     * Project ID to add secret
      */
     readonly projectId: pulumi.Input<string>;
 }

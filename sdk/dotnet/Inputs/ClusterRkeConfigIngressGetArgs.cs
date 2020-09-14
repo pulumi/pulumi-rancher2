@@ -12,18 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigIngressGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-        /// </summary>
         [Input("dnsPolicy")]
         public Input<string>? DnsPolicy { get; set; }
 
         [Input("extraArgs")]
         private InputMap<object>? _extraArgs;
-
-        /// <summary>
-        /// Extra arguments for scheduler service (map)
-        /// </summary>
         public InputMap<object> ExtraArgs
         {
             get => _extraArgs ?? (_extraArgs = new InputMap<object>());
@@ -32,10 +25,6 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
@@ -44,19 +33,12 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 

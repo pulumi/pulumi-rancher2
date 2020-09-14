@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class CloudCredentialAmazonec2CredentialConfig
     {
-        /// <summary>
-        /// AWS access key (string)
-        /// </summary>
         public readonly string AccessKey;
-        /// <summary>
-        /// AWS secret key (string)
-        /// </summary>
         public readonly string SecretKey;
 
         [OutputConstructor]

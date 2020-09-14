@@ -16,9 +16,6 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderResult? AwsCloudProvider;
         public readonly Outputs.GetClusterRkeConfigCloudProviderAzureCloudProviderResult? AzureCloudProvider;
         public readonly string CustomCloudProvider;
-        /// <summary>
-        /// The name of the Cluster (string)
-        /// </summary>
         public readonly string Name;
         public readonly Outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult? OpenstackCloudProvider;
         public readonly Outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderResult? VsphereCloudProvider;

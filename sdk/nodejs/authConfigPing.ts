@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Auth Config Ping resource. This can be used to configure and enable Auth Config Ping for Rancher v2 RKE clusters and retrieve their information.
- *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Auth Config Ping
- * const ping = new rancher2.AuthConfigPing("ping", {
- *     displayNameField: "<DISPLAY_NAME_FIELD>",
- *     groupsField: "<GROUPS_FIELD>",
- *     idpMetadataContent: "<IDP_METADATA_CONTENT>",
- *     rancherApiHost: "https://<RANCHER_API_HOST>",
- *     spCert: "<SP_CERT>",
- *     spKey: "<SP_KEY>",
- *     uidField: "<UID_FIELD>",
- *     userNameField: "<USER_NAME_FIELD>",
- * });
- * ```
- */
 export class AuthConfigPing extends pulumi.CustomResource {
     /**
      * Get an existing AuthConfigPing resource's state with the given name, ID, and optional extra
@@ -56,65 +32,26 @@ export class AuthConfigPing extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthConfigPing.__pulumiType;
     }
 
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     public readonly accessMode!: pulumi.Output<string | undefined>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-     */
     public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Ping display name field (string)
-     */
     public readonly displayNameField!: pulumi.Output<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Ping group field (string)
-     */
     public readonly groupsField!: pulumi.Output<string>;
-    /**
-     * Ping IDP metadata content (string)
-     */
     public readonly idpMetadataContent!: pulumi.Output<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-     */
     public readonly rancherApiHost!: pulumi.Output<string>;
-    /**
-     * Ping SP cert (string)
-     */
     public readonly spCert!: pulumi.Output<string>;
-    /**
-     * Ping SP key (string)
-     */
     public readonly spKey!: pulumi.Output<string>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
-    /**
-     * Ping UID field (string)
-     */
     public readonly uidField!: pulumi.Output<string>;
-    /**
-     * Ping user name field (string)
-     */
     public readonly userNameField!: pulumi.Output<string>;
 
     /**
@@ -201,65 +138,26 @@ export class AuthConfigPing extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthConfigPing resources.
  */
 export interface AuthConfigPingState {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Ping display name field (string)
-     */
     readonly displayNameField?: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Ping group field (string)
-     */
     readonly groupsField?: pulumi.Input<string>;
-    /**
-     * Ping IDP metadata content (string)
-     */
     readonly idpMetadataContent?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-     */
     readonly rancherApiHost?: pulumi.Input<string>;
-    /**
-     * Ping SP cert (string)
-     */
     readonly spCert?: pulumi.Input<string>;
-    /**
-     * Ping SP key (string)
-     */
     readonly spKey?: pulumi.Input<string>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     readonly type?: pulumi.Input<string>;
-    /**
-     * Ping UID field (string)
-     */
     readonly uidField?: pulumi.Input<string>;
-    /**
-     * Ping user name field (string)
-     */
     readonly userNameField?: pulumi.Input<string>;
 }
 
@@ -267,56 +165,23 @@ export interface AuthConfigPingState {
  * The set of arguments for constructing a AuthConfigPing resource.
  */
 export interface AuthConfigPingArgs {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Ping display name field (string)
-     */
     readonly displayNameField: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Ping group field (string)
-     */
     readonly groupsField: pulumi.Input<string>;
-    /**
-     * Ping IDP metadata content (string)
-     */
     readonly idpMetadataContent: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-     */
     readonly rancherApiHost: pulumi.Input<string>;
-    /**
-     * Ping SP cert (string)
-     */
     readonly spCert: pulumi.Input<string>;
-    /**
-     * Ping SP key (string)
-     */
     readonly spKey: pulumi.Input<string>;
-    /**
-     * Ping UID field (string)
-     */
     readonly uidField: pulumi.Input<string>;
-    /**
-     * Ping user name field (string)
-     */
     readonly userNameField: pulumi.Input<string>;
 }

@@ -9,71 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Global Role Binding using user_id
-    ///         var foo = new Rancher2.GlobalRoleBinding("foo", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "admin",
-    ///             UserId = "user-XXXXX",
-    ///         });
-    ///         // Create a new rancher2 Global Role Binding using group_principal_id
-    ///         var foo2 = new Rancher2.GlobalRoleBinding("foo2", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "admin",
-    ///             GroupPrincipalId = "local://g-XXXXX",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class GlobalRoleBinding : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// The role id from create global role binding (string)
-        /// </summary>
         [Output("globalRoleId")]
         public Output<string> GlobalRoleId { get; private set; } = null!;
 
-        /// <summary>
-        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-        /// </summary>
         [Output("groupPrincipalId")]
         public Output<string> GroupPrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the global role binding (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The user ID to assign global role binding (string)
-        /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
@@ -127,7 +85,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -135,15 +93,9 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The role id from create global role binding (string)
-        /// </summary>
         [Input("globalRoleId", required: true)]
         public Input<string> GlobalRoleId { get; set; } = null!;
 
-        /// <summary>
-        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
@@ -151,7 +103,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -159,15 +111,9 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the global role binding (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The user ID to assign global role binding (string)
-        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
@@ -182,7 +128,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -190,15 +136,9 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The role id from create global role binding (string)
-        /// </summary>
         [Input("globalRoleId")]
         public Input<string>? GlobalRoleId { get; set; }
 
-        /// <summary>
-        /// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
@@ -206,7 +146,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -214,15 +154,9 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the global role binding (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The user ID to assign global role binding (string)
-        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 

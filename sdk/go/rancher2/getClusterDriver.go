@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterDriver(ctx, &rancher2.LookupClusterDriverArgs{
-// 			Name: "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupClusterDriver(ctx *pulumi.Context, args *LookupClusterDriverArgs, opts ...pulumi.InvokeOption) (*LookupClusterDriverResult, error) {
 	var rv LookupClusterDriverResult
 	err := ctx.Invoke("rancher2:index/getClusterDriver:getClusterDriver", args, &rv, opts...)
@@ -42,32 +18,22 @@ func LookupClusterDriver(ctx *pulumi.Context, args *LookupClusterDriverArgs, opt
 
 // A collection of arguments for invoking getClusterDriver.
 type LookupClusterDriverArgs struct {
-	// Name of the cluster driver (string)
-	Name string `pulumi:"name"`
-	// The URL to download the machine driver binary for 64-bit Linux (string)
-	Url *string `pulumi:"url"`
+	Name string  `pulumi:"name"`
+	Url  *string `pulumi:"url"`
 }
 
 // A collection of values returned by getClusterDriver.
 type LookupClusterDriverResult struct {
-	// (Computed) Specify if the cluster driver state (bool)
-	Active bool `pulumi:"active"`
-	// (Computed) Actual url of the cluster driver (string)
-	ActualUrl string `pulumi:"actualUrl"`
-	// (Computed) Annotations of the resource (map)
+	Active      bool                   `pulumi:"active"`
+	ActualUrl   string                 `pulumi:"actualUrl"`
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
-	Builtin bool `pulumi:"builtin"`
-	// (Computed) Verify that the downloaded driver matches the expected checksum (string)
-	Checksum string `pulumi:"checksum"`
+	Builtin     bool                   `pulumi:"builtin"`
+	Checksum    string                 `pulumi:"checksum"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
-	// (Computed) The URL to load for customized Add Clusters screen for this driver (string)
-	UiUrl string `pulumi:"uiUrl"`
-	Url   string `pulumi:"url"`
-	// (Computed) Domains to whitelist for the ui (list)
-	WhitelistDomains []string `pulumi:"whitelistDomains"`
+	Id               string                 `pulumi:"id"`
+	Labels           map[string]interface{} `pulumi:"labels"`
+	Name             string                 `pulumi:"name"`
+	UiUrl            string                 `pulumi:"uiUrl"`
+	Url              string                 `pulumi:"url"`
+	WhitelistDomains []string               `pulumi:"whitelistDomains"`
 }

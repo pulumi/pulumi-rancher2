@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NotifierPagerdutyConfig
     {
-        /// <summary>
-        /// Wechat proxy url (string)
-        /// </summary>
         public readonly string? ProxyUrl;
-        /// <summary>
-        /// Pagerduty service key (string)
-        /// </summary>
         public readonly string ServiceKey;
 
         [OutputConstructor]

@@ -13,21 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigPrivateRegistry
     {
-        /// <summary>
-        /// Set as default registry. Default `false` (bool)
-        /// </summary>
         public readonly bool? IsDefault;
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         public readonly string? Password;
-        /// <summary>
-        /// Registry URL (string)
-        /// </summary>
         public readonly string Url;
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         public readonly string? User;
 
         [OutputConstructor]

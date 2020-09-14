@@ -6,47 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
- *
- * `cluster` and `project` scopes are supported for role templates.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 cluster Role Template
- * const foo = new rancher2.RoleTempalte("foo", {
- *     context: "cluster",
- *     defaultRole: true,
- *     description: "Terraform role template acceptance test",
- *     rules: [{
- *         apiGroups: ["*"],
- *         resources: ["secrets"],
- *         verbs: ["create"],
- *     }],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 project Role Template
- * const foo = new rancher2.RoleTempalte("foo", {
- *     context: "project",
- *     defaultRole: true,
- *     description: "Terraform role template acceptance test",
- *     rules: [{
- *         apiGroups: ["*"],
- *         resources: ["secrets"],
- *         verbs: ["create"],
- *     }],
- * });
- * ```
- */
 export class RoleTempalte extends pulumi.CustomResource {
     /**
      * Get an existing RoleTempalte resource's state with the given name, ID, and optional extra
@@ -76,55 +35,55 @@ export class RoleTempalte extends pulumi.CustomResource {
     }
 
     /**
-     * Administrative role template. Default `false` (bool)
+     * Administrative role template
      */
     public readonly administrative!: pulumi.Output<boolean | undefined>;
     /**
-     * Annotations for role template object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * (Computed) Builtin role template (string)
+     * Builtin role template
      */
     public /*out*/ readonly builtin!: pulumi.Output<boolean>;
     /**
-     * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+     * Context role template
      */
     public readonly context!: pulumi.Output<string | undefined>;
     /**
-     * Default role template for new created cluster or project. Default `false` (bool)
+     * Default role template for new created cluster or project
      */
     public readonly defaultRole!: pulumi.Output<boolean | undefined>;
     /**
-     * Role template description (string)
+     * Role template policy description
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * External role template. Default `false` (bool)
+     * External role template
      */
     public readonly external!: pulumi.Output<boolean | undefined>;
     /**
-     * Hidden role template. Default `false` (bool)
+     * Hidden role template
      */
     public readonly hidden!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels for role template object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Locked role template. Default `false` (bool)
+     * Locked role template
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
-     * Role template name (string)
+     * Role template policy name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Inherit role template IDs (list)
+     * Inherit role template IDs
      */
     public readonly roleTemplateIds!: pulumi.Output<string[]>;
     /**
-     * Role template policy rules (list)
+     * Role template policy rules
      */
     public readonly rules!: pulumi.Output<outputs.RoleTempalteRule[]>;
 
@@ -185,55 +144,55 @@ export class RoleTempalte extends pulumi.CustomResource {
  */
 export interface RoleTempalteState {
     /**
-     * Administrative role template. Default `false` (bool)
+     * Administrative role template
      */
     readonly administrative?: pulumi.Input<boolean>;
     /**
-     * Annotations for role template object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * (Computed) Builtin role template (string)
+     * Builtin role template
      */
     readonly builtin?: pulumi.Input<boolean>;
     /**
-     * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+     * Context role template
      */
     readonly context?: pulumi.Input<string>;
     /**
-     * Default role template for new created cluster or project. Default `false` (bool)
+     * Default role template for new created cluster or project
      */
     readonly defaultRole?: pulumi.Input<boolean>;
     /**
-     * Role template description (string)
+     * Role template policy description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * External role template. Default `false` (bool)
+     * External role template
      */
     readonly external?: pulumi.Input<boolean>;
     /**
-     * Hidden role template. Default `false` (bool)
+     * Hidden role template
      */
     readonly hidden?: pulumi.Input<boolean>;
     /**
-     * Labels for role template object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Locked role template. Default `false` (bool)
+     * Locked role template
      */
     readonly locked?: pulumi.Input<boolean>;
     /**
-     * Role template name (string)
+     * Role template policy name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Inherit role template IDs (list)
+     * Inherit role template IDs
      */
     readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role template policy rules (list)
+     * Role template policy rules
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
 }
@@ -243,51 +202,51 @@ export interface RoleTempalteState {
  */
 export interface RoleTempalteArgs {
     /**
-     * Administrative role template. Default `false` (bool)
+     * Administrative role template
      */
     readonly administrative?: pulumi.Input<boolean>;
     /**
-     * Annotations for role template object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+     * Context role template
      */
     readonly context?: pulumi.Input<string>;
     /**
-     * Default role template for new created cluster or project. Default `false` (bool)
+     * Default role template for new created cluster or project
      */
     readonly defaultRole?: pulumi.Input<boolean>;
     /**
-     * Role template description (string)
+     * Role template policy description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * External role template. Default `false` (bool)
+     * External role template
      */
     readonly external?: pulumi.Input<boolean>;
     /**
-     * Hidden role template. Default `false` (bool)
+     * Hidden role template
      */
     readonly hidden?: pulumi.Input<boolean>;
     /**
-     * Labels for role template object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Locked role template. Default `false` (bool)
+     * Locked role template
      */
     readonly locked?: pulumi.Input<boolean>;
     /**
-     * Role template name (string)
+     * Role template policy name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Inherit role template IDs (list)
+     * Inherit role template IDs
      */
     readonly roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role template policy rules (list)
+     * Role template policy rules
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.RoleTempalteRule>[]>;
 }

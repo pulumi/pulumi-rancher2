@@ -10,52 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewGlobalRoleBinding(ctx, "foo", &rancher2.GlobalRoleBindingArgs{
-// 			GlobalRoleId: pulumi.String("admin"),
-// 			UserId:       pulumi.String("user-XXXXX"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
-// 			GlobalRoleId:     pulumi.String("admin"),
-// 			GroupPrincipalId: pulumi.String("local://g-XXXXX"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type GlobalRoleBinding struct {
 	pulumi.CustomResourceState
 
-	// Annotations for global role binding (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// The role id from create global role binding (string)
-	GlobalRoleId pulumi.StringOutput `pulumi:"globalRoleId"`
-	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+	// Annotations of the resource
+	Annotations      pulumi.MapOutput    `pulumi:"annotations"`
+	GlobalRoleId     pulumi.StringOutput `pulumi:"globalRoleId"`
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
-	// Labels for global role binding (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the global role binding (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The user ID to assign global role binding (string)
+	// Labels of the resource
+	Labels pulumi.MapOutput    `pulumi:"labels"`
+	Name   pulumi.StringOutput `pulumi:"name"`
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -90,32 +54,24 @@ func GetGlobalRoleBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalRoleBinding resources.
 type globalRoleBindingState struct {
-	// Annotations for global role binding (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The role id from create global role binding (string)
-	GlobalRoleId *string `pulumi:"globalRoleId"`
-	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
-	// Labels for global role binding (map)
+	// Annotations of the resource
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	GlobalRoleId     *string                `pulumi:"globalRoleId"`
+	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the global role binding (string)
-	Name *string `pulumi:"name"`
-	// The user ID to assign global role binding (string)
-	UserId *string `pulumi:"userId"`
+	Name   *string                `pulumi:"name"`
+	UserId *string                `pulumi:"userId"`
 }
 
 type GlobalRoleBindingState struct {
-	// Annotations for global role binding (map)
-	Annotations pulumi.MapInput
-	// The role id from create global role binding (string)
-	GlobalRoleId pulumi.StringPtrInput
-	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+	// Annotations of the resource
+	Annotations      pulumi.MapInput
+	GlobalRoleId     pulumi.StringPtrInput
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels for global role binding (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the global role binding (string)
-	Name pulumi.StringPtrInput
-	// The user ID to assign global role binding (string)
+	Name   pulumi.StringPtrInput
 	UserId pulumi.StringPtrInput
 }
 
@@ -124,33 +80,25 @@ func (GlobalRoleBindingState) ElementType() reflect.Type {
 }
 
 type globalRoleBindingArgs struct {
-	// Annotations for global role binding (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The role id from create global role binding (string)
-	GlobalRoleId string `pulumi:"globalRoleId"`
-	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
-	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
-	// Labels for global role binding (map)
+	// Annotations of the resource
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	GlobalRoleId     string                 `pulumi:"globalRoleId"`
+	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the global role binding (string)
-	Name *string `pulumi:"name"`
-	// The user ID to assign global role binding (string)
-	UserId *string `pulumi:"userId"`
+	Name   *string                `pulumi:"name"`
+	UserId *string                `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a GlobalRoleBinding resource.
 type GlobalRoleBindingArgs struct {
-	// Annotations for global role binding (map)
-	Annotations pulumi.MapInput
-	// The role id from create global role binding (string)
-	GlobalRoleId pulumi.StringInput
-	// The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
+	// Annotations of the resource
+	Annotations      pulumi.MapInput
+	GlobalRoleId     pulumi.StringInput
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels for global role binding (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the global role binding (string)
-	Name pulumi.StringPtrInput
-	// The user ID to assign global role binding (string)
+	Name   pulumi.StringPtrInput
 	UserId pulumi.StringPtrInput
 }
 

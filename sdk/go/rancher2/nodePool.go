@@ -10,34 +10,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
 type NodePool struct {
 	pulumi.CustomResourceState
 
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// The RKE cluster id to use Node Pool (string)
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// RKE control plane role for created nodes (bool)
-	ControlPlane pulumi.BoolPtrOutput `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
-	DeleteNotReadyAfterSecs pulumi.IntPtrOutput `pulumi:"deleteNotReadyAfterSecs"`
-	// RKE etcd role for created nodes (bool)
-	Etcd pulumi.BoolPtrOutput `pulumi:"etcd"`
-	// The prefix for created nodes of the Node Pool (string)
-	HostnamePrefix pulumi.StringOutput `pulumi:"hostnamePrefix"`
-	// Labels for Node Pool object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the Node Pool (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
-	NodeTaints NodePoolNodeTaintArrayOutput `pulumi:"nodeTaints"`
-	// The Node Template ID to use for node creation (string)
-	NodeTemplateId pulumi.StringOutput `pulumi:"nodeTemplateId"`
-	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
-	Quantity pulumi.IntPtrOutput `pulumi:"quantity"`
-	// RKE role role for created nodes (bool)
-	Worker pulumi.BoolPtrOutput `pulumi:"worker"`
+	// Annotations of the resource
+	Annotations             pulumi.MapOutput     `pulumi:"annotations"`
+	ClusterId               pulumi.StringOutput  `pulumi:"clusterId"`
+	ControlPlane            pulumi.BoolPtrOutput `pulumi:"controlPlane"`
+	DeleteNotReadyAfterSecs pulumi.IntPtrOutput  `pulumi:"deleteNotReadyAfterSecs"`
+	Etcd                    pulumi.BoolPtrOutput `pulumi:"etcd"`
+	HostnamePrefix          pulumi.StringOutput  `pulumi:"hostnamePrefix"`
+	// Labels of the resource
+	Labels         pulumi.MapOutput             `pulumi:"labels"`
+	Name           pulumi.StringOutput          `pulumi:"name"`
+	NodeTaints     NodePoolNodeTaintArrayOutput `pulumi:"nodeTaints"`
+	NodeTemplateId pulumi.StringOutput          `pulumi:"nodeTemplateId"`
+	Quantity       pulumi.IntPtrOutput          `pulumi:"quantity"`
+	Worker         pulumi.BoolPtrOutput         `pulumi:"worker"`
 }
 
 // NewNodePool registers a new resource with the given unique name, arguments, and options.
@@ -77,57 +66,37 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
-	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The RKE cluster id to use Node Pool (string)
-	ClusterId *string `pulumi:"clusterId"`
-	// RKE control plane role for created nodes (bool)
-	ControlPlane *bool `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
-	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
-	// RKE etcd role for created nodes (bool)
-	Etcd *bool `pulumi:"etcd"`
-	// The prefix for created nodes of the Node Pool (string)
-	HostnamePrefix *string `pulumi:"hostnamePrefix"`
-	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the Node Pool (string)
-	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
-	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
-	// The Node Template ID to use for node creation (string)
-	NodeTemplateId *string `pulumi:"nodeTemplateId"`
-	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
-	Quantity *int `pulumi:"quantity"`
-	// RKE role role for created nodes (bool)
-	Worker *bool `pulumi:"worker"`
+	// Annotations of the resource
+	Annotations             map[string]interface{} `pulumi:"annotations"`
+	ClusterId               *string                `pulumi:"clusterId"`
+	ControlPlane            *bool                  `pulumi:"controlPlane"`
+	DeleteNotReadyAfterSecs *int                   `pulumi:"deleteNotReadyAfterSecs"`
+	Etcd                    *bool                  `pulumi:"etcd"`
+	HostnamePrefix          *string                `pulumi:"hostnamePrefix"`
+	// Labels of the resource
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           *string                `pulumi:"name"`
+	NodeTaints     []NodePoolNodeTaint    `pulumi:"nodeTaints"`
+	NodeTemplateId *string                `pulumi:"nodeTemplateId"`
+	Quantity       *int                   `pulumi:"quantity"`
+	Worker         *bool                  `pulumi:"worker"`
 }
 
 type NodePoolState struct {
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
-	// The RKE cluster id to use Node Pool (string)
-	ClusterId pulumi.StringPtrInput
-	// RKE control plane role for created nodes (bool)
-	ControlPlane pulumi.BoolPtrInput
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Annotations of the resource
+	Annotations             pulumi.MapInput
+	ClusterId               pulumi.StringPtrInput
+	ControlPlane            pulumi.BoolPtrInput
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
-	// RKE etcd role for created nodes (bool)
-	Etcd pulumi.BoolPtrInput
-	// The prefix for created nodes of the Node Pool (string)
-	HostnamePrefix pulumi.StringPtrInput
-	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
-	// The name of the Node Pool (string)
-	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
-	NodeTaints NodePoolNodeTaintArrayInput
-	// The Node Template ID to use for node creation (string)
+	Etcd                    pulumi.BoolPtrInput
+	HostnamePrefix          pulumi.StringPtrInput
+	// Labels of the resource
+	Labels         pulumi.MapInput
+	Name           pulumi.StringPtrInput
+	NodeTaints     NodePoolNodeTaintArrayInput
 	NodeTemplateId pulumi.StringPtrInput
-	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
-	Quantity pulumi.IntPtrInput
-	// RKE role role for created nodes (bool)
-	Worker pulumi.BoolPtrInput
+	Quantity       pulumi.IntPtrInput
+	Worker         pulumi.BoolPtrInput
 }
 
 func (NodePoolState) ElementType() reflect.Type {
@@ -135,58 +104,38 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
-	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The RKE cluster id to use Node Pool (string)
-	ClusterId string `pulumi:"clusterId"`
-	// RKE control plane role for created nodes (bool)
-	ControlPlane *bool `pulumi:"controlPlane"`
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
-	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
-	// RKE etcd role for created nodes (bool)
-	Etcd *bool `pulumi:"etcd"`
-	// The prefix for created nodes of the Node Pool (string)
-	HostnamePrefix string `pulumi:"hostnamePrefix"`
-	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the Node Pool (string)
-	Name *string `pulumi:"name"`
-	// Node taints. For Rancher v2.3.3 or above (List)
-	NodeTaints []NodePoolNodeTaint `pulumi:"nodeTaints"`
-	// The Node Template ID to use for node creation (string)
-	NodeTemplateId string `pulumi:"nodeTemplateId"`
-	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
-	Quantity *int `pulumi:"quantity"`
-	// RKE role role for created nodes (bool)
-	Worker *bool `pulumi:"worker"`
+	// Annotations of the resource
+	Annotations             map[string]interface{} `pulumi:"annotations"`
+	ClusterId               string                 `pulumi:"clusterId"`
+	ControlPlane            *bool                  `pulumi:"controlPlane"`
+	DeleteNotReadyAfterSecs *int                   `pulumi:"deleteNotReadyAfterSecs"`
+	Etcd                    *bool                  `pulumi:"etcd"`
+	HostnamePrefix          string                 `pulumi:"hostnamePrefix"`
+	// Labels of the resource
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           *string                `pulumi:"name"`
+	NodeTaints     []NodePoolNodeTaint    `pulumi:"nodeTaints"`
+	NodeTemplateId string                 `pulumi:"nodeTemplateId"`
+	Quantity       *int                   `pulumi:"quantity"`
+	Worker         *bool                  `pulumi:"worker"`
 }
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
-	// The RKE cluster id to use Node Pool (string)
-	ClusterId pulumi.StringInput
-	// RKE control plane role for created nodes (bool)
-	ControlPlane pulumi.BoolPtrInput
-	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+	// Annotations of the resource
+	Annotations             pulumi.MapInput
+	ClusterId               pulumi.StringInput
+	ControlPlane            pulumi.BoolPtrInput
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
-	// RKE etcd role for created nodes (bool)
-	Etcd pulumi.BoolPtrInput
-	// The prefix for created nodes of the Node Pool (string)
-	HostnamePrefix pulumi.StringInput
-	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
-	// The name of the Node Pool (string)
-	Name pulumi.StringPtrInput
-	// Node taints. For Rancher v2.3.3 or above (List)
-	NodeTaints NodePoolNodeTaintArrayInput
-	// The Node Template ID to use for node creation (string)
+	Etcd                    pulumi.BoolPtrInput
+	HostnamePrefix          pulumi.StringInput
+	// Labels of the resource
+	Labels         pulumi.MapInput
+	Name           pulumi.StringPtrInput
+	NodeTaints     NodePoolNodeTaintArrayInput
 	NodeTemplateId pulumi.StringInput
-	// The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
-	Quantity pulumi.IntPtrInput
-	// RKE role role for created nodes (bool)
-	Worker pulumi.BoolPtrInput
+	Quantity       pulumi.IntPtrInput
+	Worker         pulumi.BoolPtrInput
 }
 
 func (NodePoolArgs) ElementType() reflect.Type {

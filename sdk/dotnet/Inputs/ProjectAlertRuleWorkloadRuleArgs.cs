@@ -12,27 +12,17 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ProjectAlertRuleWorkloadRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Workload rule available percentage. Default: `70` (int)
-        /// </summary>
         [Input("availablePercentage")]
         public Input<int>? AvailablePercentage { get; set; }
 
         [Input("selector")]
         private InputMap<object>? _selector;
-
-        /// <summary>
-        /// Workload rule selector (map)
-        /// </summary>
         public InputMap<object> Selector
         {
             get => _selector ?? (_selector = new InputMap<object>());
             set => _selector = value;
         }
 
-        /// <summary>
-        /// Workload ID (string)
-        /// </summary>
         [Input("workloadId")]
         public Input<string>? WorkloadId { get; set; }
 

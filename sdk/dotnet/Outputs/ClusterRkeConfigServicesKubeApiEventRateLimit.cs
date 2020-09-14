@@ -13,18 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigServicesKubeApiEventRateLimit
     {
-        /// <summary>
-        /// Event rate limit configuration. (map)
-        /// </summary>
-        public readonly ImmutableDictionary<string, object>? Configuration;
-        /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
-        /// </summary>
+        public readonly string? Configuration;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private ClusterRkeConfigServicesKubeApiEventRateLimit(
-            ImmutableDictionary<string, object>? configuration,
+            string? configuration,
 
             bool? enabled)
         {

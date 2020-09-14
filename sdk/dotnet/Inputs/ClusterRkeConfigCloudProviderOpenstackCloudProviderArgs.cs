@@ -12,33 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("blockStorage")]
         public Input<Inputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs>? BlockStorage { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("global", required: true)]
         public Input<Inputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs> Global { get; set; } = null!;
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs>? LoadBalancer { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("metadata")]
         public Input<Inputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs>? Metadata { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("route")]
         public Input<Inputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs>? Route { get; set; }
 

@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a Rancher v2 user
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = pulumi.output(rancher2.getUser({
- *     username: "foo",
- * }, { async: true }));
- * ```
- */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     if (!opts) {
@@ -40,17 +26,8 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
-    /**
-     * Set is the user if the user is external. Default: `false` (bool)
-     */
     readonly isExternal?: boolean;
-    /**
-     * The name of the user (string)
-     */
     readonly name?: string;
-    /**
-     * The username of the user (string)
-     */
     readonly username?: string;
 }
 
@@ -58,30 +35,15 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
-    /**
-     * (Computed) Annotations of the resource (map)
-     */
     readonly annotations: {[key: string]: any};
-    /**
-     * (Computed) The user is enabled (bool)
-     */
     readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly isExternal?: boolean;
-    /**
-     * (Computed) Labels of the resource (map)
-     */
     readonly labels: {[key: string]: any};
-    /**
-     * (Computed) The user common name (string)
-     */
     readonly name: string;
-    /**
-     * (Computed) The user principal IDs (list)
-     */
     readonly principalIds: string[];
     readonly username: string;
 }

@@ -17,9 +17,6 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? DockerSocket;
         public readonly string? HostnameOverride;
         public readonly string? InternalAddress;
-        /// <summary>
-        /// Labels for the cluster template revision (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         public readonly string? NodeId;
         public readonly string? Port;

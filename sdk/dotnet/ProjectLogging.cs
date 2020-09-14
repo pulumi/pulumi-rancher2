@@ -9,126 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Project Logging
-    ///         var foo = new Rancher2.ProjectLogging("foo", new Rancher2.ProjectLoggingArgs
-    ///         {
-    ///             Kind = "syslog",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             SyslogConfig = new Rancher2.Inputs.ProjectLoggingSyslogConfigArgs
-    ///             {
-    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
-    ///                 Protocol = "udp",
-    ///                 Severity = "notice",
-    ///                 SslVerify = false,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ProjectLogging : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for Project Logging object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Output("customTargetConfig")]
         public Output<Outputs.ProjectLoggingCustomTargetConfig?> CustomTargetConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Output("elasticsearchConfig")]
         public Output<Outputs.ProjectLoggingElasticsearchConfig?> ElasticsearchConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Enable json log parsing. Default: `false` (bool)
+        /// Optional enable json log parsing
         /// </summary>
         [Output("enableJsonParsing")]
         public Output<bool?> EnableJsonParsing { get; private set; } = null!;
 
-        /// <summary>
-        /// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Output("fluentdConfig")]
         public Output<Outputs.ProjectLoggingFluentdConfig?> FluentdConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Output("kafkaConfig")]
         public Output<Outputs.ProjectLoggingKafkaConfig?> KafkaConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
-        /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for Project Logging object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Project Logging config (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The namespace id from Project logging (string)
-        /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
 
-        /// <summary>
-        /// How often buffered logs would be flushed. Default: `3` seconds (int)
-        /// </summary>
         [Output("outputFlushInterval")]
         public Output<int?> OutputFlushInterval { get; private set; } = null!;
 
-        /// <summary>
-        /// The output tags for Project Logging (map)
-        /// </summary>
         [Output("outputTags")]
         public Output<ImmutableDictionary<string, object>> OutputTags { get; private set; } = null!;
 
-        /// <summary>
-        /// The project id to configure logging (string)
-        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Output("splunkConfig")]
         public Output<Outputs.ProjectLoggingSplunkConfig?> SplunkConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
-        /// </summary>
         [Output("syslogConfig")]
         public Output<Outputs.ProjectLoggingSyslogConfig?> SyslogConfig { get; private set; } = null!;
 
@@ -182,7 +115,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Project Logging object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -190,39 +123,24 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("customTargetConfig")]
         public Input<Inputs.ProjectLoggingCustomTargetConfigArgs>? CustomTargetConfig { get; set; }
 
-        /// <summary>
-        /// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ProjectLoggingElasticsearchConfigArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// Enable json log parsing. Default: `false` (bool)
+        /// Optional enable json log parsing
         /// </summary>
         [Input("enableJsonParsing")]
         public Input<bool>? EnableJsonParsing { get; set; }
 
-        /// <summary>
-        /// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ProjectLoggingFluentdConfigArgs>? FluentdConfig { get; set; }
 
-        /// <summary>
-        /// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ProjectLoggingKafkaConfigArgs>? KafkaConfig { get; set; }
 
-        /// <summary>
-        /// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
-        /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
@@ -230,7 +148,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Project Logging object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -238,51 +156,29 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the Project Logging config (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The namespace id from Project logging (string)
-        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
-        /// <summary>
-        /// How often buffered logs would be flushed. Default: `3` seconds (int)
-        /// </summary>
         [Input("outputFlushInterval")]
         public Input<int>? OutputFlushInterval { get; set; }
 
         [Input("outputTags")]
         private InputMap<object>? _outputTags;
-
-        /// <summary>
-        /// The output tags for Project Logging (map)
-        /// </summary>
         public InputMap<object> OutputTags
         {
             get => _outputTags ?? (_outputTags = new InputMap<object>());
             set => _outputTags = value;
         }
 
-        /// <summary>
-        /// The project id to configure logging (string)
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ProjectLoggingSplunkConfigArgs>? SplunkConfig { get; set; }
 
-        /// <summary>
-        /// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
-        /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ProjectLoggingSyslogConfigArgs>? SyslogConfig { get; set; }
 
@@ -297,7 +193,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Project Logging object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -305,39 +201,24 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("customTargetConfig")]
         public Input<Inputs.ProjectLoggingCustomTargetConfigGetArgs>? CustomTargetConfig { get; set; }
 
-        /// <summary>
-        /// The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ProjectLoggingElasticsearchConfigGetArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// Enable json log parsing. Default: `false` (bool)
+        /// Optional enable json log parsing
         /// </summary>
         [Input("enableJsonParsing")]
         public Input<bool>? EnableJsonParsing { get; set; }
 
-        /// <summary>
-        /// The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ProjectLoggingFluentdConfigGetArgs>? FluentdConfig { get; set; }
 
-        /// <summary>
-        /// The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ProjectLoggingKafkaConfigGetArgs>? KafkaConfig { get; set; }
 
-        /// <summary>
-        /// The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
-        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -345,7 +226,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Project Logging object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -353,51 +234,29 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the Project Logging config (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The namespace id from Project logging (string)
-        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
-        /// <summary>
-        /// How often buffered logs would be flushed. Default: `3` seconds (int)
-        /// </summary>
         [Input("outputFlushInterval")]
         public Input<int>? OutputFlushInterval { get; set; }
 
         [Input("outputTags")]
         private InputMap<object>? _outputTags;
-
-        /// <summary>
-        /// The output tags for Project Logging (map)
-        /// </summary>
         public InputMap<object> OutputTags
         {
             get => _outputTags ?? (_outputTags = new InputMap<object>());
             set => _outputTags = value;
         }
 
-        /// <summary>
-        /// The project id to configure logging (string)
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
-        /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ProjectLoggingSplunkConfigGetArgs>? SplunkConfig { get; set; }
 
-        /// <summary>
-        /// The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
-        /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ProjectLoggingSyslogConfigGetArgs>? SyslogConfig { get; set; }
 

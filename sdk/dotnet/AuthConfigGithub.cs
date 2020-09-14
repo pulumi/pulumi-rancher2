@@ -9,97 +9,44 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
-    /// 
-    /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Auth Config Github
-    ///         var github = new Rancher2.AuthConfigGithub("github", new Rancher2.AuthConfigGithubArgs
-    ///         {
-    ///             ClientId = "&lt;GITHUB_CLIENT_ID&gt;",
-    ///             ClientSecret = "&lt;GITHUB_CLIENT_SECRET&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class AuthConfigGithub : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
-        /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
-        /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// Github auth Client ID (string)
-        /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// Github auth Client secret (string)
-        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
-        /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Github hostname to connect. Default `github.com` (string)
-        /// </summary>
         [Output("hostname")]
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The name of the resource (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Enable TLS connection. Default `true` (bool)
-        /// </summary>
         [Output("tls")]
         public Output<bool?> Tls { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The type of the resource (string)
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -149,18 +96,11 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigGithubArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
-
-        /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
-        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -171,7 +111,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -179,27 +119,15 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Github auth Client ID (string)
-        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
-        /// <summary>
-        /// Github auth Client secret (string)
-        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
-        /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Github hostname to connect. Default `github.com` (string)
-        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
@@ -207,7 +135,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -215,9 +143,6 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Enable TLS connection. Default `true` (bool)
-        /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }
 
@@ -228,18 +153,11 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigGithubState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
-
-        /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
-        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -250,7 +168,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -258,27 +176,15 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Github auth Client ID (string)
-        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// Github auth Client secret (string)
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
-        /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Github hostname to connect. Default `github.com` (string)
-        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
@@ -286,7 +192,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -294,21 +200,12 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// (Computed) The name of the resource (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Enable TLS connection. Default `true` (bool)
-        /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }
 
-        /// <summary>
-        /// (Computed) The type of the resource (string)
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

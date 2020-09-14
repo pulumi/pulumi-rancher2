@@ -103,113 +103,71 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> 'outputs.GetClusterAksConfigResult':
-        """
-        (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        """
         return pulumi.get(self, "aks_config")
 
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for Node Pool object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="clusterAuthEndpoint")
     def cluster_auth_endpoint(self) -> 'outputs.GetClusterClusterAuthEndpointResult':
-        """
-        (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        """
         return pulumi.get(self, "cluster_auth_endpoint")
 
     @property
     @pulumi.getter(name="clusterMonitoringInput")
     def cluster_monitoring_input(self) -> 'outputs.GetClusterClusterMonitoringInputResult':
-        """
-        (Computed) Cluster monitoring config (list maxitems:1)
-        """
         return pulumi.get(self, "cluster_monitoring_input")
 
     @property
     @pulumi.getter(name="clusterRegistrationToken")
     def cluster_registration_token(self) -> 'outputs.GetClusterClusterRegistrationTokenResult':
-        """
-        (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        """
         return pulumi.get(self, "cluster_registration_token")
 
     @property
     @pulumi.getter(name="clusterTemplateAnswers")
     def cluster_template_answers(self) -> 'outputs.GetClusterClusterTemplateAnswersResult':
-        """
-        (Computed) Cluster template answers (list maxitems:1)
-        """
         return pulumi.get(self, "cluster_template_answers")
 
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> str:
-        """
-        (Computed) Cluster template ID (string)
-        """
         return pulumi.get(self, "cluster_template_id")
 
     @property
     @pulumi.getter(name="clusterTemplateQuestions")
     def cluster_template_questions(self) -> List['outputs.GetClusterClusterTemplateQuestionResult']:
-        """
-        (Computed) Cluster template questions (list)
-        """
         return pulumi.get(self, "cluster_template_questions")
 
     @property
     @pulumi.getter(name="clusterTemplateRevisionId")
     def cluster_template_revision_id(self) -> str:
-        """
-        (Computed) Cluster template revision ID (string)
-        """
         return pulumi.get(self, "cluster_template_revision_id")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
     def default_pod_security_policy_template_id(self) -> str:
-        """
-        (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        """
         return pulumi.get(self, "default_pod_security_policy_template_id")
 
     @property
     @pulumi.getter(name="defaultProjectId")
     def default_project_id(self) -> str:
-        """
-        (Computed) Default project ID for the cluster (string)
-        """
         return pulumi.get(self, "default_project_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) The description for Cluster (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def driver(self) -> str:
-        """
-        (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        """
         return pulumi.get(self, "driver")
 
     @property
     @pulumi.getter(name="eksConfig")
     def eks_config(self) -> 'outputs.GetClusterEksConfigResult':
-        """
-        (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        """
         return pulumi.get(self, "eks_config")
 
     @property
@@ -220,25 +178,16 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="enableClusterMonitoring")
     def enable_cluster_monitoring(self) -> bool:
-        """
-        (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-        """
         return pulumi.get(self, "enable_cluster_monitoring")
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")
     def enable_network_policy(self) -> bool:
-        """
-        (Computed) Enable project network isolation. Default `false` (bool)
-        """
         return pulumi.get(self, "enable_network_policy")
 
     @property
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> 'outputs.GetClusterGkeConfigResult':
-        """
-        (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
-        """
         return pulumi.get(self, "gke_config")
 
     @property
@@ -252,25 +201,16 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> 'outputs.GetClusterK3sConfigResult':
-        """
-        (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        """
         return pulumi.get(self, "k3s_config")
 
     @property
     @pulumi.getter(name="kubeConfig")
     def kube_config(self) -> str:
-        """
-        (Computed) Kube Config generated for the cluster (string)
-        """
         return pulumi.get(self, "kube_config")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for Node Pool object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -281,9 +221,6 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> 'outputs.GetClusterRkeConfigResult':
-        """
-        (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
-        """
         return pulumi.get(self, "rke_config")
 
     @property
@@ -294,9 +231,6 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> str:
-        """
-        (Computed) System project ID for the cluster (string)
-        """
         return pulumi.get(self, "system_project_id")
 
 
@@ -337,19 +271,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Use this data source to retrieve information about a Rancher v2 cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo_custom = rancher2.get_cluster(name="foo-custom")
-    ```
-
-
-    :param str name: The name of the Cluster (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

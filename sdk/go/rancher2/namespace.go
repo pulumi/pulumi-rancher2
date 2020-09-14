@@ -10,108 +10,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-// 			ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 			Description: pulumi.String("foo namespace"),
-// 			ProjectId:   pulumi.String("<PROJECT_ID>"),
-// 			ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
-// 				Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
-// 					LimitsCpu:       pulumi.String("100m"),
-// 					LimitsMemory:    pulumi.String("100Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewCluster(ctx, "foo_custom", &rancher2.ClusterArgs{
-// 			Description: pulumi.String("Foo rancher2 custom cluster"),
-// 			RkeConfig: &rancher2.ClusterRkeConfigArgs{
-// 				Network: &rancher2.ClusterRkeConfigNetworkArgs{
-// 					Plugin: pulumi.String("canal"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-// 			ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 			Description: pulumi.String("foo namespace"),
-// 			ProjectId:   foo_custom.DefaultProjectId,
-// 			ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
-// 				Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
-// 					LimitsCpu:       pulumi.String("100m"),
-// 					LimitsMemory:    pulumi.String("100Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Default containers resource limits on namespace (List maxitem:1)
+	// Annotations of the resource
+	Annotations            pulumi.MapOutput                         `pulumi:"annotations"`
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrOutput `pulumi:"containerResourceLimit"`
-	// A namespace description (string)
+	// Description of the k8s namespace managed by rancher v2
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Labels for Node Pool object (map)
+	// Labels of the resource
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the namespace (string)
+	// Name of the k8s namespace managed by rancher v2
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-	ResourceQuota NamespaceResourceQuotaPtrOutput `pulumi:"resourceQuota"`
-	// Wait for cluster becomes active. Default `false` (bool)
+	// Project ID where k8s namespace belongs
+	ProjectId     pulumi.StringOutput          `pulumi:"projectId"`
+	ResourceQuota NamespaceResourceQuotaOutput `pulumi:"resourceQuota"`
+	// Wait for cluster becomes active
 	WaitForCluster pulumi.BoolPtrOutput `pulumi:"waitForCluster"`
 }
 
@@ -146,40 +60,36 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Default containers resource limits on namespace (List maxitem:1)
+	// Annotations of the resource
+	Annotations            map[string]interface{}           `pulumi:"annotations"`
 	ContainerResourceLimit *NamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
-	// A namespace description (string)
+	// Description of the k8s namespace managed by rancher v2
 	Description *string `pulumi:"description"`
-	// Labels for Node Pool object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the namespace (string)
+	// Name of the k8s namespace managed by rancher v2
 	Name *string `pulumi:"name"`
-	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-	ProjectId *string `pulumi:"projectId"`
-	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+	// Project ID where k8s namespace belongs
+	ProjectId     *string                 `pulumi:"projectId"`
 	ResourceQuota *NamespaceResourceQuota `pulumi:"resourceQuota"`
-	// Wait for cluster becomes active. Default `false` (bool)
+	// Wait for cluster becomes active
 	WaitForCluster *bool `pulumi:"waitForCluster"`
 }
 
 type NamespaceState struct {
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
-	// Default containers resource limits on namespace (List maxitem:1)
+	// Annotations of the resource
+	Annotations            pulumi.MapInput
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrInput
-	// A namespace description (string)
+	// Description of the k8s namespace managed by rancher v2
 	Description pulumi.StringPtrInput
-	// Labels for Node Pool object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the namespace (string)
+	// Name of the k8s namespace managed by rancher v2
 	Name pulumi.StringPtrInput
-	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-	ProjectId pulumi.StringPtrInput
-	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+	// Project ID where k8s namespace belongs
+	ProjectId     pulumi.StringPtrInput
 	ResourceQuota NamespaceResourceQuotaPtrInput
-	// Wait for cluster becomes active. Default `false` (bool)
+	// Wait for cluster becomes active
 	WaitForCluster pulumi.BoolPtrInput
 }
 
@@ -188,41 +98,37 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Default containers resource limits on namespace (List maxitem:1)
+	// Annotations of the resource
+	Annotations            map[string]interface{}           `pulumi:"annotations"`
 	ContainerResourceLimit *NamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
-	// A namespace description (string)
+	// Description of the k8s namespace managed by rancher v2
 	Description *string `pulumi:"description"`
-	// Labels for Node Pool object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the namespace (string)
+	// Name of the k8s namespace managed by rancher v2
 	Name *string `pulumi:"name"`
-	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-	ProjectId string `pulumi:"projectId"`
-	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+	// Project ID where k8s namespace belongs
+	ProjectId     string                  `pulumi:"projectId"`
 	ResourceQuota *NamespaceResourceQuota `pulumi:"resourceQuota"`
-	// Wait for cluster becomes active. Default `false` (bool)
+	// Wait for cluster becomes active
 	WaitForCluster *bool `pulumi:"waitForCluster"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
-	// Default containers resource limits on namespace (List maxitem:1)
+	// Annotations of the resource
+	Annotations            pulumi.MapInput
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrInput
-	// A namespace description (string)
+	// Description of the k8s namespace managed by rancher v2
 	Description pulumi.StringPtrInput
-	// Labels for Node Pool object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the namespace (string)
+	// Name of the k8s namespace managed by rancher v2
 	Name pulumi.StringPtrInput
-	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-	ProjectId pulumi.StringInput
-	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+	// Project ID where k8s namespace belongs
+	ProjectId     pulumi.StringInput
 	ResourceQuota NamespaceResourceQuotaPtrInput
-	// Wait for cluster becomes active. Default `false` (bool)
+	// Wait for cluster becomes active
 	WaitForCluster pulumi.BoolPtrInput
 }
 

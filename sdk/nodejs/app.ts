@@ -33,63 +33,62 @@ export class App extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for App object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Answers for the app template. If modified, app will be upgraded (map)
+     * Answers of the app
      */
     public readonly answers!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
-     * * add project ID before name, `p-XXXXX:<name>`
+     * Catalog name of the app
      */
     public readonly catalogName!: pulumi.Output<string>;
-    /**
-     * Description for the app (string)
-     */
     public readonly description!: pulumi.Output<string>;
     /**
-     * (Computed) The url of the app template on a catalog (string)
+     * External ID of the app
      */
     public /*out*/ readonly externalId!: pulumi.Output<string>;
     /**
-     * Force app upgrade (string)
+     * Force app upgrade
      */
     public readonly forceUpgrade!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels for App object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the app (string)
+     * Name of the app
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project id where the app will be installed (string)
+     * Project ID to add app
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
+     * App revision id
      */
     public readonly revisionId!: pulumi.Output<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * Namespace name to add app
      */
     public readonly targetNamespace!: pulumi.Output<string>;
     /**
-     * Template name of the app. If modified, app will be upgraded (string)
+     * Template name of the app
      */
     public readonly templateName!: pulumi.Output<string>;
     /**
-     * Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+     * Template version of the app
      */
     public readonly templateVersion!: pulumi.Output<string>;
     /**
-     * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+     * values.yaml base64 encoded file content of the app
      */
     public readonly valuesYaml!: pulumi.Output<string | undefined>;
+    /**
+     * Wait until app is deployed and active
+     */
+    public readonly wait!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -117,6 +116,7 @@ export class App extends pulumi.CustomResource {
             inputs["templateName"] = state ? state.templateName : undefined;
             inputs["templateVersion"] = state ? state.templateVersion : undefined;
             inputs["valuesYaml"] = state ? state.valuesYaml : undefined;
+            inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             if (!args || args.catalogName === undefined) {
@@ -144,6 +144,7 @@ export class App extends pulumi.CustomResource {
             inputs["templateName"] = args ? args.templateName : undefined;
             inputs["templateVersion"] = args ? args.templateVersion : undefined;
             inputs["valuesYaml"] = args ? args.valuesYaml : undefined;
+            inputs["wait"] = args ? args.wait : undefined;
             inputs["externalId"] = undefined /*out*/;
         }
         if (!opts) {
@@ -162,63 +163,62 @@ export class App extends pulumi.CustomResource {
  */
 export interface AppState {
     /**
-     * Annotations for App object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Answers for the app template. If modified, app will be upgraded (map)
+     * Answers of the app
      */
     readonly answers?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
-     * * add project ID before name, `p-XXXXX:<name>`
+     * Catalog name of the app
      */
     readonly catalogName?: pulumi.Input<string>;
-    /**
-     * Description for the app (string)
-     */
     readonly description?: pulumi.Input<string>;
     /**
-     * (Computed) The url of the app template on a catalog (string)
+     * External ID of the app
      */
     readonly externalId?: pulumi.Input<string>;
     /**
-     * Force app upgrade (string)
+     * Force app upgrade
      */
     readonly forceUpgrade?: pulumi.Input<boolean>;
     /**
-     * Labels for App object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the app (string)
+     * Name of the app
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project id where the app will be installed (string)
+     * Project ID to add app
      */
     readonly projectId?: pulumi.Input<string>;
     /**
-     * Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
+     * App revision id
      */
     readonly revisionId?: pulumi.Input<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * Namespace name to add app
      */
     readonly targetNamespace?: pulumi.Input<string>;
     /**
-     * Template name of the app. If modified, app will be upgraded (string)
+     * Template name of the app
      */
     readonly templateName?: pulumi.Input<string>;
     /**
-     * Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+     * Template version of the app
      */
     readonly templateVersion?: pulumi.Input<string>;
     /**
-     * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+     * values.yaml base64 encoded file content of the app
      */
     readonly valuesYaml?: pulumi.Input<string>;
+    /**
+     * Wait until app is deployed and active
+     */
+    readonly wait?: pulumi.Input<boolean>;
 }
 
 /**
@@ -226,57 +226,56 @@ export interface AppState {
  */
 export interface AppArgs {
     /**
-     * Annotations for App object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Answers for the app template. If modified, app will be upgraded (map)
+     * Answers of the app
      */
     readonly answers?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-     * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
-     * * add project ID before name, `p-XXXXX:<name>`
+     * Catalog name of the app
      */
     readonly catalogName: pulumi.Input<string>;
-    /**
-     * Description for the app (string)
-     */
     readonly description?: pulumi.Input<string>;
     /**
-     * Force app upgrade (string)
+     * Force app upgrade
      */
     readonly forceUpgrade?: pulumi.Input<boolean>;
     /**
-     * Labels for App object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the app (string)
+     * Name of the app
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The project id where the app will be installed (string)
+     * Project ID to add app
      */
     readonly projectId: pulumi.Input<string>;
     /**
-     * Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
+     * App revision id
      */
     readonly revisionId?: pulumi.Input<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * Namespace name to add app
      */
     readonly targetNamespace: pulumi.Input<string>;
     /**
-     * Template name of the app. If modified, app will be upgraded (string)
+     * Template name of the app
      */
     readonly templateName: pulumi.Input<string>;
     /**
-     * Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+     * Template version of the app
      */
     readonly templateVersion?: pulumi.Input<string>;
     /**
-     * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+     * values.yaml base64 encoded file content of the app
      */
     readonly valuesYaml?: pulumi.Input<string>;
+    /**
+     * Wait until app is deployed and active
+     */
+    readonly wait?: pulumi.Input<boolean>;
 }

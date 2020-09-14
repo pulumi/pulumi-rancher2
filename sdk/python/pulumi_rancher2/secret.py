@@ -26,21 +26,16 @@ class Secret(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
-
-        Depending of the availability, there are 2 types of Rancher v2 secrets:
-        - Project secret: Available to all namespaces in the `project_id`
-        - Namespaced secret: Available to just `namespace_id` in the `project_id`
-
+        Create a Secret resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
-        :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
-        :param pulumi.Input[str] name: The name of the secret (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
-        :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] data: Secret data base64 encoded
+        :param pulumi.Input[str] description: Secret description
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Secret name
+        :param pulumi.Input[str] namespace_id: Namespace ID to add secret
+        :param pulumi.Input[str] project_id: Project ID to add secret
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,13 +89,13 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
-        :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
-        :param pulumi.Input[str] name: The name of the secret (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
-        :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] data: Secret data base64 encoded
+        :param pulumi.Input[str] description: Secret description
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Secret name
+        :param pulumi.Input[str] namespace_id: Namespace ID to add secret
+        :param pulumi.Input[str] project_id: Project ID to add secret
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,7 +114,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for secret object (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
@@ -127,7 +122,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Secret key/value data. Base64 encoding required for values (map)
+        Secret data base64 encoded
         """
         return pulumi.get(self, "data")
 
@@ -135,7 +130,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A secret description (string)
+        Secret description
         """
         return pulumi.get(self, "description")
 
@@ -143,7 +138,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for secret object (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
@@ -151,7 +146,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the secret (string)
+        Secret name
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +154,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The namespace id where to assign the namespaced secret (string)
+        Namespace ID to add secret
         """
         return pulumi.get(self, "namespace_id")
 
@@ -167,7 +162,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id where to assign the secret (string)
+        Project ID to add secret
         """
         return pulumi.get(self, "project_id")
 

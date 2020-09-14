@@ -13,20 +13,8 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesKubeApiEventRateLimitGetArgs : Pulumi.ResourceArgs
     {
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        public Input<string>? Configuration { get; set; }
 
-        /// <summary>
-        /// Event rate limit configuration. (map)
-        /// </summary>
-        public InputMap<object> Configuration
-        {
-            get => _configuration ?? (_configuration = new InputMap<object>());
-            set => _configuration = value;
-        }
-
-        /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

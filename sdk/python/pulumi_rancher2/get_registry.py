@@ -49,17 +49,11 @@ class GetRegistryResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for Registry object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) A registry description (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -73,9 +67,6 @@ class GetRegistryResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for Registry object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -96,9 +87,6 @@ class GetRegistryResult:
     @property
     @pulumi.getter
     def registries(self) -> List['outputs.GetRegistryRegistryResult']:
-        """
-        (Computed) Registries data for registry (list)
-        """
         return pulumi.get(self, "registries")
 
 
@@ -123,35 +111,7 @@ def get_registry(name: Optional[str] = None,
                  project_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryResult:
     """
-    Use this data source to retrieve information about a Rancher v2 docker registry.
-
-    Depending of the availability, there are 2 types of Rancher v2 docker registries:
-    - Project registry: Available to all namespaces in the `project_id`
-    - Namespaced registry: Available to just `namespace_id` in the `project_id`
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_registry(name="<name>",
-        project_id="<project_id>")
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_registry(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
-    ```
-
-
-    :param str name: The name of the registry (string)
-    :param str namespace_id: The namespace id where to assign the namespaced registry (string)
-    :param str project_id: The project id where to assign the registry (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

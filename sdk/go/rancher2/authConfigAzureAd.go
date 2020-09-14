@@ -10,71 +10,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
-//
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigAzureAd(ctx, "azuread", &rancher2.AuthConfigAzureAdArgs{
-// 			ApplicationId:     pulumi.String("<AZUREAD_APP_ID>"),
-// 			ApplicationSecret: pulumi.String("<AZUREAD_APP_SECRET>"),
-// 			AuthEndpoint:      pulumi.String("<AZUREAD_AUTH_ENDPOINT>"),
-// 			GraphEndpoint:     pulumi.String("<AZUREAD_GRAPH_ENDPOINT>"),
-// 			RancherUrl:        pulumi.String("<RANCHER_URL>"),
-// 			TenantId:          pulumi.String("<AZUREAD_TENANT_ID>"),
-// 			TokenEndpoint:     pulumi.String("<AZUREAD_TOKEN_ENDPOINT>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AuthConfigAzureAd struct {
 	pulumi.CustomResourceState
 
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// AzureAD auth application ID (string)
-	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// AzureAD auth application secret (string)
-	ApplicationSecret pulumi.StringOutput `pulumi:"applicationSecret"`
-	// AzureAD auth endpoint (string)
-	AuthEndpoint pulumi.StringOutput `pulumi:"authEndpoint"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
-	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringOutput `pulumi:"graphEndpoint"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
-	RancherUrl pulumi.StringOutput `pulumi:"rancherUrl"`
-	// AzureAD tenant ID (string)
-	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// AzureAD token endpoint (string)
+	// Annotations of the resource
+	Annotations       pulumi.MapOutput       `pulumi:"annotations"`
+	ApplicationId     pulumi.StringOutput    `pulumi:"applicationId"`
+	ApplicationSecret pulumi.StringOutput    `pulumi:"applicationSecret"`
+	AuthEndpoint      pulumi.StringOutput    `pulumi:"authEndpoint"`
+	Enabled           pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	Endpoint          pulumi.StringPtrOutput `pulumi:"endpoint"`
+	GraphEndpoint     pulumi.StringOutput    `pulumi:"graphEndpoint"`
+	// Labels of the resource
+	Labels        pulumi.MapOutput    `pulumi:"labels"`
+	Name          pulumi.StringOutput `pulumi:"name"`
+	RancherUrl    pulumi.StringOutput `pulumi:"rancherUrl"`
+	TenantId      pulumi.StringOutput `pulumi:"tenantId"`
 	TokenEndpoint pulumi.StringOutput `pulumi:"tokenEndpoint"`
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type          pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewAuthConfigAzureAd registers a new resource with the given unique name, arguments, and options.
@@ -126,69 +81,43 @@ func GetAuthConfigAzureAd(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigAzureAd resources.
 type authConfigAzureAdState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// AzureAD auth application ID (string)
-	ApplicationId *string `pulumi:"applicationId"`
-	// AzureAD auth application secret (string)
-	ApplicationSecret *string `pulumi:"applicationSecret"`
-	// AzureAD auth endpoint (string)
-	AuthEndpoint *string `pulumi:"authEndpoint"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-	Endpoint *string `pulumi:"endpoint"`
-	// AzureAD graph endpoint (string)
-	GraphEndpoint *string `pulumi:"graphEndpoint"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name *string `pulumi:"name"`
-	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
-	RancherUrl *string `pulumi:"rancherUrl"`
-	// AzureAD tenant ID (string)
-	TenantId *string `pulumi:"tenantId"`
-	// AzureAD token endpoint (string)
-	TokenEndpoint *string `pulumi:"tokenEndpoint"`
-	// (Computed) The type of the resource (string)
-	Type *string `pulumi:"type"`
+	// Annotations of the resource
+	Annotations       map[string]interface{} `pulumi:"annotations"`
+	ApplicationId     *string                `pulumi:"applicationId"`
+	ApplicationSecret *string                `pulumi:"applicationSecret"`
+	AuthEndpoint      *string                `pulumi:"authEndpoint"`
+	Enabled           *bool                  `pulumi:"enabled"`
+	Endpoint          *string                `pulumi:"endpoint"`
+	GraphEndpoint     *string                `pulumi:"graphEndpoint"`
+	// Labels of the resource
+	Labels        map[string]interface{} `pulumi:"labels"`
+	Name          *string                `pulumi:"name"`
+	RancherUrl    *string                `pulumi:"rancherUrl"`
+	TenantId      *string                `pulumi:"tenantId"`
+	TokenEndpoint *string                `pulumi:"tokenEndpoint"`
+	Type          *string                `pulumi:"type"`
 }
 
 type AuthConfigAzureAdState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// AzureAD auth application ID (string)
-	ApplicationId pulumi.StringPtrInput
-	// AzureAD auth application secret (string)
+	// Annotations of the resource
+	Annotations       pulumi.MapInput
+	ApplicationId     pulumi.StringPtrInput
 	ApplicationSecret pulumi.StringPtrInput
-	// AzureAD auth endpoint (string)
-	AuthEndpoint pulumi.StringPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-	Endpoint pulumi.StringPtrInput
-	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringPtrInput
-	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
-	RancherUrl pulumi.StringPtrInput
-	// AzureAD tenant ID (string)
-	TenantId pulumi.StringPtrInput
-	// AzureAD token endpoint (string)
+	AuthEndpoint      pulumi.StringPtrInput
+	Enabled           pulumi.BoolPtrInput
+	Endpoint          pulumi.StringPtrInput
+	GraphEndpoint     pulumi.StringPtrInput
+	// Labels of the resource
+	Labels        pulumi.MapInput
+	Name          pulumi.StringPtrInput
+	RancherUrl    pulumi.StringPtrInput
+	TenantId      pulumi.StringPtrInput
 	TokenEndpoint pulumi.StringPtrInput
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringPtrInput
+	Type          pulumi.StringPtrInput
 }
 
 func (AuthConfigAzureAdState) ElementType() reflect.Type {
@@ -196,61 +125,39 @@ func (AuthConfigAzureAdState) ElementType() reflect.Type {
 }
 
 type authConfigAzureAdArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// AzureAD auth application ID (string)
-	ApplicationId string `pulumi:"applicationId"`
-	// AzureAD auth application secret (string)
-	ApplicationSecret string `pulumi:"applicationSecret"`
-	// AzureAD auth endpoint (string)
-	AuthEndpoint string `pulumi:"authEndpoint"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-	Endpoint *string `pulumi:"endpoint"`
-	// AzureAD graph endpoint (string)
-	GraphEndpoint string `pulumi:"graphEndpoint"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
-	RancherUrl string `pulumi:"rancherUrl"`
-	// AzureAD tenant ID (string)
-	TenantId string `pulumi:"tenantId"`
-	// AzureAD token endpoint (string)
-	TokenEndpoint string `pulumi:"tokenEndpoint"`
+	// Annotations of the resource
+	Annotations       map[string]interface{} `pulumi:"annotations"`
+	ApplicationId     string                 `pulumi:"applicationId"`
+	ApplicationSecret string                 `pulumi:"applicationSecret"`
+	AuthEndpoint      string                 `pulumi:"authEndpoint"`
+	Enabled           *bool                  `pulumi:"enabled"`
+	Endpoint          *string                `pulumi:"endpoint"`
+	GraphEndpoint     string                 `pulumi:"graphEndpoint"`
+	// Labels of the resource
+	Labels        map[string]interface{} `pulumi:"labels"`
+	RancherUrl    string                 `pulumi:"rancherUrl"`
+	TenantId      string                 `pulumi:"tenantId"`
+	TokenEndpoint string                 `pulumi:"tokenEndpoint"`
 }
 
 // The set of arguments for constructing a AuthConfigAzureAd resource.
 type AuthConfigAzureAdArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// AzureAD auth application ID (string)
-	ApplicationId pulumi.StringInput
-	// AzureAD auth application secret (string)
+	// Annotations of the resource
+	Annotations       pulumi.MapInput
+	ApplicationId     pulumi.StringInput
 	ApplicationSecret pulumi.StringInput
-	// AzureAD auth endpoint (string)
-	AuthEndpoint pulumi.StringInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-	Endpoint pulumi.StringPtrInput
-	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
-	RancherUrl pulumi.StringInput
-	// AzureAD tenant ID (string)
-	TenantId pulumi.StringInput
-	// AzureAD token endpoint (string)
+	AuthEndpoint      pulumi.StringInput
+	Enabled           pulumi.BoolPtrInput
+	Endpoint          pulumi.StringPtrInput
+	GraphEndpoint     pulumi.StringInput
+	// Labels of the resource
+	Labels        pulumi.MapInput
+	RancherUrl    pulumi.StringInput
+	TenantId      pulumi.StringInput
 	TokenEndpoint pulumi.StringInput
 }
 

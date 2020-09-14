@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const test = pulumi.output(rancher2.getCloudCredential({
- *     name: "test",
- * }, { async: true }));
- * ```
- */
 export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
     if (!opts) {
         opts = {}
@@ -37,9 +23,6 @@ export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.I
  * A collection of arguments for invoking getCloudCredential.
  */
 export interface GetCloudCredentialArgs {
-    /**
-     * The Cloud Credential name.
-     */
     readonly name: string;
 }
 
@@ -47,17 +30,11 @@ export interface GetCloudCredentialArgs {
  * A collection of values returned by getCloudCredential.
  */
 export interface GetCloudCredentialResult {
-    /**
-     * (Computed) Annotations for the Cloud Credential (map)
-     */
     readonly annotations: {[key: string]: any};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Computed) Labels for the Cloud Credential (map)
-     */
     readonly labels: {[key: string]: any};
     readonly name: string;
 }

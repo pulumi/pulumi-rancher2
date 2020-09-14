@@ -36,9 +36,6 @@ class GetCloudCredentialResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for the Cloud Credential (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -52,9 +49,6 @@ class GetCloudCredentialResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for the Cloud Credential (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -78,19 +72,7 @@ class AwaitableGetCloudCredentialResult(GetCloudCredentialResult):
 def get_cloud_credential(name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudCredentialResult:
     """
-    Use this data source to retrieve information about a Rancher v2 Cloud Credential.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    test = rancher2.get_cloud_credential(name="test")
-    ```
-
-
-    :param str name: The Cloud Credential name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 global role binding.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foo_id"
-// 		_, err := rancher2.LookupGlobalRoleBinding(ctx, &rancher2.LookupGlobalRoleBindingArgs{
-// 			GlobalRoleId: &opt0,
-// 			Name:         "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupGlobalRoleBinding(ctx *pulumi.Context, args *LookupGlobalRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupGlobalRoleBindingResult, error) {
 	var rv LookupGlobalRoleBindingResult
 	err := ctx.Invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args, &rv, opts...)
@@ -44,24 +18,18 @@ func LookupGlobalRoleBinding(ctx *pulumi.Context, args *LookupGlobalRoleBindingA
 
 // A collection of arguments for invoking getGlobalRoleBinding.
 type LookupGlobalRoleBindingArgs struct {
-	// The global role id (string)
 	GlobalRoleId *string `pulumi:"globalRoleId"`
-	// The name of the global role binding (string)
-	Name string `pulumi:"name"`
+	Name         string  `pulumi:"name"`
 }
 
 // A collection of values returned by getGlobalRoleBinding.
 type LookupGlobalRoleBindingResult struct {
-	// (Computed) Annotations of the resource (map)
-	Annotations  map[string]interface{} `pulumi:"annotations"`
-	GlobalRoleId string                 `pulumi:"globalRoleId"`
-	// (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
-	GroupPrincipalId string `pulumi:"groupPrincipalId"`
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	GlobalRoleId     string                 `pulumi:"globalRoleId"`
+	GroupPrincipalId string                 `pulumi:"groupPrincipalId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels of the resource (map)
+	Id     string                 `pulumi:"id"`
 	Labels map[string]interface{} `pulumi:"labels"`
 	Name   string                 `pulumi:"name"`
-	// (Computed) The user ID to assign global role binding (string)
-	UserId string `pulumi:"userId"`
+	UserId string                 `pulumi:"userId"`
 }

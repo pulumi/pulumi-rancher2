@@ -54,9 +54,6 @@ class GetClusterRoleTemplateBindingResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations of the resource (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -67,17 +64,11 @@ class GetClusterRoleTemplateBindingResult:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
-        """
-        (Computed) The group ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> str:
-        """
-        (Computed) The group_principal ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "group_principal_id")
 
     @property
@@ -91,9 +82,6 @@ class GetClusterRoleTemplateBindingResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels of the resource (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -109,17 +97,11 @@ class GetClusterRoleTemplateBindingResult:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        (Computed) The user ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userPrincipalId")
     def user_principal_id(self) -> str:
-        """
-        (Computed) The user_principal ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "user_principal_id")
 
 
@@ -146,22 +128,7 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
                                       role_template_id: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterRoleTemplateBindingResult:
     """
-    Use this data source to retrieve information about a Rancher v2 cluster role template binding.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_role_template_binding(cluster_id="foo_id",
-        name="foo")
-    ```
-
-
-    :param str cluster_id: The cluster id where bind cluster role template (string)
-    :param str name: The name of the cluster role template binding (string)
-    :param str role_template_id: The role template id from create cluster role template binding (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

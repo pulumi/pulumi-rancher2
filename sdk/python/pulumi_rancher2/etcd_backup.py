@@ -32,14 +32,8 @@ class EtcdBackup(pulumi.CustomResource):
         Create a EtcdBackup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
-        :param pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']] backup_config: Backup config for etcd backup (list maxitems:1)
-        :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
-        :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
-        :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
-        :param pulumi.Input[str] name: The name of the Etcd Backup (string)
-        :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,14 +87,8 @@ class EtcdBackup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
-        :param pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']] backup_config: Backup config for etcd backup (list maxitems:1)
-        :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
-        :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
-        :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
-        :param pulumi.Input[str] name: The name of the Etcd Backup (string)
-        :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,64 +108,46 @@ class EtcdBackup(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for Etcd Backup object (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> pulumi.Output['outputs.EtcdBackupBackupConfig']:
-        """
-        Backup config for etcd backup (list maxitems:1)
-        """
         return pulumi.get(self, "backup_config")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
-        """
-        Cluster ID to config Etcd Backup (string)
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def filename(self) -> pulumi.Output[str]:
-        """
-        Filename of the Etcd Backup (string)
-        """
         return pulumi.get(self, "filename")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for Etcd Backup object (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def manual(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Manual execution of the Etcd Backup. Default `false` (bool)
-        """
         return pulumi.get(self, "manual")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the Etcd Backup (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[str]:
-        """
-        Description for the Etcd Backup (string)
-        """
         return pulumi.get(self, "namespace_id")
 
     def translate_output_property(self, prop):

@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate
     {
-        /// <summary>
-        /// Monitoring deployment rolling update max surge. Default: `1` (int)
-        /// </summary>
         public readonly int? MaxSurge;
-        /// <summary>
-        /// Monitoring deployment rolling update max unavailable. Default: `1` (int)
-        /// </summary>
         public readonly int? MaxUnavailable;
 
         [OutputConstructor]

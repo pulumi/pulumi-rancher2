@@ -13,25 +13,10 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigDns
     {
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
-        /// <summary>
-        /// Nodelocal dns config  (list Maxitem: 1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsNodelocal? Nodelocal;
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         public readonly string? Provider;
-        /// <summary>
-        /// DNS add-on reverse cidr  (list)
-        /// </summary>
         public readonly ImmutableArray<string> ReverseCidrs;
-        /// <summary>
-        /// DNS add-on upstream nameservers  (list)
-        /// </summary>
         public readonly ImmutableArray<string> UpstreamNameservers;
 
         [OutputConstructor]

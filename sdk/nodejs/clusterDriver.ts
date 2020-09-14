@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 Cluster Driver
- * const foo = new rancher2.ClusterDriver("foo", {
- *     active: true,
- *     builtin: false,
- *     checksum: "0x0",
- *     description: "Foo description",
- *     externalId: "foo_external",
- *     uiUrl: "local://ui",
- *     url: "local://",
- *     whitelistDomains: ["*.foo.com"],
- * });
- * ```
- */
 export class ClusterDriver extends pulumi.CustomResource {
     /**
      * Get an existing ClusterDriver resource's state with the given name, ID, and optional extra
@@ -54,45 +32,21 @@ export class ClusterDriver extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClusterDriver.__pulumiType;
     }
 
-    /**
-     * Specify the cluster driver state (bool)
-     */
     public readonly active!: pulumi.Output<boolean>;
-    /**
-     * Actual url of the cluster driver (string)
-     */
     public readonly actualUrl!: pulumi.Output<string | undefined>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Specify whether the cluster driver is an internal cluster driver or not (bool)
-     */
     public readonly builtin!: pulumi.Output<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     public readonly checksum!: pulumi.Output<string | undefined>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Name of the cluster driver (string)
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The URL to load for customized Add Clusters screen for this driver (string)
-     */
     public readonly uiUrl!: pulumi.Output<string | undefined>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     public readonly url!: pulumi.Output<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     public readonly whitelistDomains!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -154,45 +108,21 @@ export class ClusterDriver extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClusterDriver resources.
  */
 export interface ClusterDriverState {
-    /**
-     * Specify the cluster driver state (bool)
-     */
     readonly active?: pulumi.Input<boolean>;
-    /**
-     * Actual url of the cluster driver (string)
-     */
     readonly actualUrl?: pulumi.Input<string>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Specify whether the cluster driver is an internal cluster driver or not (bool)
-     */
     readonly builtin?: pulumi.Input<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     readonly checksum?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of the cluster driver (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The URL to load for customized Add Clusters screen for this driver (string)
-     */
     readonly uiUrl?: pulumi.Input<string>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     readonly url?: pulumi.Input<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -200,44 +130,20 @@ export interface ClusterDriverState {
  * The set of arguments for constructing a ClusterDriver resource.
  */
 export interface ClusterDriverArgs {
-    /**
-     * Specify the cluster driver state (bool)
-     */
     readonly active: pulumi.Input<boolean>;
-    /**
-     * Actual url of the cluster driver (string)
-     */
     readonly actualUrl?: pulumi.Input<string>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Specify whether the cluster driver is an internal cluster driver or not (bool)
-     */
     readonly builtin: pulumi.Input<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     readonly checksum?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of the cluster driver (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The URL to load for customized Add Clusters screen for this driver (string)
-     */
     readonly uiUrl?: pulumi.Input<string>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     readonly url: pulumi.Input<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }

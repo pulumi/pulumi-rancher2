@@ -13,12 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult
     {
-        public readonly ImmutableDictionary<string, object>? Configuration;
+        public readonly string Configuration;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(
-            ImmutableDictionary<string, object>? configuration,
+            string configuration,
 
             bool? enabled)
         {

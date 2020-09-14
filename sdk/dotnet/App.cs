@@ -12,90 +12,91 @@ namespace Pulumi.Rancher2
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for App object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Answers for the app template. If modified, app will be upgraded (map)
+        /// Answers of the app
         /// </summary>
         [Output("answers")]
         public Output<ImmutableDictionary<string, object>?> Answers { get; private set; } = null!;
 
         /// <summary>
-        /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
-        /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
+        /// Catalog name of the app
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
-        /// <summary>
-        /// Description for the app (string)
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The url of the app template on a catalog (string)
+        /// External ID of the app
         /// </summary>
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// Force app upgrade (string)
+        /// Force app upgrade
         /// </summary>
         [Output("forceUpgrade")]
         public Output<bool?> ForceUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for App object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the app (string)
+        /// Name of the app
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project id where the app will be installed (string)
+        /// Project ID to add app
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
+        /// App revision id
         /// </summary>
         [Output("revisionId")]
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// Namespace name to add app
         /// </summary>
         [Output("targetNamespace")]
         public Output<string> TargetNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// Template name of the app. If modified, app will be upgraded (string)
+        /// Template name of the app
         /// </summary>
         [Output("templateName")]
         public Output<string> TemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+        /// Template version of the app
         /// </summary>
         [Output("templateVersion")]
         public Output<string> TemplateVersion { get; private set; } = null!;
 
         /// <summary>
-        /// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        /// values.yaml base64 encoded file content of the app
         /// </summary>
         [Output("valuesYaml")]
         public Output<string?> ValuesYaml { get; private set; } = null!;
+
+        /// <summary>
+        /// Wait until app is deployed and active
+        /// </summary>
+        [Output("wait")]
+        public Output<bool?> Wait { get; private set; } = null!;
 
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for App object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -159,7 +160,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _answers;
 
         /// <summary>
-        /// Answers for the app template. If modified, app will be upgraded (map)
+        /// Answers of the app
         /// </summary>
         public InputMap<object> Answers
         {
@@ -168,21 +169,16 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
-        /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
+        /// Catalog name of the app
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
-        /// <summary>
-        /// Description for the app (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Force app upgrade (string)
+        /// Force app upgrade
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
@@ -191,7 +187,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for App object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -200,46 +196,52 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the app (string)
+        /// Name of the app
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project id where the app will be installed (string)
+        /// Project ID to add app
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
+        /// App revision id
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// Namespace name to add app
         /// </summary>
         [Input("targetNamespace", required: true)]
         public Input<string> TargetNamespace { get; set; } = null!;
 
         /// <summary>
-        /// Template name of the app. If modified, app will be upgraded (string)
+        /// Template name of the app
         /// </summary>
         [Input("templateName", required: true)]
         public Input<string> TemplateName { get; set; } = null!;
 
         /// <summary>
-        /// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+        /// Template version of the app
         /// </summary>
         [Input("templateVersion")]
         public Input<string>? TemplateVersion { get; set; }
 
         /// <summary>
-        /// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        /// values.yaml base64 encoded file content of the app
         /// </summary>
         [Input("valuesYaml")]
         public Input<string>? ValuesYaml { get; set; }
+
+        /// <summary>
+        /// Wait until app is deployed and active
+        /// </summary>
+        [Input("wait")]
+        public Input<bool>? Wait { get; set; }
 
         public AppArgs()
         {
@@ -252,7 +254,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for App object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -264,7 +266,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _answers;
 
         /// <summary>
-        /// Answers for the app template. If modified, app will be upgraded (map)
+        /// Answers of the app
         /// </summary>
         public InputMap<object> Answers
         {
@@ -273,27 +275,22 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
-        /// * add cluster ID before name, `local:&lt;name&gt;` or `c-XXXXX:&lt;name&gt;`
-        /// * add project ID before name, `p-XXXXX:&lt;name&gt;`
+        /// Catalog name of the app
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
-        /// <summary>
-        /// Description for the app (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Computed) The url of the app template on a catalog (string)
+        /// External ID of the app
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// Force app upgrade (string)
+        /// Force app upgrade
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
@@ -302,7 +299,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for App object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -311,46 +308,52 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the app (string)
+        /// Name of the app
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project id where the app will be installed (string)
+        /// Project ID to add app
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
+        /// App revision id
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// Namespace name to add app
         /// </summary>
         [Input("targetNamespace")]
         public Input<string>? TargetNamespace { get; set; }
 
         /// <summary>
-        /// Template name of the app. If modified, app will be upgraded (string)
+        /// Template name of the app
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
 
         /// <summary>
-        /// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+        /// Template version of the app
         /// </summary>
         [Input("templateVersion")]
         public Input<string>? TemplateVersion { get; set; }
 
         /// <summary>
-        /// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        /// values.yaml base64 encoded file content of the app
         /// </summary>
         [Input("valuesYaml")]
         public Input<string>? ValuesYaml { get; set; }
+
+        /// <summary>
+        /// Wait until app is deployed and active
+        /// </summary>
+        [Input("wait")]
+        public Input<bool>? Wait { get; set; }
 
         public AppState()
         {

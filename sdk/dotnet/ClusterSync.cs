@@ -12,40 +12,37 @@ namespace Pulumi.Rancher2
     public partial class ClusterSync : Pulumi.CustomResource
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// Cluster id to sync
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) Default project ID for the cluster sync (string)
-        /// </summary>
         [Output("defaultProjectId")]
         public Output<string> DefaultProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The node pool IDs used by the cluster id (list)
+        /// Cluster node pool ids
         /// </summary>
         [Output("nodePoolIds")]
         public Output<ImmutableArray<string>> NodePoolIds { get; private set; } = null!;
 
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s)
+        /// </summary>
+        [Output("stateConfirm")]
+        public Output<int?> StateConfirm { get; private set; } = null!;
+
         [Output("synced")]
         public Output<bool?> Synced { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) System project ID for the cluster sync (string)
-        /// </summary>
         [Output("systemProjectId")]
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// Wait until monitoring is up and running
         /// </summary>
         [Output("waitMonitoring")]
         public Output<bool?> WaitMonitoring { get; private set; } = null!;
@@ -97,7 +94,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterSyncArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// Cluster id to sync
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -106,7 +103,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _nodePoolIds;
 
         /// <summary>
-        /// The node pool IDs used by the cluster id (list)
+        /// Cluster node pool ids
         /// </summary>
         public InputList<string> NodePoolIds
         {
@@ -114,11 +111,17 @@ namespace Pulumi.Rancher2
             set => _nodePoolIds = value;
         }
 
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s)
+        /// </summary>
+        [Input("stateConfirm")]
+        public Input<int>? StateConfirm { get; set; }
+
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
         /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// Wait until monitoring is up and running
         /// </summary>
         [Input("waitMonitoring")]
         public Input<bool>? WaitMonitoring { get; set; }
@@ -131,20 +134,14 @@ namespace Pulumi.Rancher2
     public sealed class ClusterSyncState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// Cluster id to sync
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// (Computed) Default project ID for the cluster sync (string)
-        /// </summary>
         [Input("defaultProjectId")]
         public Input<string>? DefaultProjectId { get; set; }
 
-        /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
@@ -152,7 +149,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _nodePoolIds;
 
         /// <summary>
-        /// The node pool IDs used by the cluster id (list)
+        /// Cluster node pool ids
         /// </summary>
         public InputList<string> NodePoolIds
         {
@@ -160,17 +157,20 @@ namespace Pulumi.Rancher2
             set => _nodePoolIds = value;
         }
 
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s)
+        /// </summary>
+        [Input("stateConfirm")]
+        public Input<int>? StateConfirm { get; set; }
+
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
-        /// <summary>
-        /// (Computed) System project ID for the cluster sync (string)
-        /// </summary>
         [Input("systemProjectId")]
         public Input<string>? SystemProjectId { get; set; }
 
         /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
+        /// Wait until monitoring is up and running
         /// </summary>
         [Input("waitMonitoring")]
         public Input<bool>? WaitMonitoring { get; set; }

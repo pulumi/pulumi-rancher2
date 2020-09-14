@@ -326,45 +326,7 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
                                      volumes: Optional[List[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPodSecurityPolicyTemplateResult:
     """
-    Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_pod_security_policy_template(name="foo")
-    ```
-
-
-    :param bool allow_privilege_escalation: = (Optional)
-    :param List[str] allowed_capabilities: (list)
-    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedCsiDriverArgs']] allowed_csi_drivers: (list)
-    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs']] allowed_flex_volumes: (list)
-    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateAllowedHostPathArgs']] allowed_host_paths: (list)
-    :param List[str] allowed_proc_mount_types: (list)
-    :param List[str] allowed_unsafe_sysctls: (list)
-    :param Mapping[str, Any] annotations: Annotations for PodSecurityPolicyTemplate object (map)
-    :param List[str] default_add_capabilities: (list)
-    :param bool default_allow_privilege_escalation: (list)
-    :param str description: The PodSecurityPolicyTemplate description (string)
-    :param List[str] forbidden_sysctls: (list)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateFsGroupArgs'] fs_group: (list maxitems:1)
-    :param bool host_ipc: (bool)
-    :param bool host_pid: (bool)
-    :param List[pulumi.InputType['GetPodSecurityPolicyTemplateHostPortArgs']] host_ports: (list)
-    :param Mapping[str, Any] labels: Labels for PodSecurityPolicyTemplate object (map)
-    :param str name: The name of the PodSecurityPolicyTemplate (string)
-    :param bool privileged: (bool)
-    :param bool read_only_root_filesystem: (bool)
-    :param List[str] required_drop_capabilities: (list)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateRunAsGroupArgs'] run_as_group: (list maxitems:1)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateRunAsUserArgs'] run_as_user: (list maxitems:1)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateRuntimeClassArgs'] runtime_class: (list maxitems:1)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateSeLinuxArgs'] se_linux: (list maxitems:1)
-    :param pulumi.InputType['GetPodSecurityPolicyTemplateSupplementalGroupArgs'] supplemental_group: (list maxitems:1)
-    :param List[str] volumes: (list)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['allowPrivilegeEscalation'] = allow_privilege_escalation

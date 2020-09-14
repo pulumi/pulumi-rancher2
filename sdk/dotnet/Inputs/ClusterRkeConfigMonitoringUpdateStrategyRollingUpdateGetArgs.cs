@@ -12,15 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Monitoring deployment rolling update max surge. Default: `1` (int)
-        /// </summary>
         [Input("maxSurge")]
         public Input<int>? MaxSurge { get; set; }
 
-        /// <summary>
-        /// Monitoring deployment rolling update max unavailable. Default: `1` (int)
-        /// </summary>
         [Input("maxUnavailable")]
         public Input<int>? MaxUnavailable { get; set; }
 

@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 role template resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.GetRoleTemplate(ctx, &rancher2.GetRoleTemplateArgs{
-// 			Name: "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetRoleTemplate(ctx *pulumi.Context, args *GetRoleTemplateArgs, opts ...pulumi.InvokeOption) (*GetRoleTemplateResult, error) {
 	var rv GetRoleTemplateResult
 	err := ctx.Invoke("rancher2:index/getRoleTemplate:getRoleTemplate", args, &rv, opts...)
@@ -42,38 +18,25 @@ func GetRoleTemplate(ctx *pulumi.Context, args *GetRoleTemplateArgs, opts ...pul
 
 // A collection of arguments for invoking getRoleTemplate.
 type GetRoleTemplateArgs struct {
-	// Role template context. `cluster` and `project` values are supported (string)
 	Context *string `pulumi:"context"`
-	// The name of the Node Template (string)
-	Name string `pulumi:"name"`
+	Name    string  `pulumi:"name"`
 }
 
 // A collection of values returned by getRoleTemplate.
 type GetRoleTemplateResult struct {
-	// (Computed) Administrative role template (bool)
-	Administrative bool `pulumi:"administrative"`
-	// (Computed) Annotations for role template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Builtin role template (string)
-	Builtin bool   `pulumi:"builtin"`
-	Context string `pulumi:"context"`
-	// (Computed) Default role template for new created cluster or project (bool)
-	DefaultRole bool `pulumi:"defaultRole"`
-	// (Computed) Role template description (string)
-	Description string `pulumi:"description"`
-	// (Computed) External role template (bool)
-	External bool `pulumi:"external"`
-	// (Computed) Hidden role template (bool)
-	Hidden bool `pulumi:"hidden"`
+	Administrative bool                   `pulumi:"administrative"`
+	Annotations    map[string]interface{} `pulumi:"annotations"`
+	Builtin        bool                   `pulumi:"builtin"`
+	Context        string                 `pulumi:"context"`
+	DefaultRole    bool                   `pulumi:"defaultRole"`
+	Description    string                 `pulumi:"description"`
+	External       bool                   `pulumi:"external"`
+	Hidden         bool                   `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels for role template object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) Locked role template (bool)
-	Locked bool   `pulumi:"locked"`
-	Name   string `pulumi:"name"`
-	// (Computed) Inherit role template IDs (list)
-	RoleTemplateIds []string `pulumi:"roleTemplateIds"`
-	// (Computed) Role template policy rules (list)
-	Rules []GetRoleTemplateRule `pulumi:"rules"`
+	Id              string                 `pulumi:"id"`
+	Labels          map[string]interface{} `pulumi:"labels"`
+	Locked          bool                   `pulumi:"locked"`
+	Name            string                 `pulumi:"name"`
+	RoleTemplateIds []string               `pulumi:"roleTemplateIds"`
+	Rules           []GetRoleTemplateRule  `pulumi:"rules"`
 }

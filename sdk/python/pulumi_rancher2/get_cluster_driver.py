@@ -57,41 +57,26 @@ class GetClusterDriverResult:
     @property
     @pulumi.getter
     def active(self) -> bool:
-        """
-        (Computed) Specify if the cluster driver state (bool)
-        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter(name="actualUrl")
     def actual_url(self) -> str:
-        """
-        (Computed) Actual url of the cluster driver (string)
-        """
         return pulumi.get(self, "actual_url")
 
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations of the resource (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def builtin(self) -> bool:
-        """
-        (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
-        """
         return pulumi.get(self, "builtin")
 
     @property
     @pulumi.getter
     def checksum(self) -> str:
-        """
-        (Computed) Verify that the downloaded driver matches the expected checksum (string)
-        """
         return pulumi.get(self, "checksum")
 
     @property
@@ -105,9 +90,6 @@ class GetClusterDriverResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels of the resource (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -118,9 +100,6 @@ class GetClusterDriverResult:
     @property
     @pulumi.getter(name="uiUrl")
     def ui_url(self) -> str:
-        """
-        (Computed) The URL to load for customized Add Clusters screen for this driver (string)
-        """
         return pulumi.get(self, "ui_url")
 
     @property
@@ -131,9 +110,6 @@ class GetClusterDriverResult:
     @property
     @pulumi.getter(name="whitelistDomains")
     def whitelist_domains(self) -> List[str]:
-        """
-        (Computed) Domains to whitelist for the ui (list)
-        """
         return pulumi.get(self, "whitelist_domains")
 
 
@@ -160,20 +136,7 @@ def get_cluster_driver(name: Optional[str] = None,
                        url: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterDriverResult:
     """
-    Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_cluster_driver(name="foo")
-    ```
-
-
-    :param str name: Name of the cluster driver (string)
-    :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

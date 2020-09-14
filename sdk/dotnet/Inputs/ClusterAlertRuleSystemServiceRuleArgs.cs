@@ -12,9 +12,6 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlertRuleSystemServiceRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 

@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterScheduledClusterScan
     {
-        /// <summary>
-        /// Enable scheduled cluster scan. Default: `false` (bool)
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// Cluster scan config (List maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterScheduledClusterScanScanConfig ScanConfig;
-        /// <summary>
-        /// Cluster scan schedule config (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterScheduledClusterScanScheduleConfig ScheduleConfig;
 
         [OutputConstructor]

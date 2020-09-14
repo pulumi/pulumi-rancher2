@@ -12,18 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("global")]
         public Input<Inputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs>? Global { get; set; }
 
         [Input("serviceOverrides")]
         private InputList<Inputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs>? _serviceOverrides;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public InputList<Inputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs> ServiceOverrides
         {
             get => _serviceOverrides ?? (_serviceOverrides = new InputList<Inputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs>());

@@ -9,43 +9,10 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
-    /// 
-    /// When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 User
-    ///         var fooUser = new Rancher2.User("fooUser", new Rancher2.UserArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Password = "changeme",
-    ///             Username = "foo",
-    ///         });
-    ///         // Create a new rancher2 global_role_binding for User
-    ///         var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new Rancher2.GlobalRoleBindingArgs
-    ///         {
-    ///             GlobalRoleId = "user-base",
-    ///             UserId = fooUser.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
@@ -54,32 +21,20 @@ namespace Pulumi.Rancher2
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The user full name (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The user password (string)
-        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The user principal IDs (list)
-        /// </summary>
         [Output("principalIds")]
         public Output<ImmutableArray<string>> PrincipalIds { get; private set; } = null!;
 
-        /// <summary>
-        /// The user username (string)
-        /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
@@ -133,7 +88,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -148,7 +103,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -156,21 +111,12 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The user full name (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The user password (string)
-        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
-        /// <summary>
-        /// The user username (string)
-        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -185,7 +131,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for global role binding (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -200,7 +146,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for global role binding (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -208,33 +154,20 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The user full name (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The user password (string)
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         [Input("principalIds")]
         private InputList<string>? _principalIds;
-
-        /// <summary>
-        /// (Computed) The user principal IDs (list)
-        /// </summary>
         public InputList<string> PrincipalIds
         {
             get => _principalIds ?? (_principalIds = new InputList<string>());
             set => _principalIds = value;
         }
 
-        /// <summary>
-        /// The user username (string)
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

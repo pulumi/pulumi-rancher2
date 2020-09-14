@@ -6,38 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a Rancher v2 certificate.
- *
- * Depending of the availability, there are 2 types of Rancher v2 certificates:
- * - Project certificate: Available to all namespaces in the `projectId`
- * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Retrieve a rancher2 Project Certificate
- * const foo = pulumi.output(rancher2.getCertificate({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * }, { async: true }));
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Retrieve a rancher2 Namespaced Certificate
- * const foo = pulumi.output(rancher2.getCertificate({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * }, { async: true }));
- * ```
- */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {
         opts = {}
@@ -57,17 +25,8 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getCertificate.
  */
 export interface GetCertificateArgs {
-    /**
-     * The name of the certificate (string)
-     */
     readonly name: string;
-    /**
-     * The namespace id where to assign the namespaced certificate (string)
-     */
     readonly namespaceId?: string;
-    /**
-     * The project id where to assign the certificate (string)
-     */
     readonly projectId: string;
 }
 
@@ -75,25 +34,13 @@ export interface GetCertificateArgs {
  * A collection of values returned by getCertificate.
  */
 export interface GetCertificateResult {
-    /**
-     * (Computed) Annotations for certificate object (map)
-     */
     readonly annotations: {[key: string]: any};
-    /**
-     * (Computed) Base64 encoded certs (string)
-     */
     readonly certs: string;
-    /**
-     * (Computed) A certificate description (string)
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Computed) Labels for certificate object (map)
-     */
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly namespaceId?: string;

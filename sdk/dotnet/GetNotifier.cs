@@ -11,33 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetNotifier
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 notifier.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetNotifier.InvokeAsync(new Rancher2.GetNotifierArgs
-        ///         {
-        ///             ClusterId = "&lt;cluster_id&gt;",
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithVersion());
     }
@@ -45,15 +18,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetNotifierArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The cluster id where create notifier (string)
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the notifier (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -66,43 +33,19 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetNotifierResult
     {
-        /// <summary>
-        /// (Computed) Annotations for notifier object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
-        /// <summary>
-        /// (Computed) The notifier description (string)
-        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels for notifier object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) Pagerduty config for notifier (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetNotifierPagerdutyConfigResult PagerdutyConfig;
-        /// <summary>
-        /// (Computed) Slack config for notifier (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetNotifierSlackConfigResult SlackConfig;
-        /// <summary>
-        /// (Computed) SMTP config for notifier (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetNotifierSmtpConfigResult SmtpConfig;
-        /// <summary>
-        /// (Computed) Webhook config for notifier (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetNotifierWebhookConfigResult WebhookConfig;
-        /// <summary>
-        /// (Computed) Wechat config for notifier (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetNotifierWechatConfigResult WechatConfig;
 
         [OutputConstructor]

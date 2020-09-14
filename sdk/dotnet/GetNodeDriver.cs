@@ -11,32 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetNodeDriver
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetNodeDriver.InvokeAsync(new Rancher2.GetNodeDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetNodeDriverResult> InvokeAsync(GetNodeDriverArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithVersion());
     }
@@ -44,15 +18,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetNodeDriverArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the node driver (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The URL to download the machine driver binary for 64-bit Linux (string)
-        /// </summary>
         [Input("url")]
         public string? Url { get; set; }
 
@@ -65,47 +33,20 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetNodeDriverResult
     {
-        /// <summary>
-        /// (Computed) Specify if the node driver state (bool)
-        /// </summary>
         public readonly bool Active;
-        /// <summary>
-        /// (Computed) Annotations of the resource (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
-        /// <summary>
-        /// (Computed) Specify wheter the node driver is an internal cluster driver or not (bool)
-        /// </summary>
         public readonly bool Builtin;
-        /// <summary>
-        /// (Computed) Verify that the downloaded driver matches the expected checksum (string)
-        /// </summary>
         public readonly string Checksum;
-        /// <summary>
-        /// (Computed) Description of the node driver (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed) External ID (string)
-        /// </summary>
         public readonly string ExternalId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels of the resource (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) The URL to load for customized Add Node screen for this driver (string)
-        /// </summary>
         public readonly string UiUrl;
         public readonly string Url;
-        /// <summary>
-        /// (Computed) Domains to whitelist for the ui (list)
-        /// </summary>
         public readonly ImmutableArray<string> WhitelistDomains;
 
         [OutputConstructor]

@@ -10,72 +10,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Auth Config Ping resource. This can be used to configure and enable Auth Config Ping for Rancher v2 RKE clusters and retrieve their information.
-//
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewAuthConfigPing(ctx, "ping", &rancher2.AuthConfigPingArgs{
-// 			DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
-// 			GroupsField:        pulumi.String("<GROUPS_FIELD>"),
-// 			IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
-// 			RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
-// 			SpCert:             pulumi.String("<SP_CERT>"),
-// 			SpKey:              pulumi.String("<SP_KEY>"),
-// 			UidField:           pulumi.String("<UID_FIELD>"),
-// 			UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type AuthConfigPing struct {
 	pulumi.CustomResourceState
 
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Ping display name field (string)
-	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Ping group field (string)
-	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
-	// Ping IDP metadata content (string)
-	IdpMetadataContent pulumi.StringOutput `pulumi:"idpMetadataContent"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Annotations of the resource
+	Annotations        pulumi.MapOutput     `pulumi:"annotations"`
+	DisplayNameField   pulumi.StringOutput  `pulumi:"displayNameField"`
+	Enabled            pulumi.BoolPtrOutput `pulumi:"enabled"`
+	GroupsField        pulumi.StringOutput  `pulumi:"groupsField"`
+	IdpMetadataContent pulumi.StringOutput  `pulumi:"idpMetadataContent"`
+	// Labels of the resource
+	Labels         pulumi.MapOutput    `pulumi:"labels"`
+	Name           pulumi.StringOutput `pulumi:"name"`
 	RancherApiHost pulumi.StringOutput `pulumi:"rancherApiHost"`
-	// Ping SP cert (string)
-	SpCert pulumi.StringOutput `pulumi:"spCert"`
-	// Ping SP key (string)
-	SpKey pulumi.StringOutput `pulumi:"spKey"`
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Ping UID field (string)
-	UidField pulumi.StringOutput `pulumi:"uidField"`
-	// Ping user name field (string)
-	UserNameField pulumi.StringOutput `pulumi:"userNameField"`
+	SpCert         pulumi.StringOutput `pulumi:"spCert"`
+	SpKey          pulumi.StringOutput `pulumi:"spKey"`
+	Type           pulumi.StringOutput `pulumi:"type"`
+	UidField       pulumi.StringOutput `pulumi:"uidField"`
+	UserNameField  pulumi.StringOutput `pulumi:"userNameField"`
 }
 
 // NewAuthConfigPing registers a new resource with the given unique name, arguments, and options.
@@ -130,69 +84,43 @@ func GetAuthConfigPing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigPing resources.
 type authConfigPingState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Ping display name field (string)
-	DisplayNameField *string `pulumi:"displayNameField"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Ping group field (string)
-	GroupsField *string `pulumi:"groupsField"`
-	// Ping IDP metadata content (string)
-	IdpMetadataContent *string `pulumi:"idpMetadataContent"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name *string `pulumi:"name"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-	RancherApiHost *string `pulumi:"rancherApiHost"`
-	// Ping SP cert (string)
-	SpCert *string `pulumi:"spCert"`
-	// Ping SP key (string)
-	SpKey *string `pulumi:"spKey"`
-	// (Computed) The type of the resource (string)
-	Type *string `pulumi:"type"`
-	// Ping UID field (string)
-	UidField *string `pulumi:"uidField"`
-	// Ping user name field (string)
-	UserNameField *string `pulumi:"userNameField"`
+	// Annotations of the resource
+	Annotations        map[string]interface{} `pulumi:"annotations"`
+	DisplayNameField   *string                `pulumi:"displayNameField"`
+	Enabled            *bool                  `pulumi:"enabled"`
+	GroupsField        *string                `pulumi:"groupsField"`
+	IdpMetadataContent *string                `pulumi:"idpMetadataContent"`
+	// Labels of the resource
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           *string                `pulumi:"name"`
+	RancherApiHost *string                `pulumi:"rancherApiHost"`
+	SpCert         *string                `pulumi:"spCert"`
+	SpKey          *string                `pulumi:"spKey"`
+	Type           *string                `pulumi:"type"`
+	UidField       *string                `pulumi:"uidField"`
+	UserNameField  *string                `pulumi:"userNameField"`
 }
 
 type AuthConfigPingState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// Ping display name field (string)
-	DisplayNameField pulumi.StringPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Ping group field (string)
-	GroupsField pulumi.StringPtrInput
-	// Ping IDP metadata content (string)
+	// Annotations of the resource
+	Annotations        pulumi.MapInput
+	DisplayNameField   pulumi.StringPtrInput
+	Enabled            pulumi.BoolPtrInput
+	GroupsField        pulumi.StringPtrInput
 	IdpMetadataContent pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringPtrInput
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Labels of the resource
+	Labels         pulumi.MapInput
+	Name           pulumi.StringPtrInput
 	RancherApiHost pulumi.StringPtrInput
-	// Ping SP cert (string)
-	SpCert pulumi.StringPtrInput
-	// Ping SP key (string)
-	SpKey pulumi.StringPtrInput
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringPtrInput
-	// Ping UID field (string)
-	UidField pulumi.StringPtrInput
-	// Ping user name field (string)
-	UserNameField pulumi.StringPtrInput
+	SpCert         pulumi.StringPtrInput
+	SpKey          pulumi.StringPtrInput
+	Type           pulumi.StringPtrInput
+	UidField       pulumi.StringPtrInput
+	UserNameField  pulumi.StringPtrInput
 }
 
 func (AuthConfigPingState) ElementType() reflect.Type {
@@ -200,62 +128,40 @@ func (AuthConfigPingState) ElementType() reflect.Type {
 }
 
 type authConfigPingArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Ping display name field (string)
-	DisplayNameField string `pulumi:"displayNameField"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Ping group field (string)
-	GroupsField string `pulumi:"groupsField"`
-	// Ping IDP metadata content (string)
-	IdpMetadataContent string `pulumi:"idpMetadataContent"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
-	RancherApiHost string `pulumi:"rancherApiHost"`
-	// Ping SP cert (string)
-	SpCert string `pulumi:"spCert"`
-	// Ping SP key (string)
-	SpKey string `pulumi:"spKey"`
-	// Ping UID field (string)
-	UidField string `pulumi:"uidField"`
-	// Ping user name field (string)
-	UserNameField string `pulumi:"userNameField"`
+	// Annotations of the resource
+	Annotations        map[string]interface{} `pulumi:"annotations"`
+	DisplayNameField   string                 `pulumi:"displayNameField"`
+	Enabled            *bool                  `pulumi:"enabled"`
+	GroupsField        string                 `pulumi:"groupsField"`
+	IdpMetadataContent string                 `pulumi:"idpMetadataContent"`
+	// Labels of the resource
+	Labels         map[string]interface{} `pulumi:"labels"`
+	RancherApiHost string                 `pulumi:"rancherApiHost"`
+	SpCert         string                 `pulumi:"spCert"`
+	SpKey          string                 `pulumi:"spKey"`
+	UidField       string                 `pulumi:"uidField"`
+	UserNameField  string                 `pulumi:"userNameField"`
 }
 
 // The set of arguments for constructing a AuthConfigPing resource.
 type AuthConfigPingArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// Ping display name field (string)
-	DisplayNameField pulumi.StringInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Ping group field (string)
-	GroupsField pulumi.StringInput
-	// Ping IDP metadata content (string)
+	// Annotations of the resource
+	Annotations        pulumi.MapInput
+	DisplayNameField   pulumi.StringInput
+	Enabled            pulumi.BoolPtrInput
+	GroupsField        pulumi.StringInput
 	IdpMetadataContent pulumi.StringInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Labels of the resource
+	Labels         pulumi.MapInput
 	RancherApiHost pulumi.StringInput
-	// Ping SP cert (string)
-	SpCert pulumi.StringInput
-	// Ping SP key (string)
-	SpKey pulumi.StringInput
-	// Ping UID field (string)
-	UidField pulumi.StringInput
-	// Ping user name field (string)
-	UserNameField pulumi.StringInput
+	SpCert         pulumi.StringInput
+	SpKey          pulumi.StringInput
+	UidField       pulumi.StringInput
+	UserNameField  pulumi.StringInput
 }
 
 func (AuthConfigPingArgs) ElementType() reflect.Type {

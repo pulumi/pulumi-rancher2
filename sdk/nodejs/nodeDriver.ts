@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Node Driver
- * const foo = new rancher2.NodeDriver("foo", {
- *     active: true,
- *     builtin: false,
- *     checksum: "0x0",
- *     description: "Foo description",
- *     externalId: "foo_external",
- *     uiUrl: "local://ui",
- *     url: "local://",
- *     whitelistDomains: ["*.foo.com"],
- * });
- * ```
- */
 export class NodeDriver extends pulumi.CustomResource {
     /**
      * Get an existing NodeDriver resource's state with the given name, ID, and optional extra
@@ -54,49 +32,22 @@ export class NodeDriver extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeDriver.__pulumiType;
     }
 
-    /**
-     * Specify if the node driver state (bool)
-     */
     public readonly active!: pulumi.Output<boolean>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Specify wheter the node driver is an internal node driver or not (bool)
-     */
     public readonly builtin!: pulumi.Output<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     public readonly checksum!: pulumi.Output<string | undefined>;
-    /**
-     * Description of the node driver (string)
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * External ID (string)
-     */
     public readonly externalId!: pulumi.Output<string | undefined>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Name of the node driver (string)
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The URL to load for customized Add Nodes screen for this driver (string)
-     */
     public readonly uiUrl!: pulumi.Output<string | undefined>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     public readonly url!: pulumi.Output<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     public readonly whitelistDomains!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -160,49 +111,22 @@ export class NodeDriver extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeDriver resources.
  */
 export interface NodeDriverState {
-    /**
-     * Specify if the node driver state (bool)
-     */
     readonly active?: pulumi.Input<boolean>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Specify wheter the node driver is an internal node driver or not (bool)
-     */
     readonly builtin?: pulumi.Input<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     readonly checksum?: pulumi.Input<string>;
-    /**
-     * Description of the node driver (string)
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * External ID (string)
-     */
     readonly externalId?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of the node driver (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The URL to load for customized Add Nodes screen for this driver (string)
-     */
     readonly uiUrl?: pulumi.Input<string>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     readonly url?: pulumi.Input<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -210,48 +134,21 @@ export interface NodeDriverState {
  * The set of arguments for constructing a NodeDriver resource.
  */
 export interface NodeDriverArgs {
-    /**
-     * Specify if the node driver state (bool)
-     */
     readonly active: pulumi.Input<boolean>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Specify wheter the node driver is an internal node driver or not (bool)
-     */
     readonly builtin: pulumi.Input<boolean>;
-    /**
-     * Verify that the downloaded driver matches the expected checksum (string)
-     */
     readonly checksum?: pulumi.Input<string>;
-    /**
-     * Description of the node driver (string)
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * External ID (string)
-     */
     readonly externalId?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of the node driver (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The URL to load for customized Add Nodes screen for this driver (string)
-     */
     readonly uiUrl?: pulumi.Input<string>;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     readonly url: pulumi.Input<string>;
-    /**
-     * Domains to whitelist for the ui (list)
-     */
     readonly whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }

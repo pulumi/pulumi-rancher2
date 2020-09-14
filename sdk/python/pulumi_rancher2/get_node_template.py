@@ -69,89 +69,56 @@ class GetNodeTemplateResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for Node Template object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="cloudCredentialId")
     def cloud_credential_id(self) -> str:
-        """
-        (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
-        """
         return pulumi.get(self, "cloud_credential_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) Description for the Node Template (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def driver(self) -> str:
-        """
-        (Computed) The driver of the node template (string)
-        """
         return pulumi.get(self, "driver")
 
     @property
     @pulumi.getter(name="engineEnv")
     def engine_env(self) -> Mapping[str, Any]:
-        """
-        (Computed) Engine environment for the node template (string)
-        """
         return pulumi.get(self, "engine_env")
 
     @property
     @pulumi.getter(name="engineInsecureRegistries")
     def engine_insecure_registries(self) -> List[str]:
-        """
-        (Computed) Insecure registry for the node template (list)
-        """
         return pulumi.get(self, "engine_insecure_registries")
 
     @property
     @pulumi.getter(name="engineInstallUrl")
     def engine_install_url(self) -> str:
-        """
-        (Computed) Docker engine install URL for the node template (string)
-        """
         return pulumi.get(self, "engine_install_url")
 
     @property
     @pulumi.getter(name="engineLabel")
     def engine_label(self) -> Mapping[str, Any]:
-        """
-        (Computed) Engine label for the node template (string)
-        """
         return pulumi.get(self, "engine_label")
 
     @property
     @pulumi.getter(name="engineOpt")
     def engine_opt(self) -> Mapping[str, Any]:
-        """
-        (Computed) Engine options for the node template (map)
-        """
         return pulumi.get(self, "engine_opt")
 
     @property
     @pulumi.getter(name="engineRegistryMirrors")
     def engine_registry_mirrors(self) -> List[str]:
-        """
-        (Computed) Engine registry mirror for the node template (list)
-        """
         return pulumi.get(self, "engine_registry_mirrors")
 
     @property
     @pulumi.getter(name="engineStorageDriver")
     def engine_storage_driver(self) -> str:
-        """
-        (Computed) Engine storage driver for the node template (string)
-        """
         return pulumi.get(self, "engine_storage_driver")
 
     @property
@@ -165,9 +132,6 @@ class GetNodeTemplateResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for Node Template object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -178,9 +142,6 @@ class GetNodeTemplateResult:
     @property
     @pulumi.getter(name="useInternalIpAddress")
     def use_internal_ip_address(self) -> Optional[bool]:
-        """
-        (Computed) Engine storage driver for the node template (bool)
-        """
         return pulumi.get(self, "use_internal_ip_address")
 
 
@@ -211,20 +172,7 @@ def get_node_template(name: Optional[str] = None,
                       use_internal_ip_address: Optional[bool] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTemplateResult:
     """
-    Use this data source to retrieve information about a Rancher v2 Node Template resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_node_template(name="foo")
-    ```
-
-
-    :param str name: The name of the Node Template (string)
-    :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -67,25 +67,16 @@ class GetRoleTemplateResult:
     @property
     @pulumi.getter
     def administrative(self) -> bool:
-        """
-        (Computed) Administrative role template (bool)
-        """
         return pulumi.get(self, "administrative")
 
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for role template object (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def builtin(self) -> bool:
-        """
-        (Computed) Builtin role template (string)
-        """
         return pulumi.get(self, "builtin")
 
     @property
@@ -96,33 +87,21 @@ class GetRoleTemplateResult:
     @property
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> bool:
-        """
-        (Computed) Default role template for new created cluster or project (bool)
-        """
         return pulumi.get(self, "default_role")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) Role template description (string)
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def external(self) -> bool:
-        """
-        (Computed) External role template (bool)
-        """
         return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
     def hidden(self) -> bool:
-        """
-        (Computed) Hidden role template (bool)
-        """
         return pulumi.get(self, "hidden")
 
     @property
@@ -136,17 +115,11 @@ class GetRoleTemplateResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for role template object (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def locked(self) -> bool:
-        """
-        (Computed) Locked role template (bool)
-        """
         return pulumi.get(self, "locked")
 
     @property
@@ -157,17 +130,11 @@ class GetRoleTemplateResult:
     @property
     @pulumi.getter(name="roleTemplateIds")
     def role_template_ids(self) -> List[str]:
-        """
-        (Computed) Inherit role template IDs (list)
-        """
         return pulumi.get(self, "role_template_ids")
 
     @property
     @pulumi.getter
     def rules(self) -> List['outputs.GetRoleTemplateRuleResult']:
-        """
-        (Computed) Role template policy rules (list)
-        """
         return pulumi.get(self, "rules")
 
 
@@ -197,20 +164,7 @@ def get_role_template(context: Optional[str] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleTemplateResult:
     """
-    Use this data source to retrieve information about a Rancher v2 role template resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_role_template(name="foo")
-    ```
-
-
-    :param str context: Role template context. `cluster` and `project` values are supported (string)
-    :param str name: The name of the Node Template (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['context'] = context

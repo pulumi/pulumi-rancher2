@@ -12,15 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class PodSecurityPolicyTemplateAllowedHostPathGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("pathPrefix", required: true)]
         public Input<string> PathPrefix { get; set; } = null!;
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 

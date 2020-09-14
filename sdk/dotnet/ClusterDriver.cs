@@ -9,68 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
-    /// </summary>
     public partial class ClusterDriver : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Specify the cluster driver state (bool)
-        /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
-        /// <summary>
-        /// Actual url of the cluster driver (string)
-        /// </summary>
         [Output("actualUrl")]
         public Output<string?> ActualUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify whether the cluster driver is an internal cluster driver or not (bool)
-        /// </summary>
         [Output("builtin")]
         public Output<bool> Builtin { get; private set; } = null!;
 
-        /// <summary>
-        /// Verify that the downloaded driver matches the expected checksum (string)
-        /// </summary>
         [Output("checksum")]
         public Output<string?> Checksum { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the cluster driver (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The URL to load for customized Add Clusters screen for this driver (string)
-        /// </summary>
         [Output("uiUrl")]
         public Output<string?> UiUrl { get; private set; } = null!;
 
-        /// <summary>
-        /// The URL to download the machine driver binary for 64-bit Linux (string)
-        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
-        /// <summary>
-        /// Domains to whitelist for the ui (list)
-        /// </summary>
         [Output("whitelistDomains")]
         public Output<ImmutableArray<string>> WhitelistDomains { get; private set; } = null!;
 
@@ -120,15 +93,9 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterDriverArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specify the cluster driver state (bool)
-        /// </summary>
         [Input("active", required: true)]
         public Input<bool> Active { get; set; } = null!;
 
-        /// <summary>
-        /// Actual url of the cluster driver (string)
-        /// </summary>
         [Input("actualUrl")]
         public Input<string>? ActualUrl { get; set; }
 
@@ -136,7 +103,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -144,15 +111,9 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Specify whether the cluster driver is an internal cluster driver or not (bool)
-        /// </summary>
         [Input("builtin", required: true)]
         public Input<bool> Builtin { get; set; } = null!;
 
-        /// <summary>
-        /// Verify that the downloaded driver matches the expected checksum (string)
-        /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
 
@@ -160,7 +121,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -168,30 +129,17 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Name of the cluster driver (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The URL to load for customized Add Clusters screen for this driver (string)
-        /// </summary>
         [Input("uiUrl")]
         public Input<string>? UiUrl { get; set; }
 
-        /// <summary>
-        /// The URL to download the machine driver binary for 64-bit Linux (string)
-        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("whitelistDomains")]
         private InputList<string>? _whitelistDomains;
-
-        /// <summary>
-        /// Domains to whitelist for the ui (list)
-        /// </summary>
         public InputList<string> WhitelistDomains
         {
             get => _whitelistDomains ?? (_whitelistDomains = new InputList<string>());
@@ -205,15 +153,9 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterDriverState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specify the cluster driver state (bool)
-        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
-        /// <summary>
-        /// Actual url of the cluster driver (string)
-        /// </summary>
         [Input("actualUrl")]
         public Input<string>? ActualUrl { get; set; }
 
@@ -221,7 +163,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -229,15 +171,9 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Specify whether the cluster driver is an internal cluster driver or not (bool)
-        /// </summary>
         [Input("builtin")]
         public Input<bool>? Builtin { get; set; }
 
-        /// <summary>
-        /// Verify that the downloaded driver matches the expected checksum (string)
-        /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
 
@@ -245,7 +181,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -253,30 +189,17 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Name of the cluster driver (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The URL to load for customized Add Clusters screen for this driver (string)
-        /// </summary>
         [Input("uiUrl")]
         public Input<string>? UiUrl { get; set; }
 
-        /// <summary>
-        /// The URL to download the machine driver binary for 64-bit Linux (string)
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         [Input("whitelistDomains")]
         private InputList<string>? _whitelistDomains;
-
-        /// <summary>
-        /// Domains to whitelist for the ui (list)
-        /// </summary>
         public InputList<string> WhitelistDomains
         {
             get => _whitelistDomains ?? (_whitelistDomains = new InputList<string>());

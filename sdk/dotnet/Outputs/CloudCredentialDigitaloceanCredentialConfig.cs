@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class CloudCredentialDigitaloceanCredentialConfig
     {
-        /// <summary>
-        /// DigitalOcean access token (string)
-        /// </summary>
         public readonly string AccessToken;
 
         [OutputConstructor]

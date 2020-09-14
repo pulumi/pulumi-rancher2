@@ -13,21 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionQuestion
     {
-        /// <summary>
-        /// Default variable value (string)
-        /// </summary>
         public readonly string Default;
-        /// <summary>
-        /// Required variable. Default `false` (bool)
-        /// </summary>
         public readonly bool? Required;
-        /// <summary>
-        /// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
-        /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// Variable name (string)
-        /// </summary>
         public readonly string Variable;
 
         [OutputConstructor]

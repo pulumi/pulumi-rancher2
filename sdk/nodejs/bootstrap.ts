@@ -32,49 +32,16 @@ export class Bootstrap extends pulumi.CustomResource {
         return obj['__pulumiType'] === Bootstrap.__pulumiType;
     }
 
-    /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-     */
     public readonly currentPassword!: pulumi.Output<string>;
-    /**
-     * Password for Admin user or random generated if empty (string)
-     */
     public readonly password!: pulumi.Output<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
     public readonly telemetry!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Computed) Generated API temporary token as helper. Should be empty (string)
-     */
     public /*out*/ readonly tempToken!: pulumi.Output<string>;
-    /**
-     * (Computed) Generated API temporary token id as helper. Should be empty (string)
-     */
     public /*out*/ readonly tempTokenId!: pulumi.Output<string>;
-    /**
-     * (Computed) Generated API token for Admin User (string)
-     */
     public /*out*/ readonly token!: pulumi.Output<string>;
-    /**
-     * (Computed) Generated API token id for Admin User (string)
-     */
     public /*out*/ readonly tokenId!: pulumi.Output<string>;
-    /**
-     * TTL in seconds for generated admin token. Default: `0`  (int)
-     */
     public readonly tokenTtl!: pulumi.Output<number | undefined>;
-    /**
-     * Regenerate admin token. Default: `false` (bool)
-     */
     public readonly tokenUpdate!: pulumi.Output<boolean | undefined>;
-    /**
-     * (Computed) URL set as server-url (string)
-     */
     public /*out*/ readonly url!: pulumi.Output<string>;
-    /**
-     * (Computed) Admin username (string)
-     */
     public /*out*/ readonly user!: pulumi.Output<string>;
 
     /**
@@ -129,49 +96,16 @@ export class Bootstrap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Bootstrap resources.
  */
 export interface BootstrapState {
-    /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-     */
     readonly currentPassword?: pulumi.Input<string>;
-    /**
-     * Password for Admin user or random generated if empty (string)
-     */
     readonly password?: pulumi.Input<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
     readonly telemetry?: pulumi.Input<boolean>;
-    /**
-     * (Computed) Generated API temporary token as helper. Should be empty (string)
-     */
     readonly tempToken?: pulumi.Input<string>;
-    /**
-     * (Computed) Generated API temporary token id as helper. Should be empty (string)
-     */
     readonly tempTokenId?: pulumi.Input<string>;
-    /**
-     * (Computed) Generated API token for Admin User (string)
-     */
     readonly token?: pulumi.Input<string>;
-    /**
-     * (Computed) Generated API token id for Admin User (string)
-     */
     readonly tokenId?: pulumi.Input<string>;
-    /**
-     * TTL in seconds for generated admin token. Default: `0`  (int)
-     */
     readonly tokenTtl?: pulumi.Input<number>;
-    /**
-     * Regenerate admin token. Default: `false` (bool)
-     */
     readonly tokenUpdate?: pulumi.Input<boolean>;
-    /**
-     * (Computed) URL set as server-url (string)
-     */
     readonly url?: pulumi.Input<string>;
-    /**
-     * (Computed) Admin username (string)
-     */
     readonly user?: pulumi.Input<string>;
 }
 
@@ -179,24 +113,9 @@ export interface BootstrapState {
  * The set of arguments for constructing a Bootstrap resource.
  */
 export interface BootstrapArgs {
-    /**
-     * Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-     */
     readonly currentPassword?: pulumi.Input<string>;
-    /**
-     * Password for Admin user or random generated if empty (string)
-     */
     readonly password?: pulumi.Input<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
     readonly telemetry?: pulumi.Input<boolean>;
-    /**
-     * TTL in seconds for generated admin token. Default: `0`  (int)
-     */
     readonly tokenTtl?: pulumi.Input<number>;
-    /**
-     * Regenerate admin token. Default: `false` (bool)
-     */
     readonly tokenUpdate?: pulumi.Input<boolean>;
 }

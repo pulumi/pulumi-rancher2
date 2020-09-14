@@ -11,32 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetCluster
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 cluster.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo_custom = Output.Create(Rancher2.GetCluster.InvokeAsync(new Rancher2.GetClusterArgs
-        ///         {
-        ///             Name = "foo-custom",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("rancher2:index/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the Cluster (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -59,100 +30,34 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterResult
     {
-        /// <summary>
-        /// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterAksConfigResult AksConfig;
-        /// <summary>
-        /// (Computed) Annotations for Node Pool object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
-        /// <summary>
-        /// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterClusterAuthEndpointResult ClusterAuthEndpoint;
-        /// <summary>
-        /// (Computed) Cluster monitoring config (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterClusterMonitoringInputResult ClusterMonitoringInput;
-        /// <summary>
-        /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterClusterRegistrationTokenResult ClusterRegistrationToken;
-        /// <summary>
-        /// (Computed) Cluster template answers (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterClusterTemplateAnswersResult ClusterTemplateAnswers;
-        /// <summary>
-        /// (Computed) Cluster template ID (string)
-        /// </summary>
         public readonly string ClusterTemplateId;
-        /// <summary>
-        /// (Computed) Cluster template questions (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterClusterTemplateQuestionResult> ClusterTemplateQuestions;
-        /// <summary>
-        /// (Computed) Cluster template revision ID (string)
-        /// </summary>
         public readonly string ClusterTemplateRevisionId;
-        /// <summary>
-        /// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        /// </summary>
         public readonly string DefaultPodSecurityPolicyTemplateId;
-        /// <summary>
-        /// (Computed) Default project ID for the cluster (string)
-        /// </summary>
         public readonly string DefaultProjectId;
-        /// <summary>
-        /// (Computed) The description for Cluster (string)
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        /// </summary>
         public readonly string Driver;
-        /// <summary>
-        /// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterEksConfigResult EksConfig;
         public readonly bool EnableClusterAlerting;
-        /// <summary>
-        /// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-        /// </summary>
         public readonly bool EnableClusterMonitoring;
-        /// <summary>
-        /// (Computed) Enable project network isolation. Default `false` (bool)
-        /// </summary>
         public readonly bool EnableNetworkPolicy;
-        /// <summary>
-        /// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterGkeConfigResult GkeConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterK3sConfigResult K3sConfig;
-        /// <summary>
-        /// (Computed) Kube Config generated for the cluster (string)
-        /// </summary>
         public readonly string KubeConfig;
-        /// <summary>
-        /// (Computed) Labels for Node Pool object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
-        /// </summary>
         public readonly Outputs.GetClusterRkeConfigResult RkeConfig;
         public readonly ImmutableArray<Outputs.GetClusterScheduledClusterScanResult> ScheduledClusterScans;
-        /// <summary>
-        /// (Computed) System project ID for the cluster (string)
-        /// </summary>
         public readonly string SystemProjectId;
 
         [OutputConstructor]

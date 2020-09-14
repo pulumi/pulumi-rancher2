@@ -47,40 +47,11 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
-
-        In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-
+        Create a AuthConfigOpenLdap resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-        :param pulumi.Input[float] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
-        :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
-        :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `entryDN` (string)
-        :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
-        :param pulumi.Input[str] group_member_user_attribute: Group member user attribute. Default `entryDN` (string)
-        :param pulumi.Input[str] group_name_attribute: Group name attribute. Default `cn` (string)
-        :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
-        :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
-        :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
-        :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
-        :param pulumi.Input[float] port: OpenLdap port. Default `389` (int)
-        :param pulumi.Input[List[pulumi.Input[str]]] servers: OpenLdap servers list (list)
-        :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access OpenLdap service (string)
-        :param pulumi.Input[str] service_account_password: Service account password for access OpenLdap service (string)
-        :param pulumi.Input[bool] tls: Enable TLS connection (bool)
-        :param pulumi.Input[float] user_disabled_bit_mask: User disabled bit mask (int)
-        :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
-        :param pulumi.Input[str] user_login_attribute: User login attribute. Default `uid` (string)
-        :param pulumi.Input[str] user_member_attribute: User member attribute. Default `memberOf` (string)
-        :param pulumi.Input[str] user_name_attribute: User name attribute. Default `givenName` (string)
-        :param pulumi.Input[str] user_object_class: User object class. Default `inetorgperson` (string)
-        :param pulumi.Input[str] user_search_attribute: User search attribute. Default `uid|sn|givenName` (string)
-        :param pulumi.Input[str] user_search_base: User search base DN (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -184,36 +155,8 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-        :param pulumi.Input[float] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
-        :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
-        :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `entryDN` (string)
-        :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
-        :param pulumi.Input[str] group_member_user_attribute: Group member user attribute. Default `entryDN` (string)
-        :param pulumi.Input[str] group_name_attribute: Group name attribute. Default `cn` (string)
-        :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
-        :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
-        :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
-        :param pulumi.Input[str] name: (Computed) The name of the resource (string)
-        :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
-        :param pulumi.Input[float] port: OpenLdap port. Default `389` (int)
-        :param pulumi.Input[List[pulumi.Input[str]]] servers: OpenLdap servers list (list)
-        :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access OpenLdap service (string)
-        :param pulumi.Input[str] service_account_password: Service account password for access OpenLdap service (string)
-        :param pulumi.Input[bool] tls: Enable TLS connection (bool)
-        :param pulumi.Input[str] type: (Computed) The type of the resource (string)
-        :param pulumi.Input[float] user_disabled_bit_mask: User disabled bit mask (int)
-        :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
-        :param pulumi.Input[str] user_login_attribute: User login attribute. Default `uid` (string)
-        :param pulumi.Input[str] user_member_attribute: User member attribute. Default `memberOf` (string)
-        :param pulumi.Input[str] user_name_attribute: User name attribute. Default `givenName` (string)
-        :param pulumi.Input[str] user_object_class: User object class. Default `inetorgperson` (string)
-        :param pulumi.Input[str] user_search_attribute: User search attribute. Default `uid|sn|givenName` (string)
-        :param pulumi.Input[str] user_search_base: User search base DN (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -254,241 +197,157 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        """
         return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
     def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
-        """
-        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        """
         return pulumi.get(self, "allowed_principal_ids")
 
     @property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[Optional[str]]:
-        """
-        Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="connectionTimeout")
     def connection_timeout(self) -> pulumi.Output[Optional[float]]:
-        """
-        OpenLdap connection timeout. Default `5000` (int)
-        """
         return pulumi.get(self, "connection_timeout")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable auth config provider. Default `true` (bool)
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="groupDnAttribute")
     def group_dn_attribute(self) -> pulumi.Output[str]:
-        """
-        Group DN attribute. Default `entryDN` (string)
-        """
         return pulumi.get(self, "group_dn_attribute")
 
     @property
     @pulumi.getter(name="groupMemberMappingAttribute")
     def group_member_mapping_attribute(self) -> pulumi.Output[str]:
-        """
-        Group member mapping attribute. Default `member` (string)
-        """
         return pulumi.get(self, "group_member_mapping_attribute")
 
     @property
     @pulumi.getter(name="groupMemberUserAttribute")
     def group_member_user_attribute(self) -> pulumi.Output[str]:
-        """
-        Group member user attribute. Default `entryDN` (string)
-        """
         return pulumi.get(self, "group_member_user_attribute")
 
     @property
     @pulumi.getter(name="groupNameAttribute")
     def group_name_attribute(self) -> pulumi.Output[str]:
-        """
-        Group name attribute. Default `cn` (string)
-        """
         return pulumi.get(self, "group_name_attribute")
 
     @property
     @pulumi.getter(name="groupObjectClass")
     def group_object_class(self) -> pulumi.Output[str]:
-        """
-        Group object class. Default `groupOfNames` (string)
-        """
         return pulumi.get(self, "group_object_class")
 
     @property
     @pulumi.getter(name="groupSearchAttribute")
     def group_search_attribute(self) -> pulumi.Output[str]:
-        """
-        Group search attribute. Default `cn` (string)
-        """
         return pulumi.get(self, "group_search_attribute")
 
     @property
     @pulumi.getter(name="groupSearchBase")
     def group_search_base(self) -> pulumi.Output[str]:
-        """
-        Group search base (string)
-        """
         return pulumi.get(self, "group_search_base")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        (Computed) The name of the resource (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nestedGroupMembershipEnabled")
     def nested_group_membership_enabled(self) -> pulumi.Output[bool]:
-        """
-        Nested group membership enable. Default `false` (bool)
-        """
         return pulumi.get(self, "nested_group_membership_enabled")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[float]]:
-        """
-        OpenLdap port. Default `389` (int)
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def servers(self) -> pulumi.Output[List[str]]:
-        """
-        OpenLdap servers list (list)
-        """
         return pulumi.get(self, "servers")
 
     @property
     @pulumi.getter(name="serviceAccountDistinguishedName")
     def service_account_distinguished_name(self) -> pulumi.Output[str]:
-        """
-        Service account DN for access OpenLdap service (string)
-        """
         return pulumi.get(self, "service_account_distinguished_name")
 
     @property
     @pulumi.getter(name="serviceAccountPassword")
     def service_account_password(self) -> pulumi.Output[str]:
-        """
-        Service account password for access OpenLdap service (string)
-        """
         return pulumi.get(self, "service_account_password")
 
     @property
     @pulumi.getter
     def tls(self) -> pulumi.Output[bool]:
-        """
-        Enable TLS connection (bool)
-        """
         return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        (Computed) The type of the resource (string)
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="userDisabledBitMask")
     def user_disabled_bit_mask(self) -> pulumi.Output[float]:
-        """
-        User disabled bit mask (int)
-        """
         return pulumi.get(self, "user_disabled_bit_mask")
 
     @property
     @pulumi.getter(name="userEnabledAttribute")
     def user_enabled_attribute(self) -> pulumi.Output[str]:
-        """
-        User enable attribute (string)
-        """
         return pulumi.get(self, "user_enabled_attribute")
 
     @property
     @pulumi.getter(name="userLoginAttribute")
     def user_login_attribute(self) -> pulumi.Output[str]:
-        """
-        User login attribute. Default `uid` (string)
-        """
         return pulumi.get(self, "user_login_attribute")
 
     @property
     @pulumi.getter(name="userMemberAttribute")
     def user_member_attribute(self) -> pulumi.Output[str]:
-        """
-        User member attribute. Default `memberOf` (string)
-        """
         return pulumi.get(self, "user_member_attribute")
 
     @property
     @pulumi.getter(name="userNameAttribute")
     def user_name_attribute(self) -> pulumi.Output[str]:
-        """
-        User name attribute. Default `givenName` (string)
-        """
         return pulumi.get(self, "user_name_attribute")
 
     @property
     @pulumi.getter(name="userObjectClass")
     def user_object_class(self) -> pulumi.Output[str]:
-        """
-        User object class. Default `inetorgperson` (string)
-        """
         return pulumi.get(self, "user_object_class")
 
     @property
     @pulumi.getter(name="userSearchAttribute")
     def user_search_attribute(self) -> pulumi.Output[str]:
-        """
-        User search attribute. Default `uid|sn|givenName` (string)
-        """
         return pulumi.get(self, "user_search_attribute")
 
     @property
     @pulumi.getter(name="userSearchBase")
     def user_search_base(self) -> pulumi.Output[str]:
-        """
-        User search base DN (string)
-        """
         return pulumi.get(self, "user_search_base")
 
     def translate_output_property(self, prop):

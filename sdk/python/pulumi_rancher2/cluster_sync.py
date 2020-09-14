@@ -17,6 +17,7 @@ class ClusterSync(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 state_confirm: Optional[pulumi.Input[float]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
                  wait_monitoring: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -26,9 +27,10 @@ class ClusterSync(pulumi.CustomResource):
         Create a ClusterSync resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
+        :param pulumi.Input[str] cluster_id: Cluster id to sync
+        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: Cluster node pool ids
+        :param pulumi.Input[float] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s)
+        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,6 +53,7 @@ class ClusterSync(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['node_pool_ids'] = node_pool_ids
+            __props__['state_confirm'] = state_confirm
             __props__['synced'] = synced
             __props__['wait_monitoring'] = wait_monitoring
             __props__['default_project_id'] = None
@@ -70,6 +73,7 @@ class ClusterSync(pulumi.CustomResource):
             default_project_id: Optional[pulumi.Input[str]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            state_confirm: Optional[pulumi.Input[float]] = None,
             synced: Optional[pulumi.Input[bool]] = None,
             system_project_id: Optional[pulumi.Input[str]] = None,
             wait_monitoring: Optional[pulumi.Input[bool]] = None) -> 'ClusterSync':
@@ -80,12 +84,10 @@ class ClusterSync(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
-        :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster sync (string)
-        :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
-        :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
+        :param pulumi.Input[str] cluster_id: Cluster id to sync
+        :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: Cluster node pool ids
+        :param pulumi.Input[float] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s)
+        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -95,6 +97,7 @@ class ClusterSync(pulumi.CustomResource):
         __props__["default_project_id"] = default_project_id
         __props__["kube_config"] = kube_config
         __props__["node_pool_ids"] = node_pool_ids
+        __props__["state_confirm"] = state_confirm
         __props__["synced"] = synced
         __props__["system_project_id"] = system_project_id
         __props__["wait_monitoring"] = wait_monitoring
@@ -104,33 +107,35 @@ class ClusterSync(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        The cluster ID that is syncing (string)
+        Cluster id to sync
         """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="defaultProjectId")
     def default_project_id(self) -> pulumi.Output[str]:
-        """
-        (Computed) Default project ID for the cluster sync (string)
-        """
         return pulumi.get(self, "default_project_id")
 
     @property
     @pulumi.getter(name="kubeConfig")
     def kube_config(self) -> pulumi.Output[str]:
-        """
-        (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        """
         return pulumi.get(self, "kube_config")
 
     @property
     @pulumi.getter(name="nodePoolIds")
     def node_pool_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        The node pool IDs used by the cluster id (list)
+        Cluster node pool ids
         """
         return pulumi.get(self, "node_pool_ids")
+
+    @property
+    @pulumi.getter(name="stateConfirm")
+    def state_confirm(self) -> pulumi.Output[Optional[float]]:
+        """
+        Wait until active status is confirmed a number of times (wait interval of 5s)
+        """
+        return pulumi.get(self, "state_confirm")
 
     @property
     @pulumi.getter
@@ -140,16 +145,13 @@ class ClusterSync(pulumi.CustomResource):
     @property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> pulumi.Output[str]:
-        """
-        (Computed) System project ID for the cluster sync (string)
-        """
         return pulumi.get(self, "system_project_id")
 
     @property
     @pulumi.getter(name="waitMonitoring")
     def wait_monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
-        Wait until monitoring is up and running. Default: `false` (bool)
+        Wait until monitoring is up and running
         """
         return pulumi.get(self, "wait_monitoring")
 

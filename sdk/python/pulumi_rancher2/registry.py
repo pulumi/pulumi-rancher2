@@ -28,54 +28,15 @@ class Registry(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
-
-        Depending of the availability, there are 2 types of Rancher v2 docker registries:
-        - Project registry: Available to all namespaces in the `project_id`
-        - Namespaced regitry: Available to just `namespace_id` in the `project_id`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user",
-            )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespaced Registry
-        foo = rancher2.Registry("foo",
-            description="Terraform registry foo",
-            namespace_id="<namespace_id>",
-            project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                password="pass",
-                username="user2",
-            )])
-        ```
-
+        Create a Registry resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
-        :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
-        :param pulumi.Input[str] name: The name of the registry (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
-        :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] description: Description of the docker registry
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Name of the docker registry
+        :param pulumi.Input[str] namespace_id: Namespace ID to add docker registry
+        :param pulumi.Input[str] project_id: Project ID to add docker registry
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,13 +90,12 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
-        :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
-        :param pulumi.Input[str] name: The name of the registry (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
-        :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] description: Description of the docker registry
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Name of the docker registry
+        :param pulumi.Input[str] namespace_id: Namespace ID to add docker registry
+        :param pulumi.Input[str] project_id: Project ID to add docker registry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -154,7 +114,7 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for Registry object (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
@@ -162,7 +122,7 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A registry description (string)
+        Description of the docker registry
         """
         return pulumi.get(self, "description")
 
@@ -170,7 +130,7 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for Registry object (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
@@ -178,7 +138,7 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the registry (string)
+        Name of the docker registry
         """
         return pulumi.get(self, "name")
 
@@ -186,7 +146,7 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The namespace id where to assign the namespaced registry (string)
+        Namespace ID to add docker registry
         """
         return pulumi.get(self, "namespace_id")
 
@@ -194,16 +154,13 @@ class Registry(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id where to assign the registry (string)
+        Project ID to add docker registry
         """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def registries(self) -> pulumi.Output[List['outputs.RegistryRegistry']]:
-        """
-        Registries data for registry (list)
-        """
         return pulumi.get(self, "registries")
 
     def translate_output_property(self, prop):

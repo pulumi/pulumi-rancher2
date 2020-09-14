@@ -12,50 +12,32 @@ namespace Pulumi.Rancher2
     public partial class EtcdBackup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for Etcd Backup object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// Backup config for etcd backup (list maxitems:1)
-        /// </summary>
         [Output("backupConfig")]
         public Output<Outputs.EtcdBackupBackupConfig> BackupConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Cluster ID to config Etcd Backup (string)
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// Filename of the Etcd Backup (string)
-        /// </summary>
         [Output("filename")]
         public Output<string> Filename { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for Etcd Backup object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
-        /// </summary>
         [Output("manual")]
         public Output<bool?> Manual { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Etcd Backup (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Description for the Etcd Backup (string)
-        /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
 
@@ -109,7 +91,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Etcd Backup object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -117,21 +99,12 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Backup config for etcd backup (list maxitems:1)
-        /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.EtcdBackupBackupConfigArgs>? BackupConfig { get; set; }
 
-        /// <summary>
-        /// Cluster ID to config Etcd Backup (string)
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Filename of the Etcd Backup (string)
-        /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
 
@@ -139,7 +112,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Etcd Backup object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -147,21 +120,12 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
-        /// </summary>
         [Input("manual")]
         public Input<bool>? Manual { get; set; }
 
-        /// <summary>
-        /// The name of the Etcd Backup (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Description for the Etcd Backup (string)
-        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
@@ -176,7 +140,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Etcd Backup object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -184,21 +148,12 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Backup config for etcd backup (list maxitems:1)
-        /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.EtcdBackupBackupConfigGetArgs>? BackupConfig { get; set; }
 
-        /// <summary>
-        /// Cluster ID to config Etcd Backup (string)
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// Filename of the Etcd Backup (string)
-        /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
 
@@ -206,7 +161,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Etcd Backup object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -214,21 +169,12 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
-        /// </summary>
         [Input("manual")]
         public Input<bool>? Manual { get; set; }
 
-        /// <summary>
-        /// The name of the Etcd Backup (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Description for the Etcd Backup (string)
-        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 

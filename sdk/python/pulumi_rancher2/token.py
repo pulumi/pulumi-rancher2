@@ -25,35 +25,15 @@ class Token(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
-
-        There are 2 kind of tokens:
-        - no scoped: valid for global system.
-        - scoped: valid for just a specific cluster (`cluster_id` should be provided).
-
-        Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Token scoped
-        foo = rancher2.Token("foo",
-            cluster_id="<cluster-id>",
-            description="foo token",
-            ttl=1200)
-        ```
-
+        Create a Token resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the token (map)
-        :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
-        :param pulumi.Input[str] description: Token description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the token (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] cluster_id: Cluster ID for scoped token
+        :param pulumi.Input[str] description: Token description
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
+        :param pulumi.Input[float] ttl: Token time to live in seconds
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,19 +95,19 @@ class Token(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key: (Computed) Token access key part (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the token (map)
-        :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
-        :param pulumi.Input[str] description: Token description (string)
-        :param pulumi.Input[bool] enabled: (Computed) Token is enabled (bool)
-        :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the token (map)
-        :param pulumi.Input[str] name: (Computed) Token name (string)
+        :param pulumi.Input[str] access_key: Token access key
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] cluster_id: Cluster ID for scoped token
+        :param pulumi.Input[str] description: Token description
+        :param pulumi.Input[bool] enabled: Token enabled
+        :param pulumi.Input[bool] expired: Token expired
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Token name
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
-        :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
-        :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
+        :param pulumi.Input[str] secret_key: Token secret key
+        :param pulumi.Input[str] token: Token value
+        :param pulumi.Input[float] ttl: Token time to live in seconds
+        :param pulumi.Input[str] user_id: Token user ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,7 +132,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[str]:
         """
-        (Computed) Token access key part (string)
+        Token access key
         """
         return pulumi.get(self, "access_key")
 
@@ -160,7 +140,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the token (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
@@ -168,7 +148,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Cluster ID for scoped token (string)
+        Cluster ID for scoped token
         """
         return pulumi.get(self, "cluster_id")
 
@@ -176,7 +156,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Token description (string)
+        Token description
         """
         return pulumi.get(self, "description")
 
@@ -184,7 +164,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        (Computed) Token is enabled (bool)
+        Token enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -192,7 +172,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def expired(self) -> pulumi.Output[bool]:
         """
-        (Computed) Token is expired (bool)
+        Token expired
         """
         return pulumi.get(self, "expired")
 
@@ -200,7 +180,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the token (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
@@ -208,7 +188,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        (Computed) Token name (string)
+        Token name
         """
         return pulumi.get(self, "name")
 
@@ -224,7 +204,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Output[str]:
         """
-        (Computed/Sensitive) Token secret key part (string)
+        Token secret key
         """
         return pulumi.get(self, "secret_key")
 
@@ -232,7 +212,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
         """
-        (Computed/Sensitive) Token value (string)
+        Token value
         """
         return pulumi.get(self, "token")
 
@@ -240,7 +220,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[float]]:
         """
-        Token time to live in seconds. Default `0` (int)
+        Token time to live in seconds
         """
         return pulumi.get(self, "ttl")
 
@@ -248,7 +228,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        (Computed) Token user ID (string)
+        Token user ID
         """
         return pulumi.get(self, "user_id")
 

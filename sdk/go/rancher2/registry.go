@@ -10,88 +10,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
-//
-// Depending of the availability, there are 2 types of Rancher v2 docker registries:
-// - Project registry: Available to all namespaces in the `projectId`
-// - Namespaced regitry: Available to just `namespaceId` in the `projectId`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-// 			Description: pulumi.String("Terraform registry foo"),
-// 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: rancher2.RegistryRegistryArray{
-// 				&rancher2.RegistryRegistryArgs{
-// 					Address:  pulumi.String("test.io"),
-// 					Password: pulumi.String("pass"),
-// 					Username: pulumi.String("user"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-// 			Description: pulumi.String("Terraform registry foo"),
-// 			NamespaceId: pulumi.String("<namespace_id>"),
-// 			ProjectId:   pulumi.String("<project_id>"),
-// 			Registries: rancher2.RegistryRegistryArray{
-// 				&rancher2.RegistryRegistryArgs{
-// 					Address:  pulumi.String("test.io"),
-// 					Password: pulumi.String("pass"),
-// 					Username: pulumi.String("user2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Registry struct {
 	pulumi.CustomResourceState
 
-	// Annotations for Registry object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// A registry description (string)
+	// Description of the docker registry
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Labels for Registry object (map)
+	// Labels of the resource
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the registry (string)
+	// Name of the docker registry
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The namespace id where to assign the namespaced registry (string)
+	// Namespace ID to add docker registry
 	NamespaceId pulumi.StringPtrOutput `pulumi:"namespaceId"`
-	// The project id where to assign the registry (string)
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Registries data for registry (list)
+	// Project ID to add docker registry
+	ProjectId  pulumi.StringOutput         `pulumi:"projectId"`
 	Registries RegistryRegistryArrayOutput `pulumi:"registries"`
 }
 
@@ -129,36 +62,34 @@ func GetRegistry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Registry resources.
 type registryState struct {
-	// Annotations for Registry object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// A registry description (string)
+	// Description of the docker registry
 	Description *string `pulumi:"description"`
-	// Labels for Registry object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the registry (string)
+	// Name of the docker registry
 	Name *string `pulumi:"name"`
-	// The namespace id where to assign the namespaced registry (string)
+	// Namespace ID to add docker registry
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The project id where to assign the registry (string)
-	ProjectId *string `pulumi:"projectId"`
-	// Registries data for registry (list)
+	// Project ID to add docker registry
+	ProjectId  *string            `pulumi:"projectId"`
 	Registries []RegistryRegistry `pulumi:"registries"`
 }
 
 type RegistryState struct {
-	// Annotations for Registry object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// A registry description (string)
+	// Description of the docker registry
 	Description pulumi.StringPtrInput
-	// Labels for Registry object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the registry (string)
+	// Name of the docker registry
 	Name pulumi.StringPtrInput
-	// The namespace id where to assign the namespaced registry (string)
+	// Namespace ID to add docker registry
 	NamespaceId pulumi.StringPtrInput
-	// The project id where to assign the registry (string)
-	ProjectId pulumi.StringPtrInput
-	// Registries data for registry (list)
+	// Project ID to add docker registry
+	ProjectId  pulumi.StringPtrInput
 	Registries RegistryRegistryArrayInput
 }
 
@@ -167,37 +98,35 @@ func (RegistryState) ElementType() reflect.Type {
 }
 
 type registryArgs struct {
-	// Annotations for Registry object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// A registry description (string)
+	// Description of the docker registry
 	Description *string `pulumi:"description"`
-	// Labels for Registry object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the registry (string)
+	// Name of the docker registry
 	Name *string `pulumi:"name"`
-	// The namespace id where to assign the namespaced registry (string)
+	// Namespace ID to add docker registry
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The project id where to assign the registry (string)
-	ProjectId string `pulumi:"projectId"`
-	// Registries data for registry (list)
+	// Project ID to add docker registry
+	ProjectId  string             `pulumi:"projectId"`
 	Registries []RegistryRegistry `pulumi:"registries"`
 }
 
 // The set of arguments for constructing a Registry resource.
 type RegistryArgs struct {
-	// Annotations for Registry object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// A registry description (string)
+	// Description of the docker registry
 	Description pulumi.StringPtrInput
-	// Labels for Registry object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the registry (string)
+	// Name of the docker registry
 	Name pulumi.StringPtrInput
-	// The namespace id where to assign the namespaced registry (string)
+	// Namespace ID to add docker registry
 	NamespaceId pulumi.StringPtrInput
-	// The project id where to assign the registry (string)
-	ProjectId pulumi.StringInput
-	// Registries data for registry (list)
+	// Project ID to add docker registry
+	ProjectId  pulumi.StringInput
 	Registries RegistryRegistryArrayInput
 }
 

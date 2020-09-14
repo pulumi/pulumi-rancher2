@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = pulumi.output(rancher2.getNodeDriver({
- *     name: "foo",
- * }, { async: true }));
- * ```
- */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
     if (!opts) {
         opts = {}
@@ -38,13 +24,7 @@ export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getNodeDriver.
  */
 export interface GetNodeDriverArgs {
-    /**
-     * Name of the node driver (string)
-     */
     readonly name: string;
-    /**
-     * The URL to download the machine driver binary for 64-bit Linux (string)
-     */
     readonly url?: string;
 }
 
@@ -52,46 +32,19 @@ export interface GetNodeDriverArgs {
  * A collection of values returned by getNodeDriver.
  */
 export interface GetNodeDriverResult {
-    /**
-     * (Computed) Specify if the node driver state (bool)
-     */
     readonly active: boolean;
-    /**
-     * (Computed) Annotations of the resource (map)
-     */
     readonly annotations: {[key: string]: any};
-    /**
-     * (Computed) Specify wheter the node driver is an internal cluster driver or not (bool)
-     */
     readonly builtin: boolean;
-    /**
-     * (Computed) Verify that the downloaded driver matches the expected checksum (string)
-     */
     readonly checksum: string;
-    /**
-     * (Computed) Description of the node driver (string)
-     */
     readonly description: string;
-    /**
-     * (Computed) External ID (string)
-     */
     readonly externalId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Computed) Labels of the resource (map)
-     */
     readonly labels: {[key: string]: any};
     readonly name: string;
-    /**
-     * (Computed) The URL to load for customized Add Node screen for this driver (string)
-     */
     readonly uiUrl: string;
     readonly url: string;
-    /**
-     * (Computed) Domains to whitelist for the ui (list)
-     */
     readonly whitelistDomains: string[];
 }

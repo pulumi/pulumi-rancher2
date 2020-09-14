@@ -27,22 +27,17 @@ class Certificate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
-
-        There are 2 types of Rancher v2 certificates:
-        - Project certificate: Available to all namespaces in the `project_id`
-        - Namespaced certificate: Available to just `namespace_id` in the `project_id`
-
+        Create a Certificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
-        :param pulumi.Input[str] certs: Base64 encoded public certs (string)
-        :param pulumi.Input[str] description: A certificate description (string)
-        :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
-        :param pulumi.Input[str] name: The name of the certificate (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
-        :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] certs: Certificate certs base64 encoded
+        :param pulumi.Input[str] description: Certificate description
+        :param pulumi.Input[str] key: Certificate key base64 encoded
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Certificate name
+        :param pulumi.Input[str] namespace_id: Namespace ID to add certificate
+        :param pulumi.Input[str] project_id: Project ID to add certificate
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,14 +95,14 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
-        :param pulumi.Input[str] certs: Base64 encoded public certs (string)
-        :param pulumi.Input[str] description: A certificate description (string)
-        :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
-        :param pulumi.Input[str] name: The name of the certificate (string)
-        :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
-        :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] certs: Certificate certs base64 encoded
+        :param pulumi.Input[str] description: Certificate description
+        :param pulumi.Input[str] key: Certificate key base64 encoded
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Certificate name
+        :param pulumi.Input[str] namespace_id: Namespace ID to add certificate
+        :param pulumi.Input[str] project_id: Project ID to add certificate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -127,7 +122,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for certificate object (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
@@ -135,7 +130,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def certs(self) -> pulumi.Output[str]:
         """
-        Base64 encoded public certs (string)
+        Certificate certs base64 encoded
         """
         return pulumi.get(self, "certs")
 
@@ -143,7 +138,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A certificate description (string)
+        Certificate description
         """
         return pulumi.get(self, "description")
 
@@ -151,7 +146,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
-        Base64 encoded private key (string)
+        Certificate key base64 encoded
         """
         return pulumi.get(self, "key")
 
@@ -159,7 +154,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for certificate object (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
@@ -167,7 +162,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the certificate (string)
+        Certificate name
         """
         return pulumi.get(self, "name")
 
@@ -175,7 +170,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The namespace id where the namespaced certificate should be created (string)
+        Namespace ID to add certificate
         """
         return pulumi.get(self, "namespace_id")
 
@@ -183,7 +178,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id where the certificate should be created  (string)
+        Project ID to add certificate
         """
         return pulumi.get(self, "project_id")
 

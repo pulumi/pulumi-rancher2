@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateHostPort
     {
-        /// <summary>
-        /// (int)
-        /// </summary>
         public readonly int Max;
-        /// <summary>
-        /// (int)
-        /// </summary>
         public readonly int Min;
 
         [OutputConstructor]

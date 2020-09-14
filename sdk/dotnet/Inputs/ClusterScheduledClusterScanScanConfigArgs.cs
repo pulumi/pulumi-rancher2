@@ -12,9 +12,6 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterScheduledClusterScanScanConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cluster Cis Scan config (List maxitems:1)
-        /// </summary>
         [Input("cisScanConfig")]
         public Input<Inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs>? CisScanConfig { get; set; }
 

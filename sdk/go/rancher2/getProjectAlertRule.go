@@ -7,31 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 project alert rule.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupProjectAlertRule(ctx, &rancher2.LookupProjectAlertRuleArgs{
-// 			Name:      "<project_alert_rule_name>",
-// 			ProjectId: "<project_id>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupProjectAlertRule(ctx *pulumi.Context, args *LookupProjectAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertRuleResult, error) {
 	var rv LookupProjectAlertRuleResult
 	err := ctx.Invoke("rancher2:index/getProjectAlertRule:getProjectAlertRule", args, &rv, opts...)
@@ -43,40 +18,26 @@ func LookupProjectAlertRule(ctx *pulumi.Context, args *LookupProjectAlertRuleArg
 
 // A collection of arguments for invoking getProjectAlertRule.
 type LookupProjectAlertRuleArgs struct {
-	// (Computed) The project alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The project alert rule name (string)
-	Name string `pulumi:"name"`
-	// The project id where create project alert rule (string)
-	ProjectId string `pulumi:"projectId"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	ProjectId string                 `pulumi:"projectId"`
 }
 
 // A collection of values returned by getProjectAlertRule.
 type LookupProjectAlertRuleResult struct {
-	// (Computed) The project alert rule annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) The project alert rule alert group ID (string)
-	GroupId string `pulumi:"groupId"`
-	// (Computed) The project alert rule group interval seconds. Default: `180` (int)
-	GroupIntervalSeconds int `pulumi:"groupIntervalSeconds"`
-	// (Computed) The project alert rule group wait seconds. Default: `180` (int)
-	GroupWaitSeconds int `pulumi:"groupWaitSeconds"`
+	Annotations          map[string]interface{} `pulumi:"annotations"`
+	GroupId              string                 `pulumi:"groupId"`
+	GroupIntervalSeconds int                    `pulumi:"groupIntervalSeconds"`
+	GroupWaitSeconds     int                    `pulumi:"groupWaitSeconds"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) The project alert rule inherited. Default: `true` (bool)
-	Inherited bool `pulumi:"inherited"`
-	// (Computed) The project alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
-	MetricRule GetProjectAlertRuleMetricRule `pulumi:"metricRule"`
-	Name       string                        `pulumi:"name"`
-	// (Computed) The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
-	PodRule   GetProjectAlertRulePodRule `pulumi:"podRule"`
-	ProjectId string                     `pulumi:"projectId"`
-	// (Computed) The project alert rule wait seconds. Default: `3600` (int)
-	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
-	// (Computed) The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-	Severity string `pulumi:"severity"`
-	// (Computed) The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
-	WorkloadRule GetProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
+	Id                    string                          `pulumi:"id"`
+	Inherited             bool                            `pulumi:"inherited"`
+	Labels                map[string]interface{}          `pulumi:"labels"`
+	MetricRule            GetProjectAlertRuleMetricRule   `pulumi:"metricRule"`
+	Name                  string                          `pulumi:"name"`
+	PodRule               GetProjectAlertRulePodRule      `pulumi:"podRule"`
+	ProjectId             string                          `pulumi:"projectId"`
+	RepeatIntervalSeconds int                             `pulumi:"repeatIntervalSeconds"`
+	Severity              string                          `pulumi:"severity"`
+	WorkloadRule          GetProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
 }

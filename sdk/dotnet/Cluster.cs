@@ -9,187 +9,142 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
-    /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Output("aksConfig")]
         public Output<Outputs.ClusterAksConfig?> AksConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        /// </summary>
         [Output("clusterAuthEndpoint")]
         public Output<Outputs.ClusterClusterAuthEndpoint> ClusterAuthEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        /// Cluster monitoring configuration
         /// </summary>
         [Output("clusterMonitoringInput")]
-        public Output<Outputs.ClusterClusterMonitoringInput> ClusterMonitoringInput { get; private set; } = null!;
+        public Output<Outputs.ClusterClusterMonitoringInput?> ClusterMonitoringInput { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        /// </summary>
         [Output("clusterRegistrationToken")]
         public Output<Outputs.ClusterClusterRegistrationToken> ClusterRegistrationToken { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        /// Cluster template answers
         /// </summary>
         [Output("clusterTemplateAnswers")]
         public Output<Outputs.ClusterClusterTemplateAnswers> ClusterTemplateAnswers { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster template ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template ID
         /// </summary>
         [Output("clusterTemplateId")]
         public Output<string?> ClusterTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster template questions. Just for Rancher v2.3.x and above (list)
+        /// Cluster template questions
         /// </summary>
         [Output("clusterTemplateQuestions")]
         public Output<ImmutableArray<Outputs.ClusterClusterTemplateQuestion>> ClusterTemplateQuestions { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template revision ID
         /// </summary>
         [Output("clusterTemplateRevisionId")]
         public Output<string?> ClusterTemplateRevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+        /// Default pod security policy template id
         /// </summary>
         [Output("defaultPodSecurityPolicyTemplateId")]
         public Output<string> DefaultPodSecurityPolicyTemplateId { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) Default project ID for the cluster (string)
-        /// </summary>
         [Output("defaultProjectId")]
         public Output<string> DefaultProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional description of this cluster (string)
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Desired agent image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Output("desiredAgentImage")]
         public Output<string> DesiredAgentImage { get; private set; } = null!;
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Output("desiredAuthImage")]
         public Output<string> DesiredAuthImage { get; private set; } = null!;
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Output("dockerRootDir")]
         public Output<string> DockerRootDir { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        /// </summary>
         [Output("driver")]
         public Output<string> Driver { get; private set; } = null!;
 
-        /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Output("eksConfig")]
         public Output<Outputs.ClusterEksConfig?> EksConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster alerting (bool)
+        /// Enable built-in cluster alerting
         /// </summary>
         [Output("enableClusterAlerting")]
         public Output<bool> EnableClusterAlerting { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        /// Enable built-in cluster istio
         /// </summary>
         [Output("enableClusterIstio")]
         public Output<bool> EnableClusterIstio { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster monitoring (bool)
+        /// Enable built-in cluster monitoring
         /// </summary>
         [Output("enableClusterMonitoring")]
         public Output<bool> EnableClusterMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Enable project network isolation (bool)
+        /// Enable project network isolation
         /// </summary>
         [Output("enableNetworkPolicy")]
         public Output<bool> EnableNetworkPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Output("gkeConfig")]
         public Output<Outputs.ClusterGkeConfig?> GkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// Is istio enabled at cluster?
         /// </summary>
+        [Output("istioEnabled")]
+        public Output<bool> IstioEnabled { get; private set; } = null!;
+
         [Output("k3sConfig")]
         public Output<Outputs.ClusterK3sConfig> K3sConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
-        /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of cluster registration token (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        /// </summary>
         [Output("rkeConfig")]
         public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        /// Cluster scheduled scan
         /// </summary>
         [Output("scheduledClusterScan")]
         public Output<Outputs.ClusterScheduledClusterScan> ScheduledClusterScan { get; private set; } = null!;
 
-        /// <summary>
-        /// (Computed) System project ID for the cluster (string)
-        /// </summary>
         [Output("systemProjectId")]
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster
         /// </summary>
         [Output("windowsPreferedCluster")]
         public Output<bool?> WindowsPreferedCluster { get; private set; } = null!;
@@ -240,9 +195,6 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("aksConfig")]
         public Input<Inputs.ClusterAksConfigArgs>? AksConfig { get; set; }
 
@@ -250,7 +202,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -258,26 +210,23 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        /// </summary>
         [Input("clusterAuthEndpoint")]
         public Input<Inputs.ClusterClusterAuthEndpointArgs>? ClusterAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        /// Cluster monitoring configuration
         /// </summary>
         [Input("clusterMonitoringInput")]
         public Input<Inputs.ClusterClusterMonitoringInputArgs>? ClusterMonitoringInput { get; set; }
 
         /// <summary>
-        /// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        /// Cluster template answers
         /// </summary>
         [Input("clusterTemplateAnswers")]
         public Input<Inputs.ClusterClusterTemplateAnswersArgs>? ClusterTemplateAnswers { get; set; }
 
         /// <summary>
-        /// Cluster template ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template ID
         /// </summary>
         [Input("clusterTemplateId")]
         public Input<string>? ClusterTemplateId { get; set; }
@@ -286,7 +235,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterClusterTemplateQuestionArgs>? _clusterTemplateQuestions;
 
         /// <summary>
-        /// Cluster template questions. Just for Rancher v2.3.x and above (list)
+        /// Cluster template questions
         /// </summary>
         public InputList<Inputs.ClusterClusterTemplateQuestionArgs> ClusterTemplateQuestions
         {
@@ -295,86 +244,56 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template revision ID
         /// </summary>
         [Input("clusterTemplateRevisionId")]
         public Input<string>? ClusterTemplateRevisionId { get; set; }
 
         /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+        /// Default pod security policy template id
         /// </summary>
         [Input("defaultPodSecurityPolicyTemplateId")]
         public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
 
-        /// <summary>
-        /// An optional description of this cluster (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Desired agent image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("desiredAgentImage")]
         public Input<string>? DesiredAgentImage { get; set; }
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("desiredAuthImage")]
         public Input<string>? DesiredAuthImage { get; set; }
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("dockerRootDir")]
         public Input<string>? DockerRootDir { get; set; }
 
-        /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
 
-        /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("eksConfig")]
         public Input<Inputs.ClusterEksConfigArgs>? EksConfig { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting (bool)
+        /// Enable built-in cluster alerting
         /// </summary>
         [Input("enableClusterAlerting")]
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
-        /// </summary>
-        [Input("enableClusterIstio")]
-        public Input<bool>? EnableClusterIstio { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster monitoring (bool)
+        /// Enable built-in cluster monitoring
         /// </summary>
         [Input("enableClusterMonitoring")]
         public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
-        /// Enable project network isolation (bool)
+        /// Enable project network isolation
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
 
-        /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.ClusterGkeConfigArgs>? GkeConfig { get; set; }
 
-        /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("k3sConfig")]
         public Input<Inputs.ClusterK3sConfigArgs>? K3sConfig { get; set; }
 
@@ -382,7 +301,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -390,26 +309,20 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Name of cluster registration token (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
 
         /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        /// Cluster scheduled scan
         /// </summary>
         [Input("scheduledClusterScan")]
         public Input<Inputs.ClusterScheduledClusterScanArgs>? ScheduledClusterScan { get; set; }
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster
         /// </summary>
         [Input("windowsPreferedCluster")]
         public Input<bool>? WindowsPreferedCluster { get; set; }
@@ -421,9 +334,6 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("aksConfig")]
         public Input<Inputs.ClusterAksConfigGetArgs>? AksConfig { get; set; }
 
@@ -431,7 +341,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for cluster registration token object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -439,32 +349,26 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        /// </summary>
         [Input("clusterAuthEndpoint")]
         public Input<Inputs.ClusterClusterAuthEndpointGetArgs>? ClusterAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+        /// Cluster monitoring configuration
         /// </summary>
         [Input("clusterMonitoringInput")]
         public Input<Inputs.ClusterClusterMonitoringInputGetArgs>? ClusterMonitoringInput { get; set; }
 
-        /// <summary>
-        /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        /// </summary>
         [Input("clusterRegistrationToken")]
         public Input<Inputs.ClusterClusterRegistrationTokenGetArgs>? ClusterRegistrationToken { get; set; }
 
         /// <summary>
-        /// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
+        /// Cluster template answers
         /// </summary>
         [Input("clusterTemplateAnswers")]
         public Input<Inputs.ClusterClusterTemplateAnswersGetArgs>? ClusterTemplateAnswers { get; set; }
 
         /// <summary>
-        /// Cluster template ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template ID
         /// </summary>
         [Input("clusterTemplateId")]
         public Input<string>? ClusterTemplateId { get; set; }
@@ -473,7 +377,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterClusterTemplateQuestionGetArgs>? _clusterTemplateQuestions;
 
         /// <summary>
-        /// Cluster template questions. Just for Rancher v2.3.x and above (list)
+        /// Cluster template questions
         /// </summary>
         public InputList<Inputs.ClusterClusterTemplateQuestionGetArgs> ClusterTemplateQuestions
         {
@@ -482,98 +386,74 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
+        /// Cluster template revision ID
         /// </summary>
         [Input("clusterTemplateRevisionId")]
         public Input<string>? ClusterTemplateRevisionId { get; set; }
 
         /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+        /// Default pod security policy template id
         /// </summary>
         [Input("defaultPodSecurityPolicyTemplateId")]
         public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
 
-        /// <summary>
-        /// (Computed) Default project ID for the cluster (string)
-        /// </summary>
         [Input("defaultProjectId")]
         public Input<string>? DefaultProjectId { get; set; }
 
-        /// <summary>
-        /// An optional description of this cluster (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Desired agent image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("desiredAgentImage")]
         public Input<string>? DesiredAgentImage { get; set; }
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("desiredAuthImage")]
         public Input<string>? DesiredAuthImage { get; set; }
 
-        /// <summary>
-        /// Desired auth image. Just for Rancher v2.3.x and above (string)
-        /// </summary>
         [Input("dockerRootDir")]
         public Input<string>? DockerRootDir { get; set; }
 
-        /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
 
-        /// <summary>
-        /// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("eksConfig")]
         public Input<Inputs.ClusterEksConfigGetArgs>? EksConfig { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting (bool)
+        /// Enable built-in cluster alerting
         /// </summary>
         [Input("enableClusterAlerting")]
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        /// Enable built-in cluster istio
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster monitoring (bool)
+        /// Enable built-in cluster monitoring
         /// </summary>
         [Input("enableClusterMonitoring")]
         public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
-        /// Enable project network isolation (bool)
+        /// Enable project network isolation
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
 
-        /// <summary>
-        /// The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.ClusterGkeConfigGetArgs>? GkeConfig { get; set; }
 
         /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// Is istio enabled at cluster?
         /// </summary>
+        [Input("istioEnabled")]
+        public Input<bool>? IstioEnabled { get; set; }
+
         [Input("k3sConfig")]
         public Input<Inputs.ClusterK3sConfigGetArgs>? K3sConfig { get; set; }
 
-        /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster (string)
-        /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
@@ -581,7 +461,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for cluster registration token object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -589,32 +469,23 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Name of cluster registration token (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)
-        /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
 
         /// <summary>
-        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
+        /// Cluster scheduled scan
         /// </summary>
         [Input("scheduledClusterScan")]
         public Input<Inputs.ClusterScheduledClusterScanGetArgs>? ScheduledClusterScan { get; set; }
 
-        /// <summary>
-        /// (Computed) System project ID for the cluster (string)
-        /// </summary>
         [Input("systemProjectId")]
         public Input<string>? SystemProjectId { get; set; }
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster
         /// </summary>
         [Input("windowsPreferedCluster")]
         public Input<bool>? WindowsPreferedCluster { get; set; }

@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
- *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Auth Config AzureAD
- * const azuread = new rancher2.AuthConfigAzureAd("azuread", {
- *     applicationId: "<AZUREAD_APP_ID>",
- *     applicationSecret: "<AZUREAD_APP_SECRET>",
- *     authEndpoint: "<AZUREAD_AUTH_ENDPOINT>",
- *     graphEndpoint: "<AZUREAD_GRAPH_ENDPOINT>",
- *     rancherUrl: "<RANCHER_URL>",
- *     tenantId: "<AZUREAD_TENANT_ID>",
- *     tokenEndpoint: "<AZUREAD_TOKEN_ENDPOINT>",
- * });
- * ```
- */
 export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**
      * Get an existing AuthConfigAzureAd resource's state with the given name, ID, and optional extra
@@ -55,65 +32,26 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthConfigAzureAd.__pulumiType;
     }
 
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     public readonly accessMode!: pulumi.Output<string | undefined>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-     */
     public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * AzureAD auth application ID (string)
-     */
     public readonly applicationId!: pulumi.Output<string>;
-    /**
-     * AzureAD auth application secret (string)
-     */
     public readonly applicationSecret!: pulumi.Output<string>;
-    /**
-     * AzureAD auth endpoint (string)
-     */
     public readonly authEndpoint!: pulumi.Output<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-     */
     public readonly endpoint!: pulumi.Output<string | undefined>;
-    /**
-     * AzureAD graph endpoint (string)
-     */
     public readonly graphEndpoint!: pulumi.Output<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * Rancher URL (string). "<rancher_url>/verify-auth-azure"
-     */
     public readonly rancherUrl!: pulumi.Output<string>;
-    /**
-     * AzureAD tenant ID (string)
-     */
     public readonly tenantId!: pulumi.Output<string>;
-    /**
-     * AzureAD token endpoint (string)
-     */
     public readonly tokenEndpoint!: pulumi.Output<string>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -197,65 +135,26 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthConfigAzureAd resources.
  */
 export interface AuthConfigAzureAdState {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * AzureAD auth application ID (string)
-     */
     readonly applicationId?: pulumi.Input<string>;
-    /**
-     * AzureAD auth application secret (string)
-     */
     readonly applicationSecret?: pulumi.Input<string>;
-    /**
-     * AzureAD auth endpoint (string)
-     */
     readonly authEndpoint?: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-     */
     readonly endpoint?: pulumi.Input<string>;
-    /**
-     * AzureAD graph endpoint (string)
-     */
     readonly graphEndpoint?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Rancher URL (string). "<rancher_url>/verify-auth-azure"
-     */
     readonly rancherUrl?: pulumi.Input<string>;
-    /**
-     * AzureAD tenant ID (string)
-     */
     readonly tenantId?: pulumi.Input<string>;
-    /**
-     * AzureAD token endpoint (string)
-     */
     readonly tokenEndpoint?: pulumi.Input<string>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -263,56 +162,23 @@ export interface AuthConfigAzureAdState {
  * The set of arguments for constructing a AuthConfigAzureAd resource.
  */
 export interface AuthConfigAzureAdArgs {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * AzureAD auth application ID (string)
-     */
     readonly applicationId: pulumi.Input<string>;
-    /**
-     * AzureAD auth application secret (string)
-     */
     readonly applicationSecret: pulumi.Input<string>;
-    /**
-     * AzureAD auth endpoint (string)
-     */
     readonly authEndpoint: pulumi.Input<string>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-     */
     readonly endpoint?: pulumi.Input<string>;
-    /**
-     * AzureAD graph endpoint (string)
-     */
     readonly graphEndpoint: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Rancher URL (string). "<rancher_url>/verify-auth-azure"
-     */
     readonly rancherUrl: pulumi.Input<string>;
-    /**
-     * AzureAD tenant ID (string)
-     */
     readonly tenantId: pulumi.Input<string>;
-    /**
-     * AzureAD token endpoint (string)
-     */
     readonly tokenEndpoint: pulumi.Input<string>;
 }

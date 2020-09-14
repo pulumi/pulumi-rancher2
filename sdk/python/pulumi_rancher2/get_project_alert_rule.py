@@ -67,33 +67,21 @@ class GetProjectAlertRuleResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) The project alert rule annotations (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
-        """
-        (Computed) The project alert rule alert group ID (string)
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
     def group_interval_seconds(self) -> float:
-        """
-        (Computed) The project alert rule group interval seconds. Default: `180` (int)
-        """
         return pulumi.get(self, "group_interval_seconds")
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
     def group_wait_seconds(self) -> float:
-        """
-        (Computed) The project alert rule group wait seconds. Default: `180` (int)
-        """
         return pulumi.get(self, "group_wait_seconds")
 
     @property
@@ -107,25 +95,16 @@ class GetProjectAlertRuleResult:
     @property
     @pulumi.getter
     def inherited(self) -> bool:
-        """
-        (Computed) The project alert rule inherited. Default: `true` (bool)
-        """
         return pulumi.get(self, "inherited")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
-        """
-        (Computed) The project alert rule labels (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="metricRule")
     def metric_rule(self) -> 'outputs.GetProjectAlertRuleMetricRuleResult':
-        """
-        (Computed) The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "metric_rule")
 
     @property
@@ -136,9 +115,6 @@ class GetProjectAlertRuleResult:
     @property
     @pulumi.getter(name="podRule")
     def pod_rule(self) -> 'outputs.GetProjectAlertRulePodRuleResult':
-        """
-        (Computed) The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "pod_rule")
 
     @property
@@ -149,25 +125,16 @@ class GetProjectAlertRuleResult:
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
     def repeat_interval_seconds(self) -> float:
-        """
-        (Computed) The project alert rule wait seconds. Default: `3600` (int)
-        """
         return pulumi.get(self, "repeat_interval_seconds")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
-        """
-        (Computed) The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="workloadRule")
     def workload_rule(self) -> 'outputs.GetProjectAlertRuleWorkloadRuleResult':
-        """
-        (Computed) The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
-        """
         return pulumi.get(self, "workload_rule")
 
 
@@ -198,22 +165,7 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
                            project_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectAlertRuleResult:
     """
-    Use this data source to retrieve information about a Rancher v2 project alert rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
-        project_id="<project_id>")
-    ```
-
-
-    :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
-    :param str name: The project alert rule name (string)
-    :param str project_id: The project id where create project alert rule (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['labels'] = labels

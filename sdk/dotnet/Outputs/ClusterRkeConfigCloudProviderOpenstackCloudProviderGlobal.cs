@@ -13,45 +13,15 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string AuthUrl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? CaFile;
-        /// <summary>
-        /// Required if `domain_name` not provided. (string)
-        /// </summary>
         public readonly string? DomainId;
-        /// <summary>
-        /// Required if `domain_id` not provided. (string)
-        /// </summary>
         public readonly string? DomainName;
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// GKE cluster region. Conflicts with `zone` (string)
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// Azure tenant ID to use (string)
-        /// </summary>
         public readonly string? TenantId;
-        /// <summary>
-        /// Required if `tenant_id` not provided. (string)
-        /// </summary>
         public readonly string? TenantName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? TrustId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

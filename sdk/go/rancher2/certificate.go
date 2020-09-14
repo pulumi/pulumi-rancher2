@@ -10,29 +10,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
-//
-// There are 2 types of Rancher v2 certificates:
-// - Project certificate: Available to all namespaces in the `projectId`
-// - Namespaced certificate: Available to just `namespaceId` in the `projectId`
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// Annotations for certificate object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Base64 encoded public certs (string)
+	// Certificate certs base64 encoded
 	Certs pulumi.StringOutput `pulumi:"certs"`
-	// A certificate description (string)
+	// Certificate description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Base64 encoded private key (string)
+	// Certificate key base64 encoded
 	Key pulumi.StringOutput `pulumi:"key"`
-	// Labels for certificate object (map)
+	// Labels of the resource
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the certificate (string)
+	// Certificate name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The namespace id where the namespaced certificate should be created (string)
+	// Namespace ID to add certificate
 	NamespaceId pulumi.StringPtrOutput `pulumi:"namespaceId"`
-	// The project id where the certificate should be created  (string)
+	// Project ID to add certificate
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 }
 
@@ -73,40 +68,40 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// Annotations for certificate object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Base64 encoded public certs (string)
+	// Certificate certs base64 encoded
 	Certs *string `pulumi:"certs"`
-	// A certificate description (string)
+	// Certificate description
 	Description *string `pulumi:"description"`
-	// Base64 encoded private key (string)
+	// Certificate key base64 encoded
 	Key *string `pulumi:"key"`
-	// Labels for certificate object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the certificate (string)
+	// Certificate name
 	Name *string `pulumi:"name"`
-	// The namespace id where the namespaced certificate should be created (string)
+	// Namespace ID to add certificate
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The project id where the certificate should be created  (string)
+	// Project ID to add certificate
 	ProjectId *string `pulumi:"projectId"`
 }
 
 type CertificateState struct {
-	// Annotations for certificate object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// Base64 encoded public certs (string)
+	// Certificate certs base64 encoded
 	Certs pulumi.StringPtrInput
-	// A certificate description (string)
+	// Certificate description
 	Description pulumi.StringPtrInput
-	// Base64 encoded private key (string)
+	// Certificate key base64 encoded
 	Key pulumi.StringPtrInput
-	// Labels for certificate object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the certificate (string)
+	// Certificate name
 	Name pulumi.StringPtrInput
-	// The namespace id where the namespaced certificate should be created (string)
+	// Namespace ID to add certificate
 	NamespaceId pulumi.StringPtrInput
-	// The project id where the certificate should be created  (string)
+	// Project ID to add certificate
 	ProjectId pulumi.StringPtrInput
 }
 
@@ -115,41 +110,41 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	// Annotations for certificate object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Base64 encoded public certs (string)
+	// Certificate certs base64 encoded
 	Certs string `pulumi:"certs"`
-	// A certificate description (string)
+	// Certificate description
 	Description *string `pulumi:"description"`
-	// Base64 encoded private key (string)
+	// Certificate key base64 encoded
 	Key string `pulumi:"key"`
-	// Labels for certificate object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the certificate (string)
+	// Certificate name
 	Name *string `pulumi:"name"`
-	// The namespace id where the namespaced certificate should be created (string)
+	// Namespace ID to add certificate
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The project id where the certificate should be created  (string)
+	// Project ID to add certificate
 	ProjectId string `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// Annotations for certificate object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// Base64 encoded public certs (string)
+	// Certificate certs base64 encoded
 	Certs pulumi.StringInput
-	// A certificate description (string)
+	// Certificate description
 	Description pulumi.StringPtrInput
-	// Base64 encoded private key (string)
+	// Certificate key base64 encoded
 	Key pulumi.StringInput
-	// Labels for certificate object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The name of the certificate (string)
+	// Certificate name
 	Name pulumi.StringPtrInput
-	// The namespace id where the namespaced certificate should be created (string)
+	// Namespace ID to add certificate
 	NamespaceId pulumi.StringPtrInput
-	// The project id where the certificate should be created  (string)
+	// Project ID to add certificate
 	ProjectId pulumi.StringInput
 }
 

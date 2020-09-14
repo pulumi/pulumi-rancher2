@@ -13,16 +13,8 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs : Pulumi.ResourceArgs
     {
         [Input("customConfig")]
-        private InputMap<object>? _customConfig;
-        public InputMap<object> CustomConfig
-        {
-            get => _customConfig ?? (_customConfig = new InputMap<object>());
-            set => _customConfig = value;
-        }
+        public Input<string>? CustomConfig { get; set; }
 
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

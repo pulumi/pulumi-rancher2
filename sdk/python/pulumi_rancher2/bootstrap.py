@@ -27,11 +27,6 @@ class Bootstrap(pulumi.CustomResource):
         Create a Bootstrap resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-        :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
-        :param pulumi.Input[float] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
-        :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,17 +84,6 @@ class Bootstrap(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-        :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
-        :param pulumi.Input[str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
-        :param pulumi.Input[str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
-        :param pulumi.Input[str] token: (Computed) Generated API token for Admin User (string)
-        :param pulumi.Input[str] token_id: (Computed) Generated API token id for Admin User (string)
-        :param pulumi.Input[float] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
-        :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
-        :param pulumi.Input[str] url: (Computed) URL set as server-url (string)
-        :param pulumi.Input[str] user: (Computed) Admin username (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,89 +105,56 @@ class Bootstrap(pulumi.CustomResource):
     @property
     @pulumi.getter(name="currentPassword")
     def current_password(self) -> pulumi.Output[str]:
-        """
-        Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
-        """
         return pulumi.get(self, "current_password")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
-        """
-        Password for Admin user or random generated if empty (string)
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def telemetry(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Send telemetry anonymous data. Default: `false` (bool)
-        """
         return pulumi.get(self, "telemetry")
 
     @property
     @pulumi.getter(name="tempToken")
     def temp_token(self) -> pulumi.Output[str]:
-        """
-        (Computed) Generated API temporary token as helper. Should be empty (string)
-        """
         return pulumi.get(self, "temp_token")
 
     @property
     @pulumi.getter(name="tempTokenId")
     def temp_token_id(self) -> pulumi.Output[str]:
-        """
-        (Computed) Generated API temporary token id as helper. Should be empty (string)
-        """
         return pulumi.get(self, "temp_token_id")
 
     @property
     @pulumi.getter
     def token(self) -> pulumi.Output[str]:
-        """
-        (Computed) Generated API token for Admin User (string)
-        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter(name="tokenId")
     def token_id(self) -> pulumi.Output[str]:
-        """
-        (Computed) Generated API token id for Admin User (string)
-        """
         return pulumi.get(self, "token_id")
 
     @property
     @pulumi.getter(name="tokenTtl")
     def token_ttl(self) -> pulumi.Output[Optional[float]]:
-        """
-        TTL in seconds for generated admin token. Default: `0`  (int)
-        """
         return pulumi.get(self, "token_ttl")
 
     @property
     @pulumi.getter(name="tokenUpdate")
     def token_update(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Regenerate admin token. Default: `false` (bool)
-        """
         return pulumi.get(self, "token_update")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
-        """
-        (Computed) URL set as server-url (string)
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def user(self) -> pulumi.Output[str]:
-        """
-        (Computed) Admin username (string)
-        """
         return pulumi.get(self, "user")
 
     def translate_output_property(self, prop):

@@ -45,9 +45,6 @@ class GetGlobalRoleBindingResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations of the resource (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -58,9 +55,6 @@ class GetGlobalRoleBindingResult:
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> str:
-        """
-        (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
-        """
         return pulumi.get(self, "group_principal_id")
 
     @property
@@ -74,9 +68,6 @@ class GetGlobalRoleBindingResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels of the resource (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -87,9 +78,6 @@ class GetGlobalRoleBindingResult:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        (Computed) The user ID to assign global role binding (string)
-        """
         return pulumi.get(self, "user_id")
 
 
@@ -112,21 +100,7 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
                             name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalRoleBindingResult:
     """
-    Use this data source to retrieve information about a Rancher v2 global role binding.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_global_role_binding(global_role_id="foo_id",
-        name="foo")
-    ```
-
-
-    :param str global_role_id: The global role id (string)
-    :param str name: The name of the global role binding (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['globalRoleId'] = global_role_id

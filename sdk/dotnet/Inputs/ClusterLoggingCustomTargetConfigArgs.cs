@@ -12,27 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterLoggingCustomTargetConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
-        /// <summary>
-        /// SSL client certificate for the syslog service (string)
-        /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
-        /// <summary>
-        /// SSL client key for the syslog service (string)
-        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
-        /// <summary>
-        /// Custom target config content (string)
-        /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 

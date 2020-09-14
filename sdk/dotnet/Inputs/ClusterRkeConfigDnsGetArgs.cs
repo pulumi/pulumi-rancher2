@@ -14,34 +14,20 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
             set => _nodeSelector = value;
         }
 
-        /// <summary>
-        /// Nodelocal dns config  (list Maxitem: 1)
-        /// </summary>
         [Input("nodelocal")]
         public Input<Inputs.ClusterRkeConfigDnsNodelocalGetArgs>? Nodelocal { get; set; }
 
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
         [Input("reverseCidrs")]
         private InputList<string>? _reverseCidrs;
-
-        /// <summary>
-        /// DNS add-on reverse cidr  (list)
-        /// </summary>
         public InputList<string> ReverseCidrs
         {
             get => _reverseCidrs ?? (_reverseCidrs = new InputList<string>());
@@ -50,10 +36,6 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("upstreamNameservers")]
         private InputList<string>? _upstreamNameservers;
-
-        /// <summary>
-        /// DNS add-on upstream nameservers  (list)
-        /// </summary>
         public InputList<string> UpstreamNameservers
         {
             get => _upstreamNameservers ?? (_upstreamNameservers = new InputList<string>());

@@ -9,113 +9,44 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.
-    /// 
-    /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
-    /// - Project registry: Available to all namespaces in the `project_id`
-    /// - Namespaced regitry: Available to just `namespace_id` in the `project_id`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Project Registry
-    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
-    ///         {
-    ///             Description = "Terraform registry foo",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             Registries = 
-    ///             {
-    ///                 new Rancher2.Inputs.RegistryRegistryArgs
-    ///                 {
-    ///                     Address = "test.io",
-    ///                     Password = "pass",
-    ///                     Username = "user",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Namespaced Registry
-    ///         var foo = new Rancher2.Registry("foo", new Rancher2.RegistryArgs
-    ///         {
-    ///             Description = "Terraform registry foo",
-    ///             NamespaceId = "&lt;namespace_id&gt;",
-    ///             ProjectId = "&lt;project_id&gt;",
-    ///             Registries = 
-    ///             {
-    ///                 new Rancher2.Inputs.RegistryRegistryArgs
-    ///                 {
-    ///                     Address = "test.io",
-    ///                     Password = "pass",
-    ///                     Username = "user2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for Registry object (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// A registry description (string)
+        /// Description of the docker registry
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for Registry object (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the registry (string)
+        /// Name of the docker registry
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace id where to assign the namespaced registry (string)
+        /// Namespace ID to add docker registry
         /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The project id where to assign the registry (string)
+        /// Project ID to add docker registry
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// Registries data for registry (list)
-        /// </summary>
         [Output("registries")]
         public Output<ImmutableArray<Outputs.RegistryRegistry>> Registries { get; private set; } = null!;
 
@@ -169,7 +100,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Registry object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -178,7 +109,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// A registry description (string)
+        /// Description of the docker registry
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -187,7 +118,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Registry object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -196,29 +127,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the registry (string)
+        /// Name of the docker registry
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespace id where to assign the namespaced registry (string)
+        /// Namespace ID to add docker registry
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// The project id where to assign the registry (string)
+        /// Project ID to add docker registry
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         [Input("registries", required: true)]
         private InputList<Inputs.RegistryRegistryArgs>? _registries;
-
-        /// <summary>
-        /// Registries data for registry (list)
-        /// </summary>
         public InputList<Inputs.RegistryRegistryArgs> Registries
         {
             get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistryArgs>());
@@ -236,7 +163,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for Registry object (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -245,7 +172,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// A registry description (string)
+        /// Description of the docker registry
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -254,7 +181,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for Registry object (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -263,29 +190,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the registry (string)
+        /// Name of the docker registry
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespace id where to assign the namespaced registry (string)
+        /// Namespace ID to add docker registry
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// The project id where to assign the registry (string)
+        /// Project ID to add docker registry
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         [Input("registries")]
         private InputList<Inputs.RegistryRegistryGetArgs>? _registries;
-
-        /// <summary>
-        /// Registries data for registry (list)
-        /// </summary>
         public InputList<Inputs.RegistryRegistryGetArgs> Registries
         {
             get => _registries ?? (_registries = new InputList<Inputs.RegistryRegistryGetArgs>());

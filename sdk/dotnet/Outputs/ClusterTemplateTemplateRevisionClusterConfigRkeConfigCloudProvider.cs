@@ -16,9 +16,6 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider? AwsCloudProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider? AzureCloudProvider;
         public readonly string? CustomCloudProvider;
-        /// <summary>
-        /// The cluster template revision name (string)
-        /// </summary>
         public readonly string? Name;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider? OpenstackCloudProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider? VsphereCloudProvider;

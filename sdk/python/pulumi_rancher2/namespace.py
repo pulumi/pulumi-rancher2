@@ -29,74 +29,15 @@ class Namespace(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespace
-        foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
-            project_id="<PROJECT_ID>",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster 
-        foo_custom = rancher2.Cluster("foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        # Create a new rancher2 Namespace assigned to default cluster project
-        foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
-            project_id=foo_custom.default_project_id,
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        ```
-
+        Create a Namespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
-        :param pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
-        :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
-        :param pulumi.Input[str] name: The name of the namespace (string)
-        :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-        :param pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-        :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] description: Description of the k8s namespace managed by rancher v2
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Name of the k8s namespace managed by rancher v2
+        :param pulumi.Input[str] project_id: Project ID where k8s namespace belongs
+        :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,14 +91,12 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
-        :param pulumi.Input[pulumi.InputType['NamespaceContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
-        :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
-        :param pulumi.Input[str] name: The name of the namespace (string)
-        :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-        :param pulumi.Input[pulumi.InputType['NamespaceResourceQuotaArgs']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-        :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] description: Description of the k8s namespace managed by rancher v2
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Name of the k8s namespace managed by rancher v2
+        :param pulumi.Input[str] project_id: Project ID where k8s namespace belongs
+        :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -177,23 +116,20 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for Node Pool object (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="containerResourceLimit")
     def container_resource_limit(self) -> pulumi.Output[Optional['outputs.NamespaceContainerResourceLimit']]:
-        """
-        Default containers resource limits on namespace (List maxitem:1)
-        """
         return pulumi.get(self, "container_resource_limit")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A namespace description (string)
+        Description of the k8s namespace managed by rancher v2
         """
         return pulumi.get(self, "description")
 
@@ -201,7 +137,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for Node Pool object (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
@@ -209,7 +145,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the namespace (string)
+        Name of the k8s namespace managed by rancher v2
         """
         return pulumi.get(self, "name")
 
@@ -217,23 +153,20 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
+        Project ID where k8s namespace belongs
         """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> pulumi.Output[Optional['outputs.NamespaceResourceQuota']]:
-        """
-        Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-        """
+    def resource_quota(self) -> pulumi.Output['outputs.NamespaceResourceQuota']:
         return pulumi.get(self, "resource_quota")
 
     @property
     @pulumi.getter(name="waitForCluster")
     def wait_for_cluster(self) -> pulumi.Output[Optional[bool]]:
         """
-        Wait for cluster becomes active. Default `false` (bool)
+        Wait for cluster becomes active
         """
         return pulumi.get(self, "wait_for_cluster")
 

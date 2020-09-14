@@ -66,33 +66,21 @@ class GetCatalogResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
-        """
-        (Computed) Annotations for the catalog (map)
-        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def branch(self) -> str:
-        """
-        (Computed) The branch of the catalog repo to use (string)
-        """
         return pulumi.get(self, "branch")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        (Computed) The cluster id of the catalog (string)
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (Computed) A catalog description (string)
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -106,17 +94,11 @@ class GetCatalogResult:
     @property
     @pulumi.getter
     def kind(self) -> str:
-        """
-        (Computed) The kind of the catalog. Just helm by the moment (string)
-        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        (Computed) Labels for the catalog (map)
-        """
         return pulumi.get(self, "labels")
 
     @property
@@ -127,17 +109,11 @@ class GetCatalogResult:
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        (Computed/Sensitive) The password to access the catalog if needed (string)
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        (Computed) The project id of the catalog (string)
-        """
         return pulumi.get(self, "project_id")
 
     @property
@@ -148,25 +124,16 @@ class GetCatalogResult:
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        (Computed) The url of the catalog repo (string)
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        (Computed/Sensitive) The username to access the catalog if needed (string)
-        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        (Computed) Helm version for the catalog (string)
-        """
         return pulumi.get(self, "version")
 
 
@@ -196,20 +163,7 @@ def get_catalog(name: Optional[str] = None,
                 scope: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
-    Use this data source to retrieve information about a Rancher v2 catalog.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    library = rancher2.get_catalog(name="catalog")
-    ```
-
-
-    :param str name: The catalog name.
-    :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

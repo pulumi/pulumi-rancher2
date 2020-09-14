@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class RegistryRegistry
     {
-        /// <summary>
-        /// Address for registry.
-        /// </summary>
         public readonly string Address;
-        /// <summary>
-        /// Password for the registry (string)
-        /// </summary>
         public readonly string? Password;
-        /// <summary>
-        /// Username for the registry (string)
-        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

@@ -11,32 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetMultiClusterApp
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 multi cluster app.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetMultiClusterApp.InvokeAsync(new Rancher2.GetMultiClusterAppArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetMultiClusterAppResult> InvokeAsync(GetMultiClusterAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMultiClusterAppResult>("rancher2:index/getMultiClusterApp:getMultiClusterApp", args ?? new GetMultiClusterAppArgs(), options.WithVersion());
     }
@@ -44,9 +18,6 @@ namespace Pulumi.Rancher2
 
     public sealed class GetMultiClusterAppArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The multi cluster app name (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -59,62 +30,23 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetMultiClusterAppResult
     {
-        /// <summary>
-        /// (Computed) Annotations for multi cluster app object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
-        /// <summary>
-        /// (Computed) The multi cluster app answers (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMultiClusterAppAnswerResult> Answers;
-        /// <summary>
-        /// (Computed) The multi cluster app catalog name (string)
-        /// </summary>
         public readonly string CatalogName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels for multi cluster app object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
-        /// <summary>
-        /// (Computed) The multi cluster app members (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMultiClusterAppMemberResult> Members;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) The multi cluster app revision history limit (int)
-        /// </summary>
         public readonly int RevisionHistoryLimit;
-        /// <summary>
-        /// (Computed) Current revision id for the multi cluster app (string)
-        /// </summary>
         public readonly string RevisionId;
-        /// <summary>
-        /// (Computed) The multi cluster app roles (list)
-        /// </summary>
         public readonly ImmutableArray<string> Roles;
-        /// <summary>
-        /// (Computed) The multi cluster app target projects (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMultiClusterAppTargetResult> Targets;
-        /// <summary>
-        /// (Computed) The multi cluster app template name (string)
-        /// </summary>
         public readonly string TemplateName;
-        /// <summary>
-        /// (Computed) The multi cluster app template version (string)
-        /// </summary>
         public readonly string TemplateVersion;
-        /// <summary>
-        /// (Computed) The multi cluster app template version ID (string)
-        /// </summary>
         public readonly string TemplateVersionId;
-        /// <summary>
-        /// (Computed) The multi cluster app upgrade strategy (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMultiClusterAppUpgradeStrategyResult> UpgradeStrategies;
 
         [OutputConstructor]

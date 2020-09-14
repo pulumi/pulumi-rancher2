@@ -12,30 +12,17 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ProjectLoggingFluentdConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// SSL certificate for the syslog service (string)
-        /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
-        /// <summary>
-        /// Compress data for the fluentd service (bool)
-        /// </summary>
         [Input("compress")]
         public Input<bool>? Compress { get; set; }
 
-        /// <summary>
-        /// Enable TLS for the fluentd service (bool)
-        /// </summary>
         [Input("enableTls")]
         public Input<bool>? EnableTls { get; set; }
 
         [Input("fluentServers", required: true)]
         private InputList<Inputs.ProjectLoggingFluentdConfigFluentServerArgs>? _fluentServers;
-
-        /// <summary>
-        /// Servers for the fluentd service (list)
-        /// </summary>
         public InputList<Inputs.ProjectLoggingFluentdConfigFluentServerArgs> FluentServers
         {
             get => _fluentServers ?? (_fluentServers = new InputList<Inputs.ProjectLoggingFluentdConfigFluentServerArgs>());

@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
- *
- * There are 2 types of Rancher v2 certificates:
- * - Project certificate: Available to all namespaces in the `projectId`
- * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- */
 export class Certificate extends pulumi.CustomResource {
     /**
      * Get an existing Certificate resource's state with the given name, ID, and optional extra
@@ -40,35 +33,35 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for certificate object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Base64 encoded public certs (string)
+     * Certificate certs base64 encoded
      */
     public readonly certs!: pulumi.Output<string>;
     /**
-     * A certificate description (string)
+     * Certificate description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Base64 encoded private key (string)
+     * Certificate key base64 encoded
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * Labels for certificate object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the certificate (string)
+     * Certificate name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The namespace id where the namespaced certificate should be created (string)
+     * Namespace ID to add certificate
      */
     public readonly namespaceId!: pulumi.Output<string | undefined>;
     /**
-     * The project id where the certificate should be created  (string)
+     * Project ID to add certificate
      */
     public readonly projectId!: pulumi.Output<string>;
 
@@ -128,35 +121,35 @@ export class Certificate extends pulumi.CustomResource {
  */
 export interface CertificateState {
     /**
-     * Annotations for certificate object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Base64 encoded public certs (string)
+     * Certificate certs base64 encoded
      */
     readonly certs?: pulumi.Input<string>;
     /**
-     * A certificate description (string)
+     * Certificate description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Base64 encoded private key (string)
+     * Certificate key base64 encoded
      */
     readonly key?: pulumi.Input<string>;
     /**
-     * Labels for certificate object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the certificate (string)
+     * Certificate name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where the namespaced certificate should be created (string)
+     * Namespace ID to add certificate
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where the certificate should be created  (string)
+     * Project ID to add certificate
      */
     readonly projectId?: pulumi.Input<string>;
 }
@@ -166,35 +159,35 @@ export interface CertificateState {
  */
 export interface CertificateArgs {
     /**
-     * Annotations for certificate object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Base64 encoded public certs (string)
+     * Certificate certs base64 encoded
      */
     readonly certs: pulumi.Input<string>;
     /**
-     * A certificate description (string)
+     * Certificate description
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Base64 encoded private key (string)
+     * Certificate key base64 encoded
      */
     readonly key: pulumi.Input<string>;
     /**
-     * Labels for certificate object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the certificate (string)
+     * Certificate name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The namespace id where the namespaced certificate should be created (string)
+     * Namespace ID to add certificate
      */
     readonly namespaceId?: pulumi.Input<string>;
     /**
-     * The project id where the certificate should be created  (string)
+     * Project ID to add certificate
      */
     readonly projectId: pulumi.Input<string>;
 }

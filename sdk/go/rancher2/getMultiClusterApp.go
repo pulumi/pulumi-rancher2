@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 multi cluster app.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupMultiClusterApp(ctx, &rancher2.LookupMultiClusterAppArgs{
-// 			Name: "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupMultiClusterApp(ctx *pulumi.Context, args *LookupMultiClusterAppArgs, opts ...pulumi.InvokeOption) (*LookupMultiClusterAppResult, error) {
 	var rv LookupMultiClusterAppResult
 	err := ctx.Invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", args, &rv, opts...)
@@ -42,39 +18,25 @@ func LookupMultiClusterApp(ctx *pulumi.Context, args *LookupMultiClusterAppArgs,
 
 // A collection of arguments for invoking getMultiClusterApp.
 type LookupMultiClusterAppArgs struct {
-	// The multi cluster app name (string)
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getMultiClusterApp.
 type LookupMultiClusterAppResult struct {
-	// (Computed) Annotations for multi cluster app object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) The multi cluster app answers (list)
-	Answers []GetMultiClusterAppAnswer `pulumi:"answers"`
-	// (Computed) The multi cluster app catalog name (string)
-	CatalogName string `pulumi:"catalogName"`
+	Annotations map[string]interface{}     `pulumi:"annotations"`
+	Answers     []GetMultiClusterAppAnswer `pulumi:"answers"`
+	CatalogName string                     `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels for multi cluster app object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The multi cluster app members (list)
-	Members []GetMultiClusterAppMember `pulumi:"members"`
-	Name    string                     `pulumi:"name"`
-	// (Computed) The multi cluster app revision history limit (int)
-	RevisionHistoryLimit int `pulumi:"revisionHistoryLimit"`
-	// (Computed) Current revision id for the multi cluster app (string)
-	RevisionId string `pulumi:"revisionId"`
-	// (Computed) The multi cluster app roles (list)
-	Roles []string `pulumi:"roles"`
-	// (Computed) The multi cluster app target projects (list)
-	Targets []GetMultiClusterAppTarget `pulumi:"targets"`
-	// (Computed) The multi cluster app template name (string)
-	TemplateName string `pulumi:"templateName"`
-	// (Computed) The multi cluster app template version (string)
-	TemplateVersion string `pulumi:"templateVersion"`
-	// (Computed) The multi cluster app template version ID (string)
-	TemplateVersionId string `pulumi:"templateVersionId"`
-	// (Computed) The multi cluster app upgrade strategy (list)
-	UpgradeStrategies []GetMultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategies"`
+	Id                   string                              `pulumi:"id"`
+	Labels               map[string]interface{}              `pulumi:"labels"`
+	Members              []GetMultiClusterAppMember          `pulumi:"members"`
+	Name                 string                              `pulumi:"name"`
+	RevisionHistoryLimit int                                 `pulumi:"revisionHistoryLimit"`
+	RevisionId           string                              `pulumi:"revisionId"`
+	Roles                []string                            `pulumi:"roles"`
+	Targets              []GetMultiClusterAppTarget          `pulumi:"targets"`
+	TemplateName         string                              `pulumi:"templateName"`
+	TemplateVersion      string                              `pulumi:"templateVersion"`
+	TemplateVersionId    string                              `pulumi:"templateVersionId"`
+	UpgradeStrategies    []GetMultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategies"`
 }

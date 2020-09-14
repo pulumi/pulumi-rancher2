@@ -13,77 +13,23 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterEksConfig
     {
-        /// <summary>
-        /// The AWS Client ID to use (string)
-        /// </summary>
         public readonly string AccessKey;
-        /// <summary>
-        /// AMI ID to use for the worker nodes instead of the default (string)
-        /// </summary>
         public readonly string? Ami;
-        /// <summary>
-        /// Associate public ip EKS worker nodes. Default `true` (bool)
-        /// </summary>
         public readonly bool? AssociateWorkerNodePublicIp;
-        /// <summary>
-        /// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-        /// </summary>
         public readonly int? DesiredNodes;
-        /// <summary>
-        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
-        /// </summary>
         public readonly string? InstanceType;
-        /// <summary>
-        /// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
-        /// </summary>
         public readonly string? KeyPairName;
-        /// <summary>
-        /// The Kubernetes master version (string)
-        /// </summary>
         public readonly string KubernetesVersion;
-        /// <summary>
-        /// The maximum number of worker nodes. Default `3` (int)
-        /// </summary>
         public readonly int? MaximumNodes;
-        /// <summary>
-        /// The minimum number of worker nodes. Default `1` (int)
-        /// </summary>
         public readonly int? MinimumNodes;
-        /// <summary>
-        /// The volume size for each node. Default `20` (int)
-        /// </summary>
         public readonly int? NodeVolumeSize;
-        /// <summary>
-        /// GKE cluster region. Conflicts with `zone` (string)
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
-        /// </summary>
         public readonly string SecretKey;
-        /// <summary>
-        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
-        /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
-        /// <summary>
-        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
-        /// </summary>
         public readonly string? ServiceRole;
-        /// <summary>
-        /// A session token to use with the client key and secret if applicable (string)
-        /// </summary>
         public readonly string? SessionToken;
-        /// <summary>
-        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
-        /// </summary>
         public readonly ImmutableArray<string> Subnets;
-        /// <summary>
-        /// Pass user-data to the nodes to perform automated configuration tasks (string)
-        /// </summary>
         public readonly string? UserData;
-        /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-        /// </summary>
         public readonly string? VirtualNetwork;
 
         [OutputConstructor]

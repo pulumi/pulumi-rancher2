@@ -12,45 +12,24 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NotifierSmtpConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Wechat default recipient (string)
-        /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
-        /// <summary>
-        /// SMTP host (string)
-        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
-        /// <summary>
-        /// SMTP password (string)
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// SMTP port (int)
-        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
-        /// <summary>
-        /// SMTP sender (string)
-        /// </summary>
         [Input("sender", required: true)]
         public Input<string> Sender { get; set; } = null!;
 
-        /// <summary>
-        /// SMTP tls. Default `true` (bool)
-        /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }
 
-        /// <summary>
-        /// SMTP username (string)
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

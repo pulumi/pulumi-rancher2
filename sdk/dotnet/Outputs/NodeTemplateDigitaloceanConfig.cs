@@ -13,61 +13,19 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateDigitaloceanConfig
     {
-        /// <summary>
-        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
-        /// </summary>
         public readonly string? AccessToken;
-        /// <summary>
-        /// Enable backups for droplet. Default `false` (bool)
-        /// </summary>
         public readonly bool? Backups;
-        /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
-        /// </summary>
         public readonly string? Image;
-        /// <summary>
-        /// Enable ipv6 for droplet. Default `false` (bool)
-        /// </summary>
         public readonly bool? Ipv6;
-        /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
-        /// </summary>
         public readonly bool? Monitoring;
-        /// <summary>
-        /// Enable private networking for droplet. Default `false` (bool)
-        /// </summary>
         public readonly bool? PrivateNetworking;
-        /// <summary>
-        /// OpenStack region name (string)
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
-        /// </summary>
         public readonly string? Size;
-        /// <summary>
-        /// SSH key fingerprint (string)
-        /// </summary>
         public readonly string? SshKeyFingerprint;
-        /// <summary>
-        /// SSH private key path (string)
-        /// </summary>
         public readonly string? SshKeyPath;
-        /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
-        /// </summary>
         public readonly string? SshPort;
-        /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-        /// </summary>
         public readonly string? SshUser;
-        /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-        /// </summary>
         public readonly string? Tags;
-        /// <summary>
-        /// Path to file with cloud-init user-data (string)
-        /// </summary>
         public readonly string? Userdata;
 
         [OutputConstructor]

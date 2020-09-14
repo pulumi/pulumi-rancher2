@@ -21,9 +21,6 @@ namespace Pulumi.Rancher2.Inputs
         [Input("customCloudProvider")]
         public Input<string>? CustomCloudProvider { get; set; }
 
-        /// <summary>
-        /// The cluster template revision name (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

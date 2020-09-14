@@ -13,49 +13,16 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterClusterRegistrationToken
     {
-        /// <summary>
-        /// Annotations for cluster registration token object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
-        /// <summary>
-        /// Cluster ID (string)
-        /// </summary>
         public readonly string? ClusterId;
-        /// <summary>
-        /// Command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? Command;
-        /// <summary>
-        /// (Computed) The ID of the resource (string)
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Insecure command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? InsecureCommand;
-        /// <summary>
-        /// Labels for cluster registration token object (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
-        /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-        /// </summary>
         public readonly string? ManifestUrl;
-        /// <summary>
-        /// Name of cluster registration token (string)
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Node command to execute in linux nodes for custom k8s cluster (string)
-        /// </summary>
         public readonly string? NodeCommand;
-        /// <summary>
-        /// Token for cluster registration token object (string)
-        /// </summary>
         public readonly string? Token;
-        /// <summary>
-        /// Node command to execute in windows nodes for custom k8s cluster (string)
-        /// </summary>
         public readonly string? WindowsNodeCommand;
 
         [OutputConstructor]

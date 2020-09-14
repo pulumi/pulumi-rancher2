@@ -13,41 +13,14 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevision
     {
-        /// <summary>
-        /// Annotations for the cluster template revision (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
-        /// <summary>
-        /// Cluster configuration (list maxitem: 1)
-        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfig ClusterConfig;
-        /// <summary>
-        /// Cluster template ID (string)
-        /// </summary>
         public readonly string? ClusterTemplateId;
-        /// <summary>
-        /// Default variable value (string)
-        /// </summary>
         public readonly bool? Default;
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// The cluster template revision ID (string)
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Labels for the cluster template revision (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
-        /// <summary>
-        /// The cluster template revision name (string)
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Cluster template questions (list)
-        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionQuestion> Questions;
 
         [OutputConstructor]

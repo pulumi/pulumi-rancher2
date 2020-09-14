@@ -6,90 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Project
- * const foo = new rancher2.Project("foo", {
- *     clusterId: "<CLUSTER_ID>",
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
- *         },
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Project enabling and customizing monitoring
- * const foo = new rancher2.Project("foo", {
- *     clusterId: "<CLUSTER_ID>",
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- *     enableProjectMonitoring: true,
- *     projectMonitoringInput: {
- *         answers: {
- *             "exporter-kubelets.https": true,
- *             "exporter-node.enabled": true,
- *             "exporter-node.ports.metrics.port": 9796,
- *             "exporter-node.resources.limits.cpu": "200m",
- *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": false,
- *             "grafana.persistence.size": "10Gi",
- *             "grafana.persistence.storageClass": "default",
- *             "operator.resources.limits.memory": "500Mi",
- *             "prometheus.persistence.enabled": "false",
- *             "prometheus.persistence.size": "50Gi",
- *             "prometheus.persistence.storageClass": "default",
- *             "prometheus.persistent.useReleaseName": "true",
- *             "prometheus.resources.core.limits.cpu": "1000m",
- *             "prometheus.resources.core.limits.memory": "1500Mi",
- *             "prometheus.resources.core.requests.cpu": "750m",
- *             "prometheus.resources.core.requests.memory": "750Mi",
- *             "prometheus.retention": "12h",
- *         },
- *     },
- *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
- *         },
- *     },
- * });
- * ```
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -119,47 +35,29 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations for Node Pool object (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * The cluster id where create project (string)
-     */
     public readonly clusterId!: pulumi.Output<string>;
-    /**
-     * Default containers resource limits on project (List maxitem:1)
-     */
     public readonly containerResourceLimit!: pulumi.Output<outputs.ProjectContainerResourceLimit | undefined>;
-    /**
-     * A project description (string)
-     */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Enable built-in project monitoring. Default `false` (bool)
+     * Enable built-in project monitoring
      */
     public readonly enableProjectMonitoring!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels for Node Pool object (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * The name of the project (string)
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Default Pod Security Policy ID for the project (string)
-     */
     public readonly podSecurityPolicyTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+     * Cluster monitoring configuration
      */
-    public readonly projectMonitoringInput!: pulumi.Output<outputs.ProjectProjectMonitoringInput>;
-    /**
-     * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
-     */
+    public readonly projectMonitoringInput!: pulumi.Output<outputs.ProjectProjectMonitoringInput | undefined>;
     public readonly resourceQuota!: pulumi.Output<outputs.ProjectResourceQuota | undefined>;
     /**
-     * Wait for cluster becomes active. Default `false` (bool)
+     * Wait for cluster becomes active
      */
     public readonly waitForCluster!: pulumi.Output<boolean | undefined>;
 
@@ -219,47 +117,29 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Annotations for Node Pool object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The cluster id where create project (string)
-     */
     readonly clusterId?: pulumi.Input<string>;
-    /**
-     * Default containers resource limits on project (List maxitem:1)
-     */
     readonly containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
-    /**
-     * A project description (string)
-     */
     readonly description?: pulumi.Input<string>;
     /**
-     * Enable built-in project monitoring. Default `false` (bool)
+     * Enable built-in project monitoring
      */
     readonly enableProjectMonitoring?: pulumi.Input<boolean>;
     /**
-     * Labels for Node Pool object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The name of the project (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Default Pod Security Policy ID for the project (string)
-     */
     readonly podSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
-     * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+     * Cluster monitoring configuration
      */
     readonly projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
-    /**
-     * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
-     */
     readonly resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
     /**
-     * Wait for cluster becomes active. Default `false` (bool)
+     * Wait for cluster becomes active
      */
     readonly waitForCluster?: pulumi.Input<boolean>;
 }
@@ -269,47 +149,29 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Annotations for Node Pool object (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The cluster id where create project (string)
-     */
     readonly clusterId: pulumi.Input<string>;
-    /**
-     * Default containers resource limits on project (List maxitem:1)
-     */
     readonly containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
-    /**
-     * A project description (string)
-     */
     readonly description?: pulumi.Input<string>;
     /**
-     * Enable built-in project monitoring. Default `false` (bool)
+     * Enable built-in project monitoring
      */
     readonly enableProjectMonitoring?: pulumi.Input<boolean>;
     /**
-     * Labels for Node Pool object (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The name of the project (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Default Pod Security Policy ID for the project (string)
-     */
     readonly podSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
-     * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+     * Cluster monitoring configuration
      */
     readonly projectMonitoringInput?: pulumi.Input<inputs.ProjectProjectMonitoringInput>;
-    /**
-     * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
-     */
     readonly resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
     /**
-     * Wait for cluster becomes active. Default `false` (bool)
+     * Wait for cluster becomes active
      */
     readonly waitForCluster?: pulumi.Input<boolean>;
 }

@@ -9,83 +9,52 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
-    /// 
-    /// There are 2 kind of tokens:
-    /// - no scoped: valid for global system.
-    /// - scoped: valid for just a specific cluster (`cluster_id` should be provided).
-    /// 
-    /// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new rancher2 Token scoped
-    ///         var foo = new Rancher2.Token("foo", new Rancher2.TokenArgs
-    ///         {
-    ///             ClusterId = "&lt;cluster-id&gt;",
-    ///             Description = "foo token",
-    ///             Ttl = 1200,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Token : Pulumi.CustomResource
     {
         /// <summary>
-        /// (Computed) Token access key part (string)
+        /// Token access key
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster ID for scoped token (string)
+        /// Cluster ID for scoped token
         /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Token description (string)
+        /// Token description
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Token is enabled (bool)
+        /// Token enabled
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Token is expired (bool)
+        /// Token expired
         /// </summary>
         [Output("expired")]
         public Output<bool> Expired { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Token name (string)
+        /// Token name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -97,25 +66,25 @@ namespace Pulumi.Rancher2
         public Output<bool?> Renew { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Token secret key part (string)
+        /// Token secret key
         /// </summary>
         [Output("secretKey")]
         public Output<string> SecretKey { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Token value (string)
+        /// Token value
         /// </summary>
         [Output("token")]
         public Output<string> TokenName { get; private set; } = null!;
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int)
+        /// Token time to live in seconds
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Token user ID (string)
+        /// Token user ID
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -170,7 +139,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -179,13 +148,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Cluster ID for scoped token (string)
+        /// Cluster ID for scoped token
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Token description (string)
+        /// Token description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -194,7 +163,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -209,7 +178,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? Renew { get; set; }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int)
+        /// Token time to live in seconds
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -222,7 +191,7 @@ namespace Pulumi.Rancher2
     public sealed class TokenState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Computed) Token access key part (string)
+        /// Token access key
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -231,7 +200,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -240,25 +209,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Cluster ID for scoped token (string)
+        /// Cluster ID for scoped token
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Token description (string)
+        /// Token description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Computed) Token is enabled (bool)
+        /// Token enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// (Computed) Token is expired (bool)
+        /// Token expired
         /// </summary>
         [Input("expired")]
         public Input<bool>? Expired { get; set; }
@@ -267,7 +236,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -276,7 +245,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (Computed) Token name (string)
+        /// Token name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -288,25 +257,25 @@ namespace Pulumi.Rancher2
         public Input<bool>? Renew { get; set; }
 
         /// <summary>
-        /// (Computed/Sensitive) Token secret key part (string)
+        /// Token secret key
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// (Computed/Sensitive) Token value (string)
+        /// Token value
         /// </summary>
         [Input("token")]
         public Input<string>? TokenName { get; set; }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int)
+        /// Token time to live in seconds
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// (Computed) Token user ID (string)
+        /// Token user ID
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

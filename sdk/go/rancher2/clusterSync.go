@@ -13,18 +13,17 @@ import (
 type ClusterSync struct {
 	pulumi.CustomResourceState
 
-	// The cluster ID that is syncing (string)
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// (Computed) Default project ID for the cluster sync (string)
+	// Cluster id to sync
+	ClusterId        pulumi.StringOutput `pulumi:"clusterId"`
 	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
-	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
-	// The node pool IDs used by the cluster id (list)
+	KubeConfig       pulumi.StringOutput `pulumi:"kubeConfig"`
+	// Cluster node pool ids
 	NodePoolIds pulumi.StringArrayOutput `pulumi:"nodePoolIds"`
-	Synced      pulumi.BoolPtrOutput     `pulumi:"synced"`
-	// (Computed) System project ID for the cluster sync (string)
-	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
+	// Wait until active status is confirmed a number of times (wait interval of 5s)
+	StateConfirm    pulumi.IntPtrOutput  `pulumi:"stateConfirm"`
+	Synced          pulumi.BoolPtrOutput `pulumi:"synced"`
+	SystemProjectId pulumi.StringOutput  `pulumi:"systemProjectId"`
+	// Wait until monitoring is up and running
 	WaitMonitoring pulumi.BoolPtrOutput `pulumi:"waitMonitoring"`
 }
 
@@ -59,34 +58,32 @@ func GetClusterSync(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterSync resources.
 type clusterSyncState struct {
-	// The cluster ID that is syncing (string)
-	ClusterId *string `pulumi:"clusterId"`
-	// (Computed) Default project ID for the cluster sync (string)
+	// Cluster id to sync
+	ClusterId        *string `pulumi:"clusterId"`
 	DefaultProjectId *string `pulumi:"defaultProjectId"`
-	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-	KubeConfig *string `pulumi:"kubeConfig"`
-	// The node pool IDs used by the cluster id (list)
+	KubeConfig       *string `pulumi:"kubeConfig"`
+	// Cluster node pool ids
 	NodePoolIds []string `pulumi:"nodePoolIds"`
-	Synced      *bool    `pulumi:"synced"`
-	// (Computed) System project ID for the cluster sync (string)
+	// Wait until active status is confirmed a number of times (wait interval of 5s)
+	StateConfirm    *int    `pulumi:"stateConfirm"`
+	Synced          *bool   `pulumi:"synced"`
 	SystemProjectId *string `pulumi:"systemProjectId"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
+	// Wait until monitoring is up and running
 	WaitMonitoring *bool `pulumi:"waitMonitoring"`
 }
 
 type ClusterSyncState struct {
-	// The cluster ID that is syncing (string)
-	ClusterId pulumi.StringPtrInput
-	// (Computed) Default project ID for the cluster sync (string)
+	// Cluster id to sync
+	ClusterId        pulumi.StringPtrInput
 	DefaultProjectId pulumi.StringPtrInput
-	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-	KubeConfig pulumi.StringPtrInput
-	// The node pool IDs used by the cluster id (list)
+	KubeConfig       pulumi.StringPtrInput
+	// Cluster node pool ids
 	NodePoolIds pulumi.StringArrayInput
-	Synced      pulumi.BoolPtrInput
-	// (Computed) System project ID for the cluster sync (string)
+	// Wait until active status is confirmed a number of times (wait interval of 5s)
+	StateConfirm    pulumi.IntPtrInput
+	Synced          pulumi.BoolPtrInput
 	SystemProjectId pulumi.StringPtrInput
-	// Wait until monitoring is up and running. Default: `false` (bool)
+	// Wait until monitoring is up and running
 	WaitMonitoring pulumi.BoolPtrInput
 }
 
@@ -95,23 +92,27 @@ func (ClusterSyncState) ElementType() reflect.Type {
 }
 
 type clusterSyncArgs struct {
-	// The cluster ID that is syncing (string)
+	// Cluster id to sync
 	ClusterId string `pulumi:"clusterId"`
-	// The node pool IDs used by the cluster id (list)
+	// Cluster node pool ids
 	NodePoolIds []string `pulumi:"nodePoolIds"`
-	Synced      *bool    `pulumi:"synced"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
+	// Wait until active status is confirmed a number of times (wait interval of 5s)
+	StateConfirm *int  `pulumi:"stateConfirm"`
+	Synced       *bool `pulumi:"synced"`
+	// Wait until monitoring is up and running
 	WaitMonitoring *bool `pulumi:"waitMonitoring"`
 }
 
 // The set of arguments for constructing a ClusterSync resource.
 type ClusterSyncArgs struct {
-	// The cluster ID that is syncing (string)
+	// Cluster id to sync
 	ClusterId pulumi.StringInput
-	// The node pool IDs used by the cluster id (list)
+	// Cluster node pool ids
 	NodePoolIds pulumi.StringArrayInput
-	Synced      pulumi.BoolPtrInput
-	// Wait until monitoring is up and running. Default: `false` (bool)
+	// Wait until active status is confirmed a number of times (wait interval of 5s)
+	StateConfirm pulumi.IntPtrInput
+	Synced       pulumi.BoolPtrInput
+	// Wait until monitoring is up and running
 	WaitMonitoring pulumi.BoolPtrInput
 }
 

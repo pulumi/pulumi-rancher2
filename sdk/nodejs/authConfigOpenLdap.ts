@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
- *
- * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
- */
 export class AuthConfigOpenLdap extends pulumi.CustomResource {
     /**
      * Get an existing AuthConfigOpenLdap resource's state with the given name, ID, and optional extra
@@ -37,125 +32,41 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthConfigOpenLdap.__pulumiType;
     }
 
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     public readonly accessMode!: pulumi.Output<string | undefined>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-     */
     public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-     */
     public readonly certificate!: pulumi.Output<string | undefined>;
-    /**
-     * OpenLdap connection timeout. Default `5000` (int)
-     */
     public readonly connectionTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Group DN attribute. Default `entryDN` (string)
-     */
     public readonly groupDnAttribute!: pulumi.Output<string>;
-    /**
-     * Group member mapping attribute. Default `member` (string)
-     */
     public readonly groupMemberMappingAttribute!: pulumi.Output<string>;
-    /**
-     * Group member user attribute. Default `entryDN` (string)
-     */
     public readonly groupMemberUserAttribute!: pulumi.Output<string>;
-    /**
-     * Group name attribute. Default `cn` (string)
-     */
     public readonly groupNameAttribute!: pulumi.Output<string>;
-    /**
-     * Group object class. Default `groupOfNames` (string)
-     */
     public readonly groupObjectClass!: pulumi.Output<string>;
-    /**
-     * Group search attribute. Default `cn` (string)
-     */
     public readonly groupSearchAttribute!: pulumi.Output<string>;
-    /**
-     * Group search base (string)
-     */
     public readonly groupSearchBase!: pulumi.Output<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * Nested group membership enable. Default `false` (bool)
-     */
     public readonly nestedGroupMembershipEnabled!: pulumi.Output<boolean>;
-    /**
-     * OpenLdap port. Default `389` (int)
-     */
     public readonly port!: pulumi.Output<number | undefined>;
-    /**
-     * OpenLdap servers list (list)
-     */
     public readonly servers!: pulumi.Output<string[]>;
-    /**
-     * Service account DN for access OpenLdap service (string)
-     */
     public readonly serviceAccountDistinguishedName!: pulumi.Output<string>;
-    /**
-     * Service account password for access OpenLdap service (string)
-     */
     public readonly serviceAccountPassword!: pulumi.Output<string>;
-    /**
-     * Enable TLS connection (bool)
-     */
     public readonly tls!: pulumi.Output<boolean>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
-    /**
-     * User disabled bit mask (int)
-     */
     public readonly userDisabledBitMask!: pulumi.Output<number>;
-    /**
-     * User enable attribute (string)
-     */
     public readonly userEnabledAttribute!: pulumi.Output<string>;
-    /**
-     * User login attribute. Default `uid` (string)
-     */
     public readonly userLoginAttribute!: pulumi.Output<string>;
-    /**
-     * User member attribute. Default `memberOf` (string)
-     */
     public readonly userMemberAttribute!: pulumi.Output<string>;
-    /**
-     * User name attribute. Default `givenName` (string)
-     */
     public readonly userNameAttribute!: pulumi.Output<string>;
-    /**
-     * User object class. Default `inetorgperson` (string)
-     */
     public readonly userObjectClass!: pulumi.Output<string>;
-    /**
-     * User search attribute. Default `uid|sn|givenName` (string)
-     */
     public readonly userSearchAttribute!: pulumi.Output<string>;
-    /**
-     * User search base DN (string)
-     */
     public readonly userSearchBase!: pulumi.Output<string>;
 
     /**
@@ -260,125 +171,41 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthConfigOpenLdap resources.
  */
 export interface AuthConfigOpenLdapState {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-     */
     readonly certificate?: pulumi.Input<string>;
-    /**
-     * OpenLdap connection timeout. Default `5000` (int)
-     */
     readonly connectionTimeout?: pulumi.Input<number>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Group DN attribute. Default `entryDN` (string)
-     */
     readonly groupDnAttribute?: pulumi.Input<string>;
-    /**
-     * Group member mapping attribute. Default `member` (string)
-     */
     readonly groupMemberMappingAttribute?: pulumi.Input<string>;
-    /**
-     * Group member user attribute. Default `entryDN` (string)
-     */
     readonly groupMemberUserAttribute?: pulumi.Input<string>;
-    /**
-     * Group name attribute. Default `cn` (string)
-     */
     readonly groupNameAttribute?: pulumi.Input<string>;
-    /**
-     * Group object class. Default `groupOfNames` (string)
-     */
     readonly groupObjectClass?: pulumi.Input<string>;
-    /**
-     * Group search attribute. Default `cn` (string)
-     */
     readonly groupSearchAttribute?: pulumi.Input<string>;
-    /**
-     * Group search base (string)
-     */
     readonly groupSearchBase?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * (Computed) The name of the resource (string)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Nested group membership enable. Default `false` (bool)
-     */
     readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
-    /**
-     * OpenLdap port. Default `389` (int)
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * OpenLdap servers list (list)
-     */
     readonly servers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Service account DN for access OpenLdap service (string)
-     */
     readonly serviceAccountDistinguishedName?: pulumi.Input<string>;
-    /**
-     * Service account password for access OpenLdap service (string)
-     */
     readonly serviceAccountPassword?: pulumi.Input<string>;
-    /**
-     * Enable TLS connection (bool)
-     */
     readonly tls?: pulumi.Input<boolean>;
-    /**
-     * (Computed) The type of the resource (string)
-     */
     readonly type?: pulumi.Input<string>;
-    /**
-     * User disabled bit mask (int)
-     */
     readonly userDisabledBitMask?: pulumi.Input<number>;
-    /**
-     * User enable attribute (string)
-     */
     readonly userEnabledAttribute?: pulumi.Input<string>;
-    /**
-     * User login attribute. Default `uid` (string)
-     */
     readonly userLoginAttribute?: pulumi.Input<string>;
-    /**
-     * User member attribute. Default `memberOf` (string)
-     */
     readonly userMemberAttribute?: pulumi.Input<string>;
-    /**
-     * User name attribute. Default `givenName` (string)
-     */
     readonly userNameAttribute?: pulumi.Input<string>;
-    /**
-     * User object class. Default `inetorgperson` (string)
-     */
     readonly userObjectClass?: pulumi.Input<string>;
-    /**
-     * User search attribute. Default `uid|sn|givenName` (string)
-     */
     readonly userSearchAttribute?: pulumi.Input<string>;
-    /**
-     * User search base DN (string)
-     */
     readonly userSearchBase?: pulumi.Input<string>;
 }
 
@@ -386,116 +213,38 @@ export interface AuthConfigOpenLdapState {
  * The set of arguments for constructing a AuthConfigOpenLdap resource.
  */
 export interface AuthConfigOpenLdapArgs {
-    /**
-     * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-     */
     readonly accessMode?: pulumi.Input<string>;
-    /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-     */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Annotations of the resource (map)
+     * Annotations of the resource
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-     */
     readonly certificate?: pulumi.Input<string>;
-    /**
-     * OpenLdap connection timeout. Default `5000` (int)
-     */
     readonly connectionTimeout?: pulumi.Input<number>;
-    /**
-     * Enable auth config provider. Default `true` (bool)
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Group DN attribute. Default `entryDN` (string)
-     */
     readonly groupDnAttribute?: pulumi.Input<string>;
-    /**
-     * Group member mapping attribute. Default `member` (string)
-     */
     readonly groupMemberMappingAttribute?: pulumi.Input<string>;
-    /**
-     * Group member user attribute. Default `entryDN` (string)
-     */
     readonly groupMemberUserAttribute?: pulumi.Input<string>;
-    /**
-     * Group name attribute. Default `cn` (string)
-     */
     readonly groupNameAttribute?: pulumi.Input<string>;
-    /**
-     * Group object class. Default `groupOfNames` (string)
-     */
     readonly groupObjectClass?: pulumi.Input<string>;
-    /**
-     * Group search attribute. Default `cn` (string)
-     */
     readonly groupSearchAttribute?: pulumi.Input<string>;
-    /**
-     * Group search base (string)
-     */
     readonly groupSearchBase?: pulumi.Input<string>;
     /**
-     * Labels of the resource (map)
+     * Labels of the resource
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Nested group membership enable. Default `false` (bool)
-     */
     readonly nestedGroupMembershipEnabled?: pulumi.Input<boolean>;
-    /**
-     * OpenLdap port. Default `389` (int)
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * OpenLdap servers list (list)
-     */
     readonly servers: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Service account DN for access OpenLdap service (string)
-     */
     readonly serviceAccountDistinguishedName: pulumi.Input<string>;
-    /**
-     * Service account password for access OpenLdap service (string)
-     */
     readonly serviceAccountPassword: pulumi.Input<string>;
-    /**
-     * Enable TLS connection (bool)
-     */
     readonly tls?: pulumi.Input<boolean>;
-    /**
-     * User disabled bit mask (int)
-     */
     readonly userDisabledBitMask?: pulumi.Input<number>;
-    /**
-     * User enable attribute (string)
-     */
     readonly userEnabledAttribute?: pulumi.Input<string>;
-    /**
-     * User login attribute. Default `uid` (string)
-     */
     readonly userLoginAttribute?: pulumi.Input<string>;
-    /**
-     * User member attribute. Default `memberOf` (string)
-     */
     readonly userMemberAttribute?: pulumi.Input<string>;
-    /**
-     * User name attribute. Default `givenName` (string)
-     */
     readonly userNameAttribute?: pulumi.Input<string>;
-    /**
-     * User object class. Default `inetorgperson` (string)
-     */
     readonly userObjectClass?: pulumi.Input<string>;
-    /**
-     * User search attribute. Default `uid|sn|givenName` (string)
-     */
     readonly userSearchAttribute?: pulumi.Input<string>;
-    /**
-     * User search base DN (string)
-     */
     readonly userSearchBase: pulumi.Input<string>;
 }

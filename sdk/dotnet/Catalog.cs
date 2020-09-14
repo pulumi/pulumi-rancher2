@@ -9,124 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
-    /// <summary>
-    /// Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new Rancher2 Global Catalog
-    ///         var foo_global = new Rancher2.Catalog("foo-global", new Rancher2.CatalogArgs
-    ///         {
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///         // Create a new Rancher2 Cluster Catalog
-    ///         var foo_cluster = new Rancher2.Catalog("foo-cluster", new Rancher2.CatalogArgs
-    ///         {
-    ///             Scope = "cluster",
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///         // Create a new Rancher2 Project Catalog
-    ///         var foo_project = new Rancher2.Catalog("foo-project", new Rancher2.CatalogArgs
-    ///         {
-    ///             Scope = "project",
-    ///             Url = "https://&lt;CATALOG_URL&gt;",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Catalog : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations for the catalog (map)
+        /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
-        /// <summary>
-        /// The branch of the catalog repo to use. Default `master` (string)
-        /// </summary>
         [Output("branch")]
         public Output<string?> Branch { get; private set; } = null!;
 
-        /// <summary>
-        /// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
-        /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// A catalog description (string)
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The kind of the catalog. Just helm by the moment (string)
-        /// </summary>
         [Output("kind")]
         public Output<string?> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for the catalog (map)
+        /// Labels of the resource
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the catalog (string)
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The password to access the catalog if needed (string)
-        /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// The project id of the catalog. Mandatory if `scope = project` (string)
-        /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
-        /// </summary>
         [Output("refresh")]
         public Output<bool?> Refresh { get; private set; } = null!;
 
-        /// <summary>
-        /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
-        /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
 
-        /// <summary>
-        /// The url of the catalog repo (string)
-        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
-        /// <summary>
-        /// The username to access the catalog if needed (string)
-        /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
 
-        /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -180,7 +109,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for the catalog (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -188,27 +117,15 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The branch of the catalog repo to use. Default `master` (string)
-        /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
-        /// <summary>
-        /// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// A catalog description (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The kind of the catalog. Just helm by the moment (string)
-        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -216,7 +133,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the catalog (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -224,51 +141,27 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the catalog (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The password to access the catalog if needed (string)
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// The project id of the catalog. Mandatory if `scope = project` (string)
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
-        /// </summary>
         [Input("refresh")]
         public Input<bool>? Refresh { get; set; }
 
-        /// <summary>
-        /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        /// <summary>
-        /// The url of the catalog repo (string)
-        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
-        /// <summary>
-        /// The username to access the catalog if needed (string)
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -283,7 +176,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for the catalog (map)
+        /// Annotations of the resource
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -291,27 +184,15 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// The branch of the catalog repo to use. Default `master` (string)
-        /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
-        /// <summary>
-        /// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// A catalog description (string)
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The kind of the catalog. Just helm by the moment (string)
-        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -319,7 +200,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the catalog (map)
+        /// Labels of the resource
         /// </summary>
         public InputMap<object> Labels
         {
@@ -327,51 +208,27 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the catalog (string)
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The password to access the catalog if needed (string)
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// The project id of the catalog. Mandatory if `scope = project` (string)
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
-        /// </summary>
         [Input("refresh")]
         public Input<bool>? Refresh { get; set; }
 
-        /// <summary>
-        /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        /// <summary>
-        /// The url of the catalog repo (string)
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
-        /// <summary>
-        /// The username to access the catalog if needed (string)
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        /// <summary>
-        /// Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

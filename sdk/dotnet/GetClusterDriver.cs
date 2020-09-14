@@ -11,32 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetClusterDriver
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetClusterDriver.InvokeAsync(new Rancher2.GetClusterDriverArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClusterDriverResult> InvokeAsync(GetClusterDriverArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterDriverResult>("rancher2:index/getClusterDriver:getClusterDriver", args ?? new GetClusterDriverArgs(), options.WithVersion());
     }
@@ -44,15 +18,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterDriverArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the cluster driver (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The URL to download the machine driver binary for 64-bit Linux (string)
-        /// </summary>
         [Input("url")]
         public string? Url { get; set; }
 
@@ -65,43 +33,19 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterDriverResult
     {
-        /// <summary>
-        /// (Computed) Specify if the cluster driver state (bool)
-        /// </summary>
         public readonly bool Active;
-        /// <summary>
-        /// (Computed) Actual url of the cluster driver (string)
-        /// </summary>
         public readonly string ActualUrl;
-        /// <summary>
-        /// (Computed) Annotations of the resource (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
-        /// <summary>
-        /// (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
-        /// </summary>
         public readonly bool Builtin;
-        /// <summary>
-        /// (Computed) Verify that the downloaded driver matches the expected checksum (string)
-        /// </summary>
         public readonly string Checksum;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Computed) Labels of the resource (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) The URL to load for customized Add Clusters screen for this driver (string)
-        /// </summary>
         public readonly string UiUrl;
         public readonly string Url;
-        /// <summary>
-        /// (Computed) Domains to whitelist for the ui (list)
-        /// </summary>
         public readonly ImmutableArray<string> WhitelistDomains;
 
         [OutputConstructor]

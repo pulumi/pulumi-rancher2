@@ -11,32 +11,6 @@ namespace Pulumi.Rancher2
 {
     public static class GetPodSecurityPolicyTemplate
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Rancher2 = Pulumi.Rancher2;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Rancher2.GetPodSecurityPolicyTemplate.InvokeAsync(new Rancher2.GetPodSecurityPolicyTemplateArgs
-        ///         {
-        ///             Name = "foo",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetPodSecurityPolicyTemplateResult> InvokeAsync(GetPodSecurityPolicyTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityPolicyTemplateResult>("rancher2:index/getPodSecurityPolicyTemplate:getPodSecurityPolicyTemplate", args ?? new GetPodSecurityPolicyTemplateArgs(), options.WithVersion());
     }
@@ -44,18 +18,11 @@ namespace Pulumi.Rancher2
 
     public sealed class GetPodSecurityPolicyTemplateArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// = (Optional)
-        /// </summary>
         [Input("allowPrivilegeEscalation")]
         public bool? AllowPrivilegeEscalation { get; set; }
 
         [Input("allowedCapabilities")]
         private List<string>? _allowedCapabilities;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> AllowedCapabilities
         {
             get => _allowedCapabilities ?? (_allowedCapabilities = new List<string>());
@@ -64,10 +31,6 @@ namespace Pulumi.Rancher2
 
         [Input("allowedCsiDrivers")]
         private List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs>? _allowedCsiDrivers;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs> AllowedCsiDrivers
         {
             get => _allowedCsiDrivers ?? (_allowedCsiDrivers = new List<Inputs.GetPodSecurityPolicyTemplateAllowedCsiDriverArgs>());
@@ -76,10 +39,6 @@ namespace Pulumi.Rancher2
 
         [Input("allowedFlexVolumes")]
         private List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs>? _allowedFlexVolumes;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs> AllowedFlexVolumes
         {
             get => _allowedFlexVolumes ?? (_allowedFlexVolumes = new List<Inputs.GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs>());
@@ -88,10 +47,6 @@ namespace Pulumi.Rancher2
 
         [Input("allowedHostPaths")]
         private List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs>? _allowedHostPaths;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs> AllowedHostPaths
         {
             get => _allowedHostPaths ?? (_allowedHostPaths = new List<Inputs.GetPodSecurityPolicyTemplateAllowedHostPathArgs>());
@@ -100,10 +55,6 @@ namespace Pulumi.Rancher2
 
         [Input("allowedProcMountTypes")]
         private List<string>? _allowedProcMountTypes;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> AllowedProcMountTypes
         {
             get => _allowedProcMountTypes ?? (_allowedProcMountTypes = new List<string>());
@@ -112,10 +63,6 @@ namespace Pulumi.Rancher2
 
         [Input("allowedUnsafeSysctls")]
         private List<string>? _allowedUnsafeSysctls;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> AllowedUnsafeSysctls
         {
             get => _allowedUnsafeSysctls ?? (_allowedUnsafeSysctls = new List<string>());
@@ -124,10 +71,6 @@ namespace Pulumi.Rancher2
 
         [Input("annotations")]
         private Dictionary<string, object>? _annotations;
-
-        /// <summary>
-        /// Annotations for PodSecurityPolicyTemplate object (map)
-        /// </summary>
         public Dictionary<string, object> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, object>());
@@ -136,67 +79,40 @@ namespace Pulumi.Rancher2
 
         [Input("defaultAddCapabilities")]
         private List<string>? _defaultAddCapabilities;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> DefaultAddCapabilities
         {
             get => _defaultAddCapabilities ?? (_defaultAddCapabilities = new List<string>());
             set => _defaultAddCapabilities = value;
         }
 
-        /// <summary>
-        /// (list)
-        /// </summary>
         [Input("defaultAllowPrivilegeEscalation")]
         public bool? DefaultAllowPrivilegeEscalation { get; set; }
 
-        /// <summary>
-        /// The PodSecurityPolicyTemplate description (string)
-        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
         [Input("forbiddenSysctls")]
         private List<string>? _forbiddenSysctls;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> ForbiddenSysctls
         {
             get => _forbiddenSysctls ?? (_forbiddenSysctls = new List<string>());
             set => _forbiddenSysctls = value;
         }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("fsGroup")]
         public Inputs.GetPodSecurityPolicyTemplateFsGroupArgs? FsGroup { get; set; }
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("hostIpc")]
         public bool? HostIpc { get; set; }
 
         [Input("hostNetwork")]
         public bool? HostNetwork { get; set; }
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("hostPid")]
         public bool? HostPid { get; set; }
 
         [Input("hostPorts")]
         private List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs>? _hostPorts;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs> HostPorts
         {
             get => _hostPorts ?? (_hostPorts = new List<Inputs.GetPodSecurityPolicyTemplateHostPortArgs>());
@@ -205,82 +121,46 @@ namespace Pulumi.Rancher2
 
         [Input("labels")]
         private Dictionary<string, object>? _labels;
-
-        /// <summary>
-        /// Labels for PodSecurityPolicyTemplate object (map)
-        /// </summary>
         public Dictionary<string, object> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, object>());
             set => _labels = value;
         }
 
-        /// <summary>
-        /// The name of the PodSecurityPolicyTemplate (string)
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("privileged")]
         public bool? Privileged { get; set; }
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("readOnlyRootFilesystem")]
         public bool? ReadOnlyRootFilesystem { get; set; }
 
         [Input("requiredDropCapabilities")]
         private List<string>? _requiredDropCapabilities;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> RequiredDropCapabilities
         {
             get => _requiredDropCapabilities ?? (_requiredDropCapabilities = new List<string>());
             set => _requiredDropCapabilities = value;
         }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("runAsGroup")]
         public Inputs.GetPodSecurityPolicyTemplateRunAsGroupArgs? RunAsGroup { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("runAsUser")]
         public Inputs.GetPodSecurityPolicyTemplateRunAsUserArgs? RunAsUser { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("runtimeClass")]
         public Inputs.GetPodSecurityPolicyTemplateRuntimeClassArgs? RuntimeClass { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("seLinux")]
         public Inputs.GetPodSecurityPolicyTemplateSeLinuxArgs? SeLinux { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("supplementalGroup")]
         public Inputs.GetPodSecurityPolicyTemplateSupplementalGroupArgs? SupplementalGroup { get; set; }
 
         [Input("volumes")]
         private List<string>? _volumes;
-
-        /// <summary>
-        /// (list)
-        /// </summary>
         public List<string> Volumes
         {
             get => _volumes ?? (_volumes = new List<string>());

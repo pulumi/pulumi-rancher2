@@ -10,76 +10,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
-//
-// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 type ActiveDirectory struct {
 	pulumi.CustomResourceState
 
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// CA certificate for TLS if selfsigned (string)
-	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
-	// ActiveDirectory connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrOutput `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult login domain (string)
-	DefaultLoginDomain pulumi.StringPtrOutput `pulumi:"defaultLoginDomain"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Group DN attribute. Default `distinguishedName` (string)
-	GroupDnAttribute pulumi.StringOutput `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute pulumi.StringOutput `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `distinguishedName` (string)
-	GroupMemberUserAttribute pulumi.StringOutput `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `name` (string)
-	GroupNameAttribute pulumi.StringOutput `pulumi:"groupNameAttribute"`
-	// Group object class. Default `group` (string)
-	GroupObjectClass pulumi.StringOutput `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `sAMAccountName` (string)
-	GroupSearchAttribute pulumi.StringOutput `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase pulumi.StringOutput `pulumi:"groupSearchBase"`
-	// Group search filter (string)
-	GroupSearchFilter pulumi.StringOutput `pulumi:"groupSearchFilter"`
-	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled pulumi.BoolOutput `pulumi:"nestedGroupMembershipEnabled"`
-	// ActiveDirectory port. Default `389` (int)
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// ActiveDirectory servers list (list)
-	Servers pulumi.StringArrayOutput `pulumi:"servers"`
-	// Service account password for access ActiveDirectory service (string)
-	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
-	// Service account DN for access ActiveDirectory service (string)
-	ServiceAccountUsername pulumi.StringOutput `pulumi:"serviceAccountUsername"`
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolOutput `pulumi:"tls"`
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringOutput `pulumi:"type"`
-	// User disabled bit mask. Default `2` (int)
-	UserDisabledBitMask pulumi.IntPtrOutput `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringOutput `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `sAMAccountName` (string)
-	UserLoginAttribute pulumi.StringOutput `pulumi:"userLoginAttribute"`
-	// User name attribute. Default `name` (string)
-	UserNameAttribute pulumi.StringOutput `pulumi:"userNameAttribute"`
-	// User object class. Default `person` (string)
-	UserObjectClass pulumi.StringOutput `pulumi:"userObjectClass"`
-	// User search attribute. Default `sAMAccountName|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringOutput `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase pulumi.StringOutput `pulumi:"userSearchBase"`
-	// User search filter (string)
-	UserSearchFilter pulumi.StringOutput `pulumi:"userSearchFilter"`
+	// Annotations of the resource
+	Annotations                 pulumi.MapOutput       `pulumi:"annotations"`
+	Certificate                 pulumi.StringPtrOutput `pulumi:"certificate"`
+	ConnectionTimeout           pulumi.IntPtrOutput    `pulumi:"connectionTimeout"`
+	DefaultLoginDomain          pulumi.StringPtrOutput `pulumi:"defaultLoginDomain"`
+	Enabled                     pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	GroupDnAttribute            pulumi.StringOutput    `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute pulumi.StringOutput    `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    pulumi.StringOutput    `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          pulumi.StringOutput    `pulumi:"groupNameAttribute"`
+	GroupObjectClass            pulumi.StringOutput    `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        pulumi.StringOutput    `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             pulumi.StringOutput    `pulumi:"groupSearchBase"`
+	GroupSearchFilter           pulumi.StringOutput    `pulumi:"groupSearchFilter"`
+	// Labels of the resource
+	Labels                       pulumi.MapOutput         `pulumi:"labels"`
+	Name                         pulumi.StringOutput      `pulumi:"name"`
+	NestedGroupMembershipEnabled pulumi.BoolOutput        `pulumi:"nestedGroupMembershipEnabled"`
+	Port                         pulumi.IntPtrOutput      `pulumi:"port"`
+	Servers                      pulumi.StringArrayOutput `pulumi:"servers"`
+	ServiceAccountPassword       pulumi.StringOutput      `pulumi:"serviceAccountPassword"`
+	ServiceAccountUsername       pulumi.StringOutput      `pulumi:"serviceAccountUsername"`
+	Tls                          pulumi.BoolOutput        `pulumi:"tls"`
+	Type                         pulumi.StringOutput      `pulumi:"type"`
+	UserDisabledBitMask          pulumi.IntPtrOutput      `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute         pulumi.StringOutput      `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute           pulumi.StringOutput      `pulumi:"userLoginAttribute"`
+	UserNameAttribute            pulumi.StringOutput      `pulumi:"userNameAttribute"`
+	UserObjectClass              pulumi.StringOutput      `pulumi:"userObjectClass"`
+	UserSearchAttribute          pulumi.StringOutput      `pulumi:"userSearchAttribute"`
+	UserSearchBase               pulumi.StringOutput      `pulumi:"userSearchBase"`
+	UserSearchFilter             pulumi.StringOutput      `pulumi:"userSearchFilter"`
 }
 
 // NewActiveDirectory registers a new resource with the given unique name, arguments, and options.
@@ -122,137 +89,77 @@ func GetActiveDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ActiveDirectory resources.
 type activeDirectoryState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// CA certificate for TLS if selfsigned (string)
-	Certificate *string `pulumi:"certificate"`
-	// ActiveDirectory connection timeout. Default `5000` (int)
-	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult login domain (string)
-	DefaultLoginDomain *string `pulumi:"defaultLoginDomain"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Group DN attribute. Default `distinguishedName` (string)
-	GroupDnAttribute *string `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute *string `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `distinguishedName` (string)
-	GroupMemberUserAttribute *string `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `name` (string)
-	GroupNameAttribute *string `pulumi:"groupNameAttribute"`
-	// Group object class. Default `group` (string)
-	GroupObjectClass *string `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `sAMAccountName` (string)
-	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
-	// Group search filter (string)
-	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) The name of the resource (string)
-	Name *string `pulumi:"name"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
-	// ActiveDirectory port. Default `389` (int)
-	Port *int `pulumi:"port"`
-	// ActiveDirectory servers list (list)
-	Servers []string `pulumi:"servers"`
-	// Service account password for access ActiveDirectory service (string)
-	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
-	// Service account DN for access ActiveDirectory service (string)
-	ServiceAccountUsername *string `pulumi:"serviceAccountUsername"`
-	// Enable TLS connection (bool)
-	Tls *bool `pulumi:"tls"`
-	// (Computed) The type of the resource (string)
-	Type *string `pulumi:"type"`
-	// User disabled bit mask. Default `2` (int)
-	UserDisabledBitMask *int `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute *string `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `sAMAccountName` (string)
-	UserLoginAttribute *string `pulumi:"userLoginAttribute"`
-	// User name attribute. Default `name` (string)
-	UserNameAttribute *string `pulumi:"userNameAttribute"`
-	// User object class. Default `person` (string)
-	UserObjectClass *string `pulumi:"userObjectClass"`
-	// User search attribute. Default `sAMAccountName|sn|givenName` (string)
-	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase *string `pulumi:"userSearchBase"`
-	// User search filter (string)
-	UserSearchFilter *string `pulumi:"userSearchFilter"`
+	// Annotations of the resource
+	Annotations                 map[string]interface{} `pulumi:"annotations"`
+	Certificate                 *string                `pulumi:"certificate"`
+	ConnectionTimeout           *int                   `pulumi:"connectionTimeout"`
+	DefaultLoginDomain          *string                `pulumi:"defaultLoginDomain"`
+	Enabled                     *bool                  `pulumi:"enabled"`
+	GroupDnAttribute            *string                `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute *string                `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    *string                `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          *string                `pulumi:"groupNameAttribute"`
+	GroupObjectClass            *string                `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        *string                `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             *string                `pulumi:"groupSearchBase"`
+	GroupSearchFilter           *string                `pulumi:"groupSearchFilter"`
+	// Labels of the resource
+	Labels                       map[string]interface{} `pulumi:"labels"`
+	Name                         *string                `pulumi:"name"`
+	NestedGroupMembershipEnabled *bool                  `pulumi:"nestedGroupMembershipEnabled"`
+	Port                         *int                   `pulumi:"port"`
+	Servers                      []string               `pulumi:"servers"`
+	ServiceAccountPassword       *string                `pulumi:"serviceAccountPassword"`
+	ServiceAccountUsername       *string                `pulumi:"serviceAccountUsername"`
+	Tls                          *bool                  `pulumi:"tls"`
+	Type                         *string                `pulumi:"type"`
+	UserDisabledBitMask          *int                   `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute         *string                `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute           *string                `pulumi:"userLoginAttribute"`
+	UserNameAttribute            *string                `pulumi:"userNameAttribute"`
+	UserObjectClass              *string                `pulumi:"userObjectClass"`
+	UserSearchAttribute          *string                `pulumi:"userSearchAttribute"`
+	UserSearchBase               *string                `pulumi:"userSearchBase"`
+	UserSearchFilter             *string                `pulumi:"userSearchFilter"`
 }
 
 type ActiveDirectoryState struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// CA certificate for TLS if selfsigned (string)
-	Certificate pulumi.StringPtrInput
-	// ActiveDirectory connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrInput
-	// ActiveDirectory defult login domain (string)
-	DefaultLoginDomain pulumi.StringPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Group DN attribute. Default `distinguishedName` (string)
-	GroupDnAttribute pulumi.StringPtrInput
-	// Group member mapping attribute. Default `member` (string)
+	// Annotations of the resource
+	Annotations                 pulumi.MapInput
+	Certificate                 pulumi.StringPtrInput
+	ConnectionTimeout           pulumi.IntPtrInput
+	DefaultLoginDomain          pulumi.StringPtrInput
+	Enabled                     pulumi.BoolPtrInput
+	GroupDnAttribute            pulumi.StringPtrInput
 	GroupMemberMappingAttribute pulumi.StringPtrInput
-	// Group member user attribute. Default `distinguishedName` (string)
-	GroupMemberUserAttribute pulumi.StringPtrInput
-	// Group name attribute. Default `name` (string)
-	GroupNameAttribute pulumi.StringPtrInput
-	// Group object class. Default `group` (string)
-	GroupObjectClass pulumi.StringPtrInput
-	// Group search attribute. Default `sAMAccountName` (string)
-	GroupSearchAttribute pulumi.StringPtrInput
-	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
-	// Group search filter (string)
-	GroupSearchFilter pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// (Computed) The name of the resource (string)
-	Name pulumi.StringPtrInput
-	// Nested group membership enable. Default `false` (bool)
+	GroupMemberUserAttribute    pulumi.StringPtrInput
+	GroupNameAttribute          pulumi.StringPtrInput
+	GroupObjectClass            pulumi.StringPtrInput
+	GroupSearchAttribute        pulumi.StringPtrInput
+	GroupSearchBase             pulumi.StringPtrInput
+	GroupSearchFilter           pulumi.StringPtrInput
+	// Labels of the resource
+	Labels                       pulumi.MapInput
+	Name                         pulumi.StringPtrInput
 	NestedGroupMembershipEnabled pulumi.BoolPtrInput
-	// ActiveDirectory port. Default `389` (int)
-	Port pulumi.IntPtrInput
-	// ActiveDirectory servers list (list)
-	Servers pulumi.StringArrayInput
-	// Service account password for access ActiveDirectory service (string)
-	ServiceAccountPassword pulumi.StringPtrInput
-	// Service account DN for access ActiveDirectory service (string)
-	ServiceAccountUsername pulumi.StringPtrInput
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolPtrInput
-	// (Computed) The type of the resource (string)
-	Type pulumi.StringPtrInput
-	// User disabled bit mask. Default `2` (int)
-	UserDisabledBitMask pulumi.IntPtrInput
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringPtrInput
-	// User login attribute. Default `sAMAccountName` (string)
-	UserLoginAttribute pulumi.StringPtrInput
-	// User name attribute. Default `name` (string)
-	UserNameAttribute pulumi.StringPtrInput
-	// User object class. Default `person` (string)
-	UserObjectClass pulumi.StringPtrInput
-	// User search attribute. Default `sAMAccountName|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringPtrInput
-	// User search base DN (string)
-	UserSearchBase pulumi.StringPtrInput
-	// User search filter (string)
-	UserSearchFilter pulumi.StringPtrInput
+	Port                         pulumi.IntPtrInput
+	Servers                      pulumi.StringArrayInput
+	ServiceAccountPassword       pulumi.StringPtrInput
+	ServiceAccountUsername       pulumi.StringPtrInput
+	Tls                          pulumi.BoolPtrInput
+	Type                         pulumi.StringPtrInput
+	UserDisabledBitMask          pulumi.IntPtrInput
+	UserEnabledAttribute         pulumi.StringPtrInput
+	UserLoginAttribute           pulumi.StringPtrInput
+	UserNameAttribute            pulumi.StringPtrInput
+	UserObjectClass              pulumi.StringPtrInput
+	UserSearchAttribute          pulumi.StringPtrInput
+	UserSearchBase               pulumi.StringPtrInput
+	UserSearchFilter             pulumi.StringPtrInput
 }
 
 func (ActiveDirectoryState) ElementType() reflect.Type {
@@ -260,130 +167,74 @@ func (ActiveDirectoryState) ElementType() reflect.Type {
 }
 
 type activeDirectoryArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// CA certificate for TLS if selfsigned (string)
-	Certificate *string `pulumi:"certificate"`
-	// ActiveDirectory connection timeout. Default `5000` (int)
-	ConnectionTimeout *int `pulumi:"connectionTimeout"`
-	// ActiveDirectory defult login domain (string)
-	DefaultLoginDomain *string `pulumi:"defaultLoginDomain"`
-	// Enable auth config provider. Default `true` (bool)
-	Enabled *bool `pulumi:"enabled"`
-	// Group DN attribute. Default `distinguishedName` (string)
-	GroupDnAttribute *string `pulumi:"groupDnAttribute"`
-	// Group member mapping attribute. Default `member` (string)
-	GroupMemberMappingAttribute *string `pulumi:"groupMemberMappingAttribute"`
-	// Group member user attribute. Default `distinguishedName` (string)
-	GroupMemberUserAttribute *string `pulumi:"groupMemberUserAttribute"`
-	// Group name attribute. Default `name` (string)
-	GroupNameAttribute *string `pulumi:"groupNameAttribute"`
-	// Group object class. Default `group` (string)
-	GroupObjectClass *string `pulumi:"groupObjectClass"`
-	// Group search attribute. Default `sAMAccountName` (string)
-	GroupSearchAttribute *string `pulumi:"groupSearchAttribute"`
-	// Group search base (string)
-	GroupSearchBase *string `pulumi:"groupSearchBase"`
-	// Group search filter (string)
-	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
-	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// Nested group membership enable. Default `false` (bool)
-	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
-	// ActiveDirectory port. Default `389` (int)
-	Port *int `pulumi:"port"`
-	// ActiveDirectory servers list (list)
-	Servers []string `pulumi:"servers"`
-	// Service account password for access ActiveDirectory service (string)
-	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
-	// Service account DN for access ActiveDirectory service (string)
-	ServiceAccountUsername string `pulumi:"serviceAccountUsername"`
-	// Enable TLS connection (bool)
-	Tls *bool `pulumi:"tls"`
-	// User disabled bit mask. Default `2` (int)
-	UserDisabledBitMask *int `pulumi:"userDisabledBitMask"`
-	// User enable attribute (string)
-	UserEnabledAttribute *string `pulumi:"userEnabledAttribute"`
-	// User login attribute. Default `sAMAccountName` (string)
-	UserLoginAttribute *string `pulumi:"userLoginAttribute"`
-	// User name attribute. Default `name` (string)
-	UserNameAttribute *string `pulumi:"userNameAttribute"`
-	// User object class. Default `person` (string)
-	UserObjectClass *string `pulumi:"userObjectClass"`
-	// User search attribute. Default `sAMAccountName|sn|givenName` (string)
-	UserSearchAttribute *string `pulumi:"userSearchAttribute"`
-	// User search base DN (string)
-	UserSearchBase string `pulumi:"userSearchBase"`
-	// User search filter (string)
-	UserSearchFilter *string `pulumi:"userSearchFilter"`
+	// Annotations of the resource
+	Annotations                 map[string]interface{} `pulumi:"annotations"`
+	Certificate                 *string                `pulumi:"certificate"`
+	ConnectionTimeout           *int                   `pulumi:"connectionTimeout"`
+	DefaultLoginDomain          *string                `pulumi:"defaultLoginDomain"`
+	Enabled                     *bool                  `pulumi:"enabled"`
+	GroupDnAttribute            *string                `pulumi:"groupDnAttribute"`
+	GroupMemberMappingAttribute *string                `pulumi:"groupMemberMappingAttribute"`
+	GroupMemberUserAttribute    *string                `pulumi:"groupMemberUserAttribute"`
+	GroupNameAttribute          *string                `pulumi:"groupNameAttribute"`
+	GroupObjectClass            *string                `pulumi:"groupObjectClass"`
+	GroupSearchAttribute        *string                `pulumi:"groupSearchAttribute"`
+	GroupSearchBase             *string                `pulumi:"groupSearchBase"`
+	GroupSearchFilter           *string                `pulumi:"groupSearchFilter"`
+	// Labels of the resource
+	Labels                       map[string]interface{} `pulumi:"labels"`
+	NestedGroupMembershipEnabled *bool                  `pulumi:"nestedGroupMembershipEnabled"`
+	Port                         *int                   `pulumi:"port"`
+	Servers                      []string               `pulumi:"servers"`
+	ServiceAccountPassword       string                 `pulumi:"serviceAccountPassword"`
+	ServiceAccountUsername       string                 `pulumi:"serviceAccountUsername"`
+	Tls                          *bool                  `pulumi:"tls"`
+	UserDisabledBitMask          *int                   `pulumi:"userDisabledBitMask"`
+	UserEnabledAttribute         *string                `pulumi:"userEnabledAttribute"`
+	UserLoginAttribute           *string                `pulumi:"userLoginAttribute"`
+	UserNameAttribute            *string                `pulumi:"userNameAttribute"`
+	UserObjectClass              *string                `pulumi:"userObjectClass"`
+	UserSearchAttribute          *string                `pulumi:"userSearchAttribute"`
+	UserSearchBase               string                 `pulumi:"userSearchBase"`
+	UserSearchFilter             *string                `pulumi:"userSearchFilter"`
 }
 
 // The set of arguments for constructing a ActiveDirectory resource.
 type ActiveDirectoryArgs struct {
-	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	AccessMode          pulumi.StringPtrInput
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
-	// CA certificate for TLS if selfsigned (string)
-	Certificate pulumi.StringPtrInput
-	// ActiveDirectory connection timeout. Default `5000` (int)
-	ConnectionTimeout pulumi.IntPtrInput
-	// ActiveDirectory defult login domain (string)
-	DefaultLoginDomain pulumi.StringPtrInput
-	// Enable auth config provider. Default `true` (bool)
-	Enabled pulumi.BoolPtrInput
-	// Group DN attribute. Default `distinguishedName` (string)
-	GroupDnAttribute pulumi.StringPtrInput
-	// Group member mapping attribute. Default `member` (string)
+	// Annotations of the resource
+	Annotations                 pulumi.MapInput
+	Certificate                 pulumi.StringPtrInput
+	ConnectionTimeout           pulumi.IntPtrInput
+	DefaultLoginDomain          pulumi.StringPtrInput
+	Enabled                     pulumi.BoolPtrInput
+	GroupDnAttribute            pulumi.StringPtrInput
 	GroupMemberMappingAttribute pulumi.StringPtrInput
-	// Group member user attribute. Default `distinguishedName` (string)
-	GroupMemberUserAttribute pulumi.StringPtrInput
-	// Group name attribute. Default `name` (string)
-	GroupNameAttribute pulumi.StringPtrInput
-	// Group object class. Default `group` (string)
-	GroupObjectClass pulumi.StringPtrInput
-	// Group search attribute. Default `sAMAccountName` (string)
-	GroupSearchAttribute pulumi.StringPtrInput
-	// Group search base (string)
-	GroupSearchBase pulumi.StringPtrInput
-	// Group search filter (string)
-	GroupSearchFilter pulumi.StringPtrInput
-	// Labels of the resource (map)
-	Labels pulumi.MapInput
-	// Nested group membership enable. Default `false` (bool)
+	GroupMemberUserAttribute    pulumi.StringPtrInput
+	GroupNameAttribute          pulumi.StringPtrInput
+	GroupObjectClass            pulumi.StringPtrInput
+	GroupSearchAttribute        pulumi.StringPtrInput
+	GroupSearchBase             pulumi.StringPtrInput
+	GroupSearchFilter           pulumi.StringPtrInput
+	// Labels of the resource
+	Labels                       pulumi.MapInput
 	NestedGroupMembershipEnabled pulumi.BoolPtrInput
-	// ActiveDirectory port. Default `389` (int)
-	Port pulumi.IntPtrInput
-	// ActiveDirectory servers list (list)
-	Servers pulumi.StringArrayInput
-	// Service account password for access ActiveDirectory service (string)
-	ServiceAccountPassword pulumi.StringInput
-	// Service account DN for access ActiveDirectory service (string)
-	ServiceAccountUsername pulumi.StringInput
-	// Enable TLS connection (bool)
-	Tls pulumi.BoolPtrInput
-	// User disabled bit mask. Default `2` (int)
-	UserDisabledBitMask pulumi.IntPtrInput
-	// User enable attribute (string)
-	UserEnabledAttribute pulumi.StringPtrInput
-	// User login attribute. Default `sAMAccountName` (string)
-	UserLoginAttribute pulumi.StringPtrInput
-	// User name attribute. Default `name` (string)
-	UserNameAttribute pulumi.StringPtrInput
-	// User object class. Default `person` (string)
-	UserObjectClass pulumi.StringPtrInput
-	// User search attribute. Default `sAMAccountName|sn|givenName` (string)
-	UserSearchAttribute pulumi.StringPtrInput
-	// User search base DN (string)
-	UserSearchBase pulumi.StringInput
-	// User search filter (string)
-	UserSearchFilter pulumi.StringPtrInput
+	Port                         pulumi.IntPtrInput
+	Servers                      pulumi.StringArrayInput
+	ServiceAccountPassword       pulumi.StringInput
+	ServiceAccountUsername       pulumi.StringInput
+	Tls                          pulumi.BoolPtrInput
+	UserDisabledBitMask          pulumi.IntPtrInput
+	UserEnabledAttribute         pulumi.StringPtrInput
+	UserLoginAttribute           pulumi.StringPtrInput
+	UserNameAttribute            pulumi.StringPtrInput
+	UserObjectClass              pulumi.StringPtrInput
+	UserSearchAttribute          pulumi.StringPtrInput
+	UserSearchBase               pulumi.StringInput
+	UserSearchFilter             pulumi.StringPtrInput
 }
 
 func (ActiveDirectoryArgs) ElementType() reflect.Type {

@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher v2 cluster template.
-//
-// Cluster Templates are available from Rancher v2.3.x and above.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.LookupClusterTemplate(ctx, &rancher2.LookupClusterTemplateArgs{
-// 			Name: "foo",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs, opts ...pulumi.InvokeOption) (*LookupClusterTemplateResult, error) {
 	var rv LookupClusterTemplateResult
 	err := ctx.Invoke("rancher2:index/getClusterTemplate:getClusterTemplate", args, &rv, opts...)
@@ -44,29 +18,21 @@ func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs,
 
 // A collection of arguments for invoking getClusterTemplate.
 type LookupClusterTemplateArgs struct {
-	// (Computed) Annotations for the cluster template (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	Description *string                `pulumi:"description"`
-	// (Computed) Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// The cluster template name (string)
-	Name string `pulumi:"name"`
+	Labels      map[string]interface{} `pulumi:"labels"`
+	Name        string                 `pulumi:"name"`
 }
 
 // A collection of values returned by getClusterTemplate.
 type LookupClusterTemplateResult struct {
-	// (Computed) Annotations for the cluster template (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	// (Computed) Default cluster template revision ID (string)
-	DefaultRevisionId string `pulumi:"defaultRevisionId"`
-	Description       string `pulumi:"description"`
+	Annotations       map[string]interface{} `pulumi:"annotations"`
+	DefaultRevisionId string                 `pulumi:"defaultRevisionId"`
+	Description       string                 `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	// (Computed) Cluster template members (list)
-	Members []GetClusterTemplateMember `pulumi:"members"`
-	Name    string                     `pulumi:"name"`
-	// (Computed) Cluster template revisions (list)
+	Id                string                               `pulumi:"id"`
+	Labels            map[string]interface{}               `pulumi:"labels"`
+	Members           []GetClusterTemplateMember           `pulumi:"members"`
+	Name              string                               `pulumi:"name"`
 	TemplateRevisions []GetClusterTemplateTemplateRevision `pulumi:"templateRevisions"`
 }

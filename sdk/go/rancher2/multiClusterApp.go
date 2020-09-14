@@ -13,35 +13,35 @@ import (
 type MultiClusterApp struct {
 	pulumi.CustomResourceState
 
-	// Annotations for multi cluster app object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// The multi cluster app answers (list)
+	// Multi cluster app answers
 	Answers MultiClusterAppAnswerArrayOutput `pulumi:"answers"`
-	// The multi cluster app catalog name (string)
+	// Multi cluster app catalog name
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
-	// Labels for multi cluster app object (map)
+	// Labels of the resource
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The multi cluster app answers (list)
+	// Multi cluster app members
 	Members MultiClusterAppMemberArrayOutput `pulumi:"members"`
-	// The multi cluster app name (string)
+	// Multi cluster app name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The multi cluster app revision history limit. Default `10` (int)
+	// Multi cluster app revision history limit
 	RevisionHistoryLimit pulumi.IntPtrOutput `pulumi:"revisionHistoryLimit"`
-	// Current revision id for the multi cluster app (string)
+	// Multi cluster app revision name
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// The multi cluster app roles (list)
+	// Multi cluster app roles
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	// The multi cluster app target projects (list)
+	// Multi cluster app targets
 	Targets MultiClusterAppTargetArrayOutput `pulumi:"targets"`
-	// The multi cluster app template name (string)
+	// Multi cluster app template name
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
-	// The multi cluster app template version. Default: `latest` (string)
+	// Multi cluster app template version
 	TemplateVersion pulumi.StringOutput `pulumi:"templateVersion"`
-	// (Computed) The multi cluster app template version ID (string)
+	// Multi cluster app template version ID
 	TemplateVersionId pulumi.StringOutput `pulumi:"templateVersionId"`
-	// The multi cluster app upgrade strategy (list MaxItems:1)
+	// Multi cluster app upgrade strategy
 	UpgradeStrategy MultiClusterAppUpgradeStrategyOutput `pulumi:"upgradeStrategy"`
-	// Wait until the multi cluster app is active. Default `true` (bool)
+	// Wait until multi cluster app is active
 	Wait pulumi.BoolPtrOutput `pulumi:"wait"`
 }
 
@@ -85,68 +85,68 @@ func GetMultiClusterApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MultiClusterApp resources.
 type multiClusterAppState struct {
-	// Annotations for multi cluster app object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The multi cluster app answers (list)
+	// Multi cluster app answers
 	Answers []MultiClusterAppAnswer `pulumi:"answers"`
-	// The multi cluster app catalog name (string)
+	// Multi cluster app catalog name
 	CatalogName *string `pulumi:"catalogName"`
-	// Labels for multi cluster app object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The multi cluster app answers (list)
+	// Multi cluster app members
 	Members []MultiClusterAppMember `pulumi:"members"`
-	// The multi cluster app name (string)
+	// Multi cluster app name
 	Name *string `pulumi:"name"`
-	// The multi cluster app revision history limit. Default `10` (int)
+	// Multi cluster app revision history limit
 	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
-	// Current revision id for the multi cluster app (string)
+	// Multi cluster app revision name
 	RevisionId *string `pulumi:"revisionId"`
-	// The multi cluster app roles (list)
+	// Multi cluster app roles
 	Roles []string `pulumi:"roles"`
-	// The multi cluster app target projects (list)
+	// Multi cluster app targets
 	Targets []MultiClusterAppTarget `pulumi:"targets"`
-	// The multi cluster app template name (string)
+	// Multi cluster app template name
 	TemplateName *string `pulumi:"templateName"`
-	// The multi cluster app template version. Default: `latest` (string)
+	// Multi cluster app template version
 	TemplateVersion *string `pulumi:"templateVersion"`
-	// (Computed) The multi cluster app template version ID (string)
+	// Multi cluster app template version ID
 	TemplateVersionId *string `pulumi:"templateVersionId"`
-	// The multi cluster app upgrade strategy (list MaxItems:1)
+	// Multi cluster app upgrade strategy
 	UpgradeStrategy *MultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategy"`
-	// Wait until the multi cluster app is active. Default `true` (bool)
+	// Wait until multi cluster app is active
 	Wait *bool `pulumi:"wait"`
 }
 
 type MultiClusterAppState struct {
-	// Annotations for multi cluster app object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// The multi cluster app answers (list)
+	// Multi cluster app answers
 	Answers MultiClusterAppAnswerArrayInput
-	// The multi cluster app catalog name (string)
+	// Multi cluster app catalog name
 	CatalogName pulumi.StringPtrInput
-	// Labels for multi cluster app object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The multi cluster app answers (list)
+	// Multi cluster app members
 	Members MultiClusterAppMemberArrayInput
-	// The multi cluster app name (string)
+	// Multi cluster app name
 	Name pulumi.StringPtrInput
-	// The multi cluster app revision history limit. Default `10` (int)
+	// Multi cluster app revision history limit
 	RevisionHistoryLimit pulumi.IntPtrInput
-	// Current revision id for the multi cluster app (string)
+	// Multi cluster app revision name
 	RevisionId pulumi.StringPtrInput
-	// The multi cluster app roles (list)
+	// Multi cluster app roles
 	Roles pulumi.StringArrayInput
-	// The multi cluster app target projects (list)
+	// Multi cluster app targets
 	Targets MultiClusterAppTargetArrayInput
-	// The multi cluster app template name (string)
+	// Multi cluster app template name
 	TemplateName pulumi.StringPtrInput
-	// The multi cluster app template version. Default: `latest` (string)
+	// Multi cluster app template version
 	TemplateVersion pulumi.StringPtrInput
-	// (Computed) The multi cluster app template version ID (string)
+	// Multi cluster app template version ID
 	TemplateVersionId pulumi.StringPtrInput
-	// The multi cluster app upgrade strategy (list MaxItems:1)
+	// Multi cluster app upgrade strategy
 	UpgradeStrategy MultiClusterAppUpgradeStrategyPtrInput
-	// Wait until the multi cluster app is active. Default `true` (bool)
+	// Wait until multi cluster app is active
 	Wait pulumi.BoolPtrInput
 }
 
@@ -155,65 +155,65 @@ func (MultiClusterAppState) ElementType() reflect.Type {
 }
 
 type multiClusterAppArgs struct {
-	// Annotations for multi cluster app object (map)
+	// Annotations of the resource
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// The multi cluster app answers (list)
+	// Multi cluster app answers
 	Answers []MultiClusterAppAnswer `pulumi:"answers"`
-	// The multi cluster app catalog name (string)
+	// Multi cluster app catalog name
 	CatalogName string `pulumi:"catalogName"`
-	// Labels for multi cluster app object (map)
+	// Labels of the resource
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The multi cluster app answers (list)
+	// Multi cluster app members
 	Members []MultiClusterAppMember `pulumi:"members"`
-	// The multi cluster app name (string)
+	// Multi cluster app name
 	Name *string `pulumi:"name"`
-	// The multi cluster app revision history limit. Default `10` (int)
+	// Multi cluster app revision history limit
 	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
-	// Current revision id for the multi cluster app (string)
+	// Multi cluster app revision name
 	RevisionId *string `pulumi:"revisionId"`
-	// The multi cluster app roles (list)
+	// Multi cluster app roles
 	Roles []string `pulumi:"roles"`
-	// The multi cluster app target projects (list)
+	// Multi cluster app targets
 	Targets []MultiClusterAppTarget `pulumi:"targets"`
-	// The multi cluster app template name (string)
+	// Multi cluster app template name
 	TemplateName string `pulumi:"templateName"`
-	// The multi cluster app template version. Default: `latest` (string)
+	// Multi cluster app template version
 	TemplateVersion *string `pulumi:"templateVersion"`
-	// The multi cluster app upgrade strategy (list MaxItems:1)
+	// Multi cluster app upgrade strategy
 	UpgradeStrategy *MultiClusterAppUpgradeStrategy `pulumi:"upgradeStrategy"`
-	// Wait until the multi cluster app is active. Default `true` (bool)
+	// Wait until multi cluster app is active
 	Wait *bool `pulumi:"wait"`
 }
 
 // The set of arguments for constructing a MultiClusterApp resource.
 type MultiClusterAppArgs struct {
-	// Annotations for multi cluster app object (map)
+	// Annotations of the resource
 	Annotations pulumi.MapInput
-	// The multi cluster app answers (list)
+	// Multi cluster app answers
 	Answers MultiClusterAppAnswerArrayInput
-	// The multi cluster app catalog name (string)
+	// Multi cluster app catalog name
 	CatalogName pulumi.StringInput
-	// Labels for multi cluster app object (map)
+	// Labels of the resource
 	Labels pulumi.MapInput
-	// The multi cluster app answers (list)
+	// Multi cluster app members
 	Members MultiClusterAppMemberArrayInput
-	// The multi cluster app name (string)
+	// Multi cluster app name
 	Name pulumi.StringPtrInput
-	// The multi cluster app revision history limit. Default `10` (int)
+	// Multi cluster app revision history limit
 	RevisionHistoryLimit pulumi.IntPtrInput
-	// Current revision id for the multi cluster app (string)
+	// Multi cluster app revision name
 	RevisionId pulumi.StringPtrInput
-	// The multi cluster app roles (list)
+	// Multi cluster app roles
 	Roles pulumi.StringArrayInput
-	// The multi cluster app target projects (list)
+	// Multi cluster app targets
 	Targets MultiClusterAppTargetArrayInput
-	// The multi cluster app template name (string)
+	// Multi cluster app template name
 	TemplateName pulumi.StringInput
-	// The multi cluster app template version. Default: `latest` (string)
+	// Multi cluster app template version
 	TemplateVersion pulumi.StringPtrInput
-	// The multi cluster app upgrade strategy (list MaxItems:1)
+	// Multi cluster app upgrade strategy
 	UpgradeStrategy MultiClusterAppUpgradeStrategyPtrInput
-	// Wait until the multi cluster app is active. Default `true` (bool)
+	// Wait until multi cluster app is active
 	Wait pulumi.BoolPtrInput
 }
 

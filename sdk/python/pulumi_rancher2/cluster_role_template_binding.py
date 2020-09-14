@@ -28,32 +28,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Role Template Binding
-        foo = rancher2.ClusterRoleTemplateBinding("foo",
-            cluster_id="<cluster_id>",
-            role_template_id="<role_template_id>",
-            user_id="<user_id>")
-        ```
-
+        Create a ClusterRoleTemplateBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
-        :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
-        :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
-        :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
-        :param pulumi.Input[str] name: The name of the cluster role template binding (string)
-        :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
-        :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
-        :param pulumi.Input[str] user_principal_id: The user_principal ID to assign cluster role template binding (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,15 +90,8 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
-        :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
-        :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
-        :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
-        :param pulumi.Input[str] name: The name of the cluster role template binding (string)
-        :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
-        :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
-        :param pulumi.Input[str] user_principal_id: The user_principal ID to assign cluster role template binding (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,72 +112,51 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations for cluster role template binding (map)
+        Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
-        """
-        The cluster id where bind cluster role template binding (string)
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The group ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> pulumi.Output[str]:
-        """
-        The group_principal ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "group_principal_id")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels for cluster role template binding (map)
+        Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the cluster role template binding (string)
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="roleTemplateId")
     def role_template_id(self) -> pulumi.Output[str]:
-        """
-        The role template id from create cluster role template binding (string)
-        """
         return pulumi.get(self, "role_template_id")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The user ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userPrincipalId")
     def user_principal_id(self) -> pulumi.Output[str]:
-        """
-        The user_principal ID to assign cluster role template binding (string)
-        """
         return pulumi.get(self, "user_principal_id")
 
     def translate_output_property(self, prop):
