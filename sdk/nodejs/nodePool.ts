@@ -26,15 +26,17 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Cloud Credential
- * const fooCloudCredential = new rancher2.CloudCredential("foo", {
+ * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ *     description: "Terraform cloudCredential acceptance test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "XXXXXXXXXXXXXXXXXXXX",
  *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
  *     },
- *     description: "Terraform cloudCredential acceptance test",
  * });
  * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
+ * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ *     description: "foo test",
+ *     cloudCredentialId: fooCloudCredential.id,
  *     amazonec2Config: {
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
@@ -43,17 +45,15 @@ import * as utilities from "./utilities";
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
  *     },
- *     cloudCredentialId: fooCloudCredential.id,
- *     description: "foo test",
  * });
  * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("foo", {
+ * const fooNodePool = new rancher2.NodePool("fooNodePool", {
  *     clusterId: foo_custom.id,
- *     controlPlane: true,
- *     etcd: true,
  *     hostnamePrefix: "foo-cluster-0",
  *     nodeTemplateId: fooNodeTemplate.id,
  *     quantity: 1,
+ *     controlPlane: true,
+ *     etcd: true,
  *     worker: true,
  * });
  * ```

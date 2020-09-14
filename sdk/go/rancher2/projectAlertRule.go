@@ -25,25 +25,25 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
-// 			ClusterId: pulumi.String("<cluster_id>"),
-// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
+// 			ClusterId:   pulumi.String("<cluster_id>"),
 // 			Description: pulumi.String("Terraform project "),
 // 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
-// 					LimitsCpu:       pulumi.String("500m"),
-// 					LimitsMemory:    pulumi.String("500Mi"),
-// 					RequestsStorage: pulumi.String("1Gi"),
-// 				},
 // 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 // 					LimitsCpu:       pulumi.String("2000m"),
 // 					LimitsMemory:    pulumi.String("2000Mi"),
 // 					RequestsStorage: pulumi.String("2Gi"),
 // 				},
+// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("500m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 			},
+// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -51,17 +51,17 @@ import (
 // 		}
 // 		fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
 // 			Description:           pulumi.String("Terraform project alert group"),
-// 			GroupIntervalSeconds:  pulumi.Int(300),
 // 			ProjectId:             fooProject.ID(),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
 // 			RepeatIntervalSeconds: pulumi.Int(3600),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
+// 			ProjectId:             fooProjectAlertGroup.ProjectId,
 // 			GroupId:               fooProjectAlertGroup.ID(),
 // 			GroupIntervalSeconds:  pulumi.Int(600),
-// 			ProjectId:             fooProjectAlertGroup.ProjectId,
 // 			RepeatIntervalSeconds: pulumi.Int(6000),
 // 		})
 // 		if err != nil {

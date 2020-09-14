@@ -64,7 +64,7 @@ export interface GetClusterAlterRuleResult {
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
     /**
-     * (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
+     * (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"` (list Maxitems:1)
      */
     readonly eventRule: outputs.GetClusterAlterRuleEventRule;
     /**

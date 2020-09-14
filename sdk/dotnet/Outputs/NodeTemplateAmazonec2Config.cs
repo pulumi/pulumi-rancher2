@@ -54,6 +54,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KeypairName;
         /// <summary>
+        /// Custom KMS key ID using the AWS Managed CMK (string)
+        /// </summary>
+        public readonly string? KmsKey;
+        /// <summary>
         /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         public readonly bool? Monitoring;
@@ -164,6 +168,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? keypairName,
 
+            string? kmsKey,
+
             bool? monitoring,
 
             ImmutableArray<string> openPorts,
@@ -218,6 +224,7 @@ namespace Pulumi.Rancher2.Outputs
             InsecureTransport = insecureTransport;
             InstanceType = instanceType;
             KeypairName = keypairName;
+            KmsKey = kmsKey;
             Monitoring = monitoring;
             OpenPorts = openPorts;
             PrivateAddressOnly = privateAddressOnly;

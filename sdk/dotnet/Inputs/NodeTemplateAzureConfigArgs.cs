@@ -56,11 +56,13 @@ namespace Pulumi.Rancher2.Inputs
 
         /// <summary>
         /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-        /// `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        /// <summary>
+        /// Fault domain count to use for availability set. Default `3` (string)
+        /// </summary>
         [Input("faultDomainCount")]
         public Input<string>? FaultDomainCount { get; set; }
 
@@ -87,6 +89,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("noPublicIp")]
         public Input<bool>? NoPublicIp { get; set; }
+
+        /// <summary>
+        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        /// </summary>
+        [Input("nsg")]
+        public Input<string>? Nsg { get; set; }
 
         [Input("openPorts")]
         private InputList<string>? _openPorts;

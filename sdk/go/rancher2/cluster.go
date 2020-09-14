@@ -20,7 +20,7 @@ type Cluster struct {
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointOutput `pulumi:"clusterAuthEndpoint"`
 	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-	ClusterMonitoringInput ClusterClusterMonitoringInputOutput `pulumi:"clusterMonitoringInput"`
+	ClusterMonitoringInput ClusterClusterMonitoringInputPtrOutput `pulumi:"clusterMonitoringInput"`
 	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 	ClusterRegistrationToken ClusterClusterRegistrationTokenOutput `pulumi:"clusterRegistrationToken"`
 	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
@@ -49,7 +49,9 @@ type Cluster struct {
 	EksConfig ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	//
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
@@ -57,6 +59,8 @@ type Cluster struct {
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+	IstioEnabled pulumi.BoolOutput `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigOutput `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -139,7 +143,9 @@ type clusterState struct {
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	//
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
@@ -147,6 +153,8 @@ type clusterState struct {
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+	IstioEnabled *bool `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -202,7 +210,9 @@ type ClusterState struct {
 	EksConfig ClusterEksConfigPtrInput
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	//
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolPtrInput
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
@@ -210,6 +220,8 @@ type ClusterState struct {
 	EnableNetworkPolicy pulumi.BoolPtrInput
 	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+	IstioEnabled pulumi.BoolPtrInput
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
@@ -265,8 +277,6 @@ type clusterArgs struct {
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
-	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
@@ -321,8 +331,6 @@ type ClusterArgs struct {
 	EksConfig ClusterEksConfigPtrInput
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
-	EnableClusterIstio pulumi.BoolPtrInput
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation (bool)

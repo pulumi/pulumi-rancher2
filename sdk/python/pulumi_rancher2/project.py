@@ -280,7 +280,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectMonitoringInput")
-    def project_monitoring_input(self) -> pulumi.Output['outputs.ProjectProjectMonitoringInput']:
+    def project_monitoring_input(self) -> pulumi.Output[Optional['outputs.ProjectProjectMonitoringInput']]:
         """
         Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         """

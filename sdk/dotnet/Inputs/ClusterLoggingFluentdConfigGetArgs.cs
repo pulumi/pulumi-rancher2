@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Compress { get; set; }
 
         /// <summary>
-        /// Enable TLS for the fluentd service (bool)
+        /// Enable TLS for the syslog service. Default `false` (bool)
         /// </summary>
         [Input("enableTls")]
         public Input<bool>? EnableTls { get; set; }

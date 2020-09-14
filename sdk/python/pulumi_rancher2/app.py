@@ -28,6 +28,7 @@ class App(pulumi.CustomResource):
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
                  values_yaml: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -46,10 +47,11 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the app (string)
         :param pulumi.Input[str] project_id: The project id where the app will be installed (string)
         :param pulumi.Input[str] revision_id: Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
-        :param pulumi.Input[str] target_namespace: The namespace name where the app will be installed (string)
+        :param pulumi.Input[str] target_namespace: The namespace id where the app will be installed (string)
         :param pulumi.Input[str] template_name: Template name of the app. If modified, app will be upgraded (string)
         :param pulumi.Input[str] template_version: Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
         :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,6 +91,7 @@ class App(pulumi.CustomResource):
             __props__['template_name'] = template_name
             __props__['template_version'] = template_version
             __props__['values_yaml'] = values_yaml
+            __props__['wait'] = wait
             __props__['external_id'] = None
         super(App, __self__).__init__(
             'rancher2:index/app:App',
@@ -113,7 +116,8 @@ class App(pulumi.CustomResource):
             target_namespace: Optional[pulumi.Input[str]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_version: Optional[pulumi.Input[str]] = None,
-            values_yaml: Optional[pulumi.Input[str]] = None) -> 'App':
+            values_yaml: Optional[pulumi.Input[str]] = None,
+            wait: Optional[pulumi.Input[bool]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,10 +137,11 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the app (string)
         :param pulumi.Input[str] project_id: The project id where the app will be installed (string)
         :param pulumi.Input[str] revision_id: Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
-        :param pulumi.Input[str] target_namespace: The namespace name where the app will be installed (string)
+        :param pulumi.Input[str] target_namespace: The namespace id where the app will be installed (string)
         :param pulumi.Input[str] template_name: Template name of the app. If modified, app will be upgraded (string)
         :param pulumi.Input[str] template_version: Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
         :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -156,6 +161,7 @@ class App(pulumi.CustomResource):
         __props__["template_name"] = template_name
         __props__["template_version"] = template_version
         __props__["values_yaml"] = values_yaml
+        __props__["wait"] = wait
         return App(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -244,7 +250,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="targetNamespace")
     def target_namespace(self) -> pulumi.Output[str]:
         """
-        The namespace name where the app will be installed (string)
+        The namespace id where the app will be installed (string)
         """
         return pulumi.get(self, "target_namespace")
 
@@ -271,6 +277,14 @@ class App(pulumi.CustomResource):
         values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
         """
         return pulumi.get(self, "values_yaml")
+
+    @property
+    @pulumi.getter
+    def wait(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Wait until app is deployed and active. Default: `true` (bool)
+        """
+        return pulumi.get(self, "wait")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

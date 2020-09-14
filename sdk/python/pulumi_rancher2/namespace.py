@@ -70,20 +70,20 @@ class Namespace(pulumi.CustomResource):
             ))
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
             project_id=foo_custom.default_project_id,
+            description="foo namespace",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
                 limit=rancher2.NamespaceResourceQuotaLimitArgs(
                     limits_cpu="100m",
                     limits_memory="100Mi",
                     requests_storage="1Gi",
                 ),
+            ),
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         ```
 
@@ -223,7 +223,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> pulumi.Output[Optional['outputs.NamespaceResourceQuota']]:
+    def resource_quota(self) -> pulumi.Output['outputs.NamespaceResourceQuota']:
         """
         Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         """

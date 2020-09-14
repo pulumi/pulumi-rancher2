@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterScanScanConfigResult
     {
+        /// <summary>
+        /// Cluster Cis Scan config (List maxitems:1)
+        /// </summary>
         public readonly Outputs.GetClusterScanScanConfigCisScanConfigResult CisScanConfig;
 
         [OutputConstructor]

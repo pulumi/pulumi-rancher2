@@ -71,20 +71,20 @@ import (
 // 			return err
 // 		}
 // 		_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-// 			ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
-// 				LimitsCpu:      pulumi.String("20m"),
-// 				LimitsMemory:   pulumi.String("20Mi"),
-// 				RequestsCpu:    pulumi.String("1m"),
-// 				RequestsMemory: pulumi.String("1Mi"),
-// 			},
-// 			Description: pulumi.String("foo namespace"),
 // 			ProjectId:   foo_custom.DefaultProjectId,
+// 			Description: pulumi.String("foo namespace"),
 // 			ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
 // 				Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 // 					LimitsCpu:       pulumi.String("100m"),
 // 					LimitsMemory:    pulumi.String("100Mi"),
 // 					RequestsStorage: pulumi.String("1Gi"),
 // 				},
+// 			},
+// 			ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -110,7 +110,7 @@ type Namespace struct {
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
-	ResourceQuota NamespaceResourceQuotaPtrOutput `pulumi:"resourceQuota"`
+	ResourceQuota NamespaceResourceQuotaOutput `pulumi:"resourceQuota"`
 	// Wait for cluster becomes active. Default `false` (bool)
 	WaitForCluster pulumi.BoolPtrOutput `pulumi:"waitForCluster"`
 }

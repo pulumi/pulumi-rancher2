@@ -306,85 +306,34 @@ export interface ClusterAlertRuleSystemServiceRule {
 }
 
 export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
     defaultRecipient?: pulumi.Input<boolean>;
-    /**
-     * Recipient notifier ID (string)
-     */
     notifierId: pulumi.Input<string>;
-    /**
-     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
     notifierType?: pulumi.Input<string>;
-    /**
-     * Recipient (string)
-     */
     recipient?: pulumi.Input<string>;
 }
 
 export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-     */
     eventType?: pulumi.Input<string>;
-    /**
-     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-     */
     resourceKind: pulumi.Input<string>;
 }
 
 export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-     */
     comparison?: pulumi.Input<string>;
-    /**
-     * Metric rule description (string)
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Metric rule duration (string)
-     */
     duration: pulumi.Input<string>;
-    /**
-     * Metric rule expression (string)
-     */
     expression: pulumi.Input<string>;
-    /**
-     * Metric rule threshold value (float64)
-     */
     thresholdValue: pulumi.Input<number>;
 }
 
 export interface ClusterAlterRuleNodeRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: pulumi.Input<string>;
-    /**
-     * Node rule cpu threshold. Default: `70` (int)
-     */
     cpuThreshold?: pulumi.Input<number>;
-    /**
-     * Node rule mem threshold. Default: `70` (int)
-     */
     memThreshold?: pulumi.Input<number>;
-    /**
-     * Node ID (string)
-     */
     nodeId?: pulumi.Input<string>;
-    /**
-     * Node rule selector (map)
-     */
     selector?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: pulumi.Input<string>;
 }
 
@@ -888,7 +837,7 @@ export interface ClusterLoggingFluentdConfig {
      */
     compress?: pulumi.Input<boolean>;
     /**
-     * Enable TLS for the fluentd service (bool)
+     * Enable TLS for the syslog service. Default `false` (bool)
      */
     enableTls?: pulumi.Input<boolean>;
     /**
@@ -1007,6 +956,10 @@ export interface ClusterLoggingSyslogConfig {
      * SSL client key for the syslog service (string)
      */
     clientKey?: pulumi.Input<string>;
+    /**
+     * Enable TLS for the syslog service. Default `false` (bool)
+     */
+    enableTls?: pulumi.Input<boolean>;
     /**
      * Endpoint of the syslog service (string)
      */
@@ -2084,7 +2037,7 @@ export interface ClusterRkeConfigServicesKubeApi {
 
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * Event rate limit configuration. (map)
+     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
      */
     configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
     /**
@@ -2122,9 +2075,9 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
-     * Event rate limit configuration. (map)
+     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<string>;
     /**
      * Enable scheduled cluster scan. Default: `false` (bool)
      */
@@ -2133,9 +2086,9 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
 
 export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
-     * Secrets encryption configuration. (map)
+     * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
      */
-    customConfig?: pulumi.Input<{[key: string]: any}>;
+    customConfig?: pulumi.Input<string>;
     /**
      * Enable scheduled cluster scan. Default: `false` (bool)
      */
@@ -2838,7 +2791,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<string>;
     /**
      * Enable cluster template revision. Default `true` (bool)
      */
@@ -2846,7 +2799,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: pulumi.Input<{[key: string]: any}>;
+    customConfig?: pulumi.Input<string>;
     /**
      * Enable cluster template revision. Default `true` (bool)
      */
@@ -3283,6 +3236,10 @@ export interface NodeTemplateAmazonec2Config {
      */
     keypairName?: pulumi.Input<string>;
     /**
+     * Custom KMS key ID using the AWS Managed CMK (string)
+     */
+    kmsKey?: pulumi.Input<string>;
+    /**
      * Enable monitoring for droplet. Default `false` (bool)
      */
     monitoring?: pulumi.Input<boolean>;
@@ -3403,9 +3360,11 @@ export interface NodeTemplateAzureConfig {
     dockerPort?: pulumi.Input<string>;
     /**
      * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-     * `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
      */
     environment?: pulumi.Input<string>;
+    /**
+     * Fault domain count to use for availability set. Default `3` (string)
+     */
     faultDomainCount?: pulumi.Input<string>;
     /**
      * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
@@ -3423,6 +3382,10 @@ export interface NodeTemplateAzureConfig {
      * Do not create a public IP address for the machine. Default `false` (bool)
      */
     noPublicIp?: pulumi.Input<boolean>;
+    /**
+     * Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     */
+    nsg?: pulumi.Input<string>;
     /**
      * Make the specified port number accessible from the Internet. (list)
      */
@@ -3811,7 +3774,7 @@ export interface NodeTemplateVsphereConfig {
      */
     cfgparams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+     * If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
      */
     cloneFrom?: pulumi.Input<string>;
     /**
@@ -4472,6 +4435,10 @@ export interface ProjectLoggingSyslogConfig {
      * SSL client key for the syslog service (string)
      */
     clientKey?: pulumi.Input<string>;
+    /**
+     * Enable TLS for the fluentd service (bool)
+     */
+    enableTls?: pulumi.Input<boolean>;
     /**
      * Endpoint of the syslog service (string)
      */

@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Compress;
         /// <summary>
-        /// Enable TLS for the fluentd service (bool)
+        /// Enable TLS for the syslog service. Default `false` (bool)
         /// </summary>
         public readonly bool? EnableTls;
         /// <summary>

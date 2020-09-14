@@ -75,7 +75,7 @@ export class App extends pulumi.CustomResource {
      */
     public readonly revisionId!: pulumi.Output<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * The namespace id where the app will be installed (string)
      */
     public readonly targetNamespace!: pulumi.Output<string>;
     /**
@@ -90,6 +90,10 @@ export class App extends pulumi.CustomResource {
      * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
      */
     public readonly valuesYaml!: pulumi.Output<string | undefined>;
+    /**
+     * Wait until app is deployed and active. Default: `true` (bool)
+     */
+    public readonly wait!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -117,6 +121,7 @@ export class App extends pulumi.CustomResource {
             inputs["templateName"] = state ? state.templateName : undefined;
             inputs["templateVersion"] = state ? state.templateVersion : undefined;
             inputs["valuesYaml"] = state ? state.valuesYaml : undefined;
+            inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             if (!args || args.catalogName === undefined) {
@@ -144,6 +149,7 @@ export class App extends pulumi.CustomResource {
             inputs["templateName"] = args ? args.templateName : undefined;
             inputs["templateVersion"] = args ? args.templateVersion : undefined;
             inputs["valuesYaml"] = args ? args.valuesYaml : undefined;
+            inputs["wait"] = args ? args.wait : undefined;
             inputs["externalId"] = undefined /*out*/;
         }
         if (!opts) {
@@ -204,7 +210,7 @@ export interface AppState {
      */
     readonly revisionId?: pulumi.Input<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * The namespace id where the app will be installed (string)
      */
     readonly targetNamespace?: pulumi.Input<string>;
     /**
@@ -219,6 +225,10 @@ export interface AppState {
      * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
      */
     readonly valuesYaml?: pulumi.Input<string>;
+    /**
+     * Wait until app is deployed and active. Default: `true` (bool)
+     */
+    readonly wait?: pulumi.Input<boolean>;
 }
 
 /**
@@ -264,7 +274,7 @@ export interface AppArgs {
      */
     readonly revisionId?: pulumi.Input<string>;
     /**
-     * The namespace name where the app will be installed (string)
+     * The namespace id where the app will be installed (string)
      */
     readonly targetNamespace: pulumi.Input<string>;
     /**
@@ -279,4 +289,8 @@ export interface AppArgs {
      * values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
      */
     readonly valuesYaml?: pulumi.Input<string>;
+    /**
+     * Wait until app is deployed and active. Default: `true` (bool)
+     */
+    readonly wait?: pulumi.Input<boolean>;
 }

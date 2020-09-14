@@ -40,14 +40,16 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Node Template from Rancher 2.2.x
- * const fooCloudCredential = new rancher2.CloudCredential("foo", {
+ * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
  *     },
- *     description: "foo test",
  * });
- * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
+ * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ *     description: "foo test",
+ *     cloudCredentialId: fooCloudCredential.id,
  *     amazonec2Config: {
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
@@ -56,8 +58,6 @@ import * as utilities from "./utilities";
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
  *     },
- *     cloudCredentialId: fooCloudCredential.id,
- *     description: "foo test",
  * });
  * ```
  */

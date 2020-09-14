@@ -33,7 +33,6 @@ class Cluster(pulumi.CustomResource):
                  driver: Optional[pulumi.Input[str]] = None,
                  eks_config: Optional[pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']]] = None,
                  enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
-                 enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
@@ -67,7 +66,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
-        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
@@ -111,7 +109,6 @@ class Cluster(pulumi.CustomResource):
             __props__['driver'] = driver
             __props__['eks_config'] = eks_config
             __props__['enable_cluster_alerting'] = enable_cluster_alerting
-            __props__['enable_cluster_istio'] = enable_cluster_istio
             __props__['enable_cluster_monitoring'] = enable_cluster_monitoring
             __props__['enable_network_policy'] = enable_network_policy
             __props__['gke_config'] = gke_config
@@ -123,6 +120,8 @@ class Cluster(pulumi.CustomResource):
             __props__['windows_prefered_cluster'] = windows_prefered_cluster
             __props__['cluster_registration_token'] = None
             __props__['default_project_id'] = None
+            __props__['enable_cluster_istio'] = None
+            __props__['istio_enabled'] = None
             __props__['kube_config'] = None
             __props__['system_project_id'] = None
         super(Cluster, __self__).__init__(
@@ -157,6 +156,7 @@ class Cluster(pulumi.CustomResource):
             enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
             enable_network_policy: Optional[pulumi.Input[bool]] = None,
             gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
+            istio_enabled: Optional[pulumi.Input[bool]] = None,
             k3s_config: Optional[pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -190,10 +190,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
-        :param pulumi.Input[bool] enable_cluster_istio: Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        :param pulumi.Input[bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
         :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
@@ -229,6 +230,7 @@ class Cluster(pulumi.CustomResource):
         __props__["enable_cluster_monitoring"] = enable_cluster_monitoring
         __props__["enable_network_policy"] = enable_network_policy
         __props__["gke_config"] = gke_config
+        __props__["istio_enabled"] = istio_enabled
         __props__["k3s_config"] = k3s_config
         __props__["kube_config"] = kube_config
         __props__["labels"] = labels
@@ -265,7 +267,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterMonitoringInput")
-    def cluster_monitoring_input(self) -> pulumi.Output['outputs.ClusterClusterMonitoringInput']:
+    def cluster_monitoring_input(self) -> pulumi.Output[Optional['outputs.ClusterClusterMonitoringInput']]:
         """
         Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
         """
@@ -387,7 +389,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="enableClusterIstio")
     def enable_cluster_istio(self) -> pulumi.Output[bool]:
         """
-        Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
         return pulumi.get(self, "enable_cluster_istio")
 
@@ -414,6 +416,14 @@ class Cluster(pulumi.CustomResource):
         The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "gke_config")
+
+    @property
+    @pulumi.getter(name="istioEnabled")
+    def istio_enabled(self) -> pulumi.Output[bool]:
+        """
+        (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        """
+        return pulumi.get(self, "istio_enabled")
 
     @property
     @pulumi.getter(name="k3sConfig")

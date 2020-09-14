@@ -43,9 +43,11 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? DockerPort;
         /// <summary>
         /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-        /// `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
         /// </summary>
         public readonly string? Environment;
+        /// <summary>
+        /// Fault domain count to use for availability set. Default `3` (string)
+        /// </summary>
         public readonly string? FaultDomainCount;
         /// <summary>
         /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
@@ -63,6 +65,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Do not create a public IP address for the machine. Default `false` (bool)
         /// </summary>
         public readonly bool? NoPublicIp;
+        /// <summary>
+        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        /// </summary>
+        public readonly string? Nsg;
         /// <summary>
         /// Make the specified port number accessible from the Internet. (list)
         /// </summary>
@@ -144,6 +150,8 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? noPublicIp,
 
+            string? nsg,
+
             ImmutableArray<string> openPorts,
 
             string? privateIpAddress,
@@ -183,6 +191,7 @@ namespace Pulumi.Rancher2.Outputs
             Location = location;
             ManagedDisks = managedDisks;
             NoPublicIp = noPublicIp;
+            Nsg = nsg;
             OpenPorts = openPorts;
             PrivateIpAddress = privateIpAddress;
             ResourceGroup = resourceGroup;

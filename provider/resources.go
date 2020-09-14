@@ -23,7 +23,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-rancher2/rancher2"
+	"github.com/rancher/terraform-provider-rancher2/rancher2"
 )
 
 // all of the token components used below.
@@ -80,6 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-rancher2",
+		GitHubOrg:   "rancher",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_url": {
 				Default: &tfbridge.DefaultInfo{

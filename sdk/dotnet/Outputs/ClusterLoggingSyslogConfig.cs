@@ -26,6 +26,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
+        /// Enable TLS for the syslog service. Default `false` (bool)
+        /// </summary>
+        public readonly bool? EnableTls;
+        /// <summary>
         /// Endpoint of the syslog service (string)
         /// </summary>
         public readonly string Endpoint;
@@ -58,6 +62,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? clientKey,
 
+            bool? enableTls,
+
             string endpoint,
 
             string? program,
@@ -73,6 +79,7 @@ namespace Pulumi.Rancher2.Outputs
             Certificate = certificate;
             ClientCert = clientCert;
             ClientKey = clientKey;
+            EnableTls = enableTls;
             Endpoint = endpoint;
             Program = program;
             Protocol = protocol;

@@ -35,6 +35,12 @@ namespace Pulumi.Rancher2
         [Output("nodePoolIds")]
         public Output<ImmutableArray<string>> NodePoolIds { get; private set; } = null!;
 
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        /// </summary>
+        [Output("stateConfirm")]
+        public Output<int?> StateConfirm { get; private set; } = null!;
+
         [Output("synced")]
         public Output<bool?> Synced { get; private set; } = null!;
 
@@ -114,6 +120,12 @@ namespace Pulumi.Rancher2
             set => _nodePoolIds = value;
         }
 
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        /// </summary>
+        [Input("stateConfirm")]
+        public Input<int>? StateConfirm { get; set; }
+
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
@@ -159,6 +171,12 @@ namespace Pulumi.Rancher2
             get => _nodePoolIds ?? (_nodePoolIds = new InputList<string>());
             set => _nodePoolIds = value;
         }
+
+        /// <summary>
+        /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        /// </summary>
+        [Input("stateConfirm")]
+        public Input<int>? StateConfirm { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }

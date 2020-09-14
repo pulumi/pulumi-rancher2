@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2
         public Output<string?> Severity { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Output("systemServiceRule")]
         public Output<Outputs.ClusterAlertRuleSystemServiceRule?> SystemServiceRule { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule"},
+                    new Pulumi.Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -270,7 +270,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Input("systemServiceRule")]
         public Input<Inputs.ClusterAlertRuleSystemServiceRuleArgs>? SystemServiceRule { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        /// The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         /// </summary>
         [Input("systemServiceRule")]
         public Input<Inputs.ClusterAlertRuleSystemServiceRuleGetArgs>? SystemServiceRule { get; set; }

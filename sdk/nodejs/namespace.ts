@@ -50,20 +50,20 @@ import * as utilities from "./utilities";
  * });
  * // Create a new rancher2 Namespace assigned to default cluster project
  * const foo = new rancher2.Namespace("foo", {
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- *     description: "foo namespace",
  *     projectId: foo_custom.defaultProjectId,
+ *     description: "foo namespace",
  *     resourceQuota: {
  *         limit: {
  *             limitsCpu: "100m",
  *             limitsMemory: "100Mi",
  *             requestsStorage: "1Gi",
  *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
  *     },
  * });
  * ```
@@ -123,7 +123,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
-    public readonly resourceQuota!: pulumi.Output<outputs.NamespaceResourceQuota | undefined>;
+    public readonly resourceQuota!: pulumi.Output<outputs.NamespaceResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */

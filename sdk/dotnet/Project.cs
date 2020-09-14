@@ -173,7 +173,7 @@ namespace Pulumi.Rancher2
         /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         /// </summary>
         [Output("projectMonitoringInput")]
-        public Output<Outputs.ProjectProjectMonitoringInput> ProjectMonitoringInput { get; private set; } = null!;
+        public Output<Outputs.ProjectProjectMonitoringInput?> ProjectMonitoringInput { get; private set; } = null!;
 
         /// <summary>
         /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)

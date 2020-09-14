@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// The namespace id where the app will be installed (string)
         /// </summary>
         [Output("targetNamespace")]
         public Output<string> TargetNamespace { get; private set; } = null!;
@@ -96,6 +96,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("valuesYaml")]
         public Output<string?> ValuesYaml { get; private set; } = null!;
+
+        /// <summary>
+        /// Wait until app is deployed and active. Default: `true` (bool)
+        /// </summary>
+        [Output("wait")]
+        public Output<bool?> Wait { get; private set; } = null!;
 
 
         /// <summary>
@@ -218,7 +224,7 @@ namespace Pulumi.Rancher2
         public Input<string>? RevisionId { get; set; }
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// The namespace id where the app will be installed (string)
         /// </summary>
         [Input("targetNamespace", required: true)]
         public Input<string> TargetNamespace { get; set; } = null!;
@@ -240,6 +246,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("valuesYaml")]
         public Input<string>? ValuesYaml { get; set; }
+
+        /// <summary>
+        /// Wait until app is deployed and active. Default: `true` (bool)
+        /// </summary>
+        [Input("wait")]
+        public Input<bool>? Wait { get; set; }
 
         public AppArgs()
         {
@@ -329,7 +341,7 @@ namespace Pulumi.Rancher2
         public Input<string>? RevisionId { get; set; }
 
         /// <summary>
-        /// The namespace name where the app will be installed (string)
+        /// The namespace id where the app will be installed (string)
         /// </summary>
         [Input("targetNamespace")]
         public Input<string>? TargetNamespace { get; set; }
@@ -351,6 +363,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("valuesYaml")]
         public Input<string>? ValuesYaml { get; set; }
+
+        /// <summary>
+        /// Wait until app is deployed and active. Default: `true` (bool)
+        /// </summary>
+        [Input("wait")]
+        public Input<bool>? Wait { get; set; }
 
         public AppState()
         {

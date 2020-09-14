@@ -60,7 +60,7 @@ export class Token extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * Annotations of the token (map)
+     * (Computed) Annotations of the token (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -80,7 +80,7 @@ export class Token extends pulumi.CustomResource {
      */
     public /*out*/ readonly expired!: pulumi.Output<boolean>;
     /**
-     * Labels of the token (map)
+     * (Computed) Labels of the token (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -169,7 +169,7 @@ export interface TokenState {
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * Annotations of the token (map)
+     * (Computed) Annotations of the token (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -189,7 +189,7 @@ export interface TokenState {
      */
     readonly expired?: pulumi.Input<boolean>;
     /**
-     * Labels of the token (map)
+     * (Computed) Labels of the token (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -223,7 +223,7 @@ export interface TokenState {
  */
 export interface TokenArgs {
     /**
-     * Annotations of the token (map)
+     * (Computed) Annotations of the token (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -235,7 +235,7 @@ export interface TokenArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels of the token (map)
+     * (Computed) Labels of the token (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**

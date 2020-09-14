@@ -45,36 +45,36 @@ class ProjectAlertRule(pulumi.CustomResource):
         # Create a new Rancher2 Project
         foo_project = rancher2.Project("fooProject",
             cluster_id="<cluster_id>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
             description="Terraform project ",
             resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
                 project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
                     limits_cpu="2000m",
                     limits_memory="2000Mi",
                     requests_storage="2Gi",
                 ),
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="500m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         # Create a new Rancher2 Project Alert Group
         foo_project_alert_group = rancher2.ProjectAlertGroup("fooProjectAlertGroup",
             description="Terraform project alert group",
-            group_interval_seconds=300,
             project_id=foo_project.id,
+            group_interval_seconds=300,
             repeat_interval_seconds=3600)
         # Create a new Rancher2 Project Alert Rule
         foo_project_alert_rule = rancher2.ProjectAlertRule("fooProjectAlertRule",
+            project_id=foo_project_alert_group.project_id,
             group_id=foo_project_alert_group.id,
             group_interval_seconds=600,
-            project_id=foo_project_alert_group.project_id,
             repeat_interval_seconds=6000)
         ```
 

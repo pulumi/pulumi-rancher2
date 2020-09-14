@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = rancher2_cluster_foo_custom.id.apply(id => rancher2.getNodePool({
- *     clusterId: id,
+ * const foo = rancher2.getNodePool({
+ *     clusterId: rancher2_cluster["foo-custom"].id,
  *     name: "foo",
- * }, { async: true }));
+ * });
  * ```
  */
 export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> {

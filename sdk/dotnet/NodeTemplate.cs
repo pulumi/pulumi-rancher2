@@ -61,15 +61,17 @@ namespace Pulumi.Rancher2
     ///         // Create a new rancher2 Node Template from Rancher 2.2.x
     ///         var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new Rancher2.CloudCredentialArgs
     ///         {
+    ///             Description = "foo test",
     ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///             {
     ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
     ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
     ///             },
-    ///             Description = "foo test",
     ///         });
     ///         var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new Rancher2.NodeTemplateArgs
     ///         {
+    ///             Description = "foo test",
+    ///             CloudCredentialId = fooCloudCredential.Id,
     ///             Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
     ///             {
     ///                 Ami = "&lt;AMI_ID&gt;",
@@ -82,8 +84,6 @@ namespace Pulumi.Rancher2
     ///                 VpcId = "&lt;VPC_ID&gt;",
     ///                 Zone = "&lt;ZONE&gt;",
     ///             },
-    ///             CloudCredentialId = fooCloudCredential.Id,
-    ///             Description = "foo test",
     ///         });
     ///     }
     /// 

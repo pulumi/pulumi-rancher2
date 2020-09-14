@@ -52,6 +52,9 @@ class GetClusterScanResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations of the resource (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -70,6 +73,9 @@ class GetClusterScanResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels of the resource (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -80,21 +86,33 @@ class GetClusterScanResult:
     @property
     @pulumi.getter(name="runType")
     def run_type(self) -> str:
+        """
+        (Computed) Cluster Scan run type (string)
+        """
         return pulumi.get(self, "run_type")
 
     @property
     @pulumi.getter(name="scanConfig")
     def scan_config(self) -> 'outputs.GetClusterScanScanConfigResult':
+        """
+        (Computed) Cluster Scan config (bool)
+        """
         return pulumi.get(self, "scan_config")
 
     @property
     @pulumi.getter(name="scanType")
     def scan_type(self) -> str:
+        """
+        (Computed) Cluster Scan type (string)
+        """
         return pulumi.get(self, "scan_type")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        (Computed) Cluster Scan status (string)
+        """
         return pulumi.get(self, "status")
 
 
@@ -119,7 +137,11 @@ def get_cluster_scan(cluster_id: Optional[str] = None,
                      name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterScanResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
+
+
+    :param str cluster_id: Cluster ID for CIS Scan (string)
+    :param str name: Name of the cluster Scan (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

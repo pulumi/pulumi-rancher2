@@ -27,9 +27,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
-// 			Enabled:  pulumi.Bool(true),
-// 			Password: pulumi.String("changeme"),
 // 			Username: pulumi.String("foo"),
+// 			Password: pulumi.String("changeme"),
+// 			Enabled:  pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err

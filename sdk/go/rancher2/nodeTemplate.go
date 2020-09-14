@@ -61,16 +61,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+// 			Description: pulumi.String("foo test"),
 // 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 // 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 // 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 // 			},
-// 			Description: pulumi.String("foo test"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+// 			Description:       pulumi.String("foo test"),
+// 			CloudCredentialId: fooCloudCredential.ID(),
 // 			Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 // 				Ami:    pulumi.String("<AMI_ID>"),
 // 				Region: pulumi.String("<REGION>"),
@@ -81,8 +83,6 @@ import (
 // 				VpcId:    pulumi.String("<VPC_ID>"),
 // 				Zone:     pulumi.String("<ZONE>"),
 // 			},
-// 			CloudCredentialId: fooCloudCredential.ID(),
-// 			Description:       pulumi.String("foo test"),
 // 		})
 // 		if err != nil {
 // 			return err

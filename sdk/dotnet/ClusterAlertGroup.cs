@@ -116,7 +116,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
+                    new Pulumi.Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

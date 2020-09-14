@@ -11,6 +11,9 @@ namespace Pulumi.Rancher2
 {
     public static class GetClusterScan
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
+        /// </summary>
         public static Task<GetClusterScanResult> InvokeAsync(GetClusterScanArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterScanResult>("rancher2:index/getClusterScan:getClusterScan", args ?? new GetClusterScanArgs(), options.WithVersion());
     }
@@ -18,9 +21,15 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterScanArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID for CIS Scan (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the cluster Scan (string)
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -33,17 +42,35 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterScanResult
     {
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed) Cluster Scan run type (string)
+        /// </summary>
         public readonly string RunType;
+        /// <summary>
+        /// (Computed) Cluster Scan config (bool)
+        /// </summary>
         public readonly Outputs.GetClusterScanScanConfigResult ScanConfig;
+        /// <summary>
+        /// (Computed) Cluster Scan type (string)
+        /// </summary>
         public readonly string ScanType;
+        /// <summary>
+        /// (Computed) Cluster Scan status (string)
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -17,6 +17,7 @@ class ClusterSync(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 state_confirm: Optional[pulumi.Input[float]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
                  wait_monitoring: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -28,6 +29,7 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[float] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         if __name__ is not None:
@@ -51,6 +53,7 @@ class ClusterSync(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['node_pool_ids'] = node_pool_ids
+            __props__['state_confirm'] = state_confirm
             __props__['synced'] = synced
             __props__['wait_monitoring'] = wait_monitoring
             __props__['default_project_id'] = None
@@ -70,6 +73,7 @@ class ClusterSync(pulumi.CustomResource):
             default_project_id: Optional[pulumi.Input[str]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             node_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            state_confirm: Optional[pulumi.Input[float]] = None,
             synced: Optional[pulumi.Input[bool]] = None,
             system_project_id: Optional[pulumi.Input[str]] = None,
             wait_monitoring: Optional[pulumi.Input[bool]] = None) -> 'ClusterSync':
@@ -84,6 +88,7 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         :param pulumi.Input[List[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[float] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
@@ -95,6 +100,7 @@ class ClusterSync(pulumi.CustomResource):
         __props__["default_project_id"] = default_project_id
         __props__["kube_config"] = kube_config
         __props__["node_pool_ids"] = node_pool_ids
+        __props__["state_confirm"] = state_confirm
         __props__["synced"] = synced
         __props__["system_project_id"] = system_project_id
         __props__["wait_monitoring"] = wait_monitoring
@@ -131,6 +137,14 @@ class ClusterSync(pulumi.CustomResource):
         The node pool IDs used by the cluster id (list)
         """
         return pulumi.get(self, "node_pool_ids")
+
+    @property
+    @pulumi.getter(name="stateConfirm")
+    def state_confirm(self) -> pulumi.Output[Optional[float]]:
+        """
+        Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        """
+        return pulumi.get(self, "state_confirm")
 
     @property
     @pulumi.getter

@@ -56,7 +56,7 @@ type LookupClusterAlterRuleResult struct {
 	// (Computed) The cluster alert rule annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	ClusterId   string                 `pulumi:"clusterId"`
-	// (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
+	// (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"` (list Maxitems:1)
 	EventRule GetClusterAlterRuleEventRule `pulumi:"eventRule"`
 	// (Computed) The cluster alert rule alert group ID (string)
 	GroupId string `pulumi:"groupId"`

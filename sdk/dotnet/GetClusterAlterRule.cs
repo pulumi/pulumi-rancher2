@@ -84,7 +84,7 @@ namespace Pulumi.Rancher2
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
         /// <summary>
-        /// (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        /// (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"` (list Maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterAlterRuleEventRuleResult EventRule;
         /// <summary>

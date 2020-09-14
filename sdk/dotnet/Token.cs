@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// (Computed) Annotations of the token (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2
         public Output<bool> Expired { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// (Computed) Labels of the token (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// (Computed) Annotations of the token (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -194,7 +194,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// (Computed) Labels of the token (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -231,7 +231,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the token (map)
+        /// (Computed) Annotations of the token (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -267,7 +267,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the token (map)
+        /// (Computed) Labels of the token (map)
         /// </summary>
         public InputMap<object> Labels
         {

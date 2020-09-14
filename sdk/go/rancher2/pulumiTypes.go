@@ -2547,14 +2547,10 @@ func (o ClusterAlertRuleSystemServiceRulePtrOutput) Condition() pulumi.StringPtr
 }
 
 type ClusterAlterGroupRecipient struct {
-	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-	DefaultRecipient *bool `pulumi:"defaultRecipient"`
-	// Recipient notifier ID (string)
-	NotifierId string `pulumi:"notifierId"`
-	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-	NotifierType *string `pulumi:"notifierType"`
-	// Recipient (string)
-	Recipient *string `pulumi:"recipient"`
+	DefaultRecipient *bool   `pulumi:"defaultRecipient"`
+	NotifierId       string  `pulumi:"notifierId"`
+	NotifierType     *string `pulumi:"notifierType"`
+	Recipient        *string `pulumi:"recipient"`
 }
 
 // ClusterAlterGroupRecipientInput is an input type that accepts ClusterAlterGroupRecipientArgs and ClusterAlterGroupRecipientOutput values.
@@ -2569,14 +2565,10 @@ type ClusterAlterGroupRecipientInput interface {
 }
 
 type ClusterAlterGroupRecipientArgs struct {
-	// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
-	// Recipient notifier ID (string)
-	NotifierId pulumi.StringInput `pulumi:"notifierId"`
-	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-	NotifierType pulumi.StringPtrInput `pulumi:"notifierType"`
-	// Recipient (string)
-	Recipient pulumi.StringPtrInput `pulumi:"recipient"`
+	DefaultRecipient pulumi.BoolPtrInput   `pulumi:"defaultRecipient"`
+	NotifierId       pulumi.StringInput    `pulumi:"notifierId"`
+	NotifierType     pulumi.StringPtrInput `pulumi:"notifierType"`
+	Recipient        pulumi.StringPtrInput `pulumi:"recipient"`
 }
 
 func (ClusterAlterGroupRecipientArgs) ElementType() reflect.Type {
@@ -2630,22 +2622,18 @@ func (o ClusterAlterGroupRecipientOutput) ToClusterAlterGroupRecipientOutputWith
 	return o
 }
 
-// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
 func (o ClusterAlterGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterAlterGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
-// Recipient notifier ID (string)
 func (o ClusterAlterGroupRecipientOutput) NotifierId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAlterGroupRecipient) string { return v.NotifierId }).(pulumi.StringOutput)
 }
 
-// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
 func (o ClusterAlterGroupRecipientOutput) NotifierType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterGroupRecipient) *string { return v.NotifierType }).(pulumi.StringPtrOutput)
 }
 
-// Recipient (string)
 func (o ClusterAlterGroupRecipientOutput) Recipient() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterGroupRecipient) *string { return v.Recipient }).(pulumi.StringPtrOutput)
 }
@@ -2671,10 +2659,8 @@ func (o ClusterAlterGroupRecipientArrayOutput) Index(i pulumi.IntInput) ClusterA
 }
 
 type ClusterAlterRuleEventRule struct {
-	// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-	EventType *string `pulumi:"eventType"`
-	// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-	ResourceKind string `pulumi:"resourceKind"`
+	EventType    *string `pulumi:"eventType"`
+	ResourceKind string  `pulumi:"resourceKind"`
 }
 
 // ClusterAlterRuleEventRuleInput is an input type that accepts ClusterAlterRuleEventRuleArgs and ClusterAlterRuleEventRuleOutput values.
@@ -2689,10 +2675,8 @@ type ClusterAlterRuleEventRuleInput interface {
 }
 
 type ClusterAlterRuleEventRuleArgs struct {
-	// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-	EventType pulumi.StringPtrInput `pulumi:"eventType"`
-	// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-	ResourceKind pulumi.StringInput `pulumi:"resourceKind"`
+	EventType    pulumi.StringPtrInput `pulumi:"eventType"`
+	ResourceKind pulumi.StringInput    `pulumi:"resourceKind"`
 }
 
 func (ClusterAlterRuleEventRuleArgs) ElementType() reflect.Type {
@@ -2771,13 +2755,10 @@ func (o ClusterAlterRuleEventRuleOutput) ToClusterAlterRuleEventRulePtrOutputWit
 		return &v
 	}).(ClusterAlterRuleEventRulePtrOutput)
 }
-
-// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
 func (o ClusterAlterRuleEventRuleOutput) EventType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleEventRule) *string { return v.EventType }).(pulumi.StringPtrOutput)
 }
 
-// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
 func (o ClusterAlterRuleEventRuleOutput) ResourceKind() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAlterRuleEventRule) string { return v.ResourceKind }).(pulumi.StringOutput)
 }
@@ -2800,7 +2781,6 @@ func (o ClusterAlterRuleEventRulePtrOutput) Elem() ClusterAlterRuleEventRuleOutp
 	return o.ApplyT(func(v *ClusterAlterRuleEventRule) ClusterAlterRuleEventRule { return *v }).(ClusterAlterRuleEventRuleOutput)
 }
 
-// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
 func (o ClusterAlterRuleEventRulePtrOutput) EventType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleEventRule) *string {
 		if v == nil {
@@ -2810,7 +2790,6 @@ func (o ClusterAlterRuleEventRulePtrOutput) EventType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
 func (o ClusterAlterRuleEventRulePtrOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleEventRule) *string {
 		if v == nil {
@@ -2821,15 +2800,10 @@ func (o ClusterAlterRuleEventRulePtrOutput) ResourceKind() pulumi.StringPtrOutpu
 }
 
 type ClusterAlterRuleMetricRule struct {
-	// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-	Comparison *string `pulumi:"comparison"`
-	// Metric rule description (string)
-	Description *string `pulumi:"description"`
-	// Metric rule duration (string)
-	Duration string `pulumi:"duration"`
-	// Metric rule expression (string)
-	Expression string `pulumi:"expression"`
-	// Metric rule threshold value (float64)
+	Comparison     *string `pulumi:"comparison"`
+	Description    *string `pulumi:"description"`
+	Duration       string  `pulumi:"duration"`
+	Expression     string  `pulumi:"expression"`
 	ThresholdValue float64 `pulumi:"thresholdValue"`
 }
 
@@ -2845,16 +2819,11 @@ type ClusterAlterRuleMetricRuleInput interface {
 }
 
 type ClusterAlterRuleMetricRuleArgs struct {
-	// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-	Comparison pulumi.StringPtrInput `pulumi:"comparison"`
-	// Metric rule description (string)
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Metric rule duration (string)
-	Duration pulumi.StringInput `pulumi:"duration"`
-	// Metric rule expression (string)
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Metric rule threshold value (float64)
-	ThresholdValue pulumi.Float64Input `pulumi:"thresholdValue"`
+	Comparison     pulumi.StringPtrInput `pulumi:"comparison"`
+	Description    pulumi.StringPtrInput `pulumi:"description"`
+	Duration       pulumi.StringInput    `pulumi:"duration"`
+	Expression     pulumi.StringInput    `pulumi:"expression"`
+	ThresholdValue pulumi.Float64Input   `pulumi:"thresholdValue"`
 }
 
 func (ClusterAlterRuleMetricRuleArgs) ElementType() reflect.Type {
@@ -2933,28 +2902,22 @@ func (o ClusterAlterRuleMetricRuleOutput) ToClusterAlterRuleMetricRulePtrOutputW
 		return &v
 	}).(ClusterAlterRuleMetricRulePtrOutput)
 }
-
-// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
 func (o ClusterAlterRuleMetricRuleOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleMetricRule) *string { return v.Comparison }).(pulumi.StringPtrOutput)
 }
 
-// Metric rule description (string)
 func (o ClusterAlterRuleMetricRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleMetricRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Metric rule duration (string)
 func (o ClusterAlterRuleMetricRuleOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAlterRuleMetricRule) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Metric rule expression (string)
 func (o ClusterAlterRuleMetricRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAlterRuleMetricRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// Metric rule threshold value (float64)
 func (o ClusterAlterRuleMetricRuleOutput) ThresholdValue() pulumi.Float64Output {
 	return o.ApplyT(func(v ClusterAlterRuleMetricRule) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
 }
@@ -2977,7 +2940,6 @@ func (o ClusterAlterRuleMetricRulePtrOutput) Elem() ClusterAlterRuleMetricRuleOu
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) ClusterAlterRuleMetricRule { return *v }).(ClusterAlterRuleMetricRuleOutput)
 }
 
-// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
 func (o ClusterAlterRuleMetricRulePtrOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) *string {
 		if v == nil {
@@ -2987,7 +2949,6 @@ func (o ClusterAlterRuleMetricRulePtrOutput) Comparison() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metric rule description (string)
 func (o ClusterAlterRuleMetricRulePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) *string {
 		if v == nil {
@@ -2997,7 +2958,6 @@ func (o ClusterAlterRuleMetricRulePtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metric rule duration (string)
 func (o ClusterAlterRuleMetricRulePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) *string {
 		if v == nil {
@@ -3007,7 +2967,6 @@ func (o ClusterAlterRuleMetricRulePtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metric rule expression (string)
 func (o ClusterAlterRuleMetricRulePtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) *string {
 		if v == nil {
@@ -3017,7 +2976,6 @@ func (o ClusterAlterRuleMetricRulePtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metric rule threshold value (float64)
 func (o ClusterAlterRuleMetricRulePtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleMetricRule) *float64 {
 		if v == nil {
@@ -3028,16 +2986,11 @@ func (o ClusterAlterRuleMetricRulePtrOutput) ThresholdValue() pulumi.Float64PtrO
 }
 
 type ClusterAlterRuleNodeRule struct {
-	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-	Condition *string `pulumi:"condition"`
-	// Node rule cpu threshold. Default: `70` (int)
-	CpuThreshold *int `pulumi:"cpuThreshold"`
-	// Node rule mem threshold. Default: `70` (int)
-	MemThreshold *int `pulumi:"memThreshold"`
-	// Node ID (string)
-	NodeId *string `pulumi:"nodeId"`
-	// Node rule selector (map)
-	Selector map[string]interface{} `pulumi:"selector"`
+	Condition    *string                `pulumi:"condition"`
+	CpuThreshold *int                   `pulumi:"cpuThreshold"`
+	MemThreshold *int                   `pulumi:"memThreshold"`
+	NodeId       *string                `pulumi:"nodeId"`
+	Selector     map[string]interface{} `pulumi:"selector"`
 }
 
 // ClusterAlterRuleNodeRuleInput is an input type that accepts ClusterAlterRuleNodeRuleArgs and ClusterAlterRuleNodeRuleOutput values.
@@ -3052,16 +3005,11 @@ type ClusterAlterRuleNodeRuleInput interface {
 }
 
 type ClusterAlterRuleNodeRuleArgs struct {
-	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// Node rule cpu threshold. Default: `70` (int)
-	CpuThreshold pulumi.IntPtrInput `pulumi:"cpuThreshold"`
-	// Node rule mem threshold. Default: `70` (int)
-	MemThreshold pulumi.IntPtrInput `pulumi:"memThreshold"`
-	// Node ID (string)
-	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// Node rule selector (map)
-	Selector pulumi.MapInput `pulumi:"selector"`
+	Condition    pulumi.StringPtrInput `pulumi:"condition"`
+	CpuThreshold pulumi.IntPtrInput    `pulumi:"cpuThreshold"`
+	MemThreshold pulumi.IntPtrInput    `pulumi:"memThreshold"`
+	NodeId       pulumi.StringPtrInput `pulumi:"nodeId"`
+	Selector     pulumi.MapInput       `pulumi:"selector"`
 }
 
 func (ClusterAlterRuleNodeRuleArgs) ElementType() reflect.Type {
@@ -3140,28 +3088,22 @@ func (o ClusterAlterRuleNodeRuleOutput) ToClusterAlterRuleNodeRulePtrOutputWithC
 		return &v
 	}).(ClusterAlterRuleNodeRulePtrOutput)
 }
-
-// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 func (o ClusterAlterRuleNodeRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleNodeRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// Node rule cpu threshold. Default: `70` (int)
 func (o ClusterAlterRuleNodeRuleOutput) CpuThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleNodeRule) *int { return v.CpuThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Node rule mem threshold. Default: `70` (int)
 func (o ClusterAlterRuleNodeRuleOutput) MemThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleNodeRule) *int { return v.MemThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Node ID (string)
 func (o ClusterAlterRuleNodeRuleOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleNodeRule) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// Node rule selector (map)
 func (o ClusterAlterRuleNodeRuleOutput) Selector() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterAlterRuleNodeRule) map[string]interface{} { return v.Selector }).(pulumi.MapOutput)
 }
@@ -3184,7 +3126,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) Elem() ClusterAlterRuleNodeRuleOutput
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) ClusterAlterRuleNodeRule { return *v }).(ClusterAlterRuleNodeRuleOutput)
 }
 
-// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 func (o ClusterAlterRuleNodeRulePtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) *string {
 		if v == nil {
@@ -3194,7 +3135,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) Condition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Node rule cpu threshold. Default: `70` (int)
 func (o ClusterAlterRuleNodeRulePtrOutput) CpuThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) *int {
 		if v == nil {
@@ -3204,7 +3144,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) CpuThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Node rule mem threshold. Default: `70` (int)
 func (o ClusterAlterRuleNodeRulePtrOutput) MemThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) *int {
 		if v == nil {
@@ -3214,7 +3153,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) MemThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Node ID (string)
 func (o ClusterAlterRuleNodeRulePtrOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) *string {
 		if v == nil {
@@ -3224,7 +3162,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) NodeId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Node rule selector (map)
 func (o ClusterAlterRuleNodeRulePtrOutput) Selector() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleNodeRule) map[string]interface{} {
 		if v == nil {
@@ -3235,7 +3172,6 @@ func (o ClusterAlterRuleNodeRulePtrOutput) Selector() pulumi.MapOutput {
 }
 
 type ClusterAlterRuleSystemServiceRule struct {
-	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 	Condition *string `pulumi:"condition"`
 }
 
@@ -3251,7 +3187,6 @@ type ClusterAlterRuleSystemServiceRuleInput interface {
 }
 
 type ClusterAlterRuleSystemServiceRuleArgs struct {
-	// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
 }
 
@@ -3331,8 +3266,6 @@ func (o ClusterAlterRuleSystemServiceRuleOutput) ToClusterAlterRuleSystemService
 		return &v
 	}).(ClusterAlterRuleSystemServiceRulePtrOutput)
 }
-
-// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 func (o ClusterAlterRuleSystemServiceRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlterRuleSystemServiceRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
@@ -3355,7 +3288,6 @@ func (o ClusterAlterRuleSystemServiceRulePtrOutput) Elem() ClusterAlterRuleSyste
 	return o.ApplyT(func(v *ClusterAlterRuleSystemServiceRule) ClusterAlterRuleSystemServiceRule { return *v }).(ClusterAlterRuleSystemServiceRuleOutput)
 }
 
-// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
 func (o ClusterAlterRuleSystemServiceRulePtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAlterRuleSystemServiceRule) *string {
 		if v == nil {
@@ -6719,7 +6651,7 @@ type ClusterLoggingFluentdConfig struct {
 	Certificate *string `pulumi:"certificate"`
 	// Compress data for the fluentd service (bool)
 	Compress *bool `pulumi:"compress"`
-	// Enable TLS for the fluentd service (bool)
+	// Enable TLS for the syslog service. Default `false` (bool)
 	EnableTls *bool `pulumi:"enableTls"`
 	// Servers for the fluentd service (list)
 	FluentServers []ClusterLoggingFluentdConfigFluentServer `pulumi:"fluentServers"`
@@ -6741,7 +6673,7 @@ type ClusterLoggingFluentdConfigArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// Compress data for the fluentd service (bool)
 	Compress pulumi.BoolPtrInput `pulumi:"compress"`
-	// Enable TLS for the fluentd service (bool)
+	// Enable TLS for the syslog service. Default `false` (bool)
 	EnableTls pulumi.BoolPtrInput `pulumi:"enableTls"`
 	// Servers for the fluentd service (list)
 	FluentServers ClusterLoggingFluentdConfigFluentServerArrayInput `pulumi:"fluentServers"`
@@ -6834,7 +6766,7 @@ func (o ClusterLoggingFluentdConfigOutput) Compress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterLoggingFluentdConfig) *bool { return v.Compress }).(pulumi.BoolPtrOutput)
 }
 
-// Enable TLS for the fluentd service (bool)
+// Enable TLS for the syslog service. Default `false` (bool)
 func (o ClusterLoggingFluentdConfigOutput) EnableTls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterLoggingFluentdConfig) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
 }
@@ -6882,7 +6814,7 @@ func (o ClusterLoggingFluentdConfigPtrOutput) Compress() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable TLS for the fluentd service (bool)
+// Enable TLS for the syslog service. Default `false` (bool)
 func (o ClusterLoggingFluentdConfigPtrOutput) EnableTls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterLoggingFluentdConfig) *bool {
 		if v == nil {
@@ -7569,6 +7501,8 @@ type ClusterLoggingSyslogConfig struct {
 	ClientCert *string `pulumi:"clientCert"`
 	// SSL client key for the syslog service (string)
 	ClientKey *string `pulumi:"clientKey"`
+	// Enable TLS for the syslog service. Default `false` (bool)
+	EnableTls *bool `pulumi:"enableTls"`
 	// Endpoint of the syslog service (string)
 	Endpoint string `pulumi:"endpoint"`
 	// Program for the syslog service (string)
@@ -7601,6 +7535,8 @@ type ClusterLoggingSyslogConfigArgs struct {
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
 	// SSL client key for the syslog service (string)
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// Enable TLS for the syslog service. Default `false` (bool)
+	EnableTls pulumi.BoolPtrInput `pulumi:"enableTls"`
 	// Endpoint of the syslog service (string)
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Program for the syslog service (string)
@@ -7707,6 +7643,11 @@ func (o ClusterLoggingSyslogConfigOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterLoggingSyslogConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// Enable TLS for the syslog service. Default `false` (bool)
+func (o ClusterLoggingSyslogConfigOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingSyslogConfig) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
+}
+
 // Endpoint of the syslog service (string)
 func (o ClusterLoggingSyslogConfigOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterLoggingSyslogConfig) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -7783,6 +7724,16 @@ func (o ClusterLoggingSyslogConfigPtrOutput) ClientKey() pulumi.StringPtrOutput 
 		}
 		return v.ClientKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable TLS for the syslog service. Default `false` (bool)
+func (o ClusterLoggingSyslogConfigPtrOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterLoggingSyslogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTls
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Endpoint of the syslog service (string)
@@ -16367,7 +16318,7 @@ func (o ClusterRkeConfigServicesKubeApiPtrOutput) ServiceNodePortRange() pulumi.
 }
 
 type ClusterRkeConfigServicesKubeApiAuditLog struct {
-	// Event rate limit configuration. (map)
+	// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
 	Configuration *ClusterRkeConfigServicesKubeApiAuditLogConfiguration `pulumi:"configuration"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
@@ -16385,7 +16336,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogInput interface {
 }
 
 type ClusterRkeConfigServicesKubeApiAuditLogArgs struct {
-	// Event rate limit configuration. (map)
+	// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
 	Configuration ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrInput `pulumi:"configuration"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -16468,7 +16419,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) ToClusterRkeConfigService
 	}).(ClusterRkeConfigServicesKubeApiAuditLogPtrOutput)
 }
 
-// Event rate limit configuration. (map)
+// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
 func (o ClusterRkeConfigServicesKubeApiAuditLogOutput) Configuration() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 		return v.Configuration
@@ -16498,7 +16449,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Elem() ClusterRkeConfi
 	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiAuditLog) ClusterRkeConfigServicesKubeApiAuditLog { return *v }).(ClusterRkeConfigServicesKubeApiAuditLogOutput)
 }
 
-// Event rate limit configuration. (map)
+// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
 func (o ClusterRkeConfigServicesKubeApiAuditLogPtrOutput) Configuration() ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiAuditLog) *ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 		if v == nil {
@@ -16747,8 +16698,8 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy() 
 }
 
 type ClusterRkeConfigServicesKubeApiEventRateLimit struct {
-	// Event rate limit configuration. (map)
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+	Configuration *string `pulumi:"configuration"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -16765,8 +16716,8 @@ type ClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 }
 
 type ClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	// Event rate limit configuration. (map)
-	Configuration pulumi.MapInput `pulumi:"configuration"`
+	// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+	Configuration pulumi.StringPtrInput `pulumi:"configuration"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -16848,9 +16799,9 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToClusterRkeConfigS
 	}).(ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
 
-// Event rate limit configuration. (map)
-func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiEventRateLimit) *string { return v.Configuration }).(pulumi.StringPtrOutput)
 }
 
 // Enable scheduled cluster scan. Default: `false` (bool)
@@ -16878,14 +16829,14 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() ClusterRk
 	}).(ClusterRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-// Event rate limit configuration. (map)
-func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiEventRateLimit) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable scheduled cluster scan. Default: `false` (bool)
@@ -16899,8 +16850,8 @@ func (o ClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi
 }
 
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	// Secrets encryption configuration. (map)
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+	CustomConfig *string `pulumi:"customConfig"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -16917,8 +16868,8 @@ type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 }
 
 type ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	// Secrets encryption configuration. (map)
-	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
 	// Enable scheduled cluster scan. Default: `false` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -17000,11 +16951,9 @@ func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToClusterR
 	}).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
 
-// Secrets encryption configuration. (map)
-func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
-		return v.CustomConfig
-	}).(pulumi.MapOutput)
+// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string { return v.CustomConfig }).(pulumi.StringPtrOutput)
 }
 
 // Enable scheduled cluster scan. Default: `false` (bool)
@@ -17032,14 +16981,14 @@ func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem() 
 	}).(ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
 }
 
-// Secrets encryption configuration. (map)
-func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+func (o ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable scheduled cluster scan. Default: `false` (bool)
@@ -27639,7 +27588,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAudi
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration *string `pulumi:"configuration"`
 	// Enable cluster template revision. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -27656,7 +27605,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRa
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Configuration pulumi.MapInput `pulumi:"configuration"`
+	Configuration pulumi.StringPtrInput `pulumi:"configuration"`
 	// Enable cluster template revision. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -27737,10 +27686,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
-func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *string {
 		return v.Configuration
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable cluster template revision. Default `true` (bool)
@@ -27770,13 +27719,13 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable cluster template revision. Default `true` (bool)
@@ -27790,7 +27739,7 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
+	CustomConfig *string `pulumi:"customConfig"`
 	// Enable cluster template revision. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
 }
@@ -27807,7 +27756,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecrets
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	CustomConfig pulumi.MapInput `pulumi:"customConfig"`
+	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
 	// Enable cluster template revision. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
@@ -27888,10 +27837,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
-func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable cluster template revision. Default `true` (bool)
@@ -27921,13 +27870,13 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
 }
 
-func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable cluster template revision. Default `true` (bool)
@@ -31826,6 +31775,8 @@ type NodeTemplateAmazonec2Config struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// OpenStack keypair to use to SSH to the instance (string)
 	KeypairName *string `pulumi:"keypairName"`
+	// Custom KMS key ID using the AWS Managed CMK (string)
+	KmsKey *string `pulumi:"kmsKey"`
 	// Enable monitoring for droplet. Default `false` (bool)
 	Monitoring *bool `pulumi:"monitoring"`
 	// Make the specified port number accessible from the Internet. (list)
@@ -31904,6 +31855,8 @@ type NodeTemplateAmazonec2ConfigArgs struct {
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// OpenStack keypair to use to SSH to the instance (string)
 	KeypairName pulumi.StringPtrInput `pulumi:"keypairName"`
+	// Custom KMS key ID using the AWS Managed CMK (string)
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Enable monitoring for droplet. Default `false` (bool)
 	Monitoring pulumi.BoolPtrInput `pulumi:"monitoring"`
 	// Make the specified port number accessible from the Internet. (list)
@@ -32075,6 +32028,11 @@ func (o NodeTemplateAmazonec2ConfigOutput) InstanceType() pulumi.StringPtrOutput
 // OpenStack keypair to use to SSH to the instance (string)
 func (o NodeTemplateAmazonec2ConfigOutput) KeypairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.KeypairName }).(pulumi.StringPtrOutput)
+}
+
+// Custom KMS key ID using the AWS Managed CMK (string)
+func (o NodeTemplateAmazonec2ConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
 // Enable monitoring for droplet. Default `false` (bool)
@@ -32302,6 +32260,16 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) KeypairName() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.KeypairName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom KMS key ID using the AWS Managed CMK (string)
+func (o NodeTemplateAmazonec2ConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32541,8 +32509,8 @@ type NodeTemplateAzureConfig struct {
 	// Docker Port. Default `2376` (string)
 	DockerPort *string `pulumi:"dockerPort"`
 	// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-	// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
-	Environment      *string `pulumi:"environment"`
+	Environment *string `pulumi:"environment"`
+	// Fault domain count to use for availability set. Default `3` (string)
 	FaultDomainCount *string `pulumi:"faultDomainCount"`
 	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image *string `pulumi:"image"`
@@ -32552,6 +32520,8 @@ type NodeTemplateAzureConfig struct {
 	ManagedDisks *bool `pulumi:"managedDisks"`
 	// Do not create a public IP address for the machine. Default `false` (bool)
 	NoPublicIp *bool `pulumi:"noPublicIp"`
+	// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+	Nsg *string `pulumi:"nsg"`
 	// Make the specified port number accessible from the Internet. (list)
 	OpenPorts []string `pulumi:"openPorts"`
 	// Specify a static private IP address for the machine. (string)
@@ -32607,8 +32577,8 @@ type NodeTemplateAzureConfigArgs struct {
 	// Docker Port. Default `2376` (string)
 	DockerPort pulumi.StringPtrInput `pulumi:"dockerPort"`
 	// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-	// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
-	Environment      pulumi.StringPtrInput `pulumi:"environment"`
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// Fault domain count to use for availability set. Default `3` (string)
 	FaultDomainCount pulumi.StringPtrInput `pulumi:"faultDomainCount"`
 	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
 	Image pulumi.StringPtrInput `pulumi:"image"`
@@ -32618,6 +32588,8 @@ type NodeTemplateAzureConfigArgs struct {
 	ManagedDisks pulumi.BoolPtrInput `pulumi:"managedDisks"`
 	// Do not create a public IP address for the machine. Default `false` (bool)
 	NoPublicIp pulumi.BoolPtrInput `pulumi:"noPublicIp"`
+	// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+	Nsg pulumi.StringPtrInput `pulumi:"nsg"`
 	// Make the specified port number accessible from the Internet. (list)
 	OpenPorts pulumi.StringArrayInput `pulumi:"openPorts"`
 	// Specify a static private IP address for the machine. (string)
@@ -32759,11 +32731,11 @@ func (o NodeTemplateAzureConfigOutput) DockerPort() pulumi.StringPtrOutput {
 }
 
 // Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
 func (o NodeTemplateAzureConfigOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
+// Fault domain count to use for availability set. Default `3` (string)
 func (o NodeTemplateAzureConfigOutput) FaultDomainCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.FaultDomainCount }).(pulumi.StringPtrOutput)
 }
@@ -32786,6 +32758,11 @@ func (o NodeTemplateAzureConfigOutput) ManagedDisks() pulumi.BoolPtrOutput {
 // Do not create a public IP address for the machine. Default `false` (bool)
 func (o NodeTemplateAzureConfigOutput) NoPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAzureConfig) *bool { return v.NoPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+func (o NodeTemplateAzureConfigOutput) Nsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateAzureConfig) *string { return v.Nsg }).(pulumi.StringPtrOutput)
 }
 
 // Make the specified port number accessible from the Internet. (list)
@@ -32942,7 +32919,6 @@ func (o NodeTemplateAzureConfigPtrOutput) DockerPort() pulumi.StringPtrOutput {
 }
 
 // Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-// `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
 func (o NodeTemplateAzureConfigPtrOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
 		if v == nil {
@@ -32952,6 +32928,7 @@ func (o NodeTemplateAzureConfigPtrOutput) Environment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Fault domain count to use for availability set. Default `3` (string)
 func (o NodeTemplateAzureConfigPtrOutput) FaultDomainCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
 		if v == nil {
@@ -32999,6 +32976,16 @@ func (o NodeTemplateAzureConfigPtrOutput) NoPublicIp() pulumi.BoolPtrOutput {
 		}
 		return v.NoPublicIp
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+func (o NodeTemplateAzureConfigPtrOutput) Nsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateAzureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Nsg
+	}).(pulumi.StringPtrOutput)
 }
 
 // Make the specified port number accessible from the Internet. (list)
@@ -35066,7 +35053,7 @@ type NodeTemplateVsphereConfig struct {
 	Boot2dockerUrl *string `pulumi:"boot2dockerUrl"`
 	// vSphere vm configuration parameters (used for guestinfo) (list)
 	Cfgparams []string `pulumi:"cfgparams"`
-	// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+	// If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
 	CloneFrom *string `pulumi:"cloneFrom"`
 	// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
 	CloudConfig *string `pulumi:"cloudConfig"`
@@ -35142,7 +35129,7 @@ type NodeTemplateVsphereConfigArgs struct {
 	Boot2dockerUrl pulumi.StringPtrInput `pulumi:"boot2dockerUrl"`
 	// vSphere vm configuration parameters (used for guestinfo) (list)
 	Cfgparams pulumi.StringArrayInput `pulumi:"cfgparams"`
-	// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+	// If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
 	CloneFrom pulumi.StringPtrInput `pulumi:"cloneFrom"`
 	// Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
 	CloudConfig pulumi.StringPtrInput `pulumi:"cloudConfig"`
@@ -35289,7 +35276,7 @@ func (o NodeTemplateVsphereConfigOutput) Cfgparams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) []string { return v.Cfgparams }).(pulumi.StringArrayOutput)
 }
 
-// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+// If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
 func (o NodeTemplateVsphereConfigOutput) CloneFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateVsphereConfig) *string { return v.CloneFrom }).(pulumi.StringPtrOutput)
 }
@@ -35472,7 +35459,7 @@ func (o NodeTemplateVsphereConfigPtrOutput) Cfgparams() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+// If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
 func (o NodeTemplateVsphereConfigPtrOutput) CloneFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateVsphereConfig) *string {
 		if v == nil {
@@ -40864,6 +40851,8 @@ type ProjectLoggingSyslogConfig struct {
 	ClientCert *string `pulumi:"clientCert"`
 	// SSL client key for the syslog service (string)
 	ClientKey *string `pulumi:"clientKey"`
+	// Enable TLS for the fluentd service (bool)
+	EnableTls *bool `pulumi:"enableTls"`
 	// Endpoint of the syslog service (string)
 	Endpoint string `pulumi:"endpoint"`
 	// Program for the syslog service (string)
@@ -40896,6 +40885,8 @@ type ProjectLoggingSyslogConfigArgs struct {
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
 	// SSL client key for the syslog service (string)
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// Enable TLS for the fluentd service (bool)
+	EnableTls pulumi.BoolPtrInput `pulumi:"enableTls"`
 	// Endpoint of the syslog service (string)
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Program for the syslog service (string)
@@ -41002,6 +40993,11 @@ func (o ProjectLoggingSyslogConfigOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectLoggingSyslogConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// Enable TLS for the fluentd service (bool)
+func (o ProjectLoggingSyslogConfigOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectLoggingSyslogConfig) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
+}
+
 // Endpoint of the syslog service (string)
 func (o ProjectLoggingSyslogConfigOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectLoggingSyslogConfig) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -41078,6 +41074,16 @@ func (o ProjectLoggingSyslogConfigPtrOutput) ClientKey() pulumi.StringPtrOutput 
 		}
 		return v.ClientKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable TLS for the fluentd service (bool)
+func (o ProjectLoggingSyslogConfigPtrOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectLoggingSyslogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTls
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Endpoint of the syslog service (string)
@@ -44632,6 +44638,7 @@ type GetClusterLoggingSyslogConfig struct {
 	Certificate *string `pulumi:"certificate"`
 	ClientCert  *string `pulumi:"clientCert"`
 	ClientKey   *string `pulumi:"clientKey"`
+	EnableTls   *bool   `pulumi:"enableTls"`
 	Endpoint    string  `pulumi:"endpoint"`
 	Program     *string `pulumi:"program"`
 	Protocol    *string `pulumi:"protocol"`
@@ -44655,6 +44662,7 @@ type GetClusterLoggingSyslogConfigArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	ClientCert  pulumi.StringPtrInput `pulumi:"clientCert"`
 	ClientKey   pulumi.StringPtrInput `pulumi:"clientKey"`
+	EnableTls   pulumi.BoolPtrInput   `pulumi:"enableTls"`
 	Endpoint    pulumi.StringInput    `pulumi:"endpoint"`
 	Program     pulumi.StringPtrInput `pulumi:"program"`
 	Protocol    pulumi.StringPtrInput `pulumi:"protocol"`
@@ -44699,6 +44707,10 @@ func (o GetClusterLoggingSyslogConfigOutput) ClientCert() pulumi.StringPtrOutput
 
 func (o GetClusterLoggingSyslogConfigOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterLoggingSyslogConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterLoggingSyslogConfigOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterLoggingSyslogConfig) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClusterLoggingSyslogConfigOutput) Endpoint() pulumi.StringOutput {
@@ -50926,8 +50938,8 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
-	Configuration map[string]interface{} `pulumi:"configuration"`
-	Enabled       *bool                  `pulumi:"enabled"`
+	Configuration string `pulumi:"configuration"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -50942,7 +50954,7 @@ type GetClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Configuration pulumi.MapInput     `pulumi:"configuration"`
+	Configuration pulumi.StringInput  `pulumi:"configuration"`
 	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -51022,10 +51034,8 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeC
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
-func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
-		return v.Configuration
-	}).(pulumi.MapOutput)
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) string { return v.Configuration }).(pulumi.StringOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
@@ -51052,13 +51062,13 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() GetClu
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Configuration
-	}).(pulumi.MapOutput)
+		return &v.Configuration
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -51071,8 +51081,8 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pul
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
-	Enabled      *bool                  `pulumi:"enabled"`
+	CustomConfig *string `pulumi:"customConfig"`
+	Enabled      *bool   `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -51087,8 +51097,8 @@ type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	CustomConfig pulumi.MapInput     `pulumi:"customConfig"`
-	Enabled      pulumi.BoolPtrInput `pulumi:"enabled"`
+	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
+	Enabled      pulumi.BoolPtrInput   `pulumi:"enabled"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -51167,10 +51177,8 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetCl
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
-func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
-		return v.CustomConfig
-	}).(pulumi.MapOutput)
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string { return v.CustomConfig }).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
@@ -51197,13 +51205,13 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
 }
 
-func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -51668,6 +51676,7 @@ func (o GetClusterRkeConfigUpgradeStrategyDrainInputOutput) Timeout() pulumi.Int
 }
 
 type GetClusterScanScanConfig struct {
+	// Cluster Cis Scan config (List maxitems:1)
 	CisScanConfig GetClusterScanScanConfigCisScanConfig `pulumi:"cisScanConfig"`
 }
 
@@ -51683,6 +51692,7 @@ type GetClusterScanScanConfigInput interface {
 }
 
 type GetClusterScanScanConfigArgs struct {
+	// Cluster Cis Scan config (List maxitems:1)
 	CisScanConfig GetClusterScanScanConfigCisScanConfigInput `pulumi:"cisScanConfig"`
 }
 
@@ -51712,16 +51722,22 @@ func (o GetClusterScanScanConfigOutput) ToGetClusterScanScanConfigOutputWithCont
 	return o
 }
 
+// Cluster Cis Scan config (List maxitems:1)
 func (o GetClusterScanScanConfigOutput) CisScanConfig() GetClusterScanScanConfigCisScanConfigOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfig) GetClusterScanScanConfigCisScanConfig { return v.CisScanConfig }).(GetClusterScanScanConfigCisScanConfigOutput)
 }
 
 type GetClusterScanScanConfigCisScanConfig struct {
-	DebugMaster              *bool    `pulumi:"debugMaster"`
-	DebugWorker              *bool    `pulumi:"debugWorker"`
-	OverrideBenchmarkVersion *string  `pulumi:"overrideBenchmarkVersion"`
-	OverrideSkips            []string `pulumi:"overrideSkips"`
-	Profile                  *string  `pulumi:"profile"`
+	// Debug master. Default: `false` (bool)
+	DebugMaster *bool `pulumi:"debugMaster"`
+	// Debug worker. Default: `false` (bool)
+	DebugWorker *bool `pulumi:"debugWorker"`
+	// Override benchmark version (string)
+	OverrideBenchmarkVersion *string `pulumi:"overrideBenchmarkVersion"`
+	// Override skip (string)
+	OverrideSkips []string `pulumi:"overrideSkips"`
+	// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+	Profile *string `pulumi:"profile"`
 }
 
 // GetClusterScanScanConfigCisScanConfigInput is an input type that accepts GetClusterScanScanConfigCisScanConfigArgs and GetClusterScanScanConfigCisScanConfigOutput values.
@@ -51736,11 +51752,16 @@ type GetClusterScanScanConfigCisScanConfigInput interface {
 }
 
 type GetClusterScanScanConfigCisScanConfigArgs struct {
-	DebugMaster              pulumi.BoolPtrInput     `pulumi:"debugMaster"`
-	DebugWorker              pulumi.BoolPtrInput     `pulumi:"debugWorker"`
-	OverrideBenchmarkVersion pulumi.StringPtrInput   `pulumi:"overrideBenchmarkVersion"`
-	OverrideSkips            pulumi.StringArrayInput `pulumi:"overrideSkips"`
-	Profile                  pulumi.StringPtrInput   `pulumi:"profile"`
+	// Debug master. Default: `false` (bool)
+	DebugMaster pulumi.BoolPtrInput `pulumi:"debugMaster"`
+	// Debug worker. Default: `false` (bool)
+	DebugWorker pulumi.BoolPtrInput `pulumi:"debugWorker"`
+	// Override benchmark version (string)
+	OverrideBenchmarkVersion pulumi.StringPtrInput `pulumi:"overrideBenchmarkVersion"`
+	// Override skip (string)
+	OverrideSkips pulumi.StringArrayInput `pulumi:"overrideSkips"`
+	// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
 }
 
 func (GetClusterScanScanConfigCisScanConfigArgs) ElementType() reflect.Type {
@@ -51769,22 +51790,27 @@ func (o GetClusterScanScanConfigCisScanConfigOutput) ToGetClusterScanScanConfigC
 	return o
 }
 
+// Debug master. Default: `false` (bool)
 func (o GetClusterScanScanConfigCisScanConfigOutput) DebugMaster() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfigCisScanConfig) *bool { return v.DebugMaster }).(pulumi.BoolPtrOutput)
 }
 
+// Debug worker. Default: `false` (bool)
 func (o GetClusterScanScanConfigCisScanConfigOutput) DebugWorker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfigCisScanConfig) *bool { return v.DebugWorker }).(pulumi.BoolPtrOutput)
 }
 
+// Override benchmark version (string)
 func (o GetClusterScanScanConfigCisScanConfigOutput) OverrideBenchmarkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfigCisScanConfig) *string { return v.OverrideBenchmarkVersion }).(pulumi.StringPtrOutput)
 }
 
+// Override skip (string)
 func (o GetClusterScanScanConfigCisScanConfigOutput) OverrideSkips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfigCisScanConfig) []string { return v.OverrideSkips }).(pulumi.StringArrayOutput)
 }
 
+// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
 func (o GetClusterScanScanConfigCisScanConfigOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterScanScanConfigCisScanConfig) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
@@ -59041,8 +59067,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
-	Configuration map[string]interface{} `pulumi:"configuration"`
-	Enabled       *bool                  `pulumi:"enabled"`
+	Configuration string `pulumi:"configuration"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -59057,7 +59083,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Configuration pulumi.MapInput     `pulumi:"configuration"`
+	Configuration pulumi.StringInput  `pulumi:"configuration"`
 	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -59137,10 +59163,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) string {
 		return v.Configuration
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
@@ -59169,13 +59195,13 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) map[string]interface{} {
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Configuration
-	}).(pulumi.MapOutput)
+		return &v.Configuration
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -59188,8 +59214,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	CustomConfig map[string]interface{} `pulumi:"customConfig"`
-	Enabled      *bool                  `pulumi:"enabled"`
+	CustomConfig *string `pulumi:"customConfig"`
+	Enabled      *bool   `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -59204,8 +59230,8 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	CustomConfig pulumi.MapInput     `pulumi:"customConfig"`
-	Enabled      pulumi.BoolPtrInput `pulumi:"enabled"`
+	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
+	Enabled      pulumi.BoolPtrInput   `pulumi:"enabled"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -59284,10 +59310,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
@@ -59316,13 +59342,13 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) map[string]interface{} {
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomConfig
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -64368,6 +64394,7 @@ type GetProjectLoggingSyslogConfig struct {
 	Certificate *string `pulumi:"certificate"`
 	ClientCert  *string `pulumi:"clientCert"`
 	ClientKey   *string `pulumi:"clientKey"`
+	EnableTls   *bool   `pulumi:"enableTls"`
 	Endpoint    string  `pulumi:"endpoint"`
 	Program     *string `pulumi:"program"`
 	Protocol    *string `pulumi:"protocol"`
@@ -64391,6 +64418,7 @@ type GetProjectLoggingSyslogConfigArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	ClientCert  pulumi.StringPtrInput `pulumi:"clientCert"`
 	ClientKey   pulumi.StringPtrInput `pulumi:"clientKey"`
+	EnableTls   pulumi.BoolPtrInput   `pulumi:"enableTls"`
 	Endpoint    pulumi.StringInput    `pulumi:"endpoint"`
 	Program     pulumi.StringPtrInput `pulumi:"program"`
 	Protocol    pulumi.StringPtrInput `pulumi:"protocol"`
@@ -64435,6 +64463,10 @@ func (o GetProjectLoggingSyslogConfigOutput) ClientCert() pulumi.StringPtrOutput
 
 func (o GetProjectLoggingSyslogConfigOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectLoggingSyslogConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectLoggingSyslogConfigOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectLoggingSyslogConfig) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetProjectLoggingSyslogConfigOutput) Endpoint() pulumi.StringOutput {

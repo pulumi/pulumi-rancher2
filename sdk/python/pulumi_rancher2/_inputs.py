@@ -1345,12 +1345,6 @@ class ClusterAlterGroupRecipientArgs:
                  default_recipient: Optional[pulumi.Input[bool]] = None,
                  notifier_type: Optional[pulumi.Input[str]] = None,
                  recipient: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] notifier_id: Recipient notifier ID (string)
-        :param pulumi.Input[bool] default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-        :param pulumi.Input[str] notifier_type: Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-        :param pulumi.Input[str] recipient: Recipient (string)
-        """
         pulumi.set(__self__, "notifier_id", notifier_id)
         if default_recipient is not None:
             pulumi.set(__self__, "default_recipient", default_recipient)
@@ -1362,9 +1356,6 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="notifierId")
     def notifier_id(self) -> pulumi.Input[str]:
-        """
-        Recipient notifier ID (string)
-        """
         return pulumi.get(self, "notifier_id")
 
     @notifier_id.setter
@@ -1374,9 +1365,6 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-        """
         return pulumi.get(self, "default_recipient")
 
     @default_recipient.setter
@@ -1386,9 +1374,6 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-        """
         return pulumi.get(self, "notifier_type")
 
     @notifier_type.setter
@@ -1398,9 +1383,6 @@ class ClusterAlterGroupRecipientArgs:
     @property
     @pulumi.getter
     def recipient(self) -> Optional[pulumi.Input[str]]:
-        """
-        Recipient (string)
-        """
         return pulumi.get(self, "recipient")
 
     @recipient.setter
@@ -1413,10 +1395,6 @@ class ClusterAlterRuleEventRuleArgs:
     def __init__(__self__, *,
                  resource_kind: pulumi.Input[str],
                  event_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] resource_kind: Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        :param pulumi.Input[str] event_type: Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-        """
         pulumi.set(__self__, "resource_kind", resource_kind)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
@@ -1424,9 +1402,6 @@ class ClusterAlterRuleEventRuleArgs:
     @property
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> pulumi.Input[str]:
-        """
-        Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-        """
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
@@ -1436,9 +1411,6 @@ class ClusterAlterRuleEventRuleArgs:
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-        """
         return pulumi.get(self, "event_type")
 
     @event_type.setter
@@ -1454,13 +1426,6 @@ class ClusterAlterRuleMetricRuleArgs:
                  threshold_value: pulumi.Input[float],
                  comparison: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] duration: Metric rule duration (string)
-        :param pulumi.Input[str] expression: Metric rule expression (string)
-        :param pulumi.Input[float] threshold_value: Metric rule threshold value (float64)
-        :param pulumi.Input[str] comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-        :param pulumi.Input[str] description: Metric rule description (string)
-        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "threshold_value", threshold_value)
@@ -1472,9 +1437,6 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
-        """
-        Metric rule duration (string)
-        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -1484,9 +1446,6 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
-        """
-        Metric rule expression (string)
-        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -1496,9 +1455,6 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> pulumi.Input[float]:
-        """
-        Metric rule threshold value (float64)
-        """
         return pulumi.get(self, "threshold_value")
 
     @threshold_value.setter
@@ -1508,9 +1464,6 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def comparison(self) -> Optional[pulumi.Input[str]]:
-        """
-        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-        """
         return pulumi.get(self, "comparison")
 
     @comparison.setter
@@ -1520,9 +1473,6 @@ class ClusterAlterRuleMetricRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Metric rule description (string)
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1538,13 +1488,6 @@ class ClusterAlterRuleNodeRuleArgs:
                  mem_threshold: Optional[pulumi.Input[float]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
-        """
-        :param pulumi.Input[str] condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        :param pulumi.Input[float] cpu_threshold: Node rule cpu threshold. Default: `70` (int)
-        :param pulumi.Input[float] mem_threshold: Node rule mem threshold. Default: `70` (int)
-        :param pulumi.Input[str] node_id: Node ID (string)
-        :param pulumi.Input[Mapping[str, Any]] selector: Node rule selector (map)
-        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if cpu_threshold is not None:
@@ -1559,9 +1502,6 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
-        """
-        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -1571,9 +1511,6 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="cpuThreshold")
     def cpu_threshold(self) -> Optional[pulumi.Input[float]]:
-        """
-        Node rule cpu threshold. Default: `70` (int)
-        """
         return pulumi.get(self, "cpu_threshold")
 
     @cpu_threshold.setter
@@ -1583,9 +1520,6 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="memThreshold")
     def mem_threshold(self) -> Optional[pulumi.Input[float]]:
-        """
-        Node rule mem threshold. Default: `70` (int)
-        """
         return pulumi.get(self, "mem_threshold")
 
     @mem_threshold.setter
@@ -1595,9 +1529,6 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Node ID (string)
-        """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
@@ -1607,9 +1538,6 @@ class ClusterAlterRuleNodeRuleArgs:
     @property
     @pulumi.getter
     def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Node rule selector (map)
-        """
         return pulumi.get(self, "selector")
 
     @selector.setter
@@ -1621,18 +1549,12 @@ class ClusterAlterRuleNodeRuleArgs:
 class ClusterAlterRuleSystemServiceRuleArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
-        """
-        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -3535,7 +3457,7 @@ class ClusterLoggingFluentdConfigArgs:
         :param pulumi.Input[List[pulumi.Input['ClusterLoggingFluentdConfigFluentServerArgs']]] fluent_servers: Servers for the fluentd service (list)
         :param pulumi.Input[str] certificate: SSL certificate for the syslog service (string)
         :param pulumi.Input[bool] compress: Compress data for the fluentd service (bool)
-        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
+        :param pulumi.Input[bool] enable_tls: Enable TLS for the syslog service. Default `false` (bool)
         """
         pulumi.set(__self__, "fluent_servers", fluent_servers)
         if certificate is not None:
@@ -3585,7 +3507,7 @@ class ClusterLoggingFluentdConfigArgs:
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable TLS for the fluentd service (bool)
+        Enable TLS for the syslog service. Default `false` (bool)
         """
         return pulumi.get(self, "enable_tls")
 
@@ -3970,6 +3892,7 @@ class ClusterLoggingSyslogConfigArgs:
                  certificate: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
+                 enable_tls: Optional[pulumi.Input[bool]] = None,
                  program: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
@@ -3980,6 +3903,7 @@ class ClusterLoggingSyslogConfigArgs:
         :param pulumi.Input[str] certificate: SSL certificate for the syslog service (string)
         :param pulumi.Input[str] client_cert: SSL client certificate for the syslog service (string)
         :param pulumi.Input[str] client_key: SSL client key for the syslog service (string)
+        :param pulumi.Input[bool] enable_tls: Enable TLS for the syslog service. Default `false` (bool)
         :param pulumi.Input[str] program: Program for the syslog service (string)
         :param pulumi.Input[str] protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
         :param pulumi.Input[str] severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
@@ -3993,6 +3917,8 @@ class ClusterLoggingSyslogConfigArgs:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if enable_tls is not None:
+            pulumi.set(__self__, "enable_tls", enable_tls)
         if program is not None:
             pulumi.set(__self__, "program", program)
         if protocol is not None:
@@ -4051,6 +3977,18 @@ class ClusterLoggingSyslogConfigArgs:
     @client_key.setter
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="enableTls")
+    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable TLS for the syslog service. Default `false` (bool)
+        """
+        return pulumi.get(self, "enable_tls")
+
+    @enable_tls.setter
+    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_tls", value)
 
     @property
     @pulumi.getter
@@ -8093,7 +8031,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
                  configuration: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs'] configuration: Event rate limit configuration. (map)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs'] configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
         :param pulumi.Input[bool] enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if configuration is not None:
@@ -8105,7 +8043,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']]:
         """
-        Event rate limit configuration. (map)
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
         """
         return pulumi.get(self, "configuration")
 
@@ -8232,10 +8170,10 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     def __init__(__self__, *,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] configuration: Event rate limit configuration. (map)
+        :param pulumi.Input[str] configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
         :param pulumi.Input[bool] enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if configuration is not None:
@@ -8245,14 +8183,14 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[str]]:
         """
-        Event rate limit configuration. (map)
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -8271,10 +8209,10 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_config: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] custom_config: Secrets encryption configuration. (map)
+        :param pulumi.Input[str] custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
         :param pulumi.Input[bool] enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if custom_config is not None:
@@ -8284,14 +8222,14 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_config(self) -> Optional[pulumi.Input[str]]:
         """
-        Secrets encryption configuration. (map)
+        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
         """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -12614,7 +12552,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs:
     def __init__(__self__, *,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
@@ -12626,11 +12564,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -12649,7 +12587,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_config: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
@@ -12661,11 +12599,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_config(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -14152,6 +14090,7 @@ class NodeTemplateAmazonec2ConfigArgs:
                  insecure_transport: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  keypair_name: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  open_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  private_address_only: Optional[pulumi.Input[bool]] = None,
@@ -14185,6 +14124,7 @@ class NodeTemplateAmazonec2ConfigArgs:
         :param pulumi.Input[bool] insecure_transport: Disable SSL when sending requests (bool)
         :param pulumi.Input[str] instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
         :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param pulumi.Input[str] kms_key: Custom KMS key ID using the AWS Managed CMK (string)
         :param pulumi.Input[bool] monitoring: Enable monitoring for droplet. Default `false` (bool)
         :param pulumi.Input[List[pulumi.Input[str]]] open_ports: Make the specified port number accessible from the Internet. (list)
         :param pulumi.Input[bool] private_address_only: Only use a private IP address. Default `false` (bool)
@@ -14227,6 +14167,8 @@ class NodeTemplateAmazonec2ConfigArgs:
             pulumi.set(__self__, "instance_type", instance_type)
         if keypair_name is not None:
             pulumi.set(__self__, "keypair_name", keypair_name)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if open_ports is not None:
@@ -14441,6 +14383,18 @@ class NodeTemplateAmazonec2ConfigArgs:
     @keypair_name.setter
     def keypair_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keypair_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom KMS key ID using the AWS Managed CMK (string)
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -14663,6 +14617,7 @@ class NodeTemplateAzureConfigArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  managed_disks: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
+                 nsg: Optional[pulumi.Input[str]] = None,
                  open_ports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[str]] = None,
@@ -14685,11 +14640,12 @@ class NodeTemplateAzureConfigArgs:
         :param pulumi.Input[str] dns: A unique DNS label for the public IP adddress (string)
         :param pulumi.Input[str] docker_port: Docker Port. Default `2376` (string)
         :param pulumi.Input[str] environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-               `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
+        :param pulumi.Input[str] fault_domain_count: Fault domain count to use for availability set. Default `3` (string)
         :param pulumi.Input[str] image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
         :param pulumi.Input[str] location: Azure region to create the virtual machine. Default `westus` (string)
         :param pulumi.Input[bool] managed_disks: Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
         :param pulumi.Input[bool] no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
+        :param pulumi.Input[str] nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
         :param pulumi.Input[List[pulumi.Input[str]]] open_ports: Make the specified port number accessible from the Internet. (list)
         :param pulumi.Input[str] private_ip_address: Specify a static private IP address for the machine. (string)
         :param pulumi.Input[str] resource_group: Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
@@ -14730,6 +14686,8 @@ class NodeTemplateAzureConfigArgs:
             pulumi.set(__self__, "managed_disks", managed_disks)
         if no_public_ip is not None:
             pulumi.set(__self__, "no_public_ip", no_public_ip)
+        if nsg is not None:
+            pulumi.set(__self__, "nsg", nsg)
         if open_ports is not None:
             pulumi.set(__self__, "open_ports", open_ports)
         if private_ip_address is not None:
@@ -14846,7 +14804,6 @@ class NodeTemplateAzureConfigArgs:
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
         Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-        `fault_domain_count` - (Optional) Fault domain count to use for availability set. Default `3` (string)
         """
         return pulumi.get(self, "environment")
 
@@ -14857,6 +14814,9 @@ class NodeTemplateAzureConfigArgs:
     @property
     @pulumi.getter(name="faultDomainCount")
     def fault_domain_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fault domain count to use for availability set. Default `3` (string)
+        """
         return pulumi.get(self, "fault_domain_count")
 
     @fault_domain_count.setter
@@ -14910,6 +14870,18 @@ class NodeTemplateAzureConfigArgs:
     @no_public_ip.setter
     def no_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_public_ip", value)
+
+    @property
+    @pulumi.getter
+    def nsg(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        """
+        return pulumi.get(self, "nsg")
+
+    @nsg.setter
+    def nsg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nsg", value)
 
     @property
     @pulumi.getter(name="openPorts")
@@ -16374,7 +16346,7 @@ class NodeTemplateVsphereConfigArgs:
         """
         :param pulumi.Input[str] boot2docker_url: vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
         :param pulumi.Input[List[pulumi.Input[str]]] cfgparams: vSphere vm configuration parameters (used for guestinfo) (list)
-        :param pulumi.Input[str] clone_from: If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] clone_from: If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
         :param pulumi.Input[str] cloud_config: Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
         :param pulumi.Input[str] cloudinit: vSphere cloud-init file or url to set in the guestinfo (string)
         :param pulumi.Input[str] content_library: If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
@@ -16495,7 +16467,7 @@ class NodeTemplateVsphereConfigArgs:
     @pulumi.getter(name="cloneFrom")
     def clone_from(self) -> Optional[pulumi.Input[str]]:
         """
-        If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
         """
         return pulumi.get(self, "clone_from")
 
@@ -18789,6 +18761,7 @@ class ProjectLoggingSyslogConfigArgs:
                  certificate: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
+                 enable_tls: Optional[pulumi.Input[bool]] = None,
                  program: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
@@ -18799,6 +18772,7 @@ class ProjectLoggingSyslogConfigArgs:
         :param pulumi.Input[str] certificate: SSL certificate for the syslog service (string)
         :param pulumi.Input[str] client_cert: SSL client certificate for the syslog service (string)
         :param pulumi.Input[str] client_key: SSL client key for the syslog service (string)
+        :param pulumi.Input[bool] enable_tls: Enable TLS for the fluentd service (bool)
         :param pulumi.Input[str] program: Program for the syslog service (string)
         :param pulumi.Input[str] protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
         :param pulumi.Input[str] severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
@@ -18812,6 +18786,8 @@ class ProjectLoggingSyslogConfigArgs:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if enable_tls is not None:
+            pulumi.set(__self__, "enable_tls", enable_tls)
         if program is not None:
             pulumi.set(__self__, "program", program)
         if protocol is not None:
@@ -18870,6 +18846,18 @@ class ProjectLoggingSyslogConfigArgs:
     @client_key.setter
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="enableTls")
+    def enable_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable TLS for the fluentd service (bool)
+        """
+        return pulumi.get(self, "enable_tls")
+
+    @enable_tls.setter
+    def enable_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_tls", value)
 
     @property
     @pulumi.getter

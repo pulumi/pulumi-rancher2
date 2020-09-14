@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
 func GetClusterScan(ctx *pulumi.Context, args *GetClusterScanArgs, opts ...pulumi.InvokeOption) (*GetClusterScanResult, error) {
 	var rv GetClusterScanResult
 	err := ctx.Invoke("rancher2:index/getClusterScan:getClusterScan", args, &rv, opts...)
@@ -18,20 +19,28 @@ func GetClusterScan(ctx *pulumi.Context, args *GetClusterScanArgs, opts ...pulum
 
 // A collection of arguments for invoking getClusterScan.
 type GetClusterScanArgs struct {
-	ClusterId string  `pulumi:"clusterId"`
-	Name      *string `pulumi:"name"`
+	// Cluster ID for CIS Scan (string)
+	ClusterId string `pulumi:"clusterId"`
+	// Name of the cluster Scan (string)
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getClusterScan.
 type GetClusterScanResult struct {
+	// (Computed) Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	ClusterId   string                 `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Labels     map[string]interface{}   `pulumi:"labels"`
-	Name       string                   `pulumi:"name"`
-	RunType    string                   `pulumi:"runType"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	Name   string                 `pulumi:"name"`
+	// (Computed) Cluster Scan run type (string)
+	RunType string `pulumi:"runType"`
+	// (Computed) Cluster Scan config (bool)
 	ScanConfig GetClusterScanScanConfig `pulumi:"scanConfig"`
-	ScanType   string                   `pulumi:"scanType"`
-	Status     string                   `pulumi:"status"`
+	// (Computed) Cluster Scan type (string)
+	ScanType string `pulumi:"scanType"`
+	// (Computed) Cluster Scan status (string)
+	Status string `pulumi:"status"`
 }

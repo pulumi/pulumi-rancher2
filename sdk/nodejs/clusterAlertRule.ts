@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new Rancher2 Cluster Alert Group
- * const fooClusterAlertGroup = new rancher2.ClusterAlertGroup("foo", {
+ * const fooClusterAlertGroup = new rancher2.ClusterAlertGroup("fooClusterAlertGroup", {
  *     clusterId: "<cluster_id>",
  *     description: "Terraform cluster alert group",
  *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,
  * });
  * // Create a new Rancher2 Cluster Alert Rule
- * const fooClusterAlertRule = new rancher2.ClusterAlertRule("foo", {
+ * const fooClusterAlertRule = new rancher2.ClusterAlertRule("fooClusterAlertRule", {
  *     clusterId: fooClusterAlertGroup.clusterId,
  *     groupId: fooClusterAlertGroup.id,
  *     groupIntervalSeconds: 600,
@@ -112,7 +112,7 @@ export class ClusterAlertRule extends pulumi.CustomResource {
      */
     public readonly severity!: pulumi.Output<string | undefined>;
     /**
-     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     public readonly systemServiceRule!: pulumi.Output<outputs.ClusterAlertRuleSystemServiceRule | undefined>;
 
@@ -235,7 +235,7 @@ export interface ClusterAlertRuleState {
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }
@@ -297,7 +297,7 @@ export interface ClusterAlertRuleArgs {
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }

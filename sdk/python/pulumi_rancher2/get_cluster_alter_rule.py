@@ -84,7 +84,7 @@ class GetClusterAlterRuleResult:
     @pulumi.getter(name="eventRule")
     def event_rule(self) -> 'outputs.GetClusterAlterRuleEventRuleResult':
         """
-        (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"` (list Maxitems:1)
         """
         return pulumi.get(self, "event_rule")
 

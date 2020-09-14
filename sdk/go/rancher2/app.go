@@ -35,7 +35,7 @@ type App struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// The namespace name where the app will be installed (string)
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringOutput `pulumi:"targetNamespace"`
 	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
@@ -43,6 +43,8 @@ type App struct {
 	TemplateVersion pulumi.StringOutput `pulumi:"templateVersion"`
 	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrOutput `pulumi:"valuesYaml"`
+	// Wait until app is deployed and active. Default: `true` (bool)
+	Wait pulumi.BoolPtrOutput `pulumi:"wait"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -107,7 +109,7 @@ type appState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId *string `pulumi:"revisionId"`
-	// The namespace name where the app will be installed (string)
+	// The namespace id where the app will be installed (string)
 	TargetNamespace *string `pulumi:"targetNamespace"`
 	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName *string `pulumi:"templateName"`
@@ -115,6 +117,8 @@ type appState struct {
 	TemplateVersion *string `pulumi:"templateVersion"`
 	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml *string `pulumi:"valuesYaml"`
+	// Wait until app is deployed and active. Default: `true` (bool)
+	Wait *bool `pulumi:"wait"`
 }
 
 type AppState struct {
@@ -140,7 +144,7 @@ type AppState struct {
 	ProjectId pulumi.StringPtrInput
 	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringPtrInput
-	// The namespace name where the app will be installed (string)
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringPtrInput
 	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringPtrInput
@@ -148,6 +152,8 @@ type AppState struct {
 	TemplateVersion pulumi.StringPtrInput
 	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrInput
+	// Wait until app is deployed and active. Default: `true` (bool)
+	Wait pulumi.BoolPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -175,7 +181,7 @@ type appArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId *string `pulumi:"revisionId"`
-	// The namespace name where the app will be installed (string)
+	// The namespace id where the app will be installed (string)
 	TargetNamespace string `pulumi:"targetNamespace"`
 	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName string `pulumi:"templateName"`
@@ -183,6 +189,8 @@ type appArgs struct {
 	TemplateVersion *string `pulumi:"templateVersion"`
 	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml *string `pulumi:"valuesYaml"`
+	// Wait until app is deployed and active. Default: `true` (bool)
+	Wait *bool `pulumi:"wait"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -207,7 +215,7 @@ type AppArgs struct {
 	ProjectId pulumi.StringInput
 	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringPtrInput
-	// The namespace name where the app will be installed (string)
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringInput
 	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringInput
@@ -215,6 +223,8 @@ type AppArgs struct {
 	TemplateVersion pulumi.StringPtrInput
 	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrInput
+	// Wait until app is deployed and active. Default: `true` (bool)
+	Wait pulumi.BoolPtrInput
 }
 
 func (AppArgs) ElementType() reflect.Type {

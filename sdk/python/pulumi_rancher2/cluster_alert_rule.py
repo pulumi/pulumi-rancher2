@@ -72,7 +72,7 @@ class ClusterAlertRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -155,7 +155,7 @@ class ClusterAlertRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[float] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -285,7 +285,7 @@ class ClusterAlertRule(pulumi.CustomResource):
     @pulumi.getter(name="systemServiceRule")
     def system_service_rule(self) -> pulumi.Output[Optional['outputs.ClusterAlertRuleSystemServiceRule']]:
         """
-        The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"`` (list Maxitems:1)
+        The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
         return pulumi.get(self, "system_service_rule")
 

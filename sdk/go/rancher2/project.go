@@ -134,7 +134,7 @@ type Project struct {
 	// Default Pod Security Policy ID for the project (string)
 	PodSecurityPolicyTemplateId pulumi.StringPtrOutput `pulumi:"podSecurityPolicyTemplateId"`
 	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput ProjectProjectMonitoringInputOutput `pulumi:"projectMonitoringInput"`
+	ProjectMonitoringInput ProjectProjectMonitoringInputPtrOutput `pulumi:"projectMonitoringInput"`
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota ProjectResourceQuotaPtrOutput `pulumi:"resourceQuota"`
 	// Wait for cluster becomes active. Default `false` (bool)

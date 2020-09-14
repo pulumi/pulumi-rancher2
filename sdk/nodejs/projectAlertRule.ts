@@ -16,40 +16,40 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new Rancher2 Project
- * const fooProject = new rancher2.Project("foo", {
+ * const fooProject = new rancher2.Project("fooProject", {
  *     clusterId: "<cluster_id>",
+ *     description: "Terraform project ",
+ *     resourceQuota: {
+ *         projectLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "2000Mi",
+ *             requestsStorage: "2Gi",
+ *         },
+ *         namespaceDefaultLimit: {
+ *             limitsCpu: "500m",
+ *             limitsMemory: "500Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
  *     containerResourceLimit: {
  *         limitsCpu: "20m",
  *         limitsMemory: "20Mi",
  *         requestsCpu: "1m",
  *         requestsMemory: "1Mi",
  *     },
- *     description: "Terraform project ",
- *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "500m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
- *         },
- *     },
  * });
  * // Create a new Rancher2 Project Alert Group
- * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("foo", {
+ * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("fooProjectAlertGroup", {
  *     description: "Terraform project alert group",
- *     groupIntervalSeconds: 300,
  *     projectId: fooProject.id,
+ *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,
  * });
  * // Create a new Rancher2 Project Alert Rule
- * const fooProjectAlertRule = new rancher2.ProjectAlertRule("foo", {
+ * const fooProjectAlertRule = new rancher2.ProjectAlertRule("fooProjectAlertRule", {
+ *     projectId: fooProjectAlertGroup.projectId,
  *     groupId: fooProjectAlertGroup.id,
  *     groupIntervalSeconds: 600,
- *     projectId: fooProjectAlertGroup.projectId,
  *     repeatIntervalSeconds: 6000,
  * });
  * ```

@@ -72,15 +72,8 @@ namespace Pulumi.Rancher2
     ///         // Create a new rancher2 Namespace assigned to default cluster project
     ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
     ///         {
-    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
-    ///             {
-    ///                 LimitsCpu = "20m",
-    ///                 LimitsMemory = "20Mi",
-    ///                 RequestsCpu = "1m",
-    ///                 RequestsMemory = "1Mi",
-    ///             },
-    ///             Description = "foo namespace",
     ///             ProjectId = foo_custom.DefaultProjectId,
+    ///             Description = "foo namespace",
     ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
     ///             {
     ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
@@ -89,6 +82,13 @@ namespace Pulumi.Rancher2
     ///                     LimitsMemory = "100Mi",
     ///                     RequestsStorage = "1Gi",
     ///                 },
+    ///             },
+    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
     ///             },
     ///         });
     ///     }
@@ -138,7 +138,7 @@ namespace Pulumi.Rancher2
         /// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         /// </summary>
         [Output("resourceQuota")]
-        public Output<Outputs.NamespaceResourceQuota?> ResourceQuota { get; private set; } = null!;
+        public Output<Outputs.NamespaceResourceQuota> ResourceQuota { get; private set; } = null!;
 
         /// <summary>
         /// Wait for cluster becomes active. Default `false` (bool)

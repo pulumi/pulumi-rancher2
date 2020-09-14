@@ -26,6 +26,22 @@ namespace Pulumi.Rancher2
     ///         var fooProject = new Rancher2.Project("fooProject", new Rancher2.ProjectArgs
     ///         {
     ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform project ",
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "500m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
     ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
     ///             {
     ///                 LimitsCpu = "20m",
@@ -33,37 +49,21 @@ namespace Pulumi.Rancher2
     ///                 RequestsCpu = "1m",
     ///                 RequestsMemory = "1Mi",
     ///             },
-    ///             Description = "Terraform project ",
-    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
-    ///             {
-    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "500m",
-    ///                     LimitsMemory = "500Mi",
-    ///                     RequestsStorage = "1Gi",
-    ///                 },
-    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
-    ///                 {
-    ///                     LimitsCpu = "2000m",
-    ///                     LimitsMemory = "2000Mi",
-    ///                     RequestsStorage = "2Gi",
-    ///                 },
-    ///             },
     ///         });
     ///         // Create a new Rancher2 Project Alert Group
     ///         var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new Rancher2.ProjectAlertGroupArgs
     ///         {
     ///             Description = "Terraform project alert group",
-    ///             GroupIntervalSeconds = 300,
     ///             ProjectId = fooProject.Id,
+    ///             GroupIntervalSeconds = 300,
     ///             RepeatIntervalSeconds = 3600,
     ///         });
     ///         // Create a new Rancher2 Project Alert Rule
     ///         var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new Rancher2.ProjectAlertRuleArgs
     ///         {
+    ///             ProjectId = fooProjectAlertGroup.ProjectId,
     ///             GroupId = fooProjectAlertGroup.Id,
     ///             GroupIntervalSeconds = 600,
-    ///             ProjectId = fooProjectAlertGroup.ProjectId,
     ///             RepeatIntervalSeconds = 6000,
     ///         });
     ///     }

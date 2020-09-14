@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2
         /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
         /// </summary>
         [Output("clusterMonitoringInput")]
-        public Output<Outputs.ClusterClusterMonitoringInput> ClusterMonitoringInput { get; private set; } = null!;
+        public Output<Outputs.ClusterClusterMonitoringInput?> ClusterMonitoringInput { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
@@ -123,7 +123,7 @@ namespace Pulumi.Rancher2
         public Output<bool> EnableClusterAlerting { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Output("enableClusterIstio")]
         public Output<bool> EnableClusterIstio { get; private set; } = null!;
@@ -145,6 +145,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("gkeConfig")]
         public Output<Outputs.ClusterGkeConfig?> GkeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        /// </summary>
+        [Output("istioEnabled")]
+        public Output<bool> IstioEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
@@ -349,12 +355,6 @@ namespace Pulumi.Rancher2
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
-        /// </summary>
-        [Input("enableClusterIstio")]
-        public Input<bool>? EnableClusterIstio { get; set; }
-
-        /// <summary>
         /// Enable built-in cluster monitoring (bool)
         /// </summary>
         [Input("enableClusterMonitoring")]
@@ -542,7 +542,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster istio. Just for Rancher v2.3.x and above (bool)
+        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
@@ -564,6 +564,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.ClusterGkeConfigGetArgs>? GkeConfig { get; set; }
+
+        /// <summary>
+        /// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+        /// </summary>
+        [Input("istioEnabled")]
+        public Input<bool>? IstioEnabled { get; set; }
 
         /// <summary>
         /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)

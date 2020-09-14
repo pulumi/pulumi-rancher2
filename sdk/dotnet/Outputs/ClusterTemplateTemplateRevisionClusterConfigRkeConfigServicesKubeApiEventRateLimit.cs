@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit
     {
-        public readonly ImmutableDictionary<string, object>? Configuration;
+        public readonly string? Configuration;
         /// <summary>
         /// Enable cluster template revision. Default `true` (bool)
         /// </summary>
@@ -21,7 +21,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit(
-            ImmutableDictionary<string, object>? configuration,
+            string? configuration,
 
             bool? enabled)
         {

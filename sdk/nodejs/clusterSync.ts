@@ -48,6 +48,10 @@ export class ClusterSync extends pulumi.CustomResource {
      * The node pool IDs used by the cluster id (list)
      */
     public readonly nodePoolIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+     */
+    public readonly stateConfirm!: pulumi.Output<number | undefined>;
     public readonly synced!: pulumi.Output<boolean | undefined>;
     /**
      * (Computed) System project ID for the cluster sync (string)
@@ -74,6 +78,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             inputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
+            inputs["stateConfirm"] = state ? state.stateConfirm : undefined;
             inputs["synced"] = state ? state.synced : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
             inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
@@ -84,6 +89,7 @@ export class ClusterSync extends pulumi.CustomResource {
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
+            inputs["stateConfirm"] = args ? args.stateConfirm : undefined;
             inputs["synced"] = args ? args.synced : undefined;
             inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
             inputs["defaultProjectId"] = undefined /*out*/;
@@ -121,6 +127,10 @@ export interface ClusterSyncState {
      * The node pool IDs used by the cluster id (list)
      */
     readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+     */
+    readonly stateConfirm?: pulumi.Input<number>;
     readonly synced?: pulumi.Input<boolean>;
     /**
      * (Computed) System project ID for the cluster sync (string)
@@ -144,6 +154,10 @@ export interface ClusterSyncArgs {
      * The node pool IDs used by the cluster id (list)
      */
     readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+     */
+    readonly stateConfirm?: pulumi.Input<number>;
     readonly synced?: pulumi.Input<boolean>;
     /**
      * Wait until monitoring is up and running. Default: `false` (bool)

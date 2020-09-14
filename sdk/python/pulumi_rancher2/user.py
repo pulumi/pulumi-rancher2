@@ -37,9 +37,9 @@ class User(pulumi.CustomResource):
 
         # Create a new rancher2 User
         foo_user = rancher2.User("fooUser",
-            enabled=True,
+            username="foo",
             password="changeme",
-            username="foo")
+            enabled=True)
         # Create a new rancher2 global_role_binding for User
         foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
             global_role_id="user-base",

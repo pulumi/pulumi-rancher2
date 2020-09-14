@@ -77,12 +77,14 @@ class NodeTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Node Template from Rancher 2.2.x
         foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+            description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
                 secret_key="<AWS_SECRET_KEY>",
-            ),
-            description="foo test")
+            ))
         foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+            description="foo test",
+            cloud_credential_id=foo_cloud_credential.id,
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 ami="<AMI_ID>",
                 region="<REGION>",
@@ -90,9 +92,7 @@ class NodeTemplate(pulumi.CustomResource):
                 subnet_id="<SUBNET_ID>",
                 vpc_id="<VPC_ID>",
                 zone="<ZONE>",
-            ),
-            cloud_credential_id=foo_cloud_credential.id,
-            description="foo test")
+            ))
         ```
 
         :param str resource_name: The name of the resource.

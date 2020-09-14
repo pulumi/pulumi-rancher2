@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Cfgparams;
         /// <summary>
-        /// If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+        /// If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? CloneFrom;
         /// <summary>

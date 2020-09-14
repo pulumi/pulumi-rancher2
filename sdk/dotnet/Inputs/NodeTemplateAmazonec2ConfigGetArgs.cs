@@ -73,6 +73,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KeypairName { get; set; }
 
         /// <summary>
+        /// Custom KMS key ID using the AWS Managed CMK (string)
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
+        /// <summary>
         /// Enable monitoring for droplet. Default `false` (bool)
         /// </summary>
         [Input("monitoring")]

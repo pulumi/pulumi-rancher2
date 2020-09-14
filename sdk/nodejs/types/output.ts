@@ -306,85 +306,34 @@ export interface ClusterAlertRuleSystemServiceRule {
 }
 
 export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
     defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID (string)
-     */
     notifierId: string;
-    /**
-     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
     notifierType: string;
-    /**
-     * Recipient (string)
-     */
     recipient: string;
 }
 
 export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
-     */
     eventType?: string;
-    /**
-     * Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
-     */
     resourceKind: string;
 }
 
 export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
-     */
     comparison?: string;
-    /**
-     * Metric rule description (string)
-     */
     description?: string;
-    /**
-     * Metric rule duration (string)
-     */
     duration: string;
-    /**
-     * Metric rule expression (string)
-     */
     expression: string;
-    /**
-     * Metric rule threshold value (float64)
-     */
     thresholdValue: number;
 }
 
 export interface ClusterAlterRuleNodeRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: string;
-    /**
-     * Node rule cpu threshold. Default: `70` (int)
-     */
     cpuThreshold?: number;
-    /**
-     * Node rule mem threshold. Default: `70` (int)
-     */
     memThreshold?: number;
-    /**
-     * Node ID (string)
-     */
     nodeId?: string;
-    /**
-     * Node rule selector (map)
-     */
     selector?: {[key: string]: any};
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
-     */
     condition?: string;
 }
 
@@ -888,7 +837,7 @@ export interface ClusterLoggingFluentdConfig {
      */
     compress?: boolean;
     /**
-     * Enable TLS for the fluentd service (bool)
+     * Enable TLS for the syslog service. Default `false` (bool)
      */
     enableTls?: boolean;
     /**
@@ -1007,6 +956,10 @@ export interface ClusterLoggingSyslogConfig {
      * SSL client key for the syslog service (string)
      */
     clientKey?: string;
+    /**
+     * Enable TLS for the syslog service. Default `false` (bool)
+     */
+    enableTls?: boolean;
     /**
      * Endpoint of the syslog service (string)
      */
@@ -2084,7 +2037,7 @@ export interface ClusterRkeConfigServicesKubeApi {
 
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
-     * Event rate limit configuration. (map)
+     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
@@ -2122,9 +2075,9 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
-     * Event rate limit configuration. (map)
+     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
      */
-    configuration?: {[key: string]: any};
+    configuration: string;
     /**
      * Enable scheduled cluster scan. Default: `false` (bool)
      */
@@ -2133,9 +2086,9 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
 
 export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
-     * Secrets encryption configuration. (map)
+     * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
      */
-    customConfig?: {[key: string]: any};
+    customConfig?: string;
     /**
      * Enable scheduled cluster scan. Default: `false` (bool)
      */
@@ -2838,7 +2791,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    configuration?: {[key: string]: any};
+    configuration: string;
     /**
      * Enable cluster template revision. Default `true` (bool)
      */
@@ -2846,7 +2799,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: {[key: string]: any};
+    customConfig?: string;
     /**
      * Enable cluster template revision. Default `true` (bool)
      */
@@ -3279,6 +3232,7 @@ export interface GetClusterLoggingSyslogConfig {
     certificate?: string;
     clientCert?: string;
     clientKey?: string;
+    enableTls?: boolean;
     endpoint: string;
     program?: string;
     protocol?: string;
@@ -3661,12 +3615,12 @@ export interface GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 }
 
 export interface GetClusterRkeConfigServicesKubeApiEventRateLimit {
-    configuration?: {[key: string]: any};
+    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: {[key: string]: any};
+    customConfig?: string;
     enabled?: boolean;
 }
 
@@ -3721,14 +3675,32 @@ export interface GetClusterRkeConfigUpgradeStrategyDrainInput {
 }
 
 export interface GetClusterScanScanConfig {
+    /**
+     * Cluster Cis Scan config (List maxitems:1)
+     */
     cisScanConfig: outputs.GetClusterScanScanConfigCisScanConfig;
 }
 
 export interface GetClusterScanScanConfigCisScanConfig {
+    /**
+     * Debug master. Default: `false` (bool)
+     */
     debugMaster?: boolean;
+    /**
+     * Debug worker. Default: `false` (bool)
+     */
     debugWorker?: boolean;
+    /**
+     * Override benchmark version (string)
+     */
     overrideBenchmarkVersion?: string;
+    /**
+     * Override skip (string)
+     */
     overrideSkips?: string[];
+    /**
+     * Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+     */
     profile?: string;
 }
 
@@ -4180,12 +4152,12 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    configuration?: {[key: string]: any};
+    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: {[key: string]: any};
+    customConfig?: string;
     enabled?: boolean;
 }
 
@@ -4560,6 +4532,7 @@ export interface GetProjectLoggingSyslogConfig {
     certificate?: string;
     clientCert?: string;
     clientKey?: string;
+    enableTls?: boolean;
     endpoint: string;
     program?: string;
     protocol?: string;
@@ -4833,6 +4806,10 @@ export interface NodeTemplateAmazonec2Config {
      */
     keypairName?: string;
     /**
+     * Custom KMS key ID using the AWS Managed CMK (string)
+     */
+    kmsKey?: string;
+    /**
      * Enable monitoring for droplet. Default `false` (bool)
      */
     monitoring?: boolean;
@@ -4953,9 +4930,11 @@ export interface NodeTemplateAzureConfig {
     dockerPort?: string;
     /**
      * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
-     * `faultDomainCount` - (Optional) Fault domain count to use for availability set. Default `3` (string)
      */
     environment?: string;
+    /**
+     * Fault domain count to use for availability set. Default `3` (string)
+     */
     faultDomainCount?: string;
     /**
      * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
@@ -4973,6 +4952,10 @@ export interface NodeTemplateAzureConfig {
      * Do not create a public IP address for the machine. Default `false` (bool)
      */
     noPublicIp?: boolean;
+    /**
+     * Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     */
+    nsg?: string;
     /**
      * Make the specified port number accessible from the Internet. (list)
      */
@@ -5361,7 +5344,7 @@ export interface NodeTemplateVsphereConfig {
      */
     cfgparams?: string[];
     /**
-     * If you choose creation type clone a name of what you want to clone is required. From Rancher v2.3.3 (string)
+     * If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
      */
     cloneFrom?: string;
     /**
@@ -6022,6 +6005,10 @@ export interface ProjectLoggingSyslogConfig {
      * SSL client key for the syslog service (string)
      */
     clientKey?: string;
+    /**
+     * Enable TLS for the fluentd service (bool)
+     */
+    enableTls?: boolean;
     /**
      * Endpoint of the syslog service (string)
      */

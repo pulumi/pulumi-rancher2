@@ -48,10 +48,10 @@ class Token(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the token (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
         """
@@ -116,12 +116,12 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: (Computed) Token access key part (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[bool] enabled: (Computed) Token is enabled (bool)
         :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the token (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[str] name: (Computed) Token name (string)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
@@ -160,7 +160,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the token (map)
+        (Computed) Annotations of the token (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -200,7 +200,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the token (map)
+        (Computed) Labels of the token (map)
         """
         return pulumi.get(self, "labels")
 

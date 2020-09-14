@@ -13,12 +13,12 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult
     {
-        public readonly ImmutableDictionary<string, object>? CustomConfig;
+        public readonly string? CustomConfig;
         public readonly bool? Enabled;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(
-            ImmutableDictionary<string, object>? customConfig,
+            string? customConfig,
 
             bool? enabled)
         {

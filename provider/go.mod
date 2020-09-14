@@ -6,6 +6,7 @@ replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/prometheus/prometheus => github.com/prometheus/prometheus v1.8.2-0.20190424153033-d3245f150225
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20200910163706-0195574877e2
 	k8s.io/api => k8s.io/api v0.0.0-20190918155943-95b840bb6a1f
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.0.0-20190918161926-8f644eb6e783
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190913080033-27d36303b655
@@ -30,8 +31,8 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk v1.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.7.3
-	github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd
-	github.com/terraform-providers/terraform-provider-rancher2 v1.9.0
+	github.com/hashicorp/terraform-plugin-sdk v1.14.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0
+	github.com/pulumi/pulumi/sdk/v2 v2.10.0
+	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

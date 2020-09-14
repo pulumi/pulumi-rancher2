@@ -46,7 +46,7 @@ type Token struct {
 
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Annotations of the token (map)
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
@@ -56,7 +56,7 @@ type Token struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolOutput `pulumi:"expired"`
-	// Labels of the token (map)
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -102,7 +102,7 @@ func GetToken(ctx *pulumi.Context,
 type tokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey *string `pulumi:"accessKey"`
-	// Annotations of the token (map)
+	// (Computed) Annotations of the token (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
@@ -112,7 +112,7 @@ type tokenState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// (Computed) Token is expired (bool)
 	Expired *bool `pulumi:"expired"`
-	// Labels of the token (map)
+	// (Computed) Labels of the token (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name *string `pulumi:"name"`
@@ -131,7 +131,7 @@ type tokenState struct {
 type TokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringPtrInput
-	// Annotations of the token (map)
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
@@ -141,7 +141,7 @@ type TokenState struct {
 	Enabled pulumi.BoolPtrInput
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolPtrInput
-	// Labels of the token (map)
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapInput
 	// (Computed) Token name (string)
 	Name pulumi.StringPtrInput
@@ -162,13 +162,13 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
-	// Annotations of the token (map)
+	// (Computed) Annotations of the token (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Token description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the token (map)
+	// (Computed) Labels of the token (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Renew expired or disabled token
 	Renew *bool `pulumi:"renew"`
@@ -178,13 +178,13 @@ type tokenArgs struct {
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
-	// Annotations of the token (map)
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
 	// Token description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the token (map)
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapInput
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrInput

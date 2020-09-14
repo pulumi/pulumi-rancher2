@@ -31,6 +31,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
+        /// Enable TLS for the fluentd service (bool)
+        /// </summary>
+        [Input("enableTls")]
+        public Input<bool>? EnableTls { get; set; }
+
+        /// <summary>
         /// Endpoint of the syslog service (string)
         /// </summary>
         [Input("endpoint", required: true)]

@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo = rancher2_cluster_foo_custom.defaultProjectId.apply(defaultProjectId => rancher2.getNamespace({
+ * const foo = rancher2.getNamespace({
  *     name: "foo",
- *     projectId: defaultProjectId,
- * }, { async: true }));
+ *     projectId: rancher2_cluster["foo-custom"].default_project_id,
+ * });
  * ```
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {

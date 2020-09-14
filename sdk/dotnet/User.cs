@@ -27,9 +27,9 @@ namespace Pulumi.Rancher2
     ///         // Create a new rancher2 User
     ///         var fooUser = new Rancher2.User("fooUser", new Rancher2.UserArgs
     ///         {
-    ///             Enabled = true,
-    ///             Password = "changeme",
     ///             Username = "foo",
+    ///             Password = "changeme",
+    ///             Enabled = true,
     ///         });
     ///         // Create a new rancher2 global_role_binding for User
     ///         var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("fooGlobalRoleBinding", new Rancher2.GlobalRoleBindingArgs

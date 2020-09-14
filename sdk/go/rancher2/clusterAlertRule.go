@@ -75,7 +75,7 @@ type ClusterAlertRule struct {
 	RepeatIntervalSeconds pulumi.IntPtrOutput `pulumi:"repeatIntervalSeconds"`
 	// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrOutput `pulumi:"severity"`
-	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
 	SystemServiceRule ClusterAlertRuleSystemServiceRulePtrOutput `pulumi:"systemServiceRule"`
 }
 
@@ -145,7 +145,7 @@ type clusterAlertRuleState struct {
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 	// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity *string `pulumi:"severity"`
-	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
 	SystemServiceRule *ClusterAlertRuleSystemServiceRule `pulumi:"systemServiceRule"`
 }
 
@@ -176,7 +176,7 @@ type ClusterAlertRuleState struct {
 	RepeatIntervalSeconds pulumi.IntPtrInput
 	// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrInput
-	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
 	SystemServiceRule ClusterAlertRuleSystemServiceRulePtrInput
 }
 
@@ -211,7 +211,7 @@ type clusterAlertRuleArgs struct {
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 	// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity *string `pulumi:"severity"`
-	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
 	SystemServiceRule *ClusterAlertRuleSystemServiceRule `pulumi:"systemServiceRule"`
 }
 
@@ -243,7 +243,7 @@ type ClusterAlertRuleArgs struct {
 	RepeatIntervalSeconds pulumi.IntPtrInput
 	// The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrInput
-	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	// The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
 	SystemServiceRule ClusterAlertRuleSystemServiceRulePtrInput
 }
 
