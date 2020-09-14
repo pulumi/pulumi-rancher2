@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateSeLinuxSeLinuxOption
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? Level;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? Role;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? User;
 
         [OutputConstructor]

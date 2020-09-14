@@ -401,17 +401,27 @@ class CloudCredentialAmazonec2CredentialConfig(dict):
     def __init__(__self__, *,
                  access_key: str,
                  secret_key: str):
+        """
+        :param str access_key: AWS access key (string)
+        :param str secret_key: AWS secret key (string)
+        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
+        """
+        AWS access key (string)
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> str:
+        """
+        AWS secret key (string)
+        """
         return pulumi.get(self, "secret_key")
 
     def _translate_property(self, prop):
@@ -424,6 +434,11 @@ class CloudCredentialAzureCredentialConfig(dict):
                  client_id: str,
                  client_secret: str,
                  subscription_id: str):
+        """
+        :param str client_id: Azure Service Principal Account ID (string)
+        :param str client_secret: Azure Service Principal Account password (string)
+        :param str subscription_id: Azure Subscription ID (string)
+        """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "subscription_id", subscription_id)
@@ -431,16 +446,25 @@ class CloudCredentialAzureCredentialConfig(dict):
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        Azure Service Principal Account ID (string)
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
+        """
+        Azure Service Principal Account password (string)
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> str:
+        """
+        Azure Subscription ID (string)
+        """
         return pulumi.get(self, "subscription_id")
 
     def _translate_property(self, prop):
@@ -451,11 +475,17 @@ class CloudCredentialAzureCredentialConfig(dict):
 class CloudCredentialDigitaloceanCredentialConfig(dict):
     def __init__(__self__, *,
                  access_token: str):
+        """
+        :param str access_token: DigitalOcean access token (string)
+        """
         pulumi.set(__self__, "access_token", access_token)
 
     @property
     @pulumi.getter(name="accessToken")
     def access_token(self) -> str:
+        """
+        DigitalOcean access token (string)
+        """
         return pulumi.get(self, "access_token")
 
     def _translate_property(self, prop):
@@ -466,11 +496,17 @@ class CloudCredentialDigitaloceanCredentialConfig(dict):
 class CloudCredentialLinodeCredentialConfig(dict):
     def __init__(__self__, *,
                  token: str):
+        """
+        :param str token: Linode API token (string)
+        """
         pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Linode API token (string)
+        """
         return pulumi.get(self, "token")
 
     def _translate_property(self, prop):
@@ -481,11 +517,17 @@ class CloudCredentialLinodeCredentialConfig(dict):
 class CloudCredentialOpenstackCredentialConfig(dict):
     def __init__(__self__, *,
                  password: str):
+        """
+        :param str password: vSphere password (string)
+        """
         pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        vSphere password (string)
+        """
         return pulumi.get(self, "password")
 
     def _translate_property(self, prop):
@@ -499,6 +541,12 @@ class CloudCredentialVsphereCredentialConfig(dict):
                  username: str,
                  vcenter: str,
                  vcenter_port: Optional[str] = None):
+        """
+        :param str password: vSphere password (string)
+        :param str username: vSphere username (string)
+        :param str vcenter: vSphere IP/hostname for vCenter (string)
+        :param str vcenter_port: vSphere Port for vCenter. Default `443` (string)
+        """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "vcenter", vcenter)
@@ -508,21 +556,33 @@ class CloudCredentialVsphereCredentialConfig(dict):
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        vSphere password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        vSphere username (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def vcenter(self) -> str:
+        """
+        vSphere IP/hostname for vCenter (string)
+        """
         return pulumi.get(self, "vcenter")
 
     @property
     @pulumi.getter(name="vcenterPort")
     def vcenter_port(self) -> Optional[str]:
+        """
+        vSphere Port for vCenter. Default `443` (string)
+        """
         return pulumi.get(self, "vcenter_port")
 
     def _translate_property(self, prop):
@@ -569,6 +629,45 @@ class ClusterAksConfig(dict):
                  pod_cidr: Optional[str] = None,
                  service_cidr: Optional[str] = None,
                  tag: Optional[Mapping[str, Any]] = None):
+        """
+        :param str agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool (string)
+        :param str client_id: Azure client ID to use (string)
+        :param str client_secret: Azure client secret associated with the \"client id\" (string)
+        :param str kubernetes_version: The Kubernetes master version (string)
+        :param str master_dns_prefix: DNS prefix to use the Kubernetes cluster control pane (string)
+        :param str resource_group: The name of the Cluster resource group (string)
+        :param str ssh_public_key_contents: Contents of the SSH public key used to authenticate with Linux hosts (string)
+        :param str subnet: The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        :param str subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        :param str tenant_id: Azure tenant ID to use (string)
+        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        :param str virtual_network_resource_group: The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        :param str aad_server_app_secret: The secret of an Azure Active Directory server application (string)
+        :param str aad_tenant_id: The ID of an Azure Active Directory tenant (string)
+        :param str add_client_app_id: The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
+        :param str add_server_app_id: The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
+        :param str admin_username: The administrator username to use for Linux hosts. Default `azureuser` (string)
+        :param float agent_os_disk_size: GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \"agent vm size\" specified. Default `0` (int)
+        :param str agent_pool_name: Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+        :param str agent_storage_profile: Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+        :param str agent_vm_size: Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+        :param str auth_base_url: Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+        :param str base_url: Different resource management API url to use. Default `https://management.azure.com/` (string)
+        :param float count: Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        :param str dns_service_ip: An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
+        :param str docker_bridge_cidr: A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
+        :param bool enable_http_application_routing: Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+        :param bool enable_monitoring: Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
+        :param str location: Azure Kubernetes cluster location. Default `eastus` (string)
+        :param str log_analytics_workspace: The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
+        :param str log_analytics_workspace_resource_group: The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
+        :param float max_pods: Maximum number of pods that can run on a node. Default `110` (int)
+        :param str network_plugin: Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+        :param str network_policy: Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        :param str pod_cidr: A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        :param str service_cidr: A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        :param Mapping[str, Any] tag: Tags for Kubernetes cluster. For example, foo=bar (map)
+        """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -635,186 +734,297 @@ class ClusterAksConfig(dict):
     @property
     @pulumi.getter(name="agentDnsPrefix")
     def agent_dns_prefix(self) -> str:
+        """
+        DNS prefix to be used to create the FQDN for the agent pool (string)
+        """
         return pulumi.get(self, "agent_dns_prefix")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        Azure client ID to use (string)
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
+        """
+        Azure client secret associated with the \"client id\" (string)
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> str:
+        """
+        The Kubernetes master version (string)
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter(name="masterDnsPrefix")
     def master_dns_prefix(self) -> str:
+        """
+        DNS prefix to use the Kubernetes cluster control pane (string)
+        """
         return pulumi.get(self, "master_dns_prefix")
 
     @property
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> str:
+        """
+        The name of the Cluster resource group (string)
+        """
         return pulumi.get(self, "resource_group")
 
     @property
     @pulumi.getter(name="sshPublicKeyContents")
     def ssh_public_key_contents(self) -> str:
+        """
+        Contents of the SSH public key used to authenticate with Linux hosts (string)
+        """
         return pulumi.get(self, "ssh_public_key_contents")
 
     @property
     @pulumi.getter
     def subnet(self) -> str:
+        """
+        The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        """
         return pulumi.get(self, "subnet")
 
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> str:
+        """
+        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        """
         return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
+        """
+        Azure tenant ID to use (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> str:
+        """
+        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        """
         return pulumi.get(self, "virtual_network")
 
     @property
     @pulumi.getter(name="virtualNetworkResourceGroup")
     def virtual_network_resource_group(self) -> str:
+        """
+        The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        """
         return pulumi.get(self, "virtual_network_resource_group")
 
     @property
     @pulumi.getter(name="aadServerAppSecret")
     def aad_server_app_secret(self) -> Optional[str]:
+        """
+        The secret of an Azure Active Directory server application (string)
+        """
         return pulumi.get(self, "aad_server_app_secret")
 
     @property
     @pulumi.getter(name="aadTenantId")
     def aad_tenant_id(self) -> Optional[str]:
+        """
+        The ID of an Azure Active Directory tenant (string)
+        """
         return pulumi.get(self, "aad_tenant_id")
 
     @property
     @pulumi.getter(name="addClientAppId")
     def add_client_app_id(self) -> Optional[str]:
+        """
+        The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
+        """
         return pulumi.get(self, "add_client_app_id")
 
     @property
     @pulumi.getter(name="addServerAppId")
     def add_server_app_id(self) -> Optional[str]:
+        """
+        The ID of an Azure Active Directory server application of type \"Web app/API\". This application represents the managed cluster's apiserver (Server application) (string)
+        """
         return pulumi.get(self, "add_server_app_id")
 
     @property
     @pulumi.getter(name="adminUsername")
     def admin_username(self) -> Optional[str]:
+        """
+        The administrator username to use for Linux hosts. Default `azureuser` (string)
+        """
         return pulumi.get(self, "admin_username")
 
     @property
     @pulumi.getter(name="agentOsDiskSize")
     def agent_os_disk_size(self) -> Optional[float]:
+        """
+        GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \"agent vm size\" specified. Default `0` (int)
+        """
         return pulumi.get(self, "agent_os_disk_size")
 
     @property
     @pulumi.getter(name="agentPoolName")
     def agent_pool_name(self) -> Optional[str]:
+        """
+        Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+        """
         return pulumi.get(self, "agent_pool_name")
 
     @property
     @pulumi.getter(name="agentStorageProfile")
     def agent_storage_profile(self) -> Optional[str]:
+        """
+        Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+        """
         return pulumi.get(self, "agent_storage_profile")
 
     @property
     @pulumi.getter(name="agentVmSize")
     def agent_vm_size(self) -> Optional[str]:
+        """
+        Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+        """
         return pulumi.get(self, "agent_vm_size")
 
     @property
     @pulumi.getter(name="authBaseUrl")
     def auth_base_url(self) -> Optional[str]:
+        """
+        Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+        """
         return pulumi.get(self, "auth_base_url")
 
     @property
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> Optional[str]:
+        """
+        Different resource management API url to use. Default `https://management.azure.com/` (string)
+        """
         return pulumi.get(self, "base_url")
 
     @property
     @pulumi.getter
     def count(self) -> Optional[float]:
+        """
+        Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        """
         return pulumi.get(self, "count")
 
     @property
     @pulumi.getter(name="dnsServiceIp")
     def dns_service_ip(self) -> Optional[str]:
+        """
+        An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
+        """
         return pulumi.get(self, "dns_service_ip")
 
     @property
     @pulumi.getter(name="dockerBridgeCidr")
     def docker_bridge_cidr(self) -> Optional[str]:
+        """
+        A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
+        """
         return pulumi.get(self, "docker_bridge_cidr")
 
     @property
     @pulumi.getter(name="enableHttpApplicationRouting")
     def enable_http_application_routing(self) -> Optional[bool]:
+        """
+        Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_http_application_routing")
 
     @property
     @pulumi.getter(name="enableMonitoring")
     def enable_monitoring(self) -> Optional[bool]:
+        """
+        Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
+        """
         return pulumi.get(self, "enable_monitoring")
 
     @property
     @pulumi.getter
     def location(self) -> Optional[str]:
+        """
+        Azure Kubernetes cluster location. Default `eastus` (string)
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="logAnalyticsWorkspace")
     def log_analytics_workspace(self) -> Optional[str]:
+        """
+        The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
+        """
         return pulumi.get(self, "log_analytics_workspace")
 
     @property
     @pulumi.getter(name="logAnalyticsWorkspaceResourceGroup")
     def log_analytics_workspace_resource_group(self) -> Optional[str]:
+        """
+        The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
+        """
         return pulumi.get(self, "log_analytics_workspace_resource_group")
 
     @property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[float]:
+        """
+        Maximum number of pods that can run on a node. Default `110` (int)
+        """
         return pulumi.get(self, "max_pods")
 
     @property
     @pulumi.getter(name="networkPlugin")
     def network_plugin(self) -> Optional[str]:
+        """
+        Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+        """
         return pulumi.get(self, "network_plugin")
 
     @property
     @pulumi.getter(name="networkPolicy")
     def network_policy(self) -> Optional[str]:
+        """
+        Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        """
         return pulumi.get(self, "network_policy")
 
     @property
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[str]:
+        """
+        A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        """
         return pulumi.get(self, "pod_cidr")
 
     @property
     @pulumi.getter(name="serviceCidr")
     def service_cidr(self) -> Optional[str]:
+        """
+        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        """
         return pulumi.get(self, "service_cidr")
 
     @property
     @pulumi.getter
     def tag(self) -> Optional[Mapping[str, Any]]:
+        """
+        Tags for Kubernetes cluster. For example, foo=bar (map)
+        """
         return pulumi.get(self, "tag")
 
     def _translate_property(self, prop):
@@ -828,6 +1038,12 @@ class ClusterAlertGroupRecipient(dict):
                  default_recipient: Optional[bool] = None,
                  notifier_type: Optional[str] = None,
                  recipient: Optional[str] = None):
+        """
+        :param str notifier_id: Recipient notifier ID (string)
+        :param bool default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        :param str notifier_type: Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param str recipient: Recipient (string)
+        """
         pulumi.set(__self__, "notifier_id", notifier_id)
         if default_recipient is not None:
             pulumi.set(__self__, "default_recipient", default_recipient)
@@ -839,21 +1055,33 @@ class ClusterAlertGroupRecipient(dict):
     @property
     @pulumi.getter(name="notifierId")
     def notifier_id(self) -> str:
+        """
+        Recipient notifier ID (string)
+        """
         return pulumi.get(self, "notifier_id")
 
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> Optional[bool]:
+        """
+        Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        """
         return pulumi.get(self, "default_recipient")
 
     @property
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[str]:
+        """
+        Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        """
         return pulumi.get(self, "notifier_type")
 
     @property
     @pulumi.getter
     def recipient(self) -> Optional[str]:
+        """
+        Recipient (string)
+        """
         return pulumi.get(self, "recipient")
 
     def _translate_property(self, prop):
@@ -865,6 +1093,10 @@ class ClusterAlertRuleEventRule(dict):
     def __init__(__self__, *,
                  resource_kind: str,
                  event_type: Optional[str] = None):
+        """
+        :param str resource_kind: Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        :param str event_type: Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         pulumi.set(__self__, "resource_kind", resource_kind)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
@@ -872,11 +1104,17 @@ class ClusterAlertRuleEventRule(dict):
     @property
     @pulumi.getter(name="resourceKind")
     def resource_kind(self) -> str:
+        """
+        Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        """
         return pulumi.get(self, "resource_kind")
 
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[str]:
+        """
+        Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        """
         return pulumi.get(self, "event_type")
 
     def _translate_property(self, prop):
@@ -891,6 +1129,13 @@ class ClusterAlertRuleMetricRule(dict):
                  threshold_value: float,
                  comparison: Optional[str] = None,
                  description: Optional[str] = None):
+        """
+        :param str duration: Metric rule duration (string)
+        :param str expression: Metric rule expression (string)
+        :param float threshold_value: Metric rule threshold value (float64)
+        :param str comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        :param str description: Metric rule description (string)
+        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "threshold_value", threshold_value)
@@ -902,26 +1147,41 @@ class ClusterAlertRuleMetricRule(dict):
     @property
     @pulumi.getter
     def duration(self) -> str:
+        """
+        Metric rule duration (string)
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Metric rule expression (string)
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> float:
+        """
+        Metric rule threshold value (float64)
+        """
         return pulumi.get(self, "threshold_value")
 
     @property
     @pulumi.getter
     def comparison(self) -> Optional[str]:
+        """
+        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        """
         return pulumi.get(self, "comparison")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Metric rule description (string)
+        """
         return pulumi.get(self, "description")
 
     def _translate_property(self, prop):
@@ -936,6 +1196,13 @@ class ClusterAlertRuleNodeRule(dict):
                  mem_threshold: Optional[float] = None,
                  node_id: Optional[str] = None,
                  selector: Optional[Mapping[str, Any]] = None):
+        """
+        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        :param float cpu_threshold: Node rule cpu threshold. Default: `70` (int)
+        :param float mem_threshold: Node rule mem threshold. Default: `70` (int)
+        :param str node_id: Node ID (string)
+        :param Mapping[str, Any] selector: Node rule selector (map)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if cpu_threshold is not None:
@@ -950,26 +1217,41 @@ class ClusterAlertRuleNodeRule(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="cpuThreshold")
     def cpu_threshold(self) -> Optional[float]:
+        """
+        Node rule cpu threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "cpu_threshold")
 
     @property
     @pulumi.getter(name="memThreshold")
     def mem_threshold(self) -> Optional[float]:
+        """
+        Node rule mem threshold. Default: `70` (int)
+        """
         return pulumi.get(self, "mem_threshold")
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
+        """
+        Node ID (string)
+        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        Node rule selector (map)
+        """
         return pulumi.get(self, "selector")
 
     def _translate_property(self, prop):
@@ -980,12 +1262,18 @@ class ClusterAlertRuleNodeRule(dict):
 class ClusterAlertRuleSystemServiceRule(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None):
+        """
+        :param str condition: System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        """
         return pulumi.get(self, "condition")
 
     def _translate_property(self, prop):
@@ -1169,6 +1457,11 @@ class ClusterClusterAuthEndpoint(dict):
                  ca_certs: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  fqdn: Optional[str] = None):
+        """
+        :param str ca_certs: CA certs for the authorized cluster endpoint (string)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        :param str fqdn: FQDN for the authorized cluster endpoint (string)
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -1179,16 +1472,25 @@ class ClusterClusterAuthEndpoint(dict):
     @property
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[str]:
+        """
+        CA certs for the authorized cluster endpoint (string)
+        """
         return pulumi.get(self, "ca_certs")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def fqdn(self) -> Optional[str]:
+        """
+        FQDN for the authorized cluster endpoint (string)
+        """
         return pulumi.get(self, "fqdn")
 
     def _translate_property(self, prop):
@@ -1200,6 +1502,10 @@ class ClusterClusterMonitoringInput(dict):
     def __init__(__self__, *,
                  answers: Optional[Mapping[str, Any]] = None,
                  version: Optional[str] = None):
+        """
+        :param Mapping[str, Any] answers: Key/value answers for monitor input (map)
+        :param str version: rancher-monitoring chart version (string)
+        """
         if answers is not None:
             pulumi.set(__self__, "answers", answers)
         if version is not None:
@@ -1208,11 +1514,17 @@ class ClusterClusterMonitoringInput(dict):
     @property
     @pulumi.getter
     def answers(self) -> Optional[Mapping[str, Any]]:
+        """
+        Key/value answers for monitor input (map)
+        """
         return pulumi.get(self, "answers")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        rancher-monitoring chart version (string)
+        """
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -1233,6 +1545,19 @@ class ClusterClusterRegistrationToken(dict):
                  node_command: Optional[str] = None,
                  token: Optional[str] = None,
                  windows_node_command: Optional[str] = None):
+        """
+        :param Mapping[str, Any] annotations: Annotations for cluster registration token object (map)
+        :param str cluster_id: Cluster ID (string)
+        :param str command: Command to execute in a imported k8s cluster (string)
+        :param str id: (Computed) The ID of the resource (string)
+        :param str insecure_command: Insecure command to execute in a imported k8s cluster (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        :param str name: Name of cluster registration token (string)
+        :param str node_command: Node command to execute in linux nodes for custom k8s cluster (string)
+        :param str token: Token for cluster registration token object (string)
+        :param str windows_node_command: Node command to execute in windows nodes for custom k8s cluster (string)
+        """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
@@ -1259,56 +1584,89 @@ class ClusterClusterRegistrationToken(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, Any]]:
+        """
+        Annotations for cluster registration token object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
+        """
+        Cluster ID (string)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def command(self) -> Optional[str]:
+        """
+        Command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "command")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        (Computed) The ID of the resource (string)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="insecureCommand")
     def insecure_command(self) -> Optional[str]:
+        """
+        Insecure command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "insecure_command")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="manifestUrl")
     def manifest_url(self) -> Optional[str]:
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        """
         return pulumi.get(self, "manifest_url")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of cluster registration token (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeCommand")
     def node_command(self) -> Optional[str]:
+        """
+        Node command to execute in linux nodes for custom k8s cluster (string)
+        """
         return pulumi.get(self, "node_command")
 
     @property
     @pulumi.getter
     def token(self) -> Optional[str]:
+        """
+        Token for cluster registration token object (string)
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter(name="windowsNodeCommand")
     def windows_node_command(self) -> Optional[str]:
+        """
+        Node command to execute in windows nodes for custom k8s cluster (string)
+        """
         return pulumi.get(self, "windows_node_command")
 
     def _translate_property(self, prop):
@@ -1321,6 +1679,11 @@ class ClusterClusterTemplateAnswers(dict):
                  cluster_id: Optional[str] = None,
                  project_id: Optional[str] = None,
                  values: Optional[Mapping[str, Any]] = None):
+        """
+        :param str cluster_id: Cluster ID (string)
+        :param str project_id: Project ID to apply answer (string)
+        :param Mapping[str, Any] values: Key/values for answer (map)
+        """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if project_id is not None:
@@ -1331,16 +1694,25 @@ class ClusterClusterTemplateAnswers(dict):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
+        """
+        Cluster ID (string)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        Project ID to apply answer (string)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Mapping[str, Any]]:
+        """
+        Key/values for answer (map)
+        """
         return pulumi.get(self, "values")
 
     def _translate_property(self, prop):
@@ -1354,6 +1726,12 @@ class ClusterClusterTemplateQuestion(dict):
                  variable: str,
                  required: Optional[bool] = None,
                  type: Optional[str] = None):
+        """
+        :param str default: Default variable value (string)
+        :param str variable: Variable name (string)
+        :param bool required: Required variable. Default `false` (bool)
+        :param str type: Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "variable", variable)
         if required is not None:
@@ -1364,21 +1742,33 @@ class ClusterClusterTemplateQuestion(dict):
     @property
     @pulumi.getter
     def default(self) -> str:
+        """
+        Default variable value (string)
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def variable(self) -> str:
+        """
+        Variable name (string)
+        """
         return pulumi.get(self, "variable")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Required variable. Default `false` (bool)
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        """
         return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
@@ -1406,6 +1796,26 @@ class ClusterEksConfig(dict):
                  subnets: Optional[List[str]] = None,
                  user_data: Optional[str] = None,
                  virtual_network: Optional[str] = None):
+        """
+        :param str access_key: The AWS Client ID to use (string)
+        :param str kubernetes_version: The Kubernetes master version (string)
+        :param str secret_key: The AWS Client Secret associated with the Client ID (string)
+        :param str ami: AMI ID to use for the worker nodes instead of the default (string)
+        :param bool associate_worker_node_public_ip: Associate public ip EKS worker nodes. Default `true` (bool)
+        :param float desired_nodes: The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        :param str instance_type: The type of machine to use for worker nodes. Default `t2.medium` (string)
+        :param str key_pair_name: Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        :param float maximum_nodes: The maximum number of worker nodes. Default `3` (int)
+        :param float minimum_nodes: The minimum number of worker nodes. Default `1` (int)
+        :param float node_volume_size: The volume size for each node. Default `20` (int)
+        :param str region: GKE cluster region. Conflicts with `zone` (string)
+        :param List[str] security_groups: List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        :param str service_role: The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        :param str session_token: A session token to use with the client key and secret if applicable (string)
+        :param List[str] subnets: List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        :param str user_data: Pass user-data to the nodes to perform automated configuration tasks (string)
+        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         pulumi.set(__self__, "secret_key", secret_key)
@@ -1443,91 +1853,145 @@ class ClusterEksConfig(dict):
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
+        """
+        The AWS Client ID to use (string)
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> str:
+        """
+        The Kubernetes master version (string)
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> str:
+        """
+        The AWS Client Secret associated with the Client ID (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @property
     @pulumi.getter
     def ami(self) -> Optional[str]:
+        """
+        AMI ID to use for the worker nodes instead of the default (string)
+        """
         return pulumi.get(self, "ami")
 
     @property
     @pulumi.getter(name="associateWorkerNodePublicIp")
     def associate_worker_node_public_ip(self) -> Optional[bool]:
+        """
+        Associate public ip EKS worker nodes. Default `true` (bool)
+        """
         return pulumi.get(self, "associate_worker_node_public_ip")
 
     @property
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> Optional[float]:
+        """
+        The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        """
         return pulumi.get(self, "desired_nodes")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
+        """
+        The type of machine to use for worker nodes. Default `t2.medium` (string)
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[str]:
+        """
+        Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        """
         return pulumi.get(self, "key_pair_name")
 
     @property
     @pulumi.getter(name="maximumNodes")
     def maximum_nodes(self) -> Optional[float]:
+        """
+        The maximum number of worker nodes. Default `3` (int)
+        """
         return pulumi.get(self, "maximum_nodes")
 
     @property
     @pulumi.getter(name="minimumNodes")
     def minimum_nodes(self) -> Optional[float]:
+        """
+        The minimum number of worker nodes. Default `1` (int)
+        """
         return pulumi.get(self, "minimum_nodes")
 
     @property
     @pulumi.getter(name="nodeVolumeSize")
     def node_volume_size(self) -> Optional[float]:
+        """
+        The volume size for each node. Default `20` (int)
+        """
         return pulumi.get(self, "node_volume_size")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        GKE cluster region. Conflicts with `zone` (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[List[str]]:
+        """
+        List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="serviceRole")
     def service_role(self) -> Optional[str]:
+        """
+        The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        """
         return pulumi.get(self, "service_role")
 
     @property
     @pulumi.getter(name="sessionToken")
     def session_token(self) -> Optional[str]:
+        """
+        A session token to use with the client key and secret if applicable (string)
+        """
         return pulumi.get(self, "session_token")
 
     @property
     @pulumi.getter
     def subnets(self) -> Optional[List[str]]:
+        """
+        List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        """
         return pulumi.get(self, "subnets")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[str]:
+        """
+        Pass user-data to the nodes to perform automated configuration tasks (string)
+        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> Optional[str]:
+        """
+        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        """
         return pulumi.get(self, "virtual_network")
 
     def _translate_property(self, prop):
@@ -1590,6 +2054,60 @@ class ClusterGkeConfig(dict):
                  taints: Optional[List[str]] = None,
                  use_ip_aliases: Optional[bool] = None,
                  zone: Optional[str] = None):
+        """
+        :param str cluster_ipv4_cidr: The IP address range of the container pods (string)
+        :param str credential: The contents of the GC credential file (string)
+        :param str disk_type: Type of the disk attached to each node (string)
+        :param str image_type: The image to use for the worker nodes (string)
+        :param str ip_policy_cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs (string)
+        :param str ip_policy_cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block (string)
+        :param str ip_policy_node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster (string)
+        :param str ip_policy_services_ipv4_cidr_block: The IP address range of the services IPs in this cluster (string)
+        :param str ip_policy_services_secondary_range_name: The name of the secondary range to be used for the services CIDR block (string)
+        :param str ip_policy_subnetwork_name: A custom subnetwork name to be used if createSubnetwork is true (string)
+        :param List[str] locations: Locations for GKE cluster (list)
+        :param str machine_type: Machine type for GKE cluster (string)
+        :param str maintenance_window: Maintenance window for GKE cluster (string)
+        :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network (string)
+        :param str master_version: Master version for GKE cluster (string)
+        :param str network: Network for GKE cluster (string)
+        :param str node_pool: The ID of the cluster node pool (string)
+        :param str node_version: Node version for GKE cluster (string)
+        :param List[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+        :param str project_id: Project ID to apply answer (string)
+        :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs (string)
+        :param str sub_network: Subnetwork for GKE cluster (string)
+        :param str description: An optional description of this cluster (string)
+        :param float disk_size_gb: Size of the disk attached to each node. Default `100` (int)
+        :param bool enable_alpha_feature: To enable Kubernetes alpha feature. Default `true` (bool)
+        :param bool enable_auto_repair: Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
+        :param bool enable_auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
+        :param bool enable_horizontal_pod_autoscaling: Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
+        :param bool enable_http_load_balancing: Enable HTTP load balancing on GKE cluster. Default `true` (bool)
+        :param bool enable_kubernetes_dashboard: Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        :param bool enable_legacy_abac: Whether to enable legacy abac on the cluster. Default `false` (bool)
+        :param bool enable_network_policy_config: Enable network policy config for the cluster. Default `true` (bool)
+        :param bool enable_nodepool_autoscaling: Enable nodepool autoscaling. Default `false` (bool)
+        :param bool enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+        :param bool enable_private_nodes: Whether nodes have internal IP address only. Default `false` (bool)
+        :param bool enable_stackdriver_logging: Enable stackdriver monitoring. Default `true` (bool)
+        :param bool enable_stackdriver_monitoring: Enable stackdriver monitoring on GKE cluster (bool)
+        :param bool ip_policy_create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
+        :param bool issue_client_certificate: Issue a client certificate. Default `false` (bool)
+        :param bool kubernetes_dashboard: Enable the Kubernetes dashboard. Default `false` (bool)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param float local_ssd_count: The number of local SSD disks to be attached to the node. Default `0` (int)
+        :param List[str] master_authorized_network_cidr_blocks: Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
+        :param float max_node_count: Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+        :param float min_node_count: Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+        :param float node_count: Node count for GKE cluster. Default `3` (int)
+        :param bool preemptible: Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+        :param str region: GKE cluster region. Conflicts with `zone` (string)
+        :param Mapping[str, Any] resource_labels: The map of Kubernetes labels to be applied to each cluster (map)
+        :param List[str] taints: List of Kubernetes taints to be applied to each node (list)
+        :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+        :param str zone: GKE cluster zone. Conflicts with `region` (string)
+        """
         pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         pulumi.set(__self__, "credential", credential)
         pulumi.set(__self__, "disk_type", disk_type)
@@ -1678,156 +2196,249 @@ class ClusterGkeConfig(dict):
     @property
     @pulumi.getter(name="clusterIpv4Cidr")
     def cluster_ipv4_cidr(self) -> str:
+        """
+        The IP address range of the container pods (string)
+        """
         return pulumi.get(self, "cluster_ipv4_cidr")
 
     @property
     @pulumi.getter
     def credential(self) -> str:
+        """
+        The contents of the GC credential file (string)
+        """
         return pulumi.get(self, "credential")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
+        """
+        Type of the disk attached to each node (string)
+        """
         return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter(name="imageType")
     def image_type(self) -> str:
+        """
+        The image to use for the worker nodes (string)
+        """
         return pulumi.get(self, "image_type")
 
     @property
     @pulumi.getter(name="ipPolicyClusterIpv4CidrBlock")
     def ip_policy_cluster_ipv4_cidr_block(self) -> str:
+        """
+        The IP address range for the cluster pod IPs (string)
+        """
         return pulumi.get(self, "ip_policy_cluster_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="ipPolicyClusterSecondaryRangeName")
     def ip_policy_cluster_secondary_range_name(self) -> str:
+        """
+        The name of the secondary range to be used for the cluster CIDR block (string)
+        """
         return pulumi.get(self, "ip_policy_cluster_secondary_range_name")
 
     @property
     @pulumi.getter(name="ipPolicyNodeIpv4CidrBlock")
     def ip_policy_node_ipv4_cidr_block(self) -> str:
+        """
+        The IP address range of the instance IPs in this cluster (string)
+        """
         return pulumi.get(self, "ip_policy_node_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="ipPolicyServicesIpv4CidrBlock")
     def ip_policy_services_ipv4_cidr_block(self) -> str:
+        """
+        The IP address range of the services IPs in this cluster (string)
+        """
         return pulumi.get(self, "ip_policy_services_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="ipPolicyServicesSecondaryRangeName")
     def ip_policy_services_secondary_range_name(self) -> str:
+        """
+        The name of the secondary range to be used for the services CIDR block (string)
+        """
         return pulumi.get(self, "ip_policy_services_secondary_range_name")
 
     @property
     @pulumi.getter(name="ipPolicySubnetworkName")
     def ip_policy_subnetwork_name(self) -> str:
+        """
+        A custom subnetwork name to be used if createSubnetwork is true (string)
+        """
         return pulumi.get(self, "ip_policy_subnetwork_name")
 
     @property
     @pulumi.getter
     def locations(self) -> List[str]:
+        """
+        Locations for GKE cluster (list)
+        """
         return pulumi.get(self, "locations")
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
+        """
+        Machine type for GKE cluster (string)
+        """
         return pulumi.get(self, "machine_type")
 
     @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> str:
+        """
+        Maintenance window for GKE cluster (string)
+        """
         return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="masterIpv4CidrBlock")
     def master_ipv4_cidr_block(self) -> str:
+        """
+        The IP range in CIDR notation to use for the hosted master network (string)
+        """
         return pulumi.get(self, "master_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="masterVersion")
     def master_version(self) -> str:
+        """
+        Master version for GKE cluster (string)
+        """
         return pulumi.get(self, "master_version")
 
     @property
     @pulumi.getter
     def network(self) -> str:
+        """
+        Network for GKE cluster (string)
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="nodePool")
     def node_pool(self) -> str:
+        """
+        The ID of the cluster node pool (string)
+        """
         return pulumi.get(self, "node_pool")
 
     @property
     @pulumi.getter(name="nodeVersion")
     def node_version(self) -> str:
+        """
+        Node version for GKE cluster (string)
+        """
         return pulumi.get(self, "node_version")
 
     @property
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> List[str]:
+        """
+        The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+        """
         return pulumi.get(self, "oauth_scopes")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project ID to apply answer (string)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
+        """
+        The Google Cloud Platform Service Account to be used by the node VMs (string)
+        """
         return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="subNetwork")
     def sub_network(self) -> str:
+        """
+        Subnetwork for GKE cluster (string)
+        """
         return pulumi.get(self, "sub_network")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        An optional description of this cluster (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> Optional[float]:
+        """
+        Size of the disk attached to each node. Default `100` (int)
+        """
         return pulumi.get(self, "disk_size_gb")
 
     @property
     @pulumi.getter(name="enableAlphaFeature")
     def enable_alpha_feature(self) -> Optional[bool]:
+        """
+        To enable Kubernetes alpha feature. Default `true` (bool)
+        """
         return pulumi.get(self, "enable_alpha_feature")
 
     @property
     @pulumi.getter(name="enableAutoRepair")
     def enable_auto_repair(self) -> Optional[bool]:
+        """
+        Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_auto_repair")
 
     @property
     @pulumi.getter(name="enableAutoUpgrade")
     def enable_auto_upgrade(self) -> Optional[bool]:
+        """
+        Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_auto_upgrade")
 
     @property
     @pulumi.getter(name="enableHorizontalPodAutoscaling")
     def enable_horizontal_pod_autoscaling(self) -> Optional[bool]:
+        """
+        Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
+        """
         return pulumi.get(self, "enable_horizontal_pod_autoscaling")
 
     @property
     @pulumi.getter(name="enableHttpLoadBalancing")
     def enable_http_load_balancing(self) -> Optional[bool]:
+        """
+        Enable HTTP load balancing on GKE cluster. Default `true` (bool)
+        """
         return pulumi.get(self, "enable_http_load_balancing")
 
     @property
     @pulumi.getter(name="enableKubernetesDashboard")
     def enable_kubernetes_dashboard(self) -> Optional[bool]:
+        """
+        Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_kubernetes_dashboard")
 
     @property
     @pulumi.getter(name="enableLegacyAbac")
     def enable_legacy_abac(self) -> Optional[bool]:
+        """
+        Whether to enable legacy abac on the cluster. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_legacy_abac")
 
     @property
@@ -1838,106 +2449,169 @@ class ClusterGkeConfig(dict):
     @property
     @pulumi.getter(name="enableNetworkPolicyConfig")
     def enable_network_policy_config(self) -> Optional[bool]:
+        """
+        Enable network policy config for the cluster. Default `true` (bool)
+        """
         return pulumi.get(self, "enable_network_policy_config")
 
     @property
     @pulumi.getter(name="enableNodepoolAutoscaling")
     def enable_nodepool_autoscaling(self) -> Optional[bool]:
+        """
+        Enable nodepool autoscaling. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_nodepool_autoscaling")
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
     def enable_private_endpoint(self) -> Optional[bool]:
+        """
+        Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_private_endpoint")
 
     @property
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> Optional[bool]:
+        """
+        Whether nodes have internal IP address only. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_private_nodes")
 
     @property
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> Optional[bool]:
+        """
+        Enable stackdriver monitoring. Default `true` (bool)
+        """
         return pulumi.get(self, "enable_stackdriver_logging")
 
     @property
     @pulumi.getter(name="enableStackdriverMonitoring")
     def enable_stackdriver_monitoring(self) -> Optional[bool]:
+        """
+        Enable stackdriver monitoring on GKE cluster (bool)
+        """
         return pulumi.get(self, "enable_stackdriver_monitoring")
 
     @property
     @pulumi.getter(name="ipPolicyCreateSubnetwork")
     def ip_policy_create_subnetwork(self) -> Optional[bool]:
+        """
+        Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
+        """
         return pulumi.get(self, "ip_policy_create_subnetwork")
 
     @property
     @pulumi.getter(name="issueClientCertificate")
     def issue_client_certificate(self) -> Optional[bool]:
+        """
+        Issue a client certificate. Default `false` (bool)
+        """
         return pulumi.get(self, "issue_client_certificate")
 
     @property
     @pulumi.getter(name="kubernetesDashboard")
     def kubernetes_dashboard(self) -> Optional[bool]:
+        """
+        Enable the Kubernetes dashboard. Default `false` (bool)
+        """
         return pulumi.get(self, "kubernetes_dashboard")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[float]:
+        """
+        The number of local SSD disks to be attached to the node. Default `0` (int)
+        """
         return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="masterAuthorizedNetworkCidrBlocks")
     def master_authorized_network_cidr_blocks(self) -> Optional[List[str]]:
+        """
+        Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
+        """
         return pulumi.get(self, "master_authorized_network_cidr_blocks")
 
     @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[float]:
+        """
+        Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+        """
         return pulumi.get(self, "max_node_count")
 
     @property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[float]:
+        """
+        Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+        """
         return pulumi.get(self, "min_node_count")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[float]:
+        """
+        Node count for GKE cluster. Default `3` (int)
+        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
+        """
+        Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+        """
         return pulumi.get(self, "preemptible")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        GKE cluster region. Conflicts with `zone` (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        The map of Kubernetes labels to be applied to each cluster (map)
+        """
         return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter
     def taints(self) -> Optional[List[str]]:
+        """
+        List of Kubernetes taints to be applied to each node (list)
+        """
         return pulumi.get(self, "taints")
 
     @property
     @pulumi.getter(name="useIpAliases")
     def use_ip_aliases(self) -> Optional[bool]:
+        """
+        Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+        """
         return pulumi.get(self, "use_ip_aliases")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        GKE cluster zone. Conflicts with `region` (string)
+        """
         return pulumi.get(self, "zone")
 
     def _translate_property(self, prop):
@@ -1949,6 +2623,10 @@ class ClusterK3sConfig(dict):
     def __init__(__self__, *,
                  upgrade_strategy: Optional['outputs.ClusterK3sConfigUpgradeStrategy'] = None,
                  version: Optional[str] = None):
+        """
+        :param 'ClusterK3sConfigUpgradeStrategyArgs' upgrade_strategy: K3S upgrade strategy (List maxitems: 1)
+        :param str version: rancher-monitoring chart version (string)
+        """
         if upgrade_strategy is not None:
             pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
         if version is not None:
@@ -1957,11 +2635,17 @@ class ClusterK3sConfig(dict):
     @property
     @pulumi.getter(name="upgradeStrategy")
     def upgrade_strategy(self) -> Optional['outputs.ClusterK3sConfigUpgradeStrategy']:
+        """
+        K3S upgrade strategy (List maxitems: 1)
+        """
         return pulumi.get(self, "upgrade_strategy")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        rancher-monitoring chart version (string)
+        """
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -1975,6 +2659,12 @@ class ClusterK3sConfigUpgradeStrategy(dict):
                  drain_worker_nodes: Optional[bool] = None,
                  server_concurrency: Optional[float] = None,
                  worker_concurrency: Optional[float] = None):
+        """
+        :param bool drain_server_nodes: Drain server nodes. Default: `false` (bool)
+        :param bool drain_worker_nodes: Drain worker nodes. Default: `false` (bool)
+        :param float server_concurrency: Server concurrency. Default: `1` (int)
+        :param float worker_concurrency: Worker concurrency. Default: `1` (int)
+        """
         if drain_server_nodes is not None:
             pulumi.set(__self__, "drain_server_nodes", drain_server_nodes)
         if drain_worker_nodes is not None:
@@ -1987,21 +2677,33 @@ class ClusterK3sConfigUpgradeStrategy(dict):
     @property
     @pulumi.getter(name="drainServerNodes")
     def drain_server_nodes(self) -> Optional[bool]:
+        """
+        Drain server nodes. Default: `false` (bool)
+        """
         return pulumi.get(self, "drain_server_nodes")
 
     @property
     @pulumi.getter(name="drainWorkerNodes")
     def drain_worker_nodes(self) -> Optional[bool]:
+        """
+        Drain worker nodes. Default: `false` (bool)
+        """
         return pulumi.get(self, "drain_worker_nodes")
 
     @property
     @pulumi.getter(name="serverConcurrency")
     def server_concurrency(self) -> Optional[float]:
+        """
+        Server concurrency. Default: `1` (int)
+        """
         return pulumi.get(self, "server_concurrency")
 
     @property
     @pulumi.getter(name="workerConcurrency")
     def worker_concurrency(self) -> Optional[float]:
+        """
+        Worker concurrency. Default: `1` (int)
+        """
         return pulumi.get(self, "worker_concurrency")
 
     def _translate_property(self, prop):
@@ -2015,6 +2717,12 @@ class ClusterLoggingCustomTargetConfig(dict):
                  certificate: Optional[str] = None,
                  client_cert: Optional[str] = None,
                  client_key: Optional[str] = None):
+        """
+        :param str content: Custom target config content (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        """
         pulumi.set(__self__, "content", content)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -2026,21 +2734,33 @@ class ClusterLoggingCustomTargetConfig(dict):
     @property
     @pulumi.getter
     def content(self) -> str:
+        """
+        Custom target config content (string)
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     def _translate_property(self, prop):
@@ -2061,6 +2781,19 @@ class ClusterLoggingElasticsearchConfig(dict):
                  index_prefix: Optional[str] = None,
                  ssl_verify: Optional[bool] = None,
                  ssl_version: Optional[str] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str auth_password: User password for the elascticsearch service (string)
+        :param str auth_username: Username for the elascticsearch service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str client_key_pass: SSL client key password for the splunk service (string)
+        :param str date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        :param str index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        :param str ssl_version: SSL version for the elascticsearch service (string)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if auth_password is not None:
             pulumi.set(__self__, "auth_password", auth_password)
@@ -2086,56 +2819,89 @@ class ClusterLoggingElasticsearchConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="authPassword")
     def auth_password(self) -> Optional[str]:
+        """
+        User password for the elascticsearch service (string)
+        """
         return pulumi.get(self, "auth_password")
 
     @property
     @pulumi.getter(name="authUsername")
     def auth_username(self) -> Optional[str]:
+        """
+        Username for the elascticsearch service (string)
+        """
         return pulumi.get(self, "auth_username")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clientKeyPass")
     def client_key_pass(self) -> Optional[str]:
+        """
+        SSL client key password for the splunk service (string)
+        """
         return pulumi.get(self, "client_key_pass")
 
     @property
     @pulumi.getter(name="dateFormat")
     def date_format(self) -> Optional[str]:
+        """
+        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        """
         return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter(name="indexPrefix")
     def index_prefix(self) -> Optional[str]:
+        """
+        Index prefix for the elascticsearch logs. Default: `local` (string)
+        """
         return pulumi.get(self, "index_prefix")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     @property
     @pulumi.getter(name="sslVersion")
     def ssl_version(self) -> Optional[str]:
+        """
+        SSL version for the elascticsearch service (string)
+        """
         return pulumi.get(self, "ssl_version")
 
     def _translate_property(self, prop):
@@ -2149,6 +2915,12 @@ class ClusterLoggingFluentdConfig(dict):
                  certificate: Optional[str] = None,
                  compress: Optional[bool] = None,
                  enable_tls: Optional[bool] = None):
+        """
+        :param List['ClusterLoggingFluentdConfigFluentServerArgs'] fluent_servers: Servers for the fluentd service (list)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param bool compress: Compress data for the fluentd service (bool)
+        :param bool enable_tls: Enable TLS for the syslog service. Default `false` (bool)
+        """
         pulumi.set(__self__, "fluent_servers", fluent_servers)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -2160,21 +2932,33 @@ class ClusterLoggingFluentdConfig(dict):
     @property
     @pulumi.getter(name="fluentServers")
     def fluent_servers(self) -> List['outputs.ClusterLoggingFluentdConfigFluentServer']:
+        """
+        Servers for the fluentd service (list)
+        """
         return pulumi.get(self, "fluent_servers")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
     def compress(self) -> Optional[bool]:
+        """
+        Compress data for the fluentd service (bool)
+        """
         return pulumi.get(self, "compress")
 
     @property
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[bool]:
+        """
+        Enable TLS for the syslog service. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_tls")
 
     def _translate_property(self, prop):
@@ -2191,6 +2975,15 @@ class ClusterLoggingFluentdConfigFluentServer(dict):
                  standby: Optional[bool] = None,
                  username: Optional[str] = None,
                  weight: Optional[float] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str hostname: Hostname of the fluentd service (string)
+        :param str password: User password of the fluentd service (string)
+        :param str shared_key: Shared key of the fluentd service (string)
+        :param bool standby: Standby server of the fluentd service (bool)
+        :param str username: Username of the fluentd service (string)
+        :param float weight: Weight of the fluentd server (int)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
@@ -2208,36 +3001,57 @@ class ClusterLoggingFluentdConfigFluentServer(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
+        """
+        Hostname of the fluentd service (string)
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        User password of the fluentd service (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sharedKey")
     def shared_key(self) -> Optional[str]:
+        """
+        Shared key of the fluentd service (string)
+        """
         return pulumi.get(self, "shared_key")
 
     @property
     @pulumi.getter
     def standby(self) -> Optional[bool]:
+        """
+        Standby server of the fluentd service (bool)
+        """
         return pulumi.get(self, "standby")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username of the fluentd service (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def weight(self) -> Optional[float]:
+        """
+        Weight of the fluentd server (int)
+        """
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -2253,6 +3067,14 @@ class ClusterLoggingKafkaConfig(dict):
                  client_cert: Optional[str] = None,
                  client_key: Optional[str] = None,
                  zookeeper_endpoint: Optional[str] = None):
+        """
+        :param str topic: Topic to publish on the kafka service (string)
+        :param List[str] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        """
         pulumi.set(__self__, "topic", topic)
         if broker_endpoints is not None:
             pulumi.set(__self__, "broker_endpoints", broker_endpoints)
@@ -2268,31 +3090,49 @@ class ClusterLoggingKafkaConfig(dict):
     @property
     @pulumi.getter
     def topic(self) -> str:
+        """
+        Topic to publish on the kafka service (string)
+        """
         return pulumi.get(self, "topic")
 
     @property
     @pulumi.getter(name="brokerEndpoints")
     def broker_endpoints(self) -> Optional[List[str]]:
+        """
+        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        """
         return pulumi.get(self, "broker_endpoints")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="zookeeperEndpoint")
     def zookeeper_endpoint(self) -> Optional[str]:
+        """
+        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        """
         return pulumi.get(self, "zookeeper_endpoint")
 
     def _translate_property(self, prop):
@@ -2311,6 +3151,17 @@ class ClusterLoggingSplunkConfig(dict):
                  index: Optional[str] = None,
                  source: Optional[str] = None,
                  ssl_verify: Optional[bool] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str token: Token for the syslog service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str client_key_pass: SSL client key password for the splunk service (string)
+        :param str index: Index prefix for the splunk logs (string)
+        :param str source: Date format for the splunk logs (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "token", token)
         if certificate is not None:
@@ -2331,46 +3182,73 @@ class ClusterLoggingSplunkConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Token for the syslog service (string)
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clientKeyPass")
     def client_key_pass(self) -> Optional[str]:
+        """
+        SSL client key password for the splunk service (string)
+        """
         return pulumi.get(self, "client_key_pass")
 
     @property
     @pulumi.getter
     def index(self) -> Optional[str]:
+        """
+        Index prefix for the splunk logs (string)
+        """
         return pulumi.get(self, "index")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
+        """
+        Date format for the splunk logs (string)
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     def _translate_property(self, prop):
@@ -2390,6 +3268,18 @@ class ClusterLoggingSyslogConfig(dict):
                  severity: Optional[str] = None,
                  ssl_verify: Optional[bool] = None,
                  token: Optional[str] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param bool enable_tls: Enable TLS for the syslog service. Default `false` (bool)
+        :param str program: Program for the syslog service (string)
+        :param str protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        :param str severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        :param str token: Token for the syslog service (string)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -2413,51 +3303,81 @@ class ClusterLoggingSyslogConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[bool]:
+        """
+        Enable TLS for the syslog service. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_tls")
 
     @property
     @pulumi.getter
     def program(self) -> Optional[str]:
+        """
+        Program for the syslog service (string)
+        """
         return pulumi.get(self, "program")
 
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
+        """
+        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def severity(self) -> Optional[str]:
+        """
+        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     @property
     @pulumi.getter
     def token(self) -> Optional[str]:
+        """
+        Token for the syslog service (string)
+        """
         return pulumi.get(self, "token")
 
     def _translate_property(self, prop):
@@ -2488,6 +3408,29 @@ class ClusterRkeConfig(dict):
                  ssh_cert_path: Optional[str] = None,
                  ssh_key_path: Optional[str] = None,
                  upgrade_strategy: Optional['outputs.ClusterRkeConfigUpgradeStrategy'] = None):
+        """
+        :param float addon_job_timeout: Duration in seconds of addon job (int)
+        :param str addons: Addons descripton to deploy on RKE cluster.
+        :param List[str] addons_includes: Addons yaml manifests to deploy on RKE cluster (list)
+        :param 'ClusterRkeConfigAuthenticationArgs' authentication: Kubernetes cluster authentication (list maxitems:1)
+        :param 'ClusterRkeConfigAuthorizationArgs' authorization: Kubernetes cluster authorization (list maxitems:1)
+        :param 'ClusterRkeConfigBastionHostArgs' bastion_host: RKE bastion host (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderArgs' cloud_provider: RKE options for Calico network provider (string)
+        :param 'ClusterRkeConfigDnsArgs' dns: RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        :param bool ignore_docker_version: Ignore docker version. Default `true` (bool)
+        :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
+        :param str kubernetes_version: The Kubernetes master version (string)
+        :param 'ClusterRkeConfigMonitoringArgs' monitoring: Kubernetes cluster monitoring (list maxitems:1)
+        :param 'ClusterRkeConfigNetworkArgs' network: Network for GKE cluster (string)
+        :param List['ClusterRkeConfigNodeArgs'] nodes: RKE cluster nodes (list)
+        :param str prefix_path: Prefix to customize Kubernetes path (string)
+        :param List['ClusterRkeConfigPrivateRegistryArgs'] private_registries: private registries for docker images (list)
+        :param 'ClusterRkeConfigServicesArgs' services: Kubernetes cluster services (list maxitems:1)
+        :param bool ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
+        :param str ssh_cert_path: Cluster level SSH certificate path (string)
+        :param str ssh_key_path: Node SSH private key path (string)
+        :param 'ClusterRkeConfigUpgradeStrategyArgs' upgrade_strategy: K3S upgrade strategy (List maxitems: 1)
+        """
         if addon_job_timeout is not None:
             pulumi.set(__self__, "addon_job_timeout", addon_job_timeout)
         if addons is not None:
@@ -2534,106 +3477,169 @@ class ClusterRkeConfig(dict):
     @property
     @pulumi.getter(name="addonJobTimeout")
     def addon_job_timeout(self) -> Optional[float]:
+        """
+        Duration in seconds of addon job (int)
+        """
         return pulumi.get(self, "addon_job_timeout")
 
     @property
     @pulumi.getter
     def addons(self) -> Optional[str]:
+        """
+        Addons descripton to deploy on RKE cluster.
+        """
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="addonsIncludes")
     def addons_includes(self) -> Optional[List[str]]:
+        """
+        Addons yaml manifests to deploy on RKE cluster (list)
+        """
         return pulumi.get(self, "addons_includes")
 
     @property
     @pulumi.getter
     def authentication(self) -> Optional['outputs.ClusterRkeConfigAuthentication']:
+        """
+        Kubernetes cluster authentication (list maxitems:1)
+        """
         return pulumi.get(self, "authentication")
 
     @property
     @pulumi.getter
     def authorization(self) -> Optional['outputs.ClusterRkeConfigAuthorization']:
+        """
+        Kubernetes cluster authorization (list maxitems:1)
+        """
         return pulumi.get(self, "authorization")
 
     @property
     @pulumi.getter(name="bastionHost")
     def bastion_host(self) -> Optional['outputs.ClusterRkeConfigBastionHost']:
+        """
+        RKE bastion host (list maxitems:1)
+        """
         return pulumi.get(self, "bastion_host")
 
     @property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> Optional['outputs.ClusterRkeConfigCloudProvider']:
+        """
+        RKE options for Calico network provider (string)
+        """
         return pulumi.get(self, "cloud_provider")
 
     @property
     @pulumi.getter
     def dns(self) -> Optional['outputs.ClusterRkeConfigDns']:
+        """
+        RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        """
         return pulumi.get(self, "dns")
 
     @property
     @pulumi.getter(name="ignoreDockerVersion")
     def ignore_docker_version(self) -> Optional[bool]:
+        """
+        Ignore docker version. Default `true` (bool)
+        """
         return pulumi.get(self, "ignore_docker_version")
 
     @property
     @pulumi.getter
     def ingress(self) -> Optional['outputs.ClusterRkeConfigIngress']:
+        """
+        Kubernetes ingress configuration (list maxitems:1)
+        """
         return pulumi.get(self, "ingress")
 
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[str]:
+        """
+        The Kubernetes master version (string)
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter
     def monitoring(self) -> Optional['outputs.ClusterRkeConfigMonitoring']:
+        """
+        Kubernetes cluster monitoring (list maxitems:1)
+        """
         return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter
     def network(self) -> Optional['outputs.ClusterRkeConfigNetwork']:
+        """
+        Network for GKE cluster (string)
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def nodes(self) -> Optional[List['outputs.ClusterRkeConfigNode']]:
+        """
+        RKE cluster nodes (list)
+        """
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter(name="prefixPath")
     def prefix_path(self) -> Optional[str]:
+        """
+        Prefix to customize Kubernetes path (string)
+        """
         return pulumi.get(self, "prefix_path")
 
     @property
     @pulumi.getter(name="privateRegistries")
     def private_registries(self) -> Optional[List['outputs.ClusterRkeConfigPrivateRegistry']]:
+        """
+        private registries for docker images (list)
+        """
         return pulumi.get(self, "private_registries")
 
     @property
     @pulumi.getter
     def services(self) -> Optional['outputs.ClusterRkeConfigServices']:
+        """
+        Kubernetes cluster services (list maxitems:1)
+        """
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter(name="sshAgentAuth")
     def ssh_agent_auth(self) -> Optional[bool]:
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
         return pulumi.get(self, "ssh_agent_auth")
 
     @property
     @pulumi.getter(name="sshCertPath")
     def ssh_cert_path(self) -> Optional[str]:
+        """
+        Cluster level SSH certificate path (string)
+        """
         return pulumi.get(self, "ssh_cert_path")
 
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[str]:
+        """
+        Node SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     @property
     @pulumi.getter(name="upgradeStrategy")
     def upgrade_strategy(self) -> Optional['outputs.ClusterRkeConfigUpgradeStrategy']:
+        """
+        K3S upgrade strategy (List maxitems: 1)
+        """
         return pulumi.get(self, "upgrade_strategy")
 
     def _translate_property(self, prop):
@@ -2645,6 +3651,10 @@ class ClusterRkeConfigAuthentication(dict):
     def __init__(__self__, *,
                  sans: Optional[List[str]] = None,
                  strategy: Optional[str] = None):
+        """
+        :param List[str] sans: RKE sans for authentication ([]string)
+        :param str strategy: Monitoring deployment update strategy (string)
+        """
         if sans is not None:
             pulumi.set(__self__, "sans", sans)
         if strategy is not None:
@@ -2653,11 +3663,17 @@ class ClusterRkeConfigAuthentication(dict):
     @property
     @pulumi.getter
     def sans(self) -> Optional[List[str]]:
+        """
+        RKE sans for authentication ([]string)
+        """
         return pulumi.get(self, "sans")
 
     @property
     @pulumi.getter
     def strategy(self) -> Optional[str]:
+        """
+        Monitoring deployment update strategy (string)
+        """
         return pulumi.get(self, "strategy")
 
     def _translate_property(self, prop):
@@ -2669,6 +3685,10 @@ class ClusterRkeConfigAuthorization(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None,
                  options: Optional[Mapping[str, Any]] = None):
+        """
+        :param str mode: RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        :param Mapping[str, Any] options: RKE options for network (map)
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if options is not None:
@@ -2677,11 +3697,17 @@ class ClusterRkeConfigAuthorization(dict):
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     def _translate_property(self, prop):
@@ -2697,6 +3723,14 @@ class ClusterRkeConfigBastionHost(dict):
                  ssh_agent_auth: Optional[bool] = None,
                  ssh_key: Optional[str] = None,
                  ssh_key_path: Optional[str] = None):
+        """
+        :param str address: Address ip for node (string)
+        :param str user: Registry user (string)
+        :param str port: Port for node. Default `22` (string)
+        :param bool ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
+        :param str ssh_key: Node SSH private key (string)
+        :param str ssh_key_path: Node SSH private key path (string)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "user", user)
         if port is not None:
@@ -2711,31 +3745,49 @@ class ClusterRkeConfigBastionHost(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        Address ip for node (string)
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def user(self) -> str:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="sshAgentAuth")
     def ssh_agent_auth(self) -> Optional[bool]:
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
         return pulumi.get(self, "ssh_agent_auth")
 
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[str]:
+        """
+        Node SSH private key (string)
+        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[str]:
+        """
+        Node SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     def _translate_property(self, prop):
@@ -2751,6 +3803,14 @@ class ClusterRkeConfigCloudProvider(dict):
                  name: Optional[str] = None,
                  openstack_cloud_provider: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProvider'] = None,
                  vsphere_cloud_provider: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProvider'] = None):
+        """
+        :param 'ClusterRkeConfigCloudProviderAwsCloudProviderArgs' aws_cloud_provider: RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderAzureCloudProviderArgs' azure_cloud_provider: RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        :param str custom_cloud_provider: RKE Custom Cloud Provider config for Cloud Provider (string)
+        :param str name: Name of cluster registration token (string)
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs' openstack_cloud_provider: RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderArgs' vsphere_cloud_provider: RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+        """
         if aws_cloud_provider is not None:
             pulumi.set(__self__, "aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
@@ -2767,31 +3827,49 @@ class ClusterRkeConfigCloudProvider(dict):
     @property
     @pulumi.getter(name="awsCloudProvider")
     def aws_cloud_provider(self) -> Optional['outputs.ClusterRkeConfigCloudProviderAwsCloudProvider']:
+        """
+        RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        """
         return pulumi.get(self, "aws_cloud_provider")
 
     @property
     @pulumi.getter(name="azureCloudProvider")
     def azure_cloud_provider(self) -> Optional['outputs.ClusterRkeConfigCloudProviderAzureCloudProvider']:
+        """
+        RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        """
         return pulumi.get(self, "azure_cloud_provider")
 
     @property
     @pulumi.getter(name="customCloudProvider")
     def custom_cloud_provider(self) -> Optional[str]:
+        """
+        RKE Custom Cloud Provider config for Cloud Provider (string)
+        """
         return pulumi.get(self, "custom_cloud_provider")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of cluster registration token (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="openstackCloudProvider")
     def openstack_cloud_provider(self) -> Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProvider']:
+        """
+        RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        """
         return pulumi.get(self, "openstack_cloud_provider")
 
     @property
     @pulumi.getter(name="vsphereCloudProvider")
     def vsphere_cloud_provider(self) -> Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProvider']:
+        """
+        RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+        """
         return pulumi.get(self, "vsphere_cloud_provider")
 
     def _translate_property(self, prop):
@@ -2803,6 +3881,10 @@ class ClusterRkeConfigCloudProviderAwsCloudProvider(dict):
     def __init__(__self__, *,
                  global_: Optional['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobal'] = None,
                  service_overrides: Optional[List['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride']] = None):
+        """
+        :param 'ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs' global_: (list maxitems:1)
+        :param List['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs'] service_overrides: (list)
+        """
         if global_ is not None:
             pulumi.set(__self__, "global_", global_)
         if service_overrides is not None:
@@ -2811,11 +3893,17 @@ class ClusterRkeConfigCloudProviderAwsCloudProvider(dict):
     @property
     @pulumi.getter(name="global")
     def global_(self) -> Optional['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobal']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @property
     @pulumi.getter(name="serviceOverrides")
     def service_overrides(self) -> Optional[List['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride']]:
+        """
+        (list)
+        """
         return pulumi.get(self, "service_overrides")
 
     def _translate_property(self, prop):
@@ -2835,6 +3923,18 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(dict):
                  subnet_id: Optional[str] = None,
                  vpc: Optional[str] = None,
                  zone: Optional[str] = None):
+        """
+        :param bool disable_security_group_ingress: Default `false` (bool)
+        :param bool disable_strict_zone_check: Default `false` (bool)
+        :param str elb_security_group: (string)
+        :param str kubernetes_cluster_id: (string)
+        :param str kubernetes_cluster_tag: (string)
+        :param str role_arn: (string)
+        :param str route_table_id: (string)
+        :param str subnet_id: (string)
+        :param str vpc: (string)
+        :param str zone: GKE cluster zone. Conflicts with `region` (string)
+        """
         if disable_security_group_ingress is not None:
             pulumi.set(__self__, "disable_security_group_ingress", disable_security_group_ingress)
         if disable_strict_zone_check is not None:
@@ -2859,51 +3959,81 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(dict):
     @property
     @pulumi.getter(name="disableSecurityGroupIngress")
     def disable_security_group_ingress(self) -> Optional[bool]:
+        """
+        Default `false` (bool)
+        """
         return pulumi.get(self, "disable_security_group_ingress")
 
     @property
     @pulumi.getter(name="disableStrictZoneCheck")
     def disable_strict_zone_check(self) -> Optional[bool]:
+        """
+        Default `false` (bool)
+        """
         return pulumi.get(self, "disable_strict_zone_check")
 
     @property
     @pulumi.getter(name="elbSecurityGroup")
     def elb_security_group(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "elb_security_group")
 
     @property
     @pulumi.getter(name="kubernetesClusterId")
     def kubernetes_cluster_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "kubernetes_cluster_id")
 
     @property
     @pulumi.getter(name="kubernetesClusterTag")
     def kubernetes_cluster_tag(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "kubernetes_cluster_tag")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def vpc(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vpc")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        GKE cluster zone. Conflicts with `region` (string)
+        """
         return pulumi.get(self, "zone")
 
     def _translate_property(self, prop):
@@ -2919,6 +4049,14 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(dict):
                  signing_name: Optional[str] = None,
                  signing_region: Optional[str] = None,
                  url: Optional[str] = None):
+        """
+        :param str service: (string)
+        :param str region: GKE cluster region. Conflicts with `zone` (string)
+        :param str signing_method: (string)
+        :param str signing_name: (string)
+        :param str signing_region: (string)
+        :param str url: Registry URL (string)
+        """
         pulumi.set(__self__, "service", service)
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -2934,31 +4072,49 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(dict):
     @property
     @pulumi.getter
     def service(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "service")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        GKE cluster region. Conflicts with `zone` (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="signingMethod")
     def signing_method(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_method")
 
     @property
     @pulumi.getter(name="signingName")
     def signing_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_name")
 
     @property
     @pulumi.getter(name="signingRegion")
     def signing_region(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_region")
 
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        Registry URL (string)
+        """
         return pulumi.get(self, "url")
 
     def _translate_property(self, prop):
@@ -2997,6 +4153,37 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
                  vm_type: Optional[str] = None,
                  vnet_name: Optional[str] = None,
                  vnet_resource_group: Optional[str] = None):
+        """
+        :param str aad_client_id: (string)
+        :param str aad_client_secret: (string)
+        :param str subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        :param str tenant_id: Azure tenant ID to use (string)
+        :param str aad_client_cert_password: (string)
+        :param str aad_client_cert_path: (string)
+        :param str cloud: (string)
+        :param bool cloud_provider_backoff: (bool)
+        :param float cloud_provider_backoff_duration: (int)
+        :param float cloud_provider_backoff_exponent: (int)
+        :param float cloud_provider_backoff_jitter: (int)
+        :param float cloud_provider_backoff_retries: (int)
+        :param bool cloud_provider_rate_limit: (bool)
+        :param float cloud_provider_rate_limit_bucket: (int)
+        :param float cloud_provider_rate_limit_qps: (int)
+        :param str load_balancer_sku: Allowed values: `basic` (default) `standard` (string)
+        :param str location: Azure Kubernetes cluster location. Default `eastus` (string)
+        :param float maximum_load_balancer_rule_count: (int)
+        :param str primary_availability_set_name: (string)
+        :param str primary_scale_set_name: (string)
+        :param str resource_group: The name of the Cluster resource group (string)
+        :param str route_table_name: (string)
+        :param str security_group_name: (string)
+        :param str subnet_name: (string)
+        :param bool use_instance_metadata: (bool)
+        :param bool use_managed_identity_extension: (bool)
+        :param str vm_type: (string)
+        :param str vnet_name: (string)
+        :param str vnet_resource_group: (string)
+        """
         pulumi.set(__self__, "aad_client_id", aad_client_id)
         pulumi.set(__self__, "aad_client_secret", aad_client_secret)
         pulumi.set(__self__, "subscription_id", subscription_id)
@@ -3055,146 +4242,233 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
     @property
     @pulumi.getter(name="aadClientId")
     def aad_client_id(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_id")
 
     @property
     @pulumi.getter(name="aadClientSecret")
     def aad_client_secret(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_secret")
 
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> str:
+        """
+        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        """
         return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
+        """
+        Azure tenant ID to use (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="aadClientCertPassword")
     def aad_client_cert_password(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_cert_password")
 
     @property
     @pulumi.getter(name="aadClientCertPath")
     def aad_client_cert_path(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_cert_path")
 
     @property
     @pulumi.getter
     def cloud(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "cloud")
 
     @property
     @pulumi.getter(name="cloudProviderBackoff")
     def cloud_provider_backoff(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "cloud_provider_backoff")
 
     @property
     @pulumi.getter(name="cloudProviderBackoffDuration")
     def cloud_provider_backoff_duration(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_duration")
 
     @property
     @pulumi.getter(name="cloudProviderBackoffExponent")
     def cloud_provider_backoff_exponent(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_exponent")
 
     @property
     @pulumi.getter(name="cloudProviderBackoffJitter")
     def cloud_provider_backoff_jitter(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_jitter")
 
     @property
     @pulumi.getter(name="cloudProviderBackoffRetries")
     def cloud_provider_backoff_retries(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_retries")
 
     @property
     @pulumi.getter(name="cloudProviderRateLimit")
     def cloud_provider_rate_limit(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit")
 
     @property
     @pulumi.getter(name="cloudProviderRateLimitBucket")
     def cloud_provider_rate_limit_bucket(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit_bucket")
 
     @property
     @pulumi.getter(name="cloudProviderRateLimitQps")
     def cloud_provider_rate_limit_qps(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit_qps")
 
     @property
     @pulumi.getter(name="loadBalancerSku")
     def load_balancer_sku(self) -> Optional[str]:
+        """
+        Allowed values: `basic` (default) `standard` (string)
+        """
         return pulumi.get(self, "load_balancer_sku")
 
     @property
     @pulumi.getter
     def location(self) -> Optional[str]:
+        """
+        Azure Kubernetes cluster location. Default `eastus` (string)
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="maximumLoadBalancerRuleCount")
     def maximum_load_balancer_rule_count(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "maximum_load_balancer_rule_count")
 
     @property
     @pulumi.getter(name="primaryAvailabilitySetName")
     def primary_availability_set_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "primary_availability_set_name")
 
     @property
     @pulumi.getter(name="primaryScaleSetName")
     def primary_scale_set_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "primary_scale_set_name")
 
     @property
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[str]:
+        """
+        The name of the Cluster resource group (string)
+        """
         return pulumi.get(self, "resource_group")
 
     @property
     @pulumi.getter(name="routeTableName")
     def route_table_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "route_table_name")
 
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "security_group_name")
 
     @property
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_name")
 
     @property
     @pulumi.getter(name="useInstanceMetadata")
     def use_instance_metadata(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_instance_metadata")
 
     @property
     @pulumi.getter(name="useManagedIdentityExtension")
     def use_managed_identity_extension(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_managed_identity_extension")
 
     @property
     @pulumi.getter(name="vmType")
     def vm_type(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vm_type")
 
     @property
     @pulumi.getter(name="vnetName")
     def vnet_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vnet_name")
 
     @property
     @pulumi.getter(name="vnetResourceGroup")
     def vnet_resource_group(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vnet_resource_group")
 
     def _translate_property(self, prop):
@@ -3209,6 +4483,13 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProvider(dict):
                  load_balancer: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer'] = None,
                  metadata: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata'] = None,
                  route: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute'] = None):
+        """
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs' global_: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs' block_storage: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs' load_balancer: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs' metadata: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs' route: (list maxitems:1)
+        """
         pulumi.set(__self__, "global_", global_)
         if block_storage is not None:
             pulumi.set(__self__, "block_storage", block_storage)
@@ -3222,26 +4503,41 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProvider(dict):
     @property
     @pulumi.getter(name="global")
     def global_(self) -> 'outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal':
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @property
     @pulumi.getter(name="blockStorage")
     def block_storage(self) -> Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "block_storage")
 
     @property
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "load_balancer")
 
     @property
     @pulumi.getter
     def metadata(self) -> Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def route(self) -> Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "route")
 
     def _translate_property(self, prop):
@@ -3254,6 +4550,11 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(dict):
                  bs_version: Optional[str] = None,
                  ignore_volume_az: Optional[bool] = None,
                  trust_device_path: Optional[bool] = None):
+        """
+        :param str bs_version: (string)
+        :param bool ignore_volume_az: (string)
+        :param bool trust_device_path: (string)
+        """
         if bs_version is not None:
             pulumi.set(__self__, "bs_version", bs_version)
         if ignore_volume_az is not None:
@@ -3264,16 +4565,25 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(dict):
     @property
     @pulumi.getter(name="bsVersion")
     def bs_version(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "bs_version")
 
     @property
     @pulumi.getter(name="ignoreVolumeAz")
     def ignore_volume_az(self) -> Optional[bool]:
+        """
+        (string)
+        """
         return pulumi.get(self, "ignore_volume_az")
 
     @property
     @pulumi.getter(name="trustDevicePath")
     def trust_device_path(self) -> Optional[bool]:
+        """
+        (string)
+        """
         return pulumi.get(self, "trust_device_path")
 
     def _translate_property(self, prop):
@@ -3293,6 +4603,18 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(dict):
                  tenant_id: Optional[str] = None,
                  tenant_name: Optional[str] = None,
                  trust_id: Optional[str] = None):
+        """
+        :param str auth_url: (string)
+        :param str password: Registry password (string)
+        :param str username: (string)
+        :param str ca_file: (string)
+        :param str domain_id: Required if `domain_name` not provided. (string)
+        :param str domain_name: Required if `domain_id` not provided. (string)
+        :param str region: GKE cluster region. Conflicts with `zone` (string)
+        :param str tenant_id: Azure tenant ID to use (string)
+        :param str tenant_name: Required if `tenant_id` not provided. (string)
+        :param str trust_id: (string)
+        """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
@@ -3314,51 +4636,81 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(dict):
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="caFile")
     def ca_file(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "ca_file")
 
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[str]:
+        """
+        Required if `domain_name` not provided. (string)
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[str]:
+        """
+        Required if `domain_id` not provided. (string)
+        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        GKE cluster region. Conflicts with `zone` (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
+        """
+        Azure tenant ID to use (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[str]:
+        """
+        Required if `tenant_id` not provided. (string)
+        """
         return pulumi.get(self, "tenant_name")
 
     @property
     @pulumi.getter(name="trustId")
     def trust_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "trust_id")
 
     def _translate_property(self, prop):
@@ -3379,6 +4731,19 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer(dict):
                  monitor_timeout: Optional[str] = None,
                  subnet_id: Optional[str] = None,
                  use_octavia: Optional[bool] = None):
+        """
+        :param bool create_monitor: (bool)
+        :param str floating_network_id: (string)
+        :param str lb_method: (string)
+        :param str lb_provider: (string)
+        :param str lb_version: (string)
+        :param bool manage_security_groups: (bool)
+        :param str monitor_delay: Default `60s` (string)
+        :param float monitor_max_retries: Default 5 (int)
+        :param str monitor_timeout: Default `30s` (string)
+        :param str subnet_id: (string)
+        :param bool use_octavia: (bool)
+        """
         if create_monitor is not None:
             pulumi.set(__self__, "create_monitor", create_monitor)
         if floating_network_id is not None:
@@ -3405,56 +4770,89 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer(dict):
     @property
     @pulumi.getter(name="createMonitor")
     def create_monitor(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "create_monitor")
 
     @property
     @pulumi.getter(name="floatingNetworkId")
     def floating_network_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "floating_network_id")
 
     @property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_method")
 
     @property
     @pulumi.getter(name="lbProvider")
     def lb_provider(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_provider")
 
     @property
     @pulumi.getter(name="lbVersion")
     def lb_version(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_version")
 
     @property
     @pulumi.getter(name="manageSecurityGroups")
     def manage_security_groups(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "manage_security_groups")
 
     @property
     @pulumi.getter(name="monitorDelay")
     def monitor_delay(self) -> Optional[str]:
+        """
+        Default `60s` (string)
+        """
         return pulumi.get(self, "monitor_delay")
 
     @property
     @pulumi.getter(name="monitorMaxRetries")
     def monitor_max_retries(self) -> Optional[float]:
+        """
+        Default 5 (int)
+        """
         return pulumi.get(self, "monitor_max_retries")
 
     @property
     @pulumi.getter(name="monitorTimeout")
     def monitor_timeout(self) -> Optional[str]:
+        """
+        Default `30s` (string)
+        """
         return pulumi.get(self, "monitor_timeout")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="useOctavia")
     def use_octavia(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_octavia")
 
     def _translate_property(self, prop):
@@ -3466,6 +4864,10 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(dict):
     def __init__(__self__, *,
                  request_timeout: Optional[float] = None,
                  search_order: Optional[str] = None):
+        """
+        :param float request_timeout: (int)
+        :param str search_order: (string)
+        """
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if search_order is not None:
@@ -3474,11 +4876,17 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(dict):
     @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "request_timeout")
 
     @property
     @pulumi.getter(name="searchOrder")
     def search_order(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "search_order")
 
     def _translate_property(self, prop):
@@ -3489,12 +4897,18 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(dict):
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(dict):
     def __init__(__self__, *,
                  router_id: Optional[str] = None):
+        """
+        :param str router_id: (string)
+        """
         if router_id is not None:
             pulumi.set(__self__, "router_id", router_id)
 
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "router_id")
 
     def _translate_property(self, prop):
@@ -3509,6 +4923,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
                  disk: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDisk'] = None,
                  global_: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal'] = None,
                  network: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork'] = None):
+        """
+        :param List['ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs'] virtual_centers: (List)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs' workspace: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs' disk: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs' global_: (list maxitems:1)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs' network: Network for GKE cluster (string)
+        """
         pulumi.set(__self__, "virtual_centers", virtual_centers)
         pulumi.set(__self__, "workspace", workspace)
         if disk is not None:
@@ -3521,26 +4942,41 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
     @property
     @pulumi.getter(name="virtualCenters")
     def virtual_centers(self) -> List['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter']:
+        """
+        (List)
+        """
         return pulumi.get(self, "virtual_centers")
 
     @property
     @pulumi.getter
     def workspace(self) -> 'outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace':
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "workspace")
 
     @property
     @pulumi.getter
     def disk(self) -> Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDisk']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter(name="global")
     def global_(self) -> Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @property
     @pulumi.getter
     def network(self) -> Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork']:
+        """
+        Network for GKE cluster (string)
+        """
         return pulumi.get(self, "network")
 
     def _translate_property(self, prop):
@@ -3551,12 +4987,18 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
 class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk(dict):
     def __init__(__self__, *,
                  scsi_controller_type: Optional[str] = None):
+        """
+        :param str scsi_controller_type: (string)
+        """
         if scsi_controller_type is not None:
             pulumi.set(__self__, "scsi_controller_type", scsi_controller_type)
 
     @property
     @pulumi.getter(name="scsiControllerType")
     def scsi_controller_type(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "scsi_controller_type")
 
     def _translate_property(self, prop):
@@ -3572,6 +5014,14 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
                  port: Optional[str] = None,
                  soap_roundtrip_count: Optional[float] = None,
                  user: Optional[str] = None):
+        """
+        :param str datacenters: (string)
+        :param bool insecure_flag: (bool)
+        :param str password: Registry password (string)
+        :param str port: Port for node. Default `22` (string)
+        :param float soap_roundtrip_count: (int)
+        :param str user: Registry user (string)
+        """
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
         if insecure_flag is not None:
@@ -3588,31 +5038,49 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
     @property
     @pulumi.getter
     def datacenters(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter(name="insecureFlag")
     def insecure_flag(self) -> Optional[bool]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "insecure_flag")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="soapRoundtripCount")
     def soap_roundtrip_count(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "soap_roundtrip_count")
 
     @property
     @pulumi.getter
     def user(self) -> Optional[str]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     def _translate_property(self, prop):
@@ -3623,12 +5091,18 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
 class ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(dict):
     def __init__(__self__, *,
                  public_network: Optional[str] = None):
+        """
+        :param str public_network: (string)
+        """
         if public_network is not None:
             pulumi.set(__self__, "public_network", public_network)
 
     @property
     @pulumi.getter(name="publicNetwork")
     def public_network(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "public_network")
 
     def _translate_property(self, prop):
@@ -3644,6 +5118,14 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(dict):
                  user: str,
                  port: Optional[str] = None,
                  soap_roundtrip_count: Optional[float] = None):
+        """
+        :param str datacenters: (string)
+        :param str name: Name of cluster registration token (string)
+        :param str password: Registry password (string)
+        :param str user: Registry user (string)
+        :param str port: Port for node. Default `22` (string)
+        :param float soap_roundtrip_count: (int)
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "password", password)
@@ -3656,31 +5138,49 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(dict):
     @property
     @pulumi.getter
     def datacenters(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def user(self) -> str:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="soapRoundtripCount")
     def soap_roundtrip_count(self) -> Optional[float]:
+        """
+        (int)
+        """
         return pulumi.get(self, "soap_roundtrip_count")
 
     def _translate_property(self, prop):
@@ -3695,6 +5195,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(dict):
                  server: str,
                  default_datastore: Optional[str] = None,
                  resourcepool_path: Optional[str] = None):
+        """
+        :param str datacenter: (string)
+        :param str folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param str server: (string)
+        :param str default_datastore: (string)
+        :param str resourcepool_path: (string)
+        """
         pulumi.set(__self__, "datacenter", datacenter)
         pulumi.set(__self__, "folder", folder)
         pulumi.set(__self__, "server", server)
@@ -3706,26 +5213,41 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(dict):
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter
     def folder(self) -> str:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
     def server(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "server")
 
     @property
     @pulumi.getter(name="defaultDatastore")
     def default_datastore(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "default_datastore")
 
     @property
     @pulumi.getter(name="resourcepoolPath")
     def resourcepool_path(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "resourcepool_path")
 
     def _translate_property(self, prop):
@@ -3740,6 +5262,13 @@ class ClusterRkeConfigDns(dict):
                  provider: Optional[str] = None,
                  reverse_cidrs: Optional[List[str]] = None,
                  upstream_nameservers: Optional[List[str]] = None):
+        """
+        :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
+        :param 'ClusterRkeConfigDnsNodelocalArgs' nodelocal: Nodelocal dns config  (list Maxitem: 1)
+        :param str provider: RKE monitoring provider (string)
+        :param List[str] reverse_cidrs: DNS add-on reverse cidr  (list)
+        :param List[str] upstream_nameservers: DNS add-on upstream nameservers  (list)
+        """
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
@@ -3754,26 +5283,41 @@ class ClusterRkeConfigDns(dict):
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter
     def nodelocal(self) -> Optional['outputs.ClusterRkeConfigDnsNodelocal']:
+        """
+        Nodelocal dns config  (list Maxitem: 1)
+        """
         return pulumi.get(self, "nodelocal")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter(name="reverseCidrs")
     def reverse_cidrs(self) -> Optional[List[str]]:
+        """
+        DNS add-on reverse cidr  (list)
+        """
         return pulumi.get(self, "reverse_cidrs")
 
     @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[List[str]]:
+        """
+        DNS add-on upstream nameservers  (list)
+        """
         return pulumi.get(self, "upstream_nameservers")
 
     def _translate_property(self, prop):
@@ -3785,6 +5329,10 @@ class ClusterRkeConfigDnsNodelocal(dict):
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  node_selector: Optional[Mapping[str, Any]] = None):
+        """
+        :param str ip_address: Nodelocal dns ip address (string)
+        :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
+        """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if node_selector is not None:
@@ -3793,11 +5341,17 @@ class ClusterRkeConfigDnsNodelocal(dict):
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
+        """
+        Nodelocal dns ip address (string)
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     def _translate_property(self, prop):
@@ -3812,6 +5366,13 @@ class ClusterRkeConfigIngress(dict):
                  node_selector: Optional[Mapping[str, Any]] = None,
                  options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None):
+        """
+        :param str dns_policy: Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
+        :param Mapping[str, Any] options: RKE options for network (map)
+        :param str provider: RKE monitoring provider (string)
+        """
         if dns_policy is not None:
             pulumi.set(__self__, "dns_policy", dns_policy)
         if extra_args is not None:
@@ -3826,26 +5387,41 @@ class ClusterRkeConfigIngress(dict):
     @property
     @pulumi.getter(name="dnsPolicy")
     def dns_policy(self) -> Optional[str]:
+        """
+        Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        """
         return pulumi.get(self, "dns_policy")
 
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter
     def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     def _translate_property(self, prop):
@@ -3860,6 +5436,13 @@ class ClusterRkeConfigMonitoring(dict):
                  provider: Optional[str] = None,
                  replicas: Optional[float] = None,
                  update_strategy: Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategy'] = None):
+        """
+        :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
+        :param Mapping[str, Any] options: RKE options for network (map)
+        :param str provider: RKE monitoring provider (string)
+        :param float replicas: RKE monitoring replicas (int)
+        :param 'ClusterRkeConfigMonitoringUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
+        """
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if options is not None:
@@ -3874,26 +5457,41 @@ class ClusterRkeConfigMonitoring(dict):
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter
     def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter
     def replicas(self) -> Optional[float]:
+        """
+        RKE monitoring replicas (int)
+        """
         return pulumi.get(self, "replicas")
 
     @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategy']:
+        """
+        RKE monitoring update strategy (list Maxitems: 1)
+        """
         return pulumi.get(self, "update_strategy")
 
     def _translate_property(self, prop):
@@ -3905,6 +5503,10 @@ class ClusterRkeConfigMonitoringUpdateStrategy(dict):
     def __init__(__self__, *,
                  rolling_update: Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate'] = None,
                  strategy: Optional[str] = None):
+        """
+        :param 'ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs' rolling_update: Monitoring deployment rolling update (list Maxitems: 1)
+        :param str strategy: Monitoring deployment update strategy (string)
+        """
         if rolling_update is not None:
             pulumi.set(__self__, "rolling_update", rolling_update)
         if strategy is not None:
@@ -3913,11 +5515,17 @@ class ClusterRkeConfigMonitoringUpdateStrategy(dict):
     @property
     @pulumi.getter(name="rollingUpdate")
     def rolling_update(self) -> Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate']:
+        """
+        Monitoring deployment rolling update (list Maxitems: 1)
+        """
         return pulumi.get(self, "rolling_update")
 
     @property
     @pulumi.getter
     def strategy(self) -> Optional[str]:
+        """
+        Monitoring deployment update strategy (string)
+        """
         return pulumi.get(self, "strategy")
 
     def _translate_property(self, prop):
@@ -3929,6 +5537,10 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(dict):
     def __init__(__self__, *,
                  max_surge: Optional[float] = None,
                  max_unavailable: Optional[float] = None):
+        """
+        :param float max_surge: Monitoring deployment rolling update max surge. Default: `1` (int)
+        :param float max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
         if max_surge is not None:
             pulumi.set(__self__, "max_surge", max_surge)
         if max_unavailable is not None:
@@ -3937,11 +5549,17 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(dict):
     @property
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[float]:
+        """
+        Monitoring deployment rolling update max surge. Default: `1` (int)
+        """
         return pulumi.get(self, "max_surge")
 
     @property
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> Optional[float]:
+        """
+        Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
         return pulumi.get(self, "max_unavailable")
 
     def _translate_property(self, prop):
@@ -3958,6 +5576,15 @@ class ClusterRkeConfigNetwork(dict):
                  options: Optional[Mapping[str, Any]] = None,
                  plugin: Optional[str] = None,
                  weave_network_provider: Optional['outputs.ClusterRkeConfigNetworkWeaveNetworkProvider'] = None):
+        """
+        :param 'ClusterRkeConfigNetworkCalicoNetworkProviderArgs' calico_network_provider: Calico provider config for RKE network (list maxitems:1)
+        :param 'ClusterRkeConfigNetworkCanalNetworkProviderArgs' canal_network_provider: Canal provider config for RKE network (list maxitems:1)
+        :param 'ClusterRkeConfigNetworkFlannelNetworkProviderArgs' flannel_network_provider: Flannel provider config for RKE network (list maxitems:1)
+        :param float mtu: Network provider MTU. Default `0` (int)
+        :param Mapping[str, Any] options: RKE options for network (map)
+        :param str plugin: Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        :param 'ClusterRkeConfigNetworkWeaveNetworkProviderArgs' weave_network_provider: Weave provider config for RKE network (list maxitems:1)
+        """
         if calico_network_provider is not None:
             pulumi.set(__self__, "calico_network_provider", calico_network_provider)
         if canal_network_provider is not None:
@@ -3976,36 +5603,57 @@ class ClusterRkeConfigNetwork(dict):
     @property
     @pulumi.getter(name="calicoNetworkProvider")
     def calico_network_provider(self) -> Optional['outputs.ClusterRkeConfigNetworkCalicoNetworkProvider']:
+        """
+        Calico provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "calico_network_provider")
 
     @property
     @pulumi.getter(name="canalNetworkProvider")
     def canal_network_provider(self) -> Optional['outputs.ClusterRkeConfigNetworkCanalNetworkProvider']:
+        """
+        Canal provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "canal_network_provider")
 
     @property
     @pulumi.getter(name="flannelNetworkProvider")
     def flannel_network_provider(self) -> Optional['outputs.ClusterRkeConfigNetworkFlannelNetworkProvider']:
+        """
+        Flannel provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "flannel_network_provider")
 
     @property
     @pulumi.getter
     def mtu(self) -> Optional[float]:
+        """
+        Network provider MTU. Default `0` (int)
+        """
         return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter
     def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def plugin(self) -> Optional[str]:
+        """
+        Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        """
         return pulumi.get(self, "plugin")
 
     @property
     @pulumi.getter(name="weaveNetworkProvider")
     def weave_network_provider(self) -> Optional['outputs.ClusterRkeConfigNetworkWeaveNetworkProvider']:
+        """
+        Weave provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "weave_network_provider")
 
     def _translate_property(self, prop):
@@ -4016,12 +5664,18 @@ class ClusterRkeConfigNetwork(dict):
 class ClusterRkeConfigNetworkCalicoNetworkProvider(dict):
     def __init__(__self__, *,
                  cloud_provider: Optional[str] = None):
+        """
+        :param str cloud_provider: RKE options for Calico network provider (string)
+        """
         if cloud_provider is not None:
             pulumi.set(__self__, "cloud_provider", cloud_provider)
 
     @property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> Optional[str]:
+        """
+        RKE options for Calico network provider (string)
+        """
         return pulumi.get(self, "cloud_provider")
 
     def _translate_property(self, prop):
@@ -4032,12 +5686,18 @@ class ClusterRkeConfigNetworkCalicoNetworkProvider(dict):
 class ClusterRkeConfigNetworkCanalNetworkProvider(dict):
     def __init__(__self__, *,
                  iface: Optional[str] = None):
+        """
+        :param str iface: Iface config Flannel network provider (string)
+        """
         if iface is not None:
             pulumi.set(__self__, "iface", iface)
 
     @property
     @pulumi.getter
     def iface(self) -> Optional[str]:
+        """
+        Iface config Flannel network provider (string)
+        """
         return pulumi.get(self, "iface")
 
     def _translate_property(self, prop):
@@ -4048,12 +5708,18 @@ class ClusterRkeConfigNetworkCanalNetworkProvider(dict):
 class ClusterRkeConfigNetworkFlannelNetworkProvider(dict):
     def __init__(__self__, *,
                  iface: Optional[str] = None):
+        """
+        :param str iface: Iface config Flannel network provider (string)
+        """
         if iface is not None:
             pulumi.set(__self__, "iface", iface)
 
     @property
     @pulumi.getter
     def iface(self) -> Optional[str]:
+        """
+        Iface config Flannel network provider (string)
+        """
         return pulumi.get(self, "iface")
 
     def _translate_property(self, prop):
@@ -4064,11 +5730,17 @@ class ClusterRkeConfigNetworkFlannelNetworkProvider(dict):
 class ClusterRkeConfigNetworkWeaveNetworkProvider(dict):
     def __init__(__self__, *,
                  password: str):
+        """
+        :param str password: Registry password (string)
+        """
         pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     def _translate_property(self, prop):
@@ -4090,6 +5762,20 @@ class ClusterRkeConfigNode(dict):
                  ssh_agent_auth: Optional[bool] = None,
                  ssh_key: Optional[str] = None,
                  ssh_key_path: Optional[str] = None):
+        """
+        :param str address: Address ip for node (string)
+        :param List[str] roles: Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        :param str user: Registry user (string)
+        :param str docker_socket: Docker socket for node (string)
+        :param str hostname_override: Hostname override for node (string)
+        :param str internal_address: Internal ip for node (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param str node_id: Id for the node (string)
+        :param str port: Port for node. Default `22` (string)
+        :param bool ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
+        :param str ssh_key: Node SSH private key (string)
+        :param str ssh_key_path: Node SSH private key path (string)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "roles", roles)
         pulumi.set(__self__, "user", user)
@@ -4115,61 +5801,97 @@ class ClusterRkeConfigNode(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        Address ip for node (string)
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def roles(self) -> List[str]:
+        """
+        Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def user(self) -> str:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @property
     @pulumi.getter(name="dockerSocket")
     def docker_socket(self) -> Optional[str]:
+        """
+        Docker socket for node (string)
+        """
         return pulumi.get(self, "docker_socket")
 
     @property
     @pulumi.getter(name="hostnameOverride")
     def hostname_override(self) -> Optional[str]:
+        """
+        Hostname override for node (string)
+        """
         return pulumi.get(self, "hostname_override")
 
     @property
     @pulumi.getter(name="internalAddress")
     def internal_address(self) -> Optional[str]:
+        """
+        Internal ip for node (string)
+        """
         return pulumi.get(self, "internal_address")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
+        """
+        Id for the node (string)
+        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="sshAgentAuth")
     def ssh_agent_auth(self) -> Optional[bool]:
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
         return pulumi.get(self, "ssh_agent_auth")
 
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[str]:
+        """
+        Node SSH private key (string)
+        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[str]:
+        """
+        Node SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     def _translate_property(self, prop):
@@ -4183,6 +5905,12 @@ class ClusterRkeConfigPrivateRegistry(dict):
                  is_default: Optional[bool] = None,
                  password: Optional[str] = None,
                  user: Optional[str] = None):
+        """
+        :param str url: Registry URL (string)
+        :param bool is_default: Set as default registry. Default `false` (bool)
+        :param str password: Registry password (string)
+        :param str user: Registry user (string)
+        """
         pulumi.set(__self__, "url", url)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
@@ -4194,21 +5922,33 @@ class ClusterRkeConfigPrivateRegistry(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        Registry URL (string)
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[bool]:
+        """
+        Set as default registry. Default `false` (bool)
+        """
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def user(self) -> Optional[str]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     def _translate_property(self, prop):
@@ -4224,6 +5964,14 @@ class ClusterRkeConfigServices(dict):
                  kubelet: Optional['outputs.ClusterRkeConfigServicesKubelet'] = None,
                  kubeproxy: Optional['outputs.ClusterRkeConfigServicesKubeproxy'] = None,
                  scheduler: Optional['outputs.ClusterRkeConfigServicesScheduler'] = None):
+        """
+        :param 'ClusterRkeConfigServicesEtcdArgs' etcd: Etcd options for RKE services (list maxitems:1)
+        :param 'ClusterRkeConfigServicesKubeApiArgs' kube_api: Kube API options for RKE services (list maxitems:1)
+        :param 'ClusterRkeConfigServicesKubeControllerArgs' kube_controller: Kube Controller options for RKE services (list maxitems:1)
+        :param 'ClusterRkeConfigServicesKubeletArgs' kubelet: Kubelet options for RKE services (list maxitems:1)
+        :param 'ClusterRkeConfigServicesKubeproxyArgs' kubeproxy: Kubeproxy options for RKE services (list maxitems:1)
+        :param 'ClusterRkeConfigServicesSchedulerArgs' scheduler: Scheduler options for RKE services (list maxitems:1)
+        """
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if kube_api is not None:
@@ -4240,31 +5988,49 @@ class ClusterRkeConfigServices(dict):
     @property
     @pulumi.getter
     def etcd(self) -> Optional['outputs.ClusterRkeConfigServicesEtcd']:
+        """
+        Etcd options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "etcd")
 
     @property
     @pulumi.getter(name="kubeApi")
     def kube_api(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApi']:
+        """
+        Kube API options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kube_api")
 
     @property
     @pulumi.getter(name="kubeController")
     def kube_controller(self) -> Optional['outputs.ClusterRkeConfigServicesKubeController']:
+        """
+        Kube Controller options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kube_controller")
 
     @property
     @pulumi.getter
     def kubelet(self) -> Optional['outputs.ClusterRkeConfigServicesKubelet']:
+        """
+        Kubelet options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kubelet")
 
     @property
     @pulumi.getter
     def kubeproxy(self) -> Optional['outputs.ClusterRkeConfigServicesKubeproxy']:
+        """
+        Kubeproxy options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kubeproxy")
 
     @property
     @pulumi.getter
     def scheduler(self) -> Optional['outputs.ClusterRkeConfigServicesScheduler']:
+        """
+        Scheduler options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "scheduler")
 
     def _translate_property(self, prop):
@@ -4289,6 +6055,23 @@ class ClusterRkeConfigServicesEtcd(dict):
                  retention: Optional[str] = None,
                  snapshot: Optional[bool] = None,
                  uid: Optional[float] = None):
+        """
+        :param 'ClusterRkeConfigServicesEtcdBackupConfigArgs' backup_config: Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        :param str ca_cert: TLS CA certificate for etcd service (string)
+        :param str cert: TLS certificate for etcd service (string)
+        :param str creation: Creation option for etcd service (string)
+        :param List[str] external_urls: External urls for etcd service (list)
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param float gid: Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        :param str image: Docker image for scheduler service (string)
+        :param str key: TLS key for etcd service (string)
+        :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param str retention: Retention for etcd backup. Default `6` (int)
+        :param bool snapshot: Snapshot option for etcd service (bool)
+        :param float uid: Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        """
         if backup_config is not None:
             pulumi.set(__self__, "backup_config", backup_config)
         if ca_cert is not None:
@@ -4323,76 +6106,121 @@ class ClusterRkeConfigServicesEtcd(dict):
     @property
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> Optional['outputs.ClusterRkeConfigServicesEtcdBackupConfig']:
+        """
+        Backup options for etcd service. Just for Rancher v2.2.x (list maxitems:1)
+        """
         return pulumi.get(self, "backup_config")
 
     @property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> Optional[str]:
+        """
+        TLS CA certificate for etcd service (string)
+        """
         return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter
     def cert(self) -> Optional[str]:
+        """
+        TLS certificate for etcd service (string)
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter
     def creation(self) -> Optional[str]:
+        """
+        Creation option for etcd service (string)
+        """
         return pulumi.get(self, "creation")
 
     @property
     @pulumi.getter(name="externalUrls")
     def external_urls(self) -> Optional[List[str]]:
+        """
+        External urls for etcd service (list)
+        """
         return pulumi.get(self, "external_urls")
 
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter
     def gid(self) -> Optional[float]:
+        """
+        Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
+        """
         return pulumi.get(self, "gid")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        TLS key for etcd service (string)
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[str]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @property
     @pulumi.getter
     def snapshot(self) -> Optional[bool]:
+        """
+        Snapshot option for etcd service (bool)
+        """
         return pulumi.get(self, "snapshot")
 
     @property
     @pulumi.getter
     def uid(self) -> Optional[float]:
+        """
+        Etcd service UID. Default: `0`. For Rancher v2.3.x or above (int)
+        """
         return pulumi.get(self, "uid")
 
     def _translate_property(self, prop):
@@ -4407,6 +6235,13 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
                  retention: Optional[float] = None,
                  s3_backup_config: Optional['outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig'] = None,
                  safe_timestamp: Optional[bool] = None):
+        """
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        :param float interval_hours: Interval hours for etcd backup. Default `12` (int)
+        :param float retention: Retention for etcd backup. Default `6` (int)
+        :param 'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs' s3_backup_config: S3 config options for etcd backup (list maxitems:1)
+        :param bool safe_timestamp: Safe timestamp for etcd backup. Default: `false` (bool)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -4421,26 +6256,41 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="intervalHours")
     def interval_hours(self) -> Optional[float]:
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
         return pulumi.get(self, "interval_hours")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[float]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @property
     @pulumi.getter(name="s3BackupConfig")
     def s3_backup_config(self) -> Optional['outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig']:
+        """
+        S3 config options for etcd backup (list maxitems:1)
+        """
         return pulumi.get(self, "s3_backup_config")
 
     @property
     @pulumi.getter(name="safeTimestamp")
     def safe_timestamp(self) -> Optional[bool]:
+        """
+        Safe timestamp for etcd backup. Default: `false` (bool)
+        """
         return pulumi.get(self, "safe_timestamp")
 
     def _translate_property(self, prop):
@@ -4457,6 +6307,15 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig(dict):
                  folder: Optional[str] = None,
                  region: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str bucket_name: Bucket name for S3 service (string)
+        :param str endpoint: Endpoint for S3 service (string)
+        :param str access_key: The AWS Client ID to use (string)
+        :param str custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        :param str folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param str region: GKE cluster region. Conflicts with `zone` (string)
+        :param str secret_key: The AWS Client Secret associated with the Client ID (string)
+        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "endpoint", endpoint)
         if access_key is not None:
@@ -4473,36 +6332,57 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig(dict):
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
+        """
+        Bucket name for S3 service (string)
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint for S3 service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        The AWS Client ID to use (string)
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="customCa")
     def custom_ca(self) -> Optional[str]:
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
         return pulumi.get(self, "custom_ca")
 
     @property
     @pulumi.getter
     def folder(self) -> Optional[str]:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        GKE cluster region. Conflicts with `zone` (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        The AWS Client Secret associated with the Client ID (string)
+        """
         return pulumi.get(self, "secret_key")
 
     def _translate_property(self, prop):
@@ -4524,6 +6404,20 @@ class ClusterRkeConfigServicesKubeApi(dict):
                  secrets_encryption_config: Optional['outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig'] = None,
                  service_cluster_ip_range: Optional[str] = None,
                  service_node_port_range: Optional[str] = None):
+        """
+        :param Mapping[str, Any] admission_configuration: Admission configuration (map)
+        :param bool always_pull_images: Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+        :param 'ClusterRkeConfigServicesKubeApiAuditLogArgs' audit_log: K8s audit log configuration. (list maxitems: 1)
+        :param 'ClusterRkeConfigServicesKubeApiEventRateLimitArgs' event_rate_limit: K8s event rate limit configuration. (list maxitems: 1)
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param str image: Docker image for scheduler service (string)
+        :param bool pod_security_policy: Pod Security Policy option for kube API service. Default `false` (bool)
+        :param 'ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs' secrets_encryption_config: [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+        :param str service_cluster_ip_range: Service Cluster ip Range option for kube controller service (string)
+        :param str service_node_port_range: Service Node Port Range option for kube API service (string)
+        """
         if admission_configuration is not None:
             pulumi.set(__self__, "admission_configuration", admission_configuration)
         if always_pull_images is not None:
@@ -4552,61 +6446,97 @@ class ClusterRkeConfigServicesKubeApi(dict):
     @property
     @pulumi.getter(name="admissionConfiguration")
     def admission_configuration(self) -> Optional[Mapping[str, Any]]:
+        """
+        Admission configuration (map)
+        """
         return pulumi.get(self, "admission_configuration")
 
     @property
     @pulumi.getter(name="alwaysPullImages")
     def always_pull_images(self) -> Optional[bool]:
+        """
+        Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+        """
         return pulumi.get(self, "always_pull_images")
 
     @property
     @pulumi.getter(name="auditLog")
     def audit_log(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLog']:
+        """
+        K8s audit log configuration. (list maxitems: 1)
+        """
         return pulumi.get(self, "audit_log")
 
     @property
     @pulumi.getter(name="eventRateLimit")
     def event_rate_limit(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiEventRateLimit']:
+        """
+        K8s event rate limit configuration. (list maxitems: 1)
+        """
         return pulumi.get(self, "event_rate_limit")
 
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="podSecurityPolicy")
     def pod_security_policy(self) -> Optional[bool]:
+        """
+        Pod Security Policy option for kube API service. Default `false` (bool)
+        """
         return pulumi.get(self, "pod_security_policy")
 
     @property
     @pulumi.getter(name="secretsEncryptionConfig")
     def secrets_encryption_config(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig']:
+        """
+        [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+        """
         return pulumi.get(self, "secrets_encryption_config")
 
     @property
     @pulumi.getter(name="serviceClusterIpRange")
     def service_cluster_ip_range(self) -> Optional[str]:
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
         return pulumi.get(self, "service_cluster_ip_range")
 
     @property
     @pulumi.getter(name="serviceNodePortRange")
     def service_node_port_range(self) -> Optional[str]:
+        """
+        Service Node Port Range option for kube API service (string)
+        """
         return pulumi.get(self, "service_node_port_range")
 
     def _translate_property(self, prop):
@@ -4618,6 +6548,10 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     def __init__(__self__, *,
                  configuration: Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -4626,11 +6560,17 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     @property
     @pulumi.getter
     def configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration']:
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        """
         return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -4646,6 +6586,14 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
                  max_size: Optional[float] = None,
                  path: Optional[str] = None,
                  policy: Optional[str] = None):
+        """
+        :param str format: Audit log format. Default: 'json' (string)
+        :param float max_age: Audit log max age. Default: `30` (int)
+        :param float max_backup: Audit log max backup. Default: `10` (int)
+        :param float max_size: Audit log max size. Default: `100` (int)
+        :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
+        """
         if format is not None:
             pulumi.set(__self__, "format", format)
         if max_age is not None:
@@ -4662,31 +6610,49 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        Audit log format. Default: 'json' (string)
+        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[float]:
+        """
+        Audit log max age. Default: `30` (int)
+        """
         return pulumi.get(self, "max_age")
 
     @property
     @pulumi.getter(name="maxBackup")
     def max_backup(self) -> Optional[float]:
+        """
+        Audit log max backup. Default: `10` (int)
+        """
         return pulumi.get(self, "max_backup")
 
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[float]:
+        """
+        Audit log max size. Default: `100` (int)
+        """
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def policy(self) -> Optional[str]:
+        """
+        Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
+        """
         return pulumi.get(self, "policy")
 
     def _translate_property(self, prop):
@@ -4698,6 +6664,10 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     def __init__(__self__, *,
                  configuration: Optional[str] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -4706,11 +6676,17 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     @property
     @pulumi.getter
     def configuration(self) -> Optional[str]:
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        """
         return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -4722,6 +6698,10 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
     def __init__(__self__, *,
                  custom_config: Optional[str] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param str custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
@@ -4730,11 +6710,17 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
     @property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> Optional[str]:
+        """
+        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+        """
         return pulumi.get(self, "custom_config")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -4750,6 +6736,14 @@ class ClusterRkeConfigServicesKubeController(dict):
                  extra_envs: Optional[List[str]] = None,
                  image: Optional[str] = None,
                  service_cluster_ip_range: Optional[str] = None):
+        """
+        :param str cluster_cidr: Cluster CIDR option for kube controller service (string)
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param str image: Docker image for scheduler service (string)
+        :param str service_cluster_ip_range: Service Cluster ip Range option for kube controller service (string)
+        """
         if cluster_cidr is not None:
             pulumi.set(__self__, "cluster_cidr", cluster_cidr)
         if extra_args is not None:
@@ -4766,31 +6760,49 @@ class ClusterRkeConfigServicesKubeController(dict):
     @property
     @pulumi.getter(name="clusterCidr")
     def cluster_cidr(self) -> Optional[str]:
+        """
+        Cluster CIDR option for kube controller service (string)
+        """
         return pulumi.get(self, "cluster_cidr")
 
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="serviceClusterIpRange")
     def service_cluster_ip_range(self) -> Optional[str]:
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
         return pulumi.get(self, "service_cluster_ip_range")
 
     def _translate_property(self, prop):
@@ -4809,6 +6821,17 @@ class ClusterRkeConfigServicesKubelet(dict):
                  generate_serving_certificate: Optional[bool] = None,
                  image: Optional[str] = None,
                  infra_container_image: Optional[str] = None):
+        """
+        :param str cluster_dns_server: Cluster DNS Server option for kubelet service (string)
+        :param str cluster_domain: Cluster Domain option for kubelet service (string)
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param bool fail_swap_on: Enable or disable failing when swap on is not supported (bool)
+        :param bool generate_serving_certificate: [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        :param str image: Docker image for scheduler service (string)
+        :param str infra_container_image: Infra container image for kubelet service (string)
+        """
         if cluster_dns_server is not None:
             pulumi.set(__self__, "cluster_dns_server", cluster_dns_server)
         if cluster_domain is not None:
@@ -4831,46 +6854,73 @@ class ClusterRkeConfigServicesKubelet(dict):
     @property
     @pulumi.getter(name="clusterDnsServer")
     def cluster_dns_server(self) -> Optional[str]:
+        """
+        Cluster DNS Server option for kubelet service (string)
+        """
         return pulumi.get(self, "cluster_dns_server")
 
     @property
     @pulumi.getter(name="clusterDomain")
     def cluster_domain(self) -> Optional[str]:
+        """
+        Cluster Domain option for kubelet service (string)
+        """
         return pulumi.get(self, "cluster_domain")
 
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter(name="failSwapOn")
     def fail_swap_on(self) -> Optional[bool]:
+        """
+        Enable or disable failing when swap on is not supported (bool)
+        """
         return pulumi.get(self, "fail_swap_on")
 
     @property
     @pulumi.getter(name="generateServingCertificate")
     def generate_serving_certificate(self) -> Optional[bool]:
+        """
+        [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        """
         return pulumi.get(self, "generate_serving_certificate")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="infraContainerImage")
     def infra_container_image(self) -> Optional[str]:
+        """
+        Infra container image for kubelet service (string)
+        """
         return pulumi.get(self, "infra_container_image")
 
     def _translate_property(self, prop):
@@ -4884,6 +6934,12 @@ class ClusterRkeConfigServicesKubeproxy(dict):
                  extra_binds: Optional[List[str]] = None,
                  extra_envs: Optional[List[str]] = None,
                  image: Optional[str] = None):
+        """
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param str image: Docker image for scheduler service (string)
+        """
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
         if extra_binds is not None:
@@ -4896,21 +6952,33 @@ class ClusterRkeConfigServicesKubeproxy(dict):
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     def _translate_property(self, prop):
@@ -4924,6 +6992,12 @@ class ClusterRkeConfigServicesScheduler(dict):
                  extra_binds: Optional[List[str]] = None,
                  extra_envs: Optional[List[str]] = None,
                  image: Optional[str] = None):
+        """
+        :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param List[str] extra_binds: Extra binds for scheduler service (list)
+        :param List[str] extra_envs: Extra environment for scheduler service (list)
+        :param str image: Docker image for scheduler service (string)
+        """
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
         if extra_binds is not None:
@@ -4936,21 +7010,33 @@ class ClusterRkeConfigServicesScheduler(dict):
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[List[str]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[List[str]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     def _translate_property(self, prop):
@@ -4964,6 +7050,12 @@ class ClusterRkeConfigUpgradeStrategy(dict):
                  drain_input: Optional['outputs.ClusterRkeConfigUpgradeStrategyDrainInput'] = None,
                  max_unavailable_controlplane: Optional[str] = None,
                  max_unavailable_worker: Optional[str] = None):
+        """
+        :param bool drain: RKE drain nodes. Default: `false` (bool)
+        :param 'ClusterRkeConfigUpgradeStrategyDrainInputArgs' drain_input: RKE drain node input (list Maxitems: 1)
+        :param str max_unavailable_controlplane: RKE max unavailable controlplane nodes. Default: `1` (string)
+        :param str max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%` (string)
+        """
         if drain is not None:
             pulumi.set(__self__, "drain", drain)
         if drain_input is not None:
@@ -4976,21 +7068,33 @@ class ClusterRkeConfigUpgradeStrategy(dict):
     @property
     @pulumi.getter
     def drain(self) -> Optional[bool]:
+        """
+        RKE drain nodes. Default: `false` (bool)
+        """
         return pulumi.get(self, "drain")
 
     @property
     @pulumi.getter(name="drainInput")
     def drain_input(self) -> Optional['outputs.ClusterRkeConfigUpgradeStrategyDrainInput']:
+        """
+        RKE drain node input (list Maxitems: 1)
+        """
         return pulumi.get(self, "drain_input")
 
     @property
     @pulumi.getter(name="maxUnavailableControlplane")
     def max_unavailable_controlplane(self) -> Optional[str]:
+        """
+        RKE max unavailable controlplane nodes. Default: `1` (string)
+        """
         return pulumi.get(self, "max_unavailable_controlplane")
 
     @property
     @pulumi.getter(name="maxUnavailableWorker")
     def max_unavailable_worker(self) -> Optional[str]:
+        """
+        RKE max unavailable worker nodes. Default: `10%` (string)
+        """
         return pulumi.get(self, "max_unavailable_worker")
 
     def _translate_property(self, prop):
@@ -5005,6 +7109,13 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
                  grace_period: Optional[float] = None,
                  ignore_daemon_sets: Optional[bool] = None,
                  timeout: Optional[float] = None):
+        """
+        :param bool delete_local_data: Delete RKE node local data. Default: `false` (bool)
+        :param bool force: Force RKE node drain. Default: `false` (bool)
+        :param float grace_period: RKE node drain grace period. Default: `-1` (int)
+        :param bool ignore_daemon_sets: Ignore RKE daemon sets. Default: `true` (bool)
+        :param float timeout: RKE node drain timeout. Default: `60` (int)
+        """
         if delete_local_data is not None:
             pulumi.set(__self__, "delete_local_data", delete_local_data)
         if force is not None:
@@ -5019,26 +7130,41 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
     @property
     @pulumi.getter(name="deleteLocalData")
     def delete_local_data(self) -> Optional[bool]:
+        """
+        Delete RKE node local data. Default: `false` (bool)
+        """
         return pulumi.get(self, "delete_local_data")
 
     @property
     @pulumi.getter
     def force(self) -> Optional[bool]:
+        """
+        Force RKE node drain. Default: `false` (bool)
+        """
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[float]:
+        """
+        RKE node drain grace period. Default: `-1` (int)
+        """
         return pulumi.get(self, "grace_period")
 
     @property
     @pulumi.getter(name="ignoreDaemonSets")
     def ignore_daemon_sets(self) -> Optional[bool]:
+        """
+        Ignore RKE daemon sets. Default: `true` (bool)
+        """
         return pulumi.get(self, "ignore_daemon_sets")
 
     @property
     @pulumi.getter
     def timeout(self) -> Optional[float]:
+        """
+        RKE node drain timeout. Default: `60` (int)
+        """
         return pulumi.get(self, "timeout")
 
     def _translate_property(self, prop):
@@ -5051,6 +7177,11 @@ class ClusterScheduledClusterScan(dict):
                  scan_config: 'outputs.ClusterScheduledClusterScanScanConfig',
                  schedule_config: 'outputs.ClusterScheduledClusterScanScheduleConfig',
                  enabled: Optional[bool] = None):
+        """
+        :param 'ClusterScheduledClusterScanScanConfigArgs' scan_config: Cluster scan config (List maxitems:1)
+        :param 'ClusterScheduledClusterScanScheduleConfigArgs' schedule_config: Cluster scan schedule config (list maxitems:1)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        """
         pulumi.set(__self__, "scan_config", scan_config)
         pulumi.set(__self__, "schedule_config", schedule_config)
         if enabled is not None:
@@ -5059,16 +7190,25 @@ class ClusterScheduledClusterScan(dict):
     @property
     @pulumi.getter(name="scanConfig")
     def scan_config(self) -> 'outputs.ClusterScheduledClusterScanScanConfig':
+        """
+        Cluster scan config (List maxitems:1)
+        """
         return pulumi.get(self, "scan_config")
 
     @property
     @pulumi.getter(name="scheduleConfig")
     def schedule_config(self) -> 'outputs.ClusterScheduledClusterScanScheduleConfig':
+        """
+        Cluster scan schedule config (list maxitems:1)
+        """
         return pulumi.get(self, "schedule_config")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -5079,12 +7219,18 @@ class ClusterScheduledClusterScan(dict):
 class ClusterScheduledClusterScanScanConfig(dict):
     def __init__(__self__, *,
                  cis_scan_config: Optional['outputs.ClusterScheduledClusterScanScanConfigCisScanConfig'] = None):
+        """
+        :param 'ClusterScheduledClusterScanScanConfigCisScanConfigArgs' cis_scan_config: Cluster Cis Scan config (List maxitems:1)
+        """
         if cis_scan_config is not None:
             pulumi.set(__self__, "cis_scan_config", cis_scan_config)
 
     @property
     @pulumi.getter(name="cisScanConfig")
     def cis_scan_config(self) -> Optional['outputs.ClusterScheduledClusterScanScanConfigCisScanConfig']:
+        """
+        Cluster Cis Scan config (List maxitems:1)
+        """
         return pulumi.get(self, "cis_scan_config")
 
     def _translate_property(self, prop):
@@ -5099,6 +7245,13 @@ class ClusterScheduledClusterScanScanConfigCisScanConfig(dict):
                  override_benchmark_version: Optional[str] = None,
                  override_skips: Optional[List[str]] = None,
                  profile: Optional[str] = None):
+        """
+        :param bool debug_master: Debug master. Default: `false` (bool)
+        :param bool debug_worker: Debug worker. Default: `false` (bool)
+        :param str override_benchmark_version: Override benchmark version (string)
+        :param List[str] override_skips: Override skip (string)
+        :param str profile: Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        """
         if debug_master is not None:
             pulumi.set(__self__, "debug_master", debug_master)
         if debug_worker is not None:
@@ -5113,26 +7266,41 @@ class ClusterScheduledClusterScanScanConfigCisScanConfig(dict):
     @property
     @pulumi.getter(name="debugMaster")
     def debug_master(self) -> Optional[bool]:
+        """
+        Debug master. Default: `false` (bool)
+        """
         return pulumi.get(self, "debug_master")
 
     @property
     @pulumi.getter(name="debugWorker")
     def debug_worker(self) -> Optional[bool]:
+        """
+        Debug worker. Default: `false` (bool)
+        """
         return pulumi.get(self, "debug_worker")
 
     @property
     @pulumi.getter(name="overrideBenchmarkVersion")
     def override_benchmark_version(self) -> Optional[str]:
+        """
+        Override benchmark version (string)
+        """
         return pulumi.get(self, "override_benchmark_version")
 
     @property
     @pulumi.getter(name="overrideSkips")
     def override_skips(self) -> Optional[List[str]]:
+        """
+        Override skip (string)
+        """
         return pulumi.get(self, "override_skips")
 
     @property
     @pulumi.getter
     def profile(self) -> Optional[str]:
+        """
+        Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        """
         return pulumi.get(self, "profile")
 
     def _translate_property(self, prop):
@@ -5144,6 +7312,10 @@ class ClusterScheduledClusterScanScheduleConfig(dict):
     def __init__(__self__, *,
                  cron_schedule: str,
                  retention: Optional[float] = None):
+        """
+        :param str cron_schedule: Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+        :param float retention: Retention for etcd backup. Default `6` (int)
+        """
         pulumi.set(__self__, "cron_schedule", cron_schedule)
         if retention is not None:
             pulumi.set(__self__, "retention", retention)
@@ -5151,11 +7323,17 @@ class ClusterScheduledClusterScanScheduleConfig(dict):
     @property
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> str:
+        """
+        Crontab schedule. It should contains 5 fields `"<min> <hour> <month_day> <month> <week_day>"` (string)
+        """
         return pulumi.get(self, "cron_schedule")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[float]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     def _translate_property(self, prop):
@@ -5168,6 +7346,11 @@ class ClusterTemplateMember(dict):
                  access_type: Optional[str] = None,
                  group_principal_id: Optional[str] = None,
                  user_principal_id: Optional[str] = None):
+        """
+        :param str access_type: Member access type. Valid values: `["read-only" | "owner"]` (string)
+        :param str group_principal_id: Member group principal id (string)
+        :param str user_principal_id: Member user principal id (string)
+        """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
         if group_principal_id is not None:
@@ -5178,16 +7361,25 @@ class ClusterTemplateMember(dict):
     @property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[str]:
+        """
+        Member access type. Valid values: `["read-only" | "owner"]` (string)
+        """
         return pulumi.get(self, "access_type")
 
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> Optional[str]:
+        """
+        Member group principal id (string)
+        """
         return pulumi.get(self, "group_principal_id")
 
     @property
     @pulumi.getter(name="userPrincipalId")
     def user_principal_id(self) -> Optional[str]:
+        """
+        Member user principal id (string)
+        """
         return pulumi.get(self, "user_principal_id")
 
     def _translate_property(self, prop):
@@ -5206,6 +7398,17 @@ class ClusterTemplateTemplateRevision(dict):
                  id: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  questions: Optional[List['outputs.ClusterTemplateTemplateRevisionQuestion']] = None):
+        """
+        :param 'ClusterTemplateTemplateRevisionClusterConfigArgs' cluster_config: Cluster configuration (list maxitem: 1)
+        :param str name: The cluster template revision name (string)
+        :param Mapping[str, Any] annotations: Annotations for the cluster template revision (map)
+        :param str cluster_template_id: Cluster template ID (string)
+        :param bool default: Default variable value (string)
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        :param str id: The cluster template revision ID (string)
+        :param Mapping[str, Any] labels: Labels for the cluster template revision (map)
+        :param List['ClusterTemplateTemplateRevisionQuestionArgs'] questions: Cluster template questions (list)
+        """
         pulumi.set(__self__, "cluster_config", cluster_config)
         pulumi.set(__self__, "name", name)
         if annotations is not None:
@@ -5226,46 +7429,73 @@ class ClusterTemplateTemplateRevision(dict):
     @property
     @pulumi.getter(name="clusterConfig")
     def cluster_config(self) -> 'outputs.ClusterTemplateTemplateRevisionClusterConfig':
+        """
+        Cluster configuration (list maxitem: 1)
+        """
         return pulumi.get(self, "cluster_config")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The cluster template revision name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, Any]]:
+        """
+        Annotations for the cluster template revision (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> Optional[str]:
+        """
+        Cluster template ID (string)
+        """
         return pulumi.get(self, "cluster_template_id")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[bool]:
+        """
+        Default variable value (string)
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The cluster template revision ID (string)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for the cluster template revision (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def questions(self) -> Optional[List['outputs.ClusterTemplateTemplateRevisionQuestion']]:
+        """
+        Cluster template questions (list)
+        """
         return pulumi.get(self, "questions")
 
     def _translate_property(self, prop):
@@ -5287,6 +7517,20 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
                  enable_network_policy: Optional[bool] = None,
                  scheduled_cluster_scan: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan'] = None,
                  windows_prefered_cluster: Optional[bool] = None):
+        """
+        :param 'ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs' rke_config: Rancher Kubernetes Engine Config (list maxitems: 1)
+        :param 'ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs' cluster_auth_endpoint: Local cluster auth endpoint (list maxitems: 1)
+        :param str default_cluster_role_for_project_members: Default cluster role for project members (string)
+        :param str default_pod_security_policy_template_id: Default pod security policy template ID (string)
+        :param str desired_agent_image: Desired agent image (string)
+        :param str desired_auth_image: Desired auth image (string)
+        :param str docker_root_dir: Desired auth image (string)
+        :param bool enable_cluster_alerting: Enable built-in cluster alerting. Default: `false` (bool)
+        :param bool enable_cluster_monitoring: Enable built-in cluster monitoring. Default: `false` (bool)
+        :param bool enable_network_policy: Enable project network isolation. Default: `false` (bool)
+        :param 'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanArgs' scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        :param bool windows_prefered_cluster: Windows prefered cluster. Default: `false` (bool)
+        """
         pulumi.set(__self__, "rke_config", rke_config)
         if cluster_auth_endpoint is not None:
             pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
@@ -5314,61 +7558,97 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
     @property
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> 'outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig':
+        """
+        Rancher Kubernetes Engine Config (list maxitems: 1)
+        """
         return pulumi.get(self, "rke_config")
 
     @property
     @pulumi.getter(name="clusterAuthEndpoint")
     def cluster_auth_endpoint(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint']:
+        """
+        Local cluster auth endpoint (list maxitems: 1)
+        """
         return pulumi.get(self, "cluster_auth_endpoint")
 
     @property
     @pulumi.getter(name="defaultClusterRoleForProjectMembers")
     def default_cluster_role_for_project_members(self) -> Optional[str]:
+        """
+        Default cluster role for project members (string)
+        """
         return pulumi.get(self, "default_cluster_role_for_project_members")
 
     @property
     @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
     def default_pod_security_policy_template_id(self) -> Optional[str]:
+        """
+        Default pod security policy template ID (string)
+        """
         return pulumi.get(self, "default_pod_security_policy_template_id")
 
     @property
     @pulumi.getter(name="desiredAgentImage")
     def desired_agent_image(self) -> Optional[str]:
+        """
+        Desired agent image (string)
+        """
         return pulumi.get(self, "desired_agent_image")
 
     @property
     @pulumi.getter(name="desiredAuthImage")
     def desired_auth_image(self) -> Optional[str]:
+        """
+        Desired auth image (string)
+        """
         return pulumi.get(self, "desired_auth_image")
 
     @property
     @pulumi.getter(name="dockerRootDir")
     def docker_root_dir(self) -> Optional[str]:
+        """
+        Desired auth image (string)
+        """
         return pulumi.get(self, "docker_root_dir")
 
     @property
     @pulumi.getter(name="enableClusterAlerting")
     def enable_cluster_alerting(self) -> Optional[bool]:
+        """
+        Enable built-in cluster alerting. Default: `false` (bool)
+        """
         return pulumi.get(self, "enable_cluster_alerting")
 
     @property
     @pulumi.getter(name="enableClusterMonitoring")
     def enable_cluster_monitoring(self) -> Optional[bool]:
+        """
+        Enable built-in cluster monitoring. Default: `false` (bool)
+        """
         return pulumi.get(self, "enable_cluster_monitoring")
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")
     def enable_network_policy(self) -> Optional[bool]:
+        """
+        Enable project network isolation. Default: `false` (bool)
+        """
         return pulumi.get(self, "enable_network_policy")
 
     @property
     @pulumi.getter(name="scheduledClusterScan")
     def scheduled_cluster_scan(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan']:
+        """
+        Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        """
         return pulumi.get(self, "scheduled_cluster_scan")
 
     @property
     @pulumi.getter(name="windowsPreferedCluster")
     def windows_prefered_cluster(self) -> Optional[bool]:
+        """
+        Windows prefered cluster. Default: `false` (bool)
+        """
         return pulumi.get(self, "windows_prefered_cluster")
 
     def _translate_property(self, prop):
@@ -5381,6 +7661,9 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint(dict):
                  ca_certs: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  fqdn: Optional[str] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -5396,6 +7679,9 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -5694,6 +7980,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider(dict):
                  name: Optional[str] = None,
                  openstack_cloud_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider'] = None,
                  vsphere_cloud_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider'] = None):
+        """
+        :param str name: The cluster template revision name (string)
+        """
         if aws_cloud_provider is not None:
             pulumi.set(__self__, "aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
@@ -5725,6 +8014,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The cluster template revision name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -6587,6 +8879,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
                  user: str,
                  port: Optional[str] = None,
                  soap_roundtrip_count: Optional[float] = None):
+        """
+        :param str name: The cluster template revision name (string)
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "password", password)
@@ -6604,6 +8899,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The cluster template revision name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -7033,6 +9331,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode(dict):
                  ssh_agent_auth: Optional[bool] = None,
                  ssh_key: Optional[str] = None,
                  ssh_key_path: Optional[str] = None):
+        """
+        :param Mapping[str, Any] labels: Labels for the cluster template revision (map)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "roles", roles)
         pulumi.set(__self__, "user", user)
@@ -7088,6 +9389,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode(dict):
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for the cluster template revision (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -7350,6 +9654,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
                  retention: Optional[float] = None,
                  s3_backup_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig'] = None,
                  safe_timestamp: Optional[bool] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -7364,6 +9671,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -7561,6 +9871,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
     def __init__(__self__, *,
                  configuration: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -7574,6 +9887,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -7641,6 +9957,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
     def __init__(__self__, *,
                  configuration: Optional[str] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -7654,6 +9973,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -7665,6 +9987,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
     def __init__(__self__, *,
                  custom_config: Optional[str] = None,
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
@@ -7678,6 +10003,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -7994,6 +10322,9 @@ class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(dict):
                  scan_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig',
                  schedule_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig',
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable cluster template revision. Default `true` (bool)
+        """
         pulumi.set(__self__, "scan_config", scan_config)
         pulumi.set(__self__, "schedule_config", schedule_config)
         if enabled is not None:
@@ -8012,6 +10343,9 @@ class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
@@ -8112,6 +10446,12 @@ class ClusterTemplateTemplateRevisionQuestion(dict):
                  variable: str,
                  required: Optional[bool] = None,
                  type: Optional[str] = None):
+        """
+        :param str default: Default variable value (string)
+        :param str variable: Variable name (string)
+        :param bool required: Required variable. Default `false` (bool)
+        :param str type: Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "variable", variable)
         if required is not None:
@@ -8122,21 +10462,33 @@ class ClusterTemplateTemplateRevisionQuestion(dict):
     @property
     @pulumi.getter
     def default(self) -> str:
+        """
+        Default variable value (string)
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def variable(self) -> str:
+        """
+        Variable name (string)
+        """
         return pulumi.get(self, "variable")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Required variable. Default `false` (bool)
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        """
         return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
@@ -8151,6 +10503,12 @@ class EtcdBackupBackupConfig(dict):
                  retention: Optional[float] = None,
                  s3_backup_config: Optional['outputs.EtcdBackupBackupConfigS3BackupConfig'] = None,
                  safe_timestamp: Optional[bool] = None):
+        """
+        :param bool enabled: Enable etcd backup (bool)
+        :param float interval_hours: Interval hours for etcd backup. Default `12` (int)
+        :param float retention: Retention for etcd backup. Default `6` (int)
+        :param 'EtcdBackupBackupConfigS3BackupConfigArgs' s3_backup_config: S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -8165,21 +10523,33 @@ class EtcdBackupBackupConfig(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Enable etcd backup (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="intervalHours")
     def interval_hours(self) -> Optional[float]:
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
         return pulumi.get(self, "interval_hours")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[float]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @property
     @pulumi.getter(name="s3BackupConfig")
     def s3_backup_config(self) -> Optional['outputs.EtcdBackupBackupConfigS3BackupConfig']:
+        """
+        S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        """
         return pulumi.get(self, "s3_backup_config")
 
     @property
@@ -8201,6 +10571,15 @@ class EtcdBackupBackupConfigS3BackupConfig(dict):
                  folder: Optional[str] = None,
                  region: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str bucket_name: Bucket name for S3 service (string)
+        :param str endpoint: Endpoint for S3 service (string)
+        :param str access_key: Access key for S3 service (string)
+        :param str custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        :param str folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param str region: Region for S3 service (string)
+        :param str secret_key: Secret key for S3 service (string)
+        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "endpoint", endpoint)
         if access_key is not None:
@@ -8217,36 +10596,57 @@ class EtcdBackupBackupConfigS3BackupConfig(dict):
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
+        """
+        Bucket name for S3 service (string)
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint for S3 service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Access key for S3 service (string)
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="customCa")
     def custom_ca(self) -> Optional[str]:
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
         return pulumi.get(self, "custom_ca")
 
     @property
     @pulumi.getter
     def folder(self) -> Optional[str]:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Region for S3 service (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Secret key for S3 service (string)
+        """
         return pulumi.get(self, "secret_key")
 
     def _translate_property(self, prop):
@@ -8259,6 +10659,11 @@ class MultiClusterAppAnswer(dict):
                  cluster_id: Optional[str] = None,
                  project_id: Optional[str] = None,
                  values: Optional[Mapping[str, Any]] = None):
+        """
+        :param str cluster_id: Cluster ID for answer (string)
+        :param str project_id: Project ID for target (string)
+        :param Mapping[str, Any] values: Key/values for answer (map)
+        """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if project_id is not None:
@@ -8269,16 +10674,25 @@ class MultiClusterAppAnswer(dict):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
+        """
+        Cluster ID for answer (string)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        Project ID for target (string)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Mapping[str, Any]]:
+        """
+        Key/values for answer (map)
+        """
         return pulumi.get(self, "values")
 
     def _translate_property(self, prop):
@@ -8291,6 +10705,11 @@ class MultiClusterAppMember(dict):
                  access_type: Optional[str] = None,
                  group_principal_id: Optional[str] = None,
                  user_principal_id: Optional[str] = None):
+        """
+        :param str access_type: Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        :param str group_principal_id: Member group principal id (string)
+        :param str user_principal_id: Member user principal id (string)
+        """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
         if group_principal_id is not None:
@@ -8301,16 +10720,25 @@ class MultiClusterAppMember(dict):
     @property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[str]:
+        """
+        Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        """
         return pulumi.get(self, "access_type")
 
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> Optional[str]:
+        """
+        Member group principal id (string)
+        """
         return pulumi.get(self, "group_principal_id")
 
     @property
     @pulumi.getter(name="userPrincipalId")
     def user_principal_id(self) -> Optional[str]:
+        """
+        Member user principal id (string)
+        """
         return pulumi.get(self, "user_principal_id")
 
     def _translate_property(self, prop):
@@ -8324,6 +10752,12 @@ class MultiClusterAppTarget(dict):
                  app_id: Optional[str] = None,
                  health_state: Optional[str] = None,
                  state: Optional[str] = None):
+        """
+        :param str project_id: Project ID for target (string)
+        :param str app_id: App ID for target (string)
+        :param str health_state: App health state for target (string)
+        :param str state: App state for target (string)
+        """
         pulumi.set(__self__, "project_id", project_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -8335,21 +10769,33 @@ class MultiClusterAppTarget(dict):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project ID for target (string)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[str]:
+        """
+        App ID for target (string)
+        """
         return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="healthState")
     def health_state(self) -> Optional[str]:
+        """
+        App health state for target (string)
+        """
         return pulumi.get(self, "health_state")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        App state for target (string)
+        """
         return pulumi.get(self, "state")
 
     def _translate_property(self, prop):
@@ -8360,12 +10806,18 @@ class MultiClusterAppTarget(dict):
 class MultiClusterAppUpgradeStrategy(dict):
     def __init__(__self__, *,
                  rolling_update: Optional['outputs.MultiClusterAppUpgradeStrategyRollingUpdate'] = None):
+        """
+        :param 'MultiClusterAppUpgradeStrategyRollingUpdateArgs' rolling_update: Upgrade strategy rolling update (list MaxItems:1)
+        """
         if rolling_update is not None:
             pulumi.set(__self__, "rolling_update", rolling_update)
 
     @property
     @pulumi.getter(name="rollingUpdate")
     def rolling_update(self) -> Optional['outputs.MultiClusterAppUpgradeStrategyRollingUpdate']:
+        """
+        Upgrade strategy rolling update (list MaxItems:1)
+        """
         return pulumi.get(self, "rolling_update")
 
     def _translate_property(self, prop):
@@ -8377,6 +10829,10 @@ class MultiClusterAppUpgradeStrategyRollingUpdate(dict):
     def __init__(__self__, *,
                  batch_size: Optional[float] = None,
                  interval: Optional[float] = None):
+        """
+        :param float batch_size: Rolling update batch size. Default `1` (int)
+        :param float interval: Rolling update interval. Default `1` (int)
+        """
         if batch_size is not None:
             pulumi.set(__self__, "batch_size", batch_size)
         if interval is not None:
@@ -8385,11 +10841,17 @@ class MultiClusterAppUpgradeStrategyRollingUpdate(dict):
     @property
     @pulumi.getter(name="batchSize")
     def batch_size(self) -> Optional[float]:
+        """
+        Rolling update batch size. Default `1` (int)
+        """
         return pulumi.get(self, "batch_size")
 
     @property
     @pulumi.getter
     def interval(self) -> Optional[float]:
+        """
+        Rolling update interval. Default `1` (int)
+        """
         return pulumi.get(self, "interval")
 
     def _translate_property(self, prop):
@@ -8403,6 +10865,12 @@ class NamespaceContainerResourceLimit(dict):
                  limits_memory: Optional[str] = None,
                  requests_cpu: Optional[str] = None,
                  requests_memory: Optional[str] = None):
+        """
+        :param str limits_cpu: Limit for limits cpu in namespace (string)
+        :param str limits_memory: Limit for limits memory in namespace (string)
+        :param str requests_cpu: Limit for requests cpu in namespace (string)
+        :param str requests_memory: Limit for requests memory in namespace (string)
+        """
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -8415,21 +10883,33 @@ class NamespaceContainerResourceLimit(dict):
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[str]:
+        """
+        Limit for limits cpu in namespace (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[str]:
+        """
+        Limit for limits memory in namespace (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[str]:
+        """
+        Limit for requests cpu in namespace (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
+        """
+        Limit for requests memory in namespace (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     def _translate_property(self, prop):
@@ -8440,11 +10920,17 @@ class NamespaceContainerResourceLimit(dict):
 class NamespaceResourceQuota(dict):
     def __init__(__self__, *,
                  limit: 'outputs.NamespaceResourceQuotaLimit'):
+        """
+        :param 'NamespaceResourceQuotaLimitArgs' limit: Resource quota limit for namespace (list maxitems:1)
+        """
         pulumi.set(__self__, "limit", limit)
 
     @property
     @pulumi.getter
     def limit(self) -> 'outputs.NamespaceResourceQuotaLimit':
+        """
+        Resource quota limit for namespace (list maxitems:1)
+        """
         return pulumi.get(self, "limit")
 
     def _translate_property(self, prop):
@@ -8467,6 +10953,20 @@ class NamespaceResourceQuotaLimit(dict):
                  services: Optional[str] = None,
                  services_load_balancers: Optional[str] = None,
                  services_node_ports: Optional[str] = None):
+        """
+        :param str config_maps: Limit for config maps in namespace (string)
+        :param str limits_cpu: Limit for limits cpu in namespace (string)
+        :param str limits_memory: Limit for limits memory in namespace (string)
+        :param str persistent_volume_claims: Limit for persistent volume claims in namespace (string)
+        :param str pods: Limit for pods in namespace (string)
+        :param str replication_controllers: Limit for replication controllers in namespace (string)
+        :param str requests_cpu: Limit for requests cpu in namespace (string)
+        :param str requests_memory: Limit for requests memory in namespace (string)
+        :param str requests_storage: Limit for requests storage in namespace (string)
+        :param str secrets: Limit for secrets in namespace (string)
+        :param str services_load_balancers: Limit for services load balancers in namespace (string)
+        :param str services_node_ports: Limit for services node ports in namespace (string)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -8497,51 +10997,81 @@ class NamespaceResourceQuotaLimit(dict):
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[str]:
+        """
+        Limit for config maps in namespace (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[str]:
+        """
+        Limit for limits cpu in namespace (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[str]:
+        """
+        Limit for limits memory in namespace (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[str]:
+        """
+        Limit for persistent volume claims in namespace (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @property
     @pulumi.getter
     def pods(self) -> Optional[str]:
+        """
+        Limit for pods in namespace (string)
+        """
         return pulumi.get(self, "pods")
 
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[str]:
+        """
+        Limit for replication controllers in namespace (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[str]:
+        """
+        Limit for requests cpu in namespace (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
+        """
+        Limit for requests memory in namespace (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[str]:
+        """
+        Limit for requests storage in namespace (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @property
     @pulumi.getter
     def secrets(self) -> Optional[str]:
+        """
+        Limit for secrets in namespace (string)
+        """
         return pulumi.get(self, "secrets")
 
     @property
@@ -8552,11 +11082,17 @@ class NamespaceResourceQuotaLimit(dict):
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[str]:
+        """
+        Limit for services load balancers in namespace (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[str]:
+        """
+        Limit for services node ports in namespace (string)
+        """
         return pulumi.get(self, "services_node_ports")
 
     def _translate_property(self, prop):
@@ -8570,6 +11106,12 @@ class NodePoolNodeTaint(dict):
                  value: str,
                  effect: Optional[str] = None,
                  time_added: Optional[str] = None):
+        """
+        :param str key: Taint key (string)
+        :param str value: Taint value (string)
+        :param str effect: Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        :param str time_added: Taint time added (string)
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
         if effect is not None:
@@ -8580,21 +11122,33 @@ class NodePoolNodeTaint(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        Taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def effect(self) -> Optional[str]:
+        """
+        Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter(name="timeAdded")
     def time_added(self) -> Optional[str]:
+        """
+        Taint time added (string)
+        """
         return pulumi.get(self, "time_added")
 
     def _translate_property(self, prop):
@@ -8637,6 +11191,41 @@ class NodeTemplateAmazonec2Config(dict):
                  use_private_address: Optional[bool] = None,
                  userdata: Optional[str] = None,
                  volume_type: Optional[str] = None):
+        """
+        :param str ami: AWS machine image (string)
+        :param str region: OpenStack region name (string)
+        :param List[str] security_groups: AWS VPC security group. (list)
+        :param str subnet_id: AWS VPC subnet id (string)
+        :param str vpc_id: AWS VPC id. (string)
+        :param str zone: AWS zone for instance (i.e. a,b,c,d,e) (string)
+        :param str access_key: AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str block_duration_minutes: AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        :param str device_name: AWS root device name. Default `/dev/sda1` (string)
+        :param bool encrypt_ebs_volume: Encrypt EBS volume. Default `false` (bool)
+        :param str endpoint: Optional endpoint URL (hostname only or fully qualified URI) (string)
+        :param str iam_instance_profile: AWS IAM Instance Profile (string)
+        :param bool insecure_transport: Disable SSL when sending requests (bool)
+        :param str instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        :param str keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param str kms_key: Custom KMS key ID using the AWS Managed CMK (string)
+        :param bool monitoring: Enable monitoring for droplet. Default `false` (bool)
+        :param List[str] open_ports: Make the specified port number accessible from the Internet. (list)
+        :param bool private_address_only: Only use a private IP address. Default `false` (bool)
+        :param bool request_spot_instance: Set this flag to request spot instance. Default `false` (bool)
+        :param str retries: Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        :param str root_size: AWS root disk size (in GB). Default `16` (string)
+        :param str secret_key: AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param bool security_group_readonly: Skip adding default rules to security groups (bool)
+        :param str session_token: AWS Session Token (string)
+        :param str spot_price: AWS spot instance bid price (in dollar). Default `0.50` (string)
+        :param str ssh_keypath: SSH Key for Instance (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        :param bool use_ebs_optimized_instance: Create an EBS optimized instance. Default `false` (bool)
+        :param bool use_private_address: Force the usage of private IP address. Default `false` (bool)
+        :param str userdata: Path to file with cloud-init user-data (string)
+        :param str volume_type: Amazon EBS volume type. Default `gp2` (string)
+        """
         pulumi.set(__self__, "ami", ami)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "security_groups", security_groups)
@@ -8701,166 +11290,265 @@ class NodeTemplateAmazonec2Config(dict):
     @property
     @pulumi.getter
     def ami(self) -> str:
+        """
+        AWS machine image (string)
+        """
         return pulumi.get(self, "ami")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        OpenStack region name (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> List[str]:
+        """
+        AWS VPC security group. (list)
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
+        """
+        AWS VPC subnet id (string)
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
+        """
+        AWS VPC id. (string)
+        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        AWS zone for instance (i.e. a,b,c,d,e) (string)
+        """
         return pulumi.get(self, "zone")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="blockDurationMinutes")
     def block_duration_minutes(self) -> Optional[str]:
+        """
+        AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        """
         return pulumi.get(self, "block_duration_minutes")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
+        """
+        AWS root device name. Default `/dev/sda1` (string)
+        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="encryptEbsVolume")
     def encrypt_ebs_volume(self) -> Optional[bool]:
+        """
+        Encrypt EBS volume. Default `false` (bool)
+        """
         return pulumi.get(self, "encrypt_ebs_volume")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        Optional endpoint URL (hostname only or fully qualified URI) (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> Optional[str]:
+        """
+        AWS IAM Instance Profile (string)
+        """
         return pulumi.get(self, "iam_instance_profile")
 
     @property
     @pulumi.getter(name="insecureTransport")
     def insecure_transport(self) -> Optional[bool]:
+        """
+        Disable SSL when sending requests (bool)
+        """
         return pulumi.get(self, "insecure_transport")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[str]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
         return pulumi.get(self, "keypair_name")
 
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
+        """
+        Custom KMS key ID using the AWS Managed CMK (string)
+        """
         return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
     def monitoring(self) -> Optional[bool]:
+        """
+        Enable monitoring for droplet. Default `false` (bool)
+        """
         return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter(name="openPorts")
     def open_ports(self) -> Optional[List[str]]:
+        """
+        Make the specified port number accessible from the Internet. (list)
+        """
         return pulumi.get(self, "open_ports")
 
     @property
     @pulumi.getter(name="privateAddressOnly")
     def private_address_only(self) -> Optional[bool]:
+        """
+        Only use a private IP address. Default `false` (bool)
+        """
         return pulumi.get(self, "private_address_only")
 
     @property
     @pulumi.getter(name="requestSpotInstance")
     def request_spot_instance(self) -> Optional[bool]:
+        """
+        Set this flag to request spot instance. Default `false` (bool)
+        """
         return pulumi.get(self, "request_spot_instance")
 
     @property
     @pulumi.getter
     def retries(self) -> Optional[str]:
+        """
+        Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        """
         return pulumi.get(self, "retries")
 
     @property
     @pulumi.getter(name="rootSize")
     def root_size(self) -> Optional[str]:
+        """
+        AWS root disk size (in GB). Default `16` (string)
+        """
         return pulumi.get(self, "root_size")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @property
     @pulumi.getter(name="securityGroupReadonly")
     def security_group_readonly(self) -> Optional[bool]:
+        """
+        Skip adding default rules to security groups (bool)
+        """
         return pulumi.get(self, "security_group_readonly")
 
     @property
     @pulumi.getter(name="sessionToken")
     def session_token(self) -> Optional[str]:
+        """
+        AWS Session Token (string)
+        """
         return pulumi.get(self, "session_token")
 
     @property
     @pulumi.getter(name="spotPrice")
     def spot_price(self) -> Optional[str]:
+        """
+        AWS spot instance bid price (in dollar). Default `0.50` (string)
+        """
         return pulumi.get(self, "spot_price")
 
     @property
     @pulumi.getter(name="sshKeypath")
     def ssh_keypath(self) -> Optional[str]:
+        """
+        SSH Key for Instance (string)
+        """
         return pulumi.get(self, "ssh_keypath")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="useEbsOptimizedInstance")
     def use_ebs_optimized_instance(self) -> Optional[bool]:
+        """
+        Create an EBS optimized instance. Default `false` (bool)
+        """
         return pulumi.get(self, "use_ebs_optimized_instance")
 
     @property
     @pulumi.getter(name="usePrivateAddress")
     def use_private_address(self) -> Optional[bool]:
+        """
+        Force the usage of private IP address. Default `false` (bool)
+        """
         return pulumi.get(self, "use_private_address")
 
     @property
     @pulumi.getter
     def userdata(self) -> Optional[str]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
         return pulumi.get(self, "userdata")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
+        """
+        Amazon EBS volume type. Default `gp2` (string)
+        """
         return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
@@ -8897,6 +11585,35 @@ class NodeTemplateAzureConfig(dict):
                  update_domain_count: Optional[str] = None,
                  use_private_ip: Optional[bool] = None,
                  vnet: Optional[str] = None):
+        """
+        :param str availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str custom_data: Path to file with custom-data (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str dns: A unique DNS label for the public IP adddress (string)
+        :param str docker_port: Docker Port. Default `2376` (string)
+        :param str environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        :param str fault_domain_count: Fault domain count to use for availability set. Default `3` (string)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param str location: Azure region to create the virtual machine. Default `westus` (string)
+        :param bool managed_disks: Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        :param bool no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
+        :param str nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        :param List[str] open_ports: Make the specified port number accessible from the Internet. (list)
+        :param str private_ip_address: Specify a static private IP address for the machine. (string)
+        :param str resource_group: Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        :param str size: Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param bool static_public_ip: Assign a static public IP address to the machine. Default `false` (bool)
+        :param str storage_type: Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        :param str subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        :param str subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        :param str subscription_id: Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str update_domain_count: Update domain count to use for availability set. Default `5` (string)
+        :param bool use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
+        :param str vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        """
         if availability_set is not None:
             pulumi.set(__self__, "availability_set", availability_set)
         if client_id is not None:
@@ -8955,136 +11672,217 @@ class NodeTemplateAzureConfig(dict):
     @property
     @pulumi.getter(name="availabilitySet")
     def availability_set(self) -> Optional[str]:
+        """
+        Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        """
         return pulumi.get(self, "availability_set")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
+        """
+        Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
+        """
+        Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[str]:
+        """
+        Path to file with custom-data (string)
+        """
         return pulumi.get(self, "custom_data")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter
     def dns(self) -> Optional[str]:
+        """
+        A unique DNS label for the public IP adddress (string)
+        """
         return pulumi.get(self, "dns")
 
     @property
     @pulumi.getter(name="dockerPort")
     def docker_port(self) -> Optional[str]:
+        """
+        Docker Port. Default `2376` (string)
+        """
         return pulumi.get(self, "docker_port")
 
     @property
     @pulumi.getter
     def environment(self) -> Optional[str]:
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        """
         return pulumi.get(self, "environment")
 
     @property
     @pulumi.getter(name="faultDomainCount")
     def fault_domain_count(self) -> Optional[str]:
+        """
+        Fault domain count to use for availability set. Default `3` (string)
+        """
         return pulumi.get(self, "fault_domain_count")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter
     def location(self) -> Optional[str]:
+        """
+        Azure region to create the virtual machine. Default `westus` (string)
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="managedDisks")
     def managed_disks(self) -> Optional[bool]:
+        """
+        Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        """
         return pulumi.get(self, "managed_disks")
 
     @property
     @pulumi.getter(name="noPublicIp")
     def no_public_ip(self) -> Optional[bool]:
+        """
+        Do not create a public IP address for the machine. Default `false` (bool)
+        """
         return pulumi.get(self, "no_public_ip")
 
     @property
     @pulumi.getter
     def nsg(self) -> Optional[str]:
+        """
+        Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        """
         return pulumi.get(self, "nsg")
 
     @property
     @pulumi.getter(name="openPorts")
     def open_ports(self) -> Optional[List[str]]:
+        """
+        Make the specified port number accessible from the Internet. (list)
+        """
         return pulumi.get(self, "open_ports")
 
     @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[str]:
+        """
+        Specify a static private IP address for the machine. (string)
+        """
         return pulumi.get(self, "private_ip_address")
 
     @property
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[str]:
+        """
+        Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        """
         return pulumi.get(self, "resource_group")
 
     @property
     @pulumi.getter
     def size(self) -> Optional[str]:
+        """
+        Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter(name="staticPublicIp")
     def static_public_ip(self) -> Optional[bool]:
+        """
+        Assign a static public IP address to the machine. Default `false` (bool)
+        """
         return pulumi.get(self, "static_public_ip")
 
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[str]:
+        """
+        Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        """
         return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter
     def subnet(self) -> Optional[str]:
+        """
+        Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        """
         return pulumi.get(self, "subnet")
 
     @property
     @pulumi.getter(name="subnetPrefix")
     def subnet_prefix(self) -> Optional[str]:
+        """
+        Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        """
         return pulumi.get(self, "subnet_prefix")
 
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> Optional[str]:
+        """
+        Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter(name="updateDomainCount")
     def update_domain_count(self) -> Optional[str]:
+        """
+        Update domain count to use for availability set. Default `5` (string)
+        """
         return pulumi.get(self, "update_domain_count")
 
     @property
     @pulumi.getter(name="usePrivateIp")
     def use_private_ip(self) -> Optional[bool]:
+        """
+        Use private IP address of the machine to connect. Default `false` (bool)
+        """
         return pulumi.get(self, "use_private_ip")
 
     @property
     @pulumi.getter
     def vnet(self) -> Optional[str]:
+        """
+        Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        """
         return pulumi.get(self, "vnet")
 
     def _translate_property(self, prop):
@@ -9108,6 +11906,22 @@ class NodeTemplateDigitaloceanConfig(dict):
                  ssh_user: Optional[str] = None,
                  tags: Optional[str] = None,
                  userdata: Optional[str] = None):
+        """
+        :param str access_token: Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param bool backups: Enable backups for droplet. Default `false` (bool)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param bool ipv6: Enable ipv6 for droplet. Default `false` (bool)
+        :param bool monitoring: Enable monitoring for droplet. Default `false` (bool)
+        :param bool private_networking: Enable private networking for droplet. Default `false` (bool)
+        :param str region: OpenStack region name (string)
+        :param str size: Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        :param str ssh_key_fingerprint: SSH key fingerprint (string)
+        :param str ssh_key_path: SSH private key path (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        :param str userdata: Path to file with cloud-init user-data (string)
+        """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
         if backups is not None:
@@ -9140,71 +11954,113 @@ class NodeTemplateDigitaloceanConfig(dict):
     @property
     @pulumi.getter(name="accessToken")
     def access_token(self) -> Optional[str]:
+        """
+        Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "access_token")
 
     @property
     @pulumi.getter
     def backups(self) -> Optional[bool]:
+        """
+        Enable backups for droplet. Default `false` (bool)
+        """
         return pulumi.get(self, "backups")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter
     def ipv6(self) -> Optional[bool]:
+        """
+        Enable ipv6 for droplet. Default `false` (bool)
+        """
         return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter
     def monitoring(self) -> Optional[bool]:
+        """
+        Enable monitoring for droplet. Default `false` (bool)
+        """
         return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter(name="privateNetworking")
     def private_networking(self) -> Optional[bool]:
+        """
+        Enable private networking for droplet. Default `false` (bool)
+        """
         return pulumi.get(self, "private_networking")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        OpenStack region name (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def size(self) -> Optional[str]:
+        """
+        Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="sshKeyFingerprint")
     def ssh_key_fingerprint(self) -> Optional[str]:
+        """
+        SSH key fingerprint (string)
+        """
         return pulumi.get(self, "ssh_key_fingerprint")
 
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[str]:
+        """
+        SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def userdata(self) -> Optional[str]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
         return pulumi.get(self, "userdata")
 
     def _translate_property(self, prop):
@@ -9230,6 +12086,24 @@ class NodeTemplateLinodeConfig(dict):
                  tags: Optional[str] = None,
                  token: Optional[str] = None,
                  ua_prefix: Optional[str] = None):
+        """
+        :param str authorized_users: Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        :param bool create_private_ip: Create private IP for the instance. Default `false` (bool)
+        :param str docker_port: Docker Port. Default `2376` (string)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param str instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        :param str label: Linode Instance Label. (string)
+        :param str region: OpenStack region name (string)
+        :param str root_pass: Root Password (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str stackscript: Specifies the Linode StackScript to use to create the instance. (string)
+        :param str stackscript_data: A JSON string specifying data for the selected StackScript. (string)
+        :param str swap_size: Linode Instance Swap Size (MB). Default `512` (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        :param str token: Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str ua_prefix: Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        """
         if authorized_users is not None:
             pulumi.set(__self__, "authorized_users", authorized_users)
         if create_private_ip is not None:
@@ -9266,81 +12140,129 @@ class NodeTemplateLinodeConfig(dict):
     @property
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[str]:
+        """
+        Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        """
         return pulumi.get(self, "authorized_users")
 
     @property
     @pulumi.getter(name="createPrivateIp")
     def create_private_ip(self) -> Optional[bool]:
+        """
+        Create private IP for the instance. Default `false` (bool)
+        """
         return pulumi.get(self, "create_private_ip")
 
     @property
     @pulumi.getter(name="dockerPort")
     def docker_port(self) -> Optional[str]:
+        """
+        Docker Port. Default `2376` (string)
+        """
         return pulumi.get(self, "docker_port")
 
     @property
     @pulumi.getter
     def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def label(self) -> Optional[str]:
+        """
+        Linode Instance Label. (string)
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        OpenStack region name (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> Optional[str]:
+        """
+        Root Password (string)
+        """
         return pulumi.get(self, "root_pass")
 
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter
     def stackscript(self) -> Optional[str]:
+        """
+        Specifies the Linode StackScript to use to create the instance. (string)
+        """
         return pulumi.get(self, "stackscript")
 
     @property
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[str]:
+        """
+        A JSON string specifying data for the selected StackScript. (string)
+        """
         return pulumi.get(self, "stackscript_data")
 
     @property
     @pulumi.getter(name="swapSize")
     def swap_size(self) -> Optional[str]:
+        """
+        Linode Instance Swap Size (MB). Default `512` (string)
+        """
         return pulumi.get(self, "swap_size")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def token(self) -> Optional[str]:
+        """
+        Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter(name="uaPrefix")
     def ua_prefix(self) -> Optional[str]:
+        """
+        Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        """
         return pulumi.get(self, "ua_prefix")
 
     def _translate_property(self, prop):
@@ -9369,6 +12291,27 @@ class NodeTemplateOpennebulaConfig(dict):
                  template_id: Optional[str] = None,
                  template_name: Optional[str] = None,
                  vcpu: Optional[str] = None):
+        """
+        :param str password: vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str user: Set the user for the XML-RPC API authentication (string)
+        :param str xml_rpc_url: Set the url for the Opennebula XML-RPC API (string)
+        :param str b2d_size: Size of the Volatile disk in MB - only for b2d (string)
+        :param str cpu: CPU value for the VM (string)
+        :param str dev_prefix: Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        :param bool disable_vnc: VNC is enabled by default. Disable it with this flag (bool)
+        :param str disk_resize: Size of the disk for the VM in MB (string)
+        :param str image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param str image_owner: Owner of the image to use as the VM OS (string)
+        :param str memory: Size of the memory for the VM in MB (string)
+        :param str network_id: Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        :param str network_name: Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        :param str network_owner: Opennebula user ID of the Network to connect the machine to (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
+        :param str template_name: Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        :param str vcpu: VCPUs for the VM (string)
+        """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user", user)
         pulumi.set(__self__, "xml_rpc_url", xml_rpc_url)
@@ -9408,96 +12351,153 @@ class NodeTemplateOpennebulaConfig(dict):
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def user(self) -> str:
+        """
+        Set the user for the XML-RPC API authentication (string)
+        """
         return pulumi.get(self, "user")
 
     @property
     @pulumi.getter(name="xmlRpcUrl")
     def xml_rpc_url(self) -> str:
+        """
+        Set the url for the Opennebula XML-RPC API (string)
+        """
         return pulumi.get(self, "xml_rpc_url")
 
     @property
     @pulumi.getter(name="b2dSize")
     def b2d_size(self) -> Optional[str]:
+        """
+        Size of the Volatile disk in MB - only for b2d (string)
+        """
         return pulumi.get(self, "b2d_size")
 
     @property
     @pulumi.getter
     def cpu(self) -> Optional[str]:
+        """
+        CPU value for the VM (string)
+        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter(name="devPrefix")
     def dev_prefix(self) -> Optional[str]:
+        """
+        Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        """
         return pulumi.get(self, "dev_prefix")
 
     @property
     @pulumi.getter(name="disableVnc")
     def disable_vnc(self) -> Optional[bool]:
+        """
+        VNC is enabled by default. Disable it with this flag (bool)
+        """
         return pulumi.get(self, "disable_vnc")
 
     @property
     @pulumi.getter(name="diskResize")
     def disk_resize(self) -> Optional[str]:
+        """
+        Size of the disk for the VM in MB (string)
+        """
         return pulumi.get(self, "disk_resize")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[str]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="imageOwner")
     def image_owner(self) -> Optional[str]:
+        """
+        Owner of the image to use as the VM OS (string)
+        """
         return pulumi.get(self, "image_owner")
 
     @property
     @pulumi.getter
     def memory(self) -> Optional[str]:
+        """
+        Size of the memory for the VM in MB (string)
+        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[str]:
+        """
+        Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[str]:
+        """
+        Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        """
         return pulumi.get(self, "network_name")
 
     @property
     @pulumi.getter(name="networkOwner")
     def network_owner(self) -> Optional[str]:
+        """
+        Opennebula user ID of the Network to connect the machine to (string)
+        """
         return pulumi.get(self, "network_owner")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[str]:
+        """
+        Opennebula template ID to use. Conflicts with `template_name` (string)
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[str]:
+        """
+        Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        """
         return pulumi.get(self, "template_name")
 
     @property
     @pulumi.getter
     def vcpu(self) -> Optional[str]:
+        """
+        VCPUs for the VM (string)
+        """
         return pulumi.get(self, "vcpu")
 
     def _translate_property(self, prop):
@@ -9536,6 +12536,37 @@ class NodeTemplateOpenstackConfig(dict):
                  tenant_id: Optional[str] = None,
                  tenant_name: Optional[str] = None,
                  user_data_file: Optional[str] = None):
+        """
+        :param str auth_url: OpenStack authentication URL (string)
+        :param str availability_zone: OpenStack availability zone (string)
+        :param str region: OpenStack region name (string)
+        :param str username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str active_timeout: OpenStack active timeout Default `200` (string)
+        :param str cacert: CA certificate bundle to verify against (string)
+        :param bool config_drive: Enables the OpenStack config drive for the instance. Default `false` (bool)
+        :param str domain_id: OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        :param str domain_name: OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        :param str endpoint_type: OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        :param str flavor_id: OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        :param str flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        :param str floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        :param str image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param bool insecure: Disable TLS credential checking. Default `false` (bool)
+        :param str ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
+        :param str keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param str net_id: OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        :param str net_name: OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        :param bool nova_network: Use the nova networking services instead of neutron (string)
+        :param str password: vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str private_key_file: Private key content to use for SSH (string)
+        :param str sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
+        :param str tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
+        :param str user_data_file: File containing an openstack userdata script (string)
+        """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
@@ -9594,146 +12625,233 @@ class NodeTemplateOpenstackConfig(dict):
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> str:
+        """
+        OpenStack authentication URL (string)
+        """
         return pulumi.get(self, "auth_url")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
+        """
+        OpenStack availability zone (string)
+        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        OpenStack region name (string)
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="activeTimeout")
     def active_timeout(self) -> Optional[str]:
+        """
+        OpenStack active timeout Default `200` (string)
+        """
         return pulumi.get(self, "active_timeout")
 
     @property
     @pulumi.getter
     def cacert(self) -> Optional[str]:
+        """
+        CA certificate bundle to verify against (string)
+        """
         return pulumi.get(self, "cacert")
 
     @property
     @pulumi.getter(name="configDrive")
     def config_drive(self) -> Optional[bool]:
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
         return pulumi.get(self, "config_drive")
 
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[str]:
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[str]:
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[str]:
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
         return pulumi.get(self, "endpoint_type")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[str]:
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[str]:
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
         return pulumi.get(self, "flavor_name")
 
     @property
     @pulumi.getter(name="floatingIpPool")
     def floating_ip_pool(self) -> Optional[str]:
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
         return pulumi.get(self, "floating_ip_pool")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[str]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter
     def insecure(self) -> Optional[bool]:
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
         return pulumi.get(self, "insecure")
 
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[str]:
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[str]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
         return pulumi.get(self, "keypair_name")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[str]:
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="netName")
     def net_name(self) -> Optional[str]:
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
         return pulumi.get(self, "net_name")
 
     @property
     @pulumi.getter(name="novaNetwork")
     def nova_network(self) -> Optional[bool]:
+        """
+        Use the nova networking services instead of neutron (string)
+        """
         return pulumi.get(self, "nova_network")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="privateKeyFile")
     def private_key_file(self) -> Optional[str]:
+        """
+        Private key content to use for SSH (string)
+        """
         return pulumi.get(self, "private_key_file")
 
     @property
     @pulumi.getter(name="secGroups")
     def sec_groups(self) -> Optional[str]:
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
         return pulumi.get(self, "sec_groups")
 
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[str]:
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
         return pulumi.get(self, "tenant_name")
 
     @property
     @pulumi.getter(name="userDataFile")
     def user_data_file(self) -> Optional[str]:
+        """
+        File containing an openstack userdata script (string)
+        """
         return pulumi.get(self, "user_data_file")
 
     def _translate_property(self, prop):
@@ -9774,6 +12892,39 @@ class NodeTemplateVsphereConfig(dict):
                  vapp_transport: Optional[str] = None,
                  vcenter: Optional[str] = None,
                  vcenter_port: Optional[str] = None):
+        """
+        :param str boot2docker_url: vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        :param List[str] cfgparams: vSphere vm configuration parameters (used for guestinfo) (list)
+        :param str clone_from: If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+        :param str cloud_config: Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        :param str cloudinit: vSphere cloud-init file or url to set in the guestinfo (string)
+        :param str content_library: If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+        :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param str creation_type: Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+        :param List[str] custom_attributes: vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+        :param str datacenter: vSphere datacenter for docker VM (string)
+        :param str datastore: vSphere datastore for docker VM (string)
+        :param str datastore_cluster: vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param List[str] networks: vSphere network where the docker VM will be attached (list)
+        :param str password: vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str pool: vSphere resource pool for docker VM (string)
+        :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param str ssh_user_group: If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
+        :param List[str] tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        :param str username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str vapp_ip_allocation_policy: vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        :param str vapp_ip_protocol: vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        :param List[str] vapp_properties: vSphere vApp properties (list)
+        :param str vapp_transport: vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        :param str vcenter: vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str vcenter_port: vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        """
         if boot2docker_url is not None:
             pulumi.set(__self__, "boot2docker_url", boot2docker_url)
         if cfgparams is not None:
@@ -9840,156 +12991,249 @@ class NodeTemplateVsphereConfig(dict):
     @property
     @pulumi.getter(name="boot2dockerUrl")
     def boot2docker_url(self) -> Optional[str]:
+        """
+        vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        """
         return pulumi.get(self, "boot2docker_url")
 
     @property
     @pulumi.getter
     def cfgparams(self) -> Optional[List[str]]:
+        """
+        vSphere vm configuration parameters (used for guestinfo) (list)
+        """
         return pulumi.get(self, "cfgparams")
 
     @property
     @pulumi.getter(name="cloneFrom")
     def clone_from(self) -> Optional[str]:
+        """
+        If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "clone_from")
 
     @property
     @pulumi.getter(name="cloudConfig")
     def cloud_config(self) -> Optional[str]:
+        """
+        Filepath to a cloud-config yaml file to put into the ISO user-data. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "cloud_config")
 
     @property
     @pulumi.getter
     def cloudinit(self) -> Optional[str]:
+        """
+        vSphere cloud-init file or url to set in the guestinfo (string)
+        """
         return pulumi.get(self, "cloudinit")
 
     @property
     @pulumi.getter(name="contentLibrary")
     def content_library(self) -> Optional[str]:
+        """
+        If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "content_library")
 
     @property
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> Optional[str]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
         return pulumi.get(self, "cpu_count")
 
     @property
     @pulumi.getter(name="creationType")
     def creation_type(self) -> Optional[str]:
+        """
+        Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "creation_type")
 
     @property
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[List[str]]:
+        """
+        vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+        """
         return pulumi.get(self, "custom_attributes")
 
     @property
     @pulumi.getter
     def datacenter(self) -> Optional[str]:
+        """
+        vSphere datacenter for docker VM (string)
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter
     def datastore(self) -> Optional[str]:
+        """
+        vSphere datastore for docker VM (string)
+        """
         return pulumi.get(self, "datastore")
 
     @property
     @pulumi.getter(name="datastoreCluster")
     def datastore_cluster(self) -> Optional[str]:
+        """
+        vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "datastore_cluster")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter
     def folder(self) -> Optional[str]:
+        """
+        vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        """
         return pulumi.get(self, "folder")
 
     @property
     @pulumi.getter
     def hostsystem(self) -> Optional[str]:
+        """
+        vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        """
         return pulumi.get(self, "hostsystem")
 
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[str]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
         return pulumi.get(self, "memory_size")
 
     @property
     @pulumi.getter
     def networks(self) -> Optional[List[str]]:
+        """
+        vSphere network where the docker VM will be attached (list)
+        """
         return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def pool(self) -> Optional[str]:
+        """
+        vSphere resource pool for docker VM (string)
+        """
         return pulumi.get(self, "pool")
 
     @property
     @pulumi.getter(name="sshPassword")
     def ssh_password(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_password")
 
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @property
     @pulumi.getter(name="sshUserGroup")
     def ssh_user_group(self) -> Optional[str]:
+        """
+        If using a non-B2D image the uploaded keys will need chown'ed. Default `staff`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user_group")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[List[str]]:
+        """
+        vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="vappIpAllocationPolicy")
     def vapp_ip_allocation_policy(self) -> Optional[str]:
+        """
+        vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        """
         return pulumi.get(self, "vapp_ip_allocation_policy")
 
     @property
     @pulumi.getter(name="vappIpProtocol")
     def vapp_ip_protocol(self) -> Optional[str]:
+        """
+        vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        """
         return pulumi.get(self, "vapp_ip_protocol")
 
     @property
     @pulumi.getter(name="vappProperties")
     def vapp_properties(self) -> Optional[List[str]]:
+        """
+        vSphere vApp properties (list)
+        """
         return pulumi.get(self, "vapp_properties")
 
     @property
     @pulumi.getter(name="vappTransport")
     def vapp_transport(self) -> Optional[str]:
+        """
+        vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        """
         return pulumi.get(self, "vapp_transport")
 
     @property
     @pulumi.getter
     def vcenter(self) -> Optional[str]:
+        """
+        vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "vcenter")
 
     @property
     @pulumi.getter(name="vcenterPort")
     def vcenter_port(self) -> Optional[str]:
+        """
+        vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x. Default `443` (string)
+        """
         return pulumi.get(self, "vcenter_port")
 
     def _translate_property(self, prop):
@@ -10001,6 +13245,10 @@ class NotifierPagerdutyConfig(dict):
     def __init__(__self__, *,
                  service_key: str,
                  proxy_url: Optional[str] = None):
+        """
+        :param str service_key: Pagerduty service key (string)
+        :param str proxy_url: Wechat proxy url (string)
+        """
         pulumi.set(__self__, "service_key", service_key)
         if proxy_url is not None:
             pulumi.set(__self__, "proxy_url", proxy_url)
@@ -10008,11 +13256,17 @@ class NotifierPagerdutyConfig(dict):
     @property
     @pulumi.getter(name="serviceKey")
     def service_key(self) -> str:
+        """
+        Pagerduty service key (string)
+        """
         return pulumi.get(self, "service_key")
 
     @property
     @pulumi.getter(name="proxyUrl")
     def proxy_url(self) -> Optional[str]:
+        """
+        Wechat proxy url (string)
+        """
         return pulumi.get(self, "proxy_url")
 
     def _translate_property(self, prop):
@@ -10025,6 +13279,11 @@ class NotifierSlackConfig(dict):
                  default_recipient: str,
                  url: str,
                  proxy_url: Optional[str] = None):
+        """
+        :param str default_recipient: Wechat default recipient (string)
+        :param str url: Webhook url (string)
+        :param str proxy_url: Wechat proxy url (string)
+        """
         pulumi.set(__self__, "default_recipient", default_recipient)
         pulumi.set(__self__, "url", url)
         if proxy_url is not None:
@@ -10033,16 +13292,25 @@ class NotifierSlackConfig(dict):
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> str:
+        """
+        Wechat default recipient (string)
+        """
         return pulumi.get(self, "default_recipient")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        Webhook url (string)
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="proxyUrl")
     def proxy_url(self) -> Optional[str]:
+        """
+        Wechat proxy url (string)
+        """
         return pulumi.get(self, "proxy_url")
 
     def _translate_property(self, prop):
@@ -10059,6 +13327,15 @@ class NotifierSmtpConfig(dict):
                  password: Optional[str] = None,
                  tls: Optional[bool] = None,
                  username: Optional[str] = None):
+        """
+        :param str default_recipient: Wechat default recipient (string)
+        :param str host: SMTP host (string)
+        :param float port: SMTP port (int)
+        :param str sender: SMTP sender (string)
+        :param str password: SMTP password (string)
+        :param bool tls: SMTP tls. Default `true` (bool)
+        :param str username: SMTP username (string)
+        """
         pulumi.set(__self__, "default_recipient", default_recipient)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -10073,36 +13350,57 @@ class NotifierSmtpConfig(dict):
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> str:
+        """
+        Wechat default recipient (string)
+        """
         return pulumi.get(self, "default_recipient")
 
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        SMTP host (string)
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def port(self) -> float:
+        """
+        SMTP port (int)
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def sender(self) -> str:
+        """
+        SMTP sender (string)
+        """
         return pulumi.get(self, "sender")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        SMTP password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def tls(self) -> Optional[bool]:
+        """
+        SMTP tls. Default `true` (bool)
+        """
         return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        SMTP username (string)
+        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -10114,6 +13412,10 @@ class NotifierWebhookConfig(dict):
     def __init__(__self__, *,
                  url: str,
                  proxy_url: Optional[str] = None):
+        """
+        :param str url: Webhook url (string)
+        :param str proxy_url: Wechat proxy url (string)
+        """
         pulumi.set(__self__, "url", url)
         if proxy_url is not None:
             pulumi.set(__self__, "proxy_url", proxy_url)
@@ -10121,11 +13423,17 @@ class NotifierWebhookConfig(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        Webhook url (string)
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="proxyUrl")
     def proxy_url(self) -> Optional[str]:
+        """
+        Wechat proxy url (string)
+        """
         return pulumi.get(self, "proxy_url")
 
     def _translate_property(self, prop):
@@ -10141,6 +13449,14 @@ class NotifierWechatConfig(dict):
                  secret: str,
                  proxy_url: Optional[str] = None,
                  recipient_type: Optional[str] = None):
+        """
+        :param str agent: Wechat agent ID (string)
+        :param str corp: Wechat corporation ID (string)
+        :param str default_recipient: Wechat default recipient (string)
+        :param str secret: Wechat agent ID (string)
+        :param str proxy_url: Wechat proxy url (string)
+        :param str recipient_type: Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+        """
         pulumi.set(__self__, "agent", agent)
         pulumi.set(__self__, "corp", corp)
         pulumi.set(__self__, "default_recipient", default_recipient)
@@ -10153,31 +13469,49 @@ class NotifierWechatConfig(dict):
     @property
     @pulumi.getter
     def agent(self) -> str:
+        """
+        Wechat agent ID (string)
+        """
         return pulumi.get(self, "agent")
 
     @property
     @pulumi.getter
     def corp(self) -> str:
+        """
+        Wechat corporation ID (string)
+        """
         return pulumi.get(self, "corp")
 
     @property
     @pulumi.getter(name="defaultRecipient")
     def default_recipient(self) -> str:
+        """
+        Wechat default recipient (string)
+        """
         return pulumi.get(self, "default_recipient")
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        Wechat agent ID (string)
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="proxyUrl")
     def proxy_url(self) -> Optional[str]:
+        """
+        Wechat proxy url (string)
+        """
         return pulumi.get(self, "proxy_url")
 
     @property
     @pulumi.getter(name="recipientType")
     def recipient_type(self) -> Optional[str]:
+        """
+        Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+        """
         return pulumi.get(self, "recipient_type")
 
     def _translate_property(self, prop):
@@ -10188,11 +13522,17 @@ class NotifierWechatConfig(dict):
 class PodSecurityPolicyTemplateAllowedCsiDriver(dict):
     def __init__(__self__, *,
                  name: str):
+        """
+        :param str name: The name of the PodSecurityPolicyTemplate (string)
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the PodSecurityPolicyTemplate (string)
+        """
         return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
@@ -10219,6 +13559,10 @@ class PodSecurityPolicyTemplateAllowedHostPath(dict):
     def __init__(__self__, *,
                  path_prefix: str,
                  read_only: Optional[bool] = None):
+        """
+        :param str path_prefix: (string)
+        :param bool read_only: (string)
+        """
         pulumi.set(__self__, "path_prefix", path_prefix)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
@@ -10226,11 +13570,17 @@ class PodSecurityPolicyTemplateAllowedHostPath(dict):
     @property
     @pulumi.getter(name="pathPrefix")
     def path_prefix(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "path_prefix")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[bool]:
+        """
+        (string)
+        """
         return pulumi.get(self, "read_only")
 
     def _translate_property(self, prop):
@@ -10242,6 +13592,10 @@ class PodSecurityPolicyTemplateFsGroup(dict):
     def __init__(__self__, *,
                  ranges: Optional[List['outputs.PodSecurityPolicyTemplateFsGroupRange']] = None,
                  rule: Optional[str] = None):
+        """
+        :param List['PodSecurityPolicyTemplateFsGroupRangeArgs'] ranges: (list)
+        :param str rule: (string)
+        """
         if ranges is not None:
             pulumi.set(__self__, "ranges", ranges)
         if rule is not None:
@@ -10250,11 +13604,17 @@ class PodSecurityPolicyTemplateFsGroup(dict):
     @property
     @pulumi.getter
     def ranges(self) -> Optional[List['outputs.PodSecurityPolicyTemplateFsGroupRange']]:
+        """
+        (list)
+        """
         return pulumi.get(self, "ranges")
 
     @property
     @pulumi.getter
     def rule(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "rule")
 
     def _translate_property(self, prop):
@@ -10266,17 +13626,27 @@ class PodSecurityPolicyTemplateFsGroupRange(dict):
     def __init__(__self__, *,
                  max: float,
                  min: float):
+        """
+        :param float max: (int)
+        :param float min: (int)
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
@@ -10288,17 +13658,27 @@ class PodSecurityPolicyTemplateHostPort(dict):
     def __init__(__self__, *,
                  max: float,
                  min: float):
+        """
+        :param float max: (int)
+        :param float min: (int)
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
@@ -10310,6 +13690,10 @@ class PodSecurityPolicyTemplateRunAsGroup(dict):
     def __init__(__self__, *,
                  rule: str,
                  ranges: Optional[List['outputs.PodSecurityPolicyTemplateRunAsGroupRange']] = None):
+        """
+        :param str rule: (string)
+        :param List['PodSecurityPolicyTemplateRunAsGroupRangeArgs'] ranges: (list)
+        """
         pulumi.set(__self__, "rule", rule)
         if ranges is not None:
             pulumi.set(__self__, "ranges", ranges)
@@ -10317,11 +13701,17 @@ class PodSecurityPolicyTemplateRunAsGroup(dict):
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def ranges(self) -> Optional[List['outputs.PodSecurityPolicyTemplateRunAsGroupRange']]:
+        """
+        (list)
+        """
         return pulumi.get(self, "ranges")
 
     def _translate_property(self, prop):
@@ -10333,17 +13723,27 @@ class PodSecurityPolicyTemplateRunAsGroupRange(dict):
     def __init__(__self__, *,
                  max: float,
                  min: float):
+        """
+        :param float max: (int)
+        :param float min: (int)
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
@@ -10355,6 +13755,10 @@ class PodSecurityPolicyTemplateRunAsUser(dict):
     def __init__(__self__, *,
                  rule: str,
                  ranges: Optional[List['outputs.PodSecurityPolicyTemplateRunAsUserRange']] = None):
+        """
+        :param str rule: (string)
+        :param List['PodSecurityPolicyTemplateRunAsUserRangeArgs'] ranges: (list)
+        """
         pulumi.set(__self__, "rule", rule)
         if ranges is not None:
             pulumi.set(__self__, "ranges", ranges)
@@ -10362,11 +13766,17 @@ class PodSecurityPolicyTemplateRunAsUser(dict):
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def ranges(self) -> Optional[List['outputs.PodSecurityPolicyTemplateRunAsUserRange']]:
+        """
+        (list)
+        """
         return pulumi.get(self, "ranges")
 
     def _translate_property(self, prop):
@@ -10378,17 +13788,27 @@ class PodSecurityPolicyTemplateRunAsUserRange(dict):
     def __init__(__self__, *,
                  max: float,
                  min: float):
+        """
+        :param float max: (int)
+        :param float min: (int)
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
@@ -10400,6 +13820,10 @@ class PodSecurityPolicyTemplateRuntimeClass(dict):
     def __init__(__self__, *,
                  allowed_runtime_class_names: List[str],
                  default_runtime_class_name: Optional[str] = None):
+        """
+        :param List[str] allowed_runtime_class_names: (list)
+        :param str default_runtime_class_name: (string)
+        """
         pulumi.set(__self__, "allowed_runtime_class_names", allowed_runtime_class_names)
         if default_runtime_class_name is not None:
             pulumi.set(__self__, "default_runtime_class_name", default_runtime_class_name)
@@ -10407,11 +13831,17 @@ class PodSecurityPolicyTemplateRuntimeClass(dict):
     @property
     @pulumi.getter(name="allowedRuntimeClassNames")
     def allowed_runtime_class_names(self) -> List[str]:
+        """
+        (list)
+        """
         return pulumi.get(self, "allowed_runtime_class_names")
 
     @property
     @pulumi.getter(name="defaultRuntimeClassName")
     def default_runtime_class_name(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "default_runtime_class_name")
 
     def _translate_property(self, prop):
@@ -10423,6 +13853,10 @@ class PodSecurityPolicyTemplateSeLinux(dict):
     def __init__(__self__, *,
                  rule: str,
                  se_linux_option: Optional['outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption'] = None):
+        """
+        :param str rule: (string)
+        :param 'PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs' se_linux_option: (list maxitems:1)
+        """
         pulumi.set(__self__, "rule", rule)
         if se_linux_option is not None:
             pulumi.set(__self__, "se_linux_option", se_linux_option)
@@ -10430,11 +13864,17 @@ class PodSecurityPolicyTemplateSeLinux(dict):
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        (string)
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter(name="seLinuxOption")
     def se_linux_option(self) -> Optional['outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "se_linux_option")
 
     def _translate_property(self, prop):
@@ -10448,6 +13888,12 @@ class PodSecurityPolicyTemplateSeLinuxSeLinuxOption(dict):
                  role: Optional[str] = None,
                  type: Optional[str] = None,
                  user: Optional[str] = None):
+        """
+        :param str level: (string)
+        :param str role: (string)
+        :param str type: (string)
+        :param str user: (string)
+        """
         if level is not None:
             pulumi.set(__self__, "level", level)
         if role is not None:
@@ -10460,21 +13906,33 @@ class PodSecurityPolicyTemplateSeLinuxSeLinuxOption(dict):
     @property
     @pulumi.getter
     def level(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "level")
 
     @property
     @pulumi.getter
     def role(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def user(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "user")
 
     def _translate_property(self, prop):
@@ -10486,6 +13944,10 @@ class PodSecurityPolicyTemplateSupplementalGroup(dict):
     def __init__(__self__, *,
                  ranges: Optional[List['outputs.PodSecurityPolicyTemplateSupplementalGroupRange']] = None,
                  rule: Optional[str] = None):
+        """
+        :param List['PodSecurityPolicyTemplateSupplementalGroupRangeArgs'] ranges: (list)
+        :param str rule: (string)
+        """
         if ranges is not None:
             pulumi.set(__self__, "ranges", ranges)
         if rule is not None:
@@ -10494,11 +13956,17 @@ class PodSecurityPolicyTemplateSupplementalGroup(dict):
     @property
     @pulumi.getter
     def ranges(self) -> Optional[List['outputs.PodSecurityPolicyTemplateSupplementalGroupRange']]:
+        """
+        (list)
+        """
         return pulumi.get(self, "ranges")
 
     @property
     @pulumi.getter
     def rule(self) -> Optional[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "rule")
 
     def _translate_property(self, prop):
@@ -10510,17 +13978,27 @@ class PodSecurityPolicyTemplateSupplementalGroupRange(dict):
     def __init__(__self__, *,
                  max: float,
                  min: float):
+        """
+        :param float max: (int)
+        :param float min: (int)
+        """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
     def max(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "max")
 
     @property
     @pulumi.getter
     def min(self) -> float:
+        """
+        (int)
+        """
         return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
@@ -10534,6 +14012,11 @@ class ProjectAlertGroupRecipient(dict):
                  default_recipient: Optional[bool] = None,
                  notifier_type: Optional[str] = None,
                  recipient: Optional[str] = None):
+        """
+        :param str notifier_id: Recipient notifier ID (string)
+        :param str notifier_type: Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param str recipient: Recipient (string)
+        """
         pulumi.set(__self__, "notifier_id", notifier_id)
         if default_recipient is not None:
             pulumi.set(__self__, "default_recipient", default_recipient)
@@ -10545,6 +14028,9 @@ class ProjectAlertGroupRecipient(dict):
     @property
     @pulumi.getter(name="notifierId")
     def notifier_id(self) -> str:
+        """
+        Recipient notifier ID (string)
+        """
         return pulumi.get(self, "notifier_id")
 
     @property
@@ -10555,11 +14041,17 @@ class ProjectAlertGroupRecipient(dict):
     @property
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[str]:
+        """
+        Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        """
         return pulumi.get(self, "notifier_type")
 
     @property
     @pulumi.getter
     def recipient(self) -> Optional[str]:
+        """
+        Recipient (string)
+        """
         return pulumi.get(self, "recipient")
 
     def _translate_property(self, prop):
@@ -10574,6 +14066,13 @@ class ProjectAlertRuleMetricRule(dict):
                  threshold_value: float,
                  comparison: Optional[str] = None,
                  description: Optional[str] = None):
+        """
+        :param str duration: Metric rule duration (string)
+        :param str expression: Metric rule expression (string)
+        :param float threshold_value: Metric rule threshold value (float64)
+        :param str comparison: Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        :param str description: Metric rule description (string)
+        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "threshold_value", threshold_value)
@@ -10585,26 +14084,41 @@ class ProjectAlertRuleMetricRule(dict):
     @property
     @pulumi.getter
     def duration(self) -> str:
+        """
+        Metric rule duration (string)
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Metric rule expression (string)
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> float:
+        """
+        Metric rule threshold value (float64)
+        """
         return pulumi.get(self, "threshold_value")
 
     @property
     @pulumi.getter
     def comparison(self) -> Optional[str]:
+        """
+        Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        """
         return pulumi.get(self, "comparison")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Metric rule description (string)
+        """
         return pulumi.get(self, "description")
 
     def _translate_property(self, prop):
@@ -10618,6 +14132,12 @@ class ProjectAlertRulePodRule(dict):
                  condition: Optional[str] = None,
                  restart_interval_seconds: Optional[float] = None,
                  restart_times: Optional[float] = None):
+        """
+        :param str pod_id: Pod ID (string)
+        :param str condition: Pod rule condition. Supported values : `"notrunning" | "notscheduled" | "restarts"`. Default: `notrunning` (string)
+        :param float restart_interval_seconds: Pod rule restart interval seconds. Default: `300` (int)
+        :param float restart_times: Pod rule restart times. Default: `3`  (int)
+        """
         pulumi.set(__self__, "pod_id", pod_id)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -10629,21 +14149,33 @@ class ProjectAlertRulePodRule(dict):
     @property
     @pulumi.getter(name="podId")
     def pod_id(self) -> str:
+        """
+        Pod ID (string)
+        """
         return pulumi.get(self, "pod_id")
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        Pod rule condition. Supported values : `"notrunning" | "notscheduled" | "restarts"`. Default: `notrunning` (string)
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="restartIntervalSeconds")
     def restart_interval_seconds(self) -> Optional[float]:
+        """
+        Pod rule restart interval seconds. Default: `300` (int)
+        """
         return pulumi.get(self, "restart_interval_seconds")
 
     @property
     @pulumi.getter(name="restartTimes")
     def restart_times(self) -> Optional[float]:
+        """
+        Pod rule restart times. Default: `3`  (int)
+        """
         return pulumi.get(self, "restart_times")
 
     def _translate_property(self, prop):
@@ -10656,6 +14188,11 @@ class ProjectAlertRuleWorkloadRule(dict):
                  available_percentage: Optional[float] = None,
                  selector: Optional[Mapping[str, Any]] = None,
                  workload_id: Optional[str] = None):
+        """
+        :param float available_percentage: Workload rule available percentage. Default: `70` (int)
+        :param Mapping[str, Any] selector: Workload rule selector (map)
+        :param str workload_id: Workload ID (string)
+        """
         if available_percentage is not None:
             pulumi.set(__self__, "available_percentage", available_percentage)
         if selector is not None:
@@ -10666,16 +14203,25 @@ class ProjectAlertRuleWorkloadRule(dict):
     @property
     @pulumi.getter(name="availablePercentage")
     def available_percentage(self) -> Optional[float]:
+        """
+        Workload rule available percentage. Default: `70` (int)
+        """
         return pulumi.get(self, "available_percentage")
 
     @property
     @pulumi.getter
     def selector(self) -> Optional[Mapping[str, Any]]:
+        """
+        Workload rule selector (map)
+        """
         return pulumi.get(self, "selector")
 
     @property
     @pulumi.getter(name="workloadId")
     def workload_id(self) -> Optional[str]:
+        """
+        Workload ID (string)
+        """
         return pulumi.get(self, "workload_id")
 
     def _translate_property(self, prop):
@@ -10689,6 +14235,12 @@ class ProjectContainerResourceLimit(dict):
                  limits_memory: Optional[str] = None,
                  requests_cpu: Optional[str] = None,
                  requests_memory: Optional[str] = None):
+        """
+        :param str limits_cpu: Limit for limits cpu in project (string)
+        :param str limits_memory: Limit for limits memory in project (string)
+        :param str requests_cpu: Limit for requests cpu in project (string)
+        :param str requests_memory: Limit for requests memory in project (string)
+        """
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -10701,21 +14253,33 @@ class ProjectContainerResourceLimit(dict):
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[str]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[str]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[str]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     def _translate_property(self, prop):
@@ -10729,6 +14293,12 @@ class ProjectLoggingCustomTargetConfig(dict):
                  certificate: Optional[str] = None,
                  client_cert: Optional[str] = None,
                  client_key: Optional[str] = None):
+        """
+        :param str content: Custom target config content (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        """
         pulumi.set(__self__, "content", content)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -10740,21 +14310,33 @@ class ProjectLoggingCustomTargetConfig(dict):
     @property
     @pulumi.getter
     def content(self) -> str:
+        """
+        Custom target config content (string)
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     def _translate_property(self, prop):
@@ -10775,6 +14357,19 @@ class ProjectLoggingElasticsearchConfig(dict):
                  index_prefix: Optional[str] = None,
                  ssl_verify: Optional[bool] = None,
                  ssl_version: Optional[str] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str auth_password: User password for the elascticsearch service (string)
+        :param str auth_username: Username for the elascticsearch service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str client_key_pass: SSL client key password for the splunk service (string)
+        :param str date_format: Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        :param str index_prefix: Index prefix for the elascticsearch logs. Default: `local` (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        :param str ssl_version: SSL version for the elascticsearch service (string)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if auth_password is not None:
             pulumi.set(__self__, "auth_password", auth_password)
@@ -10800,56 +14395,89 @@ class ProjectLoggingElasticsearchConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="authPassword")
     def auth_password(self) -> Optional[str]:
+        """
+        User password for the elascticsearch service (string)
+        """
         return pulumi.get(self, "auth_password")
 
     @property
     @pulumi.getter(name="authUsername")
     def auth_username(self) -> Optional[str]:
+        """
+        Username for the elascticsearch service (string)
+        """
         return pulumi.get(self, "auth_username")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clientKeyPass")
     def client_key_pass(self) -> Optional[str]:
+        """
+        SSL client key password for the splunk service (string)
+        """
         return pulumi.get(self, "client_key_pass")
 
     @property
     @pulumi.getter(name="dateFormat")
     def date_format(self) -> Optional[str]:
+        """
+        Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        """
         return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter(name="indexPrefix")
     def index_prefix(self) -> Optional[str]:
+        """
+        Index prefix for the elascticsearch logs. Default: `local` (string)
+        """
         return pulumi.get(self, "index_prefix")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     @property
     @pulumi.getter(name="sslVersion")
     def ssl_version(self) -> Optional[str]:
+        """
+        SSL version for the elascticsearch service (string)
+        """
         return pulumi.get(self, "ssl_version")
 
     def _translate_property(self, prop):
@@ -10863,6 +14491,12 @@ class ProjectLoggingFluentdConfig(dict):
                  certificate: Optional[str] = None,
                  compress: Optional[bool] = None,
                  enable_tls: Optional[bool] = None):
+        """
+        :param List['ProjectLoggingFluentdConfigFluentServerArgs'] fluent_servers: Servers for the fluentd service (list)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param bool compress: Compress data for the fluentd service (bool)
+        :param bool enable_tls: Enable TLS for the fluentd service (bool)
+        """
         pulumi.set(__self__, "fluent_servers", fluent_servers)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -10874,21 +14508,33 @@ class ProjectLoggingFluentdConfig(dict):
     @property
     @pulumi.getter(name="fluentServers")
     def fluent_servers(self) -> List['outputs.ProjectLoggingFluentdConfigFluentServer']:
+        """
+        Servers for the fluentd service (list)
+        """
         return pulumi.get(self, "fluent_servers")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter
     def compress(self) -> Optional[bool]:
+        """
+        Compress data for the fluentd service (bool)
+        """
         return pulumi.get(self, "compress")
 
     @property
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[bool]:
+        """
+        Enable TLS for the fluentd service (bool)
+        """
         return pulumi.get(self, "enable_tls")
 
     def _translate_property(self, prop):
@@ -10905,6 +14551,15 @@ class ProjectLoggingFluentdConfigFluentServer(dict):
                  standby: Optional[bool] = None,
                  username: Optional[str] = None,
                  weight: Optional[float] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str hostname: Hostname of the fluentd service (string)
+        :param str password: User password of the fluentd service (string)
+        :param str shared_key: Shared key of the fluentd service (string)
+        :param bool standby: Standby server of the fluentd service (bool)
+        :param str username: Username of the fluentd service (string)
+        :param float weight: Weight of the fluentd server (int)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
@@ -10922,36 +14577,57 @@ class ProjectLoggingFluentdConfigFluentServer(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
+        """
+        Hostname of the fluentd service (string)
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        User password of the fluentd service (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sharedKey")
     def shared_key(self) -> Optional[str]:
+        """
+        Shared key of the fluentd service (string)
+        """
         return pulumi.get(self, "shared_key")
 
     @property
     @pulumi.getter
     def standby(self) -> Optional[bool]:
+        """
+        Standby server of the fluentd service (bool)
+        """
         return pulumi.get(self, "standby")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username of the fluentd service (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def weight(self) -> Optional[float]:
+        """
+        Weight of the fluentd server (int)
+        """
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -10967,6 +14643,14 @@ class ProjectLoggingKafkaConfig(dict):
                  client_cert: Optional[str] = None,
                  client_key: Optional[str] = None,
                  zookeeper_endpoint: Optional[str] = None):
+        """
+        :param str topic: Topic to publish on the kafka service (string)
+        :param List[str] broker_endpoints: Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str zookeeper_endpoint: Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        """
         pulumi.set(__self__, "topic", topic)
         if broker_endpoints is not None:
             pulumi.set(__self__, "broker_endpoints", broker_endpoints)
@@ -10982,31 +14666,49 @@ class ProjectLoggingKafkaConfig(dict):
     @property
     @pulumi.getter
     def topic(self) -> str:
+        """
+        Topic to publish on the kafka service (string)
+        """
         return pulumi.get(self, "topic")
 
     @property
     @pulumi.getter(name="brokerEndpoints")
     def broker_endpoints(self) -> Optional[List[str]]:
+        """
+        Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        """
         return pulumi.get(self, "broker_endpoints")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="zookeeperEndpoint")
     def zookeeper_endpoint(self) -> Optional[str]:
+        """
+        Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        """
         return pulumi.get(self, "zookeeper_endpoint")
 
     def _translate_property(self, prop):
@@ -11025,6 +14727,17 @@ class ProjectLoggingSplunkConfig(dict):
                  index: Optional[str] = None,
                  source: Optional[str] = None,
                  ssl_verify: Optional[bool] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str token: Token for the syslog service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param str client_key_pass: SSL client key password for the splunk service (string)
+        :param str index: Index prefix for the splunk logs (string)
+        :param str source: Date format for the splunk logs (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "token", token)
         if certificate is not None:
@@ -11045,46 +14758,73 @@ class ProjectLoggingSplunkConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def token(self) -> str:
+        """
+        Token for the syslog service (string)
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clientKeyPass")
     def client_key_pass(self) -> Optional[str]:
+        """
+        SSL client key password for the splunk service (string)
+        """
         return pulumi.get(self, "client_key_pass")
 
     @property
     @pulumi.getter
     def index(self) -> Optional[str]:
+        """
+        Index prefix for the splunk logs (string)
+        """
         return pulumi.get(self, "index")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
+        """
+        Date format for the splunk logs (string)
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     def _translate_property(self, prop):
@@ -11104,6 +14844,18 @@ class ProjectLoggingSyslogConfig(dict):
                  severity: Optional[str] = None,
                  ssl_verify: Optional[bool] = None,
                  token: Optional[str] = None):
+        """
+        :param str endpoint: Endpoint of the syslog service (string)
+        :param str certificate: SSL certificate for the syslog service (string)
+        :param str client_cert: SSL client certificate for the syslog service (string)
+        :param str client_key: SSL client key for the syslog service (string)
+        :param bool enable_tls: Enable TLS for the fluentd service (bool)
+        :param str program: Program for the syslog service (string)
+        :param str protocol: Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        :param str severity: Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        :param bool ssl_verify: SSL verify for the syslog service (bool)
+        :param str token: Token for the syslog service (string)
+        """
         pulumi.set(__self__, "endpoint", endpoint)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -11127,51 +14879,81 @@ class ProjectLoggingSyslogConfig(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        Endpoint of the syslog service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def certificate(self) -> Optional[str]:
+        """
+        SSL certificate for the syslog service (string)
+        """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
+        """
+        SSL client certificate for the syslog service (string)
+        """
         return pulumi.get(self, "client_cert")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
+        """
+        SSL client key for the syslog service (string)
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="enableTls")
     def enable_tls(self) -> Optional[bool]:
+        """
+        Enable TLS for the fluentd service (bool)
+        """
         return pulumi.get(self, "enable_tls")
 
     @property
     @pulumi.getter
     def program(self) -> Optional[str]:
+        """
+        Program for the syslog service (string)
+        """
         return pulumi.get(self, "program")
 
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
+        """
+        Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def severity(self) -> Optional[str]:
+        """
+        Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="sslVerify")
     def ssl_verify(self) -> Optional[bool]:
+        """
+        SSL verify for the syslog service (bool)
+        """
         return pulumi.get(self, "ssl_verify")
 
     @property
     @pulumi.getter
     def token(self) -> Optional[str]:
+        """
+        Token for the syslog service (string)
+        """
         return pulumi.get(self, "token")
 
     def _translate_property(self, prop):
@@ -11183,6 +14965,10 @@ class ProjectProjectMonitoringInput(dict):
     def __init__(__self__, *,
                  answers: Optional[Mapping[str, Any]] = None,
                  version: Optional[str] = None):
+        """
+        :param Mapping[str, Any] answers: Key/value answers for monitor input (map)
+        :param str version: rancher-monitoring chart version (string)
+        """
         if answers is not None:
             pulumi.set(__self__, "answers", answers)
         if version is not None:
@@ -11191,11 +14977,17 @@ class ProjectProjectMonitoringInput(dict):
     @property
     @pulumi.getter
     def answers(self) -> Optional[Mapping[str, Any]]:
+        """
+        Key/value answers for monitor input (map)
+        """
         return pulumi.get(self, "answers")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        rancher-monitoring chart version (string)
+        """
         return pulumi.get(self, "version")
 
     def _translate_property(self, prop):
@@ -11207,17 +14999,27 @@ class ProjectResourceQuota(dict):
     def __init__(__self__, *,
                  namespace_default_limit: 'outputs.ProjectResourceQuotaNamespaceDefaultLimit',
                  project_limit: 'outputs.ProjectResourceQuotaProjectLimit'):
+        """
+        :param 'ProjectResourceQuotaNamespaceDefaultLimitArgs' namespace_default_limit: Default resource quota limit for  namespaces in project (list maxitems:1)
+        :param 'ProjectResourceQuotaProjectLimitArgs' project_limit: Resource quota limit for project (list maxitems:1)
+        """
         pulumi.set(__self__, "namespace_default_limit", namespace_default_limit)
         pulumi.set(__self__, "project_limit", project_limit)
 
     @property
     @pulumi.getter(name="namespaceDefaultLimit")
     def namespace_default_limit(self) -> 'outputs.ProjectResourceQuotaNamespaceDefaultLimit':
+        """
+        Default resource quota limit for  namespaces in project (list maxitems:1)
+        """
         return pulumi.get(self, "namespace_default_limit")
 
     @property
     @pulumi.getter(name="projectLimit")
     def project_limit(self) -> 'outputs.ProjectResourceQuotaProjectLimit':
+        """
+        Resource quota limit for project (list maxitems:1)
+        """
         return pulumi.get(self, "project_limit")
 
     def _translate_property(self, prop):
@@ -11240,6 +15042,20 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
                  services: Optional[str] = None,
                  services_load_balancers: Optional[str] = None,
                  services_node_ports: Optional[str] = None):
+        """
+        :param str config_maps: Limit for config maps in project (string)
+        :param str limits_cpu: Limit for limits cpu in project (string)
+        :param str limits_memory: Limit for limits memory in project (string)
+        :param str persistent_volume_claims: Limit for persistent volume claims in project (string)
+        :param str pods: Limit for pods in project (string)
+        :param str replication_controllers: Limit for replication controllers in project (string)
+        :param str requests_cpu: Limit for requests cpu in project (string)
+        :param str requests_memory: Limit for requests memory in project (string)
+        :param str requests_storage: Limit for requests storage in project (string)
+        :param str secrets: Limit for secrets in project (string)
+        :param str services_load_balancers: Limit for services load balancers in project (string)
+        :param str services_node_ports: Limit for services node ports in project (string)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -11270,51 +15086,81 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[str]:
+        """
+        Limit for config maps in project (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[str]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[str]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[str]:
+        """
+        Limit for persistent volume claims in project (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @property
     @pulumi.getter
     def pods(self) -> Optional[str]:
+        """
+        Limit for pods in project (string)
+        """
         return pulumi.get(self, "pods")
 
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[str]:
+        """
+        Limit for replication controllers in project (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[str]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[str]:
+        """
+        Limit for requests storage in project (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @property
     @pulumi.getter
     def secrets(self) -> Optional[str]:
+        """
+        Limit for secrets in project (string)
+        """
         return pulumi.get(self, "secrets")
 
     @property
@@ -11325,11 +15171,17 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[str]:
+        """
+        Limit for services load balancers in project (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[str]:
+        """
+        Limit for services node ports in project (string)
+        """
         return pulumi.get(self, "services_node_ports")
 
     def _translate_property(self, prop):
@@ -11352,6 +15204,20 @@ class ProjectResourceQuotaProjectLimit(dict):
                  services: Optional[str] = None,
                  services_load_balancers: Optional[str] = None,
                  services_node_ports: Optional[str] = None):
+        """
+        :param str config_maps: Limit for config maps in project (string)
+        :param str limits_cpu: Limit for limits cpu in project (string)
+        :param str limits_memory: Limit for limits memory in project (string)
+        :param str persistent_volume_claims: Limit for persistent volume claims in project (string)
+        :param str pods: Limit for pods in project (string)
+        :param str replication_controllers: Limit for replication controllers in project (string)
+        :param str requests_cpu: Limit for requests cpu in project (string)
+        :param str requests_memory: Limit for requests memory in project (string)
+        :param str requests_storage: Limit for requests storage in project (string)
+        :param str secrets: Limit for secrets in project (string)
+        :param str services_load_balancers: Limit for services load balancers in project (string)
+        :param str services_node_ports: Limit for services node ports in project (string)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -11382,51 +15248,81 @@ class ProjectResourceQuotaProjectLimit(dict):
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[str]:
+        """
+        Limit for config maps in project (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[str]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[str]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[str]:
+        """
+        Limit for persistent volume claims in project (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @property
     @pulumi.getter
     def pods(self) -> Optional[str]:
+        """
+        Limit for pods in project (string)
+        """
         return pulumi.get(self, "pods")
 
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[str]:
+        """
+        Limit for replication controllers in project (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[str]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[str]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[str]:
+        """
+        Limit for requests storage in project (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @property
     @pulumi.getter
     def secrets(self) -> Optional[str]:
+        """
+        Limit for secrets in project (string)
+        """
         return pulumi.get(self, "secrets")
 
     @property
@@ -11437,11 +15333,17 @@ class ProjectResourceQuotaProjectLimit(dict):
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[str]:
+        """
+        Limit for services load balancers in project (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[str]:
+        """
+        Limit for services node ports in project (string)
+        """
         return pulumi.get(self, "services_node_ports")
 
     def _translate_property(self, prop):
@@ -11454,6 +15356,11 @@ class RegistryRegistry(dict):
                  address: str,
                  password: Optional[str] = None,
                  username: Optional[str] = None):
+        """
+        :param str address: Address for registry.
+        :param str password: Password for the registry (string)
+        :param str username: Username for the registry (string)
+        """
         pulumi.set(__self__, "address", address)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -11463,16 +15370,25 @@ class RegistryRegistry(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        Address for registry.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for the registry (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username for the registry (string)
+        """
         return pulumi.get(self, "username")
 
     def _translate_property(self, prop):
@@ -11487,6 +15403,13 @@ class RoleTempalteRule(dict):
                  resource_names: Optional[List[str]] = None,
                  resources: Optional[List[str]] = None,
                  verbs: Optional[List[str]] = None):
+        """
+        :param List[str] api_groups: Policy rule api groups (list)
+        :param List[str] non_resource_urls: Policy rule non resource urls (list)
+        :param List[str] resource_names: Policy rule resource names (list)
+        :param List[str] resources: Policy rule resources (list)
+        :param List[str] verbs: Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
         if non_resource_urls is not None:
@@ -11501,26 +15424,41 @@ class RoleTempalteRule(dict):
     @property
     @pulumi.getter(name="apiGroups")
     def api_groups(self) -> Optional[List[str]]:
+        """
+        Policy rule api groups (list)
+        """
         return pulumi.get(self, "api_groups")
 
     @property
     @pulumi.getter(name="nonResourceUrls")
     def non_resource_urls(self) -> Optional[List[str]]:
+        """
+        Policy rule non resource urls (list)
+        """
         return pulumi.get(self, "non_resource_urls")
 
     @property
     @pulumi.getter(name="resourceNames")
     def resource_names(self) -> Optional[List[str]]:
+        """
+        Policy rule resource names (list)
+        """
         return pulumi.get(self, "resource_names")
 
     @property
     @pulumi.getter
     def resources(self) -> Optional[List[str]]:
+        """
+        Policy rule resources (list)
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter
     def verbs(self) -> Optional[List[str]]:
+        """
+        Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        """
         return pulumi.get(self, "verbs")
 
     def _translate_property(self, prop):
@@ -12033,6 +15971,12 @@ class GetClusterClusterRegistrationTokenResult(dict):
                  node_command: str,
                  token: str,
                  windows_node_command: str):
+        """
+        :param Mapping[str, Any] annotations: (Computed) Annotations for Node Pool object (map)
+        :param str id: (Computed) The ID of the resource (string)
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        :param str name: The name of the Cluster (string)
+        """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "command", command)
@@ -12048,6 +15992,9 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for Node Pool object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -12063,6 +16010,9 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        (Computed) The ID of the resource (string)
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -12073,6 +16023,9 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -12083,6 +16036,9 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -12363,6 +16319,10 @@ class GetClusterGkeConfigResult(dict):
                  taints: Optional[List[str]] = None,
                  use_ip_aliases: Optional[bool] = None,
                  zone: Optional[str] = None):
+        """
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        :param str description: (Computed) The description for Cluster (string)
+        """
         pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         pulumi.set(__self__, "credential", credential)
         pulumi.set(__self__, "disk_type", disk_type)
@@ -12499,6 +16459,9 @@ class GetClusterGkeConfigResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -12569,6 +16532,9 @@ class GetClusterGkeConfigResult(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        (Computed) The description for Cluster (string)
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -13455,6 +17421,9 @@ class GetClusterRkeConfigCloudProviderResult(dict):
                  azure_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderAzureCloudProviderResult'] = None,
                  openstack_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
                  vsphere_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderResult'] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        """
         pulumi.set(__self__, "custom_cloud_provider", custom_cloud_provider)
         pulumi.set(__self__, "name", name)
         if aws_cloud_provider is not None:
@@ -13474,6 +17443,9 @@ class GetClusterRkeConfigCloudProviderResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -14227,6 +18199,9 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult(di
                  port: str,
                  soap_roundtrip_count: float,
                  user: str):
+        """
+        :param str name: The name of the Cluster (string)
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "password", password)
@@ -14242,6 +18217,9 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult(di
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -14614,6 +18592,9 @@ class GetClusterRkeConfigNodeResult(dict):
                  node_id: Optional[str] = None,
                  port: Optional[str] = None,
                  ssh_agent_auth: Optional[bool] = None):
+        """
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "docker_socket", docker_socket)
         pulumi.set(__self__, "roles", roles)
@@ -14676,6 +18657,9 @@ class GetClusterRkeConfigNodeResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -15481,11 +19465,17 @@ class GetClusterRkeConfigUpgradeStrategyDrainInputResult(dict):
 class GetClusterScanScanConfigResult(dict):
     def __init__(__self__, *,
                  cis_scan_config: 'outputs.GetClusterScanScanConfigCisScanConfigResult'):
+        """
+        :param 'GetClusterScanScanConfigCisScanConfigArgs' cis_scan_config: Cluster Cis Scan config (List maxitems:1)
+        """
         pulumi.set(__self__, "cis_scan_config", cis_scan_config)
 
     @property
     @pulumi.getter(name="cisScanConfig")
     def cis_scan_config(self) -> 'outputs.GetClusterScanScanConfigCisScanConfigResult':
+        """
+        Cluster Cis Scan config (List maxitems:1)
+        """
         return pulumi.get(self, "cis_scan_config")
 
 
@@ -15497,6 +19487,13 @@ class GetClusterScanScanConfigCisScanConfigResult(dict):
                  override_benchmark_version: Optional[str] = None,
                  override_skips: Optional[List[str]] = None,
                  profile: Optional[str] = None):
+        """
+        :param bool debug_master: Debug master. Default: `false` (bool)
+        :param bool debug_worker: Debug worker. Default: `false` (bool)
+        :param str override_benchmark_version: Override benchmark version (string)
+        :param List[str] override_skips: Override skip (string)
+        :param str profile: Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        """
         if debug_master is not None:
             pulumi.set(__self__, "debug_master", debug_master)
         if debug_worker is not None:
@@ -15511,26 +19508,41 @@ class GetClusterScanScanConfigCisScanConfigResult(dict):
     @property
     @pulumi.getter(name="debugMaster")
     def debug_master(self) -> Optional[bool]:
+        """
+        Debug master. Default: `false` (bool)
+        """
         return pulumi.get(self, "debug_master")
 
     @property
     @pulumi.getter(name="debugWorker")
     def debug_worker(self) -> Optional[bool]:
+        """
+        Debug worker. Default: `false` (bool)
+        """
         return pulumi.get(self, "debug_worker")
 
     @property
     @pulumi.getter(name="overrideBenchmarkVersion")
     def override_benchmark_version(self) -> Optional[str]:
+        """
+        Override benchmark version (string)
+        """
         return pulumi.get(self, "override_benchmark_version")
 
     @property
     @pulumi.getter(name="overrideSkips")
     def override_skips(self) -> Optional[List[str]]:
+        """
+        Override skip (string)
+        """
         return pulumi.get(self, "override_skips")
 
     @property
     @pulumi.getter
     def profile(self) -> Optional[str]:
+        """
+        Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        """
         return pulumi.get(self, "profile")
 
 
@@ -15678,6 +19690,12 @@ class GetClusterTemplateTemplateRevisionResult(dict):
                  default: Optional[bool] = None,
                  enabled: Optional[bool] = None,
                  questions: Optional[List['outputs.GetClusterTemplateTemplateRevisionQuestionResult']] = None):
+        """
+        :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
+        :param str id: (Computed) The ID of the resource (string)
+        :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
+        :param str name: The cluster template name (string)
+        """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "cluster_config", cluster_config)
         pulumi.set(__self__, "cluster_template_id", cluster_template_id)
@@ -15694,6 +19712,9 @@ class GetClusterTemplateTemplateRevisionResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for the cluster template (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -15709,16 +19730,25 @@ class GetClusterTemplateTemplateRevisionResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        (Computed) The ID of the resource (string)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for the cluster template (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The cluster template name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -16115,6 +20145,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResul
                  azure_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderResult'] = None,
                  openstack_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
                  vsphere_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderResult'] = None):
+        """
+        :param str name: The cluster template name (string)
+        """
         pulumi.set(__self__, "custom_cloud_provider", custom_cloud_provider)
         pulumi.set(__self__, "name", name)
         if aws_cloud_provider is not None:
@@ -16134,6 +20167,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResul
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The cluster template name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -16887,6 +20923,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
                  port: str,
                  soap_roundtrip_count: float,
                  user: str):
+        """
+        :param str name: The cluster template name (string)
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "password", password)
@@ -16902,6 +20941,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The cluster template name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -17274,6 +21316,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult(dict):
                  node_id: Optional[str] = None,
                  port: Optional[str] = None,
                  ssh_agent_auth: Optional[bool] = None):
+        """
+        :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "docker_socket", docker_socket)
         pulumi.set(__self__, "roles", roles)
@@ -17336,6 +21381,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        (Computed) Labels for the cluster template (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -18870,11 +22918,17 @@ class GetNotifierWechatConfigResult(dict):
 class GetPodSecurityPolicyTemplateAllowedCsiDriverResult(dict):
     def __init__(__self__, *,
                  name: str):
+        """
+        :param str name: The name of the PodSecurityPolicyTemplate (string)
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the PodSecurityPolicyTemplate (string)
+        """
         return pulumi.get(self, "name")
 
 

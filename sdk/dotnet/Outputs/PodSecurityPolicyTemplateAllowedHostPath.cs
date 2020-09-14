@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateAllowedHostPath
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string PathPrefix;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly bool? ReadOnly;
 
         [OutputConstructor]

@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("publicNetwork")]
         public Input<string>? PublicNetwork { get; set; }
 

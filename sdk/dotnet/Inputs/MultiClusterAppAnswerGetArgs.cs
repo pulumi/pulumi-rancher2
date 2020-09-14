@@ -12,14 +12,24 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class MultiClusterAppAnswerGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster ID for answer (string)
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         [Input("values")]
         private InputMap<object>? _values;
+
+        /// <summary>
+        /// Key/values for answer (map)
+        /// </summary>
         public InputMap<object> Values
         {
             get => _values ?? (_values = new InputMap<object>());

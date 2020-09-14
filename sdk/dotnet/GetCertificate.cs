@@ -11,6 +11,56 @@ namespace Pulumi.Rancher2
 {
     public static class GetCertificate
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 certificate.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 certificates:
+        /// - Project certificate: Available to all namespaces in the `project_id`
+        /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
+        ///         {
+        ///             Name = "&lt;name&gt;",
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs
+        ///         {
+        ///             Name = "&lt;name&gt;",
+        ///             NamespaceId = "&lt;namespace_id&gt;",
+        ///             ProjectId = "&lt;project_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("rancher2:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
     }
@@ -18,12 +68,21 @@ namespace Pulumi.Rancher2
 
     public sealed class GetCertificateArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the certificate (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace id where to assign the namespaced certificate (string)
+        /// </summary>
         [Input("namespaceId")]
         public string? NamespaceId { get; set; }
 
+        /// <summary>
+        /// The project id where to assign the certificate (string)
+        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
@@ -36,13 +95,25 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetCertificateResult
     {
+        /// <summary>
+        /// (Computed) Annotations for certificate object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// (Computed) Base64 encoded certs (string)
+        /// </summary>
         public readonly string Certs;
+        /// <summary>
+        /// (Computed) A certificate description (string)
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels for certificate object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly string? NamespaceId;

@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialVsphereCredentialConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// vSphere password (string)
+        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
+        /// <summary>
+        /// vSphere username (string)
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
+        /// <summary>
+        /// vSphere IP/hostname for vCenter (string)
+        /// </summary>
         [Input("vcenter", required: true)]
         public Input<string> Vcenter { get; set; } = null!;
 
+        /// <summary>
+        /// vSphere Port for vCenter. Default `443` (string)
+        /// </summary>
         [Input("vcenterPort")]
         public Input<string>? VcenterPort { get; set; }
 

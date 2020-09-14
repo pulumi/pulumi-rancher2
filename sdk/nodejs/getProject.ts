@@ -24,7 +24,13 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    /**
+     * ID of the Rancher 2 cluster (string)
+     */
     readonly clusterId: string;
+    /**
+     * The project name (string)
+     */
     readonly name: string;
 }
 
@@ -32,18 +38,42 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
+    /**
+     * (Computed) Annotations of the rancher2 project (map)
+     */
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
+    /**
+     * (Computed) Default containers resource limits on project (List maxitem:1)
+     */
     readonly containerResourceLimit: outputs.GetProjectContainerResourceLimit;
+    /**
+     * (Computed) The project's description (string)
+     */
     readonly description: string;
+    /**
+     * (Computed) Enable built-in project monitoring. Default `false` (bool)
+     */
     readonly enableProjectMonitoring: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) Labels of the rancher2 project (map)
+     */
     readonly labels: {[key: string]: any};
     readonly name: string;
+    /**
+     * (Computed) Default Pod Security Policy ID for the project (string)
+     */
     readonly podSecurityPolicyTemplateId: string;
+    /**
+     * (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+     */
     readonly resourceQuota: outputs.GetProjectResourceQuota;
+    /**
+     * (Computed) UUID of the project as stored by Rancher 2 (string)
+     */
     readonly uuid: string;
 }

@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class CloudCredentialVsphereCredentialConfig
     {
+        /// <summary>
+        /// vSphere password (string)
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// vSphere username (string)
+        /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// vSphere IP/hostname for vCenter (string)
+        /// </summary>
         public readonly string Vcenter;
+        /// <summary>
+        /// vSphere Port for vCenter. Default `443` (string)
+        /// </summary>
         public readonly string? VcenterPort;
 
         [OutputConstructor]

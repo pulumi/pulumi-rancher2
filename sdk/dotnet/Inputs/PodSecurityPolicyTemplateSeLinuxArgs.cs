@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class PodSecurityPolicyTemplateSeLinuxArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         [Input("seLinuxOption")]
         public Input<Inputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>? SeLinuxOption { get; set; }
 

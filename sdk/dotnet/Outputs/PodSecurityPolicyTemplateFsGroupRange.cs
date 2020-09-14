@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateFsGroupRange
     {
+        /// <summary>
+        /// (int)
+        /// </summary>
         public readonly int Max;
+        /// <summary>
+        /// (int)
+        /// </summary>
         public readonly int Min;
 
         [OutputConstructor]

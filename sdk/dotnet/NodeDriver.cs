@@ -9,44 +9,104 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Node Driver
+    ///         var foo = new Rancher2.NodeDriver("foo", new Rancher2.NodeDriverArgs
+    ///         {
+    ///             Active = true,
+    ///             Builtin = false,
+    ///             Checksum = "0x0",
+    ///             Description = "Foo description",
+    ///             ExternalId = "foo_external",
+    ///             UiUrl = "local://ui",
+    ///             Url = "local://",
+    ///             WhitelistDomains = 
+    ///             {
+    ///                 "*.foo.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class NodeDriver : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specify if the node driver state (bool)
+        /// </summary>
         [Output("active")]
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify wheter the node driver is an internal node driver or not (bool)
+        /// </summary>
         [Output("builtin")]
         public Output<bool> Builtin { get; private set; } = null!;
 
+        /// <summary>
+        /// Verify that the downloaded driver matches the expected checksum (string)
+        /// </summary>
         [Output("checksum")]
         public Output<string?> Checksum { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the node driver (string)
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// External ID (string)
+        /// </summary>
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the node driver (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL to load for customized Add Nodes screen for this driver (string)
+        /// </summary>
         [Output("uiUrl")]
         public Output<string?> UiUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL to download the machine driver binary for 64-bit Linux (string)
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Domains to whitelist for the ui (list)
+        /// </summary>
         [Output("whitelistDomains")]
         public Output<ImmutableArray<string>> WhitelistDomains { get; private set; } = null!;
 
@@ -96,6 +156,9 @@ namespace Pulumi.Rancher2
 
     public sealed class NodeDriverArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specify if the node driver state (bool)
+        /// </summary>
         [Input("active", required: true)]
         public Input<bool> Active { get; set; } = null!;
 
@@ -103,7 +166,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -111,15 +174,27 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Specify wheter the node driver is an internal node driver or not (bool)
+        /// </summary>
         [Input("builtin", required: true)]
         public Input<bool> Builtin { get; set; } = null!;
 
+        /// <summary>
+        /// Verify that the downloaded driver matches the expected checksum (string)
+        /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
 
+        /// <summary>
+        /// Description of the node driver (string)
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// External ID (string)
+        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
@@ -127,7 +202,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -135,17 +210,30 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the node driver (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The URL to load for customized Add Nodes screen for this driver (string)
+        /// </summary>
         [Input("uiUrl")]
         public Input<string>? UiUrl { get; set; }
 
+        /// <summary>
+        /// The URL to download the machine driver binary for 64-bit Linux (string)
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("whitelistDomains")]
         private InputList<string>? _whitelistDomains;
+
+        /// <summary>
+        /// Domains to whitelist for the ui (list)
+        /// </summary>
         public InputList<string> WhitelistDomains
         {
             get => _whitelistDomains ?? (_whitelistDomains = new InputList<string>());
@@ -159,6 +247,9 @@ namespace Pulumi.Rancher2
 
     public sealed class NodeDriverState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specify if the node driver state (bool)
+        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
@@ -166,7 +257,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -174,15 +265,27 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Specify wheter the node driver is an internal node driver or not (bool)
+        /// </summary>
         [Input("builtin")]
         public Input<bool>? Builtin { get; set; }
 
+        /// <summary>
+        /// Verify that the downloaded driver matches the expected checksum (string)
+        /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
 
+        /// <summary>
+        /// Description of the node driver (string)
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// External ID (string)
+        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
@@ -190,7 +293,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -198,17 +301,30 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the node driver (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The URL to load for customized Add Nodes screen for this driver (string)
+        /// </summary>
         [Input("uiUrl")]
         public Input<string>? UiUrl { get; set; }
 
+        /// <summary>
+        /// The URL to download the machine driver binary for 64-bit Linux (string)
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         [Input("whitelistDomains")]
         private InputList<string>? _whitelistDomains;
+
+        /// <summary>
+        /// Domains to whitelist for the ui (list)
+        /// </summary>
         public InputList<string> WhitelistDomains
         {
             get => _whitelistDomains ?? (_whitelistDomains = new InputList<string>());

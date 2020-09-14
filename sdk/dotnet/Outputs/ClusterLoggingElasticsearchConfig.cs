@@ -13,16 +13,49 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterLoggingElasticsearchConfig
     {
+        /// <summary>
+        /// User password for the elascticsearch service (string)
+        /// </summary>
         public readonly string? AuthPassword;
+        /// <summary>
+        /// Username for the elascticsearch service (string)
+        /// </summary>
         public readonly string? AuthUsername;
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// SSL client key password for the splunk service (string)
+        /// </summary>
         public readonly string? ClientKeyPass;
+        /// <summary>
+        /// Date format for the elascticsearch logs. Default: `YYYY-MM-DD` (string)
+        /// </summary>
         public readonly string? DateFormat;
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Index prefix for the elascticsearch logs. Default: `local` (string)
+        /// </summary>
         public readonly string? IndexPrefix;
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
         public readonly bool? SslVerify;
+        /// <summary>
+        /// SSL version for the elascticsearch service (string)
+        /// </summary>
         public readonly string? SslVersion;
 
         [OutputConstructor]

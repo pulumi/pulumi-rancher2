@@ -11,6 +11,33 @@ namespace Pulumi.Rancher2
 {
     public static class GetClusterAlertGroup
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster alert group.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterAlertGroup.InvokeAsync(new Rancher2.GetClusterAlertGroupArgs
+        ///         {
+        ///             ClusterId = "&lt;cluster_id&gt;",
+        ///             Name = "&lt;cluster_alert_group_name&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetClusterAlertGroupResult> InvokeAsync(GetClusterAlertGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAlertGroupResult>("rancher2:index/getClusterAlertGroup:getClusterAlertGroup", args ?? new GetClusterAlertGroupArgs(), options.WithVersion());
     }
@@ -18,9 +45,15 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterAlertGroupArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The cluster id where create cluster alert group (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The cluster alert group name (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -33,18 +66,39 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterAlertGroupResult
     {
+        /// <summary>
+        /// (Computed) The cluster alert group annotations (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
+        /// <summary>
+        /// (Computed) The cluster alert group description (string)
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (Computed) The cluster alert group interval seconds. Default: `180` (int)
+        /// </summary>
         public readonly int GroupIntervalSeconds;
+        /// <summary>
+        /// (Computed) The cluster alert group wait seconds. Default: `180` (int)
+        /// </summary>
         public readonly int GroupWaitSeconds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) The cluster alert group labels (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed) The cluster alert group recipients (list)
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAlertGroupRecipientResult> Recipients;
+        /// <summary>
+        /// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
+        /// </summary>
         public readonly int RepeatIntervalSeconds;
 
         [OutputConstructor]

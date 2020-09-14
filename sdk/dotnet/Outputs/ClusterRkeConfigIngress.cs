@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigIngress
     {
+        /// <summary>
+        /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        /// </summary>
         public readonly string? DnsPolicy;
+        /// <summary>
+        /// Extra arguments for scheduler service (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
+        /// <summary>
+        /// RKE monitoring node selector (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
+        /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
+        /// <summary>
+        /// RKE monitoring provider (string)
+        /// </summary>
         public readonly string? Provider;
 
         [OutputConstructor]

@@ -9,82 +9,144 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Project
+    ///         var fooProject = new Rancher2.Project("fooProject", new Rancher2.ProjectArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform project ",
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "500m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///         });
+    ///         // Create a new Rancher2 Project Alert Group
+    ///         var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new Rancher2.ProjectAlertGroupArgs
+    ///         {
+    ///             Description = "Terraform project alert group",
+    ///             ProjectId = fooProject.Id,
+    ///             GroupIntervalSeconds = 300,
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///         // Create a new Rancher2 Project Alert Rule
+    ///         var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new Rancher2.ProjectAlertRuleArgs
+    ///         {
+    ///             ProjectId = fooProjectAlertGroup.ProjectId,
+    ///             GroupId = fooProjectAlertGroup.Id,
+    ///             GroupIntervalSeconds = 600,
+    ///             RepeatIntervalSeconds = 6000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectAlertRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert rule annotations (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule group ID
+        /// The project alert rule alert group ID (string)
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The project alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Output("groupIntervalSeconds")]
         public Output<int?> GroupIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The project alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Output("groupWaitSeconds")]
         public Output<int?> GroupWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule inherited
+        /// The project alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Output("inherited")]
         public Output<bool?> Inherited { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert rule labels (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Alert metric rule
+        /// The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("metricRule")]
         public Output<Outputs.ProjectAlertRuleMetricRule?> MetricRule { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule name
+        /// The project alert rule name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Alert pod rule
+        /// The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("podRule")]
         public Output<Outputs.ProjectAlertRulePodRule?> PodRule { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule Project ID
+        /// The project id where create project alert rule (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The project alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Output("repeatIntervalSeconds")]
         public Output<int?> RepeatIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert rule severity
+        /// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Output("severity")]
         public Output<string?> Severity { get; private set; } = null!;
 
         /// <summary>
-        /// Alert workload rule
+        /// The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         /// </summary>
         [Output("workloadRule")]
         public Output<Outputs.ProjectAlertRuleWorkloadRule?> WorkloadRule { get; private set; } = null!;
@@ -139,7 +201,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert rule annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -148,25 +210,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert rule group ID
+        /// The project alert rule alert group ID (string)
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The project alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The project alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule inherited
+        /// The project alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Input("inherited")]
         public Input<bool>? Inherited { get; set; }
@@ -175,7 +237,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert rule labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -184,43 +246,43 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert metric rule
+        /// The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("metricRule")]
         public Input<Inputs.ProjectAlertRuleMetricRuleArgs>? MetricRule { get; set; }
 
         /// <summary>
-        /// Alert rule name
+        /// The project alert rule name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert pod rule
+        /// The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("podRule")]
         public Input<Inputs.ProjectAlertRulePodRuleArgs>? PodRule { get; set; }
 
         /// <summary>
-        /// Alert rule Project ID
+        /// The project id where create project alert rule (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The project alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule severity
+        /// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Alert workload rule
+        /// The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("workloadRule")]
         public Input<Inputs.ProjectAlertRuleWorkloadRuleArgs>? WorkloadRule { get; set; }
@@ -236,7 +298,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert rule annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -245,25 +307,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert rule group ID
+        /// The project alert rule alert group ID (string)
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Alert rule interval seconds
+        /// The project alert rule group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule wait seconds
+        /// The project alert rule group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule inherited
+        /// The project alert rule inherited. Default: `true` (bool)
         /// </summary>
         [Input("inherited")]
         public Input<bool>? Inherited { get; set; }
@@ -272,7 +334,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert rule labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -281,43 +343,43 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert metric rule
+        /// The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("metricRule")]
         public Input<Inputs.ProjectAlertRuleMetricRuleGetArgs>? MetricRule { get; set; }
 
         /// <summary>
-        /// Alert rule name
+        /// The project alert rule name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert pod rule
+        /// The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("podRule")]
         public Input<Inputs.ProjectAlertRulePodRuleGetArgs>? PodRule { get; set; }
 
         /// <summary>
-        /// Alert rule Project ID
+        /// The project id where create project alert rule (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Alert rule repeat interval seconds
+        /// The project alert rule wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert rule severity
+        /// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Alert workload rule
+        /// The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         /// </summary>
         [Input("workloadRule")]
         public Input<Inputs.ProjectAlertRuleWorkloadRuleGetArgs>? WorkloadRule { get; set; }

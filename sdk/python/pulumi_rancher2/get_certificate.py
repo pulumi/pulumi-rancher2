@@ -48,16 +48,25 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for certificate object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def certs(self) -> str:
+        """
+        (Computed) Base64 encoded certs (string)
+        """
         return pulumi.get(self, "certs")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) A certificate description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -71,6 +80,9 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for certificate object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -110,7 +122,35 @@ def get_certificate(name: Optional[str] = None,
                     project_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 certificate.
+
+    Depending of the availability, there are 2 types of Rancher v2 certificates:
+    - Project certificate: Available to all namespaces in the `project_id`
+    - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        project_id="<project_id>")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_certificate(name="<name>",
+        namespace_id="<namespace_id>",
+        project_id="<project_id>")
+    ```
+
+
+    :param str name: The name of the certificate (string)
+    :param str namespace_id: The namespace id where to assign the namespaced certificate (string)
+    :param str project_id: The project id where to assign the certificate (string)
     """
     __args__ = dict()
     __args__['name'] = name

@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigAuthentication
     {
+        /// <summary>
+        /// RKE sans for authentication ([]string)
+        /// </summary>
         public readonly ImmutableArray<string> Sans;
+        /// <summary>
+        /// Monitoring deployment update strategy (string)
+        /// </summary>
         public readonly string? Strategy;
 
         [OutputConstructor]

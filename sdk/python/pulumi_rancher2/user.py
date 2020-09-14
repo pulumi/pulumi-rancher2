@@ -25,11 +25,34 @@ class User(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a User resource with the given unique name, props, and options.
+        Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
+
+        When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 User
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        # Create a new rancher2 global_role_binding for User
+        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
+        :param pulumi.Input[str] name: The user full name (string)
+        :param pulumi.Input[str] password: The user password (string)
+        :param pulumi.Input[str] username: The user username (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,8 +106,12 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
+        :param pulumi.Input[str] name: The user full name (string)
+        :param pulumi.Input[str] password: The user password (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] principal_ids: (Computed) The user principal IDs (list)
+        :param pulumi.Input[str] username: The user username (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -103,7 +130,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for global role binding (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -116,28 +143,40 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for global role binding (map)
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The user full name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
+        """
+        The user password (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="principalIds")
     def principal_ids(self) -> pulumi.Output[List[str]]:
+        """
+        (Computed) The user principal IDs (list)
+        """
         return pulumi.get(self, "principal_ids")
 
     @property
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
+        """
+        The user username (string)
+        """
         return pulumi.get(self, "username")
 
     def translate_output_property(self, prop):

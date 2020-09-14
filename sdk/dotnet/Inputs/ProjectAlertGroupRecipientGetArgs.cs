@@ -15,12 +15,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("defaultRecipient")]
         public Input<bool>? DefaultRecipient { get; set; }
 
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
         [Input("notifierId", required: true)]
         public Input<string> NotifierId { get; set; } = null!;
 
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
         [Input("notifierType")]
         public Input<string>? NotifierType { get; set; }
 
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
         [Input("recipient")]
         public Input<string>? Recipient { get; set; }
 

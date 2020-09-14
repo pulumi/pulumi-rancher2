@@ -7,6 +7,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupCloudCredential(ctx, &rancher2.LookupCloudCredentialArgs{
+// 			Name: "test",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupCloudCredential(ctx *pulumi.Context, args *LookupCloudCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCloudCredentialResult, error) {
 	var rv LookupCloudCredentialResult
 	err := ctx.Invoke("rancher2:index/getCloudCredential:getCloudCredential", args, &rv, opts...)
@@ -18,14 +42,17 @@ func LookupCloudCredential(ctx *pulumi.Context, args *LookupCloudCredentialArgs,
 
 // A collection of arguments for invoking getCloudCredential.
 type LookupCloudCredentialArgs struct {
+	// The Cloud Credential name.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getCloudCredential.
 type LookupCloudCredentialResult struct {
+	// (Computed) Annotations for the Cloud Credential (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string                 `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels for the Cloud Credential (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	Name   string                 `pulumi:"name"`
 }

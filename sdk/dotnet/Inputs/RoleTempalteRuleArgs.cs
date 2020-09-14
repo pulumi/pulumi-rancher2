@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("apiGroups")]
         private InputList<string>? _apiGroups;
+
+        /// <summary>
+        /// Policy rule api groups (list)
+        /// </summary>
         public InputList<string> ApiGroups
         {
             get => _apiGroups ?? (_apiGroups = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("nonResourceUrls")]
         private InputList<string>? _nonResourceUrls;
+
+        /// <summary>
+        /// Policy rule non resource urls (list)
+        /// </summary>
         public InputList<string> NonResourceUrls
         {
             get => _nonResourceUrls ?? (_nonResourceUrls = new InputList<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("resourceNames")]
         private InputList<string>? _resourceNames;
+
+        /// <summary>
+        /// Policy rule resource names (list)
+        /// </summary>
         public InputList<string> ResourceNames
         {
             get => _resourceNames ?? (_resourceNames = new InputList<string>());
@@ -38,6 +50,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("resources")]
         private InputList<string>? _resources;
+
+        /// <summary>
+        /// Policy rule resources (list)
+        /// </summary>
         public InputList<string> Resources
         {
             get => _resources ?? (_resources = new InputList<string>());
@@ -46,6 +62,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("verbs")]
         private InputList<string>? _verbs;
+
+        /// <summary>
+        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        /// </summary>
         public InputList<string> Verbs
         {
             get => _verbs ?? (_verbs = new InputList<string>());

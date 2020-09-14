@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
+ *
+ * On create, if setting already exists, provider will import it and update its value.
+ *
+ * On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Setting
+ * const foo = new rancher2.Setting("foo", {
+ *     value: "<VALUE>",
+ * });
+ * ```
+ */
 export class Setting extends pulumi.CustomResource {
     /**
      * Get an existing Setting resource's state with the given name, ID, and optional extra
@@ -33,14 +52,20 @@ export class Setting extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * Annotations for setting object (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Labels of the resource
+     * Labels for setting object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The name of the setting (string)
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The value of the setting (string)
+     */
     public readonly value!: pulumi.Output<string>;
 
     /**
@@ -85,14 +110,20 @@ export class Setting extends pulumi.CustomResource {
  */
 export interface SettingState {
     /**
-     * Annotations of the resource
+     * Annotations for setting object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Labels of the resource
+     * Labels for setting object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the setting (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The value of the setting (string)
+     */
     readonly value?: pulumi.Input<string>;
 }
 
@@ -101,13 +132,19 @@ export interface SettingState {
  */
 export interface SettingArgs {
     /**
-     * Annotations of the resource
+     * Annotations for setting object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Labels of the resource
+     * Labels for setting object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the setting (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The value of the setting (string)
+     */
     readonly value: pulumi.Input<string>;
 }

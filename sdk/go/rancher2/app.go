@@ -13,34 +13,37 @@ import (
 type App struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations for App object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Answers of the app
+	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapOutput `pulumi:"answers"`
-	// Catalog name of the app
+	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
+	// Description for the app (string)
 	Description pulumi.StringOutput `pulumi:"description"`
-	// External ID of the app
+	// (Computed) The url of the app template on a catalog (string)
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
-	// Force app upgrade
+	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
-	// Labels of the resource
+	// Labels for App object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Name of the app
+	// The name of the app (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Project ID to add app
+	// The project id where the app will be installed (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// App revision id
+	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// Namespace name to add app
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringOutput `pulumi:"targetNamespace"`
-	// Template name of the app
+	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
-	// Template version of the app
+	// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
 	TemplateVersion pulumi.StringOutput `pulumi:"templateVersion"`
-	// values.yaml base64 encoded file content of the app
+	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrOutput `pulumi:"valuesYaml"`
-	// Wait until app is deployed and active
+	// Wait until app is deployed and active. Default: `true` (bool)
 	Wait pulumi.BoolPtrOutput `pulumi:"wait"`
 }
 
@@ -84,66 +87,72 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
-	// Annotations of the resource
+	// Annotations for App object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Answers of the app
+	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers map[string]interface{} `pulumi:"answers"`
-	// Catalog name of the app
+	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName *string `pulumi:"catalogName"`
+	// Description for the app (string)
 	Description *string `pulumi:"description"`
-	// External ID of the app
+	// (Computed) The url of the app template on a catalog (string)
 	ExternalId *string `pulumi:"externalId"`
-	// Force app upgrade
+	// Force app upgrade (string)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Labels of the resource
+	// Labels for App object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of the app
+	// The name of the app (string)
 	Name *string `pulumi:"name"`
-	// Project ID to add app
+	// The project id where the app will be installed (string)
 	ProjectId *string `pulumi:"projectId"`
-	// App revision id
+	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId *string `pulumi:"revisionId"`
-	// Namespace name to add app
+	// The namespace id where the app will be installed (string)
 	TargetNamespace *string `pulumi:"targetNamespace"`
-	// Template name of the app
+	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName *string `pulumi:"templateName"`
-	// Template version of the app
+	// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
 	TemplateVersion *string `pulumi:"templateVersion"`
-	// values.yaml base64 encoded file content of the app
+	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml *string `pulumi:"valuesYaml"`
-	// Wait until app is deployed and active
+	// Wait until app is deployed and active. Default: `true` (bool)
 	Wait *bool `pulumi:"wait"`
 }
 
 type AppState struct {
-	// Annotations of the resource
+	// Annotations for App object (map)
 	Annotations pulumi.MapInput
-	// Answers of the app
+	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapInput
-	// Catalog name of the app
+	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringPtrInput
+	// Description for the app (string)
 	Description pulumi.StringPtrInput
-	// External ID of the app
+	// (Computed) The url of the app template on a catalog (string)
 	ExternalId pulumi.StringPtrInput
-	// Force app upgrade
+	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrInput
-	// Labels of the resource
+	// Labels for App object (map)
 	Labels pulumi.MapInput
-	// Name of the app
+	// The name of the app (string)
 	Name pulumi.StringPtrInput
-	// Project ID to add app
+	// The project id where the app will be installed (string)
 	ProjectId pulumi.StringPtrInput
-	// App revision id
+	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringPtrInput
-	// Namespace name to add app
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringPtrInput
-	// Template name of the app
+	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringPtrInput
-	// Template version of the app
+	// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
 	TemplateVersion pulumi.StringPtrInput
-	// values.yaml base64 encoded file content of the app
+	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrInput
-	// Wait until app is deployed and active
+	// Wait until app is deployed and active. Default: `true` (bool)
 	Wait pulumi.BoolPtrInput
 }
 
@@ -152,63 +161,69 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	// Annotations of the resource
+	// Annotations for App object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Answers of the app
+	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers map[string]interface{} `pulumi:"answers"`
-	// Catalog name of the app
-	CatalogName string  `pulumi:"catalogName"`
+	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+	// * add project ID before name, `p-XXXXX:<name>`
+	CatalogName string `pulumi:"catalogName"`
+	// Description for the app (string)
 	Description *string `pulumi:"description"`
-	// Force app upgrade
+	// Force app upgrade (string)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
-	// Labels of the resource
+	// Labels for App object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Name of the app
+	// The name of the app (string)
 	Name *string `pulumi:"name"`
-	// Project ID to add app
+	// The project id where the app will be installed (string)
 	ProjectId string `pulumi:"projectId"`
-	// App revision id
+	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId *string `pulumi:"revisionId"`
-	// Namespace name to add app
+	// The namespace id where the app will be installed (string)
 	TargetNamespace string `pulumi:"targetNamespace"`
-	// Template name of the app
+	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName string `pulumi:"templateName"`
-	// Template version of the app
+	// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
 	TemplateVersion *string `pulumi:"templateVersion"`
-	// values.yaml base64 encoded file content of the app
+	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml *string `pulumi:"valuesYaml"`
-	// Wait until app is deployed and active
+	// Wait until app is deployed and active. Default: `true` (bool)
 	Wait *bool `pulumi:"wait"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
-	// Annotations of the resource
+	// Annotations for App object (map)
 	Annotations pulumi.MapInput
-	// Answers of the app
+	// Answers for the app template. If modified, app will be upgraded (map)
 	Answers pulumi.MapInput
-	// Catalog name of the app
+	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+	// * add project ID before name, `p-XXXXX:<name>`
 	CatalogName pulumi.StringInput
+	// Description for the app (string)
 	Description pulumi.StringPtrInput
-	// Force app upgrade
+	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrInput
-	// Labels of the resource
+	// Labels for App object (map)
 	Labels pulumi.MapInput
-	// Name of the app
+	// The name of the app (string)
 	Name pulumi.StringPtrInput
-	// Project ID to add app
+	// The project id where the app will be installed (string)
 	ProjectId pulumi.StringInput
-	// App revision id
+	// Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revisionId` (string)
 	RevisionId pulumi.StringPtrInput
-	// Namespace name to add app
+	// The namespace id where the app will be installed (string)
 	TargetNamespace pulumi.StringInput
-	// Template name of the app
+	// Template name of the app. If modified, app will be upgraded (string)
 	TemplateName pulumi.StringInput
-	// Template version of the app
+	// Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
 	TemplateVersion pulumi.StringPtrInput
-	// values.yaml base64 encoded file content of the app
+	// values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
 	ValuesYaml pulumi.StringPtrInput
-	// Wait until app is deployed and active
+	// Wait until app is deployed and active. Default: `true` (bool)
 	Wait pulumi.BoolPtrInput
 }
 

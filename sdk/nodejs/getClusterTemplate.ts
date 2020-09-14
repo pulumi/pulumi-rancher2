@@ -6,6 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster template.
+ *
+ * Cluster Templates are available from Rancher v2.3.x and above.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = pulumi.output(rancher2.getClusterTemplate({
+ *     name: "foo",
+ * }, { async: true }));
+ * ```
+ */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +42,18 @@ export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.I
  * A collection of arguments for invoking getClusterTemplate.
  */
 export interface GetClusterTemplateArgs {
+    /**
+     * (Computed) Annotations for the cluster template (map)
+     */
     readonly annotations?: {[key: string]: any};
     readonly description?: string;
+    /**
+     * (Computed) Labels for the cluster template (map)
+     */
     readonly labels?: {[key: string]: any};
+    /**
+     * The cluster template name (string)
+     */
     readonly name: string;
 }
 
@@ -36,15 +61,30 @@ export interface GetClusterTemplateArgs {
  * A collection of values returned by getClusterTemplate.
  */
 export interface GetClusterTemplateResult {
+    /**
+     * (Computed) Annotations for the cluster template (map)
+     */
     readonly annotations: {[key: string]: any};
+    /**
+     * (Computed) Default cluster template revision ID (string)
+     */
     readonly defaultRevisionId: string;
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) Labels for the cluster template (map)
+     */
     readonly labels: {[key: string]: any};
+    /**
+     * (Computed) Cluster template members (list)
+     */
     readonly members: outputs.GetClusterTemplateMember[];
     readonly name: string;
+    /**
+     * (Computed) Cluster template revisions (list)
+     */
     readonly templateRevisions: outputs.GetClusterTemplateTemplateRevision[];
 }

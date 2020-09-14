@@ -10,20 +10,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewClusterRoleTemplateBinding(ctx, "foo", &rancher2.ClusterRoleTemplateBindingArgs{
+// 			ClusterId:      pulumi.String("<cluster_id>"),
+// 			RoleTemplateId: pulumi.String("<role_template_id>"),
+// 			UserId:         pulumi.String("<user_id>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ClusterRoleTemplateBinding struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
-	Annotations      pulumi.MapOutput       `pulumi:"annotations"`
-	ClusterId        pulumi.StringOutput    `pulumi:"clusterId"`
-	GroupId          pulumi.StringPtrOutput `pulumi:"groupId"`
-	GroupPrincipalId pulumi.StringOutput    `pulumi:"groupPrincipalId"`
-	// Labels of the resource
-	Labels          pulumi.MapOutput       `pulumi:"labels"`
-	Name            pulumi.StringOutput    `pulumi:"name"`
-	RoleTemplateId  pulumi.StringOutput    `pulumi:"roleTemplateId"`
-	UserId          pulumi.StringPtrOutput `pulumi:"userId"`
-	UserPrincipalId pulumi.StringOutput    `pulumi:"userPrincipalId"`
+	// Annotations for cluster role template binding (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// The cluster id where bind cluster role template binding (string)
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The group ID to assign cluster role template binding (string)
+	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	// The groupPrincipal ID to assign cluster role template binding (string)
+	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
+	// Labels for cluster role template binding (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The name of the cluster role template binding (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId pulumi.StringOutput `pulumi:"roleTemplateId"`
+	// The user ID to assign cluster role template binding (string)
+	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	// The userPrincipal ID to assign cluster role template binding (string)
+	UserPrincipalId pulumi.StringOutput `pulumi:"userPrincipalId"`
 }
 
 // NewClusterRoleTemplateBinding registers a new resource with the given unique name, arguments, and options.
@@ -60,30 +93,44 @@ func GetClusterRoleTemplateBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterRoleTemplateBinding resources.
 type clusterRoleTemplateBindingState struct {
-	// Annotations of the resource
-	Annotations      map[string]interface{} `pulumi:"annotations"`
-	ClusterId        *string                `pulumi:"clusterId"`
-	GroupId          *string                `pulumi:"groupId"`
-	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
-	// Labels of the resource
-	Labels          map[string]interface{} `pulumi:"labels"`
-	Name            *string                `pulumi:"name"`
-	RoleTemplateId  *string                `pulumi:"roleTemplateId"`
-	UserId          *string                `pulumi:"userId"`
-	UserPrincipalId *string                `pulumi:"userPrincipalId"`
+	// Annotations for cluster role template binding (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The cluster id where bind cluster role template binding (string)
+	ClusterId *string `pulumi:"clusterId"`
+	// The group ID to assign cluster role template binding (string)
+	GroupId *string `pulumi:"groupId"`
+	// The groupPrincipal ID to assign cluster role template binding (string)
+	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
+	// Labels for cluster role template binding (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the cluster role template binding (string)
+	Name *string `pulumi:"name"`
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId *string `pulumi:"roleTemplateId"`
+	// The user ID to assign cluster role template binding (string)
+	UserId *string `pulumi:"userId"`
+	// The userPrincipal ID to assign cluster role template binding (string)
+	UserPrincipalId *string `pulumi:"userPrincipalId"`
 }
 
 type ClusterRoleTemplateBindingState struct {
-	// Annotations of the resource
-	Annotations      pulumi.MapInput
-	ClusterId        pulumi.StringPtrInput
-	GroupId          pulumi.StringPtrInput
+	// Annotations for cluster role template binding (map)
+	Annotations pulumi.MapInput
+	// The cluster id where bind cluster role template binding (string)
+	ClusterId pulumi.StringPtrInput
+	// The group ID to assign cluster role template binding (string)
+	GroupId pulumi.StringPtrInput
+	// The groupPrincipal ID to assign cluster role template binding (string)
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels of the resource
-	Labels          pulumi.MapInput
-	Name            pulumi.StringPtrInput
-	RoleTemplateId  pulumi.StringPtrInput
-	UserId          pulumi.StringPtrInput
+	// Labels for cluster role template binding (map)
+	Labels pulumi.MapInput
+	// The name of the cluster role template binding (string)
+	Name pulumi.StringPtrInput
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId pulumi.StringPtrInput
+	// The user ID to assign cluster role template binding (string)
+	UserId pulumi.StringPtrInput
+	// The userPrincipal ID to assign cluster role template binding (string)
 	UserPrincipalId pulumi.StringPtrInput
 }
 
@@ -92,31 +139,45 @@ func (ClusterRoleTemplateBindingState) ElementType() reflect.Type {
 }
 
 type clusterRoleTemplateBindingArgs struct {
-	// Annotations of the resource
-	Annotations      map[string]interface{} `pulumi:"annotations"`
-	ClusterId        string                 `pulumi:"clusterId"`
-	GroupId          *string                `pulumi:"groupId"`
-	GroupPrincipalId *string                `pulumi:"groupPrincipalId"`
-	// Labels of the resource
-	Labels          map[string]interface{} `pulumi:"labels"`
-	Name            *string                `pulumi:"name"`
-	RoleTemplateId  string                 `pulumi:"roleTemplateId"`
-	UserId          *string                `pulumi:"userId"`
-	UserPrincipalId *string                `pulumi:"userPrincipalId"`
+	// Annotations for cluster role template binding (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The cluster id where bind cluster role template binding (string)
+	ClusterId string `pulumi:"clusterId"`
+	// The group ID to assign cluster role template binding (string)
+	GroupId *string `pulumi:"groupId"`
+	// The groupPrincipal ID to assign cluster role template binding (string)
+	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
+	// Labels for cluster role template binding (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the cluster role template binding (string)
+	Name *string `pulumi:"name"`
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId string `pulumi:"roleTemplateId"`
+	// The user ID to assign cluster role template binding (string)
+	UserId *string `pulumi:"userId"`
+	// The userPrincipal ID to assign cluster role template binding (string)
+	UserPrincipalId *string `pulumi:"userPrincipalId"`
 }
 
 // The set of arguments for constructing a ClusterRoleTemplateBinding resource.
 type ClusterRoleTemplateBindingArgs struct {
-	// Annotations of the resource
-	Annotations      pulumi.MapInput
-	ClusterId        pulumi.StringInput
-	GroupId          pulumi.StringPtrInput
+	// Annotations for cluster role template binding (map)
+	Annotations pulumi.MapInput
+	// The cluster id where bind cluster role template binding (string)
+	ClusterId pulumi.StringInput
+	// The group ID to assign cluster role template binding (string)
+	GroupId pulumi.StringPtrInput
+	// The groupPrincipal ID to assign cluster role template binding (string)
 	GroupPrincipalId pulumi.StringPtrInput
-	// Labels of the resource
-	Labels          pulumi.MapInput
-	Name            pulumi.StringPtrInput
-	RoleTemplateId  pulumi.StringInput
-	UserId          pulumi.StringPtrInput
+	// Labels for cluster role template binding (map)
+	Labels pulumi.MapInput
+	// The name of the cluster role template binding (string)
+	Name pulumi.StringPtrInput
+	// The role template id from create cluster role template binding (string)
+	RoleTemplateId pulumi.StringInput
+	// The user ID to assign cluster role template binding (string)
+	UserId pulumi.StringPtrInput
+	// The userPrincipal ID to assign cluster role template binding (string)
 	UserPrincipalId pulumi.StringPtrInput
 }
 

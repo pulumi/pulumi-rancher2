@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class MultiClusterAppAnswer
     {
+        /// <summary>
+        /// Cluster ID for answer (string)
+        /// </summary>
         public readonly string? ClusterId;
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Key/values for answer (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Values;
 
         [OutputConstructor]

@@ -10,26 +10,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
+// 			Description:           pulumi.String("Terraform project alert group"),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
+// 			ProjectId:             pulumi.String("<project_id>"),
+// 			RepeatIntervalSeconds: pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectAlertGroup struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// The project alert group annotations (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Alert group description
+	// The project alert group description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Alert group interval seconds
+	// The project alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrOutput `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrOutput `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The project alert group labels (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Alert group name
+	// The project alert group name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Alert group Project ID
+	// The project id where create project alert group (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Alert group recipients
+	// The project alert group recipients (list)
 	Recipients ProjectAlertGroupRecipientArrayOutput `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrOutput `pulumi:"repeatIntervalSeconds"`
 }
 
@@ -64,44 +91,44 @@ func GetProjectAlertGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAlertGroup resources.
 type projectAlertGroupState struct {
-	// Annotations of the resource
+	// The project alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert group description
+	// The project alert group description (string)
 	Description *string `pulumi:"description"`
-	// Alert group interval seconds
+	// The project alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The project alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert group name
+	// The project alert group name (string)
 	Name *string `pulumi:"name"`
-	// Alert group Project ID
+	// The project id where create project alert group (string)
 	ProjectId *string `pulumi:"projectId"`
-	// Alert group recipients
+	// The project alert group recipients (list)
 	Recipients []ProjectAlertGroupRecipient `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 }
 
 type ProjectAlertGroupState struct {
-	// Annotations of the resource
+	// The project alert group annotations (map)
 	Annotations pulumi.MapInput
-	// Alert group description
+	// The project alert group description (string)
 	Description pulumi.StringPtrInput
-	// Alert group interval seconds
+	// The project alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert group wait seconds
+	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Labels of the resource
+	// The project alert group labels (map)
 	Labels pulumi.MapInput
-	// Alert group name
+	// The project alert group name (string)
 	Name pulumi.StringPtrInput
-	// Alert group Project ID
+	// The project id where create project alert group (string)
 	ProjectId pulumi.StringPtrInput
-	// Alert group recipients
+	// The project alert group recipients (list)
 	Recipients ProjectAlertGroupRecipientArrayInput
-	// Alert group repeat interval seconds
+	// The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
 }
 
@@ -110,45 +137,45 @@ func (ProjectAlertGroupState) ElementType() reflect.Type {
 }
 
 type projectAlertGroupArgs struct {
-	// Annotations of the resource
+	// The project alert group annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert group description
+	// The project alert group description (string)
 	Description *string `pulumi:"description"`
-	// Alert group interval seconds
+	// The project alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert group wait seconds
+	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Labels of the resource
+	// The project alert group labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert group name
+	// The project alert group name (string)
 	Name *string `pulumi:"name"`
-	// Alert group Project ID
+	// The project id where create project alert group (string)
 	ProjectId string `pulumi:"projectId"`
-	// Alert group recipients
+	// The project alert group recipients (list)
 	Recipients []ProjectAlertGroupRecipient `pulumi:"recipients"`
-	// Alert group repeat interval seconds
+	// The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
 }
 
 // The set of arguments for constructing a ProjectAlertGroup resource.
 type ProjectAlertGroupArgs struct {
-	// Annotations of the resource
+	// The project alert group annotations (map)
 	Annotations pulumi.MapInput
-	// Alert group description
+	// The project alert group description (string)
 	Description pulumi.StringPtrInput
-	// Alert group interval seconds
+	// The project alert group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert group wait seconds
+	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Labels of the resource
+	// The project alert group labels (map)
 	Labels pulumi.MapInput
-	// Alert group name
+	// The project alert group name (string)
 	Name pulumi.StringPtrInput
-	// Alert group Project ID
+	// The project id where create project alert group (string)
 	ProjectId pulumi.StringInput
-	// Alert group recipients
+	// The project alert group recipients (list)
 	Recipients ProjectAlertGroupRecipientArrayInput
-	// Alert group repeat interval seconds
+	// The project alert group wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
 }
 

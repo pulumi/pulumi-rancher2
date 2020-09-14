@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
+ *
+ * There are 2 kind of tokens:
+ * - no scoped: valid for global system.
+ * - scoped: valid for just a specific cluster (`clusterId` should be provided).
+ *
+ * Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Token scoped
+ * const foo = new rancher2.Token("foo", {
+ *     clusterId: "<cluster-id>",
+ *     description: "foo token",
+ *     ttl: 1200,
+ * });
+ * ```
+ */
 export class Token extends pulumi.CustomResource {
     /**
      * Get an existing Token resource's state with the given name, ID, and optional extra
@@ -33,35 +56,35 @@ export class Token extends pulumi.CustomResource {
     }
 
     /**
-     * Token access key
+     * (Computed) Token access key part (string)
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * Annotations of the resource
+     * (Computed) Annotations of the token (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Cluster ID for scoped token
+     * Cluster ID for scoped token (string)
      */
     public readonly clusterId!: pulumi.Output<string | undefined>;
     /**
-     * Token description
+     * Token description (string)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Token enabled
+     * (Computed) Token is enabled (bool)
      */
     public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Token expired
+     * (Computed) Token is expired (bool)
      */
     public /*out*/ readonly expired!: pulumi.Output<boolean>;
     /**
-     * Labels of the resource
+     * (Computed) Labels of the token (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Token name
+     * (Computed) Token name (string)
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -69,19 +92,19 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly renew!: pulumi.Output<boolean | undefined>;
     /**
-     * Token secret key
+     * (Computed/Sensitive) Token secret key part (string)
      */
     public /*out*/ readonly secretKey!: pulumi.Output<string>;
     /**
-     * Token value
+     * (Computed/Sensitive) Token value (string)
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
-     * Token time to live in seconds
+     * Token time to live in seconds. Default `0` (int)
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * Token user ID
+     * (Computed) Token user ID (string)
      */
     public /*out*/ readonly userId!: pulumi.Output<string>;
 
@@ -142,35 +165,35 @@ export class Token extends pulumi.CustomResource {
  */
 export interface TokenState {
     /**
-     * Token access key
+     * (Computed) Token access key part (string)
      */
     readonly accessKey?: pulumi.Input<string>;
     /**
-     * Annotations of the resource
+     * (Computed) Annotations of the token (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Cluster ID for scoped token
+     * Cluster ID for scoped token (string)
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * Token description
+     * Token description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Token enabled
+     * (Computed) Token is enabled (bool)
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Token expired
+     * (Computed) Token is expired (bool)
      */
     readonly expired?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * (Computed) Labels of the token (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Token name
+     * (Computed) Token name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -178,19 +201,19 @@ export interface TokenState {
      */
     readonly renew?: pulumi.Input<boolean>;
     /**
-     * Token secret key
+     * (Computed/Sensitive) Token secret key part (string)
      */
     readonly secretKey?: pulumi.Input<string>;
     /**
-     * Token value
+     * (Computed/Sensitive) Token value (string)
      */
     readonly token?: pulumi.Input<string>;
     /**
-     * Token time to live in seconds
+     * Token time to live in seconds. Default `0` (int)
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * Token user ID
+     * (Computed) Token user ID (string)
      */
     readonly userId?: pulumi.Input<string>;
 }
@@ -200,19 +223,19 @@ export interface TokenState {
  */
 export interface TokenArgs {
     /**
-     * Annotations of the resource
+     * (Computed) Annotations of the token (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Cluster ID for scoped token
+     * Cluster ID for scoped token (string)
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * Token description
+     * Token description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * (Computed) Labels of the token (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -220,7 +243,7 @@ export interface TokenArgs {
      */
     readonly renew?: pulumi.Input<boolean>;
     /**
-     * Token time to live in seconds
+     * Token time to live in seconds. Default `0` (int)
      */
     readonly ttl?: pulumi.Input<number>;
 }

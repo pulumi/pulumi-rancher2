@@ -9,58 +9,84 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Project Alert Group
+    ///         var foo = new Rancher2.ProjectAlertGroup("foo", new Rancher2.ProjectAlertGroupArgs
+    ///         {
+    ///             Description = "Terraform project alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             ProjectId = "&lt;project_id&gt;",
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ProjectAlertGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert group annotations (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group description
+        /// The project alert group description (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The project alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Output("groupIntervalSeconds")]
         public Output<int?> GroupIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The project alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Output("groupWaitSeconds")]
         public Output<int?> GroupWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert group labels (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group name
+        /// The project alert group name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group Project ID
+        /// The project id where create project alert group (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group recipients
+        /// The project alert group recipients (list)
         /// </summary>
         [Output("recipients")]
         public Output<ImmutableArray<Outputs.ProjectAlertGroupRecipient>> Recipients { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The project alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Output("repeatIntervalSeconds")]
         public Output<int?> RepeatIntervalSeconds { get; private set; } = null!;
@@ -115,7 +141,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert group annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -124,19 +150,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group description
+        /// The project alert group description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The project alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The project alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
@@ -145,7 +171,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert group labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -154,13 +180,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group name
+        /// The project alert group name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert group Project ID
+        /// The project id where create project alert group (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -169,7 +195,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ProjectAlertGroupRecipientArgs>? _recipients;
 
         /// <summary>
-        /// Alert group recipients
+        /// The project alert group recipients (list)
         /// </summary>
         public InputList<Inputs.ProjectAlertGroupRecipientArgs> Recipients
         {
@@ -178,7 +204,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The project alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
@@ -194,7 +220,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The project alert group annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -203,19 +229,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group description
+        /// The project alert group description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The project alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The project alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
@@ -224,7 +250,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The project alert group labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -233,13 +259,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group name
+        /// The project alert group name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Alert group Project ID
+        /// The project id where create project alert group (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -248,7 +274,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ProjectAlertGroupRecipientGetArgs>? _recipients;
 
         /// <summary>
-        /// Alert group recipients
+        /// The project alert group recipients (list)
         /// </summary>
         public InputList<Inputs.ProjectAlertGroupRecipientGetArgs> Recipients
         {
@@ -257,7 +283,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The project alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }

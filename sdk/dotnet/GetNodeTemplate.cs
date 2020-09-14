@@ -11,6 +11,32 @@ namespace Pulumi.Rancher2
 {
     public static class GetNodeTemplate
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Template resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetNodeTemplate.InvokeAsync(new Rancher2.GetNodeTemplateArgs
+        ///         {
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("rancher2:index/getNodeTemplate:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithVersion());
     }
@@ -18,9 +44,15 @@ namespace Pulumi.Rancher2
 
     public sealed class GetNodeTemplateArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Node Template (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// (Computed) Engine storage driver for the node template (bool)
+        /// </summary>
         [Input("useInternalIpAddress")]
         public bool? UseInternalIpAddress { get; set; }
 
@@ -33,23 +65,62 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetNodeTemplateResult
     {
+        /// <summary>
+        /// (Computed) Annotations for Node Template object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+        /// </summary>
         public readonly string CloudCredentialId;
+        /// <summary>
+        /// (Computed) Description for the Node Template (string)
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (Computed) The driver of the node template (string)
+        /// </summary>
         public readonly string Driver;
+        /// <summary>
+        /// (Computed) Engine environment for the node template (string)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> EngineEnv;
+        /// <summary>
+        /// (Computed) Insecure registry for the node template (list)
+        /// </summary>
         public readonly ImmutableArray<string> EngineInsecureRegistries;
+        /// <summary>
+        /// (Computed) Docker engine install URL for the node template (string)
+        /// </summary>
         public readonly string EngineInstallUrl;
+        /// <summary>
+        /// (Computed) Engine label for the node template (string)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> EngineLabel;
+        /// <summary>
+        /// (Computed) Engine options for the node template (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> EngineOpt;
+        /// <summary>
+        /// (Computed) Engine registry mirror for the node template (list)
+        /// </summary>
         public readonly ImmutableArray<string> EngineRegistryMirrors;
+        /// <summary>
+        /// (Computed) Engine storage driver for the node template (string)
+        /// </summary>
         public readonly string EngineStorageDriver;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels for Node Template object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed) Engine storage driver for the node template (bool)
+        /// </summary>
         public readonly bool? UseInternalIpAddress;
 
         [OutputConstructor]

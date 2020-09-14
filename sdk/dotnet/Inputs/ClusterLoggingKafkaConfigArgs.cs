@@ -14,24 +14,43 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("brokerEndpoints")]
         private InputList<string>? _brokerEndpoints;
+
+        /// <summary>
+        /// Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        /// </summary>
         public InputList<string> BrokerEndpoints
         {
             get => _brokerEndpoints ?? (_brokerEndpoints = new InputList<string>());
             set => _brokerEndpoints = value;
         }
 
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// Topic to publish on the kafka service (string)
+        /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
+        /// <summary>
+        /// Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        /// </summary>
         [Input("zookeeperEndpoint")]
         public Input<string>? ZookeeperEndpoint { get; set; }
 

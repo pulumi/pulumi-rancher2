@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigUpgradeStrategyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// RKE drain nodes. Default: `false` (bool)
+        /// </summary>
         [Input("drain")]
         public Input<bool>? Drain { get; set; }
 
+        /// <summary>
+        /// RKE drain node input (list Maxitems: 1)
+        /// </summary>
         [Input("drainInput")]
         public Input<Inputs.ClusterRkeConfigUpgradeStrategyDrainInputGetArgs>? DrainInput { get; set; }
 
+        /// <summary>
+        /// RKE max unavailable controlplane nodes. Default: `1` (string)
+        /// </summary>
         [Input("maxUnavailableControlplane")]
         public Input<string>? MaxUnavailableControlplane { get; set; }
 
+        /// <summary>
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
+        /// </summary>
         [Input("maxUnavailableWorker")]
         public Input<string>? MaxUnavailableWorker { get; set; }
 

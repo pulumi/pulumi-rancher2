@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 cluster alert rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupClusterAlterRule(ctx, &rancher2.LookupClusterAlterRuleArgs{
+// 			ClusterId: "<cluster_id>",
+// 			Name:      "<cluster_alert_rule_name>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupClusterAlterRule(ctx *pulumi.Context, args *LookupClusterAlterRuleArgs, opts ...pulumi.InvokeOption) (*LookupClusterAlterRuleResult, error) {
 	var rv LookupClusterAlterRuleResult
 	err := ctx.Invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", args, &rv, opts...)
@@ -18,27 +43,42 @@ func LookupClusterAlterRule(ctx *pulumi.Context, args *LookupClusterAlterRuleArg
 
 // A collection of arguments for invoking getClusterAlterRule.
 type LookupClusterAlterRuleArgs struct {
-	ClusterId string                 `pulumi:"clusterId"`
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
+	// The cluster id where create cluster alert rule (string)
+	ClusterId string `pulumi:"clusterId"`
+	// (Computed) The cluster alert rule labels (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The cluster alert rule name (string)
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getClusterAlterRule.
 type LookupClusterAlterRuleResult struct {
-	Annotations          map[string]interface{}       `pulumi:"annotations"`
-	ClusterId            string                       `pulumi:"clusterId"`
-	EventRule            GetClusterAlterRuleEventRule `pulumi:"eventRule"`
-	GroupId              string                       `pulumi:"groupId"`
-	GroupIntervalSeconds int                          `pulumi:"groupIntervalSeconds"`
-	GroupWaitSeconds     int                          `pulumi:"groupWaitSeconds"`
+	// (Computed) The cluster alert rule annotations (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	ClusterId   string                 `pulumi:"clusterId"`
+	// (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"` (list Maxitems:1)
+	EventRule GetClusterAlterRuleEventRule `pulumi:"eventRule"`
+	// (Computed) The cluster alert rule alert group ID (string)
+	GroupId string `pulumi:"groupId"`
+	// (Computed) The cluster alert rule group interval seconds. Default: `180` (int)
+	GroupIntervalSeconds int `pulumi:"groupIntervalSeconds"`
+	// (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
+	GroupWaitSeconds int `pulumi:"groupWaitSeconds"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                               `pulumi:"id"`
-	Inherited             bool                                 `pulumi:"inherited"`
-	Labels                map[string]interface{}               `pulumi:"labels"`
-	MetricRule            GetClusterAlterRuleMetricRule        `pulumi:"metricRule"`
-	Name                  string                               `pulumi:"name"`
-	NodeRule              GetClusterAlterRuleNodeRule          `pulumi:"nodeRule"`
-	RepeatIntervalSeconds int                                  `pulumi:"repeatIntervalSeconds"`
-	Severity              string                               `pulumi:"severity"`
-	SystemServiceRule     GetClusterAlterRuleSystemServiceRule `pulumi:"systemServiceRule"`
+	Id string `pulumi:"id"`
+	// (Computed) The cluster alert rule inherited. Default: `true` (bool)
+	Inherited bool `pulumi:"inherited"`
+	// (Computed) The cluster alert rule labels (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
+	MetricRule GetClusterAlterRuleMetricRule `pulumi:"metricRule"`
+	Name       string                        `pulumi:"name"`
+	// (Computed) The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
+	NodeRule GetClusterAlterRuleNodeRule `pulumi:"nodeRule"`
+	// (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
+	RepeatIntervalSeconds int `pulumi:"repeatIntervalSeconds"`
+	// (Computed) The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
+	Severity string `pulumi:"severity"`
+	// (Computed) The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"`` (list Maxitems:1)
+	SystemServiceRule GetClusterAlterRuleSystemServiceRule `pulumi:"systemServiceRule"`
 }

@@ -9,46 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
+    /// 
+    /// Depending of the availability, there are 2 types of Rancher v2 secrets:
+    /// - Project secret: Available to all namespaces in the `project_id`
+    /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+    /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for secret object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Secret data base64 encoded
+        /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
         [Output("data")]
         public Output<ImmutableDictionary<string, object>> Data { get; private set; } = null!;
 
         /// <summary>
-        /// Secret description
+        /// A secret description (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for secret object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Secret name
+        /// The name of the secret (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Namespace ID to add secret
+        /// The namespace id where to assign the namespaced secret (string)
         /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Project ID to add secret
+        /// The project id where to assign the secret (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -103,7 +110,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for secret object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -115,7 +122,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _data;
 
         /// <summary>
-        /// Secret data base64 encoded
+        /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
         public InputMap<object> Data
         {
@@ -124,7 +131,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Secret description
+        /// A secret description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -133,7 +140,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for secret object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -142,19 +149,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Secret name
+        /// The name of the secret (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace ID to add secret
+        /// The namespace id where to assign the namespaced secret (string)
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Project ID to add secret
+        /// The project id where to assign the secret (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -170,7 +177,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for secret object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -182,7 +189,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _data;
 
         /// <summary>
-        /// Secret data base64 encoded
+        /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
         public InputMap<object> Data
         {
@@ -191,7 +198,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Secret description
+        /// A secret description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -200,7 +207,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for secret object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -209,19 +216,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Secret name
+        /// The name of the secret (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace ID to add secret
+        /// The namespace id where to assign the namespaced secret (string)
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Project ID to add secret
+        /// The project id where to assign the secret (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

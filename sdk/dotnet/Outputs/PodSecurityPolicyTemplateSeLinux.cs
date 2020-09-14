@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateSeLinux
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string Rule;
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption? SeLinuxOption;
 
         [OutputConstructor]

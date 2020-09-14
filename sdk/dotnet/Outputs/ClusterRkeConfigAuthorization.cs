@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigAuthorization
     {
+        /// <summary>
+        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
 
         [OutputConstructor]

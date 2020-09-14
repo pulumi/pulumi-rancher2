@@ -9,56 +9,73 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrOutput `pulumi:"aksConfig"`
-	// Annotations of the resource
-	Annotations         pulumi.MapOutput                 `pulumi:"annotations"`
+	// Annotations for cluster registration token object (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointOutput `pulumi:"clusterAuthEndpoint"`
-	// Cluster monitoring configuration
-	ClusterMonitoringInput   ClusterClusterMonitoringInputPtrOutput `pulumi:"clusterMonitoringInput"`
-	ClusterRegistrationToken ClusterClusterRegistrationTokenOutput  `pulumi:"clusterRegistrationToken"`
-	// Cluster template answers
+	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+	ClusterMonitoringInput ClusterClusterMonitoringInputPtrOutput `pulumi:"clusterMonitoringInput"`
+	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
+	ClusterRegistrationToken ClusterClusterRegistrationTokenOutput `pulumi:"clusterRegistrationToken"`
+	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
 	ClusterTemplateAnswers ClusterClusterTemplateAnswersOutput `pulumi:"clusterTemplateAnswers"`
-	// Cluster template ID
+	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId pulumi.StringPtrOutput `pulumi:"clusterTemplateId"`
-	// Cluster template questions
+	// Cluster template questions. Just for Rancher v2.3.x and above (list)
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayOutput `pulumi:"clusterTemplateQuestions"`
-	// Cluster template revision ID
+	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrOutput `pulumi:"clusterTemplateRevisionId"`
-	// Default pod security policy template id
-	DefaultPodSecurityPolicyTemplateId pulumi.StringOutput       `pulumi:"defaultPodSecurityPolicyTemplateId"`
-	DefaultProjectId                   pulumi.StringOutput       `pulumi:"defaultProjectId"`
-	Description                        pulumi.StringPtrOutput    `pulumi:"description"`
-	DesiredAgentImage                  pulumi.StringOutput       `pulumi:"desiredAgentImage"`
-	DesiredAuthImage                   pulumi.StringOutput       `pulumi:"desiredAuthImage"`
-	DockerRootDir                      pulumi.StringOutput       `pulumi:"dockerRootDir"`
-	Driver                             pulumi.StringOutput       `pulumi:"driver"`
-	EksConfig                          ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting
+	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+	DefaultPodSecurityPolicyTemplateId pulumi.StringOutput `pulumi:"defaultPodSecurityPolicyTemplateId"`
+	// (Computed) Default project ID for the cluster (string)
+	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
+	// An optional description of this cluster (string)
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Desired agent image. Just for Rancher v2.3.x and above (string)
+	DesiredAgentImage pulumi.StringOutput `pulumi:"desiredAgentImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DesiredAuthImage pulumi.StringOutput `pulumi:"desiredAuthImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DockerRootDir pulumi.StringOutput `pulumi:"dockerRootDir"`
+	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+	Driver pulumi.StringOutput `pulumi:"driver"`
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
-	// Enable built-in cluster monitoring
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation
-	EnableNetworkPolicy pulumi.BoolOutput         `pulumi:"enableNetworkPolicy"`
-	GkeConfig           ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
-	// Is istio enabled at cluster?
-	IstioEnabled pulumi.BoolOutput      `pulumi:"istioEnabled"`
-	K3sConfig    ClusterK3sConfigOutput `pulumi:"k3sConfig"`
-	KubeConfig   pulumi.StringOutput    `pulumi:"kubeConfig"`
-	// Labels of the resource
-	Labels    pulumi.MapOutput       `pulumi:"labels"`
-	Name      pulumi.StringOutput    `pulumi:"name"`
+	// Enable project network isolation (bool)
+	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+	IstioEnabled pulumi.BoolOutput `pulumi:"istioEnabled"`
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig ClusterK3sConfigOutput `pulumi:"k3sConfig"`
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
+	// Labels for cluster registration token object (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Name of cluster registration token (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanOutput `pulumi:"scheduledClusterScan"`
-	SystemProjectId      pulumi.StringOutput               `pulumi:"systemProjectId"`
-	// Windows preferred cluster
+	// (Computed) System project ID for the cluster (string)
+	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
+	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrOutput `pulumi:"windowsPreferedCluster"`
 }
 
@@ -90,104 +107,136 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
-	// Annotations of the resource
-	Annotations         map[string]interface{}      `pulumi:"annotations"`
+	// Annotations for cluster registration token object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint *ClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
-	// Cluster monitoring configuration
-	ClusterMonitoringInput   *ClusterClusterMonitoringInput   `pulumi:"clusterMonitoringInput"`
+	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+	ClusterMonitoringInput *ClusterClusterMonitoringInput `pulumi:"clusterMonitoringInput"`
+	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 	ClusterRegistrationToken *ClusterClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
-	// Cluster template answers
+	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
 	ClusterTemplateAnswers *ClusterClusterTemplateAnswers `pulumi:"clusterTemplateAnswers"`
-	// Cluster template ID
+	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId *string `pulumi:"clusterTemplateId"`
-	// Cluster template questions
+	// Cluster template questions. Just for Rancher v2.3.x and above (list)
 	ClusterTemplateQuestions []ClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
-	// Cluster template revision ID
+	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId *string `pulumi:"clusterTemplateRevisionId"`
-	// Default pod security policy template id
-	DefaultPodSecurityPolicyTemplateId *string           `pulumi:"defaultPodSecurityPolicyTemplateId"`
-	DefaultProjectId                   *string           `pulumi:"defaultProjectId"`
-	Description                        *string           `pulumi:"description"`
-	DesiredAgentImage                  *string           `pulumi:"desiredAgentImage"`
-	DesiredAuthImage                   *string           `pulumi:"desiredAuthImage"`
-	DockerRootDir                      *string           `pulumi:"dockerRootDir"`
-	Driver                             *string           `pulumi:"driver"`
-	EksConfig                          *ClusterEksConfig `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting
+	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
+	// (Computed) Default project ID for the cluster (string)
+	DefaultProjectId *string `pulumi:"defaultProjectId"`
+	// An optional description of this cluster (string)
+	Description *string `pulumi:"description"`
+	// Desired agent image. Just for Rancher v2.3.x and above (string)
+	DesiredAgentImage *string `pulumi:"desiredAgentImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DesiredAuthImage *string `pulumi:"desiredAuthImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DockerRootDir *string `pulumi:"dockerRootDir"`
+	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+	Driver *string `pulumi:"driver"`
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster istio
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
-	// Enable built-in cluster monitoring
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation
-	EnableNetworkPolicy *bool             `pulumi:"enableNetworkPolicy"`
-	GkeConfig           *ClusterGkeConfig `pulumi:"gkeConfig"`
-	// Is istio enabled at cluster?
-	IstioEnabled *bool             `pulumi:"istioEnabled"`
-	K3sConfig    *ClusterK3sConfig `pulumi:"k3sConfig"`
-	KubeConfig   *string           `pulumi:"kubeConfig"`
-	// Labels of the resource
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      *string                `pulumi:"name"`
-	RkeConfig *ClusterRkeConfig      `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Enable project network isolation (bool)
+	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
+	IstioEnabled *bool `pulumi:"istioEnabled"`
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	KubeConfig *string `pulumi:"kubeConfig"`
+	// Labels for cluster registration token object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Name of cluster registration token (string)
+	Name *string `pulumi:"name"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
+	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
-	SystemProjectId      *string                      `pulumi:"systemProjectId"`
-	// Windows preferred cluster
+	// (Computed) System project ID for the cluster (string)
+	SystemProjectId *string `pulumi:"systemProjectId"`
+	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
 
 type ClusterState struct {
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
-	// Annotations of the resource
-	Annotations         pulumi.MapInput
+	// Annotations for cluster registration token object (map)
+	Annotations pulumi.MapInput
+	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointPtrInput
-	// Cluster monitoring configuration
-	ClusterMonitoringInput   ClusterClusterMonitoringInputPtrInput
+	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
+	ClusterMonitoringInput ClusterClusterMonitoringInputPtrInput
+	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 	ClusterRegistrationToken ClusterClusterRegistrationTokenPtrInput
-	// Cluster template answers
+	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
 	ClusterTemplateAnswers ClusterClusterTemplateAnswersPtrInput
-	// Cluster template ID
+	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId pulumi.StringPtrInput
-	// Cluster template questions
+	// Cluster template questions. Just for Rancher v2.3.x and above (list)
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayInput
-	// Cluster template revision ID
+	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrInput
-	// Default pod security policy template id
+	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
-	DefaultProjectId                   pulumi.StringPtrInput
-	Description                        pulumi.StringPtrInput
-	DesiredAgentImage                  pulumi.StringPtrInput
-	DesiredAuthImage                   pulumi.StringPtrInput
-	DockerRootDir                      pulumi.StringPtrInput
-	Driver                             pulumi.StringPtrInput
-	EksConfig                          ClusterEksConfigPtrInput
-	// Enable built-in cluster alerting
+	// (Computed) Default project ID for the cluster (string)
+	DefaultProjectId pulumi.StringPtrInput
+	// An optional description of this cluster (string)
+	Description pulumi.StringPtrInput
+	// Desired agent image. Just for Rancher v2.3.x and above (string)
+	DesiredAgentImage pulumi.StringPtrInput
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DesiredAuthImage pulumi.StringPtrInput
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DockerRootDir pulumi.StringPtrInput
+	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+	Driver pulumi.StringPtrInput
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig ClusterEksConfigPtrInput
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster istio
+	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolPtrInput
-	// Enable built-in cluster monitoring
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
-	// Enable project network isolation
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	GkeConfig           ClusterGkeConfigPtrInput
-	// Is istio enabled at cluster?
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	GkeConfig ClusterGkeConfigPtrInput
+	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
 	IstioEnabled pulumi.BoolPtrInput
-	K3sConfig    ClusterK3sConfigPtrInput
-	KubeConfig   pulumi.StringPtrInput
-	// Labels of the resource
-	Labels    pulumi.MapInput
-	Name      pulumi.StringPtrInput
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig ClusterK3sConfigPtrInput
+	// (Computed/Sensitive) Kube Config generated for the cluster (string)
+	KubeConfig pulumi.StringPtrInput
+	// Labels for cluster registration token object (map)
+	Labels pulumi.MapInput
+	// Name of cluster registration token (string)
+	Name pulumi.StringPtrInput
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
-	SystemProjectId      pulumi.StringPtrInput
-	// Windows preferred cluster
+	// (Computed) System project ID for the cluster (string)
+	SystemProjectId pulumi.StringPtrInput
+	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrInput
 }
 
@@ -196,85 +245,109 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
-	// Annotations of the resource
-	Annotations         map[string]interface{}      `pulumi:"annotations"`
+	// Annotations for cluster registration token object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint *ClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
-	// Cluster monitoring configuration
+	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
 	ClusterMonitoringInput *ClusterClusterMonitoringInput `pulumi:"clusterMonitoringInput"`
-	// Cluster template answers
+	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
 	ClusterTemplateAnswers *ClusterClusterTemplateAnswers `pulumi:"clusterTemplateAnswers"`
-	// Cluster template ID
+	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId *string `pulumi:"clusterTemplateId"`
-	// Cluster template questions
+	// Cluster template questions. Just for Rancher v2.3.x and above (list)
 	ClusterTemplateQuestions []ClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
-	// Cluster template revision ID
+	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId *string `pulumi:"clusterTemplateRevisionId"`
-	// Default pod security policy template id
-	DefaultPodSecurityPolicyTemplateId *string           `pulumi:"defaultPodSecurityPolicyTemplateId"`
-	Description                        *string           `pulumi:"description"`
-	DesiredAgentImage                  *string           `pulumi:"desiredAgentImage"`
-	DesiredAuthImage                   *string           `pulumi:"desiredAuthImage"`
-	DockerRootDir                      *string           `pulumi:"dockerRootDir"`
-	Driver                             *string           `pulumi:"driver"`
-	EksConfig                          *ClusterEksConfig `pulumi:"eksConfig"`
-	// Enable built-in cluster alerting
+	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
+	DefaultPodSecurityPolicyTemplateId *string `pulumi:"defaultPodSecurityPolicyTemplateId"`
+	// An optional description of this cluster (string)
+	Description *string `pulumi:"description"`
+	// Desired agent image. Just for Rancher v2.3.x and above (string)
+	DesiredAgentImage *string `pulumi:"desiredAgentImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DesiredAuthImage *string `pulumi:"desiredAuthImage"`
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DockerRootDir *string `pulumi:"dockerRootDir"`
+	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+	Driver *string `pulumi:"driver"`
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Enable built-in cluster monitoring
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
-	// Enable project network isolation
-	EnableNetworkPolicy *bool             `pulumi:"enableNetworkPolicy"`
-	GkeConfig           *ClusterGkeConfig `pulumi:"gkeConfig"`
-	K3sConfig           *ClusterK3sConfig `pulumi:"k3sConfig"`
-	// Labels of the resource
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      *string                `pulumi:"name"`
-	RkeConfig *ClusterRkeConfig      `pulumi:"rkeConfig"`
-	// Cluster scheduled scan
+	// Enable project network isolation (bool)
+	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
+	// Labels for cluster registration token object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Name of cluster registration token (string)
+	Name *string `pulumi:"name"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
+	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
-	// Windows preferred cluster
+	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster *bool `pulumi:"windowsPreferedCluster"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
-	// Annotations of the resource
-	Annotations         pulumi.MapInput
+	// Annotations for cluster registration token object (map)
+	Annotations pulumi.MapInput
+	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint ClusterClusterAuthEndpointPtrInput
-	// Cluster monitoring configuration
+	// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
 	ClusterMonitoringInput ClusterClusterMonitoringInputPtrInput
-	// Cluster template answers
+	// Cluster template answers. Just for Rancher v2.3.x and above (list maxitems:1)
 	ClusterTemplateAnswers ClusterClusterTemplateAnswersPtrInput
-	// Cluster template ID
+	// Cluster template ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateId pulumi.StringPtrInput
-	// Cluster template questions
+	// Cluster template questions. Just for Rancher v2.3.x and above (list)
 	ClusterTemplateQuestions ClusterClusterTemplateQuestionArrayInput
-	// Cluster template revision ID
+	// Cluster template revision ID. Just for Rancher v2.3.x and above (string)
 	ClusterTemplateRevisionId pulumi.StringPtrInput
-	// Default pod security policy template id
+	// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
 	DefaultPodSecurityPolicyTemplateId pulumi.StringPtrInput
-	Description                        pulumi.StringPtrInput
-	DesiredAgentImage                  pulumi.StringPtrInput
-	DesiredAuthImage                   pulumi.StringPtrInput
-	DockerRootDir                      pulumi.StringPtrInput
-	Driver                             pulumi.StringPtrInput
-	EksConfig                          ClusterEksConfigPtrInput
-	// Enable built-in cluster alerting
+	// An optional description of this cluster (string)
+	Description pulumi.StringPtrInput
+	// Desired agent image. Just for Rancher v2.3.x and above (string)
+	DesiredAgentImage pulumi.StringPtrInput
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DesiredAuthImage pulumi.StringPtrInput
+	// Desired auth image. Just for Rancher v2.3.x and above (string)
+	DockerRootDir pulumi.StringPtrInput
+	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+	Driver pulumi.StringPtrInput
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig ClusterEksConfigPtrInput
+	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Enable built-in cluster monitoring
+	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
-	// Enable project network isolation
+	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	GkeConfig           ClusterGkeConfigPtrInput
-	K3sConfig           ClusterK3sConfigPtrInput
-	// Labels of the resource
-	Labels    pulumi.MapInput
-	Name      pulumi.StringPtrInput
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	GkeConfig ClusterGkeConfigPtrInput
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	K3sConfig ClusterK3sConfigPtrInput
+	// Labels for cluster registration token object (map)
+	Labels pulumi.MapInput
+	// Name of cluster registration token (string)
+	Name pulumi.StringPtrInput
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
-	// Cluster scheduled scan
+	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
-	// Windows preferred cluster
+	// Windows preferred cluster. Default: `false` (bool)
 	WindowsPreferedCluster pulumi.BoolPtrInput
 }
 

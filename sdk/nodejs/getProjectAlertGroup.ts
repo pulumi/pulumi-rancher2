@@ -6,6 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 project alert group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = pulumi.output(rancher2.getProjectAlertGroup({
+ *     name: "<project_alert_group_name>",
+ *     projectId: "<project_id>",
+ * }, { async: true }));
+ * ```
+ */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
     if (!opts) {
         opts = {}
@@ -24,7 +39,13 @@ export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulu
  * A collection of arguments for invoking getProjectAlertGroup.
  */
 export interface GetProjectAlertGroupArgs {
+    /**
+     * The project alert group name (string)
+     */
     readonly name: string;
+    /**
+     * The project id where create project alert group (string)
+     */
     readonly projectId: string;
 }
 
@@ -32,17 +53,38 @@ export interface GetProjectAlertGroupArgs {
  * A collection of values returned by getProjectAlertGroup.
  */
 export interface GetProjectAlertGroupResult {
+    /**
+     * (Computed) The project alert group annotations (map)
+     */
     readonly annotations: {[key: string]: any};
+    /**
+     * (Computed) The project alert group description (string)
+     */
     readonly description: string;
+    /**
+     * (Computed) The project alert group interval seconds. Default: `180` (int)
+     */
     readonly groupIntervalSeconds: number;
+    /**
+     * (Computed) The project alert group wait seconds. Default: `180` (int)
+     */
     readonly groupWaitSeconds: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) The project alert group labels (map)
+     */
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly projectId: string;
+    /**
+     * (Computed) The project alert group recipients (list)
+     */
     readonly recipients: outputs.GetProjectAlertGroupRecipient[];
+    /**
+     * (Computed) The project alert group wait seconds. Default: `3600` (int)
+     */
     readonly repeatIntervalSeconds: number;
 }

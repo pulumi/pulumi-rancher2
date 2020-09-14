@@ -14,8 +14,17 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ProjectAlertGroupRecipient
     {
         public readonly bool? DefaultRecipient;
+        /// <summary>
+        /// Recipient notifier ID (string)
+        /// </summary>
         public readonly string NotifierId;
+        /// <summary>
+        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// </summary>
         public readonly string? NotifierType;
+        /// <summary>
+        /// Recipient (string)
+        /// </summary>
         public readonly string? Recipient;
 
         [OutputConstructor]

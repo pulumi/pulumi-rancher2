@@ -9,56 +9,126 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Auth Config AzureAD resource. This can be used to configure and enable Auth Config AzureAD for Rancher v2 RKE clusters and retrieve their information.
+    /// 
+    /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Auth Config AzureAD
+    ///         var azuread = new Rancher2.AuthConfigAzureAd("azuread", new Rancher2.AuthConfigAzureAdArgs
+    ///         {
+    ///             ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
+    ///             ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",
+    ///             AuthEndpoint = "&lt;AZUREAD_AUTH_ENDPOINT&gt;",
+    ///             GraphEndpoint = "&lt;AZUREAD_GRAPH_ENDPOINT&gt;",
+    ///             RancherUrl = "&lt;RANCHER_URL&gt;",
+    ///             TenantId = "&lt;AZUREAD_TENANT_ID&gt;",
+    ///             TokenEndpoint = "&lt;AZUREAD_TOKEN_ENDPOINT&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class AuthConfigAzureAd : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD auth application ID (string)
+        /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD auth application secret (string)
+        /// </summary>
         [Output("applicationSecret")]
         public Output<string> ApplicationSecret { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD auth endpoint (string)
+        /// </summary>
         [Output("authEndpoint")]
         public Output<string> AuthEndpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
+        /// </summary>
         [Output("endpoint")]
         public Output<string?> Endpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD graph endpoint (string)
+        /// </summary>
         [Output("graphEndpoint")]
         public Output<string> GraphEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The name of the resource (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Rancher URL (string). "&lt;rancher_url&gt;/verify-auth-azure"
+        /// </summary>
         [Output("rancherUrl")]
         public Output<string> RancherUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD tenant ID (string)
+        /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
+        /// <summary>
+        /// AzureAD token endpoint (string)
+        /// </summary>
         [Output("tokenEndpoint")]
         public Output<string> TokenEndpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The type of the resource (string)
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -108,11 +178,18 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigAzureAdArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
+
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -123,7 +200,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -131,21 +208,39 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// AzureAD auth application ID (string)
+        /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
+        /// <summary>
+        /// AzureAD auth application secret (string)
+        /// </summary>
         [Input("applicationSecret", required: true)]
         public Input<string> ApplicationSecret { get; set; } = null!;
 
+        /// <summary>
+        /// AzureAD auth endpoint (string)
+        /// </summary>
         [Input("authEndpoint", required: true)]
         public Input<string> AuthEndpoint { get; set; } = null!;
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// AzureAD graph endpoint (string)
+        /// </summary>
         [Input("graphEndpoint", required: true)]
         public Input<string> GraphEndpoint { get; set; } = null!;
 
@@ -153,7 +248,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -161,12 +256,21 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Rancher URL (string). "&lt;rancher_url&gt;/verify-auth-azure"
+        /// </summary>
         [Input("rancherUrl", required: true)]
         public Input<string> RancherUrl { get; set; } = null!;
 
+        /// <summary>
+        /// AzureAD tenant ID (string)
+        /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
 
+        /// <summary>
+        /// AzureAD token endpoint (string)
+        /// </summary>
         [Input("tokenEndpoint", required: true)]
         public Input<string> TokenEndpoint { get; set; } = null!;
 
@@ -177,11 +281,18 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigAzureAdState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
+
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -192,7 +303,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -200,21 +311,39 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// AzureAD auth application ID (string)
+        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
+        /// <summary>
+        /// AzureAD auth application secret (string)
+        /// </summary>
         [Input("applicationSecret")]
         public Input<string>? ApplicationSecret { get; set; }
 
+        /// <summary>
+        /// AzureAD auth endpoint (string)
+        /// </summary>
         [Input("authEndpoint")]
         public Input<string>? AuthEndpoint { get; set; }
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// AzureAD graph endpoint (string)
+        /// </summary>
         [Input("graphEndpoint")]
         public Input<string>? GraphEndpoint { get; set; }
 
@@ -222,7 +351,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -230,18 +359,33 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// (Computed) The name of the resource (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Rancher URL (string). "&lt;rancher_url&gt;/verify-auth-azure"
+        /// </summary>
         [Input("rancherUrl")]
         public Input<string>? RancherUrl { get; set; }
 
+        /// <summary>
+        /// AzureAD tenant ID (string)
+        /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
+        /// <summary>
+        /// AzureAD token endpoint (string)
+        /// </summary>
         [Input("tokenEndpoint")]
         public Input<string>? TokenEndpoint { get; set; }
 
+        /// <summary>
+        /// (Computed) The type of the resource (string)
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -13,38 +13,137 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateAmazonec2Config
     {
+        /// <summary>
+        /// AWS access key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
         public readonly string? AccessKey;
+        /// <summary>
+        /// AWS machine image (string)
+        /// </summary>
         public readonly string Ami;
+        /// <summary>
+        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        /// </summary>
         public readonly string? BlockDurationMinutes;
+        /// <summary>
+        /// AWS root device name. Default `/dev/sda1` (string)
+        /// </summary>
         public readonly string? DeviceName;
+        /// <summary>
+        /// Encrypt EBS volume. Default `false` (bool)
+        /// </summary>
         public readonly bool? EncryptEbsVolume;
+        /// <summary>
+        /// Optional endpoint URL (hostname only or fully qualified URI) (string)
+        /// </summary>
         public readonly string? Endpoint;
+        /// <summary>
+        /// AWS IAM Instance Profile (string)
+        /// </summary>
         public readonly string? IamInstanceProfile;
+        /// <summary>
+        /// Disable SSL when sending requests (bool)
+        /// </summary>
         public readonly bool? InsecureTransport;
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// OpenStack keypair to use to SSH to the instance (string)
+        /// </summary>
         public readonly string? KeypairName;
+        /// <summary>
+        /// Custom KMS key ID using the AWS Managed CMK (string)
+        /// </summary>
         public readonly string? KmsKey;
+        /// <summary>
+        /// Enable monitoring for droplet. Default `false` (bool)
+        /// </summary>
         public readonly bool? Monitoring;
+        /// <summary>
+        /// Make the specified port number accessible from the Internet. (list)
+        /// </summary>
         public readonly ImmutableArray<string> OpenPorts;
+        /// <summary>
+        /// Only use a private IP address. Default `false` (bool)
+        /// </summary>
         public readonly bool? PrivateAddressOnly;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// Set this flag to request spot instance. Default `false` (bool)
+        /// </summary>
         public readonly bool? RequestSpotInstance;
+        /// <summary>
+        /// Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        /// </summary>
         public readonly string? Retries;
+        /// <summary>
+        /// AWS root disk size (in GB). Default `16` (string)
+        /// </summary>
         public readonly string? RootSize;
+        /// <summary>
+        /// AWS secret key. Required on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// Skip adding default rules to security groups (bool)
+        /// </summary>
         public readonly bool? SecurityGroupReadonly;
+        /// <summary>
+        /// AWS VPC security group. (list)
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
+        /// <summary>
+        /// AWS Session Token (string)
+        /// </summary>
         public readonly string? SessionToken;
+        /// <summary>
+        /// AWS spot instance bid price (in dollar). Default `0.50` (string)
+        /// </summary>
         public readonly string? SpotPrice;
+        /// <summary>
+        /// SSH Key for Instance (string)
+        /// </summary>
         public readonly string? SshKeypath;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
         public readonly string? SshUser;
+        /// <summary>
+        /// AWS VPC subnet id (string)
+        /// </summary>
         public readonly string SubnetId;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
         public readonly string? Tags;
+        /// <summary>
+        /// Create an EBS optimized instance. Default `false` (bool)
+        /// </summary>
         public readonly bool? UseEbsOptimizedInstance;
+        /// <summary>
+        /// Force the usage of private IP address. Default `false` (bool)
+        /// </summary>
         public readonly bool? UsePrivateAddress;
+        /// <summary>
+        /// Path to file with cloud-init user-data (string)
+        /// </summary>
         public readonly string? Userdata;
+        /// <summary>
+        /// Amazon EBS volume type. Default `gp2` (string)
+        /// </summary>
         public readonly string? VolumeType;
+        /// <summary>
+        /// AWS VPC id. (string)
+        /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// AWS zone for instance (i.e. a,b,c,d,e) (string)
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

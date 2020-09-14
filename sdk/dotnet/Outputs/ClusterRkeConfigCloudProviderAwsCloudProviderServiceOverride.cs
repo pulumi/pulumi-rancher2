@@ -13,11 +13,29 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride
     {
+        /// <summary>
+        /// GKE cluster region. Conflicts with `zone` (string)
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? SigningMethod;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? SigningName;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? SigningRegion;
+        /// <summary>
+        /// Registry URL (string)
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

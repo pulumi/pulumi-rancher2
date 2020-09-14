@@ -73,6 +73,9 @@ class GetClusterLoggingResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for Cluster Logging object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -88,6 +91,9 @@ class GetClusterLoggingResult:
     @property
     @pulumi.getter(name="elasticsearchConfig")
     def elasticsearch_config(self) -> 'outputs.GetClusterLoggingElasticsearchConfigResult':
+        """
+        (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
+        """
         return pulumi.get(self, "elasticsearch_config")
 
     @property
@@ -98,6 +104,9 @@ class GetClusterLoggingResult:
     @property
     @pulumi.getter(name="fluentdConfig")
     def fluentd_config(self) -> 'outputs.GetClusterLoggingFluentdConfigResult':
+        """
+        (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
+        """
         return pulumi.get(self, "fluentd_config")
 
     @property
@@ -111,46 +120,73 @@ class GetClusterLoggingResult:
     @property
     @pulumi.getter(name="kafkaConfig")
     def kafka_config(self) -> 'outputs.GetClusterLoggingKafkaConfigResult':
+        """
+        (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
+        """
         return pulumi.get(self, "kafka_config")
 
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        (Computed) The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Cluster Logging object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        (Computed) The name of the cluster logging config (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> str:
+        """
+        (Computed) The namespace id from cluster logging (string)
+        """
         return pulumi.get(self, "namespace_id")
 
     @property
     @pulumi.getter(name="outputFlushInterval")
     def output_flush_interval(self) -> float:
+        """
+        (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
+        """
         return pulumi.get(self, "output_flush_interval")
 
     @property
     @pulumi.getter(name="outputTags")
     def output_tags(self) -> Mapping[str, Any]:
+        """
+        (computed) The output tags for Cluster Logging (map)
+        """
         return pulumi.get(self, "output_tags")
 
     @property
     @pulumi.getter(name="splunkConfig")
     def splunk_config(self) -> 'outputs.GetClusterLoggingSplunkConfigResult':
+        """
+        (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
+        """
         return pulumi.get(self, "splunk_config")
 
     @property
     @pulumi.getter(name="syslogConfig")
     def syslog_config(self) -> 'outputs.GetClusterLoggingSyslogConfigResult':
+        """
+        (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
+        """
         return pulumi.get(self, "syslog_config")
 
 
@@ -181,7 +217,19 @@ class AwaitableGetClusterLoggingResult(GetClusterLoggingResult):
 def get_cluster_logging(cluster_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterLoggingResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 Cluster Logging.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_logging(cluster_id="<cluster_id>")
+    ```
+
+
+    :param str cluster_id: The cluster id to configure logging (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

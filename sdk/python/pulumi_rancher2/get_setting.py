@@ -46,6 +46,9 @@ class GetSettingResult:
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        the settting's value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -63,7 +66,19 @@ class AwaitableGetSettingResult(GetSettingResult):
 def get_setting(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSettingResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 setting.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    server_image = rancher2.get_setting(name="server-image")
+    ```
+
+
+    :param str name: The setting name.
     """
     __args__ = dict()
     __args__['name'] = name

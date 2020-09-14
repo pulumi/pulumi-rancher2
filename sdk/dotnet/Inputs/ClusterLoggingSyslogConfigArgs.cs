@@ -12,33 +12,63 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterLoggingSyslogConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// Enable TLS for the syslog service. Default `false` (bool)
+        /// </summary>
         [Input("enableTls")]
         public Input<bool>? EnableTls { get; set; }
 
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
+        /// <summary>
+        /// Program for the syslog service (string)
+        /// </summary>
         [Input("program")]
         public Input<string>? Program { get; set; }
 
+        /// <summary>
+        /// Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        /// <summary>
+        /// Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
         [Input("sslVerify")]
         public Input<bool>? SslVerify { get; set; }
 
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 

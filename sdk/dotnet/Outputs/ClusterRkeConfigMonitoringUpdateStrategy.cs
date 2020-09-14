@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigMonitoringUpdateStrategy
     {
+        /// <summary>
+        /// Monitoring deployment rolling update (list Maxitems: 1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate? RollingUpdate;
+        /// <summary>
+        /// Monitoring deployment update strategy (string)
+        /// </summary>
         public readonly string? Strategy;
 
         [OutputConstructor]

@@ -13,26 +13,89 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfig
     {
+        /// <summary>
+        /// Duration in seconds of addon job (int)
+        /// </summary>
         public readonly int? AddonJobTimeout;
+        /// <summary>
+        /// Addons descripton to deploy on RKE cluster.
+        /// </summary>
         public readonly string? Addons;
+        /// <summary>
+        /// Addons yaml manifests to deploy on RKE cluster (list)
+        /// </summary>
         public readonly ImmutableArray<string> AddonsIncludes;
+        /// <summary>
+        /// Kubernetes cluster authentication (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigAuthentication? Authentication;
+        /// <summary>
+        /// Kubernetes cluster authorization (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigAuthorization? Authorization;
+        /// <summary>
+        /// RKE bastion host (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigBastionHost? BastionHost;
+        /// <summary>
+        /// RKE options for Calico network provider (string)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProvider? CloudProvider;
+        /// <summary>
+        /// RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigDns? Dns;
+        /// <summary>
+        /// Ignore docker version. Default `true` (bool)
+        /// </summary>
         public readonly bool? IgnoreDockerVersion;
+        /// <summary>
+        /// Kubernetes ingress configuration (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigIngress? Ingress;
+        /// <summary>
+        /// The Kubernetes master version (string)
+        /// </summary>
         public readonly string? KubernetesVersion;
+        /// <summary>
+        /// Kubernetes cluster monitoring (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoring? Monitoring;
+        /// <summary>
+        /// Network for GKE cluster (string)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetwork? Network;
+        /// <summary>
+        /// RKE cluster nodes (list)
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigNode> Nodes;
+        /// <summary>
+        /// Prefix to customize Kubernetes path (string)
+        /// </summary>
         public readonly string? PrefixPath;
+        /// <summary>
+        /// private registries for docker images (list)
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigPrivateRegistry> PrivateRegistries;
+        /// <summary>
+        /// Kubernetes cluster services (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigServices? Services;
+        /// <summary>
+        /// Use ssh agent auth. Default `false` (bool)
+        /// </summary>
         public readonly bool? SshAgentAuth;
+        /// <summary>
+        /// Cluster level SSH certificate path (string)
+        /// </summary>
         public readonly string? SshCertPath;
+        /// <summary>
+        /// Node SSH private key path (string)
+        /// </summary>
         public readonly string? SshKeyPath;
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigUpgradeStrategy? UpgradeStrategy;
 
         [OutputConstructor]

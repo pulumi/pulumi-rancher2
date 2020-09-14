@@ -10,21 +10,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewNodeDriver(ctx, "foo", &rancher2.NodeDriverArgs{
+// 			Active:      pulumi.Bool(true),
+// 			Builtin:     pulumi.Bool(false),
+// 			Checksum:    pulumi.String("0x0"),
+// 			Description: pulumi.String("Foo description"),
+// 			ExternalId:  pulumi.String("foo_external"),
+// 			UiUrl:       pulumi.String("local://ui"),
+// 			Url:         pulumi.String("local://"),
+// 			WhitelistDomains: pulumi.StringArray{
+// 				pulumi.String("*.foo.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NodeDriver struct {
 	pulumi.CustomResourceState
 
+	// Specify if the node driver state (bool)
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Annotations of the resource
-	Annotations pulumi.MapOutput       `pulumi:"annotations"`
-	Builtin     pulumi.BoolOutput      `pulumi:"builtin"`
-	Checksum    pulumi.StringPtrOutput `pulumi:"checksum"`
+	// Annotations of the resource (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// Specify wheter the node driver is an internal node driver or not (bool)
+	Builtin pulumi.BoolOutput `pulumi:"builtin"`
+	// Verify that the downloaded driver matches the expected checksum (string)
+	Checksum pulumi.StringPtrOutput `pulumi:"checksum"`
+	// Description of the node driver (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	ExternalId  pulumi.StringPtrOutput `pulumi:"externalId"`
-	// Labels of the resource
-	Labels           pulumi.MapOutput         `pulumi:"labels"`
-	Name             pulumi.StringOutput      `pulumi:"name"`
-	UiUrl            pulumi.StringPtrOutput   `pulumi:"uiUrl"`
-	Url              pulumi.StringOutput      `pulumi:"url"`
+	// External ID (string)
+	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
+	// Labels of the resource (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Name of the node driver (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The URL to load for customized Add Nodes screen for this driver (string)
+	UiUrl pulumi.StringPtrOutput `pulumi:"uiUrl"`
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url pulumi.StringOutput `pulumi:"url"`
+	// Domains to whitelist for the ui (list)
 	WhitelistDomains pulumi.StringArrayOutput `pulumi:"whitelistDomains"`
 }
 
@@ -65,34 +107,52 @@ func GetNodeDriver(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeDriver resources.
 type nodeDriverState struct {
+	// Specify if the node driver state (bool)
 	Active *bool `pulumi:"active"`
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Builtin     *bool                  `pulumi:"builtin"`
-	Checksum    *string                `pulumi:"checksum"`
-	Description *string                `pulumi:"description"`
-	ExternalId  *string                `pulumi:"externalId"`
-	// Labels of the resource
-	Labels           map[string]interface{} `pulumi:"labels"`
-	Name             *string                `pulumi:"name"`
-	UiUrl            *string                `pulumi:"uiUrl"`
-	Url              *string                `pulumi:"url"`
-	WhitelistDomains []string               `pulumi:"whitelistDomains"`
+	// Specify wheter the node driver is an internal node driver or not (bool)
+	Builtin *bool `pulumi:"builtin"`
+	// Verify that the downloaded driver matches the expected checksum (string)
+	Checksum *string `pulumi:"checksum"`
+	// Description of the node driver (string)
+	Description *string `pulumi:"description"`
+	// External ID (string)
+	ExternalId *string `pulumi:"externalId"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Name of the node driver (string)
+	Name *string `pulumi:"name"`
+	// The URL to load for customized Add Nodes screen for this driver (string)
+	UiUrl *string `pulumi:"uiUrl"`
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url *string `pulumi:"url"`
+	// Domains to whitelist for the ui (list)
+	WhitelistDomains []string `pulumi:"whitelistDomains"`
 }
 
 type NodeDriverState struct {
+	// Specify if the node driver state (bool)
 	Active pulumi.BoolPtrInput
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations pulumi.MapInput
-	Builtin     pulumi.BoolPtrInput
-	Checksum    pulumi.StringPtrInput
+	// Specify wheter the node driver is an internal node driver or not (bool)
+	Builtin pulumi.BoolPtrInput
+	// Verify that the downloaded driver matches the expected checksum (string)
+	Checksum pulumi.StringPtrInput
+	// Description of the node driver (string)
 	Description pulumi.StringPtrInput
-	ExternalId  pulumi.StringPtrInput
-	// Labels of the resource
-	Labels           pulumi.MapInput
-	Name             pulumi.StringPtrInput
-	UiUrl            pulumi.StringPtrInput
-	Url              pulumi.StringPtrInput
+	// External ID (string)
+	ExternalId pulumi.StringPtrInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// Name of the node driver (string)
+	Name pulumi.StringPtrInput
+	// The URL to load for customized Add Nodes screen for this driver (string)
+	UiUrl pulumi.StringPtrInput
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url pulumi.StringPtrInput
+	// Domains to whitelist for the ui (list)
 	WhitelistDomains pulumi.StringArrayInput
 }
 
@@ -101,35 +161,53 @@ func (NodeDriverState) ElementType() reflect.Type {
 }
 
 type nodeDriverArgs struct {
+	// Specify if the node driver state (bool)
 	Active bool `pulumi:"active"`
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Builtin     bool                   `pulumi:"builtin"`
-	Checksum    *string                `pulumi:"checksum"`
-	Description *string                `pulumi:"description"`
-	ExternalId  *string                `pulumi:"externalId"`
-	// Labels of the resource
-	Labels           map[string]interface{} `pulumi:"labels"`
-	Name             *string                `pulumi:"name"`
-	UiUrl            *string                `pulumi:"uiUrl"`
-	Url              string                 `pulumi:"url"`
-	WhitelistDomains []string               `pulumi:"whitelistDomains"`
+	// Specify wheter the node driver is an internal node driver or not (bool)
+	Builtin bool `pulumi:"builtin"`
+	// Verify that the downloaded driver matches the expected checksum (string)
+	Checksum *string `pulumi:"checksum"`
+	// Description of the node driver (string)
+	Description *string `pulumi:"description"`
+	// External ID (string)
+	ExternalId *string `pulumi:"externalId"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Name of the node driver (string)
+	Name *string `pulumi:"name"`
+	// The URL to load for customized Add Nodes screen for this driver (string)
+	UiUrl *string `pulumi:"uiUrl"`
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url string `pulumi:"url"`
+	// Domains to whitelist for the ui (list)
+	WhitelistDomains []string `pulumi:"whitelistDomains"`
 }
 
 // The set of arguments for constructing a NodeDriver resource.
 type NodeDriverArgs struct {
+	// Specify if the node driver state (bool)
 	Active pulumi.BoolInput
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations pulumi.MapInput
-	Builtin     pulumi.BoolInput
-	Checksum    pulumi.StringPtrInput
+	// Specify wheter the node driver is an internal node driver or not (bool)
+	Builtin pulumi.BoolInput
+	// Verify that the downloaded driver matches the expected checksum (string)
+	Checksum pulumi.StringPtrInput
+	// Description of the node driver (string)
 	Description pulumi.StringPtrInput
-	ExternalId  pulumi.StringPtrInput
-	// Labels of the resource
-	Labels           pulumi.MapInput
-	Name             pulumi.StringPtrInput
-	UiUrl            pulumi.StringPtrInput
-	Url              pulumi.StringInput
+	// External ID (string)
+	ExternalId pulumi.StringPtrInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// Name of the node driver (string)
+	Name pulumi.StringPtrInput
+	// The URL to load for customized Add Nodes screen for this driver (string)
+	UiUrl pulumi.StringPtrInput
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url pulumi.StringInput
+	// Domains to whitelist for the ui (list)
 	WhitelistDomains pulumi.StringArrayInput
 }
 

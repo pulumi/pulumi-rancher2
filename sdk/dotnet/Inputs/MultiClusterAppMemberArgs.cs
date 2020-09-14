@@ -12,12 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class MultiClusterAppMemberArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Member access type. Valid values: `["member" | "owner" | "read-only"]` (string)
+        /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
+        /// <summary>
+        /// Member group principal id (string)
+        /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
 
+        /// <summary>
+        /// Member user principal id (string)
+        /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }
 

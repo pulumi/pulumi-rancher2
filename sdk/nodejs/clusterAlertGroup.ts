@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Cluster Alert Group
+ * const foo = new rancher2.ClusterAlertGroup("foo", {
+ *     clusterId: "<cluster_id>",
+ *     description: "Terraform cluster alert group",
+ *     groupIntervalSeconds: 300,
+ *     repeatIntervalSeconds: 3600,
+ * });
+ * ```
+ */
 export class ClusterAlertGroup extends pulumi.CustomResource {
     /**
      * Get an existing ClusterAlertGroup resource's state with the given name, ID, and optional extra
@@ -35,39 +53,39 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * The cluster alert group annotations (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert group Cluster ID
+     * The cluster id where create cluster alert group (string)
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Alert group description
+     * The cluster alert group description (string)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Alert group interval seconds
+     * The cluster alert group interval seconds. Default: `180` (int)
      */
     public readonly groupIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert group wait seconds
+     * The cluster alert group wait seconds. Default: `180` (int)
      */
     public readonly groupWaitSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Labels of the resource
+     * The cluster alert group labels (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert group name
+     * The cluster alert group name (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Alert group recipients
+     * The cluster alert group recipients (list)
      */
     public readonly recipients!: pulumi.Output<outputs.ClusterAlertGroupRecipient[] | undefined>;
     /**
-     * Alert group repeat interval seconds
+     * The cluster alert group wait seconds. Default: `3600` (int)
      */
     public readonly repeatIntervalSeconds!: pulumi.Output<number | undefined>;
 
@@ -125,39 +143,39 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
  */
 export interface ClusterAlertGroupState {
     /**
-     * Annotations of the resource
+     * The cluster alert group annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert group Cluster ID
+     * The cluster id where create cluster alert group (string)
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * Alert group description
+     * The cluster alert group description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Alert group interval seconds
+     * The cluster alert group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert group wait seconds
+     * The cluster alert group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Labels of the resource
+     * The cluster alert group labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert group name
+     * The cluster alert group name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert group recipients
+     * The cluster alert group recipients (list)
      */
     readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
-     * Alert group repeat interval seconds
+     * The cluster alert group wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
 }
@@ -167,39 +185,39 @@ export interface ClusterAlertGroupState {
  */
 export interface ClusterAlertGroupArgs {
     /**
-     * Annotations of the resource
+     * The cluster alert group annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert group Cluster ID
+     * The cluster id where create cluster alert group (string)
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * Alert group description
+     * The cluster alert group description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Alert group interval seconds
+     * The cluster alert group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert group wait seconds
+     * The cluster alert group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Labels of the resource
+     * The cluster alert group labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert group name
+     * The cluster alert group name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert group recipients
+     * The cluster alert group recipients (list)
      */
     readonly recipients?: pulumi.Input<pulumi.Input<inputs.ClusterAlertGroupRecipient>[]>;
     /**
-     * Alert group repeat interval seconds
+     * The cluster alert group wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
 }

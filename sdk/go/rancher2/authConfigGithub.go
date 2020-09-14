@@ -10,22 +10,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
+//
+// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewAuthConfigGithub(ctx, "github", &rancher2.AuthConfigGithubArgs{
+// 			ClientId:     pulumi.String("<GITHUB_CLIENT_ID>"),
+// 			ClientSecret: pulumi.String("<GITHUB_CLIENT_SECRET>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AuthConfigGithub struct {
 	pulumi.CustomResourceState
 
-	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations  pulumi.MapOutput       `pulumi:"annotations"`
-	ClientId     pulumi.StringOutput    `pulumi:"clientId"`
-	ClientSecret pulumi.StringOutput    `pulumi:"clientSecret"`
-	Enabled      pulumi.BoolPtrOutput   `pulumi:"enabled"`
-	Hostname     pulumi.StringPtrOutput `pulumi:"hostname"`
-	// Labels of the resource
-	Labels pulumi.MapOutput     `pulumi:"labels"`
-	Name   pulumi.StringOutput  `pulumi:"name"`
-	Tls    pulumi.BoolPtrOutput `pulumi:"tls"`
-	Type   pulumi.StringOutput  `pulumi:"type"`
+	// Annotations of the resource (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// Github auth Client ID (string)
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Github auth Client secret (string)
+	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Github hostname to connect. Default `github.com` (string)
+	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// Labels of the resource (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Enable TLS connection. Default `true` (bool)
+	Tls pulumi.BoolPtrOutput `pulumi:"tls"`
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewAuthConfigGithub registers a new resource with the given unique name, arguments, and options.
@@ -62,35 +98,53 @@ func GetAuthConfigGithub(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigGithub resources.
 type authConfigGithubState struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations  map[string]interface{} `pulumi:"annotations"`
-	ClientId     *string                `pulumi:"clientId"`
-	ClientSecret *string                `pulumi:"clientSecret"`
-	Enabled      *bool                  `pulumi:"enabled"`
-	Hostname     *string                `pulumi:"hostname"`
-	// Labels of the resource
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Github auth Client ID (string)
+	ClientId *string `pulumi:"clientId"`
+	// Github auth Client secret (string)
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// Github hostname to connect. Default `github.com` (string)
+	Hostname *string `pulumi:"hostname"`
+	// Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name   *string                `pulumi:"name"`
-	Tls    *bool                  `pulumi:"tls"`
-	Type   *string                `pulumi:"type"`
+	// (Computed) The name of the resource (string)
+	Name *string `pulumi:"name"`
+	// Enable TLS connection. Default `true` (bool)
+	Tls *bool `pulumi:"tls"`
+	// (Computed) The type of the resource (string)
+	Type *string `pulumi:"type"`
 }
 
 type AuthConfigGithubState struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations  pulumi.MapInput
-	ClientId     pulumi.StringPtrInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// Github auth Client ID (string)
+	ClientId pulumi.StringPtrInput
+	// Github auth Client secret (string)
 	ClientSecret pulumi.StringPtrInput
-	Enabled      pulumi.BoolPtrInput
-	Hostname     pulumi.StringPtrInput
-	// Labels of the resource
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// Github hostname to connect. Default `github.com` (string)
+	Hostname pulumi.StringPtrInput
+	// Labels of the resource (map)
 	Labels pulumi.MapInput
-	Name   pulumi.StringPtrInput
-	Tls    pulumi.BoolPtrInput
-	Type   pulumi.StringPtrInput
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringPtrInput
+	// Enable TLS connection. Default `true` (bool)
+	Tls pulumi.BoolPtrInput
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringPtrInput
 }
 
 func (AuthConfigGithubState) ElementType() reflect.Type {
@@ -98,32 +152,46 @@ func (AuthConfigGithubState) ElementType() reflect.Type {
 }
 
 type authConfigGithubArgs struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations  map[string]interface{} `pulumi:"annotations"`
-	ClientId     string                 `pulumi:"clientId"`
-	ClientSecret string                 `pulumi:"clientSecret"`
-	Enabled      *bool                  `pulumi:"enabled"`
-	Hostname     *string                `pulumi:"hostname"`
-	// Labels of the resource
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Github auth Client ID (string)
+	ClientId string `pulumi:"clientId"`
+	// Github auth Client secret (string)
+	ClientSecret string `pulumi:"clientSecret"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// Github hostname to connect. Default `github.com` (string)
+	Hostname *string `pulumi:"hostname"`
+	// Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Tls    *bool                  `pulumi:"tls"`
+	// Enable TLS connection. Default `true` (bool)
+	Tls *bool `pulumi:"tls"`
 }
 
 // The set of arguments for constructing a AuthConfigGithub resource.
 type AuthConfigGithubArgs struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations  pulumi.MapInput
-	ClientId     pulumi.StringInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// Github auth Client ID (string)
+	ClientId pulumi.StringInput
+	// Github auth Client secret (string)
 	ClientSecret pulumi.StringInput
-	Enabled      pulumi.BoolPtrInput
-	Hostname     pulumi.StringPtrInput
-	// Labels of the resource
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// Github hostname to connect. Default `github.com` (string)
+	Hostname pulumi.StringPtrInput
+	// Labels of the resource (map)
 	Labels pulumi.MapInput
-	Tls    pulumi.BoolPtrInput
+	// Enable TLS connection. Default `true` (bool)
+	Tls pulumi.BoolPtrInput
 }
 
 func (AuthConfigGithubArgs) ElementType() reflect.Type {

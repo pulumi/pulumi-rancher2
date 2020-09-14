@@ -12,21 +12,39 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("datacenters", required: true)]
         public Input<string> Datacenters { get; set; } = null!;
 
+        /// <summary>
+        /// Name of cluster registration token (string)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Registry password (string)
+        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
+        /// <summary>
+        /// Port for node. Default `22` (string)
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("soapRoundtripCount")]
         public Input<int>? SoapRoundtripCount { get; set; }
 
+        /// <summary>
+        /// Registry user (string)
+        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 

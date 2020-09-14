@@ -10,34 +10,95 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+// 			ClusterId:   pulumi.String("<cluster_id>"),
+// 			Description: pulumi.String("Terraform project "),
+// 			ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+// 				ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+// 					LimitsCpu:       pulumi.String("2000m"),
+// 					LimitsMemory:    pulumi.String("2000Mi"),
+// 					RequestsStorage: pulumi.String("2Gi"),
+// 				},
+// 				NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+// 					LimitsCpu:       pulumi.String("500m"),
+// 					LimitsMemory:    pulumi.String("500Mi"),
+// 					RequestsStorage: pulumi.String("1Gi"),
+// 				},
+// 			},
+// 			ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+// 				LimitsCpu:      pulumi.String("20m"),
+// 				LimitsMemory:   pulumi.String("20Mi"),
+// 				RequestsCpu:    pulumi.String("1m"),
+// 				RequestsMemory: pulumi.String("1Mi"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
+// 			Description:           pulumi.String("Terraform project alert group"),
+// 			ProjectId:             fooProject.ID(),
+// 			GroupIntervalSeconds:  pulumi.Int(300),
+// 			RepeatIntervalSeconds: pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
+// 			ProjectId:             fooProjectAlertGroup.ProjectId,
+// 			GroupId:               fooProjectAlertGroup.ID(),
+// 			GroupIntervalSeconds:  pulumi.Int(600),
+// 			RepeatIntervalSeconds: pulumi.Int(6000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ProjectAlertRule struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// The project alert rule annotations (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Alert rule group ID
+	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Alert rule interval seconds
+	// The project alert rule group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrOutput `pulumi:"groupIntervalSeconds"`
-	// Alert rule wait seconds
+	// The project alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrOutput `pulumi:"groupWaitSeconds"`
-	// Alert rule inherited
+	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrOutput `pulumi:"inherited"`
-	// Labels of the resource
+	// The project alert rule labels (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Alert metric rule
+	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrOutput `pulumi:"metricRule"`
-	// Alert rule name
+	// The project alert rule name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Alert pod rule
+	// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
 	PodRule ProjectAlertRulePodRulePtrOutput `pulumi:"podRule"`
-	// Alert rule Project ID
+	// The project id where create project alert rule (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Alert rule repeat interval seconds
+	// The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrOutput `pulumi:"repeatIntervalSeconds"`
-	// Alert rule severity
+	// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrOutput `pulumi:"severity"`
-	// Alert workload rule
+	// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule ProjectAlertRuleWorkloadRulePtrOutput `pulumi:"workloadRule"`
 }
 
@@ -75,60 +136,60 @@ func GetProjectAlertRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAlertRule resources.
 type projectAlertRuleState struct {
-	// Annotations of the resource
+	// The project alert rule annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert rule group ID
+	// The project alert rule alert group ID (string)
 	GroupId *string `pulumi:"groupId"`
-	// Alert rule interval seconds
+	// The project alert rule group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert rule wait seconds
+	// The project alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Alert rule inherited
+	// The project alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
-	// Labels of the resource
+	// The project alert rule labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert metric rule
+	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule *ProjectAlertRuleMetricRule `pulumi:"metricRule"`
-	// Alert rule name
+	// The project alert rule name (string)
 	Name *string `pulumi:"name"`
-	// Alert pod rule
+	// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
 	PodRule *ProjectAlertRulePodRule `pulumi:"podRule"`
-	// Alert rule Project ID
+	// The project id where create project alert rule (string)
 	ProjectId *string `pulumi:"projectId"`
-	// Alert rule repeat interval seconds
+	// The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
-	// Alert rule severity
+	// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity *string `pulumi:"severity"`
-	// Alert workload rule
+	// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule *ProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
 }
 
 type ProjectAlertRuleState struct {
-	// Annotations of the resource
+	// The project alert rule annotations (map)
 	Annotations pulumi.MapInput
-	// Alert rule group ID
+	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringPtrInput
-	// Alert rule interval seconds
+	// The project alert rule group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert rule wait seconds
+	// The project alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Alert rule inherited
+	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
-	// Labels of the resource
+	// The project alert rule labels (map)
 	Labels pulumi.MapInput
-	// Alert metric rule
+	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrInput
-	// Alert rule name
+	// The project alert rule name (string)
 	Name pulumi.StringPtrInput
-	// Alert pod rule
+	// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
 	PodRule ProjectAlertRulePodRulePtrInput
-	// Alert rule Project ID
+	// The project id where create project alert rule (string)
 	ProjectId pulumi.StringPtrInput
-	// Alert rule repeat interval seconds
+	// The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
-	// Alert rule severity
+	// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrInput
-	// Alert workload rule
+	// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule ProjectAlertRuleWorkloadRulePtrInput
 }
 
@@ -137,61 +198,61 @@ func (ProjectAlertRuleState) ElementType() reflect.Type {
 }
 
 type projectAlertRuleArgs struct {
-	// Annotations of the resource
+	// The project alert rule annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Alert rule group ID
+	// The project alert rule alert group ID (string)
 	GroupId string `pulumi:"groupId"`
-	// Alert rule interval seconds
+	// The project alert rule group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds *int `pulumi:"groupIntervalSeconds"`
-	// Alert rule wait seconds
+	// The project alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
-	// Alert rule inherited
+	// The project alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
-	// Labels of the resource
+	// The project alert rule labels (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Alert metric rule
+	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule *ProjectAlertRuleMetricRule `pulumi:"metricRule"`
-	// Alert rule name
+	// The project alert rule name (string)
 	Name *string `pulumi:"name"`
-	// Alert pod rule
+	// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
 	PodRule *ProjectAlertRulePodRule `pulumi:"podRule"`
-	// Alert rule Project ID
+	// The project id where create project alert rule (string)
 	ProjectId string `pulumi:"projectId"`
-	// Alert rule repeat interval seconds
+	// The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds *int `pulumi:"repeatIntervalSeconds"`
-	// Alert rule severity
+	// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity *string `pulumi:"severity"`
-	// Alert workload rule
+	// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule *ProjectAlertRuleWorkloadRule `pulumi:"workloadRule"`
 }
 
 // The set of arguments for constructing a ProjectAlertRule resource.
 type ProjectAlertRuleArgs struct {
-	// Annotations of the resource
+	// The project alert rule annotations (map)
 	Annotations pulumi.MapInput
-	// Alert rule group ID
+	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringInput
-	// Alert rule interval seconds
+	// The project alert rule group interval seconds. Default: `180` (int)
 	GroupIntervalSeconds pulumi.IntPtrInput
-	// Alert rule wait seconds
+	// The project alert rule group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
-	// Alert rule inherited
+	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
-	// Labels of the resource
+	// The project alert rule labels (map)
 	Labels pulumi.MapInput
-	// Alert metric rule
+	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrInput
-	// Alert rule name
+	// The project alert rule name (string)
 	Name pulumi.StringPtrInput
-	// Alert pod rule
+	// The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
 	PodRule ProjectAlertRulePodRulePtrInput
-	// Alert rule Project ID
+	// The project id where create project alert rule (string)
 	ProjectId pulumi.StringInput
-	// Alert rule repeat interval seconds
+	// The project alert rule wait seconds. Default: `3600` (int)
 	RepeatIntervalSeconds pulumi.IntPtrInput
-	// Alert rule severity
+	// The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
 	Severity pulumi.StringPtrInput
-	// Alert workload rule
+	// The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
 	WorkloadRule ProjectAlertRuleWorkloadRulePtrInput
 }
 

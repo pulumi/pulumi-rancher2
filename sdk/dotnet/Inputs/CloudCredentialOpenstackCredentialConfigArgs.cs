@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialOpenstackCredentialConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// vSphere password (string)
+        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 

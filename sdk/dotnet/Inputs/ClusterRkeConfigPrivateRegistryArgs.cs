@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigPrivateRegistryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set as default registry. Default `false` (bool)
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
+        /// <summary>
+        /// Registry password (string)
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        /// <summary>
+        /// Registry URL (string)
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
+        /// <summary>
+        /// Registry user (string)
+        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

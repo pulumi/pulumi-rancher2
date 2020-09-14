@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterScheduledClusterScanScheduleConfig
     {
+        /// <summary>
+        /// Crontab schedule. It should contains 5 fields `"&lt;min&gt; &lt;hour&gt; &lt;month_day&gt; &lt;month&gt; &lt;week_day&gt;"` (string)
+        /// </summary>
         public readonly string CronSchedule;
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
         public readonly int? Retention;
 
         [OutputConstructor]

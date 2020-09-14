@@ -6,6 +6,31 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Cluster Alert Group
+ * const fooClusterAlertGroup = new rancher2.ClusterAlertGroup("fooClusterAlertGroup", {
+ *     clusterId: "<cluster_id>",
+ *     description: "Terraform cluster alert group",
+ *     groupIntervalSeconds: 300,
+ *     repeatIntervalSeconds: 3600,
+ * });
+ * // Create a new Rancher2 Cluster Alert Rule
+ * const fooClusterAlertRule = new rancher2.ClusterAlertRule("fooClusterAlertRule", {
+ *     clusterId: fooClusterAlertGroup.clusterId,
+ *     groupId: fooClusterAlertGroup.id,
+ *     groupIntervalSeconds: 600,
+ *     repeatIntervalSeconds: 6000,
+ * });
+ * ```
+ */
 export class ClusterAlertRule extends pulumi.CustomResource {
     /**
      * Get an existing ClusterAlertRule resource's state with the given name, ID, and optional extra
@@ -35,59 +60,59 @@ export class ClusterAlertRule extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * The cluster alert rule annotations (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert rule cluster ID
+     * The cluster id where create cluster alert rule (string)
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Alert event rule
+     * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     public readonly eventRule!: pulumi.Output<outputs.ClusterAlertRuleEventRule | undefined>;
     /**
-     * Alert rule group ID
+     * The cluster alert rule alert group ID (string)
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * Alert rule interval seconds
+     * The cluster alert rule group interval seconds. Default: `180` (int)
      */
     public readonly groupIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule wait seconds
+     * The cluster alert rule group wait seconds. Default: `180` (int)
      */
     public readonly groupWaitSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule inherited
+     * The cluster alert rule inherited. Default: `true` (bool)
      */
     public readonly inherited!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels of the resource
+     * The cluster alert rule labels (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     public readonly metricRule!: pulumi.Output<outputs.ClusterAlertRuleMetricRule | undefined>;
     /**
-     * Alert rule name
+     * The cluster alert rule name (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Alert node rule
+     * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
     public readonly nodeRule!: pulumi.Output<outputs.ClusterAlertRuleNodeRule | undefined>;
     /**
-     * Alert rule repeat interval seconds
+     * The cluster alert rule wait seconds. Default: `3600` (int)
      */
     public readonly repeatIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule severity
+     * The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     public readonly severity!: pulumi.Output<string | undefined>;
     /**
-     * Alert system service rule
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     public readonly systemServiceRule!: pulumi.Output<outputs.ClusterAlertRuleSystemServiceRule | undefined>;
 
@@ -158,59 +183,59 @@ export class ClusterAlertRule extends pulumi.CustomResource {
  */
 export interface ClusterAlertRuleState {
     /**
-     * Annotations of the resource
+     * The cluster alert rule annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert rule cluster ID
+     * The cluster id where create cluster alert rule (string)
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * Alert event rule
+     * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly eventRule?: pulumi.Input<inputs.ClusterAlertRuleEventRule>;
     /**
-     * Alert rule group ID
+     * The cluster alert rule alert group ID (string)
      */
     readonly groupId?: pulumi.Input<string>;
     /**
-     * Alert rule interval seconds
+     * The cluster alert rule group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule wait seconds
+     * The cluster alert rule group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule inherited
+     * The cluster alert rule inherited. Default: `true` (bool)
      */
     readonly inherited?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * The cluster alert rule labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly metricRule?: pulumi.Input<inputs.ClusterAlertRuleMetricRule>;
     /**
-     * Alert rule name
+     * The cluster alert rule name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert node rule
+     * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly nodeRule?: pulumi.Input<inputs.ClusterAlertRuleNodeRule>;
     /**
-     * Alert rule repeat interval seconds
+     * The cluster alert rule wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule severity
+     * The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * Alert system service rule
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }
@@ -220,59 +245,59 @@ export interface ClusterAlertRuleState {
  */
 export interface ClusterAlertRuleArgs {
     /**
-     * Annotations of the resource
+     * The cluster alert rule annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert rule cluster ID
+     * The cluster id where create cluster alert rule (string)
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * Alert event rule
+     * The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly eventRule?: pulumi.Input<inputs.ClusterAlertRuleEventRule>;
     /**
-     * Alert rule group ID
+     * The cluster alert rule alert group ID (string)
      */
     readonly groupId: pulumi.Input<string>;
     /**
-     * Alert rule interval seconds
+     * The cluster alert rule group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule wait seconds
+     * The cluster alert rule group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule inherited
+     * The cluster alert rule inherited. Default: `true` (bool)
      */
     readonly inherited?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * The cluster alert rule labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly metricRule?: pulumi.Input<inputs.ClusterAlertRuleMetricRule>;
     /**
-     * Alert rule name
+     * The cluster alert rule name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert node rule
+     * The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"`` (list Maxitems:1)
      */
     readonly nodeRule?: pulumi.Input<inputs.ClusterAlertRuleNodeRule>;
     /**
-     * Alert rule repeat interval seconds
+     * The cluster alert rule wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule severity
+     * The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * Alert system service rule
+     * The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"` (list Maxitems:1)
      */
     readonly systemServiceRule?: pulumi.Input<inputs.ClusterAlertRuleSystemServiceRule>;
 }

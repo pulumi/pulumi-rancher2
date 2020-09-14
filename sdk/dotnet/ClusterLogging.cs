@@ -9,59 +9,126 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Logging
+    ///         var foo = new Rancher2.ClusterLogging("foo", new Rancher2.ClusterLoggingArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Kind = "syslog",
+    ///             SyslogConfig = new Rancher2.Inputs.ClusterLoggingSyslogConfigArgs
+    ///             {
+    ///                 Endpoint = "&lt;syslog_endpoint&gt;",
+    ///                 Protocol = "udp",
+    ///                 Severity = "notice",
+    ///                 SslVerify = false,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ClusterLogging : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Cluster Logging object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster id to configure logging (string)
+        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Output("customTargetConfig")]
         public Output<Outputs.ClusterLoggingCustomTargetConfig?> CustomTargetConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Output("elasticsearchConfig")]
         public Output<Outputs.ClusterLoggingElasticsearchConfig?> ElasticsearchConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Optional enable json log parsing
+        /// Enable json log parsing. Default: `false` (bool)
         /// </summary>
         [Output("enableJsonParsing")]
         public Output<bool?> EnableJsonParsing { get; private set; } = null!;
 
+        /// <summary>
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Output("fluentdConfig")]
         public Output<Outputs.ClusterLoggingFluentdConfig?> FluentdConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Output("kafkaConfig")]
         public Output<Outputs.ClusterLoggingKafkaConfig?> KafkaConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Cluster Logging object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the cluster logging config (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The namespace id from cluster logging (string)
+        /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
 
+        /// <summary>
+        /// How often buffered logs would be flushed. Default: `3` seconds (int)
+        /// </summary>
         [Output("outputFlushInterval")]
         public Output<int?> OutputFlushInterval { get; private set; } = null!;
 
+        /// <summary>
+        /// The output tags for Cluster Logging (map)
+        /// </summary>
         [Output("outputTags")]
         public Output<ImmutableDictionary<string, object>> OutputTags { get; private set; } = null!;
 
+        /// <summary>
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Output("splunkConfig")]
         public Output<Outputs.ClusterLoggingSplunkConfig?> SplunkConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// </summary>
         [Output("syslogConfig")]
         public Output<Outputs.ClusterLoggingSyslogConfig?> SyslogConfig { get; private set; } = null!;
 
@@ -115,7 +182,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Cluster Logging object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -123,27 +190,45 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The cluster id to configure logging (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("customTargetConfig")]
         public Input<Inputs.ClusterLoggingCustomTargetConfigArgs>? CustomTargetConfig { get; set; }
 
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ClusterLoggingElasticsearchConfigArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// Optional enable json log parsing
+        /// Enable json log parsing. Default: `false` (bool)
         /// </summary>
         [Input("enableJsonParsing")]
         public Input<bool>? EnableJsonParsing { get; set; }
 
+        /// <summary>
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ClusterLoggingFluentdConfigArgs>? FluentdConfig { get; set; }
 
+        /// <summary>
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ClusterLoggingKafkaConfigArgs>? KafkaConfig { get; set; }
 
+        /// <summary>
+        /// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
@@ -151,7 +236,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Cluster Logging object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -159,26 +244,45 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the cluster logging config (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The namespace id from cluster logging (string)
+        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
+        /// <summary>
+        /// How often buffered logs would be flushed. Default: `3` seconds (int)
+        /// </summary>
         [Input("outputFlushInterval")]
         public Input<int>? OutputFlushInterval { get; set; }
 
         [Input("outputTags")]
         private InputMap<object>? _outputTags;
+
+        /// <summary>
+        /// The output tags for Cluster Logging (map)
+        /// </summary>
         public InputMap<object> OutputTags
         {
             get => _outputTags ?? (_outputTags = new InputMap<object>());
             set => _outputTags = value;
         }
 
+        /// <summary>
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ClusterLoggingSplunkConfigArgs>? SplunkConfig { get; set; }
 
+        /// <summary>
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ClusterLoggingSyslogConfigArgs>? SyslogConfig { get; set; }
 
@@ -193,7 +297,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Cluster Logging object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -201,27 +305,45 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The cluster id to configure logging (string)
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("customTargetConfig")]
         public Input<Inputs.ClusterLoggingCustomTargetConfigGetArgs>? CustomTargetConfig { get; set; }
 
+        /// <summary>
+        /// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("elasticsearchConfig")]
         public Input<Inputs.ClusterLoggingElasticsearchConfigGetArgs>? ElasticsearchConfig { get; set; }
 
         /// <summary>
-        /// Optional enable json log parsing
+        /// Enable json log parsing. Default: `false` (bool)
         /// </summary>
         [Input("enableJsonParsing")]
         public Input<bool>? EnableJsonParsing { get; set; }
 
+        /// <summary>
+        /// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("fluentdConfig")]
         public Input<Inputs.ClusterLoggingFluentdConfigGetArgs>? FluentdConfig { get; set; }
 
+        /// <summary>
+        /// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("kafkaConfig")]
         public Input<Inputs.ClusterLoggingKafkaConfigGetArgs>? KafkaConfig { get; set; }
 
+        /// <summary>
+        /// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -229,7 +351,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Cluster Logging object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -237,26 +359,45 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the cluster logging config (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The namespace id from cluster logging (string)
+        /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
+        /// <summary>
+        /// How often buffered logs would be flushed. Default: `3` seconds (int)
+        /// </summary>
         [Input("outputFlushInterval")]
         public Input<int>? OutputFlushInterval { get; set; }
 
         [Input("outputTags")]
         private InputMap<object>? _outputTags;
+
+        /// <summary>
+        /// The output tags for Cluster Logging (map)
+        /// </summary>
         public InputMap<object> OutputTags
         {
             get => _outputTags ?? (_outputTags = new InputMap<object>());
             set => _outputTags = value;
         }
 
+        /// <summary>
+        /// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        /// </summary>
         [Input("splunkConfig")]
         public Input<Inputs.ClusterLoggingSplunkConfigGetArgs>? SplunkConfig { get; set; }
 
+        /// <summary>
+        /// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        /// </summary>
         [Input("syslogConfig")]
         public Input<Inputs.ClusterLoggingSyslogConfigGetArgs>? SyslogConfig { get; set; }
 

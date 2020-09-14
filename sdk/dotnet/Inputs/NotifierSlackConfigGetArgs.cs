@@ -12,12 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NotifierSlackConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Wechat default recipient (string)
+        /// </summary>
         [Input("defaultRecipient", required: true)]
         public Input<string> DefaultRecipient { get; set; } = null!;
 
+        /// <summary>
+        /// Wechat proxy url (string)
+        /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
+        /// <summary>
+        /// Webhook url (string)
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

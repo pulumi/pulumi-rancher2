@@ -6,6 +6,58 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 RKE Cluster 
+ * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     description: "Foo rancher2 custom cluster",
+ *     kind: "rke",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ * });
+ * // Create a new rancher2 Cloud Credential
+ * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ *     description: "Terraform cloudCredential acceptance test",
+ *     amazonec2CredentialConfig: {
+ *         accessKey: "XXXXXXXXXXXXXXXXXXXX",
+ *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+ *     },
+ * });
+ * // Create a new rancher2 Node Template
+ * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ *     description: "foo test",
+ *     cloudCredentialId: fooCloudCredential.id,
+ *     amazonec2Config: {
+ *         ami: "<AMI_ID>",
+ *         region: "<REGION>",
+ *         securityGroups: ["<AWS_SECURITY_GROUP>"],
+ *         subnetId: "<SUBNET_ID>",
+ *         vpcId: "<VPC_ID>",
+ *         zone: "<ZONE>",
+ *     },
+ * });
+ * // Create a new rancher2 Node Pool
+ * const fooNodePool = new rancher2.NodePool("fooNodePool", {
+ *     clusterId: foo_custom.id,
+ *     hostnamePrefix: "foo-cluster-0",
+ *     nodeTemplateId: fooNodeTemplate.id,
+ *     quantity: 1,
+ *     controlPlane: true,
+ *     etcd: true,
+ *     worker: true,
+ * });
+ * ```
+ */
 export class NodePool extends pulumi.CustomResource {
     /**
      * Get an existing NodePool resource's state with the given name, ID, and optional extra
@@ -35,22 +87,52 @@ export class NodePool extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The RKE cluster id to use Node Pool (string)
+     */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * RKE control plane role for created nodes (bool)
+     */
     public readonly controlPlane!: pulumi.Output<boolean | undefined>;
+    /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
     public readonly deleteNotReadyAfterSecs!: pulumi.Output<number | undefined>;
+    /**
+     * RKE etcd role for created nodes (bool)
+     */
     public readonly etcd!: pulumi.Output<boolean | undefined>;
+    /**
+     * The prefix for created nodes of the Node Pool (string)
+     */
     public readonly hostnamePrefix!: pulumi.Output<string>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The name of the Node Pool (string)
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
     public readonly nodeTaints!: pulumi.Output<outputs.NodePoolNodeTaint[] | undefined>;
+    /**
+     * The Node Template ID to use for node creation (string)
+     */
     public readonly nodeTemplateId!: pulumi.Output<string>;
+    /**
+     * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+     */
     public readonly quantity!: pulumi.Output<number | undefined>;
+    /**
+     * RKE role role for created nodes (bool)
+     */
     public readonly worker!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -117,22 +199,52 @@ export class NodePool extends pulumi.CustomResource {
  */
 export interface NodePoolState {
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The RKE cluster id to use Node Pool (string)
+     */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * RKE control plane role for created nodes (bool)
+     */
     readonly controlPlane?: pulumi.Input<boolean>;
+    /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
     readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
+     * RKE etcd role for created nodes (bool)
+     */
     readonly etcd?: pulumi.Input<boolean>;
+    /**
+     * The prefix for created nodes of the Node Pool (string)
+     */
     readonly hostnamePrefix?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the Node Pool (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
     readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
+    /**
+     * The Node Template ID to use for node creation (string)
+     */
     readonly nodeTemplateId?: pulumi.Input<string>;
+    /**
+     * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+     */
     readonly quantity?: pulumi.Input<number>;
+    /**
+     * RKE role role for created nodes (bool)
+     */
     readonly worker?: pulumi.Input<boolean>;
 }
 
@@ -141,21 +253,51 @@ export interface NodePoolState {
  */
 export interface NodePoolArgs {
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The RKE cluster id to use Node Pool (string)
+     */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * RKE control plane role for created nodes (bool)
+     */
     readonly controlPlane?: pulumi.Input<boolean>;
+    /**
+     * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+     */
     readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
+     * RKE etcd role for created nodes (bool)
+     */
     readonly etcd?: pulumi.Input<boolean>;
+    /**
+     * The prefix for created nodes of the Node Pool (string)
+     */
     readonly hostnamePrefix: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the Node Pool (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
     readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodePoolNodeTaint>[]>;
+    /**
+     * The Node Template ID to use for node creation (string)
+     */
     readonly nodeTemplateId: pulumi.Input<string>;
+    /**
+     * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+     */
     readonly quantity?: pulumi.Input<number>;
+    /**
+     * RKE role role for created nodes (bool)
+     */
     readonly worker?: pulumi.Input<boolean>;
 }

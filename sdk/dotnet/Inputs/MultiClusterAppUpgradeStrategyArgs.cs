@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class MultiClusterAppUpgradeStrategyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Upgrade strategy rolling update (list MaxItems:1)
+        /// </summary>
         [Input("rollingUpdate")]
         public Input<Inputs.MultiClusterAppUpgradeStrategyRollingUpdateArgs>? RollingUpdate { get; set; }
 

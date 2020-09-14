@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class CloudCredentialAzureCredentialConfig
     {
+        /// <summary>
+        /// Azure Service Principal Account ID (string)
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// Azure Service Principal Account password (string)
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// Azure Subscription ID (string)
+        /// </summary>
         public readonly string SubscriptionId;
 
         [OutputConstructor]

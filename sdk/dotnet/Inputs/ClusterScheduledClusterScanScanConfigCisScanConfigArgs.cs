@@ -12,23 +12,39 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterScheduledClusterScanScanConfigCisScanConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Debug master. Default: `false` (bool)
+        /// </summary>
         [Input("debugMaster")]
         public Input<bool>? DebugMaster { get; set; }
 
+        /// <summary>
+        /// Debug worker. Default: `false` (bool)
+        /// </summary>
         [Input("debugWorker")]
         public Input<bool>? DebugWorker { get; set; }
 
+        /// <summary>
+        /// Override benchmark version (string)
+        /// </summary>
         [Input("overrideBenchmarkVersion")]
         public Input<string>? OverrideBenchmarkVersion { get; set; }
 
         [Input("overrideSkips")]
         private InputList<string>? _overrideSkips;
+
+        /// <summary>
+        /// Override skip (string)
+        /// </summary>
         public InputList<string> OverrideSkips
         {
             get => _overrideSkips ?? (_overrideSkips = new InputList<string>());
             set => _overrideSkips = value;
         }
 
+        /// <summary>
+        /// Cis scan profile. Allowed values: `"permissive" (default) || "hardened"` (string)
+        /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 

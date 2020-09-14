@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectLoggingCustomTargetConfig
     {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// Custom target config content (string)
+        /// </summary>
         public readonly string Content;
 
         [OutputConstructor]

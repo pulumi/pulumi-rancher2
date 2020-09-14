@@ -13,12 +13,33 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterLoggingFluentdConfigFluentServer
     {
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Hostname of the fluentd service (string)
+        /// </summary>
         public readonly string? Hostname;
+        /// <summary>
+        /// User password of the fluentd service (string)
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Shared key of the fluentd service (string)
+        /// </summary>
         public readonly string? SharedKey;
+        /// <summary>
+        /// Standby server of the fluentd service (bool)
+        /// </summary>
         public readonly bool? Standby;
+        /// <summary>
+        /// Username of the fluentd service (string)
+        /// </summary>
         public readonly string? Username;
+        /// <summary>
+        /// Weight of the fluentd server (int)
+        /// </summary>
         public readonly int? Weight;
 
         [OutputConstructor]

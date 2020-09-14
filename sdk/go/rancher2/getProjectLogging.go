@@ -7,6 +7,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 Project Logging.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupProjectLogging(ctx, &rancher2.LookupProjectLoggingArgs{
+// 			ProjectId: "<project_id>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupProjectLogging(ctx *pulumi.Context, args *LookupProjectLoggingArgs, opts ...pulumi.InvokeOption) (*LookupProjectLoggingResult, error) {
 	var rv LookupProjectLoggingResult
 	err := ctx.Invoke("rancher2:index/getProjectLogging:getProjectLogging", args, &rv, opts...)
@@ -18,26 +42,39 @@ func LookupProjectLogging(ctx *pulumi.Context, args *LookupProjectLoggingArgs, o
 
 // A collection of arguments for invoking getProjectLogging.
 type LookupProjectLoggingArgs struct {
+	// The project id to configure logging (string)
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getProjectLogging.
 type LookupProjectLoggingResult struct {
-	Annotations         map[string]interface{}               `pulumi:"annotations"`
-	CustomTargetConfig  GetProjectLoggingCustomTargetConfig  `pulumi:"customTargetConfig"`
+	// (Computed) Annotations for Cluster Logging object (map)
+	Annotations        map[string]interface{}              `pulumi:"annotations"`
+	CustomTargetConfig GetProjectLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
+	// (Computed) The elasticsearch config for Cluster Logging. For `kind = elasticsearch`  (list maxitems:1)
 	ElasticsearchConfig GetProjectLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
 	EnableJsonParsing   bool                                 `pulumi:"enableJsonParsing"`
-	FluentdConfig       GetProjectLoggingFluentdConfig       `pulumi:"fluentdConfig"`
+	// (Computed) The fluentd config for Cluster Logging. For `kind = fluentd` (list maxitems:1)
+	FluentdConfig GetProjectLoggingFluentdConfig `pulumi:"fluentdConfig"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                        `pulumi:"id"`
-	KafkaConfig         GetProjectLoggingKafkaConfig  `pulumi:"kafkaConfig"`
-	Kind                string                        `pulumi:"kind"`
-	Labels              map[string]interface{}        `pulumi:"labels"`
-	Name                string                        `pulumi:"name"`
-	NamespaceId         string                        `pulumi:"namespaceId"`
-	OutputFlushInterval int                           `pulumi:"outputFlushInterval"`
-	OutputTags          map[string]interface{}        `pulumi:"outputTags"`
-	ProjectId           string                        `pulumi:"projectId"`
-	SplunkConfig        GetProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
-	SyslogConfig        GetProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
+	Id string `pulumi:"id"`
+	// (Computed) The kafka config for Cluster Logging. For `kind = kafka` (list maxitems:1)
+	KafkaConfig GetProjectLoggingKafkaConfig `pulumi:"kafkaConfig"`
+	// (Computed) The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind string `pulumi:"kind"`
+	// (Computed) Labels for Cluster Logging object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) The name of the cluster logging config (string)
+	Name string `pulumi:"name"`
+	// (Computed) The namespace id from cluster logging (string)
+	NamespaceId string `pulumi:"namespaceId"`
+	// (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
+	OutputFlushInterval int `pulumi:"outputFlushInterval"`
+	// (computed) The output tags for Cluster Logging (map)
+	OutputTags map[string]interface{} `pulumi:"outputTags"`
+	ProjectId  string                 `pulumi:"projectId"`
+	// (Computed) The splunk config for Cluster Logging. For `kind = splunk` (list maxitems:1)
+	SplunkConfig GetProjectLoggingSplunkConfig `pulumi:"splunkConfig"`
+	// (Computed) The syslog config for Cluster Logging. For `kind = syslog` (list maxitems:1)
+	SyslogConfig GetProjectLoggingSyslogConfig `pulumi:"syslogConfig"`
 }

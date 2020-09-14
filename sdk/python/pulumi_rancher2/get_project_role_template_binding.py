@@ -54,16 +54,25 @@ class GetProjectRoleTemplateBindingResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations of the resource (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
+        """
+        (Computed) The group ID to assign project role template binding (string)
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupPrincipalId")
     def group_principal_id(self) -> str:
+        """
+        (Computed) The group_principal ID to assign project role template binding (string)
+        """
         return pulumi.get(self, "group_principal_id")
 
     @property
@@ -77,6 +86,9 @@ class GetProjectRoleTemplateBindingResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels of the resource (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -97,11 +109,17 @@ class GetProjectRoleTemplateBindingResult:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
+        """
+        (Computed) The user ID to assign project role template binding (string)
+        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userPrincipalId")
     def user_principal_id(self) -> str:
+        """
+        (Computed) The user_principal ID to assign project role template binding (string)
+        """
         return pulumi.get(self, "user_principal_id")
 
 
@@ -128,7 +146,22 @@ def get_project_role_template_binding(name: Optional[str] = None,
                                       role_template_id: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectRoleTemplateBindingResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 project role template binding.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_role_template_binding(name="foo",
+        project_id="foo_id")
+    ```
+
+
+    :param str name: The name of the project role template binding (string)
+    :param str project_id: The project id where bind project role template (string)
+    :param str role_template_id: The role template id from create project role template binding (string)
     """
     __args__ = dict()
     __args__['name'] = name

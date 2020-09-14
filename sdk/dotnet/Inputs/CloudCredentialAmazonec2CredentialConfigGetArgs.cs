@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class CloudCredentialAmazonec2CredentialConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS access key (string)
+        /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// AWS secret key (string)
+        /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
 

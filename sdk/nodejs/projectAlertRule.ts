@@ -6,6 +6,54 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Project
+ * const fooProject = new rancher2.Project("fooProject", {
+ *     clusterId: "<cluster_id>",
+ *     description: "Terraform project ",
+ *     resourceQuota: {
+ *         projectLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "2000Mi",
+ *             requestsStorage: "2Gi",
+ *         },
+ *         namespaceDefaultLimit: {
+ *             limitsCpu: "500m",
+ *             limitsMemory: "500Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
+ *     },
+ * });
+ * // Create a new Rancher2 Project Alert Group
+ * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("fooProjectAlertGroup", {
+ *     description: "Terraform project alert group",
+ *     projectId: fooProject.id,
+ *     groupIntervalSeconds: 300,
+ *     repeatIntervalSeconds: 3600,
+ * });
+ * // Create a new Rancher2 Project Alert Rule
+ * const fooProjectAlertRule = new rancher2.ProjectAlertRule("fooProjectAlertRule", {
+ *     projectId: fooProjectAlertGroup.projectId,
+ *     groupId: fooProjectAlertGroup.id,
+ *     groupIntervalSeconds: 600,
+ *     repeatIntervalSeconds: 6000,
+ * });
+ * ```
+ */
 export class ProjectAlertRule extends pulumi.CustomResource {
     /**
      * Get an existing ProjectAlertRule resource's state with the given name, ID, and optional extra
@@ -35,55 +83,55 @@ export class ProjectAlertRule extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * The project alert rule annotations (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert rule group ID
+     * The project alert rule alert group ID (string)
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * Alert rule interval seconds
+     * The project alert rule group interval seconds. Default: `180` (int)
      */
     public readonly groupIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule wait seconds
+     * The project alert rule group wait seconds. Default: `180` (int)
      */
     public readonly groupWaitSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule inherited
+     * The project alert rule inherited. Default: `true` (bool)
      */
     public readonly inherited!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels of the resource
+     * The project alert rule labels (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
      */
     public readonly metricRule!: pulumi.Output<outputs.ProjectAlertRuleMetricRule | undefined>;
     /**
-     * Alert rule name
+     * The project alert rule name (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Alert pod rule
+     * The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
      */
     public readonly podRule!: pulumi.Output<outputs.ProjectAlertRulePodRule | undefined>;
     /**
-     * Alert rule Project ID
+     * The project id where create project alert rule (string)
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Alert rule repeat interval seconds
+     * The project alert rule wait seconds. Default: `3600` (int)
      */
     public readonly repeatIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Alert rule severity
+     * The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     public readonly severity!: pulumi.Output<string | undefined>;
     /**
-     * Alert workload rule
+     * The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
      */
     public readonly workloadRule!: pulumi.Output<outputs.ProjectAlertRuleWorkloadRule | undefined>;
 
@@ -150,55 +198,55 @@ export class ProjectAlertRule extends pulumi.CustomResource {
  */
 export interface ProjectAlertRuleState {
     /**
-     * Annotations of the resource
+     * The project alert rule annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert rule group ID
+     * The project alert rule alert group ID (string)
      */
     readonly groupId?: pulumi.Input<string>;
     /**
-     * Alert rule interval seconds
+     * The project alert rule group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule wait seconds
+     * The project alert rule group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule inherited
+     * The project alert rule inherited. Default: `true` (bool)
      */
     readonly inherited?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * The project alert rule labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
      */
     readonly metricRule?: pulumi.Input<inputs.ProjectAlertRuleMetricRule>;
     /**
-     * Alert rule name
+     * The project alert rule name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert pod rule
+     * The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
      */
     readonly podRule?: pulumi.Input<inputs.ProjectAlertRulePodRule>;
     /**
-     * Alert rule Project ID
+     * The project id where create project alert rule (string)
      */
     readonly projectId?: pulumi.Input<string>;
     /**
-     * Alert rule repeat interval seconds
+     * The project alert rule wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule severity
+     * The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * Alert workload rule
+     * The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
      */
     readonly workloadRule?: pulumi.Input<inputs.ProjectAlertRuleWorkloadRule>;
 }
@@ -208,55 +256,55 @@ export interface ProjectAlertRuleState {
  */
 export interface ProjectAlertRuleArgs {
     /**
-     * Annotations of the resource
+     * The project alert rule annotations (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert rule group ID
+     * The project alert rule alert group ID (string)
      */
     readonly groupId: pulumi.Input<string>;
     /**
-     * Alert rule interval seconds
+     * The project alert rule group interval seconds. Default: `180` (int)
      */
     readonly groupIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule wait seconds
+     * The project alert rule group wait seconds. Default: `180` (int)
      */
     readonly groupWaitSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule inherited
+     * The project alert rule inherited. Default: `true` (bool)
      */
     readonly inherited?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * The project alert rule labels (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Alert metric rule
+     * The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
      */
     readonly metricRule?: pulumi.Input<inputs.ProjectAlertRuleMetricRule>;
     /**
-     * Alert rule name
+     * The project alert rule name (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Alert pod rule
+     * The project alert rule pod rule. ConflictsWith: `"metricRule", "workloadRule"`` (list Maxitems:1)
      */
     readonly podRule?: pulumi.Input<inputs.ProjectAlertRulePodRule>;
     /**
-     * Alert rule Project ID
+     * The project id where create project alert rule (string)
      */
     readonly projectId: pulumi.Input<string>;
     /**
-     * Alert rule repeat interval seconds
+     * The project alert rule wait seconds. Default: `3600` (int)
      */
     readonly repeatIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Alert rule severity
+     * The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
      */
     readonly severity?: pulumi.Input<string>;
     /**
-     * Alert workload rule
+     * The project alert rule workload rule. ConflictsWith: `"metricRule", "podRule"`` (list Maxitems:1)
      */
     readonly workloadRule?: pulumi.Input<inputs.ProjectAlertRuleWorkloadRule>;
 }

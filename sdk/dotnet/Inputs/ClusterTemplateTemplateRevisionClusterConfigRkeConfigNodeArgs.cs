@@ -26,6 +26,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// Labels for the cluster template revision (map)
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());

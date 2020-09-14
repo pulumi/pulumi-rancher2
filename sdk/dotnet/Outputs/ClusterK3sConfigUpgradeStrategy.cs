@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterK3sConfigUpgradeStrategy
     {
+        /// <summary>
+        /// Drain server nodes. Default: `false` (bool)
+        /// </summary>
         public readonly bool? DrainServerNodes;
+        /// <summary>
+        /// Drain worker nodes. Default: `false` (bool)
+        /// </summary>
         public readonly bool? DrainWorkerNodes;
+        /// <summary>
+        /// Server concurrency. Default: `1` (int)
+        /// </summary>
         public readonly int? ServerConcurrency;
+        /// <summary>
+        /// Worker concurrency. Default: `1` (int)
+        /// </summary>
         public readonly int? WorkerConcurrency;
 
         [OutputConstructor]

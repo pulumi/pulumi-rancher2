@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigUpgradeStrategy
     {
+        /// <summary>
+        /// RKE drain nodes. Default: `false` (bool)
+        /// </summary>
         public readonly bool? Drain;
+        /// <summary>
+        /// RKE drain node input (list Maxitems: 1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigUpgradeStrategyDrainInput? DrainInput;
+        /// <summary>
+        /// RKE max unavailable controlplane nodes. Default: `1` (string)
+        /// </summary>
         public readonly string? MaxUnavailableControlplane;
+        /// <summary>
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
+        /// </summary>
         public readonly string? MaxUnavailableWorker;
 
         [OutputConstructor]

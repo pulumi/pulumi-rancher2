@@ -9,47 +9,80 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+    /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// The RKE cluster id to use Node Pool (string)
+        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// RKE control plane role for created nodes (bool)
+        /// </summary>
         [Output("controlPlane")]
         public Output<bool?> ControlPlane { get; private set; } = null!;
 
+        /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
         [Output("deleteNotReadyAfterSecs")]
         public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
 
+        /// <summary>
+        /// RKE etcd role for created nodes (bool)
+        /// </summary>
         [Output("etcd")]
         public Output<bool?> Etcd { get; private set; } = null!;
 
+        /// <summary>
+        /// The prefix for created nodes of the Node Pool (string)
+        /// </summary>
         [Output("hostnamePrefix")]
         public Output<string> HostnamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Node Pool (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
         [Output("nodeTaints")]
         public Output<ImmutableArray<Outputs.NodePoolNodeTaint>> NodeTaints { get; private set; } = null!;
 
+        /// <summary>
+        /// The Node Template ID to use for node creation (string)
+        /// </summary>
         [Output("nodeTemplateId")]
         public Output<string> NodeTemplateId { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of nodes to create on Node Pool. Default `1`. Only values &gt;= 1 allowed (int)
+        /// </summary>
         [Output("quantity")]
         public Output<int?> Quantity { get; private set; } = null!;
 
+        /// <summary>
+        /// RKE role role for created nodes (bool)
+        /// </summary>
         [Output("worker")]
         public Output<bool?> Worker { get; private set; } = null!;
 
@@ -103,7 +136,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -111,18 +144,33 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The RKE cluster id to use Node Pool (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// RKE control plane role for created nodes (bool)
+        /// </summary>
         [Input("controlPlane")]
         public Input<bool>? ControlPlane { get; set; }
 
+        /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
         [Input("deleteNotReadyAfterSecs")]
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
+        /// <summary>
+        /// RKE etcd role for created nodes (bool)
+        /// </summary>
         [Input("etcd")]
         public Input<bool>? Etcd { get; set; }
 
+        /// <summary>
+        /// The prefix for created nodes of the Node Pool (string)
+        /// </summary>
         [Input("hostnamePrefix", required: true)]
         public Input<string> HostnamePrefix { get; set; } = null!;
 
@@ -130,7 +178,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -138,23 +186,39 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the Node Pool (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nodeTaints")]
         private InputList<Inputs.NodePoolNodeTaintArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
         public InputList<Inputs.NodePoolNodeTaintArgs> NodeTaints
         {
             get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintArgs>());
             set => _nodeTaints = value;
         }
 
+        /// <summary>
+        /// The Node Template ID to use for node creation (string)
+        /// </summary>
         [Input("nodeTemplateId", required: true)]
         public Input<string> NodeTemplateId { get; set; } = null!;
 
+        /// <summary>
+        /// The number of nodes to create on Node Pool. Default `1`. Only values &gt;= 1 allowed (int)
+        /// </summary>
         [Input("quantity")]
         public Input<int>? Quantity { get; set; }
 
+        /// <summary>
+        /// RKE role role for created nodes (bool)
+        /// </summary>
         [Input("worker")]
         public Input<bool>? Worker { get; set; }
 
@@ -169,7 +233,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -177,18 +241,33 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The RKE cluster id to use Node Pool (string)
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// RKE control plane role for created nodes (bool)
+        /// </summary>
         [Input("controlPlane")]
         public Input<bool>? ControlPlane { get; set; }
 
+        /// <summary>
+        /// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        /// </summary>
         [Input("deleteNotReadyAfterSecs")]
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
+        /// <summary>
+        /// RKE etcd role for created nodes (bool)
+        /// </summary>
         [Input("etcd")]
         public Input<bool>? Etcd { get; set; }
 
+        /// <summary>
+        /// The prefix for created nodes of the Node Pool (string)
+        /// </summary>
         [Input("hostnamePrefix")]
         public Input<string>? HostnamePrefix { get; set; }
 
@@ -196,7 +275,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -204,23 +283,39 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the Node Pool (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nodeTaints")]
         private InputList<Inputs.NodePoolNodeTaintGetArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
         public InputList<Inputs.NodePoolNodeTaintGetArgs> NodeTaints
         {
             get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodePoolNodeTaintGetArgs>());
             set => _nodeTaints = value;
         }
 
+        /// <summary>
+        /// The Node Template ID to use for node creation (string)
+        /// </summary>
         [Input("nodeTemplateId")]
         public Input<string>? NodeTemplateId { get; set; }
 
+        /// <summary>
+        /// The number of nodes to create on Node Pool. Default `1`. Only values &gt;= 1 allowed (int)
+        /// </summary>
         [Input("quantity")]
         public Input<int>? Quantity { get; set; }
 
+        /// <summary>
+        /// RKE role role for created nodes (bool)
+        /// </summary>
         [Input("worker")]
         public Input<bool>? Worker { get; set; }
 

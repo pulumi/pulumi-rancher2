@@ -10,22 +10,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
+//
+// Depending of the availability, there are 2 types of Rancher v2 secrets:
+// - Project secret: Available to all namespaces in the `projectId`
+// - Namespaced secret: Available to just `namespaceId` in the `projectId`
 type Secret struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations for secret object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Secret data base64 encoded
+	// Secret key/value data. Base64 encoding required for values (map)
 	Data pulumi.MapOutput `pulumi:"data"`
-	// Secret description
+	// A secret description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Labels of the resource
+	// Labels for secret object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Secret name
+	// The name of the secret (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Namespace ID to add secret
+	// The namespace id where to assign the namespaced secret (string)
 	NamespaceId pulumi.StringPtrOutput `pulumi:"namespaceId"`
-	// Project ID to add secret
+	// The project id where to assign the secret (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 }
 
@@ -63,36 +68,36 @@ func GetSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Secret resources.
 type secretState struct {
-	// Annotations of the resource
+	// Annotations for secret object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Secret data base64 encoded
+	// Secret key/value data. Base64 encoding required for values (map)
 	Data map[string]interface{} `pulumi:"data"`
-	// Secret description
+	// A secret description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the resource
+	// Labels for secret object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Secret name
+	// The name of the secret (string)
 	Name *string `pulumi:"name"`
-	// Namespace ID to add secret
+	// The namespace id where to assign the namespaced secret (string)
 	NamespaceId *string `pulumi:"namespaceId"`
-	// Project ID to add secret
+	// The project id where to assign the secret (string)
 	ProjectId *string `pulumi:"projectId"`
 }
 
 type SecretState struct {
-	// Annotations of the resource
+	// Annotations for secret object (map)
 	Annotations pulumi.MapInput
-	// Secret data base64 encoded
+	// Secret key/value data. Base64 encoding required for values (map)
 	Data pulumi.MapInput
-	// Secret description
+	// A secret description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the resource
+	// Labels for secret object (map)
 	Labels pulumi.MapInput
-	// Secret name
+	// The name of the secret (string)
 	Name pulumi.StringPtrInput
-	// Namespace ID to add secret
+	// The namespace id where to assign the namespaced secret (string)
 	NamespaceId pulumi.StringPtrInput
-	// Project ID to add secret
+	// The project id where to assign the secret (string)
 	ProjectId pulumi.StringPtrInput
 }
 
@@ -101,37 +106,37 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
-	// Annotations of the resource
+	// Annotations for secret object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Secret data base64 encoded
+	// Secret key/value data. Base64 encoding required for values (map)
 	Data map[string]interface{} `pulumi:"data"`
-	// Secret description
+	// A secret description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the resource
+	// Labels for secret object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Secret name
+	// The name of the secret (string)
 	Name *string `pulumi:"name"`
-	// Namespace ID to add secret
+	// The namespace id where to assign the namespaced secret (string)
 	NamespaceId *string `pulumi:"namespaceId"`
-	// Project ID to add secret
+	// The project id where to assign the secret (string)
 	ProjectId string `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
-	// Annotations of the resource
+	// Annotations for secret object (map)
 	Annotations pulumi.MapInput
-	// Secret data base64 encoded
+	// Secret key/value data. Base64 encoding required for values (map)
 	Data pulumi.MapInput
-	// Secret description
+	// A secret description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the resource
+	// Labels for secret object (map)
 	Labels pulumi.MapInput
-	// Secret name
+	// The name of the secret (string)
 	Name pulumi.StringPtrInput
-	// Namespace ID to add secret
+	// The namespace id where to assign the namespaced secret (string)
 	NamespaceId pulumi.StringPtrInput
-	// Project ID to add secret
+	// The project id where to assign the secret (string)
 	ProjectId pulumi.StringInput
 }
 

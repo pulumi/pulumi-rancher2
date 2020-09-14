@@ -10,26 +10,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
+// 			ClusterId:   pulumi.String("<cluster_id>"),
+// 			Description: pulumi.String("Terraform notifier acceptance test"),
+// 			PagerdutyConfig: &rancher2.NotifierPagerdutyConfigArgs{
+// 				ProxyUrl:   pulumi.String("http://proxy.test.io"),
+// 				ServiceKey: pulumi.String("XXXXXXXX"),
+// 			},
+// 			SendResolved: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Notifier struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations for notifier object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Notifier cluster ID
+	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Notifier description
+	// The notifier description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Labels of the resource
+	// Labels for notifier object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Notifier name
-	Name            pulumi.StringOutput              `pulumi:"name"`
+	// The name of the notifier (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrOutput `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
-	SendResolved  pulumi.BoolPtrOutput           `pulumi:"sendResolved"`
-	SlackConfig   NotifierSlackConfigPtrOutput   `pulumi:"slackConfig"`
-	SmtpConfig    NotifierSmtpConfigPtrOutput    `pulumi:"smtpConfig"`
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
+	// Slack config for notifier (list maxitems:1)
+	SlackConfig NotifierSlackConfigPtrOutput `pulumi:"slackConfig"`
+	// SMTP config for notifier (list maxitems:1)
+	SmtpConfig NotifierSmtpConfigPtrOutput `pulumi:"smtpConfig"`
+	// Webhook config for notifier (list maxitems:1)
 	WebhookConfig NotifierWebhookConfigPtrOutput `pulumi:"webhookConfig"`
-	WechatConfig  NotifierWechatConfigPtrOutput  `pulumi:"wechatConfig"`
+	// Wechat config for notifier (list maxitems:1)
+	WechatConfig NotifierWechatConfigPtrOutput `pulumi:"wechatConfig"`
 }
 
 // NewNotifier registers a new resource with the given unique name, arguments, and options.
@@ -63,43 +98,53 @@ func GetNotifier(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notifier resources.
 type notifierState struct {
-	// Annotations of the resource
+	// Annotations for notifier object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Notifier cluster ID
+	// The cluster id where create notifier (string)
 	ClusterId *string `pulumi:"clusterId"`
-	// Notifier description
+	// The notifier description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the resource
+	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Notifier name
-	Name            *string                  `pulumi:"name"`
+	// The name of the notifier (string)
+	Name *string `pulumi:"name"`
+	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
-	SendResolved  *bool                  `pulumi:"sendResolved"`
-	SlackConfig   *NotifierSlackConfig   `pulumi:"slackConfig"`
-	SmtpConfig    *NotifierSmtpConfig    `pulumi:"smtpConfig"`
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+	SendResolved *bool `pulumi:"sendResolved"`
+	// Slack config for notifier (list maxitems:1)
+	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
+	// SMTP config for notifier (list maxitems:1)
+	SmtpConfig *NotifierSmtpConfig `pulumi:"smtpConfig"`
+	// Webhook config for notifier (list maxitems:1)
 	WebhookConfig *NotifierWebhookConfig `pulumi:"webhookConfig"`
-	WechatConfig  *NotifierWechatConfig  `pulumi:"wechatConfig"`
+	// Wechat config for notifier (list maxitems:1)
+	WechatConfig *NotifierWechatConfig `pulumi:"wechatConfig"`
 }
 
 type NotifierState struct {
-	// Annotations of the resource
+	// Annotations for notifier object (map)
 	Annotations pulumi.MapInput
-	// Notifier cluster ID
+	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringPtrInput
-	// Notifier description
+	// The notifier description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the resource
+	// Labels for notifier object (map)
 	Labels pulumi.MapInput
-	// Notifier name
-	Name            pulumi.StringPtrInput
+	// The name of the notifier (string)
+	Name pulumi.StringPtrInput
+	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
-	// Notifier send resolved
-	SendResolved  pulumi.BoolPtrInput
-	SlackConfig   NotifierSlackConfigPtrInput
-	SmtpConfig    NotifierSmtpConfigPtrInput
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+	SendResolved pulumi.BoolPtrInput
+	// Slack config for notifier (list maxitems:1)
+	SlackConfig NotifierSlackConfigPtrInput
+	// SMTP config for notifier (list maxitems:1)
+	SmtpConfig NotifierSmtpConfigPtrInput
+	// Webhook config for notifier (list maxitems:1)
 	WebhookConfig NotifierWebhookConfigPtrInput
-	WechatConfig  NotifierWechatConfigPtrInput
+	// Wechat config for notifier (list maxitems:1)
+	WechatConfig NotifierWechatConfigPtrInput
 }
 
 func (NotifierState) ElementType() reflect.Type {
@@ -107,44 +152,54 @@ func (NotifierState) ElementType() reflect.Type {
 }
 
 type notifierArgs struct {
-	// Annotations of the resource
+	// Annotations for notifier object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Notifier cluster ID
+	// The cluster id where create notifier (string)
 	ClusterId string `pulumi:"clusterId"`
-	// Notifier description
+	// The notifier description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the resource
+	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Notifier name
-	Name            *string                  `pulumi:"name"`
+	// The name of the notifier (string)
+	Name *string `pulumi:"name"`
+	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig *NotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
-	// Notifier send resolved
-	SendResolved  *bool                  `pulumi:"sendResolved"`
-	SlackConfig   *NotifierSlackConfig   `pulumi:"slackConfig"`
-	SmtpConfig    *NotifierSmtpConfig    `pulumi:"smtpConfig"`
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+	SendResolved *bool `pulumi:"sendResolved"`
+	// Slack config for notifier (list maxitems:1)
+	SlackConfig *NotifierSlackConfig `pulumi:"slackConfig"`
+	// SMTP config for notifier (list maxitems:1)
+	SmtpConfig *NotifierSmtpConfig `pulumi:"smtpConfig"`
+	// Webhook config for notifier (list maxitems:1)
 	WebhookConfig *NotifierWebhookConfig `pulumi:"webhookConfig"`
-	WechatConfig  *NotifierWechatConfig  `pulumi:"wechatConfig"`
+	// Wechat config for notifier (list maxitems:1)
+	WechatConfig *NotifierWechatConfig `pulumi:"wechatConfig"`
 }
 
 // The set of arguments for constructing a Notifier resource.
 type NotifierArgs struct {
-	// Annotations of the resource
+	// Annotations for notifier object (map)
 	Annotations pulumi.MapInput
-	// Notifier cluster ID
+	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringInput
-	// Notifier description
+	// The notifier description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the resource
+	// Labels for notifier object (map)
 	Labels pulumi.MapInput
-	// Notifier name
-	Name            pulumi.StringPtrInput
+	// The name of the notifier (string)
+	Name pulumi.StringPtrInput
+	// Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig NotifierPagerdutyConfigPtrInput
-	// Notifier send resolved
-	SendResolved  pulumi.BoolPtrInput
-	SlackConfig   NotifierSlackConfigPtrInput
-	SmtpConfig    NotifierSmtpConfigPtrInput
+	// = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+	SendResolved pulumi.BoolPtrInput
+	// Slack config for notifier (list maxitems:1)
+	SlackConfig NotifierSlackConfigPtrInput
+	// SMTP config for notifier (list maxitems:1)
+	SmtpConfig NotifierSmtpConfigPtrInput
+	// Webhook config for notifier (list maxitems:1)
 	WebhookConfig NotifierWebhookConfigPtrInput
-	WechatConfig  NotifierWechatConfigPtrInput
+	// Wechat config for notifier (list maxitems:1)
+	WechatConfig NotifierWechatConfigPtrInput
 }
 
 func (NotifierArgs) ElementType() reflect.Type {

@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterK3sConfigUpgradeStrategyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Drain server nodes. Default: `false` (bool)
+        /// </summary>
         [Input("drainServerNodes")]
         public Input<bool>? DrainServerNodes { get; set; }
 
+        /// <summary>
+        /// Drain worker nodes. Default: `false` (bool)
+        /// </summary>
         [Input("drainWorkerNodes")]
         public Input<bool>? DrainWorkerNodes { get; set; }
 
+        /// <summary>
+        /// Server concurrency. Default: `1` (int)
+        /// </summary>
         [Input("serverConcurrency")]
         public Input<int>? ServerConcurrency { get; set; }
 
+        /// <summary>
+        /// Worker concurrency. Default: `1` (int)
+        /// </summary>
         [Input("workerConcurrency")]
         public Input<int>? WorkerConcurrency { get; set; }
 

@@ -55,6 +55,9 @@ class GetClusterAlertGroupResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) The cluster alert group annotations (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -65,16 +68,25 @@ class GetClusterAlertGroupResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) The cluster alert group description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
     def group_interval_seconds(self) -> float:
+        """
+        (Computed) The cluster alert group interval seconds. Default: `180` (int)
+        """
         return pulumi.get(self, "group_interval_seconds")
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
     def group_wait_seconds(self) -> float:
+        """
+        (Computed) The cluster alert group wait seconds. Default: `180` (int)
+        """
         return pulumi.get(self, "group_wait_seconds")
 
     @property
@@ -88,6 +100,9 @@ class GetClusterAlertGroupResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) The cluster alert group labels (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -98,11 +113,17 @@ class GetClusterAlertGroupResult:
     @property
     @pulumi.getter
     def recipients(self) -> List['outputs.GetClusterAlertGroupRecipientResult']:
+        """
+        (Computed) The cluster alert group recipients (list)
+        """
         return pulumi.get(self, "recipients")
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
     def repeat_interval_seconds(self) -> float:
+        """
+        (Computed) The cluster alert group wait seconds. Default: `3600` (int)
+        """
         return pulumi.get(self, "repeat_interval_seconds")
 
 
@@ -128,7 +149,21 @@ def get_cluster_alert_group(cluster_id: Optional[str] = None,
                             name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterAlertGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 cluster alert group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_cluster_alert_group(cluster_id="<cluster_id>",
+        name="<cluster_alert_group_name>")
+    ```
+
+
+    :param str cluster_id: The cluster id where create cluster alert group (string)
+    :param str name: The cluster alert group name (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

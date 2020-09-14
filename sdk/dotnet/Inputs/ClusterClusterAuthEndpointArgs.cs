@@ -12,12 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterClusterAuthEndpointArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// CA certs for the authorized cluster endpoint (string)
+        /// </summary>
         [Input("caCerts")]
         public Input<string>? CaCerts { get; set; }
 
+        /// <summary>
+        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// FQDN for the authorized cluster endpoint (string)
+        /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
 

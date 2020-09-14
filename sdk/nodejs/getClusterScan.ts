@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 Cluster CIS Scan resource.
+ */
 export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterScanResult> {
     if (!opts) {
         opts = {}
@@ -24,7 +27,13 @@ export function getClusterScan(args: GetClusterScanArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getClusterScan.
  */
 export interface GetClusterScanArgs {
+    /**
+     * Cluster ID for CIS Scan (string)
+     */
     readonly clusterId: string;
+    /**
+     * Name of the cluster Scan (string)
+     */
     readonly name?: string;
 }
 
@@ -32,16 +41,34 @@ export interface GetClusterScanArgs {
  * A collection of values returned by getClusterScan.
  */
 export interface GetClusterScanResult {
+    /**
+     * (Computed) Annotations of the resource (map)
+     */
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) Labels of the resource (map)
+     */
     readonly labels: {[key: string]: any};
     readonly name: string;
+    /**
+     * (Computed) Cluster Scan run type (string)
+     */
     readonly runType: string;
+    /**
+     * (Computed) Cluster Scan config (bool)
+     */
     readonly scanConfig: outputs.GetClusterScanScanConfig;
+    /**
+     * (Computed) Cluster Scan type (string)
+     */
     readonly scanType: string;
+    /**
+     * (Computed) Cluster Scan status (string)
+     */
     readonly status: string;
 }

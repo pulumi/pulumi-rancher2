@@ -15,6 +15,9 @@ namespace Pulumi.Rancher2.Outputs
     {
         public readonly string ClusterIpv4Cidr;
         public readonly string Credential;
+        /// <summary>
+        /// (Computed) The description for Cluster (string)
+        /// </summary>
         public readonly string? Description;
         public readonly int? DiskSizeGb;
         public readonly string DiskType;
@@ -42,6 +45,9 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string IpPolicySubnetworkName;
         public readonly bool? IssueClientCertificate;
         public readonly bool? KubernetesDashboard;
+        /// <summary>
+        /// (Computed) Labels for Node Pool object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly int? LocalSsdCount;
         public readonly ImmutableArray<string> Locations;

@@ -12,12 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class RegistryRegistryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address for registry.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// Password for the registry (string)
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        /// <summary>
+        /// Username for the registry (string)
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

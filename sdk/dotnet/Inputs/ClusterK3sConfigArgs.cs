@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterK3sConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// K3S upgrade strategy (List maxitems: 1)
+        /// </summary>
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterK3sConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

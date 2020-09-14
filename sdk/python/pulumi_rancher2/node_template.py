@@ -44,11 +44,82 @@ class NodeTemplate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a NodeTemplate resource with the given unique name, props, and options.
+        Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
+
+        amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
+
+        **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Node Template up to Rancher 2.1.x
+        foo = rancher2.NodeTemplate("foo",
+            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
+                access_key="AWS_ACCESS_KEY",
+                ami="<AMI_ID>",
+                region="<REGION>",
+                secret_key="<AWS_SECRET_KEY>",
+                security_groups=["<AWS_SECURITY_GROUP>"],
+                subnet_id="<SUBNET_ID>",
+                vpc_id="<VPC_ID>",
+                zone="<ZONE>",
+            ),
+            description="foo test")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Node Template from Rancher 2.2.x
+        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+            description="foo test",
+            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
+                access_key="<AWS_ACCESS_KEY>",
+                secret_key="<AWS_SECRET_KEY>",
+            ))
+        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+            description="foo test",
+            cloud_credential_id=foo_cloud_credential.id,
+            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
+                ami="<AMI_ID>",
+                region="<REGION>",
+                security_groups=["<AWS_SECURITY_GROUP>"],
+                subnet_id="<SUBNET_ID>",
+                vpc_id="<VPC_ID>",
+                zone="<ZONE>",
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
+        :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+        :param pulumi.Input[str] description: Description for the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,8 +203,30 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
+        :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+        :param pulumi.Input[str] description: Description for the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
+        :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -168,127 +261,193 @@ class NodeTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="amazonec2Config")
     def amazonec2_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateAmazonec2Config']]:
+        """
+        AWS config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "amazonec2_config")
 
     @property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for Node Template object (map)
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="authCertificateAuthority")
     def auth_certificate_authority(self) -> pulumi.Output[Optional[str]]:
+        """
+        Auth certificate authority for the Node Template (string)
+        """
         return pulumi.get(self, "auth_certificate_authority")
 
     @property
     @pulumi.getter(name="authKey")
     def auth_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Auth key for the Node Template (string)
+        """
         return pulumi.get(self, "auth_key")
 
     @property
     @pulumi.getter(name="azureConfig")
     def azure_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateAzureConfig']]:
+        """
+        Azure config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "azure_config")
 
     @property
     @pulumi.getter(name="cloudCredentialId")
     def cloud_credential_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "cloud_credential_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description for the Node Template (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="digitaloceanConfig")
     def digitalocean_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateDigitaloceanConfig']]:
+        """
+        Digitalocean config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "digitalocean_config")
 
     @property
     @pulumi.getter
     def driver(self) -> pulumi.Output[str]:
+        """
+        (Computed) The driver of the node template (string)
+        """
         return pulumi.get(self, "driver")
 
     @property
     @pulumi.getter(name="driverId")
     def driver_id(self) -> pulumi.Output[str]:
+        """
+        The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
+        """
         return pulumi.get(self, "driver_id")
 
     @property
     @pulumi.getter(name="engineEnv")
     def engine_env(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Engine environment for the node template (string)
+        """
         return pulumi.get(self, "engine_env")
 
     @property
     @pulumi.getter(name="engineInsecureRegistries")
     def engine_insecure_registries(self) -> pulumi.Output[Optional[List[str]]]:
+        """
+        Insecure registry for the node template (list)
+        """
         return pulumi.get(self, "engine_insecure_registries")
 
     @property
     @pulumi.getter(name="engineInstallUrl")
     def engine_install_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        """
         return pulumi.get(self, "engine_install_url")
 
     @property
     @pulumi.getter(name="engineLabel")
     def engine_label(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Engine label for the node template (string)
+        """
         return pulumi.get(self, "engine_label")
 
     @property
     @pulumi.getter(name="engineOpt")
     def engine_opt(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Engine options for the node template (map)
+        """
         return pulumi.get(self, "engine_opt")
 
     @property
     @pulumi.getter(name="engineRegistryMirrors")
     def engine_registry_mirrors(self) -> pulumi.Output[Optional[List[str]]]:
+        """
+        Engine registry mirror for the node template (list)
+        """
         return pulumi.get(self, "engine_registry_mirrors")
 
     @property
     @pulumi.getter(name="engineStorageDriver")
     def engine_storage_driver(self) -> pulumi.Output[Optional[str]]:
+        """
+        Engine storage driver for the node template (string)
+        """
         return pulumi.get(self, "engine_storage_driver")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for Node Template object (map)
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="linodeConfig")
     def linode_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateLinodeConfig']]:
+        """
+        Linode config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "linode_config")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Node Template (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="opennebulaConfig")
     def opennebula_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateOpennebulaConfig']]:
+        """
+        Opennebula config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "opennebula_config")
 
     @property
     @pulumi.getter(name="openstackConfig")
     def openstack_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateOpenstackConfig']]:
+        """
+        Openstack config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "openstack_config")
 
     @property
     @pulumi.getter(name="useInternalIpAddress")
     def use_internal_ip_address(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Engine storage driver for the node template (bool)
+        """
         return pulumi.get(self, "use_internal_ip_address")
 
     @property
     @pulumi.getter(name="vsphereConfig")
     def vsphere_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateVsphereConfig']]:
+        """
+        vSphere config for the Node Template (list maxitems:1)
+        """
         return pulumi.get(self, "vsphere_config")
 
     def translate_output_property(self, prop):

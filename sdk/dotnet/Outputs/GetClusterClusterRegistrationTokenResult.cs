@@ -13,13 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterClusterRegistrationTokenResult
     {
+        /// <summary>
+        /// (Computed) Annotations for Node Pool object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
         public readonly string Command;
+        /// <summary>
+        /// (Computed) The ID of the resource (string)
+        /// </summary>
         public readonly string Id;
         public readonly string InsecureCommand;
+        /// <summary>
+        /// (Computed) Labels for Node Pool object (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string ManifestUrl;
+        /// <summary>
+        /// The name of the Cluster (string)
+        /// </summary>
         public readonly string Name;
         public readonly string NodeCommand;
         public readonly string Token;

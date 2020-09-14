@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? BsVersion;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly bool? IgnoreVolumeAz;
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly bool? TrustDevicePath;
 
         [OutputConstructor]

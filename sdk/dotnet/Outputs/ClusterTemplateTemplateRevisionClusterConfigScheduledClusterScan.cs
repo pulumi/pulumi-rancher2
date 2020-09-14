@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan
     {
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
         public readonly bool? Enabled;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfig ScanConfig;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig ScheduleConfig;

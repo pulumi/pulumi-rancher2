@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NamespaceResourceQuotaGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Resource quota limit for namespace (list maxitems:1)
+        /// </summary>
         [Input("limit", required: true)]
         public Input<Inputs.NamespaceResourceQuotaLimitGetArgs> Limit { get; set; } = null!;
 

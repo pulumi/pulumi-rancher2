@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterLoggingFluentdConfig
     {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         public readonly string? Certificate;
+        /// <summary>
+        /// Compress data for the fluentd service (bool)
+        /// </summary>
         public readonly bool? Compress;
+        /// <summary>
+        /// Enable TLS for the syslog service. Default `false` (bool)
+        /// </summary>
         public readonly bool? EnableTls;
+        /// <summary>
+        /// Servers for the fluentd service (list)
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterLoggingFluentdConfigFluentServer> FluentServers;
 
         [OutputConstructor]

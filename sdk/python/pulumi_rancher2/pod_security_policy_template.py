@@ -49,59 +49,144 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a PodSecurityPolicyTemplate resource with the given unique name, props, and options.
+        Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 PodSecurityPolicyTemplate
+        foo = rancher2.PodSecurityPolicyTemplate("foo",
+            allow_privilege_escalation=False,
+            allowed_csi_drivers=[
+                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
+                    name="something",
+                ),
+                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
+                    name="something-else",
+                ),
+            ],
+            allowed_flex_volumes=[
+                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
+                    driver="something",
+                ),
+                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
+                    driver="something-else",
+                ),
+            ],
+            allowed_host_paths=[
+                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
+                    path_prefix="/",
+                    read_only=True,
+                ),
+                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
+                    path_prefix="//",
+                    read_only=False,
+                ),
+            ],
+            allowed_proc_mount_types=["Default"],
+            default_allow_privilege_escalation=False,
+            description="Terraform PodSecurityPolicyTemplate acceptance test - update",
+            fs_group=rancher2.PodSecurityPolicyTemplateFsGroupArgs(
+                ranges=[
+                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
+                        max=100,
+                        min=0,
+                    ),
+                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
+                        max=100,
+                        min=0,
+                    ),
+                ],
+                rule="MustRunAs",
+            ),
+            host_ipc=False,
+            host_network=False,
+            host_pid=False,
+            host_ports=[
+                rancher2.PodSecurityPolicyTemplateHostPortArgs(
+                    max=65535,
+                    min=0,
+                ),
+                rancher2.PodSecurityPolicyTemplateHostPortArgs(
+                    max=8080,
+                    min=1024,
+                ),
+            ],
+            privileged=False,
+            read_only_root_filesystem=False,
+            required_drop_capabilities=["something"],
+            run_as_group=rancher2.PodSecurityPolicyTemplateRunAsGroupArgs(
+                ranges=[
+                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
+                        max=100,
+                        min=1,
+                    ),
+                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
+                        max=1024,
+                        min=2,
+                    ),
+                ],
+                rule="MustRunAs",
+            ),
+            run_as_user=rancher2.PodSecurityPolicyTemplateRunAsUserArgs(
+                ranges=[
+                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
+                        max=100,
+                        min=1,
+                    ),
+                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
+                        max=1024,
+                        min=2,
+                    ),
+                ],
+                rule="MustRunAs",
+            ),
+            runtime_class=rancher2.PodSecurityPolicyTemplateRuntimeClassArgs(
+                allowed_runtime_class_names=["something"],
+                default_runtime_class_name="something",
+            ),
+            se_linux=rancher2.PodSecurityPolicyTemplateSeLinuxArgs(
+                rule="RunAsAny",
+            ),
+            supplemental_group=rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs(
+                rule="RunAsAny",
+            ),
+            volumes=["azureFile"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_privilege_escalation: allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-               true.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
-               may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
-               requiredDropCapabilities.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
-               empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
-               honored if the API server enables the CSIInlineVolume feature gate.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
-               parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
-               DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
-               sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
-               sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
-               specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
-               requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
-               allowedCapabilities list.
-        :param pulumi.Input[bool] default_allow_privilege_escalation: defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
-               parent process.
-        :param pulumi.Input[str] description: Pod Security Policy template policy description
-        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
-               or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
-               forbidden.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-        :param pulumi.Input[bool] host_ipc: hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+        :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for PodSecurityPolicyTemplate object (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: (list)
+        :param pulumi.Input[bool] default_allow_privilege_escalation: (list)
+        :param pulumi.Input[str] description: The PodSecurityPolicyTemplate description (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: (list)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: (list maxitems:1)
+        :param pulumi.Input[bool] host_ipc: (bool)
         :param pulumi.Input[bool] host_network: hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
-        :param pulumi.Input[bool] host_pid: hostPID determines if the policy allows the use of HostPID in the pod spec.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: hostPorts determines which host port ranges are allowed to be exposed.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[str] name: Pod Security Policy template policy name
-        :param pulumi.Input[bool] privileged: privileged determines if a pod can request to be run as privileged.
-        :param pulumi.Input[bool] read_only_root_filesystem: readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
-               specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
-               container may run with a read only root file system if it wishes but it will not be forced to.
-        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
-               and cannot be added.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
-               the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
-               pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
-               enabled.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: seLinux is the strategy that will dictate the allowable labels that may be set.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-        :param pulumi.Input[List[pulumi.Input[str]]] volumes: volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
-               may use '*'
+        :param pulumi.Input[bool] host_pid: (bool)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for PodSecurityPolicyTemplate object (map)
+        :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
+        :param pulumi.Input[bool] privileged: (bool)
+        :param pulumi.Input[bool] read_only_root_filesystem: (bool)
+        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: (list)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: (list maxitems:1)
+        :param pulumi.Input[List[pulumi.Input[str]]] volumes: (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -193,56 +278,34 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_privilege_escalation: allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-               true.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
-               may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
-               requiredDropCapabilities.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
-               empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
-               honored if the API server enables the CSIInlineVolume feature gate.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
-               parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
-               DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
-               sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
-               sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
-               specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
-               requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
-               allowedCapabilities list.
-        :param pulumi.Input[bool] default_allow_privilege_escalation: defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
-               parent process.
-        :param pulumi.Input[str] description: Pod Security Policy template policy description
-        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
-               or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
-               forbidden.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-        :param pulumi.Input[bool] host_ipc: hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+        :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: (list)
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for PodSecurityPolicyTemplate object (map)
+        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: (list)
+        :param pulumi.Input[bool] default_allow_privilege_escalation: (list)
+        :param pulumi.Input[str] description: The PodSecurityPolicyTemplate description (string)
+        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: (list)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: (list maxitems:1)
+        :param pulumi.Input[bool] host_ipc: (bool)
         :param pulumi.Input[bool] host_network: hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
-        :param pulumi.Input[bool] host_pid: hostPID determines if the policy allows the use of HostPID in the pod spec.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: hostPorts determines which host port ranges are allowed to be exposed.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[str] name: Pod Security Policy template policy name
-        :param pulumi.Input[bool] privileged: privileged determines if a pod can request to be run as privileged.
-        :param pulumi.Input[bool] read_only_root_filesystem: readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
-               specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
-               container may run with a read only root file system if it wishes but it will not be forced to.
-        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
-               and cannot be added.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
-               the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
-               pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
-               enabled.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: seLinux is the strategy that will dictate the allowable labels that may be set.
-        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-        :param pulumi.Input[List[pulumi.Input[str]]] volumes: volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
-               may use '*'
+        :param pulumi.Input[bool] host_pid: (bool)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for PodSecurityPolicyTemplate object (map)
+        :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
+        :param pulumi.Input[bool] privileged: (bool)
+        :param pulumi.Input[bool] read_only_root_filesystem: (bool)
+        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: (list)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: (list maxitems:1)
+        :param pulumi.Input[List[pulumi.Input[str]]] volumes: (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -282,8 +345,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowPrivilegeEscalation")
     def allow_privilege_escalation(self) -> pulumi.Output[bool]:
         """
-        allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to
-        true.
+        = (Optional)
         """
         return pulumi.get(self, "allow_privilege_escalation")
 
@@ -291,9 +353,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedCapabilities")
     def allowed_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field
-        may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and
-        requiredDropCapabilities.
+        (list)
         """
         return pulumi.get(self, "allowed_capabilities")
 
@@ -301,9 +361,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedCsiDrivers")
     def allowed_csi_drivers(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedCsiDriver']]]:
         """
-        AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An
-        empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only
-        honored if the API server enables the CSIInlineVolume feature gate.
+        (list)
         """
         return pulumi.get(self, "allowed_csi_drivers")
 
@@ -311,8 +369,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedFlexVolumes")
     def allowed_flex_volumes(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedFlexVolume']]]:
         """
-        allowedFlexVolumes is a whitelist of allowed Flexvolumes. Empty or nil indicates that all Flexvolumes may be used. This
-        parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
+        (list)
         """
         return pulumi.get(self, "allowed_flex_volumes")
 
@@ -320,7 +377,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedHostPaths")
     def allowed_host_paths(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedHostPath']]]:
         """
-        allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
+        (list)
         """
         return pulumi.get(self, "allowed_host_paths")
 
@@ -328,8 +385,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedProcMountTypes")
     def allowed_proc_mount_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the
-        DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
+        (list)
         """
         return pulumi.get(self, "allowed_proc_mount_types")
 
@@ -337,9 +393,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="allowedUnsafeSysctls")
     def allowed_unsafe_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain
-        sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe
-        sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
+        (list)
         """
         return pulumi.get(self, "allowed_unsafe_sysctls")
 
@@ -347,7 +401,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for PodSecurityPolicyTemplate object (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -355,10 +409,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="defaultAddCapabilities")
     def default_add_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec
-        specifically drops the capability. You may not list a capability in both defaultAddCapabilities and
-        requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the
-        allowedCapabilities list.
+        (list)
         """
         return pulumi.get(self, "default_add_capabilities")
 
@@ -366,8 +417,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="defaultAllowPrivilegeEscalation")
     def default_allow_privilege_escalation(self) -> pulumi.Output[Optional[bool]]:
         """
-        defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its
-        parent process.
+        (list)
         """
         return pulumi.get(self, "default_allow_privilege_escalation")
 
@@ -375,7 +425,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Pod Security Policy template policy description
+        The PodSecurityPolicyTemplate description (string)
         """
         return pulumi.get(self, "description")
 
@@ -383,9 +433,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="forbiddenSysctls")
     def forbidden_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name
-        or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are
-        forbidden.
+        (list)
         """
         return pulumi.get(self, "forbidden_sysctls")
 
@@ -393,7 +441,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="fsGroup")
     def fs_group(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateFsGroup']:
         """
-        fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
+        (list maxitems:1)
         """
         return pulumi.get(self, "fs_group")
 
@@ -401,7 +449,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="hostIpc")
     def host_ipc(self) -> pulumi.Output[bool]:
         """
-        hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+        (bool)
         """
         return pulumi.get(self, "host_ipc")
 
@@ -417,7 +465,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="hostPid")
     def host_pid(self) -> pulumi.Output[bool]:
         """
-        hostPID determines if the policy allows the use of HostPID in the pod spec.
+        (bool)
         """
         return pulumi.get(self, "host_pid")
 
@@ -425,7 +473,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="hostPorts")
     def host_ports(self) -> pulumi.Output[List['outputs.PodSecurityPolicyTemplateHostPort']]:
         """
-        hostPorts determines which host port ranges are allowed to be exposed.
+        (list)
         """
         return pulumi.get(self, "host_ports")
 
@@ -433,7 +481,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for PodSecurityPolicyTemplate object (map)
         """
         return pulumi.get(self, "labels")
 
@@ -441,7 +489,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Pod Security Policy template policy name
+        The name of the PodSecurityPolicyTemplate (string)
         """
         return pulumi.get(self, "name")
 
@@ -449,7 +497,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def privileged(self) -> pulumi.Output[bool]:
         """
-        privileged determines if a pod can request to be run as privileged.
+        (bool)
         """
         return pulumi.get(self, "privileged")
 
@@ -457,9 +505,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="readOnlyRootFilesystem")
     def read_only_root_filesystem(self) -> pulumi.Output[bool]:
         """
-        readOnlyRootFilesystem when set to true will force containers to run with a read only root file system. If the container
-        specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the
-        container may run with a read only root file system if it wishes but it will not be forced to.
+        (bool)
         """
         return pulumi.get(self, "read_only_root_filesystem")
 
@@ -467,8 +513,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="requiredDropCapabilities")
     def required_drop_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        requiredDropCapabilities are the capabilities that will be dropped from the container. These are required to be dropped
-        and cannot be added.
+        (list)
         """
         return pulumi.get(self, "required_drop_capabilities")
 
@@ -476,8 +521,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="runAsGroup")
     def run_as_group(self) -> pulumi.Output[Optional['outputs.PodSecurityPolicyTemplateRunAsGroup']]:
         """
-        RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted,
-        the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
+        (list maxitems:1)
         """
         return pulumi.get(self, "run_as_group")
 
@@ -485,7 +529,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="runAsUser")
     def run_as_user(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateRunAsUser']:
         """
-        runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
+        (list maxitems:1)
         """
         return pulumi.get(self, "run_as_user")
 
@@ -493,9 +537,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="runtimeClass")
     def runtime_class(self) -> pulumi.Output[Optional['outputs.PodSecurityPolicyTemplateRuntimeClass']]:
         """
-        runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the
-        pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being
-        enabled.
+        (list maxitems:1)
         """
         return pulumi.get(self, "runtime_class")
 
@@ -503,7 +545,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="seLinux")
     def se_linux(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateSeLinux']:
         """
-        seLinux is the strategy that will dictate the allowable labels that may be set.
+        (list maxitems:1)
         """
         return pulumi.get(self, "se_linux")
 
@@ -511,7 +553,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="supplementalGroup")
     def supplemental_group(self) -> pulumi.Output['outputs.PodSecurityPolicyTemplateSupplementalGroup']:
         """
-        supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
+        (list maxitems:1)
         """
         return pulumi.get(self, "supplemental_group")
 
@@ -519,8 +561,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def volumes(self) -> pulumi.Output[List[str]]:
         """
-        volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you
-        may use '*'
+        (list)
         """
         return pulumi.get(self, "volumes")
 

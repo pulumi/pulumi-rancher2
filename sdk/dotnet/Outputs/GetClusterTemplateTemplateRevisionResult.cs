@@ -13,13 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionResult
     {
+        /// <summary>
+        /// (Computed) Annotations for the cluster template (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigResult ClusterConfig;
         public readonly string ClusterTemplateId;
         public readonly bool? Default;
         public readonly bool? Enabled;
+        /// <summary>
+        /// (Computed) The ID of the resource (string)
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels for the cluster template (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// The cluster template name (string)
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetClusterTemplateTemplateRevisionQuestionResult> Questions;
 

@@ -10,27 +10,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Cluster Logging resource. This can be used to configure Cluster Logging for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewClusterLogging(ctx, "foo", &rancher2.ClusterLoggingArgs{
+// 			ClusterId: pulumi.String("<cluster_id>"),
+// 			Kind:      pulumi.String("syslog"),
+// 			SyslogConfig: &rancher2.ClusterLoggingSyslogConfigArgs{
+// 				Endpoint:  pulumi.String("<syslog_endpoint>"),
+// 				Protocol:  pulumi.String("udp"),
+// 				Severity:  pulumi.String("notice"),
+// 				SslVerify: pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ClusterLogging struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
-	Annotations         pulumi.MapOutput                           `pulumi:"annotations"`
-	ClusterId           pulumi.StringOutput                        `pulumi:"clusterId"`
-	CustomTargetConfig  ClusterLoggingCustomTargetConfigPtrOutput  `pulumi:"customTargetConfig"`
+	// Annotations for Cluster Logging object (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// The cluster id to configure logging (string)
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrOutput `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrOutput `pulumi:"elasticsearchConfig"`
-	// Optional enable json log parsing
-	EnableJsonParsing pulumi.BoolPtrOutput                 `pulumi:"enableJsonParsing"`
-	FluentdConfig     ClusterLoggingFluentdConfigPtrOutput `pulumi:"fluentdConfig"`
-	KafkaConfig       ClusterLoggingKafkaConfigPtrOutput   `pulumi:"kafkaConfig"`
-	Kind              pulumi.StringOutput                  `pulumi:"kind"`
-	// Labels of the resource
-	Labels              pulumi.MapOutput                    `pulumi:"labels"`
-	Name                pulumi.StringOutput                 `pulumi:"name"`
-	NamespaceId         pulumi.StringPtrOutput              `pulumi:"namespaceId"`
-	OutputFlushInterval pulumi.IntPtrOutput                 `pulumi:"outputFlushInterval"`
-	OutputTags          pulumi.MapOutput                    `pulumi:"outputTags"`
-	SplunkConfig        ClusterLoggingSplunkConfigPtrOutput `pulumi:"splunkConfig"`
-	SyslogConfig        ClusterLoggingSyslogConfigPtrOutput `pulumi:"syslogConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing pulumi.BoolPtrOutput `pulumi:"enableJsonParsing"`
+	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	FluentdConfig ClusterLoggingFluentdConfigPtrOutput `pulumi:"fluentdConfig"`
+	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	KafkaConfig ClusterLoggingKafkaConfigPtrOutput `pulumi:"kafkaConfig"`
+	// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Labels for Cluster Logging object (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The name of the cluster logging config (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace id from cluster logging (string)
+	NamespaceId pulumi.StringPtrOutput `pulumi:"namespaceId"`
+	// How often buffered logs would be flushed. Default: `3` seconds (int)
+	OutputFlushInterval pulumi.IntPtrOutput `pulumi:"outputFlushInterval"`
+	// The output tags for Cluster Logging (map)
+	OutputTags pulumi.MapOutput `pulumi:"outputTags"`
+	// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	SplunkConfig ClusterLoggingSplunkConfigPtrOutput `pulumi:"splunkConfig"`
+	// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	SyslogConfig ClusterLoggingSyslogConfigPtrOutput `pulumi:"syslogConfig"`
 }
 
 // NewClusterLogging registers a new resource with the given unique name, arguments, and options.
@@ -67,45 +110,69 @@ func GetClusterLogging(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterLogging resources.
 type clusterLoggingState struct {
-	// Annotations of the resource
-	Annotations         map[string]interface{}             `pulumi:"annotations"`
-	ClusterId           *string                            `pulumi:"clusterId"`
-	CustomTargetConfig  *ClusterLoggingCustomTargetConfig  `pulumi:"customTargetConfig"`
+	// Annotations for Cluster Logging object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The cluster id to configure logging (string)
+	ClusterId *string `pulumi:"clusterId"`
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig *ClusterLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ClusterLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	// Optional enable json log parsing
-	EnableJsonParsing *bool                        `pulumi:"enableJsonParsing"`
-	FluentdConfig     *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
-	KafkaConfig       *ClusterLoggingKafkaConfig   `pulumi:"kafkaConfig"`
-	Kind              *string                      `pulumi:"kind"`
-	// Labels of the resource
-	Labels              map[string]interface{}      `pulumi:"labels"`
-	Name                *string                     `pulumi:"name"`
-	NamespaceId         *string                     `pulumi:"namespaceId"`
-	OutputFlushInterval *int                        `pulumi:"outputFlushInterval"`
-	OutputTags          map[string]interface{}      `pulumi:"outputTags"`
-	SplunkConfig        *ClusterLoggingSplunkConfig `pulumi:"splunkConfig"`
-	SyslogConfig        *ClusterLoggingSyslogConfig `pulumi:"syslogConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing *bool `pulumi:"enableJsonParsing"`
+	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	FluentdConfig *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
+	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	KafkaConfig *ClusterLoggingKafkaConfig `pulumi:"kafkaConfig"`
+	// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind *string `pulumi:"kind"`
+	// Labels for Cluster Logging object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the cluster logging config (string)
+	Name *string `pulumi:"name"`
+	// The namespace id from cluster logging (string)
+	NamespaceId *string `pulumi:"namespaceId"`
+	// How often buffered logs would be flushed. Default: `3` seconds (int)
+	OutputFlushInterval *int `pulumi:"outputFlushInterval"`
+	// The output tags for Cluster Logging (map)
+	OutputTags map[string]interface{} `pulumi:"outputTags"`
+	// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	SplunkConfig *ClusterLoggingSplunkConfig `pulumi:"splunkConfig"`
+	// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	SyslogConfig *ClusterLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
 
 type ClusterLoggingState struct {
-	// Annotations of the resource
-	Annotations         pulumi.MapInput
-	ClusterId           pulumi.StringPtrInput
-	CustomTargetConfig  ClusterLoggingCustomTargetConfigPtrInput
+	// Annotations for Cluster Logging object (map)
+	Annotations pulumi.MapInput
+	// The cluster id to configure logging (string)
+	ClusterId pulumi.StringPtrInput
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrInput
+	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrInput
-	// Optional enable json log parsing
+	// Enable json log parsing. Default: `false` (bool)
 	EnableJsonParsing pulumi.BoolPtrInput
-	FluentdConfig     ClusterLoggingFluentdConfigPtrInput
-	KafkaConfig       ClusterLoggingKafkaConfigPtrInput
-	Kind              pulumi.StringPtrInput
-	// Labels of the resource
-	Labels              pulumi.MapInput
-	Name                pulumi.StringPtrInput
-	NamespaceId         pulumi.StringPtrInput
+	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	FluentdConfig ClusterLoggingFluentdConfigPtrInput
+	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	KafkaConfig ClusterLoggingKafkaConfigPtrInput
+	// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind pulumi.StringPtrInput
+	// Labels for Cluster Logging object (map)
+	Labels pulumi.MapInput
+	// The name of the cluster logging config (string)
+	Name pulumi.StringPtrInput
+	// The namespace id from cluster logging (string)
+	NamespaceId pulumi.StringPtrInput
+	// How often buffered logs would be flushed. Default: `3` seconds (int)
 	OutputFlushInterval pulumi.IntPtrInput
-	OutputTags          pulumi.MapInput
-	SplunkConfig        ClusterLoggingSplunkConfigPtrInput
-	SyslogConfig        ClusterLoggingSyslogConfigPtrInput
+	// The output tags for Cluster Logging (map)
+	OutputTags pulumi.MapInput
+	// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	SplunkConfig ClusterLoggingSplunkConfigPtrInput
+	// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	SyslogConfig ClusterLoggingSyslogConfigPtrInput
 }
 
 func (ClusterLoggingState) ElementType() reflect.Type {
@@ -113,46 +180,70 @@ func (ClusterLoggingState) ElementType() reflect.Type {
 }
 
 type clusterLoggingArgs struct {
-	// Annotations of the resource
-	Annotations         map[string]interface{}             `pulumi:"annotations"`
-	ClusterId           string                             `pulumi:"clusterId"`
-	CustomTargetConfig  *ClusterLoggingCustomTargetConfig  `pulumi:"customTargetConfig"`
+	// Annotations for Cluster Logging object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The cluster id to configure logging (string)
+	ClusterId string `pulumi:"clusterId"`
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig *ClusterLoggingCustomTargetConfig `pulumi:"customTargetConfig"`
+	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig *ClusterLoggingElasticsearchConfig `pulumi:"elasticsearchConfig"`
-	// Optional enable json log parsing
-	EnableJsonParsing *bool                        `pulumi:"enableJsonParsing"`
-	FluentdConfig     *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
-	KafkaConfig       *ClusterLoggingKafkaConfig   `pulumi:"kafkaConfig"`
-	Kind              string                       `pulumi:"kind"`
-	// Labels of the resource
-	Labels              map[string]interface{}      `pulumi:"labels"`
-	Name                *string                     `pulumi:"name"`
-	NamespaceId         *string                     `pulumi:"namespaceId"`
-	OutputFlushInterval *int                        `pulumi:"outputFlushInterval"`
-	OutputTags          map[string]interface{}      `pulumi:"outputTags"`
-	SplunkConfig        *ClusterLoggingSplunkConfig `pulumi:"splunkConfig"`
-	SyslogConfig        *ClusterLoggingSyslogConfig `pulumi:"syslogConfig"`
+	// Enable json log parsing. Default: `false` (bool)
+	EnableJsonParsing *bool `pulumi:"enableJsonParsing"`
+	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	FluentdConfig *ClusterLoggingFluentdConfig `pulumi:"fluentdConfig"`
+	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	KafkaConfig *ClusterLoggingKafkaConfig `pulumi:"kafkaConfig"`
+	// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind string `pulumi:"kind"`
+	// Labels for Cluster Logging object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the cluster logging config (string)
+	Name *string `pulumi:"name"`
+	// The namespace id from cluster logging (string)
+	NamespaceId *string `pulumi:"namespaceId"`
+	// How often buffered logs would be flushed. Default: `3` seconds (int)
+	OutputFlushInterval *int `pulumi:"outputFlushInterval"`
+	// The output tags for Cluster Logging (map)
+	OutputTags map[string]interface{} `pulumi:"outputTags"`
+	// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	SplunkConfig *ClusterLoggingSplunkConfig `pulumi:"splunkConfig"`
+	// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	SyslogConfig *ClusterLoggingSyslogConfig `pulumi:"syslogConfig"`
 }
 
 // The set of arguments for constructing a ClusterLogging resource.
 type ClusterLoggingArgs struct {
-	// Annotations of the resource
-	Annotations         pulumi.MapInput
-	ClusterId           pulumi.StringInput
-	CustomTargetConfig  ClusterLoggingCustomTargetConfigPtrInput
+	// Annotations for Cluster Logging object (map)
+	Annotations pulumi.MapInput
+	// The cluster id to configure logging (string)
+	ClusterId pulumi.StringInput
+	// The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	CustomTargetConfig ClusterLoggingCustomTargetConfigPtrInput
+	// The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `customTargetConfig`, `fluentdConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
 	ElasticsearchConfig ClusterLoggingElasticsearchConfigPtrInput
-	// Optional enable json log parsing
+	// Enable json log parsing. Default: `false` (bool)
 	EnableJsonParsing pulumi.BoolPtrInput
-	FluentdConfig     ClusterLoggingFluentdConfigPtrInput
-	KafkaConfig       ClusterLoggingKafkaConfigPtrInput
-	Kind              pulumi.StringInput
-	// Labels of the resource
-	Labels              pulumi.MapInput
-	Name                pulumi.StringPtrInput
-	NamespaceId         pulumi.StringPtrInput
+	// The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `kafkaConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	FluentdConfig ClusterLoggingFluentdConfigPtrInput
+	// The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `splunkConfig` and `syslogConfig` (list maxitems:1)
+	KafkaConfig ClusterLoggingKafkaConfigPtrInput
+	// The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+	Kind pulumi.StringInput
+	// Labels for Cluster Logging object (map)
+	Labels pulumi.MapInput
+	// The name of the cluster logging config (string)
+	Name pulumi.StringPtrInput
+	// The namespace id from cluster logging (string)
+	NamespaceId pulumi.StringPtrInput
+	// How often buffered logs would be flushed. Default: `3` seconds (int)
 	OutputFlushInterval pulumi.IntPtrInput
-	OutputTags          pulumi.MapInput
-	SplunkConfig        ClusterLoggingSplunkConfigPtrInput
-	SyslogConfig        ClusterLoggingSyslogConfigPtrInput
+	// The output tags for Cluster Logging (map)
+	OutputTags pulumi.MapInput
+	// The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `syslogConfig` (list maxitems:1)
+	SplunkConfig ClusterLoggingSplunkConfigPtrInput
+	// The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `customTargetConfig`, `elasticsearchConfig`, `fluentdConfig`, `kafkaConfig`, and `splunkConfig` (list maxitems:1)
+	SyslogConfig ClusterLoggingSyslogConfigPtrInput
 }
 
 func (ClusterLoggingArgs) ElementType() reflect.Type {

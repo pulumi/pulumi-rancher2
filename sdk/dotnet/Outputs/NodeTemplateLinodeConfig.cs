@@ -13,21 +13,69 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateLinodeConfig
     {
+        /// <summary>
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// </summary>
         public readonly string? AuthorizedUsers;
+        /// <summary>
+        /// Create private IP for the instance. Default `false` (bool)
+        /// </summary>
         public readonly bool? CreatePrivateIp;
+        /// <summary>
+        /// Docker Port. Default `2376` (string)
+        /// </summary>
         public readonly string? DockerPort;
+        /// <summary>
+        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// </summary>
         public readonly string? Image;
+        /// <summary>
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// Linode Instance Label. (string)
+        /// </summary>
         public readonly string? Label;
+        /// <summary>
+        /// OpenStack region name (string)
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Root Password (string)
+        /// </summary>
         public readonly string? RootPass;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// </summary>
         public readonly string? SshPort;
+        /// <summary>
+        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// </summary>
         public readonly string? SshUser;
+        /// <summary>
+        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// </summary>
         public readonly string? Stackscript;
+        /// <summary>
+        /// A JSON string specifying data for the selected StackScript. (string)
+        /// </summary>
         public readonly string? StackscriptData;
+        /// <summary>
+        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// </summary>
         public readonly string? SwapSize;
+        /// <summary>
+        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// </summary>
         public readonly string? Tags;
+        /// <summary>
+        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// </summary>
         public readonly string? Token;
+        /// <summary>
+        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// </summary>
         public readonly string? UaPrefix;
 
         [OutputConstructor]

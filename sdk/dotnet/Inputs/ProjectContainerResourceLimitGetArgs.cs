@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ProjectContainerResourceLimitGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
         [Input("limitsCpu")]
         public Input<string>? LimitsCpu { get; set; }
 
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
         [Input("limitsMemory")]
         public Input<string>? LimitsMemory { get; set; }
 
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
         [Input("requestsCpu")]
         public Input<string>? RequestsCpu { get; set; }
 
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
         [Input("requestsMemory")]
         public Input<string>? RequestsMemory { get; set; }
 

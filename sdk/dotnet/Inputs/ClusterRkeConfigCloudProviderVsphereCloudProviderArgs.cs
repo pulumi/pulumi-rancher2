@@ -12,23 +12,39 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         [Input("disk")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs>? Disk { get; set; }
 
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         [Input("global")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs>? Global { get; set; }
 
+        /// <summary>
+        /// Network for GKE cluster (string)
+        /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs>? Network { get; set; }
 
         [Input("virtualCenters", required: true)]
         private InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs>? _virtualCenters;
+
+        /// <summary>
+        /// (List)
+        /// </summary>
         public InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs> VirtualCenters
         {
             get => _virtualCenters ?? (_virtualCenters = new InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs>());
             set => _virtualCenters = value;
         }
 
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         [Input("workspace", required: true)]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs> Workspace { get; set; } = null!;
 

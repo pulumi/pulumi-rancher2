@@ -6,6 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 app.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const rancher2App = pulumi.output(rancher2.getApp({
+ *     name: "foo",
+ *     projectId: "<project_id>",
+ *     targetNamespace: "<namespace_name>",
+ * }, { async: true }));
+ * ```
+ */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +42,21 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getApp.
  */
 export interface GetAppArgs {
+    /**
+     * (Computed) Annotations for the catalog (map)
+     */
     readonly annotations?: {[key: string]: any};
+    /**
+     * The app name (string)
+     */
     readonly name: string;
+    /**
+     * The id of the project where the app is deployed (string)
+     */
     readonly projectId: string;
+    /**
+     * The namespace name where the app is deployed (string)
+     */
     readonly targetNamespace?: string;
 }
 
@@ -36,21 +64,51 @@ export interface GetAppArgs {
  * A collection of values returned by getApp.
  */
 export interface GetAppResult {
+    /**
+     * (Computed) Annotations for the catalog (map)
+     */
     readonly annotations: {[key: string]: any};
+    /**
+     * (Computed) Answers for the app (map)
+     */
     readonly answers: {[key: string]: any};
+    /**
+     * (Computed) Catalog name of the app (string)
+     */
     readonly catalogName: string;
+    /**
+     * (Computed) Description for the app (string)
+     */
     readonly description: string;
+    /**
+     * (Computed) The URL of the helm catalog app (string)
+     */
     readonly externalId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) Labels for the catalog (map)
+     */
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly projectId: string;
+    /**
+     * (Computed) Current revision id for the app (string)
+     */
     readonly revisionId: string;
     readonly targetNamespace: string;
+    /**
+     * (Computed) Template name of the app (string)
+     */
     readonly templateName: string;
+    /**
+     * (Computed) Template version of the app (string)
+     */
     readonly templateVersion: string;
+    /**
+     * (Computed) values.yaml base64 encoded file content for the app (string)
+     */
     readonly valuesYaml: string;
 }

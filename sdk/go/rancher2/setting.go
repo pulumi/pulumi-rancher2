@@ -10,15 +10,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
+//
+// On create, if setting already exists, provider will import it and update its value.
+//
+// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewSetting(ctx, "foo", &rancher2.SettingArgs{
+// 			Value: pulumi.String("<VALUE>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Setting struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations for setting object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Labels of the resource
-	Labels pulumi.MapOutput    `pulumi:"labels"`
-	Name   pulumi.StringOutput `pulumi:"name"`
-	Value  pulumi.StringOutput `pulumi:"value"`
+	// Labels for setting object (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The name of the setting (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The value of the setting (string)
+	Value pulumi.StringOutput `pulumi:"value"`
 }
 
 // NewSetting registers a new resource with the given unique name, arguments, and options.
@@ -52,21 +82,25 @@ func GetSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
-	// Annotations of the resource
+	// Annotations for setting object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Labels of the resource
+	// Labels for setting object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name   *string                `pulumi:"name"`
-	Value  *string                `pulumi:"value"`
+	// The name of the setting (string)
+	Name *string `pulumi:"name"`
+	// The value of the setting (string)
+	Value *string `pulumi:"value"`
 }
 
 type SettingState struct {
-	// Annotations of the resource
+	// Annotations for setting object (map)
 	Annotations pulumi.MapInput
-	// Labels of the resource
+	// Labels for setting object (map)
 	Labels pulumi.MapInput
-	Name   pulumi.StringPtrInput
-	Value  pulumi.StringPtrInput
+	// The name of the setting (string)
+	Name pulumi.StringPtrInput
+	// The value of the setting (string)
+	Value pulumi.StringPtrInput
 }
 
 func (SettingState) ElementType() reflect.Type {
@@ -74,22 +108,26 @@ func (SettingState) ElementType() reflect.Type {
 }
 
 type settingArgs struct {
-	// Annotations of the resource
+	// Annotations for setting object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Labels of the resource
+	// Labels for setting object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name   *string                `pulumi:"name"`
-	Value  string                 `pulumi:"value"`
+	// The name of the setting (string)
+	Name *string `pulumi:"name"`
+	// The value of the setting (string)
+	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
-	// Annotations of the resource
+	// Annotations for setting object (map)
 	Annotations pulumi.MapInput
-	// Labels of the resource
+	// Labels for setting object (map)
 	Labels pulumi.MapInput
-	Name   pulumi.StringPtrInput
-	Value  pulumi.StringInput
+	// The name of the setting (string)
+	Name pulumi.StringPtrInput
+	// The value of the setting (string)
+	Value pulumi.StringInput
 }
 
 func (SettingArgs) ElementType() reflect.Type {

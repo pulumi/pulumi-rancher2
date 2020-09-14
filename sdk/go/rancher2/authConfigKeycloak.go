@@ -10,26 +10,72 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
+//
+// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewAuthConfigKeycloak(ctx, "keycloak", &rancher2.AuthConfigKeycloakArgs{
+// 			DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
+// 			GroupsField:        pulumi.String("<GROUPS_FIELD>"),
+// 			IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
+// 			RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
+// 			SpCert:             pulumi.String("<SP_CERT>"),
+// 			SpKey:              pulumi.String("<SP_KEY>"),
+// 			UidField:           pulumi.String("<UID_FIELD>"),
+// 			UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AuthConfigKeycloak struct {
 	pulumi.CustomResourceState
 
-	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        pulumi.MapOutput     `pulumi:"annotations"`
-	DisplayNameField   pulumi.StringOutput  `pulumi:"displayNameField"`
-	Enabled            pulumi.BoolPtrOutput `pulumi:"enabled"`
-	GroupsField        pulumi.StringOutput  `pulumi:"groupsField"`
-	IdpMetadataContent pulumi.StringOutput  `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         pulumi.MapOutput    `pulumi:"labels"`
-	Name           pulumi.StringOutput `pulumi:"name"`
+	// Annotations of the resource (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// KeyCloak display name field (string)
+	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// KeyCloak group field (string)
+	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
+	// KeyCloak IDP metadata content (string)
+	IdpMetadataContent pulumi.StringOutput `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringOutput `pulumi:"rancherApiHost"`
-	SpCert         pulumi.StringOutput `pulumi:"spCert"`
-	SpKey          pulumi.StringOutput `pulumi:"spKey"`
-	Type           pulumi.StringOutput `pulumi:"type"`
-	UidField       pulumi.StringOutput `pulumi:"uidField"`
-	UserNameField  pulumi.StringOutput `pulumi:"userNameField"`
+	// KeyCloak SP cert (string)
+	SpCert pulumi.StringOutput `pulumi:"spCert"`
+	// KeyCloak SP key (string)
+	SpKey pulumi.StringOutput `pulumi:"spKey"`
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringOutput `pulumi:"type"`
+	// KeyCloak UID field (string)
+	UidField pulumi.StringOutput `pulumi:"uidField"`
+	// KeyCloak user name field (string)
+	UserNameField pulumi.StringOutput `pulumi:"userNameField"`
 }
 
 // NewAuthConfigKeycloak registers a new resource with the given unique name, arguments, and options.
@@ -84,43 +130,69 @@ func GetAuthConfigKeycloak(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigKeycloak resources.
 type authConfigKeycloakState struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        map[string]interface{} `pulumi:"annotations"`
-	DisplayNameField   *string                `pulumi:"displayNameField"`
-	Enabled            *bool                  `pulumi:"enabled"`
-	GroupsField        *string                `pulumi:"groupsField"`
-	IdpMetadataContent *string                `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         map[string]interface{} `pulumi:"labels"`
-	Name           *string                `pulumi:"name"`
-	RancherApiHost *string                `pulumi:"rancherApiHost"`
-	SpCert         *string                `pulumi:"spCert"`
-	SpKey          *string                `pulumi:"spKey"`
-	Type           *string                `pulumi:"type"`
-	UidField       *string                `pulumi:"uidField"`
-	UserNameField  *string                `pulumi:"userNameField"`
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// KeyCloak display name field (string)
+	DisplayNameField *string `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// KeyCloak group field (string)
+	GroupsField *string `pulumi:"groupsField"`
+	// KeyCloak IDP metadata content (string)
+	IdpMetadataContent *string `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) The name of the resource (string)
+	Name *string `pulumi:"name"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	RancherApiHost *string `pulumi:"rancherApiHost"`
+	// KeyCloak SP cert (string)
+	SpCert *string `pulumi:"spCert"`
+	// KeyCloak SP key (string)
+	SpKey *string `pulumi:"spKey"`
+	// (Computed) The type of the resource (string)
+	Type *string `pulumi:"type"`
+	// KeyCloak UID field (string)
+	UidField *string `pulumi:"uidField"`
+	// KeyCloak user name field (string)
+	UserNameField *string `pulumi:"userNameField"`
 }
 
 type AuthConfigKeycloakState struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations        pulumi.MapInput
-	DisplayNameField   pulumi.StringPtrInput
-	Enabled            pulumi.BoolPtrInput
-	GroupsField        pulumi.StringPtrInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// KeyCloak display name field (string)
+	DisplayNameField pulumi.StringPtrInput
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// KeyCloak group field (string)
+	GroupsField pulumi.StringPtrInput
+	// KeyCloak IDP metadata content (string)
 	IdpMetadataContent pulumi.StringPtrInput
-	// Labels of the resource
-	Labels         pulumi.MapInput
-	Name           pulumi.StringPtrInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringPtrInput
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringPtrInput
-	SpCert         pulumi.StringPtrInput
-	SpKey          pulumi.StringPtrInput
-	Type           pulumi.StringPtrInput
-	UidField       pulumi.StringPtrInput
-	UserNameField  pulumi.StringPtrInput
+	// KeyCloak SP cert (string)
+	SpCert pulumi.StringPtrInput
+	// KeyCloak SP key (string)
+	SpKey pulumi.StringPtrInput
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringPtrInput
+	// KeyCloak UID field (string)
+	UidField pulumi.StringPtrInput
+	// KeyCloak user name field (string)
+	UserNameField pulumi.StringPtrInput
 }
 
 func (AuthConfigKeycloakState) ElementType() reflect.Type {
@@ -128,40 +200,62 @@ func (AuthConfigKeycloakState) ElementType() reflect.Type {
 }
 
 type authConfigKeycloakArgs struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        map[string]interface{} `pulumi:"annotations"`
-	DisplayNameField   string                 `pulumi:"displayNameField"`
-	Enabled            *bool                  `pulumi:"enabled"`
-	GroupsField        string                 `pulumi:"groupsField"`
-	IdpMetadataContent string                 `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         map[string]interface{} `pulumi:"labels"`
-	RancherApiHost string                 `pulumi:"rancherApiHost"`
-	SpCert         string                 `pulumi:"spCert"`
-	SpKey          string                 `pulumi:"spKey"`
-	UidField       string                 `pulumi:"uidField"`
-	UserNameField  string                 `pulumi:"userNameField"`
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// KeyCloak display name field (string)
+	DisplayNameField string `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// KeyCloak group field (string)
+	GroupsField string `pulumi:"groupsField"`
+	// KeyCloak IDP metadata content (string)
+	IdpMetadataContent string `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	RancherApiHost string `pulumi:"rancherApiHost"`
+	// KeyCloak SP cert (string)
+	SpCert string `pulumi:"spCert"`
+	// KeyCloak SP key (string)
+	SpKey string `pulumi:"spKey"`
+	// KeyCloak UID field (string)
+	UidField string `pulumi:"uidField"`
+	// KeyCloak user name field (string)
+	UserNameField string `pulumi:"userNameField"`
 }
 
 // The set of arguments for constructing a AuthConfigKeycloak resource.
 type AuthConfigKeycloakArgs struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations        pulumi.MapInput
-	DisplayNameField   pulumi.StringInput
-	Enabled            pulumi.BoolPtrInput
-	GroupsField        pulumi.StringInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// KeyCloak display name field (string)
+	DisplayNameField pulumi.StringInput
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// KeyCloak group field (string)
+	GroupsField pulumi.StringInput
+	// KeyCloak IDP metadata content (string)
 	IdpMetadataContent pulumi.StringInput
-	// Labels of the resource
-	Labels         pulumi.MapInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringInput
-	SpCert         pulumi.StringInput
-	SpKey          pulumi.StringInput
-	UidField       pulumi.StringInput
-	UserNameField  pulumi.StringInput
+	// KeyCloak SP cert (string)
+	SpCert pulumi.StringInput
+	// KeyCloak SP key (string)
+	SpKey pulumi.StringInput
+	// KeyCloak UID field (string)
+	UidField pulumi.StringInput
+	// KeyCloak user name field (string)
+	UserNameField pulumi.StringInput
 }
 
 func (AuthConfigKeycloakArgs) ElementType() reflect.Type {

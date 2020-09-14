@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 

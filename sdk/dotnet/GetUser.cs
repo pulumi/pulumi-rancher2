@@ -11,6 +11,32 @@ namespace Pulumi.Rancher2
 {
     public static class GetUser
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 user
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetUser.InvokeAsync(new Rancher2.GetUserArgs
+        ///         {
+        ///             Username = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("rancher2:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
     }
@@ -18,12 +44,21 @@ namespace Pulumi.Rancher2
 
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Set is the user if the user is external. Default: `false` (bool)
+        /// </summary>
         [Input("isExternal")]
         public bool? IsExternal { get; set; }
 
+        /// <summary>
+        /// The name of the user (string)
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The username of the user (string)
+        /// </summary>
         [Input("username")]
         public string? Username { get; set; }
 
@@ -36,15 +71,30 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetUserResult
     {
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// (Computed) The user is enabled (bool)
+        /// </summary>
         public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly bool? IsExternal;
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// (Computed) The user common name (string)
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (Computed) The user principal IDs (list)
+        /// </summary>
         public readonly ImmutableArray<string> PrincipalIds;
         public readonly string Username;
 

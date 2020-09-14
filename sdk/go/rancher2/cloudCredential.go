@@ -9,22 +9,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
+//
+// amazonec2, azure, digitalocean, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 			},
+// 			Description: pulumi.String("foo test"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type CloudCredential struct {
 	pulumi.CustomResourceState
 
+	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrOutput `pulumi:"amazonec2CredentialConfig"`
-	// Annotations of the resource
-	Annotations                  pulumi.MapOutput                                     `pulumi:"annotations"`
-	AzureCredentialConfig        CloudCredentialAzureCredentialConfigPtrOutput        `pulumi:"azureCredentialConfig"`
-	Description                  pulumi.StringPtrOutput                               `pulumi:"description"`
+	// Annotations for Cloud Credential object (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// Azure config for the Cloud Credential (list maxitems:1)
+	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrOutput `pulumi:"azureCredentialConfig"`
+	// Description for the Cloud Credential (string)
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrOutput `pulumi:"digitaloceanCredentialConfig"`
-	Driver                       pulumi.StringOutput                                  `pulumi:"driver"`
-	// Labels of the resource
-	Labels                    pulumi.MapOutput                                  `pulumi:"labels"`
-	LinodeCredentialConfig    CloudCredentialLinodeCredentialConfigPtrOutput    `pulumi:"linodeCredentialConfig"`
-	Name                      pulumi.StringOutput                               `pulumi:"name"`
+	// (Computed) The driver of the Cloud Credential (string)
+	Driver pulumi.StringOutput `pulumi:"driver"`
+	// Labels for Cloud Credential object (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrOutput `pulumi:"linodeCredentialConfig"`
+	// The name of the Cloud Credential (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrOutput `pulumi:"openstackCredentialConfig"`
-	VsphereCredentialConfig   CloudCredentialVsphereCredentialConfigPtrOutput   `pulumi:"vsphereCredentialConfig"`
+	// vSphere config for the Cloud Credential (list maxitems:1)
+	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrOutput `pulumi:"vsphereCredentialConfig"`
 }
 
 // NewCloudCredential registers a new resource with the given unique name, arguments, and options.
@@ -55,35 +94,53 @@ func GetCloudCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudCredential resources.
 type cloudCredentialState struct {
+	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig *CloudCredentialAmazonec2CredentialConfig `pulumi:"amazonec2CredentialConfig"`
-	// Annotations of the resource
-	Annotations                  map[string]interface{}                       `pulumi:"annotations"`
-	AzureCredentialConfig        *CloudCredentialAzureCredentialConfig        `pulumi:"azureCredentialConfig"`
-	Description                  *string                                      `pulumi:"description"`
+	// Annotations for Cloud Credential object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Azure config for the Cloud Credential (list maxitems:1)
+	AzureCredentialConfig *CloudCredentialAzureCredentialConfig `pulumi:"azureCredentialConfig"`
+	// Description for the Cloud Credential (string)
+	Description *string `pulumi:"description"`
+	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
-	Driver                       *string                                      `pulumi:"driver"`
-	// Labels of the resource
-	Labels                    map[string]interface{}                    `pulumi:"labels"`
-	LinodeCredentialConfig    *CloudCredentialLinodeCredentialConfig    `pulumi:"linodeCredentialConfig"`
-	Name                      *string                                   `pulumi:"name"`
+	// (Computed) The driver of the Cloud Credential (string)
+	Driver *string `pulumi:"driver"`
+	// Labels for Cloud Credential object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
+	// The name of the Cloud Credential (string)
+	Name *string `pulumi:"name"`
+	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
-	VsphereCredentialConfig   *CloudCredentialVsphereCredentialConfig   `pulumi:"vsphereCredentialConfig"`
+	// vSphere config for the Cloud Credential (list maxitems:1)
+	VsphereCredentialConfig *CloudCredentialVsphereCredentialConfig `pulumi:"vsphereCredentialConfig"`
 }
 
 type CloudCredentialState struct {
+	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrInput
-	// Annotations of the resource
-	Annotations                  pulumi.MapInput
-	AzureCredentialConfig        CloudCredentialAzureCredentialConfigPtrInput
-	Description                  pulumi.StringPtrInput
+	// Annotations for Cloud Credential object (map)
+	Annotations pulumi.MapInput
+	// Azure config for the Cloud Credential (list maxitems:1)
+	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrInput
+	// Description for the Cloud Credential (string)
+	Description pulumi.StringPtrInput
+	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
-	Driver                       pulumi.StringPtrInput
-	// Labels of the resource
-	Labels                    pulumi.MapInput
-	LinodeCredentialConfig    CloudCredentialLinodeCredentialConfigPtrInput
-	Name                      pulumi.StringPtrInput
+	// (Computed) The driver of the Cloud Credential (string)
+	Driver pulumi.StringPtrInput
+	// Labels for Cloud Credential object (map)
+	Labels pulumi.MapInput
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
+	// The name of the Cloud Credential (string)
+	Name pulumi.StringPtrInput
+	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
-	VsphereCredentialConfig   CloudCredentialVsphereCredentialConfigPtrInput
+	// vSphere config for the Cloud Credential (list maxitems:1)
+	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrInput
 }
 
 func (CloudCredentialState) ElementType() reflect.Type {
@@ -91,34 +148,50 @@ func (CloudCredentialState) ElementType() reflect.Type {
 }
 
 type cloudCredentialArgs struct {
+	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig *CloudCredentialAmazonec2CredentialConfig `pulumi:"amazonec2CredentialConfig"`
-	// Annotations of the resource
-	Annotations                  map[string]interface{}                       `pulumi:"annotations"`
-	AzureCredentialConfig        *CloudCredentialAzureCredentialConfig        `pulumi:"azureCredentialConfig"`
-	Description                  *string                                      `pulumi:"description"`
+	// Annotations for Cloud Credential object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Azure config for the Cloud Credential (list maxitems:1)
+	AzureCredentialConfig *CloudCredentialAzureCredentialConfig `pulumi:"azureCredentialConfig"`
+	// Description for the Cloud Credential (string)
+	Description *string `pulumi:"description"`
+	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
-	// Labels of the resource
-	Labels                    map[string]interface{}                    `pulumi:"labels"`
-	LinodeCredentialConfig    *CloudCredentialLinodeCredentialConfig    `pulumi:"linodeCredentialConfig"`
-	Name                      *string                                   `pulumi:"name"`
+	// Labels for Cloud Credential object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
+	// The name of the Cloud Credential (string)
+	Name *string `pulumi:"name"`
+	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
-	VsphereCredentialConfig   *CloudCredentialVsphereCredentialConfig   `pulumi:"vsphereCredentialConfig"`
+	// vSphere config for the Cloud Credential (list maxitems:1)
+	VsphereCredentialConfig *CloudCredentialVsphereCredentialConfig `pulumi:"vsphereCredentialConfig"`
 }
 
 // The set of arguments for constructing a CloudCredential resource.
 type CloudCredentialArgs struct {
+	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrInput
-	// Annotations of the resource
-	Annotations                  pulumi.MapInput
-	AzureCredentialConfig        CloudCredentialAzureCredentialConfigPtrInput
-	Description                  pulumi.StringPtrInput
+	// Annotations for Cloud Credential object (map)
+	Annotations pulumi.MapInput
+	// Azure config for the Cloud Credential (list maxitems:1)
+	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrInput
+	// Description for the Cloud Credential (string)
+	Description pulumi.StringPtrInput
+	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
-	// Labels of the resource
-	Labels                    pulumi.MapInput
-	LinodeCredentialConfig    CloudCredentialLinodeCredentialConfigPtrInput
-	Name                      pulumi.StringPtrInput
+	// Labels for Cloud Credential object (map)
+	Labels pulumi.MapInput
+	// Linode config for the Cloud Credential (list maxitems:1)
+	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
+	// The name of the Cloud Credential (string)
+	Name pulumi.StringPtrInput
+	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
-	VsphereCredentialConfig   CloudCredentialVsphereCredentialConfigPtrInput
+	// vSphere config for the Cloud Credential (list maxitems:1)
+	VsphereCredentialConfig CloudCredentialVsphereCredentialConfigPtrInput
 }
 
 func (CloudCredentialArgs) ElementType() reflect.Type {

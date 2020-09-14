@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
+ *
+ * When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 User
+ * const fooUser = new rancher2.User("fooUser", {
+ *     username: "foo",
+ *     password: "changeme",
+ *     enabled: true,
+ * });
+ * // Create a new rancher2 global_role_binding for User
+ * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("fooGlobalRoleBinding", {
+ *     globalRoleId: "user-base",
+ *     userId: fooUser.id,
+ * });
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -33,17 +57,29 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * Annotations for global role binding (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Labels of the resource
+     * Labels for global role binding (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The user full name (string)
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The user password (string)
+     */
     public readonly password!: pulumi.Output<string>;
+    /**
+     * (Computed) The user principal IDs (list)
+     */
     public /*out*/ readonly principalIds!: pulumi.Output<string[]>;
+    /**
+     * The user username (string)
+     */
     public readonly username!: pulumi.Output<string>;
 
     /**
@@ -97,17 +133,29 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * Annotations of the resource
+     * Annotations for global role binding (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * Labels for global role binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The user full name (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The user password (string)
+     */
     readonly password?: pulumi.Input<string>;
+    /**
+     * (Computed) The user principal IDs (list)
+     */
     readonly principalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The user username (string)
+     */
     readonly username?: pulumi.Input<string>;
 }
 
@@ -116,15 +164,24 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * Annotations of the resource
+     * Annotations for global role binding (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * Labels of the resource
+     * Labels for global role binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The user full name (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The user password (string)
+     */
     readonly password: pulumi.Input<string>;
+    /**
+     * The user username (string)
+     */
     readonly username: pulumi.Input<string>;
 }

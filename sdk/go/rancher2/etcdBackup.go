@@ -13,16 +13,22 @@ import (
 type EtcdBackup struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
-	Annotations  pulumi.MapOutput             `pulumi:"annotations"`
+	// Annotations for Etcd Backup object (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// Backup config for etcd backup (list maxitems:1)
 	BackupConfig EtcdBackupBackupConfigOutput `pulumi:"backupConfig"`
-	ClusterId    pulumi.StringOutput          `pulumi:"clusterId"`
-	Filename     pulumi.StringOutput          `pulumi:"filename"`
-	// Labels of the resource
-	Labels      pulumi.MapOutput     `pulumi:"labels"`
-	Manual      pulumi.BoolPtrOutput `pulumi:"manual"`
-	Name        pulumi.StringOutput  `pulumi:"name"`
-	NamespaceId pulumi.StringOutput  `pulumi:"namespaceId"`
+	// Cluster ID to config Etcd Backup (string)
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Filename of the Etcd Backup (string)
+	Filename pulumi.StringOutput `pulumi:"filename"`
+	// Labels for Etcd Backup object (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Manual execution of the Etcd Backup. Default `false` (bool)
+	Manual pulumi.BoolPtrOutput `pulumi:"manual"`
+	// The name of the Etcd Backup (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Description for the Etcd Backup (string)
+	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 }
 
 // NewEtcdBackup registers a new resource with the given unique name, arguments, and options.
@@ -56,28 +62,40 @@ func GetEtcdBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EtcdBackup resources.
 type etcdBackupState struct {
-	// Annotations of the resource
-	Annotations  map[string]interface{}  `pulumi:"annotations"`
+	// Annotations for Etcd Backup object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Backup config for etcd backup (list maxitems:1)
 	BackupConfig *EtcdBackupBackupConfig `pulumi:"backupConfig"`
-	ClusterId    *string                 `pulumi:"clusterId"`
-	Filename     *string                 `pulumi:"filename"`
-	// Labels of the resource
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Manual      *bool                  `pulumi:"manual"`
-	Name        *string                `pulumi:"name"`
-	NamespaceId *string                `pulumi:"namespaceId"`
+	// Cluster ID to config Etcd Backup (string)
+	ClusterId *string `pulumi:"clusterId"`
+	// Filename of the Etcd Backup (string)
+	Filename *string `pulumi:"filename"`
+	// Labels for Etcd Backup object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Manual execution of the Etcd Backup. Default `false` (bool)
+	Manual *bool `pulumi:"manual"`
+	// The name of the Etcd Backup (string)
+	Name *string `pulumi:"name"`
+	// Description for the Etcd Backup (string)
+	NamespaceId *string `pulumi:"namespaceId"`
 }
 
 type EtcdBackupState struct {
-	// Annotations of the resource
-	Annotations  pulumi.MapInput
+	// Annotations for Etcd Backup object (map)
+	Annotations pulumi.MapInput
+	// Backup config for etcd backup (list maxitems:1)
 	BackupConfig EtcdBackupBackupConfigPtrInput
-	ClusterId    pulumi.StringPtrInput
-	Filename     pulumi.StringPtrInput
-	// Labels of the resource
-	Labels      pulumi.MapInput
-	Manual      pulumi.BoolPtrInput
-	Name        pulumi.StringPtrInput
+	// Cluster ID to config Etcd Backup (string)
+	ClusterId pulumi.StringPtrInput
+	// Filename of the Etcd Backup (string)
+	Filename pulumi.StringPtrInput
+	// Labels for Etcd Backup object (map)
+	Labels pulumi.MapInput
+	// Manual execution of the Etcd Backup. Default `false` (bool)
+	Manual pulumi.BoolPtrInput
+	// The name of the Etcd Backup (string)
+	Name pulumi.StringPtrInput
+	// Description for the Etcd Backup (string)
 	NamespaceId pulumi.StringPtrInput
 }
 
@@ -86,29 +104,41 @@ func (EtcdBackupState) ElementType() reflect.Type {
 }
 
 type etcdBackupArgs struct {
-	// Annotations of the resource
-	Annotations  map[string]interface{}  `pulumi:"annotations"`
+	// Annotations for Etcd Backup object (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// Backup config for etcd backup (list maxitems:1)
 	BackupConfig *EtcdBackupBackupConfig `pulumi:"backupConfig"`
-	ClusterId    string                  `pulumi:"clusterId"`
-	Filename     *string                 `pulumi:"filename"`
-	// Labels of the resource
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Manual      *bool                  `pulumi:"manual"`
-	Name        *string                `pulumi:"name"`
-	NamespaceId *string                `pulumi:"namespaceId"`
+	// Cluster ID to config Etcd Backup (string)
+	ClusterId string `pulumi:"clusterId"`
+	// Filename of the Etcd Backup (string)
+	Filename *string `pulumi:"filename"`
+	// Labels for Etcd Backup object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Manual execution of the Etcd Backup. Default `false` (bool)
+	Manual *bool `pulumi:"manual"`
+	// The name of the Etcd Backup (string)
+	Name *string `pulumi:"name"`
+	// Description for the Etcd Backup (string)
+	NamespaceId *string `pulumi:"namespaceId"`
 }
 
 // The set of arguments for constructing a EtcdBackup resource.
 type EtcdBackupArgs struct {
-	// Annotations of the resource
-	Annotations  pulumi.MapInput
+	// Annotations for Etcd Backup object (map)
+	Annotations pulumi.MapInput
+	// Backup config for etcd backup (list maxitems:1)
 	BackupConfig EtcdBackupBackupConfigPtrInput
-	ClusterId    pulumi.StringInput
-	Filename     pulumi.StringPtrInput
-	// Labels of the resource
-	Labels      pulumi.MapInput
-	Manual      pulumi.BoolPtrInput
-	Name        pulumi.StringPtrInput
+	// Cluster ID to config Etcd Backup (string)
+	ClusterId pulumi.StringInput
+	// Filename of the Etcd Backup (string)
+	Filename pulumi.StringPtrInput
+	// Labels for Etcd Backup object (map)
+	Labels pulumi.MapInput
+	// Manual execution of the Etcd Backup. Default `false` (bool)
+	Manual pulumi.BoolPtrInput
+	// The name of the Etcd Backup (string)
+	Name pulumi.StringPtrInput
+	// Description for the Etcd Backup (string)
 	NamespaceId pulumi.StringPtrInput
 }
 

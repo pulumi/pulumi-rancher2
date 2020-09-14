@@ -9,34 +9,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
+//
+// There are 2 kind of tokens:
+// - no scoped: valid for global system.
+// - scoped: valid for just a specific cluster (`clusterId` should be provided).
+//
+// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewToken(ctx, "foo", &rancher2.TokenArgs{
+// 			ClusterId:   pulumi.String("<cluster-id>"),
+// 			Description: pulumi.String("foo token"),
+// 			Ttl:         pulumi.Int(1200),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Token struct {
 	pulumi.CustomResourceState
 
-	// Token access key
+	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Annotations of the resource
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// Cluster ID for scoped token
+	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
-	// Token description
+	// Token description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Token enabled
+	// (Computed) Token is enabled (bool)
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Token expired
+	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolOutput `pulumi:"expired"`
-	// Labels of the resource
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// Token name
+	// (Computed) Token name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrOutput `pulumi:"renew"`
-	// Token secret key
+	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
-	// Token value
+	// (Computed/Sensitive) Token value (string)
 	Token pulumi.StringOutput `pulumi:"token"`
-	// Token time to live in seconds
+	// Token time to live in seconds. Default `0` (int)
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// Token user ID
+	// (Computed) Token user ID (string)
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -68,60 +100,60 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	// Token access key
+	// (Computed) Token access key part (string)
 	AccessKey *string `pulumi:"accessKey"`
-	// Annotations of the resource
+	// (Computed) Annotations of the token (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Cluster ID for scoped token
+	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
-	// Token description
+	// Token description (string)
 	Description *string `pulumi:"description"`
-	// Token enabled
+	// (Computed) Token is enabled (bool)
 	Enabled *bool `pulumi:"enabled"`
-	// Token expired
+	// (Computed) Token is expired (bool)
 	Expired *bool `pulumi:"expired"`
-	// Labels of the resource
+	// (Computed) Labels of the token (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Token name
+	// (Computed) Token name (string)
 	Name *string `pulumi:"name"`
 	// Renew expired or disabled token
 	Renew *bool `pulumi:"renew"`
-	// Token secret key
+	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey *string `pulumi:"secretKey"`
-	// Token value
+	// (Computed/Sensitive) Token value (string)
 	Token *string `pulumi:"token"`
-	// Token time to live in seconds
+	// Token time to live in seconds. Default `0` (int)
 	Ttl *int `pulumi:"ttl"`
-	// Token user ID
+	// (Computed) Token user ID (string)
 	UserId *string `pulumi:"userId"`
 }
 
 type TokenState struct {
-	// Token access key
+	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringPtrInput
-	// Annotations of the resource
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapInput
-	// Cluster ID for scoped token
+	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
-	// Token description
+	// Token description (string)
 	Description pulumi.StringPtrInput
-	// Token enabled
+	// (Computed) Token is enabled (bool)
 	Enabled pulumi.BoolPtrInput
-	// Token expired
+	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolPtrInput
-	// Labels of the resource
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapInput
-	// Token name
+	// (Computed) Token name (string)
 	Name pulumi.StringPtrInput
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrInput
-	// Token secret key
+	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringPtrInput
-	// Token value
+	// (Computed/Sensitive) Token value (string)
 	Token pulumi.StringPtrInput
-	// Token time to live in seconds
+	// Token time to live in seconds. Default `0` (int)
 	Ttl pulumi.IntPtrInput
-	// Token user ID
+	// (Computed) Token user ID (string)
 	UserId pulumi.StringPtrInput
 }
 
@@ -130,33 +162,33 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
-	// Annotations of the resource
+	// (Computed) Annotations of the token (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// Cluster ID for scoped token
+	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
-	// Token description
+	// Token description (string)
 	Description *string `pulumi:"description"`
-	// Labels of the resource
+	// (Computed) Labels of the token (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Renew expired or disabled token
 	Renew *bool `pulumi:"renew"`
-	// Token time to live in seconds
+	// Token time to live in seconds. Default `0` (int)
 	Ttl *int `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
-	// Annotations of the resource
+	// (Computed) Annotations of the token (map)
 	Annotations pulumi.MapInput
-	// Cluster ID for scoped token
+	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
-	// Token description
+	// Token description (string)
 	Description pulumi.StringPtrInput
-	// Labels of the resource
+	// (Computed) Labels of the token (map)
 	Labels pulumi.MapInput
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrInput
-	// Token time to live in seconds
+	// Token time to live in seconds. Default `0` (int)
 	Ttl pulumi.IntPtrInput
 }
 

@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class PodSecurityPolicyTemplateRunAsUserRangeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("max", required: true)]
         public Input<int> Max { get; set; } = null!;
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("min", required: true)]
         public Input<int> Min { get; set; } = null!;
 

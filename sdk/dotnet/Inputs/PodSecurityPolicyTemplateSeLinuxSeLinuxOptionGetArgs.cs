@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

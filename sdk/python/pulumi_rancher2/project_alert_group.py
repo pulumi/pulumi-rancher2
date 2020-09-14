@@ -30,18 +30,33 @@ class ProjectAlertGroup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ProjectAlertGroup resource with the given unique name, props, and options.
+        Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Project Alert Group
+        foo = rancher2.ProjectAlertGroup("foo",
+            description="Terraform project alert group",
+            group_interval_seconds=300,
+            project_id="<project_id>",
+            repeat_interval_seconds=3600)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[str] description: Alert group description
-        :param pulumi.Input[float] group_interval_seconds: Alert group interval seconds
-        :param pulumi.Input[float] group_wait_seconds: Alert group wait seconds
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[str] name: Alert group name
-        :param pulumi.Input[str] project_id: Alert group Project ID
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: Alert group recipients
-        :param pulumi.Input[float] repeat_interval_seconds: Alert group repeat interval seconds
+        :param pulumi.Input[Mapping[str, Any]] annotations: The project alert group annotations (map)
+        :param pulumi.Input[str] description: The project alert group description (string)
+        :param pulumi.Input[float] group_interval_seconds: The project alert group interval seconds. Default: `180` (int)
+        :param pulumi.Input[float] group_wait_seconds: The project alert group wait seconds. Default: `180` (int)
+        :param pulumi.Input[Mapping[str, Any]] labels: The project alert group labels (map)
+        :param pulumi.Input[str] name: The project alert group name (string)
+        :param pulumi.Input[str] project_id: The project id where create project alert group (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: The project alert group recipients (list)
+        :param pulumi.Input[float] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,15 +112,15 @@ class ProjectAlertGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[str] description: Alert group description
-        :param pulumi.Input[float] group_interval_seconds: Alert group interval seconds
-        :param pulumi.Input[float] group_wait_seconds: Alert group wait seconds
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
-        :param pulumi.Input[str] name: Alert group name
-        :param pulumi.Input[str] project_id: Alert group Project ID
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: Alert group recipients
-        :param pulumi.Input[float] repeat_interval_seconds: Alert group repeat interval seconds
+        :param pulumi.Input[Mapping[str, Any]] annotations: The project alert group annotations (map)
+        :param pulumi.Input[str] description: The project alert group description (string)
+        :param pulumi.Input[float] group_interval_seconds: The project alert group interval seconds. Default: `180` (int)
+        :param pulumi.Input[float] group_wait_seconds: The project alert group wait seconds. Default: `180` (int)
+        :param pulumi.Input[Mapping[str, Any]] labels: The project alert group labels (map)
+        :param pulumi.Input[str] name: The project alert group name (string)
+        :param pulumi.Input[str] project_id: The project id where create project alert group (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: The project alert group recipients (list)
+        :param pulumi.Input[float] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -126,7 +141,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        The project alert group annotations (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -134,7 +149,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Alert group description
+        The project alert group description (string)
         """
         return pulumi.get(self, "description")
 
@@ -142,7 +157,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupIntervalSeconds")
     def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
-        Alert group interval seconds
+        The project alert group interval seconds. Default: `180` (int)
         """
         return pulumi.get(self, "group_interval_seconds")
 
@@ -150,7 +165,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupWaitSeconds")
     def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
         """
-        Alert group wait seconds
+        The project alert group wait seconds. Default: `180` (int)
         """
         return pulumi.get(self, "group_wait_seconds")
 
@@ -158,7 +173,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        The project alert group labels (map)
         """
         return pulumi.get(self, "labels")
 
@@ -166,7 +181,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Alert group name
+        The project alert group name (string)
         """
         return pulumi.get(self, "name")
 
@@ -174,7 +189,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Alert group Project ID
+        The project id where create project alert group (string)
         """
         return pulumi.get(self, "project_id")
 
@@ -182,7 +197,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter
     def recipients(self) -> pulumi.Output[Optional[List['outputs.ProjectAlertGroupRecipient']]]:
         """
-        Alert group recipients
+        The project alert group recipients (list)
         """
         return pulumi.get(self, "recipients")
 
@@ -190,7 +205,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
     @pulumi.getter(name="repeatIntervalSeconds")
     def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
         """
-        Alert group repeat interval seconds
+        The project alert group wait seconds. Default: `3600` (int)
         """
         return pulumi.get(self, "repeat_interval_seconds")
 

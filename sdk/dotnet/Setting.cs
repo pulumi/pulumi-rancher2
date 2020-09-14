@@ -9,23 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
+    /// 
+    /// On create, if setting already exists, provider will import it and update its value.
+    /// 
+    /// On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Setting
+    ///         var foo = new Rancher2.Setting("foo", new Rancher2.SettingArgs
+    ///         {
+    ///             Value = "&lt;VALUE&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Setting : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for setting object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for setting object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the setting (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The value of the setting (string)
+        /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
@@ -79,7 +112,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for setting object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -91,7 +124,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for setting object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -99,9 +132,15 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the setting (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The value of the setting (string)
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -116,7 +155,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for setting object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -128,7 +167,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for setting object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -136,9 +175,15 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the setting (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The value of the setting (string)
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

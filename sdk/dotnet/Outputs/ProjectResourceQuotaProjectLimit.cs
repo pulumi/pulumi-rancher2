@@ -13,18 +13,54 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectResourceQuotaProjectLimit
     {
+        /// <summary>
+        /// Limit for config maps in project (string)
+        /// </summary>
         public readonly string? ConfigMaps;
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
         public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
         public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for persistent volume claims in project (string)
+        /// </summary>
         public readonly string? PersistentVolumeClaims;
+        /// <summary>
+        /// Limit for pods in project (string)
+        /// </summary>
         public readonly string? Pods;
+        /// <summary>
+        /// Limit for replication controllers in project (string)
+        /// </summary>
         public readonly string? ReplicationControllers;
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
         public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
         public readonly string? RequestsMemory;
+        /// <summary>
+        /// Limit for requests storage in project (string)
+        /// </summary>
         public readonly string? RequestsStorage;
+        /// <summary>
+        /// Limit for secrets in project (string)
+        /// </summary>
         public readonly string? Secrets;
         public readonly string? Services;
+        /// <summary>
+        /// Limit for services load balancers in project (string)
+        /// </summary>
         public readonly string? ServicesLoadBalancers;
+        /// <summary>
+        /// Limit for services node ports in project (string)
+        /// </summary>
         public readonly string? ServicesNodePorts;
 
         [OutputConstructor]

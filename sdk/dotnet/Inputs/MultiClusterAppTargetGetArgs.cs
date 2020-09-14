@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class MultiClusterAppTargetGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// App ID for target (string)
+        /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        /// <summary>
+        /// App health state for target (string)
+        /// </summary>
         [Input("healthState")]
         public Input<string>? HealthState { get; set; }
 
+        /// <summary>
+        /// Project ID for target (string)
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// App state for target (string)
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

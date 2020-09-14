@@ -12,67 +12,123 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterEksConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AWS Client ID to use (string)
+        /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// AMI ID to use for the worker nodes instead of the default (string)
+        /// </summary>
         [Input("ami")]
         public Input<string>? Ami { get; set; }
 
+        /// <summary>
+        /// Associate public ip EKS worker nodes. Default `true` (bool)
+        /// </summary>
         [Input("associateWorkerNodePublicIp")]
         public Input<bool>? AssociateWorkerNodePublicIp { get; set; }
 
+        /// <summary>
+        /// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
+        /// </summary>
         [Input("desiredNodes")]
         public Input<int>? DesiredNodes { get; set; }
 
+        /// <summary>
+        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
+        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// The Kubernetes master version (string)
+        /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum number of worker nodes. Default `3` (int)
+        /// </summary>
         [Input("maximumNodes")]
         public Input<int>? MaximumNodes { get; set; }
 
+        /// <summary>
+        /// The minimum number of worker nodes. Default `1` (int)
+        /// </summary>
         [Input("minimumNodes")]
         public Input<int>? MinimumNodes { get; set; }
 
+        /// <summary>
+        /// The volume size for each node. Default `20` (int)
+        /// </summary>
         [Input("nodeVolumeSize")]
         public Input<int>? NodeVolumeSize { get; set; }
 
+        /// <summary>
+        /// GKE cluster region. Conflicts with `zone` (string)
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The AWS Client Secret associated with the Client ID (string)
+        /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
+
+        /// <summary>
+        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
 
+        /// <summary>
+        /// A session token to use with the client key and secret if applicable (string)
+        /// </summary>
         [Input("sessionToken")]
         public Input<string>? SessionToken { get; set; }
 
         [Input("subnets")]
         private InputList<string>? _subnets;
+
+        /// <summary>
+        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        /// </summary>
         public InputList<string> Subnets
         {
             get => _subnets ?? (_subnets = new InputList<string>());
             set => _subnets = value;
         }
 
+        /// <summary>
+        /// Pass user-data to the nodes to perform automated configuration tasks (string)
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }
 

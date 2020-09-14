@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterClusterAuthEndpoint
     {
+        /// <summary>
+        /// CA certs for the authorized cluster endpoint (string)
+        /// </summary>
         public readonly string? CaCerts;
+        /// <summary>
+        /// Enable scheduled cluster scan. Default: `false` (bool)
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// FQDN for the authorized cluster endpoint (string)
+        /// </summary>
         public readonly string? Fqdn;
 
         [OutputConstructor]

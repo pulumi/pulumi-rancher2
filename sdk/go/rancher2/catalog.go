@@ -10,25 +10,75 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewCatalog(ctx, "foo_global", &rancher2.CatalogArgs{
+// 			Url: pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCatalog(ctx, "foo_cluster", &rancher2.CatalogArgs{
+// 			Scope: pulumi.String("cluster"),
+// 			Url:   pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCatalog(ctx, "foo_project", &rancher2.CatalogArgs{
+// 			Scope: pulumi.String("project"),
+// 			Url:   pulumi.String("https://<CATALOG_URL>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Catalog struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
-	Annotations pulumi.MapOutput       `pulumi:"annotations"`
-	Branch      pulumi.StringPtrOutput `pulumi:"branch"`
-	ClusterId   pulumi.StringPtrOutput `pulumi:"clusterId"`
+	// Annotations for the catalog (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// The branch of the catalog repo to use. Default `master` (string)
+	Branch pulumi.StringPtrOutput `pulumi:"branch"`
+	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
+	// A catalog description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Kind        pulumi.StringPtrOutput `pulumi:"kind"`
-	// Labels of the resource
-	Labels    pulumi.MapOutput       `pulumi:"labels"`
-	Name      pulumi.StringOutput    `pulumi:"name"`
-	Password  pulumi.StringPtrOutput `pulumi:"password"`
+	// The kind of the catalog. Just helm by the moment (string)
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	// Labels for the catalog (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The name of the catalog (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The password to access the catalog if needed (string)
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	Refresh   pulumi.BoolPtrOutput   `pulumi:"refresh"`
-	Scope     pulumi.StringPtrOutput `pulumi:"scope"`
-	Url       pulumi.StringOutput    `pulumi:"url"`
-	Username  pulumi.StringPtrOutput `pulumi:"username"`
-	Version   pulumi.StringOutput    `pulumi:"version"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrOutput `pulumi:"refresh"`
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope pulumi.StringPtrOutput `pulumi:"scope"`
+	// The url of the catalog repo (string)
+	Url pulumi.StringOutput `pulumi:"url"`
+	// The username to access the catalog if needed (string)
+	Username pulumi.StringPtrOutput `pulumi:"username"`
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -62,41 +112,65 @@ func GetCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
-	// Annotations of the resource
+	// Annotations for the catalog (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Branch      *string                `pulumi:"branch"`
-	ClusterId   *string                `pulumi:"clusterId"`
-	Description *string                `pulumi:"description"`
-	Kind        *string                `pulumi:"kind"`
-	// Labels of the resource
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      *string                `pulumi:"name"`
-	Password  *string                `pulumi:"password"`
-	ProjectId *string                `pulumi:"projectId"`
-	Refresh   *bool                  `pulumi:"refresh"`
-	Scope     *string                `pulumi:"scope"`
-	Url       *string                `pulumi:"url"`
-	Username  *string                `pulumi:"username"`
-	Version   *string                `pulumi:"version"`
+	// The branch of the catalog repo to use. Default `master` (string)
+	Branch *string `pulumi:"branch"`
+	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+	ClusterId *string `pulumi:"clusterId"`
+	// A catalog description (string)
+	Description *string `pulumi:"description"`
+	// The kind of the catalog. Just helm by the moment (string)
+	Kind *string `pulumi:"kind"`
+	// Labels for the catalog (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the catalog (string)
+	Name *string `pulumi:"name"`
+	// The password to access the catalog if needed (string)
+	Password *string `pulumi:"password"`
+	// The project id of the catalog. Mandatory if `scope = project` (string)
+	ProjectId *string `pulumi:"projectId"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh *bool `pulumi:"refresh"`
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope *string `pulumi:"scope"`
+	// The url of the catalog repo (string)
+	Url *string `pulumi:"url"`
+	// The username to access the catalog if needed (string)
+	Username *string `pulumi:"username"`
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version *string `pulumi:"version"`
 }
 
 type CatalogState struct {
-	// Annotations of the resource
+	// Annotations for the catalog (map)
 	Annotations pulumi.MapInput
-	Branch      pulumi.StringPtrInput
-	ClusterId   pulumi.StringPtrInput
+	// The branch of the catalog repo to use. Default `master` (string)
+	Branch pulumi.StringPtrInput
+	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+	ClusterId pulumi.StringPtrInput
+	// A catalog description (string)
 	Description pulumi.StringPtrInput
-	Kind        pulumi.StringPtrInput
-	// Labels of the resource
-	Labels    pulumi.MapInput
-	Name      pulumi.StringPtrInput
-	Password  pulumi.StringPtrInput
+	// The kind of the catalog. Just helm by the moment (string)
+	Kind pulumi.StringPtrInput
+	// Labels for the catalog (map)
+	Labels pulumi.MapInput
+	// The name of the catalog (string)
+	Name pulumi.StringPtrInput
+	// The password to access the catalog if needed (string)
+	Password pulumi.StringPtrInput
+	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrInput
-	Refresh   pulumi.BoolPtrInput
-	Scope     pulumi.StringPtrInput
-	Url       pulumi.StringPtrInput
-	Username  pulumi.StringPtrInput
-	Version   pulumi.StringPtrInput
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrInput
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope pulumi.StringPtrInput
+	// The url of the catalog repo (string)
+	Url pulumi.StringPtrInput
+	// The username to access the catalog if needed (string)
+	Username pulumi.StringPtrInput
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version pulumi.StringPtrInput
 }
 
 func (CatalogState) ElementType() reflect.Type {
@@ -104,42 +178,66 @@ func (CatalogState) ElementType() reflect.Type {
 }
 
 type catalogArgs struct {
-	// Annotations of the resource
+	// Annotations for the catalog (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Branch      *string                `pulumi:"branch"`
-	ClusterId   *string                `pulumi:"clusterId"`
-	Description *string                `pulumi:"description"`
-	Kind        *string                `pulumi:"kind"`
-	// Labels of the resource
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      *string                `pulumi:"name"`
-	Password  *string                `pulumi:"password"`
-	ProjectId *string                `pulumi:"projectId"`
-	Refresh   *bool                  `pulumi:"refresh"`
-	Scope     *string                `pulumi:"scope"`
-	Url       string                 `pulumi:"url"`
-	Username  *string                `pulumi:"username"`
-	Version   *string                `pulumi:"version"`
+	// The branch of the catalog repo to use. Default `master` (string)
+	Branch *string `pulumi:"branch"`
+	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+	ClusterId *string `pulumi:"clusterId"`
+	// A catalog description (string)
+	Description *string `pulumi:"description"`
+	// The kind of the catalog. Just helm by the moment (string)
+	Kind *string `pulumi:"kind"`
+	// Labels for the catalog (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the catalog (string)
+	Name *string `pulumi:"name"`
+	// The password to access the catalog if needed (string)
+	Password *string `pulumi:"password"`
+	// The project id of the catalog. Mandatory if `scope = project` (string)
+	ProjectId *string `pulumi:"projectId"`
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh *bool `pulumi:"refresh"`
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope *string `pulumi:"scope"`
+	// The url of the catalog repo (string)
+	Url string `pulumi:"url"`
+	// The username to access the catalog if needed (string)
+	Username *string `pulumi:"username"`
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
-	// Annotations of the resource
+	// Annotations for the catalog (map)
 	Annotations pulumi.MapInput
-	Branch      pulumi.StringPtrInput
-	ClusterId   pulumi.StringPtrInput
+	// The branch of the catalog repo to use. Default `master` (string)
+	Branch pulumi.StringPtrInput
+	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+	ClusterId pulumi.StringPtrInput
+	// A catalog description (string)
 	Description pulumi.StringPtrInput
-	Kind        pulumi.StringPtrInput
-	// Labels of the resource
-	Labels    pulumi.MapInput
-	Name      pulumi.StringPtrInput
-	Password  pulumi.StringPtrInput
+	// The kind of the catalog. Just helm by the moment (string)
+	Kind pulumi.StringPtrInput
+	// Labels for the catalog (map)
+	Labels pulumi.MapInput
+	// The name of the catalog (string)
+	Name pulumi.StringPtrInput
+	// The password to access the catalog if needed (string)
+	Password pulumi.StringPtrInput
+	// The project id of the catalog. Mandatory if `scope = project` (string)
 	ProjectId pulumi.StringPtrInput
-	Refresh   pulumi.BoolPtrInput
-	Scope     pulumi.StringPtrInput
-	Url       pulumi.StringInput
-	Username  pulumi.StringPtrInput
-	Version   pulumi.StringPtrInput
+	// Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+	Refresh pulumi.BoolPtrInput
+	// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+	Scope pulumi.StringPtrInput
+	// The url of the catalog repo (string)
+	Url pulumi.StringInput
+	// The username to access the catalog if needed (string)
+	Username pulumi.StringPtrInput
+	// Helm version for the catalog. Available options: `helmV2` and `helmV3` (string)
+	Version pulumi.StringPtrInput
 }
 
 func (CatalogArgs) ElementType() reflect.Type {

@@ -33,11 +33,22 @@ class NodePool(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a NodePool resource with the given unique name, props, and options.
+        Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
+        :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
+        :param pulumi.Input[float] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
+        :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[str] name: The name of the Node Pool (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
+        :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+        :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,8 +114,18 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
+        :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
+        :param pulumi.Input[float] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
+        :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[str] name: The name of the Node Pool (string)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
+        :param pulumi.Input[float] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+        :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -128,66 +149,96 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
+        """
+        The RKE cluster id to use Node Pool (string)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> pulumi.Output[Optional[bool]]:
+        """
+        RKE control plane role for created nodes (bool)
+        """
         return pulumi.get(self, "control_plane")
 
     @property
     @pulumi.getter(name="deleteNotReadyAfterSecs")
     def delete_not_ready_after_secs(self) -> pulumi.Output[Optional[float]]:
+        """
+        Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        """
         return pulumi.get(self, "delete_not_ready_after_secs")
 
     @property
     @pulumi.getter
     def etcd(self) -> pulumi.Output[Optional[bool]]:
+        """
+        RKE etcd role for created nodes (bool)
+        """
         return pulumi.get(self, "etcd")
 
     @property
     @pulumi.getter(name="hostnamePrefix")
     def hostname_prefix(self) -> pulumi.Output[str]:
+        """
+        The prefix for created nodes of the Node Pool (string)
+        """
         return pulumi.get(self, "hostname_prefix")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Node Pool (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeTaints")
     def node_taints(self) -> pulumi.Output[Optional[List['outputs.NodePoolNodeTaint']]]:
+        """
+        Node taints. For Rancher v2.3.3 or above (List)
+        """
         return pulumi.get(self, "node_taints")
 
     @property
     @pulumi.getter(name="nodeTemplateId")
     def node_template_id(self) -> pulumi.Output[str]:
+        """
+        The Node Template ID to use for node creation (string)
+        """
         return pulumi.get(self, "node_template_id")
 
     @property
     @pulumi.getter
     def quantity(self) -> pulumi.Output[Optional[float]]:
+        """
+        The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+        """
         return pulumi.get(self, "quantity")
 
     @property
     @pulumi.getter
     def worker(self) -> pulumi.Output[Optional[bool]]:
+        """
+        RKE role role for created nodes (bool)
+        """
         return pulumi.get(self, "worker")
 
     def translate_output_property(self, prop):

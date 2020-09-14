@@ -7,6 +7,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 Node Driver resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupNodeDriver(ctx, &rancher2.LookupNodeDriverArgs{
+// 			Name: "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupNodeDriver(ctx *pulumi.Context, args *LookupNodeDriverArgs, opts ...pulumi.InvokeOption) (*LookupNodeDriverResult, error) {
 	var rv LookupNodeDriverResult
 	err := ctx.Invoke("rancher2:index/getNodeDriver:getNodeDriver", args, &rv, opts...)
@@ -18,23 +42,34 @@ func LookupNodeDriver(ctx *pulumi.Context, args *LookupNodeDriverArgs, opts ...p
 
 // A collection of arguments for invoking getNodeDriver.
 type LookupNodeDriverArgs struct {
-	Name string  `pulumi:"name"`
-	Url  *string `pulumi:"url"`
+	// Name of the node driver (string)
+	Name string `pulumi:"name"`
+	// The URL to download the machine driver binary for 64-bit Linux (string)
+	Url *string `pulumi:"url"`
 }
 
 // A collection of values returned by getNodeDriver.
 type LookupNodeDriverResult struct {
-	Active      bool                   `pulumi:"active"`
+	// (Computed) Specify if the node driver state (bool)
+	Active bool `pulumi:"active"`
+	// (Computed) Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Builtin     bool                   `pulumi:"builtin"`
-	Checksum    string                 `pulumi:"checksum"`
-	Description string                 `pulumi:"description"`
-	ExternalId  string                 `pulumi:"externalId"`
+	// (Computed) Specify wheter the node driver is an internal cluster driver or not (bool)
+	Builtin bool `pulumi:"builtin"`
+	// (Computed) Verify that the downloaded driver matches the expected checksum (string)
+	Checksum string `pulumi:"checksum"`
+	// (Computed) Description of the node driver (string)
+	Description string `pulumi:"description"`
+	// (Computed) External ID (string)
+	ExternalId string `pulumi:"externalId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                 `pulumi:"id"`
-	Labels           map[string]interface{} `pulumi:"labels"`
-	Name             string                 `pulumi:"name"`
-	UiUrl            string                 `pulumi:"uiUrl"`
-	Url              string                 `pulumi:"url"`
-	WhitelistDomains []string               `pulumi:"whitelistDomains"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	Name   string                 `pulumi:"name"`
+	// (Computed) The URL to load for customized Add Node screen for this driver (string)
+	UiUrl string `pulumi:"uiUrl"`
+	Url   string `pulumi:"url"`
+	// (Computed) Domains to whitelist for the ui (list)
+	WhitelistDomains []string `pulumi:"whitelistDomains"`
 }

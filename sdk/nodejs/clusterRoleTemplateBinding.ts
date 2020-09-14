@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Cluster Role Template Binding
+ * const foo = new rancher2.ClusterRoleTemplateBinding("foo", {
+ *     clusterId: "<cluster_id>",
+ *     roleTemplateId: "<role_template_id>",
+ *     userId: "<user_id>",
+ * });
+ * ```
+ */
 export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Get an existing ClusterRoleTemplateBinding resource's state with the given name, ID, and optional extra
@@ -33,19 +50,40 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * Annotations for cluster role template binding (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The cluster id where bind cluster role template binding (string)
+     */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * The group ID to assign cluster role template binding (string)
+     */
     public readonly groupId!: pulumi.Output<string | undefined>;
+    /**
+     * The groupPrincipal ID to assign cluster role template binding (string)
+     */
     public readonly groupPrincipalId!: pulumi.Output<string>;
     /**
-     * Labels of the resource
+     * Labels for cluster role template binding (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The name of the cluster role template binding (string)
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The role template id from create cluster role template binding (string)
+     */
     public readonly roleTemplateId!: pulumi.Output<string>;
+    /**
+     * The user ID to assign cluster role template binding (string)
+     */
     public readonly userId!: pulumi.Output<string | undefined>;
+    /**
+     * The userPrincipal ID to assign cluster role template binding (string)
+     */
     public readonly userPrincipalId!: pulumi.Output<string>;
 
     /**
@@ -103,19 +141,40 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
  */
 export interface ClusterRoleTemplateBindingState {
     /**
-     * Annotations of the resource
+     * Annotations for cluster role template binding (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The cluster id where bind cluster role template binding (string)
+     */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * The group ID to assign cluster role template binding (string)
+     */
     readonly groupId?: pulumi.Input<string>;
+    /**
+     * The groupPrincipal ID to assign cluster role template binding (string)
+     */
     readonly groupPrincipalId?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for cluster role template binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the cluster role template binding (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The role template id from create cluster role template binding (string)
+     */
     readonly roleTemplateId?: pulumi.Input<string>;
+    /**
+     * The user ID to assign cluster role template binding (string)
+     */
     readonly userId?: pulumi.Input<string>;
+    /**
+     * The userPrincipal ID to assign cluster role template binding (string)
+     */
     readonly userPrincipalId?: pulumi.Input<string>;
 }
 
@@ -124,18 +183,39 @@ export interface ClusterRoleTemplateBindingState {
  */
 export interface ClusterRoleTemplateBindingArgs {
     /**
-     * Annotations of the resource
+     * Annotations for cluster role template binding (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The cluster id where bind cluster role template binding (string)
+     */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * The group ID to assign cluster role template binding (string)
+     */
     readonly groupId?: pulumi.Input<string>;
+    /**
+     * The groupPrincipal ID to assign cluster role template binding (string)
+     */
     readonly groupPrincipalId?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for cluster role template binding (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the cluster role template binding (string)
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The role template id from create cluster role template binding (string)
+     */
     readonly roleTemplateId: pulumi.Input<string>;
+    /**
+     * The user ID to assign cluster role template binding (string)
+     */
     readonly userId?: pulumi.Input<string>;
+    /**
+     * The userPrincipal ID to assign cluster role template binding (string)
+     */
     readonly userPrincipalId?: pulumi.Input<string>;
 }

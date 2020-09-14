@@ -58,6 +58,9 @@ class GetNotifierResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for notifier object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -68,6 +71,9 @@ class GetNotifierResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) The notifier description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -81,6 +87,9 @@ class GetNotifierResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for notifier object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -91,26 +100,41 @@ class GetNotifierResult:
     @property
     @pulumi.getter(name="pagerdutyConfig")
     def pagerduty_config(self) -> 'outputs.GetNotifierPagerdutyConfigResult':
+        """
+        (Computed) Pagerduty config for notifier (list maxitems:1)
+        """
         return pulumi.get(self, "pagerduty_config")
 
     @property
     @pulumi.getter(name="slackConfig")
     def slack_config(self) -> 'outputs.GetNotifierSlackConfigResult':
+        """
+        (Computed) Slack config for notifier (list maxitems:1)
+        """
         return pulumi.get(self, "slack_config")
 
     @property
     @pulumi.getter(name="smtpConfig")
     def smtp_config(self) -> 'outputs.GetNotifierSmtpConfigResult':
+        """
+        (Computed) SMTP config for notifier (list maxitems:1)
+        """
         return pulumi.get(self, "smtp_config")
 
     @property
     @pulumi.getter(name="webhookConfig")
     def webhook_config(self) -> 'outputs.GetNotifierWebhookConfigResult':
+        """
+        (Computed) Webhook config for notifier (list maxitems:1)
+        """
         return pulumi.get(self, "webhook_config")
 
     @property
     @pulumi.getter(name="wechatConfig")
     def wechat_config(self) -> 'outputs.GetNotifierWechatConfigResult':
+        """
+        (Computed) Wechat config for notifier (list maxitems:1)
+        """
         return pulumi.get(self, "wechat_config")
 
 
@@ -137,7 +161,21 @@ def get_notifier(cluster_id: Optional[str] = None,
                  name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotifierResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 notifier.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
+        name="foo")
+    ```
+
+
+    :param str cluster_id: The cluster id where create notifier (string)
+    :param str name: The name of the notifier (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

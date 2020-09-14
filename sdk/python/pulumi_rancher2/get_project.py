@@ -58,6 +58,9 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations of the rancher2 project (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -68,16 +71,25 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="containerResourceLimit")
     def container_resource_limit(self) -> 'outputs.GetProjectContainerResourceLimitResult':
+        """
+        (Computed) Default containers resource limits on project (List maxitem:1)
+        """
         return pulumi.get(self, "container_resource_limit")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) The project's description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enableProjectMonitoring")
     def enable_project_monitoring(self) -> bool:
+        """
+        (Computed) Enable built-in project monitoring. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_project_monitoring")
 
     @property
@@ -91,6 +103,9 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels of the rancher2 project (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -101,16 +116,25 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="podSecurityPolicyTemplateId")
     def pod_security_policy_template_id(self) -> str:
+        """
+        (Computed) Default Pod Security Policy ID for the project (string)
+        """
         return pulumi.get(self, "pod_security_policy_template_id")
 
     @property
     @pulumi.getter(name="resourceQuota")
     def resource_quota(self) -> 'outputs.GetProjectResourceQuotaResult':
+        """
+        (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        """
         return pulumi.get(self, "resource_quota")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        (Computed) UUID of the project as stored by Rancher 2 (string)
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -138,6 +162,9 @@ def get_project(cluster_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str cluster_id: ID of the Rancher 2 cluster (string)
+    :param str name: The project name (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

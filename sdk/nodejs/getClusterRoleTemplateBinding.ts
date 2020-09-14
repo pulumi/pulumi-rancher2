@@ -6,6 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = pulumi.output(rancher2.getClusterRoleTemplateBinding({
+ *     clusterId: "foo_id",
+ *     name: "foo",
+ * }, { async: true }));
+ * ```
+ */
 export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
     if (!opts) {
         opts = {}
@@ -25,8 +40,17 @@ export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindin
  * A collection of arguments for invoking getClusterRoleTemplateBinding.
  */
 export interface GetClusterRoleTemplateBindingArgs {
+    /**
+     * The cluster id where bind cluster role template (string)
+     */
     readonly clusterId: string;
+    /**
+     * The name of the cluster role template binding (string)
+     */
     readonly name: string;
+    /**
+     * The role template id from create cluster role template binding (string)
+     */
     readonly roleTemplateId?: string;
 }
 
@@ -34,17 +58,35 @@ export interface GetClusterRoleTemplateBindingArgs {
  * A collection of values returned by getClusterRoleTemplateBinding.
  */
 export interface GetClusterRoleTemplateBindingResult {
+    /**
+     * (Computed) Annotations of the resource (map)
+     */
     readonly annotations: {[key: string]: any};
     readonly clusterId: string;
+    /**
+     * (Computed) The group ID to assign cluster role template binding (string)
+     */
     readonly groupId: string;
+    /**
+     * (Computed) The groupPrincipal ID to assign cluster role template binding (string)
+     */
     readonly groupPrincipalId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Computed) Labels of the resource (map)
+     */
     readonly labels: {[key: string]: any};
     readonly name: string;
     readonly roleTemplateId: string;
+    /**
+     * (Computed) The user ID to assign cluster role template binding (string)
+     */
     readonly userId: string;
+    /**
+     * (Computed) The userPrincipal ID to assign cluster role template binding (string)
+     */
     readonly userPrincipalId: string;
 }

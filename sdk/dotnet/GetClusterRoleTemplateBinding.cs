@@ -11,6 +11,33 @@ namespace Pulumi.Rancher2
 {
     public static class GetClusterRoleTemplateBinding
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Rancher2.GetClusterRoleTemplateBinding.InvokeAsync(new Rancher2.GetClusterRoleTemplateBindingArgs
+        ///         {
+        ///             ClusterId = "foo_id",
+        ///             Name = "foo",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetClusterRoleTemplateBindingResult> InvokeAsync(GetClusterRoleTemplateBindingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterRoleTemplateBindingResult>("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args ?? new GetClusterRoleTemplateBindingArgs(), options.WithVersion());
     }
@@ -18,12 +45,21 @@ namespace Pulumi.Rancher2
 
     public sealed class GetClusterRoleTemplateBindingArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The cluster id where bind cluster role template (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the cluster role template binding (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The role template id from create cluster role template binding (string)
+        /// </summary>
         [Input("roleTemplateId")]
         public string? RoleTemplateId { get; set; }
 
@@ -36,18 +72,36 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetClusterRoleTemplateBindingResult
     {
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
+        /// <summary>
+        /// (Computed) The group ID to assign cluster role template binding (string)
+        /// </summary>
         public readonly string GroupId;
+        /// <summary>
+        /// (Computed) The group_principal ID to assign cluster role template binding (string)
+        /// </summary>
         public readonly string GroupPrincipalId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         public readonly string RoleTemplateId;
+        /// <summary>
+        /// (Computed) The user ID to assign cluster role template binding (string)
+        /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// (Computed) The user_principal ID to assign cluster role template binding (string)
+        /// </summary>
         public readonly string UserPrincipalId;
 
         [OutputConstructor]

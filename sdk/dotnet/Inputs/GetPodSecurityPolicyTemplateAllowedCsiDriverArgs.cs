@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateAllowedCsiDriverArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the PodSecurityPolicyTemplate (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

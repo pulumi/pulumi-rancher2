@@ -23,11 +23,28 @@ class Setting(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Setting resource with the given unique name, props, and options.
+        Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
+
+        On create, if setting already exists, provider will import it and update its value.
+
+        On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Setting
+        foo = rancher2.Setting("foo", value="<VALUE>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for setting object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for setting object (map)
+        :param pulumi.Input[str] name: The name of the setting (string)
+        :param pulumi.Input[str] value: The value of the setting (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,8 +90,10 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for setting object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for setting object (map)
+        :param pulumi.Input[str] name: The name of the setting (string)
+        :param pulumi.Input[str] value: The value of the setting (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -90,7 +109,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for setting object (map)
         """
         return pulumi.get(self, "annotations")
 
@@ -98,18 +117,24 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for setting object (map)
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the setting (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
+        """
+        The value of the setting (string)
+        """
         return pulumi.get(self, "value")
 
     def translate_output_property(self, prop):

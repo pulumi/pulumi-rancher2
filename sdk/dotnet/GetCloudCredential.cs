@@ -11,6 +11,32 @@ namespace Pulumi.Rancher2
 {
     public static class GetCloudCredential
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Rancher2.GetCloudCredential.InvokeAsync(new Rancher2.GetCloudCredentialArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetCloudCredentialResult> InvokeAsync(GetCloudCredentialArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialArgs(), options.WithVersion());
     }
@@ -18,6 +44,9 @@ namespace Pulumi.Rancher2
 
     public sealed class GetCloudCredentialArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Cloud Credential name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -30,11 +59,17 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetCloudCredentialResult
     {
+        /// <summary>
+        /// (Computed) Annotations for the Cloud Credential (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels for the Cloud Credential (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
 

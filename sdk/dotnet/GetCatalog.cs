@@ -11,6 +11,32 @@ namespace Pulumi.Rancher2
 {
     public static class GetCatalog
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 catalog.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(Rancher2.GetCatalog.InvokeAsync(new Rancher2.GetCatalogArgs
+        ///         {
+        ///             Name = "catalog",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetCatalogResult> InvokeAsync(GetCatalogArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogResult>("rancher2:index/getCatalog:getCatalog", args ?? new GetCatalogArgs(), options.WithVersion());
     }
@@ -18,9 +44,15 @@ namespace Pulumi.Rancher2
 
     public sealed class GetCatalogArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The catalog name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+        /// </summary>
         [Input("scope")]
         public string? Scope { get; set; }
 
@@ -33,22 +65,55 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetCatalogResult
     {
+        /// <summary>
+        /// (Computed) Annotations for the catalog (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// (Computed) The branch of the catalog repo to use (string)
+        /// </summary>
         public readonly string Branch;
+        /// <summary>
+        /// (Computed) The cluster id of the catalog (string)
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// (Computed) A catalog description (string)
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) The kind of the catalog. Just helm by the moment (string)
+        /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// (Computed) Labels for the catalog (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed/Sensitive) The password to access the catalog if needed (string)
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// (Computed) The project id of the catalog (string)
+        /// </summary>
         public readonly string ProjectId;
         public readonly string? Scope;
+        /// <summary>
+        /// (Computed) The url of the catalog repo (string)
+        /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// (Computed/Sensitive) The username to access the catalog if needed (string)
+        /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// (Computed) Helm version for the catalog (string)
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

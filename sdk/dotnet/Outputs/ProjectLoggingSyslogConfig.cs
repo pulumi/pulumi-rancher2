@@ -13,15 +13,45 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectLoggingSyslogConfig
     {
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// Enable TLS for the fluentd service (bool)
+        /// </summary>
         public readonly bool? EnableTls;
+        /// <summary>
+        /// Endpoint of the syslog service (string)
+        /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Program for the syslog service (string)
+        /// </summary>
         public readonly string? Program;
+        /// <summary>
+        /// Protocol for the syslog service. `tcp` and `udp` are supported. Default: `udp` (string)
+        /// </summary>
         public readonly string? Protocol;
+        /// <summary>
+        /// Date format for the syslog logs. `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are supported. Default: `notice` (string)
+        /// </summary>
         public readonly string? Severity;
+        /// <summary>
+        /// SSL verify for the syslog service (bool)
+        /// </summary>
         public readonly bool? SslVerify;
+        /// <summary>
+        /// Token for the syslog service (string)
+        /// </summary>
         public readonly string? Token;
 
         [OutputConstructor]

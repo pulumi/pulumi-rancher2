@@ -52,11 +52,17 @@ class GetEtcdBackupResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for Etcd Backup object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> 'outputs.GetEtcdBackupBackupConfigResult':
+        """
+        (Computed) Backup config for etcd backup (list maxitems:1)
+        """
         return pulumi.get(self, "backup_config")
 
     @property
@@ -67,6 +73,9 @@ class GetEtcdBackupResult:
     @property
     @pulumi.getter
     def filename(self) -> str:
+        """
+        (Computed) Filename of the Etcd Backup (string)
+        """
         return pulumi.get(self, "filename")
 
     @property
@@ -80,11 +89,17 @@ class GetEtcdBackupResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Etcd Backup object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def manual(self) -> bool:
+        """
+        (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
+        """
         return pulumi.get(self, "manual")
 
     @property
@@ -95,6 +110,9 @@ class GetEtcdBackupResult:
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> str:
+        """
+        (Computed) Description for the Etcd Backup (string)
+        """
         return pulumi.get(self, "namespace_id")
 
 
@@ -119,7 +137,21 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
                     name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEtcdBackupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 etcd backup.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_etcd_backup(cluster_id="<CLUSTER_ID>",
+        name="foo")
+    ```
+
+
+    :param str cluster_id: Cluster ID to config Etcd Backup (string)
+    :param str name: The name of the Etcd Backup (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -55,21 +55,33 @@ class GetProjectAlertGroupResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) The project alert group annotations (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) The project alert group description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
     def group_interval_seconds(self) -> float:
+        """
+        (Computed) The project alert group interval seconds. Default: `180` (int)
+        """
         return pulumi.get(self, "group_interval_seconds")
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
     def group_wait_seconds(self) -> float:
+        """
+        (Computed) The project alert group wait seconds. Default: `180` (int)
+        """
         return pulumi.get(self, "group_wait_seconds")
 
     @property
@@ -83,6 +95,9 @@ class GetProjectAlertGroupResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) The project alert group labels (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -98,11 +113,17 @@ class GetProjectAlertGroupResult:
     @property
     @pulumi.getter
     def recipients(self) -> List['outputs.GetProjectAlertGroupRecipientResult']:
+        """
+        (Computed) The project alert group recipients (list)
+        """
         return pulumi.get(self, "recipients")
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
     def repeat_interval_seconds(self) -> float:
+        """
+        (Computed) The project alert group wait seconds. Default: `3600` (int)
+        """
         return pulumi.get(self, "repeat_interval_seconds")
 
 
@@ -128,7 +149,21 @@ def get_project_alert_group(name: Optional[str] = None,
                             project_id: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectAlertGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 project alert group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
+        project_id="<project_id>")
+    ```
+
+
+    :param str name: The project alert group name (string)
+    :param str project_id: The project id where create project alert group (string)
     """
     __args__ = dict()
     __args__['name'] = name

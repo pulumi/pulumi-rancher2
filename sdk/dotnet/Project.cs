@@ -9,52 +9,180 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Project
+    ///         var foo = new Rancher2.Project("foo", new Rancher2.ProjectArgs
+    ///         {
+    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Project enabling and customizing monitoring
+    ///         var foo = new Rancher2.Project("foo", new Rancher2.ProjectArgs
+    ///         {
+    ///             ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///             ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             EnableProjectMonitoring = true,
+    ///             ProjectMonitoringInput = new Rancher2.Inputs.ProjectProjectMonitoringInputArgs
+    ///             {
+    ///                 Answers = 
+    ///                 {
+    ///                     { "exporter-kubelets.https", true },
+    ///                     { "exporter-node.enabled", true },
+    ///                     { "exporter-node.ports.metrics.port", 9796 },
+    ///                     { "exporter-node.resources.limits.cpu", "200m" },
+    ///                     { "exporter-node.resources.limits.memory", "200Mi" },
+    ///                     { "grafana.persistence.enabled", false },
+    ///                     { "grafana.persistence.size", "10Gi" },
+    ///                     { "grafana.persistence.storageClass", "default" },
+    ///                     { "operator.resources.limits.memory", "500Mi" },
+    ///                     { "prometheus.persistence.enabled", "false" },
+    ///                     { "prometheus.persistence.size", "50Gi" },
+    ///                     { "prometheus.persistence.storageClass", "default" },
+    ///                     { "prometheus.persistent.useReleaseName", "true" },
+    ///                     { "prometheus.resources.core.limits.cpu", "1000m" },
+    ///                     { "prometheus.resources.core.limits.memory", "1500Mi" },
+    ///                     { "prometheus.resources.core.requests.cpu", "750m" },
+    ///                     { "prometheus.resources.core.requests.memory", "750Mi" },
+    ///                     { "prometheus.retention", "12h" },
+    ///                 },
+    ///             },
+    ///             ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///             {
+    ///                 NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "500Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///                 ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "2000m",
+    ///                     LimitsMemory = "2000Mi",
+    ///                     RequestsStorage = "2Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster id where create project (string)
+        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// Default containers resource limits on project (List maxitem:1)
+        /// </summary>
         [Output("containerResourceLimit")]
         public Output<Outputs.ProjectContainerResourceLimit?> ContainerResourceLimit { get; private set; } = null!;
 
+        /// <summary>
+        /// A project description (string)
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in project monitoring
+        /// Enable built-in project monitoring. Default `false` (bool)
         /// </summary>
         [Output("enableProjectMonitoring")]
         public Output<bool?> EnableProjectMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the project (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Default Pod Security Policy ID for the project (string)
+        /// </summary>
         [Output("podSecurityPolicyTemplateId")]
         public Output<string?> PodSecurityPolicyTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster monitoring configuration
+        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         /// </summary>
         [Output("projectMonitoringInput")]
         public Output<Outputs.ProjectProjectMonitoringInput?> ProjectMonitoringInput { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Output("resourceQuota")]
         public Output<Outputs.ProjectResourceQuota?> ResourceQuota { get; private set; } = null!;
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Output("waitForCluster")]
         public Output<bool?> WaitForCluster { get; private set; } = null!;
@@ -109,7 +237,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -117,17 +245,26 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The cluster id where create project (string)
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Default containers resource limits on project (List maxitem:1)
+        /// </summary>
         [Input("containerResourceLimit")]
         public Input<Inputs.ProjectContainerResourceLimitArgs>? ContainerResourceLimit { get; set; }
 
+        /// <summary>
+        /// A project description (string)
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable built-in project monitoring
+        /// Enable built-in project monitoring. Default `false` (bool)
         /// </summary>
         [Input("enableProjectMonitoring")]
         public Input<bool>? EnableProjectMonitoring { get; set; }
@@ -136,7 +273,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -144,23 +281,32 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the project (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Default Pod Security Policy ID for the project (string)
+        /// </summary>
         [Input("podSecurityPolicyTemplateId")]
         public Input<string>? PodSecurityPolicyTemplateId { get; set; }
 
         /// <summary>
-        /// Cluster monitoring configuration
+        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         /// </summary>
         [Input("projectMonitoringInput")]
         public Input<Inputs.ProjectProjectMonitoringInputArgs>? ProjectMonitoringInput { get; set; }
 
+        /// <summary>
+        /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Input("resourceQuota")]
         public Input<Inputs.ProjectResourceQuotaArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }
@@ -176,7 +322,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -184,17 +330,26 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// The cluster id where create project (string)
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// Default containers resource limits on project (List maxitem:1)
+        /// </summary>
         [Input("containerResourceLimit")]
         public Input<Inputs.ProjectContainerResourceLimitGetArgs>? ContainerResourceLimit { get; set; }
 
+        /// <summary>
+        /// A project description (string)
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable built-in project monitoring
+        /// Enable built-in project monitoring. Default `false` (bool)
         /// </summary>
         [Input("enableProjectMonitoring")]
         public Input<bool>? EnableProjectMonitoring { get; set; }
@@ -203,7 +358,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -211,23 +366,32 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the project (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Default Pod Security Policy ID for the project (string)
+        /// </summary>
         [Input("podSecurityPolicyTemplateId")]
         public Input<string>? PodSecurityPolicyTemplateId { get; set; }
 
         /// <summary>
-        /// Cluster monitoring configuration
+        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         /// </summary>
         [Input("projectMonitoringInput")]
         public Input<Inputs.ProjectProjectMonitoringInputGetArgs>? ProjectMonitoringInput { get; set; }
 
+        /// <summary>
+        /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Input("resourceQuota")]
         public Input<Inputs.ProjectResourceQuotaGetArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }

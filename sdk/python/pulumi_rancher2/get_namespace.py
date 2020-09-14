@@ -49,16 +49,25 @@ class GetNamespaceResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for Node Pool object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="containerResourceLimit")
     def container_resource_limit(self) -> 'outputs.GetNamespaceContainerResourceLimitResult':
+        """
+        (Computed) Default containers resource limits on namespace (List maxitem:1)
+        """
         return pulumi.get(self, "container_resource_limit")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        (Computed) A namespace description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -72,6 +81,9 @@ class GetNamespaceResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -87,6 +99,9 @@ class GetNamespaceResult:
     @property
     @pulumi.getter(name="resourceQuota")
     def resource_quota(self) -> 'outputs.GetNamespaceResourceQuotaResult':
+        """
+        (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        """
         return pulumi.get(self, "resource_quota")
 
 
@@ -110,7 +125,21 @@ def get_namespace(name: Optional[str] = None,
                   project_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 namespace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_namespace(name="foo",
+        project_id=rancher2_cluster["foo-custom"]["default_project_id"])
+    ```
+
+
+    :param str name: The name of the namespace (string)
+    :param str project_id: The project id where namespace is assigned (string)
     """
     __args__ = dict()
     __args__['name'] = name

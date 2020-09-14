@@ -9,52 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
+    /// 
+    /// There are 2 types of Rancher v2 certificates:
+    /// - Project certificate: Available to all namespaces in the `project_id`
+    /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+    /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for certificate object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate certs base64 encoded
+        /// Base64 encoded public certs (string)
         /// </summary>
         [Output("certs")]
         public Output<string> Certs { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate description
+        /// A certificate description (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate key base64 encoded
+        /// Base64 encoded private key (string)
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for certificate object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate name
+        /// The name of the certificate (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Namespace ID to add certificate
+        /// The namespace id where the namespaced certificate should be created (string)
         /// </summary>
         [Output("namespaceId")]
         public Output<string?> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Project ID to add certificate
+        /// The project id where the certificate should be created  (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -109,7 +116,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for certificate object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -118,19 +125,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Certificate certs base64 encoded
+        /// Base64 encoded public certs (string)
         /// </summary>
         [Input("certs", required: true)]
         public Input<string> Certs { get; set; } = null!;
 
         /// <summary>
-        /// Certificate description
+        /// A certificate description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Certificate key base64 encoded
+        /// Base64 encoded private key (string)
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -139,7 +146,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for certificate object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -148,19 +155,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Certificate name
+        /// The name of the certificate (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace ID to add certificate
+        /// The namespace id where the namespaced certificate should be created (string)
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Project ID to add certificate
+        /// The project id where the certificate should be created  (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -176,7 +183,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for certificate object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -185,19 +192,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Certificate certs base64 encoded
+        /// Base64 encoded public certs (string)
         /// </summary>
         [Input("certs")]
         public Input<string>? Certs { get; set; }
 
         /// <summary>
-        /// Certificate description
+        /// A certificate description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Certificate key base64 encoded
+        /// Base64 encoded private key (string)
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -206,7 +213,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for certificate object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -215,19 +222,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Certificate name
+        /// The name of the certificate (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace ID to add certificate
+        /// The namespace id where the namespaced certificate should be created (string)
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Project ID to add certificate
+        /// The project id where the certificate should be created  (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

@@ -15,6 +15,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("datacenters", required: true)]
         public Input<string> Datacenters { get; set; } = null!;
 
+        /// <summary>
+        /// The cluster template revision name (string)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

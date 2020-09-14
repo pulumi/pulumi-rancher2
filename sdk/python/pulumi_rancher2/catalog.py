@@ -33,11 +33,42 @@ class Catalog(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Catalog resource with the given unique name, props, and options.
+        Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 Global Catalog
+        foo_global = rancher2.Catalog("foo-global", url="https://<CATALOG_URL>")
+        # Create a new Rancher2 Cluster Catalog
+        foo_cluster = rancher2.Catalog("foo-cluster",
+            scope="cluster",
+            url="https://<CATALOG_URL>")
+        # Create a new Rancher2 Project Catalog
+        foo_project = rancher2.Catalog("foo-project",
+            scope="project",
+            url="https://<CATALOG_URL>")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
+        :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+        :param pulumi.Input[str] description: A catalog description (string)
+        :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[str] name: The name of the catalog (string)
+        :param pulumi.Input[str] password: The password to access the catalog if needed (string)
+        :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
+        :param pulumi.Input[bool] refresh: Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+        :param pulumi.Input[str] url: The url of the catalog repo (string)
+        :param pulumi.Input[str] username: The username to access the catalog if needed (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,8 +134,20 @@ class Catalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
+        :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+        :param pulumi.Input[str] description: A catalog description (string)
+        :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[str] name: The name of the catalog (string)
+        :param pulumi.Input[str] password: The password to access the catalog if needed (string)
+        :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
+        :param pulumi.Input[bool] refresh: Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        :param pulumi.Input[str] scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+        :param pulumi.Input[str] url: The url of the catalog repo (string)
+        :param pulumi.Input[str] username: The username to access the catalog if needed (string)
+        :param pulumi.Input[str] version: Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -130,76 +173,112 @@ class Catalog(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Annotations of the resource
+        Annotations for the catalog (map)
         """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def branch(self) -> pulumi.Output[Optional[str]]:
+        """
+        The branch of the catalog repo to use. Default `master` (string)
+        """
         return pulumi.get(self, "branch")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cluster id of the catalog. Mandatory if `scope = cluster` (string)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A catalog description (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[Optional[str]]:
+        """
+        The kind of the catalog. Just helm by the moment (string)
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Labels of the resource
+        Labels for the catalog (map)
         """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the catalog (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password to access the catalog if needed (string)
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project id of the catalog. Mandatory if `scope = project` (string)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def refresh(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Catalog will wait for refresh after tf creation and on every tf read. Default `false` (bool)
+        """
         return pulumi.get(self, "refresh")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
+        """
         return pulumi.get(self, "scope")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        The url of the catalog repo (string)
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username to access the catalog if needed (string)
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
+        """
+        Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)
+        """
         return pulumi.get(self, "version")
 
     def translate_output_property(self, prop):

@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 cluster role template binding.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupClusterRoleTemplateBinding(ctx, &rancher2.LookupClusterRoleTemplateBindingArgs{
+// 			ClusterId: "foo_id",
+// 			Name:      "foo",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupClusterRoleTemplateBinding(ctx *pulumi.Context, args *LookupClusterRoleTemplateBindingArgs, opts ...pulumi.InvokeOption) (*LookupClusterRoleTemplateBindingResult, error) {
 	var rv LookupClusterRoleTemplateBindingResult
 	err := ctx.Invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args, &rv, opts...)
@@ -18,22 +43,31 @@ func LookupClusterRoleTemplateBinding(ctx *pulumi.Context, args *LookupClusterRo
 
 // A collection of arguments for invoking getClusterRoleTemplateBinding.
 type LookupClusterRoleTemplateBindingArgs struct {
-	ClusterId      string  `pulumi:"clusterId"`
-	Name           string  `pulumi:"name"`
+	// The cluster id where bind cluster role template (string)
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the cluster role template binding (string)
+	Name string `pulumi:"name"`
+	// The role template id from create cluster role template binding (string)
 	RoleTemplateId *string `pulumi:"roleTemplateId"`
 }
 
 // A collection of values returned by getClusterRoleTemplateBinding.
 type LookupClusterRoleTemplateBindingResult struct {
-	Annotations      map[string]interface{} `pulumi:"annotations"`
-	ClusterId        string                 `pulumi:"clusterId"`
-	GroupId          string                 `pulumi:"groupId"`
-	GroupPrincipalId string                 `pulumi:"groupPrincipalId"`
+	// (Computed) Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	ClusterId   string                 `pulumi:"clusterId"`
+	// (Computed) The group ID to assign cluster role template binding (string)
+	GroupId string `pulumi:"groupId"`
+	// (Computed) The groupPrincipal ID to assign cluster role template binding (string)
+	GroupPrincipalId string `pulumi:"groupPrincipalId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Labels          map[string]interface{} `pulumi:"labels"`
-	Name            string                 `pulumi:"name"`
-	RoleTemplateId  string                 `pulumi:"roleTemplateId"`
-	UserId          string                 `pulumi:"userId"`
-	UserPrincipalId string                 `pulumi:"userPrincipalId"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels of the resource (map)
+	Labels         map[string]interface{} `pulumi:"labels"`
+	Name           string                 `pulumi:"name"`
+	RoleTemplateId string                 `pulumi:"roleTemplateId"`
+	// (Computed) The user ID to assign cluster role template binding (string)
+	UserId string `pulumi:"userId"`
+	// (Computed) The userPrincipal ID to assign cluster role template binding (string)
+	UserPrincipalId string `pulumi:"userPrincipalId"`
 }

@@ -6,6 +6,68 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Namespace
+ * const foo = new rancher2.Namespace("foo", {
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
+ *     },
+ *     description: "foo namespace",
+ *     projectId: "<PROJECT_ID>",
+ *     resourceQuota: {
+ *         limit: {
+ *             limitsCpu: "100m",
+ *             limitsMemory: "100Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Cluster 
+ * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     description: "Foo rancher2 custom cluster",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ * });
+ * // Create a new rancher2 Namespace assigned to default cluster project
+ * const foo = new rancher2.Namespace("foo", {
+ *     projectId: foo_custom.defaultProjectId,
+ *     description: "foo namespace",
+ *     resourceQuota: {
+ *         limit: {
+ *             limitsCpu: "100m",
+ *             limitsMemory: "100Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
+ *     },
+ * });
+ * ```
+ */
 export class Namespace extends pulumi.CustomResource {
     /**
      * Get an existing Namespace resource's state with the given name, ID, and optional extra
@@ -35,29 +97,35 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Default containers resource limits on namespace (List maxitem:1)
+     */
     public readonly containerResourceLimit!: pulumi.Output<outputs.NamespaceContainerResourceLimit | undefined>;
     /**
-     * Description of the k8s namespace managed by rancher v2
+     * A namespace description (string)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Name of the k8s namespace managed by rancher v2
+     * The name of the namespace (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Project ID where k8s namespace belongs
+     * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+     */
     public readonly resourceQuota!: pulumi.Output<outputs.NamespaceResourceQuota>;
     /**
-     * Wait for cluster becomes active
+     * Wait for cluster becomes active. Default `false` (bool)
      */
     public readonly waitForCluster!: pulumi.Output<boolean | undefined>;
 
@@ -111,29 +179,35 @@ export class Namespace extends pulumi.CustomResource {
  */
 export interface NamespaceState {
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Default containers resource limits on namespace (List maxitem:1)
+     */
     readonly containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
     /**
-     * Description of the k8s namespace managed by rancher v2
+     * A namespace description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the k8s namespace managed by rancher v2
+     * The name of the namespace (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Project ID where k8s namespace belongs
+     * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
     readonly projectId?: pulumi.Input<string>;
+    /**
+     * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+     */
     readonly resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
     /**
-     * Wait for cluster becomes active
+     * Wait for cluster becomes active. Default `false` (bool)
      */
     readonly waitForCluster?: pulumi.Input<boolean>;
 }
@@ -143,29 +217,35 @@ export interface NamespaceState {
  */
 export interface NamespaceArgs {
     /**
-     * Annotations of the resource
+     * Annotations for Node Pool object (map)
      */
     readonly annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Default containers resource limits on namespace (List maxitem:1)
+     */
     readonly containerResourceLimit?: pulumi.Input<inputs.NamespaceContainerResourceLimit>;
     /**
-     * Description of the k8s namespace managed by rancher v2
+     * A namespace description (string)
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Labels of the resource
+     * Labels for Node Pool object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the k8s namespace managed by rancher v2
+     * The name of the namespace (string)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Project ID where k8s namespace belongs
+     * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
     readonly projectId: pulumi.Input<string>;
+    /**
+     * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+     */
     readonly resourceQuota?: pulumi.Input<inputs.NamespaceResourceQuota>;
     /**
-     * Wait for cluster becomes active
+     * Wait for cluster becomes active. Default `false` (bool)
      */
     readonly waitForCluster?: pulumi.Input<boolean>;
 }

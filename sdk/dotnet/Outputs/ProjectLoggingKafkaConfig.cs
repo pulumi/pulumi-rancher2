@@ -13,11 +13,29 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectLoggingKafkaConfig
     {
+        /// <summary>
+        /// Kafka endpoints for kafka service. Conflicts with `zookeeper_endpoint` (list)
+        /// </summary>
         public readonly ImmutableArray<string> BrokerEndpoints;
+        /// <summary>
+        /// SSL certificate for the syslog service (string)
+        /// </summary>
         public readonly string? Certificate;
+        /// <summary>
+        /// SSL client certificate for the syslog service (string)
+        /// </summary>
         public readonly string? ClientCert;
+        /// <summary>
+        /// SSL client key for the syslog service (string)
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// Topic to publish on the kafka service (string)
+        /// </summary>
         public readonly string Topic;
+        /// <summary>
+        /// Zookeeper endpoint for kafka service. Conflicts with `broker_endpoints` (string)
+        /// </summary>
         public readonly string? ZookeeperEndpoint;
 
         [OutputConstructor]

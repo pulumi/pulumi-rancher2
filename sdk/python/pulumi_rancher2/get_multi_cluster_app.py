@@ -70,16 +70,25 @@ class GetMultiClusterAppResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations for multi cluster app object (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def answers(self) -> List['outputs.GetMultiClusterAppAnswerResult']:
+        """
+        (Computed) The multi cluster app answers (list)
+        """
         return pulumi.get(self, "answers")
 
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> str:
+        """
+        (Computed) The multi cluster app catalog name (string)
+        """
         return pulumi.get(self, "catalog_name")
 
     @property
@@ -93,11 +102,17 @@ class GetMultiClusterAppResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for multi cluster app object (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def members(self) -> List['outputs.GetMultiClusterAppMemberResult']:
+        """
+        (Computed) The multi cluster app members (list)
+        """
         return pulumi.get(self, "members")
 
     @property
@@ -108,41 +123,65 @@ class GetMultiClusterAppResult:
     @property
     @pulumi.getter(name="revisionHistoryLimit")
     def revision_history_limit(self) -> float:
+        """
+        (Computed) The multi cluster app revision history limit (int)
+        """
         return pulumi.get(self, "revision_history_limit")
 
     @property
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> str:
+        """
+        (Computed) Current revision id for the multi cluster app (string)
+        """
         return pulumi.get(self, "revision_id")
 
     @property
     @pulumi.getter
     def roles(self) -> List[str]:
+        """
+        (Computed) The multi cluster app roles (list)
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def targets(self) -> List['outputs.GetMultiClusterAppTargetResult']:
+        """
+        (Computed) The multi cluster app target projects (list)
+        """
         return pulumi.get(self, "targets")
 
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> str:
+        """
+        (Computed) The multi cluster app template name (string)
+        """
         return pulumi.get(self, "template_name")
 
     @property
     @pulumi.getter(name="templateVersion")
     def template_version(self) -> str:
+        """
+        (Computed) The multi cluster app template version (string)
+        """
         return pulumi.get(self, "template_version")
 
     @property
     @pulumi.getter(name="templateVersionId")
     def template_version_id(self) -> str:
+        """
+        (Computed) The multi cluster app template version ID (string)
+        """
         return pulumi.get(self, "template_version_id")
 
     @property
     @pulumi.getter(name="upgradeStrategies")
     def upgrade_strategies(self) -> List['outputs.GetMultiClusterAppUpgradeStrategyResult']:
+        """
+        (Computed) The multi cluster app upgrade strategy (list)
+        """
         return pulumi.get(self, "upgrade_strategies")
 
 
@@ -172,7 +211,19 @@ class AwaitableGetMultiClusterAppResult(GetMultiClusterAppResult):
 def get_multi_cluster_app(name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMultiClusterAppResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 multi cluster app.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_multi_cluster_app(name="foo")
+    ```
+
+
+    :param str name: The multi cluster app name (string)
     """
     __args__ = dict()
     __args__['name'] = name

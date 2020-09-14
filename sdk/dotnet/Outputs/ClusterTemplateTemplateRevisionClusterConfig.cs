@@ -13,17 +13,53 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfig
     {
+        /// <summary>
+        /// Local cluster auth endpoint (list maxitems: 1)
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint? ClusterAuthEndpoint;
+        /// <summary>
+        /// Default cluster role for project members (string)
+        /// </summary>
         public readonly string? DefaultClusterRoleForProjectMembers;
+        /// <summary>
+        /// Default pod security policy template ID (string)
+        /// </summary>
         public readonly string? DefaultPodSecurityPolicyTemplateId;
+        /// <summary>
+        /// Desired agent image (string)
+        /// </summary>
         public readonly string? DesiredAgentImage;
+        /// <summary>
+        /// Desired auth image (string)
+        /// </summary>
         public readonly string? DesiredAuthImage;
+        /// <summary>
+        /// Desired auth image (string)
+        /// </summary>
         public readonly string? DockerRootDir;
+        /// <summary>
+        /// Enable built-in cluster alerting. Default: `false` (bool)
+        /// </summary>
         public readonly bool? EnableClusterAlerting;
+        /// <summary>
+        /// Enable built-in cluster monitoring. Default: `false` (bool)
+        /// </summary>
         public readonly bool? EnableClusterMonitoring;
+        /// <summary>
+        /// Enable project network isolation. Default: `false` (bool)
+        /// </summary>
         public readonly bool? EnableNetworkPolicy;
+        /// <summary>
+        /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig RkeConfig;
+        /// <summary>
+        /// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List MaxItem:1)
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScan? ScheduledClusterScan;
+        /// <summary>
+        /// Windows prefered cluster. Default: `false` (bool)
+        /// </summary>
         public readonly bool? WindowsPreferedCluster;
 
         [OutputConstructor]

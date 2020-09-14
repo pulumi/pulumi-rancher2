@@ -10,18 +10,57 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
+//
+// When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
+// 			Username: pulumi.String("foo"),
+// 			Password: pulumi.String("changeme"),
+// 			Enabled:  pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
+// 			GlobalRoleId: pulumi.String("user-base"),
+// 			UserId:       fooUser.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations for global role binding (map)
 	Annotations pulumi.MapOutput     `pulumi:"annotations"`
 	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Labels of the resource
-	Labels       pulumi.MapOutput         `pulumi:"labels"`
-	Name         pulumi.StringOutput      `pulumi:"name"`
-	Password     pulumi.StringOutput      `pulumi:"password"`
+	// Labels for global role binding (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The user full name (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The user password (string)
+	Password pulumi.StringOutput `pulumi:"password"`
+	// (Computed) The user principal IDs (list)
 	PrincipalIds pulumi.StringArrayOutput `pulumi:"principalIds"`
-	Username     pulumi.StringOutput      `pulumi:"username"`
+	// The user username (string)
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -58,27 +97,35 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// Annotations of the resource
+	// Annotations for global role binding (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	Enabled     *bool                  `pulumi:"enabled"`
-	// Labels of the resource
-	Labels       map[string]interface{} `pulumi:"labels"`
-	Name         *string                `pulumi:"name"`
-	Password     *string                `pulumi:"password"`
-	PrincipalIds []string               `pulumi:"principalIds"`
-	Username     *string                `pulumi:"username"`
+	// Labels for global role binding (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The user full name (string)
+	Name *string `pulumi:"name"`
+	// The user password (string)
+	Password *string `pulumi:"password"`
+	// (Computed) The user principal IDs (list)
+	PrincipalIds []string `pulumi:"principalIds"`
+	// The user username (string)
+	Username *string `pulumi:"username"`
 }
 
 type UserState struct {
-	// Annotations of the resource
+	// Annotations for global role binding (map)
 	Annotations pulumi.MapInput
 	Enabled     pulumi.BoolPtrInput
-	// Labels of the resource
-	Labels       pulumi.MapInput
-	Name         pulumi.StringPtrInput
-	Password     pulumi.StringPtrInput
+	// Labels for global role binding (map)
+	Labels pulumi.MapInput
+	// The user full name (string)
+	Name pulumi.StringPtrInput
+	// The user password (string)
+	Password pulumi.StringPtrInput
+	// (Computed) The user principal IDs (list)
 	PrincipalIds pulumi.StringArrayInput
-	Username     pulumi.StringPtrInput
+	// The user username (string)
+	Username pulumi.StringPtrInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -86,25 +133,31 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// Annotations of the resource
+	// Annotations for global role binding (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	Enabled     *bool                  `pulumi:"enabled"`
-	// Labels of the resource
-	Labels   map[string]interface{} `pulumi:"labels"`
-	Name     *string                `pulumi:"name"`
-	Password string                 `pulumi:"password"`
-	Username string                 `pulumi:"username"`
+	// Labels for global role binding (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The user full name (string)
+	Name *string `pulumi:"name"`
+	// The user password (string)
+	Password string `pulumi:"password"`
+	// The user username (string)
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// Annotations of the resource
+	// Annotations for global role binding (map)
 	Annotations pulumi.MapInput
 	Enabled     pulumi.BoolPtrInput
-	// Labels of the resource
-	Labels   pulumi.MapInput
-	Name     pulumi.StringPtrInput
+	// Labels for global role binding (map)
+	Labels pulumi.MapInput
+	// The user full name (string)
+	Name pulumi.StringPtrInput
+	// The user password (string)
 	Password pulumi.StringInput
+	// The user username (string)
 	Username pulumi.StringInput
 }
 

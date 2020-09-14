@@ -9,46 +9,139 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Namespace
+    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
+    ///         {
+    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///             Description = "foo namespace",
+    ///             ProjectId = "&lt;PROJECT_ID&gt;",
+    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             {
+    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "100m",
+    ///                     LimitsMemory = "100Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Cluster 
+    ///         var foo_custom = new Rancher2.Cluster("foo-custom", new Rancher2.ClusterArgs
+    ///         {
+    ///             Description = "Foo rancher2 custom cluster",
+    ///             RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///             {
+    ///                 Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///                 {
+    ///                     Plugin = "canal",
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Create a new rancher2 Namespace assigned to default cluster project
+    ///         var foo = new Rancher2.Namespace("foo", new Rancher2.NamespaceArgs
+    ///         {
+    ///             ProjectId = foo_custom.DefaultProjectId,
+    ///             Description = "foo namespace",
+    ///             ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
+    ///             {
+    ///                 Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
+    ///                 {
+    ///                     LimitsCpu = "100m",
+    ///                     LimitsMemory = "100Mi",
+    ///                     RequestsStorage = "1Gi",
+    ///                 },
+    ///             },
+    ///             ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///             {
+    ///                 LimitsCpu = "20m",
+    ///                 LimitsMemory = "20Mi",
+    ///                 RequestsCpu = "1m",
+    ///                 RequestsMemory = "1Mi",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// Default containers resource limits on namespace (List maxitem:1)
+        /// </summary>
         [Output("containerResourceLimit")]
         public Output<Outputs.NamespaceContainerResourceLimit?> ContainerResourceLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the k8s namespace managed by rancher v2
+        /// A namespace description (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the k8s namespace managed by rancher v2
+        /// The name of the namespace (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Project ID where k8s namespace belongs
+        /// The project id where assign namespace. It's on the form `project_id=&lt;cluster_id&gt;:&lt;id&gt;`. Updating `&lt;id&gt;` part on same `&lt;cluster_id&gt;` namespace will be moved between projects (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Output("resourceQuota")]
         public Output<Outputs.NamespaceResourceQuota> ResourceQuota { get; private set; } = null!;
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Output("waitForCluster")]
         public Output<bool?> WaitForCluster { get; private set; } = null!;
@@ -103,7 +196,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -111,11 +204,14 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Default containers resource limits on namespace (List maxitem:1)
+        /// </summary>
         [Input("containerResourceLimit")]
         public Input<Inputs.NamespaceContainerResourceLimitArgs>? ContainerResourceLimit { get; set; }
 
         /// <summary>
-        /// Description of the k8s namespace managed by rancher v2
+        /// A namespace description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -124,7 +220,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -133,22 +229,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Name of the k8s namespace managed by rancher v2
+        /// The name of the namespace (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Project ID where k8s namespace belongs
+        /// The project id where assign namespace. It's on the form `project_id=&lt;cluster_id&gt;:&lt;id&gt;`. Updating `&lt;id&gt;` part on same `&lt;cluster_id&gt;` namespace will be moved between projects (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Input("resourceQuota")]
         public Input<Inputs.NamespaceResourceQuotaArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }
@@ -164,7 +263,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations for Node Pool object (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -172,11 +271,14 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Default containers resource limits on namespace (List maxitem:1)
+        /// </summary>
         [Input("containerResourceLimit")]
         public Input<Inputs.NamespaceContainerResourceLimitGetArgs>? ContainerResourceLimit { get; set; }
 
         /// <summary>
-        /// Description of the k8s namespace managed by rancher v2
+        /// A namespace description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -185,7 +287,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels for Node Pool object (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -194,22 +296,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Name of the k8s namespace managed by rancher v2
+        /// The name of the namespace (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Project ID where k8s namespace belongs
+        /// The project id where assign namespace. It's on the form `project_id=&lt;cluster_id&gt;:&lt;id&gt;`. Updating `&lt;id&gt;` part on same `&lt;cluster_id&gt;` namespace will be moved between projects (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
+        /// </summary>
         [Input("resourceQuota")]
         public Input<Inputs.NamespaceResourceQuotaGetArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active
+        /// Wait for cluster becomes active. Default `false` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }

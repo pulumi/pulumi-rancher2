@@ -6,6 +6,20 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to retrieve information about a Rancher v2 setting.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const server_image = pulumi.output(rancher2.getSetting({
+ *     name: "server-image",
+ * }, { async: true }));
+ * ```
+ */
 export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSettingResult> {
     if (!opts) {
         opts = {}
@@ -23,6 +37,9 @@ export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getSetting.
  */
 export interface GetSettingArgs {
+    /**
+     * The setting name.
+     */
     readonly name: string;
 }
 
@@ -35,5 +52,8 @@ export interface GetSettingResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * the settting's value.
+     */
     readonly value: string;
 }

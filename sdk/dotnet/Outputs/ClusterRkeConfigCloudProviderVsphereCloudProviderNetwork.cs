@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? PublicNetwork;
 
         [OutputConstructor]

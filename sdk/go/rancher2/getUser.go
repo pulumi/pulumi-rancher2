@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 user
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "foo"
+// 		_, err := rancher2.LookupUser(ctx, &rancher2.LookupUserArgs{
+// 			Username: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
 	err := ctx.Invoke("rancher2:index/getUser:getUser", args, &rv, opts...)
@@ -18,20 +43,28 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	IsExternal *bool   `pulumi:"isExternal"`
-	Name       *string `pulumi:"name"`
-	Username   *string `pulumi:"username"`
+	// Set is the user if the user is external. Default: `false` (bool)
+	IsExternal *bool `pulumi:"isExternal"`
+	// The name of the user (string)
+	Name *string `pulumi:"name"`
+	// The username of the user (string)
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// (Computed) Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Enabled     bool                   `pulumi:"enabled"`
+	// (Computed) The user is enabled (bool)
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                 `pulumi:"id"`
-	IsExternal   *bool                  `pulumi:"isExternal"`
-	Labels       map[string]interface{} `pulumi:"labels"`
-	Name         string                 `pulumi:"name"`
-	PrincipalIds []string               `pulumi:"principalIds"`
-	Username     string                 `pulumi:"username"`
+	Id         string `pulumi:"id"`
+	IsExternal *bool  `pulumi:"isExternal"`
+	// (Computed) Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) The user common name (string)
+	Name string `pulumi:"name"`
+	// (Computed) The user principal IDs (list)
+	PrincipalIds []string `pulumi:"principalIds"`
+	Username     string   `pulumi:"username"`
 }

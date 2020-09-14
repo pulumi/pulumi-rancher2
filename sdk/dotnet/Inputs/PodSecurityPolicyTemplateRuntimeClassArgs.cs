@@ -14,12 +14,19 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("allowedRuntimeClassNames", required: true)]
         private InputList<string>? _allowedRuntimeClassNames;
+
+        /// <summary>
+        /// (list)
+        /// </summary>
         public InputList<string> AllowedRuntimeClassNames
         {
             get => _allowedRuntimeClassNames ?? (_allowedRuntimeClassNames = new InputList<string>());
             set => _allowedRuntimeClassNames = value;
         }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("defaultRuntimeClassName")]
         public Input<string>? DefaultRuntimeClassName { get; set; }
 

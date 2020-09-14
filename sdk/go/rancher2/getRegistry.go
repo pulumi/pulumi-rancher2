@@ -7,6 +7,59 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Use this data source to retrieve information about a Rancher v2 docker registry.
+//
+// Depending of the availability, there are 2 types of Rancher v2 docker registries:
+// - Project registry: Available to all namespaces in the `projectId`
+// - Namespaced registry: Available to just `namespaceId` in the `projectId`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
+// 			Name:      "<name>",
+// 			ProjectId: "<project_id>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "<namespace_id>"
+// 		_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
+// 			Name:        "<name>",
+// 			NamespaceId: &opt0,
+// 			ProjectId:   "<project_id>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	var rv LookupRegistryResult
 	err := ctx.Invoke("rancher2:index/getRegistry:getRegistry", args, &rv, opts...)
@@ -18,20 +71,27 @@ func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulum
 
 // A collection of arguments for invoking getRegistry.
 type LookupRegistryArgs struct {
-	Name        string  `pulumi:"name"`
+	// The name of the registry (string)
+	Name string `pulumi:"name"`
+	// The namespace id where to assign the namespaced registry (string)
 	NamespaceId *string `pulumi:"namespaceId"`
-	ProjectId   string  `pulumi:"projectId"`
+	// The project id where to assign the registry (string)
+	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getRegistry.
 type LookupRegistryResult struct {
+	// (Computed) Annotations for Registry object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Description string                 `pulumi:"description"`
+	// (Computed) A registry description (string)
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                 `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Computed) Labels for Registry object (map)
 	Labels      map[string]interface{} `pulumi:"labels"`
 	Name        string                 `pulumi:"name"`
 	NamespaceId *string                `pulumi:"namespaceId"`
 	ProjectId   string                 `pulumi:"projectId"`
-	Registries  []GetRegistryRegistry  `pulumi:"registries"`
+	// (Computed) Registries data for registry (list)
+	Registries []GetRegistryRegistry `pulumi:"registries"`
 }

@@ -10,26 +10,72 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.
+//
+// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := rancher2.NewAuthConfigAdfs(ctx, "adfs", &rancher2.AuthConfigAdfsArgs{
+// 			DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
+// 			GroupsField:        pulumi.String("<GROUPS_FIELD>"),
+// 			IdpMetadataContent: pulumi.String("<IDP_METADATA_CONTENT>"),
+// 			RancherApiHost:     pulumi.String("https://<RANCHER_API_HOST>"),
+// 			SpCert:             pulumi.String("<SP_CERT>"),
+// 			SpKey:              pulumi.String("<SP_KEY>"),
+// 			UidField:           pulumi.String("<UID_FIELD>"),
+// 			UserNameField:      pulumi.String("<USER_NAME_FIELD>"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AuthConfigAdfs struct {
 	pulumi.CustomResourceState
 
-	AccessMode          pulumi.StringPtrOutput   `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        pulumi.MapOutput     `pulumi:"annotations"`
-	DisplayNameField   pulumi.StringOutput  `pulumi:"displayNameField"`
-	Enabled            pulumi.BoolPtrOutput `pulumi:"enabled"`
-	GroupsField        pulumi.StringOutput  `pulumi:"groupsField"`
-	IdpMetadataContent pulumi.StringOutput  `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         pulumi.MapOutput    `pulumi:"labels"`
-	Name           pulumi.StringOutput `pulumi:"name"`
+	// Annotations of the resource (map)
+	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	// ADFS display name field (string)
+	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// ADFS group field (string)
+	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
+	// ADFS IDP metadata content (string)
+	IdpMetadataContent pulumi.StringOutput `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringOutput `pulumi:"rancherApiHost"`
-	SpCert         pulumi.StringOutput `pulumi:"spCert"`
-	SpKey          pulumi.StringOutput `pulumi:"spKey"`
-	Type           pulumi.StringOutput `pulumi:"type"`
-	UidField       pulumi.StringOutput `pulumi:"uidField"`
-	UserNameField  pulumi.StringOutput `pulumi:"userNameField"`
+	// ADFS SP cert (string)
+	SpCert pulumi.StringOutput `pulumi:"spCert"`
+	// ADFS SP key (string)
+	SpKey pulumi.StringOutput `pulumi:"spKey"`
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringOutput `pulumi:"type"`
+	// ADFS UID field (string)
+	UidField pulumi.StringOutput `pulumi:"uidField"`
+	// ADFS user name field (string)
+	UserNameField pulumi.StringOutput `pulumi:"userNameField"`
 }
 
 // NewAuthConfigAdfs registers a new resource with the given unique name, arguments, and options.
@@ -84,43 +130,69 @@ func GetAuthConfigAdfs(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthConfigAdfs resources.
 type authConfigAdfsState struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        map[string]interface{} `pulumi:"annotations"`
-	DisplayNameField   *string                `pulumi:"displayNameField"`
-	Enabled            *bool                  `pulumi:"enabled"`
-	GroupsField        *string                `pulumi:"groupsField"`
-	IdpMetadataContent *string                `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         map[string]interface{} `pulumi:"labels"`
-	Name           *string                `pulumi:"name"`
-	RancherApiHost *string                `pulumi:"rancherApiHost"`
-	SpCert         *string                `pulumi:"spCert"`
-	SpKey          *string                `pulumi:"spKey"`
-	Type           *string                `pulumi:"type"`
-	UidField       *string                `pulumi:"uidField"`
-	UserNameField  *string                `pulumi:"userNameField"`
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// ADFS display name field (string)
+	DisplayNameField *string `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// ADFS group field (string)
+	GroupsField *string `pulumi:"groupsField"`
+	// ADFS IDP metadata content (string)
+	IdpMetadataContent *string `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// (Computed) The name of the resource (string)
+	Name *string `pulumi:"name"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	RancherApiHost *string `pulumi:"rancherApiHost"`
+	// ADFS SP cert (string)
+	SpCert *string `pulumi:"spCert"`
+	// ADFS SP key (string)
+	SpKey *string `pulumi:"spKey"`
+	// (Computed) The type of the resource (string)
+	Type *string `pulumi:"type"`
+	// ADFS UID field (string)
+	UidField *string `pulumi:"uidField"`
+	// ADFS user name field (string)
+	UserNameField *string `pulumi:"userNameField"`
 }
 
 type AuthConfigAdfsState struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations        pulumi.MapInput
-	DisplayNameField   pulumi.StringPtrInput
-	Enabled            pulumi.BoolPtrInput
-	GroupsField        pulumi.StringPtrInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// ADFS display name field (string)
+	DisplayNameField pulumi.StringPtrInput
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// ADFS group field (string)
+	GroupsField pulumi.StringPtrInput
+	// ADFS IDP metadata content (string)
 	IdpMetadataContent pulumi.StringPtrInput
-	// Labels of the resource
-	Labels         pulumi.MapInput
-	Name           pulumi.StringPtrInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// (Computed) The name of the resource (string)
+	Name pulumi.StringPtrInput
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringPtrInput
-	SpCert         pulumi.StringPtrInput
-	SpKey          pulumi.StringPtrInput
-	Type           pulumi.StringPtrInput
-	UidField       pulumi.StringPtrInput
-	UserNameField  pulumi.StringPtrInput
+	// ADFS SP cert (string)
+	SpCert pulumi.StringPtrInput
+	// ADFS SP key (string)
+	SpKey pulumi.StringPtrInput
+	// (Computed) The type of the resource (string)
+	Type pulumi.StringPtrInput
+	// ADFS UID field (string)
+	UidField pulumi.StringPtrInput
+	// ADFS user name field (string)
+	UserNameField pulumi.StringPtrInput
 }
 
 func (AuthConfigAdfsState) ElementType() reflect.Type {
@@ -128,40 +200,62 @@ func (AuthConfigAdfsState) ElementType() reflect.Type {
 }
 
 type authConfigAdfsArgs struct {
-	AccessMode          *string  `pulumi:"accessMode"`
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode *string `pulumi:"accessMode"`
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
-	// Annotations of the resource
-	Annotations        map[string]interface{} `pulumi:"annotations"`
-	DisplayNameField   string                 `pulumi:"displayNameField"`
-	Enabled            *bool                  `pulumi:"enabled"`
-	GroupsField        string                 `pulumi:"groupsField"`
-	IdpMetadataContent string                 `pulumi:"idpMetadataContent"`
-	// Labels of the resource
-	Labels         map[string]interface{} `pulumi:"labels"`
-	RancherApiHost string                 `pulumi:"rancherApiHost"`
-	SpCert         string                 `pulumi:"spCert"`
-	SpKey          string                 `pulumi:"spKey"`
-	UidField       string                 `pulumi:"uidField"`
-	UserNameField  string                 `pulumi:"userNameField"`
+	// Annotations of the resource (map)
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// ADFS display name field (string)
+	DisplayNameField string `pulumi:"displayNameField"`
+	// Enable auth config provider. Default `true` (bool)
+	Enabled *bool `pulumi:"enabled"`
+	// ADFS group field (string)
+	GroupsField string `pulumi:"groupsField"`
+	// ADFS IDP metadata content (string)
+	IdpMetadataContent string `pulumi:"idpMetadataContent"`
+	// Labels of the resource (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	RancherApiHost string `pulumi:"rancherApiHost"`
+	// ADFS SP cert (string)
+	SpCert string `pulumi:"spCert"`
+	// ADFS SP key (string)
+	SpKey string `pulumi:"spKey"`
+	// ADFS UID field (string)
+	UidField string `pulumi:"uidField"`
+	// ADFS user name field (string)
+	UserNameField string `pulumi:"userNameField"`
 }
 
 // The set of arguments for constructing a AuthConfigAdfs resource.
 type AuthConfigAdfsArgs struct {
-	AccessMode          pulumi.StringPtrInput
+	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+	AccessMode pulumi.StringPtrInput
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
-	// Annotations of the resource
-	Annotations        pulumi.MapInput
-	DisplayNameField   pulumi.StringInput
-	Enabled            pulumi.BoolPtrInput
-	GroupsField        pulumi.StringInput
+	// Annotations of the resource (map)
+	Annotations pulumi.MapInput
+	// ADFS display name field (string)
+	DisplayNameField pulumi.StringInput
+	// Enable auth config provider. Default `true` (bool)
+	Enabled pulumi.BoolPtrInput
+	// ADFS group field (string)
+	GroupsField pulumi.StringInput
+	// ADFS IDP metadata content (string)
 	IdpMetadataContent pulumi.StringInput
-	// Labels of the resource
-	Labels         pulumi.MapInput
+	// Labels of the resource (map)
+	Labels pulumi.MapInput
+	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringInput
-	SpCert         pulumi.StringInput
-	SpKey          pulumi.StringInput
-	UidField       pulumi.StringInput
-	UserNameField  pulumi.StringInput
+	// ADFS SP cert (string)
+	SpCert pulumi.StringInput
+	// ADFS SP key (string)
+	SpKey pulumi.StringInput
+	// ADFS UID field (string)
+	UidField pulumi.StringInput
+	// ADFS user name field (string)
+	UserNameField pulumi.StringInput
 }
 
 func (AuthConfigAdfsArgs) ElementType() reflect.Type {

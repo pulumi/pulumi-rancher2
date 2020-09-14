@@ -48,11 +48,17 @@ class GetUserResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, Any]:
+        """
+        (Computed) Annotations of the resource (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        (Computed) The user is enabled (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -71,16 +77,25 @@ class GetUserResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels of the resource (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        (Computed) The user common name (string)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="principalIds")
     def principal_ids(self) -> List[str]:
+        """
+        (Computed) The user principal IDs (list)
+        """
         return pulumi.get(self, "principal_ids")
 
     @property
@@ -110,7 +125,21 @@ def get_user(is_external: Optional[bool] = None,
              username: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a Rancher v2 user
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_user(username="foo")
+    ```
+
+
+    :param bool is_external: Set is the user if the user is external. Default: `false` (bool)
+    :param str name: The name of the user (string)
+    :param str username: The username of the user (string)
     """
     __args__ = dict()
     __args__['isExternal'] = is_external

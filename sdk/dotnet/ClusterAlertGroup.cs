@@ -9,58 +9,84 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Rancher2 Cluster Alert Group
+    ///         var foo = new Rancher2.ClusterAlertGroup("foo", new Rancher2.ClusterAlertGroupArgs
+    ///         {
+    ///             ClusterId = "&lt;cluster_id&gt;",
+    ///             Description = "Terraform cluster alert group",
+    ///             GroupIntervalSeconds = 300,
+    ///             RepeatIntervalSeconds = 3600,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class ClusterAlertGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert group annotations (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group Cluster ID
+        /// The cluster id where create cluster alert group (string)
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group description
+        /// The cluster alert group description (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The cluster alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Output("groupIntervalSeconds")]
         public Output<int?> GroupIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The cluster alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Output("groupWaitSeconds")]
         public Output<int?> GroupWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert group labels (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group name
+        /// The cluster alert group name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group recipients
+        /// The cluster alert group recipients (list)
         /// </summary>
         [Output("recipients")]
         public Output<ImmutableArray<Outputs.ClusterAlertGroupRecipient>> Recipients { get; private set; } = null!;
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The cluster alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Output("repeatIntervalSeconds")]
         public Output<int?> RepeatIntervalSeconds { get; private set; } = null!;
@@ -90,7 +116,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
+                    new Pulumi.Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,7 +145,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert group annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -128,25 +154,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group Cluster ID
+        /// The cluster id where create cluster alert group (string)
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Alert group description
+        /// The cluster alert group description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The cluster alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The cluster alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
@@ -155,7 +181,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert group labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -164,7 +190,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group name
+        /// The cluster alert group name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -173,7 +199,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterAlertGroupRecipientArgs>? _recipients;
 
         /// <summary>
-        /// Alert group recipients
+        /// The cluster alert group recipients (list)
         /// </summary>
         public InputList<Inputs.ClusterAlertGroupRecipientArgs> Recipients
         {
@@ -182,7 +208,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The cluster alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }
@@ -198,7 +224,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// The cluster alert group annotations (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -207,25 +233,25 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group Cluster ID
+        /// The cluster id where create cluster alert group (string)
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Alert group description
+        /// The cluster alert group description (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Alert group interval seconds
+        /// The cluster alert group interval seconds. Default: `180` (int)
         /// </summary>
         [Input("groupIntervalSeconds")]
         public Input<int>? GroupIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Alert group wait seconds
+        /// The cluster alert group wait seconds. Default: `180` (int)
         /// </summary>
         [Input("groupWaitSeconds")]
         public Input<int>? GroupWaitSeconds { get; set; }
@@ -234,7 +260,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// The cluster alert group labels (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -243,7 +269,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group name
+        /// The cluster alert group name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -252,7 +278,7 @@ namespace Pulumi.Rancher2
         private InputList<Inputs.ClusterAlertGroupRecipientGetArgs>? _recipients;
 
         /// <summary>
-        /// Alert group recipients
+        /// The cluster alert group recipients (list)
         /// </summary>
         public InputList<Inputs.ClusterAlertGroupRecipientGetArgs> Recipients
         {
@@ -261,7 +287,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Alert group repeat interval seconds
+        /// The cluster alert group wait seconds. Default: `3600` (int)
         /// </summary>
         [Input("repeatIntervalSeconds")]
         public Input<int>? RepeatIntervalSeconds { get; set; }

@@ -9,56 +9,127 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a Rancher v2 Auth Config OKTA resource. This can be used to configure and enable Auth Config OKTA for Rancher v2 RKE clusters and retrieve their information.
+    /// 
+    /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Auth Config OKTA
+    ///         var okta = new Rancher2.AuthConfigOkta("okta", new Rancher2.AuthConfigOktaArgs
+    ///         {
+    ///             DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
+    ///             GroupsField = "&lt;GROUPS_FIELD&gt;",
+    ///             IdpMetadataContent = "&lt;IDP_METADATA_CONTENT&gt;",
+    ///             RancherApiHost = "https://&lt;RANCHER_API_HOST&gt;",
+    ///             SpCert = "&lt;SP_CERT&gt;",
+    ///             SpKey = "&lt;SP_KEY&gt;",
+    ///             UidField = "&lt;UID_FIELD&gt;",
+    ///             UserNameField = "&lt;USER_NAME_FIELD&gt;",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class AuthConfigOkta : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://&lt;USER_ID&gt;`  `okta_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA display name field (string)
+        /// </summary>
         [Output("displayNameField")]
         public Output<string> DisplayNameField { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA group field (string)
+        /// </summary>
         [Output("groupsField")]
         public Output<string> GroupsField { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA IDP metadata content (string)
+        /// </summary>
         [Output("idpMetadataContent")]
         public Output<string> IdpMetadataContent { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The name of the resource (string)
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// </summary>
         [Output("rancherApiHost")]
         public Output<string> RancherApiHost { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA SP cert (string)
+        /// </summary>
         [Output("spCert")]
         public Output<string> SpCert { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA SP key (string)
+        /// </summary>
         [Output("spKey")]
         public Output<string> SpKey { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The type of the resource (string)
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA UID field (string)
+        /// </summary>
         [Output("uidField")]
         public Output<string> UidField { get; private set; } = null!;
 
+        /// <summary>
+        /// OKTA user name field (string)
+        /// </summary>
         [Output("userNameField")]
         public Output<string> UserNameField { get; private set; } = null!;
 
@@ -108,11 +179,18 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigOktaArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
+
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://&lt;USER_ID&gt;`  `okta_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -123,7 +201,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -131,15 +209,27 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// OKTA display name field (string)
+        /// </summary>
         [Input("displayNameField", required: true)]
         public Input<string> DisplayNameField { get; set; } = null!;
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// OKTA group field (string)
+        /// </summary>
         [Input("groupsField", required: true)]
         public Input<string> GroupsField { get; set; } = null!;
 
+        /// <summary>
+        /// OKTA IDP metadata content (string)
+        /// </summary>
         [Input("idpMetadataContent", required: true)]
         public Input<string> IdpMetadataContent { get; set; } = null!;
 
@@ -147,7 +237,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -155,18 +245,33 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// </summary>
         [Input("rancherApiHost", required: true)]
         public Input<string> RancherApiHost { get; set; } = null!;
 
+        /// <summary>
+        /// OKTA SP cert (string)
+        /// </summary>
         [Input("spCert", required: true)]
         public Input<string> SpCert { get; set; } = null!;
 
+        /// <summary>
+        /// OKTA SP key (string)
+        /// </summary>
         [Input("spKey", required: true)]
         public Input<string> SpKey { get; set; } = null!;
 
+        /// <summary>
+        /// OKTA UID field (string)
+        /// </summary>
         [Input("uidField", required: true)]
         public Input<string> UidField { get; set; } = null!;
 
+        /// <summary>
+        /// OKTA user name field (string)
+        /// </summary>
         [Input("userNameField", required: true)]
         public Input<string> UserNameField { get; set; } = null!;
 
@@ -177,11 +282,18 @@ namespace Pulumi.Rancher2
 
     public sealed class AuthConfigOktaState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         [Input("allowedPrincipalIds")]
         private InputList<string>? _allowedPrincipalIds;
+
+        /// <summary>
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://&lt;USER_ID&gt;`  `okta_group://&lt;GROUP_ID&gt;` (list)
+        /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
             get => _allowedPrincipalIds ?? (_allowedPrincipalIds = new InputList<string>());
@@ -192,7 +304,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -200,15 +312,27 @@ namespace Pulumi.Rancher2
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// OKTA display name field (string)
+        /// </summary>
         [Input("displayNameField")]
         public Input<string>? DisplayNameField { get; set; }
 
+        /// <summary>
+        /// Enable auth config provider. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// OKTA group field (string)
+        /// </summary>
         [Input("groupsField")]
         public Input<string>? GroupsField { get; set; }
 
+        /// <summary>
+        /// OKTA IDP metadata content (string)
+        /// </summary>
         [Input("idpMetadataContent")]
         public Input<string>? IdpMetadataContent { get; set; }
 
@@ -216,7 +340,7 @@ namespace Pulumi.Rancher2
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<object> Labels
         {
@@ -224,24 +348,45 @@ namespace Pulumi.Rancher2
             set => _labels = value;
         }
 
+        /// <summary>
+        /// (Computed) The name of the resource (string)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// </summary>
         [Input("rancherApiHost")]
         public Input<string>? RancherApiHost { get; set; }
 
+        /// <summary>
+        /// OKTA SP cert (string)
+        /// </summary>
         [Input("spCert")]
         public Input<string>? SpCert { get; set; }
 
+        /// <summary>
+        /// OKTA SP key (string)
+        /// </summary>
         [Input("spKey")]
         public Input<string>? SpKey { get; set; }
 
+        /// <summary>
+        /// (Computed) The type of the resource (string)
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// OKTA UID field (string)
+        /// </summary>
         [Input("uidField")]
         public Input<string>? UidField { get; set; }
 
+        /// <summary>
+        /// OKTA user name field (string)
+        /// </summary>
         [Input("userNameField")]
         public Input<string>? UserNameField { get; set; }
 
