@@ -966,6 +966,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.10.0 h1:+BPDjZYGl3AI2hLkLCig1+q7hvo/TAVBLGlzP
 github.com/pulumi/pulumi/sdk/v2 v2.10.0/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20200910163706-0195574877e2 h1:ri5lKhVOfT/yQ1h8lw4MowzNGMvOlsrJa6rvYUxBwpk=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20200910163706-0195574877e2/go.mod h1:s/2xjvpVAiM9GD+ZUNl8lMOIS30kjM7miMpADEKwHNg=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20200915085113-b003c30da062 h1:53WQ8cbAosQZDpOKd0fLQNvRHp7J/M5ujCNsgsUTu8w=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20200915085113-b003c30da062/go.mod h1:s/2xjvpVAiM9GD+ZUNl8lMOIS30kjM7miMpADEKwHNg=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=

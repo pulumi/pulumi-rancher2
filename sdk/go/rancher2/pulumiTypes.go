@@ -50938,8 +50938,7 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
-	Configuration string `pulumi:"configuration"`
-	Enabled       *bool  `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -50954,8 +50953,7 @@ type GetClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Configuration pulumi.StringInput  `pulumi:"configuration"`
-	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
@@ -51034,10 +51032,6 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeC
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
-func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) string { return v.Configuration }).(pulumi.StringOutput)
-}
-
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -51062,15 +51056,6 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() GetClu
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Configuration
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool {
 		if v == nil {
@@ -51081,8 +51066,7 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pul
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	CustomConfig *string `pulumi:"customConfig"`
-	Enabled      *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -51097,8 +51081,7 @@ type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
-	Enabled      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -51177,10 +51160,6 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetCl
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
-func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string { return v.CustomConfig }).(pulumi.StringPtrOutput)
-}
-
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -51203,15 +51182,6 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem
 	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
 		return *v
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
-}
-
-func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomConfig
-	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -59067,8 +59037,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
-	Configuration string `pulumi:"configuration"`
-	Enabled       *bool  `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -59083,8 +59052,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Configuration pulumi.StringInput  `pulumi:"configuration"`
-	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
@@ -59163,12 +59131,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) string {
-		return v.Configuration
-	}).(pulumi.StringOutput)
-}
-
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool {
 		return v.Enabled
@@ -59195,15 +59157,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Configuration
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool {
 		if v == nil {
@@ -59214,8 +59167,7 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	CustomConfig *string `pulumi:"customConfig"`
-	Enabled      *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -59230,8 +59182,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	CustomConfig pulumi.StringPtrInput `pulumi:"customConfig"`
-	Enabled      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -59310,12 +59261,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
-		return v.CustomConfig
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool {
 		return v.Enabled
@@ -59340,15 +59285,6 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
 		return *v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
-}
-
-func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomConfig
-	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {

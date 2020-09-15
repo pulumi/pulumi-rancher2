@@ -18226,14 +18226,6 @@
         },
         "rancher2:/getClusterRkeConfigServicesKubeApiEventRateLimit:getClusterRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
-                "configuration": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -18243,26 +18235,10 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "configuration"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "rancher2:/getClusterRkeConfigServicesKubeApiSecretsEncryptionConfig:getClusterRkeConfigServicesKubeApiSecretsEncryptionConfig": {
             "properties": {
-                "customConfig": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -21780,14 +21756,6 @@
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
-                "configuration": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -21797,26 +21765,10 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "configuration"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "rancher2:/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig": {
             "properties": {
-                "customConfig": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "enabled": {
                     "type": "boolean",
                     "language": {

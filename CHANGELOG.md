@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.10.3 of the Rancher2 Terraform Provider
 
 ---
 

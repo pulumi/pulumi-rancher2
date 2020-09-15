@@ -19152,16 +19152,9 @@ class GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult(dict):
 @pulumi.output_type
 class GetClusterRkeConfigServicesKubeApiEventRateLimitResult(dict):
     def __init__(__self__, *,
-                 configuration: str,
                  enabled: Optional[bool] = None):
-        pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def configuration(self) -> str:
-        return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
@@ -19172,17 +19165,9 @@ class GetClusterRkeConfigServicesKubeApiEventRateLimitResult(dict):
 @pulumi.output_type
 class GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigResult(dict):
     def __init__(__self__, *,
-                 custom_config: Optional[str] = None,
                  enabled: Optional[bool] = None):
-        if custom_config is not None:
-            pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[str]:
-        return pulumi.get(self, "custom_config")
 
     @property
     @pulumi.getter
@@ -21876,16 +21861,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAud
 @pulumi.output_type
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(dict):
     def __init__(__self__, *,
-                 configuration: str,
                  enabled: Optional[bool] = None):
-        pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def configuration(self) -> str:
-        return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
@@ -21896,17 +21874,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEve
 @pulumi.output_type
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(dict):
     def __init__(__self__, *,
-                 custom_config: Optional[str] = None,
                  enabled: Optional[bool] = None):
-        if custom_config is not None:
-            pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[str]:
-        return pulumi.get(self, "custom_config")
 
     @property
     @pulumi.getter
