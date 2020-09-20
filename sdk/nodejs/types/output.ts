@@ -3615,12 +3615,10 @@ export interface GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 }
 
 export interface GetClusterRkeConfigServicesKubeApiEventRateLimit {
-    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: string;
     enabled?: boolean;
 }
 
@@ -4152,12 +4150,10 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
-    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    customConfig?: string;
     enabled?: boolean;
 }
 
