@@ -1,0 +1,36 @@
+env:
+  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  VERSION: ${{ github.event.client_payload.ref }}
+
+name: Prepare for release
+on:
+  repository_dispatch:
+    types:
+      - prepare-release
+  workflow_dispatch:
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install chg
+        run: sudo npm install -g chg
+      - name: prepare release
+        run: |
+          chg release v${{env.VERSION}}
+      - name: git status
+        run: git status && git diff
+        working-directory: sdk-repo
+#      - name: commit changes
+#        uses: EndBug/add-and-commit@v4
+#        with:
+#          ref: "publish/${{ github.run_id }}-${{ github.run_number }}"
+#          author_name: pulumi-bot
+#          author_email: "bot@pulumi.com"
+#          cwd: ${{ github.workspace }}/sdk-repo
