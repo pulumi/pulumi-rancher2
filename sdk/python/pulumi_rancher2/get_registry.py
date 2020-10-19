@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -95,7 +95,7 @@ class GetRegistryResult:
 
     @property
     @pulumi.getter
-    def registries(self) -> List['outputs.GetRegistryRegistryResult']:
+    def registries(self) -> Sequence['outputs.GetRegistryRegistryResult']:
         """
         (Computed) Registries data for registry (list)
         """

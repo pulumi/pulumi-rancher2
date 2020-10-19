@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,33 +18,33 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-                 allowed_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_csi_drivers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]]] = None,
-                 allowed_flex_volumes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]]] = None,
-                 allowed_host_paths: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]]] = None,
-                 allowed_proc_mount_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_unsafe_sysctls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_csi_drivers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]]] = None,
+                 allowed_flex_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]]] = None,
+                 allowed_host_paths: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]]] = None,
+                 allowed_proc_mount_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 default_add_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 default_add_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 forbidden_sysctls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 forbidden_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fs_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']]] = None,
                  host_ipc: Optional[pulumi.Input[bool]] = None,
                  host_network: Optional[pulumi.Input[bool]] = None,
                  host_pid: Optional[pulumi.Input[bool]] = None,
-                 host_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]]] = None,
+                 host_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  privileged: Optional[pulumi.Input[bool]] = None,
                  read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
-                 required_drop_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 required_drop_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  run_as_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']]] = None,
                  run_as_user: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']]] = None,
                  runtime_class: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']]] = None,
                  se_linux: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']]] = None,
                  supplemental_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']]] = None,
-                 volumes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -160,33 +160,33 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: (list)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_proc_mount_types: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for PodSecurityPolicyTemplate object (map)
-        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_add_capabilities: (list)
         :param pulumi.Input[bool] default_allow_privilege_escalation: (list)
         :param pulumi.Input[str] description: The PodSecurityPolicyTemplate description (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] forbidden_sysctls: (list)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: (list maxitems:1)
         :param pulumi.Input[bool] host_ipc: (bool)
         :param pulumi.Input[bool] host_network: hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
         :param pulumi.Input[bool] host_pid: (bool)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for PodSecurityPolicyTemplate object (map)
         :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
         :param pulumi.Input[bool] privileged: (bool)
         :param pulumi.Input[bool] read_only_root_filesystem: (bool)
-        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] required_drop_capabilities: (list)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: (list maxitems:1)
-        :param pulumi.Input[List[pulumi.Input[str]]] volumes: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -244,33 +244,33 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-            allowed_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            allowed_csi_drivers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]]] = None,
-            allowed_flex_volumes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]]] = None,
-            allowed_host_paths: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]]] = None,
-            allowed_proc_mount_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            allowed_unsafe_sysctls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            allowed_csi_drivers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]]] = None,
+            allowed_flex_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]]] = None,
+            allowed_host_paths: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]]] = None,
+            allowed_proc_mount_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            default_add_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            default_add_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            forbidden_sysctls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            forbidden_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fs_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']]] = None,
             host_ipc: Optional[pulumi.Input[bool]] = None,
             host_network: Optional[pulumi.Input[bool]] = None,
             host_pid: Optional[pulumi.Input[bool]] = None,
-            host_ports: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]]] = None,
+            host_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             privileged: Optional[pulumi.Input[bool]] = None,
             read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
-            required_drop_capabilities: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            required_drop_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             run_as_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']]] = None,
             run_as_user: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']]] = None,
             runtime_class: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']]] = None,
             se_linux: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']]] = None,
             supplemental_group: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']]] = None,
-            volumes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'PodSecurityPolicyTemplate':
+            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'PodSecurityPolicyTemplate':
         """
         Get an existing PodSecurityPolicyTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -279,33 +279,33 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_capabilities: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_proc_mount_types: (list)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] allowed_csi_drivers: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] allowed_flex_volumes: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] allowed_host_paths: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_proc_mount_types: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for PodSecurityPolicyTemplate object (map)
-        :param pulumi.Input[List[pulumi.Input[str]]] default_add_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_add_capabilities: (list)
         :param pulumi.Input[bool] default_allow_privilege_escalation: (list)
         :param pulumi.Input[str] description: The PodSecurityPolicyTemplate description (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] forbidden_sysctls: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] forbidden_sysctls: (list)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateFsGroupArgs']] fs_group: (list maxitems:1)
         :param pulumi.Input[bool] host_ipc: (bool)
         :param pulumi.Input[bool] host_network: hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
         :param pulumi.Input[bool] host_pid: (bool)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateHostPortArgs']]]] host_ports: (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for PodSecurityPolicyTemplate object (map)
         :param pulumi.Input[str] name: The name of the PodSecurityPolicyTemplate (string)
         :param pulumi.Input[bool] privileged: (bool)
         :param pulumi.Input[bool] read_only_root_filesystem: (bool)
-        :param pulumi.Input[List[pulumi.Input[str]]] required_drop_capabilities: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] required_drop_capabilities: (list)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsGroupArgs']] run_as_group: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRunAsUserArgs']] run_as_user: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateRuntimeClassArgs']] runtime_class: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSeLinuxArgs']] se_linux: (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyTemplateSupplementalGroupArgs']] supplemental_group: (list maxitems:1)
-        :param pulumi.Input[List[pulumi.Input[str]]] volumes: (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,7 +351,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCapabilities")
-    def allowed_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_capabilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -359,7 +359,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedCsiDrivers")
-    def allowed_csi_drivers(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedCsiDriver']]]:
+    def allowed_csi_drivers(self) -> pulumi.Output[Optional[Sequence['outputs.PodSecurityPolicyTemplateAllowedCsiDriver']]]:
         """
         (list)
         """
@@ -367,7 +367,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedFlexVolumes")
-    def allowed_flex_volumes(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedFlexVolume']]]:
+    def allowed_flex_volumes(self) -> pulumi.Output[Optional[Sequence['outputs.PodSecurityPolicyTemplateAllowedFlexVolume']]]:
         """
         (list)
         """
@@ -375,7 +375,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedHostPaths")
-    def allowed_host_paths(self) -> pulumi.Output[Optional[List['outputs.PodSecurityPolicyTemplateAllowedHostPath']]]:
+    def allowed_host_paths(self) -> pulumi.Output[Optional[Sequence['outputs.PodSecurityPolicyTemplateAllowedHostPath']]]:
         """
         (list)
         """
@@ -383,7 +383,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedProcMountTypes")
-    def allowed_proc_mount_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_proc_mount_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -391,7 +391,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedUnsafeSysctls")
-    def allowed_unsafe_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_unsafe_sysctls(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -407,7 +407,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAddCapabilities")
-    def default_add_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
+    def default_add_capabilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -431,7 +431,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forbiddenSysctls")
-    def forbidden_sysctls(self) -> pulumi.Output[Optional[List[str]]]:
+    def forbidden_sysctls(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -471,7 +471,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostPorts")
-    def host_ports(self) -> pulumi.Output[List['outputs.PodSecurityPolicyTemplateHostPort']]:
+    def host_ports(self) -> pulumi.Output[Sequence['outputs.PodSecurityPolicyTemplateHostPort']]:
         """
         (list)
         """
@@ -511,7 +511,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiredDropCapabilities")
-    def required_drop_capabilities(self) -> pulumi.Output[Optional[List[str]]]:
+    def required_drop_capabilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         (list)
         """
@@ -559,7 +559,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def volumes(self) -> pulumi.Output[List[str]]:
+    def volumes(self) -> pulumi.Output[Sequence[str]]:
         """
         (list)
         """

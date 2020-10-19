@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,9 +20,9 @@ class ClusterTemplate(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 template_revisions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -149,9 +149,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)
         :param pulumi.Input[str] description: Cluster template description
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template revision name (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -191,9 +191,9 @@ class ClusterTemplate(pulumi.CustomResource):
             default_revision_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            template_revisions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None) -> 'ClusterTemplate':
+            template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None) -> 'ClusterTemplate':
         """
         Get an existing ClusterTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -205,9 +205,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
         :param pulumi.Input[str] description: Cluster template description
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template revision name (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -256,7 +256,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[Optional[List['outputs.ClusterTemplateMember']]]:
+    def members(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterTemplateMember']]]:
         """
         Cluster template members (list)
         """
@@ -272,7 +272,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateRevisions")
-    def template_revisions(self) -> pulumi.Output[List['outputs.ClusterTemplateTemplateRevision']]:
+    def template_revisions(self) -> pulumi.Output[Sequence['outputs.ClusterTemplateTemplateRevision']]:
         """
         Cluster template revisions (list)
         """

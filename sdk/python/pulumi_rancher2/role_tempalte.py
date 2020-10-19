@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -27,8 +27,8 @@ class RoleTempalte(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 role_template_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]]] = None,
+                 role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -83,8 +83,8 @@ class RoleTempalte(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
         :param pulumi.Input[str] name: Role template name (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,8 +137,8 @@ class RoleTempalte(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            role_template_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]]] = None) -> 'RoleTempalte':
+            role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]]] = None) -> 'RoleTempalte':
         """
         Get an existing RoleTempalte resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -157,8 +157,8 @@ class RoleTempalte(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
         :param pulumi.Input[str] name: Role template name (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTempalteRuleArgs']]]] rules: Role template policy rules (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,7 +269,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleTemplateIds")
-    def role_template_ids(self) -> pulumi.Output[List[str]]:
+    def role_template_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         Inherit role template IDs (list)
         """
@@ -277,7 +277,7 @@ class RoleTempalte(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[List['outputs.RoleTempalteRule']]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.RoleTempalteRule']]:
         """
         Role template policy rules (list)
         """

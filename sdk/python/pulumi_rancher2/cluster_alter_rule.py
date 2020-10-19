@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -25,14 +25,14 @@ class ClusterAlterRule(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  event_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleEventRuleArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 group_interval_seconds: Optional[pulumi.Input[float]] = None,
-                 group_wait_seconds: Optional[pulumi.Input[float]] = None,
+                 group_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  metric_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleMetricRuleArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleNodeRuleArgs']]] = None,
-                 repeat_interval_seconds: Optional[pulumi.Input[float]] = None,
+                 repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  system_service_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleSystemServiceRuleArgs']]] = None,
                  __props__=None,
@@ -46,14 +46,14 @@ class ClusterAlterRule(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Alert rule cluster ID
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleEventRuleArgs']] event_rule: Alert event rule
         :param pulumi.Input[str] group_id: Alert rule group ID
-        :param pulumi.Input[float] group_interval_seconds: Alert rule interval seconds
-        :param pulumi.Input[float] group_wait_seconds: Alert rule wait seconds
+        :param pulumi.Input[int] group_interval_seconds: Alert rule interval seconds
+        :param pulumi.Input[int] group_wait_seconds: Alert rule wait seconds
         :param pulumi.Input[bool] inherited: Alert rule inherited
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleMetricRuleArgs']] metric_rule: Alert metric rule
         :param pulumi.Input[str] name: Alert rule name
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleNodeRuleArgs']] node_rule: Alert node rule
-        :param pulumi.Input[float] repeat_interval_seconds: Alert rule repeat interval seconds
+        :param pulumi.Input[int] repeat_interval_seconds: Alert rule repeat interval seconds
         :param pulumi.Input[str] severity: Alert rule severity
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleSystemServiceRuleArgs']] system_service_rule: Alert system service rule
         """
@@ -107,14 +107,14 @@ class ClusterAlterRule(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             event_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleEventRuleArgs']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            group_interval_seconds: Optional[pulumi.Input[float]] = None,
-            group_wait_seconds: Optional[pulumi.Input[float]] = None,
+            group_interval_seconds: Optional[pulumi.Input[int]] = None,
+            group_wait_seconds: Optional[pulumi.Input[int]] = None,
             inherited: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             metric_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleMetricRuleArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleNodeRuleArgs']]] = None,
-            repeat_interval_seconds: Optional[pulumi.Input[float]] = None,
+            repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
             severity: Optional[pulumi.Input[str]] = None,
             system_service_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlterRuleSystemServiceRuleArgs']]] = None) -> 'ClusterAlterRule':
         """
@@ -128,14 +128,14 @@ class ClusterAlterRule(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Alert rule cluster ID
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleEventRuleArgs']] event_rule: Alert event rule
         :param pulumi.Input[str] group_id: Alert rule group ID
-        :param pulumi.Input[float] group_interval_seconds: Alert rule interval seconds
-        :param pulumi.Input[float] group_wait_seconds: Alert rule wait seconds
+        :param pulumi.Input[int] group_interval_seconds: Alert rule interval seconds
+        :param pulumi.Input[int] group_wait_seconds: Alert rule wait seconds
         :param pulumi.Input[bool] inherited: Alert rule inherited
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleMetricRuleArgs']] metric_rule: Alert metric rule
         :param pulumi.Input[str] name: Alert rule name
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleNodeRuleArgs']] node_rule: Alert node rule
-        :param pulumi.Input[float] repeat_interval_seconds: Alert rule repeat interval seconds
+        :param pulumi.Input[int] repeat_interval_seconds: Alert rule repeat interval seconds
         :param pulumi.Input[str] severity: Alert rule severity
         :param pulumi.Input[pulumi.InputType['ClusterAlterRuleSystemServiceRuleArgs']] system_service_rule: Alert system service rule
         """
@@ -193,7 +193,7 @@ class ClusterAlterRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Alert rule interval seconds
         """
@@ -201,7 +201,7 @@ class ClusterAlterRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Alert rule wait seconds
         """
@@ -249,7 +249,7 @@ class ClusterAlterRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Alert rule repeat interval seconds
         """

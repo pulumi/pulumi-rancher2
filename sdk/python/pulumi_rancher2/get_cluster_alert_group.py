@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -30,11 +30,11 @@ class GetClusterAlertGroupResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if group_interval_seconds and not isinstance(group_interval_seconds, float):
-            raise TypeError("Expected argument 'group_interval_seconds' to be a float")
+        if group_interval_seconds and not isinstance(group_interval_seconds, int):
+            raise TypeError("Expected argument 'group_interval_seconds' to be a int")
         pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
-        if group_wait_seconds and not isinstance(group_wait_seconds, float):
-            raise TypeError("Expected argument 'group_wait_seconds' to be a float")
+        if group_wait_seconds and not isinstance(group_wait_seconds, int):
+            raise TypeError("Expected argument 'group_wait_seconds' to be a int")
         pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -48,8 +48,8 @@ class GetClusterAlertGroupResult:
         if recipients and not isinstance(recipients, list):
             raise TypeError("Expected argument 'recipients' to be a list")
         pulumi.set(__self__, "recipients", recipients)
-        if repeat_interval_seconds and not isinstance(repeat_interval_seconds, float):
-            raise TypeError("Expected argument 'repeat_interval_seconds' to be a float")
+        if repeat_interval_seconds and not isinstance(repeat_interval_seconds, int):
+            raise TypeError("Expected argument 'repeat_interval_seconds' to be a int")
         pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
 
     @property
@@ -75,7 +75,7 @@ class GetClusterAlertGroupResult:
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> float:
+    def group_interval_seconds(self) -> int:
         """
         (Computed) The cluster alert group interval seconds. Default: `180` (int)
         """
@@ -83,7 +83,7 @@ class GetClusterAlertGroupResult:
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> float:
+    def group_wait_seconds(self) -> int:
         """
         (Computed) The cluster alert group wait seconds. Default: `180` (int)
         """
@@ -112,7 +112,7 @@ class GetClusterAlertGroupResult:
 
     @property
     @pulumi.getter
-    def recipients(self) -> List['outputs.GetClusterAlertGroupRecipientResult']:
+    def recipients(self) -> Sequence['outputs.GetClusterAlertGroupRecipientResult']:
         """
         (Computed) The cluster alert group recipients (list)
         """
@@ -120,7 +120,7 @@ class GetClusterAlertGroupResult:
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> float:
+    def repeat_interval_seconds(self) -> int:
         """
         (Computed) The cluster alert group wait seconds. Default: `3600` (int)
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Bootstrap']
@@ -18,7 +18,7 @@ class Bootstrap(pulumi.CustomResource):
                  current_password: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[bool]] = None,
-                 token_ttl: Optional[pulumi.Input[float]] = None,
+                 token_ttl: Optional[pulumi.Input[int]] = None,
                  token_update: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,7 +30,7 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
         :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
-        :param pulumi.Input[float] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
+        :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         """
         if __name__ is not None:
@@ -78,7 +78,7 @@ class Bootstrap(pulumi.CustomResource):
             temp_token_id: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
             token_id: Optional[pulumi.Input[str]] = None,
-            token_ttl: Optional[pulumi.Input[float]] = None,
+            token_ttl: Optional[pulumi.Input[int]] = None,
             token_update: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'Bootstrap':
@@ -96,7 +96,7 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
         :param pulumi.Input[str] token: (Computed) Generated API token for Admin User (string)
         :param pulumi.Input[str] token_id: (Computed) Generated API token id for Admin User (string)
-        :param pulumi.Input[float] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
+        :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[str] url: (Computed) URL set as server-url (string)
         :param pulumi.Input[str] user: (Computed) Admin username (string)
@@ -176,7 +176,7 @@ class Bootstrap(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> pulumi.Output[Optional[float]]:
+    def token_ttl(self) -> pulumi.Output[Optional[int]]:
         """
         TTL in seconds for generated admin token. Default: `0`  (int)
         """

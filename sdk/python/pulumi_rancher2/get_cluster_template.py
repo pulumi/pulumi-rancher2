@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -85,7 +85,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter
-    def members(self) -> List['outputs.GetClusterTemplateMemberResult']:
+    def members(self) -> Sequence['outputs.GetClusterTemplateMemberResult']:
         """
         (Computed) Cluster template members (list)
         """
@@ -98,7 +98,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter(name="templateRevisions")
-    def template_revisions(self) -> List['outputs.GetClusterTemplateTemplateRevisionResult']:
+    def template_revisions(self) -> Sequence['outputs.GetClusterTemplateTemplateRevisionResult']:
         """
         (Computed) Cluster template revisions (list)
         """

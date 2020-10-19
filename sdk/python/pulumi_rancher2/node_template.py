@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -27,11 +27,11 @@ class NodeTemplate(pulumi.CustomResource):
                  digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
                  engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_insecure_registries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_install_url: Optional[pulumi.Input[str]] = None,
                  engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_registry_mirrors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
@@ -107,11 +107,11 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
-        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -183,11 +183,11 @@ class NodeTemplate(pulumi.CustomResource):
             driver: Optional[pulumi.Input[str]] = None,
             driver_id: Optional[pulumi.Input[str]] = None,
             engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            engine_insecure_registries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_install_url: Optional[pulumi.Input[str]] = None,
             engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            engine_registry_mirrors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_storage_driver: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
@@ -214,11 +214,11 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
-        :param pulumi.Input[List[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -348,7 +348,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineInsecureRegistries")
-    def engine_insecure_registries(self) -> pulumi.Output[Optional[List[str]]]:
+    def engine_insecure_registries(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Insecure registry for the node template (list)
         """
@@ -380,7 +380,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineRegistryMirrors")
-    def engine_registry_mirrors(self) -> pulumi.Output[Optional[List[str]]]:
+    def engine_registry_mirrors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Engine registry mirror for the node template (list)
         """

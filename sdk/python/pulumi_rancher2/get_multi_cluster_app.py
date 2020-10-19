@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -42,8 +42,8 @@ class GetMultiClusterAppResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if revision_history_limit and not isinstance(revision_history_limit, float):
-            raise TypeError("Expected argument 'revision_history_limit' to be a float")
+        if revision_history_limit and not isinstance(revision_history_limit, int):
+            raise TypeError("Expected argument 'revision_history_limit' to be a int")
         pulumi.set(__self__, "revision_history_limit", revision_history_limit)
         if revision_id and not isinstance(revision_id, str):
             raise TypeError("Expected argument 'revision_id' to be a str")
@@ -77,7 +77,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter
-    def answers(self) -> List['outputs.GetMultiClusterAppAnswerResult']:
+    def answers(self) -> Sequence['outputs.GetMultiClusterAppAnswerResult']:
         """
         (Computed) The multi cluster app answers (list)
         """
@@ -109,7 +109,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter
-    def members(self) -> List['outputs.GetMultiClusterAppMemberResult']:
+    def members(self) -> Sequence['outputs.GetMultiClusterAppMemberResult']:
         """
         (Computed) The multi cluster app members (list)
         """
@@ -122,7 +122,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter(name="revisionHistoryLimit")
-    def revision_history_limit(self) -> float:
+    def revision_history_limit(self) -> int:
         """
         (Computed) The multi cluster app revision history limit (int)
         """
@@ -138,7 +138,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter
-    def roles(self) -> List[str]:
+    def roles(self) -> Sequence[str]:
         """
         (Computed) The multi cluster app roles (list)
         """
@@ -146,7 +146,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter
-    def targets(self) -> List['outputs.GetMultiClusterAppTargetResult']:
+    def targets(self) -> Sequence['outputs.GetMultiClusterAppTargetResult']:
         """
         (Computed) The multi cluster app target projects (list)
         """
@@ -178,7 +178,7 @@ class GetMultiClusterAppResult:
 
     @property
     @pulumi.getter(name="upgradeStrategies")
-    def upgrade_strategies(self) -> List['outputs.GetMultiClusterAppUpgradeStrategyResult']:
+    def upgrade_strategies(self) -> Sequence['outputs.GetMultiClusterAppUpgradeStrategyResult']:
         """
         (Computed) The multi cluster app upgrade strategy (list)
         """

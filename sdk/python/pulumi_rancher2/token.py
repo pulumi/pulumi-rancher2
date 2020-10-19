@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Token']
@@ -20,7 +20,7 @@ class Token(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -53,7 +53,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,7 +106,7 @@ class Token(pulumi.CustomResource):
             renew: Optional[pulumi.Input[bool]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'Token':
         """
         Get an existing Token resource's state with the given name, id, and optional extra
@@ -126,7 +126,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[float] ttl: Token time to live in seconds. Default `0` (int)
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -238,7 +238,7 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[float]]:
+    def ttl(self) -> pulumi.Output[Optional[int]]:
         """
         Token time to live in seconds. Default `0` (int)
         """

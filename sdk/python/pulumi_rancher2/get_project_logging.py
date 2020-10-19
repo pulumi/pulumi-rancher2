@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -54,8 +54,8 @@ class GetProjectLoggingResult:
         if namespace_id and not isinstance(namespace_id, str):
             raise TypeError("Expected argument 'namespace_id' to be a str")
         pulumi.set(__self__, "namespace_id", namespace_id)
-        if output_flush_interval and not isinstance(output_flush_interval, float):
-            raise TypeError("Expected argument 'output_flush_interval' to be a float")
+        if output_flush_interval and not isinstance(output_flush_interval, int):
+            raise TypeError("Expected argument 'output_flush_interval' to be a int")
         pulumi.set(__self__, "output_flush_interval", output_flush_interval)
         if output_tags and not isinstance(output_tags, dict):
             raise TypeError("Expected argument 'output_tags' to be a dict")
@@ -154,7 +154,7 @@ class GetProjectLoggingResult:
 
     @property
     @pulumi.getter(name="outputFlushInterval")
-    def output_flush_interval(self) -> float:
+    def output_flush_interval(self) -> int:
         """
         (Computed) How often buffered logs would be flushed. Default: `3` seconds (int)
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class Registry(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 registries: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None,
+                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -75,7 +75,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,7 +121,7 @@ class Registry(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            registries: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None) -> 'Registry':
+            registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None) -> 'Registry':
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,7 +135,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -200,7 +200,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def registries(self) -> pulumi.Output[List['outputs.RegistryRegistry']]:
+    def registries(self) -> pulumi.Output[Sequence['outputs.RegistryRegistry']]:
         """
         Registries data for registry (list)
         """

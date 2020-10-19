@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -156,7 +156,7 @@ class GetRoleTemplateResult:
 
     @property
     @pulumi.getter(name="roleTemplateIds")
-    def role_template_ids(self) -> List[str]:
+    def role_template_ids(self) -> Sequence[str]:
         """
         (Computed) Inherit role template IDs (list)
         """
@@ -164,7 +164,7 @@ class GetRoleTemplateResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.GetRoleTemplateRuleResult']:
+    def rules(self) -> Sequence['outputs.GetRoleTemplateRuleResult']:
         """
         (Computed) Role template policy rules (list)
         """

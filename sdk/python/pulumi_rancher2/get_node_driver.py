@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -141,7 +141,7 @@ class GetNodeDriverResult:
 
     @property
     @pulumi.getter(name="whitelistDomains")
-    def whitelist_domains(self) -> List[str]:
+    def whitelist_domains(self) -> Sequence[str]:
         """
         (Computed) Domains to whitelist for the ui (list)
         """

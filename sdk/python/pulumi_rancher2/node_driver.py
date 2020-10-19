@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['NodeDriver']
@@ -25,7 +25,7 @@ class NodeDriver(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ui_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
-                 whitelist_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -62,7 +62,7 @@ class NodeDriver(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the node driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Nodes screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,7 +118,7 @@ class NodeDriver(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             ui_url: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            whitelist_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'NodeDriver':
+            whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'NodeDriver':
         """
         Get an existing NodeDriver resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -136,7 +136,7 @@ class NodeDriver(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the node driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Nodes screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -237,7 +237,7 @@ class NodeDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="whitelistDomains")
-    def whitelist_domains(self) -> pulumi.Output[Optional[List[str]]]:
+    def whitelist_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Domains to whitelist for the ui (list)
         """

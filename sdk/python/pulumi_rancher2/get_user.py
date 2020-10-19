@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -92,7 +92,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="principalIds")
-    def principal_ids(self) -> List[str]:
+    def principal_ids(self) -> Sequence[str]:
         """
         (Computed) The user principal IDs (list)
         """
