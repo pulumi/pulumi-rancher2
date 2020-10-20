@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['AuthConfigFreeIpa']
@@ -16,10 +16,10 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
-                 connection_timeout: Optional[pulumi.Input[float]] = None,
+                 connection_timeout: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  group_dn_attribute: Optional[pulumi.Input[str]] = None,
                  group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
@@ -30,12 +30,12 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
-                 servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
-                 user_disabled_bit_mask: Optional[pulumi.Input[float]] = None,
+                 user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
                  user_enabled_attribute: Optional[pulumi.Input[str]] = None,
                  user_login_attribute: Optional[pulumi.Input[str]] = None,
                  user_member_attribute: Optional[pulumi.Input[str]] = None,
@@ -54,10 +54,10 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-        :param pulumi.Input[float] connection_timeout: FreeIpa connection timeout. Default `5000` (int)
+        :param pulumi.Input[int] connection_timeout: FreeIpa connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `entryDN` (string)
         :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
@@ -68,12 +68,12 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
-        :param pulumi.Input[float] port: FreeIpa port. Default `389` (int)
-        :param pulumi.Input[List[pulumi.Input[str]]] servers: FreeIpa servers list (list)
+        :param pulumi.Input[int] port: FreeIpa port. Default `389` (int)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: FreeIpa servers list (list)
         :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
         :param pulumi.Input[str] service_account_password: Service account password for access FreeIpa service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
-        :param pulumi.Input[float] user_disabled_bit_mask: User disabled bit mask (int)
+        :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask (int)
         :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
         :param pulumi.Input[str] user_login_attribute: User login attribute. Default `uid` (string)
         :param pulumi.Input[str] user_member_attribute: User member attribute. Default `memberOf` (string)
@@ -148,10 +148,10 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
-            allowed_principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             certificate: Optional[pulumi.Input[str]] = None,
-            connection_timeout: Optional[pulumi.Input[float]] = None,
+            connection_timeout: Optional[pulumi.Input[int]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             group_dn_attribute: Optional[pulumi.Input[str]] = None,
             group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
@@ -163,13 +163,13 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            port: Optional[pulumi.Input[int]] = None,
+            servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
             service_account_password: Optional[pulumi.Input[str]] = None,
             tls: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            user_disabled_bit_mask: Optional[pulumi.Input[float]] = None,
+            user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
             user_enabled_attribute: Optional[pulumi.Input[str]] = None,
             user_login_attribute: Optional[pulumi.Input[str]] = None,
             user_member_attribute: Optional[pulumi.Input[str]] = None,
@@ -185,10 +185,10 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
-        :param pulumi.Input[float] connection_timeout: FreeIpa connection timeout. Default `5000` (int)
+        :param pulumi.Input[int] connection_timeout: FreeIpa connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `entryDN` (string)
         :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
@@ -200,13 +200,13 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
-        :param pulumi.Input[float] port: FreeIpa port. Default `389` (int)
-        :param pulumi.Input[List[pulumi.Input[str]]] servers: FreeIpa servers list (list)
+        :param pulumi.Input[int] port: FreeIpa port. Default `389` (int)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: FreeIpa servers list (list)
         :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
         :param pulumi.Input[str] service_account_password: Service account password for access FreeIpa service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
-        :param pulumi.Input[float] user_disabled_bit_mask: User disabled bit mask (int)
+        :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask (int)
         :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
         :param pulumi.Input[str] user_login_attribute: User login attribute. Default `uid` (string)
         :param pulumi.Input[str] user_member_attribute: User member attribute. Default `memberOf` (string)
@@ -261,7 +261,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_principal_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
         """
@@ -285,7 +285,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionTimeout")
-    def connection_timeout(self) -> pulumi.Output[Optional[float]]:
+    def connection_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         FreeIpa connection timeout. Default `5000` (int)
         """
@@ -381,7 +381,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         FreeIpa port. Default `389` (int)
         """
@@ -389,7 +389,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> pulumi.Output[List[str]]:
+    def servers(self) -> pulumi.Output[Sequence[str]]:
         """
         FreeIpa servers list (list)
         """
@@ -429,7 +429,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userDisabledBitMask")
-    def user_disabled_bit_mask(self) -> pulumi.Output[float]:
+    def user_disabled_bit_mask(self) -> pulumi.Output[int]:
         """
         User disabled bit mask (int)
         """

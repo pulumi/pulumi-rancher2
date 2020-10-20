@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -30,8 +30,8 @@ class GetNodePoolResult:
         if control_plane and not isinstance(control_plane, bool):
             raise TypeError("Expected argument 'control_plane' to be a bool")
         pulumi.set(__self__, "control_plane", control_plane)
-        if delete_not_ready_after_secs and not isinstance(delete_not_ready_after_secs, float):
-            raise TypeError("Expected argument 'delete_not_ready_after_secs' to be a float")
+        if delete_not_ready_after_secs and not isinstance(delete_not_ready_after_secs, int):
+            raise TypeError("Expected argument 'delete_not_ready_after_secs' to be a int")
         pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
         if etcd and not isinstance(etcd, bool):
             raise TypeError("Expected argument 'etcd' to be a bool")
@@ -54,8 +54,8 @@ class GetNodePoolResult:
         if node_template_id and not isinstance(node_template_id, str):
             raise TypeError("Expected argument 'node_template_id' to be a str")
         pulumi.set(__self__, "node_template_id", node_template_id)
-        if quantity and not isinstance(quantity, float):
-            raise TypeError("Expected argument 'quantity' to be a float")
+        if quantity and not isinstance(quantity, int):
+            raise TypeError("Expected argument 'quantity' to be a int")
         pulumi.set(__self__, "quantity", quantity)
         if worker and not isinstance(worker, bool):
             raise TypeError("Expected argument 'worker' to be a bool")
@@ -84,7 +84,7 @@ class GetNodePoolResult:
 
     @property
     @pulumi.getter(name="deleteNotReadyAfterSecs")
-    def delete_not_ready_after_secs(self) -> float:
+    def delete_not_ready_after_secs(self) -> int:
         """
         (Computed) Delete not ready node after secs. Default `0` (int)
         """
@@ -129,7 +129,7 @@ class GetNodePoolResult:
 
     @property
     @pulumi.getter(name="nodeTaints")
-    def node_taints(self) -> List['outputs.GetNodePoolNodeTaintResult']:
+    def node_taints(self) -> Sequence['outputs.GetNodePoolNodeTaintResult']:
         """
         (Computed) Node taints (List)
         """
@@ -142,7 +142,7 @@ class GetNodePoolResult:
 
     @property
     @pulumi.getter
-    def quantity(self) -> float:
+    def quantity(self) -> int:
         """
         (Computed) The number of nodes to create on Node Pool (int)
         """

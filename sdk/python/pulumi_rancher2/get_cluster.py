@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -158,7 +158,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> List['outputs.GetClusterClusterTemplateQuestionResult']:
+    def cluster_template_questions(self) -> Sequence['outputs.GetClusterClusterTemplateQuestionResult']:
         """
         (Computed) Cluster template questions (list)
         """
@@ -288,7 +288,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="scheduledClusterScans")
-    def scheduled_cluster_scans(self) -> List['outputs.GetClusterScheduledClusterScanResult']:
+    def scheduled_cluster_scans(self) -> Sequence['outputs.GetClusterScheduledClusterScanResult']:
         return pulumi.get(self, "scheduled_cluster_scans")
 
     @property

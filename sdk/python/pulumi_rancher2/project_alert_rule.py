@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,15 +19,15 @@ class ProjectAlertRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 group_interval_seconds: Optional[pulumi.Input[float]] = None,
-                 group_wait_seconds: Optional[pulumi.Input[float]] = None,
+                 group_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  metric_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 repeat_interval_seconds: Optional[pulumi.Input[float]] = None,
+                 repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  workload_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']]] = None,
                  __props__=None,
@@ -82,15 +82,15 @@ class ProjectAlertRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The project alert rule annotations (map)
         :param pulumi.Input[str] group_id: The project alert rule alert group ID (string)
-        :param pulumi.Input[float] group_interval_seconds: The project alert rule group interval seconds. Default: `180` (int)
-        :param pulumi.Input[float] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_interval_seconds: The project alert rule group interval seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The project alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert rule labels (map)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The project alert rule name (string)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] project_id: The project id where create project alert rule (string)
-        :param pulumi.Input[float] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
+        :param pulumi.Input[int] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
@@ -140,15 +140,15 @@ class ProjectAlertRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            group_interval_seconds: Optional[pulumi.Input[float]] = None,
-            group_wait_seconds: Optional[pulumi.Input[float]] = None,
+            group_interval_seconds: Optional[pulumi.Input[int]] = None,
+            group_wait_seconds: Optional[pulumi.Input[int]] = None,
             inherited: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             metric_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pod_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            repeat_interval_seconds: Optional[pulumi.Input[float]] = None,
+            repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
             severity: Optional[pulumi.Input[str]] = None,
             workload_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']]] = None) -> 'ProjectAlertRule':
         """
@@ -160,15 +160,15 @@ class ProjectAlertRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The project alert rule annotations (map)
         :param pulumi.Input[str] group_id: The project alert rule alert group ID (string)
-        :param pulumi.Input[float] group_interval_seconds: The project alert rule group interval seconds. Default: `180` (int)
-        :param pulumi.Input[float] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_interval_seconds: The project alert rule group interval seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The project alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert rule labels (map)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The project alert rule name (string)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] project_id: The project id where create project alert rule (string)
-        :param pulumi.Input[float] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
+        :param pulumi.Input[int] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
@@ -209,7 +209,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The project alert rule group interval seconds. Default: `180` (int)
         """
@@ -217,7 +217,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The project alert rule group wait seconds. Default: `180` (int)
         """
@@ -273,7 +273,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The project alert rule wait seconds. Default: `3600` (int)
         """

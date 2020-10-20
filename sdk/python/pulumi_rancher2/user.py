@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['User']
@@ -97,7 +97,7 @@ class User(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            principal_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
@@ -110,7 +110,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
         :param pulumi.Input[str] name: The user full name (string)
         :param pulumi.Input[str] password: The user password (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] principal_ids: (Computed) The user principal IDs (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principal_ids: (Computed) The user principal IDs (list)
         :param pulumi.Input[str] username: The user username (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -165,7 +165,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="principalIds")
-    def principal_ids(self) -> pulumi.Output[List[str]]:
+    def principal_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         (Computed) The user principal IDs (list)
         """

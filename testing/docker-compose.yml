@@ -1,6 +1,7 @@
 version: "3"
 services:
   rancher2:
+    privileged: true
     image: rancher/rancher:latest
     ports:
       - 80:80

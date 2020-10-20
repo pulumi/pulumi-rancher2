@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,15 +18,15 @@ class MultiClusterApp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 answers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 revision_history_limit: Optional[pulumi.Input[float]] = None,
+                 revision_history_limit: Optional[pulumi.Input[int]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 targets: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
                  upgrade_strategy: Optional[pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']]] = None,
@@ -39,15 +39,15 @@ class MultiClusterApp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
         :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
         :param pulumi.Input[str] name: The multi cluster app name (string)
-        :param pulumi.Input[float] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
+        :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
         :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: The multi cluster app roles (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
         :param pulumi.Input[str] template_name: The multi cluster app template name (string)
         :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
         :param pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
@@ -104,15 +104,15 @@ class MultiClusterApp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            answers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+            answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            revision_history_limit: Optional[pulumi.Input[float]] = None,
+            revision_history_limit: Optional[pulumi.Input[int]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
-            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            targets: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_version: Optional[pulumi.Input[str]] = None,
             template_version_id: Optional[pulumi.Input[str]] = None,
@@ -126,15 +126,15 @@ class MultiClusterApp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
         :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
         :param pulumi.Input[str] name: The multi cluster app name (string)
-        :param pulumi.Input[float] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
+        :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
         :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: The multi cluster app roles (list)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
         :param pulumi.Input[str] template_name: The multi cluster app template name (string)
         :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
         :param pulumi.Input[str] template_version_id: (Computed) The multi cluster app template version ID (string)
@@ -172,7 +172,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def answers(self) -> pulumi.Output[List['outputs.MultiClusterAppAnswer']]:
+    def answers(self) -> pulumi.Output[Sequence['outputs.MultiClusterAppAnswer']]:
         """
         The multi cluster app answers (list)
         """
@@ -196,7 +196,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[Optional[List['outputs.MultiClusterAppMember']]]:
+    def members(self) -> pulumi.Output[Optional[Sequence['outputs.MultiClusterAppMember']]]:
         """
         The multi cluster app answers (list)
         """
@@ -212,7 +212,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionHistoryLimit")
-    def revision_history_limit(self) -> pulumi.Output[Optional[float]]:
+    def revision_history_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The multi cluster app revision history limit. Default `10` (int)
         """
@@ -228,7 +228,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[List[str]]:
+    def roles(self) -> pulumi.Output[Sequence[str]]:
         """
         The multi cluster app roles (list)
         """
@@ -236,7 +236,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def targets(self) -> pulumi.Output[List['outputs.MultiClusterAppTarget']]:
+    def targets(self) -> pulumi.Output[Sequence['outputs.MultiClusterAppTarget']]:
         """
         The multi cluster app target projects (list)
         """

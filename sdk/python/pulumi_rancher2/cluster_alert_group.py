@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,12 +20,12 @@ class ClusterAlertGroup(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 group_interval_seconds: Optional[pulumi.Input[float]] = None,
-                 group_wait_seconds: Optional[pulumi.Input[float]] = None,
+                 group_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
-                 repeat_interval_seconds: Optional[pulumi.Input[float]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
+                 repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -51,12 +51,12 @@ class ClusterAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert group annotations (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create cluster alert group (string)
         :param pulumi.Input[str] description: The cluster alert group description (string)
-        :param pulumi.Input[float] group_interval_seconds: The cluster alert group interval seconds. Default: `180` (int)
-        :param pulumi.Input[float] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_interval_seconds: The cluster alert group interval seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert group labels (map)
         :param pulumi.Input[str] name: The cluster alert group name (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
-        :param pulumi.Input[float] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
+        :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,12 +101,12 @@ class ClusterAlertGroup(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            group_interval_seconds: Optional[pulumi.Input[float]] = None,
-            group_wait_seconds: Optional[pulumi.Input[float]] = None,
+            group_interval_seconds: Optional[pulumi.Input[int]] = None,
+            group_wait_seconds: Optional[pulumi.Input[int]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            recipients: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
-            repeat_interval_seconds: Optional[pulumi.Input[float]] = None) -> 'ClusterAlertGroup':
+            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
+            repeat_interval_seconds: Optional[pulumi.Input[int]] = None) -> 'ClusterAlertGroup':
         """
         Get an existing ClusterAlertGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -117,12 +117,12 @@ class ClusterAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert group annotations (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create cluster alert group (string)
         :param pulumi.Input[str] description: The cluster alert group description (string)
-        :param pulumi.Input[float] group_interval_seconds: The cluster alert group interval seconds. Default: `180` (int)
-        :param pulumi.Input[float] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_interval_seconds: The cluster alert group interval seconds. Default: `180` (int)
+        :param pulumi.Input[int] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert group labels (map)
         :param pulumi.Input[str] name: The cluster alert group name (string)
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
-        :param pulumi.Input[float] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
+        :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -165,7 +165,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The cluster alert group interval seconds. Default: `180` (int)
         """
@@ -173,7 +173,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> pulumi.Output[Optional[float]]:
+    def group_wait_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The cluster alert group wait seconds. Default: `180` (int)
         """
@@ -197,7 +197,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def recipients(self) -> pulumi.Output[Optional[List['outputs.ClusterAlertGroupRecipient']]]:
+    def recipients(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterAlertGroupRecipient']]]:
         """
         The cluster alert group recipients (list)
         """
@@ -205,7 +205,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> pulumi.Output[Optional[float]]:
+    def repeat_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The cluster alert group wait seconds. Default: `3600` (int)
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -108,7 +108,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter(name="engineInsecureRegistries")
-    def engine_insecure_registries(self) -> List[str]:
+    def engine_insecure_registries(self) -> Sequence[str]:
         """
         (Computed) Insecure registry for the node template (list)
         """
@@ -140,7 +140,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter(name="engineRegistryMirrors")
-    def engine_registry_mirrors(self) -> List[str]:
+    def engine_registry_mirrors(self) -> Sequence[str]:
         """
         (Computed) Engine registry mirror for the node template (list)
         """

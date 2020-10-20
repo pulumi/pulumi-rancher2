@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -28,7 +28,7 @@ class ClusterLogging(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 output_flush_interval: Optional[pulumi.Input[float]] = None,
+                 output_flush_interval: Optional[pulumi.Input[int]] = None,
                  output_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  splunk_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingSplunkConfigArgs']]] = None,
                  syslog_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingSyslogConfigArgs']]] = None,
@@ -69,7 +69,7 @@ class ClusterLogging(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cluster Logging object (map)
         :param pulumi.Input[str] name: The name of the cluster logging config (string)
         :param pulumi.Input[str] namespace_id: The namespace id from cluster logging (string)
-        :param pulumi.Input[float] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
+        :param pulumi.Input[int] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
         :param pulumi.Input[Mapping[str, Any]] output_tags: The output tags for Cluster Logging (map)
         :param pulumi.Input[pulumi.InputType['ClusterLoggingSplunkConfigArgs']] splunk_config: The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterLoggingSyslogConfigArgs']] syslog_config: The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
@@ -131,7 +131,7 @@ class ClusterLogging(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
-            output_flush_interval: Optional[pulumi.Input[float]] = None,
+            output_flush_interval: Optional[pulumi.Input[int]] = None,
             output_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             splunk_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingSplunkConfigArgs']]] = None,
             syslog_config: Optional[pulumi.Input[pulumi.InputType['ClusterLoggingSyslogConfigArgs']]] = None) -> 'ClusterLogging':
@@ -153,7 +153,7 @@ class ClusterLogging(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cluster Logging object (map)
         :param pulumi.Input[str] name: The name of the cluster logging config (string)
         :param pulumi.Input[str] namespace_id: The namespace id from cluster logging (string)
-        :param pulumi.Input[float] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
+        :param pulumi.Input[int] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
         :param pulumi.Input[Mapping[str, Any]] output_tags: The output tags for Cluster Logging (map)
         :param pulumi.Input[pulumi.InputType['ClusterLoggingSplunkConfigArgs']] splunk_config: The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterLoggingSyslogConfigArgs']] syslog_config: The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
@@ -269,7 +269,7 @@ class ClusterLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputFlushInterval")
-    def output_flush_interval(self) -> pulumi.Output[Optional[float]]:
+    def output_flush_interval(self) -> pulumi.Output[Optional[int]]:
         """
         How often buffered logs would be flushed. Default: `3` seconds (int)
         """

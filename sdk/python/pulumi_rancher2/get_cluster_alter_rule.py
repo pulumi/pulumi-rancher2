@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -33,11 +33,11 @@ class GetClusterAlterRuleResult:
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         pulumi.set(__self__, "group_id", group_id)
-        if group_interval_seconds and not isinstance(group_interval_seconds, float):
-            raise TypeError("Expected argument 'group_interval_seconds' to be a float")
+        if group_interval_seconds and not isinstance(group_interval_seconds, int):
+            raise TypeError("Expected argument 'group_interval_seconds' to be a int")
         pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
-        if group_wait_seconds and not isinstance(group_wait_seconds, float):
-            raise TypeError("Expected argument 'group_wait_seconds' to be a float")
+        if group_wait_seconds and not isinstance(group_wait_seconds, int):
+            raise TypeError("Expected argument 'group_wait_seconds' to be a int")
         pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -57,8 +57,8 @@ class GetClusterAlterRuleResult:
         if node_rule and not isinstance(node_rule, dict):
             raise TypeError("Expected argument 'node_rule' to be a dict")
         pulumi.set(__self__, "node_rule", node_rule)
-        if repeat_interval_seconds and not isinstance(repeat_interval_seconds, float):
-            raise TypeError("Expected argument 'repeat_interval_seconds' to be a float")
+        if repeat_interval_seconds and not isinstance(repeat_interval_seconds, int):
+            raise TypeError("Expected argument 'repeat_interval_seconds' to be a int")
         pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
         if severity and not isinstance(severity, str):
             raise TypeError("Expected argument 'severity' to be a str")
@@ -98,7 +98,7 @@ class GetClusterAlterRuleResult:
 
     @property
     @pulumi.getter(name="groupIntervalSeconds")
-    def group_interval_seconds(self) -> float:
+    def group_interval_seconds(self) -> int:
         """
         (Computed) The cluster alert rule group interval seconds. Default: `180` (int)
         """
@@ -106,7 +106,7 @@ class GetClusterAlterRuleResult:
 
     @property
     @pulumi.getter(name="groupWaitSeconds")
-    def group_wait_seconds(self) -> float:
+    def group_wait_seconds(self) -> int:
         """
         (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
         """
@@ -159,7 +159,7 @@ class GetClusterAlterRuleResult:
 
     @property
     @pulumi.getter(name="repeatIntervalSeconds")
-    def repeat_interval_seconds(self) -> float:
+    def repeat_interval_seconds(self) -> int:
         """
         (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
         """
