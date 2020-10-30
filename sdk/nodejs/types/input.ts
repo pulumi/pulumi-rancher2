@@ -149,7 +149,7 @@ export interface ClusterAksConfig {
      */
     enableMonitoring?: pulumi.Input<boolean>;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -461,6 +461,7 @@ export interface ClusterEksConfig {
      * The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
      */
     desiredNodes?: pulumi.Input<number>;
+    ebsEncryption?: pulumi.Input<boolean>;
     /**
      * The type of machine to use for worker nodes. Default `t2.medium` (string)
      */
@@ -470,7 +471,7 @@ export interface ClusterEksConfig {
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -486,7 +487,7 @@ export interface ClusterEksConfig {
      */
     nodeVolumeSize?: pulumi.Input<number>;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -561,7 +562,7 @@ export interface ClusterGkeConfig {
      */
     enableHttpLoadBalancing?: pulumi.Input<boolean>;
     /**
-     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      */
     enableKubernetesDashboard?: pulumi.Input<boolean>;
     /**
@@ -582,7 +583,7 @@ export interface ClusterGkeConfig {
      */
     enablePrivateEndpoint?: pulumi.Input<boolean>;
     /**
-     * Whether nodes have internal IP address only. Default `false` (bool)
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      */
     enablePrivateNodes?: pulumi.Input<boolean>;
     /**
@@ -702,7 +703,7 @@ export interface ClusterGkeConfig {
      */
     projectId: pulumi.Input<string>;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -986,6 +987,105 @@ export interface ClusterLoggingSyslogConfig {
     token?: pulumi.Input<string>;
 }
 
+export interface ClusterOkeConfig {
+    /**
+     * The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     */
+    compartmentId: pulumi.Input<string>;
+    /**
+     * An optional description of this cluster (string)
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     */
+    enableKubernetesDashboard?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     */
+    enablePrivateNodes?: pulumi.Input<boolean>;
+    /**
+     * The fingerprint corresponding to the specified user's private API Key (string)
+     */
+    fingerprint: pulumi.Input<string>;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion: pulumi.Input<string>;
+    /**
+     * The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+     */
+    loadBalancerSubnetName1?: pulumi.Input<string>;
+    /**
+     * The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     */
+    loadBalancerSubnetName2?: pulumi.Input<string>;
+    /**
+     * The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     */
+    nodeImage: pulumi.Input<string>;
+    /**
+     * Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     */
+    nodePoolDnsDomainName?: pulumi.Input<string>;
+    /**
+     * Name for node pool subnet. Default `nodedns` (string)
+     */
+    nodePoolSubnetName?: pulumi.Input<string>;
+    /**
+     * The contents of the SSH public key file to use for the nodes (string)
+     */
+    nodePublicKeyContents?: pulumi.Input<string>;
+    /**
+     * The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     */
+    nodeShape: pulumi.Input<string>;
+    /**
+     * The private API key file contents for the specified user, in PEM format (string)
+     */
+    privateKeyContents: pulumi.Input<string>;
+    /**
+     * The passphrase (if any) of the private key for the OKE cluster (string)
+     */
+    privateKeyPassphrase?: pulumi.Input<string>;
+    /**
+     * Number of node subnets. Default `1` (int)
+     */
+    quantityOfNodeSubnets?: pulumi.Input<number>;
+    /**
+     * Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     */
+    quantityPerSubnet?: pulumi.Input<number>;
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region: pulumi.Input<string>;
+    /**
+     * Name for DNS domain of service subnet. Default `svcdns` (string)
+     */
+    serviceDnsDomainName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     */
+    skipVcnDelete?: pulumi.Input<boolean>;
+    /**
+     * The OCID of the tenancy in which to create resources (string)
+     */
+    tenancyId: pulumi.Input<string>;
+    /**
+     * The OCID of a user who has access to the tenancy/compartment (string)
+     */
+    userOcid: pulumi.Input<string>;
+    /**
+     * The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+     */
+    vcnName?: pulumi.Input<string>;
+    /**
+     * Additional CIDR from which to allow ingress to worker nodes (string)
+     */
+    workerNodeIngressCidr?: pulumi.Input<string>;
+}
+
 export interface ClusterRkeConfig {
     /**
      * Duration in seconds of addon job (int)
@@ -1028,7 +1128,7 @@ export interface ClusterRkeConfig {
      */
     ingress?: pulumi.Input<inputs.ClusterRkeConfigIngress>;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
@@ -1205,7 +1305,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
 
 export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -1409,7 +1509,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     password: pulumi.Input<string>;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -1975,7 +2075,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     folder?: pulumi.Input<string>;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: pulumi.Input<string>;
     /**
@@ -2952,6 +3052,17 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
     secretKey?: pulumi.Input<string>;
 }
 
+export interface GetNotifierDingtalkConfig {
+    proxyUrl?: string;
+    secret?: string;
+    url: string;
+}
+
+export interface GetNotifierMsteamsConfig {
+    proxyUrl?: string;
+    url: string;
+}
+
 export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
     /**
      * The name of the PodSecurityPolicyTemplate (string)
@@ -3651,6 +3762,18 @@ export interface NodeTemplateOpenstackConfig {
      */
     activeTimeout?: pulumi.Input<string>;
     /**
+     * OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+     */
+    applicationCredentialId?: pulumi.Input<string>;
+    /**
+     * OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+     */
+    applicationCredentialName?: pulumi.Input<string>;
+    /**
+     * OpenStack application credential secret (string)
+     */
+    applicationCredentialSecret?: pulumi.Input<string>;
+    /**
      * OpenStack authentication URL (string)
      */
     authUrl: pulumi.Input<string>;
@@ -3761,7 +3884,7 @@ export interface NodeTemplateOpenstackConfig {
     /**
      * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export interface NodeTemplateVsphereConfig {
@@ -3889,6 +4012,32 @@ export interface NodeTemplateVsphereConfig {
      * vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
      */
     vcenterPort?: pulumi.Input<string>;
+}
+
+export interface NotifierDingtalkConfig {
+    /**
+     * Wechat proxy url (string)
+     */
+    proxyUrl?: pulumi.Input<string>;
+    /**
+     * Wechat agent ID (string)
+     */
+    secret?: pulumi.Input<string>;
+    /**
+     * Webhook url (string)
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface NotifierMsteamsConfig {
+    /**
+     * Wechat proxy url (string)
+     */
+    proxyUrl?: pulumi.Input<string>;
+    /**
+     * Webhook url (string)
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface NotifierPagerdutyConfig {

@@ -145,6 +145,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        public readonly Outputs.GetClusterOkeConfigResult OkeConfig;
         /// <summary>
         /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
         /// </summary>
@@ -203,6 +204,8 @@ namespace Pulumi.Rancher2
 
             string name,
 
+            Outputs.GetClusterOkeConfigResult okeConfig,
+
             Outputs.GetClusterRkeConfigResult rkeConfig,
 
             ImmutableArray<Outputs.GetClusterScheduledClusterScanResult> scheduledClusterScans,
@@ -232,6 +235,7 @@ namespace Pulumi.Rancher2
             KubeConfig = kubeConfig;
             Labels = labels;
             Name = name;
+            OkeConfig = okeConfig;
             RkeConfig = rkeConfig;
             ScheduledClusterScans = scheduledClusterScans;
             SystemProjectId = systemProjectId;

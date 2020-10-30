@@ -68,9 +68,17 @@ export class Notifier extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Dingtalk config for notifier (list maxitems:1)
+     */
+    public readonly dingtalkConfig!: pulumi.Output<outputs.NotifierDingtalkConfig | undefined>;
+    /**
      * Labels for notifier object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * MSTeams config for notifier (list maxitems:1)
+     */
+    public readonly msteamsConfig!: pulumi.Output<outputs.NotifierMsteamsConfig | undefined>;
     /**
      * The name of the notifier (string)
      */
@@ -115,7 +123,9 @@ export class Notifier extends pulumi.CustomResource {
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["dingtalkConfig"] = state ? state.dingtalkConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["msteamsConfig"] = state ? state.msteamsConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["pagerdutyConfig"] = state ? state.pagerdutyConfig : undefined;
             inputs["sendResolved"] = state ? state.sendResolved : undefined;
@@ -131,7 +141,9 @@ export class Notifier extends pulumi.CustomResource {
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dingtalkConfig"] = args ? args.dingtalkConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["msteamsConfig"] = args ? args.msteamsConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pagerdutyConfig"] = args ? args.pagerdutyConfig : undefined;
             inputs["sendResolved"] = args ? args.sendResolved : undefined;
@@ -168,9 +180,17 @@ export interface NotifierState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Dingtalk config for notifier (list maxitems:1)
+     */
+    readonly dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
+    /**
      * Labels for notifier object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * MSTeams config for notifier (list maxitems:1)
+     */
+    readonly msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
     /**
      * The name of the notifier (string)
      */
@@ -218,9 +238,17 @@ export interface NotifierArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Dingtalk config for notifier (list maxitems:1)
+     */
+    readonly dingtalkConfig?: pulumi.Input<inputs.NotifierDingtalkConfig>;
+    /**
      * Labels for notifier object (map)
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * MSTeams config for notifier (list maxitems:1)
+     */
+    readonly msteamsConfig?: pulumi.Input<inputs.NotifierMsteamsConfig>;
     /**
      * The name of the notifier (string)
      */

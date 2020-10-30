@@ -15,6 +15,7 @@
     "files": [
         "activeDirectory.ts",
         "app.ts",
+        "appV2.ts",
         "authConfigAdfs.ts",
         "authConfigAzureAd.ts",
         "authConfigFreeIpa.ts",
@@ -25,6 +26,7 @@
         "authConfigPing.ts",
         "bootstrap.ts",
         "catalog.ts",
+        "catalogV2.ts",
         "certificate.ts",
         "cloudCredential.ts",
         "cluster.ts",
@@ -42,6 +44,7 @@
         "etcdBackup.ts",
         "getApp.ts",
         "getCatalog.ts",
+        "getCatalogV2.ts",
         "getCertificate.ts",
         "getCloudCredential.ts",
         "getCluster.ts",

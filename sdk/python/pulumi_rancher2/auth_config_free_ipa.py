@@ -34,6 +34,8 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
+                 test_password: Optional[pulumi.Input[str]] = None,
+                 test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
                  user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
                  user_enabled_attribute: Optional[pulumi.Input[str]] = None,
@@ -72,6 +74,8 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: FreeIpa servers list (list)
         :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
         :param pulumi.Input[str] service_account_password: Service account password for access FreeIpa service (string)
+        :param pulumi.Input[str] test_password: Password for test access to FreeIpa service (string)
+        :param pulumi.Input[str] test_username: Username for test access to FreeIpa service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
         :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask (int)
         :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
@@ -124,6 +128,12 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
             if service_account_password is None:
                 raise TypeError("Missing required property 'service_account_password'")
             __props__['service_account_password'] = service_account_password
+            if test_password is None:
+                raise TypeError("Missing required property 'test_password'")
+            __props__['test_password'] = test_password
+            if test_username is None:
+                raise TypeError("Missing required property 'test_username'")
+            __props__['test_username'] = test_username
             __props__['tls'] = tls
             __props__['user_disabled_bit_mask'] = user_disabled_bit_mask
             __props__['user_enabled_attribute'] = user_enabled_attribute
@@ -167,6 +177,8 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
             service_account_password: Optional[pulumi.Input[str]] = None,
+            test_password: Optional[pulumi.Input[str]] = None,
+            test_username: Optional[pulumi.Input[str]] = None,
             tls: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
             user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
@@ -204,6 +216,8 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: FreeIpa servers list (list)
         :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
         :param pulumi.Input[str] service_account_password: Service account password for access FreeIpa service (string)
+        :param pulumi.Input[str] test_password: Password for test access to FreeIpa service (string)
+        :param pulumi.Input[str] test_username: Username for test access to FreeIpa service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
         :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask (int)
@@ -239,6 +253,8 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         __props__["servers"] = servers
         __props__["service_account_distinguished_name"] = service_account_distinguished_name
         __props__["service_account_password"] = service_account_password
+        __props__["test_password"] = test_password
+        __props__["test_username"] = test_username
         __props__["tls"] = tls
         __props__["type"] = type
         __props__["user_disabled_bit_mask"] = user_disabled_bit_mask
@@ -410,6 +426,22 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         Service account password for access FreeIpa service (string)
         """
         return pulumi.get(self, "service_account_password")
+
+    @property
+    @pulumi.getter(name="testPassword")
+    def test_password(self) -> pulumi.Output[str]:
+        """
+        Password for test access to FreeIpa service (string)
+        """
+        return pulumi.get(self, "test_password")
+
+    @property
+    @pulumi.getter(name="testUsername")
+    def test_username(self) -> pulumi.Output[str]:
+        """
+        Username for test access to FreeIpa service (string)
+        """
+        return pulumi.get(self, "test_username")
 
     @property
     @pulumi.getter

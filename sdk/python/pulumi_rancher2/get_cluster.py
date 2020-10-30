@@ -20,7 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         pulumi.set(__self__, "aks_config", aks_config)
@@ -90,6 +90,9 @@ class GetClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if oke_config and not isinstance(oke_config, dict):
+            raise TypeError("Expected argument 'oke_config' to be a dict")
+        pulumi.set(__self__, "oke_config", oke_config)
         if rke_config and not isinstance(rke_config, dict):
             raise TypeError("Expected argument 'rke_config' to be a dict")
         pulumi.set(__self__, "rke_config", rke_config)
@@ -279,6 +282,11 @@ class GetClusterResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="okeConfig")
+    def oke_config(self) -> 'outputs.GetClusterOkeConfigResult':
+        return pulumi.get(self, "oke_config")
+
+    @property
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> 'outputs.GetClusterRkeConfigResult':
         """
@@ -329,6 +337,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             kube_config=self.kube_config,
             labels=self.labels,
             name=self.name,
+            oke_config=self.oke_config,
             rke_config=self.rke_config,
             scheduled_cluster_scans=self.scheduled_cluster_scans,
             system_project_id=self.system_project_id)
@@ -383,6 +392,7 @@ def get_cluster(name: Optional[str] = None,
         kube_config=__ret__.kube_config,
         labels=__ret__.labels,
         name=__ret__.name,
+        oke_config=__ret__.oke_config,
         rke_config=__ret__.rke_config,
         scheduled_cluster_scans=__ret__.scheduled_cluster_scans,
         system_project_id=__ret__.system_project_id)

@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .active_directory import *
 from .app import *
+from .app_v2 import *
 from .auth_config_adfs import *
 from .auth_config_azure_ad import *
 from .auth_config_free_ipa import *
@@ -15,6 +16,7 @@ from .auth_config_open_ldap import *
 from .auth_config_ping import *
 from .bootstrap import *
 from .catalog import *
+from .catalog_v2 import *
 from .certificate import *
 from .cloud_credential import *
 from .cluster import *
@@ -30,6 +32,7 @@ from .cluster_template import *
 from .etcd_backup import *
 from .get_app import *
 from .get_catalog import *
+from .get_catalog_v2 import *
 from .get_certificate import *
 from .get_cloud_credential import *
 from .get_cluster import *

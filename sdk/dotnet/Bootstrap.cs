@@ -66,6 +66,12 @@ namespace Pulumi.Rancher2
         public Output<bool?> TokenUpdate { get; private set; } = null!;
 
         /// <summary>
+        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// </summary>
+        [Output("uiDefaultLanding")]
+        public Output<string?> UiDefaultLanding { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) URL set as server-url (string)
         /// </summary>
         [Output("url")]
@@ -153,6 +159,12 @@ namespace Pulumi.Rancher2
         [Input("tokenUpdate")]
         public Input<bool>? TokenUpdate { get; set; }
 
+        /// <summary>
+        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// </summary>
+        [Input("uiDefaultLanding")]
+        public Input<string>? UiDefaultLanding { get; set; }
+
         public BootstrapArgs()
         {
         }
@@ -213,6 +225,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("tokenUpdate")]
         public Input<bool>? TokenUpdate { get; set; }
+
+        /// <summary>
+        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// </summary>
+        [Input("uiDefaultLanding")]
+        public Input<string>? UiDefaultLanding { get; set; }
 
         /// <summary>
         /// (Computed) URL set as server-url (string)

@@ -29,6 +29,7 @@ namespace Pulumi.Rancher2.Outputs
         /// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
         /// </summary>
         public readonly int? DesiredNodes;
+        public readonly bool? EbsEncryption;
         /// <summary>
         /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
@@ -38,7 +39,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KeyPairName;
         /// <summary>
-        /// The Kubernetes master version (string)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
@@ -54,7 +55,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? NodeVolumeSize;
         /// <summary>
-        /// GKE cluster region. Conflicts with `zone` (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -96,6 +97,8 @@ namespace Pulumi.Rancher2.Outputs
 
             int? desiredNodes,
 
+            bool? ebsEncryption,
+
             string? instanceType,
 
             string? keyPairName,
@@ -128,6 +131,7 @@ namespace Pulumi.Rancher2.Outputs
             Ami = ami;
             AssociateWorkerNodePublicIp = associateWorkerNodePublicIp;
             DesiredNodes = desiredNodes;
+            EbsEncryption = ebsEncryption;
             InstanceType = instanceType;
             KeyPairName = keyPairName;
             KubernetesVersion = kubernetesVersion;

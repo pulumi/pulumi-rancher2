@@ -36,6 +36,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("desiredNodes")]
         public Input<int>? DesiredNodes { get; set; }
 
+        [Input("ebsEncryption")]
+        public Input<bool>? EbsEncryption { get; set; }
+
         /// <summary>
         /// The type of machine to use for worker nodes. Default `t2.medium` (string)
         /// </summary>
@@ -49,7 +52,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The Kubernetes master version (string)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -73,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? NodeVolumeSize { get; set; }
 
         /// <summary>
-        /// GKE cluster region. Conflicts with `zone` (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

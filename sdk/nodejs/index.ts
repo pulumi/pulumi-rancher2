@@ -4,6 +4,7 @@
 // Export members:
 export * from "./activeDirectory";
 export * from "./app";
+export * from "./appV2";
 export * from "./authConfigAdfs";
 export * from "./authConfigAzureAd";
 export * from "./authConfigFreeIpa";
@@ -14,6 +15,7 @@ export * from "./authConfigOpenLdap";
 export * from "./authConfigPing";
 export * from "./bootstrap";
 export * from "./catalog";
+export * from "./catalogV2";
 export * from "./certificate";
 export * from "./cloudCredential";
 export * from "./cluster";
@@ -29,6 +31,7 @@ export * from "./clusterTemplate";
 export * from "./etcdBackup";
 export * from "./getApp";
 export * from "./getCatalog";
+export * from "./getCatalogV2";
 export * from "./getCertificate";
 export * from "./getCloudCredential";
 export * from "./getCluster";

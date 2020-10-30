@@ -14,6 +14,9 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterRkeConfigServicesEtcdResult
     {
         public readonly Outputs.GetClusterRkeConfigServicesEtcdBackupConfigResult BackupConfig;
+        /// <summary>
+        /// (Computed) K8s cluster ca cert (string)
+        /// </summary>
         public readonly string CaCert;
         public readonly string Cert;
         public readonly string Creation;

@@ -17,6 +17,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? Ami;
         public readonly bool? AssociateWorkerNodePublicIp;
         public readonly int? DesiredNodes;
+        public readonly bool? EbsEncryption;
         public readonly string? InstanceType;
         public readonly string? KeyPairName;
         public readonly string KubernetesVersion;
@@ -41,6 +42,8 @@ namespace Pulumi.Rancher2.Outputs
             bool? associateWorkerNodePublicIp,
 
             int? desiredNodes,
+
+            bool? ebsEncryption,
 
             string? instanceType,
 
@@ -74,6 +77,7 @@ namespace Pulumi.Rancher2.Outputs
             Ami = ami;
             AssociateWorkerNodePublicIp = associateWorkerNodePublicIp;
             DesiredNodes = desiredNodes;
+            EbsEncryption = ebsEncryption;
             InstanceType = instanceType;
             KeyPairName = keyPairName;
             KubernetesVersion = kubernetesVersion;

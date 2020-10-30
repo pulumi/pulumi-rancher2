@@ -20,7 +20,9 @@ class Notifier(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -56,7 +58,9 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+        :param pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
@@ -87,7 +91,9 @@ class Notifier(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['description'] = description
+            __props__['dingtalk_config'] = dingtalk_config
             __props__['labels'] = labels
+            __props__['msteams_config'] = msteams_config
             __props__['name'] = name
             __props__['pagerduty_config'] = pagerduty_config
             __props__['send_resolved'] = send_resolved
@@ -108,7 +114,9 @@ class Notifier(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
             send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -126,7 +134,9 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
+        :param pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
@@ -142,7 +152,9 @@ class Notifier(pulumi.CustomResource):
         __props__["annotations"] = annotations
         __props__["cluster_id"] = cluster_id
         __props__["description"] = description
+        __props__["dingtalk_config"] = dingtalk_config
         __props__["labels"] = labels
+        __props__["msteams_config"] = msteams_config
         __props__["name"] = name
         __props__["pagerduty_config"] = pagerduty_config
         __props__["send_resolved"] = send_resolved
@@ -177,12 +189,28 @@ class Notifier(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dingtalkConfig")
+    def dingtalk_config(self) -> pulumi.Output[Optional['outputs.NotifierDingtalkConfig']]:
+        """
+        Dingtalk config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "dingtalk_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Labels for notifier object (map)
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="msteamsConfig")
+    def msteams_config(self) -> pulumi.Output[Optional['outputs.NotifierMsteamsConfig']]:
+        """
+        MSTeams config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "msteams_config")
 
     @property
     @pulumi.getter

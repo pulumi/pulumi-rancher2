@@ -60,6 +60,10 @@ type ActiveDirectory struct {
 	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringOutput `pulumi:"serviceAccountUsername"`
+	// Password for test access to ActiveDirectory service (string)
+	TestPassword pulumi.StringOutput `pulumi:"testPassword"`
+	// Username for test access to ActiveDirectory service (string)
+	TestUsername pulumi.StringOutput `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolOutput `pulumi:"tls"`
 	// (Computed) The type of the resource (string)
@@ -93,6 +97,12 @@ func NewActiveDirectory(ctx *pulumi.Context,
 	}
 	if args == nil || args.ServiceAccountUsername == nil {
 		return nil, errors.New("missing required argument 'ServiceAccountUsername'")
+	}
+	if args == nil || args.TestPassword == nil {
+		return nil, errors.New("missing required argument 'TestPassword'")
+	}
+	if args == nil || args.TestUsername == nil {
+		return nil, errors.New("missing required argument 'TestUsername'")
 	}
 	if args == nil || args.UserSearchBase == nil {
 		return nil, errors.New("missing required argument 'UserSearchBase'")
@@ -166,6 +176,10 @@ type activeDirectoryState struct {
 	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername *string `pulumi:"serviceAccountUsername"`
+	// Password for test access to ActiveDirectory service (string)
+	TestPassword *string `pulumi:"testPassword"`
+	// Username for test access to ActiveDirectory service (string)
+	TestUsername *string `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls *bool `pulumi:"tls"`
 	// (Computed) The type of the resource (string)
@@ -233,6 +247,10 @@ type ActiveDirectoryState struct {
 	ServiceAccountPassword pulumi.StringPtrInput
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringPtrInput
+	// Password for test access to ActiveDirectory service (string)
+	TestPassword pulumi.StringPtrInput
+	// Username for test access to ActiveDirectory service (string)
+	TestUsername pulumi.StringPtrInput
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolPtrInput
 	// (Computed) The type of the resource (string)
@@ -302,6 +320,10 @@ type activeDirectoryArgs struct {
 	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername string `pulumi:"serviceAccountUsername"`
+	// Password for test access to ActiveDirectory service (string)
+	TestPassword string `pulumi:"testPassword"`
+	// Username for test access to ActiveDirectory service (string)
+	TestUsername string `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls *bool `pulumi:"tls"`
 	// User disabled bit mask. Default `2` (int)
@@ -366,6 +388,10 @@ type ActiveDirectoryArgs struct {
 	ServiceAccountPassword pulumi.StringInput
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringInput
+	// Password for test access to ActiveDirectory service (string)
+	TestPassword pulumi.StringInput
+	// Username for test access to ActiveDirectory service (string)
+	TestUsername pulumi.StringInput
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolPtrInput
 	// User disabled bit mask. Default `2` (int)

@@ -118,6 +118,14 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
      */
     public readonly serviceAccountPassword!: pulumi.Output<string>;
     /**
+     * Password for test access to OpenLdap service (string)
+     */
+    public readonly testPassword!: pulumi.Output<string>;
+    /**
+     * Username for test access to OpenLdap service (string)
+     */
+    public readonly testUsername!: pulumi.Output<string>;
+    /**
      * Enable TLS connection (bool)
      */
     public readonly tls!: pulumi.Output<boolean>;
@@ -190,6 +198,8 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
             inputs["serviceAccountDistinguishedName"] = state ? state.serviceAccountDistinguishedName : undefined;
             inputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
+            inputs["testPassword"] = state ? state.testPassword : undefined;
+            inputs["testUsername"] = state ? state.testUsername : undefined;
             inputs["tls"] = state ? state.tls : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["userDisabledBitMask"] = state ? state.userDisabledBitMask : undefined;
@@ -210,6 +220,12 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             }
             if (!args || args.serviceAccountPassword === undefined) {
                 throw new Error("Missing required property 'serviceAccountPassword'");
+            }
+            if (!args || args.testPassword === undefined) {
+                throw new Error("Missing required property 'testPassword'");
+            }
+            if (!args || args.testUsername === undefined) {
+                throw new Error("Missing required property 'testUsername'");
             }
             if (!args || args.userSearchBase === undefined) {
                 throw new Error("Missing required property 'userSearchBase'");
@@ -233,6 +249,8 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
             inputs["servers"] = args ? args.servers : undefined;
             inputs["serviceAccountDistinguishedName"] = args ? args.serviceAccountDistinguishedName : undefined;
             inputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
+            inputs["testPassword"] = args ? args.testPassword : undefined;
+            inputs["testUsername"] = args ? args.testUsername : undefined;
             inputs["tls"] = args ? args.tls : undefined;
             inputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
             inputs["userEnabledAttribute"] = args ? args.userEnabledAttribute : undefined;
@@ -340,6 +358,14 @@ export interface AuthConfigOpenLdapState {
      * Service account password for access OpenLdap service (string)
      */
     readonly serviceAccountPassword?: pulumi.Input<string>;
+    /**
+     * Password for test access to OpenLdap service (string)
+     */
+    readonly testPassword?: pulumi.Input<string>;
+    /**
+     * Username for test access to OpenLdap service (string)
+     */
+    readonly testUsername?: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
@@ -462,6 +488,14 @@ export interface AuthConfigOpenLdapArgs {
      * Service account password for access OpenLdap service (string)
      */
     readonly serviceAccountPassword: pulumi.Input<string>;
+    /**
+     * Password for test access to OpenLdap service (string)
+     */
+    readonly testPassword: pulumi.Input<string>;
+    /**
+     * Username for test access to OpenLdap service (string)
+     */
+    readonly testUsername: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */

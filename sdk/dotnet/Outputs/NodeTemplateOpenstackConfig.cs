@@ -18,6 +18,18 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ActiveTimeout;
         /// <summary>
+        /// OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        /// </summary>
+        public readonly string? ApplicationCredentialId;
+        /// <summary>
+        /// OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        /// </summary>
+        public readonly string? ApplicationCredentialName;
+        /// <summary>
+        /// OpenStack application credential secret (string)
+        /// </summary>
+        public readonly string? ApplicationCredentialSecret;
+        /// <summary>
         /// OpenStack authentication URL (string)
         /// </summary>
         public readonly string AuthUrl;
@@ -128,11 +140,17 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        public readonly string Username;
+        public readonly string? Username;
 
         [OutputConstructor]
         private NodeTemplateOpenstackConfig(
             string? activeTimeout,
+
+            string? applicationCredentialId,
+
+            string? applicationCredentialName,
+
+            string? applicationCredentialSecret,
 
             string authUrl,
 
@@ -188,9 +206,12 @@ namespace Pulumi.Rancher2.Outputs
 
             string? userDataFile,
 
-            string username)
+            string? username)
         {
             ActiveTimeout = activeTimeout;
+            ApplicationCredentialId = applicationCredentialId;
+            ApplicationCredentialName = applicationCredentialName;
+            ApplicationCredentialSecret = applicationCredentialSecret;
             AuthUrl = authUrl;
             AvailabilityZone = availabilityZone;
             Cacert = cacert;

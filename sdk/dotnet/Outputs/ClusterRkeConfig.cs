@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigIngress? Ingress;
         /// <summary>
-        /// The Kubernetes master version (string)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>

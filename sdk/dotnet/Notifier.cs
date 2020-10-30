@@ -60,10 +60,22 @@ namespace Pulumi.Rancher2
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        [Output("dingtalkConfig")]
+        public Output<Outputs.NotifierDingtalkConfig?> DingtalkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Labels for notifier object (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        [Output("msteamsConfig")]
+        public Output<Outputs.NotifierMsteamsConfig?> MsteamsConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the notifier (string)
@@ -177,6 +189,12 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("dingtalkConfig")]
+        public Input<Inputs.NotifierDingtalkConfigArgs>? DingtalkConfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -188,6 +206,12 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("msteamsConfig")]
+        public Input<Inputs.NotifierMsteamsConfigArgs>? MsteamsConfig { get; set; }
 
         /// <summary>
         /// The name of the notifier (string)
@@ -262,6 +286,12 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("dingtalkConfig")]
+        public Input<Inputs.NotifierDingtalkConfigGetArgs>? DingtalkConfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -273,6 +303,12 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("msteamsConfig")]
+        public Input<Inputs.NotifierMsteamsConfigGetArgs>? MsteamsConfig { get; set; }
 
         /// <summary>
         /// The name of the notifier (string)

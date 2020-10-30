@@ -20,6 +20,7 @@ class Bootstrap(pulumi.CustomResource):
                  telemetry: Optional[pulumi.Input[bool]] = None,
                  token_ttl: Optional[pulumi.Input[int]] = None,
                  token_update: Optional[pulumi.Input[bool]] = None,
+                 ui_default_landing: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,6 +33,7 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
+        :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -55,6 +57,7 @@ class Bootstrap(pulumi.CustomResource):
             __props__['telemetry'] = telemetry
             __props__['token_ttl'] = token_ttl
             __props__['token_update'] = token_update
+            __props__['ui_default_landing'] = ui_default_landing
             __props__['temp_token'] = None
             __props__['temp_token_id'] = None
             __props__['token'] = None
@@ -80,6 +83,7 @@ class Bootstrap(pulumi.CustomResource):
             token_id: Optional[pulumi.Input[str]] = None,
             token_ttl: Optional[pulumi.Input[int]] = None,
             token_update: Optional[pulumi.Input[bool]] = None,
+            ui_default_landing: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'Bootstrap':
         """
@@ -98,6 +102,7 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[str] token_id: (Computed) Generated API token id for Admin User (string)
         :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
+        :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         :param pulumi.Input[str] url: (Computed) URL set as server-url (string)
         :param pulumi.Input[str] user: (Computed) Admin username (string)
         """
@@ -114,6 +119,7 @@ class Bootstrap(pulumi.CustomResource):
         __props__["token_id"] = token_id
         __props__["token_ttl"] = token_ttl
         __props__["token_update"] = token_update
+        __props__["ui_default_landing"] = ui_default_landing
         __props__["url"] = url
         __props__["user"] = user
         return Bootstrap(resource_name, opts=opts, __props__=__props__)
@@ -189,6 +195,14 @@ class Bootstrap(pulumi.CustomResource):
         Regenerate admin token. Default: `false` (bool)
         """
         return pulumi.get(self, "token_update")
+
+    @property
+    @pulumi.getter(name="uiDefaultLanding")
+    def ui_default_landing(self) -> pulumi.Output[Optional[str]]:
+        """
+        Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        """
+        return pulumi.get(self, "ui_default_landing")
 
     @property
     @pulumi.getter

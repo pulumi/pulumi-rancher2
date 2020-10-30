@@ -69,6 +69,10 @@ export class Bootstrap extends pulumi.CustomResource {
      */
     public readonly tokenUpdate!: pulumi.Output<boolean | undefined>;
     /**
+     * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+     */
+    public readonly uiDefaultLanding!: pulumi.Output<string | undefined>;
+    /**
      * (Computed) URL set as server-url (string)
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class Bootstrap extends pulumi.CustomResource {
             inputs["tokenId"] = state ? state.tokenId : undefined;
             inputs["tokenTtl"] = state ? state.tokenTtl : undefined;
             inputs["tokenUpdate"] = state ? state.tokenUpdate : undefined;
+            inputs["uiDefaultLanding"] = state ? state.uiDefaultLanding : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["user"] = state ? state.user : undefined;
         } else {
@@ -107,6 +112,7 @@ export class Bootstrap extends pulumi.CustomResource {
             inputs["telemetry"] = args ? args.telemetry : undefined;
             inputs["tokenTtl"] = args ? args.tokenTtl : undefined;
             inputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
+            inputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
             inputs["tempToken"] = undefined /*out*/;
             inputs["tempTokenId"] = undefined /*out*/;
             inputs["token"] = undefined /*out*/;
@@ -166,6 +172,10 @@ export interface BootstrapState {
      */
     readonly tokenUpdate?: pulumi.Input<boolean>;
     /**
+     * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+     */
+    readonly uiDefaultLanding?: pulumi.Input<string>;
+    /**
      * (Computed) URL set as server-url (string)
      */
     readonly url?: pulumi.Input<string>;
@@ -199,4 +209,8 @@ export interface BootstrapArgs {
      * Regenerate admin token. Default: `false` (bool)
      */
     readonly tokenUpdate?: pulumi.Input<boolean>;
+    /**
+     * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+     */
+    readonly uiDefaultLanding?: pulumi.Input<string>;
 }
