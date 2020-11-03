@@ -19,6 +19,24 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ActiveTimeout { get; set; }
 
         /// <summary>
+        /// OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        /// </summary>
+        [Input("applicationCredentialId")]
+        public Input<string>? ApplicationCredentialId { get; set; }
+
+        /// <summary>
+        /// OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        /// </summary>
+        [Input("applicationCredentialName")]
+        public Input<string>? ApplicationCredentialName { get; set; }
+
+        /// <summary>
+        /// OpenStack application credential secret (string)
+        /// </summary>
+        [Input("applicationCredentialSecret")]
+        public Input<string>? ApplicationCredentialSecret { get; set; }
+
+        /// <summary>
         /// OpenStack authentication URL (string)
         /// </summary>
         [Input("authUrl", required: true)]
@@ -183,8 +201,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public NodeTemplateOpenstackConfigArgs()
         {

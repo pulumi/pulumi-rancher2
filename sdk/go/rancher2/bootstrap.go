@@ -30,6 +30,8 @@ type Bootstrap struct {
 	TokenTtl pulumi.IntPtrOutput `pulumi:"tokenTtl"`
 	// Regenerate admin token. Default: `false` (bool)
 	TokenUpdate pulumi.BoolPtrOutput `pulumi:"tokenUpdate"`
+	// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+	UiDefaultLanding pulumi.StringPtrOutput `pulumi:"uiDefaultLanding"`
 	// (Computed) URL set as server-url (string)
 	Url pulumi.StringOutput `pulumi:"url"`
 	// (Computed) Admin username (string)
@@ -82,6 +84,8 @@ type bootstrapState struct {
 	TokenTtl *int `pulumi:"tokenTtl"`
 	// Regenerate admin token. Default: `false` (bool)
 	TokenUpdate *bool `pulumi:"tokenUpdate"`
+	// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+	UiDefaultLanding *string `pulumi:"uiDefaultLanding"`
 	// (Computed) URL set as server-url (string)
 	Url *string `pulumi:"url"`
 	// (Computed) Admin username (string)
@@ -107,6 +111,8 @@ type BootstrapState struct {
 	TokenTtl pulumi.IntPtrInput
 	// Regenerate admin token. Default: `false` (bool)
 	TokenUpdate pulumi.BoolPtrInput
+	// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+	UiDefaultLanding pulumi.StringPtrInput
 	// (Computed) URL set as server-url (string)
 	Url pulumi.StringPtrInput
 	// (Computed) Admin username (string)
@@ -128,6 +134,8 @@ type bootstrapArgs struct {
 	TokenTtl *int `pulumi:"tokenTtl"`
 	// Regenerate admin token. Default: `false` (bool)
 	TokenUpdate *bool `pulumi:"tokenUpdate"`
+	// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+	UiDefaultLanding *string `pulumi:"uiDefaultLanding"`
 }
 
 // The set of arguments for constructing a Bootstrap resource.
@@ -142,6 +150,8 @@ type BootstrapArgs struct {
 	TokenTtl pulumi.IntPtrInput
 	// Regenerate admin token. Default: `false` (bool)
 	TokenUpdate pulumi.BoolPtrInput
+	// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+	UiDefaultLanding pulumi.StringPtrInput
 }
 
 func (BootstrapArgs) ElementType() reflect.Type {

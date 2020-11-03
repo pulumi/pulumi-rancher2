@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * Depending of the availability, there are 2 types of Rancher v2 docker registries:
  * - Project registry: Available to all namespaces in the `projectId`
- * - Namespaced regitry: Available to just `namespaceId` in the `projectId`
+ * - Namespaced registry: Available to just `namespaceId` in the `projectId`
  *
  * ## Example Usage
  *

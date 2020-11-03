@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigIngressGetArgs>? Ingress { get; set; }
 
         /// <summary>
-        /// The Kubernetes master version (string)
+        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }

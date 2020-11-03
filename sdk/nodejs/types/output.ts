@@ -149,7 +149,7 @@ export interface ClusterAksConfig {
      */
     enableMonitoring?: boolean;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion: string;
     /**
@@ -461,6 +461,7 @@ export interface ClusterEksConfig {
      * The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
      */
     desiredNodes?: number;
+    ebsEncryption?: boolean;
     /**
      * The type of machine to use for worker nodes. Default `t2.medium` (string)
      */
@@ -470,7 +471,7 @@ export interface ClusterEksConfig {
      */
     keyPairName?: string;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion: string;
     /**
@@ -486,7 +487,7 @@ export interface ClusterEksConfig {
      */
     nodeVolumeSize?: number;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: string;
     /**
@@ -561,7 +562,7 @@ export interface ClusterGkeConfig {
      */
     enableHttpLoadBalancing?: boolean;
     /**
-     * Whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
      */
     enableKubernetesDashboard?: boolean;
     /**
@@ -582,7 +583,7 @@ export interface ClusterGkeConfig {
      */
     enablePrivateEndpoint?: boolean;
     /**
-     * Whether nodes have internal IP address only. Default `false` (bool)
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
      */
     enablePrivateNodes?: boolean;
     /**
@@ -702,7 +703,7 @@ export interface ClusterGkeConfig {
      */
     projectId: string;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: string;
     /**
@@ -986,6 +987,105 @@ export interface ClusterLoggingSyslogConfig {
     token?: string;
 }
 
+export interface ClusterOkeConfig {
+    /**
+     * The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     */
+    compartmentId: string;
+    /**
+     * An optional description of this cluster (string)
+     */
+    description?: string;
+    /**
+     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     */
+    enableKubernetesDashboard?: boolean;
+    /**
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     */
+    enablePrivateNodes?: boolean;
+    /**
+     * The fingerprint corresponding to the specified user's private API Key (string)
+     */
+    fingerprint: string;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion: string;
+    /**
+     * The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+     */
+    loadBalancerSubnetName1?: string;
+    /**
+     * The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     */
+    loadBalancerSubnetName2?: string;
+    /**
+     * The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     */
+    nodeImage: string;
+    /**
+     * Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     */
+    nodePoolDnsDomainName?: string;
+    /**
+     * Name for node pool subnet. Default `nodedns` (string)
+     */
+    nodePoolSubnetName?: string;
+    /**
+     * The contents of the SSH public key file to use for the nodes (string)
+     */
+    nodePublicKeyContents?: string;
+    /**
+     * The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     */
+    nodeShape: string;
+    /**
+     * The private API key file contents for the specified user, in PEM format (string)
+     */
+    privateKeyContents: string;
+    /**
+     * The passphrase (if any) of the private key for the OKE cluster (string)
+     */
+    privateKeyPassphrase?: string;
+    /**
+     * Number of node subnets. Default `1` (int)
+     */
+    quantityOfNodeSubnets?: number;
+    /**
+     * Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     */
+    quantityPerSubnet?: number;
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region: string;
+    /**
+     * Name for DNS domain of service subnet. Default `svcdns` (string)
+     */
+    serviceDnsDomainName?: string;
+    /**
+     * Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     */
+    skipVcnDelete?: boolean;
+    /**
+     * The OCID of the tenancy in which to create resources (string)
+     */
+    tenancyId: string;
+    /**
+     * The OCID of a user who has access to the tenancy/compartment (string)
+     */
+    userOcid: string;
+    /**
+     * The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+     */
+    vcnName?: string;
+    /**
+     * Additional CIDR from which to allow ingress to worker nodes (string)
+     */
+    workerNodeIngressCidr?: string;
+}
+
 export interface ClusterRkeConfig {
     /**
      * Duration in seconds of addon job (int)
@@ -1028,7 +1128,7 @@ export interface ClusterRkeConfig {
      */
     ingress: outputs.ClusterRkeConfigIngress;
     /**
-     * The Kubernetes master version (string)
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
     kubernetesVersion: string;
     /**
@@ -1205,7 +1305,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
 
 export interface ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region: string;
     /**
@@ -1409,7 +1509,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     password: string;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region: string;
     /**
@@ -1975,7 +2075,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     folder?: string;
     /**
-     * GKE cluster region. Conflicts with `zone` (string)
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region?: string;
     /**
@@ -3079,6 +3179,7 @@ export interface GetClusterEksConfig {
     ami?: string;
     associateWorkerNodePublicIp?: boolean;
     desiredNodes?: number;
+    ebsEncryption?: boolean;
     instanceType?: string;
     keyPairName?: string;
     kubernetesVersion: string;
@@ -3239,6 +3340,36 @@ export interface GetClusterLoggingSyslogConfig {
     severity?: string;
     sslVerify: boolean;
     token?: string;
+}
+
+export interface GetClusterOkeConfig {
+    compartmentId: string;
+    /**
+     * (Computed) The description for Cluster (string)
+     */
+    description?: string;
+    enableKubernetesDashboard?: boolean;
+    enablePrivateNodes?: boolean;
+    fingerprint: string;
+    kubernetesVersion: string;
+    loadBalancerSubnetName1?: string;
+    loadBalancerSubnetName2?: string;
+    nodeImage: string;
+    nodePoolDnsDomainName?: string;
+    nodePoolSubnetName?: string;
+    nodePublicKeyContents?: string;
+    nodeShape: string;
+    privateKeyContents: string;
+    privateKeyPassphrase?: string;
+    quantityOfNodeSubnets?: number;
+    quantityPerSubnet?: number;
+    region: string;
+    serviceDnsDomainName?: string;
+    skipVcnDelete?: boolean;
+    tenancyId: string;
+    userOcid: string;
+    vcnName?: string;
+    workerNodeIngressCidr?: string;
 }
 
 export interface GetClusterRkeConfig {
@@ -3551,6 +3682,9 @@ export interface GetClusterRkeConfigServices {
 
 export interface GetClusterRkeConfigServicesEtcd {
     backupConfig: outputs.GetClusterRkeConfigServicesEtcdBackupConfig;
+    /**
+     * (Computed) K8s cluster ca cert (string)
+     */
     caCert: string;
     cert: string;
     creation: string;
@@ -4315,6 +4449,17 @@ export interface GetNodePoolNodeTaint {
     key: string;
     timeAdded: string;
     value: string;
+}
+
+export interface GetNotifierDingtalkConfig {
+    proxyUrl?: string;
+    secret?: string;
+    url: string;
+}
+
+export interface GetNotifierMsteamsConfig {
+    proxyUrl?: string;
+    url: string;
 }
 
 export interface GetNotifierPagerdutyConfig {
@@ -5217,6 +5362,18 @@ export interface NodeTemplateOpenstackConfig {
      */
     activeTimeout?: string;
     /**
+     * OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+     */
+    applicationCredentialId?: string;
+    /**
+     * OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+     */
+    applicationCredentialName?: string;
+    /**
+     * OpenStack application credential secret (string)
+     */
+    applicationCredentialSecret?: string;
+    /**
      * OpenStack authentication URL (string)
      */
     authUrl: string;
@@ -5327,7 +5484,7 @@ export interface NodeTemplateOpenstackConfig {
     /**
      * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
-    username: string;
+    username?: string;
 }
 
 export interface NodeTemplateVsphereConfig {
@@ -5455,6 +5612,32 @@ export interface NodeTemplateVsphereConfig {
      * vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
      */
     vcenterPort?: string;
+}
+
+export interface NotifierDingtalkConfig {
+    /**
+     * Wechat proxy url (string)
+     */
+    proxyUrl?: string;
+    /**
+     * Wechat agent ID (string)
+     */
+    secret?: string;
+    /**
+     * Webhook url (string)
+     */
+    url: string;
+}
+
+export interface NotifierMsteamsConfig {
+    /**
+     * Wechat proxy url (string)
+     */
+    proxyUrl?: string;
+    /**
+     * Webhook url (string)
+     */
+    url: string;
 }
 
 export interface NotifierPagerdutyConfig {

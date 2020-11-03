@@ -45,6 +45,10 @@ func LookupNotifier(ctx *pulumi.Context, args *LookupNotifierArgs, opts ...pulum
 type LookupNotifierArgs struct {
 	// The cluster id where create notifier (string)
 	ClusterId string `pulumi:"clusterId"`
+	// (Computed) Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig *GetNotifierDingtalkConfig `pulumi:"dingtalkConfig"`
+	// (Computed) MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig *GetNotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
 	Name string `pulumi:"name"`
 }
@@ -56,11 +60,15 @@ type LookupNotifierResult struct {
 	ClusterId   string                 `pulumi:"clusterId"`
 	// (Computed) The notifier description (string)
 	Description string `pulumi:"description"`
+	// (Computed) Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig *GetNotifierDingtalkConfig `pulumi:"dingtalkConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	// (Computed) MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig *GetNotifierMsteamsConfig `pulumi:"msteamsConfig"`
+	Name          string                    `pulumi:"name"`
 	// (Computed) Pagerduty config for notifier (list maxitems:1)
 	PagerdutyConfig GetNotifierPagerdutyConfig `pulumi:"pagerdutyConfig"`
 	// (Computed) Slack config for notifier (list maxitems:1)

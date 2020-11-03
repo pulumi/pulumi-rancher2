@@ -951,7 +951,7 @@ type ClusterAksConfig struct {
 	EnableHttpApplicationRouting *bool `pulumi:"enableHttpApplicationRouting"`
 	// Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
 	EnableMonitoring *bool `pulumi:"enableMonitoring"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location *string `pulumi:"location"`
@@ -1039,7 +1039,7 @@ type ClusterAksConfigArgs struct {
 	EnableHttpApplicationRouting pulumi.BoolPtrInput `pulumi:"enableHttpApplicationRouting"`
 	// Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
 	EnableMonitoring pulumi.BoolPtrInput `pulumi:"enableMonitoring"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion pulumi.StringInput `pulumi:"kubernetesVersion"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -1249,7 +1249,7 @@ func (o ClusterAksConfigOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterAksConfig) *bool { return v.EnableMonitoring }).(pulumi.BoolPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterAksConfigOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAksConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
 }
@@ -1547,7 +1547,7 @@ func (o ClusterAksConfigPtrOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterAksConfigPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAksConfig) *string {
 		if v == nil {
@@ -4238,12 +4238,13 @@ type ClusterEksConfig struct {
 	// Associate public ip EKS worker nodes. Default `true` (bool)
 	AssociateWorkerNodePublicIp *bool `pulumi:"associateWorkerNodePublicIp"`
 	// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-	DesiredNodes *int `pulumi:"desiredNodes"`
+	DesiredNodes  *int  `pulumi:"desiredNodes"`
+	EbsEncryption *bool `pulumi:"ebsEncryption"`
 	// The type of machine to use for worker nodes. Default `t2.medium` (string)
 	InstanceType *string `pulumi:"instanceType"`
 	// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
 	KeyPairName *string `pulumi:"keyPairName"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The maximum number of worker nodes. Default `3` (int)
 	MaximumNodes *int `pulumi:"maximumNodes"`
@@ -4251,7 +4252,7 @@ type ClusterEksConfig struct {
 	MinimumNodes *int `pulumi:"minimumNodes"`
 	// The volume size for each node. Default `20` (int)
 	NodeVolumeSize *int `pulumi:"nodeVolumeSize"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region *string `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey string `pulumi:"secretKey"`
@@ -4288,12 +4289,13 @@ type ClusterEksConfigArgs struct {
 	// Associate public ip EKS worker nodes. Default `true` (bool)
 	AssociateWorkerNodePublicIp pulumi.BoolPtrInput `pulumi:"associateWorkerNodePublicIp"`
 	// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-	DesiredNodes pulumi.IntPtrInput `pulumi:"desiredNodes"`
+	DesiredNodes  pulumi.IntPtrInput  `pulumi:"desiredNodes"`
+	EbsEncryption pulumi.BoolPtrInput `pulumi:"ebsEncryption"`
 	// The type of machine to use for worker nodes. Default `t2.medium` (string)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
 	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion pulumi.StringInput `pulumi:"kubernetesVersion"`
 	// The maximum number of worker nodes. Default `3` (int)
 	MaximumNodes pulumi.IntPtrInput `pulumi:"maximumNodes"`
@@ -4301,7 +4303,7 @@ type ClusterEksConfigArgs struct {
 	MinimumNodes pulumi.IntPtrInput `pulumi:"minimumNodes"`
 	// The volume size for each node. Default `20` (int)
 	NodeVolumeSize pulumi.IntPtrInput `pulumi:"nodeVolumeSize"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
@@ -4416,6 +4418,10 @@ func (o ClusterEksConfigOutput) DesiredNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *int { return v.DesiredNodes }).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterEksConfigOutput) EbsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfig) *bool { return v.EbsEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The type of machine to use for worker nodes. Default `t2.medium` (string)
 func (o ClusterEksConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
@@ -4426,7 +4432,7 @@ func (o ClusterEksConfigOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterEksConfigOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEksConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
 }
@@ -4446,7 +4452,7 @@ func (o ClusterEksConfigOutput) NodeVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *int { return v.NodeVolumeSize }).(pulumi.IntPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterEksConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -4544,6 +4550,15 @@ func (o ClusterEksConfigPtrOutput) DesiredNodes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterEksConfigPtrOutput) EbsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EbsEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The type of machine to use for worker nodes. Default `t2.medium` (string)
 func (o ClusterEksConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
@@ -4564,7 +4579,7 @@ func (o ClusterEksConfigPtrOutput) KeyPairName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterEksConfigPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4604,7 +4619,7 @@ func (o ClusterEksConfigPtrOutput) NodeVolumeSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterEksConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4705,7 +4720,7 @@ type ClusterGkeConfig struct {
 	EnableHorizontalPodAutoscaling *bool `pulumi:"enableHorizontalPodAutoscaling"`
 	// Enable HTTP load balancing on GKE cluster. Default `true` (bool)
 	EnableHttpLoadBalancing *bool `pulumi:"enableHttpLoadBalancing"`
-	// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 	EnableKubernetesDashboard *bool `pulumi:"enableKubernetesDashboard"`
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
 	EnableLegacyAbac              *bool `pulumi:"enableLegacyAbac"`
@@ -4716,7 +4731,7 @@ type ClusterGkeConfig struct {
 	EnableNodepoolAutoscaling *bool `pulumi:"enableNodepoolAutoscaling"`
 	// Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
 	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
-	// Whether nodes have internal IP address only. Default `false` (bool)
+	// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// Enable stackdriver monitoring. Default `true` (bool)
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
@@ -4776,7 +4791,7 @@ type ClusterGkeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// Project ID to apply answer (string)
 	ProjectId string `pulumi:"projectId"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region *string `pulumi:"region"`
 	// The map of Kubernetes labels to be applied to each cluster (map)
 	ResourceLabels map[string]interface{} `pulumi:"resourceLabels"`
@@ -4824,7 +4839,7 @@ type ClusterGkeConfigArgs struct {
 	EnableHorizontalPodAutoscaling pulumi.BoolPtrInput `pulumi:"enableHorizontalPodAutoscaling"`
 	// Enable HTTP load balancing on GKE cluster. Default `true` (bool)
 	EnableHttpLoadBalancing pulumi.BoolPtrInput `pulumi:"enableHttpLoadBalancing"`
-	// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 	EnableKubernetesDashboard pulumi.BoolPtrInput `pulumi:"enableKubernetesDashboard"`
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
 	EnableLegacyAbac              pulumi.BoolPtrInput `pulumi:"enableLegacyAbac"`
@@ -4835,7 +4850,7 @@ type ClusterGkeConfigArgs struct {
 	EnableNodepoolAutoscaling pulumi.BoolPtrInput `pulumi:"enableNodepoolAutoscaling"`
 	// Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
 	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
-	// Whether nodes have internal IP address only. Default `false` (bool)
+	// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// Enable stackdriver monitoring. Default `true` (bool)
 	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
@@ -4895,7 +4910,7 @@ type ClusterGkeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Project ID to apply answer (string)
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The map of Kubernetes labels to be applied to each cluster (map)
 	ResourceLabels pulumi.MapInput `pulumi:"resourceLabels"`
@@ -5038,7 +5053,7 @@ func (o ClusterGkeConfigOutput) EnableHttpLoadBalancing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableHttpLoadBalancing }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 func (o ClusterGkeConfigOutput) EnableKubernetesDashboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableKubernetesDashboard }).(pulumi.BoolPtrOutput)
 }
@@ -5067,7 +5082,7 @@ func (o ClusterGkeConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
-// Whether nodes have internal IP address only. Default `false` (bool)
+// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
 func (o ClusterGkeConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
@@ -5217,7 +5232,7 @@ func (o ClusterGkeConfigOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterGkeConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -5370,7 +5385,7 @@ func (o ClusterGkeConfigPtrOutput) EnableHttpLoadBalancing() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 func (o ClusterGkeConfigPtrOutput) EnableKubernetesDashboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *bool {
 		if v == nil {
@@ -5429,7 +5444,7 @@ func (o ClusterGkeConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether nodes have internal IP address only. Default `false` (bool)
+// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
 func (o ClusterGkeConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *bool {
 		if v == nil {
@@ -5729,7 +5744,7 @@ func (o ClusterGkeConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterGkeConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *string {
 		if v == nil {
@@ -7796,6 +7811,574 @@ func (o ClusterLoggingSyslogConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterOkeConfig struct {
+	// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+	CompartmentId string `pulumi:"compartmentId"`
+	// An optional description of this cluster (string)
+	Description *string `pulumi:"description"`
+	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+	EnableKubernetesDashboard *bool `pulumi:"enableKubernetesDashboard"`
+	// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// The fingerprint corresponding to the specified user's private API Key (string)
+	Fingerprint string `pulumi:"fingerprint"`
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+	KubernetesVersion string `pulumi:"kubernetesVersion"`
+	// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+	LoadBalancerSubnetName1 *string `pulumi:"loadBalancerSubnetName1"`
+	// The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+	LoadBalancerSubnetName2 *string `pulumi:"loadBalancerSubnetName2"`
+	// The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+	NodeImage string `pulumi:"nodeImage"`
+	// Name for DNS domain of node pool subnet. Default `nodedns` (string)
+	NodePoolDnsDomainName *string `pulumi:"nodePoolDnsDomainName"`
+	// Name for node pool subnet. Default `nodedns` (string)
+	NodePoolSubnetName *string `pulumi:"nodePoolSubnetName"`
+	// The contents of the SSH public key file to use for the nodes (string)
+	NodePublicKeyContents *string `pulumi:"nodePublicKeyContents"`
+	// The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+	NodeShape string `pulumi:"nodeShape"`
+	// The private API key file contents for the specified user, in PEM format (string)
+	PrivateKeyContents string `pulumi:"privateKeyContents"`
+	// The passphrase (if any) of the private key for the OKE cluster (string)
+	PrivateKeyPassphrase *string `pulumi:"privateKeyPassphrase"`
+	// Number of node subnets. Default `1` (int)
+	QuantityOfNodeSubnets *int `pulumi:"quantityOfNodeSubnets"`
+	// Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+	QuantityPerSubnet *int `pulumi:"quantityPerSubnet"`
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+	Region string `pulumi:"region"`
+	// Name for DNS domain of service subnet. Default `svcdns` (string)
+	ServiceDnsDomainName *string `pulumi:"serviceDnsDomainName"`
+	// Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+	SkipVcnDelete *bool `pulumi:"skipVcnDelete"`
+	// The OCID of the tenancy in which to create resources (string)
+	TenancyId string `pulumi:"tenancyId"`
+	// The OCID of a user who has access to the tenancy/compartment (string)
+	UserOcid string `pulumi:"userOcid"`
+	// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+	VcnName *string `pulumi:"vcnName"`
+	// Additional CIDR from which to allow ingress to worker nodes (string)
+	WorkerNodeIngressCidr *string `pulumi:"workerNodeIngressCidr"`
+}
+
+// ClusterOkeConfigInput is an input type that accepts ClusterOkeConfigArgs and ClusterOkeConfigOutput values.
+// You can construct a concrete instance of `ClusterOkeConfigInput` via:
+//
+//          ClusterOkeConfigArgs{...}
+type ClusterOkeConfigInput interface {
+	pulumi.Input
+
+	ToClusterOkeConfigOutput() ClusterOkeConfigOutput
+	ToClusterOkeConfigOutputWithContext(context.Context) ClusterOkeConfigOutput
+}
+
+type ClusterOkeConfigArgs struct {
+	// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+	CompartmentId pulumi.StringInput `pulumi:"compartmentId"`
+	// An optional description of this cluster (string)
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+	EnableKubernetesDashboard pulumi.BoolPtrInput `pulumi:"enableKubernetesDashboard"`
+	// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// The fingerprint corresponding to the specified user's private API Key (string)
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+	KubernetesVersion pulumi.StringInput `pulumi:"kubernetesVersion"`
+	// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+	LoadBalancerSubnetName1 pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName1"`
+	// The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+	LoadBalancerSubnetName2 pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName2"`
+	// The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+	NodeImage pulumi.StringInput `pulumi:"nodeImage"`
+	// Name for DNS domain of node pool subnet. Default `nodedns` (string)
+	NodePoolDnsDomainName pulumi.StringPtrInput `pulumi:"nodePoolDnsDomainName"`
+	// Name for node pool subnet. Default `nodedns` (string)
+	NodePoolSubnetName pulumi.StringPtrInput `pulumi:"nodePoolSubnetName"`
+	// The contents of the SSH public key file to use for the nodes (string)
+	NodePublicKeyContents pulumi.StringPtrInput `pulumi:"nodePublicKeyContents"`
+	// The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+	NodeShape pulumi.StringInput `pulumi:"nodeShape"`
+	// The private API key file contents for the specified user, in PEM format (string)
+	PrivateKeyContents pulumi.StringInput `pulumi:"privateKeyContents"`
+	// The passphrase (if any) of the private key for the OKE cluster (string)
+	PrivateKeyPassphrase pulumi.StringPtrInput `pulumi:"privateKeyPassphrase"`
+	// Number of node subnets. Default `1` (int)
+	QuantityOfNodeSubnets pulumi.IntPtrInput `pulumi:"quantityOfNodeSubnets"`
+	// Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+	QuantityPerSubnet pulumi.IntPtrInput `pulumi:"quantityPerSubnet"`
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+	Region pulumi.StringInput `pulumi:"region"`
+	// Name for DNS domain of service subnet. Default `svcdns` (string)
+	ServiceDnsDomainName pulumi.StringPtrInput `pulumi:"serviceDnsDomainName"`
+	// Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+	SkipVcnDelete pulumi.BoolPtrInput `pulumi:"skipVcnDelete"`
+	// The OCID of the tenancy in which to create resources (string)
+	TenancyId pulumi.StringInput `pulumi:"tenancyId"`
+	// The OCID of a user who has access to the tenancy/compartment (string)
+	UserOcid pulumi.StringInput `pulumi:"userOcid"`
+	// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+	VcnName pulumi.StringPtrInput `pulumi:"vcnName"`
+	// Additional CIDR from which to allow ingress to worker nodes (string)
+	WorkerNodeIngressCidr pulumi.StringPtrInput `pulumi:"workerNodeIngressCidr"`
+}
+
+func (ClusterOkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterOkeConfig)(nil)).Elem()
+}
+
+func (i ClusterOkeConfigArgs) ToClusterOkeConfigOutput() ClusterOkeConfigOutput {
+	return i.ToClusterOkeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterOkeConfigArgs) ToClusterOkeConfigOutputWithContext(ctx context.Context) ClusterOkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOkeConfigOutput)
+}
+
+func (i ClusterOkeConfigArgs) ToClusterOkeConfigPtrOutput() ClusterOkeConfigPtrOutput {
+	return i.ToClusterOkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterOkeConfigArgs) ToClusterOkeConfigPtrOutputWithContext(ctx context.Context) ClusterOkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOkeConfigOutput).ToClusterOkeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterOkeConfigPtrInput is an input type that accepts ClusterOkeConfigArgs, ClusterOkeConfigPtr and ClusterOkeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterOkeConfigPtrInput` via:
+//
+//          ClusterOkeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterOkeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterOkeConfigPtrOutput() ClusterOkeConfigPtrOutput
+	ToClusterOkeConfigPtrOutputWithContext(context.Context) ClusterOkeConfigPtrOutput
+}
+
+type clusterOkeConfigPtrType ClusterOkeConfigArgs
+
+func ClusterOkeConfigPtr(v *ClusterOkeConfigArgs) ClusterOkeConfigPtrInput {
+	return (*clusterOkeConfigPtrType)(v)
+}
+
+func (*clusterOkeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterOkeConfig)(nil)).Elem()
+}
+
+func (i *clusterOkeConfigPtrType) ToClusterOkeConfigPtrOutput() ClusterOkeConfigPtrOutput {
+	return i.ToClusterOkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterOkeConfigPtrType) ToClusterOkeConfigPtrOutputWithContext(ctx context.Context) ClusterOkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOkeConfigPtrOutput)
+}
+
+type ClusterOkeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterOkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterOkeConfig)(nil)).Elem()
+}
+
+func (o ClusterOkeConfigOutput) ToClusterOkeConfigOutput() ClusterOkeConfigOutput {
+	return o
+}
+
+func (o ClusterOkeConfigOutput) ToClusterOkeConfigOutputWithContext(ctx context.Context) ClusterOkeConfigOutput {
+	return o
+}
+
+func (o ClusterOkeConfigOutput) ToClusterOkeConfigPtrOutput() ClusterOkeConfigPtrOutput {
+	return o.ToClusterOkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterOkeConfigOutput) ToClusterOkeConfigPtrOutputWithContext(ctx context.Context) ClusterOkeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *ClusterOkeConfig {
+		return &v
+	}).(ClusterOkeConfigPtrOutput)
+}
+
+// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+func (o ClusterOkeConfigOutput) CompartmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.CompartmentId }).(pulumi.StringOutput)
+}
+
+// An optional description of this cluster (string)
+func (o ClusterOkeConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+func (o ClusterOkeConfigOutput) EnableKubernetesDashboard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *bool { return v.EnableKubernetesDashboard }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+func (o ClusterOkeConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
+// The fingerprint corresponding to the specified user's private API Key (string)
+func (o ClusterOkeConfigOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+func (o ClusterOkeConfigOutput) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+func (o ClusterOkeConfigOutput) LoadBalancerSubnetName1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.LoadBalancerSubnetName1 }).(pulumi.StringPtrOutput)
+}
+
+// The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+func (o ClusterOkeConfigOutput) LoadBalancerSubnetName2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.LoadBalancerSubnetName2 }).(pulumi.StringPtrOutput)
+}
+
+// The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+func (o ClusterOkeConfigOutput) NodeImage() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.NodeImage }).(pulumi.StringOutput)
+}
+
+// Name for DNS domain of node pool subnet. Default `nodedns` (string)
+func (o ClusterOkeConfigOutput) NodePoolDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.NodePoolDnsDomainName }).(pulumi.StringPtrOutput)
+}
+
+// Name for node pool subnet. Default `nodedns` (string)
+func (o ClusterOkeConfigOutput) NodePoolSubnetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.NodePoolSubnetName }).(pulumi.StringPtrOutput)
+}
+
+// The contents of the SSH public key file to use for the nodes (string)
+func (o ClusterOkeConfigOutput) NodePublicKeyContents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.NodePublicKeyContents }).(pulumi.StringPtrOutput)
+}
+
+// The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+func (o ClusterOkeConfigOutput) NodeShape() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.NodeShape }).(pulumi.StringOutput)
+}
+
+// The private API key file contents for the specified user, in PEM format (string)
+func (o ClusterOkeConfigOutput) PrivateKeyContents() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.PrivateKeyContents }).(pulumi.StringOutput)
+}
+
+// The passphrase (if any) of the private key for the OKE cluster (string)
+func (o ClusterOkeConfigOutput) PrivateKeyPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.PrivateKeyPassphrase }).(pulumi.StringPtrOutput)
+}
+
+// Number of node subnets. Default `1` (int)
+func (o ClusterOkeConfigOutput) QuantityOfNodeSubnets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *int { return v.QuantityOfNodeSubnets }).(pulumi.IntPtrOutput)
+}
+
+// Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+func (o ClusterOkeConfigOutput) QuantityPerSubnet() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *int { return v.QuantityPerSubnet }).(pulumi.IntPtrOutput)
+}
+
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+func (o ClusterOkeConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Name for DNS domain of service subnet. Default `svcdns` (string)
+func (o ClusterOkeConfigOutput) ServiceDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.ServiceDnsDomainName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+func (o ClusterOkeConfigOutput) SkipVcnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *bool { return v.SkipVcnDelete }).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the tenancy in which to create resources (string)
+func (o ClusterOkeConfigOutput) TenancyId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.TenancyId }).(pulumi.StringOutput)
+}
+
+// The OCID of a user who has access to the tenancy/compartment (string)
+func (o ClusterOkeConfigOutput) UserOcid() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) string { return v.UserOcid }).(pulumi.StringOutput)
+}
+
+// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+func (o ClusterOkeConfigOutput) VcnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.VcnName }).(pulumi.StringPtrOutput)
+}
+
+// Additional CIDR from which to allow ingress to worker nodes (string)
+func (o ClusterOkeConfigOutput) WorkerNodeIngressCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.WorkerNodeIngressCidr }).(pulumi.StringPtrOutput)
+}
+
+type ClusterOkeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterOkeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterOkeConfig)(nil)).Elem()
+}
+
+func (o ClusterOkeConfigPtrOutput) ToClusterOkeConfigPtrOutput() ClusterOkeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterOkeConfigPtrOutput) ToClusterOkeConfigPtrOutputWithContext(ctx context.Context) ClusterOkeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterOkeConfigPtrOutput) Elem() ClusterOkeConfigOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) ClusterOkeConfig { return *v }).(ClusterOkeConfigOutput)
+}
+
+// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+func (o ClusterOkeConfigPtrOutput) CompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompartmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// An optional description of this cluster (string)
+func (o ClusterOkeConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+func (o ClusterOkeConfigPtrOutput) EnableKubernetesDashboard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableKubernetesDashboard
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+func (o ClusterOkeConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateNodes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The fingerprint corresponding to the specified user's private API Key (string)
+func (o ClusterOkeConfigPtrOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Fingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+func (o ClusterOkeConfigPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
+func (o ClusterOkeConfigPtrOutput) LoadBalancerSubnetName1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSubnetName1
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+func (o ClusterOkeConfigPtrOutput) LoadBalancerSubnetName2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSubnetName2
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+func (o ClusterOkeConfigPtrOutput) NodeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name for DNS domain of node pool subnet. Default `nodedns` (string)
+func (o ClusterOkeConfigPtrOutput) NodePoolDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolDnsDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name for node pool subnet. Default `nodedns` (string)
+func (o ClusterOkeConfigPtrOutput) NodePoolSubnetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolSubnetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The contents of the SSH public key file to use for the nodes (string)
+func (o ClusterOkeConfigPtrOutput) NodePublicKeyContents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePublicKeyContents
+	}).(pulumi.StringPtrOutput)
+}
+
+// The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+func (o ClusterOkeConfigPtrOutput) NodeShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeShape
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private API key file contents for the specified user, in PEM format (string)
+func (o ClusterOkeConfigPtrOutput) PrivateKeyContents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyContents
+	}).(pulumi.StringPtrOutput)
+}
+
+// The passphrase (if any) of the private key for the OKE cluster (string)
+func (o ClusterOkeConfigPtrOutput) PrivateKeyPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyPassphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of node subnets. Default `1` (int)
+func (o ClusterOkeConfigPtrOutput) QuantityOfNodeSubnets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QuantityOfNodeSubnets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+func (o ClusterOkeConfigPtrOutput) QuantityPerSubnet() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QuantityPerSubnet
+	}).(pulumi.IntPtrOutput)
+}
+
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+func (o ClusterOkeConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name for DNS domain of service subnet. Default `svcdns` (string)
+func (o ClusterOkeConfigPtrOutput) ServiceDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDnsDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+func (o ClusterOkeConfigPtrOutput) SkipVcnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipVcnDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCID of the tenancy in which to create resources (string)
+func (o ClusterOkeConfigPtrOutput) TenancyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenancyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCID of a user who has access to the tenancy/compartment (string)
+func (o ClusterOkeConfigPtrOutput) UserOcid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserOcid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
+func (o ClusterOkeConfigPtrOutput) VcnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VcnName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional CIDR from which to allow ingress to worker nodes (string)
+func (o ClusterOkeConfigPtrOutput) WorkerNodeIngressCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerNodeIngressCidr
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterRkeConfig struct {
 	// Duration in seconds of addon job (int)
 	AddonJobTimeout *int `pulumi:"addonJobTimeout"`
@@ -7817,7 +8400,7 @@ type ClusterRkeConfig struct {
 	IgnoreDockerVersion *bool `pulumi:"ignoreDockerVersion"`
 	// Kubernetes ingress configuration (list maxitems:1)
 	Ingress *ClusterRkeConfigIngress `pulumi:"ingress"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// Kubernetes cluster monitoring (list maxitems:1)
 	Monitoring *ClusterRkeConfigMonitoring `pulumi:"monitoring"`
@@ -7873,7 +8456,7 @@ type ClusterRkeConfigArgs struct {
 	IgnoreDockerVersion pulumi.BoolPtrInput `pulumi:"ignoreDockerVersion"`
 	// Kubernetes ingress configuration (list maxitems:1)
 	Ingress ClusterRkeConfigIngressPtrInput `pulumi:"ingress"`
-	// The Kubernetes master version (string)
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
 	// Kubernetes cluster monitoring (list maxitems:1)
 	Monitoring ClusterRkeConfigMonitoringPtrInput `pulumi:"monitoring"`
@@ -8024,7 +8607,7 @@ func (o ClusterRkeConfigOutput) Ingress() ClusterRkeConfigIngressPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfig) *ClusterRkeConfigIngress { return v.Ingress }).(ClusterRkeConfigIngressPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterRkeConfigOutput) KubernetesVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfig) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
@@ -8197,7 +8780,7 @@ func (o ClusterRkeConfigPtrOutput) Ingress() ClusterRkeConfigIngressPtrOutput {
 	}).(ClusterRkeConfigIngressPtrOutput)
 }
 
-// The Kubernetes master version (string)
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterRkeConfigPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfig) *string {
 		if v == nil {
@@ -9530,7 +10113,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderGlobalPtrOutput) Zone() pul
 }
 
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride struct {
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region *string `pulumi:"region"`
 	// (string)
 	Service string `pulumi:"service"`
@@ -9556,7 +10139,7 @@ type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideInput interface
 }
 
 type ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs struct {
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// (string)
 	Service pulumi.StringInput `pulumi:"service"`
@@ -9621,7 +10204,7 @@ func (o ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) ToCl
 	return o
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -10739,7 +11322,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal struct {
 	DomainName *string `pulumi:"domainName"`
 	// Registry password (string)
 	Password string `pulumi:"password"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region *string `pulumi:"region"`
 	// Azure tenant ID to use (string)
 	TenantId *string `pulumi:"tenantId"`
@@ -10773,7 +11356,7 @@ type ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs struct {
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Registry password (string)
 	Password pulumi.StringInput `pulumi:"password"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Azure tenant ID to use (string)
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -10887,7 +11470,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput) Passwor
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -10982,7 +11565,7 @@ func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput) Pass
 	}).(pulumi.StringPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal) *string {
 		if v == nil {
@@ -15737,7 +16320,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
 	Endpoint string `pulumi:"endpoint"`
 	// Folder for S3 service. Available from Rancher v2.2.7 (string)
 	Folder *string `pulumi:"folder"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region *string `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey *string `pulumi:"secretKey"`
@@ -15765,7 +16348,7 @@ type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// Folder for S3 service. Available from Rancher v2.2.7 (string)
 	Folder pulumi.StringPtrInput `pulumi:"folder"`
-	// GKE cluster region. Conflicts with `zone` (string)
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
@@ -15873,7 +16456,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput) Folder() p
 	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string { return v.Folder }).(pulumi.StringPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -15953,7 +16536,7 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) Folder(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GKE cluster region. Conflicts with `zone` (string)
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
 func (o ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig) *string {
 		if v == nil {
@@ -34388,6 +34971,12 @@ func (o NodeTemplateOpennebulaConfigPtrOutput) XmlRpcUrl() pulumi.StringPtrOutpu
 type NodeTemplateOpenstackConfig struct {
 	// OpenStack active timeout Default `200` (string)
 	ActiveTimeout *string `pulumi:"activeTimeout"`
+	// OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+	ApplicationCredentialId *string `pulumi:"applicationCredentialId"`
+	// OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+	ApplicationCredentialName *string `pulumi:"applicationCredentialName"`
+	// OpenStack application credential secret (string)
+	ApplicationCredentialSecret *string `pulumi:"applicationCredentialSecret"`
 	// OpenStack authentication URL (string)
 	AuthUrl string `pulumi:"authUrl"`
 	// OpenStack availability zone (string)
@@ -34443,7 +35032,7 @@ type NodeTemplateOpenstackConfig struct {
 	// File containing an openstack userdata script (string)
 	UserDataFile *string `pulumi:"userDataFile"`
 	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-	Username string `pulumi:"username"`
+	Username *string `pulumi:"username"`
 }
 
 // NodeTemplateOpenstackConfigInput is an input type that accepts NodeTemplateOpenstackConfigArgs and NodeTemplateOpenstackConfigOutput values.
@@ -34460,6 +35049,12 @@ type NodeTemplateOpenstackConfigInput interface {
 type NodeTemplateOpenstackConfigArgs struct {
 	// OpenStack active timeout Default `200` (string)
 	ActiveTimeout pulumi.StringPtrInput `pulumi:"activeTimeout"`
+	// OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+	ApplicationCredentialId pulumi.StringPtrInput `pulumi:"applicationCredentialId"`
+	// OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+	ApplicationCredentialName pulumi.StringPtrInput `pulumi:"applicationCredentialName"`
+	// OpenStack application credential secret (string)
+	ApplicationCredentialSecret pulumi.StringPtrInput `pulumi:"applicationCredentialSecret"`
 	// OpenStack authentication URL (string)
 	AuthUrl pulumi.StringInput `pulumi:"authUrl"`
 	// OpenStack availability zone (string)
@@ -34515,7 +35110,7 @@ type NodeTemplateOpenstackConfigArgs struct {
 	// File containing an openstack userdata script (string)
 	UserDataFile pulumi.StringPtrInput `pulumi:"userDataFile"`
 	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-	Username pulumi.StringInput `pulumi:"username"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (NodeTemplateOpenstackConfigArgs) ElementType() reflect.Type {
@@ -34598,6 +35193,21 @@ func (o NodeTemplateOpenstackConfigOutput) ToNodeTemplateOpenstackConfigPtrOutpu
 // OpenStack active timeout Default `200` (string)
 func (o NodeTemplateOpenstackConfigOutput) ActiveTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.ActiveTimeout }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+func (o NodeTemplateOpenstackConfigOutput) ApplicationCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.ApplicationCredentialId }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+func (o NodeTemplateOpenstackConfigOutput) ApplicationCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.ApplicationCredentialName }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential secret (string)
+func (o NodeTemplateOpenstackConfigOutput) ApplicationCredentialSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.ApplicationCredentialSecret }).(pulumi.StringPtrOutput)
 }
 
 // OpenStack authentication URL (string)
@@ -34736,8 +35346,8 @@ func (o NodeTemplateOpenstackConfigOutput) UserDataFile() pulumi.StringPtrOutput
 }
 
 // vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-func (o NodeTemplateOpenstackConfigOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v NodeTemplateOpenstackConfig) string { return v.Username }).(pulumi.StringOutput)
+func (o NodeTemplateOpenstackConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type NodeTemplateOpenstackConfigPtrOutput struct{ *pulumi.OutputState }
@@ -34765,6 +35375,36 @@ func (o NodeTemplateOpenstackConfigPtrOutput) ActiveTimeout() pulumi.StringPtrOu
 			return nil
 		}
 		return v.ActiveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) ApplicationCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationCredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) ApplicationCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationCredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack application credential secret (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) ApplicationCredentialSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationCredentialSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35044,7 +35684,7 @@ func (o NodeTemplateOpenstackConfigPtrOutput) Username() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Username
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35746,6 +36386,325 @@ func (o NodeTemplateVsphereConfigPtrOutput) VcenterPort() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.VcenterPort
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotifierDingtalkConfig struct {
+	// Wechat proxy url (string)
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Wechat agent ID (string)
+	Secret *string `pulumi:"secret"`
+	// Webhook url (string)
+	Url string `pulumi:"url"`
+}
+
+// NotifierDingtalkConfigInput is an input type that accepts NotifierDingtalkConfigArgs and NotifierDingtalkConfigOutput values.
+// You can construct a concrete instance of `NotifierDingtalkConfigInput` via:
+//
+//          NotifierDingtalkConfigArgs{...}
+type NotifierDingtalkConfigInput interface {
+	pulumi.Input
+
+	ToNotifierDingtalkConfigOutput() NotifierDingtalkConfigOutput
+	ToNotifierDingtalkConfigOutputWithContext(context.Context) NotifierDingtalkConfigOutput
+}
+
+type NotifierDingtalkConfigArgs struct {
+	// Wechat proxy url (string)
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Wechat agent ID (string)
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Webhook url (string)
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (NotifierDingtalkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (i NotifierDingtalkConfigArgs) ToNotifierDingtalkConfigOutput() NotifierDingtalkConfigOutput {
+	return i.ToNotifierDingtalkConfigOutputWithContext(context.Background())
+}
+
+func (i NotifierDingtalkConfigArgs) ToNotifierDingtalkConfigOutputWithContext(ctx context.Context) NotifierDingtalkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierDingtalkConfigOutput)
+}
+
+func (i NotifierDingtalkConfigArgs) ToNotifierDingtalkConfigPtrOutput() NotifierDingtalkConfigPtrOutput {
+	return i.ToNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NotifierDingtalkConfigArgs) ToNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) NotifierDingtalkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierDingtalkConfigOutput).ToNotifierDingtalkConfigPtrOutputWithContext(ctx)
+}
+
+// NotifierDingtalkConfigPtrInput is an input type that accepts NotifierDingtalkConfigArgs, NotifierDingtalkConfigPtr and NotifierDingtalkConfigPtrOutput values.
+// You can construct a concrete instance of `NotifierDingtalkConfigPtrInput` via:
+//
+//          NotifierDingtalkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NotifierDingtalkConfigPtrInput interface {
+	pulumi.Input
+
+	ToNotifierDingtalkConfigPtrOutput() NotifierDingtalkConfigPtrOutput
+	ToNotifierDingtalkConfigPtrOutputWithContext(context.Context) NotifierDingtalkConfigPtrOutput
+}
+
+type notifierDingtalkConfigPtrType NotifierDingtalkConfigArgs
+
+func NotifierDingtalkConfigPtr(v *NotifierDingtalkConfigArgs) NotifierDingtalkConfigPtrInput {
+	return (*notifierDingtalkConfigPtrType)(v)
+}
+
+func (*notifierDingtalkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (i *notifierDingtalkConfigPtrType) ToNotifierDingtalkConfigPtrOutput() NotifierDingtalkConfigPtrOutput {
+	return i.ToNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *notifierDingtalkConfigPtrType) ToNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) NotifierDingtalkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierDingtalkConfigPtrOutput)
+}
+
+type NotifierDingtalkConfigOutput struct{ *pulumi.OutputState }
+
+func (NotifierDingtalkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (o NotifierDingtalkConfigOutput) ToNotifierDingtalkConfigOutput() NotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o NotifierDingtalkConfigOutput) ToNotifierDingtalkConfigOutputWithContext(ctx context.Context) NotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o NotifierDingtalkConfigOutput) ToNotifierDingtalkConfigPtrOutput() NotifierDingtalkConfigPtrOutput {
+	return o.ToNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NotifierDingtalkConfigOutput) ToNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) NotifierDingtalkConfigPtrOutput {
+	return o.ApplyT(func(v NotifierDingtalkConfig) *NotifierDingtalkConfig {
+		return &v
+	}).(NotifierDingtalkConfigPtrOutput)
+}
+
+// Wechat proxy url (string)
+func (o NotifierDingtalkConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotifierDingtalkConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Wechat agent ID (string)
+func (o NotifierDingtalkConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotifierDingtalkConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// Webhook url (string)
+func (o NotifierDingtalkConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v NotifierDingtalkConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type NotifierDingtalkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NotifierDingtalkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (o NotifierDingtalkConfigPtrOutput) ToNotifierDingtalkConfigPtrOutput() NotifierDingtalkConfigPtrOutput {
+	return o
+}
+
+func (o NotifierDingtalkConfigPtrOutput) ToNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) NotifierDingtalkConfigPtrOutput {
+	return o
+}
+
+func (o NotifierDingtalkConfigPtrOutput) Elem() NotifierDingtalkConfigOutput {
+	return o.ApplyT(func(v *NotifierDingtalkConfig) NotifierDingtalkConfig { return *v }).(NotifierDingtalkConfigOutput)
+}
+
+// Wechat proxy url (string)
+func (o NotifierDingtalkConfigPtrOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Wechat agent ID (string)
+func (o NotifierDingtalkConfigPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook url (string)
+func (o NotifierDingtalkConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotifierMsteamsConfig struct {
+	// Wechat proxy url (string)
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Webhook url (string)
+	Url string `pulumi:"url"`
+}
+
+// NotifierMsteamsConfigInput is an input type that accepts NotifierMsteamsConfigArgs and NotifierMsteamsConfigOutput values.
+// You can construct a concrete instance of `NotifierMsteamsConfigInput` via:
+//
+//          NotifierMsteamsConfigArgs{...}
+type NotifierMsteamsConfigInput interface {
+	pulumi.Input
+
+	ToNotifierMsteamsConfigOutput() NotifierMsteamsConfigOutput
+	ToNotifierMsteamsConfigOutputWithContext(context.Context) NotifierMsteamsConfigOutput
+}
+
+type NotifierMsteamsConfigArgs struct {
+	// Wechat proxy url (string)
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Webhook url (string)
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (NotifierMsteamsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (i NotifierMsteamsConfigArgs) ToNotifierMsteamsConfigOutput() NotifierMsteamsConfigOutput {
+	return i.ToNotifierMsteamsConfigOutputWithContext(context.Background())
+}
+
+func (i NotifierMsteamsConfigArgs) ToNotifierMsteamsConfigOutputWithContext(ctx context.Context) NotifierMsteamsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierMsteamsConfigOutput)
+}
+
+func (i NotifierMsteamsConfigArgs) ToNotifierMsteamsConfigPtrOutput() NotifierMsteamsConfigPtrOutput {
+	return i.ToNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NotifierMsteamsConfigArgs) ToNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) NotifierMsteamsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierMsteamsConfigOutput).ToNotifierMsteamsConfigPtrOutputWithContext(ctx)
+}
+
+// NotifierMsteamsConfigPtrInput is an input type that accepts NotifierMsteamsConfigArgs, NotifierMsteamsConfigPtr and NotifierMsteamsConfigPtrOutput values.
+// You can construct a concrete instance of `NotifierMsteamsConfigPtrInput` via:
+//
+//          NotifierMsteamsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NotifierMsteamsConfigPtrInput interface {
+	pulumi.Input
+
+	ToNotifierMsteamsConfigPtrOutput() NotifierMsteamsConfigPtrOutput
+	ToNotifierMsteamsConfigPtrOutputWithContext(context.Context) NotifierMsteamsConfigPtrOutput
+}
+
+type notifierMsteamsConfigPtrType NotifierMsteamsConfigArgs
+
+func NotifierMsteamsConfigPtr(v *NotifierMsteamsConfigArgs) NotifierMsteamsConfigPtrInput {
+	return (*notifierMsteamsConfigPtrType)(v)
+}
+
+func (*notifierMsteamsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (i *notifierMsteamsConfigPtrType) ToNotifierMsteamsConfigPtrOutput() NotifierMsteamsConfigPtrOutput {
+	return i.ToNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *notifierMsteamsConfigPtrType) ToNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) NotifierMsteamsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierMsteamsConfigPtrOutput)
+}
+
+type NotifierMsteamsConfigOutput struct{ *pulumi.OutputState }
+
+func (NotifierMsteamsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (o NotifierMsteamsConfigOutput) ToNotifierMsteamsConfigOutput() NotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o NotifierMsteamsConfigOutput) ToNotifierMsteamsConfigOutputWithContext(ctx context.Context) NotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o NotifierMsteamsConfigOutput) ToNotifierMsteamsConfigPtrOutput() NotifierMsteamsConfigPtrOutput {
+	return o.ToNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NotifierMsteamsConfigOutput) ToNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) NotifierMsteamsConfigPtrOutput {
+	return o.ApplyT(func(v NotifierMsteamsConfig) *NotifierMsteamsConfig {
+		return &v
+	}).(NotifierMsteamsConfigPtrOutput)
+}
+
+// Wechat proxy url (string)
+func (o NotifierMsteamsConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotifierMsteamsConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Webhook url (string)
+func (o NotifierMsteamsConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v NotifierMsteamsConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type NotifierMsteamsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NotifierMsteamsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (o NotifierMsteamsConfigPtrOutput) ToNotifierMsteamsConfigPtrOutput() NotifierMsteamsConfigPtrOutput {
+	return o
+}
+
+func (o NotifierMsteamsConfigPtrOutput) ToNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) NotifierMsteamsConfigPtrOutput {
+	return o
+}
+
+func (o NotifierMsteamsConfigPtrOutput) Elem() NotifierMsteamsConfigOutput {
+	return o.ApplyT(func(v *NotifierMsteamsConfig) NotifierMsteamsConfig { return *v }).(NotifierMsteamsConfigOutput)
+}
+
+// Wechat proxy url (string)
+func (o NotifierMsteamsConfigPtrOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotifierMsteamsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook url (string)
+func (o NotifierMsteamsConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotifierMsteamsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43448,6 +44407,7 @@ type GetClusterEksConfig struct {
 	Ami                         *string  `pulumi:"ami"`
 	AssociateWorkerNodePublicIp *bool    `pulumi:"associateWorkerNodePublicIp"`
 	DesiredNodes                *int     `pulumi:"desiredNodes"`
+	EbsEncryption               *bool    `pulumi:"ebsEncryption"`
 	InstanceType                *string  `pulumi:"instanceType"`
 	KeyPairName                 *string  `pulumi:"keyPairName"`
 	KubernetesVersion           string   `pulumi:"kubernetesVersion"`
@@ -43480,6 +44440,7 @@ type GetClusterEksConfigArgs struct {
 	Ami                         pulumi.StringPtrInput   `pulumi:"ami"`
 	AssociateWorkerNodePublicIp pulumi.BoolPtrInput     `pulumi:"associateWorkerNodePublicIp"`
 	DesiredNodes                pulumi.IntPtrInput      `pulumi:"desiredNodes"`
+	EbsEncryption               pulumi.BoolPtrInput     `pulumi:"ebsEncryption"`
 	InstanceType                pulumi.StringPtrInput   `pulumi:"instanceType"`
 	KeyPairName                 pulumi.StringPtrInput   `pulumi:"keyPairName"`
 	KubernetesVersion           pulumi.StringInput      `pulumi:"kubernetesVersion"`
@@ -43536,6 +44497,10 @@ func (o GetClusterEksConfigOutput) AssociateWorkerNodePublicIp() pulumi.BoolPtrO
 
 func (o GetClusterEksConfigOutput) DesiredNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterEksConfig) *int { return v.DesiredNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterEksConfigOutput) EbsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfig) *bool { return v.EbsEncryption }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetClusterEksConfigOutput) InstanceType() pulumi.StringPtrOutput {
@@ -44735,6 +45700,196 @@ func (o GetClusterLoggingSyslogConfigOutput) SslVerify() pulumi.BoolOutput {
 
 func (o GetClusterLoggingSyslogConfigOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterLoggingSyslogConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterOkeConfig struct {
+	CompartmentId string `pulumi:"compartmentId"`
+	// (Computed) The description for Cluster (string)
+	Description               *string `pulumi:"description"`
+	EnableKubernetesDashboard *bool   `pulumi:"enableKubernetesDashboard"`
+	EnablePrivateNodes        *bool   `pulumi:"enablePrivateNodes"`
+	Fingerprint               string  `pulumi:"fingerprint"`
+	KubernetesVersion         string  `pulumi:"kubernetesVersion"`
+	LoadBalancerSubnetName1   *string `pulumi:"loadBalancerSubnetName1"`
+	LoadBalancerSubnetName2   *string `pulumi:"loadBalancerSubnetName2"`
+	NodeImage                 string  `pulumi:"nodeImage"`
+	NodePoolDnsDomainName     *string `pulumi:"nodePoolDnsDomainName"`
+	NodePoolSubnetName        *string `pulumi:"nodePoolSubnetName"`
+	NodePublicKeyContents     *string `pulumi:"nodePublicKeyContents"`
+	NodeShape                 string  `pulumi:"nodeShape"`
+	PrivateKeyContents        string  `pulumi:"privateKeyContents"`
+	PrivateKeyPassphrase      *string `pulumi:"privateKeyPassphrase"`
+	QuantityOfNodeSubnets     *int    `pulumi:"quantityOfNodeSubnets"`
+	QuantityPerSubnet         *int    `pulumi:"quantityPerSubnet"`
+	Region                    string  `pulumi:"region"`
+	ServiceDnsDomainName      *string `pulumi:"serviceDnsDomainName"`
+	SkipVcnDelete             *bool   `pulumi:"skipVcnDelete"`
+	TenancyId                 string  `pulumi:"tenancyId"`
+	UserOcid                  string  `pulumi:"userOcid"`
+	VcnName                   *string `pulumi:"vcnName"`
+	WorkerNodeIngressCidr     *string `pulumi:"workerNodeIngressCidr"`
+}
+
+// GetClusterOkeConfigInput is an input type that accepts GetClusterOkeConfigArgs and GetClusterOkeConfigOutput values.
+// You can construct a concrete instance of `GetClusterOkeConfigInput` via:
+//
+//          GetClusterOkeConfigArgs{...}
+type GetClusterOkeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterOkeConfigOutput() GetClusterOkeConfigOutput
+	ToGetClusterOkeConfigOutputWithContext(context.Context) GetClusterOkeConfigOutput
+}
+
+type GetClusterOkeConfigArgs struct {
+	CompartmentId pulumi.StringInput `pulumi:"compartmentId"`
+	// (Computed) The description for Cluster (string)
+	Description               pulumi.StringPtrInput `pulumi:"description"`
+	EnableKubernetesDashboard pulumi.BoolPtrInput   `pulumi:"enableKubernetesDashboard"`
+	EnablePrivateNodes        pulumi.BoolPtrInput   `pulumi:"enablePrivateNodes"`
+	Fingerprint               pulumi.StringInput    `pulumi:"fingerprint"`
+	KubernetesVersion         pulumi.StringInput    `pulumi:"kubernetesVersion"`
+	LoadBalancerSubnetName1   pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName1"`
+	LoadBalancerSubnetName2   pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName2"`
+	NodeImage                 pulumi.StringInput    `pulumi:"nodeImage"`
+	NodePoolDnsDomainName     pulumi.StringPtrInput `pulumi:"nodePoolDnsDomainName"`
+	NodePoolSubnetName        pulumi.StringPtrInput `pulumi:"nodePoolSubnetName"`
+	NodePublicKeyContents     pulumi.StringPtrInput `pulumi:"nodePublicKeyContents"`
+	NodeShape                 pulumi.StringInput    `pulumi:"nodeShape"`
+	PrivateKeyContents        pulumi.StringInput    `pulumi:"privateKeyContents"`
+	PrivateKeyPassphrase      pulumi.StringPtrInput `pulumi:"privateKeyPassphrase"`
+	QuantityOfNodeSubnets     pulumi.IntPtrInput    `pulumi:"quantityOfNodeSubnets"`
+	QuantityPerSubnet         pulumi.IntPtrInput    `pulumi:"quantityPerSubnet"`
+	Region                    pulumi.StringInput    `pulumi:"region"`
+	ServiceDnsDomainName      pulumi.StringPtrInput `pulumi:"serviceDnsDomainName"`
+	SkipVcnDelete             pulumi.BoolPtrInput   `pulumi:"skipVcnDelete"`
+	TenancyId                 pulumi.StringInput    `pulumi:"tenancyId"`
+	UserOcid                  pulumi.StringInput    `pulumi:"userOcid"`
+	VcnName                   pulumi.StringPtrInput `pulumi:"vcnName"`
+	WorkerNodeIngressCidr     pulumi.StringPtrInput `pulumi:"workerNodeIngressCidr"`
+}
+
+func (GetClusterOkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterOkeConfig)(nil)).Elem()
+}
+
+func (i GetClusterOkeConfigArgs) ToGetClusterOkeConfigOutput() GetClusterOkeConfigOutput {
+	return i.ToGetClusterOkeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterOkeConfigArgs) ToGetClusterOkeConfigOutputWithContext(ctx context.Context) GetClusterOkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterOkeConfigOutput)
+}
+
+type GetClusterOkeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterOkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterOkeConfig)(nil)).Elem()
+}
+
+func (o GetClusterOkeConfigOutput) ToGetClusterOkeConfigOutput() GetClusterOkeConfigOutput {
+	return o
+}
+
+func (o GetClusterOkeConfigOutput) ToGetClusterOkeConfigOutputWithContext(ctx context.Context) GetClusterOkeConfigOutput {
+	return o
+}
+
+func (o GetClusterOkeConfigOutput) CompartmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.CompartmentId }).(pulumi.StringOutput)
+}
+
+// (Computed) The description for Cluster (string)
+func (o GetClusterOkeConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) EnableKubernetesDashboard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *bool { return v.EnableKubernetesDashboard }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) LoadBalancerSubnetName1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.LoadBalancerSubnetName1 }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) LoadBalancerSubnetName2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.LoadBalancerSubnetName2 }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) NodeImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.NodeImage }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) NodePoolDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.NodePoolDnsDomainName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) NodePoolSubnetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.NodePoolSubnetName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) NodePublicKeyContents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.NodePublicKeyContents }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) NodeShape() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.NodeShape }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) PrivateKeyContents() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.PrivateKeyContents }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) PrivateKeyPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.PrivateKeyPassphrase }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) QuantityOfNodeSubnets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *int { return v.QuantityOfNodeSubnets }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) QuantityPerSubnet() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *int { return v.QuantityPerSubnet }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) ServiceDnsDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.ServiceDnsDomainName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) SkipVcnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *bool { return v.SkipVcnDelete }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) TenancyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.TenancyId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) UserOcid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.UserOcid }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) VcnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.VcnName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterOkeConfigOutput) WorkerNodeIngressCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.WorkerNodeIngressCidr }).(pulumi.StringPtrOutput)
 }
 
 type GetClusterRkeConfig struct {
@@ -50042,20 +51197,21 @@ func (o GetClusterRkeConfigServicesOutput) Scheduler() GetClusterRkeConfigServic
 
 type GetClusterRkeConfigServicesEtcd struct {
 	BackupConfig GetClusterRkeConfigServicesEtcdBackupConfig `pulumi:"backupConfig"`
-	CaCert       string                                      `pulumi:"caCert"`
-	Cert         string                                      `pulumi:"cert"`
-	Creation     string                                      `pulumi:"creation"`
-	ExternalUrls []string                                    `pulumi:"externalUrls"`
-	ExtraArgs    map[string]interface{}                      `pulumi:"extraArgs"`
-	ExtraBinds   []string                                    `pulumi:"extraBinds"`
-	ExtraEnvs    []string                                    `pulumi:"extraEnvs"`
-	Gid          *int                                        `pulumi:"gid"`
-	Image        string                                      `pulumi:"image"`
-	Key          string                                      `pulumi:"key"`
-	Path         string                                      `pulumi:"path"`
-	Retention    string                                      `pulumi:"retention"`
-	Snapshot     bool                                        `pulumi:"snapshot"`
-	Uid          *int                                        `pulumi:"uid"`
+	// (Computed) K8s cluster ca cert (string)
+	CaCert       string                 `pulumi:"caCert"`
+	Cert         string                 `pulumi:"cert"`
+	Creation     string                 `pulumi:"creation"`
+	ExternalUrls []string               `pulumi:"externalUrls"`
+	ExtraArgs    map[string]interface{} `pulumi:"extraArgs"`
+	ExtraBinds   []string               `pulumi:"extraBinds"`
+	ExtraEnvs    []string               `pulumi:"extraEnvs"`
+	Gid          *int                   `pulumi:"gid"`
+	Image        string                 `pulumi:"image"`
+	Key          string                 `pulumi:"key"`
+	Path         string                 `pulumi:"path"`
+	Retention    string                 `pulumi:"retention"`
+	Snapshot     bool                   `pulumi:"snapshot"`
+	Uid          *int                   `pulumi:"uid"`
 }
 
 // GetClusterRkeConfigServicesEtcdInput is an input type that accepts GetClusterRkeConfigServicesEtcdArgs and GetClusterRkeConfigServicesEtcdOutput values.
@@ -50071,20 +51227,21 @@ type GetClusterRkeConfigServicesEtcdInput interface {
 
 type GetClusterRkeConfigServicesEtcdArgs struct {
 	BackupConfig GetClusterRkeConfigServicesEtcdBackupConfigInput `pulumi:"backupConfig"`
-	CaCert       pulumi.StringInput                               `pulumi:"caCert"`
-	Cert         pulumi.StringInput                               `pulumi:"cert"`
-	Creation     pulumi.StringInput                               `pulumi:"creation"`
-	ExternalUrls pulumi.StringArrayInput                          `pulumi:"externalUrls"`
-	ExtraArgs    pulumi.MapInput                                  `pulumi:"extraArgs"`
-	ExtraBinds   pulumi.StringArrayInput                          `pulumi:"extraBinds"`
-	ExtraEnvs    pulumi.StringArrayInput                          `pulumi:"extraEnvs"`
-	Gid          pulumi.IntPtrInput                               `pulumi:"gid"`
-	Image        pulumi.StringInput                               `pulumi:"image"`
-	Key          pulumi.StringInput                               `pulumi:"key"`
-	Path         pulumi.StringInput                               `pulumi:"path"`
-	Retention    pulumi.StringInput                               `pulumi:"retention"`
-	Snapshot     pulumi.BoolInput                                 `pulumi:"snapshot"`
-	Uid          pulumi.IntPtrInput                               `pulumi:"uid"`
+	// (Computed) K8s cluster ca cert (string)
+	CaCert       pulumi.StringInput      `pulumi:"caCert"`
+	Cert         pulumi.StringInput      `pulumi:"cert"`
+	Creation     pulumi.StringInput      `pulumi:"creation"`
+	ExternalUrls pulumi.StringArrayInput `pulumi:"externalUrls"`
+	ExtraArgs    pulumi.MapInput         `pulumi:"extraArgs"`
+	ExtraBinds   pulumi.StringArrayInput `pulumi:"extraBinds"`
+	ExtraEnvs    pulumi.StringArrayInput `pulumi:"extraEnvs"`
+	Gid          pulumi.IntPtrInput      `pulumi:"gid"`
+	Image        pulumi.StringInput      `pulumi:"image"`
+	Key          pulumi.StringInput      `pulumi:"key"`
+	Path         pulumi.StringInput      `pulumi:"path"`
+	Retention    pulumi.StringInput      `pulumi:"retention"`
+	Snapshot     pulumi.BoolInput        `pulumi:"snapshot"`
+	Uid          pulumi.IntPtrInput      `pulumi:"uid"`
 }
 
 func (GetClusterRkeConfigServicesEtcdArgs) ElementType() reflect.Type {
@@ -50119,6 +51276,7 @@ func (o GetClusterRkeConfigServicesEtcdOutput) BackupConfig() GetClusterRkeConfi
 	}).(GetClusterRkeConfigServicesEtcdBackupConfigOutput)
 }
 
+// (Computed) K8s cluster ca cert (string)
 func (o GetClusterRkeConfigServicesEtcdOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesEtcd) string { return v.CaCert }).(pulumi.StringOutput)
 }
@@ -61756,6 +62914,122 @@ func (o GetNodePoolNodeTaintArrayOutput) Index(i pulumi.IntInput) GetNodePoolNod
 	}).(GetNodePoolNodeTaintOutput)
 }
 
+type GetNotifierDingtalkConfig struct {
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	Secret   *string `pulumi:"secret"`
+	Url      string  `pulumi:"url"`
+}
+
+// GetNotifierDingtalkConfigInput is an input type that accepts GetNotifierDingtalkConfigArgs and GetNotifierDingtalkConfigOutput values.
+// You can construct a concrete instance of `GetNotifierDingtalkConfigInput` via:
+//
+//          GetNotifierDingtalkConfigArgs{...}
+type GetNotifierDingtalkConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput
+	ToGetNotifierDingtalkConfigOutputWithContext(context.Context) GetNotifierDingtalkConfigOutput
+}
+
+type GetNotifierDingtalkConfigArgs struct {
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	Secret   pulumi.StringPtrInput `pulumi:"secret"`
+	Url      pulumi.StringInput    `pulumi:"url"`
+}
+
+func (GetNotifierDingtalkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput {
+	return i.ToGetNotifierDingtalkConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierDingtalkConfigOutput)
+}
+
+type GetNotifierDingtalkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierDingtalkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNotifierDingtalkConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNotifierDingtalkConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNotifierMsteamsConfig struct {
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	Url      string  `pulumi:"url"`
+}
+
+// GetNotifierMsteamsConfigInput is an input type that accepts GetNotifierMsteamsConfigArgs and GetNotifierMsteamsConfigOutput values.
+// You can construct a concrete instance of `GetNotifierMsteamsConfigInput` via:
+//
+//          GetNotifierMsteamsConfigArgs{...}
+type GetNotifierMsteamsConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput
+	ToGetNotifierMsteamsConfigOutputWithContext(context.Context) GetNotifierMsteamsConfigOutput
+}
+
+type GetNotifierMsteamsConfigArgs struct {
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	Url      pulumi.StringInput    `pulumi:"url"`
+}
+
+func (GetNotifierMsteamsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput {
+	return i.ToGetNotifierMsteamsConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierMsteamsConfigOutput)
+}
+
+type GetNotifierMsteamsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierMsteamsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierMsteamsConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNotifierMsteamsConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierMsteamsConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
 type GetNotifierPagerdutyConfig struct {
 	ProxyUrl   *string `pulumi:"proxyUrl"`
 	ServiceKey string  `pulumi:"serviceKey"`
@@ -65137,6 +66411,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterLoggingSplunkConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingSyslogConfigOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingSyslogConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterOkeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterOkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigAuthenticationOutput{})
@@ -65393,6 +66669,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateOpenstackConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateVsphereConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateVsphereConfigPtrOutput{})
+	pulumi.RegisterOutputType(NotifierDingtalkConfigOutput{})
+	pulumi.RegisterOutputType(NotifierDingtalkConfigPtrOutput{})
+	pulumi.RegisterOutputType(NotifierMsteamsConfigOutput{})
+	pulumi.RegisterOutputType(NotifierMsteamsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotifierPagerdutyConfigOutput{})
 	pulumi.RegisterOutputType(NotifierPagerdutyConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotifierSlackConfigOutput{})
@@ -65494,6 +66774,7 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterLoggingKafkaConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingSplunkConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingSyslogConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterOkeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigAuthorizationOutput{})
@@ -65693,6 +66974,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespaceResourceQuotaLimitOutput{})
 	pulumi.RegisterOutputType(GetNodePoolNodeTaintOutput{})
 	pulumi.RegisterOutputType(GetNodePoolNodeTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetNotifierDingtalkConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierMsteamsConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierPagerdutyConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierSlackConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})

@@ -49,8 +49,12 @@ type Notifier struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The notifier description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig NotifierDingtalkConfigPtrOutput `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig NotifierMsteamsConfigPtrOutput `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
@@ -104,8 +108,12 @@ type notifierState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The notifier description (string)
 	Description *string `pulumi:"description"`
+	// Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig *NotifierDingtalkConfig `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig *NotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
@@ -129,8 +137,12 @@ type NotifierState struct {
 	ClusterId pulumi.StringPtrInput
 	// The notifier description (string)
 	Description pulumi.StringPtrInput
+	// Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig NotifierDingtalkConfigPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
+	// MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig NotifierMsteamsConfigPtrInput
 	// The name of the notifier (string)
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)
@@ -158,8 +170,12 @@ type notifierArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The notifier description (string)
 	Description *string `pulumi:"description"`
+	// Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig *NotifierDingtalkConfig `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig *NotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
 	Name *string `pulumi:"name"`
 	// Pagerduty config for notifier (list maxitems:1)
@@ -184,8 +200,12 @@ type NotifierArgs struct {
 	ClusterId pulumi.StringInput
 	// The notifier description (string)
 	Description pulumi.StringPtrInput
+	// Dingtalk config for notifier (list maxitems:1)
+	DingtalkConfig NotifierDingtalkConfigPtrInput
 	// Labels for notifier object (map)
 	Labels pulumi.MapInput
+	// MSTeams config for notifier (list maxitems:1)
+	MsteamsConfig NotifierMsteamsConfigPtrInput
 	// The name of the notifier (string)
 	Name pulumi.StringPtrInput
 	// Pagerduty config for notifier (list maxitems:1)

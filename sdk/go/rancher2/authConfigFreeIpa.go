@@ -56,6 +56,10 @@ type AuthConfigFreeIpa struct {
 	ServiceAccountDistinguishedName pulumi.StringOutput `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access FreeIpa service (string)
 	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
+	// Password for test access to FreeIpa service (string)
+	TestPassword pulumi.StringOutput `pulumi:"testPassword"`
+	// Username for test access to FreeIpa service (string)
+	TestUsername pulumi.StringOutput `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolOutput `pulumi:"tls"`
 	// (Computed) The type of the resource (string)
@@ -89,6 +93,12 @@ func NewAuthConfigFreeIpa(ctx *pulumi.Context,
 	}
 	if args == nil || args.ServiceAccountPassword == nil {
 		return nil, errors.New("missing required argument 'ServiceAccountPassword'")
+	}
+	if args == nil || args.TestPassword == nil {
+		return nil, errors.New("missing required argument 'TestPassword'")
+	}
+	if args == nil || args.TestUsername == nil {
+		return nil, errors.New("missing required argument 'TestUsername'")
 	}
 	if args == nil || args.UserSearchBase == nil {
 		return nil, errors.New("missing required argument 'UserSearchBase'")
@@ -158,6 +168,10 @@ type authConfigFreeIpaState struct {
 	ServiceAccountDistinguishedName *string `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access FreeIpa service (string)
 	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
+	// Password for test access to FreeIpa service (string)
+	TestPassword *string `pulumi:"testPassword"`
+	// Username for test access to FreeIpa service (string)
+	TestUsername *string `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls *bool `pulumi:"tls"`
 	// (Computed) The type of the resource (string)
@@ -221,6 +235,10 @@ type AuthConfigFreeIpaState struct {
 	ServiceAccountDistinguishedName pulumi.StringPtrInput
 	// Service account password for access FreeIpa service (string)
 	ServiceAccountPassword pulumi.StringPtrInput
+	// Password for test access to FreeIpa service (string)
+	TestPassword pulumi.StringPtrInput
+	// Username for test access to FreeIpa service (string)
+	TestUsername pulumi.StringPtrInput
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolPtrInput
 	// (Computed) The type of the resource (string)
@@ -286,6 +304,10 @@ type authConfigFreeIpaArgs struct {
 	ServiceAccountDistinguishedName string `pulumi:"serviceAccountDistinguishedName"`
 	// Service account password for access FreeIpa service (string)
 	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
+	// Password for test access to FreeIpa service (string)
+	TestPassword string `pulumi:"testPassword"`
+	// Username for test access to FreeIpa service (string)
+	TestUsername string `pulumi:"testUsername"`
 	// Enable TLS connection (bool)
 	Tls *bool `pulumi:"tls"`
 	// User disabled bit mask (int)
@@ -346,6 +368,10 @@ type AuthConfigFreeIpaArgs struct {
 	ServiceAccountDistinguishedName pulumi.StringInput
 	// Service account password for access FreeIpa service (string)
 	ServiceAccountPassword pulumi.StringInput
+	// Password for test access to FreeIpa service (string)
+	TestPassword pulumi.StringInput
+	// Username for test access to FreeIpa service (string)
+	TestUsername pulumi.StringInput
 	// Enable TLS connection (bool)
 	Tls pulumi.BoolPtrInput
 	// User disabled bit mask (int)

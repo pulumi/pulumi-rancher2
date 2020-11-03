@@ -126,6 +126,14 @@ export class ActiveDirectory extends pulumi.CustomResource {
      */
     public readonly serviceAccountUsername!: pulumi.Output<string>;
     /**
+     * Password for test access to ActiveDirectory service (string)
+     */
+    public readonly testPassword!: pulumi.Output<string>;
+    /**
+     * Username for test access to ActiveDirectory service (string)
+     */
+    public readonly testUsername!: pulumi.Output<string>;
+    /**
      * Enable TLS connection (bool)
      */
     public readonly tls!: pulumi.Output<boolean>;
@@ -200,6 +208,8 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
             inputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = state ? state.serviceAccountUsername : undefined;
+            inputs["testPassword"] = state ? state.testPassword : undefined;
+            inputs["testUsername"] = state ? state.testUsername : undefined;
             inputs["tls"] = state ? state.tls : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["userDisabledBitMask"] = state ? state.userDisabledBitMask : undefined;
@@ -220,6 +230,12 @@ export class ActiveDirectory extends pulumi.CustomResource {
             }
             if (!args || args.serviceAccountUsername === undefined) {
                 throw new Error("Missing required property 'serviceAccountUsername'");
+            }
+            if (!args || args.testPassword === undefined) {
+                throw new Error("Missing required property 'testPassword'");
+            }
+            if (!args || args.testUsername === undefined) {
+                throw new Error("Missing required property 'testUsername'");
             }
             if (!args || args.userSearchBase === undefined) {
                 throw new Error("Missing required property 'userSearchBase'");
@@ -245,6 +261,8 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = args ? args.servers : undefined;
             inputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
+            inputs["testPassword"] = args ? args.testPassword : undefined;
+            inputs["testUsername"] = args ? args.testUsername : undefined;
             inputs["tls"] = args ? args.tls : undefined;
             inputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
             inputs["userEnabledAttribute"] = args ? args.userEnabledAttribute : undefined;
@@ -360,6 +378,14 @@ export interface ActiveDirectoryState {
      * Service account DN for access ActiveDirectory service (string)
      */
     readonly serviceAccountUsername?: pulumi.Input<string>;
+    /**
+     * Password for test access to ActiveDirectory service (string)
+     */
+    readonly testPassword?: pulumi.Input<string>;
+    /**
+     * Username for test access to ActiveDirectory service (string)
+     */
+    readonly testUsername?: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */
@@ -490,6 +516,14 @@ export interface ActiveDirectoryArgs {
      * Service account DN for access ActiveDirectory service (string)
      */
     readonly serviceAccountUsername: pulumi.Input<string>;
+    /**
+     * Password for test access to ActiveDirectory service (string)
+     */
+    readonly testPassword: pulumi.Input<string>;
+    /**
+     * Username for test access to ActiveDirectory service (string)
+     */
+    readonly testUsername: pulumi.Input<string>;
     /**
      * Enable TLS connection (bool)
      */

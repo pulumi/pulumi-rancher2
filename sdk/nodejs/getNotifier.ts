@@ -31,6 +31,8 @@ export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions):
     }
     return pulumi.runtime.invoke("rancher2:index/getNotifier:getNotifier", {
         "clusterId": args.clusterId,
+        "dingtalkConfig": args.dingtalkConfig,
+        "msteamsConfig": args.msteamsConfig,
         "name": args.name,
     }, opts);
 }
@@ -43,6 +45,14 @@ export interface GetNotifierArgs {
      * The cluster id where create notifier (string)
      */
     readonly clusterId: string;
+    /**
+     * (Computed) Dingtalk config for notifier (list maxitems:1)
+     */
+    readonly dingtalkConfig?: inputs.GetNotifierDingtalkConfig;
+    /**
+     * (Computed) MSTeams config for notifier (list maxitems:1)
+     */
+    readonly msteamsConfig?: inputs.GetNotifierMsteamsConfig;
     /**
      * The name of the notifier (string)
      */
@@ -63,6 +73,10 @@ export interface GetNotifierResult {
      */
     readonly description: string;
     /**
+     * (Computed) Dingtalk config for notifier (list maxitems:1)
+     */
+    readonly dingtalkConfig?: outputs.GetNotifierDingtalkConfig;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -70,6 +84,10 @@ export interface GetNotifierResult {
      * (Computed) Labels for notifier object (map)
      */
     readonly labels: {[key: string]: any};
+    /**
+     * (Computed) MSTeams config for notifier (list maxitems:1)
+     */
+    readonly msteamsConfig?: outputs.GetNotifierMsteamsConfig;
     readonly name: string;
     /**
      * (Computed) Pagerduty config for notifier (list maxitems:1)

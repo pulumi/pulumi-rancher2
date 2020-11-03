@@ -52,6 +52,18 @@ namespace Pulumi.Rancher2
         public string ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// (Computed) Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("dingtalkConfig")]
+        public Inputs.GetNotifierDingtalkConfigArgs? DingtalkConfig { get; set; }
+
+        /// <summary>
+        /// (Computed) MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        [Input("msteamsConfig")]
+        public Inputs.GetNotifierMsteamsConfigArgs? MsteamsConfig { get; set; }
+
+        /// <summary>
         /// The name of the notifier (string)
         /// </summary>
         [Input("name", required: true)]
@@ -76,6 +88,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// (Computed) Dingtalk config for notifier (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.GetNotifierDingtalkConfigResult? DingtalkConfig;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -83,6 +99,10 @@ namespace Pulumi.Rancher2
         /// (Computed) Labels for notifier object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// (Computed) MSTeams config for notifier (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.GetNotifierMsteamsConfigResult? MsteamsConfig;
         public readonly string Name;
         /// <summary>
         /// (Computed) Pagerduty config for notifier (list maxitems:1)
@@ -113,9 +133,13 @@ namespace Pulumi.Rancher2
 
             string description,
 
+            Outputs.GetNotifierDingtalkConfigResult? dingtalkConfig,
+
             string id,
 
             ImmutableDictionary<string, object> labels,
+
+            Outputs.GetNotifierMsteamsConfigResult? msteamsConfig,
 
             string name,
 
@@ -132,8 +156,10 @@ namespace Pulumi.Rancher2
             Annotations = annotations;
             ClusterId = clusterId;
             Description = description;
+            DingtalkConfig = dingtalkConfig;
             Id = id;
             Labels = labels;
+            MsteamsConfig = msteamsConfig;
             Name = name;
             PagerdutyConfig = pagerdutyConfig;
             SlackConfig = slackConfig;

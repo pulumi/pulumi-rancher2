@@ -137,6 +137,18 @@ namespace Pulumi.Rancher2
         public Output<string> ServiceAccountPassword { get; private set; } = null!;
 
         /// <summary>
+        /// Password for test access to OpenLdap service (string)
+        /// </summary>
+        [Output("testPassword")]
+        public Output<string> TestPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// Username for test access to OpenLdap service (string)
+        /// </summary>
+        [Output("testUsername")]
+        public Output<string> TestUsername { get; private set; } = null!;
+
+        /// <summary>
         /// Enable TLS connection (bool)
         /// </summary>
         [Output("tls")]
@@ -381,6 +393,18 @@ namespace Pulumi.Rancher2
         public Input<string> ServiceAccountPassword { get; set; } = null!;
 
         /// <summary>
+        /// Password for test access to OpenLdap service (string)
+        /// </summary>
+        [Input("testPassword", required: true)]
+        public Input<string> TestPassword { get; set; } = null!;
+
+        /// <summary>
+        /// Username for test access to OpenLdap service (string)
+        /// </summary>
+        [Input("testUsername", required: true)]
+        public Input<string> TestUsername { get; set; } = null!;
+
+        /// <summary>
         /// Enable TLS connection (bool)
         /// </summary>
         [Input("tls")]
@@ -584,6 +608,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("serviceAccountPassword")]
         public Input<string>? ServiceAccountPassword { get; set; }
+
+        /// <summary>
+        /// Password for test access to OpenLdap service (string)
+        /// </summary>
+        [Input("testPassword")]
+        public Input<string>? TestPassword { get; set; }
+
+        /// <summary>
+        /// Username for test access to OpenLdap service (string)
+        /// </summary>
+        [Input("testUsername")]
+        public Input<string>? TestUsername { get; set; }
 
         /// <summary>
         /// Enable TLS connection (bool)

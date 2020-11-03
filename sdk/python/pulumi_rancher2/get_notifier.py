@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNotifierResult',
@@ -20,7 +21,7 @@ class GetNotifierResult:
     """
     A collection of values returned by getNotifier.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, description=None, id=None, labels=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
+    def __init__(__self__, annotations=None, cluster_id=None, description=None, dingtalk_config=None, id=None, labels=None, msteams_config=None, name=None, pagerduty_config=None, slack_config=None, smtp_config=None, webhook_config=None, wechat_config=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -30,12 +31,18 @@ class GetNotifierResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if dingtalk_config and not isinstance(dingtalk_config, dict):
+            raise TypeError("Expected argument 'dingtalk_config' to be a dict")
+        pulumi.set(__self__, "dingtalk_config", dingtalk_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if msteams_config and not isinstance(msteams_config, dict):
+            raise TypeError("Expected argument 'msteams_config' to be a dict")
+        pulumi.set(__self__, "msteams_config", msteams_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -77,6 +84,14 @@ class GetNotifierResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dingtalkConfig")
+    def dingtalk_config(self) -> Optional['outputs.GetNotifierDingtalkConfigResult']:
+        """
+        (Computed) Dingtalk config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "dingtalk_config")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -91,6 +106,14 @@ class GetNotifierResult:
         (Computed) Labels for notifier object (map)
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="msteamsConfig")
+    def msteams_config(self) -> Optional['outputs.GetNotifierMsteamsConfigResult']:
+        """
+        (Computed) MSTeams config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "msteams_config")
 
     @property
     @pulumi.getter
@@ -147,8 +170,10 @@ class AwaitableGetNotifierResult(GetNotifierResult):
             annotations=self.annotations,
             cluster_id=self.cluster_id,
             description=self.description,
+            dingtalk_config=self.dingtalk_config,
             id=self.id,
             labels=self.labels,
+            msteams_config=self.msteams_config,
             name=self.name,
             pagerduty_config=self.pagerduty_config,
             slack_config=self.slack_config,
@@ -158,6 +183,8 @@ class AwaitableGetNotifierResult(GetNotifierResult):
 
 
 def get_notifier(cluster_id: Optional[str] = None,
+                 dingtalk_config: Optional[pulumi.InputType['GetNotifierDingtalkConfigArgs']] = None,
+                 msteams_config: Optional[pulumi.InputType['GetNotifierMsteamsConfigArgs']] = None,
                  name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotifierResult:
     """
@@ -175,10 +202,14 @@ def get_notifier(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The cluster id where create notifier (string)
+    :param pulumi.InputType['GetNotifierDingtalkConfigArgs'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
+    :param pulumi.InputType['GetNotifierMsteamsConfigArgs'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
     :param str name: The name of the notifier (string)
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
+    __args__['dingtalkConfig'] = dingtalk_config
+    __args__['msteamsConfig'] = msteams_config
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -190,8 +221,10 @@ def get_notifier(cluster_id: Optional[str] = None,
         annotations=__ret__.annotations,
         cluster_id=__ret__.cluster_id,
         description=__ret__.description,
+        dingtalk_config=__ret__.dingtalk_config,
         id=__ret__.id,
         labels=__ret__.labels,
+        msteams_config=__ret__.msteams_config,
         name=__ret__.name,
         pagerduty_config=__ret__.pagerduty_config,
         slack_config=__ret__.slack_config,

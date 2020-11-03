@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnableHttpLoadBalancing { get; set; }
 
         /// <summary>
-        /// Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         /// </summary>
         [Input("enableKubernetesDashboard")]
         public Input<bool>? EnableKubernetesDashboard { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnablePrivateEndpoint { get; set; }
 
         /// <summary>
-        /// Whether nodes have internal IP address only. Default `false` (bool)
+        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         /// </summary>
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// GKE cluster region. Conflicts with `zone` (string)
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

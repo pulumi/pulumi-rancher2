@@ -90,8 +90,9 @@ type LookupClusterResult struct {
 	// (Computed) Kube Config generated for the cluster (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels    map[string]interface{} `pulumi:"labels"`
+	Name      string                 `pulumi:"name"`
+	OkeConfig GetClusterOkeConfig    `pulumi:"okeConfig"`
 	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
 	RkeConfig             GetClusterRkeConfig              `pulumi:"rkeConfig"`
 	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`

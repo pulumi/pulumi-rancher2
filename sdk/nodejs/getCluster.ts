@@ -133,6 +133,7 @@ export interface GetClusterResult {
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
+    readonly okeConfig: outputs.GetClusterOkeConfig;
     /**
      * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
      */

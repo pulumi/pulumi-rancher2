@@ -42,6 +42,7 @@ __all__ = [
     'ClusterLoggingKafkaConfigArgs',
     'ClusterLoggingSplunkConfigArgs',
     'ClusterLoggingSyslogConfigArgs',
+    'ClusterOkeConfigArgs',
     'ClusterRkeConfigArgs',
     'ClusterRkeConfigAuthenticationArgs',
     'ClusterRkeConfigAuthorizationArgs',
@@ -171,6 +172,8 @@ __all__ = [
     'NodeTemplateOpennebulaConfigArgs',
     'NodeTemplateOpenstackConfigArgs',
     'NodeTemplateVsphereConfigArgs',
+    'NotifierDingtalkConfigArgs',
+    'NotifierMsteamsConfigArgs',
     'NotifierPagerdutyConfigArgs',
     'NotifierSlackConfigArgs',
     'NotifierSmtpConfigArgs',
@@ -209,6 +212,8 @@ __all__ = [
     'ProjectResourceQuotaProjectLimitArgs',
     'RegistryRegistryArgs',
     'RoleTempalteRuleArgs',
+    'GetNotifierDingtalkConfigArgs',
+    'GetNotifierMsteamsConfigArgs',
     'GetPodSecurityPolicyTemplateAllowedCsiDriverArgs',
     'GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs',
     'GetPodSecurityPolicyTemplateAllowedHostPathArgs',
@@ -493,7 +498,7 @@ class ClusterAksConfigArgs:
         :param pulumi.Input[str] agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool (string)
         :param pulumi.Input[str] client_id: Azure client ID to use (string)
         :param pulumi.Input[str] client_secret: Azure client secret associated with the \"client id\" (string)
-        :param pulumi.Input[str] kubernetes_version: The Kubernetes master version (string)
+        :param pulumi.Input[str] kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param pulumi.Input[str] master_dns_prefix: DNS prefix to use the Kubernetes cluster control pane (string)
         :param pulumi.Input[str] resource_group: The name of the Cluster resource group (string)
         :param pulumi.Input[str] ssh_public_key_contents: Contents of the SSH public key used to authenticate with Linux hosts (string)
@@ -631,7 +636,7 @@ class ClusterAksConfigArgs:
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> pulumi.Input[str]:
         """
-        The Kubernetes master version (string)
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -1972,6 +1977,7 @@ class ClusterEksConfigArgs:
                  ami: Optional[pulumi.Input[str]] = None,
                  associate_worker_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  desired_nodes: Optional[pulumi.Input[int]] = None,
+                 ebs_encryption: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  maximum_nodes: Optional[pulumi.Input[int]] = None,
@@ -1986,7 +1992,7 @@ class ClusterEksConfigArgs:
                  virtual_network: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] access_key: The AWS Client ID to use (string)
-        :param pulumi.Input[str] kubernetes_version: The Kubernetes master version (string)
+        :param pulumi.Input[str] kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param pulumi.Input[str] secret_key: The AWS Client Secret associated with the Client ID (string)
         :param pulumi.Input[str] ami: AMI ID to use for the worker nodes instead of the default (string)
         :param pulumi.Input[bool] associate_worker_node_public_ip: Associate public ip EKS worker nodes. Default `true` (bool)
@@ -1996,7 +2002,7 @@ class ClusterEksConfigArgs:
         :param pulumi.Input[int] maximum_nodes: The maximum number of worker nodes. Default `3` (int)
         :param pulumi.Input[int] minimum_nodes: The minimum number of worker nodes. Default `1` (int)
         :param pulumi.Input[int] node_volume_size: The volume size for each node. Default `20` (int)
-        :param pulumi.Input[str] region: GKE cluster region. Conflicts with `zone` (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
         :param pulumi.Input[str] service_role: The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
         :param pulumi.Input[str] session_token: A session token to use with the client key and secret if applicable (string)
@@ -2013,6 +2019,8 @@ class ClusterEksConfigArgs:
             pulumi.set(__self__, "associate_worker_node_public_ip", associate_worker_node_public_ip)
         if desired_nodes is not None:
             pulumi.set(__self__, "desired_nodes", desired_nodes)
+        if ebs_encryption is not None:
+            pulumi.set(__self__, "ebs_encryption", ebs_encryption)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if key_pair_name is not None:
@@ -2054,7 +2062,7 @@ class ClusterEksConfigArgs:
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> pulumi.Input[str]:
         """
-        The Kubernetes master version (string)
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -2109,6 +2117,15 @@ class ClusterEksConfigArgs:
     @desired_nodes.setter
     def desired_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_nodes", value)
+
+    @property
+    @pulumi.getter(name="ebsEncryption")
+    def ebs_encryption(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ebs_encryption")
+
+    @ebs_encryption.setter
+    def ebs_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ebs_encryption", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -2174,7 +2191,7 @@ class ClusterEksConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        GKE cluster region. Conflicts with `zone` (string)
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         """
         return pulumi.get(self, "region")
 
@@ -2341,12 +2358,12 @@ class ClusterGkeConfigArgs:
         :param pulumi.Input[bool] enable_auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
         :param pulumi.Input[bool] enable_horizontal_pod_autoscaling: Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
         :param pulumi.Input[bool] enable_http_load_balancing: Enable HTTP load balancing on GKE cluster. Default `true` (bool)
-        :param pulumi.Input[bool] enable_kubernetes_dashboard: Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        :param pulumi.Input[bool] enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         :param pulumi.Input[bool] enable_legacy_abac: Whether to enable legacy abac on the cluster. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy_config: Enable network policy config for the cluster. Default `true` (bool)
         :param pulumi.Input[bool] enable_nodepool_autoscaling: Enable nodepool autoscaling. Default `false` (bool)
         :param pulumi.Input[bool] enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
-        :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP address only. Default `false` (bool)
+        :param pulumi.Input[bool] enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         :param pulumi.Input[bool] enable_stackdriver_logging: Enable stackdriver monitoring. Default `true` (bool)
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Enable stackdriver monitoring on GKE cluster (bool)
         :param pulumi.Input[bool] ip_policy_create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
@@ -2359,7 +2376,7 @@ class ClusterGkeConfigArgs:
         :param pulumi.Input[int] min_node_count: Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
         :param pulumi.Input[int] node_count: Node count for GKE cluster. Default `3` (int)
         :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances. Default `false` (bool)
-        :param pulumi.Input[str] region: GKE cluster region. Conflicts with `zone` (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param pulumi.Input[Mapping[str, Any]] resource_labels: The map of Kubernetes labels to be applied to each cluster (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] taints: List of Kubernetes taints to be applied to each node (list)
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
@@ -2802,7 +2819,7 @@ class ClusterGkeConfigArgs:
     @pulumi.getter(name="enableKubernetesDashboard")
     def enable_kubernetes_dashboard(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the Kubernetes dashboard. Default `false` (bool)
+        Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         """
         return pulumi.get(self, "enable_kubernetes_dashboard")
 
@@ -2871,7 +2888,7 @@ class ClusterGkeConfigArgs:
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether nodes have internal IP address only. Default `false` (bool)
+        Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         """
         return pulumi.get(self, "enable_private_nodes")
 
@@ -3027,7 +3044,7 @@ class ClusterGkeConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        GKE cluster region. Conflicts with `zone` (string)
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         """
         return pulumi.get(self, "region")
 
@@ -4052,6 +4069,388 @@ class ClusterLoggingSyslogConfigArgs:
 
 
 @pulumi.input_type
+class ClusterOkeConfigArgs:
+    def __init__(__self__, *,
+                 compartment_id: pulumi.Input[str],
+                 fingerprint: pulumi.Input[str],
+                 kubernetes_version: pulumi.Input[str],
+                 node_image: pulumi.Input[str],
+                 node_shape: pulumi.Input[str],
+                 private_key_contents: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 tenancy_id: pulumi.Input[str],
+                 user_ocid: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_kubernetes_dashboard: Optional[pulumi.Input[bool]] = None,
+                 enable_private_nodes: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_subnet_name1: Optional[pulumi.Input[str]] = None,
+                 load_balancer_subnet_name2: Optional[pulumi.Input[str]] = None,
+                 node_pool_dns_domain_name: Optional[pulumi.Input[str]] = None,
+                 node_pool_subnet_name: Optional[pulumi.Input[str]] = None,
+                 node_public_key_contents: Optional[pulumi.Input[str]] = None,
+                 private_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 quantity_of_node_subnets: Optional[pulumi.Input[int]] = None,
+                 quantity_per_subnet: Optional[pulumi.Input[int]] = None,
+                 service_dns_domain_name: Optional[pulumi.Input[str]] = None,
+                 skip_vcn_delete: Optional[pulumi.Input[bool]] = None,
+                 vcn_name: Optional[pulumi.Input[str]] = None,
+                 worker_node_ingress_cidr: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] compartment_id: The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+        :param pulumi.Input[str] fingerprint: The fingerprint corresponding to the specified user's private API Key (string)
+        :param pulumi.Input[str] kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param pulumi.Input[str] node_image: The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+        :param pulumi.Input[str] node_shape: The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+        :param pulumi.Input[str] private_key_contents: The private API key file contents for the specified user, in PEM format (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param pulumi.Input[str] tenancy_id: The OCID of the tenancy in which to create resources (string)
+        :param pulumi.Input[str] user_ocid: The OCID of a user who has access to the tenancy/compartment (string)
+        :param pulumi.Input[str] description: An optional description of this cluster (string)
+        :param pulumi.Input[bool] enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        :param pulumi.Input[bool] enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        :param pulumi.Input[str] load_balancer_subnet_name1: The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+        :param pulumi.Input[str] load_balancer_subnet_name2: The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+        :param pulumi.Input[str] node_pool_dns_domain_name: Name for DNS domain of node pool subnet. Default `nodedns` (string)
+        :param pulumi.Input[str] node_pool_subnet_name: Name for node pool subnet. Default `nodedns` (string)
+        :param pulumi.Input[str] node_public_key_contents: The contents of the SSH public key file to use for the nodes (string)
+        :param pulumi.Input[str] private_key_passphrase: The passphrase (if any) of the private key for the OKE cluster (string)
+        :param pulumi.Input[int] quantity_of_node_subnets: Number of node subnets. Default `1` (int)
+        :param pulumi.Input[int] quantity_per_subnet: Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+        :param pulumi.Input[str] service_dns_domain_name: Name for DNS domain of service subnet. Default `svcdns` (string)
+        :param pulumi.Input[bool] skip_vcn_delete: Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+        :param pulumi.Input[str] vcn_name: The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+        :param pulumi.Input[str] worker_node_ingress_cidr: Additional CIDR from which to allow ingress to worker nodes (string)
+        """
+        pulumi.set(__self__, "compartment_id", compartment_id)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        pulumi.set(__self__, "node_image", node_image)
+        pulumi.set(__self__, "node_shape", node_shape)
+        pulumi.set(__self__, "private_key_contents", private_key_contents)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "tenancy_id", tenancy_id)
+        pulumi.set(__self__, "user_ocid", user_ocid)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_kubernetes_dashboard is not None:
+            pulumi.set(__self__, "enable_kubernetes_dashboard", enable_kubernetes_dashboard)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if load_balancer_subnet_name1 is not None:
+            pulumi.set(__self__, "load_balancer_subnet_name1", load_balancer_subnet_name1)
+        if load_balancer_subnet_name2 is not None:
+            pulumi.set(__self__, "load_balancer_subnet_name2", load_balancer_subnet_name2)
+        if node_pool_dns_domain_name is not None:
+            pulumi.set(__self__, "node_pool_dns_domain_name", node_pool_dns_domain_name)
+        if node_pool_subnet_name is not None:
+            pulumi.set(__self__, "node_pool_subnet_name", node_pool_subnet_name)
+        if node_public_key_contents is not None:
+            pulumi.set(__self__, "node_public_key_contents", node_public_key_contents)
+        if private_key_passphrase is not None:
+            pulumi.set(__self__, "private_key_passphrase", private_key_passphrase)
+        if quantity_of_node_subnets is not None:
+            pulumi.set(__self__, "quantity_of_node_subnets", quantity_of_node_subnets)
+        if quantity_per_subnet is not None:
+            pulumi.set(__self__, "quantity_per_subnet", quantity_per_subnet)
+        if service_dns_domain_name is not None:
+            pulumi.set(__self__, "service_dns_domain_name", service_dns_domain_name)
+        if skip_vcn_delete is not None:
+            pulumi.set(__self__, "skip_vcn_delete", skip_vcn_delete)
+        if vcn_name is not None:
+            pulumi.set(__self__, "vcn_name", vcn_name)
+        if worker_node_ingress_cidr is not None:
+            pulumi.set(__self__, "worker_node_ingress_cidr", worker_node_ingress_cidr)
+
+    @property
+    @pulumi.getter(name="compartmentId")
+    def compartment_id(self) -> pulumi.Input[str]:
+        """
+        The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+        """
+        return pulumi.get(self, "compartment_id")
+
+    @compartment_id.setter
+    def compartment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compartment_id", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Input[str]:
+        """
+        The fingerprint corresponding to the specified user's private API Key (string)
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> pulumi.Input[str]:
+        """
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kubernetes_version", value)
+
+    @property
+    @pulumi.getter(name="nodeImage")
+    def node_image(self) -> pulumi.Input[str]:
+        """
+        The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+        """
+        return pulumi.get(self, "node_image")
+
+    @node_image.setter
+    def node_image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_image", value)
+
+    @property
+    @pulumi.getter(name="nodeShape")
+    def node_shape(self) -> pulumi.Input[str]:
+        """
+        The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+        """
+        return pulumi.get(self, "node_shape")
+
+    @node_shape.setter
+    def node_shape(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_shape", value)
+
+    @property
+    @pulumi.getter(name="privateKeyContents")
+    def private_key_contents(self) -> pulumi.Input[str]:
+        """
+        The private API key file contents for the specified user, in PEM format (string)
+        """
+        return pulumi.get(self, "private_key_contents")
+
+    @private_key_contents.setter
+    def private_key_contents(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key_contents", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="tenancyId")
+    def tenancy_id(self) -> pulumi.Input[str]:
+        """
+        The OCID of the tenancy in which to create resources (string)
+        """
+        return pulumi.get(self, "tenancy_id")
+
+    @tenancy_id.setter
+    def tenancy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tenancy_id", value)
+
+    @property
+    @pulumi.getter(name="userOcid")
+    def user_ocid(self) -> pulumi.Input[str]:
+        """
+        The OCID of a user who has access to the tenancy/compartment (string)
+        """
+        return pulumi.get(self, "user_ocid")
+
+    @user_ocid.setter
+    def user_ocid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_ocid", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this cluster (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableKubernetesDashboard")
+    def enable_kubernetes_dashboard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        """
+        return pulumi.get(self, "enable_kubernetes_dashboard")
+
+    @enable_kubernetes_dashboard.setter
+    def enable_kubernetes_dashboard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_kubernetes_dashboard", value)
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        """
+        return pulumi.get(self, "enable_private_nodes")
+
+    @enable_private_nodes.setter
+    def enable_private_nodes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_nodes", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerSubnetName1")
+    def load_balancer_subnet_name1(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+        """
+        return pulumi.get(self, "load_balancer_subnet_name1")
+
+    @load_balancer_subnet_name1.setter
+    def load_balancer_subnet_name1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_subnet_name1", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerSubnetName2")
+    def load_balancer_subnet_name2(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+        """
+        return pulumi.get(self, "load_balancer_subnet_name2")
+
+    @load_balancer_subnet_name2.setter
+    def load_balancer_subnet_name2(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_subnet_name2", value)
+
+    @property
+    @pulumi.getter(name="nodePoolDnsDomainName")
+    def node_pool_dns_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name for DNS domain of node pool subnet. Default `nodedns` (string)
+        """
+        return pulumi.get(self, "node_pool_dns_domain_name")
+
+    @node_pool_dns_domain_name.setter
+    def node_pool_dns_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_pool_dns_domain_name", value)
+
+    @property
+    @pulumi.getter(name="nodePoolSubnetName")
+    def node_pool_subnet_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name for node pool subnet. Default `nodedns` (string)
+        """
+        return pulumi.get(self, "node_pool_subnet_name")
+
+    @node_pool_subnet_name.setter
+    def node_pool_subnet_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_pool_subnet_name", value)
+
+    @property
+    @pulumi.getter(name="nodePublicKeyContents")
+    def node_public_key_contents(self) -> Optional[pulumi.Input[str]]:
+        """
+        The contents of the SSH public key file to use for the nodes (string)
+        """
+        return pulumi.get(self, "node_public_key_contents")
+
+    @node_public_key_contents.setter
+    def node_public_key_contents(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_public_key_contents", value)
+
+    @property
+    @pulumi.getter(name="privateKeyPassphrase")
+    def private_key_passphrase(self) -> Optional[pulumi.Input[str]]:
+        """
+        The passphrase (if any) of the private key for the OKE cluster (string)
+        """
+        return pulumi.get(self, "private_key_passphrase")
+
+    @private_key_passphrase.setter
+    def private_key_passphrase(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_passphrase", value)
+
+    @property
+    @pulumi.getter(name="quantityOfNodeSubnets")
+    def quantity_of_node_subnets(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of node subnets. Default `1` (int)
+        """
+        return pulumi.get(self, "quantity_of_node_subnets")
+
+    @quantity_of_node_subnets.setter
+    def quantity_of_node_subnets(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quantity_of_node_subnets", value)
+
+    @property
+    @pulumi.getter(name="quantityPerSubnet")
+    def quantity_per_subnet(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+        """
+        return pulumi.get(self, "quantity_per_subnet")
+
+    @quantity_per_subnet.setter
+    def quantity_per_subnet(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quantity_per_subnet", value)
+
+    @property
+    @pulumi.getter(name="serviceDnsDomainName")
+    def service_dns_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name for DNS domain of service subnet. Default `svcdns` (string)
+        """
+        return pulumi.get(self, "service_dns_domain_name")
+
+    @service_dns_domain_name.setter
+    def service_dns_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_dns_domain_name", value)
+
+    @property
+    @pulumi.getter(name="skipVcnDelete")
+    def skip_vcn_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+        """
+        return pulumi.get(self, "skip_vcn_delete")
+
+    @skip_vcn_delete.setter
+    def skip_vcn_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_vcn_delete", value)
+
+    @property
+    @pulumi.getter(name="vcnName")
+    def vcn_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+        """
+        return pulumi.get(self, "vcn_name")
+
+    @vcn_name.setter
+    def vcn_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vcn_name", value)
+
+    @property
+    @pulumi.getter(name="workerNodeIngressCidr")
+    def worker_node_ingress_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional CIDR from which to allow ingress to worker nodes (string)
+        """
+        return pulumi.get(self, "worker_node_ingress_cidr")
+
+    @worker_node_ingress_cidr.setter
+    def worker_node_ingress_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "worker_node_ingress_cidr", value)
+
+
+@pulumi.input_type
 class ClusterRkeConfigArgs:
     def __init__(__self__, *,
                  addon_job_timeout: Optional[pulumi.Input[int]] = None,
@@ -4086,7 +4485,7 @@ class ClusterRkeConfigArgs:
         :param pulumi.Input['ClusterRkeConfigDnsArgs'] dns: RKE dns add-on. Just for Rancher v2.2.x (list maxitems:1)
         :param pulumi.Input[bool] ignore_docker_version: Ignore docker version. Default `true` (bool)
         :param pulumi.Input['ClusterRkeConfigIngressArgs'] ingress: Kubernetes ingress configuration (list maxitems:1)
-        :param pulumi.Input[str] kubernetes_version: The Kubernetes master version (string)
+        :param pulumi.Input[str] kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param pulumi.Input['ClusterRkeConfigMonitoringArgs'] monitoring: Kubernetes cluster monitoring (list maxitems:1)
         :param pulumi.Input['ClusterRkeConfigNetworkArgs'] network: Network for GKE cluster (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNodeArgs']]] nodes: RKE cluster nodes (list)
@@ -4265,7 +4664,7 @@ class ClusterRkeConfigArgs:
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kubernetes master version (string)
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -4893,7 +5292,7 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] service: (string)
-        :param pulumi.Input[str] region: GKE cluster region. Conflicts with `zone` (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param pulumi.Input[str] signing_method: (string)
         :param pulumi.Input[str] signing_name: (string)
         :param pulumi.Input[str] signing_region: (string)
@@ -4927,7 +5326,7 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        GKE cluster region. Conflicts with `zone` (string)
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         """
         return pulumi.get(self, "region")
 
@@ -5612,7 +6011,7 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
         :param pulumi.Input[str] ca_file: (string)
         :param pulumi.Input[str] domain_id: Required if `domain_name` not provided. (string)
         :param pulumi.Input[str] domain_name: Required if `domain_id` not provided. (string)
-        :param pulumi.Input[str] region: GKE cluster region. Conflicts with `zone` (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param pulumi.Input[str] tenant_id: Azure tenant ID to use (string)
         :param pulumi.Input[str] tenant_name: Required if `tenant_id` not provided. (string)
         :param pulumi.Input[str] trust_id: (string)
@@ -5711,7 +6110,7 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        GKE cluster region. Conflicts with `zone` (string)
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         """
         return pulumi.get(self, "region")
 
@@ -7725,7 +8124,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
         :param pulumi.Input[str] access_key: The AWS Client ID to use (string)
         :param pulumi.Input[str] custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
         :param pulumi.Input[str] folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
-        :param pulumi.Input[str] region: GKE cluster region. Conflicts with `zone` (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param pulumi.Input[str] secret_key: The AWS Client Secret associated with the Client ID (string)
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -7805,7 +8204,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        GKE cluster region. Conflicts with `zone` (string)
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         """
         return pulumi.get(self, "region")
 
@@ -15848,8 +16247,10 @@ class NodeTemplateOpenstackConfigArgs:
                  auth_url: pulumi.Input[str],
                  availability_zone: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 username: pulumi.Input[str],
                  active_timeout: Optional[pulumi.Input[str]] = None,
+                 application_credential_id: Optional[pulumi.Input[str]] = None,
+                 application_credential_name: Optional[pulumi.Input[str]] = None,
+                 application_credential_secret: Optional[pulumi.Input[str]] = None,
                  cacert: Optional[pulumi.Input[str]] = None,
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
@@ -15873,13 +16274,16 @@ class NodeTemplateOpenstackConfigArgs:
                  ssh_user: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
-                 user_data_file: Optional[pulumi.Input[str]] = None):
+                 user_data_file: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auth_url: OpenStack authentication URL (string)
         :param pulumi.Input[str] availability_zone: OpenStack availability zone (string)
         :param pulumi.Input[str] region: OpenStack region name (string)
-        :param pulumi.Input[str] username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         :param pulumi.Input[str] active_timeout: OpenStack active timeout Default `200` (string)
+        :param pulumi.Input[str] application_credential_id: OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        :param pulumi.Input[str] application_credential_name: OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        :param pulumi.Input[str] application_credential_secret: OpenStack application credential secret (string)
         :param pulumi.Input[str] cacert: CA certificate bundle to verify against (string)
         :param pulumi.Input[bool] config_drive: Enables the OpenStack config drive for the instance. Default `false` (bool)
         :param pulumi.Input[str] domain_id: OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
@@ -15904,13 +16308,19 @@ class NodeTemplateOpenstackConfigArgs:
         :param pulumi.Input[str] tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
         :param pulumi.Input[str] tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
         :param pulumi.Input[str] user_data_file: File containing an openstack userdata script (string)
+        :param pulumi.Input[str] username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
         """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "username", username)
         if active_timeout is not None:
             pulumi.set(__self__, "active_timeout", active_timeout)
+        if application_credential_id is not None:
+            pulumi.set(__self__, "application_credential_id", application_credential_id)
+        if application_credential_name is not None:
+            pulumi.set(__self__, "application_credential_name", application_credential_name)
+        if application_credential_secret is not None:
+            pulumi.set(__self__, "application_credential_secret", application_credential_secret)
         if cacert is not None:
             pulumi.set(__self__, "cacert", cacert)
         if config_drive is not None:
@@ -15959,6 +16369,8 @@ class NodeTemplateOpenstackConfigArgs:
             pulumi.set(__self__, "tenant_name", tenant_name)
         if user_data_file is not None:
             pulumi.set(__self__, "user_data_file", user_data_file)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="authUrl")
@@ -15997,18 +16409,6 @@ class NodeTemplateOpenstackConfigArgs:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter
-    def username(self) -> pulumi.Input[str]:
-        """
-        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[str]):
-        pulumi.set(self, "username", value)
-
-    @property
     @pulumi.getter(name="activeTimeout")
     def active_timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16019,6 +16419,42 @@ class NodeTemplateOpenstackConfigArgs:
     @active_timeout.setter
     def active_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_timeout", value)
+
+    @property
+    @pulumi.getter(name="applicationCredentialId")
+    def application_credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
+        return pulumi.get(self, "application_credential_id")
+
+    @application_credential_id.setter
+    def application_credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_credential_id", value)
+
+    @property
+    @pulumi.getter(name="applicationCredentialName")
+    def application_credential_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
+        return pulumi.get(self, "application_credential_name")
+
+    @application_credential_name.setter
+    def application_credential_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_credential_name", value)
+
+    @property
+    @pulumi.getter(name="applicationCredentialSecret")
+    def application_credential_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential secret (string)
+        """
+        return pulumi.get(self, "application_credential_secret")
+
+    @application_credential_secret.setter
+    def application_credential_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_credential_secret", value)
 
     @property
     @pulumi.getter
@@ -16307,6 +16743,18 @@ class NodeTemplateOpenstackConfigArgs:
     @user_data_file.setter
     def user_data_file(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data_file", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -16810,6 +17258,98 @@ class NodeTemplateVsphereConfigArgs:
     @vcenter_port.setter
     def vcenter_port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vcenter_port", value)
+
+
+@pulumi.input_type
+class NotifierDingtalkConfigArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 proxy_url: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: Webhook url (string)
+        :param pulumi.Input[str] proxy_url: Wechat proxy url (string)
+        :param pulumi.Input[str] secret: Wechat agent ID (string)
+        """
+        pulumi.set(__self__, "url", url)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Webhook url (string)
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Wechat proxy url (string)
+        """
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_url", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Wechat agent ID (string)
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+
+@pulumi.input_type
+class NotifierMsteamsConfigArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 proxy_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: Webhook url (string)
+        :param pulumi.Input[str] proxy_url: Wechat proxy url (string)
+        """
+        pulumi.set(__self__, "url", url)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Webhook url (string)
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Wechat proxy url (string)
+        """
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_url", value)
 
 
 @pulumi.input_type
@@ -19557,6 +20097,74 @@ class RoleTempalteRuleArgs:
     @verbs.setter
     def verbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "verbs", value)
+
+
+@pulumi.input_type
+class GetNotifierDingtalkConfigArgs:
+    def __init__(__self__, *,
+                 url: str,
+                 proxy_url: Optional[str] = None,
+                 secret: Optional[str] = None):
+        pulumi.set(__self__, "url", url)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[str]:
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[str]):
+        pulumi.set(self, "proxy_url", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[str]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[str]):
+        pulumi.set(self, "secret", value)
+
+
+@pulumi.input_type
+class GetNotifierMsteamsConfigArgs:
+    def __init__(__self__, *,
+                 url: str,
+                 proxy_url: Optional[str] = None):
+        pulumi.set(__self__, "url", url)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[str]:
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[str]):
+        pulumi.set(self, "proxy_url", value)
 
 
 @pulumi.input_type

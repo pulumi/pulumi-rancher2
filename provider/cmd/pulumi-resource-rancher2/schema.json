@@ -425,7 +425,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes master version (string)\n",
+                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1321,6 +1321,14 @@
                         }
                     }
                 },
+                "ebsEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "instanceType": {
                     "type": "string",
                     "description": "The type of machine to use for worker nodes. Default `t2.medium` (string)\n",
@@ -1341,7 +1349,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes master version (string)\n",
+                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1377,7 +1385,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1565,7 +1573,7 @@
                 },
                 "enableKubernetesDashboard": {
                     "type": "boolean",
-                    "description": "Whether to enable the Kubernetes dashboard. Default `false` (bool)\n",
+                    "description": "Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1618,7 +1626,7 @@
                 },
                 "enablePrivateNodes": {
                     "type": "boolean",
-                    "description": "Whether nodes have internal IP address only. Default `false` (bool)\n",
+                    "description": "Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1900,7 +1908,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2643,6 +2651,238 @@
                 }
             }
         },
+        "rancher2:index/ClusterOkeConfig:ClusterOkeConfig": {
+            "properties": {
+                "compartmentId": {
+                    "type": "string",
+                    "description": "The OCID of the compartment in which to create resources OKE cluster and related resources (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of this cluster (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableKubernetesDashboard": {
+                    "type": "boolean",
+                    "description": "Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enablePrivateNodes": {
+                    "type": "boolean",
+                    "description": "Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "description": "The fingerprint corresponding to the specified user's private API Key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kubernetesVersion": {
+                    "type": "string",
+                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loadBalancerSubnetName1": {
+                    "type": "string",
+                    "description": "The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loadBalancerSubnetName2": {
+                    "type": "string",
+                    "description": "The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeImage": {
+                    "type": "string",
+                    "description": "The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePoolDnsDomainName": {
+                    "type": "string",
+                    "description": "Name for DNS domain of node pool subnet. Default `nodedns` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePoolSubnetName": {
+                    "type": "string",
+                    "description": "Name for node pool subnet. Default `nodedns` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePublicKeyContents": {
+                    "type": "string",
+                    "description": "The contents of the SSH public key file to use for the nodes (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeShape": {
+                    "type": "string",
+                    "description": "The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKeyContents": {
+                    "type": "string",
+                    "description": "The private API key file contents for the specified user, in PEM format (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKeyPassphrase": {
+                    "type": "string",
+                    "description": "The passphrase (if any) of the private key for the OKE cluster (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "quantityOfNodeSubnets": {
+                    "type": "integer",
+                    "description": "Number of node subnets. Default `1` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "quantityPerSubnet": {
+                    "type": "integer",
+                    "description": "Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceDnsDomainName": {
+                    "type": "string",
+                    "description": "Name for DNS domain of service subnet. Default `svcdns` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "skipVcnDelete": {
+                    "type": "boolean",
+                    "description": "Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tenancyId": {
+                    "type": "string",
+                    "description": "The OCID of the tenancy in which to create resources (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userOcid": {
+                    "type": "string",
+                    "description": "The OCID of a user who has access to the tenancy/compartment (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcnName": {
+                    "type": "string",
+                    "description": "The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workerNodeIngressCidr": {
+                    "type": "string",
+                    "description": "Additional CIDR from which to allow ingress to worker nodes (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "compartmentId",
+                "fingerprint",
+                "kubernetesVersion",
+                "nodeImage",
+                "nodeShape",
+                "privateKeyContents",
+                "region",
+                "tenancyId",
+                "userOcid"
+            ]
+        },
         "rancher2:index/ClusterRkeConfig:ClusterRkeConfig": {
             "properties": {
                 "addonJobTimeout": {
@@ -2740,7 +2980,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes master version (string)\n",
+                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3220,7 +3460,7 @@
             "properties": {
                 "region": {
                     "type": "string",
-                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3750,7 +3990,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5263,7 +5503,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "GKE cluster region. Conflicts with `zone` (string)\n",
+                    "description": "The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11210,6 +11450,33 @@
                         }
                     }
                 },
+                "applicationCredentialId": {
+                    "type": "string",
+                    "description": "OpenStack application credential id. Conflicts with `application_credential_name` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "applicationCredentialName": {
+                    "type": "string",
+                    "description": "OpenStack application credential name. Conflicts with `application_credential_id` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "applicationCredentialSecret": {
+                    "type": "string",
+                    "description": "OpenStack application credential secret (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "authUrl": {
                     "type": "string",
                     "description": "OpenStack authentication URL (string)\n",
@@ -11467,8 +11734,7 @@
             "required": [
                 "authUrl",
                 "availabilityZone",
-                "region",
-                "username"
+                "region"
             ]
         },
         "rancher2:index/NodeTemplateVsphereConfig:NodeTemplateVsphereConfig": {
@@ -11769,6 +12035,67 @@
                 }
             },
             "type": "object"
+        },
+        "rancher2:index/NotifierDingtalkConfig:NotifierDingtalkConfig": {
+            "properties": {
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "Wechat proxy url (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Wechat agent ID (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Webhook url (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "rancher2:index/NotifierMsteamsConfig:NotifierMsteamsConfig": {
+            "properties": {
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "Wechat proxy url (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Webhook url (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
         },
         "rancher2:index/NotifierPagerdutyConfig:NotifierPagerdutyConfig": {
             "properties": {
@@ -14392,6 +14719,14 @@
                         }
                     }
                 },
+                "ebsEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "instanceType": {
                     "type": "string",
                     "language": {
@@ -15573,6 +15908,220 @@
             "required": [
                 "endpoint",
                 "sslVerify"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "rancher2:index/getClusterOkeConfig:getClusterOkeConfig": {
+            "properties": {
+                "compartmentId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "(Computed) The description for Cluster (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableKubernetesDashboard": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enablePrivateNodes": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kubernetesVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loadBalancerSubnetName1": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loadBalancerSubnetName2": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeImage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePoolDnsDomainName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePoolSubnetName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePublicKeyContents": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeShape": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKeyContents": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKeyPassphrase": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "quantityOfNodeSubnets": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "quantityPerSubnet": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceDnsDomainName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "skipVcnDelete": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tenancyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userOcid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcnName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workerNodeIngressCidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "compartmentId",
+                "fingerprint",
+                "kubernetesVersion",
+                "nodeImage",
+                "nodeShape",
+                "privateKeyContents",
+                "region",
+                "tenancyId",
+                "userOcid"
             ],
             "language": {
                 "nodejs": {
@@ -17753,6 +18302,7 @@
                 },
                 "caCert": {
                     "type": "string",
+                    "description": "(Computed) K8s cluster ca cert (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22817,6 +23367,62 @@
                 }
             }
         },
+        "rancher2:index/getNotifierDingtalkConfig:getNotifierDingtalkConfig": {
+            "properties": {
+                "proxyUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secret": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "rancher2:index/getNotifierMsteamsConfig:getNotifierMsteamsConfig": {
+            "properties": {
+                "proxyUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
         "rancher2:index/getNotifierPagerdutyConfig:getNotifierPagerdutyConfig": {
             "properties": {
                 "proxyUrl": {
@@ -24746,6 +25352,14 @@
                     "type": "string",
                     "description": "Service account DN for access ActiveDirectory service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -24803,6 +25417,8 @@
                 "servers",
                 "serviceAccountPassword",
                 "serviceAccountUsername",
+                "testPassword",
+                "testUsername",
                 "tls",
                 "type",
                 "userEnabledAttribute",
@@ -24910,6 +25526,14 @@
                     "type": "string",
                     "description": "Service account DN for access ActiveDirectory service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -24951,6 +25575,8 @@
                 "servers",
                 "serviceAccountPassword",
                 "serviceAccountUsername",
+                "testPassword",
+                "testUsername",
                 "userSearchBase"
             ],
             "stateInputs": {
@@ -25055,6 +25681,14 @@
                     "serviceAccountUsername": {
                         "type": "string",
                         "description": "Service account DN for access ActiveDirectory service (string)\n"
+                    },
+                    "testPassword": {
+                        "type": "string",
+                        "description": "Password for test access to ActiveDirectory service (string)\n"
+                    },
+                    "testUsername": {
+                        "type": "string",
+                        "description": "Username for test access to ActiveDirectory service (string)\n"
                     },
                     "tls": {
                         "type": "boolean",
@@ -25329,6 +25963,241 @@
                     "wait": {
                         "type": "boolean",
                         "description": "Wait until app is deployed and active. Default: `true` (bool)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rancher2:index/appV2:AppV2": {
+            "description": "Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\nimport * from \"fs\";\n\n// Create a new Rancher2 App V2 using\nconst foo = new rancher2.AppV2(\"foo\", {\n    clusterId: \"\u003cCLUSTER_ID\u003e\",\n    namespace: \"cattle-monitoring-system\",\n    repoName: \"rancher-charts\",\n    chartName: \"rancher-monitoring\",\n    chartVersion: \"9.4.200\",\n    values: fs.readFileSync(\"values.yaml\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new Rancher2 App V2 using\nfoo = rancher2.AppV2(\"foo\",\n    cluster_id=\"\u003cCLUSTER_ID\u003e\",\n    namespace=\"cattle-monitoring-system\",\n    repo_name=\"rancher-charts\",\n    chart_name=\"rancher-monitoring\",\n    chart_version=\"9.4.200\",\n    values=(lambda path: open(path).read())(\"values.yaml\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Rancher2 App V2 using\n        var foo = new Rancher2.AppV2(\"foo\", new Rancher2.AppV2Args\n        {\n            ClusterId = \"\u003cCLUSTER_ID\u003e\",\n            Namespace = \"cattle-monitoring-system\",\n            RepoName = \"rancher-charts\",\n            ChartName = \"rancher-monitoring\",\n            ChartVersion = \"9.4.200\",\n            Values = File.ReadAllText(\"values.yaml\"),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the app v2 (map)\n"
+                },
+                "chartName": {
+                    "type": "string",
+                    "description": "The app v2 chart name (string)\n"
+                },
+                "chartVersion": {
+                    "type": "string",
+                    "description": "The app v2 chart version (string)\n"
+                },
+                "cleanupOnFail": {
+                    "type": "boolean",
+                    "description": "Cleanup app v2 on failed chart upgrade. Default: `false` (bool)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the app (string)\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "(Computed) The cluster name of the app (string)\n"
+                },
+                "disableHooks": {
+                    "type": "boolean",
+                    "description": "Disable app v2 chart hooks. Default: `false` (bool)\n"
+                },
+                "disableOpenApiValidation": {
+                    "type": "boolean",
+                    "description": "Disable app V2 Open API Validation. Default: `false` (bool)\n"
+                },
+                "forceUpgrade": {
+                    "type": "boolean",
+                    "description": "Force app V2 chart upgrade. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the app v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the app v2 (string)\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of the app v2 (string)\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Deploy the app v2 within project ID (string)\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Repo name (string)\n"
+                },
+                "values": {
+                    "type": "string",
+                    "description": "The app v2 values yaml. Yaml format is required (string)\n"
+                },
+                "wait": {
+                    "type": "boolean",
+                    "description": "Wait until app is deployed. Default: `false` (bool)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "chartName",
+                "clusterId",
+                "clusterName",
+                "labels",
+                "name",
+                "namespace",
+                "repoName"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the app v2 (map)\n"
+                },
+                "chartName": {
+                    "type": "string",
+                    "description": "The app v2 chart name (string)\n"
+                },
+                "chartVersion": {
+                    "type": "string",
+                    "description": "The app v2 chart version (string)\n"
+                },
+                "cleanupOnFail": {
+                    "type": "boolean",
+                    "description": "Cleanup app v2 on failed chart upgrade. Default: `false` (bool)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the app (string)\n"
+                },
+                "disableHooks": {
+                    "type": "boolean",
+                    "description": "Disable app v2 chart hooks. Default: `false` (bool)\n"
+                },
+                "disableOpenApiValidation": {
+                    "type": "boolean",
+                    "description": "Disable app V2 Open API Validation. Default: `false` (bool)\n"
+                },
+                "forceUpgrade": {
+                    "type": "boolean",
+                    "description": "Force app V2 chart upgrade. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the app v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the app v2 (string)\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of the app v2 (string)\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Deploy the app v2 within project ID (string)\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Repo name (string)\n"
+                },
+                "values": {
+                    "type": "string",
+                    "description": "The app v2 values yaml. Yaml format is required (string)\n"
+                },
+                "wait": {
+                    "type": "boolean",
+                    "description": "Wait until app is deployed. Default: `false` (bool)\n"
+                }
+            },
+            "requiredInputs": [
+                "chartName",
+                "clusterId",
+                "namespace",
+                "repoName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AppV2 resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for the app v2 (map)\n"
+                    },
+                    "chartName": {
+                        "type": "string",
+                        "description": "The app v2 chart name (string)\n"
+                    },
+                    "chartVersion": {
+                        "type": "string",
+                        "description": "The app v2 chart version (string)\n"
+                    },
+                    "cleanupOnFail": {
+                        "type": "boolean",
+                        "description": "Cleanup app v2 on failed chart upgrade. Default: `false` (bool)\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of the app (string)\n"
+                    },
+                    "clusterName": {
+                        "type": "string",
+                        "description": "(Computed) The cluster name of the app (string)\n"
+                    },
+                    "disableHooks": {
+                        "type": "boolean",
+                        "description": "Disable app v2 chart hooks. Default: `false` (bool)\n"
+                    },
+                    "disableOpenApiValidation": {
+                        "type": "boolean",
+                        "description": "Disable app V2 Open API Validation. Default: `false` (bool)\n"
+                    },
+                    "forceUpgrade": {
+                        "type": "boolean",
+                        "description": "Force app V2 chart upgrade. Default: `false` (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for the app v2 (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the app v2 (string)\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace of the app v2 (string)\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Deploy the app v2 within project ID (string)\n"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "Repo name (string)\n"
+                    },
+                    "values": {
+                        "type": "string",
+                        "description": "The app v2 values yaml. Yaml format is required (string)\n"
+                    },
+                    "wait": {
+                        "type": "boolean",
+                        "description": "Wait until app is deployed. Default: `false` (bool)\n"
                     }
                 },
                 "type": "object"
@@ -25899,6 +26768,14 @@
                     "type": "string",
                     "description": "Service account password for access FreeIpa service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to FreeIpa service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to FreeIpa service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -25955,6 +26832,8 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "testPassword",
+                "testUsername",
                 "tls",
                 "type",
                 "userDisabledBitMask",
@@ -26055,6 +26934,14 @@
                     "type": "string",
                     "description": "Service account password for access FreeIpa service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to FreeIpa service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to FreeIpa service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -26096,6 +26983,8 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "testPassword",
+                "testUsername",
                 "userSearchBase"
             ],
             "stateInputs": {
@@ -26192,6 +27081,14 @@
                     "serviceAccountPassword": {
                         "type": "string",
                         "description": "Service account password for access FreeIpa service (string)\n"
+                    },
+                    "testPassword": {
+                        "type": "string",
+                        "description": "Password for test access to FreeIpa service (string)\n"
+                    },
+                    "testUsername": {
+                        "type": "string",
+                        "description": "Username for test access to FreeIpa service (string)\n"
                     },
                     "tls": {
                         "type": "boolean",
@@ -26980,6 +27877,14 @@
                     "type": "string",
                     "description": "Service account password for access OpenLdap service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to OpenLdap service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to OpenLdap service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -27036,6 +27941,8 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "testPassword",
+                "testUsername",
                 "tls",
                 "type",
                 "userDisabledBitMask",
@@ -27136,6 +28043,14 @@
                     "type": "string",
                     "description": "Service account password for access OpenLdap service (string)\n"
                 },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to OpenLdap service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to OpenLdap service (string)\n"
+                },
                 "tls": {
                     "type": "boolean",
                     "description": "Enable TLS connection (bool)\n"
@@ -27177,6 +28092,8 @@
                 "servers",
                 "serviceAccountDistinguishedName",
                 "serviceAccountPassword",
+                "testPassword",
+                "testUsername",
                 "userSearchBase"
             ],
             "stateInputs": {
@@ -27273,6 +28190,14 @@
                     "serviceAccountPassword": {
                         "type": "string",
                         "description": "Service account password for access OpenLdap service (string)\n"
+                    },
+                    "testPassword": {
+                        "type": "string",
+                        "description": "Password for test access to OpenLdap service (string)\n"
+                    },
+                    "testUsername": {
+                        "type": "string",
+                        "description": "Username for test access to OpenLdap service (string)\n"
                     },
                     "tls": {
                         "type": "boolean",
@@ -27592,6 +28517,10 @@
                     "type": "boolean",
                     "description": "Regenerate admin token. Default: `false` (bool)\n"
                 },
+                "uiDefaultLanding": {
+                    "type": "string",
+                    "description": "Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "(Computed) URL set as server-url (string)\n"
@@ -27631,6 +28560,10 @@
                 "tokenUpdate": {
                     "type": "boolean",
                     "description": "Regenerate admin token. Default: `false` (bool)\n"
+                },
+                "uiDefaultLanding": {
+                    "type": "string",
+                    "description": "Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)\n"
                 }
             },
             "stateInputs": {
@@ -27671,6 +28604,10 @@
                     "tokenUpdate": {
                         "type": "boolean",
                         "description": "Regenerate admin token. Default: `false` (bool)\n"
+                    },
+                    "uiDefaultLanding": {
+                        "type": "string",
+                        "description": "Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)\n"
                     },
                     "url": {
                         "type": "string",
@@ -27888,6 +28825,223 @@
                     "version": {
                         "type": "string",
                         "description": "Helm version for the catalog. Available options: `helm_v2` and `helm_v3` (string)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rancher2:index/catalogV2:CatalogV2": {
+            "description": "Provides a Rancher Catalog v2 resource. This can be used to create cluster helm catalogs for Rancher v2 environments and retrieve their information. Catalog v2 resource is available at Rancher v2.5.x and above.\n",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the catalog v2 (map)\n"
+                },
+                "caBundle": {
+                    "type": "string",
+                    "description": "PEM encoded CA bundle which will be used to validate the repo's certificate (string)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the catalog V2 (string)\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)\n"
+                },
+                "gitBranch": {
+                    "type": "string",
+                    "description": "Git Repository branch containing Helm chart definitions. Default `master` (string)\n"
+                },
+                "gitRepo": {
+                    "type": "string",
+                    "description": "The url of the catalog v2 repo (string)\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Use insecure HTTPS to download the repo's index. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the catalog v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the catalog v2 (string)\n"
+                },
+                "resourceVersion": {
+                    "type": "string",
+                    "description": "(Computed) The k8s resource version (string)\n"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "K8s secret name to be used to connect to the repo (string)\n"
+                },
+                "secretNamespace": {
+                    "type": "string",
+                    "description": "K8s secret namespace (string)\n"
+                },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "K8s service account used to deploy charts instead of the end users credentials (string)\n"
+                },
+                "serviceAccountNamespace": {
+                    "type": "string",
+                    "description": "The username to access the catalog if needed (string)\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to an index generated by Helm (string)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "clusterId",
+                "labels",
+                "name",
+                "resourceVersion"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for the catalog v2 (map)\n"
+                },
+                "caBundle": {
+                    "type": "string",
+                    "description": "PEM encoded CA bundle which will be used to validate the repo's certificate (string)\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of the catalog V2 (string)\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)\n"
+                },
+                "gitBranch": {
+                    "type": "string",
+                    "description": "Git Repository branch containing Helm chart definitions. Default `master` (string)\n"
+                },
+                "gitRepo": {
+                    "type": "string",
+                    "description": "The url of the catalog v2 repo (string)\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Use insecure HTTPS to download the repo's index. Default: `false` (bool)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for the catalog v2 (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the catalog v2 (string)\n"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "K8s secret name to be used to connect to the repo (string)\n"
+                },
+                "secretNamespace": {
+                    "type": "string",
+                    "description": "K8s secret namespace (string)\n"
+                },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "K8s service account used to deploy charts instead of the end users credentials (string)\n"
+                },
+                "serviceAccountNamespace": {
+                    "type": "string",
+                    "description": "The username to access the catalog if needed (string)\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to an index generated by Helm (string)\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CatalogV2 resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for the catalog v2 (map)\n"
+                    },
+                    "caBundle": {
+                        "type": "string",
+                        "description": "PEM encoded CA bundle which will be used to validate the repo's certificate (string)\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of the catalog V2 (string)\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)\n"
+                    },
+                    "gitBranch": {
+                        "type": "string",
+                        "description": "Git Repository branch containing Helm chart definitions. Default `master` (string)\n"
+                    },
+                    "gitRepo": {
+                        "type": "string",
+                        "description": "The url of the catalog v2 repo (string)\n"
+                    },
+                    "insecure": {
+                        "type": "boolean",
+                        "description": "Use insecure HTTPS to download the repo's index. Default: `false` (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for the catalog v2 (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the catalog v2 (string)\n"
+                    },
+                    "resourceVersion": {
+                        "type": "string",
+                        "description": "(Computed) The k8s resource version (string)\n"
+                    },
+                    "secretName": {
+                        "type": "string",
+                        "description": "K8s secret name to be used to connect to the repo (string)\n"
+                    },
+                    "secretNamespace": {
+                        "type": "string",
+                        "description": "K8s secret namespace (string)\n"
+                    },
+                    "serviceAccount": {
+                        "type": "string",
+                        "description": "K8s service account used to deploy charts instead of the end users credentials (string)\n"
+                    },
+                    "serviceAccountNamespace": {
+                        "type": "string",
+                        "description": "The username to access the catalog if needed (string)\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL to an index generated by Helm (string)\n"
                     }
                 },
                 "type": "object"
@@ -28203,7 +29357,7 @@
             "properties": {
                 "aksConfig": {
                     "$ref": "#/types/rancher2:index/ClusterAksConfig:ClusterAksConfig",
-                    "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "annotations": {
                     "type": "object",
@@ -28211,6 +29365,10 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "Annotations for cluster registration token object (map)\n"
+                },
+                "caCert": {
+                    "type": "string",
+                    "description": "TLS CA certificate for etcd service (string)\n"
                 },
                 "clusterAuthEndpoint": {
                     "$ref": "#/types/rancher2:index/ClusterClusterAuthEndpoint:ClusterClusterAuthEndpoint",
@@ -28273,7 +29431,7 @@
                 },
                 "eksConfig": {
                     "$ref": "#/types/rancher2:index/ClusterEksConfig:ClusterEksConfig",
-                    "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "enableClusterAlerting": {
                     "type": "boolean",
@@ -28294,7 +29452,7 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterGkeConfig:ClusterGkeConfig",
-                    "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "istioEnabled": {
                     "type": "boolean",
@@ -28302,7 +29460,7 @@
                 },
                 "k3sConfig": {
                     "$ref": "#/types/rancher2:index/ClusterK3sConfig:ClusterK3sConfig",
-                    "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "kubeConfig": {
                     "type": "string",
@@ -28319,9 +29477,13 @@
                     "type": "string",
                     "description": "Name of cluster registration token (string)\n"
                 },
+                "okeConfig": {
+                    "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
+                    "description": "The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `gke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
+                },
                 "rkeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterRkeConfig:ClusterRkeConfig",
-                    "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)\n"
+                    "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `k3s_config` (list maxitems:1)\n"
                 },
                 "scheduledClusterScan": {
                     "$ref": "#/types/rancher2:index/ClusterScheduledClusterScan:ClusterScheduledClusterScan",
@@ -28338,6 +29500,7 @@
             },
             "required": [
                 "annotations",
+                "caCert",
                 "clusterAuthEndpoint",
                 "clusterRegistrationToken",
                 "clusterTemplateAnswers",
@@ -28363,7 +29526,7 @@
             "inputProperties": {
                 "aksConfig": {
                     "$ref": "#/types/rancher2:index/ClusterAksConfig:ClusterAksConfig",
-                    "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "annotations": {
                     "type": "object",
@@ -28425,7 +29588,7 @@
                 },
                 "eksConfig": {
                     "$ref": "#/types/rancher2:index/ClusterEksConfig:ClusterEksConfig",
-                    "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "enableClusterAlerting": {
                     "type": "boolean",
@@ -28441,11 +29604,11 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterGkeConfig:ClusterGkeConfig",
-                    "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "k3sConfig": {
                     "$ref": "#/types/rancher2:index/ClusterK3sConfig:ClusterK3sConfig",
-                    "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)\n"
+                    "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `rke_config` (list maxitems:1)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -28458,9 +29621,13 @@
                     "type": "string",
                     "description": "Name of cluster registration token (string)\n"
                 },
+                "okeConfig": {
+                    "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
+                    "description": "The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `gke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
+                },
                 "rkeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterRkeConfig:ClusterRkeConfig",
-                    "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)\n"
+                    "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `k3s_config` (list maxitems:1)\n"
                 },
                 "scheduledClusterScan": {
                     "$ref": "#/types/rancher2:index/ClusterScheduledClusterScan:ClusterScheduledClusterScan",
@@ -28476,7 +29643,7 @@
                 "properties": {
                     "aksConfig": {
                         "$ref": "#/types/rancher2:index/ClusterAksConfig:ClusterAksConfig",
-                        "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                        "description": "The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                     },
                     "annotations": {
                         "type": "object",
@@ -28484,6 +29651,10 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "Annotations for cluster registration token object (map)\n"
+                    },
+                    "caCert": {
+                        "type": "string",
+                        "description": "TLS CA certificate for etcd service (string)\n"
                     },
                     "clusterAuthEndpoint": {
                         "$ref": "#/types/rancher2:index/ClusterClusterAuthEndpoint:ClusterClusterAuthEndpoint",
@@ -28546,7 +29717,7 @@
                     },
                     "eksConfig": {
                         "$ref": "#/types/rancher2:index/ClusterEksConfig:ClusterEksConfig",
-                        "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                        "description": "The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_import`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                     },
                     "enableClusterAlerting": {
                         "type": "boolean",
@@ -28567,7 +29738,7 @@
                     },
                     "gkeConfig": {
                         "$ref": "#/types/rancher2:index/ClusterGkeConfig:ClusterGkeConfig",
-                        "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `k3s_config` and `rke_config` (list maxitems:1)\n"
+                        "description": "The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
                     },
                     "istioEnabled": {
                         "type": "boolean",
@@ -28575,7 +29746,7 @@
                     },
                     "k3sConfig": {
                         "$ref": "#/types/rancher2:index/ClusterK3sConfig:ClusterK3sConfig",
-                        "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)\n"
+                        "description": "The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `rke_config` (list maxitems:1)\n"
                     },
                     "kubeConfig": {
                         "type": "string",
@@ -28592,9 +29763,13 @@
                         "type": "string",
                         "description": "Name of cluster registration token (string)\n"
                     },
+                    "okeConfig": {
+                        "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
+                        "description": "The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_import`, `gke_config` `k3s_config` and `rke_config` (list maxitems:1)\n"
+                    },
                     "rkeConfig": {
                         "$ref": "#/types/rancher2:index/ClusterRkeConfig:ClusterRkeConfig",
-                        "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `k3s_config` (list maxitems:1)\n"
+                        "description": "The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config` and `k3s_config` (list maxitems:1)\n"
                     },
                     "scheduledClusterScan": {
                         "$ref": "#/types/rancher2:index/ClusterScheduledClusterScan:ClusterScheduledClusterScan",
@@ -31578,12 +32753,20 @@
                     "type": "string",
                     "description": "The notifier description (string)\n"
                 },
+                "dingtalkConfig": {
+                    "$ref": "#/types/rancher2:index/NotifierDingtalkConfig:NotifierDingtalkConfig",
+                    "description": "Dingtalk config for notifier (list maxitems:1)\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "Labels for notifier object (map)\n"
+                },
+                "msteamsConfig": {
+                    "$ref": "#/types/rancher2:index/NotifierMsteamsConfig:NotifierMsteamsConfig",
+                    "description": "MSTeams config for notifier (list maxitems:1)\n"
                 },
                 "name": {
                     "type": "string",
@@ -31636,12 +32819,20 @@
                     "type": "string",
                     "description": "The notifier description (string)\n"
                 },
+                "dingtalkConfig": {
+                    "$ref": "#/types/rancher2:index/NotifierDingtalkConfig:NotifierDingtalkConfig",
+                    "description": "Dingtalk config for notifier (list maxitems:1)\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "Labels for notifier object (map)\n"
+                },
+                "msteamsConfig": {
+                    "$ref": "#/types/rancher2:index/NotifierMsteamsConfig:NotifierMsteamsConfig",
+                    "description": "MSTeams config for notifier (list maxitems:1)\n"
                 },
                 "name": {
                     "type": "string",
@@ -31693,12 +32884,20 @@
                         "type": "string",
                         "description": "The notifier description (string)\n"
                     },
+                    "dingtalkConfig": {
+                        "$ref": "#/types/rancher2:index/NotifierDingtalkConfig:NotifierDingtalkConfig",
+                        "description": "Dingtalk config for notifier (list maxitems:1)\n"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "Labels for notifier object (map)\n"
+                    },
+                    "msteamsConfig": {
+                        "$ref": "#/types/rancher2:index/NotifierMsteamsConfig:NotifierMsteamsConfig",
+                        "description": "MSTeams config for notifier (list maxitems:1)\n"
                     },
                     "name": {
                         "type": "string",
@@ -33128,7 +34327,7 @@
             }
         },
         "rancher2:index/registry:Registry": {
-            "description": "Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.\n\nDepending of the availability, there are 2 types of Rancher v2 docker registries:\n- Project registry: Available to all namespaces in the `project_id`\n- Namespaced regitry: Available to just `namespace_id` in the `project_id`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Project Registry\nconst foo = new rancher2.Registry(\"foo\", {\n    description: \"Terraform registry foo\",\n    projectId: \"\u003cproject_id\u003e\",\n    registries: [{\n        address: \"test.io\",\n        password: \"pass\",\n        username: \"user\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Project Registry\nfoo = rancher2.Registry(\"foo\",\n    description=\"Terraform registry foo\",\n    project_id=\"\u003cproject_id\u003e\",\n    registries=[rancher2.RegistryRegistryArgs(\n        address=\"test.io\",\n        password=\"pass\",\n        username=\"user\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Project Registry\n        var foo = new Rancher2.Registry(\"foo\", new Rancher2.RegistryArgs\n        {\n            Description = \"Terraform registry foo\",\n            ProjectId = \"\u003cproject_id\u003e\",\n            Registries = \n            {\n                new Rancher2.Inputs.RegistryRegistryArgs\n                {\n                    Address = \"test.io\",\n                    Password = \"pass\",\n                    Username = \"user\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRegistry(ctx, \"foo\", \u0026rancher2.RegistryArgs{\n\t\t\tDescription: pulumi.String(\"Terraform registry foo\"),\n\t\t\tProjectId:   pulumi.String(\"\u003cproject_id\u003e\"),\n\t\t\tRegistries: rancher2.RegistryRegistryArray{\n\t\t\t\t\u0026rancher2.RegistryRegistryArgs{\n\t\t\t\t\tAddress:  pulumi.String(\"test.io\"),\n\t\t\t\t\tPassword: pulumi.String(\"pass\"),\n\t\t\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Namespaced Registry\nconst foo = new rancher2.Registry(\"foo\", {\n    description: \"Terraform registry foo\",\n    namespaceId: \"\u003cnamespace_id\u003e\",\n    projectId: \"\u003cproject_id\u003e\",\n    registries: [{\n        address: \"test.io\",\n        password: \"pass\",\n        username: \"user2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Namespaced Registry\nfoo = rancher2.Registry(\"foo\",\n    description=\"Terraform registry foo\",\n    namespace_id=\"\u003cnamespace_id\u003e\",\n    project_id=\"\u003cproject_id\u003e\",\n    registries=[rancher2.RegistryRegistryArgs(\n        address=\"test.io\",\n        password=\"pass\",\n        username=\"user2\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Namespaced Registry\n        var foo = new Rancher2.Registry(\"foo\", new Rancher2.RegistryArgs\n        {\n            Description = \"Terraform registry foo\",\n            NamespaceId = \"\u003cnamespace_id\u003e\",\n            ProjectId = \"\u003cproject_id\u003e\",\n            Registries = \n            {\n                new Rancher2.Inputs.RegistryRegistryArgs\n                {\n                    Address = \"test.io\",\n                    Password = \"pass\",\n                    Username = \"user2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRegistry(ctx, \"foo\", \u0026rancher2.RegistryArgs{\n\t\t\tDescription: pulumi.String(\"Terraform registry foo\"),\n\t\t\tNamespaceId: pulumi.String(\"\u003cnamespace_id\u003e\"),\n\t\t\tProjectId:   pulumi.String(\"\u003cproject_id\u003e\"),\n\t\t\tRegistries: rancher2.RegistryRegistryArray{\n\t\t\t\t\u0026rancher2.RegistryRegistryArgs{\n\t\t\t\t\tAddress:  pulumi.String(\"test.io\"),\n\t\t\t\t\tPassword: pulumi.String(\"pass\"),\n\t\t\t\t\tUsername: pulumi.String(\"user2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Rancher v2 Registry resource. This can be used to create docker registries for Rancher v2 environments and retrieve their information.\n\nDepending of the availability, there are 2 types of Rancher v2 docker registries:\n- Project registry: Available to all namespaces in the `project_id`\n- Namespaced registry: Available to just `namespace_id` in the `project_id`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Project Registry\nconst foo = new rancher2.Registry(\"foo\", {\n    description: \"Terraform registry foo\",\n    projectId: \"\u003cproject_id\u003e\",\n    registries: [{\n        address: \"test.io\",\n        password: \"pass\",\n        username: \"user\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Project Registry\nfoo = rancher2.Registry(\"foo\",\n    description=\"Terraform registry foo\",\n    project_id=\"\u003cproject_id\u003e\",\n    registries=[rancher2.RegistryRegistryArgs(\n        address=\"test.io\",\n        password=\"pass\",\n        username=\"user\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Project Registry\n        var foo = new Rancher2.Registry(\"foo\", new Rancher2.RegistryArgs\n        {\n            Description = \"Terraform registry foo\",\n            ProjectId = \"\u003cproject_id\u003e\",\n            Registries = \n            {\n                new Rancher2.Inputs.RegistryRegistryArgs\n                {\n                    Address = \"test.io\",\n                    Password = \"pass\",\n                    Username = \"user\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRegistry(ctx, \"foo\", \u0026rancher2.RegistryArgs{\n\t\t\tDescription: pulumi.String(\"Terraform registry foo\"),\n\t\t\tProjectId:   pulumi.String(\"\u003cproject_id\u003e\"),\n\t\t\tRegistries: rancher2.RegistryRegistryArray{\n\t\t\t\t\u0026rancher2.RegistryRegistryArgs{\n\t\t\t\t\tAddress:  pulumi.String(\"test.io\"),\n\t\t\t\t\tPassword: pulumi.String(\"pass\"),\n\t\t\t\t\tUsername: pulumi.String(\"user\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Namespaced Registry\nconst foo = new rancher2.Registry(\"foo\", {\n    description: \"Terraform registry foo\",\n    namespaceId: \"\u003cnamespace_id\u003e\",\n    projectId: \"\u003cproject_id\u003e\",\n    registries: [{\n        address: \"test.io\",\n        password: \"pass\",\n        username: \"user2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Namespaced Registry\nfoo = rancher2.Registry(\"foo\",\n    description=\"Terraform registry foo\",\n    namespace_id=\"\u003cnamespace_id\u003e\",\n    project_id=\"\u003cproject_id\u003e\",\n    registries=[rancher2.RegistryRegistryArgs(\n        address=\"test.io\",\n        password=\"pass\",\n        username=\"user2\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Namespaced Registry\n        var foo = new Rancher2.Registry(\"foo\", new Rancher2.RegistryArgs\n        {\n            Description = \"Terraform registry foo\",\n            NamespaceId = \"\u003cnamespace_id\u003e\",\n            ProjectId = \"\u003cproject_id\u003e\",\n            Registries = \n            {\n                new Rancher2.Inputs.RegistryRegistryArgs\n                {\n                    Address = \"test.io\",\n                    Password = \"pass\",\n                    Username = \"user2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRegistry(ctx, \"foo\", \u0026rancher2.RegistryArgs{\n\t\t\tDescription: pulumi.String(\"Terraform registry foo\"),\n\t\t\tNamespaceId: pulumi.String(\"\u003cnamespace_id\u003e\"),\n\t\t\tProjectId:   pulumi.String(\"\u003cproject_id\u003e\"),\n\t\t\tRegistries: rancher2.RegistryRegistryArray{\n\t\t\t\t\u0026rancher2.RegistryRegistryArgs{\n\t\t\t\t\tAddress:  pulumi.String(\"test.io\"),\n\t\t\t\t\tPassword: pulumi.String(\"pass\"),\n\t\t\t\t\tUsername: pulumi.String(\"user2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "annotations": {
                     "type": "object",
@@ -34220,6 +35419,118 @@
                 ]
             }
         },
+        "rancher2:index/getCatalogV2:getCatalogV2": {
+            "description": "Use this data source to retrieve information about a Rancher2 catalog v2.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCatalogV2.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of the catalog V2 (string)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the catalog v2 (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCatalogV2.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Annotations for the catalog v2 (map)\n"
+                    },
+                    "caBundle": {
+                        "type": "string",
+                        "description": "(Computed) PEM encoded CA bundle which will be used to validate the repo's certificate (string)\n"
+                    },
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "(Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)\n"
+                    },
+                    "gitBranch": {
+                        "type": "string",
+                        "description": "(Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)\n"
+                    },
+                    "gitRepo": {
+                        "type": "string",
+                        "description": "(Computed) The url of the catalog v2 repo (string)\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "insecure": {
+                        "type": "boolean",
+                        "description": "(Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Labels for the catalog v2 (map)\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "resourceVersion": {
+                        "type": "string"
+                    },
+                    "secretName": {
+                        "type": "string",
+                        "description": "(Computed) K8s secret name to be used to connect to the repo (string)\n"
+                    },
+                    "secretNamespace": {
+                        "type": "string",
+                        "description": "(Computed) K8s secret namespace (string)\n"
+                    },
+                    "serviceAccount": {
+                        "type": "string",
+                        "description": "(Computed) K8s service account used to deploy charts instead of the end users credentials (string)\n"
+                    },
+                    "serviceAccountNamespace": {
+                        "type": "string",
+                        "description": "(Computed) The username to access the catalog if needed (string)\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "(Computed) URL to an index generated by Helm (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "annotations",
+                    "caBundle",
+                    "clusterId",
+                    "enabled",
+                    "gitBranch",
+                    "gitRepo",
+                    "insecure",
+                    "labels",
+                    "name",
+                    "resourceVersion",
+                    "secretName",
+                    "secretNamespace",
+                    "serviceAccount",
+                    "serviceAccountNamespace",
+                    "url",
+                    "id"
+                ]
+            }
+        },
         "rancher2:index/getCertificate:getCertificate": {
             "description": "Use this data source to retrieve information about a Rancher v2 certificate.\n\nDepending of the availability, there are 2 types of Rancher v2 certificates:\n- Project certificate: Available to all namespaces in the `project_id`\n- Namespaced certificate: Available to just `namespace_id` in the `project_id`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Retrieve a rancher2 Project Certificate\nconst foo = pulumi.output(rancher2.getCertificate({\n    name: \"\u003cname\u003e\",\n    projectId: \"\u003cproject_id\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_certificate(name=\"\u003cname\u003e\",\n    project_id=\"\u003cproject_id\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs\n        {\n            Name = \"\u003cname\u003e\",\n            ProjectId = \"\u003cproject_id\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupCertificate(ctx, \u0026rancher2.LookupCertificateArgs{\n\t\t\tName:      \"\u003cname\u003e\",\n\t\t\tProjectId: \"\u003cproject_id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Retrieve a rancher2 Namespaced Certificate\nconst foo = pulumi.output(rancher2.getCertificate({\n    name: \"\u003cname\u003e\",\n    namespaceId: \"\u003cnamespace_id\u003e\",\n    projectId: \"\u003cproject_id\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_certificate(name=\"\u003cname\u003e\",\n    namespace_id=\"\u003cnamespace_id\u003e\",\n    project_id=\"\u003cproject_id\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetCertificate.InvokeAsync(new Rancher2.GetCertificateArgs\n        {\n            Name = \"\u003cname\u003e\",\n            NamespaceId = \"\u003cnamespace_id\u003e\",\n            ProjectId = \"\u003cproject_id\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"\u003cnamespace_id\u003e\"\n\t\t_, err := rancher2.LookupCertificate(ctx, \u0026rancher2.LookupCertificateArgs{\n\t\t\tName:        \"\u003cname\u003e\",\n\t\t\tNamespaceId: \u0026opt0,\n\t\t\tProjectId:   \"\u003cproject_id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -34461,6 +35772,9 @@
                     "name": {
                         "type": "string"
                     },
+                    "okeConfig": {
+                        "$ref": "#/types/rancher2:index/getClusterOkeConfig:getClusterOkeConfig"
+                    },
                     "rkeConfig": {
                         "$ref": "#/types/rancher2:index/getClusterRkeConfig:getClusterRkeConfig",
                         "description": "(Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)\n"
@@ -34500,6 +35814,7 @@
                     "kubeConfig",
                     "labels",
                     "name",
+                    "okeConfig",
                     "rkeConfig",
                     "scheduledClusterScans",
                     "systemProjectId",
@@ -35828,6 +37143,14 @@
                         "type": "string",
                         "description": "The cluster id where create notifier (string)\n"
                     },
+                    "dingtalkConfig": {
+                        "$ref": "#/types/rancher2:index/getNotifierDingtalkConfig:getNotifierDingtalkConfig",
+                        "description": "(Computed) Dingtalk config for notifier (list maxitems:1)\n"
+                    },
+                    "msteamsConfig": {
+                        "$ref": "#/types/rancher2:index/getNotifierMsteamsConfig:getNotifierMsteamsConfig",
+                        "description": "(Computed) MSTeams config for notifier (list maxitems:1)\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the notifier (string)\n"
@@ -35856,6 +37179,10 @@
                         "type": "string",
                         "description": "(Computed) The notifier description (string)\n"
                     },
+                    "dingtalkConfig": {
+                        "$ref": "#/types/rancher2:index/getNotifierDingtalkConfig:getNotifierDingtalkConfig",
+                        "description": "(Computed) Dingtalk config for notifier (list maxitems:1)\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -35866,6 +37193,10 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "(Computed) Labels for notifier object (map)\n"
+                    },
+                    "msteamsConfig": {
+                        "$ref": "#/types/rancher2:index/getNotifierMsteamsConfig:getNotifierMsteamsConfig",
+                        "description": "(Computed) MSTeams config for notifier (list maxitems:1)\n"
                     },
                     "name": {
                         "type": "string"
