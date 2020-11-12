@@ -463,7 +463,7 @@ export interface ClusterEksConfig {
     desiredNodes?: number;
     ebsEncryption?: boolean;
     /**
-     * The type of machine to use for worker nodes. Default `t2.medium` (string)
+     * The EKS node group instance type. Default: `t3.medium` (string)
      */
     instanceType?: string;
     /**
@@ -495,11 +495,11 @@ export interface ClusterEksConfig {
      */
     secretKey: string;
     /**
-     * List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+     * List of security groups to use for the cluster (list)
      */
     securityGroups?: string[];
     /**
-     * The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+     * The AWS service role to use (string)
      */
     serviceRole?: string;
     /**
@@ -507,7 +507,7 @@ export interface ClusterEksConfig {
      */
     sessionToken?: string;
     /**
-     * List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+     * List of subnets in the virtual network to use (list)
      */
     subnets?: string[];
     /**
@@ -518,6 +518,116 @@ export interface ClusterEksConfig {
      * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
      */
     virtualNetwork?: string;
+}
+
+export interface ClusterEksConfigV2 {
+    /**
+     * The EKS cloudCredential id (string)
+     */
+    cloudCredentialId: string;
+    /**
+     * Set to `true` to import EKS cluster. Default: `false` (bool)
+     */
+    imported?: boolean;
+    /**
+     * The AWS kms key to use (string)
+     */
+    kmsKey?: string;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion: string;
+    /**
+     * The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     */
+    loggingTypes?: string[];
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * The EKS cluster name to import. Required to create a new cluster (list)
+     */
+    nodeGroups: outputs.ClusterEksConfigV2NodeGroup[];
+    /**
+     * The EKS cluster has private access. Default: `false` (bool)
+     */
+    privateAccess?: boolean;
+    /**
+     * The EKS cluster has public access. Default: `true` (bool)
+     */
+    publicAccess?: boolean;
+    /**
+     * The EKS cluster public access sources (map)
+     */
+    publicAccessSources?: string[];
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region?: string;
+    /**
+     * Enable EKS cluster secret encryption. Default: `false` (bool)
+     */
+    secretsEncryption?: boolean;
+    /**
+     * List of security groups to use for the cluster (list)
+     */
+    securityGroups?: string[];
+    /**
+     * The AWS service role to use (string)
+     */
+    serviceRole?: string;
+    /**
+     * List of subnets in the virtual network to use (list)
+     */
+    subnets?: string[];
+    /**
+     * The EKS cluster tags (map)
+     */
+    tags?: {[key: string]: any};
+}
+
+export interface ClusterEksConfigV2NodeGroup {
+    /**
+     * The EKS node group desired size. Default: `2` (int)
+     */
+    desiredSize?: number;
+    /**
+     * The EKS node group disk size (Gb). Default: `20` (int)
+     */
+    diskSize?: number;
+    /**
+     * The EKS node group ssh key (string)
+     */
+    ec2SshKey?: string;
+    /**
+     * Set true to EKS use gpu. Default: `false` (bool)
+     */
+    gpu?: boolean;
+    /**
+     * The EKS node group instance type. Default: `t3.medium` (string)
+     */
+    instanceType?: string;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels?: {[key: string]: any};
+    /**
+     * The EKS node group maximum size. Default `2` (int)
+     */
+    maxSize?: number;
+    /**
+     * The EKS node group maximum size. Default `2` (int)
+     */
+    minSize?: number;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * The EKS cluster tags (map)
+     */
+    tags?: {[key: string]: any};
 }
 
 export interface ClusterGkeConfig {
@@ -2160,7 +2270,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     maxBackup?: number;
     /**
-     * Audit log max size. Default: `100` (int)
+     * The EKS node group maximum size. Default `2` (int)
      */
     maxSize?: number;
     /**
@@ -3194,6 +3304,47 @@ export interface GetClusterEksConfig {
     subnets?: string[];
     userData: string;
     virtualNetwork?: string;
+}
+
+export interface GetClusterEksConfigV2 {
+    cloudCredentialId: string;
+    imported?: boolean;
+    kmsKey?: string;
+    kubernetesVersion: string;
+    loggingTypes?: string[];
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    nodeGroups: outputs.GetClusterEksConfigV2NodeGroup[];
+    privateAccess?: boolean;
+    publicAccess?: boolean;
+    publicAccessSources?: string[];
+    region?: string;
+    secretsEncryption?: boolean;
+    securityGroups?: string[];
+    serviceRole?: string;
+    subnets?: string[];
+    tags?: {[key: string]: any};
+}
+
+export interface GetClusterEksConfigV2NodeGroup {
+    desiredSize?: number;
+    diskSize?: number;
+    ec2SshKey?: string;
+    gpu?: boolean;
+    instanceType?: string;
+    /**
+     * (Computed) Labels for Node Pool object (map)
+     */
+    labels?: {[key: string]: any};
+    maxSize?: number;
+    minSize?: number;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    tags?: {[key: string]: any};
 }
 
 export interface GetClusterGkeConfig {

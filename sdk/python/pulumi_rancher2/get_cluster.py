@@ -20,7 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         pulumi.set(__self__, "aks_config", aks_config)
@@ -63,6 +63,9 @@ class GetClusterResult:
         if eks_config and not isinstance(eks_config, dict):
             raise TypeError("Expected argument 'eks_config' to be a dict")
         pulumi.set(__self__, "eks_config", eks_config)
+        if eks_config_v2 and not isinstance(eks_config_v2, dict):
+            raise TypeError("Expected argument 'eks_config_v2' to be a dict")
+        pulumi.set(__self__, "eks_config_v2", eks_config_v2)
         if enable_cluster_alerting and not isinstance(enable_cluster_alerting, bool):
             raise TypeError("Expected argument 'enable_cluster_alerting' to be a bool")
         pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
@@ -216,6 +219,11 @@ class GetClusterResult:
         return pulumi.get(self, "eks_config")
 
     @property
+    @pulumi.getter(name="eksConfigV2")
+    def eks_config_v2(self) -> 'outputs.GetClusterEksConfigV2Result':
+        return pulumi.get(self, "eks_config_v2")
+
+    @property
     @pulumi.getter(name="enableClusterAlerting")
     def enable_cluster_alerting(self) -> bool:
         return pulumi.get(self, "enable_cluster_alerting")
@@ -328,6 +336,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             description=self.description,
             driver=self.driver,
             eks_config=self.eks_config,
+            eks_config_v2=self.eks_config_v2,
             enable_cluster_alerting=self.enable_cluster_alerting,
             enable_cluster_monitoring=self.enable_cluster_monitoring,
             enable_network_policy=self.enable_network_policy,
@@ -383,6 +392,7 @@ def get_cluster(name: Optional[str] = None,
         description=__ret__.description,
         driver=__ret__.driver,
         eks_config=__ret__.eks_config,
+        eks_config_v2=__ret__.eks_config_v2,
         enable_cluster_alerting=__ret__.enable_cluster_alerting,
         enable_cluster_monitoring=__ret__.enable_cluster_monitoring,
         enable_network_policy=__ret__.enable_network_policy,

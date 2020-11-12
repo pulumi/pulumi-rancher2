@@ -64,7 +64,7 @@ type AuthConfigPing struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringOutput `pulumi:"rancherApiHost"`
 	// Ping SP cert (string)
 	SpCert pulumi.StringOutput `pulumi:"spCert"`
@@ -148,7 +148,7 @@ type authConfigPingState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost *string `pulumi:"rancherApiHost"`
 	// Ping SP cert (string)
 	SpCert *string `pulumi:"spCert"`
@@ -181,7 +181,7 @@ type AuthConfigPingState struct {
 	Labels pulumi.MapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringPtrInput
 	// Ping SP cert (string)
 	SpCert pulumi.StringPtrInput
@@ -216,7 +216,7 @@ type authConfigPingArgs struct {
 	IdpMetadataContent string `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost string `pulumi:"rancherApiHost"`
 	// Ping SP cert (string)
 	SpCert string `pulumi:"spCert"`
@@ -246,7 +246,7 @@ type AuthConfigPingArgs struct {
 	IdpMetadataContent pulumi.StringInput
 	// Labels of the resource (map)
 	Labels pulumi.MapInput
-	// Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringInput
 	// Ping SP cert (string)
 	SpCert pulumi.StringInput

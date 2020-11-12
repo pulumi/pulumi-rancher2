@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EbsEncryption { get; set; }
 
         /// <summary>
-        /// The type of machine to use for worker nodes. Default `t2.medium` (string)
+        /// The EKS node group instance type. Default: `t3.medium` (string)
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        /// List of security groups to use for the cluster (list)
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -100,7 +100,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        /// The AWS service role to use (string)
         /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        /// List of subnets in the virtual network to use (list)
         /// </summary>
         public InputList<string> Subnets
         {

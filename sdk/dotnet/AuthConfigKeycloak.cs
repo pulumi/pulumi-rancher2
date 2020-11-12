@@ -98,7 +98,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// Rancher URL. URL scheme needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
         /// </summary>
         [Output("rancherApiHost")]
         public Output<string> RancherApiHost { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// Rancher URL. URL scheme needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
         /// </summary>
         [Input("rancherApiHost", required: true)]
         public Input<string> RancherApiHost { get; set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Rancher url. Schema needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
+        /// Rancher URL. URL scheme needs to be specified, `https://&lt;RANCHER_API_HOST&gt;` (string)
         /// </summary>
         [Input("rancherApiHost")]
         public Input<string>? RancherApiHost { get; set; }

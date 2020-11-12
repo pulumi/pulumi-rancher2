@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? MaxBackup;
         /// <summary>
-        /// Audit log max size. Default: `100` (int)
+        /// The EKS node group maximum size. Default `2` (int)
         /// </summary>
         public readonly int? MaxSize;
         /// <summary>

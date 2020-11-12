@@ -9,10 +9,10 @@ replace (
 	github.com/prometheus/prometheus => github.com/prometheus/prometheus v1.8.2-0.20190424153033-d3245f150225
 	github.com/rancher/lasso => github.com/rancher/lasso v0.0.0-20200905045615-7fcb07d6a20b
 	github.com/rancher/norman => github.com/rancher/norman v0.0.0-20200930000340-693d65aaffe3
-	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20201007163458-eb990af66be1
-	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20201007163458-eb990af66be1
-	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20201007163458-eb990af66be1
-	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20201030130830-fcc2561b5c07
+	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20201109223515-3205bc1e82e5
+	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20201109223515-3205bc1e82e5
+	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20201109223515-3205bc1e82e5
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20201112001829-efbf6bcde088
 	k8s.io/api => k8s.io/api v0.19.0
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.19.0
 	k8s.io/apimachinery => github.com/rancher/apimachinery v0.19.0-rancher1

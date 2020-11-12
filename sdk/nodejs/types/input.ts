@@ -463,7 +463,7 @@ export interface ClusterEksConfig {
     desiredNodes?: pulumi.Input<number>;
     ebsEncryption?: pulumi.Input<boolean>;
     /**
-     * The type of machine to use for worker nodes. Default `t2.medium` (string)
+     * The EKS node group instance type. Default: `t3.medium` (string)
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -495,11 +495,11 @@ export interface ClusterEksConfig {
      */
     secretKey: pulumi.Input<string>;
     /**
-     * List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+     * List of security groups to use for the cluster (list)
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+     * The AWS service role to use (string)
      */
     serviceRole?: pulumi.Input<string>;
     /**
@@ -507,7 +507,7 @@ export interface ClusterEksConfig {
      */
     sessionToken?: pulumi.Input<string>;
     /**
-     * List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+     * List of subnets in the virtual network to use (list)
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -518,6 +518,116 @@ export interface ClusterEksConfig {
      * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
      */
     virtualNetwork?: pulumi.Input<string>;
+}
+
+export interface ClusterEksConfigV2 {
+    /**
+     * The EKS cloudCredential id (string)
+     */
+    cloudCredentialId: pulumi.Input<string>;
+    /**
+     * Set to `true` to import EKS cluster. Default: `false` (bool)
+     */
+    imported?: pulumi.Input<boolean>;
+    /**
+     * The AWS kms key to use (string)
+     */
+    kmsKey?: pulumi.Input<string>;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion?: pulumi.Input<string>;
+    /**
+     * The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     */
+    loggingTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The EKS cluster name to import. Required to create a new cluster (list)
+     */
+    nodeGroups?: pulumi.Input<pulumi.Input<inputs.ClusterEksConfigV2NodeGroup>[]>;
+    /**
+     * The EKS cluster has private access. Default: `false` (bool)
+     */
+    privateAccess?: pulumi.Input<boolean>;
+    /**
+     * The EKS cluster has public access. Default: `true` (bool)
+     */
+    publicAccess?: pulumi.Input<boolean>;
+    /**
+     * The EKS cluster public access sources (map)
+     */
+    publicAccessSources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Enable EKS cluster secret encryption. Default: `false` (bool)
+     */
+    secretsEncryption?: pulumi.Input<boolean>;
+    /**
+     * List of security groups to use for the cluster (list)
+     */
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The AWS service role to use (string)
+     */
+    serviceRole?: pulumi.Input<string>;
+    /**
+     * List of subnets in the virtual network to use (list)
+     */
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The EKS cluster tags (map)
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface ClusterEksConfigV2NodeGroup {
+    /**
+     * The EKS node group desired size. Default: `2` (int)
+     */
+    desiredSize?: pulumi.Input<number>;
+    /**
+     * The EKS node group disk size (Gb). Default: `20` (int)
+     */
+    diskSize?: pulumi.Input<number>;
+    /**
+     * The EKS node group ssh key (string)
+     */
+    ec2SshKey?: pulumi.Input<string>;
+    /**
+     * Set true to EKS use gpu. Default: `false` (bool)
+     */
+    gpu?: pulumi.Input<boolean>;
+    /**
+     * The EKS node group instance type. Default: `t3.medium` (string)
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The EKS node group maximum size. Default `2` (int)
+     */
+    maxSize?: pulumi.Input<number>;
+    /**
+     * The EKS node group maximum size. Default `2` (int)
+     */
+    minSize?: pulumi.Input<number>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The EKS cluster tags (map)
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterGkeConfig {
@@ -2160,7 +2270,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     maxBackup?: pulumi.Input<number>;
     /**
-     * Audit log max size. Default: `100` (int)
+     * The EKS node group maximum size. Default `2` (int)
      */
     maxSize?: pulumi.Input<number>;
     /**

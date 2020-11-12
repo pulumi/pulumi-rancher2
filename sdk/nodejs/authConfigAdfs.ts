@@ -93,7 +93,7 @@ export class AuthConfigAdfs extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+     * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
     public readonly rancherApiHost!: pulumi.Output<string>;
     /**
@@ -238,7 +238,7 @@ export interface AuthConfigAdfsState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+     * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
     readonly rancherApiHost?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface AuthConfigAdfsArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+     * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
     readonly rancherApiHost: pulumi.Input<string>;
     /**
