@@ -11,5 +11,5 @@ APIRESPONSE=$(python testing/provision-rancher.py)
 
 export RANCHER_ACCESS_KEY=$(echo $APIRESPONSE |cut -d ':' -f 1)
 export RANCHER_SECRET_KEY=$(echo $APIRESPONSE | cut -d ':' -f 2)
-echo "::set-env name=RANCHER_ACCESS_KEY::$RANCHER_ACCESS_KEY"
-echo "::set-env name=RANCHER_SECRET_KEY::$RANCHER_SECRET_KEY"
+echo "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" >> $GITHUB_ENV
+echo "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" >> $GITHUB_ENV
