@@ -103,6 +103,7 @@ export interface GetClusterResult {
      * (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly eksConfig: outputs.GetClusterEksConfig;
+    readonly eksConfigV2: outputs.GetClusterEksConfigV2;
     readonly enableClusterAlerting: boolean;
     /**
      * (Computed) Enable built-in cluster monitoring. Default `false` (bool)

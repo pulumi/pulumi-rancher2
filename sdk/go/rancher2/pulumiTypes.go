@@ -4240,7 +4240,7 @@ type ClusterEksConfig struct {
 	// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
 	DesiredNodes  *int  `pulumi:"desiredNodes"`
 	EbsEncryption *bool `pulumi:"ebsEncryption"`
-	// The type of machine to use for worker nodes. Default `t2.medium` (string)
+	// The EKS node group instance type. Default: `t3.medium` (string)
 	InstanceType *string `pulumi:"instanceType"`
 	// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -4256,13 +4256,13 @@ type ClusterEksConfig struct {
 	Region *string `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey string `pulumi:"secretKey"`
-	// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+	// List of security groups to use for the cluster (list)
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+	// The AWS service role to use (string)
 	ServiceRole *string `pulumi:"serviceRole"`
 	// A session token to use with the client key and secret if applicable (string)
 	SessionToken *string `pulumi:"sessionToken"`
-	// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+	// List of subnets in the virtual network to use (list)
 	Subnets []string `pulumi:"subnets"`
 	// Pass user-data to the nodes to perform automated configuration tasks (string)
 	UserData *string `pulumi:"userData"`
@@ -4291,7 +4291,7 @@ type ClusterEksConfigArgs struct {
 	// The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
 	DesiredNodes  pulumi.IntPtrInput  `pulumi:"desiredNodes"`
 	EbsEncryption pulumi.BoolPtrInput `pulumi:"ebsEncryption"`
-	// The type of machine to use for worker nodes. Default `t2.medium` (string)
+	// The EKS node group instance type. Default: `t3.medium` (string)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
 	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
@@ -4307,13 +4307,13 @@ type ClusterEksConfigArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The AWS Client Secret associated with the Client ID (string)
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
-	// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+	// List of security groups to use for the cluster (list)
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
-	// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+	// The AWS service role to use (string)
 	ServiceRole pulumi.StringPtrInput `pulumi:"serviceRole"`
 	// A session token to use with the client key and secret if applicable (string)
 	SessionToken pulumi.StringPtrInput `pulumi:"sessionToken"`
-	// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+	// List of subnets in the virtual network to use (list)
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 	// Pass user-data to the nodes to perform automated configuration tasks (string)
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
@@ -4422,7 +4422,7 @@ func (o ClusterEksConfigOutput) EbsEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *bool { return v.EbsEncryption }).(pulumi.BoolPtrOutput)
 }
 
-// The type of machine to use for worker nodes. Default `t2.medium` (string)
+// The EKS node group instance type. Default: `t3.medium` (string)
 func (o ClusterEksConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -4462,12 +4462,12 @@ func (o ClusterEksConfigOutput) SecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEksConfig) string { return v.SecretKey }).(pulumi.StringOutput)
 }
 
-// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+// List of security groups to use for the cluster (list)
 func (o ClusterEksConfigOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEksConfig) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+// The AWS service role to use (string)
 func (o ClusterEksConfigOutput) ServiceRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.ServiceRole }).(pulumi.StringPtrOutput)
 }
@@ -4477,7 +4477,7 @@ func (o ClusterEksConfigOutput) SessionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.SessionToken }).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+// List of subnets in the virtual network to use (list)
 func (o ClusterEksConfigOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEksConfig) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
@@ -4559,7 +4559,7 @@ func (o ClusterEksConfigPtrOutput) EbsEncryption() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The type of machine to use for worker nodes. Default `t2.medium` (string)
+// The EKS node group instance type. Default: `t3.medium` (string)
 func (o ClusterEksConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4639,7 +4639,7 @@ func (o ClusterEksConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+// List of security groups to use for the cluster (list)
 func (o ClusterEksConfigPtrOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) []string {
 		if v == nil {
@@ -4649,7 +4649,7 @@ func (o ClusterEksConfigPtrOutput) SecurityGroups() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+// The AWS service role to use (string)
 func (o ClusterEksConfigPtrOutput) ServiceRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4669,7 +4669,7 @@ func (o ClusterEksConfigPtrOutput) SessionToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+// List of subnets in the virtual network to use (list)
 func (o ClusterEksConfigPtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) []string {
 		if v == nil {
@@ -4697,6 +4697,600 @@ func (o ClusterEksConfigPtrOutput) VirtualNetwork() pulumi.StringPtrOutput {
 		}
 		return v.VirtualNetwork
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterEksConfigV2 struct {
+	// The EKS cloudCredential id (string)
+	CloudCredentialId string `pulumi:"cloudCredentialId"`
+	// Set to `true` to import EKS cluster. Default: `false` (bool)
+	Imported *bool `pulumi:"imported"`
+	// The AWS kms key to use (string)
+	KmsKey *string `pulumi:"kmsKey"`
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+	LoggingTypes []string `pulumi:"loggingTypes"`
+	// Name of cluster registration token (string)
+	Name *string `pulumi:"name"`
+	// The EKS cluster name to import. Required to create a new cluster (list)
+	NodeGroups []ClusterEksConfigV2NodeGroup `pulumi:"nodeGroups"`
+	// The EKS cluster has private access. Default: `false` (bool)
+	PrivateAccess *bool `pulumi:"privateAccess"`
+	// The EKS cluster has public access. Default: `true` (bool)
+	PublicAccess *bool `pulumi:"publicAccess"`
+	// The EKS cluster public access sources (map)
+	PublicAccessSources []string `pulumi:"publicAccessSources"`
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+	Region *string `pulumi:"region"`
+	// Enable EKS cluster secret encryption. Default: `false` (bool)
+	SecretsEncryption *bool `pulumi:"secretsEncryption"`
+	// List of security groups to use for the cluster (list)
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// The AWS service role to use (string)
+	ServiceRole *string `pulumi:"serviceRole"`
+	// List of subnets in the virtual network to use (list)
+	Subnets []string `pulumi:"subnets"`
+	// The EKS cluster tags (map)
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// ClusterEksConfigV2Input is an input type that accepts ClusterEksConfigV2Args and ClusterEksConfigV2Output values.
+// You can construct a concrete instance of `ClusterEksConfigV2Input` via:
+//
+//          ClusterEksConfigV2Args{...}
+type ClusterEksConfigV2Input interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2Output() ClusterEksConfigV2Output
+	ToClusterEksConfigV2OutputWithContext(context.Context) ClusterEksConfigV2Output
+}
+
+type ClusterEksConfigV2Args struct {
+	// The EKS cloudCredential id (string)
+	CloudCredentialId pulumi.StringInput `pulumi:"cloudCredentialId"`
+	// Set to `true` to import EKS cluster. Default: `false` (bool)
+	Imported pulumi.BoolPtrInput `pulumi:"imported"`
+	// The AWS kms key to use (string)
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
+	// The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+	LoggingTypes pulumi.StringArrayInput `pulumi:"loggingTypes"`
+	// Name of cluster registration token (string)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The EKS cluster name to import. Required to create a new cluster (list)
+	NodeGroups ClusterEksConfigV2NodeGroupArrayInput `pulumi:"nodeGroups"`
+	// The EKS cluster has private access. Default: `false` (bool)
+	PrivateAccess pulumi.BoolPtrInput `pulumi:"privateAccess"`
+	// The EKS cluster has public access. Default: `true` (bool)
+	PublicAccess pulumi.BoolPtrInput `pulumi:"publicAccess"`
+	// The EKS cluster public access sources (map)
+	PublicAccessSources pulumi.StringArrayInput `pulumi:"publicAccessSources"`
+	// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Enable EKS cluster secret encryption. Default: `false` (bool)
+	SecretsEncryption pulumi.BoolPtrInput `pulumi:"secretsEncryption"`
+	// List of security groups to use for the cluster (list)
+	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	// The AWS service role to use (string)
+	ServiceRole pulumi.StringPtrInput `pulumi:"serviceRole"`
+	// List of subnets in the virtual network to use (list)
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	// The EKS cluster tags (map)
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (ClusterEksConfigV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2)(nil)).Elem()
+}
+
+func (i ClusterEksConfigV2Args) ToClusterEksConfigV2Output() ClusterEksConfigV2Output {
+	return i.ToClusterEksConfigV2OutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2Args) ToClusterEksConfigV2OutputWithContext(ctx context.Context) ClusterEksConfigV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2Output)
+}
+
+func (i ClusterEksConfigV2Args) ToClusterEksConfigV2PtrOutput() ClusterEksConfigV2PtrOutput {
+	return i.ToClusterEksConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2Args) ToClusterEksConfigV2PtrOutputWithContext(ctx context.Context) ClusterEksConfigV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2Output).ToClusterEksConfigV2PtrOutputWithContext(ctx)
+}
+
+// ClusterEksConfigV2PtrInput is an input type that accepts ClusterEksConfigV2Args, ClusterEksConfigV2Ptr and ClusterEksConfigV2PtrOutput values.
+// You can construct a concrete instance of `ClusterEksConfigV2PtrInput` via:
+//
+//          ClusterEksConfigV2Args{...}
+//
+//  or:
+//
+//          nil
+type ClusterEksConfigV2PtrInput interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2PtrOutput() ClusterEksConfigV2PtrOutput
+	ToClusterEksConfigV2PtrOutputWithContext(context.Context) ClusterEksConfigV2PtrOutput
+}
+
+type clusterEksConfigV2PtrType ClusterEksConfigV2Args
+
+func ClusterEksConfigV2Ptr(v *ClusterEksConfigV2Args) ClusterEksConfigV2PtrInput {
+	return (*clusterEksConfigV2PtrType)(v)
+}
+
+func (*clusterEksConfigV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEksConfigV2)(nil)).Elem()
+}
+
+func (i *clusterEksConfigV2PtrType) ToClusterEksConfigV2PtrOutput() ClusterEksConfigV2PtrOutput {
+	return i.ToClusterEksConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEksConfigV2PtrType) ToClusterEksConfigV2PtrOutputWithContext(ctx context.Context) ClusterEksConfigV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2PtrOutput)
+}
+
+type ClusterEksConfigV2Output struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2Output) ToClusterEksConfigV2Output() ClusterEksConfigV2Output {
+	return o
+}
+
+func (o ClusterEksConfigV2Output) ToClusterEksConfigV2OutputWithContext(ctx context.Context) ClusterEksConfigV2Output {
+	return o
+}
+
+func (o ClusterEksConfigV2Output) ToClusterEksConfigV2PtrOutput() ClusterEksConfigV2PtrOutput {
+	return o.ToClusterEksConfigV2PtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEksConfigV2Output) ToClusterEksConfigV2PtrOutputWithContext(ctx context.Context) ClusterEksConfigV2PtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *ClusterEksConfigV2 {
+		return &v
+	}).(ClusterEksConfigV2PtrOutput)
+}
+
+// The EKS cloudCredential id (string)
+func (o ClusterEksConfigV2Output) CloudCredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) string { return v.CloudCredentialId }).(pulumi.StringOutput)
+}
+
+// Set to `true` to import EKS cluster. Default: `false` (bool)
+func (o ClusterEksConfigV2Output) Imported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *bool { return v.Imported }).(pulumi.BoolPtrOutput)
+}
+
+// The AWS kms key to use (string)
+func (o ClusterEksConfigV2Output) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+func (o ClusterEksConfigV2Output) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
+}
+
+// The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+func (o ClusterEksConfigV2Output) LoggingTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) []string { return v.LoggingTypes }).(pulumi.StringArrayOutput)
+}
+
+// Name of cluster registration token (string)
+func (o ClusterEksConfigV2Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The EKS cluster name to import. Required to create a new cluster (list)
+func (o ClusterEksConfigV2Output) NodeGroups() ClusterEksConfigV2NodeGroupArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) []ClusterEksConfigV2NodeGroup { return v.NodeGroups }).(ClusterEksConfigV2NodeGroupArrayOutput)
+}
+
+// The EKS cluster has private access. Default: `false` (bool)
+func (o ClusterEksConfigV2Output) PrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *bool { return v.PrivateAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The EKS cluster has public access. Default: `true` (bool)
+func (o ClusterEksConfigV2Output) PublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *bool { return v.PublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The EKS cluster public access sources (map)
+func (o ClusterEksConfigV2Output) PublicAccessSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) []string { return v.PublicAccessSources }).(pulumi.StringArrayOutput)
+}
+
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+func (o ClusterEksConfigV2Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Enable EKS cluster secret encryption. Default: `false` (bool)
+func (o ClusterEksConfigV2Output) SecretsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *bool { return v.SecretsEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// List of security groups to use for the cluster (list)
+func (o ClusterEksConfigV2Output) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// The AWS service role to use (string)
+func (o ClusterEksConfigV2Output) ServiceRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.ServiceRole }).(pulumi.StringPtrOutput)
+}
+
+// List of subnets in the virtual network to use (list)
+func (o ClusterEksConfigV2Output) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+// The EKS cluster tags (map)
+func (o ClusterEksConfigV2Output) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type ClusterEksConfigV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEksConfigV2)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2PtrOutput) ToClusterEksConfigV2PtrOutput() ClusterEksConfigV2PtrOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2PtrOutput) ToClusterEksConfigV2PtrOutputWithContext(ctx context.Context) ClusterEksConfigV2PtrOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2PtrOutput) Elem() ClusterEksConfigV2Output {
+	return o.ApplyT(func(v *ClusterEksConfigV2) ClusterEksConfigV2 { return *v }).(ClusterEksConfigV2Output)
+}
+
+// The EKS cloudCredential id (string)
+func (o ClusterEksConfigV2PtrOutput) CloudCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudCredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set to `true` to import EKS cluster. Default: `false` (bool)
+func (o ClusterEksConfigV2PtrOutput) Imported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Imported
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The AWS kms key to use (string)
+func (o ClusterEksConfigV2PtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+func (o ClusterEksConfigV2PtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+func (o ClusterEksConfigV2PtrOutput) LoggingTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of cluster registration token (string)
+func (o ClusterEksConfigV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The EKS cluster name to import. Required to create a new cluster (list)
+func (o ClusterEksConfigV2PtrOutput) NodeGroups() ClusterEksConfigV2NodeGroupArrayOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) []ClusterEksConfigV2NodeGroup {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroups
+	}).(ClusterEksConfigV2NodeGroupArrayOutput)
+}
+
+// The EKS cluster has private access. Default: `false` (bool)
+func (o ClusterEksConfigV2PtrOutput) PrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The EKS cluster has public access. Default: `true` (bool)
+func (o ClusterEksConfigV2PtrOutput) PublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The EKS cluster public access sources (map)
+func (o ClusterEksConfigV2PtrOutput) PublicAccessSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccessSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+func (o ClusterEksConfigV2PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable EKS cluster secret encryption. Default: `false` (bool)
+func (o ClusterEksConfigV2PtrOutput) SecretsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecretsEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of security groups to use for the cluster (list)
+func (o ClusterEksConfigV2PtrOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The AWS service role to use (string)
+func (o ClusterEksConfigV2PtrOutput) ServiceRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of subnets in the virtual network to use (list)
+func (o ClusterEksConfigV2PtrOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The EKS cluster tags (map)
+func (o ClusterEksConfigV2PtrOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.MapOutput)
+}
+
+type ClusterEksConfigV2NodeGroup struct {
+	// The EKS node group desired size. Default: `2` (int)
+	DesiredSize *int `pulumi:"desiredSize"`
+	// The EKS node group disk size (Gb). Default: `20` (int)
+	DiskSize *int `pulumi:"diskSize"`
+	// The EKS node group ssh key (string)
+	Ec2SshKey *string `pulumi:"ec2SshKey"`
+	// Set true to EKS use gpu. Default: `false` (bool)
+	Gpu *bool `pulumi:"gpu"`
+	// The EKS node group instance type. Default: `t3.medium` (string)
+	InstanceType *string `pulumi:"instanceType"`
+	// Labels for cluster registration token object (map)
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The EKS node group maximum size. Default `2` (int)
+	MaxSize *int `pulumi:"maxSize"`
+	// The EKS node group maximum size. Default `2` (int)
+	MinSize *int `pulumi:"minSize"`
+	// Name of cluster registration token (string)
+	Name string `pulumi:"name"`
+	// The EKS cluster tags (map)
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// ClusterEksConfigV2NodeGroupInput is an input type that accepts ClusterEksConfigV2NodeGroupArgs and ClusterEksConfigV2NodeGroupOutput values.
+// You can construct a concrete instance of `ClusterEksConfigV2NodeGroupInput` via:
+//
+//          ClusterEksConfigV2NodeGroupArgs{...}
+type ClusterEksConfigV2NodeGroupInput interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2NodeGroupOutput() ClusterEksConfigV2NodeGroupOutput
+	ToClusterEksConfigV2NodeGroupOutputWithContext(context.Context) ClusterEksConfigV2NodeGroupOutput
+}
+
+type ClusterEksConfigV2NodeGroupArgs struct {
+	// The EKS node group desired size. Default: `2` (int)
+	DesiredSize pulumi.IntPtrInput `pulumi:"desiredSize"`
+	// The EKS node group disk size (Gb). Default: `20` (int)
+	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
+	// The EKS node group ssh key (string)
+	Ec2SshKey pulumi.StringPtrInput `pulumi:"ec2SshKey"`
+	// Set true to EKS use gpu. Default: `false` (bool)
+	Gpu pulumi.BoolPtrInput `pulumi:"gpu"`
+	// The EKS node group instance type. Default: `t3.medium` (string)
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Labels for cluster registration token object (map)
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// The EKS node group maximum size. Default `2` (int)
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	// The EKS node group maximum size. Default `2` (int)
+	MinSize pulumi.IntPtrInput `pulumi:"minSize"`
+	// Name of cluster registration token (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The EKS cluster tags (map)
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (ClusterEksConfigV2NodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (i ClusterEksConfigV2NodeGroupArgs) ToClusterEksConfigV2NodeGroupOutput() ClusterEksConfigV2NodeGroupOutput {
+	return i.ToClusterEksConfigV2NodeGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2NodeGroupArgs) ToClusterEksConfigV2NodeGroupOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2NodeGroupOutput)
+}
+
+// ClusterEksConfigV2NodeGroupArrayInput is an input type that accepts ClusterEksConfigV2NodeGroupArray and ClusterEksConfigV2NodeGroupArrayOutput values.
+// You can construct a concrete instance of `ClusterEksConfigV2NodeGroupArrayInput` via:
+//
+//          ClusterEksConfigV2NodeGroupArray{ ClusterEksConfigV2NodeGroupArgs{...} }
+type ClusterEksConfigV2NodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2NodeGroupArrayOutput() ClusterEksConfigV2NodeGroupArrayOutput
+	ToClusterEksConfigV2NodeGroupArrayOutputWithContext(context.Context) ClusterEksConfigV2NodeGroupArrayOutput
+}
+
+type ClusterEksConfigV2NodeGroupArray []ClusterEksConfigV2NodeGroupInput
+
+func (ClusterEksConfigV2NodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (i ClusterEksConfigV2NodeGroupArray) ToClusterEksConfigV2NodeGroupArrayOutput() ClusterEksConfigV2NodeGroupArrayOutput {
+	return i.ToClusterEksConfigV2NodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2NodeGroupArray) ToClusterEksConfigV2NodeGroupArrayOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2NodeGroupArrayOutput)
+}
+
+type ClusterEksConfigV2NodeGroupOutput struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2NodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2NodeGroupOutput) ToClusterEksConfigV2NodeGroupOutput() ClusterEksConfigV2NodeGroupOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupOutput) ToClusterEksConfigV2NodeGroupOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupOutput {
+	return o
+}
+
+// The EKS node group desired size. Default: `2` (int)
+func (o ClusterEksConfigV2NodeGroupOutput) DesiredSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *int { return v.DesiredSize }).(pulumi.IntPtrOutput)
+}
+
+// The EKS node group disk size (Gb). Default: `20` (int)
+func (o ClusterEksConfigV2NodeGroupOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The EKS node group ssh key (string)
+func (o ClusterEksConfigV2NodeGroupOutput) Ec2SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.Ec2SshKey }).(pulumi.StringPtrOutput)
+}
+
+// Set true to EKS use gpu. Default: `false` (bool)
+func (o ClusterEksConfigV2NodeGroupOutput) Gpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
+}
+
+// The EKS node group instance type. Default: `t3.medium` (string)
+func (o ClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Labels for cluster registration token object (map)
+func (o ClusterEksConfigV2NodeGroupOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The EKS node group maximum size. Default `2` (int)
+func (o ClusterEksConfigV2NodeGroupOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+// The EKS node group maximum size. Default `2` (int)
+func (o ClusterEksConfigV2NodeGroupOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *int { return v.MinSize }).(pulumi.IntPtrOutput)
+}
+
+// Name of cluster registration token (string)
+func (o ClusterEksConfigV2NodeGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The EKS cluster tags (map)
+func (o ClusterEksConfigV2NodeGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type ClusterEksConfigV2NodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2NodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2NodeGroupArrayOutput) ToClusterEksConfigV2NodeGroupArrayOutput() ClusterEksConfigV2NodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupArrayOutput) ToClusterEksConfigV2NodeGroupArrayOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterEksConfigV2NodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterEksConfigV2NodeGroup {
+		return vs[0].([]ClusterEksConfigV2NodeGroup)[vs[1].(int)]
+	}).(ClusterEksConfigV2NodeGroupOutput)
 }
 
 type ClusterGkeConfig struct {
@@ -17059,7 +17653,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogConfiguration struct {
 	MaxAge *int `pulumi:"maxAge"`
 	// Audit log max backup. Default: `10` (int)
 	MaxBackup *int `pulumi:"maxBackup"`
-	// Audit log max size. Default: `100` (int)
+	// The EKS node group maximum size. Default `2` (int)
 	MaxSize *int `pulumi:"maxSize"`
 	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path *string `pulumi:"path"`
@@ -17085,7 +17679,7 @@ type ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs struct {
 	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
 	// Audit log max backup. Default: `10` (int)
 	MaxBackup pulumi.IntPtrInput `pulumi:"maxBackup"`
-	// Audit log max size. Default: `100` (int)
+	// The EKS node group maximum size. Default `2` (int)
 	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -17185,7 +17779,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxBackup() 
 	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxBackup }).(pulumi.IntPtrOutput)
 }
 
-// Audit log max size. Default: `100` (int)
+// The EKS node group maximum size. Default `2` (int)
 func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationOutput) MaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
 }
@@ -17250,7 +17844,7 @@ func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxBackup
 	}).(pulumi.IntPtrOutput)
 }
 
-// Audit log max size. Default: `100` (int)
+// The EKS node group maximum size. Default `2` (int)
 func (o ClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) MaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigServicesKubeApiAuditLogConfiguration) *int {
 		if v == nil {
@@ -44559,6 +45153,302 @@ func (o GetClusterEksConfigOutput) VirtualNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterEksConfig) *string { return v.VirtualNetwork }).(pulumi.StringPtrOutput)
 }
 
+type GetClusterEksConfigV2 struct {
+	CloudCredentialId string   `pulumi:"cloudCredentialId"`
+	Imported          *bool    `pulumi:"imported"`
+	KmsKey            *string  `pulumi:"kmsKey"`
+	KubernetesVersion string   `pulumi:"kubernetesVersion"`
+	LoggingTypes      []string `pulumi:"loggingTypes"`
+	// The name of the Cluster (string)
+	Name                string                           `pulumi:"name"`
+	NodeGroups          []GetClusterEksConfigV2NodeGroup `pulumi:"nodeGroups"`
+	PrivateAccess       *bool                            `pulumi:"privateAccess"`
+	PublicAccess        *bool                            `pulumi:"publicAccess"`
+	PublicAccessSources []string                         `pulumi:"publicAccessSources"`
+	Region              *string                          `pulumi:"region"`
+	SecretsEncryption   *bool                            `pulumi:"secretsEncryption"`
+	SecurityGroups      []string                         `pulumi:"securityGroups"`
+	ServiceRole         *string                          `pulumi:"serviceRole"`
+	Subnets             []string                         `pulumi:"subnets"`
+	Tags                map[string]interface{}           `pulumi:"tags"`
+}
+
+// GetClusterEksConfigV2Input is an input type that accepts GetClusterEksConfigV2Args and GetClusterEksConfigV2Output values.
+// You can construct a concrete instance of `GetClusterEksConfigV2Input` via:
+//
+//          GetClusterEksConfigV2Args{...}
+type GetClusterEksConfigV2Input interface {
+	pulumi.Input
+
+	ToGetClusterEksConfigV2Output() GetClusterEksConfigV2Output
+	ToGetClusterEksConfigV2OutputWithContext(context.Context) GetClusterEksConfigV2Output
+}
+
+type GetClusterEksConfigV2Args struct {
+	CloudCredentialId pulumi.StringInput      `pulumi:"cloudCredentialId"`
+	Imported          pulumi.BoolPtrInput     `pulumi:"imported"`
+	KmsKey            pulumi.StringPtrInput   `pulumi:"kmsKey"`
+	KubernetesVersion pulumi.StringInput      `pulumi:"kubernetesVersion"`
+	LoggingTypes      pulumi.StringArrayInput `pulumi:"loggingTypes"`
+	// The name of the Cluster (string)
+	Name                pulumi.StringInput                       `pulumi:"name"`
+	NodeGroups          GetClusterEksConfigV2NodeGroupArrayInput `pulumi:"nodeGroups"`
+	PrivateAccess       pulumi.BoolPtrInput                      `pulumi:"privateAccess"`
+	PublicAccess        pulumi.BoolPtrInput                      `pulumi:"publicAccess"`
+	PublicAccessSources pulumi.StringArrayInput                  `pulumi:"publicAccessSources"`
+	Region              pulumi.StringPtrInput                    `pulumi:"region"`
+	SecretsEncryption   pulumi.BoolPtrInput                      `pulumi:"secretsEncryption"`
+	SecurityGroups      pulumi.StringArrayInput                  `pulumi:"securityGroups"`
+	ServiceRole         pulumi.StringPtrInput                    `pulumi:"serviceRole"`
+	Subnets             pulumi.StringArrayInput                  `pulumi:"subnets"`
+	Tags                pulumi.MapInput                          `pulumi:"tags"`
+}
+
+func (GetClusterEksConfigV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2)(nil)).Elem()
+}
+
+func (i GetClusterEksConfigV2Args) ToGetClusterEksConfigV2Output() GetClusterEksConfigV2Output {
+	return i.ToGetClusterEksConfigV2OutputWithContext(context.Background())
+}
+
+func (i GetClusterEksConfigV2Args) ToGetClusterEksConfigV2OutputWithContext(ctx context.Context) GetClusterEksConfigV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEksConfigV2Output)
+}
+
+type GetClusterEksConfigV2Output struct{ *pulumi.OutputState }
+
+func (GetClusterEksConfigV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2)(nil)).Elem()
+}
+
+func (o GetClusterEksConfigV2Output) ToGetClusterEksConfigV2Output() GetClusterEksConfigV2Output {
+	return o
+}
+
+func (o GetClusterEksConfigV2Output) ToGetClusterEksConfigV2OutputWithContext(ctx context.Context) GetClusterEksConfigV2Output {
+	return o
+}
+
+func (o GetClusterEksConfigV2Output) CloudCredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) string { return v.CloudCredentialId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2Output) Imported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *bool { return v.Imported }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2Output) LoggingTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) []string { return v.LoggingTypes }).(pulumi.StringArrayOutput)
+}
+
+// The name of the Cluster (string)
+func (o GetClusterEksConfigV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2Output) NodeGroups() GetClusterEksConfigV2NodeGroupArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) []GetClusterEksConfigV2NodeGroup { return v.NodeGroups }).(GetClusterEksConfigV2NodeGroupArrayOutput)
+}
+
+func (o GetClusterEksConfigV2Output) PrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *bool { return v.PrivateAccess }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) PublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *bool { return v.PublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) PublicAccessSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) []string { return v.PublicAccessSources }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterEksConfigV2Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) SecretsEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *bool { return v.SecretsEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterEksConfigV2Output) ServiceRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) *string { return v.ServiceRole }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterEksConfigV2Output) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterEksConfigV2Output) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetClusterEksConfigV2NodeGroup struct {
+	DesiredSize  *int    `pulumi:"desiredSize"`
+	DiskSize     *int    `pulumi:"diskSize"`
+	Ec2SshKey    *string `pulumi:"ec2SshKey"`
+	Gpu          *bool   `pulumi:"gpu"`
+	InstanceType *string `pulumi:"instanceType"`
+	// (Computed) Labels for Node Pool object (map)
+	Labels  map[string]interface{} `pulumi:"labels"`
+	MaxSize *int                   `pulumi:"maxSize"`
+	MinSize *int                   `pulumi:"minSize"`
+	// The name of the Cluster (string)
+	Name string                 `pulumi:"name"`
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetClusterEksConfigV2NodeGroupInput is an input type that accepts GetClusterEksConfigV2NodeGroupArgs and GetClusterEksConfigV2NodeGroupOutput values.
+// You can construct a concrete instance of `GetClusterEksConfigV2NodeGroupInput` via:
+//
+//          GetClusterEksConfigV2NodeGroupArgs{...}
+type GetClusterEksConfigV2NodeGroupInput interface {
+	pulumi.Input
+
+	ToGetClusterEksConfigV2NodeGroupOutput() GetClusterEksConfigV2NodeGroupOutput
+	ToGetClusterEksConfigV2NodeGroupOutputWithContext(context.Context) GetClusterEksConfigV2NodeGroupOutput
+}
+
+type GetClusterEksConfigV2NodeGroupArgs struct {
+	DesiredSize  pulumi.IntPtrInput    `pulumi:"desiredSize"`
+	DiskSize     pulumi.IntPtrInput    `pulumi:"diskSize"`
+	Ec2SshKey    pulumi.StringPtrInput `pulumi:"ec2SshKey"`
+	Gpu          pulumi.BoolPtrInput   `pulumi:"gpu"`
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// (Computed) Labels for Node Pool object (map)
+	Labels  pulumi.MapInput    `pulumi:"labels"`
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
+	MinSize pulumi.IntPtrInput `pulumi:"minSize"`
+	// The name of the Cluster (string)
+	Name pulumi.StringInput `pulumi:"name"`
+	Tags pulumi.MapInput    `pulumi:"tags"`
+}
+
+func (GetClusterEksConfigV2NodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (i GetClusterEksConfigV2NodeGroupArgs) ToGetClusterEksConfigV2NodeGroupOutput() GetClusterEksConfigV2NodeGroupOutput {
+	return i.ToGetClusterEksConfigV2NodeGroupOutputWithContext(context.Background())
+}
+
+func (i GetClusterEksConfigV2NodeGroupArgs) ToGetClusterEksConfigV2NodeGroupOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEksConfigV2NodeGroupOutput)
+}
+
+// GetClusterEksConfigV2NodeGroupArrayInput is an input type that accepts GetClusterEksConfigV2NodeGroupArray and GetClusterEksConfigV2NodeGroupArrayOutput values.
+// You can construct a concrete instance of `GetClusterEksConfigV2NodeGroupArrayInput` via:
+//
+//          GetClusterEksConfigV2NodeGroupArray{ GetClusterEksConfigV2NodeGroupArgs{...} }
+type GetClusterEksConfigV2NodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEksConfigV2NodeGroupArrayOutput() GetClusterEksConfigV2NodeGroupArrayOutput
+	ToGetClusterEksConfigV2NodeGroupArrayOutputWithContext(context.Context) GetClusterEksConfigV2NodeGroupArrayOutput
+}
+
+type GetClusterEksConfigV2NodeGroupArray []GetClusterEksConfigV2NodeGroupInput
+
+func (GetClusterEksConfigV2NodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (i GetClusterEksConfigV2NodeGroupArray) ToGetClusterEksConfigV2NodeGroupArrayOutput() GetClusterEksConfigV2NodeGroupArrayOutput {
+	return i.ToGetClusterEksConfigV2NodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEksConfigV2NodeGroupArray) ToGetClusterEksConfigV2NodeGroupArrayOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEksConfigV2NodeGroupArrayOutput)
+}
+
+type GetClusterEksConfigV2NodeGroupOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEksConfigV2NodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) ToGetClusterEksConfigV2NodeGroupOutput() GetClusterEksConfigV2NodeGroupOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) ToGetClusterEksConfigV2NodeGroupOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) DesiredSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *int { return v.DesiredSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) Ec2SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *string { return v.Ec2SshKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) Gpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) Labels for Node Pool object (map)
+func (o GetClusterEksConfigV2NodeGroupOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *int { return v.MinSize }).(pulumi.IntPtrOutput)
+}
+
+// The name of the Cluster (string)
+func (o GetClusterEksConfigV2NodeGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetClusterEksConfigV2NodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEksConfigV2NodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEksConfigV2NodeGroup)(nil)).Elem()
+}
+
+func (o GetClusterEksConfigV2NodeGroupArrayOutput) ToGetClusterEksConfigV2NodeGroupArrayOutput() GetClusterEksConfigV2NodeGroupArrayOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupArrayOutput) ToGetClusterEksConfigV2NodeGroupArrayOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupArrayOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupArrayOutput) Index(i pulumi.IntInput) GetClusterEksConfigV2NodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEksConfigV2NodeGroup {
+		return vs[0].([]GetClusterEksConfigV2NodeGroup)[vs[1].(int)]
+	}).(GetClusterEksConfigV2NodeGroupOutput)
+}
+
 type GetClusterGkeConfig struct {
 	ClusterIpv4Cidr string `pulumi:"clusterIpv4Cidr"`
 	Credential      string `pulumi:"credential"`
@@ -66391,6 +67281,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterTemplateQuestionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterEksConfigOutput{})
 	pulumi.RegisterOutputType(ClusterEksConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2Output{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2PtrOutput{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupOutput{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterK3sConfigOutput{})
@@ -66763,6 +67657,9 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterTemplateQuestionOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterTemplateQuestionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterEksConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterEksConfigV2Output{})
+	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupOutput{})
+	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterK3sConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterK3sConfigUpgradeStrategyOutput{})

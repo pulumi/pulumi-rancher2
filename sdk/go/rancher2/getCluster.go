@@ -75,8 +75,9 @@ type LookupClusterResult struct {
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver string `pulumi:"driver"`
 	// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	EksConfig             GetClusterEksConfig `pulumi:"eksConfig"`
-	EnableClusterAlerting bool                `pulumi:"enableClusterAlerting"`
+	EksConfig             GetClusterEksConfig   `pulumi:"eksConfig"`
+	EksConfigV2           GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
+	EnableClusterAlerting bool                  `pulumi:"enableClusterAlerting"`
 	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring bool `pulumi:"enableClusterMonitoring"`
 	// (Computed) Enable project network isolation. Default `false` (bool)

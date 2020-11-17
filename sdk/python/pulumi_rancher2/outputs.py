@@ -33,6 +33,8 @@ __all__ = [
     'ClusterClusterTemplateAnswers',
     'ClusterClusterTemplateQuestion',
     'ClusterEksConfig',
+    'ClusterEksConfigV2',
+    'ClusterEksConfigV2NodeGroup',
     'ClusterGkeConfig',
     'ClusterK3sConfig',
     'ClusterK3sConfigUpgradeStrategy',
@@ -225,6 +227,8 @@ __all__ = [
     'GetClusterClusterTemplateAnswersResult',
     'GetClusterClusterTemplateQuestionResult',
     'GetClusterEksConfigResult',
+    'GetClusterEksConfigV2Result',
+    'GetClusterEksConfigV2NodeGroupResult',
     'GetClusterGkeConfigResult',
     'GetClusterK3sConfigResult',
     'GetClusterK3sConfigUpgradeStrategyResult',
@@ -1810,16 +1814,16 @@ class ClusterEksConfig(dict):
         :param str ami: AMI ID to use for the worker nodes instead of the default (string)
         :param bool associate_worker_node_public_ip: Associate public ip EKS worker nodes. Default `true` (bool)
         :param int desired_nodes: The desired number of worker nodes. Just for Rancher v2.3.x and above. Default `3` (int)
-        :param str instance_type: The type of machine to use for worker nodes. Default `t2.medium` (string)
+        :param str instance_type: The EKS node group instance type. Default: `t3.medium` (string)
         :param str key_pair_name: Allow user to specify key name to use. Just for Rancher v2.2.7 and above (string)
         :param int maximum_nodes: The maximum number of worker nodes. Default `3` (int)
         :param int minimum_nodes: The minimum number of worker nodes. Default `1` (int)
         :param int node_volume_size: The volume size for each node. Default `20` (int)
         :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-        :param Sequence[str] security_groups: List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
-        :param str service_role: The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        :param Sequence[str] security_groups: List of security groups to use for the cluster (list)
+        :param str service_role: The AWS service role to use (string)
         :param str session_token: A session token to use with the client key and secret if applicable (string)
-        :param Sequence[str] subnets: List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        :param Sequence[str] subnets: List of subnets in the virtual network to use (list)
         :param str user_data: Pass user-data to the nodes to perform automated configuration tasks (string)
         :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
         """
@@ -1916,7 +1920,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
         """
-        The type of machine to use for worker nodes. Default `t2.medium` (string)
+        The EKS node group instance type. Default: `t3.medium` (string)
         """
         return pulumi.get(self, "instance_type")
 
@@ -1964,7 +1968,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[Sequence[str]]:
         """
-        List of security groups to use for the cluster. If it's not specified Rancher will create a new security group (list)
+        List of security groups to use for the cluster (list)
         """
         return pulumi.get(self, "security_groups")
 
@@ -1972,7 +1976,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="serviceRole")
     def service_role(self) -> Optional[str]:
         """
-        The service role to use to perform the cluster operations in AWS. If it's not specified Rancher will create a new service role (string)
+        The AWS service role to use (string)
         """
         return pulumi.get(self, "service_role")
 
@@ -1988,7 +1992,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter
     def subnets(self) -> Optional[Sequence[str]]:
         """
-        List of subnets in the virtual network to use. If it's not specified Rancher will create 3 news subnets (list)
+        List of subnets in the virtual network to use (list)
         """
         return pulumi.get(self, "subnets")
 
@@ -2007,6 +2011,336 @@ class ClusterEksConfig(dict):
         The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
         """
         return pulumi.get(self, "virtual_network")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterEksConfigV2(dict):
+    def __init__(__self__, *,
+                 cloud_credential_id: str,
+                 imported: Optional[bool] = None,
+                 kms_key: Optional[str] = None,
+                 kubernetes_version: Optional[str] = None,
+                 logging_types: Optional[Sequence[str]] = None,
+                 name: Optional[str] = None,
+                 node_groups: Optional[Sequence['outputs.ClusterEksConfigV2NodeGroup']] = None,
+                 private_access: Optional[bool] = None,
+                 public_access: Optional[bool] = None,
+                 public_access_sources: Optional[Sequence[str]] = None,
+                 region: Optional[str] = None,
+                 secrets_encryption: Optional[bool] = None,
+                 security_groups: Optional[Sequence[str]] = None,
+                 service_role: Optional[str] = None,
+                 subnets: Optional[Sequence[str]] = None,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str cloud_credential_id: The EKS cloud_credential id (string)
+        :param bool imported: Set to `true` to import EKS cluster. Default: `false` (bool)
+        :param str kms_key: The AWS kms key to use (string)
+        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param Sequence[str] logging_types: The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+        :param str name: Name of cluster registration token (string)
+        :param Sequence['ClusterEksConfigV2NodeGroupArgs'] node_groups: The EKS cluster name to import. Required to create a new cluster (list)
+        :param bool private_access: The EKS cluster has private access. Default: `false` (bool)
+        :param bool public_access: The EKS cluster has public access. Default: `true` (bool)
+        :param Sequence[str] public_access_sources: The EKS cluster public access sources (map)
+        :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param bool secrets_encryption: Enable EKS cluster secret encryption. Default: `false` (bool)
+        :param Sequence[str] security_groups: List of security groups to use for the cluster (list)
+        :param str service_role: The AWS service role to use (string)
+        :param Sequence[str] subnets: List of subnets in the virtual network to use (list)
+        :param Mapping[str, Any] tags: The EKS cluster tags (map)
+        """
+        pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if logging_types is not None:
+            pulumi.set(__self__, "logging_types", logging_types)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_groups is not None:
+            pulumi.set(__self__, "node_groups", node_groups)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+        if public_access_sources is not None:
+            pulumi.set(__self__, "public_access_sources", public_access_sources)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secrets_encryption is not None:
+            pulumi.set(__self__, "secrets_encryption", secrets_encryption)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if service_role is not None:
+            pulumi.set(__self__, "service_role", service_role)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="cloudCredentialId")
+    def cloud_credential_id(self) -> str:
+        """
+        The EKS cloud_credential id (string)
+        """
+        return pulumi.get(self, "cloud_credential_id")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        """
+        Set to `true` to import EKS cluster. Default: `false` (bool)
+        """
+        return pulumi.get(self, "imported")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        """
+        The AWS kms key to use (string)
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[str]:
+        """
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter(name="loggingTypes")
+    def logging_types(self) -> Optional[Sequence[str]]:
+        """
+        The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+        """
+        return pulumi.get(self, "logging_types")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeGroups")
+    def node_groups(self) -> Optional[Sequence['outputs.ClusterEksConfigV2NodeGroup']]:
+        """
+        The EKS cluster name to import. Required to create a new cluster (list)
+        """
+        return pulumi.get(self, "node_groups")
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional[bool]:
+        """
+        The EKS cluster has private access. Default: `false` (bool)
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[bool]:
+        """
+        The EKS cluster has public access. Default: `true` (bool)
+        """
+        return pulumi.get(self, "public_access")
+
+    @property
+    @pulumi.getter(name="publicAccessSources")
+    def public_access_sources(self) -> Optional[Sequence[str]]:
+        """
+        The EKS cluster public access sources (map)
+        """
+        return pulumi.get(self, "public_access_sources")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretsEncryption")
+    def secrets_encryption(self) -> Optional[bool]:
+        """
+        Enable EKS cluster secret encryption. Default: `false` (bool)
+        """
+        return pulumi.get(self, "secrets_encryption")
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[Sequence[str]]:
+        """
+        List of security groups to use for the cluster (list)
+        """
+        return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="serviceRole")
+    def service_role(self) -> Optional[str]:
+        """
+        The AWS service role to use (string)
+        """
+        return pulumi.get(self, "service_role")
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence[str]]:
+        """
+        List of subnets in the virtual network to use (list)
+        """
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The EKS cluster tags (map)
+        """
+        return pulumi.get(self, "tags")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterEksConfigV2NodeGroup(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 desired_size: Optional[int] = None,
+                 disk_size: Optional[int] = None,
+                 ec2_ssh_key: Optional[str] = None,
+                 gpu: Optional[bool] = None,
+                 instance_type: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 max_size: Optional[int] = None,
+                 min_size: Optional[int] = None,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str name: Name of cluster registration token (string)
+        :param int desired_size: The EKS node group desired size. Default: `2` (int)
+        :param int disk_size: The EKS node group disk size (Gb). Default: `20` (int)
+        :param str ec2_ssh_key: The EKS node group ssh key (string)
+        :param bool gpu: Set true to EKS use gpu. Default: `false` (bool)
+        :param str instance_type: The EKS node group instance type. Default: `t3.medium` (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param int max_size: The EKS node group maximum size. Default `2` (int)
+        :param int min_size: The EKS node group maximum size. Default `2` (int)
+        :param Mapping[str, Any] tags: The EKS cluster tags (map)
+        """
+        pulumi.set(__self__, "name", name)
+        if desired_size is not None:
+            pulumi.set(__self__, "desired_size", desired_size)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if ec2_ssh_key is not None:
+            pulumi.set(__self__, "ec2_ssh_key", ec2_ssh_key)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="desiredSize")
+    def desired_size(self) -> Optional[int]:
+        """
+        The EKS node group desired size. Default: `2` (int)
+        """
+        return pulumi.get(self, "desired_size")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[int]:
+        """
+        The EKS node group disk size (Gb). Default: `20` (int)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="ec2SshKey")
+    def ec2_ssh_key(self) -> Optional[str]:
+        """
+        The EKS node group ssh key (string)
+        """
+        return pulumi.get(self, "ec2_ssh_key")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[bool]:
+        """
+        Set true to EKS use gpu. Default: `false` (bool)
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        The EKS node group instance type. Default: `t3.medium` (string)
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[int]:
+        """
+        The EKS node group maximum size. Default `2` (int)
+        """
+        return pulumi.get(self, "max_size")
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[int]:
+        """
+        The EKS node group maximum size. Default `2` (int)
+        """
+        return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The EKS cluster tags (map)
+        """
+        return pulumi.get(self, "tags")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -6893,7 +7227,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
         :param str format: Audit log format. Default: 'json' (string)
         :param int max_age: Audit log max age. Default: `30` (int)
         :param int max_backup: Audit log max backup. Default: `10` (int)
-        :param int max_size: Audit log max size. Default: `100` (int)
+        :param int max_size: The EKS node group maximum size. Default `2` (int)
         :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
         """
@@ -6938,7 +7272,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[int]:
         """
-        Audit log max size. Default: `100` (int)
+        The EKS node group maximum size. Default `2` (int)
         """
         return pulumi.get(self, "max_size")
 
@@ -16687,6 +17021,235 @@ class GetClusterEksConfigResult(dict):
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> Optional[str]:
         return pulumi.get(self, "virtual_network")
+
+
+@pulumi.output_type
+class GetClusterEksConfigV2Result(dict):
+    def __init__(__self__, *,
+                 cloud_credential_id: str,
+                 kubernetes_version: str,
+                 name: str,
+                 node_groups: Sequence['outputs.GetClusterEksConfigV2NodeGroupResult'],
+                 imported: Optional[bool] = None,
+                 kms_key: Optional[str] = None,
+                 logging_types: Optional[Sequence[str]] = None,
+                 private_access: Optional[bool] = None,
+                 public_access: Optional[bool] = None,
+                 public_access_sources: Optional[Sequence[str]] = None,
+                 region: Optional[str] = None,
+                 secrets_encryption: Optional[bool] = None,
+                 security_groups: Optional[Sequence[str]] = None,
+                 service_role: Optional[str] = None,
+                 subnets: Optional[Sequence[str]] = None,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_groups", node_groups)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if logging_types is not None:
+            pulumi.set(__self__, "logging_types", logging_types)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+        if public_access_sources is not None:
+            pulumi.set(__self__, "public_access_sources", public_access_sources)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secrets_encryption is not None:
+            pulumi.set(__self__, "secrets_encryption", secrets_encryption)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if service_role is not None:
+            pulumi.set(__self__, "service_role", service_role)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="cloudCredentialId")
+    def cloud_credential_id(self) -> str:
+        return pulumi.get(self, "cloud_credential_id")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> str:
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeGroups")
+    def node_groups(self) -> Sequence['outputs.GetClusterEksConfigV2NodeGroupResult']:
+        return pulumi.get(self, "node_groups")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        return pulumi.get(self, "imported")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="loggingTypes")
+    def logging_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "logging_types")
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional[bool]:
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[bool]:
+        return pulumi.get(self, "public_access")
+
+    @property
+    @pulumi.getter(name="publicAccessSources")
+    def public_access_sources(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "public_access_sources")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretsEncryption")
+    def secrets_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "secrets_encryption")
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="serviceRole")
+    def service_role(self) -> Optional[str]:
+        return pulumi.get(self, "service_role")
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetClusterEksConfigV2NodeGroupResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 desired_size: Optional[int] = None,
+                 disk_size: Optional[int] = None,
+                 ec2_ssh_key: Optional[str] = None,
+                 gpu: Optional[bool] = None,
+                 instance_type: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 max_size: Optional[int] = None,
+                 min_size: Optional[int] = None,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        """
+        pulumi.set(__self__, "name", name)
+        if desired_size is not None:
+            pulumi.set(__self__, "desired_size", desired_size)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if ec2_ssh_key is not None:
+            pulumi.set(__self__, "ec2_ssh_key", ec2_ssh_key)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="desiredSize")
+    def desired_size(self) -> Optional[int]:
+        return pulumi.get(self, "desired_size")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[int]:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="ec2SshKey")
+    def ec2_ssh_key(self) -> Optional[str]:
+        return pulumi.get(self, "ec2_ssh_key")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[bool]:
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[int]:
+        return pulumi.get(self, "max_size")
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[int]:
+        return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

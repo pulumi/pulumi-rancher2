@@ -115,6 +115,7 @@ namespace Pulumi.Rancher2
         /// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterEksConfigResult EksConfig;
+        public readonly Outputs.GetClusterEksConfigV2Result EksConfigV2;
         public readonly bool EnableClusterAlerting;
         /// <summary>
         /// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
@@ -186,6 +187,8 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterEksConfigResult eksConfig,
 
+            Outputs.GetClusterEksConfigV2Result eksConfigV2,
+
             bool enableClusterAlerting,
 
             bool enableClusterMonitoring,
@@ -226,6 +229,7 @@ namespace Pulumi.Rancher2
             Description = description;
             Driver = driver;
             EksConfig = eksConfig;
+            EksConfigV2 = eksConfigV2;
             EnableClusterAlerting = enableClusterAlerting;
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;

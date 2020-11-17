@@ -64,7 +64,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[str] groups_field: KeyCloak group field (string)
         :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
-        :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+        :param pulumi.Input[str] rancher_api_host: Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: KeyCloak SP cert (string)
         :param pulumi.Input[str] sp_key: KeyCloak SP key (string)
         :param pulumi.Input[str] uid_field: KeyCloak UID field (string)
@@ -159,7 +159,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
-        :param pulumi.Input[str] rancher_api_host: Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+        :param pulumi.Input[str] rancher_api_host: Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: KeyCloak SP cert (string)
         :param pulumi.Input[str] sp_key: KeyCloak SP key (string)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
@@ -263,7 +263,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     @pulumi.getter(name="rancherApiHost")
     def rancher_api_host(self) -> pulumi.Output[str]:
         """
-        Rancher url. Schema needs to be specified, `https://<RANCHER_API_HOST>` (string)
+        Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         """
         return pulumi.get(self, "rancher_api_host")
 

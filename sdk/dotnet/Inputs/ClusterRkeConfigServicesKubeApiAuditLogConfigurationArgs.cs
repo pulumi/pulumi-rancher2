@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxBackup { get; set; }
 
         /// <summary>
-        /// Audit log max size. Default: `100` (int)
+        /// The EKS node group maximum size. Default `2` (int)
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
