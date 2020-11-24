@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -175,6 +176,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cluster Template can be imported using the rancher Cluster Template ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
+// ```
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
@@ -292,4 +301,43 @@ type ClusterTemplateArgs struct {
 
 func (ClusterTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterTemplateArgs)(nil)).Elem()
+}
+
+type ClusterTemplateInput interface {
+	pulumi.Input
+
+	ToClusterTemplateOutput() ClusterTemplateOutput
+	ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput
+}
+
+func (ClusterTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplate)(nil)).Elem()
+}
+
+func (i ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
+	return i.ToClusterTemplateOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
+}
+
+type ClusterTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateOutput)(nil)).Elem()
+}
+
+func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
+	return o
+}
+
+func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterTemplateOutput{})
 }

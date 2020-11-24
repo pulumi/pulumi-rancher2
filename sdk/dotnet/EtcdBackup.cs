@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Etcd Backup can be imported using the Rancher etcd backup ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &amp;lt;ETCD_BACKUP_ID&amp;gt;
+    /// ```
+    /// </summary>
     public partial class EtcdBackup : Pulumi.CustomResource
     {
         /// <summary>

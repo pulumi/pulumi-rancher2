@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -394,4 +395,43 @@ type AuthConfigFreeIpaArgs struct {
 
 func (AuthConfigFreeIpaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigFreeIpaArgs)(nil)).Elem()
+}
+
+type AuthConfigFreeIpaInput interface {
+	pulumi.Input
+
+	ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput
+	ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput
+}
+
+func (AuthConfigFreeIpa) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigFreeIpa)(nil)).Elem()
+}
+
+func (i AuthConfigFreeIpa) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput {
+	return i.ToAuthConfigFreeIpaOutputWithContext(context.Background())
+}
+
+func (i AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaOutput)
+}
+
+type AuthConfigFreeIpaOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigFreeIpaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigFreeIpaOutput)(nil)).Elem()
+}
+
+func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigFreeIpaOutput{})
 }

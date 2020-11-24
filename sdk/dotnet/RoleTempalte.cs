@@ -91,6 +91,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Role Template can be imported using the Rancher Role Template ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &amp;lt;role_template_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class RoleTempalte : Pulumi.CustomResource
     {

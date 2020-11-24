@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Node Driver can be imported using the Rancher Node Driver ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
 // ```
 type NodeDriver struct {
 	pulumi.CustomResourceState
@@ -213,4 +222,43 @@ type NodeDriverArgs struct {
 
 func (NodeDriverArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeDriverArgs)(nil)).Elem()
+}
+
+type NodeDriverInput interface {
+	pulumi.Input
+
+	ToNodeDriverOutput() NodeDriverOutput
+	ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput
+}
+
+func (NodeDriver) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeDriver)(nil)).Elem()
+}
+
+func (i NodeDriver) ToNodeDriverOutput() NodeDriverOutput {
+	return i.ToNodeDriverOutputWithContext(context.Background())
+}
+
+func (i NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverOutput)
+}
+
+type NodeDriverOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeDriverOutput)(nil)).Elem()
+}
+
+func (o NodeDriverOutput) ToNodeDriverOutput() NodeDriverOutput {
+	return o
+}
+
+func (o NodeDriverOutput) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodeDriverOutput{})
 }

@@ -29,7 +29,14 @@ class EtcdBackup(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a EtcdBackup resource with the given unique name, props, and options.
+        ## Import
+
+        Etcd Backup can be imported using the Rancher etcd backup ID
+
+        ```sh
+         $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)

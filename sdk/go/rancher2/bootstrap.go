@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -156,4 +157,43 @@ type BootstrapArgs struct {
 
 func (BootstrapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bootstrapArgs)(nil)).Elem()
+}
+
+type BootstrapInput interface {
+	pulumi.Input
+
+	ToBootstrapOutput() BootstrapOutput
+	ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput
+}
+
+func (Bootstrap) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bootstrap)(nil)).Elem()
+}
+
+func (i Bootstrap) ToBootstrapOutput() BootstrapOutput {
+	return i.ToBootstrapOutputWithContext(context.Background())
+}
+
+func (i Bootstrap) ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootstrapOutput)
+}
+
+type BootstrapOutput struct {
+	*pulumi.OutputState
+}
+
+func (BootstrapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootstrapOutput)(nil)).Elem()
+}
+
+func (o BootstrapOutput) ToBootstrapOutput() BootstrapOutput {
+	return o
+}
+
+func (o BootstrapOutput) ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BootstrapOutput{})
 }

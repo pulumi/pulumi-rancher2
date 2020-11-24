@@ -15,7 +15,7 @@ __all__ = [
     'get_role_tempalte',
 ]
 
-warnings.warn("rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate", DeprecationWarning)
+warnings.warn("""rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate""", DeprecationWarning)
 
 @pulumi.output_type
 class GetRoleTempalteResult:

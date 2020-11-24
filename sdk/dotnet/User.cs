@@ -41,6 +41,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Users can be imported using the Rancher User ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/user:User foo &amp;lt;user_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

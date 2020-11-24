@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Project Logging can be imported using the Rancher Project Logging ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &lt;project_logging_id&gt;
 // ```
 type ProjectLogging struct {
 	pulumi.CustomResourceState
@@ -248,4 +257,43 @@ type ProjectLoggingArgs struct {
 
 func (ProjectLoggingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLoggingArgs)(nil)).Elem()
+}
+
+type ProjectLoggingInput interface {
+	pulumi.Input
+
+	ToProjectLoggingOutput() ProjectLoggingOutput
+	ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput
+}
+
+func (ProjectLogging) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLogging)(nil)).Elem()
+}
+
+func (i ProjectLogging) ToProjectLoggingOutput() ProjectLoggingOutput {
+	return i.ToProjectLoggingOutputWithContext(context.Background())
+}
+
+func (i ProjectLogging) ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingOutput)
+}
+
+type ProjectLoggingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLoggingOutput)(nil)).Elem()
+}
+
+func (o ProjectLoggingOutput) ToProjectLoggingOutput() ProjectLoggingOutput {
+	return o
+}
+
+func (o ProjectLoggingOutput) ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectLoggingOutput{})
 }

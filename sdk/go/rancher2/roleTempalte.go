@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -85,6 +86,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Role Template can be imported using the Rancher Role Template ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
 // ```
 type RoleTempalte struct {
 	pulumi.CustomResourceState
@@ -263,4 +272,43 @@ type RoleTempalteArgs struct {
 
 func (RoleTempalteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleTempalteArgs)(nil)).Elem()
+}
+
+type RoleTempalteInput interface {
+	pulumi.Input
+
+	ToRoleTempalteOutput() RoleTempalteOutput
+	ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput
+}
+
+func (RoleTempalte) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleTempalte)(nil)).Elem()
+}
+
+func (i RoleTempalte) ToRoleTempalteOutput() RoleTempalteOutput {
+	return i.ToRoleTempalteOutputWithContext(context.Background())
+}
+
+func (i RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteOutput)
+}
+
+type RoleTempalteOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleTempalteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleTempalteOutput)(nil)).Elem()
+}
+
+func (o RoleTempalteOutput) ToRoleTempalteOutput() RoleTempalteOutput {
+	return o
+}
+
+func (o RoleTempalteOutput) ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleTempalteOutput{})
 }

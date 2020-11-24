@@ -46,6 +46,14 @@ class ProjectAlertGroup(pulumi.CustomResource):
             repeat_interval_seconds=3600)
         ```
 
+        ## Import
+
+        Project Alert Group can be imported using the Rancher project alert group ID
+
+        ```sh
+         $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The project alert group annotations (map)

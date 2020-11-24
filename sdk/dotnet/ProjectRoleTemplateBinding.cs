@@ -33,6 +33,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class ProjectRoleTemplateBinding : Pulumi.CustomResource
     {

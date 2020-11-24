@@ -39,6 +39,14 @@ class Setting(pulumi.CustomResource):
         foo = rancher2.Setting("foo", value="<VALUE>")
         ```
 
+        ## Import
+
+        Setting can be imported using the Rancher setting ID.
+
+        ```sh
+         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for setting object (map)

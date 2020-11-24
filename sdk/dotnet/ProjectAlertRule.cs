@@ -70,6 +70,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project Alert Rule can be imported using the Rancher project alert rule ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &amp;lt;project_alert_rule_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class ProjectAlertRule : Pulumi.CustomResource
     {

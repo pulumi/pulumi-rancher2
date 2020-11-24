@@ -157,6 +157,14 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             volumes=["azureFile"])
         ```
 
+        ## Import
+
+        PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
+
+        ```sh
+         $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_privilege_escalation: = (Optional)

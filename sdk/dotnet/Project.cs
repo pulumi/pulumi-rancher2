@@ -118,6 +118,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Projects can be imported using the Rancher Project ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

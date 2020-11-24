@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Catalogs can be imported using the Rancher Catalog ID and its scope.
+//
+// ```sh
+//  $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
 // ```
 type Catalog struct {
 	pulumi.CustomResourceState
@@ -242,4 +251,43 @@ type CatalogArgs struct {
 
 func (CatalogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogArgs)(nil)).Elem()
+}
+
+type CatalogInput interface {
+	pulumi.Input
+
+	ToCatalogOutput() CatalogOutput
+	ToCatalogOutputWithContext(ctx context.Context) CatalogOutput
+}
+
+func (Catalog) ElementType() reflect.Type {
+	return reflect.TypeOf((*Catalog)(nil)).Elem()
+}
+
+func (i Catalog) ToCatalogOutput() CatalogOutput {
+	return i.ToCatalogOutputWithContext(context.Background())
+}
+
+func (i Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogOutput)
+}
+
+type CatalogOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogOutput)(nil)).Elem()
+}
+
+func (o CatalogOutput) ToCatalogOutput() CatalogOutput {
+	return o
+}
+
+func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CatalogOutput{})
 }

@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -394,4 +395,43 @@ type AuthConfigOpenLdapArgs struct {
 
 func (AuthConfigOpenLdapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOpenLdapArgs)(nil)).Elem()
+}
+
+type AuthConfigOpenLdapInput interface {
+	pulumi.Input
+
+	ToAuthConfigOpenLdapOutput() AuthConfigOpenLdapOutput
+	ToAuthConfigOpenLdapOutputWithContext(ctx context.Context) AuthConfigOpenLdapOutput
+}
+
+func (AuthConfigOpenLdap) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigOpenLdap)(nil)).Elem()
+}
+
+func (i AuthConfigOpenLdap) ToAuthConfigOpenLdapOutput() AuthConfigOpenLdapOutput {
+	return i.ToAuthConfigOpenLdapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOpenLdap) ToAuthConfigOpenLdapOutputWithContext(ctx context.Context) AuthConfigOpenLdapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapOutput)
+}
+
+type AuthConfigOpenLdapOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigOpenLdapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigOpenLdapOutput)(nil)).Elem()
+}
+
+func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutput() AuthConfigOpenLdapOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutputWithContext(ctx context.Context) AuthConfigOpenLdapOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigOpenLdapOutput{})
 }

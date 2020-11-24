@@ -15,6 +15,16 @@ namespace Pulumi.Rancher2
     /// Depending of the availability, there are 2 types of Rancher v2 secrets:
     /// - Project secret: Available to all namespaces in the `project_id`
     /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+    /// 
+    /// ## Import
+    /// 
+    /// Secrets can be imported using the secret ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;`
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/secret:Secret foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;secret_id&amp;gt;
+    /// ```
+    /// 
+    ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {

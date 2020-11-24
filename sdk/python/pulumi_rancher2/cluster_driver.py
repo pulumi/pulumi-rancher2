@@ -31,6 +31,14 @@ class ClusterDriver(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
 
+        ## Import
+
+        Cluster Driver can be imported using the Rancher Cluster Driver ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Specify the cluster driver state (bool)

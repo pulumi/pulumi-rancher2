@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Project Alert Group can be imported using the Rancher project alert group ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
 // ```
 type ProjectAlertGroup struct {
 	pulumi.CustomResourceState
@@ -181,4 +190,43 @@ type ProjectAlertGroupArgs struct {
 
 func (ProjectAlertGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAlertGroupArgs)(nil)).Elem()
+}
+
+type ProjectAlertGroupInput interface {
+	pulumi.Input
+
+	ToProjectAlertGroupOutput() ProjectAlertGroupOutput
+	ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput
+}
+
+func (ProjectAlertGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAlertGroup)(nil)).Elem()
+}
+
+func (i ProjectAlertGroup) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
+	return i.ToProjectAlertGroupOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupOutput)
+}
+
+type ProjectAlertGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectAlertGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAlertGroupOutput)(nil)).Elem()
+}
+
+func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
+	return o
+}
+
+func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectAlertGroupOutput{})
 }

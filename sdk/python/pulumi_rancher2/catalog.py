@@ -53,6 +53,14 @@ class Catalog(pulumi.CustomResource):
             url="https://<CATALOG_URL>")
         ```
 
+        ## Import
+
+        Catalogs can be imported using the Rancher Catalog ID and its scope.
+
+        ```sh
+         $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)

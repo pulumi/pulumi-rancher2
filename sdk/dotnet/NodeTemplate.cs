@@ -89,6 +89,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Node Template can be imported using the Rancher Node Template ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &amp;lt;node_template_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {

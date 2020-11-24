@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -135,6 +136,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
+//
+// ```sh
+//  $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
 // ```
 type PodSecurityPolicyTemplate struct {
 	pulumi.CustomResourceState
@@ -467,4 +476,43 @@ type PodSecurityPolicyTemplateArgs struct {
 
 func (PodSecurityPolicyTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*podSecurityPolicyTemplateArgs)(nil)).Elem()
+}
+
+type PodSecurityPolicyTemplateInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput
+	ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput
+}
+
+func (PodSecurityPolicyTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplate)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput {
+	return i.ToPodSecurityPolicyTemplateOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateOutput)
+}
+
+type PodSecurityPolicyTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (PodSecurityPolicyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplateOutput)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput {
+	return o
+}
+
+func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PodSecurityPolicyTemplateOutput{})
 }

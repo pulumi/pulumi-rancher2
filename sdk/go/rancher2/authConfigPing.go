@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -260,4 +261,43 @@ type AuthConfigPingArgs struct {
 
 func (AuthConfigPingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigPingArgs)(nil)).Elem()
+}
+
+type AuthConfigPingInput interface {
+	pulumi.Input
+
+	ToAuthConfigPingOutput() AuthConfigPingOutput
+	ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput
+}
+
+func (AuthConfigPing) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigPing)(nil)).Elem()
+}
+
+func (i AuthConfigPing) ToAuthConfigPingOutput() AuthConfigPingOutput {
+	return i.ToAuthConfigPingOutputWithContext(context.Background())
+}
+
+func (i AuthConfigPing) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingOutput)
+}
+
+type AuthConfigPingOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigPingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigPingOutput)(nil)).Elem()
+}
+
+func (o AuthConfigPingOutput) ToAuthConfigPingOutput() AuthConfigPingOutput {
+	return o
+}
+
+func (o AuthConfigPingOutput) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigPingOutput{})
 }

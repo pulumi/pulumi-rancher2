@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,6 +71,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Project Alert Rule can be imported using the Rancher project alert rule ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
 // ```
 type ProjectAlertRule struct {
 	pulumi.CustomResourceState
@@ -258,4 +267,43 @@ type ProjectAlertRuleArgs struct {
 
 func (ProjectAlertRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAlertRuleArgs)(nil)).Elem()
+}
+
+type ProjectAlertRuleInput interface {
+	pulumi.Input
+
+	ToProjectAlertRuleOutput() ProjectAlertRuleOutput
+	ToProjectAlertRuleOutputWithContext(ctx context.Context) ProjectAlertRuleOutput
+}
+
+func (ProjectAlertRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAlertRule)(nil)).Elem()
+}
+
+func (i ProjectAlertRule) ToProjectAlertRuleOutput() ProjectAlertRuleOutput {
+	return i.ToProjectAlertRuleOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertRule) ToProjectAlertRuleOutputWithContext(ctx context.Context) ProjectAlertRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleOutput)
+}
+
+type ProjectAlertRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectAlertRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAlertRuleOutput)(nil)).Elem()
+}
+
+func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutput() ProjectAlertRuleOutput {
+	return o
+}
+
+func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.Context) ProjectAlertRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectAlertRuleOutput{})
 }

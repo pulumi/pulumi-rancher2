@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -59,6 +58,14 @@ import * as utilities from "./utilities";
  *         zone: "<ZONE>",
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Node Template can be imported using the Rancher Node Template ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &lt;node_template_id&gt;
  * ```
  */
 export class NodeTemplate extends pulumi.CustomResource {

@@ -501,6 +501,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Clusters can be imported using the Rancher Cluster ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/cluster:Cluster foo &amp;lt;CLUSTER_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

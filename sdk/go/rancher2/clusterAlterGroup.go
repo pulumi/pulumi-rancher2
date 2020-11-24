@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -155,4 +156,43 @@ type ClusterAlterGroupArgs struct {
 
 func (ClusterAlterGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlterGroupArgs)(nil)).Elem()
+}
+
+type ClusterAlterGroupInput interface {
+	pulumi.Input
+
+	ToClusterAlterGroupOutput() ClusterAlterGroupOutput
+	ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput
+}
+
+func (ClusterAlterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterGroup)(nil)).Elem()
+}
+
+func (i ClusterAlterGroup) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
+	return i.ToClusterAlterGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterAlterGroup) ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterGroupOutput)
+}
+
+type ClusterAlterGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterGroupOutput)(nil)).Elem()
+}
+
+func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
+	return o
+}
+
+func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterAlterGroupOutput{})
 }

@@ -56,6 +56,14 @@ class ProjectLogging(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Project Logging can be imported using the Rancher Project Logging ID
+
+        ```sh
+         $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &lt;project_logging_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Project Logging object (map)

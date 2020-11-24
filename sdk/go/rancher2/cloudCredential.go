@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -196,4 +197,43 @@ type CloudCredentialArgs struct {
 
 func (CloudCredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudCredentialArgs)(nil)).Elem()
+}
+
+type CloudCredentialInput interface {
+	pulumi.Input
+
+	ToCloudCredentialOutput() CloudCredentialOutput
+	ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput
+}
+
+func (CloudCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredential)(nil)).Elem()
+}
+
+func (i CloudCredential) ToCloudCredentialOutput() CloudCredentialOutput {
+	return i.ToCloudCredentialOutputWithContext(context.Background())
+}
+
+func (i CloudCredential) ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialOutput)
+}
+
+type CloudCredentialOutput struct {
+	*pulumi.OutputState
+}
+
+func (CloudCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredentialOutput)(nil)).Elem()
+}
+
+func (o CloudCredentialOutput) ToCloudCredentialOutput() CloudCredentialOutput {
+	return o
+}
+
+func (o CloudCredentialOutput) ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CloudCredentialOutput{})
 }

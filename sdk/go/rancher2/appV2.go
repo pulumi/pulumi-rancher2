@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,14 @@ import (
 )
 
 // Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
+//
+// ## Import
+//
+// V2 apps can be imported using the Rancher cluster ID and App V2 name.
+//
+// ```sh
+//  $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+// ```
 type AppV2 struct {
 	pulumi.CustomResourceState
 
@@ -230,4 +239,43 @@ type AppV2Args struct {
 
 func (AppV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*appV2Args)(nil)).Elem()
+}
+
+type AppV2Input interface {
+	pulumi.Input
+
+	ToAppV2Output() AppV2Output
+	ToAppV2OutputWithContext(ctx context.Context) AppV2Output
+}
+
+func (AppV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppV2)(nil)).Elem()
+}
+
+func (i AppV2) ToAppV2Output() AppV2Output {
+	return i.ToAppV2OutputWithContext(context.Background())
+}
+
+func (i AppV2) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(AppV2Output)
+}
+
+type AppV2Output struct {
+	*pulumi.OutputState
+}
+
+func (AppV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppV2Output)(nil)).Elem()
+}
+
+func (o AppV2Output) ToAppV2Output() AppV2Output {
+	return o
+}
+
+func (o AppV2Output) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppV2Output{})
 }

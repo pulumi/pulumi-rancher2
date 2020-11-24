@@ -74,6 +74,16 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Registries can be imported using the registry ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;`
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/registry:Registry foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;registry_id&amp;gt;
+    /// ```
+    /// 
+    ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced registry.
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {

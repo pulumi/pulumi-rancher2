@@ -10,6 +10,16 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 secrets:
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
+ *
+ * ## Import
+ *
+ * Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
+ * ```
+ *
+ *  `<namespace_id>` is optional, just needed for namespaced secret.
  */
 export class Secret extends pulumi.CustomResource {
     /**

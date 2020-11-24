@@ -56,6 +56,14 @@ class ClusterLogging(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Cluster Logging can be imported using the Rancher Cluster Logging ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &lt;CLUSTER_LOGGING_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Cluster Logging object (map)

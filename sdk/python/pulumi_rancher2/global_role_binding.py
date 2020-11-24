@@ -43,6 +43,14 @@ class GlobalRoleBinding(pulumi.CustomResource):
             group_principal_id="local://g-XXXXX")
         ```
 
+        ## Import
+
+        Global Role Bindings can be imported using the Rancher Global Role Binding ID
+
+        ```sh
+         $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)

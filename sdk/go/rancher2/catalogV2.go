@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,14 @@ import (
 )
 
 // Provides a Rancher Catalog v2 resource. This can be used to create cluster helm catalogs for Rancher v2 environments and retrieve their information. Catalog v2 resource is available at Rancher v2.5.x and above.
+//
+// ## Import
+//
+// V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
+//
+// ```sh
+//  $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+// ```
 type CatalogV2 struct {
 	pulumi.CustomResourceState
 
@@ -211,4 +220,43 @@ type CatalogV2Args struct {
 
 func (CatalogV2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogV2Args)(nil)).Elem()
+}
+
+type CatalogV2Input interface {
+	pulumi.Input
+
+	ToCatalogV2Output() CatalogV2Output
+	ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output
+}
+
+func (CatalogV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogV2)(nil)).Elem()
+}
+
+func (i CatalogV2) ToCatalogV2Output() CatalogV2Output {
+	return i.ToCatalogV2OutputWithContext(context.Background())
+}
+
+func (i CatalogV2) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2Output)
+}
+
+type CatalogV2Output struct {
+	*pulumi.OutputState
+}
+
+func (CatalogV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogV2Output)(nil)).Elem()
+}
+
+func (o CatalogV2Output) ToCatalogV2Output() CatalogV2Output {
+	return o
+}
+
+func (o CatalogV2Output) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CatalogV2Output{})
 }

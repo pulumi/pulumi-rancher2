@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -260,4 +261,43 @@ type AuthConfigOktaArgs struct {
 
 func (AuthConfigOktaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOktaArgs)(nil)).Elem()
+}
+
+type AuthConfigOktaInput interface {
+	pulumi.Input
+
+	ToAuthConfigOktaOutput() AuthConfigOktaOutput
+	ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput
+}
+
+func (AuthConfigOkta) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigOkta)(nil)).Elem()
+}
+
+func (i AuthConfigOkta) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
+	return i.ToAuthConfigOktaOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaOutput)
+}
+
+type AuthConfigOktaOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigOktaOutput)(nil)).Elem()
+}
+
+func (o AuthConfigOktaOutput) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
+	return o
+}
+
+func (o AuthConfigOktaOutput) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigOktaOutput{})
 }

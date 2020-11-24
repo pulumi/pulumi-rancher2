@@ -487,6 +487,8 @@ github.com/godror/godror v0.13.3/go.mod h1:2ouUT4kdhUBk7TAkHWD4SN0CdI0pgEQbo8FVH
 github.com/gofrs/flock v0.7.0/go.mod h1:F1TvTiK9OcQqauNUHlbJvyl9Qa1QvF/gOUDKA14jxHU=
 github.com/gofrs/flock v0.7.1 h1:DP+LD/t0njgoPBvT5MJLeliUIVQR03hiKR6vezdwHlc=
 github.com/gofrs/flock v0.7.1/go.mod h1:F1TvTiK9OcQqauNUHlbJvyl9Qa1QvF/gOUDKA14jxHU=
+github.com/gofrs/uuid v3.3.0+incompatible h1:8K4tyRfvU1CYPgJsveYFQMhpFd/wXNM7iK6rR7UHz84=
+github.com/gofrs/uuid v3.3.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
 github.com/gogo/googleapis v1.1.0/go.mod h1:gf4bu3Q80BeJ6H1S1vYPm8/ELATdvryBaNFGgqEef3s=
 github.com/gogo/protobuf v1.1.1/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7atdtwQ=
 github.com/gogo/protobuf v1.2.0/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7atdtwQ=
@@ -1078,12 +1080,18 @@ github.com/prometheus/prometheus v1.8.2-0.20190424153033-d3245f150225/go.mod h1:
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.11.1-0.20201020163502-64cff1e50894 h1:yUnJDty8PgO26E8T0xX5CwslQ5CZTVqdTzfv0PnSN20=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.11.1-0.20201020163502-64cff1e50894/go.mod h1:HeGEtErxeRTElloiI8SJvnb2X/AgGvOxgTGI0irEIus=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.13.2 h1:8sEHpBhHUl+lVuruvvMXL8NJFrpPSEVxB6Nexuy1irs=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.13.2/go.mod h1:NVzB8KA29SMXW8Nwp6OHI4yevnQkLiY0VMucAI2R7jU=
 github.com/pulumi/pulumi/pkg/v2 v2.12.1-0.20201019222817-89c956d18942 h1:IB34mt9friGXJGaRbZNwerIK9Oz0LfBruhbVEkJKDPg=
 github.com/pulumi/pulumi/pkg/v2 v2.12.1-0.20201019222817-89c956d18942/go.mod h1:a5zxh9WrYwWR/cDOhPMNFOUpJuwtyeFS+ZYJebehQ+c=
+github.com/pulumi/pulumi/pkg/v2 v2.13.3-0.20201109230029-a6f8b9b205cd h1:ID3x2Bv/yEDQCU67THkmdhgoINcYYb0zYXo01FeJUhU=
+github.com/pulumi/pulumi/pkg/v2 v2.13.3-0.20201109230029-a6f8b9b205cd/go.mod h1:xLEDqsipr92IXfe8EJrl8bANoEUtwmBJGBE8X8PKmP0=
 github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.11.3-0.20201009201355-249140242ebb/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
 github.com/pulumi/pulumi/sdk/v2 v2.12.0 h1:d2BQnOvRWCbxDG5DO0bz5FkhFbymABmOxlsx0h2Yhm8=
 github.com/pulumi/pulumi/sdk/v2 v2.12.0/go.mod h1:WQ4WaHMA7mduVHAJi87iIqbWvqsuBUYccBiKK+FrayI=
+github.com/pulumi/pulumi/sdk/v2 v2.13.3-0.20201109230029-a6f8b9b205cd h1:acvoTtWZHySIlANIlR5LSfRyjYSUadeJcdUZhyx9y4o=
+github.com/pulumi/pulumi/sdk/v2 v2.13.3-0.20201109230029-a6f8b9b205cd/go.mod h1:Z9ifPo/Q0+hUpAyguVx2gp5Sx+CBumnWvYQDhrM8l3E=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20201112001829-efbf6bcde088 h1:OhmpcXNq2RDR2v5Vykt1Ldz2Rkb3js7kFz6yPbcLCIU=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20201112001829-efbf6bcde088/go.mod h1:6Rl4fUhGiATn/Jq4lbKNqBbwmmHr+cyzCriPVELWc3Y=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d/go.mod h1:7DPO4domFU579Ga6E61sB9VFNaniPVwJP5C4bBCu3wA=

@@ -11,6 +11,14 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+    /// 
+    /// ## Import
+    /// 
+    /// Node Pool can be imported using the Rancher Node Pool ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {

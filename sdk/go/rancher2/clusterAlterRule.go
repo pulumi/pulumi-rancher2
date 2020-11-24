@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -208,4 +209,43 @@ type ClusterAlterRuleArgs struct {
 
 func (ClusterAlterRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlterRuleArgs)(nil)).Elem()
+}
+
+type ClusterAlterRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlterRuleOutput() ClusterAlterRuleOutput
+	ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput
+}
+
+func (ClusterAlterRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterRule)(nil)).Elem()
+}
+
+func (i ClusterAlterRule) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
+	return i.ToClusterAlterRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleOutput)
+}
+
+type ClusterAlterRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlterRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterRuleOutput)(nil)).Elem()
+}
+
+func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
+	return o
+}
+
+func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterAlterRuleOutput{})
 }

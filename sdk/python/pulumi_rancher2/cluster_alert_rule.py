@@ -57,6 +57,14 @@ class ClusterAlertRule(pulumi.CustomResource):
             repeat_interval_seconds=6000)
         ```
 
+        ## Import
+
+        Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert rule annotations (map)

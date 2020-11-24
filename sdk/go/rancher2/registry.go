@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,6 +77,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
+//
+// ```sh
+//  $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+// ```
+//
+//  `<namespace_id>` is optional, just needed for namespaced registry.
 type Registry struct {
 	pulumi.CustomResourceState
 
@@ -203,4 +214,43 @@ type RegistryArgs struct {
 
 func (RegistryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryArgs)(nil)).Elem()
+}
+
+type RegistryInput interface {
+	pulumi.Input
+
+	ToRegistryOutput() RegistryOutput
+	ToRegistryOutputWithContext(ctx context.Context) RegistryOutput
+}
+
+func (Registry) ElementType() reflect.Type {
+	return reflect.TypeOf((*Registry)(nil)).Elem()
+}
+
+func (i Registry) ToRegistryOutput() RegistryOutput {
+	return i.ToRegistryOutputWithContext(context.Background())
+}
+
+func (i Registry) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryOutput)
+}
+
+type RegistryOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryOutput)(nil)).Elem()
+}
+
+func (o RegistryOutput) ToRegistryOutput() RegistryOutput {
+	return o
+}
+
+func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryOutput{})
 }

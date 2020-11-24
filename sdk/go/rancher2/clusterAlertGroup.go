@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Cluster Alert Group can be imported using the Rancher cluster alert group ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
 // ```
 type ClusterAlertGroup struct {
 	pulumi.CustomResourceState
@@ -187,4 +196,43 @@ type ClusterAlertGroupArgs struct {
 
 func (ClusterAlertGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlertGroupArgs)(nil)).Elem()
+}
+
+type ClusterAlertGroupInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupOutput() ClusterAlertGroupOutput
+	ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput
+}
+
+func (ClusterAlertGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertGroup)(nil)).Elem()
+}
+
+func (i ClusterAlertGroup) ToClusterAlertGroupOutput() ClusterAlertGroupOutput {
+	return i.ToClusterAlertGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupOutput)
+}
+
+type ClusterAlertGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlertGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertGroupOutput)(nil)).Elem()
+}
+
+func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutput() ClusterAlertGroupOutput {
+	return o
+}
+
+func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterAlertGroupOutput{})
 }

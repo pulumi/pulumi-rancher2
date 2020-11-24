@@ -95,6 +95,14 @@ class NodeTemplate(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Node Template can be imported using the Rancher Node Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &lt;node_template_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)

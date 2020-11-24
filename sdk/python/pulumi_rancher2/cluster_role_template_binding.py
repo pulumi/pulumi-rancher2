@@ -43,6 +43,14 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
             user_id="<user_id>")
         ```
 
+        ## Import
+
+        Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)

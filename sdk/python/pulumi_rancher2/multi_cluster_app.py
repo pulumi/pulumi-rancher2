@@ -35,7 +35,14 @@ class MultiClusterApp(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a MultiClusterApp resource with the given unique name, props, and options.
+        ## Import
+
+        Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
+
+        ```sh
+         $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)

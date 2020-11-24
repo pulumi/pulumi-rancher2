@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -44,6 +45,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Users can be imported using the Rancher User ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -163,4 +172,43 @@ type UserArgs struct {
 
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
+}
+
+type UserInput interface {
+	pulumi.Input
+
+	ToUserOutput() UserOutput
+	ToUserOutputWithContext(ctx context.Context) UserOutput
+}
+
+func (User) ElementType() reflect.Type {
+	return reflect.TypeOf((*User)(nil)).Elem()
+}
+
+func (i User) ToUserOutput() UserOutput {
+	return i.ToUserOutputWithContext(context.Background())
+}
+
+func (i User) ToUserOutputWithContext(ctx context.Context) UserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
+}
+
+type UserOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOutput)(nil)).Elem()
+}
+
+func (o UserOutput) ToUserOutput() UserOutput {
+	return o
+}
+
+func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserOutput{})
 }

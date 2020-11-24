@@ -41,6 +41,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Node Driver can be imported using the Rancher Node Driver ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &amp;lt;node_driver_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class NodeDriver : Pulumi.CustomResource
     {

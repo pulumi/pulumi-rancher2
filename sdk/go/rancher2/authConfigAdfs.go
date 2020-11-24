@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -260,4 +261,43 @@ type AuthConfigAdfsArgs struct {
 
 func (AuthConfigAdfsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAdfsArgs)(nil)).Elem()
+}
+
+type AuthConfigAdfsInput interface {
+	pulumi.Input
+
+	ToAuthConfigAdfsOutput() AuthConfigAdfsOutput
+	ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput
+}
+
+func (AuthConfigAdfs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAdfs)(nil)).Elem()
+}
+
+func (i AuthConfigAdfs) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {
+	return i.ToAuthConfigAdfsOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAdfs) ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsOutput)
+}
+
+type AuthConfigAdfsOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigAdfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAdfsOutput)(nil)).Elem()
+}
+
+func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {
+	return o
+}
+
+func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigAdfsOutput{})
 }

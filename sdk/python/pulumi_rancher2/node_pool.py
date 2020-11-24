@@ -35,6 +35,14 @@ class NodePool(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
 
+        ## Import
+
+        Node Pool can be imported using the Rancher Node Pool ID
+
+        ```sh
+         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)

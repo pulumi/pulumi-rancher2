@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -196,4 +197,43 @@ type AuthConfigGithubArgs struct {
 
 func (AuthConfigGithubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigGithubArgs)(nil)).Elem()
+}
+
+type AuthConfigGithubInput interface {
+	pulumi.Input
+
+	ToAuthConfigGithubOutput() AuthConfigGithubOutput
+	ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput
+}
+
+func (AuthConfigGithub) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigGithub)(nil)).Elem()
+}
+
+func (i AuthConfigGithub) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
+	return i.ToAuthConfigGithubOutputWithContext(context.Background())
+}
+
+func (i AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubOutput)
+}
+
+type AuthConfigGithubOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigGithubOutput)(nil)).Elem()
+}
+
+func (o AuthConfigGithubOutput) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
+	return o
+}
+
+func (o AuthConfigGithubOutput) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigGithubOutput{})
 }

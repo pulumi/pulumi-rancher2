@@ -34,6 +34,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Alert Group can be imported using the Rancher cluster alert group ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &amp;lt;CLUSTER_ALERT_GROUP_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterAlertGroup : Pulumi.CustomResource
     {

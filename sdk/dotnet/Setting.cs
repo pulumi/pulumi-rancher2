@@ -35,6 +35,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Setting can be imported using the Rancher setting ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class Setting : Pulumi.CustomResource
     {

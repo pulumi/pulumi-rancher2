@@ -39,6 +39,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Logging can be imported using the Rancher Cluster Logging ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &amp;lt;CLUSTER_LOGGING_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterLogging : Pulumi.CustomResource
     {

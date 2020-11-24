@@ -39,6 +39,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project Logging can be imported using the Rancher Project Logging ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &amp;lt;project_logging_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class ProjectLogging : Pulumi.CustomResource
     {

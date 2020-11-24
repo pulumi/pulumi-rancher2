@@ -50,6 +50,14 @@ class NodeDriver(pulumi.CustomResource):
             whitelist_domains=["*.foo.com"])
         ```
 
+        ## Import
+
+        Node Driver can be imported using the Rancher Node Driver ID
+
+        ```sh
+         $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Specify if the node driver state (bool)
