@@ -42,6 +42,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &amp;lt;CLUSTER_ALERT_RULE_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterAlertRule : Pulumi.CustomResource
     {

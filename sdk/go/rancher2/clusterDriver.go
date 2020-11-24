@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,14 @@ import (
 )
 
 // Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
+//
+// ## Import
+//
+// Cluster Driver can be imported using the Rancher Cluster Driver ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+// ```
 type ClusterDriver struct {
 	pulumi.CustomResourceState
 
@@ -171,4 +180,43 @@ type ClusterDriverArgs struct {
 
 func (ClusterDriverArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterDriverArgs)(nil)).Elem()
+}
+
+type ClusterDriverInput interface {
+	pulumi.Input
+
+	ToClusterDriverOutput() ClusterDriverOutput
+	ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput
+}
+
+func (ClusterDriver) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDriver)(nil)).Elem()
+}
+
+func (i ClusterDriver) ToClusterDriverOutput() ClusterDriverOutput {
+	return i.ToClusterDriverOutputWithContext(context.Background())
+}
+
+func (i ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverOutput)
+}
+
+type ClusterDriverOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDriverOutput)(nil)).Elem()
+}
+
+func (o ClusterDriverOutput) ToClusterDriverOutput() ClusterDriverOutput {
+	return o
+}
+
+func (o ClusterDriverOutput) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterDriverOutput{})
 }

@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
 // ```
 type ProjectRoleTemplateBinding struct {
 	pulumi.CustomResourceState
@@ -183,4 +192,43 @@ type ProjectRoleTemplateBindingArgs struct {
 
 func (ProjectRoleTemplateBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectRoleTemplateBindingArgs)(nil)).Elem()
+}
+
+type ProjectRoleTemplateBindingInput interface {
+	pulumi.Input
+
+	ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput
+	ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput
+}
+
+func (ProjectRoleTemplateBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectRoleTemplateBinding)(nil)).Elem()
+}
+
+func (i ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput {
+	return i.ToProjectRoleTemplateBindingOutputWithContext(context.Background())
+}
+
+func (i ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingOutput)
+}
+
+type ProjectRoleTemplateBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectRoleTemplateBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectRoleTemplateBindingOutput)(nil)).Elem()
+}
+
+func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput {
+	return o
+}
+
+func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectRoleTemplateBindingOutput{})
 }

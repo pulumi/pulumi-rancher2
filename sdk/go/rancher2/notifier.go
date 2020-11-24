@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Notifiers can be imported using the Rancher nNtifier ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
 // ```
 type Notifier struct {
 	pulumi.CustomResourceState
@@ -224,4 +233,43 @@ type NotifierArgs struct {
 
 func (NotifierArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notifierArgs)(nil)).Elem()
+}
+
+type NotifierInput interface {
+	pulumi.Input
+
+	ToNotifierOutput() NotifierOutput
+	ToNotifierOutputWithContext(ctx context.Context) NotifierOutput
+}
+
+func (Notifier) ElementType() reflect.Type {
+	return reflect.TypeOf((*Notifier)(nil)).Elem()
+}
+
+func (i Notifier) ToNotifierOutput() NotifierOutput {
+	return i.ToNotifierOutputWithContext(context.Background())
+}
+
+func (i Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierOutput)
+}
+
+type NotifierOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotifierOutput)(nil)).Elem()
+}
+
+func (o NotifierOutput) ToNotifierOutput() NotifierOutput {
+	return o
+}
+
+func (o NotifierOutput) ToNotifierOutputWithContext(ctx context.Context) NotifierOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotifierOutput{})
 }

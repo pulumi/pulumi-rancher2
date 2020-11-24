@@ -46,6 +46,14 @@ class User(pulumi.CustomResource):
             user_id=foo_user.id)
         ```
 
+        ## Import
+
+        Users can be imported using the Rancher User ID
+
+        ```sh
+         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)

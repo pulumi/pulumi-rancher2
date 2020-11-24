@@ -69,6 +69,12 @@ namespace Pulumi.Rancher2
             using var stream = assembly.GetManifestResourceStream("Pulumi.Rancher2.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
+            var parts = version.Split("\n");
+            if (parts.Length == 2)
+            {
+                // The first part is the provider name.
+                version = parts[1].Trim();
+            }
         }
     }
 }

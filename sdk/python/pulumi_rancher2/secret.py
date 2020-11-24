@@ -32,6 +32,16 @@ class Secret(pulumi.CustomResource):
         - Project secret: Available to all namespaces in the `project_id`
         - Namespaced secret: Available to just `namespace_id` in the `project_id`
 
+        ## Import
+
+        Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
+
+        ```sh
+         $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
+        ```
+
+         `<namespace_id>` is optional, just needed for namespaced secret.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)

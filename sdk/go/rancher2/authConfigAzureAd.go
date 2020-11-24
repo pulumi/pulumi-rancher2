@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -256,4 +257,43 @@ type AuthConfigAzureAdArgs struct {
 
 func (AuthConfigAzureAdArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAzureAdArgs)(nil)).Elem()
+}
+
+type AuthConfigAzureAdInput interface {
+	pulumi.Input
+
+	ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput
+	ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput
+}
+
+func (AuthConfigAzureAd) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAzureAd)(nil)).Elem()
+}
+
+func (i AuthConfigAzureAd) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput {
+	return i.ToAuthConfigAzureAdOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdOutput)
+}
+
+type AuthConfigAzureAdOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAzureAdOutput)(nil)).Elem()
+}
+
+func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigAzureAdOutput{})
 }

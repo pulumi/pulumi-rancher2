@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Cluster Logging can be imported using the Rancher Cluster Logging ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &lt;CLUSTER_LOGGING_ID&gt;
 // ```
 type ClusterLogging struct {
 	pulumi.CustomResourceState
@@ -248,4 +257,43 @@ type ClusterLoggingArgs struct {
 
 func (ClusterLoggingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterLoggingArgs)(nil)).Elem()
+}
+
+type ClusterLoggingInput interface {
+	pulumi.Input
+
+	ToClusterLoggingOutput() ClusterLoggingOutput
+	ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput
+}
+
+func (ClusterLogging) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLogging)(nil)).Elem()
+}
+
+func (i ClusterLogging) ToClusterLoggingOutput() ClusterLoggingOutput {
+	return i.ToClusterLoggingOutputWithContext(context.Background())
+}
+
+func (i ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput)
+}
+
+type ClusterLoggingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingOutput)(nil)).Elem()
+}
+
+func (o ClusterLoggingOutput) ToClusterLoggingOutput() ClusterLoggingOutput {
+	return o
+}
+
+func (o ClusterLoggingOutput) ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterLoggingOutput{})
 }

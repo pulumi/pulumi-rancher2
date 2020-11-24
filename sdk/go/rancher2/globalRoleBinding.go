@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,6 +42,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Global Role Bindings can be imported using the Rancher Global Role Binding ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
 // ```
 type GlobalRoleBinding struct {
 	pulumi.CustomResourceState
@@ -156,4 +165,43 @@ type GlobalRoleBindingArgs struct {
 
 func (GlobalRoleBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalRoleBindingArgs)(nil)).Elem()
+}
+
+type GlobalRoleBindingInput interface {
+	pulumi.Input
+
+	ToGlobalRoleBindingOutput() GlobalRoleBindingOutput
+	ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput
+}
+
+func (GlobalRoleBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalRoleBinding)(nil)).Elem()
+}
+
+func (i GlobalRoleBinding) ToGlobalRoleBindingOutput() GlobalRoleBindingOutput {
+	return i.ToGlobalRoleBindingOutputWithContext(context.Background())
+}
+
+func (i GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingOutput)
+}
+
+type GlobalRoleBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalRoleBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalRoleBindingOutput)(nil)).Elem()
+}
+
+func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutput() GlobalRoleBindingOutput {
+	return o
+}
+
+func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalRoleBindingOutput{})
 }

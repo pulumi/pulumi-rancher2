@@ -144,6 +144,14 @@ class ClusterTemplate(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Cluster Template can be imported using the rancher Cluster Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)

@@ -35,6 +35,14 @@ class CatalogV2(pulumi.CustomResource):
         """
         Provides a Rancher Catalog v2 resource. This can be used to create cluster helm catalogs for Rancher v2 environments and retrieve their information. Catalog v2 resource is available at Rancher v2.5.x and above.
 
+        ## Import
+
+        V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
+
+        ```sh
+         $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)

@@ -71,6 +71,14 @@ class RoleTempalte(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Role Template can be imported using the Rancher Role Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &lt;role_template_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] administrative: Administrative role template. Default `false` (bool)

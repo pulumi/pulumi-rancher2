@@ -52,6 +52,14 @@ class AppV2(pulumi.CustomResource):
             values=(lambda path: open(path).read())("values.yaml"))
         ```
 
+        ## Import
+
+        V2 apps can be imported using the Rancher cluster ID and App V2 name.
+
+        ```sh
+         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the app v2 (map)

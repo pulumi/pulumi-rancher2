@@ -11,6 +11,14 @@ namespace Pulumi.Rancher2
 {
     /// <summary>
     /// Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Driver can be imported using the Rancher Cluster Driver ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &amp;lt;CLUSTER_DRIVER_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterDriver : Pulumi.CustomResource
     {

@@ -25,6 +25,14 @@ import * as utilities from "./utilities";
  *     whitelistDomains: ["*.foo.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Node Driver can be imported using the Rancher Node Driver ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+ * ```
  */
 export class NodeDriver extends pulumi.CustomResource {
     /**

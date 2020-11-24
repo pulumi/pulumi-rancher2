@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['ClusterAlterGroup']
 
-warnings.warn("rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup", DeprecationWarning)
+warnings.warn("""rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup""", DeprecationWarning)
 
 
 class ClusterAlterGroup(pulumi.CustomResource):
-    warnings.warn("rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup", DeprecationWarning)
+    warnings.warn("""rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

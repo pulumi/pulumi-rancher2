@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+ * ```
+ */
 export class MultiClusterApp extends pulumi.CustomResource {
     /**
      * Get an existing MultiClusterApp resource's state with the given name, ID, and optional extra

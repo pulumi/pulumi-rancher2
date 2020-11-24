@@ -27,6 +27,14 @@ import * as utilities from "./utilities";
  *     userId: fooUser.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Users can be imported using the Rancher User ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

@@ -400,6 +400,14 @@ class Cluster(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Clusters can be imported using the Rancher Cluster ID
+
+        ```sh
+         $ pulumi import rancher2:index/cluster:Cluster foo &lt;CLUSTER_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)

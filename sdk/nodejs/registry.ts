@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -47,6 +46,16 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+ * ```
+ *
+ *  `<namespace_id>` is optional, just needed for namespaced registry.
  */
 export class Registry extends pulumi.CustomResource {
     /**

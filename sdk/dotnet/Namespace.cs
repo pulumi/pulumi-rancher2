@@ -95,6 +95,20 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Namespaces can be imported using the namespace ID in the format `&lt;project_id&gt;.&lt;namespace_id&gt;`
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/namespace:Namespace foo &amp;lt;project_id&amp;gt;.&amp;lt;namespaces_id&amp;gt;
+    /// ```
+    /// 
+    ///  `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, but &lt;id&gt; part is optional:
+    /// 
+    /// - If full project_id is provided, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;`, the namespace'll be assigned to corresponding cluster project once it's imported.
+    /// 
+    /// - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace'll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

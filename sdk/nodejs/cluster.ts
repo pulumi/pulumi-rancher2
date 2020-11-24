@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -372,6 +371,14 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Clusters can be imported using the Rancher Cluster ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/cluster:Cluster foo &lt;CLUSTER_ID&gt;
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

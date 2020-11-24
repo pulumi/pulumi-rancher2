@@ -4,12 +4,20 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
+//
+// ```sh
+//  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+// ```
 type MultiClusterApp struct {
 	pulumi.CustomResourceState
 
@@ -219,4 +227,43 @@ type MultiClusterAppArgs struct {
 
 func (MultiClusterAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*multiClusterAppArgs)(nil)).Elem()
+}
+
+type MultiClusterAppInput interface {
+	pulumi.Input
+
+	ToMultiClusterAppOutput() MultiClusterAppOutput
+	ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput
+}
+
+func (MultiClusterApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterApp)(nil)).Elem()
+}
+
+func (i MultiClusterApp) ToMultiClusterAppOutput() MultiClusterAppOutput {
+	return i.ToMultiClusterAppOutputWithContext(context.Background())
+}
+
+func (i MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppOutput)
+}
+
+type MultiClusterAppOutput struct {
+	*pulumi.OutputState
+}
+
+func (MultiClusterAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterAppOutput)(nil)).Elem()
+}
+
+func (o MultiClusterAppOutput) ToMultiClusterAppOutput() MultiClusterAppOutput {
+	return o
+}
+
+func (o MultiClusterAppOutput) ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MultiClusterAppOutput{})
 }

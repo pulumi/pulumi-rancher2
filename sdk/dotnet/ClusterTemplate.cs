@@ -197,6 +197,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Template can be imported using the rancher Cluster Template ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterTemplate : Pulumi.CustomResource
     {

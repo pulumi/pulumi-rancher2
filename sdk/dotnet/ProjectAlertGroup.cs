@@ -34,6 +34,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project Alert Group can be imported using the Rancher project alert group ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &amp;lt;project_alert_group_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class ProjectAlertGroup : Pulumi.CustomResource
     {

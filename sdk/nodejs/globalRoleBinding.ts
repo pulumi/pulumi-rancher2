@@ -24,6 +24,14 @@ import * as utilities from "./utilities";
  *     groupPrincipalId: "local://g-XXXXX",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Global Role Bindings can be imported using the Rancher Global Role Binding ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
+ * ```
  */
 export class GlobalRoleBinding extends pulumi.CustomResource {
     /**

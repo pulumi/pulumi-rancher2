@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -29,6 +28,14 @@ import * as utilities from "./utilities";
  *     groupIntervalSeconds: 600,
  *     repeatIntervalSeconds: 6000,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
  * ```
  */
 export class ClusterAlertRule extends pulumi.CustomResource {

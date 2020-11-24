@@ -43,6 +43,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Catalogs can be imported using the Rancher Catalog ID and its scope.
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class Catalog : Pulumi.CustomResource
     {

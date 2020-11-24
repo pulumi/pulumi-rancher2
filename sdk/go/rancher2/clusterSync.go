@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -127,4 +128,43 @@ type ClusterSyncArgs struct {
 
 func (ClusterSyncArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterSyncArgs)(nil)).Elem()
+}
+
+type ClusterSyncInput interface {
+	pulumi.Input
+
+	ToClusterSyncOutput() ClusterSyncOutput
+	ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput
+}
+
+func (ClusterSync) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSync)(nil)).Elem()
+}
+
+func (i ClusterSync) ToClusterSyncOutput() ClusterSyncOutput {
+	return i.ToClusterSyncOutputWithContext(context.Background())
+}
+
+func (i ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncOutput)
+}
+
+type ClusterSyncOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSyncOutput)(nil)).Elem()
+}
+
+func (o ClusterSyncOutput) ToClusterSyncOutput() ClusterSyncOutput {
+	return o
+}
+
+func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterSyncOutput{})
 }

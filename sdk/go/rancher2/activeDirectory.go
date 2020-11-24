@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -414,4 +415,43 @@ type ActiveDirectoryArgs struct {
 
 func (ActiveDirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeDirectoryArgs)(nil)).Elem()
+}
+
+type ActiveDirectoryInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryOutput() ActiveDirectoryOutput
+	ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput
+}
+
+func (ActiveDirectory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectory)(nil)).Elem()
+}
+
+func (i ActiveDirectory) ToActiveDirectoryOutput() ActiveDirectoryOutput {
+	return i.ToActiveDirectoryOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryOutput)
+}
+
+type ActiveDirectoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryOutput)(nil)).Elem()
+}
+
+func (o ActiveDirectoryOutput) ToActiveDirectoryOutput() ActiveDirectoryOutput {
+	return o
+}
+
+func (o ActiveDirectoryOutput) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActiveDirectoryOutput{})
 }

@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -260,4 +261,43 @@ type AuthConfigKeycloakArgs struct {
 
 func (AuthConfigKeycloakArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigKeycloakArgs)(nil)).Elem()
+}
+
+type AuthConfigKeycloakInput interface {
+	pulumi.Input
+
+	ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput
+	ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput
+}
+
+func (AuthConfigKeycloak) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigKeycloak)(nil)).Elem()
+}
+
+func (i AuthConfigKeycloak) ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput {
+	return i.ToAuthConfigKeycloakOutputWithContext(context.Background())
+}
+
+func (i AuthConfigKeycloak) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakOutput)
+}
+
+type AuthConfigKeycloakOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigKeycloakOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigKeycloakOutput)(nil)).Elem()
+}
+
+func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput {
+	return o
+}
+
+func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthConfigKeycloakOutput{})
 }

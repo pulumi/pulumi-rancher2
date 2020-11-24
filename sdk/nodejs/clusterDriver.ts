@@ -25,6 +25,14 @@ import * as utilities from "./utilities";
  *     whitelistDomains: ["*.foo.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cluster Driver can be imported using the Rancher Cluster Driver ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+ * ```
  */
 export class ClusterDriver extends pulumi.CustomResource {
     /**

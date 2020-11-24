@@ -113,6 +113,14 @@ class Project(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Projects can be imported using the Rancher Project ID
+
+        ```sh
+         $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)

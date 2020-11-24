@@ -33,7 +33,14 @@ class App(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a App resource with the given unique name, props, and options.
+        ## Import
+
+        Apps can be imported using the app ID in the format `<project_id>:<app_name>`
+
+        ```sh
+         $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for App object (map)

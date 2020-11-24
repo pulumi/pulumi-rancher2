@@ -28,6 +28,14 @@ import * as utilities from "./utilities";
  *     url: "https://<CATALOG_URL>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Catalogs can be imported using the Rancher Catalog ID and its scope.
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+ * ```
  */
 export class Catalog extends pulumi.CustomResource {
     /**

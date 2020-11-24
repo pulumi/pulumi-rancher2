@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
 // ```
 type ClusterRoleTemplateBinding struct {
 	pulumi.CustomResourceState
@@ -183,4 +192,43 @@ type ClusterRoleTemplateBindingArgs struct {
 
 func (ClusterRoleTemplateBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterRoleTemplateBindingArgs)(nil)).Elem()
+}
+
+type ClusterRoleTemplateBindingInput interface {
+	pulumi.Input
+
+	ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput
+	ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput
+}
+
+func (ClusterRoleTemplateBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil)).Elem()
+}
+
+func (i ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
+	return i.ToClusterRoleTemplateBindingOutputWithContext(context.Background())
+}
+
+func (i ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingOutput)
+}
+
+type ClusterRoleTemplateBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterRoleTemplateBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRoleTemplateBindingOutput)(nil)).Elem()
+}
+
+func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterRoleTemplateBindingOutput{})
 }

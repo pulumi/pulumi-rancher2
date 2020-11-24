@@ -37,6 +37,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// V2 apps can be imported using the Rancher cluster ID and App V2 name.
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAME&amp;gt;
+    /// ```
     /// </summary>
     public partial class AppV2 : Pulumi.CustomResource
     {

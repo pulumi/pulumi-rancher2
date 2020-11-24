@@ -53,6 +53,14 @@ class Notifier(pulumi.CustomResource):
             send_resolved=True)
         ```
 
+        ## Import
+
+        Notifiers can be imported using the Rancher nNtifier ID
+
+        ```sh
+         $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)

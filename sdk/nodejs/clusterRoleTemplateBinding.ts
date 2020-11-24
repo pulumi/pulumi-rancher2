@@ -20,6 +20,14 @@ import * as utilities from "./utilities";
  *     userId: "<user_id>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+ * ```
  */
 export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**

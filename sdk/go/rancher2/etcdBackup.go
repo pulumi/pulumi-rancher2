@@ -4,12 +4,20 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Etcd Backup can be imported using the Rancher etcd backup ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+// ```
 type EtcdBackup struct {
 	pulumi.CustomResourceState
 
@@ -144,4 +152,43 @@ type EtcdBackupArgs struct {
 
 func (EtcdBackupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*etcdBackupArgs)(nil)).Elem()
+}
+
+type EtcdBackupInput interface {
+	pulumi.Input
+
+	ToEtcdBackupOutput() EtcdBackupOutput
+	ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput
+}
+
+func (EtcdBackup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtcdBackup)(nil)).Elem()
+}
+
+func (i EtcdBackup) ToEtcdBackupOutput() EtcdBackupOutput {
+	return i.ToEtcdBackupOutputWithContext(context.Background())
+}
+
+func (i EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupOutput)
+}
+
+type EtcdBackupOutput struct {
+	*pulumi.OutputState
+}
+
+func (EtcdBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtcdBackupOutput)(nil)).Elem()
+}
+
+func (o EtcdBackupOutput) ToEtcdBackupOutput() EtcdBackupOutput {
+	return o
+}
+
+func (o EtcdBackupOutput) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EtcdBackupOutput{})
 }

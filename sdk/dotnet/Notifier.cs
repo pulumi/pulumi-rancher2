@@ -38,6 +38,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Notifiers can be imported using the Rancher nNtifier ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/notifier:Notifier foo &amp;lt;notifier_id&amp;gt;
+    /// ```
     /// </summary>
     public partial class Notifier : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package rancher2
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
+//
+// ```sh
+//  $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
 // ```
 type ClusterAlertRule struct {
 	pulumi.CustomResourceState
@@ -249,4 +258,43 @@ type ClusterAlertRuleArgs struct {
 
 func (ClusterAlertRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAlertRuleArgs)(nil)).Elem()
+}
+
+type ClusterAlertRuleInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleOutput() ClusterAlertRuleOutput
+	ToClusterAlertRuleOutputWithContext(ctx context.Context) ClusterAlertRuleOutput
+}
+
+func (ClusterAlertRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRule)(nil)).Elem()
+}
+
+func (i ClusterAlertRule) ToClusterAlertRuleOutput() ClusterAlertRuleOutput {
+	return i.ToClusterAlertRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRule) ToClusterAlertRuleOutputWithContext(ctx context.Context) ClusterAlertRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleOutput)
+}
+
+type ClusterAlertRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlertRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertRuleOutput)(nil)).Elem()
+}
+
+func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutput() ClusterAlertRuleOutput {
+	return o
+}
+
+func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutputWithContext(ctx context.Context) ClusterAlertRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterAlertRuleOutput{})
 }

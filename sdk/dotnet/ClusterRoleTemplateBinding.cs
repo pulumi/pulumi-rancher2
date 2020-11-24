@@ -33,6 +33,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
+    /// ```
     /// </summary>
     public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
     {

@@ -46,6 +46,14 @@ class ClusterAlertGroup(pulumi.CustomResource):
             repeat_interval_seconds=3600)
         ```
 
+        ## Import
+
+        Cluster Alert Group can be imported using the Rancher cluster alert group ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert group annotations (map)

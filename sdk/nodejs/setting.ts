@@ -22,6 +22,14 @@ import * as utilities from "./utilities";
  *     value: "<VALUE>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Setting can be imported using the Rancher setting ID.
+ *
+ * ```sh
+ *  $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+ * ```
  */
 export class Setting extends pulumi.CustomResource {
     /**

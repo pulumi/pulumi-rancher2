@@ -165,6 +165,14 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
+    /// 
+    /// ```sh
+    ///  $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &amp;lt;pod_security_policy_name&amp;gt;
+    /// ```
     /// </summary>
     public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource
     {
