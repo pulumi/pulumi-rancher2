@@ -28,7 +28,7 @@ type AppV2 struct {
 	// The app v2 chart name (string)
 	ChartName pulumi.StringOutput `pulumi:"chartName"`
 	// The app v2 chart version (string)
-	ChartVersion pulumi.StringPtrOutput `pulumi:"chartVersion"`
+	ChartVersion pulumi.StringOutput `pulumi:"chartVersion"`
 	// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
 	CleanupOnFail pulumi.BoolPtrOutput `pulumi:"cleanupOnFail"`
 	// The cluster id of the app (string)
@@ -53,7 +53,7 @@ type AppV2 struct {
 	RepoName pulumi.StringOutput `pulumi:"repoName"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrOutput `pulumi:"values"`
-	// Wait until app is deployed. Default: `false` (bool)
+	// Wait until app is deployed. Default: `true` (bool)
 	Wait pulumi.BoolPtrOutput `pulumi:"wait"`
 }
 
@@ -127,7 +127,7 @@ type appV2State struct {
 	RepoName *string `pulumi:"repoName"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values *string `pulumi:"values"`
-	// Wait until app is deployed. Default: `false` (bool)
+	// Wait until app is deployed. Default: `true` (bool)
 	Wait *bool `pulumi:"wait"`
 }
 
@@ -162,7 +162,7 @@ type AppV2State struct {
 	RepoName pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrInput
-	// Wait until app is deployed. Default: `false` (bool)
+	// Wait until app is deployed. Default: `true` (bool)
 	Wait pulumi.BoolPtrInput
 }
 
@@ -199,7 +199,7 @@ type appV2Args struct {
 	RepoName string `pulumi:"repoName"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values *string `pulumi:"values"`
-	// Wait until app is deployed. Default: `false` (bool)
+	// Wait until app is deployed. Default: `true` (bool)
 	Wait *bool `pulumi:"wait"`
 }
 
@@ -233,7 +233,7 @@ type AppV2Args struct {
 	RepoName pulumi.StringInput
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrInput
-	// Wait until app is deployed. Default: `false` (bool)
+	// Wait until app is deployed. Default: `true` (bool)
 	Wait pulumi.BoolPtrInput
 }
 

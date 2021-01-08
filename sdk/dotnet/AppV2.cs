@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2
         /// The app v2 chart version (string)
         /// </summary>
         [Output("chartVersion")]
-        public Output<string?> ChartVersion { get; private set; } = null!;
+        public Output<string> ChartVersion { get; private set; } = null!;
 
         /// <summary>
         /// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
@@ -139,7 +139,7 @@ namespace Pulumi.Rancher2
         public Output<string?> Values { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until app is deployed. Default: `false` (bool)
+        /// Wait until app is deployed. Default: `true` (bool)
         /// </summary>
         [Output("wait")]
         public Output<bool?> Wait { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Values { get; set; }
 
         /// <summary>
-        /// Wait until app is deployed. Default: `false` (bool)
+        /// Wait until app is deployed. Default: `true` (bool)
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Values { get; set; }
 
         /// <summary>
-        /// Wait until app is deployed. Default: `false` (bool)
+        /// Wait until app is deployed. Default: `true` (bool)
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }

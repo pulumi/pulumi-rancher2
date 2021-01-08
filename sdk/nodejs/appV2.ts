@@ -72,7 +72,7 @@ export class AppV2 extends pulumi.CustomResource {
     /**
      * The app v2 chart version (string)
      */
-    public readonly chartVersion!: pulumi.Output<string | undefined>;
+    public readonly chartVersion!: pulumi.Output<string>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
@@ -122,7 +122,7 @@ export class AppV2 extends pulumi.CustomResource {
      */
     public readonly values!: pulumi.Output<string | undefined>;
     /**
-     * Wait until app is deployed. Default: `false` (bool)
+     * Wait until app is deployed. Default: `true` (bool)
      */
     public readonly wait!: pulumi.Output<boolean | undefined>;
 
@@ -261,7 +261,7 @@ export interface AppV2State {
      */
     readonly values?: pulumi.Input<string>;
     /**
-     * Wait until app is deployed. Default: `false` (bool)
+     * Wait until app is deployed. Default: `true` (bool)
      */
     readonly wait?: pulumi.Input<boolean>;
 }
@@ -327,7 +327,7 @@ export interface AppV2Args {
      */
     readonly values?: pulumi.Input<string>;
     /**
-     * Wait until app is deployed. Default: `false` (bool)
+     * Wait until app is deployed. Default: `true` (bool)
      */
     readonly wait?: pulumi.Input<boolean>;
 }

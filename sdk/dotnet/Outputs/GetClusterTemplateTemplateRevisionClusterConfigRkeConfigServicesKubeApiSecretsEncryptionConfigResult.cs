@@ -13,11 +13,16 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult
     {
+        public readonly string CustomConfig;
         public readonly bool? Enabled;
 
         [OutputConstructor]
-        private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(bool? enabled)
+        private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(
+            string customConfig,
+
+            bool? enabled)
         {
+            CustomConfig = customConfig;
             Enabled = enabled;
         }
     }

@@ -224,8 +224,10 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_pod_security_policy_template": {
 				Tok: makeResource(mainMod, "PodSecurityPolicyTemplate"),
 			},
-			"rancher2_catalog_v2": {Tok: makeResource(mainMod, "CatalogV2")},
-			"rancher2_app_v2":     {Tok: makeResource(mainMod, "AppV2")},
+			"rancher2_catalog_v2":          {Tok: makeResource(mainMod, "CatalogV2")},
+			"rancher2_app_v2":              {Tok: makeResource(mainMod, "AppV2")},
+			"rancher2_global_dns":          {Tok: makeResource(mainMod, "GlobalDns")},
+			"rancher2_global_dns_provider": {Tok: makeResource(mainMod, "GlobalDnsProvider")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":         {Tok: makeDataSource(mainMod, "getApp")},
@@ -293,8 +295,9 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_pod_security_policy_template": {
 				Tok: makeDataSource(mainMod, "getPodSecurityPolicyTemplate"),
 			},
-			"rancher2_cluster_scan": {Tok: makeDataSource(mainMod, "getClusterScan")},
-			"rancher2_catalog_v2":   {Tok: makeDataSource(mainMod, "getCatalogV2")},
+			"rancher2_cluster_scan":        {Tok: makeDataSource(mainMod, "getClusterScan")},
+			"rancher2_catalog_v2":          {Tok: makeDataSource(mainMod, "getCatalogV2")},
+			"rancher2_global_dns_provider": {Tok: makeDataSource(mainMod, "getGlobalDnsProvider")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

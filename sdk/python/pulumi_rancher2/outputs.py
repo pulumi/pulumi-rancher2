@@ -68,7 +68,10 @@ __all__ = [
     'ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace',
     'ClusterRkeConfigDns',
+    'ClusterRkeConfigDnsLinearAutoscalerParams',
     'ClusterRkeConfigDnsNodelocal',
+    'ClusterRkeConfigDnsUpdateStrategy',
+    'ClusterRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterRkeConfigIngress',
     'ClusterRkeConfigMonitoring',
     'ClusterRkeConfigMonitoringUpdateStrategy',
@@ -125,7 +128,10 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy',
@@ -159,6 +165,9 @@ __all__ = [
     'ClusterTemplateTemplateRevisionQuestion',
     'EtcdBackupBackupConfig',
     'EtcdBackupBackupConfigS3BackupConfig',
+    'GlobalDnsProviderAlidnsConfig',
+    'GlobalDnsProviderCloudflareConfig',
+    'GlobalDnsProviderRoute53Config',
     'MultiClusterAppAnswer',
     'MultiClusterAppMember',
     'MultiClusterAppTarget',
@@ -171,6 +180,7 @@ __all__ = [
     'NodeTemplateAmazonec2Config',
     'NodeTemplateAzureConfig',
     'NodeTemplateDigitaloceanConfig',
+    'NodeTemplateHetznerConfig',
     'NodeTemplateLinodeConfig',
     'NodeTemplateOpennebulaConfig',
     'NodeTemplateOpenstackConfig',
@@ -262,7 +272,10 @@ __all__ = [
     'GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult',
     'GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult',
     'GetClusterRkeConfigDnsResult',
+    'GetClusterRkeConfigDnsLinearAutoscalerParamsResult',
     'GetClusterRkeConfigDnsNodelocalResult',
+    'GetClusterRkeConfigDnsUpdateStrategyResult',
+    'GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigIngressResult',
     'GetClusterRkeConfigMonitoringResult',
     'GetClusterRkeConfigMonitoringUpdateStrategyResult',
@@ -321,7 +334,10 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult',
@@ -355,6 +371,9 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionQuestionResult',
     'GetEtcdBackupBackupConfigResult',
     'GetEtcdBackupBackupConfigS3BackupConfigResult',
+    'GetGlobalDnsProviderAlidnsConfigResult',
+    'GetGlobalDnsProviderCloudflareConfigResult',
+    'GetGlobalDnsProviderRoute53ConfigResult',
     'GetMultiClusterAppAnswerResult',
     'GetMultiClusterAppMemberResult',
     'GetMultiClusterAppTargetResult',
@@ -1051,7 +1070,7 @@ class ClusterAlertGroupRecipient(dict):
         """
         :param str notifier_id: Recipient notifier ID (string)
         :param bool default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-        :param str notifier_type: Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param str notifier_type: Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
         :param str recipient: Recipient (string)
         """
         pulumi.set(__self__, "notifier_id", notifier_id)
@@ -1082,7 +1101,7 @@ class ClusterAlertGroupRecipient(dict):
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[str]:
         """
-        Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
         """
         return pulumi.get(self, "notifier_type")
 
@@ -2434,6 +2453,7 @@ class ClusterGkeConfig(dict):
         :param bool enable_http_load_balancing: Enable HTTP load balancing on GKE cluster. Default `true` (bool)
         :param bool enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         :param bool enable_legacy_abac: Whether to enable legacy abac on the cluster. Default `false` (bool)
+        :param bool enable_master_authorized_network: Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
         :param bool enable_network_policy_config: Enable network policy config for the cluster. Default `true` (bool)
         :param bool enable_nodepool_autoscaling: Enable nodepool autoscaling. Default `false` (bool)
         :param bool enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
@@ -2792,6 +2812,9 @@ class ClusterGkeConfig(dict):
     @property
     @pulumi.getter(name="enableMasterAuthorizedNetwork")
     def enable_master_authorized_network(self) -> Optional[bool]:
+        """
+        Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_master_authorized_network")
 
     @property
@@ -5894,18 +5917,24 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(dict):
 @pulumi.output_type
 class ClusterRkeConfigDns(dict):
     def __init__(__self__, *,
+                 linear_autoscaler_params: Optional['outputs.ClusterRkeConfigDnsLinearAutoscalerParams'] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  nodelocal: Optional['outputs.ClusterRkeConfigDnsNodelocal'] = None,
                  provider: Optional[str] = None,
                  reverse_cidrs: Optional[Sequence[str]] = None,
+                 update_strategy: Optional['outputs.ClusterRkeConfigDnsUpdateStrategy'] = None,
                  upstream_nameservers: Optional[Sequence[str]] = None):
         """
+        :param 'ClusterRkeConfigDnsLinearAutoscalerParamsArgs' linear_autoscaler_params: LinearAutoScalerParams dns config (list Maxitem: 1)
         :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
         :param 'ClusterRkeConfigDnsNodelocalArgs' nodelocal: Nodelocal dns config  (list Maxitem: 1)
         :param str provider: RKE monitoring provider (string)
         :param Sequence[str] reverse_cidrs: DNS add-on reverse cidr  (list)
+        :param 'ClusterRkeConfigDnsUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         :param Sequence[str] upstream_nameservers: DNS add-on upstream nameservers  (list)
         """
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
@@ -5914,8 +5943,18 @@ class ClusterRkeConfigDns(dict):
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
             pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+
+    @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional['outputs.ClusterRkeConfigDnsLinearAutoscalerParams']:
+        """
+        LinearAutoScalerParams dns config (list Maxitem: 1)
+        """
+        return pulumi.get(self, "linear_autoscaler_params")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -5950,12 +5989,90 @@ class ClusterRkeConfigDns(dict):
         return pulumi.get(self, "reverse_cidrs")
 
     @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.ClusterRkeConfigDnsUpdateStrategy']:
+        """
+        RKE monitoring update strategy (list Maxitems: 1)
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[Sequence[str]]:
         """
         DNS add-on upstream nameservers  (list)
         """
         return pulumi.get(self, "upstream_nameservers")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterRkeConfigDnsLinearAutoscalerParams(dict):
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[float] = None,
+                 max: Optional[int] = None,
+                 min: Optional[int] = None,
+                 nodes_per_replica: Optional[float] = None,
+                 prevent_single_point_failure: Optional[bool] = None):
+        """
+        :param float cores_per_replica: number of replicas per cluster cores (float64)
+        :param int max: maximum number of replicas (int64)
+        :param int min: minimum number of replicas (int64)
+        :param float nodes_per_replica: number of replica per cluster nodes (float64)
+        :param bool prevent_single_point_failure: prevent single point of failure
+        """
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[float]:
+        """
+        number of replicas per cluster cores (float64)
+        """
+        return pulumi.get(self, "cores_per_replica")
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[int]:
+        """
+        maximum number of replicas (int64)
+        """
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[int]:
+        """
+        minimum number of replicas (int64)
+        """
+        return pulumi.get(self, "min")
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[float]:
+        """
+        number of replica per cluster nodes (float64)
+        """
+        return pulumi.get(self, "nodes_per_replica")
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[bool]:
+        """
+        prevent single point of failure
+        """
+        return pulumi.get(self, "prevent_single_point_failure")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -5990,6 +6107,74 @@ class ClusterRkeConfigDnsNodelocal(dict):
         RKE monitoring node selector (map)
         """
         return pulumi.get(self, "node_selector")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterRkeConfigDnsUpdateStrategy(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate'] = None,
+                 strategy: Optional[str] = None):
+        """
+        :param 'ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs' rolling_update: Monitoring deployment rolling update (list Maxitems: 1)
+        :param str strategy: Monitoring deployment update strategy (string)
+        """
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate']:
+        """
+        Monitoring deployment rolling update (list Maxitems: 1)
+        """
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        """
+        Monitoring deployment update strategy (string)
+        """
+        return pulumi.get(self, "strategy")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterRkeConfigDnsUpdateStrategyRollingUpdate(dict):
+    def __init__(__self__, *,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None):
+        """
+        :param int max_surge: Monitoring deployment rolling update max surge. Default: `1` (int)
+        :param int max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        """
+        Monitoring deployment rolling update max surge. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        """
+        Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_unavailable")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -9613,11 +9798,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
 @pulumi.output_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
     def __init__(__self__, *,
+                 linear_autoscaler_params: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams'] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  nodelocal: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal'] = None,
                  provider: Optional[str] = None,
                  reverse_cidrs: Optional[Sequence[str]] = None,
+                 update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy'] = None,
                  upstream_nameservers: Optional[Sequence[str]] = None):
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
@@ -9626,8 +9815,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
             pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+
+    @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams']:
+        return pulumi.get(self, "linear_autoscaler_params")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -9650,9 +9846,62 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
         return pulumi.get(self, "reverse_cidrs")
 
     @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy']:
+        return pulumi.get(self, "update_strategy")
+
+    @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "upstream_nameservers")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams(dict):
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[float] = None,
+                 max: Optional[int] = None,
+                 min: Optional[int] = None,
+                 nodes_per_replica: Optional[float] = None,
+                 prevent_single_point_failure: Optional[bool] = None):
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "cores_per_replica")
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[int]:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[int]:
+        return pulumi.get(self, "min")
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "nodes_per_replica")
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[bool]:
+        return pulumi.get(self, "prevent_single_point_failure")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -9677,6 +9926,54 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "node_selector")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate(dict):
+    def __init__(__self__, *,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None):
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -11291,6 +11588,162 @@ class EtcdBackupBackupConfigS3BackupConfig(dict):
 
 
 @pulumi.output_type
+class GlobalDnsProviderAlidnsConfig(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 secret_key: str):
+        """
+        :param str access_key: The AWS Access key (string)
+        :param str secret_key: The AWS Secret key (string)
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        The AWS Access key (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        The AWS Secret key (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GlobalDnsProviderCloudflareConfig(dict):
+    def __init__(__self__, *,
+                 api_email: str,
+                 api_key: str,
+                 proxy_setting: Optional[bool] = None):
+        """
+        :param str api_email: The CloudFlare API Email (string)
+        :param str api_key: The CloudFlare API Key (string)
+        :param bool proxy_setting: CloudFlare Proxy Setting. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "api_email", api_email)
+        pulumi.set(__self__, "api_key", api_key)
+        if proxy_setting is not None:
+            pulumi.set(__self__, "proxy_setting", proxy_setting)
+
+    @property
+    @pulumi.getter(name="apiEmail")
+    def api_email(self) -> str:
+        """
+        The CloudFlare API Email (string)
+        """
+        return pulumi.get(self, "api_email")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        """
+        The CloudFlare API Key (string)
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="proxySetting")
+    def proxy_setting(self) -> Optional[bool]:
+        """
+        CloudFlare Proxy Setting. Default: `false` (bool)
+        """
+        return pulumi.get(self, "proxy_setting")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GlobalDnsProviderRoute53Config(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 secret_key: str,
+                 credentials_path: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 zone_type: Optional[str] = None):
+        """
+        :param str access_key: The AWS Access key (string)
+        :param str secret_key: The AWS Secret key (string)
+        :param str credentials_path: The AWS credentials path. Default: `"/.aws"` (string)
+        :param str region: The AWS Region. Default: `"us-west-2"` (string)
+        :param str role_arn: The AWS Role ARN (string)
+        :param str zone_type: The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+        if credentials_path is not None:
+            pulumi.set(__self__, "credentials_path", credentials_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if zone_type is not None:
+            pulumi.set(__self__, "zone_type", zone_type)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        The AWS Access key (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        The AWS Secret key (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="credentialsPath")
+    def credentials_path(self) -> Optional[str]:
+        """
+        The AWS credentials path. Default: `"/.aws"` (string)
+        """
+        return pulumi.get(self, "credentials_path")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The AWS Region. Default: `"us-west-2"` (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The AWS Role ARN (string)
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> Optional[str]:
+        """
+        The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
+        return pulumi.get(self, "zone_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class MultiClusterAppAnswer(dict):
     def __init__(__self__, *,
                  cluster_id: Optional[str] = None,
@@ -12699,6 +13152,111 @@ class NodeTemplateDigitaloceanConfig(dict):
         Path to file with cloud-init user-data (string)
         """
         return pulumi.get(self, "userdata")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class NodeTemplateHetznerConfig(dict):
+    def __init__(__self__, *,
+                 api_token: str,
+                 image: Optional[str] = None,
+                 networks: Optional[str] = None,
+                 server_location: Optional[str] = None,
+                 server_type: Optional[str] = None,
+                 use_private_networks: Optional[bool] = None,
+                 userdata: Optional[str] = None,
+                 volumes: Optional[str] = None):
+        """
+        :param str api_token: Hetzner Cloud project API token (string)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param str networks: Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        :param str server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
+        :param str server_type: Hetzner Cloud server type. Default `cx11` (string)
+        :param bool use_private_networks: Use private network. Default `false` (bool)
+        :param str userdata: Path to file with cloud-init user-data (string)
+        :param str volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
+        """
+        pulumi.set(__self__, "api_token", api_token)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if server_location is not None:
+            pulumi.set(__self__, "server_location", server_location)
+        if server_type is not None:
+            pulumi.set(__self__, "server_type", server_type)
+        if use_private_networks is not None:
+            pulumi.set(__self__, "use_private_networks", use_private_networks)
+        if userdata is not None:
+            pulumi.set(__self__, "userdata", userdata)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> str:
+        """
+        Hetzner Cloud project API token (string)
+        """
+        return pulumi.get(self, "api_token")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[str]:
+        """
+        Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        """
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="serverLocation")
+    def server_location(self) -> Optional[str]:
+        """
+        Hetzner Cloud datacenter. Default `nbg1` (string)
+        """
+        return pulumi.get(self, "server_location")
+
+    @property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> Optional[str]:
+        """
+        Hetzner Cloud server type. Default `cx11` (string)
+        """
+        return pulumi.get(self, "server_type")
+
+    @property
+    @pulumi.getter(name="usePrivateNetworks")
+    def use_private_networks(self) -> Optional[bool]:
+        """
+        Use private network. Default `false` (bool)
+        """
+        return pulumi.get(self, "use_private_networks")
+
+    @property
+    @pulumi.getter
+    def userdata(self) -> Optional[str]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
+        return pulumi.get(self, "userdata")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[str]:
+        """
+        Comma-separated list of volume IDs or names which should be attached to the server (string)
+        """
+        return pulumi.get(self, "volumes")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -19472,15 +20030,21 @@ class GetClusterRkeConfigDnsResult(dict):
                  node_selector: Mapping[str, Any],
                  reverse_cidrs: Sequence[str],
                  upstream_nameservers: Sequence[str],
+                 linear_autoscaler_params: Optional['outputs.GetClusterRkeConfigDnsLinearAutoscalerParamsResult'] = None,
                  nodelocal: Optional['outputs.GetClusterRkeConfigDnsNodelocalResult'] = None,
-                 provider: Optional[str] = None):
+                 provider: Optional[str] = None,
+                 update_strategy: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyResult'] = None):
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
         pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if nodelocal is not None:
             pulumi.set(__self__, "nodelocal", nodelocal)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -19498,6 +20062,11 @@ class GetClusterRkeConfigDnsResult(dict):
         return pulumi.get(self, "upstream_nameservers")
 
     @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional['outputs.GetClusterRkeConfigDnsLinearAutoscalerParamsResult']:
+        return pulumi.get(self, "linear_autoscaler_params")
+
+    @property
     @pulumi.getter
     def nodelocal(self) -> Optional['outputs.GetClusterRkeConfigDnsNodelocalResult']:
         return pulumi.get(self, "nodelocal")
@@ -19506,6 +20075,56 @@ class GetClusterRkeConfigDnsResult(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyResult']:
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigDnsLinearAutoscalerParamsResult(dict):
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[float] = None,
+                 max: Optional[int] = None,
+                 min: Optional[int] = None,
+                 nodes_per_replica: Optional[float] = None,
+                 prevent_single_point_failure: Optional[bool] = None):
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "cores_per_replica")
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[int]:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[int]:
+        return pulumi.get(self, "min")
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "nodes_per_replica")
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[bool]:
+        return pulumi.get(self, "prevent_single_point_failure")
 
 
 @pulumi.output_type
@@ -19527,6 +20146,48 @@ class GetClusterRkeConfigDnsNodelocalResult(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "node_selector")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigDnsUpdateStrategyResult(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult(dict):
+    def __init__(__self__, *,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None):
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type
@@ -20341,9 +21002,16 @@ class GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult(dict):
 @pulumi.output_type
 class GetClusterRkeConfigServicesKubeApiEventRateLimitResult(dict):
     def __init__(__self__, *,
+                 configuration: str,
                  enabled: Optional[bool] = None):
+        pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> str:
+        return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
@@ -20354,9 +21022,16 @@ class GetClusterRkeConfigServicesKubeApiEventRateLimitResult(dict):
 @pulumi.output_type
 class GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigResult(dict):
     def __init__(__self__, *,
+                 custom_config: str,
                  enabled: Optional[bool] = None):
+        pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="customConfig")
+    def custom_config(self) -> str:
+        return pulumi.get(self, "custom_config")
 
     @property
     @pulumi.getter
@@ -22187,15 +22862,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
                  node_selector: Mapping[str, Any],
                  reverse_cidrs: Sequence[str],
                  upstream_nameservers: Sequence[str],
+                 linear_autoscaler_params: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult'] = None,
                  nodelocal: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult'] = None,
-                 provider: Optional[str] = None):
+                 provider: Optional[str] = None,
+                 update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult'] = None):
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
         pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if nodelocal is not None:
             pulumi.set(__self__, "nodelocal", nodelocal)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -22213,6 +22894,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
         return pulumi.get(self, "upstream_nameservers")
 
     @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult']:
+        return pulumi.get(self, "linear_autoscaler_params")
+
+    @property
     @pulumi.getter
     def nodelocal(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult']:
         return pulumi.get(self, "nodelocal")
@@ -22221,6 +22907,56 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult']:
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult(dict):
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[float] = None,
+                 max: Optional[int] = None,
+                 min: Optional[int] = None,
+                 nodes_per_replica: Optional[float] = None,
+                 prevent_single_point_failure: Optional[bool] = None):
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "cores_per_replica")
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[int]:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[int]:
+        return pulumi.get(self, "min")
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[float]:
+        return pulumi.get(self, "nodes_per_replica")
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[bool]:
+        return pulumi.get(self, "prevent_single_point_failure")
 
 
 @pulumi.output_type
@@ -22242,6 +22978,48 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "node_selector")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult(dict):
+    def __init__(__self__, *,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None):
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type
@@ -23050,9 +23828,16 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAud
 @pulumi.output_type
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(dict):
     def __init__(__self__, *,
+                 configuration: str,
                  enabled: Optional[bool] = None):
+        pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> str:
+        return pulumi.get(self, "configuration")
 
     @property
     @pulumi.getter
@@ -23063,9 +23848,16 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEve
 @pulumi.output_type
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult(dict):
     def __init__(__self__, *,
+                 custom_config: str,
                  enabled: Optional[bool] = None):
+        pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="customConfig")
+    def custom_config(self) -> str:
+        return pulumi.get(self, "custom_config")
 
     @property
     @pulumi.getter
@@ -23584,6 +24376,103 @@ class GetEtcdBackupBackupConfigS3BackupConfigResult(dict):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class GetGlobalDnsProviderAlidnsConfigResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 secret_key: str):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class GetGlobalDnsProviderCloudflareConfigResult(dict):
+    def __init__(__self__, *,
+                 api_email: str,
+                 api_key: str,
+                 proxy_setting: Optional[bool] = None):
+        pulumi.set(__self__, "api_email", api_email)
+        pulumi.set(__self__, "api_key", api_key)
+        if proxy_setting is not None:
+            pulumi.set(__self__, "proxy_setting", proxy_setting)
+
+    @property
+    @pulumi.getter(name="apiEmail")
+    def api_email(self) -> str:
+        return pulumi.get(self, "api_email")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> str:
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="proxySetting")
+    def proxy_setting(self) -> Optional[bool]:
+        return pulumi.get(self, "proxy_setting")
+
+
+@pulumi.output_type
+class GetGlobalDnsProviderRoute53ConfigResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 secret_key: str,
+                 credentials_path: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 zone_type: Optional[str] = None):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+        if credentials_path is not None:
+            pulumi.set(__self__, "credentials_path", credentials_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if zone_type is not None:
+            pulumi.set(__self__, "zone_type", zone_type)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="credentialsPath")
+    def credentials_path(self) -> Optional[str]:
+        return pulumi.get(self, "credentials_path")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> Optional[str]:
+        return pulumi.get(self, "zone_type")
 
 
 @pulumi.output_type

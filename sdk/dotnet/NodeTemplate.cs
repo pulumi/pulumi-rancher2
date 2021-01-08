@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
+    /// amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
     /// 
     /// **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
     /// 
@@ -83,6 +83,43 @@ namespace Pulumi.Rancher2
     ///                 SubnetId = "&lt;SUBNET_ID&gt;",
     ///                 VpcId = "&lt;VPC_ID&gt;",
     ///                 Zone = "&lt;ZONE&gt;",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Using the Hetzner Node Driver
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new rancher2 Node Template using hetzner node_driver
+    ///         var hetznerNodeDriver = new Rancher2.NodeDriver("hetznerNodeDriver", new Rancher2.NodeDriverArgs
+    ///         {
+    ///             Active = true,
+    ///             Builtin = false,
+    ///             UiUrl = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
+    ///             Url = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz",
+    ///             WhitelistDomains = 
+    ///             {
+    ///                 "storage.googleapis.com",
+    ///             },
+    ///         });
+    ///         var myHetznerNodeTemplate = new Rancher2.NodeTemplate("myHetznerNodeTemplate", new Rancher2.NodeTemplateArgs
+    ///         {
+    ///             DriverId = hetznerNodeDriver.Id,
+    ///             HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs
+    ///             {
+    ///                 ApiToken = "XXXXXXXXXX",
+    ///                 Image = "ubuntu-18.04",
+    ///                 ServerLocation = "nbg1",
+    ///                 ServerType = "cx11",
     ///             },
     ///         });
     ///     }
@@ -201,6 +238,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("engineStorageDriver")]
         public Output<string?> EngineStorageDriver { get; private set; } = null!;
+
+        /// <summary>
+        /// Hetzner config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Output("hetznerConfig")]
+        public Output<Outputs.NodeTemplateHetznerConfig?> HetznerConfig { get; private set; } = null!;
 
         /// <summary>
         /// Labels for Node Template object (map)
@@ -422,6 +465,12 @@ namespace Pulumi.Rancher2
         [Input("engineStorageDriver")]
         public Input<string>? EngineStorageDriver { get; set; }
 
+        /// <summary>
+        /// Hetzner config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("hetznerConfig")]
+        public Input<Inputs.NodeTemplateHetznerConfigArgs>? HetznerConfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -614,6 +663,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("engineStorageDriver")]
         public Input<string>? EngineStorageDriver { get; set; }
+
+        /// <summary>
+        /// Hetzner config for the Node Template (list maxitems:1)
+        /// </summary>
+        [Input("hetznerConfig")]
+        public Input<Inputs.NodeTemplateHetznerConfigGetArgs>? HetznerConfig { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

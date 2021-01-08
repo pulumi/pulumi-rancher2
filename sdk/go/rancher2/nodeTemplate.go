@@ -12,7 +12,7 @@ import (
 
 // Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 //
-// amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
+// amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
 //
 // **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 //
@@ -92,6 +92,46 @@ import (
 // 	})
 // }
 // ```
+// ### Using the Hetzner Node Driver
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		hetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, "hetznerNodeDriver", &rancher2.NodeDriverArgs{
+// 			Active:  pulumi.Bool(true),
+// 			Builtin: pulumi.Bool(false),
+// 			UiUrl:   pulumi.String("https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js"),
+// 			Url:     pulumi.String("https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz"),
+// 			WhitelistDomains: pulumi.StringArray{
+// 				pulumi.String("storage.googleapis.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewNodeTemplate(ctx, "myHetznerNodeTemplate", &rancher2.NodeTemplateArgs{
+// 			DriverId: hetznerNodeDriver.ID(),
+// 			HetznerConfig: &rancher2.NodeTemplateHetznerConfigArgs{
+// 				ApiToken:       pulumi.String("XXXXXXXXXX"),
+// 				Image:          pulumi.String("ubuntu-18.04"),
+// 				ServerLocation: pulumi.String("nbg1"),
+// 				ServerType:     pulumi.String("cx11"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -137,6 +177,8 @@ type NodeTemplate struct {
 	EngineRegistryMirrors pulumi.StringArrayOutput `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
 	EngineStorageDriver pulumi.StringPtrOutput `pulumi:"engineStorageDriver"`
+	// Hetzner config for the Node Template (list maxitems:1)
+	HetznerConfig NodeTemplateHetznerConfigPtrOutput `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
@@ -215,6 +257,8 @@ type nodeTemplateState struct {
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
 	EngineStorageDriver *string `pulumi:"engineStorageDriver"`
+	// Hetzner config for the Node Template (list maxitems:1)
+	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
@@ -266,6 +310,8 @@ type NodeTemplateState struct {
 	EngineRegistryMirrors pulumi.StringArrayInput
 	// Engine storage driver for the node template (string)
 	EngineStorageDriver pulumi.StringPtrInput
+	// Hetzner config for the Node Template (list maxitems:1)
+	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)
@@ -319,6 +365,8 @@ type nodeTemplateArgs struct {
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
 	EngineStorageDriver *string `pulumi:"engineStorageDriver"`
+	// Hetzner config for the Node Template (list maxitems:1)
+	HetznerConfig *NodeTemplateHetznerConfig `pulumi:"hetznerConfig"`
 	// Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
@@ -369,6 +417,8 @@ type NodeTemplateArgs struct {
 	EngineRegistryMirrors pulumi.StringArrayInput
 	// Engine storage driver for the node template (string)
 	EngineStorageDriver pulumi.StringPtrInput
+	// Hetzner config for the Node Template (list maxitems:1)
+	HetznerConfig NodeTemplateHetznerConfigPtrInput
 	// Labels for Node Template object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Node Template (list maxitems:1)

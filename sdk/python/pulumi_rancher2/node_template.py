@@ -33,6 +33,7 @@ class NodeTemplate(pulumi.CustomResource):
                  engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
+                 hetzner_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -46,7 +47,7 @@ class NodeTemplate(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
 
-        amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
+        amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
 
         **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
@@ -94,6 +95,28 @@ class NodeTemplate(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         ```
+        ### Using the Hetzner Node Driver
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Node Template using hetzner node_driver
+        hetzner_node_driver = rancher2.NodeDriver("hetznerNodeDriver",
+            active=True,
+            builtin=False,
+            ui_url="https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
+            url="https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz",
+            whitelist_domains=["storage.googleapis.com"])
+        my_hetzner_node_template = rancher2.NodeTemplate("myHetznerNodeTemplate",
+            driver_id=hetzner_node_driver.id,
+            hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
+                api_token="XXXXXXXXXX",
+                image="ubuntu-18.04",
+                server_location="nbg1",
+                server_type="cx11",
+            ))
+        ```
 
         ## Import
 
@@ -121,6 +144,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
@@ -162,6 +186,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['engine_opt'] = engine_opt
             __props__['engine_registry_mirrors'] = engine_registry_mirrors
             __props__['engine_storage_driver'] = engine_storage_driver
+            __props__['hetzner_config'] = hetzner_config
             __props__['labels'] = labels
             __props__['linode_config'] = linode_config
             __props__['name'] = name
@@ -197,6 +222,7 @@ class NodeTemplate(pulumi.CustomResource):
             engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_storage_driver: Optional[pulumi.Input[str]] = None,
+            hetzner_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -228,6 +254,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
+        :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
@@ -257,6 +284,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["engine_opt"] = engine_opt
         __props__["engine_registry_mirrors"] = engine_registry_mirrors
         __props__["engine_storage_driver"] = engine_storage_driver
+        __props__["hetzner_config"] = hetzner_config
         __props__["labels"] = labels
         __props__["linode_config"] = linode_config
         __props__["name"] = name
@@ -401,6 +429,14 @@ class NodeTemplate(pulumi.CustomResource):
         Engine storage driver for the node template (string)
         """
         return pulumi.get(self, "engine_storage_driver")
+
+    @property
+    @pulumi.getter(name="hetznerConfig")
+    def hetzner_config(self) -> pulumi.Output[Optional['outputs.NodeTemplateHetznerConfig']]:
+        """
+        Hetzner config for the Node Template (list maxitems:1)
+        """
+        return pulumi.get(self, "hetzner_config")
 
     @property
     @pulumi.getter
