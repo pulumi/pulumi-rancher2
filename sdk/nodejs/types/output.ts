@@ -231,7 +231,7 @@ export interface ClusterAlertGroupRecipient {
      */
     notifierId: string;
     /**
-     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
      */
     notifierType: string;
     /**
@@ -678,6 +678,9 @@ export interface ClusterGkeConfig {
      * Whether to enable legacy abac on the cluster. Default `false` (bool)
      */
     enableLegacyAbac?: boolean;
+    /**
+     * Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
+     */
     enableMasterAuthorizedNetwork?: boolean;
     /**
      * Enable network policy config for the cluster. Default `true` (bool)
@@ -1820,6 +1823,10 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 
 export interface ClusterRkeConfigDns {
     /**
+     * LinearAutoScalerParams dns config (list Maxitem: 1)
+     */
+    linearAutoscalerParams?: outputs.ClusterRkeConfigDnsLinearAutoscalerParams;
+    /**
      * RKE monitoring node selector (map)
      */
     nodeSelector: {[key: string]: any};
@@ -1836,9 +1843,36 @@ export interface ClusterRkeConfigDns {
      */
     reverseCidrs: string[];
     /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: outputs.ClusterRkeConfigDnsUpdateStrategy;
+    /**
      * DNS add-on upstream nameservers  (list)
      */
     upstreamNameservers: string[];
+}
+
+export interface ClusterRkeConfigDnsLinearAutoscalerParams {
+    /**
+     * number of replicas per cluster cores (float64)
+     */
+    coresPerReplica?: number;
+    /**
+     * maximum number of replicas (int64)
+     */
+    max?: number;
+    /**
+     * minimum number of replicas (int64)
+     */
+    min?: number;
+    /**
+     * number of replica per cluster nodes (float64)
+     */
+    nodesPerReplica?: number;
+    /**
+     * prevent single point of failure
+     */
+    preventSinglePointFailure?: boolean;
 }
 
 export interface ClusterRkeConfigDnsNodelocal {
@@ -1850,6 +1884,28 @@ export interface ClusterRkeConfigDnsNodelocal {
      * RKE monitoring node selector (map)
      */
     nodeSelector?: {[key: string]: any};
+}
+
+export interface ClusterRkeConfigDnsUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: string;
+}
+
+export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: number;
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: number;
 }
 
 export interface ClusterRkeConfigIngress {
@@ -2830,16 +2886,36 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    linearAutoscalerParams?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
     nodelocal?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
+    updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+    coresPerReplica?: number;
+    max?: number;
+    min?: number;
+    nodesPerReplica?: number;
+    preventSinglePointFailure?: boolean;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: string;
     nodeSelector?: {[key: string]: any};
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -3732,16 +3808,36 @@ export interface GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 }
 
 export interface GetClusterRkeConfigDns {
+    linearAutoscalerParams?: outputs.GetClusterRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
     nodelocal?: outputs.GetClusterRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
+    updateStrategy?: outputs.GetClusterRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
+}
+
+export interface GetClusterRkeConfigDnsLinearAutoscalerParams {
+    coresPerReplica?: number;
+    max?: number;
+    min?: number;
+    nodesPerReplica?: number;
+    preventSinglePointFailure?: boolean;
 }
 
 export interface GetClusterRkeConfigDnsNodelocal {
     ipAddress?: string;
     nodeSelector?: {[key: string]: any};
+}
+
+export interface GetClusterRkeConfigDnsUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface GetClusterRkeConfigIngress {
@@ -3899,10 +3995,12 @@ export interface GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 }
 
 export interface GetClusterRkeConfigServicesKubeApiEventRateLimit {
+    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig: string;
     enabled?: boolean;
 }
 
@@ -4270,16 +4368,36 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    linearAutoscalerParams?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
     nodelocal?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     provider?: string;
     reverseCidrs: string[];
+    updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+    coresPerReplica?: number;
+    max?: number;
+    min?: number;
+    nodesPerReplica?: number;
+    preventSinglePointFailure?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: string;
     nodeSelector?: {[key: string]: any};
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    maxSurge?: number;
+    maxUnavailable?: number;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -4434,10 +4552,12 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
+    configuration: string;
     enabled?: boolean;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
+    customConfig: string;
     enabled?: boolean;
 }
 
@@ -4537,6 +4657,26 @@ export interface GetEtcdBackupBackupConfigS3BackupConfig {
     folder?: string;
     region?: string;
     secretKey?: string;
+}
+
+export interface GetGlobalDnsProviderAlidnsConfig {
+    accessKey: string;
+    secretKey: string;
+}
+
+export interface GetGlobalDnsProviderCloudflareConfig {
+    apiEmail: string;
+    apiKey: string;
+    proxySetting?: boolean;
+}
+
+export interface GetGlobalDnsProviderRoute53Config {
+    accessKey: string;
+    credentialsPath?: string;
+    region?: string;
+    roleArn?: string;
+    secretKey: string;
+    zoneType?: string;
 }
 
 export interface GetMultiClusterAppAnswer {
@@ -4889,6 +5029,59 @@ export interface GetRoleTemplateRule {
     resourceNames?: string[];
     resources?: string[];
     verbs?: string[];
+}
+
+export interface GlobalDnsProviderAlidnsConfig {
+    /**
+     * The AWS Access key (string)
+     */
+    accessKey: string;
+    /**
+     * The AWS Secret key (string)
+     */
+    secretKey: string;
+}
+
+export interface GlobalDnsProviderCloudflareConfig {
+    /**
+     * The CloudFlare API Email (string)
+     */
+    apiEmail: string;
+    /**
+     * The CloudFlare API Key (string)
+     */
+    apiKey: string;
+    /**
+     * CloudFlare Proxy Setting. Default: `false` (bool)
+     */
+    proxySetting?: boolean;
+}
+
+export interface GlobalDnsProviderRoute53Config {
+    /**
+     * The AWS Access key (string)
+     */
+    accessKey: string;
+    /**
+     * The AWS credentials path. Default: `"/.aws"` (string)
+     */
+    credentialsPath?: string;
+    /**
+     * The AWS Region. Default: `"us-west-2"` (string)
+     */
+    region?: string;
+    /**
+     * The AWS Role ARN (string)
+     */
+    roleArn?: string;
+    /**
+     * The AWS Secret key (string)
+     */
+    secretKey: string;
+    /**
+     * The Route53 zone type `public, private`. Default: `"public"` (string)
+     */
+    zoneType?: string;
 }
 
 export interface MultiClusterAppAnswer {
@@ -5358,6 +5551,41 @@ export interface NodeTemplateDigitaloceanConfig {
      * Path to file with cloud-init user-data (string)
      */
     userdata?: string;
+}
+
+export interface NodeTemplateHetznerConfig {
+    /**
+     * Hetzner Cloud project API token (string)
+     */
+    apiToken: string;
+    /**
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     */
+    image?: string;
+    /**
+     * Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     */
+    networks?: string;
+    /**
+     * Hetzner Cloud datacenter. Default `nbg1` (string)
+     */
+    serverLocation?: string;
+    /**
+     * Hetzner Cloud server type. Default `cx11` (string)
+     */
+    serverType?: string;
+    /**
+     * Use private network. Default `false` (bool)
+     */
+    usePrivateNetworks?: boolean;
+    /**
+     * Path to file with cloud-init user-data (string)
+     */
+    userdata?: string;
+    /**
+     * Comma-separated list of volume IDs or names which should be attached to the server (string)
+     */
+    volumes?: string;
 }
 
 export interface NodeTemplateLinodeConfig {

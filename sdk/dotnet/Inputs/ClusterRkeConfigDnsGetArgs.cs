@@ -12,6 +12,12 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigDnsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// LinearAutoScalerParams dns config (list Maxitem: 1)
+        /// </summary>
+        [Input("linearAutoscalerParams")]
+        public Input<Inputs.ClusterRkeConfigDnsLinearAutoscalerParamsGetArgs>? LinearAutoscalerParams { get; set; }
+
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
 
@@ -47,6 +53,12 @@ namespace Pulumi.Rancher2.Inputs
             get => _reverseCidrs ?? (_reverseCidrs = new InputList<string>());
             set => _reverseCidrs = value;
         }
+
+        /// <summary>
+        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<Inputs.ClusterRkeConfigDnsUpdateStrategyGetArgs>? UpdateStrategy { get; set; }
 
         [Input("upstreamNameservers")]
         private InputList<string>? _upstreamNameservers;

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
  *
- * amazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.
+ * amazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.
  *
  * **Note** If you are upgrading to Rancher v2.3.3, please take a look to final section
  *
@@ -56,6 +56,30 @@ import * as utilities from "./utilities";
  *         subnetId: "<SUBNET_ID>",
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
+ *     },
+ * });
+ * ```
+ * ### Using the Hetzner Node Driver
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 Node Template using hetzner node_driver
+ * const hetznerNodeDriver = new rancher2.NodeDriver("hetznerNodeDriver", {
+ *     active: true,
+ *     builtin: false,
+ *     uiUrl: "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
+ *     url: "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz",
+ *     whitelistDomains: ["storage.googleapis.com"],
+ * });
+ * const myHetznerNodeTemplate = new rancher2.NodeTemplate("myHetznerNodeTemplate", {
+ *     driverId: hetznerNodeDriver.id,
+ *     hetznerConfig: {
+ *         apiToken: "XXXXXXXXXX",
+ *         image: "ubuntu-18.04",
+ *         serverLocation: "nbg1",
+ *         serverType: "cx11",
  *     },
  * });
  * ```
@@ -165,6 +189,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly engineStorageDriver!: pulumi.Output<string | undefined>;
     /**
+     * Hetzner config for the Node Template (list maxitems:1)
+     */
+    public readonly hetznerConfig!: pulumi.Output<outputs.NodeTemplateHetznerConfig | undefined>;
+    /**
      * Labels for Node Template object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -222,6 +250,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineOpt"] = state ? state.engineOpt : undefined;
             inputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
             inputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
+            inputs["hetznerConfig"] = state ? state.hetznerConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -247,6 +276,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["engineOpt"] = args ? args.engineOpt : undefined;
             inputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
             inputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
+            inputs["hetznerConfig"] = args ? args.hetznerConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["linodeConfig"] = args ? args.linodeConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -339,6 +369,10 @@ export interface NodeTemplateState {
      * Engine storage driver for the node template (string)
      */
     readonly engineStorageDriver?: pulumi.Input<string>;
+    /**
+     * Hetzner config for the Node Template (list maxitems:1)
+     */
+    readonly hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
      */
@@ -437,6 +471,10 @@ export interface NodeTemplateArgs {
      * Engine storage driver for the node template (string)
      */
     readonly engineStorageDriver?: pulumi.Input<string>;
+    /**
+     * Hetzner config for the Node Template (list maxitems:1)
+     */
+    readonly hetznerConfig?: pulumi.Input<inputs.NodeTemplateHetznerConfig>;
     /**
      * Labels for Node Template object (map)
      */

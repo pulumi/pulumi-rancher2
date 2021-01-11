@@ -84,6 +84,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
 
+        /// <summary>
+        /// Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
+        /// </summary>
         [Input("enableMasterAuthorizedNetwork")]
         public Input<bool>? EnableMasterAuthorizedNetwork { get; set; }
 

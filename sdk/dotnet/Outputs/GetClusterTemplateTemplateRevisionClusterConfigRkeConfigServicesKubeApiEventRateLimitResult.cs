@@ -13,11 +13,16 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult
     {
+        public readonly string Configuration;
         public readonly bool? Enabled;
 
         [OutputConstructor]
-        private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(bool? enabled)
+        private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitResult(
+            string configuration,
+
+            bool? enabled)
         {
+            Configuration = configuration;
             Enabled = enabled;
         }
     }

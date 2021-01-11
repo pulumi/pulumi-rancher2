@@ -61,6 +61,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Whether to enable legacy abac on the cluster. Default `false` (bool)
         /// </summary>
         public readonly bool? EnableLegacyAbac;
+        /// <summary>
+        /// Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
+        /// </summary>
         public readonly bool? EnableMasterAuthorizedNetwork;
         /// <summary>
         /// Enable network policy config for the cluster. Default `true` (bool)

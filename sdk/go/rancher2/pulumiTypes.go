@@ -1732,7 +1732,7 @@ type ClusterAlertGroupRecipient struct {
 	DefaultRecipient *bool `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId string `pulumi:"notifierId"`
-	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+	// Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
 	NotifierType *string `pulumi:"notifierType"`
 	// Recipient (string)
 	Recipient *string `pulumi:"recipient"`
@@ -1754,7 +1754,7 @@ type ClusterAlertGroupRecipientArgs struct {
 	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
 	// Recipient notifier ID (string)
 	NotifierId pulumi.StringInput `pulumi:"notifierId"`
-	// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+	// Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
 	NotifierType pulumi.StringPtrInput `pulumi:"notifierType"`
 	// Recipient (string)
 	Recipient pulumi.StringPtrInput `pulumi:"recipient"`
@@ -1821,7 +1821,7 @@ func (o ClusterAlertGroupRecipientOutput) NotifierId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAlertGroupRecipient) string { return v.NotifierId }).(pulumi.StringOutput)
 }
 
-// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+// Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
 func (o ClusterAlertGroupRecipientOutput) NotifierType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAlertGroupRecipient) *string { return v.NotifierType }).(pulumi.StringPtrOutput)
 }
@@ -5317,7 +5317,8 @@ type ClusterGkeConfig struct {
 	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 	EnableKubernetesDashboard *bool `pulumi:"enableKubernetesDashboard"`
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
-	EnableLegacyAbac              *bool `pulumi:"enableLegacyAbac"`
+	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
+	// Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
 	EnableMasterAuthorizedNetwork *bool `pulumi:"enableMasterAuthorizedNetwork"`
 	// Enable network policy config for the cluster. Default `true` (bool)
 	EnableNetworkPolicyConfig *bool `pulumi:"enableNetworkPolicyConfig"`
@@ -5436,7 +5437,8 @@ type ClusterGkeConfigArgs struct {
 	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
 	EnableKubernetesDashboard pulumi.BoolPtrInput `pulumi:"enableKubernetesDashboard"`
 	// Whether to enable legacy abac on the cluster. Default `false` (bool)
-	EnableLegacyAbac              pulumi.BoolPtrInput `pulumi:"enableLegacyAbac"`
+	EnableLegacyAbac pulumi.BoolPtrInput `pulumi:"enableLegacyAbac"`
+	// Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
 	EnableMasterAuthorizedNetwork pulumi.BoolPtrInput `pulumi:"enableMasterAuthorizedNetwork"`
 	// Enable network policy config for the cluster. Default `true` (bool)
 	EnableNetworkPolicyConfig pulumi.BoolPtrInput `pulumi:"enableNetworkPolicyConfig"`
@@ -5657,6 +5659,7 @@ func (o ClusterGkeConfigOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableLegacyAbac }).(pulumi.BoolPtrOutput)
 }
 
+// Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
 func (o ClusterGkeConfigOutput) EnableMasterAuthorizedNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGkeConfig) *bool { return v.EnableMasterAuthorizedNetwork }).(pulumi.BoolPtrOutput)
 }
@@ -5999,6 +6002,7 @@ func (o ClusterGkeConfigPtrOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
 func (o ClusterGkeConfigPtrOutput) EnableMasterAuthorizedNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGkeConfig) *bool {
 		if v == nil {
@@ -13892,6 +13896,8 @@ func (o ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput) Ser
 }
 
 type ClusterRkeConfigDns struct {
+	// LinearAutoScalerParams dns config (list Maxitem: 1)
+	LinearAutoscalerParams *ClusterRkeConfigDnsLinearAutoscalerParams `pulumi:"linearAutoscalerParams"`
 	// RKE monitoring node selector (map)
 	NodeSelector map[string]interface{} `pulumi:"nodeSelector"`
 	// Nodelocal dns config  (list Maxitem: 1)
@@ -13900,6 +13906,8 @@ type ClusterRkeConfigDns struct {
 	Provider *string `pulumi:"provider"`
 	// DNS add-on reverse cidr  (list)
 	ReverseCidrs []string `pulumi:"reverseCidrs"`
+	// RKE monitoring update strategy (list Maxitems: 1)
+	UpdateStrategy *ClusterRkeConfigDnsUpdateStrategy `pulumi:"updateStrategy"`
 	// DNS add-on upstream nameservers  (list)
 	UpstreamNameservers []string `pulumi:"upstreamNameservers"`
 }
@@ -13916,6 +13924,8 @@ type ClusterRkeConfigDnsInput interface {
 }
 
 type ClusterRkeConfigDnsArgs struct {
+	// LinearAutoScalerParams dns config (list Maxitem: 1)
+	LinearAutoscalerParams ClusterRkeConfigDnsLinearAutoscalerParamsPtrInput `pulumi:"linearAutoscalerParams"`
 	// RKE monitoring node selector (map)
 	NodeSelector pulumi.MapInput `pulumi:"nodeSelector"`
 	// Nodelocal dns config  (list Maxitem: 1)
@@ -13924,6 +13934,8 @@ type ClusterRkeConfigDnsArgs struct {
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// DNS add-on reverse cidr  (list)
 	ReverseCidrs pulumi.StringArrayInput `pulumi:"reverseCidrs"`
+	// RKE monitoring update strategy (list Maxitems: 1)
+	UpdateStrategy ClusterRkeConfigDnsUpdateStrategyPtrInput `pulumi:"updateStrategy"`
 	// DNS add-on upstream nameservers  (list)
 	UpstreamNameservers pulumi.StringArrayInput `pulumi:"upstreamNameservers"`
 }
@@ -14005,6 +14017,13 @@ func (o ClusterRkeConfigDnsOutput) ToClusterRkeConfigDnsPtrOutputWithContext(ctx
 	}).(ClusterRkeConfigDnsPtrOutput)
 }
 
+// LinearAutoScalerParams dns config (list Maxitem: 1)
+func (o ClusterRkeConfigDnsOutput) LinearAutoscalerParams() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDns) *ClusterRkeConfigDnsLinearAutoscalerParams {
+		return v.LinearAutoscalerParams
+	}).(ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
 // RKE monitoring node selector (map)
 func (o ClusterRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterRkeConfigDns) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
@@ -14023,6 +14042,11 @@ func (o ClusterRkeConfigDnsOutput) Provider() pulumi.StringPtrOutput {
 // DNS add-on reverse cidr  (list)
 func (o ClusterRkeConfigDnsOutput) ReverseCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterRkeConfigDns) []string { return v.ReverseCidrs }).(pulumi.StringArrayOutput)
+}
+
+// RKE monitoring update strategy (list Maxitems: 1)
+func (o ClusterRkeConfigDnsOutput) UpdateStrategy() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDns) *ClusterRkeConfigDnsUpdateStrategy { return v.UpdateStrategy }).(ClusterRkeConfigDnsUpdateStrategyPtrOutput)
 }
 
 // DNS add-on upstream nameservers  (list)
@@ -14046,6 +14070,16 @@ func (o ClusterRkeConfigDnsPtrOutput) ToClusterRkeConfigDnsPtrOutputWithContext(
 
 func (o ClusterRkeConfigDnsPtrOutput) Elem() ClusterRkeConfigDnsOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigDns) ClusterRkeConfigDns { return *v }).(ClusterRkeConfigDnsOutput)
+}
+
+// LinearAutoScalerParams dns config (list Maxitem: 1)
+func (o ClusterRkeConfigDnsPtrOutput) LinearAutoscalerParams() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDns) *ClusterRkeConfigDnsLinearAutoscalerParams {
+		if v == nil {
+			return nil
+		}
+		return v.LinearAutoscalerParams
+	}).(ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
 }
 
 // RKE monitoring node selector (map)
@@ -14088,6 +14122,16 @@ func (o ClusterRkeConfigDnsPtrOutput) ReverseCidrs() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// RKE monitoring update strategy (list Maxitems: 1)
+func (o ClusterRkeConfigDnsPtrOutput) UpdateStrategy() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDns) *ClusterRkeConfigDnsUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateStrategy
+	}).(ClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
 // DNS add-on upstream nameservers  (list)
 func (o ClusterRkeConfigDnsPtrOutput) UpstreamNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigDns) []string {
@@ -14096,6 +14140,215 @@ func (o ClusterRkeConfigDnsPtrOutput) UpstreamNameservers() pulumi.StringArrayOu
 		}
 		return v.UpstreamNameservers
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterRkeConfigDnsLinearAutoscalerParams struct {
+	// number of replicas per cluster cores (float64)
+	CoresPerReplica *float64 `pulumi:"coresPerReplica"`
+	// maximum number of replicas (int64)
+	Max *int `pulumi:"max"`
+	// minimum number of replicas (int64)
+	Min *int `pulumi:"min"`
+	// number of replica per cluster nodes (float64)
+	NodesPerReplica *float64 `pulumi:"nodesPerReplica"`
+	// prevent single point of failure
+	PreventSinglePointFailure *bool `pulumi:"preventSinglePointFailure"`
+}
+
+// ClusterRkeConfigDnsLinearAutoscalerParamsInput is an input type that accepts ClusterRkeConfigDnsLinearAutoscalerParamsArgs and ClusterRkeConfigDnsLinearAutoscalerParamsOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsLinearAutoscalerParamsInput` via:
+//
+//          ClusterRkeConfigDnsLinearAutoscalerParamsArgs{...}
+type ClusterRkeConfigDnsLinearAutoscalerParamsInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsLinearAutoscalerParamsOutput() ClusterRkeConfigDnsLinearAutoscalerParamsOutput
+	ToClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsOutput
+}
+
+type ClusterRkeConfigDnsLinearAutoscalerParamsArgs struct {
+	// number of replicas per cluster cores (float64)
+	CoresPerReplica pulumi.Float64PtrInput `pulumi:"coresPerReplica"`
+	// maximum number of replicas (int64)
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// minimum number of replicas (int64)
+	Min pulumi.IntPtrInput `pulumi:"min"`
+	// number of replica per cluster nodes (float64)
+	NodesPerReplica pulumi.Float64PtrInput `pulumi:"nodesPerReplica"`
+	// prevent single point of failure
+	PreventSinglePointFailure pulumi.BoolPtrInput `pulumi:"preventSinglePointFailure"`
+}
+
+func (ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterRkeConfigDnsLinearAutoscalerParamsOutput() ClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return i.ToClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (i ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsLinearAutoscalerParamsOutput).ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigDnsLinearAutoscalerParamsPtrInput is an input type that accepts ClusterRkeConfigDnsLinearAutoscalerParamsArgs, ClusterRkeConfigDnsLinearAutoscalerParamsPtr and ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsLinearAutoscalerParamsPtrInput` via:
+//
+//          ClusterRkeConfigDnsLinearAutoscalerParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterRkeConfigDnsLinearAutoscalerParamsPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput
+	ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput
+}
+
+type clusterRkeConfigDnsLinearAutoscalerParamsPtrType ClusterRkeConfigDnsLinearAutoscalerParamsArgs
+
+func ClusterRkeConfigDnsLinearAutoscalerParamsPtr(v *ClusterRkeConfigDnsLinearAutoscalerParamsArgs) ClusterRkeConfigDnsLinearAutoscalerParamsPtrInput {
+	return (*clusterRkeConfigDnsLinearAutoscalerParamsPtrType)(v)
+}
+
+func (*clusterRkeConfigDnsLinearAutoscalerParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigDnsLinearAutoscalerParamsPtrType) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigDnsLinearAutoscalerParamsPtrType) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
+type ClusterRkeConfigDnsLinearAutoscalerParamsOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsLinearAutoscalerParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsOutput() ClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *ClusterRkeConfigDnsLinearAutoscalerParams {
+		return &v
+	}).(ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
+// number of replicas per cluster cores (float64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *float64 { return v.CoresPerReplica }).(pulumi.Float64PtrOutput)
+}
+
+// maximum number of replicas (int64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// minimum number of replicas (int64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+// number of replica per cluster nodes (float64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *float64 { return v.NodesPerReplica }).(pulumi.Float64PtrOutput)
+}
+
+// prevent single point of failure
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsLinearAutoscalerParams) *bool { return v.PreventSinglePointFailure }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Elem() ClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) ClusterRkeConfigDnsLinearAutoscalerParams {
+		return *v
+	}).(ClusterRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+// number of replicas per cluster cores (float64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+// maximum number of replicas (int64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// minimum number of replicas (int64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+// number of replica per cluster nodes (float64)
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+// prevent single point of failure
+func (o ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsLinearAutoscalerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterRkeConfigDnsNodelocal struct {
@@ -14246,6 +14499,310 @@ func (o ClusterRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutput {
 		}
 		return v.NodeSelector
 	}).(pulumi.MapOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategy struct {
+	// Monitoring deployment rolling update (list Maxitems: 1)
+	RollingUpdate *ClusterRkeConfigDnsUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	// Monitoring deployment update strategy (string)
+	Strategy *string `pulumi:"strategy"`
+}
+
+// ClusterRkeConfigDnsUpdateStrategyInput is an input type that accepts ClusterRkeConfigDnsUpdateStrategyArgs and ClusterRkeConfigDnsUpdateStrategyOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsUpdateStrategyInput` via:
+//
+//          ClusterRkeConfigDnsUpdateStrategyArgs{...}
+type ClusterRkeConfigDnsUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsUpdateStrategyOutput() ClusterRkeConfigDnsUpdateStrategyOutput
+	ToClusterRkeConfigDnsUpdateStrategyOutputWithContext(context.Context) ClusterRkeConfigDnsUpdateStrategyOutput
+}
+
+type ClusterRkeConfigDnsUpdateStrategyArgs struct {
+	// Monitoring deployment rolling update (list Maxitems: 1)
+	RollingUpdate ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	// Monitoring deployment update strategy (string)
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+}
+
+func (ClusterRkeConfigDnsUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyArgs) ToClusterRkeConfigDnsUpdateStrategyOutput() ClusterRkeConfigDnsUpdateStrategyOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyArgs) ToClusterRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyArgs) ToClusterRkeConfigDnsUpdateStrategyPtrOutput() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyArgs) ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyOutput).ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigDnsUpdateStrategyPtrInput is an input type that accepts ClusterRkeConfigDnsUpdateStrategyArgs, ClusterRkeConfigDnsUpdateStrategyPtr and ClusterRkeConfigDnsUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsUpdateStrategyPtrInput` via:
+//
+//          ClusterRkeConfigDnsUpdateStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterRkeConfigDnsUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsUpdateStrategyPtrOutput() ClusterRkeConfigDnsUpdateStrategyPtrOutput
+	ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Context) ClusterRkeConfigDnsUpdateStrategyPtrOutput
+}
+
+type clusterRkeConfigDnsUpdateStrategyPtrType ClusterRkeConfigDnsUpdateStrategyArgs
+
+func ClusterRkeConfigDnsUpdateStrategyPtr(v *ClusterRkeConfigDnsUpdateStrategyArgs) ClusterRkeConfigDnsUpdateStrategyPtrInput {
+	return (*clusterRkeConfigDnsUpdateStrategyPtrType)(v)
+}
+
+func (*clusterRkeConfigDnsUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigDnsUpdateStrategyPtrType) ToClusterRkeConfigDnsUpdateStrategyPtrOutput() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigDnsUpdateStrategyPtrType) ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) ToClusterRkeConfigDnsUpdateStrategyOutput() ClusterRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) ToClusterRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) ToClusterRkeConfigDnsUpdateStrategyPtrOutput() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategy) *ClusterRkeConfigDnsUpdateStrategy {
+		return &v
+	}).(ClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
+// Monitoring deployment rolling update (list Maxitems: 1)
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) RollingUpdate() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategy) *ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment update strategy (string)
+func (o ClusterRkeConfigDnsUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategy) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyPtrOutput) ToClusterRkeConfigDnsUpdateStrategyPtrOutput() ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyPtrOutput) ToClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyPtrOutput) Elem() ClusterRkeConfigDnsUpdateStrategyOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategy) ClusterRkeConfigDnsUpdateStrategy { return *v }).(ClusterRkeConfigDnsUpdateStrategyOutput)
+}
+
+// Monitoring deployment rolling update (list Maxitems: 1)
+func (o ClusterRkeConfigDnsUpdateStrategyPtrOutput) RollingUpdate() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategy) *ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment update strategy (string)
+func (o ClusterRkeConfigDnsUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdate struct {
+	// Monitoring deployment rolling update max surge. Default: `1` (int)
+	MaxSurge *int `pulumi:"maxSurge"`
+	// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// ClusterRkeConfigDnsUpdateStrategyRollingUpdateInput is an input type that accepts ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs and ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsUpdateStrategyRollingUpdateInput` via:
+//
+//          ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput
+	ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput
+}
+
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs struct {
+	// Monitoring deployment rolling update max surge. Default: `1` (int)
+	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
+	// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput).ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs, ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtr and ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput` via:
+//
+//          ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+	ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+}
+
+type clusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs
+
+func ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtr(v *ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput {
+	return (*clusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*clusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *clusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategyRollingUpdate) *ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return &v
+	}).(ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+// Monitoring deployment rolling update max surge. Default: `1` (int)
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) Elem() ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategyRollingUpdate) ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return *v
+	}).(ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+// Monitoring deployment rolling update max surge. Default: `1` (int)
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+func (o ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterRkeConfigIngress struct {
@@ -25040,11 +25597,13 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVspher
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
-	NodeSelector        map[string]interface{}                                             `pulumi:"nodeSelector"`
-	Nodelocal           *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal `pulumi:"nodelocal"`
-	Provider            *string                                                            `pulumi:"provider"`
-	ReverseCidrs        []string                                                           `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string                                                           `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams `pulumi:"linearAutoscalerParams"`
+	NodeSelector           map[string]interface{}                                                          `pulumi:"nodeSelector"`
+	Nodelocal              *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal              `pulumi:"nodelocal"`
+	Provider               *string                                                                         `pulumi:"provider"`
+	ReverseCidrs           []string                                                                        `pulumi:"reverseCidrs"`
+	UpdateStrategy         *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy         `pulumi:"updateStrategy"`
+	UpstreamNameservers    []string                                                                        `pulumi:"upstreamNameservers"`
 }
 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
@@ -25059,11 +25618,13 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface {
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput                                                           `pulumi:"nodeSelector"`
-	Nodelocal           ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
-	Provider            pulumi.StringPtrInput                                                     `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput                                                   `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput                                                   `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput `pulumi:"linearAutoscalerParams"`
+	NodeSelector           pulumi.MapInput                                                                        `pulumi:"nodeSelector"`
+	Nodelocal              ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput              `pulumi:"nodelocal"`
+	Provider               pulumi.StringPtrInput                                                                  `pulumi:"provider"`
+	ReverseCidrs           pulumi.StringArrayInput                                                                `pulumi:"reverseCidrs"`
+	UpdateStrategy         ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput         `pulumi:"updateStrategy"`
+	UpstreamNameservers    pulumi.StringArrayInput                                                                `pulumi:"upstreamNameservers"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -25142,6 +25703,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) ToCluste
 		return &v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput)
 }
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) LinearAutoscalerParams() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return v.LinearAutoscalerParams
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) map[string]interface{} {
 		return v.NodeSelector
@@ -25160,6 +25727,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Provider
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) ReverseCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) []string { return v.ReverseCidrs }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) UpdateStrategy() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return v.UpdateStrategy
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) UpstreamNameservers() pulumi.StringArrayOutput {
@@ -25186,6 +25759,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Elem(
 	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
 		return *v
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) LinearAutoscalerParams() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		if v == nil {
+			return nil
+		}
+		return v.LinearAutoscalerParams
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
 }
 
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) NodeSelector() pulumi.MapOutput {
@@ -25224,6 +25806,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Rever
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) UpdateStrategy() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateStrategy
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
 func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) UpstreamNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) []string {
 		if v == nil {
@@ -25231,6 +25822,204 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput) Upstr
 		}
 		return v.UpstreamNameservers
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams struct {
+	CoresPerReplica           *float64 `pulumi:"coresPerReplica"`
+	Max                       *int     `pulumi:"max"`
+	Min                       *int     `pulumi:"min"`
+	NodesPerReplica           *float64 `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure *bool    `pulumi:"preventSinglePointFailure"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs{...}
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs struct {
+	CoresPerReplica           pulumi.Float64PtrInput `pulumi:"coresPerReplica"`
+	Max                       pulumi.IntPtrInput     `pulumi:"max"`
+	Min                       pulumi.IntPtrInput     `pulumi:"min"`
+	NodesPerReplica           pulumi.Float64PtrInput `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure pulumi.BoolPtrInput    `pulumi:"preventSinglePointFailure"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *bool {
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct {
@@ -25376,6 +26165,300 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutp
 		}
 		return v.NodeSelector
 	}).(pulumi.MapOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy struct {
+	RollingUpdate *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                                                              `pulumi:"strategy"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs{...}
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs struct {
+	RollingUpdate ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                                                       `pulumi:"strategy"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) RollingUpdate() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *string {
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) RollingUpdate() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput).ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs, ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtr and ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput` via:
+//
+//          ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+	ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+}
+
+type clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs
+
+func ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtr(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput {
+	return (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return &v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) Elem() ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return *v
+	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
@@ -31494,6 +32577,551 @@ func (o EtcdBackupBackupConfigS3BackupConfigPtrOutput) SecretKey() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type GlobalDnsProviderAlidnsConfig struct {
+	// The AWS Access key (string)
+	AccessKey string `pulumi:"accessKey"`
+	// The AWS Secret key (string)
+	SecretKey string `pulumi:"secretKey"`
+}
+
+// GlobalDnsProviderAlidnsConfigInput is an input type that accepts GlobalDnsProviderAlidnsConfigArgs and GlobalDnsProviderAlidnsConfigOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderAlidnsConfigInput` via:
+//
+//          GlobalDnsProviderAlidnsConfigArgs{...}
+type GlobalDnsProviderAlidnsConfigInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderAlidnsConfigOutput() GlobalDnsProviderAlidnsConfigOutput
+	ToGlobalDnsProviderAlidnsConfigOutputWithContext(context.Context) GlobalDnsProviderAlidnsConfigOutput
+}
+
+type GlobalDnsProviderAlidnsConfigArgs struct {
+	// The AWS Access key (string)
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The AWS Secret key (string)
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+}
+
+func (GlobalDnsProviderAlidnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (i GlobalDnsProviderAlidnsConfigArgs) ToGlobalDnsProviderAlidnsConfigOutput() GlobalDnsProviderAlidnsConfigOutput {
+	return i.ToGlobalDnsProviderAlidnsConfigOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderAlidnsConfigArgs) ToGlobalDnsProviderAlidnsConfigOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderAlidnsConfigOutput)
+}
+
+func (i GlobalDnsProviderAlidnsConfigArgs) ToGlobalDnsProviderAlidnsConfigPtrOutput() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return i.ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderAlidnsConfigArgs) ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderAlidnsConfigOutput).ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(ctx)
+}
+
+// GlobalDnsProviderAlidnsConfigPtrInput is an input type that accepts GlobalDnsProviderAlidnsConfigArgs, GlobalDnsProviderAlidnsConfigPtr and GlobalDnsProviderAlidnsConfigPtrOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderAlidnsConfigPtrInput` via:
+//
+//          GlobalDnsProviderAlidnsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalDnsProviderAlidnsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderAlidnsConfigPtrOutput() GlobalDnsProviderAlidnsConfigPtrOutput
+	ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(context.Context) GlobalDnsProviderAlidnsConfigPtrOutput
+}
+
+type globalDnsProviderAlidnsConfigPtrType GlobalDnsProviderAlidnsConfigArgs
+
+func GlobalDnsProviderAlidnsConfigPtr(v *GlobalDnsProviderAlidnsConfigArgs) GlobalDnsProviderAlidnsConfigPtrInput {
+	return (*globalDnsProviderAlidnsConfigPtrType)(v)
+}
+
+func (*globalDnsProviderAlidnsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (i *globalDnsProviderAlidnsConfigPtrType) ToGlobalDnsProviderAlidnsConfigPtrOutput() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return i.ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *globalDnsProviderAlidnsConfigPtrType) ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderAlidnsConfigPtrOutput)
+}
+
+type GlobalDnsProviderAlidnsConfigOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderAlidnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderAlidnsConfigOutput) ToGlobalDnsProviderAlidnsConfigOutput() GlobalDnsProviderAlidnsConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderAlidnsConfigOutput) ToGlobalDnsProviderAlidnsConfigOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderAlidnsConfigOutput) ToGlobalDnsProviderAlidnsConfigPtrOutput() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o.ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalDnsProviderAlidnsConfigOutput) ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderAlidnsConfig) *GlobalDnsProviderAlidnsConfig {
+		return &v
+	}).(GlobalDnsProviderAlidnsConfigPtrOutput)
+}
+
+// The AWS Access key (string)
+func (o GlobalDnsProviderAlidnsConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderAlidnsConfig) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The AWS Secret key (string)
+func (o GlobalDnsProviderAlidnsConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderAlidnsConfig) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+type GlobalDnsProviderAlidnsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderAlidnsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderAlidnsConfigPtrOutput) ToGlobalDnsProviderAlidnsConfigPtrOutput() GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderAlidnsConfigPtrOutput) ToGlobalDnsProviderAlidnsConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderAlidnsConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderAlidnsConfigPtrOutput) Elem() GlobalDnsProviderAlidnsConfigOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderAlidnsConfig) GlobalDnsProviderAlidnsConfig { return *v }).(GlobalDnsProviderAlidnsConfigOutput)
+}
+
+// The AWS Access key (string)
+func (o GlobalDnsProviderAlidnsConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderAlidnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Secret key (string)
+func (o GlobalDnsProviderAlidnsConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderAlidnsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalDnsProviderCloudflareConfig struct {
+	// The CloudFlare API Email (string)
+	ApiEmail string `pulumi:"apiEmail"`
+	// The CloudFlare API Key (string)
+	ApiKey string `pulumi:"apiKey"`
+	// CloudFlare Proxy Setting. Default: `false` (bool)
+	ProxySetting *bool `pulumi:"proxySetting"`
+}
+
+// GlobalDnsProviderCloudflareConfigInput is an input type that accepts GlobalDnsProviderCloudflareConfigArgs and GlobalDnsProviderCloudflareConfigOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderCloudflareConfigInput` via:
+//
+//          GlobalDnsProviderCloudflareConfigArgs{...}
+type GlobalDnsProviderCloudflareConfigInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderCloudflareConfigOutput() GlobalDnsProviderCloudflareConfigOutput
+	ToGlobalDnsProviderCloudflareConfigOutputWithContext(context.Context) GlobalDnsProviderCloudflareConfigOutput
+}
+
+type GlobalDnsProviderCloudflareConfigArgs struct {
+	// The CloudFlare API Email (string)
+	ApiEmail pulumi.StringInput `pulumi:"apiEmail"`
+	// The CloudFlare API Key (string)
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// CloudFlare Proxy Setting. Default: `false` (bool)
+	ProxySetting pulumi.BoolPtrInput `pulumi:"proxySetting"`
+}
+
+func (GlobalDnsProviderCloudflareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (i GlobalDnsProviderCloudflareConfigArgs) ToGlobalDnsProviderCloudflareConfigOutput() GlobalDnsProviderCloudflareConfigOutput {
+	return i.ToGlobalDnsProviderCloudflareConfigOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderCloudflareConfigArgs) ToGlobalDnsProviderCloudflareConfigOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderCloudflareConfigOutput)
+}
+
+func (i GlobalDnsProviderCloudflareConfigArgs) ToGlobalDnsProviderCloudflareConfigPtrOutput() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return i.ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderCloudflareConfigArgs) ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderCloudflareConfigOutput).ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(ctx)
+}
+
+// GlobalDnsProviderCloudflareConfigPtrInput is an input type that accepts GlobalDnsProviderCloudflareConfigArgs, GlobalDnsProviderCloudflareConfigPtr and GlobalDnsProviderCloudflareConfigPtrOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderCloudflareConfigPtrInput` via:
+//
+//          GlobalDnsProviderCloudflareConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalDnsProviderCloudflareConfigPtrInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderCloudflareConfigPtrOutput() GlobalDnsProviderCloudflareConfigPtrOutput
+	ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(context.Context) GlobalDnsProviderCloudflareConfigPtrOutput
+}
+
+type globalDnsProviderCloudflareConfigPtrType GlobalDnsProviderCloudflareConfigArgs
+
+func GlobalDnsProviderCloudflareConfigPtr(v *GlobalDnsProviderCloudflareConfigArgs) GlobalDnsProviderCloudflareConfigPtrInput {
+	return (*globalDnsProviderCloudflareConfigPtrType)(v)
+}
+
+func (*globalDnsProviderCloudflareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (i *globalDnsProviderCloudflareConfigPtrType) ToGlobalDnsProviderCloudflareConfigPtrOutput() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return i.ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *globalDnsProviderCloudflareConfigPtrType) ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderCloudflareConfigPtrOutput)
+}
+
+type GlobalDnsProviderCloudflareConfigOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderCloudflareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderCloudflareConfigOutput) ToGlobalDnsProviderCloudflareConfigOutput() GlobalDnsProviderCloudflareConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderCloudflareConfigOutput) ToGlobalDnsProviderCloudflareConfigOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderCloudflareConfigOutput) ToGlobalDnsProviderCloudflareConfigPtrOutput() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o.ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalDnsProviderCloudflareConfigOutput) ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderCloudflareConfig) *GlobalDnsProviderCloudflareConfig {
+		return &v
+	}).(GlobalDnsProviderCloudflareConfigPtrOutput)
+}
+
+// The CloudFlare API Email (string)
+func (o GlobalDnsProviderCloudflareConfigOutput) ApiEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderCloudflareConfig) string { return v.ApiEmail }).(pulumi.StringOutput)
+}
+
+// The CloudFlare API Key (string)
+func (o GlobalDnsProviderCloudflareConfigOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderCloudflareConfig) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// CloudFlare Proxy Setting. Default: `false` (bool)
+func (o GlobalDnsProviderCloudflareConfigOutput) ProxySetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderCloudflareConfig) *bool { return v.ProxySetting }).(pulumi.BoolPtrOutput)
+}
+
+type GlobalDnsProviderCloudflareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderCloudflareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) ToGlobalDnsProviderCloudflareConfigPtrOutput() GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) ToGlobalDnsProviderCloudflareConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderCloudflareConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) Elem() GlobalDnsProviderCloudflareConfigOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderCloudflareConfig) GlobalDnsProviderCloudflareConfig { return *v }).(GlobalDnsProviderCloudflareConfigOutput)
+}
+
+// The CloudFlare API Email (string)
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) ApiEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderCloudflareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CloudFlare API Key (string)
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderCloudflareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// CloudFlare Proxy Setting. Default: `false` (bool)
+func (o GlobalDnsProviderCloudflareConfigPtrOutput) ProxySetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderCloudflareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProxySetting
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GlobalDnsProviderRoute53Config struct {
+	// The AWS Access key (string)
+	AccessKey string `pulumi:"accessKey"`
+	// The AWS credentials path. Default: `"/.aws"` (string)
+	CredentialsPath *string `pulumi:"credentialsPath"`
+	// The AWS Region. Default: `"us-west-2"` (string)
+	Region *string `pulumi:"region"`
+	// The AWS Role ARN (string)
+	RoleArn *string `pulumi:"roleArn"`
+	// The AWS Secret key (string)
+	SecretKey string `pulumi:"secretKey"`
+	// The Route53 zone type `public, private`. Default: `"public"` (string)
+	ZoneType *string `pulumi:"zoneType"`
+}
+
+// GlobalDnsProviderRoute53ConfigInput is an input type that accepts GlobalDnsProviderRoute53ConfigArgs and GlobalDnsProviderRoute53ConfigOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderRoute53ConfigInput` via:
+//
+//          GlobalDnsProviderRoute53ConfigArgs{...}
+type GlobalDnsProviderRoute53ConfigInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderRoute53ConfigOutput() GlobalDnsProviderRoute53ConfigOutput
+	ToGlobalDnsProviderRoute53ConfigOutputWithContext(context.Context) GlobalDnsProviderRoute53ConfigOutput
+}
+
+type GlobalDnsProviderRoute53ConfigArgs struct {
+	// The AWS Access key (string)
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The AWS credentials path. Default: `"/.aws"` (string)
+	CredentialsPath pulumi.StringPtrInput `pulumi:"credentialsPath"`
+	// The AWS Region. Default: `"us-west-2"` (string)
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The AWS Role ARN (string)
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The AWS Secret key (string)
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+	// The Route53 zone type `public, private`. Default: `"public"` (string)
+	ZoneType pulumi.StringPtrInput `pulumi:"zoneType"`
+}
+
+func (GlobalDnsProviderRoute53ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (i GlobalDnsProviderRoute53ConfigArgs) ToGlobalDnsProviderRoute53ConfigOutput() GlobalDnsProviderRoute53ConfigOutput {
+	return i.ToGlobalDnsProviderRoute53ConfigOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderRoute53ConfigArgs) ToGlobalDnsProviderRoute53ConfigOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderRoute53ConfigOutput)
+}
+
+func (i GlobalDnsProviderRoute53ConfigArgs) ToGlobalDnsProviderRoute53ConfigPtrOutput() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return i.ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalDnsProviderRoute53ConfigArgs) ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderRoute53ConfigOutput).ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(ctx)
+}
+
+// GlobalDnsProviderRoute53ConfigPtrInput is an input type that accepts GlobalDnsProviderRoute53ConfigArgs, GlobalDnsProviderRoute53ConfigPtr and GlobalDnsProviderRoute53ConfigPtrOutput values.
+// You can construct a concrete instance of `GlobalDnsProviderRoute53ConfigPtrInput` via:
+//
+//          GlobalDnsProviderRoute53ConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalDnsProviderRoute53ConfigPtrInput interface {
+	pulumi.Input
+
+	ToGlobalDnsProviderRoute53ConfigPtrOutput() GlobalDnsProviderRoute53ConfigPtrOutput
+	ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(context.Context) GlobalDnsProviderRoute53ConfigPtrOutput
+}
+
+type globalDnsProviderRoute53ConfigPtrType GlobalDnsProviderRoute53ConfigArgs
+
+func GlobalDnsProviderRoute53ConfigPtr(v *GlobalDnsProviderRoute53ConfigArgs) GlobalDnsProviderRoute53ConfigPtrInput {
+	return (*globalDnsProviderRoute53ConfigPtrType)(v)
+}
+
+func (*globalDnsProviderRoute53ConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (i *globalDnsProviderRoute53ConfigPtrType) ToGlobalDnsProviderRoute53ConfigPtrOutput() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return i.ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *globalDnsProviderRoute53ConfigPtrType) ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderRoute53ConfigPtrOutput)
+}
+
+type GlobalDnsProviderRoute53ConfigOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderRoute53ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderRoute53ConfigOutput) ToGlobalDnsProviderRoute53ConfigOutput() GlobalDnsProviderRoute53ConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderRoute53ConfigOutput) ToGlobalDnsProviderRoute53ConfigOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigOutput {
+	return o
+}
+
+func (o GlobalDnsProviderRoute53ConfigOutput) ToGlobalDnsProviderRoute53ConfigPtrOutput() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o.ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalDnsProviderRoute53ConfigOutput) ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) *GlobalDnsProviderRoute53Config {
+		return &v
+	}).(GlobalDnsProviderRoute53ConfigPtrOutput)
+}
+
+// The AWS Access key (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The AWS credentials path. Default: `"/.aws"` (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) CredentialsPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) *string { return v.CredentialsPath }).(pulumi.StringPtrOutput)
+}
+
+// The AWS Region. Default: `"us-west-2"` (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The AWS Role ARN (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The AWS Secret key (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// The Route53 zone type `public, private`. Default: `"public"` (string)
+func (o GlobalDnsProviderRoute53ConfigOutput) ZoneType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlobalDnsProviderRoute53Config) *string { return v.ZoneType }).(pulumi.StringPtrOutput)
+}
+
+type GlobalDnsProviderRoute53ConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalDnsProviderRoute53ConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) ToGlobalDnsProviderRoute53ConfigPtrOutput() GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) ToGlobalDnsProviderRoute53ConfigPtrOutputWithContext(ctx context.Context) GlobalDnsProviderRoute53ConfigPtrOutput {
+	return o
+}
+
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) Elem() GlobalDnsProviderRoute53ConfigOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) GlobalDnsProviderRoute53Config { return *v }).(GlobalDnsProviderRoute53ConfigOutput)
+}
+
+// The AWS Access key (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS credentials path. Default: `"/.aws"` (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) CredentialsPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialsPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Region. Default: `"us-west-2"` (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Role ARN (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Secret key (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Route53 zone type `public, private`. Default: `"public"` (string)
+func (o GlobalDnsProviderRoute53ConfigPtrOutput) ZoneType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalDnsProviderRoute53Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneType
+	}).(pulumi.StringPtrOutput)
+}
+
 type MultiClusterAppAnswer struct {
 	// Cluster ID for answer (string)
 	ClusterId *string `pulumi:"clusterId"`
@@ -34670,6 +36298,270 @@ func (o NodeTemplateDigitaloceanConfigPtrOutput) Userdata() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.Userdata
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeTemplateHetznerConfig struct {
+	// Hetzner Cloud project API token (string)
+	ApiToken string `pulumi:"apiToken"`
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+	Image *string `pulumi:"image"`
+	// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+	Networks *string `pulumi:"networks"`
+	// Hetzner Cloud datacenter. Default `nbg1` (string)
+	ServerLocation *string `pulumi:"serverLocation"`
+	// Hetzner Cloud server type. Default `cx11` (string)
+	ServerType *string `pulumi:"serverType"`
+	// Use private network. Default `false` (bool)
+	UsePrivateNetworks *bool `pulumi:"usePrivateNetworks"`
+	// Path to file with cloud-init user-data (string)
+	Userdata *string `pulumi:"userdata"`
+	// Comma-separated list of volume IDs or names which should be attached to the server (string)
+	Volumes *string `pulumi:"volumes"`
+}
+
+// NodeTemplateHetznerConfigInput is an input type that accepts NodeTemplateHetznerConfigArgs and NodeTemplateHetznerConfigOutput values.
+// You can construct a concrete instance of `NodeTemplateHetznerConfigInput` via:
+//
+//          NodeTemplateHetznerConfigArgs{...}
+type NodeTemplateHetznerConfigInput interface {
+	pulumi.Input
+
+	ToNodeTemplateHetznerConfigOutput() NodeTemplateHetznerConfigOutput
+	ToNodeTemplateHetznerConfigOutputWithContext(context.Context) NodeTemplateHetznerConfigOutput
+}
+
+type NodeTemplateHetznerConfigArgs struct {
+	// Hetzner Cloud project API token (string)
+	ApiToken pulumi.StringInput `pulumi:"apiToken"`
+	// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+	Networks pulumi.StringPtrInput `pulumi:"networks"`
+	// Hetzner Cloud datacenter. Default `nbg1` (string)
+	ServerLocation pulumi.StringPtrInput `pulumi:"serverLocation"`
+	// Hetzner Cloud server type. Default `cx11` (string)
+	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
+	// Use private network. Default `false` (bool)
+	UsePrivateNetworks pulumi.BoolPtrInput `pulumi:"usePrivateNetworks"`
+	// Path to file with cloud-init user-data (string)
+	Userdata pulumi.StringPtrInput `pulumi:"userdata"`
+	// Comma-separated list of volume IDs or names which should be attached to the server (string)
+	Volumes pulumi.StringPtrInput `pulumi:"volumes"`
+}
+
+func (NodeTemplateHetznerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateHetznerConfig)(nil)).Elem()
+}
+
+func (i NodeTemplateHetznerConfigArgs) ToNodeTemplateHetznerConfigOutput() NodeTemplateHetznerConfigOutput {
+	return i.ToNodeTemplateHetznerConfigOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateHetznerConfigArgs) ToNodeTemplateHetznerConfigOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateHetznerConfigOutput)
+}
+
+func (i NodeTemplateHetznerConfigArgs) ToNodeTemplateHetznerConfigPtrOutput() NodeTemplateHetznerConfigPtrOutput {
+	return i.ToNodeTemplateHetznerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateHetznerConfigArgs) ToNodeTemplateHetznerConfigPtrOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateHetznerConfigOutput).ToNodeTemplateHetznerConfigPtrOutputWithContext(ctx)
+}
+
+// NodeTemplateHetznerConfigPtrInput is an input type that accepts NodeTemplateHetznerConfigArgs, NodeTemplateHetznerConfigPtr and NodeTemplateHetznerConfigPtrOutput values.
+// You can construct a concrete instance of `NodeTemplateHetznerConfigPtrInput` via:
+//
+//          NodeTemplateHetznerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeTemplateHetznerConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeTemplateHetznerConfigPtrOutput() NodeTemplateHetznerConfigPtrOutput
+	ToNodeTemplateHetznerConfigPtrOutputWithContext(context.Context) NodeTemplateHetznerConfigPtrOutput
+}
+
+type nodeTemplateHetznerConfigPtrType NodeTemplateHetznerConfigArgs
+
+func NodeTemplateHetznerConfigPtr(v *NodeTemplateHetznerConfigArgs) NodeTemplateHetznerConfigPtrInput {
+	return (*nodeTemplateHetznerConfigPtrType)(v)
+}
+
+func (*nodeTemplateHetznerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateHetznerConfig)(nil)).Elem()
+}
+
+func (i *nodeTemplateHetznerConfigPtrType) ToNodeTemplateHetznerConfigPtrOutput() NodeTemplateHetznerConfigPtrOutput {
+	return i.ToNodeTemplateHetznerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeTemplateHetznerConfigPtrType) ToNodeTemplateHetznerConfigPtrOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateHetznerConfigPtrOutput)
+}
+
+type NodeTemplateHetznerConfigOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateHetznerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateHetznerConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateHetznerConfigOutput) ToNodeTemplateHetznerConfigOutput() NodeTemplateHetznerConfigOutput {
+	return o
+}
+
+func (o NodeTemplateHetznerConfigOutput) ToNodeTemplateHetznerConfigOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigOutput {
+	return o
+}
+
+func (o NodeTemplateHetznerConfigOutput) ToNodeTemplateHetznerConfigPtrOutput() NodeTemplateHetznerConfigPtrOutput {
+	return o.ToNodeTemplateHetznerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeTemplateHetznerConfigOutput) ToNodeTemplateHetznerConfigPtrOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *NodeTemplateHetznerConfig {
+		return &v
+	}).(NodeTemplateHetznerConfigPtrOutput)
+}
+
+// Hetzner Cloud project API token (string)
+func (o NodeTemplateHetznerConfigOutput) ApiToken() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) string { return v.ApiToken }).(pulumi.StringOutput)
+}
+
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+func (o NodeTemplateHetznerConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+func (o NodeTemplateHetznerConfigOutput) Networks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.Networks }).(pulumi.StringPtrOutput)
+}
+
+// Hetzner Cloud datacenter. Default `nbg1` (string)
+func (o NodeTemplateHetznerConfigOutput) ServerLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.ServerLocation }).(pulumi.StringPtrOutput)
+}
+
+// Hetzner Cloud server type. Default `cx11` (string)
+func (o NodeTemplateHetznerConfigOutput) ServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.ServerType }).(pulumi.StringPtrOutput)
+}
+
+// Use private network. Default `false` (bool)
+func (o NodeTemplateHetznerConfigOutput) UsePrivateNetworks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *bool { return v.UsePrivateNetworks }).(pulumi.BoolPtrOutput)
+}
+
+// Path to file with cloud-init user-data (string)
+func (o NodeTemplateHetznerConfigOutput) Userdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.Userdata }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of volume IDs or names which should be attached to the server (string)
+func (o NodeTemplateHetznerConfigOutput) Volumes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *string { return v.Volumes }).(pulumi.StringPtrOutput)
+}
+
+type NodeTemplateHetznerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateHetznerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplateHetznerConfig)(nil)).Elem()
+}
+
+func (o NodeTemplateHetznerConfigPtrOutput) ToNodeTemplateHetznerConfigPtrOutput() NodeTemplateHetznerConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateHetznerConfigPtrOutput) ToNodeTemplateHetznerConfigPtrOutputWithContext(ctx context.Context) NodeTemplateHetznerConfigPtrOutput {
+	return o
+}
+
+func (o NodeTemplateHetznerConfigPtrOutput) Elem() NodeTemplateHetznerConfigOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) NodeTemplateHetznerConfig { return *v }).(NodeTemplateHetznerConfigOutput)
+}
+
+// Hetzner Cloud project API token (string)
+func (o NodeTemplateHetznerConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+func (o NodeTemplateHetznerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+func (o NodeTemplateHetznerConfigPtrOutput) Networks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hetzner Cloud datacenter. Default `nbg1` (string)
+func (o NodeTemplateHetznerConfigPtrOutput) ServerLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hetzner Cloud server type. Default `cx11` (string)
+func (o NodeTemplateHetznerConfigPtrOutput) ServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use private network. Default `false` (bool)
+func (o NodeTemplateHetznerConfigPtrOutput) UsePrivateNetworks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UsePrivateNetworks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Path to file with cloud-init user-data (string)
+func (o NodeTemplateHetznerConfigPtrOutput) Userdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Userdata
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of volume IDs or names which should be attached to the server (string)
+func (o NodeTemplateHetznerConfigPtrOutput) Volumes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50477,11 +52369,13 @@ func (o GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput) 
 }
 
 type GetClusterRkeConfigDns struct {
-	NodeSelector        map[string]interface{}           `pulumi:"nodeSelector"`
-	Nodelocal           *GetClusterRkeConfigDnsNodelocal `pulumi:"nodelocal"`
-	Provider            *string                          `pulumi:"provider"`
-	ReverseCidrs        []string                         `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string                         `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams *GetClusterRkeConfigDnsLinearAutoscalerParams `pulumi:"linearAutoscalerParams"`
+	NodeSelector           map[string]interface{}                        `pulumi:"nodeSelector"`
+	Nodelocal              *GetClusterRkeConfigDnsNodelocal              `pulumi:"nodelocal"`
+	Provider               *string                                       `pulumi:"provider"`
+	ReverseCidrs           []string                                      `pulumi:"reverseCidrs"`
+	UpdateStrategy         *GetClusterRkeConfigDnsUpdateStrategy         `pulumi:"updateStrategy"`
+	UpstreamNameservers    []string                                      `pulumi:"upstreamNameservers"`
 }
 
 // GetClusterRkeConfigDnsInput is an input type that accepts GetClusterRkeConfigDnsArgs and GetClusterRkeConfigDnsOutput values.
@@ -50496,11 +52390,13 @@ type GetClusterRkeConfigDnsInput interface {
 }
 
 type GetClusterRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput                         `pulumi:"nodeSelector"`
-	Nodelocal           GetClusterRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
-	Provider            pulumi.StringPtrInput                   `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput                 `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput                 `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams GetClusterRkeConfigDnsLinearAutoscalerParamsPtrInput `pulumi:"linearAutoscalerParams"`
+	NodeSelector           pulumi.MapInput                                      `pulumi:"nodeSelector"`
+	Nodelocal              GetClusterRkeConfigDnsNodelocalPtrInput              `pulumi:"nodelocal"`
+	Provider               pulumi.StringPtrInput                                `pulumi:"provider"`
+	ReverseCidrs           pulumi.StringArrayInput                              `pulumi:"reverseCidrs"`
+	UpdateStrategy         GetClusterRkeConfigDnsUpdateStrategyPtrInput         `pulumi:"updateStrategy"`
+	UpstreamNameservers    pulumi.StringArrayInput                              `pulumi:"upstreamNameservers"`
 }
 
 func (GetClusterRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -50529,6 +52425,12 @@ func (o GetClusterRkeConfigDnsOutput) ToGetClusterRkeConfigDnsOutputWithContext(
 	return o
 }
 
+func (o GetClusterRkeConfigDnsOutput) LinearAutoscalerParams() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDns) *GetClusterRkeConfigDnsLinearAutoscalerParams {
+		return v.LinearAutoscalerParams
+	}).(GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
 func (o GetClusterRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) map[string]interface{} { return v.NodeSelector }).(pulumi.MapOutput)
 }
@@ -50545,8 +52447,200 @@ func (o GetClusterRkeConfigDnsOutput) ReverseCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) []string { return v.ReverseCidrs }).(pulumi.StringArrayOutput)
 }
 
+func (o GetClusterRkeConfigDnsOutput) UpdateStrategy() GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDns) *GetClusterRkeConfigDnsUpdateStrategy { return v.UpdateStrategy }).(GetClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
 func (o GetClusterRkeConfigDnsOutput) UpstreamNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigDns) []string { return v.UpstreamNameservers }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterRkeConfigDnsLinearAutoscalerParams struct {
+	CoresPerReplica           *float64 `pulumi:"coresPerReplica"`
+	Max                       *int     `pulumi:"max"`
+	Min                       *int     `pulumi:"min"`
+	NodesPerReplica           *float64 `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure *bool    `pulumi:"preventSinglePointFailure"`
+}
+
+// GetClusterRkeConfigDnsLinearAutoscalerParamsInput is an input type that accepts GetClusterRkeConfigDnsLinearAutoscalerParamsArgs and GetClusterRkeConfigDnsLinearAutoscalerParamsOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsLinearAutoscalerParamsInput` via:
+//
+//          GetClusterRkeConfigDnsLinearAutoscalerParamsArgs{...}
+type GetClusterRkeConfigDnsLinearAutoscalerParamsInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsOutput
+	ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsOutput
+}
+
+type GetClusterRkeConfigDnsLinearAutoscalerParamsArgs struct {
+	CoresPerReplica           pulumi.Float64PtrInput `pulumi:"coresPerReplica"`
+	Max                       pulumi.IntPtrInput     `pulumi:"max"`
+	Min                       pulumi.IntPtrInput     `pulumi:"min"`
+	NodesPerReplica           pulumi.Float64PtrInput `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure pulumi.BoolPtrInput    `pulumi:"preventSinglePointFailure"`
+}
+
+func (GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return i.ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (i GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsLinearAutoscalerParamsOutput).ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigDnsLinearAutoscalerParamsPtrInput is an input type that accepts GetClusterRkeConfigDnsLinearAutoscalerParamsArgs, GetClusterRkeConfigDnsLinearAutoscalerParamsPtr and GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsLinearAutoscalerParamsPtrInput` via:
+//
+//          GetClusterRkeConfigDnsLinearAutoscalerParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterRkeConfigDnsLinearAutoscalerParamsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput
+	ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput
+}
+
+type getClusterRkeConfigDnsLinearAutoscalerParamsPtrType GetClusterRkeConfigDnsLinearAutoscalerParamsArgs
+
+func GetClusterRkeConfigDnsLinearAutoscalerParamsPtr(v *GetClusterRkeConfigDnsLinearAutoscalerParamsArgs) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrInput {
+	return (*getClusterRkeConfigDnsLinearAutoscalerParamsPtrType)(v)
+}
+
+func (*getClusterRkeConfigDnsLinearAutoscalerParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigDnsLinearAutoscalerParamsPtrType) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigDnsLinearAutoscalerParamsPtrType) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
+type GetClusterRkeConfigDnsLinearAutoscalerParamsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *GetClusterRkeConfigDnsLinearAutoscalerParams {
+		return &v
+	}).(GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *float64 { return v.CoresPerReplica }).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *float64 { return v.NodesPerReplica }).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsLinearAutoscalerParams) *bool { return v.PreventSinglePointFailure }).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToGetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Elem() GetClusterRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) GetClusterRkeConfigDnsLinearAutoscalerParams {
+		return *v
+	}).(GetClusterRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsLinearAutoscalerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterRkeConfigDnsNodelocal struct {
@@ -50688,6 +52782,292 @@ func (o GetClusterRkeConfigDnsNodelocalPtrOutput) NodeSelector() pulumi.MapOutpu
 		}
 		return v.NodeSelector
 	}).(pulumi.MapOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategy struct {
+	RollingUpdate *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                            `pulumi:"strategy"`
+}
+
+// GetClusterRkeConfigDnsUpdateStrategyInput is an input type that accepts GetClusterRkeConfigDnsUpdateStrategyArgs and GetClusterRkeConfigDnsUpdateStrategyOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsUpdateStrategyInput` via:
+//
+//          GetClusterRkeConfigDnsUpdateStrategyArgs{...}
+type GetClusterRkeConfigDnsUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsUpdateStrategyOutput() GetClusterRkeConfigDnsUpdateStrategyOutput
+	ToGetClusterRkeConfigDnsUpdateStrategyOutputWithContext(context.Context) GetClusterRkeConfigDnsUpdateStrategyOutput
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyArgs struct {
+	RollingUpdate GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                     `pulumi:"strategy"`
+}
+
+func (GetClusterRkeConfigDnsUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyArgs) ToGetClusterRkeConfigDnsUpdateStrategyOutput() GetClusterRkeConfigDnsUpdateStrategyOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyArgs) ToGetClusterRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyArgs) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutput() GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyArgs) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyOutput).ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigDnsUpdateStrategyPtrInput is an input type that accepts GetClusterRkeConfigDnsUpdateStrategyArgs, GetClusterRkeConfigDnsUpdateStrategyPtr and GetClusterRkeConfigDnsUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsUpdateStrategyPtrInput` via:
+//
+//          GetClusterRkeConfigDnsUpdateStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterRkeConfigDnsUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsUpdateStrategyPtrOutput() GetClusterRkeConfigDnsUpdateStrategyPtrOutput
+	ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Context) GetClusterRkeConfigDnsUpdateStrategyPtrOutput
+}
+
+type getClusterRkeConfigDnsUpdateStrategyPtrType GetClusterRkeConfigDnsUpdateStrategyArgs
+
+func GetClusterRkeConfigDnsUpdateStrategyPtr(v *GetClusterRkeConfigDnsUpdateStrategyArgs) GetClusterRkeConfigDnsUpdateStrategyPtrInput {
+	return (*getClusterRkeConfigDnsUpdateStrategyPtrType)(v)
+}
+
+func (*getClusterRkeConfigDnsUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigDnsUpdateStrategyPtrType) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutput() GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigDnsUpdateStrategyPtrType) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) ToGetClusterRkeConfigDnsUpdateStrategyOutput() GetClusterRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) ToGetClusterRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutput() GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategy) *GetClusterRkeConfigDnsUpdateStrategy {
+		return &v
+	}).(GetClusterRkeConfigDnsUpdateStrategyPtrOutput)
+}
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) RollingUpdate() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategy) *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategy) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyPtrOutput) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutput() GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyPtrOutput) ToGetClusterRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyPtrOutput) Elem() GetClusterRkeConfigDnsUpdateStrategyOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategy) GetClusterRkeConfigDnsUpdateStrategy { return *v }).(GetClusterRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyPtrOutput) RollingUpdate() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategy) *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// GetClusterRkeConfigDnsUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs and GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsUpdateStrategyRollingUpdateInput` via:
+//
+//          GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput
+	ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput).ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs, GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtr and GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput` via:
+//
+//          GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+	ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+}
+
+type getClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs
+
+func GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtr(v *GetClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrInput {
+	return (*getClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*getClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *getClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return &v
+	}).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToGetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) Elem() GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+		return *v
+	}).(GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetClusterRkeConfigIngress struct {
@@ -52986,7 +55366,8 @@ func (o GetClusterRkeConfigServicesKubeApiAuditLogConfigurationPtrOutput) Policy
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimit struct {
-	Enabled *bool `pulumi:"enabled"`
+	Configuration string `pulumi:"configuration"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -53001,7 +55382,8 @@ type GetClusterRkeConfigServicesKubeApiEventRateLimitInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Configuration pulumi.StringInput  `pulumi:"configuration"`
+	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
@@ -53080,6 +55462,10 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) ToGetClusterRkeC
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) string { return v.Configuration }).(pulumi.StringOutput)
+}
+
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -53104,6 +55490,15 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Elem() GetClu
 	}).(GetClusterRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
+func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Configuration
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiEventRateLimit) *bool {
 		if v == nil {
@@ -53114,7 +55509,8 @@ func (o GetClusterRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pul
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	Enabled *bool `pulumi:"enabled"`
+	CustomConfig string `pulumi:"customConfig"`
+	Enabled      *bool  `pulumi:"enabled"`
 }
 
 // GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -53129,7 +55525,8 @@ type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigInput interface {
 }
 
 type GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	CustomConfig pulumi.StringInput  `pulumi:"customConfig"`
+	Enabled      pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -53208,6 +55605,10 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) ToGetCl
 		return &v
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) string { return v.CustomConfig }).(pulumi.StringOutput)
+}
+
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -53230,6 +55631,15 @@ func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Elem
 	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
 		return *v
 	}).(GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -58459,11 +60869,13 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsp
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns struct {
-	NodeSelector        map[string]interface{}                                                `pulumi:"nodeSelector"`
-	Nodelocal           *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal `pulumi:"nodelocal"`
-	Provider            *string                                                               `pulumi:"provider"`
-	ReverseCidrs        []string                                                              `pulumi:"reverseCidrs"`
-	UpstreamNameservers []string                                                              `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams `pulumi:"linearAutoscalerParams"`
+	NodeSelector           map[string]interface{}                                                             `pulumi:"nodeSelector"`
+	Nodelocal              *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal              `pulumi:"nodelocal"`
+	Provider               *string                                                                            `pulumi:"provider"`
+	ReverseCidrs           []string                                                                           `pulumi:"reverseCidrs"`
+	UpdateStrategy         *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy         `pulumi:"updateStrategy"`
+	UpstreamNameservers    []string                                                                           `pulumi:"upstreamNameservers"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput values.
@@ -58478,11 +60890,13 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsInput interface 
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs struct {
-	NodeSelector        pulumi.MapInput                                                              `pulumi:"nodeSelector"`
-	Nodelocal           GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput `pulumi:"nodelocal"`
-	Provider            pulumi.StringPtrInput                                                        `pulumi:"provider"`
-	ReverseCidrs        pulumi.StringArrayInput                                                      `pulumi:"reverseCidrs"`
-	UpstreamNameservers pulumi.StringArrayInput                                                      `pulumi:"upstreamNameservers"`
+	LinearAutoscalerParams GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput `pulumi:"linearAutoscalerParams"`
+	NodeSelector           pulumi.MapInput                                                                           `pulumi:"nodeSelector"`
+	Nodelocal              GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrInput              `pulumi:"nodelocal"`
+	Provider               pulumi.StringPtrInput                                                                     `pulumi:"provider"`
+	ReverseCidrs           pulumi.StringArrayInput                                                                   `pulumi:"reverseCidrs"`
+	UpdateStrategy         GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput         `pulumi:"updateStrategy"`
+	UpstreamNameservers    pulumi.StringArrayInput                                                                   `pulumi:"upstreamNameservers"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs) ElementType() reflect.Type {
@@ -58511,6 +60925,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) ToGet
 	return o
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) LinearAutoscalerParams() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return v.LinearAutoscalerParams
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) NodeSelector() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) map[string]interface{} {
 		return v.NodeSelector
@@ -58531,10 +60951,214 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) Rever
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) []string { return v.ReverseCidrs }).(pulumi.StringArrayOutput)
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) UpdateStrategy() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return v.UpdateStrategy
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput) UpstreamNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns) []string {
 		return v.UpstreamNameservers
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams struct {
+	CoresPerReplica           *float64 `pulumi:"coresPerReplica"`
+	Max                       *int     `pulumi:"max"`
+	Min                       *int     `pulumi:"min"`
+	NodesPerReplica           *float64 `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure *bool    `pulumi:"preventSinglePointFailure"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs{...}
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs struct {
+	CoresPerReplica           pulumi.Float64PtrInput `pulumi:"coresPerReplica"`
+	Max                       pulumi.IntPtrInput     `pulumi:"max"`
+	Min                       pulumi.IntPtrInput     `pulumi:"min"`
+	NodesPerReplica           pulumi.Float64PtrInput `pulumi:"nodesPerReplica"`
+	PreventSinglePointFailure pulumi.BoolPtrInput    `pulumi:"preventSinglePointFailure"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *bool {
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) CoresPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CoresPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) NodesPerReplica() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NodesPerReplica
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput) PreventSinglePointFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventSinglePointFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal struct {
@@ -58682,6 +61306,300 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrO
 		}
 		return v.NodeSelector
 	}).(pulumi.MapOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy struct {
+	RollingUpdate *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate `pulumi:"rollingUpdate"`
+	Strategy      *string                                                                                 `pulumi:"strategy"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs{...}
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs struct {
+	RollingUpdate GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput `pulumi:"rollingUpdate"`
+	Strategy      pulumi.StringPtrInput                                                                          `pulumi:"strategy"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) RollingUpdate() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return v.RollingUpdate
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *string {
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) RollingUpdate() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpdate
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate struct {
+	MaxSurge       *int `pulumi:"maxSurge"`
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs struct {
+	MaxSurge       pulumi.IntPtrInput `pulumi:"maxSurge"`
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+}
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput).ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs, GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtr and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput` via:
+//
+//          GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs{...}
+//
+//  or:
+//
+//          nil
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+	ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput
+}
+
+type getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs
+
+func GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtr(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrInput {
+	return (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType)(v)
+}
+
+func (*getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return i.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrType) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return &v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput)
+}
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate)(nil)).Elem()
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) ToGetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutputWithContext(ctx context.Context) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput {
+	return o
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) Elem() GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+		return *v
+	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress struct {
@@ -61085,7 +64003,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiA
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit struct {
-	Enabled *bool `pulumi:"enabled"`
+	Configuration string `pulumi:"configuration"`
+	Enabled       *bool  `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput values.
@@ -61100,7 +64019,8 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEven
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Configuration pulumi.StringInput  `pulumi:"configuration"`
+	Enabled       pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs) ElementType() reflect.Type {
@@ -61179,6 +64099,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput)
 }
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Configuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) string {
+		return v.Configuration
+	}).(pulumi.StringOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool {
 		return v.Enabled
@@ -61205,6 +64131,15 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitOutput)
 }
 
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Configuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Configuration
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit) *bool {
 		if v == nil {
@@ -61215,7 +64150,8 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiE
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig struct {
-	Enabled *bool `pulumi:"enabled"`
+	CustomConfig string `pulumi:"customConfig"`
+	Enabled      *bool  `pulumi:"enabled"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput values.
@@ -61230,7 +64166,8 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecr
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	CustomConfig pulumi.StringInput  `pulumi:"customConfig"`
+	Enabled      pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs) ElementType() reflect.Type {
@@ -61309,6 +64246,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 		return &v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput)
 }
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) CustomConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) string {
+		return v.CustomConfig
+	}).(pulumi.StringOutput)
+}
+
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *bool {
 		return v.Enabled
@@ -61333,6 +64276,15 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiS
 	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
 		return *v
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) CustomConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -62890,6 +65842,201 @@ func (o GetEtcdBackupBackupConfigS3BackupConfigPtrOutput) SecretKey() pulumi.Str
 		}
 		return v.SecretKey
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetGlobalDnsProviderAlidnsConfig struct {
+	AccessKey string `pulumi:"accessKey"`
+	SecretKey string `pulumi:"secretKey"`
+}
+
+// GetGlobalDnsProviderAlidnsConfigInput is an input type that accepts GetGlobalDnsProviderAlidnsConfigArgs and GetGlobalDnsProviderAlidnsConfigOutput values.
+// You can construct a concrete instance of `GetGlobalDnsProviderAlidnsConfigInput` via:
+//
+//          GetGlobalDnsProviderAlidnsConfigArgs{...}
+type GetGlobalDnsProviderAlidnsConfigInput interface {
+	pulumi.Input
+
+	ToGetGlobalDnsProviderAlidnsConfigOutput() GetGlobalDnsProviderAlidnsConfigOutput
+	ToGetGlobalDnsProviderAlidnsConfigOutputWithContext(context.Context) GetGlobalDnsProviderAlidnsConfigOutput
+}
+
+type GetGlobalDnsProviderAlidnsConfigArgs struct {
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+}
+
+func (GetGlobalDnsProviderAlidnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (i GetGlobalDnsProviderAlidnsConfigArgs) ToGetGlobalDnsProviderAlidnsConfigOutput() GetGlobalDnsProviderAlidnsConfigOutput {
+	return i.ToGetGlobalDnsProviderAlidnsConfigOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDnsProviderAlidnsConfigArgs) ToGetGlobalDnsProviderAlidnsConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderAlidnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDnsProviderAlidnsConfigOutput)
+}
+
+type GetGlobalDnsProviderAlidnsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDnsProviderAlidnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderAlidnsConfig)(nil)).Elem()
+}
+
+func (o GetGlobalDnsProviderAlidnsConfigOutput) ToGetGlobalDnsProviderAlidnsConfigOutput() GetGlobalDnsProviderAlidnsConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderAlidnsConfigOutput) ToGetGlobalDnsProviderAlidnsConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderAlidnsConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderAlidnsConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderAlidnsConfig) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalDnsProviderAlidnsConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderAlidnsConfig) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+type GetGlobalDnsProviderCloudflareConfig struct {
+	ApiEmail     string `pulumi:"apiEmail"`
+	ApiKey       string `pulumi:"apiKey"`
+	ProxySetting *bool  `pulumi:"proxySetting"`
+}
+
+// GetGlobalDnsProviderCloudflareConfigInput is an input type that accepts GetGlobalDnsProviderCloudflareConfigArgs and GetGlobalDnsProviderCloudflareConfigOutput values.
+// You can construct a concrete instance of `GetGlobalDnsProviderCloudflareConfigInput` via:
+//
+//          GetGlobalDnsProviderCloudflareConfigArgs{...}
+type GetGlobalDnsProviderCloudflareConfigInput interface {
+	pulumi.Input
+
+	ToGetGlobalDnsProviderCloudflareConfigOutput() GetGlobalDnsProviderCloudflareConfigOutput
+	ToGetGlobalDnsProviderCloudflareConfigOutputWithContext(context.Context) GetGlobalDnsProviderCloudflareConfigOutput
+}
+
+type GetGlobalDnsProviderCloudflareConfigArgs struct {
+	ApiEmail     pulumi.StringInput  `pulumi:"apiEmail"`
+	ApiKey       pulumi.StringInput  `pulumi:"apiKey"`
+	ProxySetting pulumi.BoolPtrInput `pulumi:"proxySetting"`
+}
+
+func (GetGlobalDnsProviderCloudflareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (i GetGlobalDnsProviderCloudflareConfigArgs) ToGetGlobalDnsProviderCloudflareConfigOutput() GetGlobalDnsProviderCloudflareConfigOutput {
+	return i.ToGetGlobalDnsProviderCloudflareConfigOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDnsProviderCloudflareConfigArgs) ToGetGlobalDnsProviderCloudflareConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderCloudflareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDnsProviderCloudflareConfigOutput)
+}
+
+type GetGlobalDnsProviderCloudflareConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDnsProviderCloudflareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderCloudflareConfig)(nil)).Elem()
+}
+
+func (o GetGlobalDnsProviderCloudflareConfigOutput) ToGetGlobalDnsProviderCloudflareConfigOutput() GetGlobalDnsProviderCloudflareConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderCloudflareConfigOutput) ToGetGlobalDnsProviderCloudflareConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderCloudflareConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderCloudflareConfigOutput) ApiEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderCloudflareConfig) string { return v.ApiEmail }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalDnsProviderCloudflareConfigOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderCloudflareConfig) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalDnsProviderCloudflareConfigOutput) ProxySetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderCloudflareConfig) *bool { return v.ProxySetting }).(pulumi.BoolPtrOutput)
+}
+
+type GetGlobalDnsProviderRoute53Config struct {
+	AccessKey       string  `pulumi:"accessKey"`
+	CredentialsPath *string `pulumi:"credentialsPath"`
+	Region          *string `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	SecretKey       string  `pulumi:"secretKey"`
+	ZoneType        *string `pulumi:"zoneType"`
+}
+
+// GetGlobalDnsProviderRoute53ConfigInput is an input type that accepts GetGlobalDnsProviderRoute53ConfigArgs and GetGlobalDnsProviderRoute53ConfigOutput values.
+// You can construct a concrete instance of `GetGlobalDnsProviderRoute53ConfigInput` via:
+//
+//          GetGlobalDnsProviderRoute53ConfigArgs{...}
+type GetGlobalDnsProviderRoute53ConfigInput interface {
+	pulumi.Input
+
+	ToGetGlobalDnsProviderRoute53ConfigOutput() GetGlobalDnsProviderRoute53ConfigOutput
+	ToGetGlobalDnsProviderRoute53ConfigOutputWithContext(context.Context) GetGlobalDnsProviderRoute53ConfigOutput
+}
+
+type GetGlobalDnsProviderRoute53ConfigArgs struct {
+	AccessKey       pulumi.StringInput    `pulumi:"accessKey"`
+	CredentialsPath pulumi.StringPtrInput `pulumi:"credentialsPath"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	SecretKey       pulumi.StringInput    `pulumi:"secretKey"`
+	ZoneType        pulumi.StringPtrInput `pulumi:"zoneType"`
+}
+
+func (GetGlobalDnsProviderRoute53ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (i GetGlobalDnsProviderRoute53ConfigArgs) ToGetGlobalDnsProviderRoute53ConfigOutput() GetGlobalDnsProviderRoute53ConfigOutput {
+	return i.ToGetGlobalDnsProviderRoute53ConfigOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDnsProviderRoute53ConfigArgs) ToGetGlobalDnsProviderRoute53ConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderRoute53ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDnsProviderRoute53ConfigOutput)
+}
+
+type GetGlobalDnsProviderRoute53ConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDnsProviderRoute53ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDnsProviderRoute53Config)(nil)).Elem()
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) ToGetGlobalDnsProviderRoute53ConfigOutput() GetGlobalDnsProviderRoute53ConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) ToGetGlobalDnsProviderRoute53ConfigOutputWithContext(ctx context.Context) GetGlobalDnsProviderRoute53ConfigOutput {
+	return o
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) CredentialsPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) *string { return v.CredentialsPath }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalDnsProviderRoute53ConfigOutput) ZoneType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) *string { return v.ZoneType }).(pulumi.StringPtrOutput)
 }
 
 type GetMultiClusterAppAnswer struct {
@@ -67351,8 +70498,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsLinearAutoscalerParamsOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsNodelocalOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigDnsNodelocalPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(ClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigIngressPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRkeConfigMonitoringOutput{})
@@ -67463,8 +70616,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput{})
@@ -67531,6 +70690,12 @@ func init() {
 	pulumi.RegisterOutputType(EtcdBackupBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(EtcdBackupBackupConfigS3BackupConfigOutput{})
 	pulumi.RegisterOutputType(EtcdBackupBackupConfigS3BackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderAlidnsConfigOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderAlidnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderCloudflareConfigOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderCloudflareConfigPtrOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderRoute53ConfigOutput{})
+	pulumi.RegisterOutputType(GlobalDnsProviderRoute53ConfigPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppAnswerOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppAnswerArrayOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppMemberOutput{})
@@ -67555,6 +70720,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateAzureConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateDigitaloceanConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeTemplateHetznerConfigOutput{})
+	pulumi.RegisterOutputType(NodeTemplateHetznerConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateLinodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateLinodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigOutput{})
@@ -67710,8 +70877,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigDnsOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsLinearAutoscalerParamsOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsLinearAutoscalerParamsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigDnsNodelocalOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigDnsNodelocalPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(GetClusterRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringOutput{})
 	pulumi.RegisterOutputType(GetClusterRkeConfigMonitoringUpdateStrategyOutput{})
@@ -67802,8 +70975,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateOutput{})
+	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdatePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringOutput{})
 	pulumi.RegisterOutputType(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyOutput{})
@@ -67856,6 +71035,9 @@ func init() {
 	pulumi.RegisterOutputType(GetEtcdBackupBackupConfigOutput{})
 	pulumi.RegisterOutputType(GetEtcdBackupBackupConfigS3BackupConfigOutput{})
 	pulumi.RegisterOutputType(GetEtcdBackupBackupConfigS3BackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetGlobalDnsProviderAlidnsConfigOutput{})
+	pulumi.RegisterOutputType(GetGlobalDnsProviderCloudflareConfigOutput{})
+	pulumi.RegisterOutputType(GetGlobalDnsProviderRoute53ConfigOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppAnswerOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppAnswerArrayOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppMemberOutput{})

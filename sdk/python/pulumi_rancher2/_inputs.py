@@ -67,7 +67,10 @@ __all__ = [
     'ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs',
     'ClusterRkeConfigDnsArgs',
+    'ClusterRkeConfigDnsLinearAutoscalerParamsArgs',
     'ClusterRkeConfigDnsNodelocalArgs',
+    'ClusterRkeConfigDnsUpdateStrategyArgs',
+    'ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs',
     'ClusterRkeConfigIngressArgs',
     'ClusterRkeConfigMonitoringArgs',
     'ClusterRkeConfigMonitoringUpdateStrategyArgs',
@@ -124,7 +127,10 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs',
@@ -158,6 +164,9 @@ __all__ = [
     'ClusterTemplateTemplateRevisionQuestionArgs',
     'EtcdBackupBackupConfigArgs',
     'EtcdBackupBackupConfigS3BackupConfigArgs',
+    'GlobalDnsProviderAlidnsConfigArgs',
+    'GlobalDnsProviderCloudflareConfigArgs',
+    'GlobalDnsProviderRoute53ConfigArgs',
     'MultiClusterAppAnswerArgs',
     'MultiClusterAppMemberArgs',
     'MultiClusterAppTargetArgs',
@@ -170,6 +179,7 @@ __all__ = [
     'NodeTemplateAmazonec2ConfigArgs',
     'NodeTemplateAzureConfigArgs',
     'NodeTemplateDigitaloceanConfigArgs',
+    'NodeTemplateHetznerConfigArgs',
     'NodeTemplateLinodeConfigArgs',
     'NodeTemplateOpennebulaConfigArgs',
     'NodeTemplateOpenstackConfigArgs',
@@ -1053,7 +1063,7 @@ class ClusterAlertGroupRecipientArgs:
         """
         :param pulumi.Input[str] notifier_id: Recipient notifier ID (string)
         :param pulumi.Input[bool] default_recipient: Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-        :param pulumi.Input[str] notifier_type: Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        :param pulumi.Input[str] notifier_type: Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
         :param pulumi.Input[str] recipient: Recipient (string)
         """
         pulumi.set(__self__, "notifier_id", notifier_id)
@@ -1092,7 +1102,7 @@ class ClusterAlertGroupRecipientArgs:
     @pulumi.getter(name="notifierType")
     def notifier_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
         """
         return pulumi.get(self, "notifier_type")
 
@@ -2790,6 +2800,7 @@ class ClusterGkeConfigArgs:
         :param pulumi.Input[bool] enable_http_load_balancing: Enable HTTP load balancing on GKE cluster. Default `true` (bool)
         :param pulumi.Input[bool] enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         :param pulumi.Input[bool] enable_legacy_abac: Whether to enable legacy abac on the cluster. Default `false` (bool)
+        :param pulumi.Input[bool] enable_master_authorized_network: Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
         :param pulumi.Input[bool] enable_network_policy_config: Enable network policy config for the cluster. Default `true` (bool)
         :param pulumi.Input[bool] enable_nodepool_autoscaling: Enable nodepool autoscaling. Default `false` (bool)
         :param pulumi.Input[bool] enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
@@ -3272,6 +3283,9 @@ class ClusterGkeConfigArgs:
     @property
     @pulumi.getter(name="enableMasterAuthorizedNetwork")
     def enable_master_authorized_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
+        """
         return pulumi.get(self, "enable_master_authorized_network")
 
     @enable_master_authorized_network.setter
@@ -7250,18 +7264,24 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
 @pulumi.input_type
 class ClusterRkeConfigDnsArgs:
     def __init__(__self__, *,
+                 linear_autoscaler_params: Optional[pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs']] = None,
                  node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nodelocal: Optional[pulumi.Input['ClusterRkeConfigDnsNodelocalArgs']] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  reverse_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 update_strategy: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs']] = None,
                  upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs'] linear_autoscaler_params: LinearAutoScalerParams dns config (list Maxitem: 1)
         :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
         :param pulumi.Input['ClusterRkeConfigDnsNodelocalArgs'] nodelocal: Nodelocal dns config  (list Maxitem: 1)
         :param pulumi.Input[str] provider: RKE monitoring provider (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_cidrs: DNS add-on reverse cidr  (list)
+        :param pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs'] update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] upstream_nameservers: DNS add-on upstream nameservers  (list)
         """
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
@@ -7270,8 +7290,22 @@ class ClusterRkeConfigDnsArgs:
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
             pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+
+    @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional[pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs']]:
+        """
+        LinearAutoScalerParams dns config (list Maxitem: 1)
+        """
+        return pulumi.get(self, "linear_autoscaler_params")
+
+    @linear_autoscaler_params.setter
+    def linear_autoscaler_params(self, value: Optional[pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs']]):
+        pulumi.set(self, "linear_autoscaler_params", value)
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -7322,6 +7356,18 @@ class ClusterRkeConfigDnsArgs:
         pulumi.set(self, "reverse_cidrs", value)
 
     @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs']]:
+        """
+        RKE monitoring update strategy (list Maxitems: 1)
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs']]):
+        pulumi.set(self, "update_strategy", value)
+
+    @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -7332,6 +7378,93 @@ class ClusterRkeConfigDnsArgs:
     @upstream_nameservers.setter
     def upstream_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "upstream_nameservers", value)
+
+
+@pulumi.input_type
+class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[pulumi.Input[float]] = None,
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None,
+                 nodes_per_replica: Optional[pulumi.Input[float]] = None,
+                 prevent_single_point_failure: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[float] cores_per_replica: number of replicas per cluster cores (float64)
+        :param pulumi.Input[int] max: maximum number of replicas (int64)
+        :param pulumi.Input[int] min: minimum number of replicas (int64)
+        :param pulumi.Input[float] nodes_per_replica: number of replica per cluster nodes (float64)
+        :param pulumi.Input[bool] prevent_single_point_failure: prevent single point of failure
+        """
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[pulumi.Input[float]]:
+        """
+        number of replicas per cluster cores (float64)
+        """
+        return pulumi.get(self, "cores_per_replica")
+
+    @cores_per_replica.setter
+    def cores_per_replica(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cores_per_replica", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximum number of replicas (int64)
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[pulumi.Input[int]]:
+        """
+        minimum number of replicas (int64)
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[pulumi.Input[float]]:
+        """
+        number of replica per cluster nodes (float64)
+        """
+        return pulumi.get(self, "nodes_per_replica")
+
+    @nodes_per_replica.setter
+    def nodes_per_replica(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "nodes_per_replica", value)
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        prevent single point of failure
+        """
+        return pulumi.get(self, "prevent_single_point_failure")
+
+    @prevent_single_point_failure.setter
+    def prevent_single_point_failure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_single_point_failure", value)
 
 
 @pulumi.input_type
@@ -7371,6 +7504,84 @@ class ClusterRkeConfigDnsNodelocalArgs:
     @node_selector.setter
     def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "node_selector", value)
+
+
+@pulumi.input_type
+class ClusterRkeConfigDnsUpdateStrategyArgs:
+    def __init__(__self__, *,
+                 rolling_update: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs']] = None,
+                 strategy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs'] rolling_update: Monitoring deployment rolling update (list Maxitems: 1)
+        :param pulumi.Input[str] strategy: Monitoring deployment update strategy (string)
+        """
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs']]:
+        """
+        Monitoring deployment rolling update (list Maxitems: 1)
+        """
+        return pulumi.get(self, "rolling_update")
+
+    @rolling_update.setter
+    def rolling_update(self, value: Optional[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs']]):
+        pulumi.set(self, "rolling_update", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Monitoring deployment update strategy (string)
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy", value)
+
+
+@pulumi.input_type
+class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
+    def __init__(__self__, *,
+                 max_surge: Optional[pulumi.Input[int]] = None,
+                 max_unavailable: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_surge: Monitoring deployment rolling update max surge. Default: `1` (int)
+        :param pulumi.Input[int] max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[pulumi.Input[int]]:
+        """
+        Monitoring deployment rolling update max surge. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_surge")
+
+    @max_surge.setter
+    def max_surge(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_surge", value)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
+        """
+        Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_unavailable", value)
 
 
 @pulumi.input_type
@@ -12058,11 +12269,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
     def __init__(__self__, *,
+                 linear_autoscaler_params: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs']] = None,
                  node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nodelocal: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs']] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  reverse_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 update_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs']] = None,
                  upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if linear_autoscaler_params is not None:
+            pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
@@ -12071,8 +12286,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
             pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
+
+    @property
+    @pulumi.getter(name="linearAutoscalerParams")
+    def linear_autoscaler_params(self) -> Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs']]:
+        return pulumi.get(self, "linear_autoscaler_params")
+
+    @linear_autoscaler_params.setter
+    def linear_autoscaler_params(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs']]):
+        pulumi.set(self, "linear_autoscaler_params", value)
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -12111,6 +12337,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
         pulumi.set(self, "reverse_cidrs", value)
 
     @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs']]:
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs']]):
+        pulumi.set(self, "update_strategy", value)
+
+    @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "upstream_nameservers")
@@ -12118,6 +12353,71 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
     @upstream_nameservers.setter
     def upstream_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "upstream_nameservers", value)
+
+
+@pulumi.input_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs:
+    def __init__(__self__, *,
+                 cores_per_replica: Optional[pulumi.Input[float]] = None,
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None,
+                 nodes_per_replica: Optional[pulumi.Input[float]] = None,
+                 prevent_single_point_failure: Optional[pulumi.Input[bool]] = None):
+        if cores_per_replica is not None:
+            pulumi.set(__self__, "cores_per_replica", cores_per_replica)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if nodes_per_replica is not None:
+            pulumi.set(__self__, "nodes_per_replica", nodes_per_replica)
+        if prevent_single_point_failure is not None:
+            pulumi.set(__self__, "prevent_single_point_failure", prevent_single_point_failure)
+
+    @property
+    @pulumi.getter(name="coresPerReplica")
+    def cores_per_replica(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cores_per_replica")
+
+    @cores_per_replica.setter
+    def cores_per_replica(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cores_per_replica", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter(name="nodesPerReplica")
+    def nodes_per_replica(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "nodes_per_replica")
+
+    @nodes_per_replica.setter
+    def nodes_per_replica(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "nodes_per_replica", value)
+
+    @property
+    @pulumi.getter(name="preventSinglePointFailure")
+    def prevent_single_point_failure(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "prevent_single_point_failure")
+
+    @prevent_single_point_failure.setter
+    def prevent_single_point_failure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_single_point_failure", value)
 
 
 @pulumi.input_type
@@ -12147,6 +12447,64 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
     @node_selector.setter
     def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "node_selector", value)
+
+
+@pulumi.input_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs:
+    def __init__(__self__, *,
+                 rolling_update: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs']] = None,
+                 strategy: Optional[pulumi.Input[str]] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs']]:
+        return pulumi.get(self, "rolling_update")
+
+    @rolling_update.setter
+    def rolling_update(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs']]):
+        pulumi.set(self, "rolling_update", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy", value)
+
+
+@pulumi.input_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs:
+    def __init__(__self__, *,
+                 max_surge: Optional[pulumi.Input[int]] = None,
+                 max_unavailable: Optional[pulumi.Input[int]] = None):
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_surge")
+
+    @max_surge.setter
+    def max_surge(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_surge", value)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_unavailable", value)
 
 
 @pulumi.input_type
@@ -14287,6 +14645,197 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
 
 
 @pulumi.input_type
+class GlobalDnsProviderAlidnsConfigArgs:
+    def __init__(__self__, *,
+                 access_key: pulumi.Input[str],
+                 secret_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_key: The AWS Access key (string)
+        :param pulumi.Input[str] secret_key: The AWS Secret key (string)
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Access key (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Secret key (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key", value)
+
+
+@pulumi.input_type
+class GlobalDnsProviderCloudflareConfigArgs:
+    def __init__(__self__, *,
+                 api_email: pulumi.Input[str],
+                 api_key: pulumi.Input[str],
+                 proxy_setting: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] api_email: The CloudFlare API Email (string)
+        :param pulumi.Input[str] api_key: The CloudFlare API Key (string)
+        :param pulumi.Input[bool] proxy_setting: CloudFlare Proxy Setting. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "api_email", api_email)
+        pulumi.set(__self__, "api_key", api_key)
+        if proxy_setting is not None:
+            pulumi.set(__self__, "proxy_setting", proxy_setting)
+
+    @property
+    @pulumi.getter(name="apiEmail")
+    def api_email(self) -> pulumi.Input[str]:
+        """
+        The CloudFlare API Email (string)
+        """
+        return pulumi.get(self, "api_email")
+
+    @api_email.setter
+    def api_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_email", value)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[str]:
+        """
+        The CloudFlare API Key (string)
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter(name="proxySetting")
+    def proxy_setting(self) -> Optional[pulumi.Input[bool]]:
+        """
+        CloudFlare Proxy Setting. Default: `false` (bool)
+        """
+        return pulumi.get(self, "proxy_setting")
+
+    @proxy_setting.setter
+    def proxy_setting(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_setting", value)
+
+
+@pulumi.input_type
+class GlobalDnsProviderRoute53ConfigArgs:
+    def __init__(__self__, *,
+                 access_key: pulumi.Input[str],
+                 secret_key: pulumi.Input[str],
+                 credentials_path: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 zone_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_key: The AWS Access key (string)
+        :param pulumi.Input[str] secret_key: The AWS Secret key (string)
+        :param pulumi.Input[str] credentials_path: The AWS credentials path. Default: `"/.aws"` (string)
+        :param pulumi.Input[str] region: The AWS Region. Default: `"us-west-2"` (string)
+        :param pulumi.Input[str] role_arn: The AWS Role ARN (string)
+        :param pulumi.Input[str] zone_type: The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "secret_key", secret_key)
+        if credentials_path is not None:
+            pulumi.set(__self__, "credentials_path", credentials_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if zone_type is not None:
+            pulumi.set(__self__, "zone_type", zone_type)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Access key (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Secret key (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="credentialsPath")
+    def credentials_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS credentials path. Default: `"/.aws"` (string)
+        """
+        return pulumi.get(self, "credentials_path")
+
+    @credentials_path.setter
+    def credentials_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credentials_path", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Region. Default: `"us-west-2"` (string)
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Role ARN (string)
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
+        return pulumi.get(self, "zone_type")
+
+    @zone_type.setter
+    def zone_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_type", value)
+
+
+@pulumi.input_type
 class MultiClusterAppAnswerArgs:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -16098,6 +16647,140 @@ class NodeTemplateDigitaloceanConfigArgs:
     @userdata.setter
     def userdata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userdata", value)
+
+
+@pulumi.input_type
+class NodeTemplateHetznerConfigArgs:
+    def __init__(__self__, *,
+                 api_token: pulumi.Input[str],
+                 image: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[str]] = None,
+                 server_location: Optional[pulumi.Input[str]] = None,
+                 server_type: Optional[pulumi.Input[str]] = None,
+                 use_private_networks: Optional[pulumi.Input[bool]] = None,
+                 userdata: Optional[pulumi.Input[str]] = None,
+                 volumes: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_token: Hetzner Cloud project API token (string)
+        :param pulumi.Input[str] image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param pulumi.Input[str] networks: Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        :param pulumi.Input[str] server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
+        :param pulumi.Input[str] server_type: Hetzner Cloud server type. Default `cx11` (string)
+        :param pulumi.Input[bool] use_private_networks: Use private network. Default `false` (bool)
+        :param pulumi.Input[str] userdata: Path to file with cloud-init user-data (string)
+        :param pulumi.Input[str] volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
+        """
+        pulumi.set(__self__, "api_token", api_token)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if server_location is not None:
+            pulumi.set(__self__, "server_location", server_location)
+        if server_type is not None:
+            pulumi.set(__self__, "server_type", server_type)
+        if use_private_networks is not None:
+            pulumi.set(__self__, "use_private_networks", use_private_networks)
+        if userdata is not None:
+            pulumi.set(__self__, "userdata", userdata)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> pulumi.Input[str]:
+        """
+        Hetzner Cloud project API token (string)
+        """
+        return pulumi.get(self, "api_token")
+
+    @api_token.setter
+    def api_token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_token", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="serverLocation")
+    def server_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hetzner Cloud datacenter. Default `nbg1` (string)
+        """
+        return pulumi.get(self, "server_location")
+
+    @server_location.setter
+    def server_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_location", value)
+
+    @property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hetzner Cloud server type. Default `cx11` (string)
+        """
+        return pulumi.get(self, "server_type")
+
+    @server_type.setter
+    def server_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_type", value)
+
+    @property
+    @pulumi.getter(name="usePrivateNetworks")
+    def use_private_networks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use private network. Default `false` (bool)
+        """
+        return pulumi.get(self, "use_private_networks")
+
+    @use_private_networks.setter
+    def use_private_networks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_private_networks", value)
+
+    @property
+    @pulumi.getter
+    def userdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
+        return pulumi.get(self, "userdata")
+
+    @userdata.setter
+    def userdata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "userdata", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of volume IDs or names which should be attached to the server (string)
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volumes", value)
 
 
 @pulumi.input_type

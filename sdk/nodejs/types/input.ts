@@ -231,7 +231,7 @@ export interface ClusterAlertGroupRecipient {
      */
     notifierId: pulumi.Input<string>;
     /**
-     * Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
      */
     notifierType?: pulumi.Input<string>;
     /**
@@ -678,6 +678,9 @@ export interface ClusterGkeConfig {
      * Whether to enable legacy abac on the cluster. Default `false` (bool)
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * Enable master authorized network. Set to `true` if `masterAuthorizedNetworkCidrBlocks` is set. Default `false` (bool)
+     */
     enableMasterAuthorizedNetwork?: pulumi.Input<boolean>;
     /**
      * Enable network policy config for the cluster. Default `true` (bool)
@@ -1820,6 +1823,10 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 
 export interface ClusterRkeConfigDns {
     /**
+     * LinearAutoScalerParams dns config (list Maxitem: 1)
+     */
+    linearAutoscalerParams?: pulumi.Input<inputs.ClusterRkeConfigDnsLinearAutoscalerParams>;
+    /**
      * RKE monitoring node selector (map)
      */
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
@@ -1836,9 +1843,36 @@ export interface ClusterRkeConfigDns {
      */
     reverseCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: pulumi.Input<inputs.ClusterRkeConfigDnsUpdateStrategy>;
+    /**
      * DNS add-on upstream nameservers  (list)
      */
     upstreamNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClusterRkeConfigDnsLinearAutoscalerParams {
+    /**
+     * number of replicas per cluster cores (float64)
+     */
+    coresPerReplica?: pulumi.Input<number>;
+    /**
+     * maximum number of replicas (int64)
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * minimum number of replicas (int64)
+     */
+    min?: pulumi.Input<number>;
+    /**
+     * number of replica per cluster nodes (float64)
+     */
+    nodesPerReplica?: pulumi.Input<number>;
+    /**
+     * prevent single point of failure
+     */
+    preventSinglePointFailure?: pulumi.Input<boolean>;
 }
 
 export interface ClusterRkeConfigDnsNodelocal {
@@ -1850,6 +1884,28 @@ export interface ClusterRkeConfigDnsNodelocal {
      * RKE monitoring node selector (map)
      */
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface ClusterRkeConfigDnsUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: pulumi.Input<inputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate>;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max surge. Default: `1` (int)
+     */
+    maxSurge?: pulumi.Input<number>;
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterRkeConfigIngress {
@@ -2830,16 +2886,36 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    linearAutoscalerParams?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams>;
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     nodelocal?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal>;
     provider?: pulumi.Input<string>;
     reverseCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy>;
     upstreamNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams {
+    coresPerReplica?: pulumi.Input<number>;
+    max?: pulumi.Input<number>;
+    min?: pulumi.Input<number>;
+    nodesPerReplica?: pulumi.Input<number>;
+    preventSinglePointFailure?: pulumi.Input<boolean>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: pulumi.Input<string>;
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate>;
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    maxSurge?: pulumi.Input<number>;
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
@@ -3248,6 +3324,59 @@ export interface GetPodSecurityPolicyTemplateSupplementalGroup {
 export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
     max: number;
     min: number;
+}
+
+export interface GlobalDnsProviderAlidnsConfig {
+    /**
+     * The AWS Access key (string)
+     */
+    accessKey: pulumi.Input<string>;
+    /**
+     * The AWS Secret key (string)
+     */
+    secretKey: pulumi.Input<string>;
+}
+
+export interface GlobalDnsProviderCloudflareConfig {
+    /**
+     * The CloudFlare API Email (string)
+     */
+    apiEmail: pulumi.Input<string>;
+    /**
+     * The CloudFlare API Key (string)
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * CloudFlare Proxy Setting. Default: `false` (bool)
+     */
+    proxySetting?: pulumi.Input<boolean>;
+}
+
+export interface GlobalDnsProviderRoute53Config {
+    /**
+     * The AWS Access key (string)
+     */
+    accessKey: pulumi.Input<string>;
+    /**
+     * The AWS credentials path. Default: `"/.aws"` (string)
+     */
+    credentialsPath?: pulumi.Input<string>;
+    /**
+     * The AWS Region. Default: `"us-west-2"` (string)
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The AWS Role ARN (string)
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The AWS Secret key (string)
+     */
+    secretKey: pulumi.Input<string>;
+    /**
+     * The Route53 zone type `public, private`. Default: `"public"` (string)
+     */
+    zoneType?: pulumi.Input<string>;
 }
 
 export interface MultiClusterAppAnswer {
@@ -3717,6 +3846,41 @@ export interface NodeTemplateDigitaloceanConfig {
      * Path to file with cloud-init user-data (string)
      */
     userdata?: pulumi.Input<string>;
+}
+
+export interface NodeTemplateHetznerConfig {
+    /**
+     * Hetzner Cloud project API token (string)
+     */
+    apiToken: pulumi.Input<string>;
+    /**
+     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     */
+    networks?: pulumi.Input<string>;
+    /**
+     * Hetzner Cloud datacenter. Default `nbg1` (string)
+     */
+    serverLocation?: pulumi.Input<string>;
+    /**
+     * Hetzner Cloud server type. Default `cx11` (string)
+     */
+    serverType?: pulumi.Input<string>;
+    /**
+     * Use private network. Default `false` (bool)
+     */
+    usePrivateNetworks?: pulumi.Input<boolean>;
+    /**
+     * Path to file with cloud-init user-data (string)
+     */
+    userdata?: pulumi.Input<string>;
+    /**
+     * Comma-separated list of volume IDs or names which should be attached to the server (string)
+     */
+    volumes?: pulumi.Input<string>;
 }
 
 export interface NodeTemplateLinodeConfig {

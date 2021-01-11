@@ -13,14 +13,18 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult
     {
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult? LinearAutoscalerParams;
         public readonly ImmutableDictionary<string, object> NodeSelector;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult? Nodelocal;
         public readonly string? Provider;
         public readonly ImmutableArray<string> ReverseCidrs;
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult? UpdateStrategy;
         public readonly ImmutableArray<string> UpstreamNameservers;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult? linearAutoscalerParams,
+
             ImmutableDictionary<string, object> nodeSelector,
 
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult? nodelocal,
@@ -29,12 +33,16 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> reverseCidrs,
 
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult? updateStrategy,
+
             ImmutableArray<string> upstreamNameservers)
         {
+            LinearAutoscalerParams = linearAutoscalerParams;
             NodeSelector = nodeSelector;
             Nodelocal = nodelocal;
             Provider = provider;
             ReverseCidrs = reverseCidrs;
+            UpdateStrategy = updateStrategy;
             UpstreamNameservers = upstreamNameservers;
         }
     }

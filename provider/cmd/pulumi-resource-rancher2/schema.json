@@ -646,7 +646,7 @@
                 },
                 "notifierType": {
                     "type": "string",
-                    "description": "Recipient notifier ID. Supported values : `\"pagerduty\" | \"slack\" | \"email\" | \"webhook\" | \"wechat\"` (string)\n",
+                    "description": "Recipient notifier ID. Supported values : `\"dingtalk\" | \"msteams\" | \"pagerduty\" | \"slack\" | \"email\" | \"webhook\" | \"wechat\"` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1875,6 +1875,7 @@
                 },
                 "enableMasterAuthorizedNetwork": {
                     "type": "boolean",
+                    "description": "Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4837,6 +4838,15 @@
         },
         "rancher2:index/ClusterRkeConfigDns:ClusterRkeConfigDns": {
             "properties": {
+                "linearAutoscalerParams": {
+                    "$ref": "#/types/rancher2:index/ClusterRkeConfigDnsLinearAutoscalerParams:ClusterRkeConfigDnsLinearAutoscalerParams",
+                    "description": "LinearAutoScalerParams dns config (list Maxitem: 1)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nodeSelector": {
                     "type": "object",
                     "additionalProperties": {
@@ -4879,6 +4889,15 @@
                         }
                     }
                 },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:index/ClusterRkeConfigDnsUpdateStrategy:ClusterRkeConfigDnsUpdateStrategy",
+                    "description": "RKE monitoring update strategy (list Maxitems: 1)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upstreamNameservers": {
                     "type": "array",
                     "items": {
@@ -4903,6 +4922,56 @@
                 }
             }
         },
+        "rancher2:index/ClusterRkeConfigDnsLinearAutoscalerParams:ClusterRkeConfigDnsLinearAutoscalerParams": {
+            "properties": {
+                "coresPerReplica": {
+                    "type": "number",
+                    "description": "number of replicas per cluster cores (float64)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "maximum number of replicas (int64)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "minimum number of replicas (int64)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodesPerReplica": {
+                    "type": "number",
+                    "description": "number of replica per cluster nodes (float64)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSinglePointFailure": {
+                    "type": "boolean",
+                    "description": "prevent single point of failure\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:index/ClusterRkeConfigDnsNodelocal:ClusterRkeConfigDnsNodelocal": {
             "properties": {
                 "ipAddress": {
@@ -4920,6 +4989,52 @@
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "RKE monitoring node selector (map)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/ClusterRkeConfigDnsUpdateStrategy:ClusterRkeConfigDnsUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:index/ClusterRkeConfigDnsUpdateStrategyRollingUpdate:ClusterRkeConfigDnsUpdateStrategyRollingUpdate",
+                    "description": "Monitoring deployment rolling update (list Maxitems: 1)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Monitoring deployment update strategy (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/ClusterRkeConfigDnsUpdateStrategyRollingUpdate:ClusterRkeConfigDnsUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "description": "Monitoring deployment rolling update max surge. Default: `1` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "description": "Monitoring deployment rolling update max unavailable. Default: `1` (int)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8471,6 +8586,14 @@
         },
         "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns": {
             "properties": {
+                "linearAutoscalerParams": {
+                    "$ref": "#/types/rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nodeSelector": {
                     "type": "object",
                     "additionalProperties": {
@@ -8509,6 +8632,14 @@
                         }
                     }
                 },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upstreamNameservers": {
                     "type": "array",
                     "items": {
@@ -8532,6 +8663,51 @@
                 }
             }
         },
+        "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams": {
+            "properties": {
+                "coresPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "max": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodesPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSinglePointFailure": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal": {
             "properties": {
                 "ipAddress": {
@@ -8547,6 +8723,48 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate:ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10295,6 +10513,132 @@
                 "endpoint"
             ]
         },
+        "rancher2:index/GlobalDnsProviderAlidnsConfig:GlobalDnsProviderAlidnsConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "The AWS Access key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "The AWS Secret key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "secretKey"
+            ]
+        },
+        "rancher2:index/GlobalDnsProviderCloudflareConfig:GlobalDnsProviderCloudflareConfig": {
+            "properties": {
+                "apiEmail": {
+                    "type": "string",
+                    "description": "The CloudFlare API Email (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "apiKey": {
+                    "type": "string",
+                    "description": "The CloudFlare API Key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "proxySetting": {
+                    "type": "boolean",
+                    "description": "CloudFlare Proxy Setting. Default: `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiEmail",
+                "apiKey"
+            ]
+        },
+        "rancher2:index/GlobalDnsProviderRoute53Config:GlobalDnsProviderRoute53Config": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "The AWS Access key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "credentialsPath": {
+                    "type": "string",
+                    "description": "The AWS credentials path. Default: `\"/.aws\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS Region. Default: `\"us-west-2\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The AWS Role ARN (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "The AWS Secret key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneType": {
+                    "type": "string",
+                    "description": "The Route53 zone type `public, private`. Default: `\"public\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "secretKey"
+            ]
+        },
         "rancher2:index/MultiClusterAppAnswer:MultiClusterAppAnswer": {
             "properties": {
                 "clusterId": {
@@ -11392,6 +11736,86 @@
                 }
             },
             "type": "object"
+        },
+        "rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig": {
+            "properties": {
+                "apiToken": {
+                    "type": "string",
+                    "description": "Hetzner Cloud project API token (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "image": {
+                    "type": "string",
+                    "description": "Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "networks": {
+                    "type": "string",
+                    "description": "Comma-separated list of network IDs or names which should be attached to the server private network interface (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverLocation": {
+                    "type": "string",
+                    "description": "Hetzner Cloud datacenter. Default `nbg1` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverType": {
+                    "type": "string",
+                    "description": "Hetzner Cloud server type. Default `cx11` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePrivateNetworks": {
+                    "type": "boolean",
+                    "description": "Use private network. Default `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userdata": {
+                    "type": "string",
+                    "description": "Path to file with cloud-init user-data (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumes": {
+                    "type": "string",
+                    "description": "Comma-separated list of volume IDs or names which should be attached to the server (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiToken"
+            ]
         },
         "rancher2:index/NodeTemplateLinodeConfig:NodeTemplateLinodeConfig": {
             "properties": {
@@ -18194,6 +18618,14 @@
         },
         "rancher2:index/getClusterRkeConfigDns:getClusterRkeConfigDns": {
             "properties": {
+                "linearAutoscalerParams": {
+                    "$ref": "#/types/rancher2:index/getClusterRkeConfigDnsLinearAutoscalerParams:getClusterRkeConfigDnsLinearAutoscalerParams",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nodeSelector": {
                     "type": "object",
                     "additionalProperties": {
@@ -18232,6 +18664,14 @@
                         }
                     }
                 },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:index/getClusterRkeConfigDnsUpdateStrategy:getClusterRkeConfigDnsUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upstreamNameservers": {
                     "type": "array",
                     "items": {
@@ -18256,6 +18696,51 @@
                 }
             }
         },
+        "rancher2:index/getClusterRkeConfigDnsLinearAutoscalerParams:getClusterRkeConfigDnsLinearAutoscalerParams": {
+            "properties": {
+                "coresPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "max": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodesPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSinglePointFailure": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:index/getClusterRkeConfigDnsNodelocal:getClusterRkeConfigDnsNodelocal": {
             "properties": {
                 "ipAddress": {
@@ -18271,6 +18756,48 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/getClusterRkeConfigDnsUpdateStrategy:getClusterRkeConfigDnsUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:index/getClusterRkeConfigDnsUpdateStrategyRollingUpdate:getClusterRkeConfigDnsUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/getClusterRkeConfigDnsUpdateStrategyRollingUpdate:getClusterRkeConfigDnsUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19324,6 +19851,14 @@
         },
         "rancher2:index/getClusterRkeConfigServicesKubeApiEventRateLimit:getClusterRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
+                "configuration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -19333,10 +19868,26 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "configuration"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterRkeConfigServicesKubeApiSecretsEncryptionConfig:getClusterRkeConfigServicesKubeApiSecretsEncryptionConfig": {
             "properties": {
+                "customConfig": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -19346,7 +19897,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "customConfig"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterRkeConfigServicesKubeController:getClusterRkeConfigServicesKubeController": {
             "properties": {
@@ -21725,6 +22284,14 @@
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDns": {
             "properties": {
+                "linearAutoscalerParams": {
+                    "$ref": "#/types/rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nodeSelector": {
                     "type": "object",
                     "additionalProperties": {
@@ -21763,6 +22330,14 @@
                         }
                     }
                 },
+                "updateStrategy": {
+                    "$ref": "#/types/rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "upstreamNameservers": {
                     "type": "array",
                     "items": {
@@ -21787,6 +22362,51 @@
                 }
             }
         },
+        "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams": {
+            "properties": {
+                "coresPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "max": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodesPerReplica": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preventSinglePointFailure": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal": {
             "properties": {
                 "ipAddress": {
@@ -21802,6 +22422,48 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy": {
+            "properties": {
+                "rollingUpdate": {
+                    "$ref": "#/types/rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "strategy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate:getClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate": {
+            "properties": {
+                "maxSurge": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxUnavailable": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22854,6 +23516,14 @@
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit": {
             "properties": {
+                "configuration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -22863,10 +23533,26 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "configuration"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig": {
             "properties": {
+                "customConfig": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enabled": {
                     "type": "boolean",
                     "language": {
@@ -22876,7 +23562,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "customConfig"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController": {
             "properties": {
@@ -23541,6 +24235,136 @@
             "required": [
                 "bucketName",
                 "endpoint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "rancher2:index/getGlobalDnsProviderAlidnsConfig:getGlobalDnsProviderAlidnsConfig": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "secretKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "rancher2:index/getGlobalDnsProviderCloudflareConfig:getGlobalDnsProviderCloudflareConfig": {
+            "properties": {
+                "apiEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "apiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "proxySetting": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiEmail",
+                "apiKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "rancher2:index/getGlobalDnsProviderRoute53Config:getGlobalDnsProviderRoute53Config": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "credentialsPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "secretKey"
             ],
             "language": {
                 "nodejs": {
@@ -26588,12 +27412,13 @@
                 },
                 "wait": {
                     "type": "boolean",
-                    "description": "Wait until app is deployed. Default: `false` (bool)\n"
+                    "description": "Wait until app is deployed. Default: `true` (bool)\n"
                 }
             },
             "required": [
                 "annotations",
                 "chartName",
+                "chartVersion",
                 "clusterId",
                 "clusterName",
                 "labels",
@@ -26666,7 +27491,7 @@
                 },
                 "wait": {
                     "type": "boolean",
-                    "description": "Wait until app is deployed. Default: `false` (bool)\n"
+                    "description": "Wait until app is deployed. Default: `true` (bool)\n"
                 }
             },
             "requiredInputs": [
@@ -26746,7 +27571,7 @@
                     },
                     "wait": {
                         "type": "boolean",
-                        "description": "Wait until app is deployed. Default: `false` (bool)\n"
+                        "description": "Wait until app is deployed. Default: `true` (bool)\n"
                     }
                 },
                 "type": "object"
@@ -32036,6 +32861,277 @@
                 "type": "object"
             }
         },
+        "rancher2:index/globalDns:GlobalDns": {
+            "description": "Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider\nconst fooGlobalDnsProvider = new rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", {\n    rootDomain: \"example.com\",\n    route53Config: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zoneType: \"private\",\n        region: \"us-east-1\",\n    },\n});\n// Create a new rancher2 Global DNS using project IDs\nconst fooGlobalDns = new rancher2.GlobalDns(\"fooGlobalDns\", {\n    fqdn: \"foo.example.com\",\n    providerId: fooGlobalDnsProvider.id,\n    projectIds: [\n        \"project1\",\n        \"project2\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider\nfoo_global_dns_provider = rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\",\n    root_domain=\"example.com\",\n    route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zone_type=\"private\",\n        region=\"us-east-1\",\n    ))\n# Create a new rancher2 Global DNS using project IDs\nfoo_global_dns = rancher2.GlobalDns(\"fooGlobalDns\",\n    fqdn=\"foo.example.com\",\n    provider_id=foo_global_dns_provider.id,\n    project_ids=[\n        \"project1\",\n        \"project2\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider\n        var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", new Rancher2.GlobalDnsProviderArgs\n        {\n            RootDomain = \"example.com\",\n            Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ZoneType = \"private\",\n                Region = \"us-east-1\",\n            },\n        });\n        // Create a new rancher2 Global DNS using project IDs\n        var fooGlobalDns = new Rancher2.GlobalDns(\"fooGlobalDns\", new Rancher2.GlobalDnsArgs\n        {\n            Fqdn = \"foo.example.com\",\n            ProviderId = fooGlobalDnsProvider.Id,\n            ProjectIds = \n            {\n                \"project1\",\n                \"project2\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, \"fooGlobalDnsProvider\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t\tRoute53Config: \u0026rancher2.GlobalDnsProviderRoute53ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tZoneType:  pulumi.String(\"private\"),\n\t\t\t\tRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewGlobalDns(ctx, \"fooGlobalDns\", \u0026rancher2.GlobalDnsArgs{\n\t\t\tFqdn:       pulumi.String(\"foo.example.com\"),\n\t\t\tProviderId: fooGlobalDnsProvider.ID(),\n\t\t\tProjectIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"project1\"),\n\t\t\t\tpulumi.String(\"project2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider\nconst fooGlobalDnsProvider = new rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", {\n    rootDomain: \"example.com\",\n    route53Config: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zoneType: \"private\",\n        region: \"us-east-1\",\n    },\n});\n// Create a new rancher2 Global DNS using MultiClusterApp ID\nconst fooGlobalDns = new rancher2.GlobalDns(\"fooGlobalDns\", {\n    fqdn: \"foo.example.com\",\n    providerId: fooGlobalDnsProvider.id,\n    multiClusterAppId: \"\u003cMCA_ID\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider\nfoo_global_dns_provider = rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\",\n    root_domain=\"example.com\",\n    route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zone_type=\"private\",\n        region=\"us-east-1\",\n    ))\n# Create a new rancher2 Global DNS using MultiClusterApp ID\nfoo_global_dns = rancher2.GlobalDns(\"fooGlobalDns\",\n    fqdn=\"foo.example.com\",\n    provider_id=foo_global_dns_provider.id,\n    multi_cluster_app_id=\"\u003cMCA_ID\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider\n        var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", new Rancher2.GlobalDnsProviderArgs\n        {\n            RootDomain = \"example.com\",\n            Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ZoneType = \"private\",\n                Region = \"us-east-1\",\n            },\n        });\n        // Create a new rancher2 Global DNS using MultiClusterApp ID\n        var fooGlobalDns = new Rancher2.GlobalDns(\"fooGlobalDns\", new Rancher2.GlobalDnsArgs\n        {\n            Fqdn = \"foo.example.com\",\n            ProviderId = fooGlobalDnsProvider.Id,\n            MultiClusterAppId = \"\u003cMCA_ID\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, \"fooGlobalDnsProvider\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t\tRoute53Config: \u0026rancher2.GlobalDnsProviderRoute53ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tZoneType:  pulumi.String(\"private\"),\n\t\t\t\tRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewGlobalDns(ctx, \"fooGlobalDns\", \u0026rancher2.GlobalDnsArgs{\n\t\t\tFqdn:              pulumi.String(\"foo.example.com\"),\n\t\t\tProviderId:        fooGlobalDnsProvider.ID(),\n\t\t\tMultiClusterAppId: pulumi.String(\"\u003cMCA_ID\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGlobal DNS Entry can be imported using the Rancher Global DNS ID\n\n```sh\n $ pulumi import rancher2:index/globalDns:GlobalDns foo \u003cglobal_dns_id\u003e\n```\n\n ",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for Global DNS (map)\n"
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "The Global DNS record (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for Global DNS (map)\n"
+                },
+                "multiClusterAppId": {
+                    "type": "string",
+                    "description": "The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Global DNS (string)\n"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The Global DNS provider ID to use (string)\n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "TTL in seconds for DNS record. Default: `300` (int)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "fqdn",
+                "labels",
+                "name",
+                "providerId"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for Global DNS (map)\n"
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "The Global DNS record (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for Global DNS (map)\n"
+                },
+                "multiClusterAppId": {
+                    "type": "string",
+                    "description": "The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Global DNS (string)\n"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The Global DNS provider ID to use (string)\n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "TTL in seconds for DNS record. Default: `300` (int)\n"
+                }
+            },
+            "requiredInputs": [
+                "fqdn",
+                "providerId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GlobalDns resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for Global DNS (map)\n"
+                    },
+                    "fqdn": {
+                        "type": "string",
+                        "description": "The Global DNS record (string)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for Global DNS (map)\n"
+                    },
+                    "multiClusterAppId": {
+                        "type": "string",
+                        "description": "The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Global DNS (string)\n"
+                    },
+                    "projectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))\n"
+                    },
+                    "providerId": {
+                        "type": "string",
+                        "description": "The Global DNS provider ID to use (string)\n"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "description": "TTL in seconds for DNS record. Default: `300` (int)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rancher2:index/globalDnsProvider:GlobalDnsProvider": {
+            "description": "Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider - alidns\nconst foo = new rancher2.GlobalDnsProvider(\"foo\", {\n    alidnsConfig: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n    },\n    rootDomain: \"example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider - alidns\nfoo = rancher2.GlobalDnsProvider(\"foo\",\n    alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n    ),\n    root_domain=\"example.com\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider - alidns\n        var foo = new Rancher2.GlobalDnsProvider(\"foo\", new Rancher2.GlobalDnsProviderArgs\n        {\n            AlidnsConfig = new Rancher2.Inputs.GlobalDnsProviderAlidnsConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n            },\n            RootDomain = \"example.com\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewGlobalDnsProvider(ctx, \"foo\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tAlidnsConfig: \u0026rancher2.GlobalDnsProviderAlidnsConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t},\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider - cloudflare\nconst foo = new rancher2.GlobalDnsProvider(\"foo\", {\n    cloudflareConfig: {\n        apiEmail: \"test@test.local\",\n        apiKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        proxySetting: true,\n    },\n    rootDomain: \"example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider - cloudflare\nfoo = rancher2.GlobalDnsProvider(\"foo\",\n    cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(\n        api_email=\"test@test.local\",\n        api_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        proxy_setting=True,\n    ),\n    root_domain=\"example.com\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider - cloudflare\n        var foo = new Rancher2.GlobalDnsProvider(\"foo\", new Rancher2.GlobalDnsProviderArgs\n        {\n            CloudflareConfig = new Rancher2.Inputs.GlobalDnsProviderCloudflareConfigArgs\n            {\n                ApiEmail = \"test@test.local\",\n                ApiKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ProxySetting = true,\n            },\n            RootDomain = \"example.com\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewGlobalDnsProvider(ctx, \"foo\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tCloudflareConfig: \u0026rancher2.GlobalDnsProviderCloudflareConfigArgs{\n\t\t\t\tApiEmail:     pulumi.String(\"test@test.local\"),\n\t\t\t\tApiKey:       pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tProxySetting: pulumi.Bool(true),\n\t\t\t},\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider - route53\nconst foo = new rancher2.GlobalDnsProvider(\"foo\", {\n    rootDomain: \"example.com\",\n    route53Config: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        region: \"us-east-1\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zoneType: \"private\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider - route53\nfoo = rancher2.GlobalDnsProvider(\"foo\",\n    root_domain=\"example.com\",\n    route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        region=\"us-east-1\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zone_type=\"private\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider - route53\n        var foo = new Rancher2.GlobalDnsProvider(\"foo\", new Rancher2.GlobalDnsProviderArgs\n        {\n            RootDomain = \"example.com\",\n            Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                Region = \"us-east-1\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ZoneType = \"private\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewGlobalDnsProvider(ctx, \"foo\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t\tRoute53Config: \u0026rancher2.GlobalDnsProviderRoute53ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tZoneType:  pulumi.String(\"private\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGlobal DNS Providers can be imported using the Rancher Global DNS Provider ID\n\n```sh\n $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo \u003cglobal_dns_provider_id\u003e\n```\n\n ",
+            "properties": {
+                "alidnsConfig": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderAlidnsConfig:GlobalDnsProviderAlidnsConfig"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for Global DNS Provider (map)\n"
+                },
+                "cloudflareConfig": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderCloudflareConfig:GlobalDnsProviderCloudflareConfig"
+                },
+                "dnsProvider": {
+                    "type": "string",
+                    "description": "(Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for Global DNS Provider (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Global DNS Provider (string)\n"
+                },
+                "rootDomain": {
+                    "type": "string",
+                    "description": "The user ID to assign Global DNS Provider (string)\n"
+                },
+                "route53Config": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderRoute53Config:GlobalDnsProviderRoute53Config"
+                }
+            },
+            "required": [
+                "annotations",
+                "dnsProvider",
+                "labels",
+                "name",
+                "rootDomain"
+            ],
+            "inputProperties": {
+                "alidnsConfig": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderAlidnsConfig:GlobalDnsProviderAlidnsConfig"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for Global DNS Provider (map)\n"
+                },
+                "cloudflareConfig": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderCloudflareConfig:GlobalDnsProviderCloudflareConfig"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for Global DNS Provider (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Global DNS Provider (string)\n"
+                },
+                "rootDomain": {
+                    "type": "string",
+                    "description": "The user ID to assign Global DNS Provider (string)\n"
+                },
+                "route53Config": {
+                    "$ref": "#/types/rancher2:index/GlobalDnsProviderRoute53Config:GlobalDnsProviderRoute53Config"
+                }
+            },
+            "requiredInputs": [
+                "rootDomain"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GlobalDnsProvider resources.\n",
+                "properties": {
+                    "alidnsConfig": {
+                        "$ref": "#/types/rancher2:index/GlobalDnsProviderAlidnsConfig:GlobalDnsProviderAlidnsConfig"
+                    },
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for Global DNS Provider (map)\n"
+                    },
+                    "cloudflareConfig": {
+                        "$ref": "#/types/rancher2:index/GlobalDnsProviderCloudflareConfig:GlobalDnsProviderCloudflareConfig"
+                    },
+                    "dnsProvider": {
+                        "type": "string",
+                        "description": "(Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for Global DNS Provider (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Global DNS Provider (string)\n"
+                    },
+                    "rootDomain": {
+                        "type": "string",
+                        "description": "The user ID to assign Global DNS Provider (string)\n"
+                    },
+                    "route53Config": {
+                        "$ref": "#/types/rancher2:index/GlobalDnsProviderRoute53Config:GlobalDnsProviderRoute53Config"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rancher2:index/globalRoleBinding:GlobalRoleBinding": {
             "description": "Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global Role Binding using user_id\nconst foo = new rancher2.GlobalRoleBinding(\"foo\", {\n    globalRoleId: \"admin\",\n    userId: \"user-XXXXX\",\n});\n// Create a new rancher2 Global Role Binding using group_principal_id\nconst foo2 = new rancher2.GlobalRoleBinding(\"foo2\", {\n    globalRoleId: \"admin\",\n    groupPrincipalId: \"local://g-XXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global Role Binding using user_id\nfoo = rancher2.GlobalRoleBinding(\"foo\",\n    global_role_id=\"admin\",\n    user_id=\"user-XXXXX\")\n# Create a new rancher2 Global Role Binding using group_principal_id\nfoo2 = rancher2.GlobalRoleBinding(\"foo2\",\n    global_role_id=\"admin\",\n    group_principal_id=\"local://g-XXXXX\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global Role Binding using user_id\n        var foo = new Rancher2.GlobalRoleBinding(\"foo\", new Rancher2.GlobalRoleBindingArgs\n        {\n            GlobalRoleId = \"admin\",\n            UserId = \"user-XXXXX\",\n        });\n        // Create a new rancher2 Global Role Binding using group_principal_id\n        var foo2 = new Rancher2.GlobalRoleBinding(\"foo2\", new Rancher2.GlobalRoleBindingArgs\n        {\n            GlobalRoleId = \"admin\",\n            GroupPrincipalId = \"local://g-XXXXX\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewGlobalRoleBinding(ctx, \"foo\", \u0026rancher2.GlobalRoleBindingArgs{\n\t\t\tGlobalRoleId: pulumi.String(\"admin\"),\n\t\t\tUserId:       pulumi.String(\"user-XXXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewGlobalRoleBinding(ctx, \"foo2\", \u0026rancher2.GlobalRoleBindingArgs{\n\t\t\tGlobalRoleId:     pulumi.String(\"admin\"),\n\t\t\tGroupPrincipalId: pulumi.String(\"local://g-XXXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGlobal Role Bindings can be imported using the Rancher Global Role Binding ID\n\n```sh\n $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo \u0026lt;GLOBAL_ROLE_BINDING_ID\u0026gt;\n```\n\n ",
             "properties": {
@@ -32933,7 +34029,7 @@
             }
         },
         "rancher2:index/nodeTemplate:NodeTemplate": {
-            "description": "Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.\n\namazonec2, azure, digitalocean, linode, opennebula, openstack, and vsphere drivers are supported for node templates.\n\n**Note** If you are upgrading to Rancher v2.3.3, please take a look to final section\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template up to Rancher 2.1.x\nconst foo = new rancher2.NodeTemplate(\"foo\", {\n    amazonec2Config: {\n        accessKey: \"AWS_ACCESS_KEY\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template up to Rancher 2.1.x\nfoo = rancher2.NodeTemplate(\"foo\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"AWS_ACCESS_KEY\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template up to Rancher 2.1.x\n        var foo = new Rancher2.NodeTemplate(\"foo\", new Rancher2.NodeTemplateArgs\n        {\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"AWS_ACCESS_KEY\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewNodeTemplate(ctx, \"foo\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"AWS_ACCESS_KEY\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template from Rancher 2.2.x\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    cloudCredentialId: fooCloudCredential.id,\n    amazonec2Config: {\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template from Rancher 2.2.x\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    cloud_credential_id=foo_cloud_credential.id,\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template from Rancher 2.2.x\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            CloudCredentialId = fooCloudCredential.Id,\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription:       pulumi.String(\"foo test\"),\n\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAmi:    pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion: pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNode Template can be imported using the Rancher Node Template ID\n\n```sh\n $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo \u0026lt;node_template_id\u0026gt;\n```\n\n ",
+            "description": "Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.\n\namazonec2, azure, digitalocean, linode, opennebula, openstack, hetzner, and vsphere drivers are supported for node templates.\n\n**Note** If you are upgrading to Rancher v2.3.3, please take a look to final section\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template up to Rancher 2.1.x\nconst foo = new rancher2.NodeTemplate(\"foo\", {\n    amazonec2Config: {\n        accessKey: \"AWS_ACCESS_KEY\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n    description: \"foo test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template up to Rancher 2.1.x\nfoo = rancher2.NodeTemplate(\"foo\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"AWS_ACCESS_KEY\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ),\n    description=\"foo test\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template up to Rancher 2.1.x\n        var foo = new Rancher2.NodeTemplate(\"foo\", new Rancher2.NodeTemplateArgs\n        {\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"AWS_ACCESS_KEY\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n            Description = \"foo test\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewNodeTemplate(ctx, \"foo\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"AWS_ACCESS_KEY\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template from Rancher 2.2.x\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    cloudCredentialId: fooCloudCredential.id,\n    amazonec2Config: {\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template from Rancher 2.2.x\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    cloud_credential_id=foo_cloud_credential.id,\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template from Rancher 2.2.x\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            CloudCredentialId = fooCloudCredential.Id,\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription:       pulumi.String(\"foo test\"),\n\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAmi:    pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion: pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using the Hetzner Node Driver\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Node Template using hetzner node_driver\nconst hetznerNodeDriver = new rancher2.NodeDriver(\"hetznerNodeDriver\", {\n    active: true,\n    builtin: false,\n    uiUrl: \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url: \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n    whitelistDomains: [\"storage.googleapis.com\"],\n});\nconst myHetznerNodeTemplate = new rancher2.NodeTemplate(\"myHetznerNodeTemplate\", {\n    driverId: hetznerNodeDriver.id,\n    hetznerConfig: {\n        apiToken: \"XXXXXXXXXX\",\n        image: \"ubuntu-18.04\",\n        serverLocation: \"nbg1\",\n        serverType: \"cx11\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Node Template using hetzner node_driver\nhetzner_node_driver = rancher2.NodeDriver(\"hetznerNodeDriver\",\n    active=True,\n    builtin=False,\n    ui_url=\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n    url=\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n    whitelist_domains=[\"storage.googleapis.com\"])\nmy_hetzner_node_template = rancher2.NodeTemplate(\"myHetznerNodeTemplate\",\n    driver_id=hetzner_node_driver.id,\n    hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(\n        api_token=\"XXXXXXXXXX\",\n        image=\"ubuntu-18.04\",\n        server_location=\"nbg1\",\n        server_type=\"cx11\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Node Template using hetzner node_driver\n        var hetznerNodeDriver = new Rancher2.NodeDriver(\"hetznerNodeDriver\", new Rancher2.NodeDriverArgs\n        {\n            Active = true,\n            Builtin = false,\n            UiUrl = \"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\",\n            Url = \"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\",\n            WhitelistDomains = \n            {\n                \"storage.googleapis.com\",\n            },\n        });\n        var myHetznerNodeTemplate = new Rancher2.NodeTemplate(\"myHetznerNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            DriverId = hetznerNodeDriver.Id,\n            HetznerConfig = new Rancher2.Inputs.NodeTemplateHetznerConfigArgs\n            {\n                ApiToken = \"XXXXXXXXXX\",\n                Image = \"ubuntu-18.04\",\n                ServerLocation = \"nbg1\",\n                ServerType = \"cx11\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\thetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, \"hetznerNodeDriver\", \u0026rancher2.NodeDriverArgs{\n\t\t\tActive:  pulumi.Bool(true),\n\t\t\tBuiltin: pulumi.Bool(false),\n\t\t\tUiUrl:   pulumi.String(\"https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js\"),\n\t\t\tUrl:     pulumi.String(\"https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.0.0/docker-machine-driver-hetzner_3.0.0_linux_amd64.tar.gz\"),\n\t\t\tWhitelistDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"storage.googleapis.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodeTemplate(ctx, \"myHetznerNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDriverId: hetznerNodeDriver.ID(),\n\t\t\tHetznerConfig: \u0026rancher2.NodeTemplateHetznerConfigArgs{\n\t\t\t\tApiToken:       pulumi.String(\"XXXXXXXXXX\"),\n\t\t\t\tImage:          pulumi.String(\"ubuntu-18.04\"),\n\t\t\t\tServerLocation: pulumi.String(\"nbg1\"),\n\t\t\t\tServerType:     pulumi.String(\"cx11\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNode Template can be imported using the Rancher Node Template ID\n\n```sh\n $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo \u0026lt;node_template_id\u0026gt;\n```\n\n ",
             "properties": {
                 "amazonec2Config": {
                     "$ref": "#/types/rancher2:index/NodeTemplateAmazonec2Config:NodeTemplateAmazonec2Config",
@@ -33020,6 +34116,10 @@
                 "engineStorageDriver": {
                     "type": "string",
                     "description": "Engine storage driver for the node template (string)\n"
+                },
+                "hetznerConfig": {
+                    "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
+                    "description": "Hetzner config for the Node Template (list maxitems:1)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -33143,6 +34243,10 @@
                     "type": "string",
                     "description": "Engine storage driver for the node template (string)\n"
                 },
+                "hetznerConfig": {
+                    "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
+                    "description": "Hetzner config for the Node Template (list maxitems:1)\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -33263,6 +34367,10 @@
                     "engineStorageDriver": {
                         "type": "string",
                         "description": "Engine storage driver for the node template (string)\n"
+                    },
+                    "hetznerConfig": {
+                        "$ref": "#/types/rancher2:index/NodeTemplateHetznerConfig:NodeTemplateHetznerConfig",
+                        "description": "Hetzner config for the Node Template (list maxitems:1)\n"
                     },
                     "labels": {
                         "type": "object",
@@ -37118,6 +38226,76 @@
                     "manual",
                     "name",
                     "namespaceId",
+                    "id"
+                ]
+            }
+        },
+        "rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider": {
+            "description": "Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getGlobalDnsProvider({\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_global_dns_provider(name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetGlobalDnsProvider.InvokeAsync(new Rancher2.GetGlobalDnsProviderArgs\n        {\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupGlobalDnsProvider(ctx, \u0026rancher2.LookupGlobalDnsProviderArgs{\n\t\t\tName: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGlobalDnsProvider.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the global DNS provider (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGlobalDnsProvider.\n",
+                "properties": {
+                    "alidnsConfig": {
+                        "$ref": "#/types/rancher2:index/getGlobalDnsProviderAlidnsConfig:getGlobalDnsProviderAlidnsConfig"
+                    },
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Annotations of the resource (map)\n"
+                    },
+                    "cloudflareConfig": {
+                        "$ref": "#/types/rancher2:index/getGlobalDnsProviderCloudflareConfig:getGlobalDnsProviderCloudflareConfig"
+                    },
+                    "dnsProvider": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Labels of the resource (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(Computed) The name of the global DNS provider (string)\n"
+                    },
+                    "rootDomain": {
+                        "type": "string"
+                    },
+                    "route53Config": {
+                        "$ref": "#/types/rancher2:index/getGlobalDnsProviderRoute53Config:getGlobalDnsProviderRoute53Config"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alidnsConfig",
+                    "annotations",
+                    "cloudflareConfig",
+                    "dnsProvider",
+                    "labels",
+                    "name",
+                    "rootDomain",
+                    "route53Config",
                     "id"
                 ]
             }

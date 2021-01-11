@@ -44,6 +44,7 @@ from .get_cluster_role_template_binding import *
 from .get_cluster_scan import *
 from .get_cluster_template import *
 from .get_etcd_backup import *
+from .get_global_dns_provider import *
 from .get_global_role_binding import *
 from .get_multi_cluster_app import *
 from .get_namespace import *
@@ -63,6 +64,8 @@ from .get_role_template import *
 from .get_secret import *
 from .get_setting import *
 from .get_user import *
+from .global_dns import *
+from .global_dns_provider import *
 from .global_role_binding import *
 from .multi_cluster_app import *
 from .namespace import *

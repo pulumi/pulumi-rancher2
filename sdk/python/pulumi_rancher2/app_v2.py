@@ -76,7 +76,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
-        :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `false` (bool)
+        :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -167,7 +167,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
-        :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `false` (bool)
+        :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -209,7 +209,7 @@ class AppV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="chartVersion")
-    def chart_version(self) -> pulumi.Output[Optional[str]]:
+    def chart_version(self) -> pulumi.Output[str]:
         """
         The app v2 chart version (string)
         """
@@ -315,7 +315,7 @@ class AppV2(pulumi.CustomResource):
     @pulumi.getter
     def wait(self) -> pulumi.Output[Optional[bool]]:
         """
-        Wait until app is deployed. Default: `false` (bool)
+        Wait until app is deployed. Default: `true` (bool)
         """
         return pulumi.get(self, "wait")
 
