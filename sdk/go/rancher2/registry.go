@@ -109,14 +109,15 @@ type Registry struct {
 // NewRegistry registers a new resource with the given unique name, arguments, and options.
 func NewRegistry(ctx *pulumi.Context,
 	name string, args *RegistryArgs, opts ...pulumi.ResourceOption) (*Registry, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
-	if args == nil || args.Registries == nil {
-		return nil, errors.New("missing required argument 'Registries'")
-	}
 	if args == nil {
-		args = &RegistryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.Registries == nil {
+		return nil, errors.New("invalid value for required argument 'Registries'")
 	}
 	var resource Registry
 	err := ctx.RegisterResource("rancher2:index/registry:Registry", name, args, &resource, opts...)

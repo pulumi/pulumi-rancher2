@@ -153,10 +153,10 @@ export class ProjectLogging extends pulumi.CustomResource {
             inputs["syslogConfig"] = state ? state.syslogConfig : undefined;
         } else {
             const args = argsOrState as ProjectLoggingArgs | undefined;
-            if (!args || args.kind === undefined) {
+            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

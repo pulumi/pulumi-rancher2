@@ -70,14 +70,14 @@ class Secret(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if data is None:
+            if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__['data'] = data
             __props__['description'] = description
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['namespace_id'] = namespace_id
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
         super(Secret, __self__).__init__(

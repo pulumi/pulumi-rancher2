@@ -222,22 +222,22 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
         } else {
             const args = argsOrState as ActiveDirectoryArgs | undefined;
-            if (!args || args.servers === undefined) {
+            if ((!args || args.servers === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'servers'");
             }
-            if (!args || args.serviceAccountPassword === undefined) {
+            if ((!args || args.serviceAccountPassword === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountPassword'");
             }
-            if (!args || args.serviceAccountUsername === undefined) {
+            if ((!args || args.serviceAccountUsername === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountUsername'");
             }
-            if (!args || args.testPassword === undefined) {
+            if ((!args || args.testPassword === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'testPassword'");
             }
-            if (!args || args.testUsername === undefined) {
+            if ((!args || args.testUsername === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'testUsername'");
             }
-            if (!args || args.userSearchBase === undefined) {
+            if ((!args || args.userSearchBase === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userSearchBase'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

@@ -137,7 +137,7 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
             inputs["route53Config"] = state ? state.route53Config : undefined;
         } else {
             const args = argsOrState as GlobalDnsProviderArgs | undefined;
-            if (!args || args.rootDomain === undefined) {
+            if ((!args || args.rootDomain === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rootDomain'");
             }
             inputs["alidnsConfig"] = args ? args.alidnsConfig : undefined;

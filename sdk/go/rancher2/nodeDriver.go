@@ -82,17 +82,18 @@ type NodeDriver struct {
 // NewNodeDriver registers a new resource with the given unique name, arguments, and options.
 func NewNodeDriver(ctx *pulumi.Context,
 	name string, args *NodeDriverArgs, opts ...pulumi.ResourceOption) (*NodeDriver, error) {
-	if args == nil || args.Active == nil {
-		return nil, errors.New("missing required argument 'Active'")
-	}
-	if args == nil || args.Builtin == nil {
-		return nil, errors.New("missing required argument 'Builtin'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &NodeDriverArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Active == nil {
+		return nil, errors.New("invalid value for required argument 'Active'")
+	}
+	if args.Builtin == nil {
+		return nil, errors.New("invalid value for required argument 'Builtin'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource NodeDriver
 	err := ctx.RegisterResource("rancher2:index/nodeDriver:NodeDriver", name, args, &resource, opts...)

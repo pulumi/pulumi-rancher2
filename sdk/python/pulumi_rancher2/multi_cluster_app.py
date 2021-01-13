@@ -79,7 +79,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
             __props__['annotations'] = annotations
             __props__['answers'] = answers
-            if catalog_name is None:
+            if catalog_name is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_name'")
             __props__['catalog_name'] = catalog_name
             __props__['labels'] = labels
@@ -87,13 +87,13 @@ class MultiClusterApp(pulumi.CustomResource):
             __props__['name'] = name
             __props__['revision_history_limit'] = revision_history_limit
             __props__['revision_id'] = revision_id
-            if roles is None:
+            if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")
             __props__['roles'] = roles
-            if targets is None:
+            if targets is None and not opts.urn:
                 raise TypeError("Missing required property 'targets'")
             __props__['targets'] = targets
-            if template_name is None:
+            if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
             __props__['template_version'] = template_version

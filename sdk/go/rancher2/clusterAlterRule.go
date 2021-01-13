@@ -48,14 +48,15 @@ type ClusterAlterRule struct {
 // NewClusterAlterRule registers a new resource with the given unique name, arguments, and options.
 func NewClusterAlterRule(ctx *pulumi.Context,
 	name string, args *ClusterAlterRuleArgs, opts ...pulumi.ResourceOption) (*ClusterAlterRule, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
 	if args == nil {
-		args = &ClusterAlterRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
 	var resource ClusterAlterRule
 	err := ctx.RegisterResource("rancher2:index/clusterAlterRule:ClusterAlterRule", name, args, &resource, opts...)

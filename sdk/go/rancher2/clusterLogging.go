@@ -88,14 +88,15 @@ type ClusterLogging struct {
 // NewClusterLogging registers a new resource with the given unique name, arguments, and options.
 func NewClusterLogging(ctx *pulumi.Context,
 	name string, args *ClusterLoggingArgs, opts ...pulumi.ResourceOption) (*ClusterLogging, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
 	if args == nil {
-		args = &ClusterLoggingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	var resource ClusterLogging
 	err := ctx.RegisterResource("rancher2:index/clusterLogging:ClusterLogging", name, args, &resource, opts...)

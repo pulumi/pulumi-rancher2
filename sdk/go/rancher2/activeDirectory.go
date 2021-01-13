@@ -90,26 +90,27 @@ type ActiveDirectory struct {
 // NewActiveDirectory registers a new resource with the given unique name, arguments, and options.
 func NewActiveDirectory(ctx *pulumi.Context,
 	name string, args *ActiveDirectoryArgs, opts ...pulumi.ResourceOption) (*ActiveDirectory, error) {
-	if args == nil || args.Servers == nil {
-		return nil, errors.New("missing required argument 'Servers'")
-	}
-	if args == nil || args.ServiceAccountPassword == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountPassword'")
-	}
-	if args == nil || args.ServiceAccountUsername == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountUsername'")
-	}
-	if args == nil || args.TestPassword == nil {
-		return nil, errors.New("missing required argument 'TestPassword'")
-	}
-	if args == nil || args.TestUsername == nil {
-		return nil, errors.New("missing required argument 'TestUsername'")
-	}
-	if args == nil || args.UserSearchBase == nil {
-		return nil, errors.New("missing required argument 'UserSearchBase'")
-	}
 	if args == nil {
-		args = &ActiveDirectoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Servers == nil {
+		return nil, errors.New("invalid value for required argument 'Servers'")
+	}
+	if args.ServiceAccountPassword == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountPassword'")
+	}
+	if args.ServiceAccountUsername == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountUsername'")
+	}
+	if args.TestPassword == nil {
+		return nil, errors.New("invalid value for required argument 'TestPassword'")
+	}
+	if args.TestUsername == nil {
+		return nil, errors.New("invalid value for required argument 'TestUsername'")
+	}
+	if args.UserSearchBase == nil {
+		return nil, errors.New("invalid value for required argument 'UserSearchBase'")
 	}
 	var resource ActiveDirectory
 	err := ctx.RegisterResource("rancher2:index/activeDirectory:ActiveDirectory", name, args, &resource, opts...)

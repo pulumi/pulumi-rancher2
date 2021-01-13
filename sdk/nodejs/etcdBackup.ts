@@ -97,7 +97,7 @@ export class EtcdBackup extends pulumi.CustomResource {
             inputs["namespaceId"] = state ? state.namespaceId : undefined;
         } else {
             const args = argsOrState as EtcdBackupArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

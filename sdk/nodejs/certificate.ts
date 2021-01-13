@@ -94,13 +94,13 @@ export class Certificate extends pulumi.CustomResource {
             inputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if (!args || args.certs === undefined) {
+            if ((!args || args.certs === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'certs'");
             }
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -142,7 +142,7 @@ export class Notifier extends pulumi.CustomResource {
             inputs["wechatConfig"] = state ? state.wechatConfig : undefined;
         } else {
             const args = argsOrState as NotifierArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -119,7 +119,7 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
             inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ProjectAlertGroupArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

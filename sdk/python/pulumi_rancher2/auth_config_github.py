@@ -76,10 +76,10 @@ class AuthConfigGithub(pulumi.CustomResource):
             __props__['access_mode'] = access_mode
             __props__['allowed_principal_ids'] = allowed_principal_ids
             __props__['annotations'] = annotations
-            if client_id is None:
+            if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__['client_id'] = client_id
-            if client_secret is None:
+            if client_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'client_secret'")
             __props__['client_secret'] = client_secret
             __props__['enabled'] = enabled

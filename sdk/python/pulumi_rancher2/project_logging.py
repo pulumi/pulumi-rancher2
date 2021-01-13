@@ -105,7 +105,7 @@ class ProjectLogging(pulumi.CustomResource):
             __props__['enable_json_parsing'] = enable_json_parsing
             __props__['fluentd_config'] = fluentd_config
             __props__['kafka_config'] = kafka_config
-            if kind is None:
+            if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__['kind'] = kind
             __props__['labels'] = labels
@@ -113,7 +113,7 @@ class ProjectLogging(pulumi.CustomResource):
             __props__['namespace_id'] = namespace_id
             __props__['output_flush_interval'] = output_flush_interval
             __props__['output_tags'] = output_tags
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['splunk_config'] = splunk_config

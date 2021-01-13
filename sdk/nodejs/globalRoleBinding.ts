@@ -106,7 +106,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GlobalRoleBindingArgs | undefined;
-            if (!args || args.globalRoleId === undefined) {
+            if ((!args || args.globalRoleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'globalRoleId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

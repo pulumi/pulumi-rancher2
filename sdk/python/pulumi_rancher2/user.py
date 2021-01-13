@@ -83,10 +83,10 @@ class User(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['labels'] = labels
             __props__['name'] = name
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
             __props__['principal_ids'] = None

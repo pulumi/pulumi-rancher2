@@ -45,6 +45,7 @@ func NewBootstrap(ctx *pulumi.Context,
 	if args == nil {
 		args = &BootstrapArgs{}
 	}
+
 	var resource Bootstrap
 	err := ctx.RegisterResource("rancher2:index/bootstrap:Bootstrap", name, args, &resource, opts...)
 	if err != nil {

@@ -71,14 +71,15 @@ type ProjectRoleTemplateBinding struct {
 // NewProjectRoleTemplateBinding registers a new resource with the given unique name, arguments, and options.
 func NewProjectRoleTemplateBinding(ctx *pulumi.Context,
 	name string, args *ProjectRoleTemplateBindingArgs, opts ...pulumi.ResourceOption) (*ProjectRoleTemplateBinding, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
-	if args == nil || args.RoleTemplateId == nil {
-		return nil, errors.New("missing required argument 'RoleTemplateId'")
-	}
 	if args == nil {
-		args = &ProjectRoleTemplateBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.RoleTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleTemplateId'")
 	}
 	var resource ProjectRoleTemplateBinding
 	err := ctx.RegisterResource("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, args, &resource, opts...)

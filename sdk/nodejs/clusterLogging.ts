@@ -153,10 +153,10 @@ export class ClusterLogging extends pulumi.CustomResource {
             inputs["syslogConfig"] = state ? state.syslogConfig : undefined;
         } else {
             const args = argsOrState as ClusterLoggingArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.kind === undefined) {
+            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

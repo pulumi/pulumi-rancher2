@@ -111,7 +111,7 @@ class GlobalDnsProvider(pulumi.CustomResource):
             __props__['cloudflare_config'] = cloudflare_config
             __props__['labels'] = labels
             __props__['name'] = name
-            if root_domain is None:
+            if root_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'root_domain'")
             __props__['root_domain'] = root_domain
             __props__['route53_config'] = route53_config

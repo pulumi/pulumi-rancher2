@@ -78,7 +78,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if global_role_id is None:
+            if global_role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'global_role_id'")
             __props__['global_role_id'] = global_role_id
             __props__['group_principal_id'] = group_principal_id

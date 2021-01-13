@@ -93,3 +93,182 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "rancher2:index/activeDirectory:ActiveDirectory":
+                return ActiveDirectory(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/app:App":
+                return App(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/appV2:AppV2":
+                return AppV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigAdfs:AuthConfigAdfs":
+                return AuthConfigAdfs(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
+                return AuthConfigAzureAd(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
+                return AuthConfigFreeIpa(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigGithub:AuthConfigGithub":
+                return AuthConfigGithub(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
+                return AuthConfigKeycloak(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigOkta:AuthConfigOkta":
+                return AuthConfigOkta(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap":
+                return AuthConfigOpenLdap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigPing:AuthConfigPing":
+                return AuthConfigPing(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/bootstrap:Bootstrap":
+                return Bootstrap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/catalog:Catalog":
+                return Catalog(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/catalogV2:CatalogV2":
+                return CatalogV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/certificate:Certificate":
+                return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/cloudCredential:CloudCredential":
+                return CloudCredential(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/cluster:Cluster":
+                return Cluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterAlertGroup:ClusterAlertGroup":
+                return ClusterAlertGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterAlertRule:ClusterAlertRule":
+                return ClusterAlertRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterAlterGroup:ClusterAlterGroup":
+                return ClusterAlterGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterAlterRule:ClusterAlterRule":
+                return ClusterAlterRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterDriver:ClusterDriver":
+                return ClusterDriver(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterLogging:ClusterLogging":
+                return ClusterLogging(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
+                return ClusterRoleTemplateBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterSync:ClusterSync":
+                return ClusterSync(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterTemplate:ClusterTemplate":
+                return ClusterTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/etcdBackup:EtcdBackup":
+                return EtcdBackup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/globalDns:GlobalDns":
+                return GlobalDns(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/globalDnsProvider:GlobalDnsProvider":
+                return GlobalDnsProvider(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/globalRoleBinding:GlobalRoleBinding":
+                return GlobalRoleBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/multiClusterApp:MultiClusterApp":
+                return MultiClusterApp(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/namespace:Namespace":
+                return Namespace(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/nodeDriver:NodeDriver":
+                return NodeDriver(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/nodePool:NodePool":
+                return NodePool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/nodeTemplate:NodeTemplate":
+                return NodeTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/notifier:Notifier":
+                return Notifier(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
+                return PodSecurityPolicyTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/project:Project":
+                return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/projectAlertGroup:ProjectAlertGroup":
+                return ProjectAlertGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/projectAlertRule:ProjectAlertRule":
+                return ProjectAlertRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/projectLogging:ProjectLogging":
+                return ProjectLogging(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
+                return ProjectRoleTemplateBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/registry:Registry":
+                return Registry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/roleTempalte:RoleTempalte":
+                return RoleTempalte(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/secret:Secret":
+                return Secret(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/setting:Setting":
+                return Setting(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/token:Token":
+                return Token(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/user:User":
+                return User(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("rancher2", "index/activeDirectory", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/app", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/appV2", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigAdfs", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigAzureAd", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigFreeIpa", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigGithub", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigKeycloak", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigOkta", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigOpenLdap", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigPing", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/bootstrap", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/catalog", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/catalogV2", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/certificate", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/cloudCredential", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/cluster", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterAlertGroup", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterAlertRule", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterAlterGroup", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterAlterRule", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterDriver", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterLogging", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterRoleTemplateBinding", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterSync", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/etcdBackup", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/globalDns", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/globalDnsProvider", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/globalRoleBinding", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/multiClusterApp", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/namespace", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/nodeDriver", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/nodePool", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/nodeTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/notifier", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/podSecurityPolicyTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/project", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/projectAlertGroup", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/projectAlertRule", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/projectLogging", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/projectRoleTemplateBinding", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/registry", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/roleTempalte", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/secret", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/setting", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/token", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/user", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:rancher2":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("rancher2", Package())
+
+_register_module()

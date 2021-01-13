@@ -120,7 +120,7 @@ class ProjectAlertRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
             __props__['group_interval_seconds'] = group_interval_seconds
@@ -130,7 +130,7 @@ class ProjectAlertRule(pulumi.CustomResource):
             __props__['metric_rule'] = metric_rule
             __props__['name'] = name
             __props__['pod_rule'] = pod_rule
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['repeat_interval_seconds'] = repeat_interval_seconds

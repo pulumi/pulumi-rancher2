@@ -63,11 +63,12 @@ type Setting struct {
 // NewSetting registers a new resource with the given unique name, arguments, and options.
 func NewSetting(ctx *pulumi.Context,
 	name string, args *SettingArgs, opts ...pulumi.ResourceOption) (*Setting, error) {
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &SettingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource Setting
 	err := ctx.RegisterResource("rancher2:index/setting:Setting", name, args, &resource, opts...)

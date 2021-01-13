@@ -91,14 +91,15 @@ type ClusterAlertRule struct {
 // NewClusterAlertRule registers a new resource with the given unique name, arguments, and options.
 func NewClusterAlertRule(ctx *pulumi.Context,
 	name string, args *ClusterAlertRuleArgs, opts ...pulumi.ResourceOption) (*ClusterAlertRule, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
 	if args == nil {
-		args = &ClusterAlertRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

@@ -60,20 +60,21 @@ type AppV2 struct {
 // NewAppV2 registers a new resource with the given unique name, arguments, and options.
 func NewAppV2(ctx *pulumi.Context,
 	name string, args *AppV2Args, opts ...pulumi.ResourceOption) (*AppV2, error) {
-	if args == nil || args.ChartName == nil {
-		return nil, errors.New("missing required argument 'ChartName'")
-	}
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.Namespace == nil {
-		return nil, errors.New("missing required argument 'Namespace'")
-	}
-	if args == nil || args.RepoName == nil {
-		return nil, errors.New("missing required argument 'RepoName'")
-	}
 	if args == nil {
-		args = &AppV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ChartName == nil {
+		return nil, errors.New("invalid value for required argument 'ChartName'")
+	}
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.Namespace == nil {
+		return nil, errors.New("invalid value for required argument 'Namespace'")
+	}
+	if args.RepoName == nil {
+		return nil, errors.New("invalid value for required argument 'RepoName'")
 	}
 	var resource AppV2
 	err := ctx.RegisterResource("rancher2:index/appV2:AppV2", name, args, &resource, opts...)

@@ -146,28 +146,28 @@ export class AuthConfigOkta extends pulumi.CustomResource {
             inputs["userNameField"] = state ? state.userNameField : undefined;
         } else {
             const args = argsOrState as AuthConfigOktaArgs | undefined;
-            if (!args || args.displayNameField === undefined) {
+            if ((!args || args.displayNameField === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayNameField'");
             }
-            if (!args || args.groupsField === undefined) {
+            if ((!args || args.groupsField === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupsField'");
             }
-            if (!args || args.idpMetadataContent === undefined) {
+            if ((!args || args.idpMetadataContent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'idpMetadataContent'");
             }
-            if (!args || args.rancherApiHost === undefined) {
+            if ((!args || args.rancherApiHost === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rancherApiHost'");
             }
-            if (!args || args.spCert === undefined) {
+            if ((!args || args.spCert === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spCert'");
             }
-            if (!args || args.spKey === undefined) {
+            if ((!args || args.spKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spKey'");
             }
-            if (!args || args.uidField === undefined) {
+            if ((!args || args.uidField === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'uidField'");
             }
-            if (!args || args.userNameField === undefined) {
+            if ((!args || args.userNameField === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userNameField'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

@@ -99,10 +99,10 @@ export class Secret extends pulumi.CustomResource {
             inputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if (!args || args.data === undefined) {
+            if ((!args || args.data === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'data'");
             }
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

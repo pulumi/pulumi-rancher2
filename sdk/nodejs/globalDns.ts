@@ -147,10 +147,10 @@ export class GlobalDns extends pulumi.CustomResource {
             inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as GlobalDnsArgs | undefined;
-            if (!args || args.fqdn === undefined) {
+            if ((!args || args.fqdn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fqdn'");
             }
-            if (!args || args.providerId === undefined) {
+            if ((!args || args.providerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'providerId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -86,26 +86,27 @@ type AuthConfigFreeIpa struct {
 // NewAuthConfigFreeIpa registers a new resource with the given unique name, arguments, and options.
 func NewAuthConfigFreeIpa(ctx *pulumi.Context,
 	name string, args *AuthConfigFreeIpaArgs, opts ...pulumi.ResourceOption) (*AuthConfigFreeIpa, error) {
-	if args == nil || args.Servers == nil {
-		return nil, errors.New("missing required argument 'Servers'")
-	}
-	if args == nil || args.ServiceAccountDistinguishedName == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountDistinguishedName'")
-	}
-	if args == nil || args.ServiceAccountPassword == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountPassword'")
-	}
-	if args == nil || args.TestPassword == nil {
-		return nil, errors.New("missing required argument 'TestPassword'")
-	}
-	if args == nil || args.TestUsername == nil {
-		return nil, errors.New("missing required argument 'TestUsername'")
-	}
-	if args == nil || args.UserSearchBase == nil {
-		return nil, errors.New("missing required argument 'UserSearchBase'")
-	}
 	if args == nil {
-		args = &AuthConfigFreeIpaArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Servers == nil {
+		return nil, errors.New("invalid value for required argument 'Servers'")
+	}
+	if args.ServiceAccountDistinguishedName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountDistinguishedName'")
+	}
+	if args.ServiceAccountPassword == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountPassword'")
+	}
+	if args.TestPassword == nil {
+		return nil, errors.New("invalid value for required argument 'TestPassword'")
+	}
+	if args.TestUsername == nil {
+		return nil, errors.New("invalid value for required argument 'TestUsername'")
+	}
+	if args.UserSearchBase == nil {
+		return nil, errors.New("invalid value for required argument 'UserSearchBase'")
 	}
 	var resource AuthConfigFreeIpa
 	err := ctx.RegisterResource("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", name, args, &resource, opts...)

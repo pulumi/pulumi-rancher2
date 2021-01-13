@@ -40,17 +40,18 @@ type Certificate struct {
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
 func NewCertificate(ctx *pulumi.Context,
 	name string, args *CertificateArgs, opts ...pulumi.ResourceOption) (*Certificate, error) {
-	if args == nil || args.Certs == nil {
-		return nil, errors.New("missing required argument 'Certs'")
-	}
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &CertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Certs == nil {
+		return nil, errors.New("invalid value for required argument 'Certs'")
+	}
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource Certificate
 	err := ctx.RegisterResource("rancher2:index/certificate:Certificate", name, args, &resource, opts...)

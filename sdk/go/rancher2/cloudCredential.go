@@ -73,6 +73,7 @@ func NewCloudCredential(ctx *pulumi.Context,
 	if args == nil {
 		args = &CloudCredentialArgs{}
 	}
+
 	var resource CloudCredential
 	err := ctx.RegisterResource("rancher2:index/cloudCredential:CloudCredential", name, args, &resource, opts...)
 	if err != nil {

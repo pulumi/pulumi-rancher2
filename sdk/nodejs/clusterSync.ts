@@ -84,7 +84,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

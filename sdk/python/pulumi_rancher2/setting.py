@@ -74,7 +74,7 @@ class Setting(pulumi.CustomResource):
             __props__['annotations'] = annotations
             __props__['labels'] = labels
             __props__['name'] = name
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
         super(Setting, __self__).__init__(

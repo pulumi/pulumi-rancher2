@@ -76,19 +76,19 @@ class NodePool(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['control_plane'] = control_plane
             __props__['delete_not_ready_after_secs'] = delete_not_ready_after_secs
             __props__['etcd'] = etcd
-            if hostname_prefix is None:
+            if hostname_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname_prefix'")
             __props__['hostname_prefix'] = hostname_prefix
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['node_taints'] = node_taints
-            if node_template_id is None:
+            if node_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template_id'")
             __props__['node_template_id'] = node_template_id
             __props__['quantity'] = quantity

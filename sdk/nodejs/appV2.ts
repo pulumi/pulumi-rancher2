@@ -156,16 +156,16 @@ export class AppV2 extends pulumi.CustomResource {
             inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppV2Args | undefined;
-            if (!args || args.chartName === undefined) {
+            if ((!args || args.chartName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'chartName'");
             }
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.namespace === undefined) {
+            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if (!args || args.repoName === undefined) {
+            if ((!args || args.repoName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repoName'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

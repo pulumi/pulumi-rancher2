@@ -69,19 +69,19 @@ class ClusterDriver(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if active is None:
+            if active is None and not opts.urn:
                 raise TypeError("Missing required property 'active'")
             __props__['active'] = active
             __props__['actual_url'] = actual_url
             __props__['annotations'] = annotations
-            if builtin is None:
+            if builtin is None and not opts.urn:
                 raise TypeError("Missing required property 'builtin'")
             __props__['builtin'] = builtin
             __props__['checksum'] = checksum
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['ui_url'] = ui_url
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['whitelist_domains'] = whitelist_domains

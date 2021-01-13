@@ -38,11 +38,12 @@ type ClusterAlterGroup struct {
 // NewClusterAlterGroup registers a new resource with the given unique name, arguments, and options.
 func NewClusterAlterGroup(ctx *pulumi.Context,
 	name string, args *ClusterAlterGroupArgs, opts ...pulumi.ResourceOption) (*ClusterAlterGroup, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &ClusterAlterGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource ClusterAlterGroup
 	err := ctx.RegisterResource("rancher2:index/clusterAlterGroup:ClusterAlterGroup", name, args, &resource, opts...)

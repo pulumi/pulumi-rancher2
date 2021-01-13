@@ -34,11 +34,12 @@ type ClusterSync struct {
 // NewClusterSync registers a new resource with the given unique name, arguments, and options.
 func NewClusterSync(ctx *pulumi.Context,
 	name string, args *ClusterSyncArgs, opts ...pulumi.ResourceOption) (*ClusterSync, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &ClusterSyncArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource ClusterSync
 	err := ctx.RegisterResource("rancher2:index/clusterSync:ClusterSync", name, args, &resource, opts...)
