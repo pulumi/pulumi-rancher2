@@ -58,20 +58,21 @@ type App struct {
 // NewApp registers a new resource with the given unique name, arguments, and options.
 func NewApp(ctx *pulumi.Context,
 	name string, args *AppArgs, opts ...pulumi.ResourceOption) (*App, error) {
-	if args == nil || args.CatalogName == nil {
-		return nil, errors.New("missing required argument 'CatalogName'")
-	}
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
-	if args == nil || args.TargetNamespace == nil {
-		return nil, errors.New("missing required argument 'TargetNamespace'")
-	}
-	if args == nil || args.TemplateName == nil {
-		return nil, errors.New("missing required argument 'TemplateName'")
-	}
 	if args == nil {
-		args = &AppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CatalogName == nil {
+		return nil, errors.New("invalid value for required argument 'CatalogName'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.TargetNamespace == nil {
+		return nil, errors.New("invalid value for required argument 'TargetNamespace'")
+	}
+	if args.TemplateName == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
 	var resource App
 	err := ctx.RegisterResource("rancher2:index/app:App", name, args, &resource, opts...)

@@ -121,11 +121,12 @@ type GlobalDnsProvider struct {
 // NewGlobalDnsProvider registers a new resource with the given unique name, arguments, and options.
 func NewGlobalDnsProvider(ctx *pulumi.Context,
 	name string, args *GlobalDnsProviderArgs, opts ...pulumi.ResourceOption) (*GlobalDnsProvider, error) {
-	if args == nil || args.RootDomain == nil {
-		return nil, errors.New("missing required argument 'RootDomain'")
-	}
 	if args == nil {
-		args = &GlobalDnsProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RootDomain == nil {
+		return nil, errors.New("invalid value for required argument 'RootDomain'")
 	}
 	var resource GlobalDnsProvider
 	err := ctx.RegisterResource("rancher2:index/globalDnsProvider:GlobalDnsProvider", name, args, &resource, opts...)

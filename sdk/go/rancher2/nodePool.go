@@ -52,17 +52,18 @@ type NodePool struct {
 // NewNodePool registers a new resource with the given unique name, arguments, and options.
 func NewNodePool(ctx *pulumi.Context,
 	name string, args *NodePoolArgs, opts ...pulumi.ResourceOption) (*NodePool, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.HostnamePrefix == nil {
-		return nil, errors.New("missing required argument 'HostnamePrefix'")
-	}
-	if args == nil || args.NodeTemplateId == nil {
-		return nil, errors.New("missing required argument 'NodeTemplateId'")
-	}
 	if args == nil {
-		args = &NodePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.HostnamePrefix == nil {
+		return nil, errors.New("invalid value for required argument 'HostnamePrefix'")
+	}
+	if args.NodeTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'NodeTemplateId'")
 	}
 	var resource NodePool
 	err := ctx.RegisterResource("rancher2:index/nodePool:NodePool", name, args, &resource, opts...)

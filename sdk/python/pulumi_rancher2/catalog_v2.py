@@ -79,7 +79,7 @@ class CatalogV2(pulumi.CustomResource):
 
             __props__['annotations'] = annotations
             __props__['ca_bundle'] = ca_bundle
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['enabled'] = enabled

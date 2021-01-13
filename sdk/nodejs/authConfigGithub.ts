@@ -120,10 +120,10 @@ export class AuthConfigGithub extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AuthConfigGithubArgs | undefined;
-            if (!args || args.clientId === undefined) {
+            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if (!args || args.clientSecret === undefined) {
+            if ((!args || args.clientSecret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientSecret'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

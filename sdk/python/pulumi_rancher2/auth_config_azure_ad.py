@@ -89,28 +89,28 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             __props__['access_mode'] = access_mode
             __props__['allowed_principal_ids'] = allowed_principal_ids
             __props__['annotations'] = annotations
-            if application_id is None:
+            if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__['application_id'] = application_id
-            if application_secret is None:
+            if application_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'application_secret'")
             __props__['application_secret'] = application_secret
-            if auth_endpoint is None:
+            if auth_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_endpoint'")
             __props__['auth_endpoint'] = auth_endpoint
             __props__['enabled'] = enabled
             __props__['endpoint'] = endpoint
-            if graph_endpoint is None:
+            if graph_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'graph_endpoint'")
             __props__['graph_endpoint'] = graph_endpoint
             __props__['labels'] = labels
-            if rancher_url is None:
+            if rancher_url is None and not opts.urn:
                 raise TypeError("Missing required property 'rancher_url'")
             __props__['rancher_url'] = rancher_url
-            if tenant_id is None:
+            if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__['tenant_id'] = tenant_id
-            if token_endpoint is None:
+            if token_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'token_endpoint'")
             __props__['token_endpoint'] = token_endpoint
             __props__['name'] = None

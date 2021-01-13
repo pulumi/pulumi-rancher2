@@ -81,29 +81,30 @@ type AuthConfigAzureAd struct {
 // NewAuthConfigAzureAd registers a new resource with the given unique name, arguments, and options.
 func NewAuthConfigAzureAd(ctx *pulumi.Context,
 	name string, args *AuthConfigAzureAdArgs, opts ...pulumi.ResourceOption) (*AuthConfigAzureAd, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
-	if args == nil || args.ApplicationSecret == nil {
-		return nil, errors.New("missing required argument 'ApplicationSecret'")
-	}
-	if args == nil || args.AuthEndpoint == nil {
-		return nil, errors.New("missing required argument 'AuthEndpoint'")
-	}
-	if args == nil || args.GraphEndpoint == nil {
-		return nil, errors.New("missing required argument 'GraphEndpoint'")
-	}
-	if args == nil || args.RancherUrl == nil {
-		return nil, errors.New("missing required argument 'RancherUrl'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
-	if args == nil || args.TokenEndpoint == nil {
-		return nil, errors.New("missing required argument 'TokenEndpoint'")
-	}
 	if args == nil {
-		args = &AuthConfigAzureAdArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
+	if args.ApplicationSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationSecret'")
+	}
+	if args.AuthEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'AuthEndpoint'")
+	}
+	if args.GraphEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'GraphEndpoint'")
+	}
+	if args.RancherUrl == nil {
+		return nil, errors.New("invalid value for required argument 'RancherUrl'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
+	}
+	if args.TokenEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'TokenEndpoint'")
 	}
 	var resource AuthConfigAzureAd
 	err := ctx.RegisterResource("rancher2:index/authConfigAzureAd:AuthConfigAzureAd", name, args, &resource, opts...)

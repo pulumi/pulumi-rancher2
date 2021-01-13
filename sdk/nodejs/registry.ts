@@ -135,10 +135,10 @@ export class Registry extends pulumi.CustomResource {
             inputs["registries"] = state ? state.registries : undefined;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if (!args || args.registries === undefined) {
+            if ((!args || args.registries === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'registries'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

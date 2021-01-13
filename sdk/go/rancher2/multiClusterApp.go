@@ -56,20 +56,21 @@ type MultiClusterApp struct {
 // NewMultiClusterApp registers a new resource with the given unique name, arguments, and options.
 func NewMultiClusterApp(ctx *pulumi.Context,
 	name string, args *MultiClusterAppArgs, opts ...pulumi.ResourceOption) (*MultiClusterApp, error) {
-	if args == nil || args.CatalogName == nil {
-		return nil, errors.New("missing required argument 'CatalogName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Targets == nil {
-		return nil, errors.New("missing required argument 'Targets'")
-	}
-	if args == nil || args.TemplateName == nil {
-		return nil, errors.New("missing required argument 'TemplateName'")
-	}
 	if args == nil {
-		args = &MultiClusterAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CatalogName == nil {
+		return nil, errors.New("invalid value for required argument 'CatalogName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Targets == nil {
+		return nil, errors.New("invalid value for required argument 'Targets'")
+	}
+	if args.TemplateName == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateName'")
 	}
 	var resource MultiClusterApp
 	err := ctx.RegisterResource("rancher2:index/multiClusterApp:MultiClusterApp", name, args, &resource, opts...)

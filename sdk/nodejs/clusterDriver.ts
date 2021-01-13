@@ -127,13 +127,13 @@ export class ClusterDriver extends pulumi.CustomResource {
             inputs["whitelistDomains"] = state ? state.whitelistDomains : undefined;
         } else {
             const args = argsOrState as ClusterDriverArgs | undefined;
-            if (!args || args.active === undefined) {
+            if ((!args || args.active === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'active'");
             }
-            if (!args || args.builtin === undefined) {
+            if ((!args || args.builtin === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'builtin'");
             }
-            if (!args || args.url === undefined) {
+            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["active"] = args ? args.active : undefined;

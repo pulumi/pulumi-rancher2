@@ -145,25 +145,25 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AuthConfigAzureAdArgs | undefined;
-            if (!args || args.applicationId === undefined) {
+            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if (!args || args.applicationSecret === undefined) {
+            if ((!args || args.applicationSecret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationSecret'");
             }
-            if (!args || args.authEndpoint === undefined) {
+            if ((!args || args.authEndpoint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'authEndpoint'");
             }
-            if (!args || args.graphEndpoint === undefined) {
+            if ((!args || args.graphEndpoint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'graphEndpoint'");
             }
-            if (!args || args.rancherUrl === undefined) {
+            if ((!args || args.rancherUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rancherUrl'");
             }
-            if (!args || args.tenantId === undefined) {
+            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            if (!args || args.tokenEndpoint === undefined) {
+            if ((!args || args.tokenEndpoint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tokenEndpoint'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

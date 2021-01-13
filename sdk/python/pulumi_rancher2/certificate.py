@@ -62,17 +62,17 @@ class Certificate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if certs is None:
+            if certs is None and not opts.urn:
                 raise TypeError("Missing required property 'certs'")
             __props__['certs'] = certs
             __props__['description'] = description
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['namespace_id'] = namespace_id
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
         super(Certificate, __self__).__init__(

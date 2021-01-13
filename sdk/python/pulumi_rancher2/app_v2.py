@@ -96,12 +96,12 @@ class AppV2(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if chart_name is None:
+            if chart_name is None and not opts.urn:
                 raise TypeError("Missing required property 'chart_name'")
             __props__['chart_name'] = chart_name
             __props__['chart_version'] = chart_version
             __props__['cleanup_on_fail'] = cleanup_on_fail
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['disable_hooks'] = disable_hooks
@@ -109,11 +109,11 @@ class AppV2(pulumi.CustomResource):
             __props__['force_upgrade'] = force_upgrade
             __props__['labels'] = labels
             __props__['name'] = name
-            if namespace is None:
+            if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
             __props__['namespace'] = namespace
             __props__['project_id'] = project_id
-            if repo_name is None:
+            if repo_name is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_name'")
             __props__['repo_name'] = repo_name
             __props__['values'] = values

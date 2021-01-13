@@ -90,30 +90,30 @@ class AuthConfigOkta(pulumi.CustomResource):
             __props__['access_mode'] = access_mode
             __props__['allowed_principal_ids'] = allowed_principal_ids
             __props__['annotations'] = annotations
-            if display_name_field is None:
+            if display_name_field is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name_field'")
             __props__['display_name_field'] = display_name_field
             __props__['enabled'] = enabled
-            if groups_field is None:
+            if groups_field is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_field'")
             __props__['groups_field'] = groups_field
-            if idp_metadata_content is None:
+            if idp_metadata_content is None and not opts.urn:
                 raise TypeError("Missing required property 'idp_metadata_content'")
             __props__['idp_metadata_content'] = idp_metadata_content
             __props__['labels'] = labels
-            if rancher_api_host is None:
+            if rancher_api_host is None and not opts.urn:
                 raise TypeError("Missing required property 'rancher_api_host'")
             __props__['rancher_api_host'] = rancher_api_host
-            if sp_cert is None:
+            if sp_cert is None and not opts.urn:
                 raise TypeError("Missing required property 'sp_cert'")
             __props__['sp_cert'] = sp_cert
-            if sp_key is None:
+            if sp_key is None and not opts.urn:
                 raise TypeError("Missing required property 'sp_key'")
             __props__['sp_key'] = sp_key
-            if uid_field is None:
+            if uid_field is None and not opts.urn:
                 raise TypeError("Missing required property 'uid_field'")
             __props__['uid_field'] = uid_field
-            if user_name_field is None:
+            if user_name_field is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name_field'")
             __props__['user_name_field'] = user_name_field
             __props__['name'] = None

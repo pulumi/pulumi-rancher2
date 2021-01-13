@@ -119,7 +119,7 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
             inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ClusterAlertGroupArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

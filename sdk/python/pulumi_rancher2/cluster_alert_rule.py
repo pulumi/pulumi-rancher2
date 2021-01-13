@@ -100,11 +100,11 @@ class ClusterAlertRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['annotations'] = annotations
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['event_rule'] = event_rule
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
             __props__['group_interval_seconds'] = group_interval_seconds

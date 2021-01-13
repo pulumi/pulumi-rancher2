@@ -212,22 +212,22 @@ export class AuthConfigFreeIpa extends pulumi.CustomResource {
             inputs["userSearchBase"] = state ? state.userSearchBase : undefined;
         } else {
             const args = argsOrState as AuthConfigFreeIpaArgs | undefined;
-            if (!args || args.servers === undefined) {
+            if ((!args || args.servers === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'servers'");
             }
-            if (!args || args.serviceAccountDistinguishedName === undefined) {
+            if ((!args || args.serviceAccountDistinguishedName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountDistinguishedName'");
             }
-            if (!args || args.serviceAccountPassword === undefined) {
+            if ((!args || args.serviceAccountPassword === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountPassword'");
             }
-            if (!args || args.testPassword === undefined) {
+            if ((!args || args.testPassword === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'testPassword'");
             }
-            if (!args || args.testUsername === undefined) {
+            if ((!args || args.testUsername === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'testUsername'");
             }
-            if (!args || args.userSearchBase === undefined) {
+            if ((!args || args.userSearchBase === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userSearchBase'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

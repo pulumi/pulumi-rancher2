@@ -68,14 +68,15 @@ type AuthConfigGithub struct {
 // NewAuthConfigGithub registers a new resource with the given unique name, arguments, and options.
 func NewAuthConfigGithub(ctx *pulumi.Context,
 	name string, args *AuthConfigGithubArgs, opts ...pulumi.ResourceOption) (*AuthConfigGithub, error) {
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClientSecret == nil {
-		return nil, errors.New("missing required argument 'ClientSecret'")
-	}
 	if args == nil {
-		args = &AuthConfigGithubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ClientSecret'")
 	}
 	var resource AuthConfigGithub
 	err := ctx.RegisterResource("rancher2:index/authConfigGithub:AuthConfigGithub", name, args, &resource, opts...)

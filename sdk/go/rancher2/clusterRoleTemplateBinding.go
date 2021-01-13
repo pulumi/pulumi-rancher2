@@ -71,14 +71,15 @@ type ClusterRoleTemplateBinding struct {
 // NewClusterRoleTemplateBinding registers a new resource with the given unique name, arguments, and options.
 func NewClusterRoleTemplateBinding(ctx *pulumi.Context,
 	name string, args *ClusterRoleTemplateBindingArgs, opts ...pulumi.ResourceOption) (*ClusterRoleTemplateBinding, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.RoleTemplateId == nil {
-		return nil, errors.New("missing required argument 'RoleTemplateId'")
-	}
 	if args == nil {
-		args = &ClusterRoleTemplateBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.RoleTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleTemplateId'")
 	}
 	var resource ClusterRoleTemplateBinding
 	err := ctx.RegisterResource("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, args, &resource, opts...)

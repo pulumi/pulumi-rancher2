@@ -134,7 +134,7 @@ class Namespace(pulumi.CustomResource):
             __props__['description'] = description
             __props__['labels'] = labels
             __props__['name'] = name
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['resource_quota'] = resource_quota

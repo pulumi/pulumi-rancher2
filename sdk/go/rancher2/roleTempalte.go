@@ -132,6 +132,7 @@ func NewRoleTempalte(ctx *pulumi.Context,
 	if args == nil {
 		args = &RoleTempalteArgs{}
 	}
+
 	var resource RoleTempalte
 	err := ctx.RegisterResource("rancher2:index/roleTempalte:RoleTempalte", name, args, &resource, opts...)
 	if err != nil {

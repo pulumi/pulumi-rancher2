@@ -209,6 +209,7 @@ func NewClusterTemplate(ctx *pulumi.Context,
 	if args == nil {
 		args = &ClusterTemplateArgs{}
 	}
+
 	var resource ClusterTemplate
 	err := ctx.RegisterResource("rancher2:index/clusterTemplate:ClusterTemplate", name, args, &resource, opts...)
 	if err != nil {

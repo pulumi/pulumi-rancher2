@@ -71,11 +71,12 @@ type GlobalRoleBinding struct {
 // NewGlobalRoleBinding registers a new resource with the given unique name, arguments, and options.
 func NewGlobalRoleBinding(ctx *pulumi.Context,
 	name string, args *GlobalRoleBindingArgs, opts ...pulumi.ResourceOption) (*GlobalRoleBinding, error) {
-	if args == nil || args.GlobalRoleId == nil {
-		return nil, errors.New("missing required argument 'GlobalRoleId'")
-	}
 	if args == nil {
-		args = &GlobalRoleBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GlobalRoleId == nil {
+		return nil, errors.New("invalid value for required argument 'GlobalRoleId'")
 	}
 	var resource GlobalRoleBinding
 	err := ctx.RegisterResource("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, args, &resource, opts...)

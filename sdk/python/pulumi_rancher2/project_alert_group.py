@@ -89,7 +89,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
             __props__['group_wait_seconds'] = group_wait_seconds
             __props__['labels'] = labels
             __props__['name'] = name
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['recipients'] = recipients

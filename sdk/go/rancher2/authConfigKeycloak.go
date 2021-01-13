@@ -82,32 +82,33 @@ type AuthConfigKeycloak struct {
 // NewAuthConfigKeycloak registers a new resource with the given unique name, arguments, and options.
 func NewAuthConfigKeycloak(ctx *pulumi.Context,
 	name string, args *AuthConfigKeycloakArgs, opts ...pulumi.ResourceOption) (*AuthConfigKeycloak, error) {
-	if args == nil || args.DisplayNameField == nil {
-		return nil, errors.New("missing required argument 'DisplayNameField'")
-	}
-	if args == nil || args.GroupsField == nil {
-		return nil, errors.New("missing required argument 'GroupsField'")
-	}
-	if args == nil || args.IdpMetadataContent == nil {
-		return nil, errors.New("missing required argument 'IdpMetadataContent'")
-	}
-	if args == nil || args.RancherApiHost == nil {
-		return nil, errors.New("missing required argument 'RancherApiHost'")
-	}
-	if args == nil || args.SpCert == nil {
-		return nil, errors.New("missing required argument 'SpCert'")
-	}
-	if args == nil || args.SpKey == nil {
-		return nil, errors.New("missing required argument 'SpKey'")
-	}
-	if args == nil || args.UidField == nil {
-		return nil, errors.New("missing required argument 'UidField'")
-	}
-	if args == nil || args.UserNameField == nil {
-		return nil, errors.New("missing required argument 'UserNameField'")
-	}
 	if args == nil {
-		args = &AuthConfigKeycloakArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayNameField == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayNameField'")
+	}
+	if args.GroupsField == nil {
+		return nil, errors.New("invalid value for required argument 'GroupsField'")
+	}
+	if args.IdpMetadataContent == nil {
+		return nil, errors.New("invalid value for required argument 'IdpMetadataContent'")
+	}
+	if args.RancherApiHost == nil {
+		return nil, errors.New("invalid value for required argument 'RancherApiHost'")
+	}
+	if args.SpCert == nil {
+		return nil, errors.New("invalid value for required argument 'SpCert'")
+	}
+	if args.SpKey == nil {
+		return nil, errors.New("invalid value for required argument 'SpKey'")
+	}
+	if args.UidField == nil {
+		return nil, errors.New("invalid value for required argument 'UidField'")
+	}
+	if args.UserNameField == nil {
+		return nil, errors.New("invalid value for required argument 'UserNameField'")
 	}
 	var resource AuthConfigKeycloak
 	err := ctx.RegisterResource("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, args, &resource, opts...)

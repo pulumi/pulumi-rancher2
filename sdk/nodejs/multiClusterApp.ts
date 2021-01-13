@@ -132,16 +132,16 @@ export class MultiClusterApp extends pulumi.CustomResource {
             inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as MultiClusterAppArgs | undefined;
-            if (!args || args.catalogName === undefined) {
+            if ((!args || args.catalogName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if (!args || args.roles === undefined) {
+            if ((!args || args.roles === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roles'");
             }
-            if (!args || args.targets === undefined) {
+            if ((!args || args.targets === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targets'");
             }
-            if (!args || args.templateName === undefined) {
+            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

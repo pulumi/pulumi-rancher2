@@ -117,10 +117,10 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
             inputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
         } else {
             const args = argsOrState as ProjectRoleTemplateBindingArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if (!args || args.roleTemplateId === undefined) {
+            if ((!args || args.roleTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleTemplateId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -212,6 +212,7 @@ func NewPodSecurityPolicyTemplate(ctx *pulumi.Context,
 	if args == nil {
 		args = &PodSecurityPolicyTemplateArgs{}
 	}
+
 	var resource PodSecurityPolicyTemplate
 	err := ctx.RegisterResource("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, args, &resource, opts...)
 	if err != nil {

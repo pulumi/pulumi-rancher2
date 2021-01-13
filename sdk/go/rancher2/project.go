@@ -153,11 +153,12 @@ type Project struct {
 // NewProject registers a new resource with the given unique name, arguments, and options.
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &ProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("rancher2:index/project:Project", name, args, &resource, opts...)

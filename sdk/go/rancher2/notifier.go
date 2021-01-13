@@ -83,11 +83,12 @@ type Notifier struct {
 // NewNotifier registers a new resource with the given unique name, arguments, and options.
 func NewNotifier(ctx *pulumi.Context,
 	name string, args *NotifierArgs, opts ...pulumi.ResourceOption) (*Notifier, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &NotifierArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource Notifier
 	err := ctx.RegisterResource("rancher2:index/notifier:Notifier", name, args, &resource, opts...)

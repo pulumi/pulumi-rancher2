@@ -117,10 +117,10 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
             inputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
         } else {
             const args = argsOrState as ClusterRoleTemplateBindingArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.roleTemplateId === undefined) {
+            if ((!args || args.roleTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleTemplateId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -93,11 +93,12 @@ type Catalog struct {
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
 func NewCatalog(ctx *pulumi.Context,
 	name string, args *CatalogArgs, opts ...pulumi.ResourceOption) (*Catalog, error) {
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &CatalogArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource Catalog
 	err := ctx.RegisterResource("rancher2:index/catalog:Catalog", name, args, &resource, opts...)

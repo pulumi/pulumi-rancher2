@@ -164,7 +164,7 @@ export class Namespace extends pulumi.CustomResource {
             inputs["waitForCluster"] = state ? state.waitForCluster : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

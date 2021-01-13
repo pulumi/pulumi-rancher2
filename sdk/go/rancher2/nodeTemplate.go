@@ -201,6 +201,7 @@ func NewNodeTemplate(ctx *pulumi.Context,
 	if args == nil {
 		args = &NodeTemplateArgs{}
 	}
+
 	var resource NodeTemplate
 	err := ctx.RegisterResource("rancher2:index/nodeTemplate:NodeTemplate", name, args, &resource, opts...)
 	if err != nil {

@@ -106,7 +106,7 @@ class Catalog(pulumi.CustomResource):
             __props__['project_id'] = project_id
             __props__['refresh'] = refresh
             __props__['scope'] = scope
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['username'] = username

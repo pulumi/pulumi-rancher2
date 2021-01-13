@@ -150,7 +150,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
-            if (!args || args.url === undefined) {
+            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

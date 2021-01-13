@@ -94,7 +94,7 @@ export class Setting extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as SettingArgs | undefined;
-            if (!args || args.value === undefined) {
+            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

@@ -168,13 +168,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["worker"] = state ? state.worker : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.hostnamePrefix === undefined) {
+            if ((!args || args.hostnamePrefix === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostnamePrefix'");
             }
-            if (!args || args.nodeTemplateId === undefined) {
+            if ((!args || args.nodeTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeTemplateId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

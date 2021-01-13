@@ -88,14 +88,15 @@ type ProjectLogging struct {
 // NewProjectLogging registers a new resource with the given unique name, arguments, and options.
 func NewProjectLogging(ctx *pulumi.Context,
 	name string, args *ProjectLoggingArgs, opts ...pulumi.ResourceOption) (*ProjectLogging, error) {
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &ProjectLoggingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource ProjectLogging
 	err := ctx.RegisterResource("rancher2:index/projectLogging:ProjectLogging", name, args, &resource, opts...)

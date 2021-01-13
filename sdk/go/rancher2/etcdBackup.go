@@ -42,11 +42,12 @@ type EtcdBackup struct {
 // NewEtcdBackup registers a new resource with the given unique name, arguments, and options.
 func NewEtcdBackup(ctx *pulumi.Context,
 	name string, args *EtcdBackupArgs, opts ...pulumi.ResourceOption) (*EtcdBackup, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &EtcdBackupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource EtcdBackup
 	err := ctx.RegisterResource("rancher2:index/etcdBackup:EtcdBackup", name, args, &resource, opts...)

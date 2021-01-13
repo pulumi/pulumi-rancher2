@@ -72,11 +72,12 @@ type ProjectAlertGroup struct {
 // NewProjectAlertGroup registers a new resource with the given unique name, arguments, and options.
 func NewProjectAlertGroup(ctx *pulumi.Context,
 	name string, args *ProjectAlertGroupArgs, opts ...pulumi.ResourceOption) (*ProjectAlertGroup, error) {
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &ProjectAlertGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource ProjectAlertGroup
 	err := ctx.RegisterResource("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, args, &resource, opts...)

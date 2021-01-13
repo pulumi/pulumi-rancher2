@@ -75,14 +75,15 @@ type User struct {
 // NewUser registers a new resource with the given unique name, arguments, and options.
 func NewUser(ctx *pulumi.Context,
 	name string, args *UserArgs, opts ...pulumi.ResourceOption) (*User, error) {
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &UserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource User
 	err := ctx.RegisterResource("rancher2:index/user:User", name, args, &resource, opts...)

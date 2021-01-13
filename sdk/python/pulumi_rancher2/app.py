@@ -79,21 +79,21 @@ class App(pulumi.CustomResource):
 
             __props__['annotations'] = annotations
             __props__['answers'] = answers
-            if catalog_name is None:
+            if catalog_name is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_name'")
             __props__['catalog_name'] = catalog_name
             __props__['description'] = description
             __props__['force_upgrade'] = force_upgrade
             __props__['labels'] = labels
             __props__['name'] = name
-            if project_id is None:
+            if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['revision_id'] = revision_id
-            if target_namespace is None:
+            if target_namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'target_namespace'")
             __props__['target_namespace'] = target_namespace
-            if template_name is None:
+            if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
             __props__['template_name'] = template_name
             __props__['template_version'] = template_version

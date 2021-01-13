@@ -169,10 +169,10 @@ export class ProjectAlertRule extends pulumi.CustomResource {
             inputs["workloadRule"] = state ? state.workloadRule : undefined;
         } else {
             const args = argsOrState as ProjectAlertRuleArgs | undefined;
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;

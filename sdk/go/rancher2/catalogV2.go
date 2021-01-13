@@ -58,11 +58,12 @@ type CatalogV2 struct {
 // NewCatalogV2 registers a new resource with the given unique name, arguments, and options.
 func NewCatalogV2(ctx *pulumi.Context,
 	name string, args *CatalogV2Args, opts ...pulumi.ResourceOption) (*CatalogV2, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
 	if args == nil {
-		args = &CatalogV2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
 	var resource CatalogV2
 	err := ctx.RegisterResource("rancher2:index/catalogV2:CatalogV2", name, args, &resource, opts...)

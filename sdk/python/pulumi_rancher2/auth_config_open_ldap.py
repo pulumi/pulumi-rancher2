@@ -119,19 +119,19 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['nested_group_membership_enabled'] = nested_group_membership_enabled
             __props__['port'] = port
-            if servers is None:
+            if servers is None and not opts.urn:
                 raise TypeError("Missing required property 'servers'")
             __props__['servers'] = servers
-            if service_account_distinguished_name is None:
+            if service_account_distinguished_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_distinguished_name'")
             __props__['service_account_distinguished_name'] = service_account_distinguished_name
-            if service_account_password is None:
+            if service_account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_password'")
             __props__['service_account_password'] = service_account_password
-            if test_password is None:
+            if test_password is None and not opts.urn:
                 raise TypeError("Missing required property 'test_password'")
             __props__['test_password'] = test_password
-            if test_username is None:
+            if test_username is None and not opts.urn:
                 raise TypeError("Missing required property 'test_username'")
             __props__['test_username'] = test_username
             __props__['tls'] = tls
@@ -142,7 +142,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             __props__['user_name_attribute'] = user_name_attribute
             __props__['user_object_class'] = user_object_class
             __props__['user_search_attribute'] = user_search_attribute
-            if user_search_base is None:
+            if user_search_base is None and not opts.urn:
                 raise TypeError("Missing required property 'user_search_base'")
             __props__['user_search_base'] = user_search_base
             __props__['name'] = None

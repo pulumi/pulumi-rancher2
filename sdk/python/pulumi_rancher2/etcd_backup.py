@@ -67,7 +67,7 @@ class EtcdBackup(pulumi.CustomResource):
 
             __props__['annotations'] = annotations
             __props__['backup_config'] = backup_config
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['filename'] = filename

@@ -195,7 +195,7 @@ export class Project extends pulumi.CustomResource {
             inputs["waitForCluster"] = state ? state.waitForCluster : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
