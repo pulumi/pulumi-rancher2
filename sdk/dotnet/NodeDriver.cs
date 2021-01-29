@@ -50,6 +50,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &amp;lt;node_driver_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/nodeDriver:NodeDriver")]
     public partial class NodeDriver : Pulumi.CustomResource
     {
         /// <summary>

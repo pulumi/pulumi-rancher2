@@ -405,15 +405,15 @@ type AuthConfigFreeIpaInput interface {
 	ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput
 }
 
-func (AuthConfigFreeIpa) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigFreeIpa)(nil)).Elem()
+func (*AuthConfigFreeIpa) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigFreeIpa)(nil))
 }
 
-func (i AuthConfigFreeIpa) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput {
+func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput {
 	return i.ToAuthConfigFreeIpaOutputWithContext(context.Background())
 }
 
-func (i AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput {
+func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Context) AuthConfigFreeIpaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaOutput)
 }
 
@@ -422,7 +422,7 @@ type AuthConfigFreeIpaOutput struct {
 }
 
 func (AuthConfigFreeIpaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigFreeIpaOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigFreeIpa)(nil))
 }
 
 func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutput() AuthConfigFreeIpaOutput {

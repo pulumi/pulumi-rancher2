@@ -39,6 +39,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/cloudCredential:CloudCredential")]
     public partial class CloudCredential : Pulumi.CustomResource
     {
         /// <summary>

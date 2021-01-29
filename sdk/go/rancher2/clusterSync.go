@@ -138,15 +138,15 @@ type ClusterSyncInput interface {
 	ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput
 }
 
-func (ClusterSync) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterSync)(nil)).Elem()
+func (*ClusterSync) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSync)(nil))
 }
 
-func (i ClusterSync) ToClusterSyncOutput() ClusterSyncOutput {
+func (i *ClusterSync) ToClusterSyncOutput() ClusterSyncOutput {
 	return i.ToClusterSyncOutputWithContext(context.Background())
 }
 
-func (i ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
+func (i *ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) ClusterSyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncOutput)
 }
 
@@ -155,7 +155,7 @@ type ClusterSyncOutput struct {
 }
 
 func (ClusterSyncOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterSyncOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterSync)(nil))
 }
 
 func (o ClusterSyncOutput) ToClusterSyncOutput() ClusterSyncOutput {

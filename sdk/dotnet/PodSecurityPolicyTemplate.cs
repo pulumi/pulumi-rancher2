@@ -174,6 +174,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &amp;lt;pod_security_policy_name&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate")]
     public partial class PodSecurityPolicyTemplate : Pulumi.CustomResource
     {
         /// <summary>

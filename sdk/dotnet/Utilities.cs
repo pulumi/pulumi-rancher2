@@ -77,4 +77,11 @@ namespace Pulumi.Rancher2
             }
         }
     }
+
+    internal sealed class Rancher2ResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public Rancher2ResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

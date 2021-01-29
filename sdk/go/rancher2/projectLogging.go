@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -267,15 +268,15 @@ type ProjectLoggingInput interface {
 	ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput
 }
 
-func (ProjectLogging) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLogging)(nil)).Elem()
+func (*ProjectLogging) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLogging)(nil))
 }
 
-func (i ProjectLogging) ToProjectLoggingOutput() ProjectLoggingOutput {
+func (i *ProjectLogging) ToProjectLoggingOutput() ProjectLoggingOutput {
 	return i.ToProjectLoggingOutputWithContext(context.Background())
 }
 
-func (i ProjectLogging) ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput {
+func (i *ProjectLogging) ToProjectLoggingOutputWithContext(ctx context.Context) ProjectLoggingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLoggingOutput)
 }
 
@@ -284,7 +285,7 @@ type ProjectLoggingOutput struct {
 }
 
 func (ProjectLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLoggingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectLogging)(nil))
 }
 
 func (o ProjectLoggingOutput) ToProjectLoggingOutput() ProjectLoggingOutput {

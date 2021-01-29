@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -57,6 +58,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -282,15 +284,15 @@ type RoleTempalteInput interface {
 	ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput
 }
 
-func (RoleTempalte) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleTempalte)(nil)).Elem()
+func (*RoleTempalte) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleTempalte)(nil))
 }
 
-func (i RoleTempalte) ToRoleTempalteOutput() RoleTempalteOutput {
+func (i *RoleTempalte) ToRoleTempalteOutput() RoleTempalteOutput {
 	return i.ToRoleTempalteOutputWithContext(context.Background())
 }
 
-func (i RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput {
+func (i *RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) RoleTempalteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteOutput)
 }
 
@@ -299,7 +301,7 @@ type RoleTempalteOutput struct {
 }
 
 func (RoleTempalteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleTempalteOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleTempalte)(nil))
 }
 
 func (o RoleTempalteOutput) ToRoleTempalteOutput() RoleTempalteOutput {

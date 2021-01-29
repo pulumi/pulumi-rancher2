@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -486,15 +487,15 @@ type PodSecurityPolicyTemplateInput interface {
 	ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput
 }
 
-func (PodSecurityPolicyTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*PodSecurityPolicyTemplate)(nil)).Elem()
+func (*PodSecurityPolicyTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyTemplate)(nil))
 }
 
-func (i PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput {
+func (i *PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput {
 	return i.ToPodSecurityPolicyTemplateOutputWithContext(context.Background())
 }
 
-func (i PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
+func (i *PodSecurityPolicyTemplate) ToPodSecurityPolicyTemplateOutputWithContext(ctx context.Context) PodSecurityPolicyTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyTemplateOutput)
 }
 
@@ -503,7 +504,7 @@ type PodSecurityPolicyTemplateOutput struct {
 }
 
 func (PodSecurityPolicyTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PodSecurityPolicyTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*PodSecurityPolicyTemplate)(nil))
 }
 
 func (o PodSecurityPolicyTemplateOutput) ToPodSecurityPolicyTemplateOutput() PodSecurityPolicyTemplateOutput {

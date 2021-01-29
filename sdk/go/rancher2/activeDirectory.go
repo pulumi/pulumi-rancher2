@@ -425,15 +425,15 @@ type ActiveDirectoryInput interface {
 	ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput
 }
 
-func (ActiveDirectory) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActiveDirectory)(nil)).Elem()
+func (*ActiveDirectory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectory)(nil))
 }
 
-func (i ActiveDirectory) ToActiveDirectoryOutput() ActiveDirectoryOutput {
+func (i *ActiveDirectory) ToActiveDirectoryOutput() ActiveDirectoryOutput {
 	return i.ToActiveDirectoryOutputWithContext(context.Background())
 }
 
-func (i ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
+func (i *ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryOutput)
 }
 
@@ -442,7 +442,7 @@ type ActiveDirectoryOutput struct {
 }
 
 func (ActiveDirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActiveDirectoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActiveDirectory)(nil))
 }
 
 func (o ActiveDirectoryOutput) ToActiveDirectoryOutput() ActiveDirectoryOutput {

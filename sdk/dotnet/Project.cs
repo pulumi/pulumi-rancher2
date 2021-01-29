@@ -127,6 +127,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

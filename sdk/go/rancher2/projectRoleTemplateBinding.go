@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -202,15 +202,15 @@ type ProjectRoleTemplateBindingInput interface {
 	ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput
 }
 
-func (ProjectRoleTemplateBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectRoleTemplateBinding)(nil)).Elem()
+func (*ProjectRoleTemplateBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectRoleTemplateBinding)(nil))
 }
 
-func (i ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput {
+func (i *ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput {
 	return i.ToProjectRoleTemplateBindingOutputWithContext(context.Background())
 }
 
-func (i ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput {
+func (i *ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingOutput)
 }
 
@@ -219,7 +219,7 @@ type ProjectRoleTemplateBindingOutput struct {
 }
 
 func (ProjectRoleTemplateBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectRoleTemplateBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectRoleTemplateBinding)(nil))
 }
 
 func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutput() ProjectRoleTemplateBindingOutput {

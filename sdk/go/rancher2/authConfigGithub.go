@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -207,15 +207,15 @@ type AuthConfigGithubInput interface {
 	ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput
 }
 
-func (AuthConfigGithub) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigGithub)(nil)).Elem()
+func (*AuthConfigGithub) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigGithub)(nil))
 }
 
-func (i AuthConfigGithub) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
+func (i *AuthConfigGithub) ToAuthConfigGithubOutput() AuthConfigGithubOutput {
 	return i.ToAuthConfigGithubOutputWithContext(context.Background())
 }
 
-func (i AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
+func (i *AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Context) AuthConfigGithubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubOutput)
 }
 
@@ -224,7 +224,7 @@ type AuthConfigGithubOutput struct {
 }
 
 func (AuthConfigGithubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigGithubOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigGithub)(nil))
 }
 
 func (o AuthConfigGithubOutput) ToAuthConfigGithubOutput() AuthConfigGithubOutput {

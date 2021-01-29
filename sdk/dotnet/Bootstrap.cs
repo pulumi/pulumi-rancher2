@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    [Rancher2ResourceType("rancher2:index/bootstrap:Bootstrap")]
     public partial class Bootstrap : Pulumi.CustomResource
     {
         /// <summary>

@@ -35,6 +35,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigGithub:AuthConfigGithub")]
     public partial class AuthConfigGithub : Pulumi.CustomResource
     {
         /// <summary>

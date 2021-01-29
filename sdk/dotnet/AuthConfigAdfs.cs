@@ -41,6 +41,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigAdfs:AuthConfigAdfs")]
     public partial class AuthConfigAdfs : Pulumi.CustomResource
     {
         /// <summary>

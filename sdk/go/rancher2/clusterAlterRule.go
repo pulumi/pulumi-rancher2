@@ -219,15 +219,15 @@ type ClusterAlterRuleInput interface {
 	ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput
 }
 
-func (ClusterAlterRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterRule)(nil)).Elem()
+func (*ClusterAlterRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterRule)(nil))
 }
 
-func (i ClusterAlterRule) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
+func (i *ClusterAlterRule) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {
 	return i.ToClusterAlterRuleOutputWithContext(context.Background())
 }
 
-func (i ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput {
+func (i *ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Context) ClusterAlterRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleOutput)
 }
 
@@ -236,7 +236,7 @@ type ClusterAlterRuleOutput struct {
 }
 
 func (ClusterAlterRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterAlterRule)(nil))
 }
 
 func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutput() ClusterAlterRuleOutput {

@@ -94,6 +94,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo &lt;global_dns_provider_id&gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/globalDnsProvider:GlobalDnsProvider")]
     public partial class GlobalDnsProvider : Pulumi.CustomResource
     {
         [Output("alidnsConfig")]

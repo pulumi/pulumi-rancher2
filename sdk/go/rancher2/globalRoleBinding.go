@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -175,15 +175,15 @@ type GlobalRoleBindingInput interface {
 	ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput
 }
 
-func (GlobalRoleBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalRoleBinding)(nil)).Elem()
+func (*GlobalRoleBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalRoleBinding)(nil))
 }
 
-func (i GlobalRoleBinding) ToGlobalRoleBindingOutput() GlobalRoleBindingOutput {
+func (i *GlobalRoleBinding) ToGlobalRoleBindingOutput() GlobalRoleBindingOutput {
 	return i.ToGlobalRoleBindingOutputWithContext(context.Background())
 }
 
-func (i GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput {
+func (i *GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingOutput)
 }
 
@@ -192,7 +192,7 @@ type GlobalRoleBindingOutput struct {
 }
 
 func (GlobalRoleBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalRoleBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalRoleBinding)(nil))
 }
 
 func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutput() GlobalRoleBindingOutput {

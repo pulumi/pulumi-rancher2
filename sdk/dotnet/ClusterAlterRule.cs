@@ -10,6 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     [Obsolete(@"rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")]
+    [Rancher2ResourceType("rancher2:index/clusterAlterRule:ClusterAlterRule")]
     public partial class ClusterAlterRule : Pulumi.CustomResource
     {
         /// <summary>

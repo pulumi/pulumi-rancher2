@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &amp;lt;ETCD_BACKUP_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/etcdBackup:EtcdBackup")]
     public partial class EtcdBackup : Pulumi.CustomResource
     {
         /// <summary>

@@ -85,6 +85,7 @@ namespace Pulumi.Rancher2
     /// 
     ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced registry.
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/registry:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

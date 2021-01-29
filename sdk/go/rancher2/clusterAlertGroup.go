@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -206,15 +206,15 @@ type ClusterAlertGroupInput interface {
 	ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput
 }
 
-func (ClusterAlertGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlertGroup)(nil)).Elem()
+func (*ClusterAlertGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlertGroup)(nil))
 }
 
-func (i ClusterAlertGroup) ToClusterAlertGroupOutput() ClusterAlertGroupOutput {
+func (i *ClusterAlertGroup) ToClusterAlertGroupOutput() ClusterAlertGroupOutput {
 	return i.ToClusterAlertGroupOutputWithContext(context.Background())
 }
 
-func (i ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput {
+func (i *ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupOutput)
 }
 
@@ -223,7 +223,7 @@ type ClusterAlertGroupOutput struct {
 }
 
 func (ClusterAlertGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlertGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterAlertGroup)(nil))
 }
 
 func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutput() ClusterAlertGroupOutput {

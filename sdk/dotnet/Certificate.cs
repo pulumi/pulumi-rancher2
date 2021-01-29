@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2
     /// - Project certificate: Available to all namespaces in the `project_id`
     /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>

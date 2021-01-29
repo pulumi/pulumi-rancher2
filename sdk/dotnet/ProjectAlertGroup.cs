@@ -43,6 +43,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &amp;lt;project_alert_group_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/projectAlertGroup:ProjectAlertGroup")]
     public partial class ProjectAlertGroup : Pulumi.CustomResource
     {
         /// <summary>

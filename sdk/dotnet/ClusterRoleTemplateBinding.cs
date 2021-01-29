@@ -42,6 +42,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding")]
     public partial class ClusterRoleTemplateBinding : Pulumi.CustomResource
     {
         /// <summary>

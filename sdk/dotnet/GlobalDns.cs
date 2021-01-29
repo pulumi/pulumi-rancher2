@@ -90,6 +90,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/globalDns:GlobalDns foo &lt;global_dns_id&gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/globalDns:GlobalDns")]
     public partial class GlobalDns : Pulumi.CustomResource
     {
         /// <summary>

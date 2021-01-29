@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -202,15 +202,15 @@ type ClusterRoleTemplateBindingInput interface {
 	ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput
 }
 
-func (ClusterRoleTemplateBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil)).Elem()
+func (*ClusterRoleTemplateBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil))
 }
 
-func (i ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
+func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {
 	return i.ToClusterRoleTemplateBindingOutputWithContext(context.Background())
 }
 
-func (i ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
+func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingOutput)
 }
 
@@ -219,7 +219,7 @@ type ClusterRoleTemplateBindingOutput struct {
 }
 
 func (ClusterRoleTemplateBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterRoleTemplateBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterRoleTemplateBinding)(nil))
 }
 
 func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutput() ClusterRoleTemplateBindingOutput {

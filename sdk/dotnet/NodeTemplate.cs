@@ -135,6 +135,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &amp;lt;node_template_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/nodeTemplate:NodeTemplate")]
     public partial class NodeTemplate : Pulumi.CustomResource
     {
         /// <summary>

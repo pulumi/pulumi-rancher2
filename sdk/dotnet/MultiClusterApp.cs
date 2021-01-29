@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &amp;lt;MULTI_CLUSTER_APP_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/multiClusterApp:MultiClusterApp")]
     public partial class MultiClusterApp : Pulumi.CustomResource
     {
         /// <summary>

@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -267,15 +268,15 @@ type ClusterLoggingInput interface {
 	ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput
 }
 
-func (ClusterLogging) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterLogging)(nil)).Elem()
+func (*ClusterLogging) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLogging)(nil))
 }
 
-func (i ClusterLogging) ToClusterLoggingOutput() ClusterLoggingOutput {
+func (i *ClusterLogging) ToClusterLoggingOutput() ClusterLoggingOutput {
 	return i.ToClusterLoggingOutputWithContext(context.Background())
 }
 
-func (i ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput {
+func (i *ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) ClusterLoggingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput)
 }
 
@@ -284,7 +285,7 @@ type ClusterLoggingOutput struct {
 }
 
 func (ClusterLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterLoggingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterLogging)(nil))
 }
 
 func (o ClusterLoggingOutput) ToClusterLoggingOutput() ClusterLoggingOutput {

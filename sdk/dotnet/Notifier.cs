@@ -47,6 +47,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/notifier:Notifier foo &amp;lt;notifier_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/notifier:Notifier")]
     public partial class Notifier : Pulumi.CustomResource
     {
         /// <summary>

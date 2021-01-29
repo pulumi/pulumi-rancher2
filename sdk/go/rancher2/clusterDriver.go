@@ -190,15 +190,15 @@ type ClusterDriverInput interface {
 	ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput
 }
 
-func (ClusterDriver) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterDriver)(nil)).Elem()
+func (*ClusterDriver) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDriver)(nil))
 }
 
-func (i ClusterDriver) ToClusterDriverOutput() ClusterDriverOutput {
+func (i *ClusterDriver) ToClusterDriverOutput() ClusterDriverOutput {
 	return i.ToClusterDriverOutputWithContext(context.Background())
 }
 
-func (i ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
+func (i *ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) ClusterDriverOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverOutput)
 }
 
@@ -207,7 +207,7 @@ type ClusterDriverOutput struct {
 }
 
 func (ClusterDriverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterDriverOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterDriver)(nil))
 }
 
 func (o ClusterDriverOutput) ToClusterDriverOutput() ClusterDriverOutput {
