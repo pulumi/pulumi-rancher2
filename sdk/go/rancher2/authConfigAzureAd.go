@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -267,15 +267,15 @@ type AuthConfigAzureAdInput interface {
 	ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput
 }
 
-func (AuthConfigAzureAd) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigAzureAd)(nil)).Elem()
+func (*AuthConfigAzureAd) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAzureAd)(nil))
 }
 
-func (i AuthConfigAzureAd) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput {
+func (i *AuthConfigAzureAd) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput {
 	return i.ToAuthConfigAzureAdOutputWithContext(context.Background())
 }
 
-func (i AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
+func (i *AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdOutput)
 }
 
@@ -284,7 +284,7 @@ type AuthConfigAzureAdOutput struct {
 }
 
 func (AuthConfigAzureAdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigAzureAdOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigAzureAd)(nil))
 }
 
 func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOutput {

@@ -35,11 +35,12 @@ replace (
 	k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.19.0
 	k8s.io/metrics => k8s.io/metrics v0.19.0
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.19.0
+	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 )
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.17.0
-	github.com/pulumi/pulumi/sdk/v2 v2.17.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.1
+	github.com/pulumi/pulumi/sdk/v2 v2.18.0
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

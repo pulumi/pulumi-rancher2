@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -271,15 +271,15 @@ type AuthConfigPingInput interface {
 	ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput
 }
 
-func (AuthConfigPing) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigPing)(nil)).Elem()
+func (*AuthConfigPing) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigPing)(nil))
 }
 
-func (i AuthConfigPing) ToAuthConfigPingOutput() AuthConfigPingOutput {
+func (i *AuthConfigPing) ToAuthConfigPingOutput() AuthConfigPingOutput {
 	return i.ToAuthConfigPingOutputWithContext(context.Background())
 }
 
-func (i AuthConfigPing) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
+func (i *AuthConfigPing) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingOutput)
 }
 
@@ -288,7 +288,7 @@ type AuthConfigPingOutput struct {
 }
 
 func (AuthConfigPingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigPingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigPing)(nil))
 }
 
 func (o AuthConfigPingOutput) ToAuthConfigPingOutput() AuthConfigPingOutput {

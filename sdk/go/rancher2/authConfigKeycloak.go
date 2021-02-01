@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -271,15 +271,15 @@ type AuthConfigKeycloakInput interface {
 	ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput
 }
 
-func (AuthConfigKeycloak) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigKeycloak)(nil)).Elem()
+func (*AuthConfigKeycloak) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigKeycloak)(nil))
 }
 
-func (i AuthConfigKeycloak) ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput {
+func (i *AuthConfigKeycloak) ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput {
 	return i.ToAuthConfigKeycloakOutputWithContext(context.Background())
 }
 
-func (i AuthConfigKeycloak) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
+func (i *AuthConfigKeycloak) ToAuthConfigKeycloakOutputWithContext(ctx context.Context) AuthConfigKeycloakOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigKeycloakOutput)
 }
 
@@ -288,7 +288,7 @@ type AuthConfigKeycloakOutput struct {
 }
 
 func (AuthConfigKeycloakOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigKeycloakOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigKeycloak)(nil))
 }
 
 func (o AuthConfigKeycloakOutput) ToAuthConfigKeycloakOutput() AuthConfigKeycloakOutput {

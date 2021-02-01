@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -271,15 +271,15 @@ type AuthConfigOktaInput interface {
 	ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput
 }
 
-func (AuthConfigOkta) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigOkta)(nil)).Elem()
+func (*AuthConfigOkta) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigOkta)(nil))
 }
 
-func (i AuthConfigOkta) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
+func (i *AuthConfigOkta) ToAuthConfigOktaOutput() AuthConfigOktaOutput {
 	return i.ToAuthConfigOktaOutputWithContext(context.Background())
 }
 
-func (i AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
+func (i *AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) AuthConfigOktaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaOutput)
 }
 
@@ -288,7 +288,7 @@ type AuthConfigOktaOutput struct {
 }
 
 func (AuthConfigOktaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigOktaOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigOkta)(nil))
 }
 
 func (o AuthConfigOktaOutput) ToAuthConfigOktaOutput() AuthConfigOktaOutput {

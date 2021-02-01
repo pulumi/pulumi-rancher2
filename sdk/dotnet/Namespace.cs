@@ -110,6 +110,7 @@ namespace Pulumi.Rancher2
     /// 
     /// - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace'll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/namespace:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>

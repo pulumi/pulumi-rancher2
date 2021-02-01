@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -261,15 +261,15 @@ type CatalogInput interface {
 	ToCatalogOutputWithContext(ctx context.Context) CatalogOutput
 }
 
-func (Catalog) ElementType() reflect.Type {
-	return reflect.TypeOf((*Catalog)(nil)).Elem()
+func (*Catalog) ElementType() reflect.Type {
+	return reflect.TypeOf((*Catalog)(nil))
 }
 
-func (i Catalog) ToCatalogOutput() CatalogOutput {
+func (i *Catalog) ToCatalogOutput() CatalogOutput {
 	return i.ToCatalogOutputWithContext(context.Background())
 }
 
-func (i Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
+func (i *Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogOutput)
 }
 
@@ -278,7 +278,7 @@ type CatalogOutput struct {
 }
 
 func (CatalogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogOutput)(nil)).Elem()
+	return reflect.TypeOf((*Catalog)(nil))
 }
 
 func (o CatalogOutput) ToCatalogOutput() CatalogOutput {

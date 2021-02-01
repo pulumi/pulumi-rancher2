@@ -48,7 +48,7 @@ setup(name='pulumi_rancher2',
       packages=find_packages(),
       package_data={
           'pulumi_rancher2': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -200,15 +200,15 @@ type ProjectAlertGroupInput interface {
 	ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput
 }
 
-func (ProjectAlertGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertGroup)(nil)).Elem()
+func (*ProjectAlertGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAlertGroup)(nil))
 }
 
-func (i ProjectAlertGroup) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
+func (i *ProjectAlertGroup) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {
 	return i.ToProjectAlertGroupOutputWithContext(context.Background())
 }
 
-func (i ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
+func (i *ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupOutput)
 }
 
@@ -217,7 +217,7 @@ type ProjectAlertGroupOutput struct {
 }
 
 func (ProjectAlertGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectAlertGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectAlertGroup)(nil))
 }
 
 func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutput() ProjectAlertGroupOutput {

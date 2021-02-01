@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -151,15 +151,15 @@ type SettingInput interface {
 	ToSettingOutputWithContext(ctx context.Context) SettingOutput
 }
 
-func (Setting) ElementType() reflect.Type {
-	return reflect.TypeOf((*Setting)(nil)).Elem()
+func (*Setting) ElementType() reflect.Type {
+	return reflect.TypeOf((*Setting)(nil))
 }
 
-func (i Setting) ToSettingOutput() SettingOutput {
+func (i *Setting) ToSettingOutput() SettingOutput {
 	return i.ToSettingOutputWithContext(context.Background())
 }
 
-func (i Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
+func (i *Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
 }
 
@@ -168,7 +168,7 @@ type SettingOutput struct {
 }
 
 func (SettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SettingOutput)(nil)).Elem()
+	return reflect.TypeOf((*Setting)(nil))
 }
 
 func (o SettingOutput) ToSettingOutput() SettingOutput {

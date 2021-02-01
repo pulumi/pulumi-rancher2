@@ -41,6 +41,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigOkta:AuthConfigOkta")]
     public partial class AuthConfigOkta : Pulumi.CustomResource
     {
         /// <summary>

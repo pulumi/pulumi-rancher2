@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -243,15 +244,15 @@ type NotifierInput interface {
 	ToNotifierOutputWithContext(ctx context.Context) NotifierOutput
 }
 
-func (Notifier) ElementType() reflect.Type {
-	return reflect.TypeOf((*Notifier)(nil)).Elem()
+func (*Notifier) ElementType() reflect.Type {
+	return reflect.TypeOf((*Notifier)(nil))
 }
 
-func (i Notifier) ToNotifierOutput() NotifierOutput {
+func (i *Notifier) ToNotifierOutput() NotifierOutput {
 	return i.ToNotifierOutputWithContext(context.Background())
 }
 
-func (i Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutput {
+func (i *Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierOutput)
 }
 
@@ -260,7 +261,7 @@ type NotifierOutput struct {
 }
 
 func (NotifierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotifierOutput)(nil)).Elem()
+	return reflect.TypeOf((*Notifier)(nil))
 }
 
 func (o NotifierOutput) ToNotifierOutput() NotifierOutput {

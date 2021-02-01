@@ -230,15 +230,15 @@ type CatalogV2Input interface {
 	ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output
 }
 
-func (CatalogV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogV2)(nil)).Elem()
+func (*CatalogV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogV2)(nil))
 }
 
-func (i CatalogV2) ToCatalogV2Output() CatalogV2Output {
+func (i *CatalogV2) ToCatalogV2Output() CatalogV2Output {
 	return i.ToCatalogV2OutputWithContext(context.Background())
 }
 
-func (i CatalogV2) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output {
+func (i *CatalogV2) ToCatalogV2OutputWithContext(ctx context.Context) CatalogV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogV2Output)
 }
 
@@ -247,7 +247,7 @@ type CatalogV2Output struct {
 }
 
 func (CatalogV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogV2Output)(nil)).Elem()
+	return reflect.TypeOf((*CatalogV2)(nil))
 }
 
 func (o CatalogV2Output) ToCatalogV2Output() CatalogV2Output {

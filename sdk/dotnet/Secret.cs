@@ -26,6 +26,7 @@ namespace Pulumi.Rancher2
     /// 
     ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/secret:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>

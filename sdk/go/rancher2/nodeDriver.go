@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -232,15 +232,15 @@ type NodeDriverInput interface {
 	ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput
 }
 
-func (NodeDriver) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeDriver)(nil)).Elem()
+func (*NodeDriver) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeDriver)(nil))
 }
 
-func (i NodeDriver) ToNodeDriverOutput() NodeDriverOutput {
+func (i *NodeDriver) ToNodeDriverOutput() NodeDriverOutput {
 	return i.ToNodeDriverOutputWithContext(context.Background())
 }
 
-func (i NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
+func (i *NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverOutput)
 }
 
@@ -249,7 +249,7 @@ type NodeDriverOutput struct {
 }
 
 func (NodeDriverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeDriverOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodeDriver)(nil))
 }
 
 func (o NodeDriverOutput) ToNodeDriverOutput() NodeDriverOutput {

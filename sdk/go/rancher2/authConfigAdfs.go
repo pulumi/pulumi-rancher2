@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -271,15 +271,15 @@ type AuthConfigAdfsInput interface {
 	ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput
 }
 
-func (AuthConfigAdfs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigAdfs)(nil)).Elem()
+func (*AuthConfigAdfs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthConfigAdfs)(nil))
 }
 
-func (i AuthConfigAdfs) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {
+func (i *AuthConfigAdfs) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {
 	return i.ToAuthConfigAdfsOutputWithContext(context.Background())
 }
 
-func (i AuthConfigAdfs) ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput {
+func (i *AuthConfigAdfs) ToAuthConfigAdfsOutputWithContext(ctx context.Context) AuthConfigAdfsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsOutput)
 }
 
@@ -288,7 +288,7 @@ type AuthConfigAdfsOutput struct {
 }
 
 func (AuthConfigAdfsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthConfigAdfsOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthConfigAdfs)(nil))
 }
 
 func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutput() AuthConfigAdfsOutput {

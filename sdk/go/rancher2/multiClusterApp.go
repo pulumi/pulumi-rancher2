@@ -237,15 +237,15 @@ type MultiClusterAppInput interface {
 	ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput
 }
 
-func (MultiClusterApp) ElementType() reflect.Type {
-	return reflect.TypeOf((*MultiClusterApp)(nil)).Elem()
+func (*MultiClusterApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterApp)(nil))
 }
 
-func (i MultiClusterApp) ToMultiClusterAppOutput() MultiClusterAppOutput {
+func (i *MultiClusterApp) ToMultiClusterAppOutput() MultiClusterAppOutput {
 	return i.ToMultiClusterAppOutputWithContext(context.Background())
 }
 
-func (i MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput {
+func (i *MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context) MultiClusterAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppOutput)
 }
 
@@ -254,7 +254,7 @@ type MultiClusterAppOutput struct {
 }
 
 func (MultiClusterAppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MultiClusterAppOutput)(nil)).Elem()
+	return reflect.TypeOf((*MultiClusterApp)(nil))
 }
 
 func (o MultiClusterAppOutput) ToMultiClusterAppOutput() MultiClusterAppOutput {

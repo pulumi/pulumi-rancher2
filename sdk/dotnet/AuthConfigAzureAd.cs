@@ -40,6 +40,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigAzureAd:AuthConfigAzureAd")]
     public partial class AuthConfigAzureAd : Pulumi.CustomResource
     {
         /// <summary>

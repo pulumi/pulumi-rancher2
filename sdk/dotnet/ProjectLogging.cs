@@ -48,6 +48,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &amp;lt;project_logging_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/projectLogging:ProjectLogging")]
     public partial class ProjectLogging : Pulumi.CustomResource
     {
         /// <summary>

@@ -206,6 +206,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/clusterTemplate:ClusterTemplate")]
     public partial class ClusterTemplate : Pulumi.CustomResource
     {
         /// <summary>

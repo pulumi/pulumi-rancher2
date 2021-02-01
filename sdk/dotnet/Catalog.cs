@@ -52,6 +52,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/catalog:Catalog")]
     public partial class Catalog : Pulumi.CustomResource
     {
         /// <summary>

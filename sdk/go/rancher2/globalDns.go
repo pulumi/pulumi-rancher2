@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -58,6 +59,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -242,15 +244,15 @@ type GlobalDnsInput interface {
 	ToGlobalDnsOutputWithContext(ctx context.Context) GlobalDnsOutput
 }
 
-func (GlobalDns) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalDns)(nil)).Elem()
+func (*GlobalDns) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalDns)(nil))
 }
 
-func (i GlobalDns) ToGlobalDnsOutput() GlobalDnsOutput {
+func (i *GlobalDns) ToGlobalDnsOutput() GlobalDnsOutput {
 	return i.ToGlobalDnsOutputWithContext(context.Background())
 }
 
-func (i GlobalDns) ToGlobalDnsOutputWithContext(ctx context.Context) GlobalDnsOutput {
+func (i *GlobalDns) ToGlobalDnsOutputWithContext(ctx context.Context) GlobalDnsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsOutput)
 }
 
@@ -259,7 +261,7 @@ type GlobalDnsOutput struct {
 }
 
 func (GlobalDnsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalDnsOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalDns)(nil))
 }
 
 func (o GlobalDnsOutput) ToGlobalDnsOutput() GlobalDnsOutput {

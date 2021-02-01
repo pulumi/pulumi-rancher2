@@ -166,15 +166,15 @@ type ClusterAlterGroupInput interface {
 	ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput
 }
 
-func (ClusterAlterGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterGroup)(nil)).Elem()
+func (*ClusterAlterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAlterGroup)(nil))
 }
 
-func (i ClusterAlterGroup) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
+func (i *ClusterAlterGroup) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {
 	return i.ToClusterAlterGroupOutputWithContext(context.Background())
 }
 
-func (i ClusterAlterGroup) ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput {
+func (i *ClusterAlterGroup) ToClusterAlterGroupOutputWithContext(ctx context.Context) ClusterAlterGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterGroupOutput)
 }
 
@@ -183,7 +183,7 @@ type ClusterAlterGroupOutput struct {
 }
 
 func (ClusterAlterGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterAlterGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterAlterGroup)(nil))
 }
 
 func (o ClusterAlterGroupOutput) ToClusterAlterGroupOutput() ClusterAlterGroupOutput {

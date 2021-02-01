@@ -23,6 +23,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -56,6 +57,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -99,6 +101,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -447,15 +450,15 @@ type NodeTemplateInput interface {
 	ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput
 }
 
-func (NodeTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeTemplate)(nil)).Elem()
+func (*NodeTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplate)(nil))
 }
 
-func (i NodeTemplate) ToNodeTemplateOutput() NodeTemplateOutput {
+func (i *NodeTemplate) ToNodeTemplateOutput() NodeTemplateOutput {
 	return i.ToNodeTemplateOutputWithContext(context.Background())
 }
 
-func (i NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
+func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOutput)
 }
 
@@ -464,7 +467,7 @@ type NodeTemplateOutput struct {
 }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodeTemplate)(nil))
 }
 
 func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {

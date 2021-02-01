@@ -20,6 +20,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {
         /// <summary>

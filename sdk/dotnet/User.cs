@@ -50,6 +50,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/user:User foo &amp;lt;user_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

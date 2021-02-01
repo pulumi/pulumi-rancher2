@@ -100,6 +100,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo &amp;lt;role_template_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/roleTempalte:RoleTempalte")]
     public partial class RoleTempalte : Pulumi.CustomResource
     {
         /// <summary>

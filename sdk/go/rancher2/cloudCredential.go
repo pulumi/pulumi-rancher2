@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -207,15 +208,15 @@ type CloudCredentialInput interface {
 	ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput
 }
 
-func (CloudCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudCredential)(nil)).Elem()
+func (*CloudCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredential)(nil))
 }
 
-func (i CloudCredential) ToCloudCredentialOutput() CloudCredentialOutput {
+func (i *CloudCredential) ToCloudCredentialOutput() CloudCredentialOutput {
 	return i.ToCloudCredentialOutputWithContext(context.Background())
 }
 
-func (i CloudCredential) ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput {
+func (i *CloudCredential) ToCloudCredentialOutputWithContext(ctx context.Context) CloudCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialOutput)
 }
 
@@ -224,7 +225,7 @@ type CloudCredentialOutput struct {
 }
 
 func (CloudCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudCredentialOutput)(nil)).Elem()
+	return reflect.TypeOf((*CloudCredential)(nil))
 }
 
 func (o CloudCredentialOutput) ToCloudCredentialOutput() CloudCredentialOutput {

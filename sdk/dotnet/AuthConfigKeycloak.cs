@@ -41,6 +41,7 @@ namespace Pulumi.Rancher2
     /// }
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigKeycloak:AuthConfigKeycloak")]
     public partial class AuthConfigKeycloak : Pulumi.CustomResource
     {
         /// <summary>

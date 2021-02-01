@@ -48,6 +48,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/clusterLogging:ClusterLogging foo &amp;lt;CLUSTER_LOGGING_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/clusterLogging:ClusterLogging")]
     public partial class ClusterLogging : Pulumi.CustomResource
     {
         /// <summary>

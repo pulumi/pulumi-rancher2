@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/app:App foo &amp;lt;PROJECT_ID_ID&amp;gt;:&amp;lt;APP_NAME&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/app:App")]
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>

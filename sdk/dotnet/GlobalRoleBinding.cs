@@ -47,6 +47,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &amp;lt;GLOBAL_ROLE_BINDING_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/globalRoleBinding:GlobalRoleBinding")]
     public partial class GlobalRoleBinding : Pulumi.CustomResource
     {
         /// <summary>

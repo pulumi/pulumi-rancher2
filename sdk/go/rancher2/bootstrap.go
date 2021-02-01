@@ -167,15 +167,15 @@ type BootstrapInput interface {
 	ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput
 }
 
-func (Bootstrap) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bootstrap)(nil)).Elem()
+func (*Bootstrap) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bootstrap)(nil))
 }
 
-func (i Bootstrap) ToBootstrapOutput() BootstrapOutput {
+func (i *Bootstrap) ToBootstrapOutput() BootstrapOutput {
 	return i.ToBootstrapOutputWithContext(context.Background())
 }
 
-func (i Bootstrap) ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput {
+func (i *Bootstrap) ToBootstrapOutputWithContext(ctx context.Context) BootstrapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BootstrapOutput)
 }
 
@@ -184,7 +184,7 @@ type BootstrapOutput struct {
 }
 
 func (BootstrapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BootstrapOutput)(nil)).Elem()
+	return reflect.TypeOf((*Bootstrap)(nil))
 }
 
 func (o BootstrapOutput) ToBootstrapOutput() BootstrapOutput {

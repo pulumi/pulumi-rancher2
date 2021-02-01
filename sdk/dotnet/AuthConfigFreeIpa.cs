@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa")]
     public partial class AuthConfigFreeIpa : Pulumi.CustomResource
     {
         /// <summary>

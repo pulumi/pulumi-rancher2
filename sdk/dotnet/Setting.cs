@@ -44,6 +44,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/setting:Setting")]
     public partial class Setting : Pulumi.CustomResource
     {
         /// <summary>

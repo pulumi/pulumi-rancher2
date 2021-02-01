@@ -162,15 +162,15 @@ type EtcdBackupInput interface {
 	ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput
 }
 
-func (EtcdBackup) ElementType() reflect.Type {
-	return reflect.TypeOf((*EtcdBackup)(nil)).Elem()
+func (*EtcdBackup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtcdBackup)(nil))
 }
 
-func (i EtcdBackup) ToEtcdBackupOutput() EtcdBackupOutput {
+func (i *EtcdBackup) ToEtcdBackupOutput() EtcdBackupOutput {
 	return i.ToEtcdBackupOutputWithContext(context.Background())
 }
 
-func (i EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput {
+func (i *EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupOutput)
 }
 
@@ -179,7 +179,7 @@ type EtcdBackupOutput struct {
 }
 
 func (EtcdBackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EtcdBackupOutput)(nil)).Elem()
+	return reflect.TypeOf((*EtcdBackup)(nil))
 }
 
 func (o EtcdBackupOutput) ToEtcdBackupOutput() EtcdBackupOutput {

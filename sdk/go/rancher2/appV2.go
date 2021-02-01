@@ -249,15 +249,15 @@ type AppV2Input interface {
 	ToAppV2OutputWithContext(ctx context.Context) AppV2Output
 }
 
-func (AppV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppV2)(nil)).Elem()
+func (*AppV2) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppV2)(nil))
 }
 
-func (i AppV2) ToAppV2Output() AppV2Output {
+func (i *AppV2) ToAppV2Output() AppV2Output {
 	return i.ToAppV2OutputWithContext(context.Background())
 }
 
-func (i AppV2) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
+func (i *AppV2) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(AppV2Output)
 }
 
@@ -266,7 +266,7 @@ type AppV2Output struct {
 }
 
 func (AppV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppV2Output)(nil)).Elem()
+	return reflect.TypeOf((*AppV2)(nil))
 }
 
 func (o AppV2Output) ToAppV2Output() AppV2Output {

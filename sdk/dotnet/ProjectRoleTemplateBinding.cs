@@ -42,6 +42,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding")]
     public partial class ProjectRoleTemplateBinding : Pulumi.CustomResource
     {
         /// <summary>

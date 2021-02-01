@@ -20,6 +20,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;CATALOG_V2_NAME&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/catalogV2:CatalogV2")]
     public partial class CatalogV2 : Pulumi.CustomResource
     {
         /// <summary>

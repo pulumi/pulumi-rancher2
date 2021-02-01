@@ -20,6 +20,7 @@ namespace Pulumi.Rancher2
     ///  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &amp;lt;CLUSTER_DRIVER_ID&amp;gt;
     /// ```
     /// </summary>
+    [Rancher2ResourceType("rancher2:index/clusterDriver:ClusterDriver")]
     public partial class ClusterDriver : Pulumi.CustomResource
     {
         /// <summary>
