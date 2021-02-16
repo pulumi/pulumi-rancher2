@@ -133,7 +133,8 @@ export class ClusterAlertRule extends pulumi.CustomResource {
     constructor(name: string, args: ClusterAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterAlertRuleArgs | ClusterAlertRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterAlertRuleState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -151,10 +152,10 @@ export class ClusterAlertRule extends pulumi.CustomResource {
             inputs["systemServiceRule"] = state ? state.systemServiceRule : undefined;
         } else {
             const args = argsOrState as ClusterAlertRuleArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -172,15 +173,11 @@ export class ClusterAlertRule extends pulumi.CustomResource {
             inputs["severity"] = args ? args.severity : undefined;
             inputs["systemServiceRule"] = args ? args.systemServiceRule : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterRule:ClusterAlterRule" }] };
-        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterAlertRule.__pulumiType, name, inputs, opts);
     }
 }

@@ -417,6 +417,85 @@ func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaOutput)
 }
 
+func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIpaPtrOutput {
+	return i.ToAuthConfigFreeIpaPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigFreeIpa) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaPtrOutput)
+}
+
+type AuthConfigFreeIpaPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIpaPtrOutput
+	ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput
+}
+
+type authConfigFreeIpaPtrType AuthConfigFreeIpaArgs
+
+func (*authConfigFreeIpaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigFreeIpa)(nil))
+}
+
+func (i *authConfigFreeIpaPtrType) ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIpaPtrOutput {
+	return i.ToAuthConfigFreeIpaPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigFreeIpaPtrType) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaPtrOutput)
+}
+
+// AuthConfigFreeIpaArrayInput is an input type that accepts AuthConfigFreeIpaArray and AuthConfigFreeIpaArrayOutput values.
+// You can construct a concrete instance of `AuthConfigFreeIpaArrayInput` via:
+//
+//          AuthConfigFreeIpaArray{ AuthConfigFreeIpaArgs{...} }
+type AuthConfigFreeIpaArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigFreeIpaArrayOutput() AuthConfigFreeIpaArrayOutput
+	ToAuthConfigFreeIpaArrayOutputWithContext(context.Context) AuthConfigFreeIpaArrayOutput
+}
+
+type AuthConfigFreeIpaArray []AuthConfigFreeIpaInput
+
+func (AuthConfigFreeIpaArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigFreeIpa)(nil))
+}
+
+func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutput() AuthConfigFreeIpaArrayOutput {
+	return i.ToAuthConfigFreeIpaArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigFreeIpaArray) ToAuthConfigFreeIpaArrayOutputWithContext(ctx context.Context) AuthConfigFreeIpaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaArrayOutput)
+}
+
+// AuthConfigFreeIpaMapInput is an input type that accepts AuthConfigFreeIpaMap and AuthConfigFreeIpaMapOutput values.
+// You can construct a concrete instance of `AuthConfigFreeIpaMapInput` via:
+//
+//          AuthConfigFreeIpaMap{ "key": AuthConfigFreeIpaArgs{...} }
+type AuthConfigFreeIpaMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigFreeIpaMapOutput() AuthConfigFreeIpaMapOutput
+	ToAuthConfigFreeIpaMapOutputWithContext(context.Context) AuthConfigFreeIpaMapOutput
+}
+
+type AuthConfigFreeIpaMap map[string]AuthConfigFreeIpaInput
+
+func (AuthConfigFreeIpaMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigFreeIpa)(nil))
+}
+
+func (i AuthConfigFreeIpaMap) ToAuthConfigFreeIpaMapOutput() AuthConfigFreeIpaMapOutput {
+	return i.ToAuthConfigFreeIpaMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigFreeIpaMap) ToAuthConfigFreeIpaMapOutputWithContext(ctx context.Context) AuthConfigFreeIpaMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigFreeIpaMapOutput)
+}
+
 type AuthConfigFreeIpaOutput struct {
 	*pulumi.OutputState
 }
@@ -433,6 +512,75 @@ func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaOutputWithContext(ctx contex
 	return o
 }
 
+func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIpaPtrOutput {
+	return o.ToAuthConfigFreeIpaPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigFreeIpaOutput) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
+	return o.ApplyT(func(v AuthConfigFreeIpa) *AuthConfigFreeIpa {
+		return &v
+	}).(AuthConfigFreeIpaPtrOutput)
+}
+
+type AuthConfigFreeIpaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigFreeIpaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigFreeIpa)(nil))
+}
+
+func (o AuthConfigFreeIpaPtrOutput) ToAuthConfigFreeIpaPtrOutput() AuthConfigFreeIpaPtrOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaPtrOutput) ToAuthConfigFreeIpaPtrOutputWithContext(ctx context.Context) AuthConfigFreeIpaPtrOutput {
+	return o
+}
+
+type AuthConfigFreeIpaArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigFreeIpaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigFreeIpa)(nil))
+}
+
+func (o AuthConfigFreeIpaArrayOutput) ToAuthConfigFreeIpaArrayOutput() AuthConfigFreeIpaArrayOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaArrayOutput) ToAuthConfigFreeIpaArrayOutputWithContext(ctx context.Context) AuthConfigFreeIpaArrayOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaArrayOutput) Index(i pulumi.IntInput) AuthConfigFreeIpaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigFreeIpa {
+		return vs[0].([]AuthConfigFreeIpa)[vs[1].(int)]
+	}).(AuthConfigFreeIpaOutput)
+}
+
+type AuthConfigFreeIpaMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigFreeIpaMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigFreeIpa)(nil))
+}
+
+func (o AuthConfigFreeIpaMapOutput) ToAuthConfigFreeIpaMapOutput() AuthConfigFreeIpaMapOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaMapOutput) ToAuthConfigFreeIpaMapOutputWithContext(ctx context.Context) AuthConfigFreeIpaMapOutput {
+	return o
+}
+
+func (o AuthConfigFreeIpaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigFreeIpaOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigFreeIpa {
+		return vs[0].(map[string]AuthConfigFreeIpa)[vs[1].(string)]
+	}).(AuthConfigFreeIpaOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigFreeIpaOutput{})
+	pulumi.RegisterOutputType(AuthConfigFreeIpaPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigFreeIpaArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigFreeIpaMapOutput{})
 }

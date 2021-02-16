@@ -21,7 +21,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -58,7 +57,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -296,6 +294,85 @@ func (i *RoleTempalte) ToRoleTempalteOutputWithContext(ctx context.Context) Role
 	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteOutput)
 }
 
+func (i *RoleTempalte) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
+	return i.ToRoleTempaltePtrOutputWithContext(context.Background())
+}
+
+func (i *RoleTempalte) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleTempaltePtrOutput)
+}
+
+type RoleTempaltePtrInput interface {
+	pulumi.Input
+
+	ToRoleTempaltePtrOutput() RoleTempaltePtrOutput
+	ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput
+}
+
+type roleTempaltePtrType RoleTempalteArgs
+
+func (*roleTempaltePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleTempalte)(nil))
+}
+
+func (i *roleTempaltePtrType) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
+	return i.ToRoleTempaltePtrOutputWithContext(context.Background())
+}
+
+func (i *roleTempaltePtrType) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleTempaltePtrOutput)
+}
+
+// RoleTempalteArrayInput is an input type that accepts RoleTempalteArray and RoleTempalteArrayOutput values.
+// You can construct a concrete instance of `RoleTempalteArrayInput` via:
+//
+//          RoleTempalteArray{ RoleTempalteArgs{...} }
+type RoleTempalteArrayInput interface {
+	pulumi.Input
+
+	ToRoleTempalteArrayOutput() RoleTempalteArrayOutput
+	ToRoleTempalteArrayOutputWithContext(context.Context) RoleTempalteArrayOutput
+}
+
+type RoleTempalteArray []RoleTempalteInput
+
+func (RoleTempalteArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RoleTempalte)(nil))
+}
+
+func (i RoleTempalteArray) ToRoleTempalteArrayOutput() RoleTempalteArrayOutput {
+	return i.ToRoleTempalteArrayOutputWithContext(context.Background())
+}
+
+func (i RoleTempalteArray) ToRoleTempalteArrayOutputWithContext(ctx context.Context) RoleTempalteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteArrayOutput)
+}
+
+// RoleTempalteMapInput is an input type that accepts RoleTempalteMap and RoleTempalteMapOutput values.
+// You can construct a concrete instance of `RoleTempalteMapInput` via:
+//
+//          RoleTempalteMap{ "key": RoleTempalteArgs{...} }
+type RoleTempalteMapInput interface {
+	pulumi.Input
+
+	ToRoleTempalteMapOutput() RoleTempalteMapOutput
+	ToRoleTempalteMapOutputWithContext(context.Context) RoleTempalteMapOutput
+}
+
+type RoleTempalteMap map[string]RoleTempalteInput
+
+func (RoleTempalteMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RoleTempalte)(nil))
+}
+
+func (i RoleTempalteMap) ToRoleTempalteMapOutput() RoleTempalteMapOutput {
+	return i.ToRoleTempalteMapOutputWithContext(context.Background())
+}
+
+func (i RoleTempalteMap) ToRoleTempalteMapOutputWithContext(ctx context.Context) RoleTempalteMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleTempalteMapOutput)
+}
+
 type RoleTempalteOutput struct {
 	*pulumi.OutputState
 }
@@ -312,6 +389,75 @@ func (o RoleTempalteOutput) ToRoleTempalteOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RoleTempalteOutput) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
+	return o.ToRoleTempaltePtrOutputWithContext(context.Background())
+}
+
+func (o RoleTempalteOutput) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
+	return o.ApplyT(func(v RoleTempalte) *RoleTempalte {
+		return &v
+	}).(RoleTempaltePtrOutput)
+}
+
+type RoleTempaltePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleTempaltePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleTempalte)(nil))
+}
+
+func (o RoleTempaltePtrOutput) ToRoleTempaltePtrOutput() RoleTempaltePtrOutput {
+	return o
+}
+
+func (o RoleTempaltePtrOutput) ToRoleTempaltePtrOutputWithContext(ctx context.Context) RoleTempaltePtrOutput {
+	return o
+}
+
+type RoleTempalteArrayOutput struct{ *pulumi.OutputState }
+
+func (RoleTempalteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoleTempalte)(nil))
+}
+
+func (o RoleTempalteArrayOutput) ToRoleTempalteArrayOutput() RoleTempalteArrayOutput {
+	return o
+}
+
+func (o RoleTempalteArrayOutput) ToRoleTempalteArrayOutputWithContext(ctx context.Context) RoleTempalteArrayOutput {
+	return o
+}
+
+func (o RoleTempalteArrayOutput) Index(i pulumi.IntInput) RoleTempalteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleTempalte {
+		return vs[0].([]RoleTempalte)[vs[1].(int)]
+	}).(RoleTempalteOutput)
+}
+
+type RoleTempalteMapOutput struct{ *pulumi.OutputState }
+
+func (RoleTempalteMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RoleTempalte)(nil))
+}
+
+func (o RoleTempalteMapOutput) ToRoleTempalteMapOutput() RoleTempalteMapOutput {
+	return o
+}
+
+func (o RoleTempalteMapOutput) ToRoleTempalteMapOutputWithContext(ctx context.Context) RoleTempalteMapOutput {
+	return o
+}
+
+func (o RoleTempalteMapOutput) MapIndex(k pulumi.StringInput) RoleTempalteOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RoleTempalte {
+		return vs[0].(map[string]RoleTempalte)[vs[1].(string)]
+	}).(RoleTempalteOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleTempalteOutput{})
+	pulumi.RegisterOutputType(RoleTempaltePtrOutput{})
+	pulumi.RegisterOutputType(RoleTempalteArrayOutput{})
+	pulumi.RegisterOutputType(RoleTempalteMapOutput{})
 }

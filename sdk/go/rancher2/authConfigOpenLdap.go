@@ -417,6 +417,85 @@ func (i *AuthConfigOpenLdap) ToAuthConfigOpenLdapOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapOutput)
 }
 
+func (i *AuthConfigOpenLdap) ToAuthConfigOpenLdapPtrOutput() AuthConfigOpenLdapPtrOutput {
+	return i.ToAuthConfigOpenLdapPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigOpenLdap) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapPtrOutput)
+}
+
+type AuthConfigOpenLdapPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigOpenLdapPtrOutput() AuthConfigOpenLdapPtrOutput
+	ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput
+}
+
+type authConfigOpenLdapPtrType AuthConfigOpenLdapArgs
+
+func (*authConfigOpenLdapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigOpenLdap)(nil))
+}
+
+func (i *authConfigOpenLdapPtrType) ToAuthConfigOpenLdapPtrOutput() AuthConfigOpenLdapPtrOutput {
+	return i.ToAuthConfigOpenLdapPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigOpenLdapPtrType) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapPtrOutput)
+}
+
+// AuthConfigOpenLdapArrayInput is an input type that accepts AuthConfigOpenLdapArray and AuthConfigOpenLdapArrayOutput values.
+// You can construct a concrete instance of `AuthConfigOpenLdapArrayInput` via:
+//
+//          AuthConfigOpenLdapArray{ AuthConfigOpenLdapArgs{...} }
+type AuthConfigOpenLdapArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigOpenLdapArrayOutput() AuthConfigOpenLdapArrayOutput
+	ToAuthConfigOpenLdapArrayOutputWithContext(context.Context) AuthConfigOpenLdapArrayOutput
+}
+
+type AuthConfigOpenLdapArray []AuthConfigOpenLdapInput
+
+func (AuthConfigOpenLdapArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigOpenLdap)(nil))
+}
+
+func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutput() AuthConfigOpenLdapArrayOutput {
+	return i.ToAuthConfigOpenLdapArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutputWithContext(ctx context.Context) AuthConfigOpenLdapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapArrayOutput)
+}
+
+// AuthConfigOpenLdapMapInput is an input type that accepts AuthConfigOpenLdapMap and AuthConfigOpenLdapMapOutput values.
+// You can construct a concrete instance of `AuthConfigOpenLdapMapInput` via:
+//
+//          AuthConfigOpenLdapMap{ "key": AuthConfigOpenLdapArgs{...} }
+type AuthConfigOpenLdapMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigOpenLdapMapOutput() AuthConfigOpenLdapMapOutput
+	ToAuthConfigOpenLdapMapOutputWithContext(context.Context) AuthConfigOpenLdapMapOutput
+}
+
+type AuthConfigOpenLdapMap map[string]AuthConfigOpenLdapInput
+
+func (AuthConfigOpenLdapMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigOpenLdap)(nil))
+}
+
+func (i AuthConfigOpenLdapMap) ToAuthConfigOpenLdapMapOutput() AuthConfigOpenLdapMapOutput {
+	return i.ToAuthConfigOpenLdapMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOpenLdapMap) ToAuthConfigOpenLdapMapOutputWithContext(ctx context.Context) AuthConfigOpenLdapMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapMapOutput)
+}
+
 type AuthConfigOpenLdapOutput struct {
 	*pulumi.OutputState
 }
@@ -433,6 +512,75 @@ func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutputWithContext(ctx cont
 	return o
 }
 
+func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapPtrOutput() AuthConfigOpenLdapPtrOutput {
+	return o.ToAuthConfigOpenLdapPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
+	return o.ApplyT(func(v AuthConfigOpenLdap) *AuthConfigOpenLdap {
+		return &v
+	}).(AuthConfigOpenLdapPtrOutput)
+}
+
+type AuthConfigOpenLdapPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigOpenLdapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigOpenLdap)(nil))
+}
+
+func (o AuthConfigOpenLdapPtrOutput) ToAuthConfigOpenLdapPtrOutput() AuthConfigOpenLdapPtrOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapPtrOutput) ToAuthConfigOpenLdapPtrOutputWithContext(ctx context.Context) AuthConfigOpenLdapPtrOutput {
+	return o
+}
+
+type AuthConfigOpenLdapArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigOpenLdapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigOpenLdap)(nil))
+}
+
+func (o AuthConfigOpenLdapArrayOutput) ToAuthConfigOpenLdapArrayOutput() AuthConfigOpenLdapArrayOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapArrayOutput) ToAuthConfigOpenLdapArrayOutputWithContext(ctx context.Context) AuthConfigOpenLdapArrayOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapArrayOutput) Index(i pulumi.IntInput) AuthConfigOpenLdapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigOpenLdap {
+		return vs[0].([]AuthConfigOpenLdap)[vs[1].(int)]
+	}).(AuthConfigOpenLdapOutput)
+}
+
+type AuthConfigOpenLdapMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigOpenLdapMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigOpenLdap)(nil))
+}
+
+func (o AuthConfigOpenLdapMapOutput) ToAuthConfigOpenLdapMapOutput() AuthConfigOpenLdapMapOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapMapOutput) ToAuthConfigOpenLdapMapOutputWithContext(ctx context.Context) AuthConfigOpenLdapMapOutput {
+	return o
+}
+
+func (o AuthConfigOpenLdapMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOpenLdapOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigOpenLdap {
+		return vs[0].(map[string]AuthConfigOpenLdap)[vs[1].(string)]
+	}).(AuthConfigOpenLdapOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigOpenLdapOutput{})
+	pulumi.RegisterOutputType(AuthConfigOpenLdapPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigOpenLdapArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigOpenLdapMapOutput{})
 }

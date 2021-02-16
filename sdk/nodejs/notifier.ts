@@ -125,7 +125,8 @@ export class Notifier extends pulumi.CustomResource {
     constructor(name: string, args: NotifierArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotifierArgs | NotifierState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NotifierState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -142,7 +143,7 @@ export class Notifier extends pulumi.CustomResource {
             inputs["wechatConfig"] = state ? state.wechatConfig : undefined;
         } else {
             const args = argsOrState as NotifierArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -159,12 +160,8 @@ export class Notifier extends pulumi.CustomResource {
             inputs["webhookConfig"] = args ? args.webhookConfig : undefined;
             inputs["wechatConfig"] = args ? args.wechatConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Notifier.__pulumiType, name, inputs, opts);
     }

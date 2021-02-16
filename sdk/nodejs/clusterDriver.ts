@@ -113,7 +113,8 @@ export class ClusterDriver extends pulumi.CustomResource {
     constructor(name: string, args: ClusterDriverArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterDriverArgs | ClusterDriverState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterDriverState | undefined;
             inputs["active"] = state ? state.active : undefined;
             inputs["actualUrl"] = state ? state.actualUrl : undefined;
@@ -127,13 +128,13 @@ export class ClusterDriver extends pulumi.CustomResource {
             inputs["whitelistDomains"] = state ? state.whitelistDomains : undefined;
         } else {
             const args = argsOrState as ClusterDriverArgs | undefined;
-            if ((!args || args.active === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.active === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'active'");
             }
-            if ((!args || args.builtin === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.builtin === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'builtin'");
             }
-            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["active"] = args ? args.active : undefined;
@@ -147,12 +148,8 @@ export class ClusterDriver extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["whitelistDomains"] = args ? args.whitelistDomains : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterDriver.__pulumiType, name, inputs, opts);
     }

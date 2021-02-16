@@ -118,7 +118,8 @@ export class Token extends pulumi.CustomResource {
     constructor(name: string, args?: TokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TokenState | undefined;
             inputs["accessKey"] = state ? state.accessKey : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
@@ -149,12 +150,8 @@ export class Token extends pulumi.CustomResource {
             inputs["token"] = undefined /*out*/;
             inputs["userId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Token.__pulumiType, name, inputs, opts);
     }

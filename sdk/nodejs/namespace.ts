@@ -152,7 +152,8 @@ export class Namespace extends pulumi.CustomResource {
     constructor(name: string, args: NamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceArgs | NamespaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
@@ -164,7 +165,7 @@ export class Namespace extends pulumi.CustomResource {
             inputs["waitForCluster"] = state ? state.waitForCluster : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -176,12 +177,8 @@ export class Namespace extends pulumi.CustomResource {
             inputs["resourceQuota"] = args ? args.resourceQuota : undefined;
             inputs["waitForCluster"] = args ? args.waitForCluster : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Namespace.__pulumiType, name, inputs, opts);
     }

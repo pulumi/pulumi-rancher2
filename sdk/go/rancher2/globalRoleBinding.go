@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -187,6 +187,85 @@ func (i *GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingOutput)
 }
 
+func (i *GlobalRoleBinding) ToGlobalRoleBindingPtrOutput() GlobalRoleBindingPtrOutput {
+	return i.ToGlobalRoleBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalRoleBinding) ToGlobalRoleBindingPtrOutputWithContext(ctx context.Context) GlobalRoleBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingPtrOutput)
+}
+
+type GlobalRoleBindingPtrInput interface {
+	pulumi.Input
+
+	ToGlobalRoleBindingPtrOutput() GlobalRoleBindingPtrOutput
+	ToGlobalRoleBindingPtrOutputWithContext(ctx context.Context) GlobalRoleBindingPtrOutput
+}
+
+type globalRoleBindingPtrType GlobalRoleBindingArgs
+
+func (*globalRoleBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalRoleBinding)(nil))
+}
+
+func (i *globalRoleBindingPtrType) ToGlobalRoleBindingPtrOutput() GlobalRoleBindingPtrOutput {
+	return i.ToGlobalRoleBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *globalRoleBindingPtrType) ToGlobalRoleBindingPtrOutputWithContext(ctx context.Context) GlobalRoleBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingPtrOutput)
+}
+
+// GlobalRoleBindingArrayInput is an input type that accepts GlobalRoleBindingArray and GlobalRoleBindingArrayOutput values.
+// You can construct a concrete instance of `GlobalRoleBindingArrayInput` via:
+//
+//          GlobalRoleBindingArray{ GlobalRoleBindingArgs{...} }
+type GlobalRoleBindingArrayInput interface {
+	pulumi.Input
+
+	ToGlobalRoleBindingArrayOutput() GlobalRoleBindingArrayOutput
+	ToGlobalRoleBindingArrayOutputWithContext(context.Context) GlobalRoleBindingArrayOutput
+}
+
+type GlobalRoleBindingArray []GlobalRoleBindingInput
+
+func (GlobalRoleBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GlobalRoleBinding)(nil))
+}
+
+func (i GlobalRoleBindingArray) ToGlobalRoleBindingArrayOutput() GlobalRoleBindingArrayOutput {
+	return i.ToGlobalRoleBindingArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalRoleBindingArray) ToGlobalRoleBindingArrayOutputWithContext(ctx context.Context) GlobalRoleBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingArrayOutput)
+}
+
+// GlobalRoleBindingMapInput is an input type that accepts GlobalRoleBindingMap and GlobalRoleBindingMapOutput values.
+// You can construct a concrete instance of `GlobalRoleBindingMapInput` via:
+//
+//          GlobalRoleBindingMap{ "key": GlobalRoleBindingArgs{...} }
+type GlobalRoleBindingMapInput interface {
+	pulumi.Input
+
+	ToGlobalRoleBindingMapOutput() GlobalRoleBindingMapOutput
+	ToGlobalRoleBindingMapOutputWithContext(context.Context) GlobalRoleBindingMapOutput
+}
+
+type GlobalRoleBindingMap map[string]GlobalRoleBindingInput
+
+func (GlobalRoleBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GlobalRoleBinding)(nil))
+}
+
+func (i GlobalRoleBindingMap) ToGlobalRoleBindingMapOutput() GlobalRoleBindingMapOutput {
+	return i.ToGlobalRoleBindingMapOutputWithContext(context.Background())
+}
+
+func (i GlobalRoleBindingMap) ToGlobalRoleBindingMapOutputWithContext(ctx context.Context) GlobalRoleBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingMapOutput)
+}
+
 type GlobalRoleBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -203,6 +282,75 @@ func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutputWithContext(ctx contex
 	return o
 }
 
+func (o GlobalRoleBindingOutput) ToGlobalRoleBindingPtrOutput() GlobalRoleBindingPtrOutput {
+	return o.ToGlobalRoleBindingPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalRoleBindingOutput) ToGlobalRoleBindingPtrOutputWithContext(ctx context.Context) GlobalRoleBindingPtrOutput {
+	return o.ApplyT(func(v GlobalRoleBinding) *GlobalRoleBinding {
+		return &v
+	}).(GlobalRoleBindingPtrOutput)
+}
+
+type GlobalRoleBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalRoleBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalRoleBinding)(nil))
+}
+
+func (o GlobalRoleBindingPtrOutput) ToGlobalRoleBindingPtrOutput() GlobalRoleBindingPtrOutput {
+	return o
+}
+
+func (o GlobalRoleBindingPtrOutput) ToGlobalRoleBindingPtrOutputWithContext(ctx context.Context) GlobalRoleBindingPtrOutput {
+	return o
+}
+
+type GlobalRoleBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalRoleBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalRoleBinding)(nil))
+}
+
+func (o GlobalRoleBindingArrayOutput) ToGlobalRoleBindingArrayOutput() GlobalRoleBindingArrayOutput {
+	return o
+}
+
+func (o GlobalRoleBindingArrayOutput) ToGlobalRoleBindingArrayOutputWithContext(ctx context.Context) GlobalRoleBindingArrayOutput {
+	return o
+}
+
+func (o GlobalRoleBindingArrayOutput) Index(i pulumi.IntInput) GlobalRoleBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalRoleBinding {
+		return vs[0].([]GlobalRoleBinding)[vs[1].(int)]
+	}).(GlobalRoleBindingOutput)
+}
+
+type GlobalRoleBindingMapOutput struct{ *pulumi.OutputState }
+
+func (GlobalRoleBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GlobalRoleBinding)(nil))
+}
+
+func (o GlobalRoleBindingMapOutput) ToGlobalRoleBindingMapOutput() GlobalRoleBindingMapOutput {
+	return o
+}
+
+func (o GlobalRoleBindingMapOutput) ToGlobalRoleBindingMapOutputWithContext(ctx context.Context) GlobalRoleBindingMapOutput {
+	return o
+}
+
+func (o GlobalRoleBindingMapOutput) MapIndex(k pulumi.StringInput) GlobalRoleBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalRoleBinding {
+		return vs[0].(map[string]GlobalRoleBinding)[vs[1].(string)]
+	}).(GlobalRoleBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalRoleBindingOutput{})
+	pulumi.RegisterOutputType(GlobalRoleBindingPtrOutput{})
+	pulumi.RegisterOutputType(GlobalRoleBindingArrayOutput{})
+	pulumi.RegisterOutputType(GlobalRoleBindingMapOutput{})
 }

@@ -5,6 +5,7 @@ go 1.14
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/crewjam/saml => github.com/crewjam/saml v0.4.1
+	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/prometheus/prometheus => github.com/prometheus/prometheus v1.8.2-0.20190424153033-d3245f150225
 	github.com/rancher/lasso => github.com/rancher/lasso v0.0.0-20200905045615-7fcb07d6a20b
@@ -35,12 +36,11 @@ replace (
 	k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.19.0
 	k8s.io/metrics => k8s.io/metrics v0.19.0
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.19.0
-	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 )
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.1
-	github.com/pulumi/pulumi/sdk/v2 v2.18.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.19.0
+	github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

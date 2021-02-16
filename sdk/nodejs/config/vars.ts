@@ -9,11 +9,11 @@ let __config = new pulumi.Config("rancher2");
 /**
  * API Key used to authenticate with the rancher server
  */
-export let accessKey: string | undefined = __config.get("accessKey") || utilities.getEnv("RANCHER_ACCESS_KEY");
+export let accessKey: string | undefined = __config.get("accessKey");
 /**
  * The URL to the rancher API
  */
-export let apiUrl: string | undefined = __config.get("apiUrl") || utilities.getEnv("RANCHER_URL");
+export let apiUrl: string | undefined = __config.get("apiUrl");
 /**
  * Bootstrap rancher server
  */
@@ -21,7 +21,7 @@ export let bootstrap: boolean | undefined = __config.getObject<boolean>("bootstr
 /**
  * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
  */
-export let caCerts: string | undefined = __config.get("caCerts") || utilities.getEnv("RANCHER_CA_CERTS");
+export let caCerts: string | undefined = __config.get("caCerts");
 /**
  * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
  */
@@ -33,8 +33,8 @@ export let retries: number | undefined = __config.getObject<number>("retries");
 /**
  * API secret used to authenticate with the rancher server
  */
-export let secretKey: string | undefined = __config.get("secretKey") || utilities.getEnv("RANCHER_SECRET_KEY");
+export let secretKey: string | undefined = __config.get("secretKey");
 /**
  * API token used to authenticate with the rancher server
  */
-export let tokenKey: string | undefined = __config.get("tokenKey") || utilities.getEnv("RANCHER_TOKEN_KEY");
+export let tokenKey: string | undefined = __config.get("tokenKey");

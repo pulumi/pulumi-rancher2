@@ -145,7 +145,8 @@ export class RoleTempalte extends pulumi.CustomResource {
     constructor(name: string, args?: RoleTempalteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleTempalteArgs | RoleTempalteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RoleTempalteState | undefined;
             inputs["administrative"] = state ? state.administrative : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
@@ -176,12 +177,8 @@ export class RoleTempalte extends pulumi.CustomResource {
             inputs["rules"] = args ? args.rules : undefined;
             inputs["builtin"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RoleTempalte.__pulumiType, name, inputs, opts);
     }

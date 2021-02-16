@@ -33,24 +33,24 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["accessKey"] = (args ? args.accessKey : undefined) || utilities.getEnv("RANCHER_ACCESS_KEY");
-            inputs["apiUrl"] = (args ? args.apiUrl : undefined) || utilities.getEnv("RANCHER_URL");
+            if ((!args || args.apiUrl === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiUrl'");
+            }
+            inputs["accessKey"] = args ? args.accessKey : undefined;
+            inputs["apiUrl"] = args ? args.apiUrl : undefined;
             inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
-            inputs["caCerts"] = (args ? args.caCerts : undefined) || utilities.getEnv("RANCHER_CA_CERTS");
+            inputs["caCerts"] = args ? args.caCerts : undefined;
             inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
             inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
-            inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("RANCHER_SECRET_KEY");
-            inputs["tokenKey"] = (args ? args.tokenKey : undefined) || utilities.getEnv("RANCHER_TOKEN_KEY");
+            inputs["secretKey"] = args ? args.secretKey : undefined;
+            inputs["tokenKey"] = args ? args.tokenKey : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -67,7 +67,7 @@ export interface ProviderArgs {
     /**
      * The URL to the rancher API
      */
-    readonly apiUrl?: pulumi.Input<string>;
+    readonly apiUrl: pulumi.Input<string>;
     /**
      * Bootstrap rancher server
      */

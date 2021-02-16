@@ -107,7 +107,8 @@ export class ClusterAlterRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterAlterRuleArgs | ClusterAlterRuleState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("ClusterAlterRule is deprecated: rancher2.ClusterAlterRule has been deprecated in favor of rancher2.ClusterAlertRule")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterAlterRuleState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -125,10 +126,10 @@ export class ClusterAlterRule extends pulumi.CustomResource {
             inputs["systemServiceRule"] = state ? state.systemServiceRule : undefined;
         } else {
             const args = argsOrState as ClusterAlterRuleArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -146,12 +147,8 @@ export class ClusterAlterRule extends pulumi.CustomResource {
             inputs["severity"] = args ? args.severity : undefined;
             inputs["systemServiceRule"] = args ? args.systemServiceRule : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterAlterRule.__pulumiType, name, inputs, opts);
     }

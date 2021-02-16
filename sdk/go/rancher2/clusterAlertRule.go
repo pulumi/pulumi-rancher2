@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -280,6 +280,85 @@ func (i *ClusterAlertRule) ToClusterAlertRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleOutput)
 }
 
+func (i *ClusterAlertRule) ToClusterAlertRulePtrOutput() ClusterAlertRulePtrOutput {
+	return i.ToClusterAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterAlertRule) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRulePtrOutput)
+}
+
+type ClusterAlertRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertRulePtrOutput() ClusterAlertRulePtrOutput
+	ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput
+}
+
+type clusterAlertRulePtrType ClusterAlertRuleArgs
+
+func (*clusterAlertRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRule)(nil))
+}
+
+func (i *clusterAlertRulePtrType) ToClusterAlertRulePtrOutput() ClusterAlertRulePtrOutput {
+	return i.ToClusterAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertRulePtrType) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRulePtrOutput)
+}
+
+// ClusterAlertRuleArrayInput is an input type that accepts ClusterAlertRuleArray and ClusterAlertRuleArrayOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleArrayInput` via:
+//
+//          ClusterAlertRuleArray{ ClusterAlertRuleArgs{...} }
+type ClusterAlertRuleArrayInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleArrayOutput() ClusterAlertRuleArrayOutput
+	ToClusterAlertRuleArrayOutputWithContext(context.Context) ClusterAlertRuleArrayOutput
+}
+
+type ClusterAlertRuleArray []ClusterAlertRuleInput
+
+func (ClusterAlertRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterAlertRule)(nil))
+}
+
+func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutput() ClusterAlertRuleArrayOutput {
+	return i.ToClusterAlertRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleArray) ToClusterAlertRuleArrayOutputWithContext(ctx context.Context) ClusterAlertRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleArrayOutput)
+}
+
+// ClusterAlertRuleMapInput is an input type that accepts ClusterAlertRuleMap and ClusterAlertRuleMapOutput values.
+// You can construct a concrete instance of `ClusterAlertRuleMapInput` via:
+//
+//          ClusterAlertRuleMap{ "key": ClusterAlertRuleArgs{...} }
+type ClusterAlertRuleMapInput interface {
+	pulumi.Input
+
+	ToClusterAlertRuleMapOutput() ClusterAlertRuleMapOutput
+	ToClusterAlertRuleMapOutputWithContext(context.Context) ClusterAlertRuleMapOutput
+}
+
+type ClusterAlertRuleMap map[string]ClusterAlertRuleInput
+
+func (ClusterAlertRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterAlertRule)(nil))
+}
+
+func (i ClusterAlertRuleMap) ToClusterAlertRuleMapOutput() ClusterAlertRuleMapOutput {
+	return i.ToClusterAlertRuleMapOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertRuleMap) ToClusterAlertRuleMapOutputWithContext(ctx context.Context) ClusterAlertRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertRuleMapOutput)
+}
+
 type ClusterAlertRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutputWithContext(ctx context.
 	return o
 }
 
+func (o ClusterAlertRuleOutput) ToClusterAlertRulePtrOutput() ClusterAlertRulePtrOutput {
+	return o.ToClusterAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertRuleOutput) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlertRule) *ClusterAlertRule {
+		return &v
+	}).(ClusterAlertRulePtrOutput)
+}
+
+type ClusterAlertRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlertRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertRule)(nil))
+}
+
+func (o ClusterAlertRulePtrOutput) ToClusterAlertRulePtrOutput() ClusterAlertRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlertRulePtrOutput) ToClusterAlertRulePtrOutputWithContext(ctx context.Context) ClusterAlertRulePtrOutput {
+	return o
+}
+
+type ClusterAlertRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAlertRule)(nil))
+}
+
+func (o ClusterAlertRuleArrayOutput) ToClusterAlertRuleArrayOutput() ClusterAlertRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAlertRuleArrayOutput) ToClusterAlertRuleArrayOutputWithContext(ctx context.Context) ClusterAlertRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAlertRuleArrayOutput) Index(i pulumi.IntInput) ClusterAlertRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlertRule {
+		return vs[0].([]ClusterAlertRule)[vs[1].(int)]
+	}).(ClusterAlertRuleOutput)
+}
+
+type ClusterAlertRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterAlertRule)(nil))
+}
+
+func (o ClusterAlertRuleMapOutput) ToClusterAlertRuleMapOutput() ClusterAlertRuleMapOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMapOutput) ToClusterAlertRuleMapOutputWithContext(ctx context.Context) ClusterAlertRuleMapOutput {
+	return o
+}
+
+func (o ClusterAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlertRule {
+		return vs[0].(map[string]ClusterAlertRule)[vs[1].(string)]
+	}).(ClusterAlertRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterAlertRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAlertRuleMapOutput{})
 }

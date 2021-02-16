@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -214,6 +214,85 @@ func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingOutput)
 }
 
+func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
+	return i.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingPtrOutput)
+}
+
+type ClusterRoleTemplateBindingPtrInput interface {
+	pulumi.Input
+
+	ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput
+	ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput
+}
+
+type clusterRoleTemplateBindingPtrType ClusterRoleTemplateBindingArgs
+
+func (*clusterRoleTemplateBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil))
+}
+
+func (i *clusterRoleTemplateBindingPtrType) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
+	return i.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRoleTemplateBindingPtrType) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingPtrOutput)
+}
+
+// ClusterRoleTemplateBindingArrayInput is an input type that accepts ClusterRoleTemplateBindingArray and ClusterRoleTemplateBindingArrayOutput values.
+// You can construct a concrete instance of `ClusterRoleTemplateBindingArrayInput` via:
+//
+//          ClusterRoleTemplateBindingArray{ ClusterRoleTemplateBindingArgs{...} }
+type ClusterRoleTemplateBindingArrayInput interface {
+	pulumi.Input
+
+	ToClusterRoleTemplateBindingArrayOutput() ClusterRoleTemplateBindingArrayOutput
+	ToClusterRoleTemplateBindingArrayOutputWithContext(context.Context) ClusterRoleTemplateBindingArrayOutput
+}
+
+type ClusterRoleTemplateBindingArray []ClusterRoleTemplateBindingInput
+
+func (ClusterRoleTemplateBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterRoleTemplateBinding)(nil))
+}
+
+func (i ClusterRoleTemplateBindingArray) ToClusterRoleTemplateBindingArrayOutput() ClusterRoleTemplateBindingArrayOutput {
+	return i.ToClusterRoleTemplateBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterRoleTemplateBindingArray) ToClusterRoleTemplateBindingArrayOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingArrayOutput)
+}
+
+// ClusterRoleTemplateBindingMapInput is an input type that accepts ClusterRoleTemplateBindingMap and ClusterRoleTemplateBindingMapOutput values.
+// You can construct a concrete instance of `ClusterRoleTemplateBindingMapInput` via:
+//
+//          ClusterRoleTemplateBindingMap{ "key": ClusterRoleTemplateBindingArgs{...} }
+type ClusterRoleTemplateBindingMapInput interface {
+	pulumi.Input
+
+	ToClusterRoleTemplateBindingMapOutput() ClusterRoleTemplateBindingMapOutput
+	ToClusterRoleTemplateBindingMapOutputWithContext(context.Context) ClusterRoleTemplateBindingMapOutput
+}
+
+type ClusterRoleTemplateBindingMap map[string]ClusterRoleTemplateBindingInput
+
+func (ClusterRoleTemplateBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterRoleTemplateBinding)(nil))
+}
+
+func (i ClusterRoleTemplateBindingMap) ToClusterRoleTemplateBindingMapOutput() ClusterRoleTemplateBindingMapOutput {
+	return i.ToClusterRoleTemplateBindingMapOutputWithContext(context.Background())
+}
+
+func (i ClusterRoleTemplateBindingMap) ToClusterRoleTemplateBindingMapOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingMapOutput)
+}
+
 type ClusterRoleTemplateBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -230,6 +309,75 @@ func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutputWith
 	return o
 }
 
+func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
+	return o.ToClusterRoleTemplateBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
+	return o.ApplyT(func(v ClusterRoleTemplateBinding) *ClusterRoleTemplateBinding {
+		return &v
+	}).(ClusterRoleTemplateBindingPtrOutput)
+}
+
+type ClusterRoleTemplateBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterRoleTemplateBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRoleTemplateBinding)(nil))
+}
+
+func (o ClusterRoleTemplateBindingPtrOutput) ToClusterRoleTemplateBindingPtrOutput() ClusterRoleTemplateBindingPtrOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingPtrOutput) ToClusterRoleTemplateBindingPtrOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingPtrOutput {
+	return o
+}
+
+type ClusterRoleTemplateBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterRoleTemplateBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterRoleTemplateBinding)(nil))
+}
+
+func (o ClusterRoleTemplateBindingArrayOutput) ToClusterRoleTemplateBindingArrayOutput() ClusterRoleTemplateBindingArrayOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingArrayOutput) ToClusterRoleTemplateBindingArrayOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingArrayOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingArrayOutput) Index(i pulumi.IntInput) ClusterRoleTemplateBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterRoleTemplateBinding {
+		return vs[0].([]ClusterRoleTemplateBinding)[vs[1].(int)]
+	}).(ClusterRoleTemplateBindingOutput)
+}
+
+type ClusterRoleTemplateBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterRoleTemplateBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterRoleTemplateBinding)(nil))
+}
+
+func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutput() ClusterRoleTemplateBindingMapOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingMapOutput {
+	return o
+}
+
+func (o ClusterRoleTemplateBindingMapOutput) MapIndex(k pulumi.StringInput) ClusterRoleTemplateBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterRoleTemplateBinding {
+		return vs[0].(map[string]ClusterRoleTemplateBinding)[vs[1].(string)]
+	}).(ClusterRoleTemplateBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterRoleTemplateBindingOutput{})
+	pulumi.RegisterOutputType(ClusterRoleTemplateBindingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRoleTemplateBindingArrayOutput{})
+	pulumi.RegisterOutputType(ClusterRoleTemplateBindingMapOutput{})
 }

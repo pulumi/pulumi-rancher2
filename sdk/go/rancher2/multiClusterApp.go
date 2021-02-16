@@ -249,6 +249,85 @@ func (i *MultiClusterApp) ToMultiClusterAppOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppOutput)
 }
 
+func (i *MultiClusterApp) ToMultiClusterAppPtrOutput() MultiClusterAppPtrOutput {
+	return i.ToMultiClusterAppPtrOutputWithContext(context.Background())
+}
+
+func (i *MultiClusterApp) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppPtrOutput)
+}
+
+type MultiClusterAppPtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterAppPtrOutput() MultiClusterAppPtrOutput
+	ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput
+}
+
+type multiClusterAppPtrType MultiClusterAppArgs
+
+func (*multiClusterAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterApp)(nil))
+}
+
+func (i *multiClusterAppPtrType) ToMultiClusterAppPtrOutput() MultiClusterAppPtrOutput {
+	return i.ToMultiClusterAppPtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterAppPtrType) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppPtrOutput)
+}
+
+// MultiClusterAppArrayInput is an input type that accepts MultiClusterAppArray and MultiClusterAppArrayOutput values.
+// You can construct a concrete instance of `MultiClusterAppArrayInput` via:
+//
+//          MultiClusterAppArray{ MultiClusterAppArgs{...} }
+type MultiClusterAppArrayInput interface {
+	pulumi.Input
+
+	ToMultiClusterAppArrayOutput() MultiClusterAppArrayOutput
+	ToMultiClusterAppArrayOutputWithContext(context.Context) MultiClusterAppArrayOutput
+}
+
+type MultiClusterAppArray []MultiClusterAppInput
+
+func (MultiClusterAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MultiClusterApp)(nil))
+}
+
+func (i MultiClusterAppArray) ToMultiClusterAppArrayOutput() MultiClusterAppArrayOutput {
+	return i.ToMultiClusterAppArrayOutputWithContext(context.Background())
+}
+
+func (i MultiClusterAppArray) ToMultiClusterAppArrayOutputWithContext(ctx context.Context) MultiClusterAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppArrayOutput)
+}
+
+// MultiClusterAppMapInput is an input type that accepts MultiClusterAppMap and MultiClusterAppMapOutput values.
+// You can construct a concrete instance of `MultiClusterAppMapInput` via:
+//
+//          MultiClusterAppMap{ "key": MultiClusterAppArgs{...} }
+type MultiClusterAppMapInput interface {
+	pulumi.Input
+
+	ToMultiClusterAppMapOutput() MultiClusterAppMapOutput
+	ToMultiClusterAppMapOutputWithContext(context.Context) MultiClusterAppMapOutput
+}
+
+type MultiClusterAppMap map[string]MultiClusterAppInput
+
+func (MultiClusterAppMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MultiClusterApp)(nil))
+}
+
+func (i MultiClusterAppMap) ToMultiClusterAppMapOutput() MultiClusterAppMapOutput {
+	return i.ToMultiClusterAppMapOutputWithContext(context.Background())
+}
+
+func (i MultiClusterAppMap) ToMultiClusterAppMapOutputWithContext(ctx context.Context) MultiClusterAppMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterAppMapOutput)
+}
+
 type MultiClusterAppOutput struct {
 	*pulumi.OutputState
 }
@@ -265,6 +344,75 @@ func (o MultiClusterAppOutput) ToMultiClusterAppOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o MultiClusterAppOutput) ToMultiClusterAppPtrOutput() MultiClusterAppPtrOutput {
+	return o.ToMultiClusterAppPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterAppOutput) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
+	return o.ApplyT(func(v MultiClusterApp) *MultiClusterApp {
+		return &v
+	}).(MultiClusterAppPtrOutput)
+}
+
+type MultiClusterAppPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MultiClusterAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterApp)(nil))
+}
+
+func (o MultiClusterAppPtrOutput) ToMultiClusterAppPtrOutput() MultiClusterAppPtrOutput {
+	return o
+}
+
+func (o MultiClusterAppPtrOutput) ToMultiClusterAppPtrOutputWithContext(ctx context.Context) MultiClusterAppPtrOutput {
+	return o
+}
+
+type MultiClusterAppArrayOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MultiClusterApp)(nil))
+}
+
+func (o MultiClusterAppArrayOutput) ToMultiClusterAppArrayOutput() MultiClusterAppArrayOutput {
+	return o
+}
+
+func (o MultiClusterAppArrayOutput) ToMultiClusterAppArrayOutputWithContext(ctx context.Context) MultiClusterAppArrayOutput {
+	return o
+}
+
+func (o MultiClusterAppArrayOutput) Index(i pulumi.IntInput) MultiClusterAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MultiClusterApp {
+		return vs[0].([]MultiClusterApp)[vs[1].(int)]
+	}).(MultiClusterAppOutput)
+}
+
+type MultiClusterAppMapOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterAppMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MultiClusterApp)(nil))
+}
+
+func (o MultiClusterAppMapOutput) ToMultiClusterAppMapOutput() MultiClusterAppMapOutput {
+	return o
+}
+
+func (o MultiClusterAppMapOutput) ToMultiClusterAppMapOutputWithContext(ctx context.Context) MultiClusterAppMapOutput {
+	return o
+}
+
+func (o MultiClusterAppMapOutput) MapIndex(k pulumi.StringInput) MultiClusterAppOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MultiClusterApp {
+		return vs[0].(map[string]MultiClusterApp)[vs[1].(string)]
+	}).(MultiClusterAppOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MultiClusterAppOutput{})
+	pulumi.RegisterOutputType(MultiClusterAppPtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterAppArrayOutput{})
+	pulumi.RegisterOutputType(MultiClusterAppMapOutput{})
 }

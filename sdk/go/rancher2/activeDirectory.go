@@ -437,6 +437,85 @@ func (i *ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryOutput)
 }
 
+func (i *ActiveDirectory) ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOutput {
+	return i.ToActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *ActiveDirectory) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryPtrOutput)
+}
+
+type ActiveDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOutput
+	ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput
+}
+
+type activeDirectoryPtrType ActiveDirectoryArgs
+
+func (*activeDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectory)(nil))
+}
+
+func (i *activeDirectoryPtrType) ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOutput {
+	return i.ToActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *activeDirectoryPtrType) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryPtrOutput)
+}
+
+// ActiveDirectoryArrayInput is an input type that accepts ActiveDirectoryArray and ActiveDirectoryArrayOutput values.
+// You can construct a concrete instance of `ActiveDirectoryArrayInput` via:
+//
+//          ActiveDirectoryArray{ ActiveDirectoryArgs{...} }
+type ActiveDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput
+	ToActiveDirectoryArrayOutputWithContext(context.Context) ActiveDirectoryArrayOutput
+}
+
+type ActiveDirectoryArray []ActiveDirectoryInput
+
+func (ActiveDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ActiveDirectory)(nil))
+}
+
+func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput {
+	return i.ToActiveDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutputWithContext(ctx context.Context) ActiveDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryArrayOutput)
+}
+
+// ActiveDirectoryMapInput is an input type that accepts ActiveDirectoryMap and ActiveDirectoryMapOutput values.
+// You can construct a concrete instance of `ActiveDirectoryMapInput` via:
+//
+//          ActiveDirectoryMap{ "key": ActiveDirectoryArgs{...} }
+type ActiveDirectoryMapInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryMapOutput() ActiveDirectoryMapOutput
+	ToActiveDirectoryMapOutputWithContext(context.Context) ActiveDirectoryMapOutput
+}
+
+type ActiveDirectoryMap map[string]ActiveDirectoryInput
+
+func (ActiveDirectoryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ActiveDirectory)(nil))
+}
+
+func (i ActiveDirectoryMap) ToActiveDirectoryMapOutput() ActiveDirectoryMapOutput {
+	return i.ToActiveDirectoryMapOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryMap) ToActiveDirectoryMapOutputWithContext(ctx context.Context) ActiveDirectoryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryMapOutput)
+}
+
 type ActiveDirectoryOutput struct {
 	*pulumi.OutputState
 }
@@ -453,6 +532,75 @@ func (o ActiveDirectoryOutput) ToActiveDirectoryOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ActiveDirectoryOutput) ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOutput {
+	return o.ToActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o ActiveDirectoryOutput) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
+	return o.ApplyT(func(v ActiveDirectory) *ActiveDirectory {
+		return &v
+	}).(ActiveDirectoryPtrOutput)
+}
+
+type ActiveDirectoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectory)(nil))
+}
+
+func (o ActiveDirectoryPtrOutput) ToActiveDirectoryPtrOutput() ActiveDirectoryPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryPtrOutput) ToActiveDirectoryPtrOutputWithContext(ctx context.Context) ActiveDirectoryPtrOutput {
+	return o
+}
+
+type ActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActiveDirectory)(nil))
+}
+
+func (o ActiveDirectoryArrayOutput) ToActiveDirectoryArrayOutput() ActiveDirectoryArrayOutput {
+	return o
+}
+
+func (o ActiveDirectoryArrayOutput) ToActiveDirectoryArrayOutputWithContext(ctx context.Context) ActiveDirectoryArrayOutput {
+	return o
+}
+
+func (o ActiveDirectoryArrayOutput) Index(i pulumi.IntInput) ActiveDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActiveDirectory {
+		return vs[0].([]ActiveDirectory)[vs[1].(int)]
+	}).(ActiveDirectoryOutput)
+}
+
+type ActiveDirectoryMapOutput struct{ *pulumi.OutputState }
+
+func (ActiveDirectoryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActiveDirectory)(nil))
+}
+
+func (o ActiveDirectoryMapOutput) ToActiveDirectoryMapOutput() ActiveDirectoryMapOutput {
+	return o
+}
+
+func (o ActiveDirectoryMapOutput) ToActiveDirectoryMapOutputWithContext(ctx context.Context) ActiveDirectoryMapOutput {
+	return o
+}
+
+func (o ActiveDirectoryMapOutput) MapIndex(k pulumi.StringInput) ActiveDirectoryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActiveDirectory {
+		return vs[0].(map[string]ActiveDirectory)[vs[1].(string)]
+	}).(ActiveDirectoryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryMapOutput{})
 }

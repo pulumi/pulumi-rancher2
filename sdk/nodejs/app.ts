@@ -114,7 +114,8 @@ export class App extends pulumi.CustomResource {
     constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["answers"] = state ? state.answers : undefined;
@@ -133,16 +134,16 @@ export class App extends pulumi.CustomResource {
             inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.catalogName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.targetNamespace === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetNamespace === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetNamespace'");
             }
-            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -161,12 +162,8 @@ export class App extends pulumi.CustomResource {
             inputs["wait"] = args ? args.wait : undefined;
             inputs["externalId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(App.__pulumiType, name, inputs, opts);
     }

@@ -60,27 +60,19 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_key is None:
-                access_key = _utilities.get_env('RANCHER_ACCESS_KEY')
             __props__['access_key'] = access_key
-            if api_url is None:
-                api_url = _utilities.get_env('RANCHER_URL')
+            if api_url is None and not opts.urn:
+                raise TypeError("Missing required property 'api_url'")
             __props__['api_url'] = api_url
             if bootstrap is None:
                 bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
             __props__['bootstrap'] = pulumi.Output.from_input(bootstrap).apply(pulumi.runtime.to_json) if bootstrap is not None else None
-            if ca_certs is None:
-                ca_certs = _utilities.get_env('RANCHER_CA_CERTS')
             __props__['ca_certs'] = ca_certs
             if insecure is None:
                 insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
             __props__['insecure'] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__['retries'] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
-            if secret_key is None:
-                secret_key = _utilities.get_env('RANCHER_SECRET_KEY')
             __props__['secret_key'] = secret_key
-            if token_key is None:
-                token_key = _utilities.get_env('RANCHER_TOKEN_KEY')
             __props__['token_key'] = token_key
         super(Provider, __self__).__init__(
             'rancher2',

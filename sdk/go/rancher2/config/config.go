@@ -10,20 +10,12 @@ import (
 
 // API Key used to authenticate with the rancher server
 func GetAccessKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "rancher2:accessKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "RANCHER_ACCESS_KEY").(string)
+	return config.Get(ctx, "rancher2:accessKey")
 }
 
 // The URL to the rancher API
 func GetApiUrl(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "rancher2:apiUrl")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "RANCHER_URL").(string)
+	return config.Get(ctx, "rancher2:apiUrl")
 }
 
 // Bootstrap rancher server
@@ -37,11 +29,7 @@ func GetBootstrap(ctx *pulumi.Context) bool {
 
 // CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 func GetCaCerts(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "rancher2:caCerts")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "RANCHER_CA_CERTS").(string)
+	return config.Get(ctx, "rancher2:caCerts")
 }
 
 // Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
@@ -60,18 +48,10 @@ func GetRetries(ctx *pulumi.Context) int {
 
 // API secret used to authenticate with the rancher server
 func GetSecretKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "rancher2:secretKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "RANCHER_SECRET_KEY").(string)
+	return config.Get(ctx, "rancher2:secretKey")
 }
 
 // API token used to authenticate with the rancher server
 func GetTokenKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "rancher2:tokenKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "RANCHER_TOKEN_KEY").(string)
+	return config.Get(ctx, "rancher2:tokenKey")
 }

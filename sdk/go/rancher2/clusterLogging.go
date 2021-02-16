@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -280,6 +279,85 @@ func (i *ClusterLogging) ToClusterLoggingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput)
 }
 
+func (i *ClusterLogging) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
+	return i.ToClusterLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterLogging) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingPtrOutput)
+}
+
+type ClusterLoggingPtrInput interface {
+	pulumi.Input
+
+	ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput
+	ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput
+}
+
+type clusterLoggingPtrType ClusterLoggingArgs
+
+func (*clusterLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLogging)(nil))
+}
+
+func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
+	return i.ToClusterLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingPtrOutput)
+}
+
+// ClusterLoggingArrayInput is an input type that accepts ClusterLoggingArray and ClusterLoggingArrayOutput values.
+// You can construct a concrete instance of `ClusterLoggingArrayInput` via:
+//
+//          ClusterLoggingArray{ ClusterLoggingArgs{...} }
+type ClusterLoggingArrayInput interface {
+	pulumi.Input
+
+	ToClusterLoggingArrayOutput() ClusterLoggingArrayOutput
+	ToClusterLoggingArrayOutputWithContext(context.Context) ClusterLoggingArrayOutput
+}
+
+type ClusterLoggingArray []ClusterLoggingInput
+
+func (ClusterLoggingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterLogging)(nil))
+}
+
+func (i ClusterLoggingArray) ToClusterLoggingArrayOutput() ClusterLoggingArrayOutput {
+	return i.ToClusterLoggingArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingArray) ToClusterLoggingArrayOutputWithContext(ctx context.Context) ClusterLoggingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingArrayOutput)
+}
+
+// ClusterLoggingMapInput is an input type that accepts ClusterLoggingMap and ClusterLoggingMapOutput values.
+// You can construct a concrete instance of `ClusterLoggingMapInput` via:
+//
+//          ClusterLoggingMap{ "key": ClusterLoggingArgs{...} }
+type ClusterLoggingMapInput interface {
+	pulumi.Input
+
+	ToClusterLoggingMapOutput() ClusterLoggingMapOutput
+	ToClusterLoggingMapOutputWithContext(context.Context) ClusterLoggingMapOutput
+}
+
+type ClusterLoggingMap map[string]ClusterLoggingInput
+
+func (ClusterLoggingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterLogging)(nil))
+}
+
+func (i ClusterLoggingMap) ToClusterLoggingMapOutput() ClusterLoggingMapOutput {
+	return i.ToClusterLoggingMapOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingMap) ToClusterLoggingMapOutputWithContext(ctx context.Context) ClusterLoggingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingMapOutput)
+}
+
 type ClusterLoggingOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +374,75 @@ func (o ClusterLoggingOutput) ToClusterLoggingOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ClusterLoggingOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
+	return o.ToClusterLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterLoggingOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
+	return o.ApplyT(func(v ClusterLogging) *ClusterLogging {
+		return &v
+	}).(ClusterLoggingPtrOutput)
+}
+
+type ClusterLoggingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLogging)(nil))
+}
+
+func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingPtrOutput) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
+	return o
+}
+
+type ClusterLoggingArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterLogging)(nil))
+}
+
+func (o ClusterLoggingArrayOutput) ToClusterLoggingArrayOutput() ClusterLoggingArrayOutput {
+	return o
+}
+
+func (o ClusterLoggingArrayOutput) ToClusterLoggingArrayOutputWithContext(ctx context.Context) ClusterLoggingArrayOutput {
+	return o
+}
+
+func (o ClusterLoggingArrayOutput) Index(i pulumi.IntInput) ClusterLoggingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterLogging {
+		return vs[0].([]ClusterLogging)[vs[1].(int)]
+	}).(ClusterLoggingOutput)
+}
+
+type ClusterLoggingMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterLogging)(nil))
+}
+
+func (o ClusterLoggingMapOutput) ToClusterLoggingMapOutput() ClusterLoggingMapOutput {
+	return o
+}
+
+func (o ClusterLoggingMapOutput) ToClusterLoggingMapOutputWithContext(ctx context.Context) ClusterLoggingMapOutput {
+	return o
+}
+
+func (o ClusterLoggingMapOutput) MapIndex(k pulumi.StringInput) ClusterLoggingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterLogging {
+		return vs[0].(map[string]ClusterLogging)[vs[1].(string)]
+	}).(ClusterLoggingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterLoggingOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingArrayOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingMapOutput{})
 }

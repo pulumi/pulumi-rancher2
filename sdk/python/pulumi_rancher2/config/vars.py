@@ -21,12 +21,12 @@ __all__ = [
 
 __config__ = pulumi.Config('rancher2')
 
-access_key = __config__.get('accessKey') or _utilities.get_env('RANCHER_ACCESS_KEY')
+access_key = __config__.get('accessKey')
 """
 API Key used to authenticate with the rancher server
 """
 
-api_url = __config__.get('apiUrl') or _utilities.get_env('RANCHER_URL')
+api_url = __config__.get('apiUrl')
 """
 The URL to the rancher API
 """
@@ -36,7 +36,7 @@ bootstrap = __config__.get('bootstrap') or (_utilities.get_env_bool('RANCHER_BOO
 Bootstrap rancher server
 """
 
-ca_certs = __config__.get('caCerts') or _utilities.get_env('RANCHER_CA_CERTS')
+ca_certs = __config__.get('caCerts')
 """
 CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 """
@@ -51,12 +51,12 @@ retries = __config__.get('retries')
 Rancher connection retries
 """
 
-secret_key = __config__.get('secretKey') or _utilities.get_env('RANCHER_SECRET_KEY')
+secret_key = __config__.get('secretKey')
 """
 API secret used to authenticate with the rancher server
 """
 
-token_key = __config__.get('tokenKey') or _utilities.get_env('RANCHER_TOKEN_KEY')
+token_key = __config__.get('tokenKey')
 """
 API token used to authenticate with the rancher server
 """

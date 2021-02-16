@@ -150,6 +150,85 @@ func (i *ClusterSync) ToClusterSyncOutputWithContext(ctx context.Context) Cluste
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncOutput)
 }
 
+func (i *ClusterSync) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
+	return i.ToClusterSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterSync) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncPtrOutput)
+}
+
+type ClusterSyncPtrInput interface {
+	pulumi.Input
+
+	ToClusterSyncPtrOutput() ClusterSyncPtrOutput
+	ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput
+}
+
+type clusterSyncPtrType ClusterSyncArgs
+
+func (*clusterSyncPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSync)(nil))
+}
+
+func (i *clusterSyncPtrType) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
+	return i.ToClusterSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSyncPtrType) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncPtrOutput)
+}
+
+// ClusterSyncArrayInput is an input type that accepts ClusterSyncArray and ClusterSyncArrayOutput values.
+// You can construct a concrete instance of `ClusterSyncArrayInput` via:
+//
+//          ClusterSyncArray{ ClusterSyncArgs{...} }
+type ClusterSyncArrayInput interface {
+	pulumi.Input
+
+	ToClusterSyncArrayOutput() ClusterSyncArrayOutput
+	ToClusterSyncArrayOutputWithContext(context.Context) ClusterSyncArrayOutput
+}
+
+type ClusterSyncArray []ClusterSyncInput
+
+func (ClusterSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterSync)(nil))
+}
+
+func (i ClusterSyncArray) ToClusterSyncArrayOutput() ClusterSyncArrayOutput {
+	return i.ToClusterSyncArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterSyncArray) ToClusterSyncArrayOutputWithContext(ctx context.Context) ClusterSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncArrayOutput)
+}
+
+// ClusterSyncMapInput is an input type that accepts ClusterSyncMap and ClusterSyncMapOutput values.
+// You can construct a concrete instance of `ClusterSyncMapInput` via:
+//
+//          ClusterSyncMap{ "key": ClusterSyncArgs{...} }
+type ClusterSyncMapInput interface {
+	pulumi.Input
+
+	ToClusterSyncMapOutput() ClusterSyncMapOutput
+	ToClusterSyncMapOutputWithContext(context.Context) ClusterSyncMapOutput
+}
+
+type ClusterSyncMap map[string]ClusterSyncInput
+
+func (ClusterSyncMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterSync)(nil))
+}
+
+func (i ClusterSyncMap) ToClusterSyncMapOutput() ClusterSyncMapOutput {
+	return i.ToClusterSyncMapOutputWithContext(context.Background())
+}
+
+func (i ClusterSyncMap) ToClusterSyncMapOutputWithContext(ctx context.Context) ClusterSyncMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncMapOutput)
+}
+
 type ClusterSyncOutput struct {
 	*pulumi.OutputState
 }
@@ -166,6 +245,75 @@ func (o ClusterSyncOutput) ToClusterSyncOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o ClusterSyncOutput) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
+	return o.ToClusterSyncPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSyncOutput) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
+	return o.ApplyT(func(v ClusterSync) *ClusterSync {
+		return &v
+	}).(ClusterSyncPtrOutput)
+}
+
+type ClusterSyncPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSync)(nil))
+}
+
+func (o ClusterSyncPtrOutput) ToClusterSyncPtrOutput() ClusterSyncPtrOutput {
+	return o
+}
+
+func (o ClusterSyncPtrOutput) ToClusterSyncPtrOutputWithContext(ctx context.Context) ClusterSyncPtrOutput {
+	return o
+}
+
+type ClusterSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSync)(nil))
+}
+
+func (o ClusterSyncArrayOutput) ToClusterSyncArrayOutput() ClusterSyncArrayOutput {
+	return o
+}
+
+func (o ClusterSyncArrayOutput) ToClusterSyncArrayOutputWithContext(ctx context.Context) ClusterSyncArrayOutput {
+	return o
+}
+
+func (o ClusterSyncArrayOutput) Index(i pulumi.IntInput) ClusterSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSync {
+		return vs[0].([]ClusterSync)[vs[1].(int)]
+	}).(ClusterSyncOutput)
+}
+
+type ClusterSyncMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterSyncMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterSync)(nil))
+}
+
+func (o ClusterSyncMapOutput) ToClusterSyncMapOutput() ClusterSyncMapOutput {
+	return o
+}
+
+func (o ClusterSyncMapOutput) ToClusterSyncMapOutputWithContext(ctx context.Context) ClusterSyncMapOutput {
+	return o
+}
+
+func (o ClusterSyncMapOutput) MapIndex(k pulumi.StringInput) ClusterSyncOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterSync {
+		return vs[0].(map[string]ClusterSync)[vs[1].(string)]
+	}).(ClusterSyncOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterSyncOutput{})
+	pulumi.RegisterOutputType(ClusterSyncPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSyncArrayOutput{})
+	pulumi.RegisterOutputType(ClusterSyncMapOutput{})
 }

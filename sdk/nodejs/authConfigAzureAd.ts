@@ -126,7 +126,8 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
     constructor(name: string, args: AuthConfigAzureAdArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthConfigAzureAdArgs | AuthConfigAzureAdState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AuthConfigAzureAdState | undefined;
             inputs["accessMode"] = state ? state.accessMode : undefined;
             inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
@@ -145,25 +146,25 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AuthConfigAzureAdArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.applicationSecret === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationSecret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationSecret'");
             }
-            if ((!args || args.authEndpoint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.authEndpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authEndpoint'");
             }
-            if ((!args || args.graphEndpoint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.graphEndpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'graphEndpoint'");
             }
-            if ((!args || args.rancherUrl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rancherUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rancherUrl'");
             }
-            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            if ((!args || args.tokenEndpoint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tokenEndpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tokenEndpoint'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;
@@ -182,12 +183,8 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AuthConfigAzureAd.__pulumiType, name, inputs, opts);
     }
