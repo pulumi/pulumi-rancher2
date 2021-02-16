@@ -134,7 +134,8 @@ export class ClusterLogging extends pulumi.CustomResource {
     constructor(name: string, args: ClusterLoggingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterLoggingArgs | ClusterLoggingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterLoggingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -153,10 +154,10 @@ export class ClusterLogging extends pulumi.CustomResource {
             inputs["syslogConfig"] = state ? state.syslogConfig : undefined;
         } else {
             const args = argsOrState as ClusterLoggingArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -175,12 +176,8 @@ export class ClusterLogging extends pulumi.CustomResource {
             inputs["splunkConfig"] = args ? args.splunkConfig : undefined;
             inputs["syslogConfig"] = args ? args.syslogConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterLogging.__pulumiType, name, inputs, opts);
     }

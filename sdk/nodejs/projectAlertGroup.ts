@@ -106,7 +106,8 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
     constructor(name: string, args: ProjectAlertGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectAlertGroupArgs | ProjectAlertGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectAlertGroupState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -119,7 +120,7 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
             inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ProjectAlertGroupArgs | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -132,12 +133,8 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
             inputs["recipients"] = args ? args.recipients : undefined;
             inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectAlertGroup.__pulumiType, name, inputs, opts);
     }

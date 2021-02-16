@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -212,6 +212,85 @@ func (i *ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupOutput)
 }
 
+func (i *ProjectAlertGroup) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
+	return i.ToProjectAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectAlertGroup) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupPtrOutput)
+}
+
+type ProjectAlertGroupPtrInput interface {
+	pulumi.Input
+
+	ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput
+	ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput
+}
+
+type projectAlertGroupPtrType ProjectAlertGroupArgs
+
+func (*projectAlertGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAlertGroup)(nil))
+}
+
+func (i *projectAlertGroupPtrType) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
+	return i.ToProjectAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *projectAlertGroupPtrType) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupPtrOutput)
+}
+
+// ProjectAlertGroupArrayInput is an input type that accepts ProjectAlertGroupArray and ProjectAlertGroupArrayOutput values.
+// You can construct a concrete instance of `ProjectAlertGroupArrayInput` via:
+//
+//          ProjectAlertGroupArray{ ProjectAlertGroupArgs{...} }
+type ProjectAlertGroupArrayInput interface {
+	pulumi.Input
+
+	ToProjectAlertGroupArrayOutput() ProjectAlertGroupArrayOutput
+	ToProjectAlertGroupArrayOutputWithContext(context.Context) ProjectAlertGroupArrayOutput
+}
+
+type ProjectAlertGroupArray []ProjectAlertGroupInput
+
+func (ProjectAlertGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectAlertGroup)(nil))
+}
+
+func (i ProjectAlertGroupArray) ToProjectAlertGroupArrayOutput() ProjectAlertGroupArrayOutput {
+	return i.ToProjectAlertGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertGroupArray) ToProjectAlertGroupArrayOutputWithContext(ctx context.Context) ProjectAlertGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupArrayOutput)
+}
+
+// ProjectAlertGroupMapInput is an input type that accepts ProjectAlertGroupMap and ProjectAlertGroupMapOutput values.
+// You can construct a concrete instance of `ProjectAlertGroupMapInput` via:
+//
+//          ProjectAlertGroupMap{ "key": ProjectAlertGroupArgs{...} }
+type ProjectAlertGroupMapInput interface {
+	pulumi.Input
+
+	ToProjectAlertGroupMapOutput() ProjectAlertGroupMapOutput
+	ToProjectAlertGroupMapOutputWithContext(context.Context) ProjectAlertGroupMapOutput
+}
+
+type ProjectAlertGroupMap map[string]ProjectAlertGroupInput
+
+func (ProjectAlertGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectAlertGroup)(nil))
+}
+
+func (i ProjectAlertGroupMap) ToProjectAlertGroupMapOutput() ProjectAlertGroupMapOutput {
+	return i.ToProjectAlertGroupMapOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertGroupMap) ToProjectAlertGroupMapOutputWithContext(ctx context.Context) ProjectAlertGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupMapOutput)
+}
+
 type ProjectAlertGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -228,6 +307,75 @@ func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx contex
 	return o
 }
 
+func (o ProjectAlertGroupOutput) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
+	return o.ToProjectAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectAlertGroupOutput) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
+	return o.ApplyT(func(v ProjectAlertGroup) *ProjectAlertGroup {
+		return &v
+	}).(ProjectAlertGroupPtrOutput)
+}
+
+type ProjectAlertGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectAlertGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAlertGroup)(nil))
+}
+
+func (o ProjectAlertGroupPtrOutput) ToProjectAlertGroupPtrOutput() ProjectAlertGroupPtrOutput {
+	return o
+}
+
+func (o ProjectAlertGroupPtrOutput) ToProjectAlertGroupPtrOutputWithContext(ctx context.Context) ProjectAlertGroupPtrOutput {
+	return o
+}
+
+type ProjectAlertGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectAlertGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAlertGroup)(nil))
+}
+
+func (o ProjectAlertGroupArrayOutput) ToProjectAlertGroupArrayOutput() ProjectAlertGroupArrayOutput {
+	return o
+}
+
+func (o ProjectAlertGroupArrayOutput) ToProjectAlertGroupArrayOutputWithContext(ctx context.Context) ProjectAlertGroupArrayOutput {
+	return o
+}
+
+func (o ProjectAlertGroupArrayOutput) Index(i pulumi.IntInput) ProjectAlertGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAlertGroup {
+		return vs[0].([]ProjectAlertGroup)[vs[1].(int)]
+	}).(ProjectAlertGroupOutput)
+}
+
+type ProjectAlertGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectAlertGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectAlertGroup)(nil))
+}
+
+func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutput() ProjectAlertGroupMapOutput {
+	return o
+}
+
+func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutputWithContext(ctx context.Context) ProjectAlertGroupMapOutput {
+	return o
+}
+
+func (o ProjectAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectAlertGroup {
+		return vs[0].(map[string]ProjectAlertGroup)[vs[1].(string)]
+	}).(ProjectAlertGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectAlertGroupOutput{})
+	pulumi.RegisterOutputType(ProjectAlertGroupPtrOutput{})
+	pulumi.RegisterOutputType(ProjectAlertGroupArrayOutput{})
+	pulumi.RegisterOutputType(ProjectAlertGroupMapOutput{})
 }

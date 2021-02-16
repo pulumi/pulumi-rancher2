@@ -202,6 +202,85 @@ func (i *ClusterDriver) ToClusterDriverOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverOutput)
 }
 
+func (i *ClusterDriver) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
+	return i.ToClusterDriverPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterDriver) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverPtrOutput)
+}
+
+type ClusterDriverPtrInput interface {
+	pulumi.Input
+
+	ToClusterDriverPtrOutput() ClusterDriverPtrOutput
+	ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput
+}
+
+type clusterDriverPtrType ClusterDriverArgs
+
+func (*clusterDriverPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDriver)(nil))
+}
+
+func (i *clusterDriverPtrType) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
+	return i.ToClusterDriverPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterDriverPtrType) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverPtrOutput)
+}
+
+// ClusterDriverArrayInput is an input type that accepts ClusterDriverArray and ClusterDriverArrayOutput values.
+// You can construct a concrete instance of `ClusterDriverArrayInput` via:
+//
+//          ClusterDriverArray{ ClusterDriverArgs{...} }
+type ClusterDriverArrayInput interface {
+	pulumi.Input
+
+	ToClusterDriverArrayOutput() ClusterDriverArrayOutput
+	ToClusterDriverArrayOutputWithContext(context.Context) ClusterDriverArrayOutput
+}
+
+type ClusterDriverArray []ClusterDriverInput
+
+func (ClusterDriverArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterDriver)(nil))
+}
+
+func (i ClusterDriverArray) ToClusterDriverArrayOutput() ClusterDriverArrayOutput {
+	return i.ToClusterDriverArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDriverArray) ToClusterDriverArrayOutputWithContext(ctx context.Context) ClusterDriverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverArrayOutput)
+}
+
+// ClusterDriverMapInput is an input type that accepts ClusterDriverMap and ClusterDriverMapOutput values.
+// You can construct a concrete instance of `ClusterDriverMapInput` via:
+//
+//          ClusterDriverMap{ "key": ClusterDriverArgs{...} }
+type ClusterDriverMapInput interface {
+	pulumi.Input
+
+	ToClusterDriverMapOutput() ClusterDriverMapOutput
+	ToClusterDriverMapOutputWithContext(context.Context) ClusterDriverMapOutput
+}
+
+type ClusterDriverMap map[string]ClusterDriverInput
+
+func (ClusterDriverMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterDriver)(nil))
+}
+
+func (i ClusterDriverMap) ToClusterDriverMapOutput() ClusterDriverMapOutput {
+	return i.ToClusterDriverMapOutputWithContext(context.Background())
+}
+
+func (i ClusterDriverMap) ToClusterDriverMapOutputWithContext(ctx context.Context) ClusterDriverMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDriverMapOutput)
+}
+
 type ClusterDriverOutput struct {
 	*pulumi.OutputState
 }
@@ -218,6 +297,75 @@ func (o ClusterDriverOutput) ToClusterDriverOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ClusterDriverOutput) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
+	return o.ToClusterDriverPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterDriverOutput) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
+	return o.ApplyT(func(v ClusterDriver) *ClusterDriver {
+		return &v
+	}).(ClusterDriverPtrOutput)
+}
+
+type ClusterDriverPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterDriverPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDriver)(nil))
+}
+
+func (o ClusterDriverPtrOutput) ToClusterDriverPtrOutput() ClusterDriverPtrOutput {
+	return o
+}
+
+func (o ClusterDriverPtrOutput) ToClusterDriverPtrOutputWithContext(ctx context.Context) ClusterDriverPtrOutput {
+	return o
+}
+
+type ClusterDriverArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDriverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDriver)(nil))
+}
+
+func (o ClusterDriverArrayOutput) ToClusterDriverArrayOutput() ClusterDriverArrayOutput {
+	return o
+}
+
+func (o ClusterDriverArrayOutput) ToClusterDriverArrayOutputWithContext(ctx context.Context) ClusterDriverArrayOutput {
+	return o
+}
+
+func (o ClusterDriverArrayOutput) Index(i pulumi.IntInput) ClusterDriverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDriver {
+		return vs[0].([]ClusterDriver)[vs[1].(int)]
+	}).(ClusterDriverOutput)
+}
+
+type ClusterDriverMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterDriverMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterDriver)(nil))
+}
+
+func (o ClusterDriverMapOutput) ToClusterDriverMapOutput() ClusterDriverMapOutput {
+	return o
+}
+
+func (o ClusterDriverMapOutput) ToClusterDriverMapOutputWithContext(ctx context.Context) ClusterDriverMapOutput {
+	return o
+}
+
+func (o ClusterDriverMapOutput) MapIndex(k pulumi.StringInput) ClusterDriverOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterDriver {
+		return vs[0].(map[string]ClusterDriver)[vs[1].(string)]
+	}).(ClusterDriverOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterDriverOutput{})
+	pulumi.RegisterOutputType(ClusterDriverPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDriverArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDriverMapOutput{})
 }

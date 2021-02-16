@@ -96,7 +96,8 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
     constructor(name: string, args: GlobalRoleBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalRoleBindingArgs | GlobalRoleBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalRoleBindingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["globalRoleId"] = state ? state.globalRoleId : undefined;
@@ -106,7 +107,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as GlobalRoleBindingArgs | undefined;
-            if ((!args || args.globalRoleId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.globalRoleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'globalRoleId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -116,12 +117,8 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalRoleBinding.__pulumiType, name, inputs, opts);
     }

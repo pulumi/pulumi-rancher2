@@ -127,7 +127,8 @@ export class AuthConfigPing extends pulumi.CustomResource {
     constructor(name: string, args: AuthConfigPingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthConfigPingArgs | AuthConfigPingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AuthConfigPingState | undefined;
             inputs["accessMode"] = state ? state.accessMode : undefined;
             inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
@@ -146,28 +147,28 @@ export class AuthConfigPing extends pulumi.CustomResource {
             inputs["userNameField"] = state ? state.userNameField : undefined;
         } else {
             const args = argsOrState as AuthConfigPingArgs | undefined;
-            if ((!args || args.displayNameField === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayNameField === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayNameField'");
             }
-            if ((!args || args.groupsField === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupsField === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupsField'");
             }
-            if ((!args || args.idpMetadataContent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.idpMetadataContent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'idpMetadataContent'");
             }
-            if ((!args || args.rancherApiHost === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rancherApiHost === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rancherApiHost'");
             }
-            if ((!args || args.spCert === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spCert === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spCert'");
             }
-            if ((!args || args.spKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spKey'");
             }
-            if ((!args || args.uidField === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.uidField === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uidField'");
             }
-            if ((!args || args.userNameField === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userNameField === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userNameField'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;
@@ -186,12 +187,8 @@ export class AuthConfigPing extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AuthConfigPing.__pulumiType, name, inputs, opts);
     }

@@ -274,7 +274,8 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     constructor(name: string, args?: PodSecurityPolicyTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PodSecurityPolicyTemplateArgs | PodSecurityPolicyTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PodSecurityPolicyTemplateState | undefined;
             inputs["allowPrivilegeEscalation"] = state ? state.allowPrivilegeEscalation : undefined;
             inputs["allowedCapabilities"] = state ? state.allowedCapabilities : undefined;
@@ -335,12 +336,8 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
             inputs["supplementalGroup"] = args ? args.supplementalGroup : undefined;
             inputs["volumes"] = args ? args.volumes : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PodSecurityPolicyTemplate.__pulumiType, name, inputs, opts);
     }

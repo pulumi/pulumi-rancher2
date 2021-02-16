@@ -72,7 +72,8 @@ export class ClusterSync extends pulumi.CustomResource {
     constructor(name: string, args: ClusterSyncArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterSyncArgs | ClusterSyncState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterSyncState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
@@ -84,7 +85,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -96,12 +97,8 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["kubeConfig"] = undefined /*out*/;
             inputs["systemProjectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterSync.__pulumiType, name, inputs, opts);
     }

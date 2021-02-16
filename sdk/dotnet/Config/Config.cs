@@ -11,12 +11,12 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// API Key used to authenticate with the rancher server
         /// </summary>
-        public static string? AccessKey { get; set; } = __config.Get("accessKey") ?? Utilities.GetEnv("RANCHER_ACCESS_KEY");
+        public static string? AccessKey { get; set; } = __config.Get("accessKey");
 
         /// <summary>
         /// The URL to the rancher API
         /// </summary>
-        public static string? ApiUrl { get; set; } = __config.Get("apiUrl") ?? Utilities.GetEnv("RANCHER_URL");
+        public static string? ApiUrl { get; set; } = __config.Get("apiUrl");
 
         /// <summary>
         /// Bootstrap rancher server
@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
         /// </summary>
-        public static string? CaCerts { get; set; } = __config.Get("caCerts") ?? Utilities.GetEnv("RANCHER_CA_CERTS");
+        public static string? CaCerts { get; set; } = __config.Get("caCerts");
 
         /// <summary>
         /// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
@@ -41,12 +41,12 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// API secret used to authenticate with the rancher server
         /// </summary>
-        public static string? SecretKey { get; set; } = __config.Get("secretKey") ?? Utilities.GetEnv("RANCHER_SECRET_KEY");
+        public static string? SecretKey { get; set; } = __config.Get("secretKey");
 
         /// <summary>
         /// API token used to authenticate with the rancher server
         /// </summary>
-        public static string? TokenKey { get; set; } = __config.Get("tokenKey") ?? Utilities.GetEnv("RANCHER_TOKEN_KEY");
+        public static string? TokenKey { get; set; } = __config.Get("tokenKey");
 
     }
 }

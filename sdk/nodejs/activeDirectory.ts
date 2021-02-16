@@ -184,7 +184,8 @@ export class ActiveDirectory extends pulumi.CustomResource {
     constructor(name: string, args: ActiveDirectoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ActiveDirectoryArgs | ActiveDirectoryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ActiveDirectoryState | undefined;
             inputs["accessMode"] = state ? state.accessMode : undefined;
             inputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
@@ -222,22 +223,22 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
         } else {
             const args = argsOrState as ActiveDirectoryArgs | undefined;
-            if ((!args || args.servers === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.servers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servers'");
             }
-            if ((!args || args.serviceAccountPassword === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceAccountPassword === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountPassword'");
             }
-            if ((!args || args.serviceAccountUsername === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceAccountUsername === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountUsername'");
             }
-            if ((!args || args.testPassword === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.testPassword === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testPassword'");
             }
-            if ((!args || args.testUsername === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.testUsername === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testUsername'");
             }
-            if ((!args || args.userSearchBase === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userSearchBase === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userSearchBase'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;
@@ -275,12 +276,8 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ActiveDirectory.__pulumiType, name, inputs, opts);
     }

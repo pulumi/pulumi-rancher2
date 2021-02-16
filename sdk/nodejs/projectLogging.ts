@@ -134,7 +134,8 @@ export class ProjectLogging extends pulumi.CustomResource {
     constructor(name: string, args: ProjectLoggingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectLoggingArgs | ProjectLoggingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectLoggingState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["customTargetConfig"] = state ? state.customTargetConfig : undefined;
@@ -153,10 +154,10 @@ export class ProjectLogging extends pulumi.CustomResource {
             inputs["syslogConfig"] = state ? state.syslogConfig : undefined;
         } else {
             const args = argsOrState as ProjectLoggingArgs | undefined;
-            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -175,12 +176,8 @@ export class ProjectLogging extends pulumi.CustomResource {
             inputs["splunkConfig"] = args ? args.splunkConfig : undefined;
             inputs["syslogConfig"] = args ? args.syslogConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectLogging.__pulumiType, name, inputs, opts);
     }

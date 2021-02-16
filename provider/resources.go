@@ -86,35 +86,10 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-rancher2",
 		GitHubOrg:   "rancher",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"api_url": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"RANCHER_URL"},
-				},
-			},
-			"access_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"RANCHER_ACCESS_KEY"},
-				},
-			},
 			"bootstrap": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"RANCHER_BOOTSTRAP"},
 					Value:   false,
-				},
-			},
-			"secret_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"RANCHER_SECRET_KEY"},
-				},
-			},
-			"token_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"RANCHER_TOKEN_KEY"},
-				},
-			},
-			"ca_certs": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"RANCHER_CA_CERTS"},
 				},
 			},
 			"insecure": {

@@ -109,7 +109,8 @@ export class CloudCredential extends pulumi.CustomResource {
     constructor(name: string, args?: CloudCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CloudCredentialArgs | CloudCredentialState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CloudCredentialState | undefined;
             inputs["amazonec2CredentialConfig"] = state ? state.amazonec2CredentialConfig : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
@@ -136,12 +137,8 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
             inputs["driver"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CloudCredential.__pulumiType, name, inputs, opts);
     }

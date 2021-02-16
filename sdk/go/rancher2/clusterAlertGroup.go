@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -218,6 +218,85 @@ func (i *ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupOutput)
 }
 
+func (i *ClusterAlertGroup) ToClusterAlertGroupPtrOutput() ClusterAlertGroupPtrOutput {
+	return i.ToClusterAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterAlertGroup) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupPtrOutput)
+}
+
+type ClusterAlertGroupPtrInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupPtrOutput() ClusterAlertGroupPtrOutput
+	ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput
+}
+
+type clusterAlertGroupPtrType ClusterAlertGroupArgs
+
+func (*clusterAlertGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertGroup)(nil))
+}
+
+func (i *clusterAlertGroupPtrType) ToClusterAlertGroupPtrOutput() ClusterAlertGroupPtrOutput {
+	return i.ToClusterAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlertGroupPtrType) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupPtrOutput)
+}
+
+// ClusterAlertGroupArrayInput is an input type that accepts ClusterAlertGroupArray and ClusterAlertGroupArrayOutput values.
+// You can construct a concrete instance of `ClusterAlertGroupArrayInput` via:
+//
+//          ClusterAlertGroupArray{ ClusterAlertGroupArgs{...} }
+type ClusterAlertGroupArrayInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupArrayOutput() ClusterAlertGroupArrayOutput
+	ToClusterAlertGroupArrayOutputWithContext(context.Context) ClusterAlertGroupArrayOutput
+}
+
+type ClusterAlertGroupArray []ClusterAlertGroupInput
+
+func (ClusterAlertGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterAlertGroup)(nil))
+}
+
+func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutput() ClusterAlertGroupArrayOutput {
+	return i.ToClusterAlertGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutputWithContext(ctx context.Context) ClusterAlertGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupArrayOutput)
+}
+
+// ClusterAlertGroupMapInput is an input type that accepts ClusterAlertGroupMap and ClusterAlertGroupMapOutput values.
+// You can construct a concrete instance of `ClusterAlertGroupMapInput` via:
+//
+//          ClusterAlertGroupMap{ "key": ClusterAlertGroupArgs{...} }
+type ClusterAlertGroupMapInput interface {
+	pulumi.Input
+
+	ToClusterAlertGroupMapOutput() ClusterAlertGroupMapOutput
+	ToClusterAlertGroupMapOutputWithContext(context.Context) ClusterAlertGroupMapOutput
+}
+
+type ClusterAlertGroupMap map[string]ClusterAlertGroupInput
+
+func (ClusterAlertGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterAlertGroup)(nil))
+}
+
+func (i ClusterAlertGroupMap) ToClusterAlertGroupMapOutput() ClusterAlertGroupMapOutput {
+	return i.ToClusterAlertGroupMapOutputWithContext(context.Background())
+}
+
+func (i ClusterAlertGroupMap) ToClusterAlertGroupMapOutputWithContext(ctx context.Context) ClusterAlertGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupMapOutput)
+}
+
 type ClusterAlertGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -234,6 +313,75 @@ func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutputWithContext(ctx contex
 	return o
 }
 
+func (o ClusterAlertGroupOutput) ToClusterAlertGroupPtrOutput() ClusterAlertGroupPtrOutput {
+	return o.ToClusterAlertGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlertGroupOutput) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
+	return o.ApplyT(func(v ClusterAlertGroup) *ClusterAlertGroup {
+		return &v
+	}).(ClusterAlertGroupPtrOutput)
+}
+
+type ClusterAlertGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlertGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlertGroup)(nil))
+}
+
+func (o ClusterAlertGroupPtrOutput) ToClusterAlertGroupPtrOutput() ClusterAlertGroupPtrOutput {
+	return o
+}
+
+func (o ClusterAlertGroupPtrOutput) ToClusterAlertGroupPtrOutputWithContext(ctx context.Context) ClusterAlertGroupPtrOutput {
+	return o
+}
+
+type ClusterAlertGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAlertGroup)(nil))
+}
+
+func (o ClusterAlertGroupArrayOutput) ToClusterAlertGroupArrayOutput() ClusterAlertGroupArrayOutput {
+	return o
+}
+
+func (o ClusterAlertGroupArrayOutput) ToClusterAlertGroupArrayOutputWithContext(ctx context.Context) ClusterAlertGroupArrayOutput {
+	return o
+}
+
+func (o ClusterAlertGroupArrayOutput) Index(i pulumi.IntInput) ClusterAlertGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlertGroup {
+		return vs[0].([]ClusterAlertGroup)[vs[1].(int)]
+	}).(ClusterAlertGroupOutput)
+}
+
+type ClusterAlertGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlertGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterAlertGroup)(nil))
+}
+
+func (o ClusterAlertGroupMapOutput) ToClusterAlertGroupMapOutput() ClusterAlertGroupMapOutput {
+	return o
+}
+
+func (o ClusterAlertGroupMapOutput) ToClusterAlertGroupMapOutputWithContext(ctx context.Context) ClusterAlertGroupMapOutput {
+	return o
+}
+
+func (o ClusterAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlertGroup {
+		return vs[0].(map[string]ClusterAlertGroup)[vs[1].(string)]
+	}).(ClusterAlertGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterAlertGroupOutput{})
+	pulumi.RegisterOutputType(ClusterAlertGroupPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlertGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAlertGroupMapOutput{})
 }

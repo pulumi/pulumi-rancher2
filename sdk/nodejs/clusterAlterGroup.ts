@@ -87,7 +87,8 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterAlterGroupArgs | ClusterAlterGroupState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterAlterGroupState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -100,7 +101,7 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
             inputs["repeatIntervalSeconds"] = state ? state.repeatIntervalSeconds : undefined;
         } else {
             const args = argsOrState as ClusterAlterGroupArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -113,12 +114,8 @@ export class ClusterAlterGroup extends pulumi.CustomResource {
             inputs["recipients"] = args ? args.recipients : undefined;
             inputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterAlterGroup.__pulumiType, name, inputs, opts);
     }

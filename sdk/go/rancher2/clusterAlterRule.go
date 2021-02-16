@@ -231,6 +231,85 @@ func (i *ClusterAlterRule) ToClusterAlterRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleOutput)
 }
 
+func (i *ClusterAlterRule) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
+	return i.ToClusterAlterRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterAlterRule) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRulePtrOutput)
+}
+
+type ClusterAlterRulePtrInput interface {
+	pulumi.Input
+
+	ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput
+	ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput
+}
+
+type clusterAlterRulePtrType ClusterAlterRuleArgs
+
+func (*clusterAlterRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlterRule)(nil))
+}
+
+func (i *clusterAlterRulePtrType) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
+	return i.ToClusterAlterRulePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAlterRulePtrType) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRulePtrOutput)
+}
+
+// ClusterAlterRuleArrayInput is an input type that accepts ClusterAlterRuleArray and ClusterAlterRuleArrayOutput values.
+// You can construct a concrete instance of `ClusterAlterRuleArrayInput` via:
+//
+//          ClusterAlterRuleArray{ ClusterAlterRuleArgs{...} }
+type ClusterAlterRuleArrayInput interface {
+	pulumi.Input
+
+	ToClusterAlterRuleArrayOutput() ClusterAlterRuleArrayOutput
+	ToClusterAlterRuleArrayOutputWithContext(context.Context) ClusterAlterRuleArrayOutput
+}
+
+type ClusterAlterRuleArray []ClusterAlterRuleInput
+
+func (ClusterAlterRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterAlterRule)(nil))
+}
+
+func (i ClusterAlterRuleArray) ToClusterAlterRuleArrayOutput() ClusterAlterRuleArrayOutput {
+	return i.ToClusterAlterRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAlterRuleArray) ToClusterAlterRuleArrayOutputWithContext(ctx context.Context) ClusterAlterRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleArrayOutput)
+}
+
+// ClusterAlterRuleMapInput is an input type that accepts ClusterAlterRuleMap and ClusterAlterRuleMapOutput values.
+// You can construct a concrete instance of `ClusterAlterRuleMapInput` via:
+//
+//          ClusterAlterRuleMap{ "key": ClusterAlterRuleArgs{...} }
+type ClusterAlterRuleMapInput interface {
+	pulumi.Input
+
+	ToClusterAlterRuleMapOutput() ClusterAlterRuleMapOutput
+	ToClusterAlterRuleMapOutputWithContext(context.Context) ClusterAlterRuleMapOutput
+}
+
+type ClusterAlterRuleMap map[string]ClusterAlterRuleInput
+
+func (ClusterAlterRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterAlterRule)(nil))
+}
+
+func (i ClusterAlterRuleMap) ToClusterAlterRuleMapOutput() ClusterAlterRuleMapOutput {
+	return i.ToClusterAlterRuleMapOutputWithContext(context.Background())
+}
+
+func (i ClusterAlterRuleMap) ToClusterAlterRuleMapOutputWithContext(ctx context.Context) ClusterAlterRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlterRuleMapOutput)
+}
+
 type ClusterAlterRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -247,6 +326,75 @@ func (o ClusterAlterRuleOutput) ToClusterAlterRuleOutputWithContext(ctx context.
 	return o
 }
 
+func (o ClusterAlterRuleOutput) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
+	return o.ToClusterAlterRulePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAlterRuleOutput) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
+	return o.ApplyT(func(v ClusterAlterRule) *ClusterAlterRule {
+		return &v
+	}).(ClusterAlterRulePtrOutput)
+}
+
+type ClusterAlterRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterAlterRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAlterRule)(nil))
+}
+
+func (o ClusterAlterRulePtrOutput) ToClusterAlterRulePtrOutput() ClusterAlterRulePtrOutput {
+	return o
+}
+
+func (o ClusterAlterRulePtrOutput) ToClusterAlterRulePtrOutputWithContext(ctx context.Context) ClusterAlterRulePtrOutput {
+	return o
+}
+
+type ClusterAlterRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlterRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAlterRule)(nil))
+}
+
+func (o ClusterAlterRuleArrayOutput) ToClusterAlterRuleArrayOutput() ClusterAlterRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAlterRuleArrayOutput) ToClusterAlterRuleArrayOutputWithContext(ctx context.Context) ClusterAlterRuleArrayOutput {
+	return o
+}
+
+func (o ClusterAlterRuleArrayOutput) Index(i pulumi.IntInput) ClusterAlterRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAlterRule {
+		return vs[0].([]ClusterAlterRule)[vs[1].(int)]
+	}).(ClusterAlterRuleOutput)
+}
+
+type ClusterAlterRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterAlterRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterAlterRule)(nil))
+}
+
+func (o ClusterAlterRuleMapOutput) ToClusterAlterRuleMapOutput() ClusterAlterRuleMapOutput {
+	return o
+}
+
+func (o ClusterAlterRuleMapOutput) ToClusterAlterRuleMapOutputWithContext(ctx context.Context) ClusterAlterRuleMapOutput {
+	return o
+}
+
+func (o ClusterAlterRuleMapOutput) MapIndex(k pulumi.StringInput) ClusterAlterRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterAlterRule {
+		return vs[0].(map[string]ClusterAlterRule)[vs[1].(string)]
+	}).(ClusterAlterRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterAlterRuleOutput{})
+	pulumi.RegisterOutputType(ClusterAlterRulePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAlterRuleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAlterRuleMapOutput{})
 }

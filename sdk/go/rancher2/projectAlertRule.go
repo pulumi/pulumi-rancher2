@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -290,6 +289,85 @@ func (i *ProjectAlertRule) ToProjectAlertRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleOutput)
 }
 
+func (i *ProjectAlertRule) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
+	return i.ToProjectAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectAlertRule) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRulePtrOutput)
+}
+
+type ProjectAlertRulePtrInput interface {
+	pulumi.Input
+
+	ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput
+	ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput
+}
+
+type projectAlertRulePtrType ProjectAlertRuleArgs
+
+func (*projectAlertRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAlertRule)(nil))
+}
+
+func (i *projectAlertRulePtrType) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
+	return i.ToProjectAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (i *projectAlertRulePtrType) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRulePtrOutput)
+}
+
+// ProjectAlertRuleArrayInput is an input type that accepts ProjectAlertRuleArray and ProjectAlertRuleArrayOutput values.
+// You can construct a concrete instance of `ProjectAlertRuleArrayInput` via:
+//
+//          ProjectAlertRuleArray{ ProjectAlertRuleArgs{...} }
+type ProjectAlertRuleArrayInput interface {
+	pulumi.Input
+
+	ToProjectAlertRuleArrayOutput() ProjectAlertRuleArrayOutput
+	ToProjectAlertRuleArrayOutputWithContext(context.Context) ProjectAlertRuleArrayOutput
+}
+
+type ProjectAlertRuleArray []ProjectAlertRuleInput
+
+func (ProjectAlertRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectAlertRule)(nil))
+}
+
+func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutput() ProjectAlertRuleArrayOutput {
+	return i.ToProjectAlertRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutputWithContext(ctx context.Context) ProjectAlertRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleArrayOutput)
+}
+
+// ProjectAlertRuleMapInput is an input type that accepts ProjectAlertRuleMap and ProjectAlertRuleMapOutput values.
+// You can construct a concrete instance of `ProjectAlertRuleMapInput` via:
+//
+//          ProjectAlertRuleMap{ "key": ProjectAlertRuleArgs{...} }
+type ProjectAlertRuleMapInput interface {
+	pulumi.Input
+
+	ToProjectAlertRuleMapOutput() ProjectAlertRuleMapOutput
+	ToProjectAlertRuleMapOutputWithContext(context.Context) ProjectAlertRuleMapOutput
+}
+
+type ProjectAlertRuleMap map[string]ProjectAlertRuleInput
+
+func (ProjectAlertRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectAlertRule)(nil))
+}
+
+func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutput() ProjectAlertRuleMapOutput {
+	return i.ToProjectAlertRuleMapOutputWithContext(context.Background())
+}
+
+func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutputWithContext(ctx context.Context) ProjectAlertRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleMapOutput)
+}
+
 type ProjectAlertRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -306,6 +384,75 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
+	return o.ToProjectAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (o ProjectAlertRuleOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
+	return o.ApplyT(func(v ProjectAlertRule) *ProjectAlertRule {
+		return &v
+	}).(ProjectAlertRulePtrOutput)
+}
+
+type ProjectAlertRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectAlertRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAlertRule)(nil))
+}
+
+func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutput() ProjectAlertRulePtrOutput {
+	return o
+}
+
+func (o ProjectAlertRulePtrOutput) ToProjectAlertRulePtrOutputWithContext(ctx context.Context) ProjectAlertRulePtrOutput {
+	return o
+}
+
+type ProjectAlertRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectAlertRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAlertRule)(nil))
+}
+
+func (o ProjectAlertRuleArrayOutput) ToProjectAlertRuleArrayOutput() ProjectAlertRuleArrayOutput {
+	return o
+}
+
+func (o ProjectAlertRuleArrayOutput) ToProjectAlertRuleArrayOutputWithContext(ctx context.Context) ProjectAlertRuleArrayOutput {
+	return o
+}
+
+func (o ProjectAlertRuleArrayOutput) Index(i pulumi.IntInput) ProjectAlertRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAlertRule {
+		return vs[0].([]ProjectAlertRule)[vs[1].(int)]
+	}).(ProjectAlertRuleOutput)
+}
+
+type ProjectAlertRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectAlertRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectAlertRule)(nil))
+}
+
+func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutput() ProjectAlertRuleMapOutput {
+	return o
+}
+
+func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutputWithContext(ctx context.Context) ProjectAlertRuleMapOutput {
+	return o
+}
+
+func (o ProjectAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectAlertRule {
+		return vs[0].(map[string]ProjectAlertRule)[vs[1].(string)]
+	}).(ProjectAlertRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectAlertRuleOutput{})
+	pulumi.RegisterOutputType(ProjectAlertRulePtrOutput{})
+	pulumi.RegisterOutputType(ProjectAlertRuleArrayOutput{})
+	pulumi.RegisterOutputType(ProjectAlertRuleMapOutput{})
 }

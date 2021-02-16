@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("rancher2", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// The URL to the rancher API
         /// </summary>
-        [Input("apiUrl")]
-        public Input<string>? ApiUrl { get; set; }
+        [Input("apiUrl", required: true)]
+        public Input<string> ApiUrl { get; set; } = null!;
 
         /// <summary>
         /// Bootstrap rancher server
@@ -95,13 +95,8 @@ namespace Pulumi.Rancher2
 
         public ProviderArgs()
         {
-            AccessKey = Utilities.GetEnv("RANCHER_ACCESS_KEY");
-            ApiUrl = Utilities.GetEnv("RANCHER_URL");
             Bootstrap = Utilities.GetEnvBoolean("RANCHER_BOOTSTRAP") ?? false;
-            CaCerts = Utilities.GetEnv("RANCHER_CA_CERTS");
             Insecure = Utilities.GetEnvBoolean("RANCHER_INSECURE") ?? false;
-            SecretKey = Utilities.GetEnv("RANCHER_SECRET_KEY");
-            TokenKey = Utilities.GetEnv("RANCHER_TOKEN_KEY");
         }
     }
 }

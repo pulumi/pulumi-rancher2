@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -279,6 +279,85 @@ func (i *AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdOutput)
 }
 
+func (i *AuthConfigAzureAd) ToAuthConfigAzureAdPtrOutput() AuthConfigAzureAdPtrOutput {
+	return i.ToAuthConfigAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigAzureAd) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdPtrOutput)
+}
+
+type AuthConfigAzureAdPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigAzureAdPtrOutput() AuthConfigAzureAdPtrOutput
+	ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput
+}
+
+type authConfigAzureAdPtrType AuthConfigAzureAdArgs
+
+func (*authConfigAzureAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigAzureAd)(nil))
+}
+
+func (i *authConfigAzureAdPtrType) ToAuthConfigAzureAdPtrOutput() AuthConfigAzureAdPtrOutput {
+	return i.ToAuthConfigAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigAzureAdPtrType) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdPtrOutput)
+}
+
+// AuthConfigAzureAdArrayInput is an input type that accepts AuthConfigAzureAdArray and AuthConfigAzureAdArrayOutput values.
+// You can construct a concrete instance of `AuthConfigAzureAdArrayInput` via:
+//
+//          AuthConfigAzureAdArray{ AuthConfigAzureAdArgs{...} }
+type AuthConfigAzureAdArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigAzureAdArrayOutput() AuthConfigAzureAdArrayOutput
+	ToAuthConfigAzureAdArrayOutputWithContext(context.Context) AuthConfigAzureAdArrayOutput
+}
+
+type AuthConfigAzureAdArray []AuthConfigAzureAdInput
+
+func (AuthConfigAzureAdArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigAzureAd)(nil))
+}
+
+func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutput() AuthConfigAzureAdArrayOutput {
+	return i.ToAuthConfigAzureAdArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutputWithContext(ctx context.Context) AuthConfigAzureAdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdArrayOutput)
+}
+
+// AuthConfigAzureAdMapInput is an input type that accepts AuthConfigAzureAdMap and AuthConfigAzureAdMapOutput values.
+// You can construct a concrete instance of `AuthConfigAzureAdMapInput` via:
+//
+//          AuthConfigAzureAdMap{ "key": AuthConfigAzureAdArgs{...} }
+type AuthConfigAzureAdMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigAzureAdMapOutput() AuthConfigAzureAdMapOutput
+	ToAuthConfigAzureAdMapOutputWithContext(context.Context) AuthConfigAzureAdMapOutput
+}
+
+type AuthConfigAzureAdMap map[string]AuthConfigAzureAdInput
+
+func (AuthConfigAzureAdMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigAzureAd)(nil))
+}
+
+func (i AuthConfigAzureAdMap) ToAuthConfigAzureAdMapOutput() AuthConfigAzureAdMapOutput {
+	return i.ToAuthConfigAzureAdMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAzureAdMap) ToAuthConfigAzureAdMapOutputWithContext(ctx context.Context) AuthConfigAzureAdMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdMapOutput)
+}
+
 type AuthConfigAzureAdOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutputWithContext(ctx contex
 	return o
 }
 
+func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdPtrOutput() AuthConfigAzureAdPtrOutput {
+	return o.ToAuthConfigAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
+	return o.ApplyT(func(v AuthConfigAzureAd) *AuthConfigAzureAd {
+		return &v
+	}).(AuthConfigAzureAdPtrOutput)
+}
+
+type AuthConfigAzureAdPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigAzureAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigAzureAd)(nil))
+}
+
+func (o AuthConfigAzureAdPtrOutput) ToAuthConfigAzureAdPtrOutput() AuthConfigAzureAdPtrOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdPtrOutput) ToAuthConfigAzureAdPtrOutputWithContext(ctx context.Context) AuthConfigAzureAdPtrOutput {
+	return o
+}
+
+type AuthConfigAzureAdArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigAzureAdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigAzureAd)(nil))
+}
+
+func (o AuthConfigAzureAdArrayOutput) ToAuthConfigAzureAdArrayOutput() AuthConfigAzureAdArrayOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdArrayOutput) ToAuthConfigAzureAdArrayOutputWithContext(ctx context.Context) AuthConfigAzureAdArrayOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdArrayOutput) Index(i pulumi.IntInput) AuthConfigAzureAdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigAzureAd {
+		return vs[0].([]AuthConfigAzureAd)[vs[1].(int)]
+	}).(AuthConfigAzureAdOutput)
+}
+
+type AuthConfigAzureAdMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigAzureAdMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigAzureAd)(nil))
+}
+
+func (o AuthConfigAzureAdMapOutput) ToAuthConfigAzureAdMapOutput() AuthConfigAzureAdMapOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdMapOutput) ToAuthConfigAzureAdMapOutputWithContext(ctx context.Context) AuthConfigAzureAdMapOutput {
+	return o
+}
+
+func (o AuthConfigAzureAdMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAzureAdOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigAzureAd {
+		return vs[0].(map[string]AuthConfigAzureAd)[vs[1].(string)]
+	}).(AuthConfigAzureAdOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigAzureAdOutput{})
+	pulumi.RegisterOutputType(AuthConfigAzureAdPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigAzureAdArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigAzureAdMapOutput{})
 }

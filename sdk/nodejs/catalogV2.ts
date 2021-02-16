@@ -114,7 +114,8 @@ export class CatalogV2 extends pulumi.CustomResource {
     constructor(name: string, args: CatalogV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogV2Args | CatalogV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CatalogV2State | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["caBundle"] = state ? state.caBundle : undefined;
@@ -133,7 +134,7 @@ export class CatalogV2 extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as CatalogV2Args | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -152,12 +153,8 @@ export class CatalogV2 extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["resourceVersion"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CatalogV2.__pulumiType, name, inputs, opts);
     }

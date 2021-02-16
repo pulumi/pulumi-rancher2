@@ -125,7 +125,8 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
     constructor(name: string, args: GlobalDnsProviderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalDnsProviderArgs | GlobalDnsProviderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalDnsProviderState | undefined;
             inputs["alidnsConfig"] = state ? state.alidnsConfig : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
@@ -137,7 +138,7 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
             inputs["route53Config"] = state ? state.route53Config : undefined;
         } else {
             const args = argsOrState as GlobalDnsProviderArgs | undefined;
-            if ((!args || args.rootDomain === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rootDomain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rootDomain'");
             }
             inputs["alidnsConfig"] = args ? args.alidnsConfig : undefined;
@@ -149,12 +150,8 @@ export class GlobalDnsProvider extends pulumi.CustomResource {
             inputs["route53Config"] = args ? args.route53Config : undefined;
             inputs["dnsProvider"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalDnsProvider.__pulumiType, name, inputs, opts);
     }

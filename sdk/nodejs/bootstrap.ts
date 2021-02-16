@@ -91,7 +91,8 @@ export class Bootstrap extends pulumi.CustomResource {
     constructor(name: string, args?: BootstrapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BootstrapArgs | BootstrapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BootstrapState | undefined;
             inputs["currentPassword"] = state ? state.currentPassword : undefined;
             inputs["password"] = state ? state.password : undefined;
@@ -120,12 +121,8 @@ export class Bootstrap extends pulumi.CustomResource {
             inputs["url"] = undefined /*out*/;
             inputs["user"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Bootstrap.__pulumiType, name, inputs, opts);
     }

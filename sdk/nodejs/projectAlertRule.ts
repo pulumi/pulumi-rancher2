@@ -152,7 +152,8 @@ export class ProjectAlertRule extends pulumi.CustomResource {
     constructor(name: string, args: ProjectAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectAlertRuleArgs | ProjectAlertRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectAlertRuleState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
@@ -169,10 +170,10 @@ export class ProjectAlertRule extends pulumi.CustomResource {
             inputs["workloadRule"] = state ? state.workloadRule : undefined;
         } else {
             const args = argsOrState as ProjectAlertRuleArgs | undefined;
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -189,12 +190,8 @@ export class ProjectAlertRule extends pulumi.CustomResource {
             inputs["severity"] = args ? args.severity : undefined;
             inputs["workloadRule"] = args ? args.workloadRule : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectAlertRule.__pulumiType, name, inputs, opts);
     }

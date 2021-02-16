@@ -201,7 +201,8 @@ export class ClusterTemplate extends pulumi.CustomResource {
     constructor(name: string, args?: ClusterTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterTemplateArgs | ClusterTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterTemplateState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["defaultRevisionId"] = state ? state.defaultRevisionId : undefined;
@@ -220,12 +221,8 @@ export class ClusterTemplate extends pulumi.CustomResource {
             inputs["templateRevisions"] = args ? args.templateRevisions : undefined;
             inputs["defaultRevisionId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterTemplate.__pulumiType, name, inputs, opts);
     }

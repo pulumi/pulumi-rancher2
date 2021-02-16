@@ -135,7 +135,8 @@ export class GlobalDns extends pulumi.CustomResource {
     constructor(name: string, args: GlobalDnsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalDnsArgs | GlobalDnsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalDnsState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["fqdn"] = state ? state.fqdn : undefined;
@@ -147,10 +148,10 @@ export class GlobalDns extends pulumi.CustomResource {
             inputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as GlobalDnsArgs | undefined;
-            if ((!args || args.fqdn === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fqdn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fqdn'");
             }
-            if ((!args || args.providerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.providerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -162,12 +163,8 @@ export class GlobalDns extends pulumi.CustomResource {
             inputs["providerId"] = args ? args.providerId : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalDns.__pulumiType, name, inputs, opts);
     }

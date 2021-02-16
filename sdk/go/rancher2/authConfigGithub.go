@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -219,6 +219,85 @@ func (i *AuthConfigGithub) ToAuthConfigGithubOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubOutput)
 }
 
+func (i *AuthConfigGithub) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
+	return i.ToAuthConfigGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigGithub) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubPtrOutput)
+}
+
+type AuthConfigGithubPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput
+	ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput
+}
+
+type authConfigGithubPtrType AuthConfigGithubArgs
+
+func (*authConfigGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigGithub)(nil))
+}
+
+func (i *authConfigGithubPtrType) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
+	return i.ToAuthConfigGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigGithubPtrType) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubPtrOutput)
+}
+
+// AuthConfigGithubArrayInput is an input type that accepts AuthConfigGithubArray and AuthConfigGithubArrayOutput values.
+// You can construct a concrete instance of `AuthConfigGithubArrayInput` via:
+//
+//          AuthConfigGithubArray{ AuthConfigGithubArgs{...} }
+type AuthConfigGithubArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigGithubArrayOutput() AuthConfigGithubArrayOutput
+	ToAuthConfigGithubArrayOutputWithContext(context.Context) AuthConfigGithubArrayOutput
+}
+
+type AuthConfigGithubArray []AuthConfigGithubInput
+
+func (AuthConfigGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigGithub)(nil))
+}
+
+func (i AuthConfigGithubArray) ToAuthConfigGithubArrayOutput() AuthConfigGithubArrayOutput {
+	return i.ToAuthConfigGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigGithubArray) ToAuthConfigGithubArrayOutputWithContext(ctx context.Context) AuthConfigGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubArrayOutput)
+}
+
+// AuthConfigGithubMapInput is an input type that accepts AuthConfigGithubMap and AuthConfigGithubMapOutput values.
+// You can construct a concrete instance of `AuthConfigGithubMapInput` via:
+//
+//          AuthConfigGithubMap{ "key": AuthConfigGithubArgs{...} }
+type AuthConfigGithubMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigGithubMapOutput() AuthConfigGithubMapOutput
+	ToAuthConfigGithubMapOutputWithContext(context.Context) AuthConfigGithubMapOutput
+}
+
+type AuthConfigGithubMap map[string]AuthConfigGithubInput
+
+func (AuthConfigGithubMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigGithub)(nil))
+}
+
+func (i AuthConfigGithubMap) ToAuthConfigGithubMapOutput() AuthConfigGithubMapOutput {
+	return i.ToAuthConfigGithubMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigGithubMap) ToAuthConfigGithubMapOutputWithContext(ctx context.Context) AuthConfigGithubMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigGithubMapOutput)
+}
+
 type AuthConfigGithubOutput struct {
 	*pulumi.OutputState
 }
@@ -235,6 +314,75 @@ func (o AuthConfigGithubOutput) ToAuthConfigGithubOutputWithContext(ctx context.
 	return o
 }
 
+func (o AuthConfigGithubOutput) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
+	return o.ToAuthConfigGithubPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigGithubOutput) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
+	return o.ApplyT(func(v AuthConfigGithub) *AuthConfigGithub {
+		return &v
+	}).(AuthConfigGithubPtrOutput)
+}
+
+type AuthConfigGithubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigGithub)(nil))
+}
+
+func (o AuthConfigGithubPtrOutput) ToAuthConfigGithubPtrOutput() AuthConfigGithubPtrOutput {
+	return o
+}
+
+func (o AuthConfigGithubPtrOutput) ToAuthConfigGithubPtrOutputWithContext(ctx context.Context) AuthConfigGithubPtrOutput {
+	return o
+}
+
+type AuthConfigGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigGithub)(nil))
+}
+
+func (o AuthConfigGithubArrayOutput) ToAuthConfigGithubArrayOutput() AuthConfigGithubArrayOutput {
+	return o
+}
+
+func (o AuthConfigGithubArrayOutput) ToAuthConfigGithubArrayOutputWithContext(ctx context.Context) AuthConfigGithubArrayOutput {
+	return o
+}
+
+func (o AuthConfigGithubArrayOutput) Index(i pulumi.IntInput) AuthConfigGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigGithub {
+		return vs[0].([]AuthConfigGithub)[vs[1].(int)]
+	}).(AuthConfigGithubOutput)
+}
+
+type AuthConfigGithubMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigGithubMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigGithub)(nil))
+}
+
+func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutput() AuthConfigGithubMapOutput {
+	return o
+}
+
+func (o AuthConfigGithubMapOutput) ToAuthConfigGithubMapOutputWithContext(ctx context.Context) AuthConfigGithubMapOutput {
+	return o
+}
+
+func (o AuthConfigGithubMapOutput) MapIndex(k pulumi.StringInput) AuthConfigGithubOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigGithub {
+		return vs[0].(map[string]AuthConfigGithub)[vs[1].(string)]
+	}).(AuthConfigGithubOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigGithubOutput{})
+	pulumi.RegisterOutputType(AuthConfigGithubPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigGithubArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigGithubMapOutput{})
 }

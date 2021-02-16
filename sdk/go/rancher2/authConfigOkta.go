@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -283,6 +283,85 @@ func (i *AuthConfigOkta) ToAuthConfigOktaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaOutput)
 }
 
+func (i *AuthConfigOkta) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
+	return i.ToAuthConfigOktaPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigOkta) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaPtrOutput)
+}
+
+type AuthConfigOktaPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput
+	ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput
+}
+
+type authConfigOktaPtrType AuthConfigOktaArgs
+
+func (*authConfigOktaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigOkta)(nil))
+}
+
+func (i *authConfigOktaPtrType) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
+	return i.ToAuthConfigOktaPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigOktaPtrType) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaPtrOutput)
+}
+
+// AuthConfigOktaArrayInput is an input type that accepts AuthConfigOktaArray and AuthConfigOktaArrayOutput values.
+// You can construct a concrete instance of `AuthConfigOktaArrayInput` via:
+//
+//          AuthConfigOktaArray{ AuthConfigOktaArgs{...} }
+type AuthConfigOktaArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigOktaArrayOutput() AuthConfigOktaArrayOutput
+	ToAuthConfigOktaArrayOutputWithContext(context.Context) AuthConfigOktaArrayOutput
+}
+
+type AuthConfigOktaArray []AuthConfigOktaInput
+
+func (AuthConfigOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigOkta)(nil))
+}
+
+func (i AuthConfigOktaArray) ToAuthConfigOktaArrayOutput() AuthConfigOktaArrayOutput {
+	return i.ToAuthConfigOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOktaArray) ToAuthConfigOktaArrayOutputWithContext(ctx context.Context) AuthConfigOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaArrayOutput)
+}
+
+// AuthConfigOktaMapInput is an input type that accepts AuthConfigOktaMap and AuthConfigOktaMapOutput values.
+// You can construct a concrete instance of `AuthConfigOktaMapInput` via:
+//
+//          AuthConfigOktaMap{ "key": AuthConfigOktaArgs{...} }
+type AuthConfigOktaMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigOktaMapOutput() AuthConfigOktaMapOutput
+	ToAuthConfigOktaMapOutputWithContext(context.Context) AuthConfigOktaMapOutput
+}
+
+type AuthConfigOktaMap map[string]AuthConfigOktaInput
+
+func (AuthConfigOktaMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigOkta)(nil))
+}
+
+func (i AuthConfigOktaMap) ToAuthConfigOktaMapOutput() AuthConfigOktaMapOutput {
+	return i.ToAuthConfigOktaMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigOktaMap) ToAuthConfigOktaMapOutputWithContext(ctx context.Context) AuthConfigOktaMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOktaMapOutput)
+}
+
 type AuthConfigOktaOutput struct {
 	*pulumi.OutputState
 }
@@ -299,6 +378,75 @@ func (o AuthConfigOktaOutput) ToAuthConfigOktaOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AuthConfigOktaOutput) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
+	return o.ToAuthConfigOktaPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigOktaOutput) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
+	return o.ApplyT(func(v AuthConfigOkta) *AuthConfigOkta {
+		return &v
+	}).(AuthConfigOktaPtrOutput)
+}
+
+type AuthConfigOktaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigOktaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigOkta)(nil))
+}
+
+func (o AuthConfigOktaPtrOutput) ToAuthConfigOktaPtrOutput() AuthConfigOktaPtrOutput {
+	return o
+}
+
+func (o AuthConfigOktaPtrOutput) ToAuthConfigOktaPtrOutputWithContext(ctx context.Context) AuthConfigOktaPtrOutput {
+	return o
+}
+
+type AuthConfigOktaArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigOkta)(nil))
+}
+
+func (o AuthConfigOktaArrayOutput) ToAuthConfigOktaArrayOutput() AuthConfigOktaArrayOutput {
+	return o
+}
+
+func (o AuthConfigOktaArrayOutput) ToAuthConfigOktaArrayOutputWithContext(ctx context.Context) AuthConfigOktaArrayOutput {
+	return o
+}
+
+func (o AuthConfigOktaArrayOutput) Index(i pulumi.IntInput) AuthConfigOktaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigOkta {
+		return vs[0].([]AuthConfigOkta)[vs[1].(int)]
+	}).(AuthConfigOktaOutput)
+}
+
+type AuthConfigOktaMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigOktaMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigOkta)(nil))
+}
+
+func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutput() AuthConfigOktaMapOutput {
+	return o
+}
+
+func (o AuthConfigOktaMapOutput) ToAuthConfigOktaMapOutputWithContext(ctx context.Context) AuthConfigOktaMapOutput {
+	return o
+}
+
+func (o AuthConfigOktaMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOktaOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigOkta {
+		return vs[0].(map[string]AuthConfigOkta)[vs[1].(string)]
+	}).(AuthConfigOktaOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigOktaOutput{})
+	pulumi.RegisterOutputType(AuthConfigOktaPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigOktaArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigOktaMapOutput{})
 }

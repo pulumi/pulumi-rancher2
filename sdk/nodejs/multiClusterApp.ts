@@ -113,7 +113,8 @@ export class MultiClusterApp extends pulumi.CustomResource {
     constructor(name: string, args: MultiClusterAppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MultiClusterAppArgs | MultiClusterAppState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MultiClusterAppState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["answers"] = state ? state.answers : undefined;
@@ -132,16 +133,16 @@ export class MultiClusterApp extends pulumi.CustomResource {
             inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as MultiClusterAppArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.catalogName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.roles === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.roles === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if ((!args || args.targets === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targets === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targets'");
             }
-            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -160,12 +161,8 @@ export class MultiClusterApp extends pulumi.CustomResource {
             inputs["wait"] = args ? args.wait : undefined;
             inputs["templateVersionId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MultiClusterApp.__pulumiType, name, inputs, opts);
     }

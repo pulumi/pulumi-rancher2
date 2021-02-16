@@ -152,7 +152,8 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
@@ -168,13 +169,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["worker"] = state ? state.worker : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.hostnamePrefix === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostnamePrefix === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostnamePrefix'");
             }
-            if ((!args || args.nodeTemplateId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodeTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplateId'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -190,12 +191,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["quantity"] = args ? args.quantity : undefined;
             inputs["worker"] = args ? args.worker : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodePool.__pulumiType, name, inputs, opts);
     }

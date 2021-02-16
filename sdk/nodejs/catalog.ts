@@ -132,7 +132,8 @@ export class Catalog extends pulumi.CustomResource {
     constructor(name: string, args: CatalogArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogArgs | CatalogState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["branch"] = state ? state.branch : undefined;
@@ -150,7 +151,7 @@ export class Catalog extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
-            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -168,12 +169,8 @@ export class Catalog extends pulumi.CustomResource {
             inputs["username"] = args ? args.username : undefined;
             inputs["version"] = args ? args.version : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Catalog.__pulumiType, name, inputs, opts);
     }

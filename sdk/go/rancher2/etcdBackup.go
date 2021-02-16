@@ -174,6 +174,85 @@ func (i *EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBack
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupOutput)
 }
 
+func (i *EtcdBackup) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
+	return i.ToEtcdBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *EtcdBackup) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupPtrOutput)
+}
+
+type EtcdBackupPtrInput interface {
+	pulumi.Input
+
+	ToEtcdBackupPtrOutput() EtcdBackupPtrOutput
+	ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput
+}
+
+type etcdBackupPtrType EtcdBackupArgs
+
+func (*etcdBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EtcdBackup)(nil))
+}
+
+func (i *etcdBackupPtrType) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
+	return i.ToEtcdBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *etcdBackupPtrType) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupPtrOutput)
+}
+
+// EtcdBackupArrayInput is an input type that accepts EtcdBackupArray and EtcdBackupArrayOutput values.
+// You can construct a concrete instance of `EtcdBackupArrayInput` via:
+//
+//          EtcdBackupArray{ EtcdBackupArgs{...} }
+type EtcdBackupArrayInput interface {
+	pulumi.Input
+
+	ToEtcdBackupArrayOutput() EtcdBackupArrayOutput
+	ToEtcdBackupArrayOutputWithContext(context.Context) EtcdBackupArrayOutput
+}
+
+type EtcdBackupArray []EtcdBackupInput
+
+func (EtcdBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EtcdBackup)(nil))
+}
+
+func (i EtcdBackupArray) ToEtcdBackupArrayOutput() EtcdBackupArrayOutput {
+	return i.ToEtcdBackupArrayOutputWithContext(context.Background())
+}
+
+func (i EtcdBackupArray) ToEtcdBackupArrayOutputWithContext(ctx context.Context) EtcdBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupArrayOutput)
+}
+
+// EtcdBackupMapInput is an input type that accepts EtcdBackupMap and EtcdBackupMapOutput values.
+// You can construct a concrete instance of `EtcdBackupMapInput` via:
+//
+//          EtcdBackupMap{ "key": EtcdBackupArgs{...} }
+type EtcdBackupMapInput interface {
+	pulumi.Input
+
+	ToEtcdBackupMapOutput() EtcdBackupMapOutput
+	ToEtcdBackupMapOutputWithContext(context.Context) EtcdBackupMapOutput
+}
+
+type EtcdBackupMap map[string]EtcdBackupInput
+
+func (EtcdBackupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EtcdBackup)(nil))
+}
+
+func (i EtcdBackupMap) ToEtcdBackupMapOutput() EtcdBackupMapOutput {
+	return i.ToEtcdBackupMapOutputWithContext(context.Background())
+}
+
+func (i EtcdBackupMap) ToEtcdBackupMapOutputWithContext(ctx context.Context) EtcdBackupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupMapOutput)
+}
+
 type EtcdBackupOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o EtcdBackupOutput) ToEtcdBackupOutputWithContext(ctx context.Context) Etc
 	return o
 }
 
+func (o EtcdBackupOutput) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
+	return o.ToEtcdBackupPtrOutputWithContext(context.Background())
+}
+
+func (o EtcdBackupOutput) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
+	return o.ApplyT(func(v EtcdBackup) *EtcdBackup {
+		return &v
+	}).(EtcdBackupPtrOutput)
+}
+
+type EtcdBackupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EtcdBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EtcdBackup)(nil))
+}
+
+func (o EtcdBackupPtrOutput) ToEtcdBackupPtrOutput() EtcdBackupPtrOutput {
+	return o
+}
+
+func (o EtcdBackupPtrOutput) ToEtcdBackupPtrOutputWithContext(ctx context.Context) EtcdBackupPtrOutput {
+	return o
+}
+
+type EtcdBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (EtcdBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EtcdBackup)(nil))
+}
+
+func (o EtcdBackupArrayOutput) ToEtcdBackupArrayOutput() EtcdBackupArrayOutput {
+	return o
+}
+
+func (o EtcdBackupArrayOutput) ToEtcdBackupArrayOutputWithContext(ctx context.Context) EtcdBackupArrayOutput {
+	return o
+}
+
+func (o EtcdBackupArrayOutput) Index(i pulumi.IntInput) EtcdBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EtcdBackup {
+		return vs[0].([]EtcdBackup)[vs[1].(int)]
+	}).(EtcdBackupOutput)
+}
+
+type EtcdBackupMapOutput struct{ *pulumi.OutputState }
+
+func (EtcdBackupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EtcdBackup)(nil))
+}
+
+func (o EtcdBackupMapOutput) ToEtcdBackupMapOutput() EtcdBackupMapOutput {
+	return o
+}
+
+func (o EtcdBackupMapOutput) ToEtcdBackupMapOutputWithContext(ctx context.Context) EtcdBackupMapOutput {
+	return o
+}
+
+func (o EtcdBackupMapOutput) MapIndex(k pulumi.StringInput) EtcdBackupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EtcdBackup {
+		return vs[0].(map[string]EtcdBackup)[vs[1].(string)]
+	}).(EtcdBackupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EtcdBackupOutput{})
+	pulumi.RegisterOutputType(EtcdBackupPtrOutput{})
+	pulumi.RegisterOutputType(EtcdBackupArrayOutput{})
+	pulumi.RegisterOutputType(EtcdBackupMapOutput{})
 }

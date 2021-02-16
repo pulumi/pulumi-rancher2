@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -283,6 +283,85 @@ func (i *AuthConfigAdfs) ToAuthConfigAdfsOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsOutput)
 }
 
+func (i *AuthConfigAdfs) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutput {
+	return i.ToAuthConfigAdfsPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthConfigAdfs) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsPtrOutput)
+}
+
+type AuthConfigAdfsPtrInput interface {
+	pulumi.Input
+
+	ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutput
+	ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput
+}
+
+type authConfigAdfsPtrType AuthConfigAdfsArgs
+
+func (*authConfigAdfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigAdfs)(nil))
+}
+
+func (i *authConfigAdfsPtrType) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutput {
+	return i.ToAuthConfigAdfsPtrOutputWithContext(context.Background())
+}
+
+func (i *authConfigAdfsPtrType) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsPtrOutput)
+}
+
+// AuthConfigAdfsArrayInput is an input type that accepts AuthConfigAdfsArray and AuthConfigAdfsArrayOutput values.
+// You can construct a concrete instance of `AuthConfigAdfsArrayInput` via:
+//
+//          AuthConfigAdfsArray{ AuthConfigAdfsArgs{...} }
+type AuthConfigAdfsArrayInput interface {
+	pulumi.Input
+
+	ToAuthConfigAdfsArrayOutput() AuthConfigAdfsArrayOutput
+	ToAuthConfigAdfsArrayOutputWithContext(context.Context) AuthConfigAdfsArrayOutput
+}
+
+type AuthConfigAdfsArray []AuthConfigAdfsInput
+
+func (AuthConfigAdfsArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthConfigAdfs)(nil))
+}
+
+func (i AuthConfigAdfsArray) ToAuthConfigAdfsArrayOutput() AuthConfigAdfsArrayOutput {
+	return i.ToAuthConfigAdfsArrayOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAdfsArray) ToAuthConfigAdfsArrayOutputWithContext(ctx context.Context) AuthConfigAdfsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsArrayOutput)
+}
+
+// AuthConfigAdfsMapInput is an input type that accepts AuthConfigAdfsMap and AuthConfigAdfsMapOutput values.
+// You can construct a concrete instance of `AuthConfigAdfsMapInput` via:
+//
+//          AuthConfigAdfsMap{ "key": AuthConfigAdfsArgs{...} }
+type AuthConfigAdfsMapInput interface {
+	pulumi.Input
+
+	ToAuthConfigAdfsMapOutput() AuthConfigAdfsMapOutput
+	ToAuthConfigAdfsMapOutputWithContext(context.Context) AuthConfigAdfsMapOutput
+}
+
+type AuthConfigAdfsMap map[string]AuthConfigAdfsInput
+
+func (AuthConfigAdfsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthConfigAdfs)(nil))
+}
+
+func (i AuthConfigAdfsMap) ToAuthConfigAdfsMapOutput() AuthConfigAdfsMapOutput {
+	return i.ToAuthConfigAdfsMapOutputWithContext(context.Background())
+}
+
+func (i AuthConfigAdfsMap) ToAuthConfigAdfsMapOutputWithContext(ctx context.Context) AuthConfigAdfsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAdfsMapOutput)
+}
+
 type AuthConfigAdfsOutput struct {
 	*pulumi.OutputState
 }
@@ -299,6 +378,75 @@ func (o AuthConfigAdfsOutput) ToAuthConfigAdfsOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AuthConfigAdfsOutput) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutput {
+	return o.ToAuthConfigAdfsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthConfigAdfsOutput) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
+	return o.ApplyT(func(v AuthConfigAdfs) *AuthConfigAdfs {
+		return &v
+	}).(AuthConfigAdfsPtrOutput)
+}
+
+type AuthConfigAdfsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthConfigAdfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthConfigAdfs)(nil))
+}
+
+func (o AuthConfigAdfsPtrOutput) ToAuthConfigAdfsPtrOutput() AuthConfigAdfsPtrOutput {
+	return o
+}
+
+func (o AuthConfigAdfsPtrOutput) ToAuthConfigAdfsPtrOutputWithContext(ctx context.Context) AuthConfigAdfsPtrOutput {
+	return o
+}
+
+type AuthConfigAdfsArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigAdfsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthConfigAdfs)(nil))
+}
+
+func (o AuthConfigAdfsArrayOutput) ToAuthConfigAdfsArrayOutput() AuthConfigAdfsArrayOutput {
+	return o
+}
+
+func (o AuthConfigAdfsArrayOutput) ToAuthConfigAdfsArrayOutputWithContext(ctx context.Context) AuthConfigAdfsArrayOutput {
+	return o
+}
+
+func (o AuthConfigAdfsArrayOutput) Index(i pulumi.IntInput) AuthConfigAdfsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthConfigAdfs {
+		return vs[0].([]AuthConfigAdfs)[vs[1].(int)]
+	}).(AuthConfigAdfsOutput)
+}
+
+type AuthConfigAdfsMapOutput struct{ *pulumi.OutputState }
+
+func (AuthConfigAdfsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthConfigAdfs)(nil))
+}
+
+func (o AuthConfigAdfsMapOutput) ToAuthConfigAdfsMapOutput() AuthConfigAdfsMapOutput {
+	return o
+}
+
+func (o AuthConfigAdfsMapOutput) ToAuthConfigAdfsMapOutputWithContext(ctx context.Context) AuthConfigAdfsMapOutput {
+	return o
+}
+
+func (o AuthConfigAdfsMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAdfsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthConfigAdfs {
+		return vs[0].(map[string]AuthConfigAdfs)[vs[1].(string)]
+	}).(AuthConfigAdfsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigAdfsOutput{})
+	pulumi.RegisterOutputType(AuthConfigAdfsPtrOutput{})
+	pulumi.RegisterOutputType(AuthConfigAdfsArrayOutput{})
+	pulumi.RegisterOutputType(AuthConfigAdfsMapOutput{})
 }

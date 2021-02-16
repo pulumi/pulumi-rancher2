@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
-// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -256,6 +255,85 @@ func (i *Notifier) ToNotifierOutputWithContext(ctx context.Context) NotifierOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NotifierOutput)
 }
 
+func (i *Notifier) ToNotifierPtrOutput() NotifierPtrOutput {
+	return i.ToNotifierPtrOutputWithContext(context.Background())
+}
+
+func (i *Notifier) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierPtrOutput)
+}
+
+type NotifierPtrInput interface {
+	pulumi.Input
+
+	ToNotifierPtrOutput() NotifierPtrOutput
+	ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput
+}
+
+type notifierPtrType NotifierArgs
+
+func (*notifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Notifier)(nil))
+}
+
+func (i *notifierPtrType) ToNotifierPtrOutput() NotifierPtrOutput {
+	return i.ToNotifierPtrOutputWithContext(context.Background())
+}
+
+func (i *notifierPtrType) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierPtrOutput)
+}
+
+// NotifierArrayInput is an input type that accepts NotifierArray and NotifierArrayOutput values.
+// You can construct a concrete instance of `NotifierArrayInput` via:
+//
+//          NotifierArray{ NotifierArgs{...} }
+type NotifierArrayInput interface {
+	pulumi.Input
+
+	ToNotifierArrayOutput() NotifierArrayOutput
+	ToNotifierArrayOutputWithContext(context.Context) NotifierArrayOutput
+}
+
+type NotifierArray []NotifierInput
+
+func (NotifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Notifier)(nil))
+}
+
+func (i NotifierArray) ToNotifierArrayOutput() NotifierArrayOutput {
+	return i.ToNotifierArrayOutputWithContext(context.Background())
+}
+
+func (i NotifierArray) ToNotifierArrayOutputWithContext(ctx context.Context) NotifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierArrayOutput)
+}
+
+// NotifierMapInput is an input type that accepts NotifierMap and NotifierMapOutput values.
+// You can construct a concrete instance of `NotifierMapInput` via:
+//
+//          NotifierMap{ "key": NotifierArgs{...} }
+type NotifierMapInput interface {
+	pulumi.Input
+
+	ToNotifierMapOutput() NotifierMapOutput
+	ToNotifierMapOutputWithContext(context.Context) NotifierMapOutput
+}
+
+type NotifierMap map[string]NotifierInput
+
+func (NotifierMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Notifier)(nil))
+}
+
+func (i NotifierMap) ToNotifierMapOutput() NotifierMapOutput {
+	return i.ToNotifierMapOutputWithContext(context.Background())
+}
+
+func (i NotifierMap) ToNotifierMapOutputWithContext(ctx context.Context) NotifierMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotifierMapOutput)
+}
+
 type NotifierOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +350,75 @@ func (o NotifierOutput) ToNotifierOutputWithContext(ctx context.Context) Notifie
 	return o
 }
 
+func (o NotifierOutput) ToNotifierPtrOutput() NotifierPtrOutput {
+	return o.ToNotifierPtrOutputWithContext(context.Background())
+}
+
+func (o NotifierOutput) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
+	return o.ApplyT(func(v Notifier) *Notifier {
+		return &v
+	}).(NotifierPtrOutput)
+}
+
+type NotifierPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Notifier)(nil))
+}
+
+func (o NotifierPtrOutput) ToNotifierPtrOutput() NotifierPtrOutput {
+	return o
+}
+
+func (o NotifierPtrOutput) ToNotifierPtrOutputWithContext(ctx context.Context) NotifierPtrOutput {
+	return o
+}
+
+type NotifierArrayOutput struct{ *pulumi.OutputState }
+
+func (NotifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Notifier)(nil))
+}
+
+func (o NotifierArrayOutput) ToNotifierArrayOutput() NotifierArrayOutput {
+	return o
+}
+
+func (o NotifierArrayOutput) ToNotifierArrayOutputWithContext(ctx context.Context) NotifierArrayOutput {
+	return o
+}
+
+func (o NotifierArrayOutput) Index(i pulumi.IntInput) NotifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Notifier {
+		return vs[0].([]Notifier)[vs[1].(int)]
+	}).(NotifierOutput)
+}
+
+type NotifierMapOutput struct{ *pulumi.OutputState }
+
+func (NotifierMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Notifier)(nil))
+}
+
+func (o NotifierMapOutput) ToNotifierMapOutput() NotifierMapOutput {
+	return o
+}
+
+func (o NotifierMapOutput) ToNotifierMapOutputWithContext(ctx context.Context) NotifierMapOutput {
+	return o
+}
+
+func (o NotifierMapOutput) MapIndex(k pulumi.StringInput) NotifierOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Notifier {
+		return vs[0].(map[string]Notifier)[vs[1].(string)]
+	}).(NotifierOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NotifierOutput{})
+	pulumi.RegisterOutputType(NotifierPtrOutput{})
+	pulumi.RegisterOutputType(NotifierArrayOutput{})
+	pulumi.RegisterOutputType(NotifierMapOutput{})
 }

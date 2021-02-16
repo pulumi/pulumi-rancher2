@@ -136,7 +136,8 @@ export class AppV2 extends pulumi.CustomResource {
     constructor(name: string, args: AppV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppV2Args | AppV2State, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppV2State | undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["chartName"] = state ? state.chartName : undefined;
@@ -156,16 +157,16 @@ export class AppV2 extends pulumi.CustomResource {
             inputs["wait"] = state ? state.wait : undefined;
         } else {
             const args = argsOrState as AppV2Args | undefined;
-            if ((!args || args.chartName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.chartName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'chartName'");
             }
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespace === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.repoName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.repoName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repoName'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
@@ -185,12 +186,8 @@ export class AppV2 extends pulumi.CustomResource {
             inputs["wait"] = args ? args.wait : undefined;
             inputs["clusterName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AppV2.__pulumiType, name, inputs, opts);
     }
