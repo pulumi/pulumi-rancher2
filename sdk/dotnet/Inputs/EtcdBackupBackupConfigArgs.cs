@@ -39,6 +39,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("safeTimestamp")]
         public Input<bool>? SafeTimestamp { get; set; }
 
+        [Input("timeout")]
+        public Input<int>? Timeout { get; set; }
+
         public EtcdBackupBackupConfigArgs()
         {
         }

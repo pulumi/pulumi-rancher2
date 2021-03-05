@@ -105,6 +105,10 @@ export interface GetNodeTemplateResult {
     readonly labels: {[key: string]: any};
     readonly name: string;
     /**
+     * (Computed) Node taints (List)
+     */
+    readonly nodeTaints: outputs.GetNodeTemplateNodeTaint[];
+    /**
      * (Computed) Engine storage driver for the node template (bool)
      */
     readonly useInternalIpAddress?: boolean;

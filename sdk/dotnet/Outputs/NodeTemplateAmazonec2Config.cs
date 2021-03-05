@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Userdata;
         /// <summary>
-        /// Amazon EBS volume type. Default `gp2` (string)
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         /// </summary>
         public readonly string? VolumeType;
         /// <summary>

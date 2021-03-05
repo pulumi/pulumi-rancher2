@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? Retention;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig? S3BackupConfig;
         public readonly bool? SafeTimestamp;
+        public readonly int? Timeout;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig(
@@ -32,13 +33,16 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig? s3BackupConfig,
 
-            bool? safeTimestamp)
+            bool? safeTimestamp,
+
+            int? timeout)
         {
             Enabled = enabled;
             IntervalHours = intervalHours;
             Retention = retention;
             S3BackupConfig = s3BackupConfig;
             SafeTimestamp = safeTimestamp;
+            Timeout = timeout;
         }
     }
 }

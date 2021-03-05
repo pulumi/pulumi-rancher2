@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Required;
         /// <summary>
-        /// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        /// Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
         /// </summary>
         public readonly string? Type;
         /// <summary>

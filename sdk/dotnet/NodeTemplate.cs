@@ -265,6 +265,12 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        [Output("nodeTaints")]
+        public Output<ImmutableArray<Outputs.NodeTemplateNodeTaint>> NodeTaints { get; private set; } = null!;
+
+        /// <summary>
         /// Opennebula config for the Node Template (list maxitems:1)
         /// </summary>
         [Output("opennebulaConfig")]
@@ -496,6 +502,18 @@ namespace Pulumi.Rancher2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nodeTaints")]
+        private InputList<Inputs.NodeTemplateNodeTaintArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        public InputList<Inputs.NodeTemplateNodeTaintArgs> NodeTaints
+        {
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodeTemplateNodeTaintArgs>());
+            set => _nodeTaints = value;
+        }
+
         /// <summary>
         /// Opennebula config for the Node Template (list maxitems:1)
         /// </summary>
@@ -694,6 +712,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("nodeTaints")]
+        private InputList<Inputs.NodeTemplateNodeTaintGetArgs>? _nodeTaints;
+
+        /// <summary>
+        /// Node taints. For Rancher v2.3.3 or above (List)
+        /// </summary>
+        public InputList<Inputs.NodeTemplateNodeTaintGetArgs> NodeTaints
+        {
+            get => _nodeTaints ?? (_nodeTaints = new InputList<Inputs.NodeTemplateNodeTaintGetArgs>());
+            set => _nodeTaints = value;
+        }
 
         /// <summary>
         /// Opennebula config for the Node Template (list maxitems:1)

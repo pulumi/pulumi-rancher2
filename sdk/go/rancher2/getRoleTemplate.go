@@ -44,7 +44,7 @@ func GetRoleTemplate(ctx *pulumi.Context, args *GetRoleTemplateArgs, opts ...pul
 type GetRoleTemplateArgs struct {
 	// Role template context. `cluster` and `project` values are supported (string)
 	Context *string `pulumi:"context"`
-	// The name of the Node Template (string)
+	// The name of the Role Template (string)
 	Name string `pulumi:"name"`
 }
 

@@ -407,6 +407,15 @@
                         }
                     }
                 },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "description": "Load balancer type (basic | standard). Must be standard for auto-scaling\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "location": {
                     "type": "string",
                     "description": "Azure Kubernetes cluster location. Default `eastus` (string)\n",
@@ -586,6 +595,7 @@
                         "clientId",
                         "clientSecret",
                         "kubernetesVersion",
+                        "loadBalancerSku",
                         "masterDnsPrefix",
                         "resourceGroup",
                         "sshPublicKeyContents",
@@ -1235,7 +1245,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)\n",
+                    "description": "Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2922,6 +2932,15 @@
                         }
                     }
                 },
+                "customBootVolumeSize": {
+                    "type": "integer",
+                    "description": "Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "description": {
                     "type": "string",
                     "description": "An optional description of this cluster (string)\n",
@@ -2952,6 +2971,15 @@
                 "fingerprint": {
                     "type": "string",
                     "description": "The fingerprint corresponding to the specified user's private API Key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flexOcpus": {
+                    "type": "integer",
+                    "description": "Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3105,6 +3133,15 @@
                 "userOcid": {
                     "type": "string",
                     "description": "The OCID of a user who has access to the tenancy/compartment (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcnCompartmentId": {
+                    "type": "string",
+                    "description": "The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3342,6 +3379,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "winPrefixPath": {
+                    "type": "string",
+                    "description": "Prefix to customize Kubernetes path for windows (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -3362,7 +3408,8 @@
                         "services",
                         "sshCertPath",
                         "sshKeyPath",
-                        "upgradeStrategy"
+                        "upgradeStrategy",
+                        "winPrefixPath"
                     ]
                 }
             }
@@ -3911,7 +3958,7 @@
                 },
                 "loadBalancerSku": {
                     "type": "string",
-                    "description": "Allowed values: `basic` (default) `standard` (string)\n",
+                    "description": "Load balancer type (basic | standard). Must be standard for auto-scaling\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5824,9 +5871,25 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "RKE node drain timeout. Default: `60` (int)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeout"
+                    ]
+                }
+            }
         },
         "rancher2:index/ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig:ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig": {
             "properties": {
@@ -6727,6 +6790,192 @@
                 }
             }
         },
+        "rancher2:index/ClusterSyncNode:ClusterSyncNode": {
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations of the node (map).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "capacity": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The total resources of a node (map).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "The Cluster ID of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "externalIpAddress": {
+                    "type": "string",
+                    "description": "The external IP address of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The hostname of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the node (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "The private IP address of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels of the node (map).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodePoolId": {
+                    "type": "string",
+                    "description": "The Node Pool ID of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeTemplateId": {
+                    "type": "string",
+                    "description": "The Node Template ID of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The Provider ID of the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestedHostname": {
+                    "type": "string",
+                    "description": "The requested hostname (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles of the node. `controlplane`, `etcd` and `worker`. (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshUser": {
+                    "type": "string",
+                    "description": "The user to connect to the node (string).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "systemInfo": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "annotations",
+                        "capacity",
+                        "clusterId",
+                        "externalIpAddress",
+                        "hostname",
+                        "id",
+                        "ipAddress",
+                        "labels",
+                        "name",
+                        "nodePoolId",
+                        "nodeTemplateId",
+                        "providerId",
+                        "requestedHostname",
+                        "roles",
+                        "sshUser",
+                        "systemInfo"
+                    ]
+                }
+            }
+        },
         "rancher2:index/ClusterTemplateMember:ClusterTemplateMember": {
             "properties": {
                 "accessType": {
@@ -7207,6 +7456,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "winPrefixPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -7227,7 +7484,8 @@
                         "services",
                         "sshCertPath",
                         "sshKeyPath",
-                        "upgradeStrategy"
+                        "upgradeStrategy",
+                        "winPrefixPath"
                     ]
                 }
             }
@@ -9489,9 +9747,24 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeout"
+                    ]
+                }
+            }
         },
         "rancher2:index/ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig:ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig": {
             "properties": {
@@ -10412,9 +10685,24 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeout"
+                    ]
+                }
+            }
         },
         "rancher2:index/EtcdBackupBackupConfigS3BackupConfig:EtcdBackupBackupConfigS3BackupConfig": {
             "properties": {
@@ -10613,6 +10901,71 @@
                 "accessKey",
                 "secretKey"
             ]
+        },
+        "rancher2:index/GlobalRoleRule:GlobalRoleRule": {
+            "properties": {
+                "apiGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policy rule api groups (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nonResourceUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policy rule non resource urls (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policy rule resource names (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policy rule resources (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "verbs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/MultiClusterAppAnswer:MultiClusterAppAnswer": {
             "properties": {
@@ -11294,7 +11647,7 @@
                 },
                 "volumeType": {
                     "type": "string",
-                    "description": "Amazon EBS volume type. Default `gp2` (string)\n",
+                    "description": "OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11941,6 +12294,60 @@
             },
             "type": "object"
         },
+        "rancher2:index/NodeTemplateNodeTaint:NodeTemplateNodeTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "Taint effect. Supported values : `\"NoExecute\" | \"NoSchedule\" | \"PreferNoSchedule\"` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Taint key (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeAdded": {
+                    "type": "string",
+                    "description": "Taint time added (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Taint value (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "key",
+                        "timeAdded",
+                        "value"
+                    ]
+                }
+            }
+        },
         "rancher2:index/NodeTemplateOpennebulaConfig:NodeTemplateOpennebulaConfig": {
             "properties": {
                 "b2dSize": {
@@ -12178,6 +12585,15 @@
                         }
                     }
                 },
+                "bootFromVolume": {
+                    "type": "boolean",
+                    "description": "Enable booting from volume. Default is `false` (bool)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "cacert": {
                     "type": "string",
                     "description": "CA certificate bundle to verify against (string)\n",
@@ -12406,6 +12822,51 @@
                 "username": {
                     "type": "string",
                     "description": "vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeDevicePath": {
+                    "type": "string",
+                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeId": {
+                    "type": "string",
+                    "description": "OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeName": {
+                    "type": "string",
+                    "description": "OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "string",
+                    "description": "OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14752,6 +15213,14 @@
                         }
                     }
                 },
+                "loadBalancerSku": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "location": {
                     "type": "string",
                     "language": {
@@ -14898,6 +15367,7 @@
                 "clientId",
                 "clientSecret",
                 "kubernetesVersion",
+                "loadBalancerSku",
                 "masterDnsPrefix",
                 "resourceGroup",
                 "sshPublicKeyContents",
@@ -16872,6 +17342,14 @@
                         }
                     }
                 },
+                "customBootVolumeSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "description": {
                     "type": "string",
                     "description": "(Computed) The description for Cluster (string)\n",
@@ -16899,6 +17377,14 @@
                 },
                 "fingerprint": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "flexOcpus": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17034,6 +17520,14 @@
                     }
                 },
                 "userOcid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vcnCompartmentId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -17254,6 +17748,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "winPrefixPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -17272,7 +17774,8 @@
                 "services",
                 "sshCertPath",
                 "sshKeyPath",
-                "upgradeStrategy"
+                "upgradeStrategy",
+                "winPrefixPath"
             ],
             "language": {
                 "nodejs": {
@@ -19536,9 +20039,25 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "timeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig:getClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig": {
             "properties": {
@@ -20920,6 +21439,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "winPrefixPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -20938,7 +21465,8 @@
                 "services",
                 "sshCertPath",
                 "sshKeyPath",
-                "upgradeStrategy"
+                "upgradeStrategy",
+                "winPrefixPath"
             ],
             "language": {
                 "nodejs": {
@@ -23201,9 +23729,25 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "timeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig:getClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig": {
             "properties": {
@@ -24143,9 +24687,25 @@
                             "mapCase": false
                         }
                     }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "timeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "rancher2:index/getEtcdBackupBackupConfigS3BackupConfig:getEtcdBackupBackupConfigS3BackupConfig": {
             "properties": {
@@ -24346,6 +24906,66 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:index/getGlobalRoleRule:getGlobalRoleRule": {
+            "properties": {
+                "apiGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nonResourceUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "verbs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/getMultiClusterAppAnswer:getMultiClusterAppAnswer": {
             "properties": {
@@ -24668,6 +25288,53 @@
             "type": "object"
         },
         "rancher2:index/getNodePoolNodeTaint:getNodePoolNodeTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeAdded": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "timeAdded",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "rancher2:index/getNodeTemplateNodeTaint:getNodeTemplateNodeTaint": {
             "properties": {
                 "effect": {
                     "type": "string",
@@ -30680,7 +31347,7 @@
             }
         },
         "rancher2:index/cluster:Cluster": {
-            "description": "Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Creating Rancher v2 RKE cluster enabling and customizing monitoring\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_custom = new rancher2.Cluster(\"foo-custom\", {\n    clusterMonitoringInput: {\n        answers: {\n            \"exporter-kubelets.https\": true,\n            \"exporter-node.enabled\": true,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": false,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version: \"0.1.0\",\n    },\n    description: \"Foo rancher2 custom cluster\",\n    enableClusterMonitoring: true,\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom = rancher2.Cluster(\"foo-custom\",\n    cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(\n        answers={\n            \"exporter-kubelets.https\": True,\n            \"exporter-node.enabled\": True,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": False,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version=\"0.1.0\",\n    ),\n    description=\"Foo rancher2 custom cluster\",\n    enable_cluster_monitoring=True,\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_custom = new Rancher2.Cluster(\"foo-custom\", new Rancher2.ClusterArgs\n        {\n            ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs\n            {\n                Answers = \n                {\n                    { \"exporter-kubelets.https\", true },\n                    { \"exporter-node.enabled\", true },\n                    { \"exporter-node.ports.metrics.port\", 9796 },\n                    { \"exporter-node.resources.limits.cpu\", \"200m\" },\n                    { \"exporter-node.resources.limits.memory\", \"200Mi\" },\n                    { \"grafana.persistence.enabled\", false },\n                    { \"grafana.persistence.size\", \"10Gi\" },\n                    { \"grafana.persistence.storageClass\", \"default\" },\n                    { \"operator.resources.limits.memory\", \"500Mi\" },\n                    { \"prometheus.persistence.enabled\", \"false\" },\n                    { \"prometheus.persistence.size\", \"50Gi\" },\n                    { \"prometheus.persistence.storageClass\", \"default\" },\n                    { \"prometheus.persistent.useReleaseName\", \"true\" },\n                    { \"prometheus.resources.core.limits.cpu\", \"1000m\" },\n                    { \"prometheus.resources.core.limits.memory\", \"1500Mi\" },\n                    { \"prometheus.resources.core.requests.cpu\", \"750m\" },\n                    { \"prometheus.resources.core.requests.memory\", \"750Mi\" },\n                    { \"prometheus.retention\", \"12h\" },\n                },\n                Version = \"0.1.0\",\n            },\n            Description = \"Foo rancher2 custom cluster\",\n            EnableClusterMonitoring = true,\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_custom\", \u0026rancher2.ClusterArgs{\n\t\t\tClusterMonitoringInput: \u0026rancher2.ClusterClusterMonitoringInputArgs{\n\t\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\t\"exporter-kubelets.https\":                   pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.enabled\":                     pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.ports.metrics.port\":          pulumi.Float64(9796),\n\t\t\t\t\t\"exporter-node.resources.limits.cpu\":        pulumi.String(\"200m\"),\n\t\t\t\t\t\"exporter-node.resources.limits.memory\":     pulumi.String(\"200Mi\"),\n\t\t\t\t\t\"grafana.persistence.enabled\":               pulumi.Bool(false),\n\t\t\t\t\t\"grafana.persistence.size\":                  pulumi.String(\"10Gi\"),\n\t\t\t\t\t\"grafana.persistence.storageClass\":          pulumi.String(\"default\"),\n\t\t\t\t\t\"operator.resources.limits.memory\":          pulumi.String(\"500Mi\"),\n\t\t\t\t\t\"prometheus.persistence.enabled\":            pulumi.String(\"false\"),\n\t\t\t\t\t\"prometheus.persistence.size\":               pulumi.String(\"50Gi\"),\n\t\t\t\t\t\"prometheus.persistence.storageClass\":       pulumi.String(\"default\"),\n\t\t\t\t\t\"prometheus.persistent.useReleaseName\":      pulumi.String(\"true\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.cpu\":      pulumi.String(\"1000m\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.memory\":   pulumi.String(\"1500Mi\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.cpu\":    pulumi.String(\"750m\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.memory\": pulumi.String(\"750Mi\"),\n\t\t\t\t\t\"prometheus.retention\":                      pulumi.String(\"12h\"),\n\t\t\t\t},\n\t\t\t\tVersion: pulumi.String(\"0.1.0\"),\n\t\t\t},\n\t\t\tDescription:             pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tEnableClusterMonitoring: pulumi.Bool(true),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_customCluster = new rancher2.Cluster(\"foo-customCluster\", {\n    description: \"Foo rancher2 custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n    enableClusterMonitoring: true,\n    clusterMonitoringInput: {\n        answers: {\n            \"exporter-kubelets.https\": true,\n            \"exporter-node.enabled\": true,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": false,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version: \"0.1.0\",\n    },\n});\n// Create a new rancher2 Cluster Sync for foo-custom cluster\nconst foo_customClusterSync = new rancher2.ClusterSync(\"foo-customClusterSync\", {\n    clusterId: foo_customCluster.id,\n    waitMonitoring: foo_customCluster.enableClusterMonitoring,\n});\n// Create a new rancher2 Namespace\nconst foo_istio = new rancher2.Namespace(\"foo-istio\", {\n    projectId: foo_customClusterSync.systemProjectId,\n    description: \"istio namespace\",\n});\n// Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\nconst istio = new rancher2.App(\"istio\", {\n    catalogName: \"system-library\",\n    description: \"Terraform app acceptance test\",\n    projectId: foo_istio.projectId,\n    templateName: \"rancher-istio\",\n    templateVersion: \"0.1.1\",\n    targetNamespace: foo_istio.id,\n    answers: {\n        \"certmanager.enabled\": false,\n        enableCRDs: true,\n        \"galley.enabled\": true,\n        \"gateways.enabled\": false,\n        \"gateways.istio-ingressgateway.resources.limits.cpu\": \"2000m\",\n        \"gateways.istio-ingressgateway.resources.limits.memory\": \"1024Mi\",\n        \"gateways.istio-ingressgateway.resources.requests.cpu\": \"100m\",\n        \"gateways.istio-ingressgateway.resources.requests.memory\": \"128Mi\",\n        \"gateways.istio-ingressgateway.type\": \"NodePort\",\n        \"global.monitoring.type\": \"cluster-monitoring\",\n        \"global.rancher.clusterId\": foo_customClusterSync.clusterId,\n        \"istio_cni.enabled\": \"false\",\n        \"istiocoredns.enabled\": \"false\",\n        \"kiali.enabled\": \"true\",\n        \"mixer.enabled\": \"true\",\n        \"mixer.policy.enabled\": \"true\",\n        \"mixer.policy.resources.limits.cpu\": \"4800m\",\n        \"mixer.policy.resources.limits.memory\": \"4096Mi\",\n        \"mixer.policy.resources.requests.cpu\": \"1000m\",\n        \"mixer.policy.resources.requests.memory\": \"1024Mi\",\n        \"mixer.telemetry.resources.limits.cpu\": \"4800m\",\n        \"mixer.telemetry.resources.limits.memory\": \"4096Mi\",\n        \"mixer.telemetry.resources.requests.cpu\": \"1000m\",\n        \"mixer.telemetry.resources.requests.memory\": \"1024Mi\",\n        \"mtls.enabled\": false,\n        \"nodeagent.enabled\": false,\n        \"pilot.enabled\": true,\n        \"pilot.resources.limits.cpu\": \"1000m\",\n        \"pilot.resources.limits.memory\": \"4096Mi\",\n        \"pilot.resources.requests.cpu\": \"500m\",\n        \"pilot.resources.requests.memory\": \"2048Mi\",\n        \"pilot.traceSampling\": \"1\",\n        \"security.enabled\": true,\n        \"sidecarInjectorWebhook.enabled\": true,\n        \"tracing.enabled\": true,\n        \"tracing.jaeger.resources.limits.cpu\": \"500m\",\n        \"tracing.jaeger.resources.limits.memory\": \"1024Mi\",\n        \"tracing.jaeger.resources.requests.cpu\": \"100m\",\n        \"tracing.jaeger.resources.requests.memory\": \"100Mi\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom_cluster = rancher2.Cluster(\"foo-customCluster\",\n    description=\"Foo rancher2 custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ),\n    enable_cluster_monitoring=True,\n    cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(\n        answers={\n            \"exporter-kubelets.https\": True,\n            \"exporter-node.enabled\": True,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": False,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version=\"0.1.0\",\n    ))\n# Create a new rancher2 Cluster Sync for foo-custom cluster\nfoo_custom_cluster_sync = rancher2.ClusterSync(\"foo-customClusterSync\",\n    cluster_id=foo_custom_cluster.id,\n    wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)\n# Create a new rancher2 Namespace\nfoo_istio = rancher2.Namespace(\"foo-istio\",\n    project_id=foo_custom_cluster_sync.system_project_id,\n    description=\"istio namespace\")\n# Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\nistio = rancher2.App(\"istio\",\n    catalog_name=\"system-library\",\n    description=\"Terraform app acceptance test\",\n    project_id=foo_istio.project_id,\n    template_name=\"rancher-istio\",\n    template_version=\"0.1.1\",\n    target_namespace=foo_istio.id,\n    answers={\n        \"certmanager.enabled\": False,\n        \"enableCRDs\": True,\n        \"galley.enabled\": True,\n        \"gateways.enabled\": False,\n        \"gateways.istio-ingressgateway.resources.limits.cpu\": \"2000m\",\n        \"gateways.istio-ingressgateway.resources.limits.memory\": \"1024Mi\",\n        \"gateways.istio-ingressgateway.resources.requests.cpu\": \"100m\",\n        \"gateways.istio-ingressgateway.resources.requests.memory\": \"128Mi\",\n        \"gateways.istio-ingressgateway.type\": \"NodePort\",\n        \"global.monitoring.type\": \"cluster-monitoring\",\n        \"global.rancher.clusterId\": foo_custom_cluster_sync.cluster_id,\n        \"istio_cni.enabled\": \"false\",\n        \"istiocoredns.enabled\": \"false\",\n        \"kiali.enabled\": \"true\",\n        \"mixer.enabled\": \"true\",\n        \"mixer.policy.enabled\": \"true\",\n        \"mixer.policy.resources.limits.cpu\": \"4800m\",\n        \"mixer.policy.resources.limits.memory\": \"4096Mi\",\n        \"mixer.policy.resources.requests.cpu\": \"1000m\",\n        \"mixer.policy.resources.requests.memory\": \"1024Mi\",\n        \"mixer.telemetry.resources.limits.cpu\": \"4800m\",\n        \"mixer.telemetry.resources.limits.memory\": \"4096Mi\",\n        \"mixer.telemetry.resources.requests.cpu\": \"1000m\",\n        \"mixer.telemetry.resources.requests.memory\": \"1024Mi\",\n        \"mtls.enabled\": False,\n        \"nodeagent.enabled\": False,\n        \"pilot.enabled\": True,\n        \"pilot.resources.limits.cpu\": \"1000m\",\n        \"pilot.resources.limits.memory\": \"4096Mi\",\n        \"pilot.resources.requests.cpu\": \"500m\",\n        \"pilot.resources.requests.memory\": \"2048Mi\",\n        \"pilot.traceSampling\": \"1\",\n        \"security.enabled\": True,\n        \"sidecarInjectorWebhook.enabled\": True,\n        \"tracing.enabled\": True,\n        \"tracing.jaeger.resources.limits.cpu\": \"500m\",\n        \"tracing.jaeger.resources.limits.memory\": \"1024Mi\",\n        \"tracing.jaeger.resources.requests.cpu\": \"100m\",\n        \"tracing.jaeger.resources.requests.memory\": \"100Mi\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_customCluster = new Rancher2.Cluster(\"foo-customCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Foo rancher2 custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n            EnableClusterMonitoring = true,\n            ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs\n            {\n                Answers = \n                {\n                    { \"exporter-kubelets.https\", true },\n                    { \"exporter-node.enabled\", true },\n                    { \"exporter-node.ports.metrics.port\", 9796 },\n                    { \"exporter-node.resources.limits.cpu\", \"200m\" },\n                    { \"exporter-node.resources.limits.memory\", \"200Mi\" },\n                    { \"grafana.persistence.enabled\", false },\n                    { \"grafana.persistence.size\", \"10Gi\" },\n                    { \"grafana.persistence.storageClass\", \"default\" },\n                    { \"operator.resources.limits.memory\", \"500Mi\" },\n                    { \"prometheus.persistence.enabled\", \"false\" },\n                    { \"prometheus.persistence.size\", \"50Gi\" },\n                    { \"prometheus.persistence.storageClass\", \"default\" },\n                    { \"prometheus.persistent.useReleaseName\", \"true\" },\n                    { \"prometheus.resources.core.limits.cpu\", \"1000m\" },\n                    { \"prometheus.resources.core.limits.memory\", \"1500Mi\" },\n                    { \"prometheus.resources.core.requests.cpu\", \"750m\" },\n                    { \"prometheus.resources.core.requests.memory\", \"750Mi\" },\n                    { \"prometheus.retention\", \"12h\" },\n                },\n                Version = \"0.1.0\",\n            },\n        });\n        // Create a new rancher2 Cluster Sync for foo-custom cluster\n        var foo_customClusterSync = new Rancher2.ClusterSync(\"foo-customClusterSync\", new Rancher2.ClusterSyncArgs\n        {\n            ClusterId = foo_customCluster.Id,\n            WaitMonitoring = foo_customCluster.EnableClusterMonitoring,\n        });\n        // Create a new rancher2 Namespace\n        var foo_istio = new Rancher2.Namespace(\"foo-istio\", new Rancher2.NamespaceArgs\n        {\n            ProjectId = foo_customClusterSync.SystemProjectId,\n            Description = \"istio namespace\",\n        });\n        // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\n        var istio = new Rancher2.App(\"istio\", new Rancher2.AppArgs\n        {\n            CatalogName = \"system-library\",\n            Description = \"Terraform app acceptance test\",\n            ProjectId = foo_istio.ProjectId,\n            TemplateName = \"rancher-istio\",\n            TemplateVersion = \"0.1.1\",\n            TargetNamespace = foo_istio.Id,\n            Answers = \n            {\n                { \"certmanager.enabled\", false },\n                { \"enableCRDs\", true },\n                { \"galley.enabled\", true },\n                { \"gateways.enabled\", false },\n                { \"gateways.istio-ingressgateway.resources.limits.cpu\", \"2000m\" },\n                { \"gateways.istio-ingressgateway.resources.limits.memory\", \"1024Mi\" },\n                { \"gateways.istio-ingressgateway.resources.requests.cpu\", \"100m\" },\n                { \"gateways.istio-ingressgateway.resources.requests.memory\", \"128Mi\" },\n                { \"gateways.istio-ingressgateway.type\", \"NodePort\" },\n                { \"global.monitoring.type\", \"cluster-monitoring\" },\n                { \"global.rancher.clusterId\", foo_customClusterSync.ClusterId },\n                { \"istio_cni.enabled\", \"false\" },\n                { \"istiocoredns.enabled\", \"false\" },\n                { \"kiali.enabled\", \"true\" },\n                { \"mixer.enabled\", \"true\" },\n                { \"mixer.policy.enabled\", \"true\" },\n                { \"mixer.policy.resources.limits.cpu\", \"4800m\" },\n                { \"mixer.policy.resources.limits.memory\", \"4096Mi\" },\n                { \"mixer.policy.resources.requests.cpu\", \"1000m\" },\n                { \"mixer.policy.resources.requests.memory\", \"1024Mi\" },\n                { \"mixer.telemetry.resources.limits.cpu\", \"4800m\" },\n                { \"mixer.telemetry.resources.limits.memory\", \"4096Mi\" },\n                { \"mixer.telemetry.resources.requests.cpu\", \"1000m\" },\n                { \"mixer.telemetry.resources.requests.memory\", \"1024Mi\" },\n                { \"mtls.enabled\", false },\n                { \"nodeagent.enabled\", false },\n                { \"pilot.enabled\", true },\n                { \"pilot.resources.limits.cpu\", \"1000m\" },\n                { \"pilot.resources.limits.memory\", \"4096Mi\" },\n                { \"pilot.resources.requests.cpu\", \"500m\" },\n                { \"pilot.resources.requests.memory\", \"2048Mi\" },\n                { \"pilot.traceSampling\", \"1\" },\n                { \"security.enabled\", true },\n                { \"sidecarInjectorWebhook.enabled\", true },\n                { \"tracing.enabled\", true },\n                { \"tracing.jaeger.resources.limits.cpu\", \"500m\" },\n                { \"tracing.jaeger.resources.limits.memory\", \"1024Mi\" },\n                { \"tracing.jaeger.resources.requests.cpu\", \"100m\" },\n                { \"tracing.jaeger.resources.requests.memory\", \"100Mi\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_customCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnableClusterMonitoring: pulumi.Bool(true),\n\t\t\tClusterMonitoringInput: \u0026rancher2.ClusterClusterMonitoringInputArgs{\n\t\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\t\"exporter-kubelets.https\":                   pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.enabled\":                     pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.ports.metrics.port\":          pulumi.Float64(9796),\n\t\t\t\t\t\"exporter-node.resources.limits.cpu\":        pulumi.String(\"200m\"),\n\t\t\t\t\t\"exporter-node.resources.limits.memory\":     pulumi.String(\"200Mi\"),\n\t\t\t\t\t\"grafana.persistence.enabled\":               pulumi.Bool(false),\n\t\t\t\t\t\"grafana.persistence.size\":                  pulumi.String(\"10Gi\"),\n\t\t\t\t\t\"grafana.persistence.storageClass\":          pulumi.String(\"default\"),\n\t\t\t\t\t\"operator.resources.limits.memory\":          pulumi.String(\"500Mi\"),\n\t\t\t\t\t\"prometheus.persistence.enabled\":            pulumi.String(\"false\"),\n\t\t\t\t\t\"prometheus.persistence.size\":               pulumi.String(\"50Gi\"),\n\t\t\t\t\t\"prometheus.persistence.storageClass\":       pulumi.String(\"default\"),\n\t\t\t\t\t\"prometheus.persistent.useReleaseName\":      pulumi.String(\"true\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.cpu\":      pulumi.String(\"1000m\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.memory\":   pulumi.String(\"1500Mi\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.cpu\":    pulumi.String(\"750m\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.memory\": pulumi.String(\"750Mi\"),\n\t\t\t\t\t\"prometheus.retention\":                      pulumi.String(\"12h\"),\n\t\t\t\t},\n\t\t\t\tVersion: pulumi.String(\"0.1.0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewClusterSync(ctx, \"foo_customClusterSync\", \u0026rancher2.ClusterSyncArgs{\n\t\t\tClusterId:      foo_customCluster.ID(),\n\t\t\tWaitMonitoring: foo_customCluster.EnableClusterMonitoring,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNamespace(ctx, \"foo_istio\", \u0026rancher2.NamespaceArgs{\n\t\t\tProjectId:   foo_customClusterSync.SystemProjectId,\n\t\t\tDescription: pulumi.String(\"istio namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewApp(ctx, \"istio\", \u0026rancher2.AppArgs{\n\t\t\tCatalogName:     pulumi.String(\"system-library\"),\n\t\t\tDescription:     pulumi.String(\"Terraform app acceptance test\"),\n\t\t\tProjectId:       foo_istio.ProjectId,\n\t\t\tTemplateName:    pulumi.String(\"rancher-istio\"),\n\t\t\tTemplateVersion: pulumi.String(\"0.1.1\"),\n\t\t\tTargetNamespace: foo_istio.ID(),\n\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\"certmanager.enabled\": pulumi.Bool(false),\n\t\t\t\t\"enableCRDs\":          pulumi.Bool(true),\n\t\t\t\t\"galley.enabled\":      pulumi.Bool(true),\n\t\t\t\t\"gateways.enabled\":    pulumi.Bool(false),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.limits.cpu\":      pulumi.String(\"2000m\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.limits.memory\":   pulumi.String(\"1024Mi\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.requests.cpu\":    pulumi.String(\"100m\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.requests.memory\": pulumi.String(\"128Mi\"),\n\t\t\t\t\"gateways.istio-ingressgateway.type\":                      pulumi.String(\"NodePort\"),\n\t\t\t\t\"global.monitoring.type\":                                  pulumi.String(\"cluster-monitoring\"),\n\t\t\t\t\"global.rancher.clusterId\":                                foo_customClusterSync.ClusterId,\n\t\t\t\t\"istio_cni.enabled\":                                       pulumi.String(\"false\"),\n\t\t\t\t\"istiocoredns.enabled\":                                    pulumi.String(\"false\"),\n\t\t\t\t\"kiali.enabled\":                                           pulumi.String(\"true\"),\n\t\t\t\t\"mixer.enabled\":                                           pulumi.String(\"true\"),\n\t\t\t\t\"mixer.policy.enabled\":                                    pulumi.String(\"true\"),\n\t\t\t\t\"mixer.policy.resources.limits.cpu\":                       pulumi.String(\"4800m\"),\n\t\t\t\t\"mixer.policy.resources.limits.memory\":                    pulumi.String(\"4096Mi\"),\n\t\t\t\t\"mixer.policy.resources.requests.cpu\":                     pulumi.String(\"1000m\"),\n\t\t\t\t\"mixer.policy.resources.requests.memory\":                  pulumi.String(\"1024Mi\"),\n\t\t\t\t\"mixer.telemetry.resources.limits.cpu\":                    pulumi.String(\"4800m\"),\n\t\t\t\t\"mixer.telemetry.resources.limits.memory\":                 pulumi.String(\"4096Mi\"),\n\t\t\t\t\"mixer.telemetry.resources.requests.cpu\":                  pulumi.String(\"1000m\"),\n\t\t\t\t\"mixer.telemetry.resources.requests.memory\":               pulumi.String(\"1024Mi\"),\n\t\t\t\t\"mtls.enabled\":                                            pulumi.Bool(false),\n\t\t\t\t\"nodeagent.enabled\":                                       pulumi.Bool(false),\n\t\t\t\t\"pilot.enabled\":                                           pulumi.Bool(true),\n\t\t\t\t\"pilot.resources.limits.cpu\":                              pulumi.String(\"1000m\"),\n\t\t\t\t\"pilot.resources.limits.memory\":                           pulumi.String(\"4096Mi\"),\n\t\t\t\t\"pilot.resources.requests.cpu\":                            pulumi.String(\"500m\"),\n\t\t\t\t\"pilot.resources.requests.memory\":                         pulumi.String(\"2048Mi\"),\n\t\t\t\t\"pilot.traceSampling\":                                     pulumi.String(\"1\"),\n\t\t\t\t\"security.enabled\":                                        pulumi.Bool(true),\n\t\t\t\t\"sidecarInjectorWebhook.enabled\":                          pulumi.Bool(true),\n\t\t\t\t\"tracing.enabled\":                                         pulumi.Bool(true),\n\t\t\t\t\"tracing.jaeger.resources.limits.cpu\":                     pulumi.String(\"500m\"),\n\t\t\t\t\"tracing.jaeger.resources.limits.memory\":                  pulumi.String(\"1024Mi\"),\n\t\t\t\t\"tracing.jaeger.resources.requests.cpu\":                   pulumi.String(\"100m\"),\n\t\t\t\t\"tracing.jaeger.resources.requests.memory\":                pulumi.String(\"100Mi\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_custom = new rancher2.Cluster(\"foo-custom\", {\n    description: \"Foo rancher2 custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n});\n// Create a new rancher2 Node Template\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    amazonec2Config: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n// Create a new rancher2 Node Pool\nconst fooNodePool = new rancher2.NodePool(\"fooNodePool\", {\n    clusterId: foo_custom.id,\n    hostnamePrefix: \"foo-cluster-0\",\n    nodeTemplateId: fooNodeTemplate.id,\n    quantity: 3,\n    controlPlane: true,\n    etcd: true,\n    worker: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom = rancher2.Cluster(\"foo-custom\",\n    description=\"Foo rancher2 custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ))\n# Create a new rancher2 Node Template\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n# Create a new rancher2 Node Pool\nfoo_node_pool = rancher2.NodePool(\"fooNodePool\",\n    cluster_id=foo_custom.id,\n    hostname_prefix=\"foo-cluster-0\",\n    node_template_id=foo_node_template.id,\n    quantity=3,\n    control_plane=True,\n    etcd=True,\n    worker=True)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_custom = new Rancher2.Cluster(\"foo-custom\", new Rancher2.ClusterArgs\n        {\n            Description = \"Foo rancher2 custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n        });\n        // Create a new rancher2 Node Template\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n        // Create a new rancher2 Node Pool\n        var fooNodePool = new Rancher2.NodePool(\"fooNodePool\", new Rancher2.NodePoolArgs\n        {\n            ClusterId = foo_custom.Id,\n            HostnamePrefix = \"foo-cluster-0\",\n            NodeTemplateId = fooNodeTemplate.Id,\n            Quantity = 3,\n            ControlPlane = true,\n            Etcd = true,\n            Worker = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_custom\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodePool(ctx, \"fooNodePool\", \u0026rancher2.NodePoolArgs{\n\t\t\tClusterId:      foo_custom.ID(),\n\t\t\tHostnamePrefix: pulumi.String(\"foo-cluster-0\"),\n\t\t\tNodeTemplateId: fooNodeTemplate.ID(),\n\t\t\tQuantity:       pulumi.Int(3),\n\t\t\tControlPlane:   pulumi.Bool(true),\n\t\t\tEtcd:           pulumi.Bool(true),\n\t\t\tWorker:         pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 cluster template\nconst fooClusterTemplate = new rancher2.ClusterTemplate(\"fooClusterTemplate\", {\n    members: [{\n        accessType: \"owner\",\n        userPrincipalId: \"local://user-XXXXX\",\n    }],\n    templateRevisions: [{\n        name: \"V1\",\n        clusterConfig: {\n            rkeConfig: {\n                network: {\n                    plugin: \"canal\",\n                },\n                services: {\n                    etcd: {\n                        creation: \"6h\",\n                        retention: \"24h\",\n                    },\n                },\n            },\n        },\n        \"default\": true,\n    }],\n    description: \"Test cluster template v2\",\n});\n// Create a new rancher2 RKE Cluster from template\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    clusterTemplateId: fooClusterTemplate.id,\n    clusterTemplateRevisionId: fooClusterTemplate.templateRevisions.apply(templateRevisions =\u003e templateRevisions[0].id),\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 cluster template\nfoo_cluster_template = rancher2.ClusterTemplate(\"fooClusterTemplate\",\n    members=[rancher2.ClusterTemplateMemberArgs(\n        access_type=\"owner\",\n        user_principal_id=\"local://user-XXXXX\",\n    )],\n    template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(\n        name=\"V1\",\n        cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(\n            rke_config={\n                \"network\": {\n                    \"plugin\": \"canal\",\n                },\n                \"services\": {\n                    \"etcd\": {\n                        \"creation\": \"6h\",\n                        \"retention\": \"24h\",\n                    },\n                },\n            },\n        ),\n        default=True,\n    )],\n    description=\"Test cluster template v2\")\n# Create a new rancher2 RKE Cluster from template\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    cluster_template_id=foo_cluster_template.id,\n    cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 cluster template\n        var fooClusterTemplate = new Rancher2.ClusterTemplate(\"fooClusterTemplate\", new Rancher2.ClusterTemplateArgs\n        {\n            Members = \n            {\n                new Rancher2.Inputs.ClusterTemplateMemberArgs\n                {\n                    AccessType = \"owner\",\n                    UserPrincipalId = \"local://user-XXXXX\",\n                },\n            },\n            TemplateRevisions = \n            {\n                new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs\n                {\n                    Name = \"V1\",\n                    ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs\n                    {\n                        RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs\n                        {\n                            Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs\n                            {\n                                Plugin = \"canal\",\n                            },\n                            Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs\n                            {\n                                Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs\n                                {\n                                    Creation = \"6h\",\n                                    Retention = \"24h\",\n                                },\n                            },\n                        },\n                    },\n                    Default = true,\n                },\n            },\n            Description = \"Test cluster template v2\",\n        });\n        // Create a new rancher2 RKE Cluster from template\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            ClusterTemplateId = fooClusterTemplate.Id,\n            ClusterTemplateRevisionId = fooClusterTemplate.TemplateRevisions.Apply(templateRevisions =\u003e templateRevisions[0].Id),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooClusterTemplate, err := rancher2.NewClusterTemplate(ctx, \"fooClusterTemplate\", \u0026rancher2.ClusterTemplateArgs{\n\t\t\tMembers: rancher2.ClusterTemplateMemberArray{\n\t\t\t\t\u0026rancher2.ClusterTemplateMemberArgs{\n\t\t\t\t\tAccessType:      pulumi.String(\"owner\"),\n\t\t\t\t\tUserPrincipalId: pulumi.String(\"local://user-XXXXX\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{\n\t\t\t\t\u0026rancher2.ClusterTemplateTemplateRevisionArgs{\n\t\t\t\t\tName: pulumi.String(\"V1\"),\n\t\t\t\t\tClusterConfig: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{\n\t\t\t\t\t\tRkeConfig: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{\n\t\t\t\t\t\t\tNetwork: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{\n\t\t\t\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tServices: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{\n\t\t\t\t\t\t\t\tEtcd: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDefault: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Test cluster template v2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tClusterTemplateId: fooClusterTemplate.ID(),\n\t\t\tClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (string, error) {\n\t\t\t\treturn templateRevisions[0].Id, nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = new rancher2.Cluster(\"foo\", {\n    description: \"Terraform custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n        services: {\n            etcd: {\n                creation: \"6h\",\n                retention: \"24h\",\n            },\n            kubeApi: {\n                auditLog: {\n                    configuration: {\n                        format: \"json\",\n                        maxAge: 5,\n                        maxBackup: 5,\n                        maxSize: 100,\n                        path: \"-\",\n                        policy: `apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n`,\n                    },\n                    enabled: true,\n                },\n            },\n        },\n        upgradeStrategy: {\n            drain: true,\n            maxUnavailableWorker: \"20%\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.Cluster(\"foo\",\n    description=\"Terraform custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n        services=rancher2.ClusterRkeConfigServicesArgs(\n            etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(\n                creation=\"6h\",\n                retention=\"24h\",\n            ),\n            kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(\n                audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(\n                    configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(\n                        format=\"json\",\n                        max_age=5,\n                        max_backup=5,\n                        max_size=100,\n                        path=\"-\",\n                        policy=\"\"\"apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n\n\"\"\",\n                    ),\n                    enabled=True,\n                ),\n            ),\n        ),\n        upgrade_strategy={\n            \"drain\": True,\n            \"maxUnavailableWorker\": \"20%\",\n        },\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rancher2.Cluster(\"foo\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n                Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs\n                {\n                    Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs\n                    {\n                        Creation = \"6h\",\n                        Retention = \"24h\",\n                    },\n                    KubeApi = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiArgs\n                    {\n                        AuditLog = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs\n                        {\n                            Configuration = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs\n                            {\n                                Format = \"json\",\n                                MaxAge = 5,\n                                MaxBackup = 5,\n                                MaxSize = 100,\n                                Path = \"-\",\n                                Policy = @\"apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n\n\",\n                            },\n                            Enabled = true,\n                        },\n                    },\n                },\n                UpgradeStrategy = new Rancher2.Inputs.ClusterRkeConfigUpgradeStrategyArgs\n                {\n                    Drain = true,\n                    MaxUnavailableWorker = \"20%\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t\tServices: \u0026rancher2.ClusterRkeConfigServicesArgs{\n\t\t\t\t\tEtcd: \u0026rancher2.ClusterRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t},\n\t\t\t\t\tKubeApi: \u0026rancher2.ClusterRkeConfigServicesKubeApiArgs{\n\t\t\t\t\t\tAuditLog: \u0026rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs{\n\t\t\t\t\t\t\tConfiguration: \u0026rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{\n\t\t\t\t\t\t\t\tFormat:    pulumi.String(\"json\"),\n\t\t\t\t\t\t\t\tMaxAge:    pulumi.Int(5),\n\t\t\t\t\t\t\t\tMaxBackup: pulumi.Int(5),\n\t\t\t\t\t\t\t\tMaxSize:   pulumi.Int(100),\n\t\t\t\t\t\t\t\tPath:      pulumi.String(\"-\"),\n\t\t\t\t\t\t\t\tPolicy:    pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v\", \"apiVersion: audit.k8s.io/v1\\n\", \"kind: Policy\\n\", \"metadata:\\n\", \"  creationTimestamp: null\\n\", \"omitStages:\\n\", \"- RequestReceived\\n\", \"rules:\\n\", \"- level: RequestResponse\\n\", \"  resources:\\n\", \"  - resources:\\n\", \"    - pods\\n\", \"\\n\")),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tUpgradeStrategy: \u0026rancher2.ClusterRkeConfigUpgradeStrategyArgs{\n\t\t\t\t\tDrain:                pulumi.Bool(true),\n\t\t\t\t\tMaxUnavailableWorker: pulumi.String(fmt.Sprintf(\"%v%v\", \"20\", \"%\")),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = new rancher2.Cluster(\"foo\", {\n    description: \"Terraform custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n        services: {\n            etcd: {\n                creation: \"6h\",\n                retention: \"24h\",\n            },\n        },\n    },\n    scheduledClusterScan: {\n        enabled: true,\n        scanConfig: {\n            cisScanConfig: {\n                debugMaster: true,\n                debugWorker: true,\n            },\n        },\n        scheduleConfig: {\n            cronSchedule: \"30 * * * *\",\n            retention: 5,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.Cluster(\"foo\",\n    description=\"Terraform custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n        services=rancher2.ClusterRkeConfigServicesArgs(\n            etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(\n                creation=\"6h\",\n                retention=\"24h\",\n            ),\n        ),\n    ),\n    scheduled_cluster_scan=rancher2.ClusterScheduledClusterScanArgs(\n        enabled=True,\n        scan_config=rancher2.ClusterScheduledClusterScanScanConfigArgs(\n            cis_scan_config=rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs(\n                debug_master=True,\n                debug_worker=True,\n            ),\n        ),\n        schedule_config=rancher2.ClusterScheduledClusterScanScheduleConfigArgs(\n            cron_schedule=\"30 * * * *\",\n            retention=5,\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rancher2.Cluster(\"foo\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n                Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs\n                {\n                    Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs\n                    {\n                        Creation = \"6h\",\n                        Retention = \"24h\",\n                    },\n                },\n            },\n            ScheduledClusterScan = new Rancher2.Inputs.ClusterScheduledClusterScanArgs\n            {\n                Enabled = true,\n                ScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigArgs\n                {\n                    CisScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs\n                    {\n                        DebugMaster = true,\n                        DebugWorker = true,\n                    },\n                },\n                ScheduleConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScheduleConfigArgs\n                {\n                    CronSchedule = \"30 * * * *\",\n                    Retention = 5,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t\tServices: \u0026rancher2.ClusterRkeConfigServicesArgs{\n\t\t\t\t\tEtcd: \u0026rancher2.ClusterRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tScheduledClusterScan: \u0026rancher2.ClusterScheduledClusterScanArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tScanConfig: \u0026rancher2.ClusterScheduledClusterScanScanConfigArgs{\n\t\t\t\t\tCisScanConfig: \u0026rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs{\n\t\t\t\t\t\tDebugMaster: pulumi.Bool(true),\n\t\t\t\t\t\tDebugWorker: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tScheduleConfig: \u0026rancher2.ClusterScheduledClusterScanScheduleConfigArgs{\n\t\t\t\t\tCronSchedule: pulumi.String(\"30 * * * *\"),\n\t\t\t\t\tRetention:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    description: \"Terraform EKS cluster\",\n    eksConfigV2: {\n        cloudCredentialId: fooCloudCredential.id,\n        name: \"\u003cCLUSTER_NAME\u003e\",\n        region: \"\u003cEKS_REGION\u003e\",\n        imported: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    description=\"Terraform EKS cluster\",\n    eks_config_v2=rancher2.ClusterEksConfigV2Args(\n        cloud_credential_id=foo_cloud_credential.id,\n        name=\"\u003cCLUSTER_NAME\u003e\",\n        region=\"\u003cEKS_REGION\u003e\",\n        imported=True,\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform EKS cluster\",\n            EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args\n            {\n                CloudCredentialId = fooCloudCredential.Id,\n                Name = \"\u003cCLUSTER_NAME\u003e\",\n                Region = \"\u003cEKS_REGION\u003e\",\n                Imported = true,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform EKS cluster\"),\n\t\t\tEksConfigV2: \u0026rancher2.ClusterEksConfigV2Args{\n\t\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\t\tName:              pulumi.String(\"\u003cCLUSTER_NAME\u003e\"),\n\t\t\t\tRegion:            pulumi.String(\"\u003cEKS_REGION\u003e\"),\n\t\t\t\tImported:          pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    description: \"Terraform EKS cluster\",\n    eksConfigV2: {\n        cloudCredentialId: fooCloudCredential.id,\n        region: \"\u003cEKS_REGION\u003e\",\n        kubernetesVersion: \"1.17\",\n        loggingTypes: [\n            \"audit\",\n            \"api\",\n        ],\n        nodeGroups: [\n            {\n                name: \"node_group1\",\n                instanceType: \"t3.medium\",\n                desiredSize: 3,\n                maxSize: 5,\n            },\n            {\n                name: \"node_group2\",\n                instanceType: \"m5.xlarge\",\n                desiredSize: 2,\n                maxSize: 3,\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    description=\"Terraform EKS cluster\",\n    eks_config_v2=rancher2.ClusterEksConfigV2Args(\n        cloud_credential_id=foo_cloud_credential.id,\n        region=\"\u003cEKS_REGION\u003e\",\n        kubernetes_version=\"1.17\",\n        logging_types=[\n            \"audit\",\n            \"api\",\n        ],\n        node_groups=[\n            rancher2.ClusterEksConfigV2NodeGroupArgs(\n                name=\"node_group1\",\n                instance_type=\"t3.medium\",\n                desired_size=3,\n                max_size=5,\n            ),\n            rancher2.ClusterEksConfigV2NodeGroupArgs(\n                name=\"node_group2\",\n                instance_type=\"m5.xlarge\",\n                desired_size=2,\n                max_size=3,\n            ),\n        ],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform EKS cluster\",\n            EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args\n            {\n                CloudCredentialId = fooCloudCredential.Id,\n                Region = \"\u003cEKS_REGION\u003e\",\n                KubernetesVersion = \"1.17\",\n                LoggingTypes = \n                {\n                    \"audit\",\n                    \"api\",\n                },\n                NodeGroups = \n                {\n                    new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs\n                    {\n                        Name = \"node_group1\",\n                        InstanceType = \"t3.medium\",\n                        DesiredSize = 3,\n                        MaxSize = 5,\n                    },\n                    new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs\n                    {\n                        Name = \"node_group2\",\n                        InstanceType = \"m5.xlarge\",\n                        DesiredSize = 2,\n                        MaxSize = 3,\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform EKS cluster\"),\n\t\t\tEksConfigV2: \u0026rancher2.ClusterEksConfigV2Args{\n\t\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\t\tRegion:            pulumi.String(\"\u003cEKS_REGION\u003e\"),\n\t\t\t\tKubernetesVersion: pulumi.String(\"1.17\"),\n\t\t\t\tLoggingTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"audit\"),\n\t\t\t\t\tpulumi.String(\"api\"),\n\t\t\t\t},\n\t\t\t\tNodeGroups: rancher2.ClusterEksConfigV2NodeGroupArray{\n\t\t\t\t\t\u0026rancher2.ClusterEksConfigV2NodeGroupArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"node_group1\"),\n\t\t\t\t\t\tInstanceType: pulumi.String(\"t3.medium\"),\n\t\t\t\t\t\tDesiredSize:  pulumi.Int(3),\n\t\t\t\t\t\tMaxSize:      pulumi.Int(5),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026rancher2.ClusterEksConfigV2NodeGroupArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"node_group2\"),\n\t\t\t\t\t\tInstanceType: pulumi.String(\"m5.xlarge\"),\n\t\t\t\t\t\tDesiredSize:  pulumi.Int(2),\n\t\t\t\t\t\tMaxSize:      pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nClusters can be imported using the Rancher Cluster ID\n\n```sh\n $ pulumi import rancher2:index/cluster:Cluster foo \u0026lt;CLUSTER_ID\u0026gt;\n```\n\n ",
+            "description": "Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Creating Rancher v2 RKE cluster enabling and customizing monitoring\n\n**Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_custom = new rancher2.Cluster(\"foo-custom\", {\n    clusterMonitoringInput: {\n        answers: {\n            \"exporter-kubelets.https\": true,\n            \"exporter-node.enabled\": true,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": false,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version: \"0.1.0\",\n    },\n    description: \"Foo rancher2 custom cluster\",\n    enableClusterMonitoring: true,\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom = rancher2.Cluster(\"foo-custom\",\n    cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(\n        answers={\n            \"exporter-kubelets.https\": True,\n            \"exporter-node.enabled\": True,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": False,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version=\"0.1.0\",\n    ),\n    description=\"Foo rancher2 custom cluster\",\n    enable_cluster_monitoring=True,\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_custom = new Rancher2.Cluster(\"foo-custom\", new Rancher2.ClusterArgs\n        {\n            ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs\n            {\n                Answers = \n                {\n                    { \"exporter-kubelets.https\", true },\n                    { \"exporter-node.enabled\", true },\n                    { \"exporter-node.ports.metrics.port\", 9796 },\n                    { \"exporter-node.resources.limits.cpu\", \"200m\" },\n                    { \"exporter-node.resources.limits.memory\", \"200Mi\" },\n                    { \"grafana.persistence.enabled\", false },\n                    { \"grafana.persistence.size\", \"10Gi\" },\n                    { \"grafana.persistence.storageClass\", \"default\" },\n                    { \"operator.resources.limits.memory\", \"500Mi\" },\n                    { \"prometheus.persistence.enabled\", \"false\" },\n                    { \"prometheus.persistence.size\", \"50Gi\" },\n                    { \"prometheus.persistence.storageClass\", \"default\" },\n                    { \"prometheus.persistent.useReleaseName\", \"true\" },\n                    { \"prometheus.resources.core.limits.cpu\", \"1000m\" },\n                    { \"prometheus.resources.core.limits.memory\", \"1500Mi\" },\n                    { \"prometheus.resources.core.requests.cpu\", \"750m\" },\n                    { \"prometheus.resources.core.requests.memory\", \"750Mi\" },\n                    { \"prometheus.retention\", \"12h\" },\n                },\n                Version = \"0.1.0\",\n            },\n            Description = \"Foo rancher2 custom cluster\",\n            EnableClusterMonitoring = true,\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_custom\", \u0026rancher2.ClusterArgs{\n\t\t\tClusterMonitoringInput: \u0026rancher2.ClusterClusterMonitoringInputArgs{\n\t\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\t\"exporter-kubelets.https\":                   pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.enabled\":                     pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.ports.metrics.port\":          pulumi.Float64(9796),\n\t\t\t\t\t\"exporter-node.resources.limits.cpu\":        pulumi.String(\"200m\"),\n\t\t\t\t\t\"exporter-node.resources.limits.memory\":     pulumi.String(\"200Mi\"),\n\t\t\t\t\t\"grafana.persistence.enabled\":               pulumi.Bool(false),\n\t\t\t\t\t\"grafana.persistence.size\":                  pulumi.String(\"10Gi\"),\n\t\t\t\t\t\"grafana.persistence.storageClass\":          pulumi.String(\"default\"),\n\t\t\t\t\t\"operator.resources.limits.memory\":          pulumi.String(\"500Mi\"),\n\t\t\t\t\t\"prometheus.persistence.enabled\":            pulumi.String(\"false\"),\n\t\t\t\t\t\"prometheus.persistence.size\":               pulumi.String(\"50Gi\"),\n\t\t\t\t\t\"prometheus.persistence.storageClass\":       pulumi.String(\"default\"),\n\t\t\t\t\t\"prometheus.persistent.useReleaseName\":      pulumi.String(\"true\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.cpu\":      pulumi.String(\"1000m\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.memory\":   pulumi.String(\"1500Mi\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.cpu\":    pulumi.String(\"750m\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.memory\": pulumi.String(\"750Mi\"),\n\t\t\t\t\t\"prometheus.retention\":                      pulumi.String(\"12h\"),\n\t\t\t\t},\n\t\t\t\tVersion: pulumi.String(\"0.1.0\"),\n\t\t\t},\n\t\t\tDescription:             pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tEnableClusterMonitoring: pulumi.Bool(true),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_customCluster = new rancher2.Cluster(\"foo-customCluster\", {\n    description: \"Foo rancher2 custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n    enableClusterMonitoring: true,\n    clusterMonitoringInput: {\n        answers: {\n            \"exporter-kubelets.https\": true,\n            \"exporter-node.enabled\": true,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": false,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version: \"0.1.0\",\n    },\n});\n// Create a new rancher2 Cluster Sync for foo-custom cluster\nconst foo_customClusterSync = new rancher2.ClusterSync(\"foo-customClusterSync\", {\n    clusterId: foo_customCluster.id,\n    waitMonitoring: foo_customCluster.enableClusterMonitoring,\n});\n// Create a new rancher2 Namespace\nconst foo_istio = new rancher2.Namespace(\"foo-istio\", {\n    projectId: foo_customClusterSync.systemProjectId,\n    description: \"istio namespace\",\n});\n// Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\nconst istio = new rancher2.App(\"istio\", {\n    catalogName: \"system-library\",\n    description: \"Terraform app acceptance test\",\n    projectId: foo_istio.projectId,\n    templateName: \"rancher-istio\",\n    templateVersion: \"0.1.1\",\n    targetNamespace: foo_istio.id,\n    answers: {\n        \"certmanager.enabled\": false,\n        enableCRDs: true,\n        \"galley.enabled\": true,\n        \"gateways.enabled\": false,\n        \"gateways.istio-ingressgateway.resources.limits.cpu\": \"2000m\",\n        \"gateways.istio-ingressgateway.resources.limits.memory\": \"1024Mi\",\n        \"gateways.istio-ingressgateway.resources.requests.cpu\": \"100m\",\n        \"gateways.istio-ingressgateway.resources.requests.memory\": \"128Mi\",\n        \"gateways.istio-ingressgateway.type\": \"NodePort\",\n        \"global.monitoring.type\": \"cluster-monitoring\",\n        \"global.rancher.clusterId\": foo_customClusterSync.clusterId,\n        \"istio_cni.enabled\": \"false\",\n        \"istiocoredns.enabled\": \"false\",\n        \"kiali.enabled\": \"true\",\n        \"mixer.enabled\": \"true\",\n        \"mixer.policy.enabled\": \"true\",\n        \"mixer.policy.resources.limits.cpu\": \"4800m\",\n        \"mixer.policy.resources.limits.memory\": \"4096Mi\",\n        \"mixer.policy.resources.requests.cpu\": \"1000m\",\n        \"mixer.policy.resources.requests.memory\": \"1024Mi\",\n        \"mixer.telemetry.resources.limits.cpu\": \"4800m\",\n        \"mixer.telemetry.resources.limits.memory\": \"4096Mi\",\n        \"mixer.telemetry.resources.requests.cpu\": \"1000m\",\n        \"mixer.telemetry.resources.requests.memory\": \"1024Mi\",\n        \"mtls.enabled\": false,\n        \"nodeagent.enabled\": false,\n        \"pilot.enabled\": true,\n        \"pilot.resources.limits.cpu\": \"1000m\",\n        \"pilot.resources.limits.memory\": \"4096Mi\",\n        \"pilot.resources.requests.cpu\": \"500m\",\n        \"pilot.resources.requests.memory\": \"2048Mi\",\n        \"pilot.traceSampling\": \"1\",\n        \"security.enabled\": true,\n        \"sidecarInjectorWebhook.enabled\": true,\n        \"tracing.enabled\": true,\n        \"tracing.jaeger.resources.limits.cpu\": \"500m\",\n        \"tracing.jaeger.resources.limits.memory\": \"1024Mi\",\n        \"tracing.jaeger.resources.requests.cpu\": \"100m\",\n        \"tracing.jaeger.resources.requests.memory\": \"100Mi\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom_cluster = rancher2.Cluster(\"foo-customCluster\",\n    description=\"Foo rancher2 custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ),\n    enable_cluster_monitoring=True,\n    cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(\n        answers={\n            \"exporter-kubelets.https\": True,\n            \"exporter-node.enabled\": True,\n            \"exporter-node.ports.metrics.port\": 9796,\n            \"exporter-node.resources.limits.cpu\": \"200m\",\n            \"exporter-node.resources.limits.memory\": \"200Mi\",\n            \"grafana.persistence.enabled\": False,\n            \"grafana.persistence.size\": \"10Gi\",\n            \"grafana.persistence.storageClass\": \"default\",\n            \"operator.resources.limits.memory\": \"500Mi\",\n            \"prometheus.persistence.enabled\": \"false\",\n            \"prometheus.persistence.size\": \"50Gi\",\n            \"prometheus.persistence.storageClass\": \"default\",\n            \"prometheus.persistent.useReleaseName\": \"true\",\n            \"prometheus.resources.core.limits.cpu\": \"1000m\",\n            \"prometheus.resources.core.limits.memory\": \"1500Mi\",\n            \"prometheus.resources.core.requests.cpu\": \"750m\",\n            \"prometheus.resources.core.requests.memory\": \"750Mi\",\n            \"prometheus.retention\": \"12h\",\n        },\n        version=\"0.1.0\",\n    ))\n# Create a new rancher2 Cluster Sync for foo-custom cluster\nfoo_custom_cluster_sync = rancher2.ClusterSync(\"foo-customClusterSync\",\n    cluster_id=foo_custom_cluster.id,\n    wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)\n# Create a new rancher2 Namespace\nfoo_istio = rancher2.Namespace(\"foo-istio\",\n    project_id=foo_custom_cluster_sync.system_project_id,\n    description=\"istio namespace\")\n# Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\nistio = rancher2.App(\"istio\",\n    catalog_name=\"system-library\",\n    description=\"Terraform app acceptance test\",\n    project_id=foo_istio.project_id,\n    template_name=\"rancher-istio\",\n    template_version=\"0.1.1\",\n    target_namespace=foo_istio.id,\n    answers={\n        \"certmanager.enabled\": False,\n        \"enableCRDs\": True,\n        \"galley.enabled\": True,\n        \"gateways.enabled\": False,\n        \"gateways.istio-ingressgateway.resources.limits.cpu\": \"2000m\",\n        \"gateways.istio-ingressgateway.resources.limits.memory\": \"1024Mi\",\n        \"gateways.istio-ingressgateway.resources.requests.cpu\": \"100m\",\n        \"gateways.istio-ingressgateway.resources.requests.memory\": \"128Mi\",\n        \"gateways.istio-ingressgateway.type\": \"NodePort\",\n        \"global.monitoring.type\": \"cluster-monitoring\",\n        \"global.rancher.clusterId\": foo_custom_cluster_sync.cluster_id,\n        \"istio_cni.enabled\": \"false\",\n        \"istiocoredns.enabled\": \"false\",\n        \"kiali.enabled\": \"true\",\n        \"mixer.enabled\": \"true\",\n        \"mixer.policy.enabled\": \"true\",\n        \"mixer.policy.resources.limits.cpu\": \"4800m\",\n        \"mixer.policy.resources.limits.memory\": \"4096Mi\",\n        \"mixer.policy.resources.requests.cpu\": \"1000m\",\n        \"mixer.policy.resources.requests.memory\": \"1024Mi\",\n        \"mixer.telemetry.resources.limits.cpu\": \"4800m\",\n        \"mixer.telemetry.resources.limits.memory\": \"4096Mi\",\n        \"mixer.telemetry.resources.requests.cpu\": \"1000m\",\n        \"mixer.telemetry.resources.requests.memory\": \"1024Mi\",\n        \"mtls.enabled\": False,\n        \"nodeagent.enabled\": False,\n        \"pilot.enabled\": True,\n        \"pilot.resources.limits.cpu\": \"1000m\",\n        \"pilot.resources.limits.memory\": \"4096Mi\",\n        \"pilot.resources.requests.cpu\": \"500m\",\n        \"pilot.resources.requests.memory\": \"2048Mi\",\n        \"pilot.traceSampling\": \"1\",\n        \"security.enabled\": True,\n        \"sidecarInjectorWebhook.enabled\": True,\n        \"tracing.enabled\": True,\n        \"tracing.jaeger.resources.limits.cpu\": \"500m\",\n        \"tracing.jaeger.resources.limits.memory\": \"1024Mi\",\n        \"tracing.jaeger.resources.requests.cpu\": \"100m\",\n        \"tracing.jaeger.resources.requests.memory\": \"100Mi\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_customCluster = new Rancher2.Cluster(\"foo-customCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Foo rancher2 custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n            EnableClusterMonitoring = true,\n            ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs\n            {\n                Answers = \n                {\n                    { \"exporter-kubelets.https\", true },\n                    { \"exporter-node.enabled\", true },\n                    { \"exporter-node.ports.metrics.port\", 9796 },\n                    { \"exporter-node.resources.limits.cpu\", \"200m\" },\n                    { \"exporter-node.resources.limits.memory\", \"200Mi\" },\n                    { \"grafana.persistence.enabled\", false },\n                    { \"grafana.persistence.size\", \"10Gi\" },\n                    { \"grafana.persistence.storageClass\", \"default\" },\n                    { \"operator.resources.limits.memory\", \"500Mi\" },\n                    { \"prometheus.persistence.enabled\", \"false\" },\n                    { \"prometheus.persistence.size\", \"50Gi\" },\n                    { \"prometheus.persistence.storageClass\", \"default\" },\n                    { \"prometheus.persistent.useReleaseName\", \"true\" },\n                    { \"prometheus.resources.core.limits.cpu\", \"1000m\" },\n                    { \"prometheus.resources.core.limits.memory\", \"1500Mi\" },\n                    { \"prometheus.resources.core.requests.cpu\", \"750m\" },\n                    { \"prometheus.resources.core.requests.memory\", \"750Mi\" },\n                    { \"prometheus.retention\", \"12h\" },\n                },\n                Version = \"0.1.0\",\n            },\n        });\n        // Create a new rancher2 Cluster Sync for foo-custom cluster\n        var foo_customClusterSync = new Rancher2.ClusterSync(\"foo-customClusterSync\", new Rancher2.ClusterSyncArgs\n        {\n            ClusterId = foo_customCluster.Id,\n            WaitMonitoring = foo_customCluster.EnableClusterMonitoring,\n        });\n        // Create a new rancher2 Namespace\n        var foo_istio = new Rancher2.Namespace(\"foo-istio\", new Rancher2.NamespaceArgs\n        {\n            ProjectId = foo_customClusterSync.SystemProjectId,\n            Description = \"istio namespace\",\n        });\n        // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)\n        var istio = new Rancher2.App(\"istio\", new Rancher2.AppArgs\n        {\n            CatalogName = \"system-library\",\n            Description = \"Terraform app acceptance test\",\n            ProjectId = foo_istio.ProjectId,\n            TemplateName = \"rancher-istio\",\n            TemplateVersion = \"0.1.1\",\n            TargetNamespace = foo_istio.Id,\n            Answers = \n            {\n                { \"certmanager.enabled\", false },\n                { \"enableCRDs\", true },\n                { \"galley.enabled\", true },\n                { \"gateways.enabled\", false },\n                { \"gateways.istio-ingressgateway.resources.limits.cpu\", \"2000m\" },\n                { \"gateways.istio-ingressgateway.resources.limits.memory\", \"1024Mi\" },\n                { \"gateways.istio-ingressgateway.resources.requests.cpu\", \"100m\" },\n                { \"gateways.istio-ingressgateway.resources.requests.memory\", \"128Mi\" },\n                { \"gateways.istio-ingressgateway.type\", \"NodePort\" },\n                { \"global.monitoring.type\", \"cluster-monitoring\" },\n                { \"global.rancher.clusterId\", foo_customClusterSync.ClusterId },\n                { \"istio_cni.enabled\", \"false\" },\n                { \"istiocoredns.enabled\", \"false\" },\n                { \"kiali.enabled\", \"true\" },\n                { \"mixer.enabled\", \"true\" },\n                { \"mixer.policy.enabled\", \"true\" },\n                { \"mixer.policy.resources.limits.cpu\", \"4800m\" },\n                { \"mixer.policy.resources.limits.memory\", \"4096Mi\" },\n                { \"mixer.policy.resources.requests.cpu\", \"1000m\" },\n                { \"mixer.policy.resources.requests.memory\", \"1024Mi\" },\n                { \"mixer.telemetry.resources.limits.cpu\", \"4800m\" },\n                { \"mixer.telemetry.resources.limits.memory\", \"4096Mi\" },\n                { \"mixer.telemetry.resources.requests.cpu\", \"1000m\" },\n                { \"mixer.telemetry.resources.requests.memory\", \"1024Mi\" },\n                { \"mtls.enabled\", false },\n                { \"nodeagent.enabled\", false },\n                { \"pilot.enabled\", true },\n                { \"pilot.resources.limits.cpu\", \"1000m\" },\n                { \"pilot.resources.limits.memory\", \"4096Mi\" },\n                { \"pilot.resources.requests.cpu\", \"500m\" },\n                { \"pilot.resources.requests.memory\", \"2048Mi\" },\n                { \"pilot.traceSampling\", \"1\" },\n                { \"security.enabled\", true },\n                { \"sidecarInjectorWebhook.enabled\", true },\n                { \"tracing.enabled\", true },\n                { \"tracing.jaeger.resources.limits.cpu\", \"500m\" },\n                { \"tracing.jaeger.resources.limits.memory\", \"1024Mi\" },\n                { \"tracing.jaeger.resources.requests.cpu\", \"100m\" },\n                { \"tracing.jaeger.resources.requests.memory\", \"100Mi\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_customCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnableClusterMonitoring: pulumi.Bool(true),\n\t\t\tClusterMonitoringInput: \u0026rancher2.ClusterClusterMonitoringInputArgs{\n\t\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\t\"exporter-kubelets.https\":                   pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.enabled\":                     pulumi.Bool(true),\n\t\t\t\t\t\"exporter-node.ports.metrics.port\":          pulumi.Float64(9796),\n\t\t\t\t\t\"exporter-node.resources.limits.cpu\":        pulumi.String(\"200m\"),\n\t\t\t\t\t\"exporter-node.resources.limits.memory\":     pulumi.String(\"200Mi\"),\n\t\t\t\t\t\"grafana.persistence.enabled\":               pulumi.Bool(false),\n\t\t\t\t\t\"grafana.persistence.size\":                  pulumi.String(\"10Gi\"),\n\t\t\t\t\t\"grafana.persistence.storageClass\":          pulumi.String(\"default\"),\n\t\t\t\t\t\"operator.resources.limits.memory\":          pulumi.String(\"500Mi\"),\n\t\t\t\t\t\"prometheus.persistence.enabled\":            pulumi.String(\"false\"),\n\t\t\t\t\t\"prometheus.persistence.size\":               pulumi.String(\"50Gi\"),\n\t\t\t\t\t\"prometheus.persistence.storageClass\":       pulumi.String(\"default\"),\n\t\t\t\t\t\"prometheus.persistent.useReleaseName\":      pulumi.String(\"true\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.cpu\":      pulumi.String(\"1000m\"),\n\t\t\t\t\t\"prometheus.resources.core.limits.memory\":   pulumi.String(\"1500Mi\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.cpu\":    pulumi.String(\"750m\"),\n\t\t\t\t\t\"prometheus.resources.core.requests.memory\": pulumi.String(\"750Mi\"),\n\t\t\t\t\t\"prometheus.retention\":                      pulumi.String(\"12h\"),\n\t\t\t\t},\n\t\t\t\tVersion: pulumi.String(\"0.1.0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewClusterSync(ctx, \"foo_customClusterSync\", \u0026rancher2.ClusterSyncArgs{\n\t\t\tClusterId:      foo_customCluster.ID(),\n\t\t\tWaitMonitoring: foo_customCluster.EnableClusterMonitoring,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNamespace(ctx, \"foo_istio\", \u0026rancher2.NamespaceArgs{\n\t\t\tProjectId:   foo_customClusterSync.SystemProjectId,\n\t\t\tDescription: pulumi.String(\"istio namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewApp(ctx, \"istio\", \u0026rancher2.AppArgs{\n\t\t\tCatalogName:     pulumi.String(\"system-library\"),\n\t\t\tDescription:     pulumi.String(\"Terraform app acceptance test\"),\n\t\t\tProjectId:       foo_istio.ProjectId,\n\t\t\tTemplateName:    pulumi.String(\"rancher-istio\"),\n\t\t\tTemplateVersion: pulumi.String(\"0.1.1\"),\n\t\t\tTargetNamespace: foo_istio.ID(),\n\t\t\tAnswers: pulumi.Map{\n\t\t\t\t\"certmanager.enabled\": pulumi.Bool(false),\n\t\t\t\t\"enableCRDs\":          pulumi.Bool(true),\n\t\t\t\t\"galley.enabled\":      pulumi.Bool(true),\n\t\t\t\t\"gateways.enabled\":    pulumi.Bool(false),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.limits.cpu\":      pulumi.String(\"2000m\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.limits.memory\":   pulumi.String(\"1024Mi\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.requests.cpu\":    pulumi.String(\"100m\"),\n\t\t\t\t\"gateways.istio-ingressgateway.resources.requests.memory\": pulumi.String(\"128Mi\"),\n\t\t\t\t\"gateways.istio-ingressgateway.type\":                      pulumi.String(\"NodePort\"),\n\t\t\t\t\"global.monitoring.type\":                                  pulumi.String(\"cluster-monitoring\"),\n\t\t\t\t\"global.rancher.clusterId\":                                foo_customClusterSync.ClusterId,\n\t\t\t\t\"istio_cni.enabled\":                                       pulumi.String(\"false\"),\n\t\t\t\t\"istiocoredns.enabled\":                                    pulumi.String(\"false\"),\n\t\t\t\t\"kiali.enabled\":                                           pulumi.String(\"true\"),\n\t\t\t\t\"mixer.enabled\":                                           pulumi.String(\"true\"),\n\t\t\t\t\"mixer.policy.enabled\":                                    pulumi.String(\"true\"),\n\t\t\t\t\"mixer.policy.resources.limits.cpu\":                       pulumi.String(\"4800m\"),\n\t\t\t\t\"mixer.policy.resources.limits.memory\":                    pulumi.String(\"4096Mi\"),\n\t\t\t\t\"mixer.policy.resources.requests.cpu\":                     pulumi.String(\"1000m\"),\n\t\t\t\t\"mixer.policy.resources.requests.memory\":                  pulumi.String(\"1024Mi\"),\n\t\t\t\t\"mixer.telemetry.resources.limits.cpu\":                    pulumi.String(\"4800m\"),\n\t\t\t\t\"mixer.telemetry.resources.limits.memory\":                 pulumi.String(\"4096Mi\"),\n\t\t\t\t\"mixer.telemetry.resources.requests.cpu\":                  pulumi.String(\"1000m\"),\n\t\t\t\t\"mixer.telemetry.resources.requests.memory\":               pulumi.String(\"1024Mi\"),\n\t\t\t\t\"mtls.enabled\":                                            pulumi.Bool(false),\n\t\t\t\t\"nodeagent.enabled\":                                       pulumi.Bool(false),\n\t\t\t\t\"pilot.enabled\":                                           pulumi.Bool(true),\n\t\t\t\t\"pilot.resources.limits.cpu\":                              pulumi.String(\"1000m\"),\n\t\t\t\t\"pilot.resources.limits.memory\":                           pulumi.String(\"4096Mi\"),\n\t\t\t\t\"pilot.resources.requests.cpu\":                            pulumi.String(\"500m\"),\n\t\t\t\t\"pilot.resources.requests.memory\":                         pulumi.String(\"2048Mi\"),\n\t\t\t\t\"pilot.traceSampling\":                                     pulumi.String(\"1\"),\n\t\t\t\t\"security.enabled\":                                        pulumi.Bool(true),\n\t\t\t\t\"sidecarInjectorWebhook.enabled\":                          pulumi.Bool(true),\n\t\t\t\t\"tracing.enabled\":                                         pulumi.Bool(true),\n\t\t\t\t\"tracing.jaeger.resources.limits.cpu\":                     pulumi.String(\"500m\"),\n\t\t\t\t\"tracing.jaeger.resources.limits.memory\":                  pulumi.String(\"1024Mi\"),\n\t\t\t\t\"tracing.jaeger.resources.requests.cpu\":                   pulumi.String(\"100m\"),\n\t\t\t\t\"tracing.jaeger.resources.requests.memory\":                pulumi.String(\"100Mi\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 RKE Cluster\nconst foo_custom = new rancher2.Cluster(\"foo-custom\", {\n    description: \"Foo rancher2 custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n    },\n});\n// Create a new rancher2 Node Template\nconst fooNodeTemplate = new rancher2.NodeTemplate(\"fooNodeTemplate\", {\n    description: \"foo test\",\n    amazonec2Config: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n        ami: \"\u003cAMI_ID\u003e\",\n        region: \"\u003cREGION\u003e\",\n        securityGroups: [\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnetId: \"\u003cSUBNET_ID\u003e\",\n        vpcId: \"\u003cVPC_ID\u003e\",\n        zone: \"\u003cZONE\u003e\",\n    },\n});\n// Create a new rancher2 Node Pool\nconst fooNodePool = new rancher2.NodePool(\"fooNodePool\", {\n    clusterId: foo_custom.id,\n    hostnamePrefix: \"foo-cluster-0\",\n    nodeTemplateId: fooNodeTemplate.id,\n    quantity: 3,\n    controlPlane: true,\n    etcd: true,\n    worker: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 RKE Cluster\nfoo_custom = rancher2.Cluster(\"foo-custom\",\n    description=\"Foo rancher2 custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n    ))\n# Create a new rancher2 Node Template\nfoo_node_template = rancher2.NodeTemplate(\"fooNodeTemplate\",\n    description=\"foo test\",\n    amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n        ami=\"\u003cAMI_ID\u003e\",\n        region=\"\u003cREGION\u003e\",\n        security_groups=[\"\u003cAWS_SECURITY_GROUP\u003e\"],\n        subnet_id=\"\u003cSUBNET_ID\u003e\",\n        vpc_id=\"\u003cVPC_ID\u003e\",\n        zone=\"\u003cZONE\u003e\",\n    ))\n# Create a new rancher2 Node Pool\nfoo_node_pool = rancher2.NodePool(\"fooNodePool\",\n    cluster_id=foo_custom.id,\n    hostname_prefix=\"foo-cluster-0\",\n    node_template_id=foo_node_template.id,\n    quantity=3,\n    control_plane=True,\n    etcd=True,\n    worker=True)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 RKE Cluster\n        var foo_custom = new Rancher2.Cluster(\"foo-custom\", new Rancher2.ClusterArgs\n        {\n            Description = \"Foo rancher2 custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n            },\n        });\n        // Create a new rancher2 Node Template\n        var fooNodeTemplate = new Rancher2.NodeTemplate(\"fooNodeTemplate\", new Rancher2.NodeTemplateArgs\n        {\n            Description = \"foo test\",\n            Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n                Ami = \"\u003cAMI_ID\u003e\",\n                Region = \"\u003cREGION\u003e\",\n                SecurityGroups = \n                {\n                    \"\u003cAWS_SECURITY_GROUP\u003e\",\n                },\n                SubnetId = \"\u003cSUBNET_ID\u003e\",\n                VpcId = \"\u003cVPC_ID\u003e\",\n                Zone = \"\u003cZONE\u003e\",\n            },\n        });\n        // Create a new rancher2 Node Pool\n        var fooNodePool = new Rancher2.NodePool(\"fooNodePool\", new Rancher2.NodePoolArgs\n        {\n            ClusterId = foo_custom.Id,\n            HostnamePrefix = \"foo-cluster-0\",\n            NodeTemplateId = fooNodeTemplate.Id,\n            Quantity = 3,\n            ControlPlane = true,\n            Etcd = true,\n            Worker = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo_custom\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Foo rancher2 custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, \"fooNodeTemplate\", \u0026rancher2.NodeTemplateArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2Config: \u0026rancher2.NodeTemplateAmazonec2ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t\tAmi:       pulumi.String(\"\u003cAMI_ID\u003e\"),\n\t\t\t\tRegion:    pulumi.String(\"\u003cREGION\u003e\"),\n\t\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"\u003cAWS_SECURITY_GROUP\u003e\"),\n\t\t\t\t},\n\t\t\t\tSubnetId: pulumi.String(\"\u003cSUBNET_ID\u003e\"),\n\t\t\t\tVpcId:    pulumi.String(\"\u003cVPC_ID\u003e\"),\n\t\t\t\tZone:     pulumi.String(\"\u003cZONE\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewNodePool(ctx, \"fooNodePool\", \u0026rancher2.NodePoolArgs{\n\t\t\tClusterId:      foo_custom.ID(),\n\t\t\tHostnamePrefix: pulumi.String(\"foo-cluster-0\"),\n\t\t\tNodeTemplateId: fooNodeTemplate.ID(),\n\t\t\tQuantity:       pulumi.Int(3),\n\t\t\tControlPlane:   pulumi.Bool(true),\n\t\t\tEtcd:           pulumi.Bool(true),\n\t\t\tWorker:         pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 cluster template\nconst fooClusterTemplate = new rancher2.ClusterTemplate(\"fooClusterTemplate\", {\n    members: [{\n        accessType: \"owner\",\n        userPrincipalId: \"local://user-XXXXX\",\n    }],\n    templateRevisions: [{\n        name: \"V1\",\n        clusterConfig: {\n            rkeConfig: {\n                network: {\n                    plugin: \"canal\",\n                },\n                services: {\n                    etcd: {\n                        creation: \"6h\",\n                        retention: \"24h\",\n                    },\n                },\n            },\n        },\n        \"default\": true,\n    }],\n    description: \"Test cluster template v2\",\n});\n// Create a new rancher2 RKE Cluster from template\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    clusterTemplateId: fooClusterTemplate.id,\n    clusterTemplateRevisionId: fooClusterTemplate.templateRevisions.apply(templateRevisions =\u003e templateRevisions[0].id),\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 cluster template\nfoo_cluster_template = rancher2.ClusterTemplate(\"fooClusterTemplate\",\n    members=[rancher2.ClusterTemplateMemberArgs(\n        access_type=\"owner\",\n        user_principal_id=\"local://user-XXXXX\",\n    )],\n    template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(\n        name=\"V1\",\n        cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(\n            rke_config={\n                \"network\": {\n                    \"plugin\": \"canal\",\n                },\n                \"services\": {\n                    \"etcd\": {\n                        \"creation\": \"6h\",\n                        \"retention\": \"24h\",\n                    },\n                },\n            },\n        ),\n        default=True,\n    )],\n    description=\"Test cluster template v2\")\n# Create a new rancher2 RKE Cluster from template\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    cluster_template_id=foo_cluster_template.id,\n    cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 cluster template\n        var fooClusterTemplate = new Rancher2.ClusterTemplate(\"fooClusterTemplate\", new Rancher2.ClusterTemplateArgs\n        {\n            Members = \n            {\n                new Rancher2.Inputs.ClusterTemplateMemberArgs\n                {\n                    AccessType = \"owner\",\n                    UserPrincipalId = \"local://user-XXXXX\",\n                },\n            },\n            TemplateRevisions = \n            {\n                new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs\n                {\n                    Name = \"V1\",\n                    ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs\n                    {\n                        RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs\n                        {\n                            Network = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs\n                            {\n                                Plugin = \"canal\",\n                            },\n                            Services = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs\n                            {\n                                Etcd = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs\n                                {\n                                    Creation = \"6h\",\n                                    Retention = \"24h\",\n                                },\n                            },\n                        },\n                    },\n                    Default = true,\n                },\n            },\n            Description = \"Test cluster template v2\",\n        });\n        // Create a new rancher2 RKE Cluster from template\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            ClusterTemplateId = fooClusterTemplate.Id,\n            ClusterTemplateRevisionId = fooClusterTemplate.TemplateRevisions.Apply(templateRevisions =\u003e templateRevisions[0].Id),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooClusterTemplate, err := rancher2.NewClusterTemplate(ctx, \"fooClusterTemplate\", \u0026rancher2.ClusterTemplateArgs{\n\t\t\tMembers: rancher2.ClusterTemplateMemberArray{\n\t\t\t\t\u0026rancher2.ClusterTemplateMemberArgs{\n\t\t\t\t\tAccessType:      pulumi.String(\"owner\"),\n\t\t\t\t\tUserPrincipalId: pulumi.String(\"local://user-XXXXX\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{\n\t\t\t\t\u0026rancher2.ClusterTemplateTemplateRevisionArgs{\n\t\t\t\t\tName: pulumi.String(\"V1\"),\n\t\t\t\t\tClusterConfig: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{\n\t\t\t\t\t\tRkeConfig: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{\n\t\t\t\t\t\t\tNetwork: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{\n\t\t\t\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tServices: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{\n\t\t\t\t\t\t\t\tEtcd: \u0026rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDefault: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Test cluster template v2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tClusterTemplateId: fooClusterTemplate.ID(),\n\t\t\tClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (string, error) {\n\t\t\t\treturn templateRevisions[0].Id, nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = new rancher2.Cluster(\"foo\", {\n    description: \"Terraform custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n        services: {\n            etcd: {\n                creation: \"6h\",\n                retention: \"24h\",\n            },\n            kubeApi: {\n                auditLog: {\n                    configuration: {\n                        format: \"json\",\n                        maxAge: 5,\n                        maxBackup: 5,\n                        maxSize: 100,\n                        path: \"-\",\n                        policy: `apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n`,\n                    },\n                    enabled: true,\n                },\n            },\n        },\n        upgradeStrategy: {\n            drain: true,\n            maxUnavailableWorker: \"20%\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.Cluster(\"foo\",\n    description=\"Terraform custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n        services=rancher2.ClusterRkeConfigServicesArgs(\n            etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(\n                creation=\"6h\",\n                retention=\"24h\",\n            ),\n            kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(\n                audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(\n                    configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(\n                        format=\"json\",\n                        max_age=5,\n                        max_backup=5,\n                        max_size=100,\n                        path=\"-\",\n                        policy=\"\"\"apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n\n\"\"\",\n                    ),\n                    enabled=True,\n                ),\n            ),\n        ),\n        upgrade_strategy={\n            \"drain\": True,\n            \"maxUnavailableWorker\": \"20%\",\n        },\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rancher2.Cluster(\"foo\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n                Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs\n                {\n                    Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs\n                    {\n                        Creation = \"6h\",\n                        Retention = \"24h\",\n                    },\n                    KubeApi = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiArgs\n                    {\n                        AuditLog = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs\n                        {\n                            Configuration = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs\n                            {\n                                Format = \"json\",\n                                MaxAge = 5,\n                                MaxBackup = 5,\n                                MaxSize = 100,\n                                Path = \"-\",\n                                Policy = @\"apiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  creationTimestamp: null\nomitStages:\n- RequestReceived\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n\n\",\n                            },\n                            Enabled = true,\n                        },\n                    },\n                },\n                UpgradeStrategy = new Rancher2.Inputs.ClusterRkeConfigUpgradeStrategyArgs\n                {\n                    Drain = true,\n                    MaxUnavailableWorker = \"20%\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t\tServices: \u0026rancher2.ClusterRkeConfigServicesArgs{\n\t\t\t\t\tEtcd: \u0026rancher2.ClusterRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t},\n\t\t\t\t\tKubeApi: \u0026rancher2.ClusterRkeConfigServicesKubeApiArgs{\n\t\t\t\t\t\tAuditLog: \u0026rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs{\n\t\t\t\t\t\t\tConfiguration: \u0026rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{\n\t\t\t\t\t\t\t\tFormat:    pulumi.String(\"json\"),\n\t\t\t\t\t\t\t\tMaxAge:    pulumi.Int(5),\n\t\t\t\t\t\t\t\tMaxBackup: pulumi.Int(5),\n\t\t\t\t\t\t\t\tMaxSize:   pulumi.Int(100),\n\t\t\t\t\t\t\t\tPath:      pulumi.String(\"-\"),\n\t\t\t\t\t\t\t\tPolicy:    pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v\", \"apiVersion: audit.k8s.io/v1\\n\", \"kind: Policy\\n\", \"metadata:\\n\", \"  creationTimestamp: null\\n\", \"omitStages:\\n\", \"- RequestReceived\\n\", \"rules:\\n\", \"- level: RequestResponse\\n\", \"  resources:\\n\", \"  - resources:\\n\", \"    - pods\\n\", \"\\n\")),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tUpgradeStrategy: \u0026rancher2.ClusterRkeConfigUpgradeStrategyArgs{\n\t\t\t\t\tDrain:                pulumi.Bool(true),\n\t\t\t\t\tMaxUnavailableWorker: pulumi.String(fmt.Sprintf(\"%v%v\", \"20\", \"%\")),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating Rancher v2 RKE cluster with scheduled cluster scan. For Rancher v2.4.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = new rancher2.Cluster(\"foo\", {\n    description: \"Terraform custom cluster\",\n    rkeConfig: {\n        network: {\n            plugin: \"canal\",\n        },\n        services: {\n            etcd: {\n                creation: \"6h\",\n                retention: \"24h\",\n            },\n        },\n    },\n    scheduledClusterScan: {\n        enabled: true,\n        scanConfig: {\n            cisScanConfig: {\n                debugMaster: true,\n                debugWorker: true,\n            },\n        },\n        scheduleConfig: {\n            cronSchedule: \"30 * * * *\",\n            retention: 5,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.Cluster(\"foo\",\n    description=\"Terraform custom cluster\",\n    rke_config=rancher2.ClusterRkeConfigArgs(\n        network=rancher2.ClusterRkeConfigNetworkArgs(\n            plugin=\"canal\",\n        ),\n        services=rancher2.ClusterRkeConfigServicesArgs(\n            etcd=rancher2.ClusterRkeConfigServicesEtcdArgs(\n                creation=\"6h\",\n                retention=\"24h\",\n            ),\n        ),\n    ),\n    scheduled_cluster_scan=rancher2.ClusterScheduledClusterScanArgs(\n        enabled=True,\n        scan_config=rancher2.ClusterScheduledClusterScanScanConfigArgs(\n            cis_scan_config=rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs(\n                debug_master=True,\n                debug_worker=True,\n            ),\n        ),\n        schedule_config=rancher2.ClusterScheduledClusterScanScheduleConfigArgs(\n            cron_schedule=\"30 * * * *\",\n            retention=5,\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rancher2.Cluster(\"foo\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform custom cluster\",\n            RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs\n            {\n                Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs\n                {\n                    Plugin = \"canal\",\n                },\n                Services = new Rancher2.Inputs.ClusterRkeConfigServicesArgs\n                {\n                    Etcd = new Rancher2.Inputs.ClusterRkeConfigServicesEtcdArgs\n                    {\n                        Creation = \"6h\",\n                        Retention = \"24h\",\n                    },\n                },\n            },\n            ScheduledClusterScan = new Rancher2.Inputs.ClusterScheduledClusterScanArgs\n            {\n                Enabled = true,\n                ScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigArgs\n                {\n                    CisScanConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScanConfigCisScanConfigArgs\n                    {\n                        DebugMaster = true,\n                        DebugWorker = true,\n                    },\n                },\n                ScheduleConfig = new Rancher2.Inputs.ClusterScheduledClusterScanScheduleConfigArgs\n                {\n                    CronSchedule = \"30 * * * *\",\n                    Retention = 5,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewCluster(ctx, \"foo\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform custom cluster\"),\n\t\t\tRkeConfig: \u0026rancher2.ClusterRkeConfigArgs{\n\t\t\t\tNetwork: \u0026rancher2.ClusterRkeConfigNetworkArgs{\n\t\t\t\t\tPlugin: pulumi.String(\"canal\"),\n\t\t\t\t},\n\t\t\t\tServices: \u0026rancher2.ClusterRkeConfigServicesArgs{\n\t\t\t\t\tEtcd: \u0026rancher2.ClusterRkeConfigServicesEtcdArgs{\n\t\t\t\t\t\tCreation:  pulumi.String(\"6h\"),\n\t\t\t\t\t\tRetention: pulumi.String(\"24h\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tScheduledClusterScan: \u0026rancher2.ClusterScheduledClusterScanArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tScanConfig: \u0026rancher2.ClusterScheduledClusterScanScanConfigArgs{\n\t\t\t\t\tCisScanConfig: \u0026rancher2.ClusterScheduledClusterScanScanConfigCisScanConfigArgs{\n\t\t\t\t\t\tDebugMaster: pulumi.Bool(true),\n\t\t\t\t\t\tDebugWorker: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tScheduleConfig: \u0026rancher2.ClusterScheduledClusterScanScheduleConfigArgs{\n\t\t\t\t\tCronSchedule: pulumi.String(\"30 * * * *\"),\n\t\t\t\t\tRetention:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    description: \"Terraform EKS cluster\",\n    eksConfigV2: {\n        cloudCredentialId: fooCloudCredential.id,\n        name: \"\u003cCLUSTER_NAME\u003e\",\n        region: \"\u003cEKS_REGION\u003e\",\n        imported: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    description=\"Terraform EKS cluster\",\n    eks_config_v2=rancher2.ClusterEksConfigV2Args(\n        cloud_credential_id=foo_cloud_credential.id,\n        name=\"\u003cCLUSTER_NAME\u003e\",\n        region=\"\u003cEKS_REGION\u003e\",\n        imported=True,\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform EKS cluster\",\n            EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args\n            {\n                CloudCredentialId = fooCloudCredential.Id,\n                Name = \"\u003cCLUSTER_NAME\u003e\",\n                Region = \"\u003cEKS_REGION\u003e\",\n                Imported = true,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform EKS cluster\"),\n\t\t\tEksConfigV2: \u0026rancher2.ClusterEksConfigV2Args{\n\t\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\t\tName:              pulumi.String(\"\u003cCLUSTER_NAME\u003e\"),\n\t\t\t\tRegion:            pulumi.String(\"\u003cEKS_REGION\u003e\"),\n\t\t\t\tImported:          pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x or above.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst fooCloudCredential = new rancher2.CloudCredential(\"fooCloudCredential\", {\n    description: \"foo test\",\n    amazonec2CredentialConfig: {\n        accessKey: \"\u003cAWS_ACCESS_KEY\u003e\",\n        secretKey: \"\u003cAWS_SECRET_KEY\u003e\",\n    },\n});\nconst fooCluster = new rancher2.Cluster(\"fooCluster\", {\n    description: \"Terraform EKS cluster\",\n    eksConfigV2: {\n        cloudCredentialId: fooCloudCredential.id,\n        region: \"\u003cEKS_REGION\u003e\",\n        kubernetesVersion: \"1.17\",\n        loggingTypes: [\n            \"audit\",\n            \"api\",\n        ],\n        nodeGroups: [\n            {\n                name: \"node_group1\",\n                instanceType: \"t3.medium\",\n                desiredSize: 3,\n                maxSize: 5,\n            },\n            {\n                name: \"node_group2\",\n                instanceType: \"m5.xlarge\",\n                desiredSize: 2,\n                maxSize: 3,\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo_cloud_credential = rancher2.CloudCredential(\"fooCloudCredential\",\n    description=\"foo test\",\n    amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(\n        access_key=\"\u003cAWS_ACCESS_KEY\u003e\",\n        secret_key=\"\u003cAWS_SECRET_KEY\u003e\",\n    ))\nfoo_cluster = rancher2.Cluster(\"fooCluster\",\n    description=\"Terraform EKS cluster\",\n    eks_config_v2=rancher2.ClusterEksConfigV2Args(\n        cloud_credential_id=foo_cloud_credential.id,\n        region=\"\u003cEKS_REGION\u003e\",\n        kubernetes_version=\"1.17\",\n        logging_types=[\n            \"audit\",\n            \"api\",\n        ],\n        node_groups=[\n            rancher2.ClusterEksConfigV2NodeGroupArgs(\n                name=\"node_group1\",\n                instance_type=\"t3.medium\",\n                desired_size=3,\n                max_size=5,\n            ),\n            rancher2.ClusterEksConfigV2NodeGroupArgs(\n                name=\"node_group2\",\n                instance_type=\"m5.xlarge\",\n                desired_size=2,\n                max_size=3,\n            ),\n        ],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fooCloudCredential = new Rancher2.CloudCredential(\"fooCloudCredential\", new Rancher2.CloudCredentialArgs\n        {\n            Description = \"foo test\",\n            Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs\n            {\n                AccessKey = \"\u003cAWS_ACCESS_KEY\u003e\",\n                SecretKey = \"\u003cAWS_SECRET_KEY\u003e\",\n            },\n        });\n        var fooCluster = new Rancher2.Cluster(\"fooCluster\", new Rancher2.ClusterArgs\n        {\n            Description = \"Terraform EKS cluster\",\n            EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args\n            {\n                CloudCredentialId = fooCloudCredential.Id,\n                Region = \"\u003cEKS_REGION\u003e\",\n                KubernetesVersion = \"1.17\",\n                LoggingTypes = \n                {\n                    \"audit\",\n                    \"api\",\n                },\n                NodeGroups = \n                {\n                    new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs\n                    {\n                        Name = \"node_group1\",\n                        InstanceType = \"t3.medium\",\n                        DesiredSize = 3,\n                        MaxSize = 5,\n                    },\n                    new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs\n                    {\n                        Name = \"node_group2\",\n                        InstanceType = \"m5.xlarge\",\n                        DesiredSize = 2,\n                        MaxSize = 3,\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooCloudCredential, err := rancher2.NewCloudCredential(ctx, \"fooCloudCredential\", \u0026rancher2.CloudCredentialArgs{\n\t\t\tDescription: pulumi.String(\"foo test\"),\n\t\t\tAmazonec2CredentialConfig: \u0026rancher2.CloudCredentialAmazonec2CredentialConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"\u003cAWS_ACCESS_KEY\u003e\"),\n\t\t\t\tSecretKey: pulumi.String(\"\u003cAWS_SECRET_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewCluster(ctx, \"fooCluster\", \u0026rancher2.ClusterArgs{\n\t\t\tDescription: pulumi.String(\"Terraform EKS cluster\"),\n\t\t\tEksConfigV2: \u0026rancher2.ClusterEksConfigV2Args{\n\t\t\t\tCloudCredentialId: fooCloudCredential.ID(),\n\t\t\t\tRegion:            pulumi.String(\"\u003cEKS_REGION\u003e\"),\n\t\t\t\tKubernetesVersion: pulumi.String(\"1.17\"),\n\t\t\t\tLoggingTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"audit\"),\n\t\t\t\t\tpulumi.String(\"api\"),\n\t\t\t\t},\n\t\t\t\tNodeGroups: rancher2.ClusterEksConfigV2NodeGroupArray{\n\t\t\t\t\t\u0026rancher2.ClusterEksConfigV2NodeGroupArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"node_group1\"),\n\t\t\t\t\t\tInstanceType: pulumi.String(\"t3.medium\"),\n\t\t\t\t\t\tDesiredSize:  pulumi.Int(3),\n\t\t\t\t\t\tMaxSize:      pulumi.Int(5),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026rancher2.ClusterEksConfigV2NodeGroupArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"node_group2\"),\n\t\t\t\t\t\tInstanceType: pulumi.String(\"m5.xlarge\"),\n\t\t\t\t\t\tDesiredSize:  pulumi.Int(2),\n\t\t\t\t\t\tMaxSize:      pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nClusters can be imported using the Rancher Cluster ID\n\n```sh\n $ pulumi import rancher2:index/cluster:Cluster foo \u0026lt;CLUSTER_ID\u0026gt;\n```\n\n ",
             "properties": {
                 "aksConfig": {
                     "$ref": "#/types/rancher2:index/ClusterAksConfig:ClusterAksConfig",
@@ -32432,7 +33099,7 @@
             "properties": {
                 "clusterId": {
                     "type": "string",
-                    "description": "The cluster ID that is syncing (string)\n"
+                    "description": "The Cluster ID of the node (string).\n"
                 },
                 "defaultProjectId": {
                     "type": "string",
@@ -32448,6 +33115,13 @@
                         "type": "string"
                     },
                     "description": "The node pool IDs used by the cluster id (list)\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/ClusterSyncNode:ClusterSyncNode"
+                    },
+                    "description": "(Computed) The cluster nodes (list).\n"
                 },
                 "stateConfirm": {
                     "type": "integer",
@@ -32469,12 +33143,13 @@
                 "clusterId",
                 "defaultProjectId",
                 "kubeConfig",
+                "nodes",
                 "systemProjectId"
             ],
             "inputProperties": {
                 "clusterId": {
                     "type": "string",
-                    "description": "The cluster ID that is syncing (string)\n"
+                    "description": "The Cluster ID of the node (string).\n"
                 },
                 "nodePoolIds": {
                     "type": "array",
@@ -32503,7 +33178,7 @@
                 "properties": {
                     "clusterId": {
                         "type": "string",
-                        "description": "The cluster ID that is syncing (string)\n"
+                        "description": "The Cluster ID of the node (string).\n"
                     },
                     "defaultProjectId": {
                         "type": "string",
@@ -32519,6 +33194,13 @@
                             "type": "string"
                         },
                         "description": "The node pool IDs used by the cluster id (list)\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/ClusterSyncNode:ClusterSyncNode"
+                        },
+                        "description": "(Computed) The cluster nodes (list).\n"
                     },
                     "stateConfirm": {
                         "type": "integer",
@@ -32814,6 +33496,89 @@
                 "type": "object"
             }
         },
+        "rancher2:index/feature:Feature": {
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for feature object (map)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for feature object (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the feature (string)\n"
+                },
+                "value": {
+                    "type": "boolean",
+                    "description": "The value of the feature. Default: `false` (bool)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "labels",
+                "name"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for feature object (map)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for feature object (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the feature (string)\n"
+                },
+                "value": {
+                    "type": "boolean",
+                    "description": "The value of the feature. Default: `false` (bool)\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Feature resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for feature object (map)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for feature object (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the feature (string)\n"
+                    },
+                    "value": {
+                        "type": "boolean",
+                        "description": "The value of the feature. Default: `false` (bool)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rancher2:index/globalDns:GlobalDns": {
             "description": "Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider\nconst fooGlobalDnsProvider = new rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", {\n    rootDomain: \"example.com\",\n    route53Config: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zoneType: \"private\",\n        region: \"us-east-1\",\n    },\n});\n// Create a new rancher2 Global DNS using project IDs\nconst fooGlobalDns = new rancher2.GlobalDns(\"fooGlobalDns\", {\n    fqdn: \"foo.example.com\",\n    providerId: fooGlobalDnsProvider.id,\n    projectIds: [\n        \"project1\",\n        \"project2\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider\nfoo_global_dns_provider = rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\",\n    root_domain=\"example.com\",\n    route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zone_type=\"private\",\n        region=\"us-east-1\",\n    ))\n# Create a new rancher2 Global DNS using project IDs\nfoo_global_dns = rancher2.GlobalDns(\"fooGlobalDns\",\n    fqdn=\"foo.example.com\",\n    provider_id=foo_global_dns_provider.id,\n    project_ids=[\n        \"project1\",\n        \"project2\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider\n        var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", new Rancher2.GlobalDnsProviderArgs\n        {\n            RootDomain = \"example.com\",\n            Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ZoneType = \"private\",\n                Region = \"us-east-1\",\n            },\n        });\n        // Create a new rancher2 Global DNS using project IDs\n        var fooGlobalDns = new Rancher2.GlobalDns(\"fooGlobalDns\", new Rancher2.GlobalDnsArgs\n        {\n            Fqdn = \"foo.example.com\",\n            ProviderId = fooGlobalDnsProvider.Id,\n            ProjectIds = \n            {\n                \"project1\",\n                \"project2\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, \"fooGlobalDnsProvider\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t\tRoute53Config: \u0026rancher2.GlobalDnsProviderRoute53ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tZoneType:  pulumi.String(\"private\"),\n\t\t\t\tRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewGlobalDns(ctx, \"fooGlobalDns\", \u0026rancher2.GlobalDnsArgs{\n\t\t\tFqdn:       pulumi.String(\"foo.example.com\"),\n\t\t\tProviderId: fooGlobalDnsProvider.ID(),\n\t\t\tProjectIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"project1\"),\n\t\t\t\tpulumi.String(\"project2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global DNS Provider\nconst fooGlobalDnsProvider = new rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", {\n    rootDomain: \"example.com\",\n    route53Config: {\n        accessKey: \"YYYYYYYYYYYYYYYYYYYY\",\n        secretKey: \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zoneType: \"private\",\n        region: \"us-east-1\",\n    },\n});\n// Create a new rancher2 Global DNS using MultiClusterApp ID\nconst fooGlobalDns = new rancher2.GlobalDns(\"fooGlobalDns\", {\n    fqdn: \"foo.example.com\",\n    providerId: fooGlobalDnsProvider.id,\n    multiClusterAppId: \"\u003cMCA_ID\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global DNS Provider\nfoo_global_dns_provider = rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\",\n    root_domain=\"example.com\",\n    route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(\n        access_key=\"YYYYYYYYYYYYYYYYYYYY\",\n        secret_key=\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        zone_type=\"private\",\n        region=\"us-east-1\",\n    ))\n# Create a new rancher2 Global DNS using MultiClusterApp ID\nfoo_global_dns = rancher2.GlobalDns(\"fooGlobalDns\",\n    fqdn=\"foo.example.com\",\n    provider_id=foo_global_dns_provider.id,\n    multi_cluster_app_id=\"\u003cMCA_ID\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global DNS Provider\n        var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider(\"fooGlobalDnsProvider\", new Rancher2.GlobalDnsProviderArgs\n        {\n            RootDomain = \"example.com\",\n            Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs\n            {\n                AccessKey = \"YYYYYYYYYYYYYYYYYYYY\",\n                SecretKey = \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n                ZoneType = \"private\",\n                Region = \"us-east-1\",\n            },\n        });\n        // Create a new rancher2 Global DNS using MultiClusterApp ID\n        var fooGlobalDns = new Rancher2.GlobalDns(\"fooGlobalDns\", new Rancher2.GlobalDnsArgs\n        {\n            Fqdn = \"foo.example.com\",\n            ProviderId = fooGlobalDnsProvider.Id,\n            MultiClusterAppId = \"\u003cMCA_ID\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, \"fooGlobalDnsProvider\", \u0026rancher2.GlobalDnsProviderArgs{\n\t\t\tRootDomain: pulumi.String(\"example.com\"),\n\t\t\tRoute53Config: \u0026rancher2.GlobalDnsProviderRoute53ConfigArgs{\n\t\t\t\tAccessKey: pulumi.String(\"YYYYYYYYYYYYYYYYYYYY\"),\n\t\t\t\tSecretKey: pulumi.String(\"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"),\n\t\t\t\tZoneType:  pulumi.String(\"private\"),\n\t\t\t\tRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rancher2.NewGlobalDns(ctx, \"fooGlobalDns\", \u0026rancher2.GlobalDnsArgs{\n\t\t\tFqdn:              pulumi.String(\"foo.example.com\"),\n\t\t\tProviderId:        fooGlobalDnsProvider.ID(),\n\t\t\tMultiClusterAppId: pulumi.String(\"\u003cMCA_ID\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGlobal DNS Entry can be imported using the Rancher Global DNS ID\n\n```sh\n $ pulumi import rancher2:index/globalDns:GlobalDns foo \u003cglobal_dns_id\u003e\n```\n\n ",
             "properties": {
@@ -33080,6 +33845,134 @@
                     },
                     "route53Config": {
                         "$ref": "#/types/rancher2:index/GlobalDnsProviderRoute53Config:GlobalDnsProviderRoute53Config"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rancher2:index/globalRole:GlobalRole": {
+            "description": "Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Global Role\nconst foo = new rancher2.GlobalRole(\"foo\", {\n    description: \"Terraform global role acceptance test\",\n    newUserDefault: true,\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Global Role\nfoo = rancher2.GlobalRole(\"foo\",\n    description=\"Terraform global role acceptance test\",\n    new_user_default=True,\n    rules=[rancher2.GlobalRoleRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Global Role\n        var foo = new Rancher2.GlobalRole(\"foo\", new Rancher2.GlobalRoleArgs\n        {\n            Description = \"Terraform global role acceptance test\",\n            NewUserDefault = true,\n            Rules = \n            {\n                new Rancher2.Inputs.GlobalRoleRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewGlobalRole(ctx, \"foo\", \u0026rancher2.GlobalRoleArgs{\n\t\t\tDescription:    pulumi.String(\"Terraform global role acceptance test\"),\n\t\t\tNewUserDefault: pulumi.Bool(true),\n\t\t\tRules: rancher2.GlobalRoleRuleArray{\n\t\t\t\t\u0026rancher2.GlobalRoleRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGlobal Role can be imported using the Rancher Global Role ID\n\n```sh\n $ pulumi import rancher2:index/globalRole:GlobalRole foo \u0026lt;global_role_id\u0026gt;\n```\n\n ",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for global role object (map)\n"
+                },
+                "builtin": {
+                    "type": "boolean",
+                    "description": "(Computed) Builtin global role (bool)\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Global role description (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for global role object (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Global role name (string)\n"
+                },
+                "newUserDefault": {
+                    "type": "boolean",
+                    "description": "Whether or not this role should be added to new users. Default `false` (bool)\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/GlobalRoleRule:GlobalRoleRule"
+                    },
+                    "description": "Global role policy rules (list)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "builtin",
+                "description",
+                "labels",
+                "name",
+                "rules"
+            ],
+            "inputProperties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations for global role object (map)\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Global role description (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels for global role object (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Global role name (string)\n"
+                },
+                "newUserDefault": {
+                    "type": "boolean",
+                    "description": "Whether or not this role should be added to new users. Default `false` (bool)\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/GlobalRoleRule:GlobalRoleRule"
+                    },
+                    "description": "Global role policy rules (list)\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GlobalRole resources.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations for global role object (map)\n"
+                    },
+                    "builtin": {
+                        "type": "boolean",
+                        "description": "(Computed) Builtin global role (bool)\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Global role description (string)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels for global role object (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Global role name (string)\n"
+                    },
+                    "newUserDefault": {
+                        "type": "boolean",
+                        "description": "Whether or not this role should be added to new users. Default `false` (bool)\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/GlobalRoleRule:GlobalRoleRule"
+                        },
+                        "description": "Global role policy rules (list)\n"
                     }
                 },
                 "type": "object"
@@ -34089,6 +34982,13 @@
                     "type": "string",
                     "description": "The name of the Node Template (string)\n"
                 },
+                "nodeTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/NodeTemplateNodeTaint:NodeTemplateNodeTaint"
+                    },
+                    "description": "Node taints. For Rancher v2.3.3 or above (List)\n"
+                },
                 "opennebulaConfig": {
                     "$ref": "#/types/rancher2:index/NodeTemplateOpennebulaConfig:NodeTemplateOpennebulaConfig",
                     "description": "Opennebula config for the Node Template (list maxitems:1)\n"
@@ -34215,6 +35115,13 @@
                     "type": "string",
                     "description": "The name of the Node Template (string)\n"
                 },
+                "nodeTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/NodeTemplateNodeTaint:NodeTemplateNodeTaint"
+                    },
+                    "description": "Node taints. For Rancher v2.3.3 or above (List)\n"
+                },
                 "opennebulaConfig": {
                     "$ref": "#/types/rancher2:index/NodeTemplateOpennebulaConfig:NodeTemplateOpennebulaConfig",
                     "description": "Opennebula config for the Node Template (list maxitems:1)\n"
@@ -34339,6 +35246,13 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Node Template (string)\n"
+                    },
+                    "nodeTaints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/NodeTemplateNodeTaint:NodeTemplateNodeTaint"
+                        },
+                        "description": "Node taints. For Rancher v2.3.3 or above (List)\n"
                     },
                     "opennebulaConfig": {
                         "$ref": "#/types/rancher2:index/NodeTemplateOpennebulaConfig:NodeTemplateOpennebulaConfig",
@@ -38253,6 +39167,78 @@
                 ]
             }
         },
+        "rancher2:index/getGlobalRole:getGlobalRole": {
+            "description": "Use this data source to retrieve information about a Rancher v2 global role resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getGlobalRole({\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_global_role(name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetGlobalRole.InvokeAsync(new Rancher2.GetGlobalRoleArgs\n        {\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupGlobalRole(ctx, \u0026rancher2.LookupGlobalRoleArgs{\n\t\t\tName: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGlobalRole.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Global Role (string)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGlobalRole.\n",
+                "properties": {
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Annotations for global role object (map)\n"
+                    },
+                    "builtin": {
+                        "type": "boolean",
+                        "description": "(Computed) Builtin global role (bool)\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "(Computed) Global role description (string)\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "(Computed) Labels for global role object (map)\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "newUserDefault": {
+                        "type": "boolean",
+                        "description": "(Computed) Whether or not this role should be added to new users (bool)\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/getGlobalRoleRule:getGlobalRoleRule"
+                        },
+                        "description": "(Computed) Global role policy rules (list)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "annotations",
+                    "builtin",
+                    "description",
+                    "labels",
+                    "name",
+                    "newUserDefault",
+                    "rules",
+                    "id"
+                ]
+            }
+        },
         "rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding": {
             "description": "Use this data source to retrieve information about a Rancher v2 global role binding.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getGlobalRoleBinding({\n    globalRoleId: \"foo_id\",\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_global_role_binding(global_role_id=\"foo_id\",\n    name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetGlobalRoleBinding.InvokeAsync(new Rancher2.GetGlobalRoleBindingArgs\n        {\n            GlobalRoleId = \"foo_id\",\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"foo_id\"\n\t\t_, err := rancher2.LookupGlobalRoleBinding(ctx, \u0026rancher2.LookupGlobalRoleBindingArgs{\n\t\t\tGlobalRoleId: \u0026opt0,\n\t\t\tName:         \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -38809,6 +39795,13 @@
                     "name": {
                         "type": "string"
                     },
+                    "nodeTaints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/getNodeTemplateNodeTaint:getNodeTemplateNodeTaint"
+                        },
+                        "description": "(Computed) Node taints (List)\n"
+                    },
                     "useInternalIpAddress": {
                         "type": "boolean",
                         "description": "(Computed) Engine storage driver for the node template (bool)\n"
@@ -38829,6 +39822,7 @@
                     "engineStorageDriver",
                     "labels",
                     "name",
+                    "nodeTaints",
                     "id"
                 ]
             }
@@ -39913,7 +40907,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Node Template (string)\n"
+                        "description": "The name of the Role Template (string)\n"
                     }
                 },
                 "type": "object",

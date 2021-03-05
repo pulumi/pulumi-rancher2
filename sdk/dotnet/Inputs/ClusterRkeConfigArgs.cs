@@ -156,6 +156,12 @@ namespace Pulumi.Rancher2.Inputs
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterRkeConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
+        /// <summary>
+        /// Prefix to customize Kubernetes path for windows (string)
+        /// </summary>
+        [Input("winPrefixPath")]
+        public Input<string>? WinPrefixPath { get; set; }
+
         public ClusterRkeConfigArgs()
         {
         }

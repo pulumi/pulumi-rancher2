@@ -37,6 +37,7 @@ class NodeTemplate(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]]] = None,
                  opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
                  openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
                  use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
@@ -148,6 +149,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
@@ -190,6 +192,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['linode_config'] = linode_config
             __props__['name'] = name
+            __props__['node_taints'] = node_taints
             __props__['opennebula_config'] = opennebula_config
             __props__['openstack_config'] = openstack_config
             __props__['use_internal_ip_address'] = use_internal_ip_address
@@ -226,6 +229,7 @@ class NodeTemplate(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]]] = None,
             opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
             openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
             use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
@@ -258,6 +262,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
         :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
@@ -288,6 +293,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["linode_config"] = linode_config
         __props__["name"] = name
+        __props__["node_taints"] = node_taints
         __props__["opennebula_config"] = opennebula_config
         __props__["openstack_config"] = openstack_config
         __props__["use_internal_ip_address"] = use_internal_ip_address
@@ -461,6 +467,14 @@ class NodeTemplate(pulumi.CustomResource):
         The name of the Node Template (string)
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeTaints")
+    def node_taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTemplateNodeTaint']]]:
+        """
+        Node taints. For Rancher v2.3.3 or above (List)
+        """
+        return pulumi.get(self, "node_taints")
 
     @property
     @pulumi.getter(name="opennebulaConfig")

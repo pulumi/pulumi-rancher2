@@ -74,10 +74,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewClusterTemplate(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/etcdBackup:EtcdBackup":
 		r, err = NewEtcdBackup(ctx, name, nil, pulumi.URN_(urn))
+	case "rancher2:index/feature:Feature":
+		r, err = NewFeature(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/globalDns:GlobalDns":
 		r, err = NewGlobalDns(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/globalDnsProvider:GlobalDnsProvider":
 		r, err = NewGlobalDnsProvider(ctx, name, nil, pulumi.URN_(urn))
+	case "rancher2:index/globalRole:GlobalRole":
+		r, err = NewGlobalRole(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
 		r, err = NewGlobalRoleBinding(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/multiClusterApp:MultiClusterApp":
@@ -281,12 +285,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
+		"index/feature",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
 		"index/globalDns",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/globalDnsProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/globalRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

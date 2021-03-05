@@ -38,6 +38,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
+        /// Enable booting from volume. Default is `false` (bool)
+        /// </summary>
+        public readonly bool? BootFromVolume;
+        /// <summary>
         /// CA certificate bundle to verify against (string)
         /// </summary>
         public readonly string? Cacert;
@@ -141,6 +145,26 @@ namespace Pulumi.Rancher2.Outputs
         /// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
         /// </summary>
         public readonly string? Username;
+        /// <summary>
+        /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        /// </summary>
+        public readonly string? VolumeDevicePath;
+        /// <summary>
+        /// OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// </summary>
+        public readonly string? VolumeId;
+        /// <summary>
+        /// OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// </summary>
+        public readonly string? VolumeName;
+        /// <summary>
+        /// OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        /// </summary>
+        public readonly string? VolumeSize;
+        /// <summary>
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// </summary>
+        public readonly string? VolumeType;
 
         [OutputConstructor]
         private NodeTemplateOpenstackConfig(
@@ -155,6 +179,8 @@ namespace Pulumi.Rancher2.Outputs
             string authUrl,
 
             string availabilityZone,
+
+            bool? bootFromVolume,
 
             string? cacert,
 
@@ -206,7 +232,17 @@ namespace Pulumi.Rancher2.Outputs
 
             string? userDataFile,
 
-            string? username)
+            string? username,
+
+            string? volumeDevicePath,
+
+            string? volumeId,
+
+            string? volumeName,
+
+            string? volumeSize,
+
+            string? volumeType)
         {
             ActiveTimeout = activeTimeout;
             ApplicationCredentialId = applicationCredentialId;
@@ -214,6 +250,7 @@ namespace Pulumi.Rancher2.Outputs
             ApplicationCredentialSecret = applicationCredentialSecret;
             AuthUrl = authUrl;
             AvailabilityZone = availabilityZone;
+            BootFromVolume = bootFromVolume;
             Cacert = cacert;
             ConfigDrive = configDrive;
             DomainId = domainId;
@@ -240,6 +277,11 @@ namespace Pulumi.Rancher2.Outputs
             TenantName = tenantName;
             UserDataFile = userDataFile;
             Username = username;
+            VolumeDevicePath = volumeDevicePath;
+            VolumeId = volumeId;
+            VolumeName = volumeName;
+            VolumeSize = volumeSize;
+            VolumeType = volumeType;
         }
     }
 }

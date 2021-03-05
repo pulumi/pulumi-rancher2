@@ -205,6 +205,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    public readonly nodeTaints!: pulumi.Output<outputs.NodeTemplateNodeTaint[] | undefined>;
+    /**
      * Opennebula config for the Node Template (list maxitems:1)
      */
     public readonly opennebulaConfig!: pulumi.Output<outputs.NodeTemplateOpennebulaConfig | undefined>;
@@ -255,6 +259,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["linodeConfig"] = state ? state.linodeConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["nodeTaints"] = state ? state.nodeTaints : undefined;
             inputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
             inputs["openstackConfig"] = state ? state.openstackConfig : undefined;
             inputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
@@ -281,6 +286,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["linodeConfig"] = args ? args.linodeConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["nodeTaints"] = args ? args.nodeTaints : undefined;
             inputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
             inputs["openstackConfig"] = args ? args.openstackConfig : undefined;
             inputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
@@ -383,6 +389,10 @@ export interface NodeTemplateState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
+    /**
      * Opennebula config for the Node Template (list maxitems:1)
      */
     readonly opennebulaConfig?: pulumi.Input<inputs.NodeTemplateOpennebulaConfig>;
@@ -484,6 +494,10 @@ export interface NodeTemplateArgs {
      * The name of the Node Template (string)
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Node taints. For Rancher v2.3.3 or above (List)
+     */
+    readonly nodeTaints?: pulumi.Input<pulumi.Input<inputs.NodeTemplateNodeTaint>[]>;
     /**
      * Opennebula config for the Node Template (list maxitems:1)
      */

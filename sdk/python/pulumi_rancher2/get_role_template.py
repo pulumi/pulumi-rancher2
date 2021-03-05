@@ -210,7 +210,7 @@ def get_role_template(context: Optional[str] = None,
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
-    :param str name: The name of the Node Template (string)
+    :param str name: The name of the Role Template (string)
     """
     __args__ = dict()
     __args__['context'] = context

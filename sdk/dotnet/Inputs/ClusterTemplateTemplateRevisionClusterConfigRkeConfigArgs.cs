@@ -90,6 +90,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("upgradeStrategy")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs>? UpgradeStrategy { get; set; }
 
+        [Input("winPrefixPath")]
+        public Input<string>? WinPrefixPath { get; set; }
+
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs()
         {
         }

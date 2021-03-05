@@ -152,6 +152,10 @@ export interface ClusterAksConfig {
      */
     kubernetesVersion: string;
     /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
+    loadBalancerSku: string;
+    /**
      * Azure Kubernetes cluster location. Default `eastus` (string)
      */
     location?: string;
@@ -434,7 +438,7 @@ export interface ClusterClusterTemplateQuestion {
      */
     required?: boolean;
     /**
-     * Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+     * Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
      */
     type?: string;
     /**
@@ -1105,6 +1109,10 @@ export interface ClusterOkeConfig {
      */
     compartmentId: string;
     /**
+     * Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+     */
+    customBootVolumeSize?: number;
+    /**
      * An optional description of this cluster (string)
      */
     description?: string;
@@ -1120,6 +1128,10 @@ export interface ClusterOkeConfig {
      * The fingerprint corresponding to the specified user's private API Key (string)
      */
     fingerprint: string;
+    /**
+     * Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+     */
+    flexOcpus?: number;
     /**
      * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
@@ -1188,6 +1200,10 @@ export interface ClusterOkeConfig {
      * The OCID of a user who has access to the tenancy/compartment (string)
      */
     userOcid: string;
+    /**
+     * The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+     */
+    vcnCompartmentId?: string;
     /**
      * The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
      */
@@ -1283,6 +1299,10 @@ export interface ClusterRkeConfig {
      * K3S upgrade strategy (List maxitems: 1)
      */
     upgradeStrategy: outputs.ClusterRkeConfigUpgradeStrategy;
+    /**
+     * Prefix to customize Kubernetes path for windows (string)
+     */
+    winPrefixPath: string;
 }
 
 export interface ClusterRkeConfigAuthentication {
@@ -1496,7 +1516,7 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     cloudProviderRateLimitQps: number;
     /**
-     * Allowed values: `basic` (default) `standard` (string)
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
      */
     loadBalancerSku?: string;
     /**
@@ -2216,6 +2236,10 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      * Safe timestamp for etcd backup. Default: `false` (bool)
      */
     safeTimestamp?: boolean;
+    /**
+     * RKE node drain timeout. Default: `60` (int)
+     */
+    timeout: number;
 }
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -2562,6 +2586,73 @@ export interface ClusterScheduledClusterScanScheduleConfig {
     retention: number;
 }
 
+export interface ClusterSyncNode {
+    /**
+     * Annotations of the node (map).
+     */
+    annotations: {[key: string]: any};
+    /**
+     * The total resources of a node (map).
+     */
+    capacity: {[key: string]: any};
+    /**
+     * The Cluster ID of the node (string).
+     */
+    clusterId: string;
+    /**
+     * The external IP address of the node (string).
+     */
+    externalIpAddress: string;
+    /**
+     * The hostname of the node (string).
+     */
+    hostname: string;
+    /**
+     * The ID of the node (string)
+     */
+    id: string;
+    /**
+     * The private IP address of the node (string).
+     */
+    ipAddress: string;
+    /**
+     * Labels of the node (map).
+     */
+    labels: {[key: string]: any};
+    /**
+     * The name of the node (string).
+     */
+    name: string;
+    /**
+     * The Node Pool ID of the node (string).
+     */
+    nodePoolId: string;
+    /**
+     * The Node Template ID of the node (string).
+     */
+    nodeTemplateId: string;
+    /**
+     * The Provider ID of the node (string).
+     */
+    providerId: string;
+    /**
+     * The requested hostname (string).
+     */
+    requestedHostname: string;
+    /**
+     * Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+     */
+    roles: string[];
+    /**
+     * The user to connect to the node (string).
+     */
+    sshUser: string;
+    /**
+     * General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+     */
+    systemInfo: {[key: string]: any};
+}
+
 export interface ClusterTemplateMember {
     /**
      * Member access type. Valid values: `["read-only" | "owner"]` (string)
@@ -2698,6 +2789,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshCertPath: string;
     sshKeyPath: string;
     upgradeStrategy: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
+    winPrefixPath: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -3031,6 +3123,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     retention?: number;
     s3BackupConfig?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig;
     safeTimestamp?: boolean;
+    timeout: number;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -3204,6 +3297,7 @@ export interface EtcdBackupBackupConfig {
      */
     s3BackupConfig?: outputs.EtcdBackupBackupConfigS3BackupConfig;
     safeTimestamp?: boolean;
+    timeout: number;
 }
 
 export interface EtcdBackupBackupConfigS3BackupConfig {
@@ -3258,6 +3352,7 @@ export interface GetClusterAksConfig {
     enableHttpApplicationRouting?: boolean;
     enableMonitoring?: boolean;
     kubernetesVersion: string;
+    loadBalancerSku: string;
     location?: string;
     logAnalyticsWorkspace?: string;
     logAnalyticsWorkspaceResourceGroup?: string;
@@ -3570,6 +3665,7 @@ export interface GetClusterLoggingSyslogConfig {
 
 export interface GetClusterOkeConfig {
     compartmentId: string;
+    customBootVolumeSize?: number;
     /**
      * (Computed) The description for Cluster (string)
      */
@@ -3577,6 +3673,7 @@ export interface GetClusterOkeConfig {
     enableKubernetesDashboard?: boolean;
     enablePrivateNodes?: boolean;
     fingerprint: string;
+    flexOcpus?: number;
     kubernetesVersion: string;
     loadBalancerSubnetName1?: string;
     loadBalancerSubnetName2?: string;
@@ -3594,6 +3691,7 @@ export interface GetClusterOkeConfig {
     skipVcnDelete?: boolean;
     tenancyId: string;
     userOcid: string;
+    vcnCompartmentId?: string;
     vcnName?: string;
     workerNodeIngressCidr?: string;
 }
@@ -3620,6 +3718,7 @@ export interface GetClusterRkeConfig {
     sshCertPath: string;
     sshKeyPath: string;
     upgradeStrategy: outputs.GetClusterRkeConfigUpgradeStrategy;
+    winPrefixPath: string;
 }
 
 export interface GetClusterRkeConfigAuthentication {
@@ -3953,6 +4052,7 @@ export interface GetClusterRkeConfigServicesEtcdBackupConfig {
     retention?: number;
     s3BackupConfig?: outputs.GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig;
     safeTimestamp?: boolean;
+    timeout: number;
 }
 
 export interface GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -4180,6 +4280,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshCertPath: string;
     sshKeyPath: string;
     upgradeStrategy: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
+    winPrefixPath: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -4510,6 +4611,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     retention?: number;
     s3BackupConfig?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig;
     safeTimestamp?: boolean;
+    timeout: number;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -4647,6 +4749,7 @@ export interface GetEtcdBackupBackupConfig {
     retention?: number;
     s3BackupConfig?: outputs.GetEtcdBackupBackupConfigS3BackupConfig;
     safeTimestamp?: boolean;
+    timeout: number;
 }
 
 export interface GetEtcdBackupBackupConfigS3BackupConfig {
@@ -4677,6 +4780,14 @@ export interface GetGlobalDnsProviderRoute53Config {
     roleArn?: string;
     secretKey: string;
     zoneType?: string;
+}
+
+export interface GetGlobalRoleRule {
+    apiGroups?: string[];
+    nonResourceUrls?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs?: string[];
 }
 
 export interface GetMultiClusterAppAnswer {
@@ -4735,6 +4846,13 @@ export interface GetNamespaceResourceQuotaLimit {
 }
 
 export interface GetNodePoolNodeTaint {
+    effect?: string;
+    key: string;
+    timeAdded: string;
+    value: string;
+}
+
+export interface GetNodeTemplateNodeTaint {
     effect?: string;
     key: string;
     timeAdded: string;
@@ -5084,6 +5202,29 @@ export interface GlobalDnsProviderRoute53Config {
     zoneType?: string;
 }
 
+export interface GlobalRoleRule {
+    /**
+     * Policy rule api groups (list)
+     */
+    apiGroups?: string[];
+    /**
+     * Policy rule non resource urls (list)
+     */
+    nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names (list)
+     */
+    resourceNames?: string[];
+    /**
+     * Policy rule resources (list)
+     */
+    resources?: string[];
+    /**
+     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+     */
+    verbs?: string[];
+}
+
 export interface MultiClusterAppAnswer {
     /**
      * Cluster ID for answer (string)
@@ -5370,7 +5511,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     userdata?: string;
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      */
     volumeType?: string;
     /**
@@ -5655,6 +5796,25 @@ export interface NodeTemplateLinodeConfig {
     uaPrefix?: string;
 }
 
+export interface NodeTemplateNodeTaint {
+    /**
+     * Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+     */
+    effect?: string;
+    /**
+     * Taint key (string)
+     */
+    key: string;
+    /**
+     * Taint time added (string)
+     */
+    timeAdded: string;
+    /**
+     * Taint value (string)
+     */
+    value: string;
+}
+
 export interface NodeTemplateOpennebulaConfig {
     /**
      * Size of the Volatile disk in MB - only for b2d (string)
@@ -5760,6 +5920,10 @@ export interface NodeTemplateOpenstackConfig {
      */
     availabilityZone: string;
     /**
+     * Enable booting from volume. Default is `false` (bool)
+     */
+    bootFromVolume?: boolean;
+    /**
      * CA certificate bundle to verify against (string)
      */
     cacert?: string;
@@ -5863,6 +6027,26 @@ export interface NodeTemplateOpenstackConfig {
      * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     username?: string;
+    /**
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+     */
+    volumeDevicePath?: string;
+    /**
+     * OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+     */
+    volumeId?: string;
+    /**
+     * OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+     */
+    volumeName?: string;
+    /**
+     * OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+     */
+    volumeSize?: string;
+    /**
+     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     */
+    volumeType?: string;
 }
 
 export interface NodeTemplateVsphereConfig {

@@ -19,6 +19,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> CompartmentId { get; set; } = null!;
 
         /// <summary>
+        /// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+        /// </summary>
+        [Input("customBootVolumeSize")]
+        public Input<int>? CustomBootVolumeSize { get; set; }
+
+        /// <summary>
         /// An optional description of this cluster (string)
         /// </summary>
         [Input("description")]
@@ -41,6 +47,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("fingerprint", required: true)]
         public Input<string> Fingerprint { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+        /// </summary>
+        [Input("flexOcpus")]
+        public Input<int>? FlexOcpus { get; set; }
 
         /// <summary>
         /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
@@ -143,6 +155,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("userOcid", required: true)]
         public Input<string> UserOcid { get; set; } = null!;
+
+        /// <summary>
+        /// The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+        /// </summary>
+        [Input("vcnCompartmentId")]
+        public Input<string>? VcnCompartmentId { get; set; }
 
         /// <summary>
         /// The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)

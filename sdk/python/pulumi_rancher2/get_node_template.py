@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'GetNodeTemplateResult',
@@ -19,7 +20,7 @@ class GetNodeTemplateResult:
     """
     A collection of values returned by getNodeTemplate.
     """
-    def __init__(__self__, annotations=None, cloud_credential_id=None, description=None, driver=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, id=None, labels=None, name=None, use_internal_ip_address=None):
+    def __init__(__self__, annotations=None, cloud_credential_id=None, description=None, driver=None, engine_env=None, engine_insecure_registries=None, engine_install_url=None, engine_label=None, engine_opt=None, engine_registry_mirrors=None, engine_storage_driver=None, id=None, labels=None, name=None, node_taints=None, use_internal_ip_address=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -62,6 +63,9 @@ class GetNodeTemplateResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if node_taints and not isinstance(node_taints, list):
+            raise TypeError("Expected argument 'node_taints' to be a list")
+        pulumi.set(__self__, "node_taints", node_taints)
         if use_internal_ip_address and not isinstance(use_internal_ip_address, bool):
             raise TypeError("Expected argument 'use_internal_ip_address' to be a bool")
         pulumi.set(__self__, "use_internal_ip_address", use_internal_ip_address)
@@ -176,6 +180,14 @@ class GetNodeTemplateResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nodeTaints")
+    def node_taints(self) -> Sequence['outputs.GetNodeTemplateNodeTaintResult']:
+        """
+        (Computed) Node taints (List)
+        """
+        return pulumi.get(self, "node_taints")
+
+    @property
     @pulumi.getter(name="useInternalIpAddress")
     def use_internal_ip_address(self) -> Optional[bool]:
         """
@@ -204,6 +216,7 @@ class AwaitableGetNodeTemplateResult(GetNodeTemplateResult):
             id=self.id,
             labels=self.labels,
             name=self.name,
+            node_taints=self.node_taints,
             use_internal_ip_address=self.use_internal_ip_address)
 
 
@@ -250,4 +263,5 @@ def get_node_template(name: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name,
+        node_taints=__ret__.node_taints,
         use_internal_ip_address=__ret__.use_internal_ip_address)

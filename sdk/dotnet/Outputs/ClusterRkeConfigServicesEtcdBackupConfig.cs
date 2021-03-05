@@ -33,6 +33,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Safe timestamp for etcd backup. Default: `false` (bool)
         /// </summary>
         public readonly bool? SafeTimestamp;
+        /// <summary>
+        /// RKE node drain timeout. Default: `60` (int)
+        /// </summary>
+        public readonly int? Timeout;
 
         [OutputConstructor]
         private ClusterRkeConfigServicesEtcdBackupConfig(
@@ -44,13 +48,16 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig? s3BackupConfig,
 
-            bool? safeTimestamp)
+            bool? safeTimestamp,
+
+            int? timeout)
         {
             Enabled = enabled;
             IntervalHours = intervalHours;
             Retention = retention;
             S3BackupConfig = s3BackupConfig;
             SafeTimestamp = safeTimestamp;
+            Timeout = timeout;
         }
     }
 }
