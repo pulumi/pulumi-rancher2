@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? Retention;
         public readonly Outputs.GetEtcdBackupBackupConfigS3BackupConfigResult? S3BackupConfig;
         public readonly bool? SafeTimestamp;
+        public readonly int Timeout;
 
         [OutputConstructor]
         private GetEtcdBackupBackupConfigResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetEtcdBackupBackupConfigS3BackupConfigResult? s3BackupConfig,
 
-            bool? safeTimestamp)
+            bool? safeTimestamp,
+
+            int timeout)
         {
             Enabled = enabled;
             IntervalHours = intervalHours;
             Retention = retention;
             S3BackupConfig = s3BackupConfig;
             SafeTimestamp = safeTimestamp;
+            Timeout = timeout;
         }
     }
 }

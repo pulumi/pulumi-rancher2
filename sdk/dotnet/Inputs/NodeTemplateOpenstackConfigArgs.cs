@@ -49,6 +49,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> AvailabilityZone { get; set; } = null!;
 
         /// <summary>
+        /// Enable booting from volume. Default is `false` (bool)
+        /// </summary>
+        [Input("bootFromVolume")]
+        public Input<bool>? BootFromVolume { get; set; }
+
+        /// <summary>
         /// CA certificate bundle to verify against (string)
         /// </summary>
         [Input("cacert")]
@@ -203,6 +209,36 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        /// </summary>
+        [Input("volumeDevicePath")]
+        public Input<string>? VolumeDevicePath { get; set; }
+
+        /// <summary>
+        /// OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// </summary>
+        [Input("volumeId")]
+        public Input<string>? VolumeId { get; set; }
+
+        /// <summary>
+        /// OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// </summary>
+        [Input("volumeName")]
+        public Input<string>? VolumeName { get; set; }
+
+        /// <summary>
+        /// OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        /// </summary>
+        [Input("volumeSize")]
+        public Input<string>? VolumeSize { get; set; }
+
+        /// <summary>
+        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
 
         public NodeTemplateOpenstackConfigArgs()
         {

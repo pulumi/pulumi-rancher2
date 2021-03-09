@@ -119,6 +119,10 @@ namespace Pulumi.Rancher2
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
         /// <summary>
+        /// (Computed) Node taints (List)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNodeTemplateNodeTaintResult> NodeTaints;
+        /// <summary>
         /// (Computed) Engine storage driver for the node template (bool)
         /// </summary>
         public readonly bool? UseInternalIpAddress;
@@ -153,6 +157,8 @@ namespace Pulumi.Rancher2
 
             string name,
 
+            ImmutableArray<Outputs.GetNodeTemplateNodeTaintResult> nodeTaints,
+
             bool? useInternalIpAddress)
         {
             Annotations = annotations;
@@ -169,6 +175,7 @@ namespace Pulumi.Rancher2
             Id = id;
             Labels = labels;
             Name = name;
+            NodeTaints = nodeTaints;
             UseInternalIpAddress = useInternalIpAddress;
         }
     }

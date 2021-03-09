@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export class ClusterSync extends pulumi.CustomResource {
@@ -33,7 +34,7 @@ export class ClusterSync extends pulumi.CustomResource {
     }
 
     /**
-     * The cluster ID that is syncing (string)
+     * The Cluster ID of the node (string).
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
@@ -48,6 +49,10 @@ export class ClusterSync extends pulumi.CustomResource {
      * The node pool IDs used by the cluster id (list)
      */
     public readonly nodePoolIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * (Computed) The cluster nodes (list).
+     */
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.ClusterSyncNode[]>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      */
@@ -79,6 +84,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             inputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
+            inputs["nodes"] = state ? state.nodes : undefined;
             inputs["stateConfirm"] = state ? state.stateConfirm : undefined;
             inputs["synced"] = state ? state.synced : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
@@ -95,6 +101,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
             inputs["defaultProjectId"] = undefined /*out*/;
             inputs["kubeConfig"] = undefined /*out*/;
+            inputs["nodes"] = undefined /*out*/;
             inputs["systemProjectId"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -109,7 +116,7 @@ export class ClusterSync extends pulumi.CustomResource {
  */
 export interface ClusterSyncState {
     /**
-     * The cluster ID that is syncing (string)
+     * The Cluster ID of the node (string).
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
@@ -124,6 +131,10 @@ export interface ClusterSyncState {
      * The node pool IDs used by the cluster id (list)
      */
     readonly nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Computed) The cluster nodes (list).
+     */
+    readonly nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[]>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      */
@@ -144,7 +155,7 @@ export interface ClusterSyncState {
  */
 export interface ClusterSyncArgs {
     /**
-     * The cluster ID that is syncing (string)
+     * The Cluster ID of the node (string).
      */
     readonly clusterId: pulumi.Input<string>;
     /**

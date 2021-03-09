@@ -14,7 +14,7 @@ import (
 type ClusterSync struct {
 	pulumi.CustomResourceState
 
-	// The cluster ID that is syncing (string)
+	// The Cluster ID of the node (string).
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
@@ -22,6 +22,8 @@ type ClusterSync struct {
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds pulumi.StringArrayOutput `pulumi:"nodePoolIds"`
+	// (Computed) The cluster nodes (list).
+	Nodes ClusterSyncNodeArrayOutput `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	StateConfirm pulumi.IntPtrOutput  `pulumi:"stateConfirm"`
 	Synced       pulumi.BoolPtrOutput `pulumi:"synced"`
@@ -63,7 +65,7 @@ func GetClusterSync(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterSync resources.
 type clusterSyncState struct {
-	// The cluster ID that is syncing (string)
+	// The Cluster ID of the node (string).
 	ClusterId *string `pulumi:"clusterId"`
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId *string `pulumi:"defaultProjectId"`
@@ -71,6 +73,8 @@ type clusterSyncState struct {
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds []string `pulumi:"nodePoolIds"`
+	// (Computed) The cluster nodes (list).
+	Nodes []ClusterSyncNode `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	StateConfirm *int  `pulumi:"stateConfirm"`
 	Synced       *bool `pulumi:"synced"`
@@ -81,7 +85,7 @@ type clusterSyncState struct {
 }
 
 type ClusterSyncState struct {
-	// The cluster ID that is syncing (string)
+	// The Cluster ID of the node (string).
 	ClusterId pulumi.StringPtrInput
 	// (Computed) Default project ID for the cluster sync (string)
 	DefaultProjectId pulumi.StringPtrInput
@@ -89,6 +93,8 @@ type ClusterSyncState struct {
 	KubeConfig pulumi.StringPtrInput
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds pulumi.StringArrayInput
+	// (Computed) The cluster nodes (list).
+	Nodes ClusterSyncNodeArrayInput
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	StateConfirm pulumi.IntPtrInput
 	Synced       pulumi.BoolPtrInput
@@ -103,7 +109,7 @@ func (ClusterSyncState) ElementType() reflect.Type {
 }
 
 type clusterSyncArgs struct {
-	// The cluster ID that is syncing (string)
+	// The Cluster ID of the node (string).
 	ClusterId string `pulumi:"clusterId"`
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds []string `pulumi:"nodePoolIds"`
@@ -116,7 +122,7 @@ type clusterSyncArgs struct {
 
 // The set of arguments for constructing a ClusterSync resource.
 type ClusterSyncArgs struct {
-	// The cluster ID that is syncing (string)
+	// The Cluster ID of the node (string).
 	ClusterId pulumi.StringInput
 	// The node pool IDs used by the cluster id (list)
 	NodePoolIds pulumi.StringArrayInput

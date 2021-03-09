@@ -18,6 +18,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string CompartmentId;
         /// <summary>
+        /// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+        /// </summary>
+        public readonly int? CustomBootVolumeSize;
+        /// <summary>
         /// An optional description of this cluster (string)
         /// </summary>
         public readonly string? Description;
@@ -33,6 +37,10 @@ namespace Pulumi.Rancher2.Outputs
         /// The fingerprint corresponding to the specified user's private API Key (string)
         /// </summary>
         public readonly string Fingerprint;
+        /// <summary>
+        /// Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+        /// </summary>
+        public readonly int? FlexOcpus;
         /// <summary>
         /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
@@ -102,6 +110,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string UserOcid;
         /// <summary>
+        /// The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+        /// </summary>
+        public readonly string? VcnCompartmentId;
+        /// <summary>
         /// The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
         /// </summary>
         public readonly string? VcnName;
@@ -114,6 +126,8 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterOkeConfig(
             string compartmentId,
 
+            int? customBootVolumeSize,
+
             string? description,
 
             bool? enableKubernetesDashboard,
@@ -121,6 +135,8 @@ namespace Pulumi.Rancher2.Outputs
             bool? enablePrivateNodes,
 
             string fingerprint,
+
+            int? flexOcpus,
 
             string kubernetesVersion,
 
@@ -156,15 +172,19 @@ namespace Pulumi.Rancher2.Outputs
 
             string userOcid,
 
+            string? vcnCompartmentId,
+
             string? vcnName,
 
             string? workerNodeIngressCidr)
         {
             CompartmentId = compartmentId;
+            CustomBootVolumeSize = customBootVolumeSize;
             Description = description;
             EnableKubernetesDashboard = enableKubernetesDashboard;
             EnablePrivateNodes = enablePrivateNodes;
             Fingerprint = fingerprint;
+            FlexOcpus = flexOcpus;
             KubernetesVersion = kubernetesVersion;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;
             LoadBalancerSubnetName2 = loadBalancerSubnetName2;
@@ -182,6 +202,7 @@ namespace Pulumi.Rancher2.Outputs
             SkipVcnDelete = skipVcnDelete;
             TenancyId = tenancyId;
             UserOcid = userOcid;
+            VcnCompartmentId = vcnCompartmentId;
             VcnName = vcnName;
             WorkerNodeIngressCidr = workerNodeIngressCidr;
         }

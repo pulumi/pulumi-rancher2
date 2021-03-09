@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2
     public partial class ClusterSync : Pulumi.CustomResource
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// The Cluster ID of the node (string).
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -35,6 +35,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("nodePoolIds")]
         public Output<ImmutableArray<string>> NodePoolIds { get; private set; } = null!;
+
+        /// <summary>
+        /// (Computed) The cluster nodes (list).
+        /// </summary>
+        [Output("nodes")]
+        public Output<ImmutableArray<Outputs.ClusterSyncNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
@@ -104,7 +110,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterSyncArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// The Cluster ID of the node (string).
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -144,7 +150,7 @@ namespace Pulumi.Rancher2
     public sealed class ClusterSyncState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID that is syncing (string)
+        /// The Cluster ID of the node (string).
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -171,6 +177,18 @@ namespace Pulumi.Rancher2
         {
             get => _nodePoolIds ?? (_nodePoolIds = new InputList<string>());
             set => _nodePoolIds = value;
+        }
+
+        [Input("nodes")]
+        private InputList<Inputs.ClusterSyncNodeGetArgs>? _nodes;
+
+        /// <summary>
+        /// (Computed) The cluster nodes (list).
+        /// </summary>
+        public InputList<Inputs.ClusterSyncNodeGetArgs> Nodes
+        {
+            get => _nodes ?? (_nodes = new InputList<Inputs.ClusterSyncNodeGetArgs>());
+            set => _nodes = value;
         }
 
         /// <summary>

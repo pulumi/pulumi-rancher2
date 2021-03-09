@@ -185,6 +185,8 @@ type NodeTemplate struct {
 	LinodeConfig NodeTemplateLinodeConfigPtrOutput `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodeTemplateNodeTaintArrayOutput `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrOutput `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
@@ -266,6 +268,8 @@ type nodeTemplateState struct {
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints []NodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
@@ -319,6 +323,8 @@ type NodeTemplateState struct {
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodeTemplateNodeTaintArrayInput
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)
@@ -374,6 +380,8 @@ type nodeTemplateArgs struct {
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
 	Name *string `pulumi:"name"`
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints []NodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig *NodeTemplateOpennebulaConfig `pulumi:"opennebulaConfig"`
 	// Openstack config for the Node Template (list maxitems:1)
@@ -426,6 +434,8 @@ type NodeTemplateArgs struct {
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
 	Name pulumi.StringPtrInput
+	// Node taints. For Rancher v2.3.3 or above (List)
+	NodeTaints NodeTemplateNodeTaintArrayInput
 	// Opennebula config for the Node Template (list maxitems:1)
 	OpennebulaConfig NodeTemplateOpennebulaConfigPtrInput
 	// Openstack config for the Node Template (list maxitems:1)

@@ -152,6 +152,10 @@ export interface ClusterAksConfig {
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
+    loadBalancerSku?: pulumi.Input<string>;
+    /**
      * Azure Kubernetes cluster location. Default `eastus` (string)
      */
     location?: pulumi.Input<string>;
@@ -434,7 +438,7 @@ export interface ClusterClusterTemplateQuestion {
      */
     required?: pulumi.Input<boolean>;
     /**
-     * Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+     * Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
      */
     type?: pulumi.Input<string>;
     /**
@@ -1105,6 +1109,10 @@ export interface ClusterOkeConfig {
      */
     compartmentId: pulumi.Input<string>;
     /**
+     * Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+     */
+    customBootVolumeSize?: pulumi.Input<number>;
+    /**
      * An optional description of this cluster (string)
      */
     description?: pulumi.Input<string>;
@@ -1120,6 +1128,10 @@ export interface ClusterOkeConfig {
      * The fingerprint corresponding to the specified user's private API Key (string)
      */
     fingerprint: pulumi.Input<string>;
+    /**
+     * Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+     */
+    flexOcpus?: pulumi.Input<number>;
     /**
      * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
      */
@@ -1188,6 +1200,10 @@ export interface ClusterOkeConfig {
      * The OCID of a user who has access to the tenancy/compartment (string)
      */
     userOcid: pulumi.Input<string>;
+    /**
+     * The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+     */
+    vcnCompartmentId?: pulumi.Input<string>;
     /**
      * The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
      */
@@ -1283,6 +1299,10 @@ export interface ClusterRkeConfig {
      * K3S upgrade strategy (List maxitems: 1)
      */
     upgradeStrategy?: pulumi.Input<inputs.ClusterRkeConfigUpgradeStrategy>;
+    /**
+     * Prefix to customize Kubernetes path for windows (string)
+     */
+    winPrefixPath?: pulumi.Input<string>;
 }
 
 export interface ClusterRkeConfigAuthentication {
@@ -1496,7 +1516,7 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     cloudProviderRateLimitQps?: pulumi.Input<number>;
     /**
-     * Allowed values: `basic` (default) `standard` (string)
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
      */
     loadBalancerSku?: pulumi.Input<string>;
     /**
@@ -2216,6 +2236,10 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
      * Safe timestamp for etcd backup. Default: `false` (bool)
      */
     safeTimestamp?: pulumi.Input<boolean>;
+    /**
+     * RKE node drain timeout. Default: `60` (int)
+     */
+    timeout?: pulumi.Input<number>;
 }
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -2562,6 +2586,73 @@ export interface ClusterScheduledClusterScanScheduleConfig {
     retention?: pulumi.Input<number>;
 }
 
+export interface ClusterSyncNode {
+    /**
+     * Annotations of the node (map).
+     */
+    annotations?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The total resources of a node (map).
+     */
+    capacity?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The Cluster ID of the node (string).
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * The external IP address of the node (string).
+     */
+    externalIpAddress?: pulumi.Input<string>;
+    /**
+     * The hostname of the node (string).
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The ID of the node (string)
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The private IP address of the node (string).
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * Labels of the node (map).
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the node (string).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The Node Pool ID of the node (string).
+     */
+    nodePoolId?: pulumi.Input<string>;
+    /**
+     * The Node Template ID of the node (string).
+     */
+    nodeTemplateId?: pulumi.Input<string>;
+    /**
+     * The Provider ID of the node (string).
+     */
+    providerId?: pulumi.Input<string>;
+    /**
+     * The requested hostname (string).
+     */
+    requestedHostname?: pulumi.Input<string>;
+    /**
+     * Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The user to connect to the node (string).
+     */
+    sshUser?: pulumi.Input<string>;
+    /**
+     * General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+     */
+    systemInfo?: pulumi.Input<{[key: string]: any}>;
+}
+
 export interface ClusterTemplateMember {
     /**
      * Member access type. Valid values: `["read-only" | "owner"]` (string)
@@ -2698,6 +2789,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     sshCertPath?: pulumi.Input<string>;
     sshKeyPath?: pulumi.Input<string>;
     upgradeStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy>;
+    winPrefixPath?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication {
@@ -3031,6 +3123,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     retention?: pulumi.Input<number>;
     s3BackupConfig?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig>;
     safeTimestamp?: pulumi.Input<boolean>;
+    timeout?: pulumi.Input<number>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig {
@@ -3204,6 +3297,7 @@ export interface EtcdBackupBackupConfig {
      */
     s3BackupConfig?: pulumi.Input<inputs.EtcdBackupBackupConfigS3BackupConfig>;
     safeTimestamp?: pulumi.Input<boolean>;
+    timeout?: pulumi.Input<number>;
 }
 
 export interface EtcdBackupBackupConfigS3BackupConfig {
@@ -3377,6 +3471,29 @@ export interface GlobalDnsProviderRoute53Config {
      * The Route53 zone type `public, private`. Default: `"public"` (string)
      */
     zoneType?: pulumi.Input<string>;
+}
+
+export interface GlobalRoleRule {
+    /**
+     * Policy rule api groups (list)
+     */
+    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule non resource urls (list)
+     */
+    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resource names (list)
+     */
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resources (list)
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+     */
+    verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MultiClusterAppAnswer {
@@ -3665,7 +3782,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     userdata?: pulumi.Input<string>;
     /**
-     * Amazon EBS volume type. Default `gp2` (string)
+     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      */
     volumeType?: pulumi.Input<string>;
     /**
@@ -3950,6 +4067,25 @@ export interface NodeTemplateLinodeConfig {
     uaPrefix?: pulumi.Input<string>;
 }
 
+export interface NodeTemplateNodeTaint {
+    /**
+     * Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * Taint key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Taint time added (string)
+     */
+    timeAdded?: pulumi.Input<string>;
+    /**
+     * Taint value (string)
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface NodeTemplateOpennebulaConfig {
     /**
      * Size of the Volatile disk in MB - only for b2d (string)
@@ -4055,6 +4191,10 @@ export interface NodeTemplateOpenstackConfig {
      */
     availabilityZone: pulumi.Input<string>;
     /**
+     * Enable booting from volume. Default is `false` (bool)
+     */
+    bootFromVolume?: pulumi.Input<boolean>;
+    /**
      * CA certificate bundle to verify against (string)
      */
     cacert?: pulumi.Input<string>;
@@ -4158,6 +4298,26 @@ export interface NodeTemplateOpenstackConfig {
      * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
      */
     username?: pulumi.Input<string>;
+    /**
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+     */
+    volumeDevicePath?: pulumi.Input<string>;
+    /**
+     * OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+     */
+    volumeId?: pulumi.Input<string>;
+    /**
+     * OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+     */
+    volumeName?: pulumi.Input<string>;
+    /**
+     * OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+     */
+    volumeSize?: pulumi.Input<string>;
+    /**
+     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+     */
+    volumeType?: pulumi.Input<string>;
 }
 
 export interface NodeTemplateVsphereConfig {

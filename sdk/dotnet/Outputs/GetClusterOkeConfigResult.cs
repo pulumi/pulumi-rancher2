@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterOkeConfigResult
     {
         public readonly string CompartmentId;
+        public readonly int? CustomBootVolumeSize;
         /// <summary>
         /// (Computed) The description for Cluster (string)
         /// </summary>
@@ -21,6 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EnableKubernetesDashboard;
         public readonly bool? EnablePrivateNodes;
         public readonly string Fingerprint;
+        public readonly int? FlexOcpus;
         public readonly string KubernetesVersion;
         public readonly string? LoadBalancerSubnetName1;
         public readonly string? LoadBalancerSubnetName2;
@@ -38,12 +40,15 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? SkipVcnDelete;
         public readonly string TenancyId;
         public readonly string UserOcid;
+        public readonly string? VcnCompartmentId;
         public readonly string? VcnName;
         public readonly string? WorkerNodeIngressCidr;
 
         [OutputConstructor]
         private GetClusterOkeConfigResult(
             string compartmentId,
+
+            int? customBootVolumeSize,
 
             string? description,
 
@@ -52,6 +57,8 @@ namespace Pulumi.Rancher2.Outputs
             bool? enablePrivateNodes,
 
             string fingerprint,
+
+            int? flexOcpus,
 
             string kubernetesVersion,
 
@@ -87,15 +94,19 @@ namespace Pulumi.Rancher2.Outputs
 
             string userOcid,
 
+            string? vcnCompartmentId,
+
             string? vcnName,
 
             string? workerNodeIngressCidr)
         {
             CompartmentId = compartmentId;
+            CustomBootVolumeSize = customBootVolumeSize;
             Description = description;
             EnableKubernetesDashboard = enableKubernetesDashboard;
             EnablePrivateNodes = enablePrivateNodes;
             Fingerprint = fingerprint;
+            FlexOcpus = flexOcpus;
             KubernetesVersion = kubernetesVersion;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;
             LoadBalancerSubnetName2 = loadBalancerSubnetName2;
@@ -113,6 +124,7 @@ namespace Pulumi.Rancher2.Outputs
             SkipVcnDelete = skipVcnDelete;
             TenancyId = tenancyId;
             UserOcid = userOcid;
+            VcnCompartmentId = vcnCompartmentId;
             VcnName = vcnName;
             WorkerNodeIngressCidr = workerNodeIngressCidr;
         }

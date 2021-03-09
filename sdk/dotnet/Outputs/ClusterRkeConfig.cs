@@ -97,6 +97,10 @@ namespace Pulumi.Rancher2.Outputs
         /// K3S upgrade strategy (List maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigUpgradeStrategy? UpgradeStrategy;
+        /// <summary>
+        /// Prefix to customize Kubernetes path for windows (string)
+        /// </summary>
+        public readonly string? WinPrefixPath;
 
         [OutputConstructor]
         private ClusterRkeConfig(
@@ -140,7 +144,9 @@ namespace Pulumi.Rancher2.Outputs
 
             string? sshKeyPath,
 
-            Outputs.ClusterRkeConfigUpgradeStrategy? upgradeStrategy)
+            Outputs.ClusterRkeConfigUpgradeStrategy? upgradeStrategy,
+
+            string? winPrefixPath)
         {
             AddonJobTimeout = addonJobTimeout;
             Addons = addons;
@@ -163,6 +169,7 @@ namespace Pulumi.Rancher2.Outputs
             SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
             UpgradeStrategy = upgradeStrategy;
+            WinPrefixPath = winPrefixPath;
         }
     }
 }

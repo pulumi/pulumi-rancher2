@@ -77,6 +77,8 @@ type LookupNodeTemplateResult struct {
 	// (Computed) Labels for Node Template object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	Name   string                 `pulumi:"name"`
+	// (Computed) Node taints (List)
+	NodeTaints []GetNodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// (Computed) Engine storage driver for the node template (bool)
 	UseInternalIpAddress *bool `pulumi:"useInternalIpAddress"`
 }

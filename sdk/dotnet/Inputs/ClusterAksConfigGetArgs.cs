@@ -133,6 +133,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         /// <summary>
+        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// </summary>
+        [Input("loadBalancerSku")]
+        public Input<string>? LoadBalancerSku { get; set; }
+
+        /// <summary>
         /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         [Input("location")]

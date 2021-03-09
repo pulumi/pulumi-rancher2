@@ -34,6 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? SshCertPath;
         public readonly string? SshKeyPath;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy? UpgradeStrategy;
+        public readonly string? WinPrefixPath;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfig(
@@ -77,7 +78,9 @@ namespace Pulumi.Rancher2.Outputs
 
             string? sshKeyPath,
 
-            Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy? upgradeStrategy)
+            Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy? upgradeStrategy,
+
+            string? winPrefixPath)
         {
             AddonJobTimeout = addonJobTimeout;
             Addons = addons;
@@ -100,6 +103,7 @@ namespace Pulumi.Rancher2.Outputs
             SshCertPath = sshCertPath;
             SshKeyPath = sshKeyPath;
             UpgradeStrategy = upgradeStrategy;
+            WinPrefixPath = winPrefixPath;
         }
     }
 }

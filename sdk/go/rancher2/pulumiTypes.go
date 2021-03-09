@@ -953,6 +953,8 @@ type ClusterAksConfig struct {
 	EnableMonitoring *bool `pulumi:"enableMonitoring"`
 	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
+	// Load balancer type (basic | standard). Must be standard for auto-scaling
+	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location *string `pulumi:"location"`
 	// The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
@@ -1041,6 +1043,8 @@ type ClusterAksConfigArgs struct {
 	EnableMonitoring pulumi.BoolPtrInput `pulumi:"enableMonitoring"`
 	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion pulumi.StringInput `pulumi:"kubernetesVersion"`
+	// Load balancer type (basic | standard). Must be standard for auto-scaling
+	LoadBalancerSku pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
@@ -1252,6 +1256,11 @@ func (o ClusterAksConfigOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 // The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 func (o ClusterAksConfigOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAksConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// Load balancer type (basic | standard). Must be standard for auto-scaling
+func (o ClusterAksConfigOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAksConfig) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
 }
 
 // Azure Kubernetes cluster location. Default `eastus` (string)
@@ -1554,6 +1563,16 @@ func (o ClusterAksConfigPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.KubernetesVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load balancer type (basic | standard). Must be standard for auto-scaling
+func (o ClusterAksConfigPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAksConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerSku
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4111,7 +4130,7 @@ type ClusterClusterTemplateQuestion struct {
 	Default string `pulumi:"default"`
 	// Required variable. Default `false` (bool)
 	Required *bool `pulumi:"required"`
-	// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+	// Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
 	Type *string `pulumi:"type"`
 	// Variable name (string)
 	Variable string `pulumi:"variable"`
@@ -4133,7 +4152,7 @@ type ClusterClusterTemplateQuestionArgs struct {
 	Default pulumi.StringInput `pulumi:"default"`
 	// Required variable. Default `false` (bool)
 	Required pulumi.BoolPtrInput `pulumi:"required"`
-	// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+	// Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Variable name (string)
 	Variable pulumi.StringInput `pulumi:"variable"`
@@ -4200,7 +4219,7 @@ func (o ClusterClusterTemplateQuestionOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterTemplateQuestion) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+// Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
 func (o ClusterClusterTemplateQuestionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterTemplateQuestion) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -8412,6 +8431,8 @@ func (o ClusterLoggingSyslogConfigPtrOutput) Token() pulumi.StringPtrOutput {
 type ClusterOkeConfig struct {
 	// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
 	CompartmentId string `pulumi:"compartmentId"`
+	// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+	CustomBootVolumeSize *int `pulumi:"customBootVolumeSize"`
 	// An optional description of this cluster (string)
 	Description *string `pulumi:"description"`
 	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
@@ -8420,6 +8441,8 @@ type ClusterOkeConfig struct {
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// The fingerprint corresponding to the specified user's private API Key (string)
 	Fingerprint string `pulumi:"fingerprint"`
+	// Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+	FlexOcpus *int `pulumi:"flexOcpus"`
 	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
@@ -8454,6 +8477,8 @@ type ClusterOkeConfig struct {
 	TenancyId string `pulumi:"tenancyId"`
 	// The OCID of a user who has access to the tenancy/compartment (string)
 	UserOcid string `pulumi:"userOcid"`
+	// The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+	VcnCompartmentId *string `pulumi:"vcnCompartmentId"`
 	// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
 	VcnName *string `pulumi:"vcnName"`
 	// Additional CIDR from which to allow ingress to worker nodes (string)
@@ -8474,6 +8499,8 @@ type ClusterOkeConfigInput interface {
 type ClusterOkeConfigArgs struct {
 	// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
 	CompartmentId pulumi.StringInput `pulumi:"compartmentId"`
+	// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+	CustomBootVolumeSize pulumi.IntPtrInput `pulumi:"customBootVolumeSize"`
 	// An optional description of this cluster (string)
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
@@ -8482,6 +8509,8 @@ type ClusterOkeConfigArgs struct {
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// The fingerprint corresponding to the specified user's private API Key (string)
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+	FlexOcpus pulumi.IntPtrInput `pulumi:"flexOcpus"`
 	// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
 	KubernetesVersion pulumi.StringInput `pulumi:"kubernetesVersion"`
 	// The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
@@ -8516,6 +8545,8 @@ type ClusterOkeConfigArgs struct {
 	TenancyId pulumi.StringInput `pulumi:"tenancyId"`
 	// The OCID of a user who has access to the tenancy/compartment (string)
 	UserOcid pulumi.StringInput `pulumi:"userOcid"`
+	// The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+	VcnCompartmentId pulumi.StringPtrInput `pulumi:"vcnCompartmentId"`
 	// The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
 	VcnName pulumi.StringPtrInput `pulumi:"vcnName"`
 	// Additional CIDR from which to allow ingress to worker nodes (string)
@@ -8604,6 +8635,11 @@ func (o ClusterOkeConfigOutput) CompartmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterOkeConfig) string { return v.CompartmentId }).(pulumi.StringOutput)
 }
 
+// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+func (o ClusterOkeConfigOutput) CustomBootVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *int { return v.CustomBootVolumeSize }).(pulumi.IntPtrOutput)
+}
+
 // An optional description of this cluster (string)
 func (o ClusterOkeConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -8622,6 +8658,11 @@ func (o ClusterOkeConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 // The fingerprint corresponding to the specified user's private API Key (string)
 func (o ClusterOkeConfigOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterOkeConfig) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+func (o ClusterOkeConfigOutput) FlexOcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *int { return v.FlexOcpus }).(pulumi.IntPtrOutput)
 }
 
 // The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
@@ -8709,6 +8750,11 @@ func (o ClusterOkeConfigOutput) UserOcid() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterOkeConfig) string { return v.UserOcid }).(pulumi.StringOutput)
 }
 
+// The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+func (o ClusterOkeConfigOutput) VcnCompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.VcnCompartmentId }).(pulumi.StringPtrOutput)
+}
+
 // The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
 func (o ClusterOkeConfigOutput) VcnName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterOkeConfig) *string { return v.VcnName }).(pulumi.StringPtrOutput)
@@ -8745,6 +8791,16 @@ func (o ClusterOkeConfigPtrOutput) CompartmentId() pulumi.StringPtrOutput {
 		}
 		return &v.CompartmentId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `nodeImage` specified. Default `0` (int)
+func (o ClusterOkeConfigPtrOutput) CustomBootVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomBootVolumeSize
+	}).(pulumi.IntPtrOutput)
 }
 
 // An optional description of this cluster (string)
@@ -8785,6 +8841,16 @@ func (o ClusterOkeConfigPtrOutput) Fingerprint() pulumi.StringPtrOutput {
 		}
 		return &v.Fingerprint
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies number of OCPUs for nodes (requires flexible shape specified with `nodeShape`) (int)
+func (o ClusterOkeConfigPtrOutput) FlexOcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FlexOcpus
+	}).(pulumi.IntPtrOutput)
 }
 
 // The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
@@ -8957,6 +9023,16 @@ func (o ClusterOkeConfigPtrOutput) UserOcid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The OCID of the compartment (if different from `compartmentId`) in which to find the pre-existing virtual network set with `vcnName`. (string)
+func (o ClusterOkeConfigPtrOutput) VcnCompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterOkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VcnCompartmentId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of an existing virtual network to use for the cluster creation. If set, you must also set `loadBalancerSubnetName1`. A VCN and subnets will be created if none are specified. (string)
 func (o ClusterOkeConfigPtrOutput) VcnName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterOkeConfig) *string {
@@ -9020,6 +9096,8 @@ type ClusterRkeConfig struct {
 	SshKeyPath *string `pulumi:"sshKeyPath"`
 	// K3S upgrade strategy (List maxitems: 1)
 	UpgradeStrategy *ClusterRkeConfigUpgradeStrategy `pulumi:"upgradeStrategy"`
+	// Prefix to customize Kubernetes path for windows (string)
+	WinPrefixPath *string `pulumi:"winPrefixPath"`
 }
 
 // ClusterRkeConfigInput is an input type that accepts ClusterRkeConfigArgs and ClusterRkeConfigOutput values.
@@ -9076,6 +9154,8 @@ type ClusterRkeConfigArgs struct {
 	SshKeyPath pulumi.StringPtrInput `pulumi:"sshKeyPath"`
 	// K3S upgrade strategy (List maxitems: 1)
 	UpgradeStrategy ClusterRkeConfigUpgradeStrategyPtrInput `pulumi:"upgradeStrategy"`
+	// Prefix to customize Kubernetes path for windows (string)
+	WinPrefixPath pulumi.StringPtrInput `pulumi:"winPrefixPath"`
 }
 
 func (ClusterRkeConfigArgs) ElementType() reflect.Type {
@@ -9258,6 +9338,11 @@ func (o ClusterRkeConfigOutput) SshKeyPath() pulumi.StringPtrOutput {
 // K3S upgrade strategy (List maxitems: 1)
 func (o ClusterRkeConfigOutput) UpgradeStrategy() ClusterRkeConfigUpgradeStrategyPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfig) *ClusterRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(ClusterRkeConfigUpgradeStrategyPtrOutput)
+}
+
+// Prefix to customize Kubernetes path for windows (string)
+func (o ClusterRkeConfigOutput) WinPrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfig) *string { return v.WinPrefixPath }).(pulumi.StringPtrOutput)
 }
 
 type ClusterRkeConfigPtrOutput struct{ *pulumi.OutputState }
@@ -9486,6 +9571,16 @@ func (o ClusterRkeConfigPtrOutput) UpgradeStrategy() ClusterRkeConfigUpgradeStra
 		}
 		return v.UpgradeStrategy
 	}).(ClusterRkeConfigUpgradeStrategyPtrOutput)
+}
+
+// Prefix to customize Kubernetes path for windows (string)
+func (o ClusterRkeConfigPtrOutput) WinPrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WinPrefixPath
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterRkeConfigAuthentication struct {
@@ -10879,7 +10974,7 @@ type ClusterRkeConfigCloudProviderAzureCloudProvider struct {
 	CloudProviderRateLimitBucket *int `pulumi:"cloudProviderRateLimitBucket"`
 	// (int)
 	CloudProviderRateLimitQps *int `pulumi:"cloudProviderRateLimitQps"`
-	// Allowed values: `basic` (default) `standard` (string)
+	// Load balancer type (basic | standard). Must be standard for auto-scaling
 	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location *string `pulumi:"location"`
@@ -10951,7 +11046,7 @@ type ClusterRkeConfigCloudProviderAzureCloudProviderArgs struct {
 	CloudProviderRateLimitBucket pulumi.IntPtrInput `pulumi:"cloudProviderRateLimitBucket"`
 	// (int)
 	CloudProviderRateLimitQps pulumi.IntPtrInput `pulumi:"cloudProviderRateLimitQps"`
-	// Allowed values: `basic` (default) `standard` (string)
+	// Load balancer type (basic | standard). Must be standard for auto-scaling
 	LoadBalancerSku pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
 	// Azure Kubernetes cluster location. Default `eastus` (string)
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -11127,7 +11222,7 @@ func (o ClusterRkeConfigCloudProviderAzureCloudProviderOutput) CloudProviderRate
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAzureCloudProvider) *int { return v.CloudProviderRateLimitQps }).(pulumi.IntPtrOutput)
 }
 
-// Allowed values: `basic` (default) `standard` (string)
+// Load balancer type (basic | standard). Must be standard for auto-scaling
 func (o ClusterRkeConfigCloudProviderAzureCloudProviderOutput) LoadBalancerSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRkeConfigCloudProviderAzureCloudProvider) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
 }
@@ -11357,7 +11452,7 @@ func (o ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) CloudProviderR
 	}).(pulumi.IntPtrOutput)
 }
 
-// Allowed values: `basic` (default) `standard` (string)
+// Load balancer type (basic | standard). Must be standard for auto-scaling
 func (o ClusterRkeConfigCloudProviderAzureCloudProviderPtrOutput) LoadBalancerSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterRkeConfigCloudProviderAzureCloudProvider) *string {
 		if v == nil {
@@ -17262,6 +17357,8 @@ type ClusterRkeConfigServicesEtcdBackupConfig struct {
 	S3BackupConfig *ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	// Safe timestamp for etcd backup. Default: `false` (bool)
 	SafeTimestamp *bool `pulumi:"safeTimestamp"`
+	// RKE node drain timeout. Default: `60` (int)
+	Timeout *int `pulumi:"timeout"`
 }
 
 // ClusterRkeConfigServicesEtcdBackupConfigInput is an input type that accepts ClusterRkeConfigServicesEtcdBackupConfigArgs and ClusterRkeConfigServicesEtcdBackupConfigOutput values.
@@ -17286,6 +17383,8 @@ type ClusterRkeConfigServicesEtcdBackupConfigArgs struct {
 	S3BackupConfig ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	// Safe timestamp for etcd backup. Default: `false` (bool)
 	SafeTimestamp pulumi.BoolPtrInput `pulumi:"safeTimestamp"`
+	// RKE node drain timeout. Default: `60` (int)
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (ClusterRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -17392,6 +17491,11 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.B
 	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
+// RKE node drain timeout. Default: `60` (int)
+func (o ClusterRkeConfigServicesEtcdBackupConfigOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterRkeConfigServicesEtcdBackupConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
 type ClusterRkeConfigServicesEtcdBackupConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -17458,6 +17562,16 @@ func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) SafeTimestamp() pulum
 		}
 		return v.SafeTimestamp
 	}).(pulumi.BoolPtrOutput)
+}
+
+// RKE node drain timeout. Default: `60` (int)
+func (o ClusterRkeConfigServicesEtcdBackupConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterRkeConfigServicesEtcdBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -20682,6 +20796,238 @@ func (o ClusterScheduledClusterScanScheduleConfigPtrOutput) Retention() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClusterSyncNode struct {
+	// Annotations of the node (map).
+	Annotations map[string]interface{} `pulumi:"annotations"`
+	// The total resources of a node (map).
+	Capacity map[string]interface{} `pulumi:"capacity"`
+	// The Cluster ID of the node (string).
+	ClusterId *string `pulumi:"clusterId"`
+	// The external IP address of the node (string).
+	ExternalIpAddress *string `pulumi:"externalIpAddress"`
+	// The hostname of the node (string).
+	Hostname *string `pulumi:"hostname"`
+	// The ID of the node (string)
+	Id *string `pulumi:"id"`
+	// The private IP address of the node (string).
+	IpAddress *string `pulumi:"ipAddress"`
+	// Labels of the node (map).
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The name of the node (string).
+	Name *string `pulumi:"name"`
+	// The Node Pool ID of the node (string).
+	NodePoolId *string `pulumi:"nodePoolId"`
+	// The Node Template ID of the node (string).
+	NodeTemplateId *string `pulumi:"nodeTemplateId"`
+	// The Provider ID of the node (string).
+	ProviderId *string `pulumi:"providerId"`
+	// The requested hostname (string).
+	RequestedHostname *string `pulumi:"requestedHostname"`
+	// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+	Roles []string `pulumi:"roles"`
+	// The user to connect to the node (string).
+	SshUser *string `pulumi:"sshUser"`
+	// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+	SystemInfo map[string]interface{} `pulumi:"systemInfo"`
+}
+
+// ClusterSyncNodeInput is an input type that accepts ClusterSyncNodeArgs and ClusterSyncNodeOutput values.
+// You can construct a concrete instance of `ClusterSyncNodeInput` via:
+//
+//          ClusterSyncNodeArgs{...}
+type ClusterSyncNodeInput interface {
+	pulumi.Input
+
+	ToClusterSyncNodeOutput() ClusterSyncNodeOutput
+	ToClusterSyncNodeOutputWithContext(context.Context) ClusterSyncNodeOutput
+}
+
+type ClusterSyncNodeArgs struct {
+	// Annotations of the node (map).
+	Annotations pulumi.MapInput `pulumi:"annotations"`
+	// The total resources of a node (map).
+	Capacity pulumi.MapInput `pulumi:"capacity"`
+	// The Cluster ID of the node (string).
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The external IP address of the node (string).
+	ExternalIpAddress pulumi.StringPtrInput `pulumi:"externalIpAddress"`
+	// The hostname of the node (string).
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The ID of the node (string)
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The private IP address of the node (string).
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Labels of the node (map).
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// The name of the node (string).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Node Pool ID of the node (string).
+	NodePoolId pulumi.StringPtrInput `pulumi:"nodePoolId"`
+	// The Node Template ID of the node (string).
+	NodeTemplateId pulumi.StringPtrInput `pulumi:"nodeTemplateId"`
+	// The Provider ID of the node (string).
+	ProviderId pulumi.StringPtrInput `pulumi:"providerId"`
+	// The requested hostname (string).
+	RequestedHostname pulumi.StringPtrInput `pulumi:"requestedHostname"`
+	// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// The user to connect to the node (string).
+	SshUser pulumi.StringPtrInput `pulumi:"sshUser"`
+	// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+	SystemInfo pulumi.MapInput `pulumi:"systemInfo"`
+}
+
+func (ClusterSyncNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSyncNode)(nil)).Elem()
+}
+
+func (i ClusterSyncNodeArgs) ToClusterSyncNodeOutput() ClusterSyncNodeOutput {
+	return i.ToClusterSyncNodeOutputWithContext(context.Background())
+}
+
+func (i ClusterSyncNodeArgs) ToClusterSyncNodeOutputWithContext(ctx context.Context) ClusterSyncNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncNodeOutput)
+}
+
+// ClusterSyncNodeArrayInput is an input type that accepts ClusterSyncNodeArray and ClusterSyncNodeArrayOutput values.
+// You can construct a concrete instance of `ClusterSyncNodeArrayInput` via:
+//
+//          ClusterSyncNodeArray{ ClusterSyncNodeArgs{...} }
+type ClusterSyncNodeArrayInput interface {
+	pulumi.Input
+
+	ToClusterSyncNodeArrayOutput() ClusterSyncNodeArrayOutput
+	ToClusterSyncNodeArrayOutputWithContext(context.Context) ClusterSyncNodeArrayOutput
+}
+
+type ClusterSyncNodeArray []ClusterSyncNodeInput
+
+func (ClusterSyncNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSyncNode)(nil)).Elem()
+}
+
+func (i ClusterSyncNodeArray) ToClusterSyncNodeArrayOutput() ClusterSyncNodeArrayOutput {
+	return i.ToClusterSyncNodeArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterSyncNodeArray) ToClusterSyncNodeArrayOutputWithContext(ctx context.Context) ClusterSyncNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSyncNodeArrayOutput)
+}
+
+type ClusterSyncNodeOutput struct{ *pulumi.OutputState }
+
+func (ClusterSyncNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSyncNode)(nil)).Elem()
+}
+
+func (o ClusterSyncNodeOutput) ToClusterSyncNodeOutput() ClusterSyncNodeOutput {
+	return o
+}
+
+func (o ClusterSyncNodeOutput) ToClusterSyncNodeOutputWithContext(ctx context.Context) ClusterSyncNodeOutput {
+	return o
+}
+
+// Annotations of the node (map).
+func (o ClusterSyncNodeOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterSyncNode) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+}
+
+// The total resources of a node (map).
+func (o ClusterSyncNodeOutput) Capacity() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterSyncNode) map[string]interface{} { return v.Capacity }).(pulumi.MapOutput)
+}
+
+// The Cluster ID of the node (string).
+func (o ClusterSyncNodeOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The external IP address of the node (string).
+func (o ClusterSyncNodeOutput) ExternalIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.ExternalIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The hostname of the node (string).
+func (o ClusterSyncNodeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the node (string)
+func (o ClusterSyncNodeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the node (string).
+func (o ClusterSyncNodeOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Labels of the node (map).
+func (o ClusterSyncNodeOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterSyncNode) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The name of the node (string).
+func (o ClusterSyncNodeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Node Pool ID of the node (string).
+func (o ClusterSyncNodeOutput) NodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.NodePoolId }).(pulumi.StringPtrOutput)
+}
+
+// The Node Template ID of the node (string).
+func (o ClusterSyncNodeOutput) NodeTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.NodeTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// The Provider ID of the node (string).
+func (o ClusterSyncNodeOutput) ProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.ProviderId }).(pulumi.StringPtrOutput)
+}
+
+// The requested hostname (string).
+func (o ClusterSyncNodeOutput) RequestedHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.RequestedHostname }).(pulumi.StringPtrOutput)
+}
+
+// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+func (o ClusterSyncNodeOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterSyncNode) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// The user to connect to the node (string).
+func (o ClusterSyncNodeOutput) SshUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSyncNode) *string { return v.SshUser }).(pulumi.StringPtrOutput)
+}
+
+// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+func (o ClusterSyncNodeOutput) SystemInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterSyncNode) map[string]interface{} { return v.SystemInfo }).(pulumi.MapOutput)
+}
+
+type ClusterSyncNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterSyncNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSyncNode)(nil)).Elem()
+}
+
+func (o ClusterSyncNodeArrayOutput) ToClusterSyncNodeArrayOutput() ClusterSyncNodeArrayOutput {
+	return o
+}
+
+func (o ClusterSyncNodeArrayOutput) ToClusterSyncNodeArrayOutputWithContext(ctx context.Context) ClusterSyncNodeArrayOutput {
+	return o
+}
+
+func (o ClusterSyncNodeArrayOutput) Index(i pulumi.IntInput) ClusterSyncNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSyncNode {
+		return vs[0].([]ClusterSyncNode)[vs[1].(int)]
+	}).(ClusterSyncNodeOutput)
+}
+
 type ClusterTemplateMember struct {
 	// Member access type. Valid values: `["read-only" | "owner"]` (string)
 	AccessType *string `pulumi:"accessType"`
@@ -21313,6 +21659,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	SshCertPath         *string                                                                `pulumi:"sshCertPath"`
 	SshKeyPath          *string                                                                `pulumi:"sshKeyPath"`
 	UpgradeStrategy     *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy  `pulumi:"upgradeStrategy"`
+	WinPrefixPath       *string                                                                `pulumi:"winPrefixPath"`
 }
 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput values.
@@ -21348,6 +21695,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	SshCertPath         pulumi.StringPtrInput                                                          `pulumi:"sshCertPath"`
 	SshKeyPath          pulumi.StringPtrInput                                                          `pulumi:"sshKeyPath"`
 	UpgradeStrategy     ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrInput   `pulumi:"upgradeStrategy"`
+	WinPrefixPath       pulumi.StringPtrInput                                                          `pulumi:"winPrefixPath"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs) ElementType() reflect.Type {
@@ -21482,6 +21830,10 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) UpgradeStra
 	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
 		return v.UpgradeStrategy
 	}).(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) WinPrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfig) *string { return v.WinPrefixPath }).(pulumi.StringPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication struct {
@@ -28738,6 +29090,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 	Retention      *int                                                                                         `pulumi:"retention"`
 	S3BackupConfig *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	SafeTimestamp  *bool                                                                                        `pulumi:"safeTimestamp"`
+	Timeout        *int                                                                                         `pulumi:"timeout"`
 }
 
 // ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput is an input type that accepts ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs and ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput values.
@@ -28758,6 +29111,7 @@ type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConf
 	Retention      pulumi.IntPtrInput                                                                                  `pulumi:"retention"`
 	S3BackupConfig ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	SafeTimestamp  pulumi.BoolPtrInput                                                                                 `pulumi:"safeTimestamp"`
+	Timeout        pulumi.IntPtrInput                                                                                  `pulumi:"timeout"`
 }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -28868,6 +29222,12 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *int {
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -28932,6 +29292,15 @@ func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 		}
 		return v.SafeTimestamp
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -32139,6 +32508,7 @@ type EtcdBackupBackupConfig struct {
 	// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
 	S3BackupConfig *EtcdBackupBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	SafeTimestamp  *bool                                 `pulumi:"safeTimestamp"`
+	Timeout        *int                                  `pulumi:"timeout"`
 }
 
 // EtcdBackupBackupConfigInput is an input type that accepts EtcdBackupBackupConfigArgs and EtcdBackupBackupConfigOutput values.
@@ -32162,6 +32532,7 @@ type EtcdBackupBackupConfigArgs struct {
 	// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
 	S3BackupConfig EtcdBackupBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	SafeTimestamp  pulumi.BoolPtrInput                          `pulumi:"safeTimestamp"`
+	Timeout        pulumi.IntPtrInput                           `pulumi:"timeout"`
 }
 
 func (EtcdBackupBackupConfigArgs) ElementType() reflect.Type {
@@ -32265,6 +32636,10 @@ func (o EtcdBackupBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EtcdBackupBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
 }
 
+func (o EtcdBackupBackupConfigOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EtcdBackupBackupConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
 type EtcdBackupBackupConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EtcdBackupBackupConfigPtrOutput) ElementType() reflect.Type {
@@ -32330,6 +32705,15 @@ func (o EtcdBackupBackupConfigPtrOutput) SafeTimestamp() pulumi.BoolPtrOutput {
 		}
 		return v.SafeTimestamp
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o EtcdBackupBackupConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EtcdBackupBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type EtcdBackupBackupConfigS3BackupConfig struct {
@@ -33120,6 +33504,139 @@ func (o GlobalDnsProviderRoute53ConfigPtrOutput) ZoneType() pulumi.StringPtrOutp
 		}
 		return v.ZoneType
 	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalRoleRule struct {
+	// Policy rule api groups (list)
+	ApiGroups []string `pulumi:"apiGroups"`
+	// Policy rule non resource urls (list)
+	NonResourceUrls []string `pulumi:"nonResourceUrls"`
+	// Policy rule resource names (list)
+	ResourceNames []string `pulumi:"resourceNames"`
+	// Policy rule resources (list)
+	Resources []string `pulumi:"resources"`
+	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+	Verbs []string `pulumi:"verbs"`
+}
+
+// GlobalRoleRuleInput is an input type that accepts GlobalRoleRuleArgs and GlobalRoleRuleOutput values.
+// You can construct a concrete instance of `GlobalRoleRuleInput` via:
+//
+//          GlobalRoleRuleArgs{...}
+type GlobalRoleRuleInput interface {
+	pulumi.Input
+
+	ToGlobalRoleRuleOutput() GlobalRoleRuleOutput
+	ToGlobalRoleRuleOutputWithContext(context.Context) GlobalRoleRuleOutput
+}
+
+type GlobalRoleRuleArgs struct {
+	// Policy rule api groups (list)
+	ApiGroups pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule non resource urls (list)
+	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
+	// Policy rule resource names (list)
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+	// Policy rule resources (list)
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+	Verbs pulumi.StringArrayInput `pulumi:"verbs"`
+}
+
+func (GlobalRoleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalRoleRule)(nil)).Elem()
+}
+
+func (i GlobalRoleRuleArgs) ToGlobalRoleRuleOutput() GlobalRoleRuleOutput {
+	return i.ToGlobalRoleRuleOutputWithContext(context.Background())
+}
+
+func (i GlobalRoleRuleArgs) ToGlobalRoleRuleOutputWithContext(ctx context.Context) GlobalRoleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleRuleOutput)
+}
+
+// GlobalRoleRuleArrayInput is an input type that accepts GlobalRoleRuleArray and GlobalRoleRuleArrayOutput values.
+// You can construct a concrete instance of `GlobalRoleRuleArrayInput` via:
+//
+//          GlobalRoleRuleArray{ GlobalRoleRuleArgs{...} }
+type GlobalRoleRuleArrayInput interface {
+	pulumi.Input
+
+	ToGlobalRoleRuleArrayOutput() GlobalRoleRuleArrayOutput
+	ToGlobalRoleRuleArrayOutputWithContext(context.Context) GlobalRoleRuleArrayOutput
+}
+
+type GlobalRoleRuleArray []GlobalRoleRuleInput
+
+func (GlobalRoleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalRoleRule)(nil)).Elem()
+}
+
+func (i GlobalRoleRuleArray) ToGlobalRoleRuleArrayOutput() GlobalRoleRuleArrayOutput {
+	return i.ToGlobalRoleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalRoleRuleArray) ToGlobalRoleRuleArrayOutputWithContext(ctx context.Context) GlobalRoleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleRuleArrayOutput)
+}
+
+type GlobalRoleRuleOutput struct{ *pulumi.OutputState }
+
+func (GlobalRoleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalRoleRule)(nil)).Elem()
+}
+
+func (o GlobalRoleRuleOutput) ToGlobalRoleRuleOutput() GlobalRoleRuleOutput {
+	return o
+}
+
+func (o GlobalRoleRuleOutput) ToGlobalRoleRuleOutputWithContext(ctx context.Context) GlobalRoleRuleOutput {
+	return o
+}
+
+// Policy rule api groups (list)
+func (o GlobalRoleRuleOutput) ApiGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlobalRoleRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule non resource urls (list)
+func (o GlobalRoleRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlobalRoleRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule resource names (list)
+func (o GlobalRoleRuleOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlobalRoleRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule resources (list)
+func (o GlobalRoleRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlobalRoleRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+func (o GlobalRoleRuleOutput) Verbs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlobalRoleRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type GlobalRoleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalRoleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalRoleRule)(nil)).Elem()
+}
+
+func (o GlobalRoleRuleArrayOutput) ToGlobalRoleRuleArrayOutput() GlobalRoleRuleArrayOutput {
+	return o
+}
+
+func (o GlobalRoleRuleArrayOutput) ToGlobalRoleRuleArrayOutputWithContext(ctx context.Context) GlobalRoleRuleArrayOutput {
+	return o
+}
+
+func (o GlobalRoleRuleArrayOutput) Index(i pulumi.IntInput) GlobalRoleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalRoleRule {
+		return vs[0].([]GlobalRoleRule)[vs[1].(int)]
+	}).(GlobalRoleRuleOutput)
 }
 
 type MultiClusterAppAnswer struct {
@@ -34620,7 +35137,7 @@ type NodeTemplateAmazonec2Config struct {
 	UsePrivateAddress *bool `pulumi:"usePrivateAddress"`
 	// Path to file with cloud-init user-data (string)
 	Userdata *string `pulumi:"userdata"`
-	// Amazon EBS volume type. Default `gp2` (string)
+	// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
 	VolumeType *string `pulumi:"volumeType"`
 	// AWS VPC id. (string)
 	VpcId string `pulumi:"vpcId"`
@@ -34700,7 +35217,7 @@ type NodeTemplateAmazonec2ConfigArgs struct {
 	UsePrivateAddress pulumi.BoolPtrInput `pulumi:"usePrivateAddress"`
 	// Path to file with cloud-init user-data (string)
 	Userdata pulumi.StringPtrInput `pulumi:"userdata"`
-	// Amazon EBS volume type. Default `gp2` (string)
+	// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 	// AWS VPC id. (string)
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -34935,7 +35452,7 @@ func (o NodeTemplateAmazonec2ConfigOutput) Userdata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.Userdata }).(pulumi.StringPtrOutput)
 }
 
-// Amazon EBS volume type. Default `gp2` (string)
+// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
 func (o NodeTemplateAmazonec2ConfigOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateAmazonec2Config) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -35268,7 +35785,7 @@ func (o NodeTemplateAmazonec2ConfigPtrOutput) Userdata() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Amazon EBS volume type. Default `gp2` (string)
+// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
 func (o NodeTemplateAmazonec2ConfigPtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateAmazonec2Config) *string {
 		if v == nil {
@@ -36981,6 +37498,130 @@ func (o NodeTemplateLinodeConfigPtrOutput) UaPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NodeTemplateNodeTaint struct {
+	// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+	Effect *string `pulumi:"effect"`
+	// Taint key (string)
+	Key string `pulumi:"key"`
+	// Taint time added (string)
+	TimeAdded *string `pulumi:"timeAdded"`
+	// Taint value (string)
+	Value string `pulumi:"value"`
+}
+
+// NodeTemplateNodeTaintInput is an input type that accepts NodeTemplateNodeTaintArgs and NodeTemplateNodeTaintOutput values.
+// You can construct a concrete instance of `NodeTemplateNodeTaintInput` via:
+//
+//          NodeTemplateNodeTaintArgs{...}
+type NodeTemplateNodeTaintInput interface {
+	pulumi.Input
+
+	ToNodeTemplateNodeTaintOutput() NodeTemplateNodeTaintOutput
+	ToNodeTemplateNodeTaintOutputWithContext(context.Context) NodeTemplateNodeTaintOutput
+}
+
+type NodeTemplateNodeTaintArgs struct {
+	// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Taint key (string)
+	Key pulumi.StringInput `pulumi:"key"`
+	// Taint time added (string)
+	TimeAdded pulumi.StringPtrInput `pulumi:"timeAdded"`
+	// Taint value (string)
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NodeTemplateNodeTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (i NodeTemplateNodeTaintArgs) ToNodeTemplateNodeTaintOutput() NodeTemplateNodeTaintOutput {
+	return i.ToNodeTemplateNodeTaintOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateNodeTaintArgs) ToNodeTemplateNodeTaintOutputWithContext(ctx context.Context) NodeTemplateNodeTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateNodeTaintOutput)
+}
+
+// NodeTemplateNodeTaintArrayInput is an input type that accepts NodeTemplateNodeTaintArray and NodeTemplateNodeTaintArrayOutput values.
+// You can construct a concrete instance of `NodeTemplateNodeTaintArrayInput` via:
+//
+//          NodeTemplateNodeTaintArray{ NodeTemplateNodeTaintArgs{...} }
+type NodeTemplateNodeTaintArrayInput interface {
+	pulumi.Input
+
+	ToNodeTemplateNodeTaintArrayOutput() NodeTemplateNodeTaintArrayOutput
+	ToNodeTemplateNodeTaintArrayOutputWithContext(context.Context) NodeTemplateNodeTaintArrayOutput
+}
+
+type NodeTemplateNodeTaintArray []NodeTemplateNodeTaintInput
+
+func (NodeTemplateNodeTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (i NodeTemplateNodeTaintArray) ToNodeTemplateNodeTaintArrayOutput() NodeTemplateNodeTaintArrayOutput {
+	return i.ToNodeTemplateNodeTaintArrayOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateNodeTaintArray) ToNodeTemplateNodeTaintArrayOutputWithContext(ctx context.Context) NodeTemplateNodeTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateNodeTaintArrayOutput)
+}
+
+type NodeTemplateNodeTaintOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateNodeTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (o NodeTemplateNodeTaintOutput) ToNodeTemplateNodeTaintOutput() NodeTemplateNodeTaintOutput {
+	return o
+}
+
+func (o NodeTemplateNodeTaintOutput) ToNodeTemplateNodeTaintOutputWithContext(ctx context.Context) NodeTemplateNodeTaintOutput {
+	return o
+}
+
+// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+func (o NodeTemplateNodeTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateNodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Taint key (string)
+func (o NodeTemplateNodeTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeTemplateNodeTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Taint time added (string)
+func (o NodeTemplateNodeTaintOutput) TimeAdded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateNodeTaint) *string { return v.TimeAdded }).(pulumi.StringPtrOutput)
+}
+
+// Taint value (string)
+func (o NodeTemplateNodeTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeTemplateNodeTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NodeTemplateNodeTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateNodeTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (o NodeTemplateNodeTaintArrayOutput) ToNodeTemplateNodeTaintArrayOutput() NodeTemplateNodeTaintArrayOutput {
+	return o
+}
+
+func (o NodeTemplateNodeTaintArrayOutput) ToNodeTemplateNodeTaintArrayOutputWithContext(ctx context.Context) NodeTemplateNodeTaintArrayOutput {
+	return o
+}
+
+func (o NodeTemplateNodeTaintArrayOutput) Index(i pulumi.IntInput) NodeTemplateNodeTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeTemplateNodeTaint {
+		return vs[0].([]NodeTemplateNodeTaint)[vs[1].(int)]
+	}).(NodeTemplateNodeTaintOutput)
+}
+
 type NodeTemplateOpennebulaConfig struct {
 	// Size of the Volatile disk in MB - only for b2d (string)
 	B2dSize *string `pulumi:"b2dSize"`
@@ -37467,6 +38108,8 @@ type NodeTemplateOpenstackConfig struct {
 	AuthUrl string `pulumi:"authUrl"`
 	// OpenStack availability zone (string)
 	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Enable booting from volume. Default is `false` (bool)
+	BootFromVolume *bool `pulumi:"bootFromVolume"`
 	// CA certificate bundle to verify against (string)
 	Cacert *string `pulumi:"cacert"`
 	// Enables the OpenStack config drive for the instance. Default `false` (bool)
@@ -37519,6 +38162,16 @@ type NodeTemplateOpenstackConfig struct {
 	UserDataFile *string `pulumi:"userDataFile"`
 	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username *string `pulumi:"username"`
+	// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+	VolumeDevicePath *string `pulumi:"volumeDevicePath"`
+	// OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+	VolumeId *string `pulumi:"volumeId"`
+	// OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+	VolumeName *string `pulumi:"volumeName"`
+	// OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+	VolumeSize *string `pulumi:"volumeSize"`
+	// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 // NodeTemplateOpenstackConfigInput is an input type that accepts NodeTemplateOpenstackConfigArgs and NodeTemplateOpenstackConfigOutput values.
@@ -37545,6 +38198,8 @@ type NodeTemplateOpenstackConfigArgs struct {
 	AuthUrl pulumi.StringInput `pulumi:"authUrl"`
 	// OpenStack availability zone (string)
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Enable booting from volume. Default is `false` (bool)
+	BootFromVolume pulumi.BoolPtrInput `pulumi:"bootFromVolume"`
 	// CA certificate bundle to verify against (string)
 	Cacert pulumi.StringPtrInput `pulumi:"cacert"`
 	// Enables the OpenStack config drive for the instance. Default `false` (bool)
@@ -37597,6 +38252,16 @@ type NodeTemplateOpenstackConfigArgs struct {
 	UserDataFile pulumi.StringPtrInput `pulumi:"userDataFile"`
 	// vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
 	Username pulumi.StringPtrInput `pulumi:"username"`
+	// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+	VolumeDevicePath pulumi.StringPtrInput `pulumi:"volumeDevicePath"`
+	// OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+	// OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+	VolumeName pulumi.StringPtrInput `pulumi:"volumeName"`
+	// OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+	VolumeSize pulumi.StringPtrInput `pulumi:"volumeSize"`
+	// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (NodeTemplateOpenstackConfigArgs) ElementType() reflect.Type {
@@ -37704,6 +38369,11 @@ func (o NodeTemplateOpenstackConfigOutput) AuthUrl() pulumi.StringOutput {
 // OpenStack availability zone (string)
 func (o NodeTemplateOpenstackConfigOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Enable booting from volume. Default is `false` (bool)
+func (o NodeTemplateOpenstackConfigOutput) BootFromVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *bool { return v.BootFromVolume }).(pulumi.BoolPtrOutput)
 }
 
 // CA certificate bundle to verify against (string)
@@ -37836,6 +38506,31 @@ func (o NodeTemplateOpenstackConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+func (o NodeTemplateOpenstackConfigOutput) VolumeDevicePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.VolumeDevicePath }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigOutput) VolumeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.VolumeName }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigOutput) VolumeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.VolumeSize }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+func (o NodeTemplateOpenstackConfigOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTemplateOpenstackConfig) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
 type NodeTemplateOpenstackConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOpenstackConfigPtrOutput) ElementType() reflect.Type {
@@ -37912,6 +38607,16 @@ func (o NodeTemplateOpenstackConfigPtrOutput) AvailabilityZone() pulumi.StringPt
 		}
 		return &v.AvailabilityZone
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable booting from volume. Default is `false` (bool)
+func (o NodeTemplateOpenstackConfigPtrOutput) BootFromVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BootFromVolume
+	}).(pulumi.BoolPtrOutput)
 }
 
 // CA certificate bundle to verify against (string)
@@ -38171,6 +38876,56 @@ func (o NodeTemplateOpenstackConfigPtrOutput) Username() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) VolumeDevicePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeDevicePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) VolumeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) VolumeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
+func (o NodeTemplateOpenstackConfigPtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeTemplateOpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -45872,6 +46627,7 @@ type GetClusterAksConfig struct {
 	EnableHttpApplicationRouting       *bool                  `pulumi:"enableHttpApplicationRouting"`
 	EnableMonitoring                   *bool                  `pulumi:"enableMonitoring"`
 	KubernetesVersion                  string                 `pulumi:"kubernetesVersion"`
+	LoadBalancerSku                    string                 `pulumi:"loadBalancerSku"`
 	Location                           *string                `pulumi:"location"`
 	LogAnalyticsWorkspace              *string                `pulumi:"logAnalyticsWorkspace"`
 	LogAnalyticsWorkspaceResourceGroup *string                `pulumi:"logAnalyticsWorkspaceResourceGroup"`
@@ -45923,6 +46679,7 @@ type GetClusterAksConfigArgs struct {
 	EnableHttpApplicationRouting       pulumi.BoolPtrInput   `pulumi:"enableHttpApplicationRouting"`
 	EnableMonitoring                   pulumi.BoolPtrInput   `pulumi:"enableMonitoring"`
 	KubernetesVersion                  pulumi.StringInput    `pulumi:"kubernetesVersion"`
+	LoadBalancerSku                    pulumi.StringInput    `pulumi:"loadBalancerSku"`
 	Location                           pulumi.StringPtrInput `pulumi:"location"`
 	LogAnalyticsWorkspace              pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspace"`
 	LogAnalyticsWorkspaceResourceGroup pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceResourceGroup"`
@@ -46046,6 +46803,10 @@ func (o GetClusterAksConfigOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 
 func (o GetClusterAksConfigOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterAksConfig) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+func (o GetClusterAksConfigOutput) LoadBalancerSku() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAksConfig) string { return v.LoadBalancerSku }).(pulumi.StringOutput)
 }
 
 func (o GetClusterAksConfigOutput) Location() pulumi.StringPtrOutput {
@@ -48485,12 +49246,14 @@ func (o GetClusterLoggingSyslogConfigOutput) Token() pulumi.StringPtrOutput {
 }
 
 type GetClusterOkeConfig struct {
-	CompartmentId string `pulumi:"compartmentId"`
+	CompartmentId        string `pulumi:"compartmentId"`
+	CustomBootVolumeSize *int   `pulumi:"customBootVolumeSize"`
 	// (Computed) The description for Cluster (string)
 	Description               *string `pulumi:"description"`
 	EnableKubernetesDashboard *bool   `pulumi:"enableKubernetesDashboard"`
 	EnablePrivateNodes        *bool   `pulumi:"enablePrivateNodes"`
 	Fingerprint               string  `pulumi:"fingerprint"`
+	FlexOcpus                 *int    `pulumi:"flexOcpus"`
 	KubernetesVersion         string  `pulumi:"kubernetesVersion"`
 	LoadBalancerSubnetName1   *string `pulumi:"loadBalancerSubnetName1"`
 	LoadBalancerSubnetName2   *string `pulumi:"loadBalancerSubnetName2"`
@@ -48508,6 +49271,7 @@ type GetClusterOkeConfig struct {
 	SkipVcnDelete             *bool   `pulumi:"skipVcnDelete"`
 	TenancyId                 string  `pulumi:"tenancyId"`
 	UserOcid                  string  `pulumi:"userOcid"`
+	VcnCompartmentId          *string `pulumi:"vcnCompartmentId"`
 	VcnName                   *string `pulumi:"vcnName"`
 	WorkerNodeIngressCidr     *string `pulumi:"workerNodeIngressCidr"`
 }
@@ -48524,12 +49288,14 @@ type GetClusterOkeConfigInput interface {
 }
 
 type GetClusterOkeConfigArgs struct {
-	CompartmentId pulumi.StringInput `pulumi:"compartmentId"`
+	CompartmentId        pulumi.StringInput `pulumi:"compartmentId"`
+	CustomBootVolumeSize pulumi.IntPtrInput `pulumi:"customBootVolumeSize"`
 	// (Computed) The description for Cluster (string)
 	Description               pulumi.StringPtrInput `pulumi:"description"`
 	EnableKubernetesDashboard pulumi.BoolPtrInput   `pulumi:"enableKubernetesDashboard"`
 	EnablePrivateNodes        pulumi.BoolPtrInput   `pulumi:"enablePrivateNodes"`
 	Fingerprint               pulumi.StringInput    `pulumi:"fingerprint"`
+	FlexOcpus                 pulumi.IntPtrInput    `pulumi:"flexOcpus"`
 	KubernetesVersion         pulumi.StringInput    `pulumi:"kubernetesVersion"`
 	LoadBalancerSubnetName1   pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName1"`
 	LoadBalancerSubnetName2   pulumi.StringPtrInput `pulumi:"loadBalancerSubnetName2"`
@@ -48547,6 +49313,7 @@ type GetClusterOkeConfigArgs struct {
 	SkipVcnDelete             pulumi.BoolPtrInput   `pulumi:"skipVcnDelete"`
 	TenancyId                 pulumi.StringInput    `pulumi:"tenancyId"`
 	UserOcid                  pulumi.StringInput    `pulumi:"userOcid"`
+	VcnCompartmentId          pulumi.StringPtrInput `pulumi:"vcnCompartmentId"`
 	VcnName                   pulumi.StringPtrInput `pulumi:"vcnName"`
 	WorkerNodeIngressCidr     pulumi.StringPtrInput `pulumi:"workerNodeIngressCidr"`
 }
@@ -48581,6 +49348,10 @@ func (o GetClusterOkeConfigOutput) CompartmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.CompartmentId }).(pulumi.StringOutput)
 }
 
+func (o GetClusterOkeConfigOutput) CustomBootVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *int { return v.CustomBootVolumeSize }).(pulumi.IntPtrOutput)
+}
+
 // (Computed) The description for Cluster (string)
 func (o GetClusterOkeConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -48596,6 +49367,10 @@ func (o GetClusterOkeConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 
 func (o GetClusterOkeConfigOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+func (o GetClusterOkeConfigOutput) FlexOcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *int { return v.FlexOcpus }).(pulumi.IntPtrOutput)
 }
 
 func (o GetClusterOkeConfigOutput) KubernetesVersion() pulumi.StringOutput {
@@ -48666,6 +49441,10 @@ func (o GetClusterOkeConfigOutput) UserOcid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterOkeConfig) string { return v.UserOcid }).(pulumi.StringOutput)
 }
 
+func (o GetClusterOkeConfigOutput) VcnCompartmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.VcnCompartmentId }).(pulumi.StringPtrOutput)
+}
+
 func (o GetClusterOkeConfigOutput) VcnName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterOkeConfig) *string { return v.VcnName }).(pulumi.StringPtrOutput)
 }
@@ -48696,6 +49475,7 @@ type GetClusterRkeConfig struct {
 	SshCertPath         string                               `pulumi:"sshCertPath"`
 	SshKeyPath          string                               `pulumi:"sshKeyPath"`
 	UpgradeStrategy     GetClusterRkeConfigUpgradeStrategy   `pulumi:"upgradeStrategy"`
+	WinPrefixPath       string                               `pulumi:"winPrefixPath"`
 }
 
 // GetClusterRkeConfigInput is an input type that accepts GetClusterRkeConfigArgs and GetClusterRkeConfigOutput values.
@@ -48731,6 +49511,7 @@ type GetClusterRkeConfigArgs struct {
 	SshCertPath         pulumi.StringInput                           `pulumi:"sshCertPath"`
 	SshKeyPath          pulumi.StringInput                           `pulumi:"sshKeyPath"`
 	UpgradeStrategy     GetClusterRkeConfigUpgradeStrategyInput      `pulumi:"upgradeStrategy"`
+	WinPrefixPath       pulumi.StringInput                           `pulumi:"winPrefixPath"`
 }
 
 func (GetClusterRkeConfigArgs) ElementType() reflect.Type {
@@ -48841,6 +49622,10 @@ func (o GetClusterRkeConfigOutput) SshKeyPath() pulumi.StringOutput {
 
 func (o GetClusterRkeConfigOutput) UpgradeStrategy() GetClusterRkeConfigUpgradeStrategyOutput {
 	return o.ApplyT(func(v GetClusterRkeConfig) GetClusterRkeConfigUpgradeStrategy { return v.UpgradeStrategy }).(GetClusterRkeConfigUpgradeStrategyOutput)
+}
+
+func (o GetClusterRkeConfigOutput) WinPrefixPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRkeConfig) string { return v.WinPrefixPath }).(pulumi.StringOutput)
 }
 
 type GetClusterRkeConfigAuthentication struct {
@@ -54609,6 +55394,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfig struct {
 	Retention      *int                                                       `pulumi:"retention"`
 	S3BackupConfig *GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	SafeTimestamp  *bool                                                      `pulumi:"safeTimestamp"`
+	Timeout        int                                                        `pulumi:"timeout"`
 }
 
 // GetClusterRkeConfigServicesEtcdBackupConfigInput is an input type that accepts GetClusterRkeConfigServicesEtcdBackupConfigArgs and GetClusterRkeConfigServicesEtcdBackupConfigOutput values.
@@ -54628,6 +55414,7 @@ type GetClusterRkeConfigServicesEtcdBackupConfigArgs struct {
 	Retention      pulumi.IntPtrInput                                                `pulumi:"retention"`
 	S3BackupConfig GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	SafeTimestamp  pulumi.BoolPtrInput                                               `pulumi:"safeTimestamp"`
+	Timeout        pulumi.IntInput                                                   `pulumi:"timeout"`
 }
 
 func (GetClusterRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -54676,6 +55463,10 @@ func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) S3BackupConfig() GetC
 
 func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterRkeConfigServicesEtcdBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterRkeConfigServicesEtcdBackupConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterRkeConfigServicesEtcdBackupConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 type GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -57004,6 +57795,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfig struct {
 	SshCertPath         string                                                                    `pulumi:"sshCertPath"`
 	SshKeyPath          string                                                                    `pulumi:"sshKeyPath"`
 	UpgradeStrategy     GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy   `pulumi:"upgradeStrategy"`
+	WinPrefixPath       string                                                                    `pulumi:"winPrefixPath"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput values.
@@ -57039,6 +57831,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs struct {
 	SshCertPath         pulumi.StringInput                                                                `pulumi:"sshCertPath"`
 	SshKeyPath          pulumi.StringInput                                                                `pulumi:"sshKeyPath"`
 	UpgradeStrategy     GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyInput      `pulumi:"upgradeStrategy"`
+	WinPrefixPath       pulumi.StringInput                                                                `pulumi:"winPrefixPath"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs) ElementType() reflect.Type {
@@ -57173,6 +57966,10 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) UpgradeS
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy {
 		return v.UpgradeStrategy
 	}).(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigOutput) WinPrefixPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfig) string { return v.WinPrefixPath }).(pulumi.StringOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication struct {
@@ -63194,6 +63991,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	Retention      *int                                                                                            `pulumi:"retention"`
 	S3BackupConfig *GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	SafeTimestamp  *bool                                                                                           `pulumi:"safeTimestamp"`
+	Timeout        int                                                                                             `pulumi:"timeout"`
 }
 
 // GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigInput is an input type that accepts GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs and GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput values.
@@ -63213,6 +64011,7 @@ type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupC
 	Retention      pulumi.IntPtrInput                                                                                     `pulumi:"retention"`
 	S3BackupConfig GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	SafeTimestamp  pulumi.BoolPtrInput                                                                                    `pulumi:"safeTimestamp"`
+	Timeout        pulumi.IntInput                                                                                        `pulumi:"timeout"`
 }
 
 func (GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs) ElementType() reflect.Type {
@@ -63269,6 +64068,12 @@ func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBack
 	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) *bool {
 		return v.SafeTimestamp
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig) int {
+		return v.Timeout
+	}).(pulumi.IntOutput)
 }
 
 type GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig struct {
@@ -65561,6 +66366,7 @@ type GetEtcdBackupBackupConfig struct {
 	Retention      *int                                     `pulumi:"retention"`
 	S3BackupConfig *GetEtcdBackupBackupConfigS3BackupConfig `pulumi:"s3BackupConfig"`
 	SafeTimestamp  *bool                                    `pulumi:"safeTimestamp"`
+	Timeout        int                                      `pulumi:"timeout"`
 }
 
 // GetEtcdBackupBackupConfigInput is an input type that accepts GetEtcdBackupBackupConfigArgs and GetEtcdBackupBackupConfigOutput values.
@@ -65580,6 +66386,7 @@ type GetEtcdBackupBackupConfigArgs struct {
 	Retention      pulumi.IntPtrInput                              `pulumi:"retention"`
 	S3BackupConfig GetEtcdBackupBackupConfigS3BackupConfigPtrInput `pulumi:"s3BackupConfig"`
 	SafeTimestamp  pulumi.BoolPtrInput                             `pulumi:"safeTimestamp"`
+	Timeout        pulumi.IntInput                                 `pulumi:"timeout"`
 }
 
 func (GetEtcdBackupBackupConfigArgs) ElementType() reflect.Type {
@@ -65626,6 +66433,10 @@ func (o GetEtcdBackupBackupConfigOutput) S3BackupConfig() GetEtcdBackupBackupCon
 
 func (o GetEtcdBackupBackupConfigOutput) SafeTimestamp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEtcdBackupBackupConfig) *bool { return v.SafeTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEtcdBackupBackupConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEtcdBackupBackupConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 type GetEtcdBackupBackupConfigS3BackupConfig struct {
@@ -66037,6 +66848,124 @@ func (o GetGlobalDnsProviderRoute53ConfigOutput) SecretKey() pulumi.StringOutput
 
 func (o GetGlobalDnsProviderRoute53ConfigOutput) ZoneType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGlobalDnsProviderRoute53Config) *string { return v.ZoneType }).(pulumi.StringPtrOutput)
+}
+
+type GetGlobalRoleRule struct {
+	ApiGroups       []string `pulumi:"apiGroups"`
+	NonResourceUrls []string `pulumi:"nonResourceUrls"`
+	ResourceNames   []string `pulumi:"resourceNames"`
+	Resources       []string `pulumi:"resources"`
+	Verbs           []string `pulumi:"verbs"`
+}
+
+// GetGlobalRoleRuleInput is an input type that accepts GetGlobalRoleRuleArgs and GetGlobalRoleRuleOutput values.
+// You can construct a concrete instance of `GetGlobalRoleRuleInput` via:
+//
+//          GetGlobalRoleRuleArgs{...}
+type GetGlobalRoleRuleInput interface {
+	pulumi.Input
+
+	ToGetGlobalRoleRuleOutput() GetGlobalRoleRuleOutput
+	ToGetGlobalRoleRuleOutputWithContext(context.Context) GetGlobalRoleRuleOutput
+}
+
+type GetGlobalRoleRuleArgs struct {
+	ApiGroups       pulumi.StringArrayInput `pulumi:"apiGroups"`
+	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
+	ResourceNames   pulumi.StringArrayInput `pulumi:"resourceNames"`
+	Resources       pulumi.StringArrayInput `pulumi:"resources"`
+	Verbs           pulumi.StringArrayInput `pulumi:"verbs"`
+}
+
+func (GetGlobalRoleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalRoleRule)(nil)).Elem()
+}
+
+func (i GetGlobalRoleRuleArgs) ToGetGlobalRoleRuleOutput() GetGlobalRoleRuleOutput {
+	return i.ToGetGlobalRoleRuleOutputWithContext(context.Background())
+}
+
+func (i GetGlobalRoleRuleArgs) ToGetGlobalRoleRuleOutputWithContext(ctx context.Context) GetGlobalRoleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalRoleRuleOutput)
+}
+
+// GetGlobalRoleRuleArrayInput is an input type that accepts GetGlobalRoleRuleArray and GetGlobalRoleRuleArrayOutput values.
+// You can construct a concrete instance of `GetGlobalRoleRuleArrayInput` via:
+//
+//          GetGlobalRoleRuleArray{ GetGlobalRoleRuleArgs{...} }
+type GetGlobalRoleRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalRoleRuleArrayOutput() GetGlobalRoleRuleArrayOutput
+	ToGetGlobalRoleRuleArrayOutputWithContext(context.Context) GetGlobalRoleRuleArrayOutput
+}
+
+type GetGlobalRoleRuleArray []GetGlobalRoleRuleInput
+
+func (GetGlobalRoleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalRoleRule)(nil)).Elem()
+}
+
+func (i GetGlobalRoleRuleArray) ToGetGlobalRoleRuleArrayOutput() GetGlobalRoleRuleArrayOutput {
+	return i.ToGetGlobalRoleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalRoleRuleArray) ToGetGlobalRoleRuleArrayOutputWithContext(ctx context.Context) GetGlobalRoleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalRoleRuleArrayOutput)
+}
+
+type GetGlobalRoleRuleOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalRoleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalRoleRule)(nil)).Elem()
+}
+
+func (o GetGlobalRoleRuleOutput) ToGetGlobalRoleRuleOutput() GetGlobalRoleRuleOutput {
+	return o
+}
+
+func (o GetGlobalRoleRuleOutput) ToGetGlobalRoleRuleOutputWithContext(ctx context.Context) GetGlobalRoleRuleOutput {
+	return o
+}
+
+func (o GetGlobalRoleRuleOutput) ApiGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalRoleRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGlobalRoleRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalRoleRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGlobalRoleRuleOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalRoleRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGlobalRoleRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalRoleRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGlobalRoleRuleOutput) Verbs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalRoleRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type GetGlobalRoleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalRoleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalRoleRule)(nil)).Elem()
+}
+
+func (o GetGlobalRoleRuleArrayOutput) ToGetGlobalRoleRuleArrayOutput() GetGlobalRoleRuleArrayOutput {
+	return o
+}
+
+func (o GetGlobalRoleRuleArrayOutput) ToGetGlobalRoleRuleArrayOutputWithContext(ctx context.Context) GetGlobalRoleRuleArrayOutput {
+	return o
+}
+
+func (o GetGlobalRoleRuleArrayOutput) Index(i pulumi.IntInput) GetGlobalRoleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalRoleRule {
+		return vs[0].([]GetGlobalRoleRule)[vs[1].(int)]
+	}).(GetGlobalRoleRuleOutput)
 }
 
 type GetMultiClusterAppAnswer struct {
@@ -66949,6 +67878,118 @@ func (o GetNodePoolNodeTaintArrayOutput) Index(i pulumi.IntInput) GetNodePoolNod
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodePoolNodeTaint {
 		return vs[0].([]GetNodePoolNodeTaint)[vs[1].(int)]
 	}).(GetNodePoolNodeTaintOutput)
+}
+
+type GetNodeTemplateNodeTaint struct {
+	Effect    *string `pulumi:"effect"`
+	Key       string  `pulumi:"key"`
+	TimeAdded string  `pulumi:"timeAdded"`
+	Value     string  `pulumi:"value"`
+}
+
+// GetNodeTemplateNodeTaintInput is an input type that accepts GetNodeTemplateNodeTaintArgs and GetNodeTemplateNodeTaintOutput values.
+// You can construct a concrete instance of `GetNodeTemplateNodeTaintInput` via:
+//
+//          GetNodeTemplateNodeTaintArgs{...}
+type GetNodeTemplateNodeTaintInput interface {
+	pulumi.Input
+
+	ToGetNodeTemplateNodeTaintOutput() GetNodeTemplateNodeTaintOutput
+	ToGetNodeTemplateNodeTaintOutputWithContext(context.Context) GetNodeTemplateNodeTaintOutput
+}
+
+type GetNodeTemplateNodeTaintArgs struct {
+	Effect    pulumi.StringPtrInput `pulumi:"effect"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+	TimeAdded pulumi.StringInput    `pulumi:"timeAdded"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetNodeTemplateNodeTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (i GetNodeTemplateNodeTaintArgs) ToGetNodeTemplateNodeTaintOutput() GetNodeTemplateNodeTaintOutput {
+	return i.ToGetNodeTemplateNodeTaintOutputWithContext(context.Background())
+}
+
+func (i GetNodeTemplateNodeTaintArgs) ToGetNodeTemplateNodeTaintOutputWithContext(ctx context.Context) GetNodeTemplateNodeTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeTemplateNodeTaintOutput)
+}
+
+// GetNodeTemplateNodeTaintArrayInput is an input type that accepts GetNodeTemplateNodeTaintArray and GetNodeTemplateNodeTaintArrayOutput values.
+// You can construct a concrete instance of `GetNodeTemplateNodeTaintArrayInput` via:
+//
+//          GetNodeTemplateNodeTaintArray{ GetNodeTemplateNodeTaintArgs{...} }
+type GetNodeTemplateNodeTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeTemplateNodeTaintArrayOutput() GetNodeTemplateNodeTaintArrayOutput
+	ToGetNodeTemplateNodeTaintArrayOutputWithContext(context.Context) GetNodeTemplateNodeTaintArrayOutput
+}
+
+type GetNodeTemplateNodeTaintArray []GetNodeTemplateNodeTaintInput
+
+func (GetNodeTemplateNodeTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (i GetNodeTemplateNodeTaintArray) ToGetNodeTemplateNodeTaintArrayOutput() GetNodeTemplateNodeTaintArrayOutput {
+	return i.ToGetNodeTemplateNodeTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeTemplateNodeTaintArray) ToGetNodeTemplateNodeTaintArrayOutputWithContext(ctx context.Context) GetNodeTemplateNodeTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeTemplateNodeTaintArrayOutput)
+}
+
+type GetNodeTemplateNodeTaintOutput struct{ *pulumi.OutputState }
+
+func (GetNodeTemplateNodeTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (o GetNodeTemplateNodeTaintOutput) ToGetNodeTemplateNodeTaintOutput() GetNodeTemplateNodeTaintOutput {
+	return o
+}
+
+func (o GetNodeTemplateNodeTaintOutput) ToGetNodeTemplateNodeTaintOutputWithContext(ctx context.Context) GetNodeTemplateNodeTaintOutput {
+	return o
+}
+
+func (o GetNodeTemplateNodeTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeTemplateNodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodeTemplateNodeTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTemplateNodeTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetNodeTemplateNodeTaintOutput) TimeAdded() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTemplateNodeTaint) string { return v.TimeAdded }).(pulumi.StringOutput)
+}
+
+func (o GetNodeTemplateNodeTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeTemplateNodeTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetNodeTemplateNodeTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeTemplateNodeTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeTemplateNodeTaint)(nil)).Elem()
+}
+
+func (o GetNodeTemplateNodeTaintArrayOutput) ToGetNodeTemplateNodeTaintArrayOutput() GetNodeTemplateNodeTaintArrayOutput {
+	return o
+}
+
+func (o GetNodeTemplateNodeTaintArrayOutput) ToGetNodeTemplateNodeTaintArrayOutputWithContext(ctx context.Context) GetNodeTemplateNodeTaintArrayOutput {
+	return o
+}
+
+func (o GetNodeTemplateNodeTaintArrayOutput) Index(i pulumi.IntInput) GetNodeTemplateNodeTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeTemplateNodeTaint {
+		return vs[0].([]GetNodeTemplateNodeTaint)[vs[1].(int)]
+	}).(GetNodeTemplateNodeTaintOutput)
 }
 
 type GetNotifierDingtalkConfig struct {
@@ -70566,6 +71607,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterScheduledClusterScanScanConfigCisScanConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterScheduledClusterScanScheduleConfigOutput{})
 	pulumi.RegisterOutputType(ClusterScheduledClusterScanScheduleConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSyncNodeOutput{})
+	pulumi.RegisterOutputType(ClusterSyncNodeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMemberOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMemberArrayOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateTemplateRevisionOutput{})
@@ -70696,6 +71739,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalDnsProviderCloudflareConfigPtrOutput{})
 	pulumi.RegisterOutputType(GlobalDnsProviderRoute53ConfigOutput{})
 	pulumi.RegisterOutputType(GlobalDnsProviderRoute53ConfigPtrOutput{})
+	pulumi.RegisterOutputType(GlobalRoleRuleOutput{})
+	pulumi.RegisterOutputType(GlobalRoleRuleArrayOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppAnswerOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppAnswerArrayOutput{})
 	pulumi.RegisterOutputType(MultiClusterAppMemberOutput{})
@@ -70724,6 +71769,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateHetznerConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateLinodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateLinodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeTemplateNodeTaintOutput{})
+	pulumi.RegisterOutputType(NodeTemplateNodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpennebulaConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateOpenstackConfigOutput{})
@@ -71038,6 +72085,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalDnsProviderAlidnsConfigOutput{})
 	pulumi.RegisterOutputType(GetGlobalDnsProviderCloudflareConfigOutput{})
 	pulumi.RegisterOutputType(GetGlobalDnsProviderRoute53ConfigOutput{})
+	pulumi.RegisterOutputType(GetGlobalRoleRuleOutput{})
+	pulumi.RegisterOutputType(GetGlobalRoleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppAnswerOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppAnswerArrayOutput{})
 	pulumi.RegisterOutputType(GetMultiClusterAppMemberOutput{})
@@ -71053,6 +72102,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespaceResourceQuotaLimitOutput{})
 	pulumi.RegisterOutputType(GetNodePoolNodeTaintOutput{})
 	pulumi.RegisterOutputType(GetNodePoolNodeTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeTemplateNodeTaintOutput{})
+	pulumi.RegisterOutputType(GetNodeTemplateNodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetNotifierDingtalkConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierMsteamsConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierPagerdutyConfigOutput{})

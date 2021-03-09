@@ -32,6 +32,7 @@ export * from "./clusterRoleTemplateBinding";
 export * from "./clusterSync";
 export * from "./clusterTemplate";
 export * from "./etcdBackup";
+export * from "./feature";
 export * from "./getApp";
 export * from "./getCatalog";
 export * from "./getCatalogV2";
@@ -47,6 +48,7 @@ export * from "./getClusterScan";
 export * from "./getClusterTemplate";
 export * from "./getEtcdBackup";
 export * from "./getGlobalDnsProvider";
+export * from "./getGlobalRole";
 export * from "./getGlobalRoleBinding";
 export * from "./getMultiClusterApp";
 export * from "./getNamespace";
@@ -68,6 +70,7 @@ export * from "./getSetting";
 export * from "./getUser";
 export * from "./globalDns";
 export * from "./globalDnsProvider";
+export * from "./globalRole";
 export * from "./globalRoleBinding";
 export * from "./multiClusterApp";
 export * from "./namespace";
@@ -126,8 +129,10 @@ import { ClusterRoleTemplateBinding } from "./clusterRoleTemplateBinding";
 import { ClusterSync } from "./clusterSync";
 import { ClusterTemplate } from "./clusterTemplate";
 import { EtcdBackup } from "./etcdBackup";
+import { Feature } from "./feature";
 import { GlobalDns } from "./globalDns";
 import { GlobalDnsProvider } from "./globalDnsProvider";
+import { GlobalRole } from "./globalRole";
 import { GlobalRoleBinding } from "./globalRoleBinding";
 import { MultiClusterApp } from "./multiClusterApp";
 import { Namespace } from "./namespace";
@@ -206,10 +211,14 @@ const _module = {
                 return new ClusterTemplate(name, <any>undefined, { urn })
             case "rancher2:index/etcdBackup:EtcdBackup":
                 return new EtcdBackup(name, <any>undefined, { urn })
+            case "rancher2:index/feature:Feature":
+                return new Feature(name, <any>undefined, { urn })
             case "rancher2:index/globalDns:GlobalDns":
                 return new GlobalDns(name, <any>undefined, { urn })
             case "rancher2:index/globalDnsProvider:GlobalDnsProvider":
                 return new GlobalDnsProvider(name, <any>undefined, { urn })
+            case "rancher2:index/globalRole:GlobalRole":
+                return new GlobalRole(name, <any>undefined, { urn })
             case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
                 return new GlobalRoleBinding(name, <any>undefined, { urn })
             case "rancher2:index/multiClusterApp:MultiClusterApp":
@@ -280,8 +289,10 @@ pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBind
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDns", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDnsProvider", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/globalRole", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/multiClusterApp", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)

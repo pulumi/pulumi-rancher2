@@ -51,7 +51,7 @@ namespace Pulumi.Rancher2
         public string? Context { get; set; }
 
         /// <summary>
-        /// The name of the Node Template (string)
+        /// The name of the Role Template (string)
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

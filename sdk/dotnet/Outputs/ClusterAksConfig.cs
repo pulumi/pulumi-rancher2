@@ -94,6 +94,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
+        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// </summary>
+        public readonly string? LoadBalancerSku;
+        /// <summary>
         /// Azure Kubernetes cluster location. Default `eastus` (string)
         /// </summary>
         public readonly string? Location;
@@ -204,6 +208,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string kubernetesVersion,
 
+            string? loadBalancerSku,
+
             string? location,
 
             string? logAnalyticsWorkspace,
@@ -258,6 +264,7 @@ namespace Pulumi.Rancher2.Outputs
             EnableHttpApplicationRouting = enableHttpApplicationRouting;
             EnableMonitoring = enableMonitoring;
             KubernetesVersion = kubernetesVersion;
+            LoadBalancerSku = loadBalancerSku;
             Location = location;
             LogAnalyticsWorkspace = logAnalyticsWorkspace;
             LogAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;

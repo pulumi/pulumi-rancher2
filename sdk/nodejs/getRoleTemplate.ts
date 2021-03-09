@@ -42,7 +42,7 @@ export interface GetRoleTemplateArgs {
      */
     readonly context?: string;
     /**
-     * The name of the Node Template (string)
+     * The name of the Role Template (string)
      */
     readonly name: string;
 }

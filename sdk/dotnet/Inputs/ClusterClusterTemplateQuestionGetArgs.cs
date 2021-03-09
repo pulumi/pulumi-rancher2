@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Required { get; set; }
 
         /// <summary>
-        /// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        /// Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

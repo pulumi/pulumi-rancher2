@@ -30,6 +30,7 @@ from .cluster_role_template_binding import *
 from .cluster_sync import *
 from .cluster_template import *
 from .etcd_backup import *
+from .feature import *
 from .get_app import *
 from .get_catalog import *
 from .get_catalog_v2 import *
@@ -45,6 +46,7 @@ from .get_cluster_scan import *
 from .get_cluster_template import *
 from .get_etcd_backup import *
 from .get_global_dns_provider import *
+from .get_global_role import *
 from .get_global_role_binding import *
 from .get_multi_cluster_app import *
 from .get_namespace import *
@@ -66,6 +68,7 @@ from .get_setting import *
 from .get_user import *
 from .global_dns import *
 from .global_dns_provider import *
+from .global_role import *
 from .global_role_binding import *
 from .multi_cluster_app import *
 from .namespace import *
@@ -160,10 +163,14 @@ def _register_module():
                 return ClusterTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/etcdBackup:EtcdBackup":
                 return EtcdBackup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/feature:Feature":
+                return Feature(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/globalDns:GlobalDns":
                 return GlobalDns(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/globalDnsProvider:GlobalDnsProvider":
                 return GlobalDnsProvider(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/globalRole:GlobalRole":
+                return GlobalRole(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/globalRoleBinding:GlobalRoleBinding":
                 return GlobalRoleBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/multiClusterApp:MultiClusterApp":
@@ -234,8 +241,10 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/clusterSync", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/clusterTemplate", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/etcdBackup", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/feature", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalDns", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalDnsProvider", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/globalRole", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalRoleBinding", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/multiClusterApp", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/namespace", _module_instance)

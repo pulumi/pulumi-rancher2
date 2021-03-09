@@ -33,6 +33,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? EnableHttpApplicationRouting;
         public readonly bool? EnableMonitoring;
         public readonly string KubernetesVersion;
+        public readonly string LoadBalancerSku;
         public readonly string? Location;
         public readonly string? LogAnalyticsWorkspace;
         public readonly string? LogAnalyticsWorkspaceResourceGroup;
@@ -93,6 +94,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string kubernetesVersion,
 
+            string loadBalancerSku,
+
             string? location,
 
             string? logAnalyticsWorkspace,
@@ -147,6 +150,7 @@ namespace Pulumi.Rancher2.Outputs
             EnableHttpApplicationRouting = enableHttpApplicationRouting;
             EnableMonitoring = enableMonitoring;
             KubernetesVersion = kubernetesVersion;
+            LoadBalancerSku = loadBalancerSku;
             Location = location;
             LogAnalyticsWorkspace = logAnalyticsWorkspace;
             LogAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;
