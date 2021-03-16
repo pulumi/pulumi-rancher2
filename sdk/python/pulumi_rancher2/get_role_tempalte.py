@@ -168,7 +168,7 @@ def get_role_tempalte(context: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate")
+    pulumi.log.warn("""get_role_tempalte is deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate""")
     __args__ = dict()
     __args__['context'] = context
     __args__['name'] = name

@@ -42,9 +42,9 @@ export class Provider extends pulumi.ProviderResource {
             }
             inputs["accessKey"] = args ? args.accessKey : undefined;
             inputs["apiUrl"] = args ? args.apiUrl : undefined;
-            inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) || (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
+            inputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (<any>utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
             inputs["caCerts"] = args ? args.caCerts : undefined;
-            inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) || (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
+            inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
             inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["tokenKey"] = args ? args.tokenKey : undefined;
