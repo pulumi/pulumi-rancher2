@@ -47,7 +47,7 @@ class ClusterAlterGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlterGroupRecipientArgs']]]] recipients: Alert group recipients
         :param pulumi.Input[int] repeat_interval_seconds: Alert group repeat interval seconds
         """
-        pulumi.log.warn("ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup")
+        pulumi.log.warn("""ClusterAlterGroup is deprecated: rancher2.ClusterAlterGroup has been deprecated in favor of rancher2.ClusterAlertGroup""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
