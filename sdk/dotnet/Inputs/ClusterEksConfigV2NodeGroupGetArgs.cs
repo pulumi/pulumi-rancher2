@@ -37,6 +37,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Gpu { get; set; }
 
         /// <summary>
+        /// The EKS node group image ID (string)
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
         /// The EKS node group instance type. Default: `t3.medium` (string)
         /// </summary>
         [Input("instanceType")]
@@ -52,6 +58,18 @@ namespace Pulumi.Rancher2.Inputs
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
+        }
+
+        [Input("launchTemplates")]
+        private InputList<Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateGetArgs>? _launchTemplates;
+
+        /// <summary>
+        /// The EKS node groups launch template (list Maxitem: 1)
+        /// </summary>
+        public InputList<Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateGetArgs> LaunchTemplates
+        {
+            get => _launchTemplates ?? (_launchTemplates = new InputList<Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateGetArgs>());
+            set => _launchTemplates = value;
         }
 
         /// <summary>
@@ -72,6 +90,48 @@ namespace Pulumi.Rancher2.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Enable EKS node group request spot instances (bool)
+        /// </summary>
+        [Input("requestSpotInstances")]
+        public Input<bool>? RequestSpotInstances { get; set; }
+
+        [Input("resourceTags")]
+        private InputMap<object>? _resourceTags;
+
+        /// <summary>
+        /// The EKS node group resource tags (map)
+        /// </summary>
+        public InputMap<object> ResourceTags
+        {
+            get => _resourceTags ?? (_resourceTags = new InputMap<object>());
+            set => _resourceTags = value;
+        }
+
+        [Input("spotInstanceTypes")]
+        private InputList<string>? _spotInstanceTypes;
+
+        /// <summary>
+        /// The EKS node group sport instace types (list string)
+        /// </summary>
+        public InputList<string> SpotInstanceTypes
+        {
+            get => _spotInstanceTypes ?? (_spotInstanceTypes = new InputList<string>());
+            set => _spotInstanceTypes = value;
+        }
+
+        [Input("subnets")]
+        private InputList<string>? _subnets;
+
+        /// <summary>
+        /// The EKS node group subnets (list string)
+        /// </summary>
+        public InputList<string> Subnets
+        {
+            get => _subnets ?? (_subnets = new InputList<string>());
+            set => _subnets = value;
+        }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -83,6 +143,18 @@ namespace Pulumi.Rancher2.Inputs
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The EKS node group user data (string)
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public ClusterEksConfigV2NodeGroupGetArgs()
         {

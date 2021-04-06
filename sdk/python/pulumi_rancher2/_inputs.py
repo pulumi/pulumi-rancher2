@@ -34,6 +34,7 @@ __all__ = [
     'ClusterEksConfigArgs',
     'ClusterEksConfigV2Args',
     'ClusterEksConfigV2NodeGroupArgs',
+    'ClusterEksConfigV2NodeGroupLaunchTemplateArgs',
     'ClusterGkeConfigArgs',
     'ClusterK3sConfigArgs',
     'ClusterK3sConfigUpgradeStrategyArgs',
@@ -1710,7 +1711,7 @@ class ClusterClusterRegistrationTokenArgs:
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[str] cluster_id: Cluster ID (string)
         :param pulumi.Input[str] command: Command to execute in a imported k8s cluster (string)
-        :param pulumi.Input[str] id: (Computed) The ID of the resource (string)
+        :param pulumi.Input[str] id: The EKS node group launch template ID (string)
         :param pulumi.Input[str] insecure_command: Insecure command to execute in a imported k8s cluster (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
@@ -1782,7 +1783,7 @@ class ClusterClusterRegistrationTokenArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Computed) The ID of the resource (string)
+        The EKS node group launch template ID (string)
         """
         return pulumi.get(self, "id")
 
@@ -2037,8 +2038,8 @@ class ClusterEksConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: List of security groups to use for the cluster (list)
         :param pulumi.Input[str] service_role: The AWS service role to use (string)
         :param pulumi.Input[str] session_token: A session token to use with the client key and secret if applicable (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: List of subnets in the virtual network to use (list)
-        :param pulumi.Input[str] user_data: Pass user-data to the nodes to perform automated configuration tasks (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The EKS node group subnets (list string)
+        :param pulumi.Input[str] user_data: The EKS node group user data (string)
         :param pulumi.Input[str] virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -2270,7 +2271,7 @@ class ClusterEksConfigArgs:
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of subnets in the virtual network to use (list)
+        The EKS node group subnets (list string)
         """
         return pulumi.get(self, "subnets")
 
@@ -2282,7 +2283,7 @@ class ClusterEksConfigArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        Pass user-data to the nodes to perform automated configuration tasks (string)
+        The EKS node group user data (string)
         """
         return pulumi.get(self, "user_data")
 
@@ -2337,7 +2338,7 @@ class ClusterEksConfigV2Args:
         :param pulumi.Input[bool] secrets_encryption: Enable EKS cluster secret encryption. Default: `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: List of security groups to use for the cluster (list)
         :param pulumi.Input[str] service_role: The AWS service role to use (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: List of subnets in the virtual network to use (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The EKS node group subnets (list string)
         :param pulumi.Input[Mapping[str, Any]] tags: The EKS cluster tags (map)
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
@@ -2544,7 +2545,7 @@ class ClusterEksConfigV2Args:
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of subnets in the virtual network to use (list)
+        The EKS node group subnets (list string)
         """
         return pulumi.get(self, "subnets")
 
@@ -2573,22 +2574,38 @@ class ClusterEksConfigV2NodeGroupArgs:
                  disk_size: Optional[pulumi.Input[int]] = None,
                  ec2_ssh_key: Optional[pulumi.Input[str]] = None,
                  gpu: Optional[pulumi.Input[bool]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 launch_templates: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 request_spot_instances: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 spot_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of cluster registration token (string)
         :param pulumi.Input[int] desired_size: The EKS node group desired size. Default: `2` (int)
         :param pulumi.Input[int] disk_size: The EKS node group disk size (Gb). Default: `20` (int)
         :param pulumi.Input[str] ec2_ssh_key: The EKS node group ssh key (string)
         :param pulumi.Input[bool] gpu: Set true to EKS use gpu. Default: `false` (bool)
+        :param pulumi.Input[str] image_id: The EKS node group image ID (string)
         :param pulumi.Input[str] instance_type: The EKS node group instance type. Default: `t3.medium` (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]] launch_templates: The EKS node groups launch template (list Maxitem: 1)
         :param pulumi.Input[int] max_size: The EKS node group maximum size. Default `2` (int)
         :param pulumi.Input[int] min_size: The EKS node group maximum size. Default `2` (int)
+        :param pulumi.Input[bool] request_spot_instances: Enable EKS node group request spot instances (bool)
+        :param pulumi.Input[Mapping[str, Any]] resource_tags: The EKS node group resource tags (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_instance_types: The EKS node group sport instace types (list string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The EKS node group subnets (list string)
         :param pulumi.Input[Mapping[str, Any]] tags: The EKS cluster tags (map)
+        :param pulumi.Input[str] user_data: The EKS node group user data (string)
+        :param pulumi.Input[str] version: rancher-monitoring chart version (string)
         """
         pulumi.set(__self__, "name", name)
         if desired_size is not None:
@@ -2599,16 +2616,32 @@ class ClusterEksConfigV2NodeGroupArgs:
             pulumi.set(__self__, "ec2_ssh_key", ec2_ssh_key)
         if gpu is not None:
             pulumi.set(__self__, "gpu", gpu)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if launch_templates is not None:
+            pulumi.set(__self__, "launch_templates", launch_templates)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if request_spot_instances is not None:
+            pulumi.set(__self__, "request_spot_instances", request_spot_instances)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
+        if spot_instance_types is not None:
+            pulumi.set(__self__, "spot_instance_types", spot_instance_types)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2671,6 +2704,18 @@ class ClusterEksConfigV2NodeGroupArgs:
         pulumi.set(self, "gpu", value)
 
     @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EKS node group image ID (string)
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2693,6 +2738,18 @@ class ClusterEksConfigV2NodeGroupArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="launchTemplates")
+    def launch_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]]:
+        """
+        The EKS node groups launch template (list Maxitem: 1)
+        """
+        return pulumi.get(self, "launch_templates")
+
+    @launch_templates.setter
+    def launch_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]]):
+        pulumi.set(self, "launch_templates", value)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -2719,6 +2776,54 @@ class ClusterEksConfigV2NodeGroupArgs:
         pulumi.set(self, "min_size", value)
 
     @property
+    @pulumi.getter(name="requestSpotInstances")
+    def request_spot_instances(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable EKS node group request spot instances (bool)
+        """
+        return pulumi.get(self, "request_spot_instances")
+
+    @request_spot_instances.setter
+    def request_spot_instances(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_spot_instances", value)
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The EKS node group resource tags (map)
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
+    @pulumi.getter(name="spotInstanceTypes")
+    def spot_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The EKS node group sport instace types (list string)
+        """
+        return pulumi.get(self, "spot_instance_types")
+
+    @spot_instance_types.setter
+    def spot_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "spot_instance_types", value)
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The EKS node group subnets (list string)
+        """
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnets", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -2729,6 +2834,84 @@ class ClusterEksConfigV2NodeGroupArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EKS node group user data (string)
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        rancher-monitoring chart version (string)
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] id: The EKS node group launch template ID (string)
+        :param pulumi.Input[str] name: Name of cluster registration token (string)
+        :param pulumi.Input[int] version: rancher-monitoring chart version (string)
+        """
+        pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The EKS node group launch template ID (string)
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        rancher-monitoring chart version (string)
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -17142,7 +17325,7 @@ class NodeTemplateHetznerConfigArgs:
                  networks: Optional[pulumi.Input[str]] = None,
                  server_location: Optional[pulumi.Input[str]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
-                 use_private_networks: Optional[pulumi.Input[bool]] = None,
+                 use_private_network: Optional[pulumi.Input[bool]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[str]] = None):
         """
@@ -17151,7 +17334,7 @@ class NodeTemplateHetznerConfigArgs:
         :param pulumi.Input[str] networks: Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
         :param pulumi.Input[str] server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
         :param pulumi.Input[str] server_type: Hetzner Cloud server type. Default `cx11` (string)
-        :param pulumi.Input[bool] use_private_networks: Use private network. Default `false` (bool)
+        :param pulumi.Input[bool] use_private_network: Use private network. Default `false` (bool)
         :param pulumi.Input[str] userdata: Path to file with cloud-init user-data (string)
         :param pulumi.Input[str] volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
         """
@@ -17164,8 +17347,8 @@ class NodeTemplateHetznerConfigArgs:
             pulumi.set(__self__, "server_location", server_location)
         if server_type is not None:
             pulumi.set(__self__, "server_type", server_type)
-        if use_private_networks is not None:
-            pulumi.set(__self__, "use_private_networks", use_private_networks)
+        if use_private_network is not None:
+            pulumi.set(__self__, "use_private_network", use_private_network)
         if userdata is not None:
             pulumi.set(__self__, "userdata", userdata)
         if volumes is not None:
@@ -17232,16 +17415,16 @@ class NodeTemplateHetznerConfigArgs:
         pulumi.set(self, "server_type", value)
 
     @property
-    @pulumi.getter(name="usePrivateNetworks")
-    def use_private_networks(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="usePrivateNetwork")
+    def use_private_network(self) -> Optional[pulumi.Input[bool]]:
         """
         Use private network. Default `false` (bool)
         """
-        return pulumi.get(self, "use_private_networks")
+        return pulumi.get(self, "use_private_network")
 
-    @use_private_networks.setter
-    def use_private_networks(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "use_private_networks", value)
+    @use_private_network.setter
+    def use_private_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_private_network", value)
 
     @property
     @pulumi.getter

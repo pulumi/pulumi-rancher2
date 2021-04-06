@@ -45,8 +45,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// Use private network. Default `false` (bool)
         /// </summary>
-        [Input("usePrivateNetworks")]
-        public Input<bool>? UsePrivateNetworks { get; set; }
+        [Input("usePrivateNetwork")]
+        public Input<bool>? UsePrivateNetwork { get; set; }
 
         /// <summary>
         /// Path to file with cloud-init user-data (string)

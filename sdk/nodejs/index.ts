@@ -66,6 +66,7 @@ export * from "./getRegistry";
 export * from "./getRoleTempalte";
 export * from "./getRoleTemplate";
 export * from "./getSecret";
+export * from "./getSecretV2";
 export * from "./getSetting";
 export * from "./getUser";
 export * from "./globalDns";
@@ -88,6 +89,7 @@ export * from "./provider";
 export * from "./registry";
 export * from "./roleTempalte";
 export * from "./secret";
+export * from "./secretV2";
 export * from "./setting";
 export * from "./token";
 export * from "./user";
@@ -149,6 +151,7 @@ import { ProjectRoleTemplateBinding } from "./projectRoleTemplateBinding";
 import { Registry } from "./registry";
 import { RoleTempalte } from "./roleTempalte";
 import { Secret } from "./secret";
+import { SecretV2 } from "./secretV2";
 import { Setting } from "./setting";
 import { Token } from "./token";
 import { User } from "./user";
@@ -251,6 +254,8 @@ const _module = {
                 return new RoleTempalte(name, <any>undefined, { urn })
             case "rancher2:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "rancher2:index/secretV2:SecretV2":
+                return new SecretV2(name, <any>undefined, { urn })
             case "rancher2:index/setting:Setting":
                 return new Setting(name, <any>undefined, { urn })
             case "rancher2:index/token:Token":
@@ -309,6 +314,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBind
 pulumi.runtime.registerResourceModule("rancher2", "index/registry", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/roleTempalte", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secret", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/secretV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/setting", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/token", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/user", _module)

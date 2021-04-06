@@ -374,6 +374,41 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 or above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ *     description: "foo test",
+ *     amazonec2CredentialConfig: {
+ *         accessKey: "<AWS_ACCESS_KEY>",
+ *         secretKey: "<AWS_SECRET_KEY>",
+ *     },
+ * });
+ * const fooCluster = new rancher2.Cluster("fooCluster", {
+ *     description: "Terraform EKS cluster",
+ *     eksConfigV2: {
+ *         cloudCredentialId: fooCloudCredential.id,
+ *         region: "<EKS_REGION>",
+ *         kubernetesVersion: "1.17",
+ *         loggingTypes: [
+ *             "audit",
+ *             "api",
+ *         ],
+ *         nodeGroups: [{
+ *             desiredSize: 3,
+ *             maxSize: 5,
+ *             name: "node_group1",
+ *             launchTemplates: [{
+ *                 id: "<EC2_LAUNCH_TEMPLATE_ID>",
+ *                 version: 1,
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

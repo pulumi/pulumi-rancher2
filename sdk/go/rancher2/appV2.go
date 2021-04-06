@@ -51,6 +51,8 @@ type AppV2 struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName pulumi.StringOutput `pulumi:"repoName"`
+	// (Computed) The system default registry of the app (string)
+	SystemDefaultRegistry pulumi.StringOutput `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrOutput `pulumi:"values"`
 	// Wait until app is deployed. Default: `true` (bool)
@@ -126,6 +128,8 @@ type appV2State struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName *string `pulumi:"repoName"`
+	// (Computed) The system default registry of the app (string)
+	SystemDefaultRegistry *string `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values *string `pulumi:"values"`
 	// Wait until app is deployed. Default: `true` (bool)
@@ -161,6 +165,8 @@ type AppV2State struct {
 	ProjectId pulumi.StringPtrInput
 	// Repo name (string)
 	RepoName pulumi.StringPtrInput
+	// (Computed) The system default registry of the app (string)
+	SystemDefaultRegistry pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrInput
 	// Wait until app is deployed. Default: `true` (bool)

@@ -3642,7 +3642,7 @@ type ClusterClusterRegistrationToken struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Command to execute in a imported k8s cluster (string)
 	Command *string `pulumi:"command"`
-	// (Computed) The ID of the resource (string)
+	// The EKS node group launch template ID (string)
 	Id *string `pulumi:"id"`
 	// Insecure command to execute in a imported k8s cluster (string)
 	InsecureCommand *string `pulumi:"insecureCommand"`
@@ -3678,7 +3678,7 @@ type ClusterClusterRegistrationTokenArgs struct {
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// Command to execute in a imported k8s cluster (string)
 	Command pulumi.StringPtrInput `pulumi:"command"`
-	// (Computed) The ID of the resource (string)
+	// The EKS node group launch template ID (string)
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Insecure command to execute in a imported k8s cluster (string)
 	InsecureCommand pulumi.StringPtrInput `pulumi:"insecureCommand"`
@@ -3788,7 +3788,7 @@ func (o ClusterClusterRegistrationTokenOutput) Command() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ClusterClusterRegistrationToken) *string { return v.Command }).(pulumi.StringPtrOutput)
 }
 
-// (Computed) The ID of the resource (string)
+// The EKS node group launch template ID (string)
 func (o ClusterClusterRegistrationTokenOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterRegistrationToken) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3876,7 +3876,7 @@ func (o ClusterClusterRegistrationTokenPtrOutput) Command() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Computed) The ID of the resource (string)
+// The EKS node group launch template ID (string)
 func (o ClusterClusterRegistrationTokenPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterRegistrationToken) *string {
 		if v == nil {
@@ -4281,9 +4281,9 @@ type ClusterEksConfig struct {
 	ServiceRole *string `pulumi:"serviceRole"`
 	// A session token to use with the client key and secret if applicable (string)
 	SessionToken *string `pulumi:"sessionToken"`
-	// List of subnets in the virtual network to use (list)
+	// The EKS node group subnets (list string)
 	Subnets []string `pulumi:"subnets"`
-	// Pass user-data to the nodes to perform automated configuration tasks (string)
+	// The EKS node group user data (string)
 	UserData *string `pulumi:"userData"`
 	// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
 	VirtualNetwork *string `pulumi:"virtualNetwork"`
@@ -4332,9 +4332,9 @@ type ClusterEksConfigArgs struct {
 	ServiceRole pulumi.StringPtrInput `pulumi:"serviceRole"`
 	// A session token to use with the client key and secret if applicable (string)
 	SessionToken pulumi.StringPtrInput `pulumi:"sessionToken"`
-	// List of subnets in the virtual network to use (list)
+	// The EKS node group subnets (list string)
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// Pass user-data to the nodes to perform automated configuration tasks (string)
+	// The EKS node group user data (string)
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
 	// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
 	VirtualNetwork pulumi.StringPtrInput `pulumi:"virtualNetwork"`
@@ -4496,12 +4496,12 @@ func (o ClusterEksConfigOutput) SessionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.SessionToken }).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use (list)
+// The EKS node group subnets (list string)
 func (o ClusterEksConfigOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEksConfig) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
-// Pass user-data to the nodes to perform automated configuration tasks (string)
+// The EKS node group user data (string)
 func (o ClusterEksConfigOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfig) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
@@ -4688,7 +4688,7 @@ func (o ClusterEksConfigPtrOutput) SessionToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use (list)
+// The EKS node group subnets (list string)
 func (o ClusterEksConfigPtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) []string {
 		if v == nil {
@@ -4698,7 +4698,7 @@ func (o ClusterEksConfigPtrOutput) Subnets() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Pass user-data to the nodes to perform automated configuration tasks (string)
+// The EKS node group user data (string)
 func (o ClusterEksConfigPtrOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEksConfig) *string {
 		if v == nil {
@@ -4747,7 +4747,7 @@ type ClusterEksConfigV2 struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The AWS service role to use (string)
 	ServiceRole *string `pulumi:"serviceRole"`
-	// List of subnets in the virtual network to use (list)
+	// The EKS node group subnets (list string)
 	Subnets []string `pulumi:"subnets"`
 	// The EKS cluster tags (map)
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -4793,7 +4793,7 @@ type ClusterEksConfigV2Args struct {
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// The AWS service role to use (string)
 	ServiceRole pulumi.StringPtrInput `pulumi:"serviceRole"`
-	// List of subnets in the virtual network to use (list)
+	// The EKS node group subnets (list string)
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 	// The EKS cluster tags (map)
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -4946,7 +4946,7 @@ func (o ClusterEksConfigV2Output) ServiceRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.ServiceRole }).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use (list)
+// The EKS node group subnets (list string)
 func (o ClusterEksConfigV2Output) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
@@ -5114,7 +5114,7 @@ func (o ClusterEksConfigV2PtrOutput) ServiceRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of subnets in the virtual network to use (list)
+// The EKS node group subnets (list string)
 func (o ClusterEksConfigV2PtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterEksConfigV2) []string {
 		if v == nil {
@@ -5143,18 +5143,34 @@ type ClusterEksConfigV2NodeGroup struct {
 	Ec2SshKey *string `pulumi:"ec2SshKey"`
 	// Set true to EKS use gpu. Default: `false` (bool)
 	Gpu *bool `pulumi:"gpu"`
+	// The EKS node group image ID (string)
+	ImageId *string `pulumi:"imageId"`
 	// The EKS node group instance type. Default: `t3.medium` (string)
 	InstanceType *string `pulumi:"instanceType"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
+	// The EKS node groups launch template (list Maxitem: 1)
+	LaunchTemplates []ClusterEksConfigV2NodeGroupLaunchTemplate `pulumi:"launchTemplates"`
 	// The EKS node group maximum size. Default `2` (int)
 	MaxSize *int `pulumi:"maxSize"`
 	// The EKS node group maximum size. Default `2` (int)
 	MinSize *int `pulumi:"minSize"`
 	// Name of cluster registration token (string)
 	Name string `pulumi:"name"`
+	// Enable EKS node group request spot instances (bool)
+	RequestSpotInstances *bool `pulumi:"requestSpotInstances"`
+	// The EKS node group resource tags (map)
+	ResourceTags map[string]interface{} `pulumi:"resourceTags"`
+	// The EKS node group sport instace types (list string)
+	SpotInstanceTypes []string `pulumi:"spotInstanceTypes"`
+	// The EKS node group subnets (list string)
+	Subnets []string `pulumi:"subnets"`
 	// The EKS cluster tags (map)
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The EKS node group user data (string)
+	UserData *string `pulumi:"userData"`
+	// rancher-monitoring chart version (string)
+	Version *string `pulumi:"version"`
 }
 
 // ClusterEksConfigV2NodeGroupInput is an input type that accepts ClusterEksConfigV2NodeGroupArgs and ClusterEksConfigV2NodeGroupOutput values.
@@ -5177,18 +5193,34 @@ type ClusterEksConfigV2NodeGroupArgs struct {
 	Ec2SshKey pulumi.StringPtrInput `pulumi:"ec2SshKey"`
 	// Set true to EKS use gpu. Default: `false` (bool)
 	Gpu pulumi.BoolPtrInput `pulumi:"gpu"`
+	// The EKS node group image ID (string)
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// The EKS node group instance type. Default: `t3.medium` (string)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput `pulumi:"labels"`
+	// The EKS node groups launch template (list Maxitem: 1)
+	LaunchTemplates ClusterEksConfigV2NodeGroupLaunchTemplateArrayInput `pulumi:"launchTemplates"`
 	// The EKS node group maximum size. Default `2` (int)
 	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	// The EKS node group maximum size. Default `2` (int)
 	MinSize pulumi.IntPtrInput `pulumi:"minSize"`
 	// Name of cluster registration token (string)
 	Name pulumi.StringInput `pulumi:"name"`
+	// Enable EKS node group request spot instances (bool)
+	RequestSpotInstances pulumi.BoolPtrInput `pulumi:"requestSpotInstances"`
+	// The EKS node group resource tags (map)
+	ResourceTags pulumi.MapInput `pulumi:"resourceTags"`
+	// The EKS node group sport instace types (list string)
+	SpotInstanceTypes pulumi.StringArrayInput `pulumi:"spotInstanceTypes"`
+	// The EKS node group subnets (list string)
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 	// The EKS cluster tags (map)
 	Tags pulumi.MapInput `pulumi:"tags"`
+	// The EKS node group user data (string)
+	UserData pulumi.StringPtrInput `pulumi:"userData"`
+	// rancher-monitoring chart version (string)
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ClusterEksConfigV2NodeGroupArgs) ElementType() reflect.Type {
@@ -5262,6 +5294,11 @@ func (o ClusterEksConfigV2NodeGroupOutput) Gpu() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
 }
 
+// The EKS node group image ID (string)
+func (o ClusterEksConfigV2NodeGroupOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
 // The EKS node group instance type. Default: `t3.medium` (string)
 func (o ClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
@@ -5270,6 +5307,13 @@ func (o ClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOutput
 // Labels for cluster registration token object (map)
 func (o ClusterEksConfigV2NodeGroupOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The EKS node groups launch template (list Maxitem: 1)
+func (o ClusterEksConfigV2NodeGroupOutput) LaunchTemplates() ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) []ClusterEksConfigV2NodeGroupLaunchTemplate {
+		return v.LaunchTemplates
+	}).(ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput)
 }
 
 // The EKS node group maximum size. Default `2` (int)
@@ -5287,9 +5331,39 @@ func (o ClusterEksConfigV2NodeGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Enable EKS node group request spot instances (bool)
+func (o ClusterEksConfigV2NodeGroupOutput) RequestSpotInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *bool { return v.RequestSpotInstances }).(pulumi.BoolPtrOutput)
+}
+
+// The EKS node group resource tags (map)
+func (o ClusterEksConfigV2NodeGroupOutput) ResourceTags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+}
+
+// The EKS node group sport instace types (list string)
+func (o ClusterEksConfigV2NodeGroupOutput) SpotInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) []string { return v.SpotInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The EKS node group subnets (list string)
+func (o ClusterEksConfigV2NodeGroupOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
 // The EKS cluster tags (map)
 func (o ClusterEksConfigV2NodeGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The EKS node group user data (string)
+func (o ClusterEksConfigV2NodeGroupOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// rancher-monitoring chart version (string)
+func (o ClusterEksConfigV2NodeGroupOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroup) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ClusterEksConfigV2NodeGroupArrayOutput struct{ *pulumi.OutputState }
@@ -5310,6 +5384,121 @@ func (o ClusterEksConfigV2NodeGroupArrayOutput) Index(i pulumi.IntInput) Cluster
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterEksConfigV2NodeGroup {
 		return vs[0].([]ClusterEksConfigV2NodeGroup)[vs[1].(int)]
 	}).(ClusterEksConfigV2NodeGroupOutput)
+}
+
+type ClusterEksConfigV2NodeGroupLaunchTemplate struct {
+	// The EKS node group launch template ID (string)
+	Id string `pulumi:"id"`
+	// Name of cluster registration token (string)
+	Name *string `pulumi:"name"`
+	// rancher-monitoring chart version (string)
+	Version *int `pulumi:"version"`
+}
+
+// ClusterEksConfigV2NodeGroupLaunchTemplateInput is an input type that accepts ClusterEksConfigV2NodeGroupLaunchTemplateArgs and ClusterEksConfigV2NodeGroupLaunchTemplateOutput values.
+// You can construct a concrete instance of `ClusterEksConfigV2NodeGroupLaunchTemplateInput` via:
+//
+//          ClusterEksConfigV2NodeGroupLaunchTemplateArgs{...}
+type ClusterEksConfigV2NodeGroupLaunchTemplateInput interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2NodeGroupLaunchTemplateOutput() ClusterEksConfigV2NodeGroupLaunchTemplateOutput
+	ToClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateOutput
+}
+
+type ClusterEksConfigV2NodeGroupLaunchTemplateArgs struct {
+	// The EKS node group launch template ID (string)
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of cluster registration token (string)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// rancher-monitoring chart version (string)
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (ClusterEksConfigV2NodeGroupLaunchTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (i ClusterEksConfigV2NodeGroupLaunchTemplateArgs) ToClusterEksConfigV2NodeGroupLaunchTemplateOutput() ClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return i.ToClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2NodeGroupLaunchTemplateArgs) ToClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2NodeGroupLaunchTemplateOutput)
+}
+
+// ClusterEksConfigV2NodeGroupLaunchTemplateArrayInput is an input type that accepts ClusterEksConfigV2NodeGroupLaunchTemplateArray and ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput values.
+// You can construct a concrete instance of `ClusterEksConfigV2NodeGroupLaunchTemplateArrayInput` via:
+//
+//          ClusterEksConfigV2NodeGroupLaunchTemplateArray{ ClusterEksConfigV2NodeGroupLaunchTemplateArgs{...} }
+type ClusterEksConfigV2NodeGroupLaunchTemplateArrayInput interface {
+	pulumi.Input
+
+	ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput
+	ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput
+}
+
+type ClusterEksConfigV2NodeGroupLaunchTemplateArray []ClusterEksConfigV2NodeGroupLaunchTemplateInput
+
+func (ClusterEksConfigV2NodeGroupLaunchTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (i ClusterEksConfigV2NodeGroupLaunchTemplateArray) ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return i.ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterEksConfigV2NodeGroupLaunchTemplateArray) ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput)
+}
+
+type ClusterEksConfigV2NodeGroupLaunchTemplateOutput struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2NodeGroupLaunchTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateOutput) ToClusterEksConfigV2NodeGroupLaunchTemplateOutput() ClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateOutput) ToClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return o
+}
+
+// The EKS node group launch template ID (string)
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroupLaunchTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of cluster registration token (string)
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroupLaunchTemplate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// rancher-monitoring chart version (string)
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2NodeGroupLaunchTemplate) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ToClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(ctx context.Context) ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o
+}
+
+func (o ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) Index(i pulumi.IntInput) ClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterEksConfigV2NodeGroupLaunchTemplate {
+		return vs[0].([]ClusterEksConfigV2NodeGroupLaunchTemplate)[vs[1].(int)]
+	}).(ClusterEksConfigV2NodeGroupLaunchTemplateOutput)
 }
 
 type ClusterGkeConfig struct {
@@ -36830,7 +37019,7 @@ type NodeTemplateHetznerConfig struct {
 	// Hetzner Cloud server type. Default `cx11` (string)
 	ServerType *string `pulumi:"serverType"`
 	// Use private network. Default `false` (bool)
-	UsePrivateNetworks *bool `pulumi:"usePrivateNetworks"`
+	UsePrivateNetwork *bool `pulumi:"usePrivateNetwork"`
 	// Path to file with cloud-init user-data (string)
 	Userdata *string `pulumi:"userdata"`
 	// Comma-separated list of volume IDs or names which should be attached to the server (string)
@@ -36860,7 +37049,7 @@ type NodeTemplateHetznerConfigArgs struct {
 	// Hetzner Cloud server type. Default `cx11` (string)
 	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
 	// Use private network. Default `false` (bool)
-	UsePrivateNetworks pulumi.BoolPtrInput `pulumi:"usePrivateNetworks"`
+	UsePrivateNetwork pulumi.BoolPtrInput `pulumi:"usePrivateNetwork"`
 	// Path to file with cloud-init user-data (string)
 	Userdata pulumi.StringPtrInput `pulumi:"userdata"`
 	// Comma-separated list of volume IDs or names which should be attached to the server (string)
@@ -36970,8 +37159,8 @@ func (o NodeTemplateHetznerConfigOutput) ServerType() pulumi.StringPtrOutput {
 }
 
 // Use private network. Default `false` (bool)
-func (o NodeTemplateHetznerConfigOutput) UsePrivateNetworks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NodeTemplateHetznerConfig) *bool { return v.UsePrivateNetworks }).(pulumi.BoolPtrOutput)
+func (o NodeTemplateHetznerConfigOutput) UsePrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeTemplateHetznerConfig) *bool { return v.UsePrivateNetwork }).(pulumi.BoolPtrOutput)
 }
 
 // Path to file with cloud-init user-data (string)
@@ -37053,12 +37242,12 @@ func (o NodeTemplateHetznerConfigPtrOutput) ServerType() pulumi.StringPtrOutput 
 }
 
 // Use private network. Default `false` (bool)
-func (o NodeTemplateHetznerConfigPtrOutput) UsePrivateNetworks() pulumi.BoolPtrOutput {
+func (o NodeTemplateHetznerConfigPtrOutput) UsePrivateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodeTemplateHetznerConfig) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.UsePrivateNetworks
+		return v.UsePrivateNetwork
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -47953,14 +48142,22 @@ type GetClusterEksConfigV2NodeGroup struct {
 	DiskSize     *int    `pulumi:"diskSize"`
 	Ec2SshKey    *string `pulumi:"ec2SshKey"`
 	Gpu          *bool   `pulumi:"gpu"`
+	ImageId      *string `pulumi:"imageId"`
 	InstanceType *string `pulumi:"instanceType"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels  map[string]interface{} `pulumi:"labels"`
-	MaxSize *int                   `pulumi:"maxSize"`
-	MinSize *int                   `pulumi:"minSize"`
+	Labels          map[string]interface{}                         `pulumi:"labels"`
+	LaunchTemplates []GetClusterEksConfigV2NodeGroupLaunchTemplate `pulumi:"launchTemplates"`
+	MaxSize         *int                                           `pulumi:"maxSize"`
+	MinSize         *int                                           `pulumi:"minSize"`
 	// The name of the Cluster (string)
-	Name string                 `pulumi:"name"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Name                 string                 `pulumi:"name"`
+	RequestSpotInstances *bool                  `pulumi:"requestSpotInstances"`
+	ResourceTags         map[string]interface{} `pulumi:"resourceTags"`
+	SpotInstanceTypes    []string               `pulumi:"spotInstanceTypes"`
+	Subnets              []string               `pulumi:"subnets"`
+	Tags                 map[string]interface{} `pulumi:"tags"`
+	UserData             string                 `pulumi:"userData"`
+	Version              string                 `pulumi:"version"`
 }
 
 // GetClusterEksConfigV2NodeGroupInput is an input type that accepts GetClusterEksConfigV2NodeGroupArgs and GetClusterEksConfigV2NodeGroupOutput values.
@@ -47979,14 +48176,22 @@ type GetClusterEksConfigV2NodeGroupArgs struct {
 	DiskSize     pulumi.IntPtrInput    `pulumi:"diskSize"`
 	Ec2SshKey    pulumi.StringPtrInput `pulumi:"ec2SshKey"`
 	Gpu          pulumi.BoolPtrInput   `pulumi:"gpu"`
+	ImageId      pulumi.StringPtrInput `pulumi:"imageId"`
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels  pulumi.MapInput    `pulumi:"labels"`
-	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
-	MinSize pulumi.IntPtrInput `pulumi:"minSize"`
+	Labels          pulumi.MapInput                                        `pulumi:"labels"`
+	LaunchTemplates GetClusterEksConfigV2NodeGroupLaunchTemplateArrayInput `pulumi:"launchTemplates"`
+	MaxSize         pulumi.IntPtrInput                                     `pulumi:"maxSize"`
+	MinSize         pulumi.IntPtrInput                                     `pulumi:"minSize"`
 	// The name of the Cluster (string)
-	Name pulumi.StringInput `pulumi:"name"`
-	Tags pulumi.MapInput    `pulumi:"tags"`
+	Name                 pulumi.StringInput      `pulumi:"name"`
+	RequestSpotInstances pulumi.BoolPtrInput     `pulumi:"requestSpotInstances"`
+	ResourceTags         pulumi.MapInput         `pulumi:"resourceTags"`
+	SpotInstanceTypes    pulumi.StringArrayInput `pulumi:"spotInstanceTypes"`
+	Subnets              pulumi.StringArrayInput `pulumi:"subnets"`
+	Tags                 pulumi.MapInput         `pulumi:"tags"`
+	UserData             pulumi.StringInput      `pulumi:"userData"`
+	Version              pulumi.StringInput      `pulumi:"version"`
 }
 
 func (GetClusterEksConfigV2NodeGroupArgs) ElementType() reflect.Type {
@@ -48056,6 +48261,10 @@ func (o GetClusterEksConfigV2NodeGroupOutput) Gpu() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetClusterEksConfigV2NodeGroupOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
 func (o GetClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -48063,6 +48272,12 @@ func (o GetClusterEksConfigV2NodeGroupOutput) InstanceType() pulumi.StringPtrOut
 // (Computed) Labels for Node Pool object (map)
 func (o GetClusterEksConfigV2NodeGroupOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) LaunchTemplates() GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) []GetClusterEksConfigV2NodeGroupLaunchTemplate {
+		return v.LaunchTemplates
+	}).(GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput)
 }
 
 func (o GetClusterEksConfigV2NodeGroupOutput) MaxSize() pulumi.IntPtrOutput {
@@ -48078,8 +48293,32 @@ func (o GetClusterEksConfigV2NodeGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetClusterEksConfigV2NodeGroupOutput) RequestSpotInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) *bool { return v.RequestSpotInstances }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) ResourceTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) SpotInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) []string { return v.SpotInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
 func (o GetClusterEksConfigV2NodeGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) string { return v.UserData }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroup) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetClusterEksConfigV2NodeGroupArrayOutput struct{ *pulumi.OutputState }
@@ -48100,6 +48339,118 @@ func (o GetClusterEksConfigV2NodeGroupArrayOutput) Index(i pulumi.IntInput) GetC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEksConfigV2NodeGroup {
 		return vs[0].([]GetClusterEksConfigV2NodeGroup)[vs[1].(int)]
 	}).(GetClusterEksConfigV2NodeGroupOutput)
+}
+
+type GetClusterEksConfigV2NodeGroupLaunchTemplate struct {
+	// (Computed) The ID of the resource (string)
+	Id string `pulumi:"id"`
+	// The name of the Cluster (string)
+	Name    string `pulumi:"name"`
+	Version *int   `pulumi:"version"`
+}
+
+// GetClusterEksConfigV2NodeGroupLaunchTemplateInput is an input type that accepts GetClusterEksConfigV2NodeGroupLaunchTemplateArgs and GetClusterEksConfigV2NodeGroupLaunchTemplateOutput values.
+// You can construct a concrete instance of `GetClusterEksConfigV2NodeGroupLaunchTemplateInput` via:
+//
+//          GetClusterEksConfigV2NodeGroupLaunchTemplateArgs{...}
+type GetClusterEksConfigV2NodeGroupLaunchTemplateInput interface {
+	pulumi.Input
+
+	ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateOutput
+	ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateOutput
+}
+
+type GetClusterEksConfigV2NodeGroupLaunchTemplateArgs struct {
+	// (Computed) The ID of the resource (string)
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the Cluster (string)
+	Name    pulumi.StringInput `pulumi:"name"`
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (GetClusterEksConfigV2NodeGroupLaunchTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (i GetClusterEksConfigV2NodeGroupLaunchTemplateArgs) ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return i.ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(context.Background())
+}
+
+func (i GetClusterEksConfigV2NodeGroupLaunchTemplateArgs) ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEksConfigV2NodeGroupLaunchTemplateOutput)
+}
+
+// GetClusterEksConfigV2NodeGroupLaunchTemplateArrayInput is an input type that accepts GetClusterEksConfigV2NodeGroupLaunchTemplateArray and GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput values.
+// You can construct a concrete instance of `GetClusterEksConfigV2NodeGroupLaunchTemplateArrayInput` via:
+//
+//          GetClusterEksConfigV2NodeGroupLaunchTemplateArray{ GetClusterEksConfigV2NodeGroupLaunchTemplateArgs{...} }
+type GetClusterEksConfigV2NodeGroupLaunchTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput
+	ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput
+}
+
+type GetClusterEksConfigV2NodeGroupLaunchTemplateArray []GetClusterEksConfigV2NodeGroupLaunchTemplateInput
+
+func (GetClusterEksConfigV2NodeGroupLaunchTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (i GetClusterEksConfigV2NodeGroupLaunchTemplateArray) ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return i.ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEksConfigV2NodeGroupLaunchTemplateArray) ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput)
+}
+
+type GetClusterEksConfigV2NodeGroupLaunchTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) ToGetClusterEksConfigV2NodeGroupLaunchTemplateOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return o
+}
+
+// (Computed) The ID of the resource (string)
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroupLaunchTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Cluster (string)
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroupLaunchTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2NodeGroupLaunchTemplate) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEksConfigV2NodeGroupLaunchTemplate)(nil)).Elem()
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput() GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) ToGetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutputWithContext(ctx context.Context) GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput {
+	return o
+}
+
+func (o GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) Index(i pulumi.IntInput) GetClusterEksConfigV2NodeGroupLaunchTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEksConfigV2NodeGroupLaunchTemplate {
+		return vs[0].([]GetClusterEksConfigV2NodeGroupLaunchTemplate)[vs[1].(int)]
+	}).(GetClusterEksConfigV2NodeGroupLaunchTemplateOutput)
 }
 
 type GetClusterGkeConfig struct {
@@ -71473,6 +71824,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterEksConfigV2PtrOutput{})
 	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupOutput{})
 	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupLaunchTemplateOutput{})
+	pulumi.RegisterOutputType(ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterK3sConfigOutput{})
@@ -71874,6 +72227,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterEksConfigV2Output{})
 	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupOutput{})
 	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupLaunchTemplateOutput{})
+	pulumi.RegisterOutputType(GetClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterGkeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterK3sConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterK3sConfigUpgradeStrategyOutput{})

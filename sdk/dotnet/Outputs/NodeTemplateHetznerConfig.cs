@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Use private network. Default `false` (bool)
         /// </summary>
-        public readonly bool? UsePrivateNetworks;
+        public readonly bool? UsePrivateNetwork;
         /// <summary>
         /// Path to file with cloud-init user-data (string)
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? serverType,
 
-            bool? usePrivateNetworks,
+            bool? usePrivateNetwork,
 
             string? userdata,
 
@@ -69,7 +69,7 @@ namespace Pulumi.Rancher2.Outputs
             Networks = networks;
             ServerLocation = serverLocation;
             ServerType = serverType;
-            UsePrivateNetworks = usePrivateNetworks;
+            UsePrivateNetwork = usePrivateNetwork;
             Userdata = userdata;
             Volumes = volumes;
         }

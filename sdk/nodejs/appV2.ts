@@ -118,6 +118,10 @@ export class AppV2 extends pulumi.CustomResource {
      */
     public readonly repoName!: pulumi.Output<string>;
     /**
+     * (Computed) The system default registry of the app (string)
+     */
+    public /*out*/ readonly systemDefaultRegistry!: pulumi.Output<string>;
+    /**
      * The app v2 values yaml. Yaml format is required (string)
      */
     public readonly values!: pulumi.Output<string | undefined>;
@@ -153,6 +157,7 @@ export class AppV2 extends pulumi.CustomResource {
             inputs["namespace"] = state ? state.namespace : undefined;
             inputs["projectId"] = state ? state.projectId : undefined;
             inputs["repoName"] = state ? state.repoName : undefined;
+            inputs["systemDefaultRegistry"] = state ? state.systemDefaultRegistry : undefined;
             inputs["values"] = state ? state.values : undefined;
             inputs["wait"] = state ? state.wait : undefined;
         } else {
@@ -185,6 +190,7 @@ export class AppV2 extends pulumi.CustomResource {
             inputs["values"] = args ? args.values : undefined;
             inputs["wait"] = args ? args.wait : undefined;
             inputs["clusterName"] = undefined /*out*/;
+            inputs["systemDefaultRegistry"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -253,6 +259,10 @@ export interface AppV2State {
      * Repo name (string)
      */
     readonly repoName?: pulumi.Input<string>;
+    /**
+     * (Computed) The system default registry of the app (string)
+     */
+    readonly systemDefaultRegistry?: pulumi.Input<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */

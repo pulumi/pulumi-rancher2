@@ -380,7 +380,7 @@ export interface ClusterClusterRegistrationToken {
      */
     command?: pulumi.Input<string>;
     /**
-     * (Computed) The ID of the resource (string)
+     * The EKS node group launch template ID (string)
      */
     id?: pulumi.Input<string>;
     /**
@@ -510,11 +510,11 @@ export interface ClusterEksConfig {
      */
     sessionToken?: pulumi.Input<string>;
     /**
-     * List of subnets in the virtual network to use (list)
+     * The EKS node group subnets (list string)
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Pass user-data to the nodes to perform automated configuration tasks (string)
+     * The EKS node group user data (string)
      */
     userData?: pulumi.Input<string>;
     /**
@@ -581,7 +581,7 @@ export interface ClusterEksConfigV2 {
      */
     serviceRole?: pulumi.Input<string>;
     /**
-     * List of subnets in the virtual network to use (list)
+     * The EKS node group subnets (list string)
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -608,6 +608,10 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     gpu?: pulumi.Input<boolean>;
     /**
+     * The EKS node group image ID (string)
+     */
+    imageId?: pulumi.Input<string>;
+    /**
      * The EKS node group instance type. Default: `t3.medium` (string)
      */
     instanceType?: pulumi.Input<string>;
@@ -615,6 +619,10 @@ export interface ClusterEksConfigV2NodeGroup {
      * Labels for cluster registration token object (map)
      */
     labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The EKS node groups launch template (list Maxitem: 1)
+     */
+    launchTemplates?: pulumi.Input<pulumi.Input<inputs.ClusterEksConfigV2NodeGroupLaunchTemplate>[]>;
     /**
      * The EKS node group maximum size. Default `2` (int)
      */
@@ -628,9 +636,48 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     name: pulumi.Input<string>;
     /**
+     * Enable EKS node group request spot instances (bool)
+     */
+    requestSpotInstances?: pulumi.Input<boolean>;
+    /**
+     * The EKS node group resource tags (map)
+     */
+    resourceTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The EKS node group sport instace types (list string)
+     */
+    spotInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The EKS node group subnets (list string)
+     */
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The EKS cluster tags (map)
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The EKS node group user data (string)
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
+    /**
+     * The EKS node group launch template ID (string)
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: pulumi.Input<number>;
 }
 
 export interface ClusterGkeConfig {
@@ -3989,7 +4036,7 @@ export interface NodeTemplateHetznerConfig {
     /**
      * Use private network. Default `false` (bool)
      */
-    usePrivateNetworks?: pulumi.Input<boolean>;
+    usePrivateNetwork?: pulumi.Input<boolean>;
     /**
      * Path to file with cloud-init user-data (string)
      */

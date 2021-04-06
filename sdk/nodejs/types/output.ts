@@ -380,7 +380,7 @@ export interface ClusterClusterRegistrationToken {
      */
     command: string;
     /**
-     * (Computed) The ID of the resource (string)
+     * The EKS node group launch template ID (string)
      */
     id: string;
     /**
@@ -510,11 +510,11 @@ export interface ClusterEksConfig {
      */
     sessionToken?: string;
     /**
-     * List of subnets in the virtual network to use (list)
+     * The EKS node group subnets (list string)
      */
     subnets?: string[];
     /**
-     * Pass user-data to the nodes to perform automated configuration tasks (string)
+     * The EKS node group user data (string)
      */
     userData: string;
     /**
@@ -581,7 +581,7 @@ export interface ClusterEksConfigV2 {
      */
     serviceRole?: string;
     /**
-     * List of subnets in the virtual network to use (list)
+     * The EKS node group subnets (list string)
      */
     subnets?: string[];
     /**
@@ -608,6 +608,10 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     gpu?: boolean;
     /**
+     * The EKS node group image ID (string)
+     */
+    imageId?: string;
+    /**
      * The EKS node group instance type. Default: `t3.medium` (string)
      */
     instanceType?: string;
@@ -615,6 +619,10 @@ export interface ClusterEksConfigV2NodeGroup {
      * Labels for cluster registration token object (map)
      */
     labels?: {[key: string]: any};
+    /**
+     * The EKS node groups launch template (list Maxitem: 1)
+     */
+    launchTemplates?: outputs.ClusterEksConfigV2NodeGroupLaunchTemplate[];
     /**
      * The EKS node group maximum size. Default `2` (int)
      */
@@ -628,9 +636,48 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     name: string;
     /**
+     * Enable EKS node group request spot instances (bool)
+     */
+    requestSpotInstances?: boolean;
+    /**
+     * The EKS node group resource tags (map)
+     */
+    resourceTags?: {[key: string]: any};
+    /**
+     * The EKS node group sport instace types (list string)
+     */
+    spotInstanceTypes?: string[];
+    /**
+     * The EKS node group subnets (list string)
+     */
+    subnets: string[];
+    /**
      * The EKS cluster tags (map)
      */
     tags?: {[key: string]: any};
+    /**
+     * The EKS node group user data (string)
+     */
+    userData: string;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version: string;
+}
+
+export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
+    /**
+     * The EKS node group launch template ID (string)
+     */
+    id: string;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: number;
 }
 
 export interface ClusterGkeConfig {
@@ -3503,18 +3550,38 @@ export interface GetClusterEksConfigV2NodeGroup {
     diskSize?: number;
     ec2SshKey?: string;
     gpu?: boolean;
+    imageId?: string;
     instanceType?: string;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels?: {[key: string]: any};
+    launchTemplates?: outputs.GetClusterEksConfigV2NodeGroupLaunchTemplate[];
     maxSize?: number;
     minSize?: number;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    requestSpotInstances?: boolean;
+    resourceTags?: {[key: string]: any};
+    spotInstanceTypes?: string[];
+    subnets: string[];
     tags?: {[key: string]: any};
+    userData: string;
+    version: string;
+}
+
+export interface GetClusterEksConfigV2NodeGroupLaunchTemplate {
+    /**
+     * (Computed) The ID of the resource (string)
+     */
+    id: string;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    version?: number;
 }
 
 export interface GetClusterGkeConfig {
@@ -5718,7 +5785,7 @@ export interface NodeTemplateHetznerConfig {
     /**
      * Use private network. Default `false` (bool)
      */
-    usePrivateNetworks?: boolean;
+    usePrivateNetwork?: boolean;
     /**
      * Path to file with cloud-init user-data (string)
      */

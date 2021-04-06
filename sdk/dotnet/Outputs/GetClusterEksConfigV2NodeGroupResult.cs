@@ -17,18 +17,26 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? DiskSize;
         public readonly string? Ec2SshKey;
         public readonly bool? Gpu;
+        public readonly string? ImageId;
         public readonly string? InstanceType;
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupLaunchTemplateResult> LaunchTemplates;
         public readonly int? MaxSize;
         public readonly int? MinSize;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        public readonly bool? RequestSpotInstances;
+        public readonly ImmutableDictionary<string, object>? ResourceTags;
+        public readonly ImmutableArray<string> SpotInstanceTypes;
+        public readonly ImmutableArray<string> Subnets;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly string UserData;
+        public readonly string Version;
 
         [OutputConstructor]
         private GetClusterEksConfigV2NodeGroupResult(
@@ -40,9 +48,13 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? gpu,
 
+            string? imageId,
+
             string? instanceType,
 
             ImmutableDictionary<string, object>? labels,
+
+            ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupLaunchTemplateResult> launchTemplates,
 
             int? maxSize,
 
@@ -50,18 +62,38 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
-            ImmutableDictionary<string, object>? tags)
+            bool? requestSpotInstances,
+
+            ImmutableDictionary<string, object>? resourceTags,
+
+            ImmutableArray<string> spotInstanceTypes,
+
+            ImmutableArray<string> subnets,
+
+            ImmutableDictionary<string, object>? tags,
+
+            string userData,
+
+            string version)
         {
             DesiredSize = desiredSize;
             DiskSize = diskSize;
             Ec2SshKey = ec2SshKey;
             Gpu = gpu;
+            ImageId = imageId;
             InstanceType = instanceType;
             Labels = labels;
+            LaunchTemplates = launchTemplates;
             MaxSize = maxSize;
             MinSize = minSize;
             Name = name;
+            RequestSpotInstances = requestSpotInstances;
+            ResourceTags = resourceTags;
+            SpotInstanceTypes = spotInstanceTypes;
+            Subnets = subnets;
             Tags = tags;
+            UserData = userData;
+            Version = version;
         }
     }
 }

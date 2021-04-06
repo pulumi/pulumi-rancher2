@@ -114,6 +114,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewRoleTempalte(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/secret:Secret":
 		r, err = NewSecret(ctx, name, nil, pulumi.URN_(urn))
+	case "rancher2:index/secretV2:SecretV2":
+		r, err = NewSecretV2(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/setting:Setting":
 		r, err = NewSetting(ctx, name, nil, pulumi.URN_(urn))
 	case "rancher2:index/token:Token":
@@ -381,6 +383,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/secret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/secretV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

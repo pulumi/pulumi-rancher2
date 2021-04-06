@@ -208,6 +208,7 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_global_dns_provider": {Tok: makeResource(mainMod, "GlobalDnsProvider")},
 			"rancher2_global_role":         {Tok: makeResource(mainMod, "GlobalRole")},
 			"rancher2_feature":             {Tok: makeResource(mainMod, "Feature")},
+			"rancher2_secret_v2":           {Tok: makeResource(mainMod, "SecretV2")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":         {Tok: makeDataSource(mainMod, "getApp")},
@@ -279,6 +280,7 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_catalog_v2":          {Tok: makeDataSource(mainMod, "getCatalogV2")},
 			"rancher2_global_dns_provider": {Tok: makeDataSource(mainMod, "getGlobalDnsProvider")},
 			"rancher2_global_role":         {Tok: makeDataSource(mainMod, "getGlobalRole")},
+			"rancher2_secret_v2":           {Tok: makeDataSource(mainMod, "getSecretV2")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

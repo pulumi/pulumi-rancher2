@@ -30,6 +30,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Gpu;
         /// <summary>
+        /// The EKS node group image ID (string)
+        /// </summary>
+        public readonly string? ImageId;
+        /// <summary>
         /// The EKS node group instance type. Default: `t3.medium` (string)
         /// </summary>
         public readonly string? InstanceType;
@@ -37,6 +41,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Labels for cluster registration token object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
+        /// <summary>
+        /// The EKS node groups launch template (list Maxitem: 1)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterEksConfigV2NodeGroupLaunchTemplate> LaunchTemplates;
         /// <summary>
         /// The EKS node group maximum size. Default `2` (int)
         /// </summary>
@@ -50,9 +58,33 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Enable EKS node group request spot instances (bool)
+        /// </summary>
+        public readonly bool? RequestSpotInstances;
+        /// <summary>
+        /// The EKS node group resource tags (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? ResourceTags;
+        /// <summary>
+        /// The EKS node group sport instace types (list string)
+        /// </summary>
+        public readonly ImmutableArray<string> SpotInstanceTypes;
+        /// <summary>
+        /// The EKS node group subnets (list string)
+        /// </summary>
+        public readonly ImmutableArray<string> Subnets;
+        /// <summary>
         /// The EKS cluster tags (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// The EKS node group user data (string)
+        /// </summary>
+        public readonly string? UserData;
+        /// <summary>
+        /// rancher-monitoring chart version (string)
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private ClusterEksConfigV2NodeGroup(
@@ -64,9 +96,13 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? gpu,
 
+            string? imageId,
+
             string? instanceType,
 
             ImmutableDictionary<string, object>? labels,
+
+            ImmutableArray<Outputs.ClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates,
 
             int? maxSize,
 
@@ -74,18 +110,38 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
-            ImmutableDictionary<string, object>? tags)
+            bool? requestSpotInstances,
+
+            ImmutableDictionary<string, object>? resourceTags,
+
+            ImmutableArray<string> spotInstanceTypes,
+
+            ImmutableArray<string> subnets,
+
+            ImmutableDictionary<string, object>? tags,
+
+            string? userData,
+
+            string? version)
         {
             DesiredSize = desiredSize;
             DiskSize = diskSize;
             Ec2SshKey = ec2SshKey;
             Gpu = gpu;
+            ImageId = imageId;
             InstanceType = instanceType;
             Labels = labels;
+            LaunchTemplates = launchTemplates;
             MaxSize = maxSize;
             MinSize = minSize;
             Name = name;
+            RequestSpotInstances = requestSpotInstances;
+            ResourceTags = resourceTags;
+            SpotInstanceTypes = spotInstanceTypes;
+            Subnets = subnets;
             Tags = tags;
+            UserData = userData;
+            Version = version;
         }
     }
 }

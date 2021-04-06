@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ServiceRole;
         /// <summary>
-        /// List of subnets in the virtual network to use (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
