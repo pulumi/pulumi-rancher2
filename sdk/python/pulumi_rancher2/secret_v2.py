@@ -5,13 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['SecretV2']
+__all__ = ['SecretV2Args', 'SecretV2']
+
+@pulumi.input_type
+class SecretV2Args:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 data: pulumi.Input[Mapping[str, Any]],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 immutable: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SecretV2 resource.
+        :param pulumi.Input[str] cluster_id: The cluster id of the secret V2 (string)
+        :param pulumi.Input[Mapping[str, Any]] data: The data of the secret v2 (map)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the secret v2 (map)
+        :param pulumi.Input[bool] immutable: If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the secret v2 (map)
+        :param pulumi.Input[str] name: The name of the secret v2 (string)
+        :param pulumi.Input[str] namespace: The namespaces of the secret v2. Default: `default` (string)
+        :param pulumi.Input[str] type: The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "data", data)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if immutable is not None:
+            pulumi.set(__self__, "immutable", immutable)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The cluster id of the secret V2 (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Input[Mapping[str, Any]]:
+        """
+        The data of the secret v2 (map)
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: pulumi.Input[Mapping[str, Any]]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for the secret v2 (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def immutable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+        """
+        return pulumi.get(self, "immutable")
+
+    @immutable.setter
+    def immutable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "immutable", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for the secret v2 (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secret v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespaces of the secret v2. Default: `default` (string)
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class SecretV2(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +182,49 @@ class SecretV2(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespaces of the secret v2. Default: `default` (string)
         :param pulumi.Input[str] type: The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretV2Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher Secret v2 resource. This can be used to create k8s secrets for Rancher v2 environments and retrieve their information. Secret v2 resource is available at Rancher v2.5.x and above.
+
+        ## Import
+
+        V2 secrets can be imported using the Rancher cluster ID, Secret V2 namespace and name.
+
+        ```sh
+         $ pulumi import rancher2:index/secretV2:SecretV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SecretV2Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretV2Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 immutable: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

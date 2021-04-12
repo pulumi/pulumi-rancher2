@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.13.0 of the Rancher2 Terraform Provider
+* Upgrade to pulumi-terraform-bridge v2.23.0
 
 ---
 

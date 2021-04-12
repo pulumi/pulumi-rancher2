@@ -5,13 +5,111 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['User']
+__all__ = ['UserArgs', 'User']
+
+@pulumi.input_type
+class UserArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] password: The user password (string)
+        :param pulumi.Input[str] username: The user username (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role binding (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role binding (map)
+        :param pulumi.Input[str] name: The user full name (string)
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        The user password (string)
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        The user username (string)
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for global role binding (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for global role binding (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user full name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class User(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +160,66 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[str] username: The user username (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 User resource. This can be used to create Users for Rancher v2 environments and retrieve their information.
+
+        When a Rancher User is created, it doesn't have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 User
+        foo_user = rancher2.User("fooUser",
+            username="foo",
+            password="changeme",
+            enabled=True)
+        # Create a new rancher2 global_role_binding for User
+        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+            global_role_id="user-base",
+            user_id=foo_user.id)
+        ```
+
+        ## Import
+
+        Users can be imported using the Rancher User ID
+
+        ```sh
+         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

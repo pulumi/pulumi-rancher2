@@ -5,15 +5,230 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Notifier']
+__all__ = ['NotifierArgs', 'Notifier']
+
+@pulumi.input_type
+class NotifierArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dingtalk_config: Optional[pulumi.Input['NotifierDingtalkConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 msteams_config: Optional[pulumi.Input['NotifierMsteamsConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pagerduty_config: Optional[pulumi.Input['NotifierPagerdutyConfigArgs']] = None,
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 slack_config: Optional[pulumi.Input['NotifierSlackConfigArgs']] = None,
+                 smtp_config: Optional[pulumi.Input['NotifierSmtpConfigArgs']] = None,
+                 webhook_config: Optional[pulumi.Input['NotifierWebhookConfigArgs']] = None,
+                 wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None):
+        """
+        The set of arguments for constructing a Notifier resource.
+        :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[str] description: The notifier description (string)
+        :param pulumi.Input['NotifierDingtalkConfigArgs'] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input['NotifierMsteamsConfigArgs'] msteams_config: MSTeams config for notifier (list maxitems:1)
+        :param pulumi.Input[str] name: The name of the notifier (string)
+        :param pulumi.Input['NotifierPagerdutyConfigArgs'] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
+        :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+        :param pulumi.Input['NotifierSlackConfigArgs'] slack_config: Slack config for notifier (list maxitems:1)
+        :param pulumi.Input['NotifierSmtpConfigArgs'] smtp_config: SMTP config for notifier (list maxitems:1)
+        :param pulumi.Input['NotifierWebhookConfigArgs'] webhook_config: Webhook config for notifier (list maxitems:1)
+        :param pulumi.Input['NotifierWechatConfigArgs'] wechat_config: Wechat config for notifier (list maxitems:1)
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dingtalk_config is not None:
+            pulumi.set(__self__, "dingtalk_config", dingtalk_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if msteams_config is not None:
+            pulumi.set(__self__, "msteams_config", msteams_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pagerduty_config is not None:
+            pulumi.set(__self__, "pagerduty_config", pagerduty_config)
+        if send_resolved is not None:
+            pulumi.set(__self__, "send_resolved", send_resolved)
+        if slack_config is not None:
+            pulumi.set(__self__, "slack_config", slack_config)
+        if smtp_config is not None:
+            pulumi.set(__self__, "smtp_config", smtp_config)
+        if webhook_config is not None:
+            pulumi.set(__self__, "webhook_config", webhook_config)
+        if wechat_config is not None:
+            pulumi.set(__self__, "wechat_config", wechat_config)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The cluster id where create notifier (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for notifier object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The notifier description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dingtalkConfig")
+    def dingtalk_config(self) -> Optional[pulumi.Input['NotifierDingtalkConfigArgs']]:
+        """
+        Dingtalk config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "dingtalk_config")
+
+    @dingtalk_config.setter
+    def dingtalk_config(self, value: Optional[pulumi.Input['NotifierDingtalkConfigArgs']]):
+        pulumi.set(self, "dingtalk_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for notifier object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="msteamsConfig")
+    def msteams_config(self) -> Optional[pulumi.Input['NotifierMsteamsConfigArgs']]:
+        """
+        MSTeams config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "msteams_config")
+
+    @msteams_config.setter
+    def msteams_config(self, value: Optional[pulumi.Input['NotifierMsteamsConfigArgs']]):
+        pulumi.set(self, "msteams_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the notifier (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pagerdutyConfig")
+    def pagerduty_config(self) -> Optional[pulumi.Input['NotifierPagerdutyConfigArgs']]:
+        """
+        Pagerduty config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "pagerduty_config")
+
+    @pagerduty_config.setter
+    def pagerduty_config(self, value: Optional[pulumi.Input['NotifierPagerdutyConfigArgs']]):
+        pulumi.set(self, "pagerduty_config", value)
+
+    @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> Optional[pulumi.Input[bool]]:
+        """
+        = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @send_resolved.setter
+    def send_resolved(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_resolved", value)
+
+    @property
+    @pulumi.getter(name="slackConfig")
+    def slack_config(self) -> Optional[pulumi.Input['NotifierSlackConfigArgs']]:
+        """
+        Slack config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "slack_config")
+
+    @slack_config.setter
+    def slack_config(self, value: Optional[pulumi.Input['NotifierSlackConfigArgs']]):
+        pulumi.set(self, "slack_config", value)
+
+    @property
+    @pulumi.getter(name="smtpConfig")
+    def smtp_config(self) -> Optional[pulumi.Input['NotifierSmtpConfigArgs']]:
+        """
+        SMTP config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "smtp_config")
+
+    @smtp_config.setter
+    def smtp_config(self, value: Optional[pulumi.Input['NotifierSmtpConfigArgs']]):
+        pulumi.set(self, "smtp_config", value)
+
+    @property
+    @pulumi.getter(name="webhookConfig")
+    def webhook_config(self) -> Optional[pulumi.Input['NotifierWebhookConfigArgs']]:
+        """
+        Webhook config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "webhook_config")
+
+    @webhook_config.setter
+    def webhook_config(self, value: Optional[pulumi.Input['NotifierWebhookConfigArgs']]):
+        pulumi.set(self, "webhook_config", value)
+
+    @property
+    @pulumi.getter(name="wechatConfig")
+    def wechat_config(self) -> Optional[pulumi.Input['NotifierWechatConfigArgs']]:
+        """
+        Wechat config for notifier (list maxitems:1)
+        """
+        return pulumi.get(self, "wechat_config")
+
+    @wechat_config.setter
+    def wechat_config(self, value: Optional[pulumi.Input['NotifierWechatConfigArgs']]):
+        pulumi.set(self, "wechat_config", value)
 
 
 class Notifier(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -77,6 +292,71 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']] webhook_config: Webhook config for notifier (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']] wechat_config: Wechat config for notifier (list maxitems:1)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NotifierArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Notifier
+        foo = rancher2.Notifier("foo",
+            cluster_id="<cluster_id>",
+            description="Terraform notifier acceptance test",
+            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
+                proxy_url="http://proxy.test.io",
+                service_key="XXXXXXXX",
+            ),
+            send_resolved=True)
+        ```
+
+        ## Import
+
+        Notifiers can be imported using the Rancher nNtifier ID
+
+        ```sh
+         $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NotifierArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NotifierArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
+                 smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
+                 webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
+                 wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

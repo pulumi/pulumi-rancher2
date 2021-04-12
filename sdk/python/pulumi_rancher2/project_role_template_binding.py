@@ -5,13 +5,163 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ProjectRoleTemplateBinding']
+__all__ = ['ProjectRoleTemplateBindingArgs', 'ProjectRoleTemplateBinding']
+
+@pulumi.input_type
+class ProjectRoleTemplateBindingArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str],
+                 role_template_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_principal_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_principal_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ProjectRoleTemplateBinding resource.
+        :param pulumi.Input[str] project_id: The project id where bind project role template (string)
+        :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
+        :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[str] name: The name of the project role template binding (string)
+        :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
+        :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "role_template_id", role_template_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if group_principal_id is not None:
+            pulumi.set(__self__, "group_principal_id", group_principal_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if user_principal_id is not None:
+            pulumi.set(__self__, "user_principal_id", user_principal_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id where bind project role template (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="roleTemplateId")
+    def role_template_id(self) -> pulumi.Input[str]:
+        """
+        The role template id from create project role template binding (string)
+        """
+        return pulumi.get(self, "role_template_id")
+
+    @role_template_id.setter
+    def role_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_template_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations of the resource (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group ID to assign project role template binding (string)
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="groupPrincipalId")
+    def group_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group_principal ID to assign project role template binding (string)
+        """
+        return pulumi.get(self, "group_principal_id")
+
+    @group_principal_id.setter
+    def group_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_principal_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels of the resource (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project role template binding (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user ID to assign project role template binding (string)
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter(name="userPrincipalId")
+    def user_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user_principal ID to assign project role template binding (string)
+        """
+        return pulumi.get(self, "user_principal_id")
+
+    @user_principal_id.setter
+    def user_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_principal_id", value)
 
 
 class ProjectRoleTemplateBinding(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +213,63 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectRoleTemplateBindingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Role Template Binding
+        foo = rancher2.ProjectRoleTemplateBinding("foo",
+            project_id="<project_id>",
+            role_template_id="<role_template_id>",
+            user_id="<user_id>")
+        ```
+
+        ## Import
+
+        Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
+
+        ```sh
+         $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectRoleTemplateBindingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectRoleTemplateBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_principal_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 role_template_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_principal_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

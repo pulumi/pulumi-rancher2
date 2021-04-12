@@ -5,15 +5,150 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EtcdBackup']
+__all__ = ['EtcdBackupArgs', 'EtcdBackup']
+
+@pulumi.input_type
+class EtcdBackupArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
+                 filename: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 manual: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a EtcdBackup resource.
+        :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
+        :param pulumi.Input['EtcdBackupBackupConfigArgs'] backup_config: Backup config for etcd backup (list maxitems:1)
+        :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
+        :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
+        :param pulumi.Input[str] name: The name of the Etcd Backup (string)
+        :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if backup_config is not None:
+            pulumi.set(__self__, "backup_config", backup_config)
+        if filename is not None:
+            pulumi.set(__self__, "filename", filename)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        Cluster ID to config Etcd Backup (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Etcd Backup object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="backupConfig")
+    def backup_config(self) -> Optional[pulumi.Input['EtcdBackupBackupConfigArgs']]:
+        """
+        Backup config for etcd backup (list maxitems:1)
+        """
+        return pulumi.get(self, "backup_config")
+
+    @backup_config.setter
+    def backup_config(self, value: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']]):
+        pulumi.set(self, "backup_config", value)
+
+    @property
+    @pulumi.getter
+    def filename(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filename of the Etcd Backup (string)
+        """
+        return pulumi.get(self, "filename")
+
+    @filename.setter
+    def filename(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Etcd Backup object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Manual execution of the Etcd Backup. Default `false` (bool)
+        """
+        return pulumi.get(self, "manual")
+
+    @manual.setter
+    def manual(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "manual", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Etcd Backup (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the Etcd Backup (string)
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
 
 
 class EtcdBackup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +183,47 @@ class EtcdBackup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EtcdBackupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Etcd Backup can be imported using the Rancher etcd backup ID
+
+        ```sh
+         $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EtcdBackupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EtcdBackupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 backup_config: Optional[pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 filename: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 manual: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

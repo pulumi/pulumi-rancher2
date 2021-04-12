@@ -21,111 +21,112 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "rancher2:index/activeDirectory:ActiveDirectory":
-		r, err = NewActiveDirectory(ctx, name, nil, pulumi.URN_(urn))
+		r = &ActiveDirectory{}
 	case "rancher2:index/app:App":
-		r, err = NewApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &App{}
 	case "rancher2:index/appV2:AppV2":
-		r, err = NewAppV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppV2{}
 	case "rancher2:index/authConfigAdfs:AuthConfigAdfs":
-		r, err = NewAuthConfigAdfs(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigAdfs{}
 	case "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
-		r, err = NewAuthConfigAzureAd(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigAzureAd{}
 	case "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
-		r, err = NewAuthConfigFreeIpa(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigFreeIpa{}
 	case "rancher2:index/authConfigGithub:AuthConfigGithub":
-		r, err = NewAuthConfigGithub(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigGithub{}
 	case "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
-		r, err = NewAuthConfigKeycloak(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigKeycloak{}
 	case "rancher2:index/authConfigOkta:AuthConfigOkta":
-		r, err = NewAuthConfigOkta(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigOkta{}
 	case "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap":
-		r, err = NewAuthConfigOpenLdap(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigOpenLdap{}
 	case "rancher2:index/authConfigPing:AuthConfigPing":
-		r, err = NewAuthConfigPing(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthConfigPing{}
 	case "rancher2:index/bootstrap:Bootstrap":
-		r, err = NewBootstrap(ctx, name, nil, pulumi.URN_(urn))
+		r = &Bootstrap{}
 	case "rancher2:index/catalog:Catalog":
-		r, err = NewCatalog(ctx, name, nil, pulumi.URN_(urn))
+		r = &Catalog{}
 	case "rancher2:index/catalogV2:CatalogV2":
-		r, err = NewCatalogV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &CatalogV2{}
 	case "rancher2:index/certificate:Certificate":
-		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &Certificate{}
 	case "rancher2:index/cloudCredential:CloudCredential":
-		r, err = NewCloudCredential(ctx, name, nil, pulumi.URN_(urn))
+		r = &CloudCredential{}
 	case "rancher2:index/cluster:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "rancher2:index/clusterAlertGroup:ClusterAlertGroup":
-		r, err = NewClusterAlertGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterAlertGroup{}
 	case "rancher2:index/clusterAlertRule:ClusterAlertRule":
-		r, err = NewClusterAlertRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterAlertRule{}
 	case "rancher2:index/clusterAlterGroup:ClusterAlterGroup":
-		r, err = NewClusterAlterGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterAlterGroup{}
 	case "rancher2:index/clusterAlterRule:ClusterAlterRule":
-		r, err = NewClusterAlterRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterAlterRule{}
 	case "rancher2:index/clusterDriver:ClusterDriver":
-		r, err = NewClusterDriver(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterDriver{}
 	case "rancher2:index/clusterLogging:ClusterLogging":
-		r, err = NewClusterLogging(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterLogging{}
 	case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
-		r, err = NewClusterRoleTemplateBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterRoleTemplateBinding{}
 	case "rancher2:index/clusterSync:ClusterSync":
-		r, err = NewClusterSync(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterSync{}
 	case "rancher2:index/clusterTemplate:ClusterTemplate":
-		r, err = NewClusterTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterTemplate{}
 	case "rancher2:index/etcdBackup:EtcdBackup":
-		r, err = NewEtcdBackup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EtcdBackup{}
 	case "rancher2:index/feature:Feature":
-		r, err = NewFeature(ctx, name, nil, pulumi.URN_(urn))
+		r = &Feature{}
 	case "rancher2:index/globalDns:GlobalDns":
-		r, err = NewGlobalDns(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalDns{}
 	case "rancher2:index/globalDnsProvider:GlobalDnsProvider":
-		r, err = NewGlobalDnsProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalDnsProvider{}
 	case "rancher2:index/globalRole:GlobalRole":
-		r, err = NewGlobalRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalRole{}
 	case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
-		r, err = NewGlobalRoleBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalRoleBinding{}
 	case "rancher2:index/multiClusterApp:MultiClusterApp":
-		r, err = NewMultiClusterApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &MultiClusterApp{}
 	case "rancher2:index/namespace:Namespace":
-		r, err = NewNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Namespace{}
 	case "rancher2:index/nodeDriver:NodeDriver":
-		r, err = NewNodeDriver(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeDriver{}
 	case "rancher2:index/nodePool:NodePool":
-		r, err = NewNodePool(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodePool{}
 	case "rancher2:index/nodeTemplate:NodeTemplate":
-		r, err = NewNodeTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeTemplate{}
 	case "rancher2:index/notifier:Notifier":
-		r, err = NewNotifier(ctx, name, nil, pulumi.URN_(urn))
+		r = &Notifier{}
 	case "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
-		r, err = NewPodSecurityPolicyTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &PodSecurityPolicyTemplate{}
 	case "rancher2:index/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "rancher2:index/projectAlertGroup:ProjectAlertGroup":
-		r, err = NewProjectAlertGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectAlertGroup{}
 	case "rancher2:index/projectAlertRule:ProjectAlertRule":
-		r, err = NewProjectAlertRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectAlertRule{}
 	case "rancher2:index/projectLogging:ProjectLogging":
-		r, err = NewProjectLogging(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectLogging{}
 	case "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
-		r, err = NewProjectRoleTemplateBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectRoleTemplateBinding{}
 	case "rancher2:index/registry:Registry":
-		r, err = NewRegistry(ctx, name, nil, pulumi.URN_(urn))
+		r = &Registry{}
 	case "rancher2:index/roleTempalte:RoleTempalte":
-		r, err = NewRoleTempalte(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoleTempalte{}
 	case "rancher2:index/secret:Secret":
-		r, err = NewSecret(ctx, name, nil, pulumi.URN_(urn))
+		r = &Secret{}
 	case "rancher2:index/secretV2:SecretV2":
-		r, err = NewSecretV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretV2{}
 	case "rancher2:index/setting:Setting":
-		r, err = NewSetting(ctx, name, nil, pulumi.URN_(urn))
+		r = &Setting{}
 	case "rancher2:index/token:Token":
-		r, err = NewToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &Token{}
 	case "rancher2:index/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -142,7 +143,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

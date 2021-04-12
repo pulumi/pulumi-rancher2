@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Setting']
+__all__ = ['SettingArgs', 'Setting']
+
+@pulumi.input_type
+class SettingArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Setting resource.
+        :param pulumi.Input[str] value: The value of the setting (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for setting object (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for setting object (map)
+        :param pulumi.Input[str] name: The name of the setting (string)
+        """
+        pulumi.set(__self__, "value", value)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the setting (string)
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for setting object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for setting object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the setting (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Setting(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -54,6 +125,59 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the setting (string)
         :param pulumi.Input[str] value: The value of the setting (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SettingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
+
+        On create, if setting already exists, provider will import it and update its value.
+
+        On destroy, if setting is a system setting like `server-url`, provider'll not delete it from Rancher, it'll just update setting value to default and remove it from tfstate.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Setting
+        foo = rancher2.Setting("foo", value="<VALUE>")
+        ```
+
+        ## Import
+
+        Setting can be imported using the Rancher setting ID.
+
+        ```sh
+         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SettingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SettingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

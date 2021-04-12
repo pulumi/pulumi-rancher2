@@ -5,13 +5,257 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AppV2']
+__all__ = ['AppV2Args', 'AppV2']
+
+@pulumi.input_type
+class AppV2Args:
+    def __init__(__self__, *,
+                 chart_name: pulumi.Input[str],
+                 cluster_id: pulumi.Input[str],
+                 namespace: pulumi.Input[str],
+                 repo_name: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 chart_version: Optional[pulumi.Input[str]] = None,
+                 cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
+                 disable_hooks: Optional[pulumi.Input[bool]] = None,
+                 disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
+                 force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a AppV2 resource.
+        :param pulumi.Input[str] chart_name: The app v2 chart name (string)
+        :param pulumi.Input[str] cluster_id: The cluster id of the app (string)
+        :param pulumi.Input[str] namespace: The namespace of the app v2 (string)
+        :param pulumi.Input[str] repo_name: Repo name (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the app v2 (map)
+        :param pulumi.Input[str] chart_version: The app v2 chart version (string)
+        :param pulumi.Input[bool] cleanup_on_fail: Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+        :param pulumi.Input[bool] disable_hooks: Disable app v2 chart hooks. Default: `false` (bool)
+        :param pulumi.Input[bool] disable_open_api_validation: Disable app V2 Open API Validation. Default: `false` (bool)
+        :param pulumi.Input[bool] force_upgrade: Force app V2 chart upgrade. Default: `false` (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the app v2 (map)
+        :param pulumi.Input[str] name: The name of the app v2 (string)
+        :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
+        :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
+        :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
+        """
+        pulumi.set(__self__, "chart_name", chart_name)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "repo_name", repo_name)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if chart_version is not None:
+            pulumi.set(__self__, "chart_version", chart_version)
+        if cleanup_on_fail is not None:
+            pulumi.set(__self__, "cleanup_on_fail", cleanup_on_fail)
+        if disable_hooks is not None:
+            pulumi.set(__self__, "disable_hooks", disable_hooks)
+        if disable_open_api_validation is not None:
+            pulumi.set(__self__, "disable_open_api_validation", disable_open_api_validation)
+        if force_upgrade is not None:
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter(name="chartName")
+    def chart_name(self) -> pulumi.Input[str]:
+        """
+        The app v2 chart name (string)
+        """
+        return pulumi.get(self, "chart_name")
+
+    @chart_name.setter
+    def chart_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "chart_name", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The cluster id of the app (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        """
+        The namespace of the app v2 (string)
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> pulumi.Input[str]:
+        """
+        Repo name (string)
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for the app v2 (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="chartVersion")
+    def chart_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app v2 chart version (string)
+        """
+        return pulumi.get(self, "chart_version")
+
+    @chart_version.setter
+    def chart_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chart_version", value)
+
+    @property
+    @pulumi.getter(name="cleanupOnFail")
+    def cleanup_on_fail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+        """
+        return pulumi.get(self, "cleanup_on_fail")
+
+    @cleanup_on_fail.setter
+    def cleanup_on_fail(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cleanup_on_fail", value)
+
+    @property
+    @pulumi.getter(name="disableHooks")
+    def disable_hooks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable app v2 chart hooks. Default: `false` (bool)
+        """
+        return pulumi.get(self, "disable_hooks")
+
+    @disable_hooks.setter
+    def disable_hooks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_hooks", value)
+
+    @property
+    @pulumi.getter(name="disableOpenApiValidation")
+    def disable_open_api_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable app V2 Open API Validation. Default: `false` (bool)
+        """
+        return pulumi.get(self, "disable_open_api_validation")
+
+    @disable_open_api_validation.setter
+    def disable_open_api_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_open_api_validation", value)
+
+    @property
+    @pulumi.getter(name="forceUpgrade")
+    def force_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force app V2 chart upgrade. Default: `false` (bool)
+        """
+        return pulumi.get(self, "force_upgrade")
+
+    @force_upgrade.setter
+    def force_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for the app v2 (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deploy the app v2 within project ID (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app v2 values yaml. Yaml format is required (string)
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until app is deployed. Default: `true` (bool)
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait", value)
 
 
 class AppV2(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -78,6 +322,72 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AppV2Args,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new Rancher2 App V2 using
+        foo = rancher2.AppV2("foo",
+            cluster_id="<CLUSTER_ID>",
+            namespace="cattle-monitoring-system",
+            repo_name="rancher-charts",
+            chart_name="rancher-monitoring",
+            chart_version="9.4.200",
+            values=(lambda path: open(path).read())("values.yaml"))
+        ```
+
+        ## Import
+
+        V2 apps can be imported using the Rancher cluster ID and App V2 name.
+
+        ```sh
+         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AppV2Args args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AppV2Args, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 chart_name: Optional[pulumi.Input[str]] = None,
+                 chart_version: Optional[pulumi.Input[str]] = None,
+                 cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 disable_hooks: Optional[pulumi.Input[bool]] = None,
+                 disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
+                 force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
