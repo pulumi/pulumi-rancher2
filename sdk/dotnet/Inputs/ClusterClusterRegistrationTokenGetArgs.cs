@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Command { get; set; }
 
         /// <summary>
-        /// (Computed) The ID of the resource (string)
+        /// The EKS node group launch template ID (string)
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

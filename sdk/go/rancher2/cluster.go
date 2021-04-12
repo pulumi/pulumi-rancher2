@@ -487,6 +487,60 @@ import (
 // 	})
 // }
 // ```
+// ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 or above.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-rancher2/sdk/v2/go/rancher2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+// 			Description: pulumi.String("foo test"),
+// 			Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+// 				AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
+// 				SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
+// 			Description: pulumi.String("Terraform EKS cluster"),
+// 			EksConfigV2: &rancher2.ClusterEksConfigV2Args{
+// 				CloudCredentialId: fooCloudCredential.ID(),
+// 				Region:            pulumi.String("<EKS_REGION>"),
+// 				KubernetesVersion: pulumi.String("1.17"),
+// 				LoggingTypes: pulumi.StringArray{
+// 					pulumi.String("audit"),
+// 					pulumi.String("api"),
+// 				},
+// 				NodeGroups: rancher2.ClusterEksConfigV2NodeGroupArray{
+// 					&rancher2.ClusterEksConfigV2NodeGroupArgs{
+// 						DesiredSize: pulumi.Int(3),
+// 						MaxSize:     pulumi.Int(5),
+// 						Name:        pulumi.String("node_group1"),
+// 						LaunchTemplates: rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArray{
+// 							&rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArgs{
+// 								Id:      pulumi.String("<EC2_LAUNCH_TEMPLATE_ID>"),
+// 								Version: pulumi.Int(1),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

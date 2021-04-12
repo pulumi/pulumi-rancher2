@@ -115,7 +115,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// List of subnets in the virtual network to use (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public InputList<string> Subnets
         {
@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Pass user-data to the nodes to perform automated configuration tasks (string)
+        /// The EKS node group user data (string)
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

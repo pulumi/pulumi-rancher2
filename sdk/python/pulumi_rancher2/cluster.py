@@ -401,6 +401,39 @@ class Cluster(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+            description="foo test",
+            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
+                access_key="<AWS_ACCESS_KEY>",
+                secret_key="<AWS_SECRET_KEY>",
+            ))
+        foo_cluster = rancher2.Cluster("fooCluster",
+            description="Terraform EKS cluster",
+            eks_config_v2=rancher2.ClusterEksConfigV2Args(
+                cloud_credential_id=foo_cloud_credential.id,
+                region="<EKS_REGION>",
+                kubernetes_version="1.17",
+                logging_types=[
+                    "audit",
+                    "api",
+                ],
+                node_groups=[rancher2.ClusterEksConfigV2NodeGroupArgs(
+                    desired_size=3,
+                    max_size=5,
+                    name="node_group1",
+                    launch_templates=[rancher2.ClusterEksConfigV2NodeGroupLaunchTemplateArgs(
+                        id="<EC2_LAUNCH_TEMPLATE_ID>",
+                        version=1,
+                    )],
+                )],
+            ))
+        ```
 
         ## Import
 

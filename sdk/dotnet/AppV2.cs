@@ -134,6 +134,12 @@ namespace Pulumi.Rancher2
         public Output<string> RepoName { get; private set; } = null!;
 
         /// <summary>
+        /// (Computed) The system default registry of the app (string)
+        /// </summary>
+        [Output("systemDefaultRegistry")]
+        public Output<string> SystemDefaultRegistry { get; private set; } = null!;
+
+        /// <summary>
         /// The app v2 values yaml. Yaml format is required (string)
         /// </summary>
         [Output("values")]
@@ -395,6 +401,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
+
+        /// <summary>
+        /// (Computed) The system default registry of the app (string)
+        /// </summary>
+        [Input("systemDefaultRegistry")]
+        public Input<string>? SystemDefaultRegistry { get; set; }
 
         /// <summary>
         /// The app v2 values yaml. Yaml format is required (string)

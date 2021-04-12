@@ -75,11 +75,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SessionToken;
         /// <summary>
-        /// List of subnets in the virtual network to use (list)
+        /// The EKS node group subnets (list string)
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// Pass user-data to the nodes to perform automated configuration tasks (string)
+        /// The EKS node group user data (string)
         /// </summary>
         public readonly string? UserData;
         /// <summary>

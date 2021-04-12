@@ -64,6 +64,7 @@ from .get_registry import *
 from .get_role_tempalte import *
 from .get_role_template import *
 from .get_secret import *
+from .get_secret_v2 import *
 from .get_setting import *
 from .get_user import *
 from .global_dns import *
@@ -86,6 +87,7 @@ from .provider import *
 from .registry import *
 from .role_tempalte import *
 from .secret import *
+from .secret_v2 import *
 from .setting import *
 from .token import *
 from .user import *
@@ -203,6 +205,8 @@ def _register_module():
                 return RoleTempalte(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/secret:Secret":
                 return Secret(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/secretV2:SecretV2":
+                return SecretV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/setting:Setting":
                 return Setting(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/token:Token":
@@ -261,6 +265,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/registry", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/roleTempalte", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/secret", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/secretV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/setting", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/token", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/user", _module_instance)

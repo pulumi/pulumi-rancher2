@@ -503,6 +503,61 @@ namespace Pulumi.Rancher2
     /// 
     /// }
     /// ```
+    /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 or above.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new Rancher2.CloudCredentialArgs
+    ///         {
+    ///             Description = "foo test",
+    ///             Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///             {
+    ///                 AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
+    ///                 SecretKey = "&lt;AWS_SECRET_KEY&gt;",
+    ///             },
+    ///         });
+    ///         var fooCluster = new Rancher2.Cluster("fooCluster", new Rancher2.ClusterArgs
+    ///         {
+    ///             Description = "Terraform EKS cluster",
+    ///             EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
+    ///             {
+    ///                 CloudCredentialId = fooCloudCredential.Id,
+    ///                 Region = "&lt;EKS_REGION&gt;",
+    ///                 KubernetesVersion = "1.17",
+    ///                 LoggingTypes = 
+    ///                 {
+    ///                     "audit",
+    ///                     "api",
+    ///                 },
+    ///                 NodeGroups = 
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
+    ///                     {
+    ///                         DesiredSize = 3,
+    ///                         MaxSize = 5,
+    ///                         Name = "node_group1",
+    ///                         LaunchTemplates = 
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs
+    ///                             {
+    ///                                 Id = "&lt;EC2_LAUNCH_TEMPLATE_ID&gt;",
+    ///                                 Version = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

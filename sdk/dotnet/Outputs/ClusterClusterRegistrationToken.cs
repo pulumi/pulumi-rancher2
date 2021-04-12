@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Command;
         /// <summary>
-        /// (Computed) The ID of the resource (string)
+        /// The EKS node group launch template ID (string)
         /// </summary>
         public readonly string? Id;
         /// <summary>

@@ -119,6 +119,7 @@ class AppV2(pulumi.CustomResource):
             __props__['values'] = values
             __props__['wait'] = wait
             __props__['cluster_name'] = None
+            __props__['system_default_registry'] = None
         super(AppV2, __self__).__init__(
             'rancher2:index/appV2:AppV2',
             resource_name,
@@ -143,6 +144,7 @@ class AppV2(pulumi.CustomResource):
             namespace: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             repo_name: Optional[pulumi.Input[str]] = None,
+            system_default_registry: Optional[pulumi.Input[str]] = None,
             values: Optional[pulumi.Input[str]] = None,
             wait: Optional[pulumi.Input[bool]] = None) -> 'AppV2':
         """
@@ -166,6 +168,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
+        :param pulumi.Input[str] system_default_registry: (Computed) The system default registry of the app (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
@@ -187,6 +190,7 @@ class AppV2(pulumi.CustomResource):
         __props__["namespace"] = namespace
         __props__["project_id"] = project_id
         __props__["repo_name"] = repo_name
+        __props__["system_default_registry"] = system_default_registry
         __props__["values"] = values
         __props__["wait"] = wait
         return AppV2(resource_name, opts=opts, __props__=__props__)
@@ -302,6 +306,14 @@ class AppV2(pulumi.CustomResource):
         Repo name (string)
         """
         return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="systemDefaultRegistry")
+    def system_default_registry(self) -> pulumi.Output[str]:
+        """
+        (Computed) The system default registry of the app (string)
+        """
+        return pulumi.get(self, "system_default_registry")
 
     @property
     @pulumi.getter

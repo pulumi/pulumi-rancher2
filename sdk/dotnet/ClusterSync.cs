@@ -58,6 +58,12 @@ namespace Pulumi.Rancher2
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// </summary>
+        [Output("waitCatalogs")]
+        public Output<bool?> WaitCatalogs { get; private set; } = null!;
+
+        /// <summary>
         /// Wait until monitoring is up and running. Default: `false` (bool)
         /// </summary>
         [Output("waitMonitoring")]
@@ -137,6 +143,12 @@ namespace Pulumi.Rancher2
         public Input<bool>? Synced { get; set; }
 
         /// <summary>
+        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// </summary>
+        [Input("waitCatalogs")]
+        public Input<bool>? WaitCatalogs { get; set; }
+
+        /// <summary>
         /// Wait until monitoring is up and running. Default: `false` (bool)
         /// </summary>
         [Input("waitMonitoring")]
@@ -205,6 +217,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("systemProjectId")]
         public Input<string>? SystemProjectId { get; set; }
+
+        /// <summary>
+        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// </summary>
+        [Input("waitCatalogs")]
+        public Input<bool>? WaitCatalogs { get; set; }
 
         /// <summary>
         /// Wait until monitoring is up and running. Default: `false` (bool)

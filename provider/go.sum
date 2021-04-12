@@ -1334,6 +1334,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210305185828-4ea09569fc08 h1:hjstgBwTI0FhF6tgtAhjWS5/WAVZhJYNvTEhzKXBPKE=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210305185828-4ea09569fc08/go.mod h1:7RoD/uo7fJRl/XkwMeO+jI6J3g3pwgVH1JUHv49ZpTI=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210406132731-632a7710f8fb h1:WZjsFEvTRf+WDAQ06BR4rVAyeZp2Gk6roCuMbsnmScA=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210406132731-632a7710f8fb/go.mod h1:H869nRPv2R3u4GNc10pjHApvCMtX6Lab/gLsebYJS3Y=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d h1:K6eOUihrFLdZjZnA4XlRp864fmWXv9YTIk7VPLhRacA=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d/go.mod h1:7DPO4domFU579Ga6E61sB9VFNaniPVwJP5C4bBCu3wA=
 github.com/rackspace/gophercloud v0.0.0-20150408191457-ce0f487f6747 h1:Ney6Z2JleqcILrsaSePqF9xeeSEb1jt4BWPgXk3f9T8=
