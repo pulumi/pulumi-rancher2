@@ -5,15 +5,122 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GlobalDnsProvider']
+__all__ = ['GlobalDnsProviderArgs', 'GlobalDnsProvider']
+
+@pulumi.input_type
+class GlobalDnsProviderArgs:
+    def __init__(__self__, *,
+                 root_domain: pulumi.Input[str],
+                 alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None):
+        """
+        The set of arguments for constructing a GlobalDnsProvider resource.
+        :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
+        :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
+        """
+        pulumi.set(__self__, "root_domain", root_domain)
+        if alidns_config is not None:
+            pulumi.set(__self__, "alidns_config", alidns_config)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cloudflare_config is not None:
+            pulumi.set(__self__, "cloudflare_config", cloudflare_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if route53_config is not None:
+            pulumi.set(__self__, "route53_config", route53_config)
+
+    @property
+    @pulumi.getter(name="rootDomain")
+    def root_domain(self) -> pulumi.Input[str]:
+        """
+        The user ID to assign Global DNS Provider (string)
+        """
+        return pulumi.get(self, "root_domain")
+
+    @root_domain.setter
+    def root_domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "root_domain", value)
+
+    @property
+    @pulumi.getter(name="alidnsConfig")
+    def alidns_config(self) -> Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']]:
+        return pulumi.get(self, "alidns_config")
+
+    @alidns_config.setter
+    def alidns_config(self, value: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']]):
+        pulumi.set(self, "alidns_config", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Global DNS Provider (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="cloudflareConfig")
+    def cloudflare_config(self) -> Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']]:
+        return pulumi.get(self, "cloudflare_config")
+
+    @cloudflare_config.setter
+    def cloudflare_config(self, value: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']]):
+        pulumi.set(self, "cloudflare_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Global DNS Provider (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Global DNS Provider (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="route53Config")
+    def route53_config(self) -> Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']]:
+        return pulumi.get(self, "route53_config")
+
+    @route53_config.setter
+    def route53_config(self, value: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']]):
+        pulumi.set(self, "route53_config", value)
 
 
 class GlobalDnsProvider(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +196,92 @@ class GlobalDnsProvider(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GlobalDnsProviderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - alidns
+        foo = rancher2.GlobalDnsProvider("foo",
+            alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - cloudflare
+        foo = rancher2.GlobalDnsProvider("foo",
+            cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
+                api_email="test@test.local",
+                api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                proxy_setting=True,
+            ),
+            root_domain="example.com")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Global DNS Provider - route53
+        foo = rancher2.GlobalDnsProvider("foo",
+            root_domain="example.com",
+            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
+                access_key="YYYYYYYYYYYYYYYYYYYY",
+                region="us-east-1",
+                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                zone_type="private",
+            ))
+        ```
+
+        ## Import
+
+        Global DNS Providers can be imported using the Rancher Global DNS Provider ID
+
+        ```sh
+         $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo <global_dns_provider_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GlobalDnsProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalDnsProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alidns_config: Optional[pulumi.Input[pulumi.InputType['GlobalDnsProviderAlidnsConfigArgs']]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cloudflare_config: Optional[pulumi.Input[pulumi.InputType['GlobalDnsProviderCloudflareConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 root_domain: Optional[pulumi.Input[str]] = None,
+                 route53_config: Optional[pulumi.Input[pulumi.InputType['GlobalDnsProviderRoute53ConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

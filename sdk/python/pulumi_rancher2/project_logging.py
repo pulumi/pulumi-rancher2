@@ -5,15 +5,261 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ProjectLogging']
+__all__ = ['ProjectLoggingArgs', 'ProjectLogging']
+
+@pulumi.input_type
+class ProjectLoggingArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_target_config: Optional[pulumi.Input['ProjectLoggingCustomTargetConfigArgs']] = None,
+                 elasticsearch_config: Optional[pulumi.Input['ProjectLoggingElasticsearchConfigArgs']] = None,
+                 enable_json_parsing: Optional[pulumi.Input[bool]] = None,
+                 fluentd_config: Optional[pulumi.Input['ProjectLoggingFluentdConfigArgs']] = None,
+                 kafka_config: Optional[pulumi.Input['ProjectLoggingKafkaConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 output_flush_interval: Optional[pulumi.Input[int]] = None,
+                 output_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 splunk_config: Optional[pulumi.Input['ProjectLoggingSplunkConfigArgs']] = None,
+                 syslog_config: Optional[pulumi.Input['ProjectLoggingSyslogConfigArgs']] = None):
+        """
+        The set of arguments for constructing a ProjectLogging resource.
+        :param pulumi.Input[str] kind: The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        :param pulumi.Input[str] project_id: The project id to configure logging (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Project Logging object (map)
+        :param pulumi.Input['ProjectLoggingCustomTargetConfigArgs'] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ProjectLoggingElasticsearchConfigArgs'] elasticsearch_config: The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[bool] enable_json_parsing: Enable json log parsing. Default: `false` (bool)
+        :param pulumi.Input['ProjectLoggingFluentdConfigArgs'] fluentd_config: The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ProjectLoggingKafkaConfigArgs'] kafka_config: The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Project Logging object (map)
+        :param pulumi.Input[str] name: The name of the Project Logging config (string)
+        :param pulumi.Input[str] namespace_id: The namespace id from Project logging (string)
+        :param pulumi.Input[int] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
+        :param pulumi.Input[Mapping[str, Any]] output_tags: The output tags for Project Logging (map)
+        :param pulumi.Input['ProjectLoggingSplunkConfigArgs'] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ProjectLoggingSyslogConfigArgs'] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "project_id", project_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if custom_target_config is not None:
+            pulumi.set(__self__, "custom_target_config", custom_target_config)
+        if elasticsearch_config is not None:
+            pulumi.set(__self__, "elasticsearch_config", elasticsearch_config)
+        if enable_json_parsing is not None:
+            pulumi.set(__self__, "enable_json_parsing", enable_json_parsing)
+        if fluentd_config is not None:
+            pulumi.set(__self__, "fluentd_config", fluentd_config)
+        if kafka_config is not None:
+            pulumi.set(__self__, "kafka_config", kafka_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if output_flush_interval is not None:
+            pulumi.set(__self__, "output_flush_interval", output_flush_interval)
+        if output_tags is not None:
+            pulumi.set(__self__, "output_tags", output_tags)
+        if splunk_config is not None:
+            pulumi.set(__self__, "splunk_config", splunk_config)
+        if syslog_config is not None:
+            pulumi.set(__self__, "syslog_config", syslog_config)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[str]:
+        """
+        The kind of the Project Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id to configure logging (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Project Logging object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="customTargetConfig")
+    def custom_target_config(self) -> Optional[pulumi.Input['ProjectLoggingCustomTargetConfigArgs']]:
+        """
+        The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "custom_target_config")
+
+    @custom_target_config.setter
+    def custom_target_config(self, value: Optional[pulumi.Input['ProjectLoggingCustomTargetConfigArgs']]):
+        pulumi.set(self, "custom_target_config", value)
+
+    @property
+    @pulumi.getter(name="elasticsearchConfig")
+    def elasticsearch_config(self) -> Optional[pulumi.Input['ProjectLoggingElasticsearchConfigArgs']]:
+        """
+        The elasticsearch config for Project Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "elasticsearch_config")
+
+    @elasticsearch_config.setter
+    def elasticsearch_config(self, value: Optional[pulumi.Input['ProjectLoggingElasticsearchConfigArgs']]):
+        pulumi.set(self, "elasticsearch_config", value)
+
+    @property
+    @pulumi.getter(name="enableJsonParsing")
+    def enable_json_parsing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable json log parsing. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enable_json_parsing")
+
+    @enable_json_parsing.setter
+    def enable_json_parsing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_json_parsing", value)
+
+    @property
+    @pulumi.getter(name="fluentdConfig")
+    def fluentd_config(self) -> Optional[pulumi.Input['ProjectLoggingFluentdConfigArgs']]:
+        """
+        The fluentd config for Project Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "fluentd_config")
+
+    @fluentd_config.setter
+    def fluentd_config(self, value: Optional[pulumi.Input['ProjectLoggingFluentdConfigArgs']]):
+        pulumi.set(self, "fluentd_config", value)
+
+    @property
+    @pulumi.getter(name="kafkaConfig")
+    def kafka_config(self) -> Optional[pulumi.Input['ProjectLoggingKafkaConfigArgs']]:
+        """
+        The kafka config for Project Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "kafka_config")
+
+    @kafka_config.setter
+    def kafka_config(self, value: Optional[pulumi.Input['ProjectLoggingKafkaConfigArgs']]):
+        pulumi.set(self, "kafka_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Project Logging object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Project Logging config (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace id from Project logging (string)
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter(name="outputFlushInterval")
+    def output_flush_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often buffered logs would be flushed. Default: `3` seconds (int)
+        """
+        return pulumi.get(self, "output_flush_interval")
+
+    @output_flush_interval.setter
+    def output_flush_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "output_flush_interval", value)
+
+    @property
+    @pulumi.getter(name="outputTags")
+    def output_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The output tags for Project Logging (map)
+        """
+        return pulumi.get(self, "output_tags")
+
+    @output_tags.setter
+    def output_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "output_tags", value)
+
+    @property
+    @pulumi.getter(name="splunkConfig")
+    def splunk_config(self) -> Optional[pulumi.Input['ProjectLoggingSplunkConfigArgs']]:
+        """
+        The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "splunk_config")
+
+    @splunk_config.setter
+    def splunk_config(self, value: Optional[pulumi.Input['ProjectLoggingSplunkConfigArgs']]):
+        pulumi.set(self, "splunk_config", value)
+
+    @property
+    @pulumi.getter(name="syslogConfig")
+    def syslog_config(self) -> Optional[pulumi.Input['ProjectLoggingSyslogConfigArgs']]:
+        """
+        The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "syslog_config")
+
+    @syslog_config.setter
+    def syslog_config(self, value: Optional[pulumi.Input['ProjectLoggingSyslogConfigArgs']]):
+        pulumi.set(self, "syslog_config", value)
 
 
 class ProjectLogging(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -82,6 +328,74 @@ class ProjectLogging(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ProjectLoggingSplunkConfigArgs']] splunk_config: The splunk config for Project Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ProjectLoggingSyslogConfigArgs']] syslog_config: The syslog config for Project Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectLoggingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Project Logging resource. This can be used to create Project Logging for Rancher v2 environments and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Project Logging
+        foo = rancher2.ProjectLogging("foo",
+            kind="syslog",
+            project_id="<project_id>",
+            syslog_config=rancher2.ProjectLoggingSyslogConfigArgs(
+                endpoint="<syslog_endpoint>",
+                protocol="udp",
+                severity="notice",
+                ssl_verify=False,
+            ))
+        ```
+
+        ## Import
+
+        Project Logging can be imported using the Rancher Project Logging ID
+
+        ```sh
+         $ pulumi import rancher2:index/projectLogging:ProjectLogging foo &lt;project_logging_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectLoggingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectLoggingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_target_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingCustomTargetConfigArgs']]] = None,
+                 elasticsearch_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingElasticsearchConfigArgs']]] = None,
+                 enable_json_parsing: Optional[pulumi.Input[bool]] = None,
+                 fluentd_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingFluentdConfigArgs']]] = None,
+                 kafka_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingKafkaConfigArgs']]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 output_flush_interval: Optional[pulumi.Input[int]] = None,
+                 output_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 splunk_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingSplunkConfigArgs']]] = None,
+                 syslog_config: Optional[pulumi.Input[pulumi.InputType['ProjectLoggingSyslogConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

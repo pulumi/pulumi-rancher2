@@ -5,15 +5,243 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MultiClusterApp']
+__all__ = ['MultiClusterAppArgs', 'MultiClusterApp']
+
+@pulumi.input_type
+class MultiClusterAppArgs:
+    def __init__(__self__, *,
+                 catalog_name: pulumi.Input[str],
+                 roles: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 targets: pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]],
+                 template_name: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 revision_history_limit: Optional[pulumi.Input[int]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
+                 wait: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a MultiClusterApp resource.
+        :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[str] template_name: The multi cluster app template name (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]] members: The multi cluster app answers (list)
+        :param pulumi.Input[str] name: The multi cluster app name (string)
+        :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
+        :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
+        :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
+        :param pulumi.Input['MultiClusterAppUpgradeStrategyArgs'] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
+        :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
+        """
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "roles", roles)
+        pulumi.set(__self__, "targets", targets)
+        pulumi.set(__self__, "template_name", template_name)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if revision_history_limit is not None:
+            pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+        if revision_id is not None:
+            pulumi.set(__self__, "revision_id", revision_id)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+        if upgrade_strategy is not None:
+            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[str]:
+        """
+        The multi cluster app catalog name (string)
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The multi cluster app roles (list)
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]:
+        """
+        The multi cluster app target projects (list)
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]):
+        pulumi.set(self, "targets", value)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> pulumi.Input[str]:
+        """
+        The multi cluster app template name (string)
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for multi cluster app object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def answers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]]:
+        """
+        The multi cluster app answers (list)
+        """
+        return pulumi.get(self, "answers")
+
+    @answers.setter
+    def answers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]]):
+        pulumi.set(self, "answers", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for multi cluster app object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]]:
+        """
+        The multi cluster app answers (list)
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="revisionHistoryLimit")
+    def revision_history_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multi cluster app revision history limit. Default `10` (int)
+        """
+        return pulumi.get(self, "revision_history_limit")
+
+    @revision_history_limit.setter
+    def revision_history_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "revision_history_limit", value)
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current revision id for the multi cluster app (string)
+        """
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_id", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app template version. Default: `latest` (string)
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']]:
+        """
+        The multi cluster app upgrade strategy (list MaxItems:1)
+        """
+        return pulumi.get(self, "upgrade_strategy")
+
+    @upgrade_strategy.setter
+    def upgrade_strategy(self, value: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']]):
+        pulumi.set(self, "upgrade_strategy", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until the multi cluster app is active. Default `true` (bool)
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait", value)
 
 
 class MultiClusterApp(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +288,53 @@ class MultiClusterApp(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MultiClusterAppArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
+
+        ```sh
+         $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MultiClusterAppArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MultiClusterAppArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 revision_history_limit: Optional[pulumi.Input[int]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_strategy: Optional[pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

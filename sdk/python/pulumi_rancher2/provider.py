@@ -5,13 +5,152 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Provider']
+__all__ = ['ProviderArgs', 'Provider']
+
+@pulumi.input_type
+class ProviderArgs:
+    def __init__(__self__, *,
+                 api_url: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 bootstrap: Optional[pulumi.Input[bool]] = None,
+                 ca_certs: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 token_key: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] api_url: The URL to the rancher API
+        :param pulumi.Input[str] access_key: API Key used to authenticate with the rancher server
+        :param pulumi.Input[bool] bootstrap: Bootstrap rancher server
+        :param pulumi.Input[str] ca_certs: CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+        :param pulumi.Input[bool] insecure: Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+        :param pulumi.Input[int] retries: Rancher connection retries
+        :param pulumi.Input[str] secret_key: API secret used to authenticate with the rancher server
+        :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
+        """
+        pulumi.set(__self__, "api_url", api_url)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if bootstrap is None:
+            bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
+        if bootstrap is not None:
+            pulumi.set(__self__, "bootstrap", bootstrap)
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+        if insecure is None:
+            insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if token_key is not None:
+            pulumi.set(__self__, "token_key", token_key)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> pulumi.Input[str]:
+        """
+        The URL to the rancher API
+        """
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_url", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Key used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def bootstrap(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bootstrap rancher server
+        """
+        return pulumi.get(self, "bootstrap")
+
+    @bootstrap.setter
+    def bootstrap(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bootstrap", value)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @ca_certs.setter
+    def ca_certs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certs", value)
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Rancher connection retries
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        API secret used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="tokenKey")
+    def token_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        API token used to authenticate with the rancher server
+        """
+        return pulumi.get(self, "token_key")
+
+    @token_key.setter
+    def token_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_key", value)
 
 
 class Provider(pulumi.ProviderResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +182,44 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] secret_key: API secret used to authenticate with the rancher server
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProviderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The provider type for the rancher2 package. By default, resources use package-wide configuration
+        settings, however an explicit `Provider` instance may be created and passed during resource
+        construction to achieve fine-grained programmatic control over provider settings. See the
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
+        :param str resource_name: The name of the resource.
+        :param ProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
+                 bootstrap: Optional[pulumi.Input[bool]] = None,
+                 ca_certs: Optional[pulumi.Input[str]] = None,
+                 insecure: Optional[pulumi.Input[bool]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 token_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

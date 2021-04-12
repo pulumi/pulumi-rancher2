@@ -5,13 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Bootstrap']
+__all__ = ['BootstrapArgs', 'Bootstrap']
+
+@pulumi.input_type
+class BootstrapArgs:
+    def __init__(__self__, *,
+                 current_password: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 telemetry: Optional[pulumi.Input[bool]] = None,
+                 token_ttl: Optional[pulumi.Input[int]] = None,
+                 token_update: Optional[pulumi.Input[bool]] = None,
+                 ui_default_landing: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Bootstrap resource.
+        :param pulumi.Input[str] current_password: Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        :param pulumi.Input[str] password: Password for Admin user or random generated if empty (string)
+        :param pulumi.Input[bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
+        :param pulumi.Input[int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
+        :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
+        :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        """
+        if current_password is not None:
+            pulumi.set(__self__, "current_password", current_password)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if telemetry is not None:
+            pulumi.set(__self__, "telemetry", telemetry)
+        if token_ttl is not None:
+            pulumi.set(__self__, "token_ttl", token_ttl)
+        if token_update is not None:
+            pulumi.set(__self__, "token_update", token_update)
+        if ui_default_landing is not None:
+            pulumi.set(__self__, "ui_default_landing", ui_default_landing)
+
+    @property
+    @pulumi.getter(name="currentPassword")
+    def current_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current password for Admin user. Just needed for recover if admin password has been changed from other resources and token is expired (string)
+        """
+        return pulumi.get(self, "current_password")
+
+    @current_password.setter
+    def current_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_password", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for Admin user or random generated if empty (string)
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def telemetry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Send telemetry anonymous data. Default: `false` (bool)
+        """
+        return pulumi.get(self, "telemetry")
+
+    @telemetry.setter
+    def telemetry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "telemetry", value)
+
+    @property
+    @pulumi.getter(name="tokenTtl")
+    def token_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        TTL in seconds for generated admin token. Default: `0`  (int)
+        """
+        return pulumi.get(self, "token_ttl")
+
+    @token_ttl.setter
+    def token_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "token_ttl", value)
+
+    @property
+    @pulumi.getter(name="tokenUpdate")
+    def token_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Regenerate admin token. Default: `false` (bool)
+        """
+        return pulumi.get(self, "token_update")
+
+    @token_update.setter
+    def token_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "token_update", value)
+
+    @property
+    @pulumi.getter(name="uiDefaultLanding")
+    def ui_default_landing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        """
+        return pulumi.get(self, "ui_default_landing")
+
+    @ui_default_landing.setter
+    def ui_default_landing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_default_landing", value)
 
 
 class Bootstrap(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +139,38 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[BootstrapArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Bootstrap resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param BootstrapArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BootstrapArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 current_password: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 telemetry: Optional[pulumi.Input[bool]] = None,
+                 token_ttl: Optional[pulumi.Input[int]] = None,
+                 token_update: Optional[pulumi.Input[bool]] = None,
+                 ui_default_landing: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

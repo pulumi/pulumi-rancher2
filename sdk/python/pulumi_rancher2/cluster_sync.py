@@ -5,15 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterSync']
+__all__ = ['ClusterSyncArgs', 'ClusterSync']
+
+@pulumi.input_type
+class ClusterSyncArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 state_confirm: Optional[pulumi.Input[int]] = None,
+                 synced: Optional[pulumi.Input[bool]] = None,
+                 wait_catalogs: Optional[pulumi.Input[bool]] = None,
+                 wait_monitoring: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ClusterSync resource.
+        :param pulumi.Input[str] cluster_id: The Cluster ID of the node (string).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
+        :param pulumi.Input[int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if node_pool_ids is not None:
+            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
+        if state_confirm is not None:
+            pulumi.set(__self__, "state_confirm", state_confirm)
+        if synced is not None:
+            pulumi.set(__self__, "synced", synced)
+        if wait_catalogs is not None:
+            pulumi.set(__self__, "wait_catalogs", wait_catalogs)
+        if wait_monitoring is not None:
+            pulumi.set(__self__, "wait_monitoring", wait_monitoring)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The Cluster ID of the node (string).
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="nodePoolIds")
+    def node_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The node pool IDs used by the cluster id (list)
+        """
+        return pulumi.get(self, "node_pool_ids")
+
+    @node_pool_ids.setter
+    def node_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_pool_ids", value)
+
+    @property
+    @pulumi.getter(name="stateConfirm")
+    def state_confirm(self) -> Optional[pulumi.Input[int]]:
+        """
+        Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
+        """
+        return pulumi.get(self, "state_confirm")
+
+    @state_confirm.setter
+    def state_confirm(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "state_confirm", value)
+
+    @property
+    @pulumi.getter
+    def synced(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "synced")
+
+    @synced.setter
+    def synced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "synced", value)
+
+    @property
+    @pulumi.getter(name="waitCatalogs")
+    def wait_catalogs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        """
+        return pulumi.get(self, "wait_catalogs")
+
+    @wait_catalogs.setter
+    def wait_catalogs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_catalogs", value)
+
+    @property
+    @pulumi.getter(name="waitMonitoring")
+    def wait_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until monitoring is up and running. Default: `false` (bool)
+        """
+        return pulumi.get(self, "wait_monitoring")
+
+    @wait_monitoring.setter
+    def wait_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_monitoring", value)
 
 
 class ClusterSync(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +135,38 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterSyncArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ClusterSync resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ClusterSyncArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterSyncArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 state_confirm: Optional[pulumi.Input[int]] = None,
+                 synced: Optional[pulumi.Input[bool]] = None,
+                 wait_catalogs: Optional[pulumi.Input[bool]] = None,
+                 wait_monitoring: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

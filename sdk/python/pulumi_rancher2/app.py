@@ -5,13 +5,245 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['App']
+__all__ = ['AppArgs', 'App']
+
+@pulumi.input_type
+class AppArgs:
+    def __init__(__self__, *,
+                 catalog_name: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 target_namespace: pulumi.Input[str],
+                 template_name: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 values_yaml: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a App resource.
+        :param pulumi.Input[str] catalog_name: Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+               * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+               * add project ID before name, `p-XXXXX:<name>`
+        :param pulumi.Input[str] project_id: The project id where the app will be installed (string)
+        :param pulumi.Input[str] target_namespace: The namespace id where the app will be installed (string)
+        :param pulumi.Input[str] template_name: Template name of the app. If modified, app will be upgraded (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for App object (map)
+        :param pulumi.Input[Mapping[str, Any]] answers: Answers for the app template. If modified, app will be upgraded (map)
+        :param pulumi.Input[str] description: Description for the app (string)
+        :param pulumi.Input[bool] force_upgrade: Force app upgrade (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for App object (map)
+        :param pulumi.Input[str] name: The name of the app (string)
+        :param pulumi.Input[str] revision_id: Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
+        :param pulumi.Input[str] template_version: Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+        :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
+        """
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "target_namespace", target_namespace)
+        pulumi.set(__self__, "template_name", template_name)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if force_upgrade is not None:
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if revision_id is not None:
+            pulumi.set(__self__, "revision_id", revision_id)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+        if values_yaml is not None:
+            pulumi.set(__self__, "values_yaml", values_yaml)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[str]:
+        """
+        Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
+        * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
+        * add project ID before name, `p-XXXXX:<name>`
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id where the app will be installed (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="targetNamespace")
+    def target_namespace(self) -> pulumi.Input[str]:
+        """
+        The namespace id where the app will be installed (string)
+        """
+        return pulumi.get(self, "target_namespace")
+
+    @target_namespace.setter
+    def target_namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_namespace", value)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> pulumi.Input[str]:
+        """
+        Template name of the app. If modified, app will be upgraded (string)
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for App object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def answers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Answers for the app template. If modified, app will be upgraded (map)
+        """
+        return pulumi.get(self, "answers")
+
+    @answers.setter
+    def answers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "answers", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the app (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceUpgrade")
+    def force_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force app upgrade (string)
+        """
+        return pulumi.get(self, "force_upgrade")
+
+    @force_upgrade.setter
+    def force_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for App object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current revision id for the app. If modified, If this argument is provided or modified, app will be rollbacked to `revision_id` (string)
+        """
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_id", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template version of the app. If modified, app will be upgraded. Default: `latest` (string)
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
+
+    @property
+    @pulumi.getter(name="valuesYaml")
+    def values_yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
+        """
+        return pulumi.get(self, "values_yaml")
+
+    @values_yaml.setter
+    def values_yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "values_yaml", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until app is deployed and active. Default: `true` (bool)
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait", value)
 
 
 class App(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +292,53 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AppArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Apps can be imported using the app ID in the format `<project_id>:<app_name>`
+
+        ```sh
+         $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AppArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AppArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 target_namespace: Optional[pulumi.Input[str]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 values_yaml: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

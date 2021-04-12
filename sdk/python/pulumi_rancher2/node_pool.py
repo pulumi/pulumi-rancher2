@@ -5,15 +5,212 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodePool']
+__all__ = ['NodePoolArgs', 'NodePool']
+
+@pulumi.input_type
+class NodePoolArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 hostname_prefix: pulumi.Input[str],
+                 node_template_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 control_plane: Optional[pulumi.Input[bool]] = None,
+                 delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 etcd: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]] = None,
+                 quantity: Optional[pulumi.Input[int]] = None,
+                 worker: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a NodePool resource.
+        :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
+        :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
+        :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
+        :param pulumi.Input[int] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[str] name: The name of the Node Pool (string)
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]] node_taints: Node taints. For Rancher v2.3.3 or above (List)
+        :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+        :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "hostname_prefix", hostname_prefix)
+        pulumi.set(__self__, "node_template_id", node_template_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
+        if delete_not_ready_after_secs is not None:
+            pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
+        if etcd is not None:
+            pulumi.set(__self__, "etcd", etcd)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_taints is not None:
+            pulumi.set(__self__, "node_taints", node_taints)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+        if worker is not None:
+            pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The RKE cluster id to use Node Pool (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="hostnamePrefix")
+    def hostname_prefix(self) -> pulumi.Input[str]:
+        """
+        The prefix for created nodes of the Node Pool (string)
+        """
+        return pulumi.get(self, "hostname_prefix")
+
+    @hostname_prefix.setter
+    def hostname_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname_prefix", value)
+
+    @property
+    @pulumi.getter(name="nodeTemplateId")
+    def node_template_id(self) -> pulumi.Input[str]:
+        """
+        The Node Template ID to use for node creation (string)
+        """
+        return pulumi.get(self, "node_template_id")
+
+    @node_template_id.setter
+    def node_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_template_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Node Pool object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input[bool]]:
+        """
+        RKE control plane role for created nodes (bool)
+        """
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "control_plane", value)
+
+    @property
+    @pulumi.getter(name="deleteNotReadyAfterSecs")
+    def delete_not_ready_after_secs(self) -> Optional[pulumi.Input[int]]:
+        """
+        Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        """
+        return pulumi.get(self, "delete_not_ready_after_secs")
+
+    @delete_not_ready_after_secs.setter
+    def delete_not_ready_after_secs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "delete_not_ready_after_secs", value)
+
+    @property
+    @pulumi.getter
+    def etcd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        RKE etcd role for created nodes (bool)
+        """
+        return pulumi.get(self, "etcd")
+
+    @etcd.setter
+    def etcd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "etcd", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Node Pool (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeTaints")
+    def node_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]]:
+        """
+        Node taints. For Rancher v2.3.3 or above (List)
+        """
+        return pulumi.get(self, "node_taints")
+
+    @node_taints.setter
+    def node_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]]):
+        pulumi.set(self, "node_taints", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quantity", value)
+
+    @property
+    @pulumi.getter
+    def worker(self) -> Optional[pulumi.Input[bool]]:
+        """
+        RKE role role for created nodes (bool)
+        """
+        return pulumi.get(self, "worker")
+
+    @worker.setter
+    def worker(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "worker", value)
 
 
 class NodePool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +255,53 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodePoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+
+        ## Import
+
+        Node Pool can be imported using the Rancher Node Pool ID
+
+        ```sh
+         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NodePoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 control_plane: Optional[pulumi.Input[bool]] = None,
+                 delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 etcd: Optional[pulumi.Input[bool]] = None,
+                 hostname_prefix: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]]] = None,
+                 node_template_id: Optional[pulumi.Input[str]] = None,
+                 quantity: Optional[pulumi.Input[int]] = None,
+                 worker: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

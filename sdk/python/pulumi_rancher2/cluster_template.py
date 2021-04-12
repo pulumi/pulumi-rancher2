@@ -5,15 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterTemplate']
+__all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
+
+@pulumi.input_type
+class ClusterTemplateArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None):
+        """
+        The set of arguments for constructing a ClusterTemplate resource.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)
+        :param pulumi.Input[str] description: Cluster template description
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]] members: Cluster template members (list)
+        :param pulumi.Input[str] name: The cluster template revision name (string)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if template_revisions is not None:
+            pulumi.set(__self__, "template_revisions", template_revisions)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for the cluster template revision (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster template description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for the cluster template revision (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]]:
+        """
+        Cluster template members (list)
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster template revision name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="templateRevisions")
+    def template_revisions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]]:
+        """
+        Cluster template revisions (list)
+        """
+        return pulumi.get(self, "template_revisions")
+
+    @template_revisions.setter
+    def template_revisions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]]):
+        pulumi.set(self, "template_revisions", value)
 
 
 class ClusterTemplate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -161,6 +265,162 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The cluster template revision name (string)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ClusterTemplateArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information.
+
+        Cluster Templates are available from Rancher v2.3.x and above.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cluster Template
+        foo = rancher2.ClusterTemplate("foo",
+            description="Terraform cluster template foo",
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                    },
+                ),
+                default=True,
+                name="V1",
+            )])
+        ```
+
+        Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x or above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cluster Template
+        foo = rancher2.ClusterTemplate("foo",
+            description="Terraform cluster template foo",
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                        "upgrade_strategy": {
+                            "drain": True,
+                            "maxUnavailableWorker": "20%",
+                        },
+                    },
+                ),
+                default=True,
+                name="V1",
+            )])
+        ```
+
+        Creating Rancher v2 RKE cluster template with scheduled cluster scan. For Rancher v2.4.x or above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 Cluster Template
+        foo = rancher2.ClusterTemplate("foo",
+            description="Terraform cluster template foo",
+            members=[rancher2.ClusterTemplateMemberArgs(
+                access_type="owner",
+                user_principal_id="local://user-XXXXX",
+            )],
+            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
+                    rke_config={
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                    },
+                    scheduled_cluster_scan={
+                        "enabled": True,
+                        "scanConfig": {
+                            "cisScanConfig": {
+                                "debugMaster": True,
+                                "debugWorker": True,
+                            },
+                        },
+                        "scheduleConfig": {
+                            "cronSchedule": "30 * * * *",
+                            "retention": 5,
+                        },
+                    },
+                ),
+                default=True,
+                name="V1",
+            )])
+        ```
+
+        ## Import
+
+        Cluster Template can be imported using the rancher Cluster Template ID
+
+        ```sh
+         $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClusterTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
