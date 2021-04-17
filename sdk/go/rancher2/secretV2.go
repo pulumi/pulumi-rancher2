@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Rancher Secret v2 resource. This can be used to create k8s secrets for Rancher v2 environments and retrieve their information. Secret v2 resource is available at Rancher v2.5.x and above.

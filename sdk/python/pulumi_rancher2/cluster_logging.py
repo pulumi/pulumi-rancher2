@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -258,6 +258,254 @@ class ClusterLoggingArgs:
         pulumi.set(self, "syslog_config", value)
 
 
+@pulumi.input_type
+class _ClusterLoggingState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 custom_target_config: Optional[pulumi.Input['ClusterLoggingCustomTargetConfigArgs']] = None,
+                 elasticsearch_config: Optional[pulumi.Input['ClusterLoggingElasticsearchConfigArgs']] = None,
+                 enable_json_parsing: Optional[pulumi.Input[bool]] = None,
+                 fluentd_config: Optional[pulumi.Input['ClusterLoggingFluentdConfigArgs']] = None,
+                 kafka_config: Optional[pulumi.Input['ClusterLoggingKafkaConfigArgs']] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 output_flush_interval: Optional[pulumi.Input[int]] = None,
+                 output_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 splunk_config: Optional[pulumi.Input['ClusterLoggingSplunkConfigArgs']] = None,
+                 syslog_config: Optional[pulumi.Input['ClusterLoggingSyslogConfigArgs']] = None):
+        """
+        Input properties used for looking up and filtering ClusterLogging resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Cluster Logging object (map)
+        :param pulumi.Input[str] cluster_id: The cluster id to configure logging (string)
+        :param pulumi.Input['ClusterLoggingCustomTargetConfigArgs'] custom_target_config: The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ClusterLoggingElasticsearchConfigArgs'] elasticsearch_config: The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[bool] enable_json_parsing: Enable json log parsing. Default: `false` (bool)
+        :param pulumi.Input['ClusterLoggingFluentdConfigArgs'] fluentd_config: The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ClusterLoggingKafkaConfigArgs'] kafka_config: The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        :param pulumi.Input[str] kind: The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cluster Logging object (map)
+        :param pulumi.Input[str] name: The name of the cluster logging config (string)
+        :param pulumi.Input[str] namespace_id: The namespace id from cluster logging (string)
+        :param pulumi.Input[int] output_flush_interval: How often buffered logs would be flushed. Default: `3` seconds (int)
+        :param pulumi.Input[Mapping[str, Any]] output_tags: The output tags for Cluster Logging (map)
+        :param pulumi.Input['ClusterLoggingSplunkConfigArgs'] splunk_config: The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        :param pulumi.Input['ClusterLoggingSyslogConfigArgs'] syslog_config: The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if custom_target_config is not None:
+            pulumi.set(__self__, "custom_target_config", custom_target_config)
+        if elasticsearch_config is not None:
+            pulumi.set(__self__, "elasticsearch_config", elasticsearch_config)
+        if enable_json_parsing is not None:
+            pulumi.set(__self__, "enable_json_parsing", enable_json_parsing)
+        if fluentd_config is not None:
+            pulumi.set(__self__, "fluentd_config", fluentd_config)
+        if kafka_config is not None:
+            pulumi.set(__self__, "kafka_config", kafka_config)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if output_flush_interval is not None:
+            pulumi.set(__self__, "output_flush_interval", output_flush_interval)
+        if output_tags is not None:
+            pulumi.set(__self__, "output_tags", output_tags)
+        if splunk_config is not None:
+            pulumi.set(__self__, "splunk_config", splunk_config)
+        if syslog_config is not None:
+            pulumi.set(__self__, "syslog_config", syslog_config)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Cluster Logging object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster id to configure logging (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="customTargetConfig")
+    def custom_target_config(self) -> Optional[pulumi.Input['ClusterLoggingCustomTargetConfigArgs']]:
+        """
+        The custom target config for Cluster Logging. For `kind = custom`. Conflicts with `elasticsearch_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "custom_target_config")
+
+    @custom_target_config.setter
+    def custom_target_config(self, value: Optional[pulumi.Input['ClusterLoggingCustomTargetConfigArgs']]):
+        pulumi.set(self, "custom_target_config", value)
+
+    @property
+    @pulumi.getter(name="elasticsearchConfig")
+    def elasticsearch_config(self) -> Optional[pulumi.Input['ClusterLoggingElasticsearchConfigArgs']]:
+        """
+        The elasticsearch config for Cluster Logging. For `kind = elasticsearch`. Conflicts with `custom_target_config`, `fluentd_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "elasticsearch_config")
+
+    @elasticsearch_config.setter
+    def elasticsearch_config(self, value: Optional[pulumi.Input['ClusterLoggingElasticsearchConfigArgs']]):
+        pulumi.set(self, "elasticsearch_config", value)
+
+    @property
+    @pulumi.getter(name="enableJsonParsing")
+    def enable_json_parsing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable json log parsing. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enable_json_parsing")
+
+    @enable_json_parsing.setter
+    def enable_json_parsing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_json_parsing", value)
+
+    @property
+    @pulumi.getter(name="fluentdConfig")
+    def fluentd_config(self) -> Optional[pulumi.Input['ClusterLoggingFluentdConfigArgs']]:
+        """
+        The fluentd config for Cluster Logging. For `kind = fluentd`. Conflicts with `custom_target_config`, `elasticsearch_config`, `kafka_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "fluentd_config")
+
+    @fluentd_config.setter
+    def fluentd_config(self, value: Optional[pulumi.Input['ClusterLoggingFluentdConfigArgs']]):
+        pulumi.set(self, "fluentd_config", value)
+
+    @property
+    @pulumi.getter(name="kafkaConfig")
+    def kafka_config(self) -> Optional[pulumi.Input['ClusterLoggingKafkaConfigArgs']]:
+        """
+        The kafka config for Cluster Logging. For `kind = kafka`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `splunk_config` and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "kafka_config")
+
+    @kafka_config.setter
+    def kafka_config(self, value: Optional[pulumi.Input['ClusterLoggingKafkaConfigArgs']]):
+        pulumi.set(self, "kafka_config", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of the Cluster Logging. `elasticsearch`, `fluentd`, `kafka`, `splunk` and `syslog` are supported (string)
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Cluster Logging object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cluster logging config (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace id from cluster logging (string)
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter(name="outputFlushInterval")
+    def output_flush_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often buffered logs would be flushed. Default: `3` seconds (int)
+        """
+        return pulumi.get(self, "output_flush_interval")
+
+    @output_flush_interval.setter
+    def output_flush_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "output_flush_interval", value)
+
+    @property
+    @pulumi.getter(name="outputTags")
+    def output_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The output tags for Cluster Logging (map)
+        """
+        return pulumi.get(self, "output_tags")
+
+    @output_tags.setter
+    def output_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "output_tags", value)
+
+    @property
+    @pulumi.getter(name="splunkConfig")
+    def splunk_config(self) -> Optional[pulumi.Input['ClusterLoggingSplunkConfigArgs']]:
+        """
+        The splunk config for Cluster Logging. For `kind = splunk`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `syslog_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "splunk_config")
+
+    @splunk_config.setter
+    def splunk_config(self, value: Optional[pulumi.Input['ClusterLoggingSplunkConfigArgs']]):
+        pulumi.set(self, "splunk_config", value)
+
+    @property
+    @pulumi.getter(name="syslogConfig")
+    def syslog_config(self) -> Optional[pulumi.Input['ClusterLoggingSyslogConfigArgs']]:
+        """
+        The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "syslog_config")
+
+    @syslog_config.setter
+    def syslog_config(self, value: Optional[pulumi.Input['ClusterLoggingSyslogConfigArgs']]):
+        pulumi.set(self, "syslog_config", value)
+
+
 class ClusterLogging(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -411,27 +659,27 @@ class ClusterLogging(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterLoggingArgs.__new__(ClusterLoggingArgs)
 
-            __props__['annotations'] = annotations
+            __props__.__dict__["annotations"] = annotations
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['custom_target_config'] = custom_target_config
-            __props__['elasticsearch_config'] = elasticsearch_config
-            __props__['enable_json_parsing'] = enable_json_parsing
-            __props__['fluentd_config'] = fluentd_config
-            __props__['kafka_config'] = kafka_config
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["custom_target_config"] = custom_target_config
+            __props__.__dict__["elasticsearch_config"] = elasticsearch_config
+            __props__.__dict__["enable_json_parsing"] = enable_json_parsing
+            __props__.__dict__["fluentd_config"] = fluentd_config
+            __props__.__dict__["kafka_config"] = kafka_config
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['namespace_id'] = namespace_id
-            __props__['output_flush_interval'] = output_flush_interval
-            __props__['output_tags'] = output_tags
-            __props__['splunk_config'] = splunk_config
-            __props__['syslog_config'] = syslog_config
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["namespace_id"] = namespace_id
+            __props__.__dict__["output_flush_interval"] = output_flush_interval
+            __props__.__dict__["output_tags"] = output_tags
+            __props__.__dict__["splunk_config"] = splunk_config
+            __props__.__dict__["syslog_config"] = syslog_config
         super(ClusterLogging, __self__).__init__(
             'rancher2:index/clusterLogging:ClusterLogging',
             resource_name,
@@ -482,23 +730,23 @@ class ClusterLogging(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterLoggingState.__new__(_ClusterLoggingState)
 
-        __props__["annotations"] = annotations
-        __props__["cluster_id"] = cluster_id
-        __props__["custom_target_config"] = custom_target_config
-        __props__["elasticsearch_config"] = elasticsearch_config
-        __props__["enable_json_parsing"] = enable_json_parsing
-        __props__["fluentd_config"] = fluentd_config
-        __props__["kafka_config"] = kafka_config
-        __props__["kind"] = kind
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["namespace_id"] = namespace_id
-        __props__["output_flush_interval"] = output_flush_interval
-        __props__["output_tags"] = output_tags
-        __props__["splunk_config"] = splunk_config
-        __props__["syslog_config"] = syslog_config
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["custom_target_config"] = custom_target_config
+        __props__.__dict__["elasticsearch_config"] = elasticsearch_config
+        __props__.__dict__["enable_json_parsing"] = enable_json_parsing
+        __props__.__dict__["fluentd_config"] = fluentd_config
+        __props__.__dict__["kafka_config"] = kafka_config
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_id"] = namespace_id
+        __props__.__dict__["output_flush_interval"] = output_flush_interval
+        __props__.__dict__["output_tags"] = output_tags
+        __props__.__dict__["splunk_config"] = splunk_config
+        __props__.__dict__["syslog_config"] = syslog_config
         return ClusterLogging(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -620,10 +868,4 @@ class ClusterLogging(pulumi.CustomResource):
         The syslog config for Cluster Logging. For `kind = syslog`. Conflicts with `custom_target_config`, `elasticsearch_config`, `fluentd_config`, `kafka_config`, and `splunk_config` (list maxitems:1)
         """
         return pulumi.get(self, "syslog_config")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

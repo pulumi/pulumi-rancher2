@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GlobalDnsArgs', 'GlobalDns']
 
@@ -130,6 +130,142 @@ class GlobalDnsArgs:
     @project_ids.setter
     def project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "project_ids", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        TTL in seconds for DNS record. Default: `300` (int)
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class _GlobalDnsState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 fqdn: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 provider_id: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering GlobalDns resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS (map)
+        :param pulumi.Input[str] fqdn: The Global DNS record (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS (map)
+        :param pulumi.Input[str] multi_cluster_app_id: The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
+        :param pulumi.Input[str] name: The name of the Global DNS (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
+        :param pulumi.Input[str] provider_id: The Global DNS provider ID to use (string)
+        :param pulumi.Input[int] ttl: TTL in seconds for DNS record. Default: `300` (int)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if multi_cluster_app_id is not None:
+            pulumi.set(__self__, "multi_cluster_app_id", multi_cluster_app_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_ids is not None:
+            pulumi.set(__self__, "project_ids", project_ids)
+        if provider_id is not None:
+            pulumi.set(__self__, "provider_id", provider_id)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for Global DNS (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Global DNS record (string)
+        """
+        return pulumi.get(self, "fqdn")
+
+    @fqdn.setter
+    def fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for Global DNS (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="multiClusterAppId")
+    def multi_cluster_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
+        """
+        return pulumi.get(self, "multi_cluster_app_id")
+
+    @multi_cluster_app_id.setter
+    def multi_cluster_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_cluster_app_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Global DNS (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectIds")
+    def project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
+        """
+        return pulumi.get(self, "project_ids")
+
+    @project_ids.setter
+    def project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_ids", value)
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Global DNS provider ID to use (string)
+        """
+        return pulumi.get(self, "provider_id")
+
+    @provider_id.setter
+    def provider_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider_id", value)
 
     @property
     @pulumi.getter
@@ -330,20 +466,20 @@ class GlobalDns(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GlobalDnsArgs.__new__(GlobalDnsArgs)
 
-            __props__['annotations'] = annotations
+            __props__.__dict__["annotations"] = annotations
             if fqdn is None and not opts.urn:
                 raise TypeError("Missing required property 'fqdn'")
-            __props__['fqdn'] = fqdn
-            __props__['labels'] = labels
-            __props__['multi_cluster_app_id'] = multi_cluster_app_id
-            __props__['name'] = name
-            __props__['project_ids'] = project_ids
+            __props__.__dict__["fqdn"] = fqdn
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["multi_cluster_app_id"] = multi_cluster_app_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project_ids"] = project_ids
             if provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_id'")
-            __props__['provider_id'] = provider_id
-            __props__['ttl'] = ttl
+            __props__.__dict__["provider_id"] = provider_id
+            __props__.__dict__["ttl"] = ttl
         super(GlobalDns, __self__).__init__(
             'rancher2:index/globalDns:GlobalDns',
             resource_name,
@@ -380,16 +516,16 @@ class GlobalDns(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GlobalDnsState.__new__(_GlobalDnsState)
 
-        __props__["annotations"] = annotations
-        __props__["fqdn"] = fqdn
-        __props__["labels"] = labels
-        __props__["multi_cluster_app_id"] = multi_cluster_app_id
-        __props__["name"] = name
-        __props__["project_ids"] = project_ids
-        __props__["provider_id"] = provider_id
-        __props__["ttl"] = ttl
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["fqdn"] = fqdn
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["multi_cluster_app_id"] = multi_cluster_app_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project_ids"] = project_ids
+        __props__.__dict__["provider_id"] = provider_id
+        __props__.__dict__["ttl"] = ttl
         return GlobalDns(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -455,10 +591,4 @@ class GlobalDns(pulumi.CustomResource):
         TTL in seconds for DNS record. Default: `300` (int)
         """
         return pulumi.get(self, "ttl")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

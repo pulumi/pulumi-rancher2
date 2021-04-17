@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -54,6 +54,126 @@ class ClusterTemplateArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster template description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for the cluster template revision (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]]:
+        """
+        Cluster template members (list)
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster template revision name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="templateRevisions")
+    def template_revisions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]]:
+        """
+        Cluster template revisions (list)
+        """
+        return pulumi.get(self, "template_revisions")
+
+    @template_revisions.setter
+    def template_revisions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]]):
+        pulumi.set(self, "template_revisions", value)
+
+
+@pulumi.input_type
+class _ClusterTemplateState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_revision_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering ClusterTemplate resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template revision (map)
+        :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
+        :param pulumi.Input[str] description: Cluster template description
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template revision (map)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]] members: Cluster template members (list)
+        :param pulumi.Input[str] name: The cluster template revision name (string)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if default_revision_id is not None:
+            pulumi.set(__self__, "default_revision_id", default_revision_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if template_revisions is not None:
+            pulumi.set(__self__, "template_revisions", template_revisions)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for the cluster template revision (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="defaultRevisionId")
+    def default_revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) Default cluster template revision ID (string)
+        """
+        return pulumi.get(self, "default_revision_id")
+
+    @default_revision_id.setter
+    def default_revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_revision_id", value)
 
     @property
     @pulumi.getter
@@ -436,15 +556,15 @@ class ClusterTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterTemplateArgs.__new__(ClusterTemplateArgs)
 
-            __props__['annotations'] = annotations
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['members'] = members
-            __props__['name'] = name
-            __props__['template_revisions'] = template_revisions
-            __props__['default_revision_id'] = None
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["members"] = members
+            __props__.__dict__["name"] = name
+            __props__.__dict__["template_revisions"] = template_revisions
+            __props__.__dict__["default_revision_id"] = None
         super(ClusterTemplate, __self__).__init__(
             'rancher2:index/clusterTemplate:ClusterTemplate',
             resource_name,
@@ -479,15 +599,15 @@ class ClusterTemplate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterTemplateState.__new__(_ClusterTemplateState)
 
-        __props__["annotations"] = annotations
-        __props__["default_revision_id"] = default_revision_id
-        __props__["description"] = description
-        __props__["labels"] = labels
-        __props__["members"] = members
-        __props__["name"] = name
-        __props__["template_revisions"] = template_revisions
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["default_revision_id"] = default_revision_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["members"] = members
+        __props__.__dict__["name"] = name
+        __props__.__dict__["template_revisions"] = template_revisions
         return ClusterTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -545,10 +665,4 @@ class ClusterTemplate(pulumi.CustomResource):
         Cluster template revisions (list)
         """
         return pulumi.get(self, "template_revisions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

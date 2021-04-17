@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['NodeDriverArgs', 'NodeDriver']
 
@@ -191,6 +191,190 @@ class NodeDriverArgs:
         pulumi.set(self, "whitelist_domains", value)
 
 
+@pulumi.input_type
+class _NodeDriverState:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 builtin: Optional[pulumi.Input[bool]] = None,
+                 checksum: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ui_url: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering NodeDriver resources.
+        :param pulumi.Input[bool] active: Specify if the node driver state (bool)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[bool] builtin: Specify wheter the node driver is an internal node driver or not (bool)
+        :param pulumi.Input[str] checksum: Verify that the downloaded driver matches the expected checksum (string)
+        :param pulumi.Input[str] description: Description of the node driver (string)
+        :param pulumi.Input[str] external_id: External ID (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[str] name: Name of the node driver (string)
+        :param pulumi.Input[str] ui_url: The URL to load for customized Add Nodes screen for this driver (string)
+        :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if builtin is not None:
+            pulumi.set(__self__, "builtin", builtin)
+        if checksum is not None:
+            pulumi.set(__self__, "checksum", checksum)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ui_url is not None:
+            pulumi.set(__self__, "ui_url", ui_url)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if whitelist_domains is not None:
+            pulumi.set(__self__, "whitelist_domains", whitelist_domains)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify if the node driver state (bool)
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations of the resource (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def builtin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify wheter the node driver is an internal node driver or not (bool)
+        """
+        return pulumi.get(self, "builtin")
+
+    @builtin.setter
+    def builtin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "builtin", value)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        Verify that the downloaded driver matches the expected checksum (string)
+        """
+        return pulumi.get(self, "checksum")
+
+    @checksum.setter
+    def checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "checksum", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the node driver (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        External ID (string)
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels of the resource (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the node driver (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="uiUrl")
+    def ui_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to load for customized Add Nodes screen for this driver (string)
+        """
+        return pulumi.get(self, "ui_url")
+
+    @ui_url.setter
+    def ui_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_url", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to download the machine driver binary for 64-bit Linux (string)
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="whitelistDomains")
+    def whitelist_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domains to whitelist for the ui (list)
+        """
+        return pulumi.get(self, "whitelist_domains")
+
+    @whitelist_domains.setter
+    def whitelist_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelist_domains", value)
+
+
 class NodeDriver(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -332,25 +516,25 @@ class NodeDriver(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NodeDriverArgs.__new__(NodeDriverArgs)
 
             if active is None and not opts.urn:
                 raise TypeError("Missing required property 'active'")
-            __props__['active'] = active
-            __props__['annotations'] = annotations
+            __props__.__dict__["active"] = active
+            __props__.__dict__["annotations"] = annotations
             if builtin is None and not opts.urn:
                 raise TypeError("Missing required property 'builtin'")
-            __props__['builtin'] = builtin
-            __props__['checksum'] = checksum
-            __props__['description'] = description
-            __props__['external_id'] = external_id
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['ui_url'] = ui_url
+            __props__.__dict__["builtin"] = builtin
+            __props__.__dict__["checksum"] = checksum
+            __props__.__dict__["description"] = description
+            __props__.__dict__["external_id"] = external_id
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["ui_url"] = ui_url
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
-            __props__['url'] = url
-            __props__['whitelist_domains'] = whitelist_domains
+            __props__.__dict__["url"] = url
+            __props__.__dict__["whitelist_domains"] = whitelist_domains
         super(NodeDriver, __self__).__init__(
             'rancher2:index/nodeDriver:NodeDriver',
             resource_name,
@@ -393,19 +577,19 @@ class NodeDriver(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NodeDriverState.__new__(_NodeDriverState)
 
-        __props__["active"] = active
-        __props__["annotations"] = annotations
-        __props__["builtin"] = builtin
-        __props__["checksum"] = checksum
-        __props__["description"] = description
-        __props__["external_id"] = external_id
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["ui_url"] = ui_url
-        __props__["url"] = url
-        __props__["whitelist_domains"] = whitelist_domains
+        __props__.__dict__["active"] = active
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["builtin"] = builtin
+        __props__.__dict__["checksum"] = checksum
+        __props__.__dict__["description"] = description
+        __props__.__dict__["external_id"] = external_id
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["ui_url"] = ui_url
+        __props__.__dict__["url"] = url
+        __props__.__dict__["whitelist_domains"] = whitelist_domains
         return NodeDriver(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -495,10 +679,4 @@ class NodeDriver(pulumi.CustomResource):
         Domains to whitelist for the ui (list)
         """
         return pulumi.get(self, "whitelist_domains")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

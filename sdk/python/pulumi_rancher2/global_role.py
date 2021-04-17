@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -54,6 +54,126 @@ class GlobalRoleArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global role description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for global role object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global role name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="newUserDefault")
+    def new_user_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this role should be added to new users. Default `false` (bool)
+        """
+        return pulumi.get(self, "new_user_default")
+
+    @new_user_default.setter
+    def new_user_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "new_user_default", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]]:
+        """
+        Global role policy rules (list)
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class _GlobalRoleState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 builtin: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 new_user_default: Optional[pulumi.Input[bool]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering GlobalRole resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
+        :param pulumi.Input[bool] builtin: (Computed) Builtin global role (bool)
+        :param pulumi.Input[str] description: Global role description (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
+        :param pulumi.Input[str] name: Global role name (string)
+        :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if builtin is not None:
+            pulumi.set(__self__, "builtin", builtin)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if new_user_default is not None:
+            pulumi.set(__self__, "new_user_default", new_user_default)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for global role object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def builtin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Computed) Builtin global role (bool)
+        """
+        return pulumi.get(self, "builtin")
+
+    @builtin.setter
+    def builtin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "builtin", value)
 
     @property
     @pulumi.getter
@@ -240,15 +360,15 @@ class GlobalRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GlobalRoleArgs.__new__(GlobalRoleArgs)
 
-            __props__['annotations'] = annotations
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['new_user_default'] = new_user_default
-            __props__['rules'] = rules
-            __props__['builtin'] = None
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["new_user_default"] = new_user_default
+            __props__.__dict__["rules"] = rules
+            __props__.__dict__["builtin"] = None
         super(GlobalRole, __self__).__init__(
             'rancher2:index/globalRole:GlobalRole',
             resource_name,
@@ -283,15 +403,15 @@ class GlobalRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GlobalRoleState.__new__(_GlobalRoleState)
 
-        __props__["annotations"] = annotations
-        __props__["builtin"] = builtin
-        __props__["description"] = description
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["new_user_default"] = new_user_default
-        __props__["rules"] = rules
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["builtin"] = builtin
+        __props__.__dict__["description"] = description
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["new_user_default"] = new_user_default
+        __props__.__dict__["rules"] = rules
         return GlobalRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -349,10 +469,4 @@ class GlobalRole(pulumi.CustomResource):
         Global role policy rules (list)
         """
         return pulumi.get(self, "rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

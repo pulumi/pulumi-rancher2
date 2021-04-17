@@ -4,7 +4,7 @@
 package rancher2
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deprecated: rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate

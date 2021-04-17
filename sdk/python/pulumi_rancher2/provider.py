@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -235,31 +235,25 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['access_key'] = access_key
+            __props__.__dict__["access_key"] = access_key
             if api_url is None and not opts.urn:
                 raise TypeError("Missing required property 'api_url'")
-            __props__['api_url'] = api_url
+            __props__.__dict__["api_url"] = api_url
             if bootstrap is None:
                 bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
-            __props__['bootstrap'] = pulumi.Output.from_input(bootstrap).apply(pulumi.runtime.to_json) if bootstrap is not None else None
-            __props__['ca_certs'] = ca_certs
+            __props__.__dict__["bootstrap"] = pulumi.Output.from_input(bootstrap).apply(pulumi.runtime.to_json) if bootstrap is not None else None
+            __props__.__dict__["ca_certs"] = ca_certs
             if insecure is None:
                 insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
-            __props__['insecure'] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            __props__['retries'] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
-            __props__['secret_key'] = secret_key
-            __props__['token_key'] = token_key
+            __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
+            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["token_key"] = token_key
         super(Provider, __self__).__init__(
             'rancher2',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

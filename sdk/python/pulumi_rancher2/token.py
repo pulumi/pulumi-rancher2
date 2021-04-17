@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TokenArgs', 'Token']
 
@@ -112,6 +112,222 @@ class TokenArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class _TokenState:
+    def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 expired: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 renew: Optional[pulumi.Input[bool]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Token resources.
+        :param pulumi.Input[str] access_key: (Computed) Token access key part (string)
+        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
+        :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
+        :param pulumi.Input[str] description: Token description (string)
+        :param pulumi.Input[bool] enabled: (Computed) Token is enabled (bool)
+        :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
+        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
+        :param pulumi.Input[str] name: (Computed) Token name (string)
+        :param pulumi.Input[bool] renew: Renew expired or disabled token
+        :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
+        :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
+        :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if expired is not None:
+            pulumi.set(__self__, "expired", expired)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if renew is not None:
+            pulumi.set(__self__, "renew", renew)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) Token access key part (string)
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        (Computed) Annotations of the token (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster ID for scoped token (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token description (string)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Computed) Token is enabled (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def expired(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Computed) Token is expired (bool)
+        """
+        return pulumi.get(self, "expired")
+
+    @expired.setter
+    def expired(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "expired", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        (Computed) Labels of the token (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) Token name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Renew expired or disabled token
+        """
+        return pulumi.get(self, "renew")
+
+    @renew.setter
+    def renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "renew", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed/Sensitive) Token secret key part (string)
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed/Sensitive) Token value (string)
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Token time to live in seconds. Default `0` (int)
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) Token user ID (string)
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class Token(pulumi.CustomResource):
@@ -226,21 +442,21 @@ class Token(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TokenArgs.__new__(TokenArgs)
 
-            __props__['annotations'] = annotations
-            __props__['cluster_id'] = cluster_id
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['renew'] = renew
-            __props__['ttl'] = ttl
-            __props__['access_key'] = None
-            __props__['enabled'] = None
-            __props__['expired'] = None
-            __props__['name'] = None
-            __props__['secret_key'] = None
-            __props__['token'] = None
-            __props__['user_id'] = None
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["renew"] = renew
+            __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["access_key"] = None
+            __props__.__dict__["enabled"] = None
+            __props__.__dict__["expired"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["secret_key"] = None
+            __props__.__dict__["token"] = None
+            __props__.__dict__["user_id"] = None
         super(Token, __self__).__init__(
             'rancher2:index/token:Token',
             resource_name,
@@ -287,21 +503,21 @@ class Token(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TokenState.__new__(_TokenState)
 
-        __props__["access_key"] = access_key
-        __props__["annotations"] = annotations
-        __props__["cluster_id"] = cluster_id
-        __props__["description"] = description
-        __props__["enabled"] = enabled
-        __props__["expired"] = expired
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["renew"] = renew
-        __props__["secret_key"] = secret_key
-        __props__["token"] = token
-        __props__["ttl"] = ttl
-        __props__["user_id"] = user_id
+        __props__.__dict__["access_key"] = access_key
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["expired"] = expired
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["renew"] = renew
+        __props__.__dict__["secret_key"] = secret_key
+        __props__.__dict__["token"] = token
+        __props__.__dict__["ttl"] = ttl
+        __props__.__dict__["user_id"] = user_id
         return Token(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -407,10 +623,4 @@ class Token(pulumi.CustomResource):
         (Computed) Token user ID (string)
         """
         return pulumi.get(self, "user_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

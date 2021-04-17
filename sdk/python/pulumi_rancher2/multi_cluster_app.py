@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -240,6 +240,254 @@ class MultiClusterAppArgs:
         pulumi.set(self, "wait", value)
 
 
+@pulumi.input_type
+class _MultiClusterAppState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]] = None,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 revision_history_limit: Optional[pulumi.Input[int]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 template_version_id: Optional[pulumi.Input[str]] = None,
+                 upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
+                 wait: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering MultiClusterApp resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]] members: The multi cluster app answers (list)
+        :param pulumi.Input[str] name: The multi cluster app name (string)
+        :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
+        :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
+        :param pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[str] template_name: The multi cluster app template name (string)
+        :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
+        :param pulumi.Input[str] template_version_id: (Computed) The multi cluster app template version ID (string)
+        :param pulumi.Input['MultiClusterAppUpgradeStrategyArgs'] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
+        :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if answers is not None:
+            pulumi.set(__self__, "answers", answers)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if revision_history_limit is not None:
+            pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+        if revision_id is not None:
+            pulumi.set(__self__, "revision_id", revision_id)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+        if template_name is not None:
+            pulumi.set(__self__, "template_name", template_name)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+        if template_version_id is not None:
+            pulumi.set(__self__, "template_version_id", template_version_id)
+        if upgrade_strategy is not None:
+            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations for multi cluster app object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def answers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]]:
+        """
+        The multi cluster app answers (list)
+        """
+        return pulumi.get(self, "answers")
+
+    @answers.setter
+    def answers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]]):
+        pulumi.set(self, "answers", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app catalog name (string)
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels for multi cluster app object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]]:
+        """
+        The multi cluster app answers (list)
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app name (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="revisionHistoryLimit")
+    def revision_history_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multi cluster app revision history limit. Default `10` (int)
+        """
+        return pulumi.get(self, "revision_history_limit")
+
+    @revision_history_limit.setter
+    def revision_history_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "revision_history_limit", value)
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current revision id for the multi cluster app (string)
+        """
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_id", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The multi cluster app roles (list)
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]]:
+        """
+        The multi cluster app target projects (list)
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app template name (string)
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi cluster app template version. Default: `latest` (string)
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
+
+    @property
+    @pulumi.getter(name="templateVersionId")
+    def template_version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The multi cluster app template version ID (string)
+        """
+        return pulumi.get(self, "template_version_id")
+
+    @template_version_id.setter
+    def template_version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version_id", value)
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']]:
+        """
+        The multi cluster app upgrade strategy (list MaxItems:1)
+        """
+        return pulumi.get(self, "upgrade_strategy")
+
+    @upgrade_strategy.setter
+    def upgrade_strategy(self, value: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']]):
+        pulumi.set(self, "upgrade_strategy", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Wait until the multi cluster app is active. Default `true` (bool)
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait", value)
+
+
 class MultiClusterApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -350,31 +598,31 @@ class MultiClusterApp(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MultiClusterAppArgs.__new__(MultiClusterAppArgs)
 
-            __props__['annotations'] = annotations
-            __props__['answers'] = answers
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["answers"] = answers
             if catalog_name is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_name'")
-            __props__['catalog_name'] = catalog_name
-            __props__['labels'] = labels
-            __props__['members'] = members
-            __props__['name'] = name
-            __props__['revision_history_limit'] = revision_history_limit
-            __props__['revision_id'] = revision_id
+            __props__.__dict__["catalog_name"] = catalog_name
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["members"] = members
+            __props__.__dict__["name"] = name
+            __props__.__dict__["revision_history_limit"] = revision_history_limit
+            __props__.__dict__["revision_id"] = revision_id
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")
-            __props__['roles'] = roles
+            __props__.__dict__["roles"] = roles
             if targets is None and not opts.urn:
                 raise TypeError("Missing required property 'targets'")
-            __props__['targets'] = targets
+            __props__.__dict__["targets"] = targets
             if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
-            __props__['template_name'] = template_name
-            __props__['template_version'] = template_version
-            __props__['upgrade_strategy'] = upgrade_strategy
-            __props__['wait'] = wait
-            __props__['template_version_id'] = None
+            __props__.__dict__["template_name"] = template_name
+            __props__.__dict__["template_version"] = template_version
+            __props__.__dict__["upgrade_strategy"] = upgrade_strategy
+            __props__.__dict__["wait"] = wait
+            __props__.__dict__["template_version_id"] = None
         super(MultiClusterApp, __self__).__init__(
             'rancher2:index/multiClusterApp:MultiClusterApp',
             resource_name,
@@ -425,23 +673,23 @@ class MultiClusterApp(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MultiClusterAppState.__new__(_MultiClusterAppState)
 
-        __props__["annotations"] = annotations
-        __props__["answers"] = answers
-        __props__["catalog_name"] = catalog_name
-        __props__["labels"] = labels
-        __props__["members"] = members
-        __props__["name"] = name
-        __props__["revision_history_limit"] = revision_history_limit
-        __props__["revision_id"] = revision_id
-        __props__["roles"] = roles
-        __props__["targets"] = targets
-        __props__["template_name"] = template_name
-        __props__["template_version"] = template_version
-        __props__["template_version_id"] = template_version_id
-        __props__["upgrade_strategy"] = upgrade_strategy
-        __props__["wait"] = wait
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["answers"] = answers
+        __props__.__dict__["catalog_name"] = catalog_name
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["members"] = members
+        __props__.__dict__["name"] = name
+        __props__.__dict__["revision_history_limit"] = revision_history_limit
+        __props__.__dict__["revision_id"] = revision_id
+        __props__.__dict__["roles"] = roles
+        __props__.__dict__["targets"] = targets
+        __props__.__dict__["template_name"] = template_name
+        __props__.__dict__["template_version"] = template_version
+        __props__.__dict__["template_version_id"] = template_version_id
+        __props__.__dict__["upgrade_strategy"] = upgrade_strategy
+        __props__.__dict__["wait"] = wait
         return MultiClusterApp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -563,10 +811,4 @@ class MultiClusterApp(pulumi.CustomResource):
         Wait until the multi cluster app is active. Default `true` (bool)
         """
         return pulumi.get(self, "wait")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
