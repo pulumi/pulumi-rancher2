@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -77,6 +77,158 @@ class ClusterAlterGroupArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert group description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="groupIntervalSeconds")
+    def group_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Alert group interval seconds
+        """
+        return pulumi.get(self, "group_interval_seconds")
+
+    @group_interval_seconds.setter
+    def group_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="groupWaitSeconds")
+    def group_wait_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Alert group wait seconds
+        """
+        return pulumi.get(self, "group_wait_seconds")
+
+    @group_wait_seconds.setter
+    def group_wait_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_wait_seconds", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels of the resource
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert group name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]]:
+        """
+        Alert group recipients
+        """
+        return pulumi.get(self, "recipients")
+
+    @recipients.setter
+    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]]):
+        pulumi.set(self, "recipients", value)
+
+    @property
+    @pulumi.getter(name="repeatIntervalSeconds")
+    def repeat_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Alert group repeat interval seconds
+        """
+        return pulumi.get(self, "repeat_interval_seconds")
+
+    @repeat_interval_seconds.setter
+    def repeat_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "repeat_interval_seconds", value)
+
+
+@pulumi.input_type
+class _ClusterAlterGroupState:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 group_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 group_wait_seconds: Optional[pulumi.Input[int]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
+                 repeat_interval_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering ClusterAlterGroup resources.
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[str] cluster_id: Alert group Cluster ID
+        :param pulumi.Input[str] description: Alert group description
+        :param pulumi.Input[int] group_interval_seconds: Alert group interval seconds
+        :param pulumi.Input[int] group_wait_seconds: Alert group wait seconds
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: Alert group name
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]] recipients: Alert group recipients
+        :param pulumi.Input[int] repeat_interval_seconds: Alert group repeat interval seconds
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if group_interval_seconds is not None:
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
+        if group_wait_seconds is not None:
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if recipients is not None:
+            pulumi.set(__self__, "recipients", recipients)
+        if repeat_interval_seconds is not None:
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations of the resource
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert group Cluster ID
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter
@@ -250,19 +402,19 @@ class ClusterAlterGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterAlterGroupArgs.__new__(ClusterAlterGroupArgs)
 
-            __props__['annotations'] = annotations
+            __props__.__dict__["annotations"] = annotations
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['description'] = description
-            __props__['group_interval_seconds'] = group_interval_seconds
-            __props__['group_wait_seconds'] = group_wait_seconds
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['recipients'] = recipients
-            __props__['repeat_interval_seconds'] = repeat_interval_seconds
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["group_interval_seconds"] = group_interval_seconds
+            __props__.__dict__["group_wait_seconds"] = group_wait_seconds
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["recipients"] = recipients
+            __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
         super(ClusterAlterGroup, __self__).__init__(
             'rancher2:index/clusterAlterGroup:ClusterAlterGroup',
             resource_name,
@@ -301,17 +453,17 @@ class ClusterAlterGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterAlterGroupState.__new__(_ClusterAlterGroupState)
 
-        __props__["annotations"] = annotations
-        __props__["cluster_id"] = cluster_id
-        __props__["description"] = description
-        __props__["group_interval_seconds"] = group_interval_seconds
-        __props__["group_wait_seconds"] = group_wait_seconds
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["recipients"] = recipients
-        __props__["repeat_interval_seconds"] = repeat_interval_seconds
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["group_interval_seconds"] = group_interval_seconds
+        __props__.__dict__["group_wait_seconds"] = group_wait_seconds
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["recipients"] = recipients
+        __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
         return ClusterAlterGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -385,10 +537,4 @@ class ClusterAlterGroup(pulumi.CustomResource):
         Alert group repeat interval seconds
         """
         return pulumi.get(self, "repeat_interval_seconds")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

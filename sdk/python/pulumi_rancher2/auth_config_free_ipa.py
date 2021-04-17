@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AuthConfigFreeIpaArgs', 'AuthConfigFreeIpa']
 
@@ -492,6 +492,526 @@ class AuthConfigFreeIpaArgs:
         pulumi.set(self, "user_search_attribute", value)
 
 
+@pulumi.input_type
+class _AuthConfigFreeIpaState:
+    def __init__(__self__, *,
+                 access_mode: Optional[pulumi.Input[str]] = None,
+                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 connection_timeout: Optional[pulumi.Input[int]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 group_dn_attribute: Optional[pulumi.Input[str]] = None,
+                 group_member_mapping_attribute: Optional[pulumi.Input[str]] = None,
+                 group_member_user_attribute: Optional[pulumi.Input[str]] = None,
+                 group_name_attribute: Optional[pulumi.Input[str]] = None,
+                 group_object_class: Optional[pulumi.Input[str]] = None,
+                 group_search_attribute: Optional[pulumi.Input[str]] = None,
+                 group_search_base: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_account_distinguished_name: Optional[pulumi.Input[str]] = None,
+                 service_account_password: Optional[pulumi.Input[str]] = None,
+                 test_password: Optional[pulumi.Input[str]] = None,
+                 test_username: Optional[pulumi.Input[str]] = None,
+                 tls: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
+                 user_enabled_attribute: Optional[pulumi.Input[str]] = None,
+                 user_login_attribute: Optional[pulumi.Input[str]] = None,
+                 user_member_attribute: Optional[pulumi.Input[str]] = None,
+                 user_name_attribute: Optional[pulumi.Input[str]] = None,
+                 user_object_class: Optional[pulumi.Input[str]] = None,
+                 user_search_attribute: Optional[pulumi.Input[str]] = None,
+                 user_search_base: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AuthConfigFreeIpa resources.
+        :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
+        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
+        :param pulumi.Input[int] connection_timeout: FreeIpa connection timeout. Default `5000` (int)
+        :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] group_dn_attribute: Group DN attribute. Default `entryDN` (string)
+        :param pulumi.Input[str] group_member_mapping_attribute: Group member mapping attribute. Default `member` (string)
+        :param pulumi.Input[str] group_member_user_attribute: Group member user attribute. Default `entryDN` (string)
+        :param pulumi.Input[str] group_name_attribute: Group name attribute. Default `cn` (string)
+        :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
+        :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
+        :param pulumi.Input[str] group_search_base: Group search base (string)
+        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[str] name: (Computed) The name of the resource (string)
+        :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
+        :param pulumi.Input[int] port: FreeIpa port. Default `389` (int)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: FreeIpa servers list (list)
+        :param pulumi.Input[str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
+        :param pulumi.Input[str] service_account_password: Service account password for access FreeIpa service (string)
+        :param pulumi.Input[str] test_password: Password for test access to FreeIpa service (string)
+        :param pulumi.Input[str] test_username: Username for test access to FreeIpa service (string)
+        :param pulumi.Input[bool] tls: Enable TLS connection (bool)
+        :param pulumi.Input[str] type: (Computed) The type of the resource (string)
+        :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask (int)
+        :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
+        :param pulumi.Input[str] user_login_attribute: User login attribute. Default `uid` (string)
+        :param pulumi.Input[str] user_member_attribute: User member attribute. Default `memberOf` (string)
+        :param pulumi.Input[str] user_name_attribute: User name attribute. Default `givenName` (string)
+        :param pulumi.Input[str] user_object_class: User object class. Default `inetorgperson` (string)
+        :param pulumi.Input[str] user_search_attribute: User search attribute. Default `uid|sn|givenName` (string)
+        :param pulumi.Input[str] user_search_base: User search base DN (string)
+        """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
+        if allowed_principal_ids is not None:
+            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if connection_timeout is not None:
+            pulumi.set(__self__, "connection_timeout", connection_timeout)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_dn_attribute is not None:
+            pulumi.set(__self__, "group_dn_attribute", group_dn_attribute)
+        if group_member_mapping_attribute is not None:
+            pulumi.set(__self__, "group_member_mapping_attribute", group_member_mapping_attribute)
+        if group_member_user_attribute is not None:
+            pulumi.set(__self__, "group_member_user_attribute", group_member_user_attribute)
+        if group_name_attribute is not None:
+            pulumi.set(__self__, "group_name_attribute", group_name_attribute)
+        if group_object_class is not None:
+            pulumi.set(__self__, "group_object_class", group_object_class)
+        if group_search_attribute is not None:
+            pulumi.set(__self__, "group_search_attribute", group_search_attribute)
+        if group_search_base is not None:
+            pulumi.set(__self__, "group_search_base", group_search_base)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nested_group_membership_enabled is not None:
+            pulumi.set(__self__, "nested_group_membership_enabled", nested_group_membership_enabled)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if service_account_distinguished_name is not None:
+            pulumi.set(__self__, "service_account_distinguished_name", service_account_distinguished_name)
+        if service_account_password is not None:
+            pulumi.set(__self__, "service_account_password", service_account_password)
+        if test_password is not None:
+            pulumi.set(__self__, "test_password", test_password)
+        if test_username is not None:
+            pulumi.set(__self__, "test_username", test_username)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user_disabled_bit_mask is not None:
+            pulumi.set(__self__, "user_disabled_bit_mask", user_disabled_bit_mask)
+        if user_enabled_attribute is not None:
+            pulumi.set(__self__, "user_enabled_attribute", user_enabled_attribute)
+        if user_login_attribute is not None:
+            pulumi.set(__self__, "user_login_attribute", user_login_attribute)
+        if user_member_attribute is not None:
+            pulumi.set(__self__, "user_member_attribute", user_member_attribute)
+        if user_name_attribute is not None:
+            pulumi.set(__self__, "user_name_attribute", user_name_attribute)
+        if user_object_class is not None:
+            pulumi.set(__self__, "user_object_class", user_object_class)
+        if user_search_attribute is not None:
+            pulumi.set(__self__, "user_search_attribute", user_search_attribute)
+        if user_search_base is not None:
+            pulumi.set(__self__, "user_search_base", user_search_base)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_mode", value)
+
+    @property
+    @pulumi.getter(name="allowedPrincipalIds")
+    def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
+        """
+        return pulumi.get(self, "allowed_principal_ids")
+
+    @allowed_principal_ids.setter
+    def allowed_principal_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_principal_ids", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Annotations of the resource (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="connectionTimeout")
+    def connection_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        FreeIpa connection timeout. Default `5000` (int)
+        """
+        return pulumi.get(self, "connection_timeout")
+
+    @connection_timeout.setter
+    def connection_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_timeout", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable auth config provider. Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="groupDnAttribute")
+    def group_dn_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group DN attribute. Default `entryDN` (string)
+        """
+        return pulumi.get(self, "group_dn_attribute")
+
+    @group_dn_attribute.setter
+    def group_dn_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_dn_attribute", value)
+
+    @property
+    @pulumi.getter(name="groupMemberMappingAttribute")
+    def group_member_mapping_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group member mapping attribute. Default `member` (string)
+        """
+        return pulumi.get(self, "group_member_mapping_attribute")
+
+    @group_member_mapping_attribute.setter
+    def group_member_mapping_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_member_mapping_attribute", value)
+
+    @property
+    @pulumi.getter(name="groupMemberUserAttribute")
+    def group_member_user_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group member user attribute. Default `entryDN` (string)
+        """
+        return pulumi.get(self, "group_member_user_attribute")
+
+    @group_member_user_attribute.setter
+    def group_member_user_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_member_user_attribute", value)
+
+    @property
+    @pulumi.getter(name="groupNameAttribute")
+    def group_name_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group name attribute. Default `cn` (string)
+        """
+        return pulumi.get(self, "group_name_attribute")
+
+    @group_name_attribute.setter
+    def group_name_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_name_attribute", value)
+
+    @property
+    @pulumi.getter(name="groupObjectClass")
+    def group_object_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group object class. Default `groupOfNames` (string)
+        """
+        return pulumi.get(self, "group_object_class")
+
+    @group_object_class.setter
+    def group_object_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_object_class", value)
+
+    @property
+    @pulumi.getter(name="groupSearchAttribute")
+    def group_search_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group search attribute. Default `cn` (string)
+        """
+        return pulumi.get(self, "group_search_attribute")
+
+    @group_search_attribute.setter
+    def group_search_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_search_attribute", value)
+
+    @property
+    @pulumi.getter(name="groupSearchBase")
+    def group_search_base(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group search base (string)
+        """
+        return pulumi.get(self, "group_search_base")
+
+    @group_search_base.setter
+    def group_search_base(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_search_base", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Labels of the resource (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The name of the resource (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nestedGroupMembershipEnabled")
+    def nested_group_membership_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Nested group membership enable. Default `false` (bool)
+        """
+        return pulumi.get(self, "nested_group_membership_enabled")
+
+    @nested_group_membership_enabled.setter
+    def nested_group_membership_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nested_group_membership_enabled", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        FreeIpa port. Default `389` (int)
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        FreeIpa servers list (list)
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "servers", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountDistinguishedName")
+    def service_account_distinguished_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account DN for access FreeIpa service (string)
+        """
+        return pulumi.get(self, "service_account_distinguished_name")
+
+    @service_account_distinguished_name.setter
+    def service_account_distinguished_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_distinguished_name", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountPassword")
+    def service_account_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account password for access FreeIpa service (string)
+        """
+        return pulumi.get(self, "service_account_password")
+
+    @service_account_password.setter
+    def service_account_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_password", value)
+
+    @property
+    @pulumi.getter(name="testPassword")
+    def test_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for test access to FreeIpa service (string)
+        """
+        return pulumi.get(self, "test_password")
+
+    @test_password.setter
+    def test_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_password", value)
+
+    @property
+    @pulumi.getter(name="testUsername")
+    def test_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for test access to FreeIpa service (string)
+        """
+        return pulumi.get(self, "test_username")
+
+    @test_username.setter
+    def test_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_username", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable TLS connection (bool)
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tls", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The type of the resource (string)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userDisabledBitMask")
+    def user_disabled_bit_mask(self) -> Optional[pulumi.Input[int]]:
+        """
+        User disabled bit mask (int)
+        """
+        return pulumi.get(self, "user_disabled_bit_mask")
+
+    @user_disabled_bit_mask.setter
+    def user_disabled_bit_mask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "user_disabled_bit_mask", value)
+
+    @property
+    @pulumi.getter(name="userEnabledAttribute")
+    def user_enabled_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        User enable attribute (string)
+        """
+        return pulumi.get(self, "user_enabled_attribute")
+
+    @user_enabled_attribute.setter
+    def user_enabled_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_enabled_attribute", value)
+
+    @property
+    @pulumi.getter(name="userLoginAttribute")
+    def user_login_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        User login attribute. Default `uid` (string)
+        """
+        return pulumi.get(self, "user_login_attribute")
+
+    @user_login_attribute.setter
+    def user_login_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_login_attribute", value)
+
+    @property
+    @pulumi.getter(name="userMemberAttribute")
+    def user_member_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        User member attribute. Default `memberOf` (string)
+        """
+        return pulumi.get(self, "user_member_attribute")
+
+    @user_member_attribute.setter
+    def user_member_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_member_attribute", value)
+
+    @property
+    @pulumi.getter(name="userNameAttribute")
+    def user_name_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name attribute. Default `givenName` (string)
+        """
+        return pulumi.get(self, "user_name_attribute")
+
+    @user_name_attribute.setter
+    def user_name_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name_attribute", value)
+
+    @property
+    @pulumi.getter(name="userObjectClass")
+    def user_object_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        User object class. Default `inetorgperson` (string)
+        """
+        return pulumi.get(self, "user_object_class")
+
+    @user_object_class.setter
+    def user_object_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_object_class", value)
+
+    @property
+    @pulumi.getter(name="userSearchAttribute")
+    def user_search_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        User search attribute. Default `uid|sn|givenName` (string)
+        """
+        return pulumi.get(self, "user_search_attribute")
+
+    @user_search_attribute.setter
+    def user_search_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_search_attribute", value)
+
+    @property
+    @pulumi.getter(name="userSearchBase")
+    def user_search_base(self) -> Optional[pulumi.Input[str]]:
+        """
+        User search base DN (string)
+        """
+        return pulumi.get(self, "user_search_base")
+
+    @user_search_base.setter
+    def user_search_base(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_search_base", value)
+
+
 class AuthConfigFreeIpa(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -642,52 +1162,52 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AuthConfigFreeIpaArgs.__new__(AuthConfigFreeIpaArgs)
 
-            __props__['access_mode'] = access_mode
-            __props__['allowed_principal_ids'] = allowed_principal_ids
-            __props__['annotations'] = annotations
-            __props__['certificate'] = certificate
-            __props__['connection_timeout'] = connection_timeout
-            __props__['enabled'] = enabled
-            __props__['group_dn_attribute'] = group_dn_attribute
-            __props__['group_member_mapping_attribute'] = group_member_mapping_attribute
-            __props__['group_member_user_attribute'] = group_member_user_attribute
-            __props__['group_name_attribute'] = group_name_attribute
-            __props__['group_object_class'] = group_object_class
-            __props__['group_search_attribute'] = group_search_attribute
-            __props__['group_search_base'] = group_search_base
-            __props__['labels'] = labels
-            __props__['nested_group_membership_enabled'] = nested_group_membership_enabled
-            __props__['port'] = port
+            __props__.__dict__["access_mode"] = access_mode
+            __props__.__dict__["allowed_principal_ids"] = allowed_principal_ids
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["connection_timeout"] = connection_timeout
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["group_dn_attribute"] = group_dn_attribute
+            __props__.__dict__["group_member_mapping_attribute"] = group_member_mapping_attribute
+            __props__.__dict__["group_member_user_attribute"] = group_member_user_attribute
+            __props__.__dict__["group_name_attribute"] = group_name_attribute
+            __props__.__dict__["group_object_class"] = group_object_class
+            __props__.__dict__["group_search_attribute"] = group_search_attribute
+            __props__.__dict__["group_search_base"] = group_search_base
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["nested_group_membership_enabled"] = nested_group_membership_enabled
+            __props__.__dict__["port"] = port
             if servers is None and not opts.urn:
                 raise TypeError("Missing required property 'servers'")
-            __props__['servers'] = servers
+            __props__.__dict__["servers"] = servers
             if service_account_distinguished_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_distinguished_name'")
-            __props__['service_account_distinguished_name'] = service_account_distinguished_name
+            __props__.__dict__["service_account_distinguished_name"] = service_account_distinguished_name
             if service_account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_password'")
-            __props__['service_account_password'] = service_account_password
+            __props__.__dict__["service_account_password"] = service_account_password
             if test_password is None and not opts.urn:
                 raise TypeError("Missing required property 'test_password'")
-            __props__['test_password'] = test_password
+            __props__.__dict__["test_password"] = test_password
             if test_username is None and not opts.urn:
                 raise TypeError("Missing required property 'test_username'")
-            __props__['test_username'] = test_username
-            __props__['tls'] = tls
-            __props__['user_disabled_bit_mask'] = user_disabled_bit_mask
-            __props__['user_enabled_attribute'] = user_enabled_attribute
-            __props__['user_login_attribute'] = user_login_attribute
-            __props__['user_member_attribute'] = user_member_attribute
-            __props__['user_name_attribute'] = user_name_attribute
-            __props__['user_object_class'] = user_object_class
-            __props__['user_search_attribute'] = user_search_attribute
+            __props__.__dict__["test_username"] = test_username
+            __props__.__dict__["tls"] = tls
+            __props__.__dict__["user_disabled_bit_mask"] = user_disabled_bit_mask
+            __props__.__dict__["user_enabled_attribute"] = user_enabled_attribute
+            __props__.__dict__["user_login_attribute"] = user_login_attribute
+            __props__.__dict__["user_member_attribute"] = user_member_attribute
+            __props__.__dict__["user_name_attribute"] = user_name_attribute
+            __props__.__dict__["user_object_class"] = user_object_class
+            __props__.__dict__["user_search_attribute"] = user_search_attribute
             if user_search_base is None and not opts.urn:
                 raise TypeError("Missing required property 'user_search_base'")
-            __props__['user_search_base'] = user_search_base
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__["user_search_base"] = user_search_base
+            __props__.__dict__["name"] = None
+            __props__.__dict__["type"] = None
         super(AuthConfigFreeIpa, __self__).__init__(
             'rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa',
             resource_name,
@@ -772,40 +1292,40 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AuthConfigFreeIpaState.__new__(_AuthConfigFreeIpaState)
 
-        __props__["access_mode"] = access_mode
-        __props__["allowed_principal_ids"] = allowed_principal_ids
-        __props__["annotations"] = annotations
-        __props__["certificate"] = certificate
-        __props__["connection_timeout"] = connection_timeout
-        __props__["enabled"] = enabled
-        __props__["group_dn_attribute"] = group_dn_attribute
-        __props__["group_member_mapping_attribute"] = group_member_mapping_attribute
-        __props__["group_member_user_attribute"] = group_member_user_attribute
-        __props__["group_name_attribute"] = group_name_attribute
-        __props__["group_object_class"] = group_object_class
-        __props__["group_search_attribute"] = group_search_attribute
-        __props__["group_search_base"] = group_search_base
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["nested_group_membership_enabled"] = nested_group_membership_enabled
-        __props__["port"] = port
-        __props__["servers"] = servers
-        __props__["service_account_distinguished_name"] = service_account_distinguished_name
-        __props__["service_account_password"] = service_account_password
-        __props__["test_password"] = test_password
-        __props__["test_username"] = test_username
-        __props__["tls"] = tls
-        __props__["type"] = type
-        __props__["user_disabled_bit_mask"] = user_disabled_bit_mask
-        __props__["user_enabled_attribute"] = user_enabled_attribute
-        __props__["user_login_attribute"] = user_login_attribute
-        __props__["user_member_attribute"] = user_member_attribute
-        __props__["user_name_attribute"] = user_name_attribute
-        __props__["user_object_class"] = user_object_class
-        __props__["user_search_attribute"] = user_search_attribute
-        __props__["user_search_base"] = user_search_base
+        __props__.__dict__["access_mode"] = access_mode
+        __props__.__dict__["allowed_principal_ids"] = allowed_principal_ids
+        __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["connection_timeout"] = connection_timeout
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["group_dn_attribute"] = group_dn_attribute
+        __props__.__dict__["group_member_mapping_attribute"] = group_member_mapping_attribute
+        __props__.__dict__["group_member_user_attribute"] = group_member_user_attribute
+        __props__.__dict__["group_name_attribute"] = group_name_attribute
+        __props__.__dict__["group_object_class"] = group_object_class
+        __props__.__dict__["group_search_attribute"] = group_search_attribute
+        __props__.__dict__["group_search_base"] = group_search_base
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["nested_group_membership_enabled"] = nested_group_membership_enabled
+        __props__.__dict__["port"] = port
+        __props__.__dict__["servers"] = servers
+        __props__.__dict__["service_account_distinguished_name"] = service_account_distinguished_name
+        __props__.__dict__["service_account_password"] = service_account_password
+        __props__.__dict__["test_password"] = test_password
+        __props__.__dict__["test_username"] = test_username
+        __props__.__dict__["tls"] = tls
+        __props__.__dict__["type"] = type
+        __props__.__dict__["user_disabled_bit_mask"] = user_disabled_bit_mask
+        __props__.__dict__["user_enabled_attribute"] = user_enabled_attribute
+        __props__.__dict__["user_login_attribute"] = user_login_attribute
+        __props__.__dict__["user_member_attribute"] = user_member_attribute
+        __props__.__dict__["user_name_attribute"] = user_name_attribute
+        __props__.__dict__["user_object_class"] = user_object_class
+        __props__.__dict__["user_search_attribute"] = user_search_attribute
+        __props__.__dict__["user_search_base"] = user_search_base
         return AuthConfigFreeIpa(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1063,10 +1583,4 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         User search base DN (string)
         """
         return pulumi.get(self, "user_search_base")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

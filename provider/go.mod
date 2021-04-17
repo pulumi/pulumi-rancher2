@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/provider/v2
+module github.com/pulumi/pulumi-rancher2/provider/v3
 
 go 1.16
 
@@ -40,7 +40,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.23.0
-	github.com/pulumi/pulumi/sdk/v2 v2.24.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0-beta.1
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.2
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )
