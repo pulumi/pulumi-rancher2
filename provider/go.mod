@@ -40,7 +40,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0-beta.1
-	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0
+	github.com/pulumi/pulumi/pkg/v3 v3.0.0
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0
 	github.com/rancher/terraform-provider-rancher2 v1.10.2
 )

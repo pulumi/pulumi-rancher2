@@ -341,9 +341,7 @@ class Token(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a Rancher v2 Token resource. This can be used to create Tokens for Rancher v2 provider user and retrieve their information.
 
@@ -424,15 +422,7 @@ class Token(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
