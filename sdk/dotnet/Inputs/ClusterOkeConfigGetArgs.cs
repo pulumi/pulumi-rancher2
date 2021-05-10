@@ -61,6 +61,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         /// <summary>
+        /// The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+        /// </summary>
+        [Input("limitNodeCount")]
+        public Input<int>? LimitNodeCount { get; set; }
+
+        /// <summary>
         /// The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
         /// </summary>
         [Input("loadBalancerSubnetName1")]

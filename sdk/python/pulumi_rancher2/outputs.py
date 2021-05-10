@@ -13,6 +13,7 @@ __all__ = [
     'CloudCredentialAmazonec2CredentialConfig',
     'CloudCredentialAzureCredentialConfig',
     'CloudCredentialDigitaloceanCredentialConfig',
+    'CloudCredentialGoogleCredentialConfig',
     'CloudCredentialLinodeCredentialConfig',
     'CloudCredentialOpenstackCredentialConfig',
     'CloudCredentialVsphereCredentialConfig',
@@ -37,6 +38,17 @@ __all__ = [
     'ClusterEksConfigV2NodeGroup',
     'ClusterEksConfigV2NodeGroupLaunchTemplate',
     'ClusterGkeConfig',
+    'ClusterGkeConfigV2',
+    'ClusterGkeConfigV2ClusterAddons',
+    'ClusterGkeConfigV2IpAllocationPolicy',
+    'ClusterGkeConfigV2MasterAuthorizedNetworksConfig',
+    'ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock',
+    'ClusterGkeConfigV2NodePool',
+    'ClusterGkeConfigV2NodePoolAutoscaling',
+    'ClusterGkeConfigV2NodePoolConfig',
+    'ClusterGkeConfigV2NodePoolConfigTaint',
+    'ClusterGkeConfigV2NodePoolManagement',
+    'ClusterGkeConfigV2PrivateClusterConfig',
     'ClusterK3sConfig',
     'ClusterK3sConfigUpgradeStrategy',
     'ClusterLoggingCustomTargetConfig',
@@ -47,6 +59,8 @@ __all__ = [
     'ClusterLoggingSplunkConfig',
     'ClusterLoggingSyslogConfig',
     'ClusterOkeConfig',
+    'ClusterRke2Config',
+    'ClusterRke2ConfigUpgradeStrategy',
     'ClusterRkeConfig',
     'ClusterRkeConfigAuthentication',
     'ClusterRkeConfigAuthorization',
@@ -74,6 +88,8 @@ __all__ = [
     'ClusterRkeConfigDnsUpdateStrategy',
     'ClusterRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterRkeConfigIngress',
+    'ClusterRkeConfigIngressUpdateStrategy',
+    'ClusterRkeConfigIngressUpdateStrategyRollingUpdate',
     'ClusterRkeConfigMonitoring',
     'ClusterRkeConfigMonitoringUpdateStrategy',
     'ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate',
@@ -135,6 +151,8 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate',
@@ -245,6 +263,17 @@ __all__ = [
     'GetClusterEksConfigV2NodeGroupResult',
     'GetClusterEksConfigV2NodeGroupLaunchTemplateResult',
     'GetClusterGkeConfigResult',
+    'GetClusterGkeConfigV2Result',
+    'GetClusterGkeConfigV2ClusterAddonsResult',
+    'GetClusterGkeConfigV2IpAllocationPolicyResult',
+    'GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult',
+    'GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult',
+    'GetClusterGkeConfigV2NodePoolResult',
+    'GetClusterGkeConfigV2NodePoolAutoscalingResult',
+    'GetClusterGkeConfigV2NodePoolConfigResult',
+    'GetClusterGkeConfigV2NodePoolConfigTaintResult',
+    'GetClusterGkeConfigV2NodePoolManagementResult',
+    'GetClusterGkeConfigV2PrivateClusterConfigResult',
     'GetClusterK3sConfigResult',
     'GetClusterK3sConfigUpgradeStrategyResult',
     'GetClusterLoggingCustomTargetConfigResult',
@@ -255,6 +284,8 @@ __all__ = [
     'GetClusterLoggingSplunkConfigResult',
     'GetClusterLoggingSyslogConfigResult',
     'GetClusterOkeConfigResult',
+    'GetClusterRke2ConfigResult',
+    'GetClusterRke2ConfigUpgradeStrategyResult',
     'GetClusterRkeConfigResult',
     'GetClusterRkeConfigAuthenticationResult',
     'GetClusterRkeConfigAuthorizationResult',
@@ -282,6 +313,8 @@ __all__ = [
     'GetClusterRkeConfigDnsUpdateStrategyResult',
     'GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigIngressResult',
+    'GetClusterRkeConfigIngressUpdateStrategyResult',
+    'GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigMonitoringResult',
     'GetClusterRkeConfigMonitoringUpdateStrategyResult',
     'GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateResult',
@@ -344,6 +377,8 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateResult',
@@ -574,6 +609,41 @@ class CloudCredentialDigitaloceanCredentialConfig(dict):
         DigitalOcean access token (string)
         """
         return pulumi.get(self, "access_token")
+
+
+@pulumi.output_type
+class CloudCredentialGoogleCredentialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authEncodedJson":
+            suggest = "auth_encoded_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudCredentialGoogleCredentialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudCredentialGoogleCredentialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudCredentialGoogleCredentialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_encoded_json: str):
+        """
+        :param str auth_encoded_json: Google auth encoded json (string)
+        """
+        pulumi.set(__self__, "auth_encoded_json", auth_encoded_json)
+
+    @property
+    @pulumi.getter(name="authEncodedJson")
+    def auth_encoded_json(self) -> str:
+        """
+        Google auth encoded json (string)
+        """
+        return pulumi.get(self, "auth_encoded_json")
 
 
 @pulumi.output_type
@@ -2464,17 +2534,17 @@ class ClusterEksConfigV2(dict):
                  tags: Optional[Mapping[str, Any]] = None):
         """
         :param str cloud_credential_id: The EKS cloud_credential id (string)
-        :param bool imported: Set to `true` to import EKS cluster. Default: `false` (bool)
+        :param bool imported: Is GKE cluster imported? Default: `false` (bool)
         :param str kms_key: The AWS kms key to use (string)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param Sequence[str] logging_types: The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
         :param str name: Name of cluster registration token (string)
         :param Sequence['ClusterEksConfigV2NodeGroupArgs'] node_groups: The EKS cluster name to import. Required to create a new cluster (list)
-        :param bool private_access: The EKS cluster has private access. Default: `false` (bool)
-        :param bool public_access: The EKS cluster has public access. Default: `true` (bool)
+        :param bool private_access: The EKS cluster has private access (bool)
+        :param bool public_access: The EKS cluster has public access (bool)
         :param Sequence[str] public_access_sources: The EKS cluster public access sources (map)
         :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-        :param bool secrets_encryption: Enable EKS cluster secret encryption. Default: `false` (bool)
+        :param bool secrets_encryption: Enable EKS cluster secret encryption (bool)
         :param Sequence[str] security_groups: List of security groups to use for the cluster (list)
         :param str service_role: The AWS service role to use (string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
@@ -2524,7 +2594,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter
     def imported(self) -> Optional[bool]:
         """
-        Set to `true` to import EKS cluster. Default: `false` (bool)
+        Is GKE cluster imported? Default: `false` (bool)
         """
         return pulumi.get(self, "imported")
 
@@ -2572,7 +2642,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional[bool]:
         """
-        The EKS cluster has private access. Default: `false` (bool)
+        The EKS cluster has private access (bool)
         """
         return pulumi.get(self, "private_access")
 
@@ -2580,7 +2650,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[bool]:
         """
-        The EKS cluster has public access. Default: `true` (bool)
+        The EKS cluster has public access (bool)
         """
         return pulumi.get(self, "public_access")
 
@@ -2604,7 +2674,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter(name="secretsEncryption")
     def secrets_encryption(self) -> Optional[bool]:
         """
-        Enable EKS cluster secret encryption. Default: `false` (bool)
+        Enable EKS cluster secret encryption (bool)
         """
         return pulumi.get(self, "secrets_encryption")
 
@@ -3106,28 +3176,28 @@ class ClusterGkeConfig(dict):
         """
         :param str cluster_ipv4_cidr: The IP address range of the container pods (string)
         :param str credential: The contents of the GC credential file (string)
-        :param str disk_type: Type of the disk attached to each node (string)
-        :param str image_type: The image to use for the worker nodes (string)
+        :param str disk_type: The GKE node config disk type (string)
+        :param str image_type: The GKE node config image type (string)
         :param str ip_policy_cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs (string)
         :param str ip_policy_cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block (string)
         :param str ip_policy_node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster (string)
         :param str ip_policy_services_ipv4_cidr_block: The IP address range of the services IPs in this cluster (string)
         :param str ip_policy_services_secondary_range_name: The name of the secondary range to be used for the services CIDR block (string)
         :param str ip_policy_subnetwork_name: A custom subnetwork name to be used if createSubnetwork is true (string)
-        :param Sequence[str] locations: Locations for GKE cluster (list)
-        :param str machine_type: Machine type for GKE cluster (string)
-        :param str maintenance_window: Maintenance window for GKE cluster (string)
-        :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network (string)
+        :param Sequence[str] locations: The GKE cluster locations (List)
+        :param str machine_type: The GKE node config machine type (string)
+        :param str maintenance_window: The GKE cluster maintenance window (string)
+        :param str master_ipv4_cidr_block: The GKE cluster private master ip v4 cidr block (string)
         :param str master_version: Master version for GKE cluster (string)
-        :param str network: Network for GKE cluster (string)
+        :param str network: The GKE cluster network. Required for create new cluster (string)
         :param str node_pool: The ID of the cluster node pool (string)
         :param str node_version: Node version for GKE cluster (string)
-        :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+        :param Sequence[str] oauth_scopes: The GKE node config oauth scopes (List)
         :param str project_id: Project ID to apply answer (string)
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs (string)
         :param str sub_network: Subnetwork for GKE cluster (string)
         :param str description: An optional description of this cluster (string)
-        :param int disk_size_gb: Size of the disk attached to each node. Default `100` (int)
+        :param int disk_size_gb: The GKE node config disk size Gb (int)
         :param bool enable_alpha_feature: To enable Kubernetes alpha feature. Default `true` (bool)
         :param bool enable_auto_repair: Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
         :param bool enable_auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
@@ -3138,7 +3208,7 @@ class ClusterGkeConfig(dict):
         :param bool enable_master_authorized_network: Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
         :param bool enable_network_policy_config: Enable network policy config for the cluster. Default `true` (bool)
         :param bool enable_nodepool_autoscaling: Enable nodepool autoscaling. Default `false` (bool)
-        :param bool enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+        :param bool enable_private_endpoint: Enable GKE cluster private endpoint. Default: `false` (bool)
         :param bool enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         :param bool enable_stackdriver_logging: Enable stackdriver monitoring. Default `true` (bool)
         :param bool enable_stackdriver_monitoring: Enable stackdriver monitoring on GKE cluster (bool)
@@ -3146,17 +3216,17 @@ class ClusterGkeConfig(dict):
         :param bool issue_client_certificate: Issue a client certificate. Default `false` (bool)
         :param bool kubernetes_dashboard: Enable the Kubernetes dashboard. Default `false` (bool)
         :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
-        :param int local_ssd_count: The number of local SSD disks to be attached to the node. Default `0` (int)
+        :param int local_ssd_count: The GKE node config local ssd count (int)
         :param Sequence[str] master_authorized_network_cidr_blocks: Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
-        :param int max_node_count: Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
-        :param int min_node_count: Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+        :param int max_node_count: The GKE node pool config max node count (int)
+        :param int min_node_count: The GKE node pool config min node count (int)
         :param int node_count: Node count for GKE cluster. Default `3` (int)
-        :param bool preemptible: Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+        :param bool preemptible: Enable GKE node config preemptible. Default: `false` (bool)
         :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param Mapping[str, Any] resource_labels: The map of Kubernetes labels to be applied to each cluster (map)
-        :param Sequence[str] taints: List of Kubernetes taints to be applied to each node (list)
-        :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
-        :param str zone: GKE cluster zone. Conflicts with `region` (string)
+        :param Sequence[str] taints: The GKE node config taints (List)
+        :param bool use_ip_aliases: Use GKE ip aliases? Default: `true` (bool)
+        :param str zone: The GKE cluster zone. Required if `region` not set (string)
         """
         pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         pulumi.set(__self__, "credential", credential)
@@ -3263,7 +3333,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        Type of the disk attached to each node (string)
+        The GKE node config disk type (string)
         """
         return pulumi.get(self, "disk_type")
 
@@ -3271,7 +3341,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> str:
         """
-        The image to use for the worker nodes (string)
+        The GKE node config image type (string)
         """
         return pulumi.get(self, "image_type")
 
@@ -3327,7 +3397,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def locations(self) -> Sequence[str]:
         """
-        Locations for GKE cluster (list)
+        The GKE cluster locations (List)
         """
         return pulumi.get(self, "locations")
 
@@ -3335,7 +3405,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        Machine type for GKE cluster (string)
+        The GKE node config machine type (string)
         """
         return pulumi.get(self, "machine_type")
 
@@ -3343,7 +3413,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> str:
         """
-        Maintenance window for GKE cluster (string)
+        The GKE cluster maintenance window (string)
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -3351,7 +3421,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="masterIpv4CidrBlock")
     def master_ipv4_cidr_block(self) -> str:
         """
-        The IP range in CIDR notation to use for the hosted master network (string)
+        The GKE cluster private master ip v4 cidr block (string)
         """
         return pulumi.get(self, "master_ipv4_cidr_block")
 
@@ -3367,7 +3437,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        Network for GKE cluster (string)
+        The GKE cluster network. Required for create new cluster (string)
         """
         return pulumi.get(self, "network")
 
@@ -3391,7 +3461,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Sequence[str]:
         """
-        The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+        The GKE node config oauth scopes (List)
         """
         return pulumi.get(self, "oauth_scopes")
 
@@ -3431,7 +3501,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> Optional[int]:
         """
-        Size of the disk attached to each node. Default `100` (int)
+        The GKE node config disk size Gb (int)
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -3519,7 +3589,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="enablePrivateEndpoint")
     def enable_private_endpoint(self) -> Optional[bool]:
         """
-        Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+        Enable GKE cluster private endpoint. Default: `false` (bool)
         """
         return pulumi.get(self, "enable_private_endpoint")
 
@@ -3583,7 +3653,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[int]:
         """
-        The number of local SSD disks to be attached to the node. Default `0` (int)
+        The GKE node config local ssd count (int)
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -3599,7 +3669,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[int]:
         """
-        Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+        The GKE node pool config max node count (int)
         """
         return pulumi.get(self, "max_node_count")
 
@@ -3607,7 +3677,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[int]:
         """
-        Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+        The GKE node pool config min node count (int)
         """
         return pulumi.get(self, "min_node_count")
 
@@ -3623,7 +3693,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         """
-        Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+        Enable GKE node config preemptible. Default: `false` (bool)
         """
         return pulumi.get(self, "preemptible")
 
@@ -3647,7 +3717,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence[str]]:
         """
-        List of Kubernetes taints to be applied to each node (list)
+        The GKE node config taints (List)
         """
         return pulumi.get(self, "taints")
 
@@ -3655,7 +3725,7 @@ class ClusterGkeConfig(dict):
     @pulumi.getter(name="useIpAliases")
     def use_ip_aliases(self) -> Optional[bool]:
         """
-        Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+        Use GKE ip aliases? Default: `true` (bool)
         """
         return pulumi.get(self, "use_ip_aliases")
 
@@ -3663,9 +3733,1090 @@ class ClusterGkeConfig(dict):
     @pulumi.getter
     def zone(self) -> Optional[str]:
         """
-        GKE cluster zone. Conflicts with `region` (string)
+        The GKE cluster zone. Required if `region` not set (string)
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCredentialSecret":
+            suggest = "google_credential_secret"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "clusterAddons":
+            suggest = "cluster_addons"
+        elif key == "clusterIpv4CidrBlock":
+            suggest = "cluster_ipv4_cidr_block"
+        elif key == "enableKubernetesAlpha":
+            suggest = "enable_kubernetes_alpha"
+        elif key == "ipAllocationPolicy":
+            suggest = "ip_allocation_policy"
+        elif key == "kubernetesVersion":
+            suggest = "kubernetes_version"
+        elif key == "loggingService":
+            suggest = "logging_service"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "masterAuthorizedNetworksConfig":
+            suggest = "master_authorized_networks_config"
+        elif key == "monitoringService":
+            suggest = "monitoring_service"
+        elif key == "networkPolicyEnabled":
+            suggest = "network_policy_enabled"
+        elif key == "nodePools":
+            suggest = "node_pools"
+        elif key == "privateClusterConfig":
+            suggest = "private_cluster_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_credential_secret: str,
+                 name: str,
+                 project_id: str,
+                 cluster_addons: Optional['outputs.ClusterGkeConfigV2ClusterAddons'] = None,
+                 cluster_ipv4_cidr_block: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enable_kubernetes_alpha: Optional[bool] = None,
+                 imported: Optional[bool] = None,
+                 ip_allocation_policy: Optional['outputs.ClusterGkeConfigV2IpAllocationPolicy'] = None,
+                 kubernetes_version: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 locations: Optional[Sequence[str]] = None,
+                 logging_service: Optional[str] = None,
+                 maintenance_window: Optional[str] = None,
+                 master_authorized_networks_config: Optional['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig'] = None,
+                 monitoring_service: Optional[str] = None,
+                 network: Optional[str] = None,
+                 network_policy_enabled: Optional[bool] = None,
+                 node_pools: Optional[Sequence['outputs.ClusterGkeConfigV2NodePool']] = None,
+                 private_cluster_config: Optional['outputs.ClusterGkeConfigV2PrivateClusterConfig'] = None,
+                 region: Optional[str] = None,
+                 subnetwork: Optional[str] = None,
+                 zone: Optional[str] = None):
+        """
+        :param str google_credential_secret: Google credential secret (string)
+        :param str name: Name of cluster registration token (string)
+        :param str project_id: Project ID to apply answer (string)
+        :param 'ClusterGkeConfigV2ClusterAddonsArgs' cluster_addons: The GKE cluster addons (List maxitems:1)
+        :param str cluster_ipv4_cidr_block: The GKE cluster ip v4 allocation cidr block (string)
+        :param str description: An optional description of this cluster (string)
+        :param bool enable_kubernetes_alpha: Enable Kubernetes alpha. Default: `false` (bool)
+        :param bool imported: Is GKE cluster imported? Default: `false` (bool)
+        :param 'ClusterGkeConfigV2IpAllocationPolicyArgs' ip_allocation_policy: The GKE ip allocation policy (List maxitems:1)
+        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param Sequence[str] locations: The GKE cluster locations (List)
+        :param str logging_service: The GKE cluster logging service (string)
+        :param str maintenance_window: The GKE cluster maintenance window (string)
+        :param 'ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs' master_authorized_networks_config: The GKE cluster master authorized networks config (List maxitems:1)
+        :param str monitoring_service: The GKE cluster monitoring service (string)
+        :param str network: The GKE cluster network. Required for create new cluster (string)
+        :param bool network_policy_enabled: Is GKE cluster network policy enabled? Default: `false` (bool)
+        :param Sequence['ClusterGkeConfigV2NodePoolArgs'] node_pools: The GKE cluster node pools. Required for create new cluster (List)
+        :param 'ClusterGkeConfigV2PrivateClusterConfigArgs' private_cluster_config: The GKE private cluster config (List maxitems:1)
+        :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param str subnetwork: The GKE cluster subnetwork. Required for create new cluster (string)
+        :param str zone: The GKE cluster zone. Required if `region` not set (string)
+        """
+        pulumi.set(__self__, "google_credential_secret", google_credential_secret)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
+        if cluster_addons is not None:
+            pulumi.set(__self__, "cluster_addons", cluster_addons)
+        if cluster_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_kubernetes_alpha is not None:
+            pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+        if ip_allocation_policy is not None:
+            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if logging_service is not None:
+            pulumi.set(__self__, "logging_service", logging_service)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if master_authorized_networks_config is not None:
+            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if monitoring_service is not None:
+            pulumi.set(__self__, "monitoring_service", monitoring_service)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_policy_enabled is not None:
+            pulumi.set(__self__, "network_policy_enabled", network_policy_enabled)
+        if node_pools is not None:
+            pulumi.set(__self__, "node_pools", node_pools)
+        if private_cluster_config is not None:
+            pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="googleCredentialSecret")
+    def google_credential_secret(self) -> str:
+        """
+        Google credential secret (string)
+        """
+        return pulumi.get(self, "google_credential_secret")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project ID to apply answer (string)
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="clusterAddons")
+    def cluster_addons(self) -> Optional['outputs.ClusterGkeConfigV2ClusterAddons']:
+        """
+        The GKE cluster addons (List maxitems:1)
+        """
+        return pulumi.get(self, "cluster_addons")
+
+    @property
+    @pulumi.getter(name="clusterIpv4CidrBlock")
+    def cluster_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        The GKE cluster ip v4 allocation cidr block (string)
+        """
+        return pulumi.get(self, "cluster_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this cluster (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableKubernetesAlpha")
+    def enable_kubernetes_alpha(self) -> Optional[bool]:
+        """
+        Enable Kubernetes alpha. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enable_kubernetes_alpha")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        """
+        Is GKE cluster imported? Default: `false` (bool)
+        """
+        return pulumi.get(self, "imported")
+
+    @property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> Optional['outputs.ClusterGkeConfigV2IpAllocationPolicy']:
+        """
+        The GKE ip allocation policy (List maxitems:1)
+        """
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[str]:
+        """
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[Sequence[str]]:
+        """
+        The GKE cluster locations (List)
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="loggingService")
+    def logging_service(self) -> Optional[str]:
+        """
+        The GKE cluster logging service (string)
+        """
+        return pulumi.get(self, "logging_service")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[str]:
+        """
+        The GKE cluster maintenance window (string)
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> Optional['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig']:
+        """
+        The GKE cluster master authorized networks config (List maxitems:1)
+        """
+        return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="monitoringService")
+    def monitoring_service(self) -> Optional[str]:
+        """
+        The GKE cluster monitoring service (string)
+        """
+        return pulumi.get(self, "monitoring_service")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The GKE cluster network. Required for create new cluster (string)
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkPolicyEnabled")
+    def network_policy_enabled(self) -> Optional[bool]:
+        """
+        Is GKE cluster network policy enabled? Default: `false` (bool)
+        """
+        return pulumi.get(self, "network_policy_enabled")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> Optional[Sequence['outputs.ClusterGkeConfigV2NodePool']]:
+        """
+        The GKE cluster node pools. Required for create new cluster (List)
+        """
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="privateClusterConfig")
+    def private_cluster_config(self) -> Optional['outputs.ClusterGkeConfigV2PrivateClusterConfig']:
+        """
+        The GKE private cluster config (List maxitems:1)
+        """
+        return pulumi.get(self, "private_cluster_config")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        """
+        The GKE cluster subnetwork. Required for create new cluster (string)
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        """
+        The GKE cluster zone. Required if `region` not set (string)
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2ClusterAddons(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "horizontalPodAutoscaling":
+            suggest = "horizontal_pod_autoscaling"
+        elif key == "httpLoadBalancing":
+            suggest = "http_load_balancing"
+        elif key == "networkPolicyConfig":
+            suggest = "network_policy_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2ClusterAddons. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2ClusterAddons.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2ClusterAddons.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 horizontal_pod_autoscaling: Optional[bool] = None,
+                 http_load_balancing: Optional[bool] = None,
+                 network_policy_config: Optional[bool] = None):
+        """
+        :param bool horizontal_pod_autoscaling: Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+        :param bool http_load_balancing: Enable GKE HTTP load balancing. Default: `false` (bool)
+        :param bool network_policy_config: Enable GKE network policy config. Default: `false` (bool)
+        """
+        if horizontal_pod_autoscaling is not None:
+            pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
+        if http_load_balancing is not None:
+            pulumi.set(__self__, "http_load_balancing", http_load_balancing)
+        if network_policy_config is not None:
+            pulumi.set(__self__, "network_policy_config", network_policy_config)
+
+    @property
+    @pulumi.getter(name="horizontalPodAutoscaling")
+    def horizontal_pod_autoscaling(self) -> Optional[bool]:
+        """
+        Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+        """
+        return pulumi.get(self, "horizontal_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="httpLoadBalancing")
+    def http_load_balancing(self) -> Optional[bool]:
+        """
+        Enable GKE HTTP load balancing. Default: `false` (bool)
+        """
+        return pulumi.get(self, "http_load_balancing")
+
+    @property
+    @pulumi.getter(name="networkPolicyConfig")
+    def network_policy_config(self) -> Optional[bool]:
+        """
+        Enable GKE network policy config. Default: `false` (bool)
+        """
+        return pulumi.get(self, "network_policy_config")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2IpAllocationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterIpv4CidrBlock":
+            suggest = "cluster_ipv4_cidr_block"
+        elif key == "clusterSecondaryRangeName":
+            suggest = "cluster_secondary_range_name"
+        elif key == "createSubnetwork":
+            suggest = "create_subnetwork"
+        elif key == "nodeIpv4CidrBlock":
+            suggest = "node_ipv4_cidr_block"
+        elif key == "servicesIpv4CidrBlock":
+            suggest = "services_ipv4_cidr_block"
+        elif key == "servicesSecondaryRangeName":
+            suggest = "services_secondary_range_name"
+        elif key == "subnetworkName":
+            suggest = "subnetwork_name"
+        elif key == "useIpAliases":
+            suggest = "use_ip_aliases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2IpAllocationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2IpAllocationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2IpAllocationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_ipv4_cidr_block: Optional[str] = None,
+                 cluster_secondary_range_name: Optional[str] = None,
+                 create_subnetwork: Optional[bool] = None,
+                 node_ipv4_cidr_block: Optional[str] = None,
+                 services_ipv4_cidr_block: Optional[str] = None,
+                 services_secondary_range_name: Optional[str] = None,
+                 subnetwork_name: Optional[str] = None,
+                 use_ip_aliases: Optional[bool] = None):
+        """
+        :param str cluster_ipv4_cidr_block: The GKE cluster ip v4 allocation cidr block (string)
+        :param str cluster_secondary_range_name: The GKE cluster ip v4 allocation secondary range name(string)
+        :param bool create_subnetwork: Create GKE subnetwork? Default: `false` (bool)
+        :param str node_ipv4_cidr_block: The GKE node ip v4 allocation cidr block (string)
+        :param str services_ipv4_cidr_block: The GKE services ip v4 allocation cidr block (string)
+        :param str services_secondary_range_name: The GKE services ip v4 allocation secondary range name (string)
+        :param str subnetwork_name: The GKE cluster subnetwork name (string)
+        :param bool use_ip_aliases: Use GKE ip aliases? Default: `true` (bool)
+        """
+        if cluster_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+        if cluster_secondary_range_name is not None:
+            pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        if create_subnetwork is not None:
+            pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        if node_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
+        if services_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
+        if services_secondary_range_name is not None:
+            pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        if subnetwork_name is not None:
+            pulumi.set(__self__, "subnetwork_name", subnetwork_name)
+        if use_ip_aliases is not None:
+            pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
+
+    @property
+    @pulumi.getter(name="clusterIpv4CidrBlock")
+    def cluster_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        The GKE cluster ip v4 allocation cidr block (string)
+        """
+        return pulumi.get(self, "cluster_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="clusterSecondaryRangeName")
+    def cluster_secondary_range_name(self) -> Optional[str]:
+        """
+        The GKE cluster ip v4 allocation secondary range name(string)
+        """
+        return pulumi.get(self, "cluster_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="createSubnetwork")
+    def create_subnetwork(self) -> Optional[bool]:
+        """
+        Create GKE subnetwork? Default: `false` (bool)
+        """
+        return pulumi.get(self, "create_subnetwork")
+
+    @property
+    @pulumi.getter(name="nodeIpv4CidrBlock")
+    def node_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        The GKE node ip v4 allocation cidr block (string)
+        """
+        return pulumi.get(self, "node_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesIpv4CidrBlock")
+    def services_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        The GKE services ip v4 allocation cidr block (string)
+        """
+        return pulumi.get(self, "services_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesSecondaryRangeName")
+    def services_secondary_range_name(self) -> Optional[str]:
+        """
+        The GKE services ip v4 allocation secondary range name (string)
+        """
+        return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="subnetworkName")
+    def subnetwork_name(self) -> Optional[str]:
+        """
+        The GKE cluster subnetwork name (string)
+        """
+        return pulumi.get(self, "subnetwork_name")
+
+    @property
+    @pulumi.getter(name="useIpAliases")
+    def use_ip_aliases(self) -> Optional[bool]:
+        """
+        Use GKE ip aliases? Default: `true` (bool)
+        """
+        return pulumi.get(self, "use_ip_aliases")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2MasterAuthorizedNetworksConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlocks":
+            suggest = "cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2MasterAuthorizedNetworksConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2MasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2MasterAuthorizedNetworksConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_blocks: Sequence['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock'],
+                 enabled: Optional[bool] = None):
+        """
+        :param Sequence['ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs'] cidr_blocks: The GKE master authorized network config cidr blocks (List)
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Sequence['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock']:
+        """
+        The GKE master authorized network config cidr blocks (List)
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 display_name: Optional[str] = None):
+        """
+        :param str cidr_block: The GKE master authorized network config cidr block (string)
+        :param str display_name: The GKE master authorized network config cidr block dispaly name (string)
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The GKE master authorized network config cidr block (string)
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The GKE master authorized network config cidr block dispaly name (string)
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2NodePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialNodeCount":
+            suggest = "initial_node_count"
+        elif key == "maxPodsConstraint":
+            suggest = "max_pods_constraint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2NodePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2NodePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2NodePool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_node_count: int,
+                 name: str,
+                 version: str,
+                 autoscaling: Optional['outputs.ClusterGkeConfigV2NodePoolAutoscaling'] = None,
+                 config: Optional['outputs.ClusterGkeConfigV2NodePoolConfig'] = None,
+                 management: Optional['outputs.ClusterGkeConfigV2NodePoolManagement'] = None,
+                 max_pods_constraint: Optional[int] = None):
+        """
+        :param int initial_node_count: The GKE node pool config initial node count (int)
+        :param str name: Name of cluster registration token (string)
+        :param str version: rancher-monitoring chart version (string)
+        :param 'ClusterGkeConfigV2NodePoolAutoscalingArgs' autoscaling: The GKE node pool config autoscaling (List maxitems:1)
+        :param 'ClusterGkeConfigV2NodePoolConfigArgs' config: The GKE node pool node config (List maxitems:1)
+        :param 'ClusterGkeConfigV2NodePoolManagementArgs' management: The GKE node pool config management (List maxitems:1)
+        :param int max_pods_constraint: The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+        """
+        pulumi.set(__self__, "initial_node_count", initial_node_count)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
+        if max_pods_constraint is not None:
+            pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> int:
+        """
+        The GKE node pool config initial node count (int)
+        """
+        return pulumi.get(self, "initial_node_count")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        rancher-monitoring chart version (string)
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional['outputs.ClusterGkeConfigV2NodePoolAutoscaling']:
+        """
+        The GKE node pool config autoscaling (List maxitems:1)
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.ClusterGkeConfigV2NodePoolConfig']:
+        """
+        The GKE node pool node config (List maxitems:1)
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional['outputs.ClusterGkeConfigV2NodePoolManagement']:
+        """
+        The GKE node pool config management (List maxitems:1)
+        """
+        return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter(name="maxPodsConstraint")
+    def max_pods_constraint(self) -> Optional[int]:
+        """
+        The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+        """
+        return pulumi.get(self, "max_pods_constraint")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2NodePoolAutoscaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2NodePoolAutoscaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2NodePoolAutoscaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2NodePoolAutoscaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 max_node_count: Optional[int] = None,
+                 min_node_count: Optional[int] = None):
+        """
+        :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
+        :param int max_node_count: The GKE node pool config max node count (int)
+        :param int min_node_count: The GKE node pool config min node count (int)
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable scheduled cluster scan. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[int]:
+        """
+        The GKE node pool config max node count (int)
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[int]:
+        """
+        The GKE node pool config min node count (int)
+        """
+        return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2NodePoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2NodePoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2NodePoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2NodePoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[int] = None,
+                 disk_type: Optional[str] = None,
+                 image_type: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 local_ssd_count: Optional[int] = None,
+                 machine_type: Optional[str] = None,
+                 oauth_scopes: Optional[Sequence[str]] = None,
+                 preemptible: Optional[bool] = None,
+                 taints: Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']] = None):
+        """
+        :param int disk_size_gb: The GKE node config disk size Gb (int)
+        :param str disk_type: The GKE node config disk type (string)
+        :param str image_type: The GKE node config image type (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param int local_ssd_count: The GKE node config local ssd count (int)
+        :param str machine_type: The GKE node config machine type (string)
+        :param Sequence[str] oauth_scopes: The GKE node config oauth scopes (List)
+        :param bool preemptible: Enable GKE node config preemptible. Default: `false` (bool)
+        :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The GKE node config taints (List)
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if oauth_scopes is not None:
+            pulumi.set(__self__, "oauth_scopes", oauth_scopes)
+        if preemptible is not None:
+            pulumi.set(__self__, "preemptible", preemptible)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[int]:
+        """
+        The GKE node config disk size Gb (int)
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        """
+        The GKE node config disk type (string)
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        """
+        The GKE node config image type (string)
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        """
+        The GKE node config local ssd count (int)
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        The GKE node config machine type (string)
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="oauthScopes")
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
+        """
+        The GKE node config oauth scopes (List)
+        """
+        return pulumi.get(self, "oauth_scopes")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> Optional[bool]:
+        """
+        Enable GKE node config preemptible. Default: `false` (bool)
+        """
+        return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']]:
+        """
+        The GKE node config taints (List)
+        """
+        return pulumi.get(self, "taints")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2NodePoolConfigTaint(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        """
+        :param str effect: The GKE taint effect (string)
+        :param str key: The GKE taint key (string)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        The GKE taint effect (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The GKE taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2NodePoolManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRepair":
+            suggest = "auto_repair"
+        elif key == "autoUpgrade":
+            suggest = "auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2NodePoolManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2NodePoolManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2NodePoolManagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_repair: Optional[bool] = None,
+                 auto_upgrade: Optional[bool] = None):
+        """
+        :param bool auto_repair: Enable GKE node pool config management auto repair. Default: `false` (bool)
+        :param bool auto_upgrade: Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+        """
+        if auto_repair is not None:
+            pulumi.set(__self__, "auto_repair", auto_repair)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> Optional[bool]:
+        """
+        Enable GKE node pool config management auto repair. Default: `false` (bool)
+        """
+        return pulumi.get(self, "auto_repair")
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> Optional[bool]:
+        """
+        Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+
+@pulumi.output_type
+class ClusterGkeConfigV2PrivateClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "masterIpv4CidrBlock":
+            suggest = "master_ipv4_cidr_block"
+        elif key == "enablePrivateEndpoint":
+            suggest = "enable_private_endpoint"
+        elif key == "enablePrivateNodes":
+            suggest = "enable_private_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2PrivateClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGkeConfigV2PrivateClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGkeConfigV2PrivateClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 master_ipv4_cidr_block: str,
+                 enable_private_endpoint: Optional[bool] = None,
+                 enable_private_nodes: Optional[bool] = None):
+        """
+        :param str master_ipv4_cidr_block: The GKE cluster private master ip v4 cidr block (string)
+        :param bool enable_private_endpoint: Enable GKE cluster private endpoint. Default: `false` (bool)
+        :param bool enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        """
+        pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
+        if enable_private_endpoint is not None:
+            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+
+    @property
+    @pulumi.getter(name="masterIpv4CidrBlock")
+    def master_ipv4_cidr_block(self) -> str:
+        """
+        The GKE cluster private master ip v4 cidr block (string)
+        """
+        return pulumi.get(self, "master_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="enablePrivateEndpoint")
+    def enable_private_endpoint(self) -> Optional[bool]:
+        """
+        Enable GKE cluster private endpoint. Default: `false` (bool)
+        """
+        return pulumi.get(self, "enable_private_endpoint")
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[bool]:
+        """
+        Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        """
+        return pulumi.get(self, "enable_private_nodes")
 
 
 @pulumi.output_type
@@ -4631,6 +5782,8 @@ class ClusterOkeConfig(dict):
             suggest = "enable_private_nodes"
         elif key == "flexOcpus":
             suggest = "flex_ocpus"
+        elif key == "limitNodeCount":
+            suggest = "limit_node_count"
         elif key == "loadBalancerSubnetName1":
             suggest = "load_balancer_subnet_name1"
         elif key == "loadBalancerSubnetName2":
@@ -4684,6 +5837,7 @@ class ClusterOkeConfig(dict):
                  enable_kubernetes_dashboard: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
                  flex_ocpus: Optional[int] = None,
+                 limit_node_count: Optional[int] = None,
                  load_balancer_subnet_name1: Optional[str] = None,
                  load_balancer_subnet_name2: Optional[str] = None,
                  node_pool_dns_domain_name: Optional[str] = None,
@@ -4712,6 +5866,7 @@ class ClusterOkeConfig(dict):
         :param bool enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
         :param bool enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         :param int flex_ocpus: Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+        :param int limit_node_count: The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
         :param str load_balancer_subnet_name1: The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
         :param str load_balancer_subnet_name2: The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
         :param str node_pool_dns_domain_name: Name for DNS domain of node pool subnet. Default `nodedns` (string)
@@ -4745,6 +5900,8 @@ class ClusterOkeConfig(dict):
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if flex_ocpus is not None:
             pulumi.set(__self__, "flex_ocpus", flex_ocpus)
+        if limit_node_count is not None:
+            pulumi.set(__self__, "limit_node_count", limit_node_count)
         if load_balancer_subnet_name1 is not None:
             pulumi.set(__self__, "load_balancer_subnet_name1", load_balancer_subnet_name1)
         if load_balancer_subnet_name2 is not None:
@@ -4885,6 +6042,14 @@ class ClusterOkeConfig(dict):
         return pulumi.get(self, "flex_ocpus")
 
     @property
+    @pulumi.getter(name="limitNodeCount")
+    def limit_node_count(self) -> Optional[int]:
+        """
+        The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+        """
+        return pulumi.get(self, "limit_node_count")
+
+    @property
     @pulumi.getter(name="loadBalancerSubnetName1")
     def load_balancer_subnet_name1(self) -> Optional[str]:
         """
@@ -4990,6 +6155,132 @@ class ClusterOkeConfig(dict):
 
 
 @pulumi.output_type
+class ClusterRke2Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "upgradeStrategy":
+            suggest = "upgrade_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRke2Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRke2Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRke2Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 upgrade_strategy: Optional['outputs.ClusterRke2ConfigUpgradeStrategy'] = None,
+                 version: Optional[str] = None):
+        """
+        :param 'ClusterRke2ConfigUpgradeStrategyArgs' upgrade_strategy: K3S upgrade strategy (List maxitems: 1)
+        :param str version: rancher-monitoring chart version (string)
+        """
+        if upgrade_strategy is not None:
+            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> Optional['outputs.ClusterRke2ConfigUpgradeStrategy']:
+        """
+        K3S upgrade strategy (List maxitems: 1)
+        """
+        return pulumi.get(self, "upgrade_strategy")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        rancher-monitoring chart version (string)
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ClusterRke2ConfigUpgradeStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainServerNodes":
+            suggest = "drain_server_nodes"
+        elif key == "drainWorkerNodes":
+            suggest = "drain_worker_nodes"
+        elif key == "serverConcurrency":
+            suggest = "server_concurrency"
+        elif key == "workerConcurrency":
+            suggest = "worker_concurrency"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRke2ConfigUpgradeStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRke2ConfigUpgradeStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRke2ConfigUpgradeStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 drain_server_nodes: Optional[bool] = None,
+                 drain_worker_nodes: Optional[bool] = None,
+                 server_concurrency: Optional[int] = None,
+                 worker_concurrency: Optional[int] = None):
+        """
+        :param bool drain_server_nodes: Drain server nodes. Default: `false` (bool)
+        :param bool drain_worker_nodes: Drain worker nodes. Default: `false` (bool)
+        :param int server_concurrency: Server concurrency. Default: `1` (int)
+        :param int worker_concurrency: Worker concurrency. Default: `1` (int)
+        """
+        if drain_server_nodes is not None:
+            pulumi.set(__self__, "drain_server_nodes", drain_server_nodes)
+        if drain_worker_nodes is not None:
+            pulumi.set(__self__, "drain_worker_nodes", drain_worker_nodes)
+        if server_concurrency is not None:
+            pulumi.set(__self__, "server_concurrency", server_concurrency)
+        if worker_concurrency is not None:
+            pulumi.set(__self__, "worker_concurrency", worker_concurrency)
+
+    @property
+    @pulumi.getter(name="drainServerNodes")
+    def drain_server_nodes(self) -> Optional[bool]:
+        """
+        Drain server nodes. Default: `false` (bool)
+        """
+        return pulumi.get(self, "drain_server_nodes")
+
+    @property
+    @pulumi.getter(name="drainWorkerNodes")
+    def drain_worker_nodes(self) -> Optional[bool]:
+        """
+        Drain worker nodes. Default: `false` (bool)
+        """
+        return pulumi.get(self, "drain_worker_nodes")
+
+    @property
+    @pulumi.getter(name="serverConcurrency")
+    def server_concurrency(self) -> Optional[int]:
+        """
+        Server concurrency. Default: `1` (int)
+        """
+        return pulumi.get(self, "server_concurrency")
+
+    @property
+    @pulumi.getter(name="workerConcurrency")
+    def worker_concurrency(self) -> Optional[int]:
+        """
+        Worker concurrency. Default: `1` (int)
+        """
+        return pulumi.get(self, "worker_concurrency")
+
+
+@pulumi.output_type
 class ClusterRkeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5068,7 +6359,7 @@ class ClusterRkeConfig(dict):
         :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param 'ClusterRkeConfigMonitoringArgs' monitoring: Kubernetes cluster monitoring (list maxitems:1)
-        :param 'ClusterRkeConfigNetworkArgs' network: Network for GKE cluster (string)
+        :param 'ClusterRkeConfigNetworkArgs' network: The GKE cluster network. Required for create new cluster (string)
         :param Sequence['ClusterRkeConfigNodeArgs'] nodes: RKE cluster nodes (list)
         :param str prefix_path: Prefix to customize Kubernetes path (string)
         :param Sequence['ClusterRkeConfigPrivateRegistryArgs'] private_registries: private registries for docker images (list)
@@ -5224,7 +6515,7 @@ class ClusterRkeConfig(dict):
     @pulumi.getter
     def network(self) -> Optional['outputs.ClusterRkeConfigNetwork']:
         """
-        Network for GKE cluster (string)
+        The GKE cluster network. Required for create new cluster (string)
         """
         return pulumi.get(self, "network")
 
@@ -5669,7 +6960,7 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(dict):
         :param str route_table_id: (string)
         :param str subnet_id: (string)
         :param str vpc: (string)
-        :param str zone: GKE cluster zone. Conflicts with `region` (string)
+        :param str zone: The GKE cluster zone. Required if `region` not set (string)
         """
         if disable_security_group_ingress is not None:
             pulumi.set(__self__, "disable_security_group_ingress", disable_security_group_ingress)
@@ -5768,7 +7059,7 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(dict):
     @pulumi.getter
     def zone(self) -> Optional[str]:
         """
-        GKE cluster zone. Conflicts with `region` (string)
+        The GKE cluster zone. Required if `region` not set (string)
         """
         return pulumi.get(self, "zone")
 
@@ -6890,7 +8181,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
         :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs' workspace: (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs' disk: (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs' global_: (list maxitems:1)
-        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs' network: Network for GKE cluster (string)
+        :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs' network: The GKE cluster network. Required for create new cluster (string)
         """
         pulumi.set(__self__, "virtual_centers", virtual_centers)
         pulumi.set(__self__, "workspace", workspace)
@@ -6937,7 +8228,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
     @pulumi.getter
     def network(self) -> Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork']:
         """
-        Network for GKE cluster (string)
+        The GKE cluster network. Required for create new cluster (string)
         """
         return pulumi.get(self, "network")
 
@@ -7644,12 +8935,22 @@ class ClusterRkeConfigIngress(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dnsPolicy":
+        if key == "defaultBackend":
+            suggest = "default_backend"
+        elif key == "dnsPolicy":
             suggest = "dns_policy"
         elif key == "extraArgs":
             suggest = "extra_args"
+        elif key == "httpPort":
+            suggest = "http_port"
+        elif key == "httpsPort":
+            suggest = "https_port"
+        elif key == "networkMode":
+            suggest = "network_mode"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "updateStrategy":
+            suggest = "update_strategy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterRkeConfigIngress. Access the value via the '{suggest}' property getter instead.")
@@ -7663,28 +8964,56 @@ class ClusterRkeConfigIngress(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_backend: Optional[bool] = None,
                  dns_policy: Optional[str] = None,
                  extra_args: Optional[Mapping[str, Any]] = None,
+                 http_port: Optional[int] = None,
+                 https_port: Optional[int] = None,
+                 network_mode: Optional[str] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  options: Optional[Mapping[str, Any]] = None,
-                 provider: Optional[str] = None):
+                 provider: Optional[str] = None,
+                 update_strategy: Optional['outputs.ClusterRkeConfigIngressUpdateStrategy'] = None):
         """
+        :param bool default_backend: Enable ingress default backend. Default: `true` (bool)
         :param str dns_policy: Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
         :param Mapping[str, Any] extra_args: Extra arguments for scheduler service (map)
+        :param int http_port: HTTP port for RKE Ingress (int)
+        :param int https_port: HTTPS port for RKE Ingress (int)
+        :param str network_mode: Network mode for RKE Ingress (string)
         :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
         :param Mapping[str, Any] options: RKE options for network (map)
         :param str provider: RKE monitoring provider (string)
+        :param 'ClusterRkeConfigIngressUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         """
+        if default_backend is not None:
+            pulumi.set(__self__, "default_backend", default_backend)
         if dns_policy is not None:
             pulumi.set(__self__, "dns_policy", dns_policy)
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
+        if http_port is not None:
+            pulumi.set(__self__, "http_port", http_port)
+        if https_port is not None:
+            pulumi.set(__self__, "https_port", https_port)
+        if network_mode is not None:
+            pulumi.set(__self__, "network_mode", network_mode)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
+
+    @property
+    @pulumi.getter(name="defaultBackend")
+    def default_backend(self) -> Optional[bool]:
+        """
+        Enable ingress default backend. Default: `true` (bool)
+        """
+        return pulumi.get(self, "default_backend")
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -7701,6 +9030,30 @@ class ClusterRkeConfigIngress(dict):
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> Optional[int]:
+        """
+        HTTP port for RKE Ingress (int)
+        """
+        return pulumi.get(self, "http_port")
+
+    @property
+    @pulumi.getter(name="httpsPort")
+    def https_port(self) -> Optional[int]:
+        """
+        HTTPS port for RKE Ingress (int)
+        """
+        return pulumi.get(self, "https_port")
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> Optional[str]:
+        """
+        Network mode for RKE Ingress (string)
+        """
+        return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -7725,6 +9078,98 @@ class ClusterRkeConfigIngress(dict):
         RKE monitoring provider (string)
         """
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.ClusterRkeConfigIngressUpdateStrategy']:
+        """
+        RKE monitoring update strategy (list Maxitems: 1)
+        """
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterRkeConfigIngressUpdateStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rollingUpdate":
+            suggest = "rolling_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRkeConfigIngressUpdateStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRkeConfigIngressUpdateStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRkeConfigIngressUpdateStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate'] = None,
+                 strategy: Optional[str] = None):
+        """
+        :param 'ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs' rolling_update: Monitoring deployment rolling update (list Maxitems: 1)
+        :param str strategy: Monitoring deployment update strategy (string)
+        """
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate']:
+        """
+        Monitoring deployment rolling update (list Maxitems: 1)
+        """
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        """
+        Monitoring deployment update strategy (string)
+        """
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class ClusterRkeConfigIngressUpdateStrategyRollingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRkeConfigIngressUpdateStrategyRollingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRkeConfigIngressUpdateStrategyRollingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRkeConfigIngressUpdateStrategyRollingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_unavailable: Optional[int] = None):
+        """
+        :param int max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        """
+        Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        """
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type
@@ -8519,7 +9964,7 @@ class ClusterRkeConfigServicesEtcd(dict):
         :param Sequence[str] extra_envs: Extra environment for scheduler service (list)
         :param int gid: Etcd service GID. Default: `0`. For Rancher v2.3.x or above (int)
         :param str image: Docker image for scheduler service (string)
-        :param str key: TLS key for etcd service (string)
+        :param str key: The GKE taint key (string)
         :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         :param str retention: Retention for etcd backup. Default `6` (int)
         :param bool snapshot: Snapshot option for etcd service (bool)
@@ -8640,7 +10085,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        TLS key for etcd service (string)
+        The GKE taint key (string)
         """
         return pulumi.get(self, "key")
 
@@ -12734,12 +14179,22 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dnsPolicy":
+        if key == "defaultBackend":
+            suggest = "default_backend"
+        elif key == "dnsPolicy":
             suggest = "dns_policy"
         elif key == "extraArgs":
             suggest = "extra_args"
+        elif key == "httpPort":
+            suggest = "http_port"
+        elif key == "httpsPort":
+            suggest = "https_port"
+        elif key == "networkMode":
+            suggest = "network_mode"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "updateStrategy":
+            suggest = "update_strategy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress. Access the value via the '{suggest}' property getter instead.")
@@ -12753,21 +14208,41 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_backend: Optional[bool] = None,
                  dns_policy: Optional[str] = None,
                  extra_args: Optional[Mapping[str, Any]] = None,
+                 http_port: Optional[int] = None,
+                 https_port: Optional[int] = None,
+                 network_mode: Optional[str] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  options: Optional[Mapping[str, Any]] = None,
-                 provider: Optional[str] = None):
+                 provider: Optional[str] = None,
+                 update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy'] = None):
+        if default_backend is not None:
+            pulumi.set(__self__, "default_backend", default_backend)
         if dns_policy is not None:
             pulumi.set(__self__, "dns_policy", dns_policy)
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
+        if http_port is not None:
+            pulumi.set(__self__, "http_port", http_port)
+        if https_port is not None:
+            pulumi.set(__self__, "https_port", https_port)
+        if network_mode is not None:
+            pulumi.set(__self__, "network_mode", network_mode)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
+
+    @property
+    @pulumi.getter(name="defaultBackend")
+    def default_backend(self) -> Optional[bool]:
+        return pulumi.get(self, "default_backend")
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -12778,6 +14253,21 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "extra_args")
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> Optional[int]:
+        return pulumi.get(self, "http_port")
+
+    @property
+    @pulumi.getter(name="httpsPort")
+    def https_port(self) -> Optional[int]:
+        return pulumi.get(self, "https_port")
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> Optional[str]:
+        return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -12793,6 +14283,79 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy']:
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rollingUpdate":
+            suggest = "rolling_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_unavailable: Optional[int] = None):
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type
@@ -22064,14 +23627,14 @@ class GetClusterEksConfigV2Result(dict):
                  kubernetes_version: str,
                  name: str,
                  node_groups: Sequence['outputs.GetClusterEksConfigV2NodeGroupResult'],
+                 private_access: bool,
+                 public_access: bool,
+                 secrets_encryption: bool,
                  imported: Optional[bool] = None,
                  kms_key: Optional[str] = None,
                  logging_types: Optional[Sequence[str]] = None,
-                 private_access: Optional[bool] = None,
-                 public_access: Optional[bool] = None,
                  public_access_sources: Optional[Sequence[str]] = None,
                  region: Optional[str] = None,
-                 secrets_encryption: Optional[bool] = None,
                  security_groups: Optional[Sequence[str]] = None,
                  service_role: Optional[str] = None,
                  subnets: Optional[Sequence[str]] = None,
@@ -22083,22 +23646,19 @@ class GetClusterEksConfigV2Result(dict):
         pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_groups", node_groups)
+        pulumi.set(__self__, "private_access", private_access)
+        pulumi.set(__self__, "public_access", public_access)
+        pulumi.set(__self__, "secrets_encryption", secrets_encryption)
         if imported is not None:
             pulumi.set(__self__, "imported", imported)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if logging_types is not None:
             pulumi.set(__self__, "logging_types", logging_types)
-        if private_access is not None:
-            pulumi.set(__self__, "private_access", private_access)
-        if public_access is not None:
-            pulumi.set(__self__, "public_access", public_access)
         if public_access_sources is not None:
             pulumi.set(__self__, "public_access_sources", public_access_sources)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if secrets_encryption is not None:
-            pulumi.set(__self__, "secrets_encryption", secrets_encryption)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
         if service_role is not None:
@@ -22132,6 +23692,21 @@ class GetClusterEksConfigV2Result(dict):
         return pulumi.get(self, "node_groups")
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> bool:
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> bool:
+        return pulumi.get(self, "public_access")
+
+    @property
+    @pulumi.getter(name="secretsEncryption")
+    def secrets_encryption(self) -> bool:
+        return pulumi.get(self, "secrets_encryption")
+
+    @property
     @pulumi.getter
     def imported(self) -> Optional[bool]:
         return pulumi.get(self, "imported")
@@ -22147,16 +23722,6 @@ class GetClusterEksConfigV2Result(dict):
         return pulumi.get(self, "logging_types")
 
     @property
-    @pulumi.getter(name="privateAccess")
-    def private_access(self) -> Optional[bool]:
-        return pulumi.get(self, "private_access")
-
-    @property
-    @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[bool]:
-        return pulumi.get(self, "public_access")
-
-    @property
     @pulumi.getter(name="publicAccessSources")
     def public_access_sources(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "public_access_sources")
@@ -22165,11 +23730,6 @@ class GetClusterEksConfigV2Result(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="secretsEncryption")
-    def secrets_encryption(self) -> Optional[bool]:
-        return pulumi.get(self, "secrets_encryption")
 
     @property
     @pulumi.getter(name="securityGroups")
@@ -22800,6 +24360,555 @@ class GetClusterGkeConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterGkeConfigV2Result(dict):
+    def __init__(__self__, *,
+                 cluster_addons: 'outputs.GetClusterGkeConfigV2ClusterAddonsResult',
+                 cluster_ipv4_cidr_block: str,
+                 description: str,
+                 enable_kubernetes_alpha: bool,
+                 google_credential_secret: str,
+                 ip_allocation_policy: 'outputs.GetClusterGkeConfigV2IpAllocationPolicyResult',
+                 kubernetes_version: str,
+                 labels: Mapping[str, Any],
+                 locations: Sequence[str],
+                 logging_service: str,
+                 maintenance_window: str,
+                 master_authorized_networks_config: 'outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult',
+                 monitoring_service: str,
+                 name: str,
+                 network: str,
+                 network_policy_enabled: bool,
+                 node_pools: Sequence['outputs.GetClusterGkeConfigV2NodePoolResult'],
+                 private_cluster_config: 'outputs.GetClusterGkeConfigV2PrivateClusterConfigResult',
+                 project_id: str,
+                 region: str,
+                 subnetwork: str,
+                 zone: str,
+                 imported: Optional[bool] = None):
+        """
+        :param str description: (Computed) The description for Cluster (string)
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "cluster_addons", cluster_addons)
+        pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+        pulumi.set(__self__, "google_credential_secret", google_credential_secret)
+        pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
+        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "logging_service", logging_service)
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
+        pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        pulumi.set(__self__, "monitoring_service", monitoring_service)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_policy_enabled", network_policy_enabled)
+        pulumi.set(__self__, "node_pools", node_pools)
+        pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "zone", zone)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+
+    @property
+    @pulumi.getter(name="clusterAddons")
+    def cluster_addons(self) -> 'outputs.GetClusterGkeConfigV2ClusterAddonsResult':
+        return pulumi.get(self, "cluster_addons")
+
+    @property
+    @pulumi.getter(name="clusterIpv4CidrBlock")
+    def cluster_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "cluster_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        (Computed) The description for Cluster (string)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableKubernetesAlpha")
+    def enable_kubernetes_alpha(self) -> bool:
+        return pulumi.get(self, "enable_kubernetes_alpha")
+
+    @property
+    @pulumi.getter(name="googleCredentialSecret")
+    def google_credential_secret(self) -> str:
+        return pulumi.get(self, "google_credential_secret")
+
+    @property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> 'outputs.GetClusterGkeConfigV2IpAllocationPolicyResult':
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> str:
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Sequence[str]:
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="loggingService")
+    def logging_service(self) -> str:
+        return pulumi.get(self, "logging_service")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> str:
+        return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> 'outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult':
+        return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="monitoringService")
+    def monitoring_service(self) -> str:
+        return pulumi.get(self, "monitoring_service")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkPolicyEnabled")
+    def network_policy_enabled(self) -> bool:
+        return pulumi.get(self, "network_policy_enabled")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> Sequence['outputs.GetClusterGkeConfigV2NodePoolResult']:
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="privateClusterConfig")
+    def private_cluster_config(self) -> 'outputs.GetClusterGkeConfigV2PrivateClusterConfigResult':
+        return pulumi.get(self, "private_cluster_config")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        return pulumi.get(self, "zone")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        return pulumi.get(self, "imported")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2ClusterAddonsResult(dict):
+    def __init__(__self__, *,
+                 horizontal_pod_autoscaling: bool,
+                 http_load_balancing: bool,
+                 network_policy_config: bool):
+        pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
+        pulumi.set(__self__, "http_load_balancing", http_load_balancing)
+        pulumi.set(__self__, "network_policy_config", network_policy_config)
+
+    @property
+    @pulumi.getter(name="horizontalPodAutoscaling")
+    def horizontal_pod_autoscaling(self) -> bool:
+        return pulumi.get(self, "horizontal_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="httpLoadBalancing")
+    def http_load_balancing(self) -> bool:
+        return pulumi.get(self, "http_load_balancing")
+
+    @property
+    @pulumi.getter(name="networkPolicyConfig")
+    def network_policy_config(self) -> bool:
+        return pulumi.get(self, "network_policy_config")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2IpAllocationPolicyResult(dict):
+    def __init__(__self__, *,
+                 cluster_ipv4_cidr_block: str,
+                 cluster_secondary_range_name: str,
+                 create_subnetwork: bool,
+                 node_ipv4_cidr_block: str,
+                 services_ipv4_cidr_block: str,
+                 services_secondary_range_name: str,
+                 subnetwork_name: str,
+                 use_ip_aliases: bool):
+        pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+        pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
+        pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
+        pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        pulumi.set(__self__, "subnetwork_name", subnetwork_name)
+        pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
+
+    @property
+    @pulumi.getter(name="clusterIpv4CidrBlock")
+    def cluster_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "cluster_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="clusterSecondaryRangeName")
+    def cluster_secondary_range_name(self) -> str:
+        return pulumi.get(self, "cluster_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="createSubnetwork")
+    def create_subnetwork(self) -> bool:
+        return pulumi.get(self, "create_subnetwork")
+
+    @property
+    @pulumi.getter(name="nodeIpv4CidrBlock")
+    def node_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "node_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesIpv4CidrBlock")
+    def services_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "services_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesSecondaryRangeName")
+    def services_secondary_range_name(self) -> str:
+        return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="subnetworkName")
+    def subnetwork_name(self) -> str:
+        return pulumi.get(self, "subnetwork_name")
+
+    @property
+    @pulumi.getter(name="useIpAliases")
+    def use_ip_aliases(self) -> bool:
+        return pulumi.get(self, "use_ip_aliases")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult(dict):
+    def __init__(__self__, *,
+                 cidr_blocks: Sequence['outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult'],
+                 enabled: Optional[bool] = None):
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Sequence['outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult']:
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 display_name: Optional[str] = None):
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2NodePoolResult(dict):
+    def __init__(__self__, *,
+                 autoscaling: 'outputs.GetClusterGkeConfigV2NodePoolAutoscalingResult',
+                 config: 'outputs.GetClusterGkeConfigV2NodePoolConfigResult',
+                 initial_node_count: int,
+                 management: 'outputs.GetClusterGkeConfigV2NodePoolManagementResult',
+                 max_pods_constraint: int,
+                 name: str,
+                 version: str):
+        """
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "autoscaling", autoscaling)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "initial_node_count", initial_node_count)
+        pulumi.set(__self__, "management", management)
+        pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> 'outputs.GetClusterGkeConfigV2NodePoolAutoscalingResult':
+        return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter
+    def config(self) -> 'outputs.GetClusterGkeConfigV2NodePoolConfigResult':
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> int:
+        return pulumi.get(self, "initial_node_count")
+
+    @property
+    @pulumi.getter
+    def management(self) -> 'outputs.GetClusterGkeConfigV2NodePoolManagementResult':
+        return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter(name="maxPodsConstraint")
+    def max_pods_constraint(self) -> int:
+        return pulumi.get(self, "max_pods_constraint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2NodePoolAutoscalingResult(dict):
+    def __init__(__self__, *,
+                 max_node_count: int,
+                 min_node_count: int,
+                 enabled: Optional[bool] = None):
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> int:
+        return pulumi.get(self, "max_node_count")
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> int:
+        return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2NodePoolConfigResult(dict):
+    def __init__(__self__, *,
+                 labels: Mapping[str, Any],
+                 oauth_scopes: Sequence[str],
+                 disk_size_gb: Optional[int] = None,
+                 disk_type: Optional[str] = None,
+                 image_type: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
+                 machine_type: Optional[str] = None,
+                 preemptible: Optional[bool] = None,
+                 taints: Optional[Sequence['outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult']] = None):
+        """
+        :param Mapping[str, Any] labels: (Computed) Labels for Node Pool object (map)
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "oauth_scopes", oauth_scopes)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if preemptible is not None:
+            pulumi.set(__self__, "preemptible", preemptible)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        """
+        (Computed) Labels for Node Pool object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="oauthScopes")
+    def oauth_scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "oauth_scopes")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[int]:
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> Optional[bool]:
+        return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence['outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult']]:
+        return pulumi.get(self, "taints")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2NodePoolConfigTaintResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2NodePoolManagementResult(dict):
+    def __init__(__self__, *,
+                 auto_repair: bool,
+                 auto_upgrade: bool):
+        pulumi.set(__self__, "auto_repair", auto_repair)
+        pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> bool:
+        return pulumi.get(self, "auto_repair")
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> bool:
+        return pulumi.get(self, "auto_upgrade")
+
+
+@pulumi.output_type
+class GetClusterGkeConfigV2PrivateClusterConfigResult(dict):
+    def __init__(__self__, *,
+                 master_ipv4_cidr_block: str,
+                 enable_private_endpoint: Optional[bool] = None,
+                 enable_private_nodes: Optional[bool] = None):
+        pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
+        if enable_private_endpoint is not None:
+            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+
+    @property
+    @pulumi.getter(name="masterIpv4CidrBlock")
+    def master_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "master_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="enablePrivateEndpoint")
+    def enable_private_endpoint(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_private_endpoint")
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_private_nodes")
+
+
+@pulumi.output_type
 class GetClusterK3sConfigResult(dict):
     def __init__(__self__, *,
                  upgrade_strategy: 'outputs.GetClusterK3sConfigUpgradeStrategyResult',
@@ -23304,6 +25413,7 @@ class GetClusterOkeConfigResult(dict):
                  enable_kubernetes_dashboard: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
                  flex_ocpus: Optional[int] = None,
+                 limit_node_count: Optional[int] = None,
                  load_balancer_subnet_name1: Optional[str] = None,
                  load_balancer_subnet_name2: Optional[str] = None,
                  node_pool_dns_domain_name: Optional[str] = None,
@@ -23339,6 +25449,8 @@ class GetClusterOkeConfigResult(dict):
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if flex_ocpus is not None:
             pulumi.set(__self__, "flex_ocpus", flex_ocpus)
+        if limit_node_count is not None:
+            pulumi.set(__self__, "limit_node_count", limit_node_count)
         if load_balancer_subnet_name1 is not None:
             pulumi.set(__self__, "load_balancer_subnet_name1", load_balancer_subnet_name1)
         if load_balancer_subnet_name2 is not None:
@@ -23440,6 +25552,11 @@ class GetClusterOkeConfigResult(dict):
         return pulumi.get(self, "flex_ocpus")
 
     @property
+    @pulumi.getter(name="limitNodeCount")
+    def limit_node_count(self) -> Optional[int]:
+        return pulumi.get(self, "limit_node_count")
+
+    @property
     @pulumi.getter(name="loadBalancerSubnetName1")
     def load_balancer_subnet_name1(self) -> Optional[str]:
         return pulumi.get(self, "load_balancer_subnet_name1")
@@ -23503,6 +25620,62 @@ class GetClusterOkeConfigResult(dict):
     @pulumi.getter(name="workerNodeIngressCidr")
     def worker_node_ingress_cidr(self) -> Optional[str]:
         return pulumi.get(self, "worker_node_ingress_cidr")
+
+
+@pulumi.output_type
+class GetClusterRke2ConfigResult(dict):
+    def __init__(__self__, *,
+                 upgrade_strategy: 'outputs.GetClusterRke2ConfigUpgradeStrategyResult',
+                 version: str):
+        pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> 'outputs.GetClusterRke2ConfigUpgradeStrategyResult':
+        return pulumi.get(self, "upgrade_strategy")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetClusterRke2ConfigUpgradeStrategyResult(dict):
+    def __init__(__self__, *,
+                 drain_server_nodes: Optional[bool] = None,
+                 drain_worker_nodes: Optional[bool] = None,
+                 server_concurrency: Optional[int] = None,
+                 worker_concurrency: Optional[int] = None):
+        if drain_server_nodes is not None:
+            pulumi.set(__self__, "drain_server_nodes", drain_server_nodes)
+        if drain_worker_nodes is not None:
+            pulumi.set(__self__, "drain_worker_nodes", drain_worker_nodes)
+        if server_concurrency is not None:
+            pulumi.set(__self__, "server_concurrency", server_concurrency)
+        if worker_concurrency is not None:
+            pulumi.set(__self__, "worker_concurrency", worker_concurrency)
+
+    @property
+    @pulumi.getter(name="drainServerNodes")
+    def drain_server_nodes(self) -> Optional[bool]:
+        return pulumi.get(self, "drain_server_nodes")
+
+    @property
+    @pulumi.getter(name="drainWorkerNodes")
+    def drain_worker_nodes(self) -> Optional[bool]:
+        return pulumi.get(self, "drain_worker_nodes")
+
+    @property
+    @pulumi.getter(name="serverConcurrency")
+    def server_concurrency(self) -> Optional[int]:
+        return pulumi.get(self, "server_concurrency")
+
+    @property
+    @pulumi.getter(name="workerConcurrency")
+    def worker_concurrency(self) -> Optional[int]:
+        return pulumi.get(self, "worker_concurrency")
 
 
 @pulumi.output_type
@@ -24800,14 +26973,26 @@ class GetClusterRkeConfigIngressResult(dict):
     def __init__(__self__, *,
                  dns_policy: str,
                  extra_args: Mapping[str, Any],
+                 http_port: int,
+                 https_port: int,
+                 network_mode: str,
                  node_selector: Mapping[str, Any],
                  options: Mapping[str, Any],
-                 provider: str):
+                 provider: str,
+                 default_backend: Optional[bool] = None,
+                 update_strategy: Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyResult'] = None):
         pulumi.set(__self__, "dns_policy", dns_policy)
         pulumi.set(__self__, "extra_args", extra_args)
+        pulumi.set(__self__, "http_port", http_port)
+        pulumi.set(__self__, "https_port", https_port)
+        pulumi.set(__self__, "network_mode", network_mode)
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "provider", provider)
+        if default_backend is not None:
+            pulumi.set(__self__, "default_backend", default_backend)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -24818,6 +27003,21 @@ class GetClusterRkeConfigIngressResult(dict):
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Mapping[str, Any]:
         return pulumi.get(self, "extra_args")
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> int:
+        return pulumi.get(self, "http_port")
+
+    @property
+    @pulumi.getter(name="httpsPort")
+    def https_port(self) -> int:
+        return pulumi.get(self, "https_port")
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> str:
+        return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -24833,6 +27033,50 @@ class GetClusterRkeConfigIngressResult(dict):
     @pulumi.getter
     def provider(self) -> str:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="defaultBackend")
+    def default_backend(self) -> Optional[bool]:
+        return pulumi.get(self, "default_backend")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyResult']:
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigIngressUpdateStrategyResult(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult(dict):
+    def __init__(__self__, *,
+                 max_unavailable: Optional[int] = None):
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type
@@ -27646,14 +29890,26 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
     def __init__(__self__, *,
                  dns_policy: str,
                  extra_args: Mapping[str, Any],
+                 http_port: int,
+                 https_port: int,
+                 network_mode: str,
                  node_selector: Mapping[str, Any],
                  options: Mapping[str, Any],
-                 provider: str):
+                 provider: str,
+                 default_backend: Optional[bool] = None,
+                 update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult'] = None):
         pulumi.set(__self__, "dns_policy", dns_policy)
         pulumi.set(__self__, "extra_args", extra_args)
+        pulumi.set(__self__, "http_port", http_port)
+        pulumi.set(__self__, "https_port", https_port)
+        pulumi.set(__self__, "network_mode", network_mode)
         pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "provider", provider)
+        if default_backend is not None:
+            pulumi.set(__self__, "default_backend", default_backend)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -27664,6 +29920,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Mapping[str, Any]:
         return pulumi.get(self, "extra_args")
+
+    @property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> int:
+        return pulumi.get(self, "http_port")
+
+    @property
+    @pulumi.getter(name="httpsPort")
+    def https_port(self) -> int:
+        return pulumi.get(self, "https_port")
+
+    @property
+    @pulumi.getter(name="networkMode")
+    def network_mode(self) -> str:
+        return pulumi.get(self, "network_mode")
 
     @property
     @pulumi.getter(name="nodeSelector")
@@ -27679,6 +29950,50 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
     @pulumi.getter
     def provider(self) -> str:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="defaultBackend")
+    def default_backend(self) -> Optional[bool]:
+        return pulumi.get(self, "default_backend")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult']:
+        return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult(dict):
+    def __init__(__self__, *,
+                 rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult'] = None,
+                 strategy: Optional[str] = None):
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult(dict):
+    def __init__(__self__, *,
+                 max_unavailable: Optional[int] = None):
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        return pulumi.get(self, "max_unavailable")
 
 
 @pulumi.output_type

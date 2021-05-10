@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigIngress
     {
         /// <summary>
+        /// Enable ingress default backend. Default: `true` (bool)
+        /// </summary>
+        public readonly bool? DefaultBackend;
+        /// <summary>
         /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
         /// </summary>
         public readonly string? DnsPolicy;
@@ -21,6 +25,18 @@ namespace Pulumi.Rancher2.Outputs
         /// Extra arguments for scheduler service (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
+        /// <summary>
+        /// HTTP port for RKE Ingress (int)
+        /// </summary>
+        public readonly int? HttpPort;
+        /// <summary>
+        /// HTTPS port for RKE Ingress (int)
+        /// </summary>
+        public readonly int? HttpsPort;
+        /// <summary>
+        /// Network mode for RKE Ingress (string)
+        /// </summary>
+        public readonly string? NetworkMode;
         /// <summary>
         /// RKE monitoring node selector (map)
         /// </summary>
@@ -33,24 +49,43 @@ namespace Pulumi.Rancher2.Outputs
         /// RKE monitoring provider (string)
         /// </summary>
         public readonly string? Provider;
+        /// <summary>
+        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// </summary>
+        public readonly Outputs.ClusterRkeConfigIngressUpdateStrategy? UpdateStrategy;
 
         [OutputConstructor]
         private ClusterRkeConfigIngress(
+            bool? defaultBackend,
+
             string? dnsPolicy,
 
             ImmutableDictionary<string, object>? extraArgs,
+
+            int? httpPort,
+
+            int? httpsPort,
+
+            string? networkMode,
 
             ImmutableDictionary<string, object>? nodeSelector,
 
             ImmutableDictionary<string, object>? options,
 
-            string? provider)
+            string? provider,
+
+            Outputs.ClusterRkeConfigIngressUpdateStrategy? updateStrategy)
         {
+            DefaultBackend = defaultBackend;
             DnsPolicy = dnsPolicy;
             ExtraArgs = extraArgs;
+            HttpPort = httpPort;
+            HttpsPort = httpsPort;
+            NetworkMode = networkMode;
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
+            UpdateStrategy = updateStrategy;
         }
     }
 }

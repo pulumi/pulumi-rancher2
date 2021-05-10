@@ -79,6 +79,12 @@ namespace Pulumi.Rancher2
         public Output<string> Driver { get; private set; } = null!;
 
         /// <summary>
+        /// Google config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Output("googleCredentialConfig")]
+        public Output<Outputs.CloudCredentialGoogleCredentialConfig?> GoogleCredentialConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Labels for Cloud Credential object (map)
         /// </summary>
         [Output("labels")]
@@ -190,6 +196,12 @@ namespace Pulumi.Rancher2
         [Input("digitaloceanCredentialConfig")]
         public Input<Inputs.CloudCredentialDigitaloceanCredentialConfigArgs>? DigitaloceanCredentialConfig { get; set; }
 
+        /// <summary>
+        /// Google config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("googleCredentialConfig")]
+        public Input<Inputs.CloudCredentialGoogleCredentialConfigArgs>? GoogleCredentialConfig { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -274,6 +286,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
+
+        /// <summary>
+        /// Google config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("googleCredentialConfig")]
+        public Input<Inputs.CloudCredentialGoogleCredentialConfigGetArgs>? GoogleCredentialConfig { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

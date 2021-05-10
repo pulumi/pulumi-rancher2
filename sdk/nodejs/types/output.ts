@@ -37,6 +37,13 @@ export interface CloudCredentialDigitaloceanCredentialConfig {
     accessToken: string;
 }
 
+export interface CloudCredentialGoogleCredentialConfig {
+    /**
+     * Google auth encoded json (string)
+     */
+    authEncodedJson: string;
+}
+
 export interface CloudCredentialLinodeCredentialConfig {
     /**
      * Linode API token (string)
@@ -529,7 +536,7 @@ export interface ClusterEksConfigV2 {
      */
     cloudCredentialId: string;
     /**
-     * Set to `true` to import EKS cluster. Default: `false` (bool)
+     * Is GKE cluster imported? Default: `false` (bool)
      */
     imported?: boolean;
     /**
@@ -553,13 +560,13 @@ export interface ClusterEksConfigV2 {
      */
     nodeGroups: outputs.ClusterEksConfigV2NodeGroup[];
     /**
-     * The EKS cluster has private access. Default: `false` (bool)
+     * The EKS cluster has private access (bool)
      */
-    privateAccess?: boolean;
+    privateAccess: boolean;
     /**
-     * The EKS cluster has public access. Default: `true` (bool)
+     * The EKS cluster has public access (bool)
      */
-    publicAccess?: boolean;
+    publicAccess: boolean;
     /**
      * The EKS cluster public access sources (map)
      */
@@ -569,9 +576,9 @@ export interface ClusterEksConfigV2 {
      */
     region?: string;
     /**
-     * Enable EKS cluster secret encryption. Default: `false` (bool)
+     * Enable EKS cluster secret encryption (bool)
      */
-    secretsEncryption?: boolean;
+    secretsEncryption: boolean;
     /**
      * List of security groups to use for the cluster (list)
      */
@@ -694,11 +701,11 @@ export interface ClusterGkeConfig {
      */
     description?: string;
     /**
-     * Size of the disk attached to each node. Default `100` (int)
+     * The GKE node config disk size Gb (int)
      */
     diskSizeGb?: number;
     /**
-     * Type of the disk attached to each node (string)
+     * The GKE node config disk type (string)
      */
     diskType: string;
     /**
@@ -742,7 +749,7 @@ export interface ClusterGkeConfig {
      */
     enableNodepoolAutoscaling?: boolean;
     /**
-     * Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+     * Enable GKE cluster private endpoint. Default: `false` (bool)
      */
     enablePrivateEndpoint?: boolean;
     /**
@@ -758,7 +765,7 @@ export interface ClusterGkeConfig {
      */
     enableStackdriverMonitoring?: boolean;
     /**
-     * The image to use for the worker nodes (string)
+     * The GKE node config image type (string)
      */
     imageType: string;
     /**
@@ -802,19 +809,19 @@ export interface ClusterGkeConfig {
      */
     labels: {[key: string]: any};
     /**
-     * The number of local SSD disks to be attached to the node. Default `0` (int)
+     * The GKE node config local ssd count (int)
      */
     localSsdCount?: number;
     /**
-     * Locations for GKE cluster (list)
+     * The GKE cluster locations (List)
      */
     locations: string[];
     /**
-     * Machine type for GKE cluster (string)
+     * The GKE node config machine type (string)
      */
     machineType: string;
     /**
-     * Maintenance window for GKE cluster (string)
+     * The GKE cluster maintenance window (string)
      */
     maintenanceWindow: string;
     /**
@@ -822,7 +829,7 @@ export interface ClusterGkeConfig {
      */
     masterAuthorizedNetworkCidrBlocks?: string[];
     /**
-     * The IP range in CIDR notation to use for the hosted master network (string)
+     * The GKE cluster private master ip v4 cidr block (string)
      */
     masterIpv4CidrBlock: string;
     /**
@@ -830,15 +837,15 @@ export interface ClusterGkeConfig {
      */
     masterVersion: string;
     /**
-     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * The GKE node pool config max node count (int)
      */
     maxNodeCount?: number;
     /**
-     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+     * The GKE node pool config min node count (int)
      */
     minNodeCount?: number;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network: string;
     /**
@@ -854,11 +861,11 @@ export interface ClusterGkeConfig {
      */
     nodeVersion: string;
     /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * The GKE node config oauth scopes (List)
      */
     oauthScopes: string[];
     /**
-     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * Enable GKE node config preemptible. Default: `false` (bool)
      */
     preemptible?: boolean;
     /**
@@ -882,17 +889,310 @@ export interface ClusterGkeConfig {
      */
     subNetwork: string;
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The GKE node config taints (List)
      */
     taints?: string[];
     /**
-     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * Use GKE ip aliases? Default: `true` (bool)
      */
     useIpAliases?: boolean;
     /**
-     * GKE cluster zone. Conflicts with `region` (string)
+     * The GKE cluster zone. Required if `region` not set (string)
      */
     zone?: string;
+}
+
+export interface ClusterGkeConfigV2 {
+    /**
+     * The GKE cluster addons (List maxitems:1)
+     */
+    clusterAddons: outputs.ClusterGkeConfigV2ClusterAddons;
+    /**
+     * The GKE cluster ip v4 allocation cidr block (string)
+     */
+    clusterIpv4CidrBlock: string;
+    /**
+     * An optional description of this cluster (string)
+     */
+    description: string;
+    /**
+     * Enable Kubernetes alpha. Default: `false` (bool)
+     */
+    enableKubernetesAlpha: boolean;
+    /**
+     * Google credential secret (string)
+     */
+    googleCredentialSecret: string;
+    /**
+     * Is GKE cluster imported? Default: `false` (bool)
+     */
+    imported?: boolean;
+    /**
+     * The GKE ip allocation policy (List maxitems:1)
+     */
+    ipAllocationPolicy: outputs.ClusterGkeConfigV2IpAllocationPolicy;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion: string;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels: {[key: string]: any};
+    /**
+     * The GKE cluster locations (List)
+     */
+    locations: string[];
+    /**
+     * The GKE cluster logging service (string)
+     */
+    loggingService: string;
+    /**
+     * The GKE cluster maintenance window (string)
+     */
+    maintenanceWindow: string;
+    /**
+     * The GKE cluster master authorized networks config (List maxitems:1)
+     */
+    masterAuthorizedNetworksConfig: outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig;
+    /**
+     * The GKE cluster monitoring service (string)
+     */
+    monitoringService: string;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * The GKE cluster network. Required for create new cluster (string)
+     */
+    network: string;
+    /**
+     * Is GKE cluster network policy enabled? Default: `false` (bool)
+     */
+    networkPolicyEnabled: boolean;
+    /**
+     * The GKE cluster node pools. Required for create new cluster (List)
+     */
+    nodePools: outputs.ClusterGkeConfigV2NodePool[];
+    /**
+     * The GKE private cluster config (List maxitems:1)
+     */
+    privateClusterConfig: outputs.ClusterGkeConfigV2PrivateClusterConfig;
+    /**
+     * Project ID to apply answer (string)
+     */
+    projectId: string;
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region: string;
+    /**
+     * The GKE cluster subnetwork. Required for create new cluster (string)
+     */
+    subnetwork: string;
+    /**
+     * The GKE cluster zone. Required if `region` not set (string)
+     */
+    zone: string;
+}
+
+export interface ClusterGkeConfigV2ClusterAddons {
+    /**
+     * Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     */
+    horizontalPodAutoscaling: boolean;
+    /**
+     * Enable GKE HTTP load balancing. Default: `false` (bool)
+     */
+    httpLoadBalancing: boolean;
+    /**
+     * Enable GKE network policy config. Default: `false` (bool)
+     */
+    networkPolicyConfig: boolean;
+}
+
+export interface ClusterGkeConfigV2IpAllocationPolicy {
+    /**
+     * The GKE cluster ip v4 allocation cidr block (string)
+     */
+    clusterIpv4CidrBlock: string;
+    /**
+     * The GKE cluster ip v4 allocation secondary range name(string)
+     */
+    clusterSecondaryRangeName: string;
+    /**
+     * Create GKE subnetwork? Default: `false` (bool)
+     */
+    createSubnetwork: boolean;
+    /**
+     * The GKE node ip v4 allocation cidr block (string)
+     */
+    nodeIpv4CidrBlock: string;
+    /**
+     * The GKE services ip v4 allocation cidr block (string)
+     */
+    servicesIpv4CidrBlock: string;
+    /**
+     * The GKE services ip v4 allocation secondary range name (string)
+     */
+    servicesSecondaryRangeName: string;
+    /**
+     * The GKE cluster subnetwork name (string)
+     */
+    subnetworkName: string;
+    /**
+     * Use GKE ip aliases? Default: `true` (bool)
+     */
+    useIpAliases: boolean;
+}
+
+export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
+    /**
+     * The GKE master authorized network config cidr blocks (List)
+     */
+    cidrBlocks: outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock[];
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: boolean;
+}
+
+export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * The GKE master authorized network config cidr block (string)
+     */
+    cidrBlock: string;
+    /**
+     * The GKE master authorized network config cidr block dispaly name (string)
+     */
+    displayName?: string;
+}
+
+export interface ClusterGkeConfigV2NodePool {
+    /**
+     * The GKE node pool config autoscaling (List maxitems:1)
+     */
+    autoscaling: outputs.ClusterGkeConfigV2NodePoolAutoscaling;
+    /**
+     * The GKE node pool node config (List maxitems:1)
+     */
+    config: outputs.ClusterGkeConfigV2NodePoolConfig;
+    /**
+     * The GKE node pool config initial node count (int)
+     */
+    initialNodeCount: number;
+    /**
+     * The GKE node pool config management (List maxitems:1)
+     */
+    management: outputs.ClusterGkeConfigV2NodePoolManagement;
+    /**
+     * The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     */
+    maxPodsConstraint: number;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: string;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version: string;
+}
+
+export interface ClusterGkeConfigV2NodePoolAutoscaling {
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: boolean;
+    /**
+     * The GKE node pool config max node count (int)
+     */
+    maxNodeCount: number;
+    /**
+     * The GKE node pool config min node count (int)
+     */
+    minNodeCount: number;
+}
+
+export interface ClusterGkeConfigV2NodePoolConfig {
+    /**
+     * The GKE node config disk size Gb (int)
+     */
+    diskSizeGb?: number;
+    /**
+     * The GKE node config disk type (string)
+     */
+    diskType?: string;
+    /**
+     * The GKE node config image type (string)
+     */
+    imageType?: string;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels: {[key: string]: any};
+    /**
+     * The GKE node config local ssd count (int)
+     */
+    localSsdCount?: number;
+    /**
+     * The GKE node config machine type (string)
+     */
+    machineType?: string;
+    /**
+     * The GKE node config oauth scopes (List)
+     */
+    oauthScopes: string[];
+    /**
+     * Enable GKE node config preemptible. Default: `false` (bool)
+     */
+    preemptible?: boolean;
+    /**
+     * The GKE node config taints (List)
+     */
+    taints?: outputs.ClusterGkeConfigV2NodePoolConfigTaint[];
+}
+
+export interface ClusterGkeConfigV2NodePoolConfigTaint {
+    /**
+     * The GKE taint effect (string)
+     */
+    effect: string;
+    /**
+     * The GKE taint key (string)
+     */
+    key: string;
+    /**
+     * The GKE taint value (string)
+     */
+    value: string;
+}
+
+export interface ClusterGkeConfigV2NodePoolManagement {
+    /**
+     * Enable GKE node pool config management auto repair. Default: `false` (bool)
+     */
+    autoRepair: boolean;
+    /**
+     * Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     */
+    autoUpgrade: boolean;
+}
+
+export interface ClusterGkeConfigV2PrivateClusterConfig {
+    /**
+     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     */
+    enablePrivateEndpoint?: boolean;
+    /**
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     */
+    enablePrivateNodes?: boolean;
+    /**
+     * The GKE cluster private master ip v4 cidr block (string)
+     */
+    masterIpv4CidrBlock: string;
 }
 
 export interface ClusterK3sConfig {
@@ -1184,6 +1484,10 @@ export interface ClusterOkeConfig {
      */
     kubernetesVersion: string;
     /**
+     * The maximum number of worker nodes. Can limit `quantityPerSubnet`. Default `0` (no limit) (int)
+     */
+    limitNodeCount?: number;
+    /**
      * The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
      */
     loadBalancerSubnetName1?: string;
@@ -1261,6 +1565,36 @@ export interface ClusterOkeConfig {
     workerNodeIngressCidr?: string;
 }
 
+export interface ClusterRke2Config {
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy: outputs.ClusterRke2ConfigUpgradeStrategy;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version: string;
+}
+
+export interface ClusterRke2ConfigUpgradeStrategy {
+    /**
+     * Drain server nodes. Default: `false` (bool)
+     */
+    drainServerNodes?: boolean;
+    /**
+     * Drain worker nodes. Default: `false` (bool)
+     */
+    drainWorkerNodes?: boolean;
+    /**
+     * Server concurrency. Default: `1` (int)
+     */
+    serverConcurrency?: number;
+    /**
+     * Worker concurrency. Default: `1` (int)
+     */
+    workerConcurrency?: number;
+}
+
 export interface ClusterRkeConfig {
     /**
      * Duration in seconds of addon job (int)
@@ -1311,7 +1645,7 @@ export interface ClusterRkeConfig {
      */
     monitoring: outputs.ClusterRkeConfigMonitoring;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network: outputs.ClusterRkeConfigNetwork;
     /**
@@ -1477,7 +1811,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     vpc: string;
     /**
-     * GKE cluster zone. Conflicts with `region` (string)
+     * The GKE cluster zone. Required if `region` not set (string)
      */
     zone: string;
 }
@@ -1784,7 +2118,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProvider {
      */
     global: outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network: outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork;
     /**
@@ -1977,6 +2311,10 @@ export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigIngress {
     /**
+     * Enable ingress default backend. Default: `true` (bool)
+     */
+    defaultBackend?: boolean;
+    /**
      * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
      */
     dnsPolicy: string;
@@ -1984,6 +2322,18 @@ export interface ClusterRkeConfigIngress {
      * Extra arguments for scheduler service (map)
      */
     extraArgs: {[key: string]: any};
+    /**
+     * HTTP port for RKE Ingress (int)
+     */
+    httpPort: number;
+    /**
+     * HTTPS port for RKE Ingress (int)
+     */
+    httpsPort: number;
+    /**
+     * Network mode for RKE Ingress (string)
+     */
+    networkMode: string;
     /**
      * RKE monitoring node selector (map)
      */
@@ -1996,6 +2346,28 @@ export interface ClusterRkeConfigIngress {
      * RKE monitoring provider (string)
      */
     provider: string;
+    /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: outputs.ClusterRkeConfigIngressUpdateStrategy;
+}
+
+export interface ClusterRkeConfigIngressUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: outputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: string;
+}
+
+export interface ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: number;
 }
 
 export interface ClusterRkeConfigMonitoring {
@@ -2241,7 +2613,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     image: string;
     /**
-     * TLS key for etcd service (string)
+     * The GKE taint key (string)
      */
     key: string;
     /**
@@ -3058,11 +3430,25 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateS
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    defaultBackend?: boolean;
     dnsPolicy: string;
     extraArgs: {[key: string]: any};
+    httpPort: number;
+    httpsPort: number;
+    networkMode: string;
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    maxUnavailable?: number;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
@@ -3534,11 +3920,11 @@ export interface GetClusterEksConfigV2 {
      */
     name: string;
     nodeGroups: outputs.GetClusterEksConfigV2NodeGroup[];
-    privateAccess?: boolean;
-    publicAccess?: boolean;
+    privateAccess: boolean;
+    publicAccess: boolean;
     publicAccessSources?: string[];
     region?: string;
-    secretsEncryption?: boolean;
+    secretsEncryption: boolean;
     securityGroups?: string[];
     serviceRole?: string;
     subnets?: string[];
@@ -3646,6 +4032,119 @@ export interface GetClusterGkeConfig {
     zone?: string;
 }
 
+export interface GetClusterGkeConfigV2 {
+    clusterAddons: outputs.GetClusterGkeConfigV2ClusterAddons;
+    clusterIpv4CidrBlock: string;
+    /**
+     * (Computed) The description for Cluster (string)
+     */
+    description: string;
+    enableKubernetesAlpha: boolean;
+    googleCredentialSecret: string;
+    imported?: boolean;
+    ipAllocationPolicy: outputs.GetClusterGkeConfigV2IpAllocationPolicy;
+    kubernetesVersion: string;
+    /**
+     * (Computed) Labels for Node Pool object (map)
+     */
+    labels: {[key: string]: any};
+    locations: string[];
+    loggingService: string;
+    maintenanceWindow: string;
+    masterAuthorizedNetworksConfig: outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfig;
+    monitoringService: string;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    network: string;
+    networkPolicyEnabled: boolean;
+    nodePools: outputs.GetClusterGkeConfigV2NodePool[];
+    privateClusterConfig: outputs.GetClusterGkeConfigV2PrivateClusterConfig;
+    projectId: string;
+    region: string;
+    subnetwork: string;
+    zone: string;
+}
+
+export interface GetClusterGkeConfigV2ClusterAddons {
+    horizontalPodAutoscaling: boolean;
+    httpLoadBalancing: boolean;
+    networkPolicyConfig: boolean;
+}
+
+export interface GetClusterGkeConfigV2IpAllocationPolicy {
+    clusterIpv4CidrBlock: string;
+    clusterSecondaryRangeName: string;
+    createSubnetwork: boolean;
+    nodeIpv4CidrBlock: string;
+    servicesIpv4CidrBlock: string;
+    servicesSecondaryRangeName: string;
+    subnetworkName: string;
+    useIpAliases: boolean;
+}
+
+export interface GetClusterGkeConfigV2MasterAuthorizedNetworksConfig {
+    cidrBlocks: outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock[];
+    enabled?: boolean;
+}
+
+export interface GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
+    cidrBlock: string;
+    displayName?: string;
+}
+
+export interface GetClusterGkeConfigV2NodePool {
+    autoscaling: outputs.GetClusterGkeConfigV2NodePoolAutoscaling;
+    config: outputs.GetClusterGkeConfigV2NodePoolConfig;
+    initialNodeCount: number;
+    management: outputs.GetClusterGkeConfigV2NodePoolManagement;
+    maxPodsConstraint: number;
+    /**
+     * The name of the Cluster (string)
+     */
+    name: string;
+    version: string;
+}
+
+export interface GetClusterGkeConfigV2NodePoolAutoscaling {
+    enabled?: boolean;
+    maxNodeCount: number;
+    minNodeCount: number;
+}
+
+export interface GetClusterGkeConfigV2NodePoolConfig {
+    diskSizeGb?: number;
+    diskType?: string;
+    imageType?: string;
+    /**
+     * (Computed) Labels for Node Pool object (map)
+     */
+    labels: {[key: string]: any};
+    localSsdCount?: number;
+    machineType?: string;
+    oauthScopes: string[];
+    preemptible?: boolean;
+    taints?: outputs.GetClusterGkeConfigV2NodePoolConfigTaint[];
+}
+
+export interface GetClusterGkeConfigV2NodePoolConfigTaint {
+    effect: string;
+    key: string;
+    value: string;
+}
+
+export interface GetClusterGkeConfigV2NodePoolManagement {
+    autoRepair: boolean;
+    autoUpgrade: boolean;
+}
+
+export interface GetClusterGkeConfigV2PrivateClusterConfig {
+    enablePrivateEndpoint?: boolean;
+    enablePrivateNodes?: boolean;
+    masterIpv4CidrBlock: string;
+}
+
 export interface GetClusterK3sConfig {
     upgradeStrategy: outputs.GetClusterK3sConfigUpgradeStrategy;
     version: string;
@@ -3742,6 +4241,7 @@ export interface GetClusterOkeConfig {
     fingerprint: string;
     flexOcpus?: number;
     kubernetesVersion: string;
+    limitNodeCount?: number;
     loadBalancerSubnetName1?: string;
     loadBalancerSubnetName2?: string;
     nodeImage: string;
@@ -3761,6 +4261,18 @@ export interface GetClusterOkeConfig {
     vcnCompartmentId?: string;
     vcnName?: string;
     workerNodeIngressCidr?: string;
+}
+
+export interface GetClusterRke2Config {
+    upgradeStrategy: outputs.GetClusterRke2ConfigUpgradeStrategy;
+    version: string;
+}
+
+export interface GetClusterRke2ConfigUpgradeStrategy {
+    drainServerNodes?: boolean;
+    drainWorkerNodes?: boolean;
+    serverConcurrency?: number;
+    workerConcurrency?: number;
 }
 
 export interface GetClusterRkeConfig {
@@ -4007,11 +4519,25 @@ export interface GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
 }
 
 export interface GetClusterRkeConfigIngress {
+    defaultBackend?: boolean;
     dnsPolicy: string;
     extraArgs: {[key: string]: any};
+    httpPort: number;
+    httpsPort: number;
+    networkMode: string;
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    updateStrategy?: outputs.GetClusterRkeConfigIngressUpdateStrategy;
+}
+
+export interface GetClusterRkeConfigIngressUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterRkeConfigIngressUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterRkeConfigIngressUpdateStrategyRollingUpdate {
+    maxUnavailable?: number;
 }
 
 export interface GetClusterRkeConfigMonitoring {
@@ -4569,11 +5095,25 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpda
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    defaultBackend?: boolean;
     dnsPolicy: string;
     extraArgs: {[key: string]: any};
+    httpPort: number;
+    httpsPort: number;
+    networkMode: string;
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate;
+    strategy?: string;
+}
+
+export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    maxUnavailable?: number;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {

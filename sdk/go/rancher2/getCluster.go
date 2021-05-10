@@ -48,7 +48,7 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig GetClusterAksConfig `pulumi:"aksConfig"`
 	// (Computed) Annotations for Node Pool object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
@@ -74,27 +74,33 @@ type LookupClusterResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver string `pulumi:"driver"`
-	// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
-	EksConfig             GetClusterEksConfig   `pulumi:"eksConfig"`
+	// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	EksConfig GetClusterEksConfig `pulumi:"eksConfig"`
+	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2           GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	EnableClusterAlerting bool                  `pulumi:"enableClusterAlerting"`
 	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
 	EnableClusterMonitoring bool `pulumi:"enableClusterMonitoring"`
 	// (Computed) Enable project network isolation. Default `false` (bool)
 	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
-	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `rkeConfig` (list maxitems:1)
+	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
 	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
+	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 GetClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig` and `rkeConfig` (list maxitems:1)
+	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig GetClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed) Kube Config generated for the cluster (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	OkeConfig GetClusterOkeConfig    `pulumi:"okeConfig"`
-	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig` and `gkeConfig` (list maxitems:1)
+	Labels map[string]interface{} `pulumi:"labels"`
+	Name   string                 `pulumi:"name"`
+	// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	OkeConfig GetClusterOkeConfig `pulumi:"okeConfig"`
+	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config GetClusterRke2Config `pulumi:"rke2Config"`
+	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig             GetClusterRkeConfig              `pulumi:"rkeConfig"`
 	ScheduledClusterScans []GetClusterScheduledClusterScan `pulumi:"scheduledClusterScans"`
 	// (Computed) System project ID for the cluster (string)

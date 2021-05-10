@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoring? Monitoring;
         /// <summary>
-        /// Network for GKE cluster (string)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigNetwork? Network;
         /// <summary>

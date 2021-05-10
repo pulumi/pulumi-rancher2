@@ -63,6 +63,10 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
     /**
+     * Wait until alerting is up and running. Default: `false` (bool)
+     */
+    public readonly waitAlerting!: pulumi.Output<boolean | undefined>;
+    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
     public readonly waitCatalogs!: pulumi.Output<boolean | undefined>;
@@ -92,6 +96,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["stateConfirm"] = state ? state.stateConfirm : undefined;
             inputs["synced"] = state ? state.synced : undefined;
             inputs["systemProjectId"] = state ? state.systemProjectId : undefined;
+            inputs["waitAlerting"] = state ? state.waitAlerting : undefined;
             inputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
             inputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
@@ -103,6 +108,7 @@ export class ClusterSync extends pulumi.CustomResource {
             inputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
             inputs["stateConfirm"] = args ? args.stateConfirm : undefined;
             inputs["synced"] = args ? args.synced : undefined;
+            inputs["waitAlerting"] = args ? args.waitAlerting : undefined;
             inputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
             inputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
             inputs["defaultProjectId"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface ClusterSyncState {
      */
     readonly systemProjectId?: pulumi.Input<string>;
     /**
+     * Wait until alerting is up and running. Default: `false` (bool)
+     */
+    readonly waitAlerting?: pulumi.Input<boolean>;
+    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
     readonly waitCatalogs?: pulumi.Input<boolean>;
@@ -177,6 +187,10 @@ export interface ClusterSyncArgs {
      */
     readonly stateConfirm?: pulumi.Input<number>;
     readonly synced?: pulumi.Input<boolean>;
+    /**
+     * Wait until alerting is up and running. Default: `false` (bool)
+     */
+    readonly waitAlerting?: pulumi.Input<boolean>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */

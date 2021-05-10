@@ -46,6 +46,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
+        /// The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+        /// </summary>
+        public readonly int? LimitNodeCount;
+        /// <summary>
         /// The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
         /// </summary>
         public readonly string? LoadBalancerSubnetName1;
@@ -140,6 +144,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string kubernetesVersion,
 
+            int? limitNodeCount,
+
             string? loadBalancerSubnetName1,
 
             string? loadBalancerSubnetName2,
@@ -186,6 +192,7 @@ namespace Pulumi.Rancher2.Outputs
             Fingerprint = fingerprint;
             FlexOcpus = flexOcpus;
             KubernetesVersion = kubernetesVersion;
+            LimitNodeCount = limitNodeCount;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;
             LoadBalancerSubnetName2 = loadBalancerSubnetName2;
             NodeImage = nodeImage;

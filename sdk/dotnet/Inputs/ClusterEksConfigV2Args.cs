@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> CloudCredentialId { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` to import EKS cluster. Default: `false` (bool)
+        /// Is GKE cluster imported? Default: `false` (bool)
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
@@ -67,13 +67,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS cluster has private access. Default: `false` (bool)
+        /// The EKS cluster has private access (bool)
         /// </summary>
         [Input("privateAccess")]
         public Input<bool>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// The EKS cluster has public access. Default: `true` (bool)
+        /// The EKS cluster has public access (bool)
         /// </summary>
         [Input("publicAccess")]
         public Input<bool>? PublicAccess { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Enable EKS cluster secret encryption. Default: `false` (bool)
+        /// Enable EKS cluster secret encryption (bool)
         /// </summary>
         [Input("secretsEncryption")]
         public Input<bool>? SecretsEncryption { get; set; }

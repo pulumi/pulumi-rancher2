@@ -13,6 +13,12 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigIngressArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable ingress default backend. Default: `true` (bool)
+        /// </summary>
+        [Input("defaultBackend")]
+        public Input<bool>? DefaultBackend { get; set; }
+
+        /// <summary>
         /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
         /// </summary>
         [Input("dnsPolicy")]
@@ -29,6 +35,24 @@ namespace Pulumi.Rancher2.Inputs
             get => _extraArgs ?? (_extraArgs = new InputMap<object>());
             set => _extraArgs = value;
         }
+
+        /// <summary>
+        /// HTTP port for RKE Ingress (int)
+        /// </summary>
+        [Input("httpPort")]
+        public Input<int>? HttpPort { get; set; }
+
+        /// <summary>
+        /// HTTPS port for RKE Ingress (int)
+        /// </summary>
+        [Input("httpsPort")]
+        public Input<int>? HttpsPort { get; set; }
+
+        /// <summary>
+        /// Network mode for RKE Ingress (string)
+        /// </summary>
+        [Input("networkMode")]
+        public Input<string>? NetworkMode { get; set; }
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
@@ -59,6 +83,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
+
+        /// <summary>
+        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<Inputs.ClusterRkeConfigIngressUpdateStrategyArgs>? UpdateStrategy { get; set; }
 
         public ClusterRkeConfigIngressArgs()
         {

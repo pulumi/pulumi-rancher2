@@ -55,6 +55,8 @@ type CloudCredential struct {
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrOutput `pulumi:"digitaloceanCredentialConfig"`
 	// (Computed) The driver of the Cloud Credential (string)
 	Driver pulumi.StringOutput `pulumi:"driver"`
+	// Google config for the Cloud Credential (list maxitems:1)
+	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrOutput `pulumi:"googleCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -108,6 +110,8 @@ type cloudCredentialState struct {
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
 	// (Computed) The driver of the Cloud Credential (string)
 	Driver *string `pulumi:"driver"`
+	// Google config for the Cloud Credential (list maxitems:1)
+	GoogleCredentialConfig *CloudCredentialGoogleCredentialConfig `pulumi:"googleCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -133,6 +137,8 @@ type CloudCredentialState struct {
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
 	// (Computed) The driver of the Cloud Credential (string)
 	Driver pulumi.StringPtrInput
+	// Google config for the Cloud Credential (list maxitems:1)
+	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -160,6 +166,8 @@ type cloudCredentialArgs struct {
 	Description *string `pulumi:"description"`
 	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig *CloudCredentialDigitaloceanCredentialConfig `pulumi:"digitaloceanCredentialConfig"`
+	// Google config for the Cloud Credential (list maxitems:1)
+	GoogleCredentialConfig *CloudCredentialGoogleCredentialConfig `pulumi:"googleCredentialConfig"`
 	// Labels for Cloud Credential object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
@@ -184,6 +192,8 @@ type CloudCredentialArgs struct {
 	Description pulumi.StringPtrInput
 	// DigitalOcean config for the Cloud Credential (list maxitems:1)
 	DigitaloceanCredentialConfig CloudCredentialDigitaloceanCredentialConfigPtrInput
+	// Google config for the Cloud Credential (list maxitems:1)
+	GoogleCredentialConfig CloudCredentialGoogleCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
 	Labels pulumi.MapInput
 	// Linode config for the Cloud Credential (list maxitems:1)

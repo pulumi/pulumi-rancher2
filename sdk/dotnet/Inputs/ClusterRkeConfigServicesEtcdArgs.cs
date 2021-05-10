@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// TLS key for etcd service (string)
+        /// The GKE taint key (string)
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

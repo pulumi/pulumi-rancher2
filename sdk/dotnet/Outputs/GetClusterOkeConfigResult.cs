@@ -24,6 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string Fingerprint;
         public readonly int? FlexOcpus;
         public readonly string KubernetesVersion;
+        public readonly int? LimitNodeCount;
         public readonly string? LoadBalancerSubnetName1;
         public readonly string? LoadBalancerSubnetName2;
         public readonly string NodeImage;
@@ -61,6 +62,8 @@ namespace Pulumi.Rancher2.Outputs
             int? flexOcpus,
 
             string kubernetesVersion,
+
+            int? limitNodeCount,
 
             string? loadBalancerSubnetName1,
 
@@ -108,6 +111,7 @@ namespace Pulumi.Rancher2.Outputs
             Fingerprint = fingerprint;
             FlexOcpus = flexOcpus;
             KubernetesVersion = kubernetesVersion;
+            LimitNodeCount = limitNodeCount;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;
             LoadBalancerSubnetName2 = loadBalancerSubnetName2;
             NodeImage = nodeImage;

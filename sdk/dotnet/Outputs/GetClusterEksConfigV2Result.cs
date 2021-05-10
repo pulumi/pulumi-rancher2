@@ -23,11 +23,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupResult> NodeGroups;
-        public readonly bool? PrivateAccess;
-        public readonly bool? PublicAccess;
+        public readonly bool PrivateAccess;
+        public readonly bool PublicAccess;
         public readonly ImmutableArray<string> PublicAccessSources;
         public readonly string? Region;
-        public readonly bool? SecretsEncryption;
+        public readonly bool SecretsEncryption;
         public readonly ImmutableArray<string> SecurityGroups;
         public readonly string? ServiceRole;
         public readonly ImmutableArray<string> Subnets;
@@ -49,15 +49,15 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupResult> nodeGroups,
 
-            bool? privateAccess,
+            bool privateAccess,
 
-            bool? publicAccess,
+            bool publicAccess,
 
             ImmutableArray<string> publicAccessSources,
 
             string? region,
 
-            bool? secretsEncryption,
+            bool secretsEncryption,
 
             ImmutableArray<string> securityGroups,
 

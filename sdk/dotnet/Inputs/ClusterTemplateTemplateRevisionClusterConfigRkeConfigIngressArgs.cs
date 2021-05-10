@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs : Pulumi.ResourceArgs
     {
+        [Input("defaultBackend")]
+        public Input<bool>? DefaultBackend { get; set; }
+
         [Input("dnsPolicy")]
         public Input<string>? DnsPolicy { get; set; }
 
@@ -22,6 +25,15 @@ namespace Pulumi.Rancher2.Inputs
             get => _extraArgs ?? (_extraArgs = new InputMap<object>());
             set => _extraArgs = value;
         }
+
+        [Input("httpPort")]
+        public Input<int>? HttpPort { get; set; }
+
+        [Input("httpsPort")]
+        public Input<int>? HttpsPort { get; set; }
+
+        [Input("networkMode")]
+        public Input<string>? NetworkMode { get; set; }
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
@@ -41,6 +53,9 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("provider")]
         public Input<string>? Provider { get; set; }
+
+        [Input("updateStrategy")]
+        public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs>? UpdateStrategy { get; set; }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs()
         {

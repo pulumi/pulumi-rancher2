@@ -79,6 +79,10 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     public /*out*/ readonly driver!: pulumi.Output<string>;
     /**
+     * Google config for the Cloud Credential (list maxitems:1)
+     */
+    public readonly googleCredentialConfig!: pulumi.Output<outputs.CloudCredentialGoogleCredentialConfig | undefined>;
+    /**
      * Labels for Cloud Credential object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -118,6 +122,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
             inputs["driver"] = state ? state.driver : undefined;
+            inputs["googleCredentialConfig"] = state ? state.googleCredentialConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -130,6 +135,7 @@ export class CloudCredential extends pulumi.CustomResource {
             inputs["azureCredentialConfig"] = args ? args.azureCredentialConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
+            inputs["googleCredentialConfig"] = args ? args.googleCredentialConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -172,6 +178,10 @@ export interface CloudCredentialState {
      * (Computed) The driver of the Cloud Credential (string)
      */
     readonly driver?: pulumi.Input<string>;
+    /**
+     * Google config for the Cloud Credential (list maxitems:1)
+     */
+    readonly googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */
@@ -218,6 +228,10 @@ export interface CloudCredentialArgs {
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
     readonly digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
+    /**
+     * Google config for the Cloud Credential (list maxitems:1)
+     */
+    readonly googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
     /**
      * Labels for Cloud Credential object (map)
      */

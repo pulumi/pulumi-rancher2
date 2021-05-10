@@ -60,7 +60,7 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterResult
     {
         /// <summary>
-        /// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterAksConfigResult AksConfig;
         /// <summary>
@@ -112,9 +112,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Driver;
         /// <summary>
-        /// (Computed) The Amazon eks configuration for `eks` Clusters. Conflicts with `aks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterEksConfigResult EksConfig;
+        /// <summary>
+        /// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        /// </summary>
         public readonly Outputs.GetClusterEksConfigV2Result EksConfigV2;
         public readonly bool EnableClusterAlerting;
         /// <summary>
@@ -126,15 +129,19 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool EnableNetworkPolicy;
         /// <summary>
-        /// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config` and `rke_config` (list maxitems:1)
+        /// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterGkeConfigResult GkeConfig;
+        /// <summary>
+        /// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.GetClusterGkeConfigV2Result GkeConfigV2;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config` and `rke_config` (list maxitems:1)
+        /// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterK3sConfigResult K3sConfig;
         /// <summary>
@@ -146,9 +153,16 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string Name;
+        /// <summary>
+        /// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        /// </summary>
         public readonly Outputs.GetClusterOkeConfigResult OkeConfig;
         /// <summary>
-        /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config` and `gke_config` (list maxitems:1)
+        /// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        /// </summary>
+        public readonly Outputs.GetClusterRke2ConfigResult Rke2Config;
+        /// <summary>
+        /// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterRkeConfigResult RkeConfig;
         public readonly ImmutableArray<Outputs.GetClusterScheduledClusterScanResult> ScheduledClusterScans;
@@ -197,6 +211,8 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterGkeConfigResult gkeConfig,
 
+            Outputs.GetClusterGkeConfigV2Result gkeConfigV2,
+
             string id,
 
             Outputs.GetClusterK3sConfigResult k3sConfig,
@@ -208,6 +224,8 @@ namespace Pulumi.Rancher2
             string name,
 
             Outputs.GetClusterOkeConfigResult okeConfig,
+
+            Outputs.GetClusterRke2ConfigResult rke2Config,
 
             Outputs.GetClusterRkeConfigResult rkeConfig,
 
@@ -234,12 +252,14 @@ namespace Pulumi.Rancher2
             EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             GkeConfig = gkeConfig;
+            GkeConfigV2 = gkeConfigV2;
             Id = id;
             K3sConfig = k3sConfig;
             KubeConfig = kubeConfig;
             Labels = labels;
             Name = name;
             OkeConfig = okeConfig;
+            Rke2Config = rke2Config;
             RkeConfig = rkeConfig;
             ScheduledClusterScans = scheduledClusterScans;
             SystemProjectId = systemProjectId;

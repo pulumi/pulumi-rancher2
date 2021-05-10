@@ -29,6 +29,8 @@ type ClusterSync struct {
 	Synced       pulumi.BoolPtrOutput `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
+	// Wait until alerting is up and running. Default: `false` (bool)
+	WaitAlerting pulumi.BoolPtrOutput `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrOutput `pulumi:"waitCatalogs"`
 	// Wait until monitoring is up and running. Default: `false` (bool)
@@ -82,6 +84,8 @@ type clusterSyncState struct {
 	Synced       *bool `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId *string `pulumi:"systemProjectId"`
+	// Wait until alerting is up and running. Default: `false` (bool)
+	WaitAlerting *bool `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs *bool `pulumi:"waitCatalogs"`
 	// Wait until monitoring is up and running. Default: `false` (bool)
@@ -104,6 +108,8 @@ type ClusterSyncState struct {
 	Synced       pulumi.BoolPtrInput
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId pulumi.StringPtrInput
+	// Wait until alerting is up and running. Default: `false` (bool)
+	WaitAlerting pulumi.BoolPtrInput
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrInput
 	// Wait until monitoring is up and running. Default: `false` (bool)
@@ -122,6 +128,8 @@ type clusterSyncArgs struct {
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	StateConfirm *int  `pulumi:"stateConfirm"`
 	Synced       *bool `pulumi:"synced"`
+	// Wait until alerting is up and running. Default: `false` (bool)
+	WaitAlerting *bool `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs *bool `pulumi:"waitCatalogs"`
 	// Wait until monitoring is up and running. Default: `false` (bool)
@@ -137,6 +145,8 @@ type ClusterSyncArgs struct {
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	StateConfirm pulumi.IntPtrInput
 	Synced       pulumi.BoolPtrInput
+	// Wait until alerting is up and running. Default: `false` (bool)
+	WaitAlerting pulumi.BoolPtrInput
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrInput
 	// Wait until monitoring is up and running. Default: `false` (bool)
