@@ -478,6 +478,8 @@ import (
 // 						MaxSize:      pulumi.Int(3),
 // 					},
 // 				},
+// 				PrivateAccess: pulumi.Bool(true),
+// 				PublicAccess:  pulumi.Bool(false),
 // 			},
 // 		})
 // 		if err != nil {
@@ -532,6 +534,8 @@ import (
 // 						},
 // 					},
 // 				},
+// 				PrivateAccess: pulumi.Bool(true),
+// 				PublicAccess:  pulumi.Bool(true),
 // 			},
 // 		})
 // 		if err != nil {
@@ -552,7 +556,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrOutput `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
@@ -586,9 +590,9 @@ type Cluster struct {
 	DockerRootDir pulumi.StringOutput `pulumi:"dockerRootDir"`
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver pulumi.StringOutput `pulumi:"driver"`
-	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
-	// The Amazon EKS configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2 ClusterEksConfigV2PtrOutput `pulumi:"eksConfigV2"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
@@ -600,11 +604,13 @@ type Cluster struct {
 	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
-	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 ClusterGkeConfigV2PtrOutput `pulumi:"gkeConfigV2"`
 	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
 	IstioEnabled pulumi.BoolOutput `pulumi:"istioEnabled"`
-	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigOutput `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
@@ -612,9 +618,11 @@ type Cluster struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Name of cluster registration token (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `gkeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrOutput `pulumi:"okeConfig"`
-	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config ClusterRke2ConfigOutput `pulumi:"rke2Config"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigOutput `pulumi:"rkeConfig"`
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanOutput `pulumi:"scheduledClusterScan"`
@@ -653,7 +661,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
@@ -687,9 +695,9 @@ type clusterState struct {
 	DockerRootDir *string `pulumi:"dockerRootDir"`
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver *string `pulumi:"driver"`
-	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
-	// The Amazon EKS configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2 *ClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
@@ -701,11 +709,13 @@ type clusterState struct {
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
-	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
+	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 *ClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
 	IstioEnabled *bool `pulumi:"istioEnabled"`
-	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
@@ -713,9 +723,11 @@ type clusterState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Name of cluster registration token (string)
 	Name *string `pulumi:"name"`
-	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `gkeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
-	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config *ClusterRke2Config `pulumi:"rke2Config"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
@@ -726,7 +738,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
 	// Annotations for cluster registration token object (map)
 	Annotations pulumi.MapInput
@@ -760,9 +772,9 @@ type ClusterState struct {
 	DockerRootDir pulumi.StringPtrInput
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver pulumi.StringPtrInput
-	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrInput
-	// The Amazon EKS configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2 ClusterEksConfigV2PtrInput
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
@@ -774,11 +786,13 @@ type ClusterState struct {
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
+	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 ClusterGkeConfigV2PtrInput
 	// (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
 	IstioEnabled pulumi.BoolPtrInput
-	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
 	// (Computed/Sensitive) Kube Config generated for the cluster (string)
 	KubeConfig pulumi.StringPtrInput
@@ -786,9 +800,11 @@ type ClusterState struct {
 	Labels pulumi.MapInput
 	// Name of cluster registration token (string)
 	Name pulumi.StringPtrInput
-	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `gkeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
-	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config ClusterRke2ConfigPtrInput
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput
@@ -803,7 +819,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
@@ -831,9 +847,9 @@ type clusterArgs struct {
 	DockerRootDir *string `pulumi:"dockerRootDir"`
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver *string `pulumi:"driver"`
-	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
-	// The Amazon EKS configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2 *ClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
@@ -841,17 +857,21 @@ type clusterArgs struct {
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
-	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
-	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 *ClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// Labels for cluster registration token object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Name of cluster registration token (string)
 	Name *string `pulumi:"name"`
-	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `gkeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
-	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config *ClusterRke2Config `pulumi:"rke2Config"`
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig *ClusterRkeConfig `pulumi:"rkeConfig"`
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan *ClusterScheduledClusterScan `pulumi:"scheduledClusterScan"`
@@ -861,7 +881,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
 	// Annotations for cluster registration token object (map)
 	Annotations pulumi.MapInput
@@ -889,9 +909,9 @@ type ClusterArgs struct {
 	DockerRootDir pulumi.StringPtrInput
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver pulumi.StringPtrInput
-	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig ClusterEksConfigPtrInput
-	// The Amazon EKS configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
+	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
 	EksConfigV2 ClusterEksConfigV2PtrInput
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
@@ -899,17 +919,21 @@ type ClusterArgs struct {
 	EnableClusterMonitoring pulumi.BoolPtrInput
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
-	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	GkeConfig ClusterGkeConfigPtrInput
-	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+	GkeConfigV2 ClusterGkeConfigV2PtrInput
+	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
 	// Labels for cluster registration token object (map)
 	Labels pulumi.MapInput
 	// Name of cluster registration token (string)
 	Name pulumi.StringPtrInput
-	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksImport`, `gkeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
-	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	Rke2Config ClusterRke2ConfigPtrInput
+	// The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
 	RkeConfig ClusterRkeConfigPtrInput
 	// Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
 	ScheduledClusterScan ClusterScheduledClusterScanPtrInput

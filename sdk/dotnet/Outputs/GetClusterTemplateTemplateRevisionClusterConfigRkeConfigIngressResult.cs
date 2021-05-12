@@ -13,29 +13,49 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult
     {
+        public readonly bool? DefaultBackend;
         public readonly string DnsPolicy;
         public readonly ImmutableDictionary<string, object> ExtraArgs;
+        public readonly int HttpPort;
+        public readonly int HttpsPort;
+        public readonly string NetworkMode;
         public readonly ImmutableDictionary<string, object> NodeSelector;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Provider;
+        public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult? UpdateStrategy;
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(
+            bool? defaultBackend,
+
             string dnsPolicy,
 
             ImmutableDictionary<string, object> extraArgs,
+
+            int httpPort,
+
+            int httpsPort,
+
+            string networkMode,
 
             ImmutableDictionary<string, object> nodeSelector,
 
             ImmutableDictionary<string, object> options,
 
-            string provider)
+            string provider,
+
+            Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult? updateStrategy)
         {
+            DefaultBackend = defaultBackend;
             DnsPolicy = dnsPolicy;
             ExtraArgs = extraArgs;
+            HttpPort = httpPort;
+            HttpsPort = httpsPort;
+            NetworkMode = networkMode;
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
+            UpdateStrategy = updateStrategy;
         }
     }
 }

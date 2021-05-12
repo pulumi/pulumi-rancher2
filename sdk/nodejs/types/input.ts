@@ -37,6 +37,13 @@ export interface CloudCredentialDigitaloceanCredentialConfig {
     accessToken: pulumi.Input<string>;
 }
 
+export interface CloudCredentialGoogleCredentialConfig {
+    /**
+     * Google auth encoded json (string)
+     */
+    authEncodedJson: pulumi.Input<string>;
+}
+
 export interface CloudCredentialLinodeCredentialConfig {
     /**
      * Linode API token (string)
@@ -529,7 +536,7 @@ export interface ClusterEksConfigV2 {
      */
     cloudCredentialId: pulumi.Input<string>;
     /**
-     * Set to `true` to import EKS cluster. Default: `false` (bool)
+     * Is GKE cluster imported? Default: `false` (bool)
      */
     imported?: pulumi.Input<boolean>;
     /**
@@ -553,11 +560,11 @@ export interface ClusterEksConfigV2 {
      */
     nodeGroups?: pulumi.Input<pulumi.Input<inputs.ClusterEksConfigV2NodeGroup>[]>;
     /**
-     * The EKS cluster has private access. Default: `false` (bool)
+     * The EKS cluster has private access (bool)
      */
     privateAccess?: pulumi.Input<boolean>;
     /**
-     * The EKS cluster has public access. Default: `true` (bool)
+     * The EKS cluster has public access (bool)
      */
     publicAccess?: pulumi.Input<boolean>;
     /**
@@ -569,7 +576,7 @@ export interface ClusterEksConfigV2 {
      */
     region?: pulumi.Input<string>;
     /**
-     * Enable EKS cluster secret encryption. Default: `false` (bool)
+     * Enable EKS cluster secret encryption (bool)
      */
     secretsEncryption?: pulumi.Input<boolean>;
     /**
@@ -694,11 +701,11 @@ export interface ClusterGkeConfig {
      */
     description?: pulumi.Input<string>;
     /**
-     * Size of the disk attached to each node. Default `100` (int)
+     * The GKE node config disk size Gb (int)
      */
     diskSizeGb?: pulumi.Input<number>;
     /**
-     * Type of the disk attached to each node (string)
+     * The GKE node config disk type (string)
      */
     diskType: pulumi.Input<string>;
     /**
@@ -742,7 +749,7 @@ export interface ClusterGkeConfig {
      */
     enableNodepoolAutoscaling?: pulumi.Input<boolean>;
     /**
-     * Whether the master's internal IP address is used as the cluster endpoint. Default `false` (bool)
+     * Enable GKE cluster private endpoint. Default: `false` (bool)
      */
     enablePrivateEndpoint?: pulumi.Input<boolean>;
     /**
@@ -758,7 +765,7 @@ export interface ClusterGkeConfig {
      */
     enableStackdriverMonitoring?: pulumi.Input<boolean>;
     /**
-     * The image to use for the worker nodes (string)
+     * The GKE node config image type (string)
      */
     imageType: pulumi.Input<string>;
     /**
@@ -802,19 +809,19 @@ export interface ClusterGkeConfig {
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The number of local SSD disks to be attached to the node. Default `0` (int)
+     * The GKE node config local ssd count (int)
      */
     localSsdCount?: pulumi.Input<number>;
     /**
-     * Locations for GKE cluster (list)
+     * The GKE cluster locations (List)
      */
     locations: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Machine type for GKE cluster (string)
+     * The GKE node config machine type (string)
      */
     machineType: pulumi.Input<string>;
     /**
-     * Maintenance window for GKE cluster (string)
+     * The GKE cluster maintenance window (string)
      */
     maintenanceWindow: pulumi.Input<string>;
     /**
@@ -822,7 +829,7 @@ export interface ClusterGkeConfig {
      */
     masterAuthorizedNetworkCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The IP range in CIDR notation to use for the hosted master network (string)
+     * The GKE cluster private master ip v4 cidr block (string)
      */
     masterIpv4CidrBlock: pulumi.Input<string>;
     /**
@@ -830,15 +837,15 @@ export interface ClusterGkeConfig {
      */
     masterVersion: pulumi.Input<string>;
     /**
-     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster. Default `0` (int)
+     * The GKE node pool config max node count (int)
      */
     maxNodeCount?: pulumi.Input<number>;
     /**
-     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount. Default `0` (int)
+     * The GKE node pool config min node count (int)
      */
     minNodeCount?: pulumi.Input<number>;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network: pulumi.Input<string>;
     /**
@@ -854,11 +861,11 @@ export interface ClusterGkeConfig {
      */
     nodeVersion: pulumi.Input<string>;
     /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account (list)
+     * The GKE node config oauth scopes (List)
      */
     oauthScopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the nodes are created as preemptible VM instances. Default `false` (bool)
+     * Enable GKE node config preemptible. Default: `false` (bool)
      */
     preemptible?: pulumi.Input<boolean>;
     /**
@@ -882,17 +889,310 @@ export interface ClusterGkeConfig {
      */
     subNetwork: pulumi.Input<string>;
     /**
-     * List of Kubernetes taints to be applied to each node (list)
+     * The GKE node config taints (List)
      */
     taints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether alias IPs will be used for pod IPs in the cluster. Default `false` (bool)
+     * Use GKE ip aliases? Default: `true` (bool)
      */
     useIpAliases?: pulumi.Input<boolean>;
     /**
-     * GKE cluster zone. Conflicts with `region` (string)
+     * The GKE cluster zone. Required if `region` not set (string)
      */
     zone?: pulumi.Input<string>;
+}
+
+export interface ClusterGkeConfigV2 {
+    /**
+     * The GKE cluster addons (List maxitems:1)
+     */
+    clusterAddons?: pulumi.Input<inputs.ClusterGkeConfigV2ClusterAddons>;
+    /**
+     * The GKE cluster ip v4 allocation cidr block (string)
+     */
+    clusterIpv4CidrBlock?: pulumi.Input<string>;
+    /**
+     * An optional description of this cluster (string)
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Enable Kubernetes alpha. Default: `false` (bool)
+     */
+    enableKubernetesAlpha?: pulumi.Input<boolean>;
+    /**
+     * Google credential secret (string)
+     */
+    googleCredentialSecret: pulumi.Input<string>;
+    /**
+     * Is GKE cluster imported? Default: `false` (bool)
+     */
+    imported?: pulumi.Input<boolean>;
+    /**
+     * The GKE ip allocation policy (List maxitems:1)
+     */
+    ipAllocationPolicy?: pulumi.Input<inputs.ClusterGkeConfigV2IpAllocationPolicy>;
+    /**
+     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     */
+    kubernetesVersion?: pulumi.Input<string>;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The GKE cluster locations (List)
+     */
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The GKE cluster logging service (string)
+     */
+    loggingService?: pulumi.Input<string>;
+    /**
+     * The GKE cluster maintenance window (string)
+     */
+    maintenanceWindow?: pulumi.Input<string>;
+    /**
+     * The GKE cluster master authorized networks config (List maxitems:1)
+     */
+    masterAuthorizedNetworksConfig?: pulumi.Input<inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig>;
+    /**
+     * The GKE cluster monitoring service (string)
+     */
+    monitoringService?: pulumi.Input<string>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The GKE cluster network. Required for create new cluster (string)
+     */
+    network?: pulumi.Input<string>;
+    /**
+     * Is GKE cluster network policy enabled? Default: `false` (bool)
+     */
+    networkPolicyEnabled?: pulumi.Input<boolean>;
+    /**
+     * The GKE cluster node pools. Required for create new cluster (List)
+     */
+    nodePools?: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2NodePool>[]>;
+    /**
+     * The GKE private cluster config (List maxitems:1)
+     */
+    privateClusterConfig?: pulumi.Input<inputs.ClusterGkeConfigV2PrivateClusterConfig>;
+    /**
+     * Project ID to apply answer (string)
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The GKE cluster subnetwork. Required for create new cluster (string)
+     */
+    subnetwork?: pulumi.Input<string>;
+    /**
+     * The GKE cluster zone. Required if `region` not set (string)
+     */
+    zone?: pulumi.Input<string>;
+}
+
+export interface ClusterGkeConfigV2ClusterAddons {
+    /**
+     * Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     */
+    horizontalPodAutoscaling?: pulumi.Input<boolean>;
+    /**
+     * Enable GKE HTTP load balancing. Default: `false` (bool)
+     */
+    httpLoadBalancing?: pulumi.Input<boolean>;
+    /**
+     * Enable GKE network policy config. Default: `false` (bool)
+     */
+    networkPolicyConfig?: pulumi.Input<boolean>;
+}
+
+export interface ClusterGkeConfigV2IpAllocationPolicy {
+    /**
+     * The GKE cluster ip v4 allocation cidr block (string)
+     */
+    clusterIpv4CidrBlock?: pulumi.Input<string>;
+    /**
+     * The GKE cluster ip v4 allocation secondary range name(string)
+     */
+    clusterSecondaryRangeName?: pulumi.Input<string>;
+    /**
+     * Create GKE subnetwork? Default: `false` (bool)
+     */
+    createSubnetwork?: pulumi.Input<boolean>;
+    /**
+     * The GKE node ip v4 allocation cidr block (string)
+     */
+    nodeIpv4CidrBlock?: pulumi.Input<string>;
+    /**
+     * The GKE services ip v4 allocation cidr block (string)
+     */
+    servicesIpv4CidrBlock?: pulumi.Input<string>;
+    /**
+     * The GKE services ip v4 allocation secondary range name (string)
+     */
+    servicesSecondaryRangeName?: pulumi.Input<string>;
+    /**
+     * The GKE cluster subnetwork name (string)
+     */
+    subnetworkName?: pulumi.Input<string>;
+    /**
+     * Use GKE ip aliases? Default: `true` (bool)
+     */
+    useIpAliases?: pulumi.Input<boolean>;
+}
+
+export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
+    /**
+     * The GKE master authorized network config cidr blocks (List)
+     */
+    cidrBlocks: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock>[]>;
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * The GKE master authorized network config cidr block (string)
+     */
+    cidrBlock: pulumi.Input<string>;
+    /**
+     * The GKE master authorized network config cidr block dispaly name (string)
+     */
+    displayName?: pulumi.Input<string>;
+}
+
+export interface ClusterGkeConfigV2NodePool {
+    /**
+     * The GKE node pool config autoscaling (List maxitems:1)
+     */
+    autoscaling?: pulumi.Input<inputs.ClusterGkeConfigV2NodePoolAutoscaling>;
+    /**
+     * The GKE node pool node config (List maxitems:1)
+     */
+    config?: pulumi.Input<inputs.ClusterGkeConfigV2NodePoolConfig>;
+    /**
+     * The GKE node pool config initial node count (int)
+     */
+    initialNodeCount: pulumi.Input<number>;
+    /**
+     * The GKE node pool config management (List maxitems:1)
+     */
+    management?: pulumi.Input<inputs.ClusterGkeConfigV2NodePoolManagement>;
+    /**
+     * The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     */
+    maxPodsConstraint?: pulumi.Input<number>;
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version: pulumi.Input<string>;
+}
+
+export interface ClusterGkeConfigV2NodePoolAutoscaling {
+    /**
+     * Enable scheduled cluster scan. Default: `false` (bool)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The GKE node pool config max node count (int)
+     */
+    maxNodeCount?: pulumi.Input<number>;
+    /**
+     * The GKE node pool config min node count (int)
+     */
+    minNodeCount?: pulumi.Input<number>;
+}
+
+export interface ClusterGkeConfigV2NodePoolConfig {
+    /**
+     * The GKE node config disk size Gb (int)
+     */
+    diskSizeGb?: pulumi.Input<number>;
+    /**
+     * The GKE node config disk type (string)
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * The GKE node config image type (string)
+     */
+    imageType?: pulumi.Input<string>;
+    /**
+     * Labels for cluster registration token object (map)
+     */
+    labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The GKE node config local ssd count (int)
+     */
+    localSsdCount?: pulumi.Input<number>;
+    /**
+     * The GKE node config machine type (string)
+     */
+    machineType?: pulumi.Input<string>;
+    /**
+     * The GKE node config oauth scopes (List)
+     */
+    oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable GKE node config preemptible. Default: `false` (bool)
+     */
+    preemptible?: pulumi.Input<boolean>;
+    /**
+     * The GKE node config taints (List)
+     */
+    taints?: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2NodePoolConfigTaint>[]>;
+}
+
+export interface ClusterGkeConfigV2NodePoolConfigTaint {
+    /**
+     * The GKE taint effect (string)
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The GKE taint key (string)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The GKE taint value (string)
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ClusterGkeConfigV2NodePoolManagement {
+    /**
+     * Enable GKE node pool config management auto repair. Default: `false` (bool)
+     */
+    autoRepair?: pulumi.Input<boolean>;
+    /**
+     * Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     */
+    autoUpgrade?: pulumi.Input<boolean>;
+}
+
+export interface ClusterGkeConfigV2PrivateClusterConfig {
+    /**
+     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     */
+    enablePrivateEndpoint?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     */
+    enablePrivateNodes?: pulumi.Input<boolean>;
+    /**
+     * The GKE cluster private master ip v4 cidr block (string)
+     */
+    masterIpv4CidrBlock: pulumi.Input<string>;
 }
 
 export interface ClusterK3sConfig {
@@ -1184,6 +1484,10 @@ export interface ClusterOkeConfig {
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
+     * The maximum number of worker nodes. Can limit `quantityPerSubnet`. Default `0` (no limit) (int)
+     */
+    limitNodeCount?: pulumi.Input<number>;
+    /**
      * The name of the first existing subnet to use for Kubernetes services / LB. `vcnName` is also required when specifying an existing subnet. (string)
      */
     loadBalancerSubnetName1?: pulumi.Input<string>;
@@ -1261,6 +1565,36 @@ export interface ClusterOkeConfig {
     workerNodeIngressCidr?: pulumi.Input<string>;
 }
 
+export interface ClusterRke2Config {
+    /**
+     * K3S upgrade strategy (List maxitems: 1)
+     */
+    upgradeStrategy?: pulumi.Input<inputs.ClusterRke2ConfigUpgradeStrategy>;
+    /**
+     * rancher-monitoring chart version (string)
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface ClusterRke2ConfigUpgradeStrategy {
+    /**
+     * Drain server nodes. Default: `false` (bool)
+     */
+    drainServerNodes?: pulumi.Input<boolean>;
+    /**
+     * Drain worker nodes. Default: `false` (bool)
+     */
+    drainWorkerNodes?: pulumi.Input<boolean>;
+    /**
+     * Server concurrency. Default: `1` (int)
+     */
+    serverConcurrency?: pulumi.Input<number>;
+    /**
+     * Worker concurrency. Default: `1` (int)
+     */
+    workerConcurrency?: pulumi.Input<number>;
+}
+
 export interface ClusterRkeConfig {
     /**
      * Duration in seconds of addon job (int)
@@ -1311,7 +1645,7 @@ export interface ClusterRkeConfig {
      */
     monitoring?: pulumi.Input<inputs.ClusterRkeConfigMonitoring>;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network?: pulumi.Input<inputs.ClusterRkeConfigNetwork>;
     /**
@@ -1477,7 +1811,7 @@ export interface ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
      */
     vpc?: pulumi.Input<string>;
     /**
-     * GKE cluster zone. Conflicts with `region` (string)
+     * The GKE cluster zone. Required if `region` not set (string)
      */
     zone?: pulumi.Input<string>;
 }
@@ -1784,7 +2118,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProvider {
      */
     global?: pulumi.Input<inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal>;
     /**
-     * Network for GKE cluster (string)
+     * The GKE cluster network. Required for create new cluster (string)
      */
     network?: pulumi.Input<inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork>;
     /**
@@ -1977,6 +2311,10 @@ export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
 
 export interface ClusterRkeConfigIngress {
     /**
+     * Enable ingress default backend. Default: `true` (bool)
+     */
+    defaultBackend?: pulumi.Input<boolean>;
+    /**
      * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
      */
     dnsPolicy?: pulumi.Input<string>;
@@ -1984,6 +2322,18 @@ export interface ClusterRkeConfigIngress {
      * Extra arguments for scheduler service (map)
      */
     extraArgs?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * HTTP port for RKE Ingress (int)
+     */
+    httpPort?: pulumi.Input<number>;
+    /**
+     * HTTPS port for RKE Ingress (int)
+     */
+    httpsPort?: pulumi.Input<number>;
+    /**
+     * Network mode for RKE Ingress (string)
+     */
+    networkMode?: pulumi.Input<string>;
     /**
      * RKE monitoring node selector (map)
      */
@@ -1996,6 +2346,28 @@ export interface ClusterRkeConfigIngress {
      * RKE monitoring provider (string)
      */
     provider?: pulumi.Input<string>;
+    /**
+     * RKE monitoring update strategy (list Maxitems: 1)
+     */
+    updateStrategy?: pulumi.Input<inputs.ClusterRkeConfigIngressUpdateStrategy>;
+}
+
+export interface ClusterRkeConfigIngressUpdateStrategy {
+    /**
+     * Monitoring deployment rolling update (list Maxitems: 1)
+     */
+    rollingUpdate?: pulumi.Input<inputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate>;
+    /**
+     * Monitoring deployment update strategy (string)
+     */
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     */
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterRkeConfigMonitoring {
@@ -2241,7 +2613,7 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     image?: pulumi.Input<string>;
     /**
-     * TLS key for etcd service (string)
+     * The GKE taint key (string)
      */
     key?: pulumi.Input<string>;
     /**
@@ -3058,11 +3430,25 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateS
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
+    defaultBackend?: pulumi.Input<boolean>;
     dnsPolicy?: pulumi.Input<string>;
     extraArgs?: pulumi.Input<{[key: string]: any}>;
+    httpPort?: pulumi.Input<number>;
+    httpsPort?: pulumi.Input<number>;
+    networkMode?: pulumi.Input<string>;
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     options?: pulumi.Input<{[key: string]: any}>;
     provider?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate>;
+    strategy?: pulumi.Input<string>;
+}
+
+export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    maxUnavailable?: pulumi.Input<number>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {

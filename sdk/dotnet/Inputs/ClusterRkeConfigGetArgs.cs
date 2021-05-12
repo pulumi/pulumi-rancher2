@@ -91,7 +91,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigMonitoringGetArgs>? Monitoring { get; set; }
 
         /// <summary>
-        /// Network for GKE cluster (string)
+        /// The GKE cluster network. Required for create new cluster (string)
         /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigNetworkGetArgs>? Network { get; set; }

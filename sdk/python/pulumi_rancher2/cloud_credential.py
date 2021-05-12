@@ -20,6 +20,7 @@ class CloudCredentialArgs:
                  azure_credential_config: Optional[pulumi.Input['CloudCredentialAzureCredentialConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_credential_config: Optional[pulumi.Input['CloudCredentialDigitaloceanCredentialConfigArgs']] = None,
+                 google_credential_config: Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class CloudCredentialArgs:
         :param pulumi.Input['CloudCredentialAzureCredentialConfigArgs'] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialDigitaloceanCredentialConfigArgs'] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input['CloudCredentialGoogleCredentialConfigArgs'] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
@@ -48,6 +50,8 @@ class CloudCredentialArgs:
             pulumi.set(__self__, "description", description)
         if digitalocean_credential_config is not None:
             pulumi.set(__self__, "digitalocean_credential_config", digitalocean_credential_config)
+        if google_credential_config is not None:
+            pulumi.set(__self__, "google_credential_config", google_credential_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if linode_credential_config is not None:
@@ -120,6 +124,18 @@ class CloudCredentialArgs:
         pulumi.set(self, "digitalocean_credential_config", value)
 
     @property
+    @pulumi.getter(name="googleCredentialConfig")
+    def google_credential_config(self) -> Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']]:
+        """
+        Google config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "google_credential_config")
+
+    @google_credential_config.setter
+    def google_credential_config(self, value: Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']]):
+        pulumi.set(self, "google_credential_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -189,6 +205,7 @@ class _CloudCredentialState:
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_credential_config: Optional[pulumi.Input['CloudCredentialDigitaloceanCredentialConfigArgs']] = None,
                  driver: Optional[pulumi.Input[str]] = None,
+                 google_credential_config: Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -202,6 +219,7 @@ class _CloudCredentialState:
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
         :param pulumi.Input['CloudCredentialDigitaloceanCredentialConfigArgs'] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the Cloud Credential (string)
+        :param pulumi.Input['CloudCredentialGoogleCredentialConfigArgs'] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
@@ -220,6 +238,8 @@ class _CloudCredentialState:
             pulumi.set(__self__, "digitalocean_credential_config", digitalocean_credential_config)
         if driver is not None:
             pulumi.set(__self__, "driver", driver)
+        if google_credential_config is not None:
+            pulumi.set(__self__, "google_credential_config", google_credential_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if linode_credential_config is not None:
@@ -304,6 +324,18 @@ class _CloudCredentialState:
         pulumi.set(self, "driver", value)
 
     @property
+    @pulumi.getter(name="googleCredentialConfig")
+    def google_credential_config(self) -> Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']]:
+        """
+        Google config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "google_credential_config")
+
+    @google_credential_config.setter
+    def google_credential_config(self, value: Optional[pulumi.Input['CloudCredentialGoogleCredentialConfigArgs']]):
+        pulumi.set(self, "google_credential_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -374,6 +406,7 @@ class CloudCredential(pulumi.CustomResource):
                  azure_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
+                 google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -407,6 +440,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
@@ -459,6 +493,7 @@ class CloudCredential(pulumi.CustomResource):
                  azure_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
+                 google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -481,6 +516,7 @@ class CloudCredential(pulumi.CustomResource):
             __props__.__dict__["azure_credential_config"] = azure_credential_config
             __props__.__dict__["description"] = description
             __props__.__dict__["digitalocean_credential_config"] = digitalocean_credential_config
+            __props__.__dict__["google_credential_config"] = google_credential_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linode_credential_config"] = linode_credential_config
             __props__.__dict__["name"] = name
@@ -503,6 +539,7 @@ class CloudCredential(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
             driver: Optional[pulumi.Input[str]] = None,
+            google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -521,6 +558,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
         :param pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the Cloud Credential (string)
+        :param pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
@@ -537,6 +575,7 @@ class CloudCredential(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["digitalocean_credential_config"] = digitalocean_credential_config
         __props__.__dict__["driver"] = driver
+        __props__.__dict__["google_credential_config"] = google_credential_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linode_credential_config"] = linode_credential_config
         __props__.__dict__["name"] = name
@@ -591,6 +630,14 @@ class CloudCredential(pulumi.CustomResource):
         (Computed) The driver of the Cloud Credential (string)
         """
         return pulumi.get(self, "driver")
+
+    @property
+    @pulumi.getter(name="googleCredentialConfig")
+    def google_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialGoogleCredentialConfig']]:
+        """
+        Google config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "google_credential_config")
 
     @property
     @pulumi.getter

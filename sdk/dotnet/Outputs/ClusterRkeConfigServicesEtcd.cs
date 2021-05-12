@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// TLS key for etcd service (string)
+        /// The GKE taint key (string)
         /// </summary>
         public readonly string? Key;
         /// <summary>
