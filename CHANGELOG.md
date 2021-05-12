@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.14.0 of the Rancher2 Terraform Provider
+_(none)_
 
 ---
+
+## 3.1.0 (2021-05-12)
+* Upgrade to v1.14.0 of the Rancher2 Terraform Provider
 
 ## 3.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
