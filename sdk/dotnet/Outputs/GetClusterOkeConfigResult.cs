@@ -32,11 +32,13 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? NodePoolSubnetName;
         public readonly string? NodePublicKeyContents;
         public readonly string NodeShape;
+        public readonly string? PodCidr;
         public readonly string PrivateKeyContents;
         public readonly string? PrivateKeyPassphrase;
         public readonly int? QuantityOfNodeSubnets;
         public readonly int? QuantityPerSubnet;
         public readonly string Region;
+        public readonly string? ServiceCidr;
         public readonly string? ServiceDnsDomainName;
         public readonly bool? SkipVcnDelete;
         public readonly string TenancyId;
@@ -79,6 +81,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string nodeShape,
 
+            string? podCidr,
+
             string privateKeyContents,
 
             string? privateKeyPassphrase,
@@ -88,6 +92,8 @@ namespace Pulumi.Rancher2.Outputs
             int? quantityPerSubnet,
 
             string region,
+
+            string? serviceCidr,
 
             string? serviceDnsDomainName,
 
@@ -119,11 +125,13 @@ namespace Pulumi.Rancher2.Outputs
             NodePoolSubnetName = nodePoolSubnetName;
             NodePublicKeyContents = nodePublicKeyContents;
             NodeShape = nodeShape;
+            PodCidr = podCidr;
             PrivateKeyContents = privateKeyContents;
             PrivateKeyPassphrase = privateKeyPassphrase;
             QuantityOfNodeSubnets = quantityOfNodeSubnets;
             QuantityPerSubnet = quantityPerSubnet;
             Region = region;
+            ServiceCidr = serviceCidr;
             ServiceDnsDomainName = serviceDnsDomainName;
             SkipVcnDelete = skipVcnDelete;
             TenancyId = tenancyId;

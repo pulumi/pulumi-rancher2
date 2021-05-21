@@ -77,6 +77,17 @@ export interface CloudCredentialVsphereCredentialConfig {
     vcenterPort?: pulumi.Input<string>;
 }
 
+export interface ClusterAgentEnvVar {
+    /**
+     * Name of cluster registration token (string)
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The GKE taint value (string)
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ClusterAksConfig {
     /**
      * The secret of an Azure Active Directory server application (string)
@@ -191,7 +202,7 @@ export interface ClusterAksConfig {
      */
     networkPolicy?: pulumi.Input<string>;
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
      */
     podCidr?: pulumi.Input<string>;
     /**
@@ -199,7 +210,7 @@ export interface ClusterAksConfig {
      */
     resourceGroup: pulumi.Input<string>;
     /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
      */
     serviceCidr?: pulumi.Input<string>;
     /**
@@ -215,9 +226,15 @@ export interface ClusterAksConfig {
      */
     subscriptionId: pulumi.Input<string>;
     /**
-     * Tags for Kubernetes cluster. For example, foo=bar (map)
+     * Use `tags` argument instead as []string
+     *
+     * @deprecated Use tags argument instead as []string
      */
     tag?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The EKS cluster tags (map)
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Azure tenant ID to use (string)
      */
@@ -1516,6 +1533,10 @@ export interface ClusterOkeConfig {
      */
     nodeShape: pulumi.Input<string>;
     /**
+     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     */
+    podCidr?: pulumi.Input<string>;
+    /**
      * The private API key file contents for the specified user, in PEM format (string)
      */
     privateKeyContents: pulumi.Input<string>;
@@ -1535,6 +1556,10 @@ export interface ClusterOkeConfig {
      * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
      */
     region: pulumi.Input<string>;
+    /**
+     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     */
+    serviceCidr?: pulumi.Input<string>;
     /**
      * Name for DNS domain of service subnet. Default `svcdns` (string)
      */

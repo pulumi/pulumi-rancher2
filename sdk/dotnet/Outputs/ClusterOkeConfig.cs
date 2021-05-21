@@ -78,6 +78,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string NodeShape;
         /// <summary>
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        /// </summary>
+        public readonly string? PodCidr;
+        /// <summary>
         /// The private API key file contents for the specified user, in PEM format (string)
         /// </summary>
         public readonly string PrivateKeyContents;
@@ -97,6 +101,10 @@ namespace Pulumi.Rancher2.Outputs
         /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        /// </summary>
+        public readonly string? ServiceCidr;
         /// <summary>
         /// Name for DNS domain of service subnet. Default `svcdns` (string)
         /// </summary>
@@ -160,6 +168,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string nodeShape,
 
+            string? podCidr,
+
             string privateKeyContents,
 
             string? privateKeyPassphrase,
@@ -169,6 +179,8 @@ namespace Pulumi.Rancher2.Outputs
             int? quantityPerSubnet,
 
             string region,
+
+            string? serviceCidr,
 
             string? serviceDnsDomainName,
 
@@ -200,11 +212,13 @@ namespace Pulumi.Rancher2.Outputs
             NodePoolSubnetName = nodePoolSubnetName;
             NodePublicKeyContents = nodePublicKeyContents;
             NodeShape = nodeShape;
+            PodCidr = podCidr;
             PrivateKeyContents = privateKeyContents;
             PrivateKeyPassphrase = privateKeyPassphrase;
             QuantityOfNodeSubnets = quantityOfNodeSubnets;
             QuantityPerSubnet = quantityPerSubnet;
             Region = region;
+            ServiceCidr = serviceCidr;
             ServiceDnsDomainName = serviceDnsDomainName;
             SkipVcnDelete = skipVcnDelete;
             TenancyId = tenancyId;

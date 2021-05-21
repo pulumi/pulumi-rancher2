@@ -556,6 +556,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars ClusterAgentEnvVarArrayOutput `pulumi:"agentEnvVars"`
 	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrOutput `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
@@ -661,6 +663,8 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars []ClusterAgentEnvVar `pulumi:"agentEnvVars"`
 	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
@@ -738,6 +742,8 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars ClusterAgentEnvVarArrayInput
 	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
 	// Annotations for cluster registration token object (map)
@@ -819,6 +825,8 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars []ClusterAgentEnvVar `pulumi:"agentEnvVars"`
 	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig *ClusterAksConfig `pulumi:"aksConfig"`
 	// Annotations for cluster registration token object (map)
@@ -881,6 +889,8 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars ClusterAgentEnvVarArrayInput
 	// The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig ClusterAksConfigPtrInput
 	// Annotations for cluster registration token object (map)

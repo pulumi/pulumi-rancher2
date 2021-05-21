@@ -20,13 +20,19 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, aks_config=None, annotations=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+        if agent_env_vars and not isinstance(agent_env_vars, list):
+            raise TypeError("Expected argument 'agent_env_vars' to be a list")
+        pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         pulumi.set(__self__, "aks_config", aks_config)
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
+        if ca_cert and not isinstance(ca_cert, str):
+            raise TypeError("Expected argument 'ca_cert' to be a str")
+        pulumi.set(__self__, "ca_cert", ca_cert)
         if cluster_auth_endpoint and not isinstance(cluster_auth_endpoint, dict):
             raise TypeError("Expected argument 'cluster_auth_endpoint' to be a dict")
         pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
@@ -113,6 +119,14 @@ class GetClusterResult:
         pulumi.set(__self__, "system_project_id", system_project_id)
 
     @property
+    @pulumi.getter(name="agentEnvVars")
+    def agent_env_vars(self) -> Sequence[str]:
+        """
+        (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        """
+        return pulumi.get(self, "agent_env_vars")
+
+    @property
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> 'outputs.GetClusterAksConfigResult':
         """
@@ -127,6 +141,14 @@ class GetClusterResult:
         (Computed) Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> str:
+        """
+        (Computed) K8s cluster ca cert (string)
+        """
+        return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter(name="clusterAuthEndpoint")
@@ -350,8 +372,10 @@ class AwaitableGetClusterResult(GetClusterResult):
         if False:
             yield self
         return GetClusterResult(
+            agent_env_vars=self.agent_env_vars,
             aks_config=self.aks_config,
             annotations=self.annotations,
+            ca_cert=self.ca_cert,
             cluster_auth_endpoint=self.cluster_auth_endpoint,
             cluster_monitoring_input=self.cluster_monitoring_input,
             cluster_registration_token=self.cluster_registration_token,
@@ -408,8 +432,10 @@ def get_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
+        agent_env_vars=__ret__.agent_env_vars,
         aks_config=__ret__.aks_config,
         annotations=__ret__.annotations,
+        ca_cert=__ret__.ca_cert,
         cluster_auth_endpoint=__ret__.cluster_auth_endpoint,
         cluster_monitoring_input=__ret__.cluster_monitoring_input,
         cluster_registration_token=__ret__.cluster_registration_token,

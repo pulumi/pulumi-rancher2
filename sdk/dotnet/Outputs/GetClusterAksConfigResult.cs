@@ -48,6 +48,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string Subnet;
         public readonly string SubscriptionId;
         public readonly ImmutableDictionary<string, object> Tag;
+        public readonly ImmutableArray<string> Tags;
         public readonly string TenantId;
         public readonly string VirtualNetwork;
         public readonly string VirtualNetworkResourceGroup;
@@ -124,6 +125,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableDictionary<string, object> tag,
 
+            ImmutableArray<string> tags,
+
             string tenantId,
 
             string virtualNetwork,
@@ -165,6 +168,7 @@ namespace Pulumi.Rancher2.Outputs
             Subnet = subnet;
             SubscriptionId = subscriptionId;
             Tag = tag;
+            Tags = tags;
             TenantId = tenantId;
             VirtualNetwork = virtualNetwork;
             VirtualNetworkResourceGroup = virtualNetworkResourceGroup;

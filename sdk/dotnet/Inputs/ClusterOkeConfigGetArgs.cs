@@ -109,6 +109,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> NodeShape { get; set; } = null!;
 
         /// <summary>
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        /// </summary>
+        [Input("podCidr")]
+        public Input<string>? PodCidr { get; set; }
+
+        /// <summary>
         /// The private API key file contents for the specified user, in PEM format (string)
         /// </summary>
         [Input("privateKeyContents", required: true)]
@@ -137,6 +143,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        /// </summary>
+        [Input("serviceCidr")]
+        public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
         /// Name for DNS domain of service subnet. Default `svcdns` (string)
