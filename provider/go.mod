@@ -10,7 +10,7 @@ replace (
 	github.com/rancher/rancher => github.com/rancher/rancher v0.0.0-20210505234332-cf16ca13d023
 	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20210505234332-cf16ca13d023
 	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20210505234332-cf16ca13d023
-	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521143757-732f14721038
+	github.com/rancher/terraform-provider-rancher2 => github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521164455-a6aa41c55126
 	k8s.io/api => k8s.io/api v0.20.0
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.20.0
 	k8s.io/apimachinery => k8s.io/apimachinery v0.20.0
