@@ -60,6 +60,10 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterResult
     {
         /// <summary>
+        /// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        /// </summary>
+        public readonly ImmutableArray<string> AgentEnvVars;
+        /// <summary>
         /// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterAksConfigResult AksConfig;
@@ -67,6 +71,10 @@ namespace Pulumi.Rancher2
         /// (Computed) Annotations for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// (Computed) K8s cluster ca cert (string)
+        /// </summary>
+        public readonly string CaCert;
         /// <summary>
         /// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         /// </summary>
@@ -173,9 +181,13 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterResult(
+            ImmutableArray<string> agentEnvVars,
+
             Outputs.GetClusterAksConfigResult aksConfig,
 
             ImmutableDictionary<string, object> annotations,
+
+            string caCert,
 
             Outputs.GetClusterClusterAuthEndpointResult clusterAuthEndpoint,
 
@@ -233,8 +245,10 @@ namespace Pulumi.Rancher2
 
             string systemProjectId)
         {
+            AgentEnvVars = agentEnvVars;
             AksConfig = aksConfig;
             Annotations = annotations;
+            CaCert = caCert;
             ClusterAuthEndpoint = clusterAuthEndpoint;
             ClusterMonitoringInput = clusterMonitoringInput;
             ClusterRegistrationToken = clusterRegistrationToken;

@@ -48,10 +48,14 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
+	// (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+	AgentEnvVars []string `pulumi:"agentEnvVars"`
 	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfig GetClusterAksConfig `pulumi:"aksConfig"`
 	// (Computed) Annotations for Node Pool object (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
+	// (Computed) K8s cluster ca cert (string)
+	CaCert string `pulumi:"caCert"`
 	// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint GetClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
 	// (Computed) Cluster monitoring config (list maxitems:1)

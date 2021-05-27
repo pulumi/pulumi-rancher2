@@ -47,6 +47,10 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     /**
+     * (Computed) Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     */
+    readonly agentEnvVars: string[];
+    /**
      * (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfig: outputs.GetClusterAksConfig;
@@ -54,6 +58,10 @@ export interface GetClusterResult {
      * (Computed) Annotations for Node Pool object (map)
      */
     readonly annotations: {[key: string]: any};
+    /**
+     * (Computed) K8s cluster ca cert (string)
+     */
+    readonly caCert: string;
     /**
      * (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      */

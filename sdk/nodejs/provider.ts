@@ -47,6 +47,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (<any>utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
             inputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
             inputs["secretKey"] = args ? args.secretKey : undefined;
+            inputs["timeout"] = args ? args.timeout : undefined;
             inputs["tokenKey"] = args ? args.tokenKey : undefined;
         }
         if (!opts.version) {
@@ -82,12 +83,18 @@ export interface ProviderArgs {
     readonly insecure?: pulumi.Input<boolean>;
     /**
      * Rancher connection retries
+     *
+     * @deprecated Use timeout instead
      */
     readonly retries?: pulumi.Input<number>;
     /**
      * API secret used to authenticate with the rancher server
      */
     readonly secretKey?: pulumi.Input<string>;
+    /**
+     * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+     */
+    readonly timeout?: pulumi.Input<string>;
     /**
      * API token used to authenticate with the rancher server
      */

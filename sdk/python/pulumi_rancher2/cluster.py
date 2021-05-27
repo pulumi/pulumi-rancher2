@@ -15,6 +15,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
+                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
                  aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
@@ -46,6 +47,7 @@ class ClusterArgs:
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -76,6 +78,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
+        if agent_env_vars is not None:
+            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config is not None:
             pulumi.set(__self__, "aks_config", aks_config)
         if annotations is not None:
@@ -134,6 +138,18 @@ class ClusterArgs:
             pulumi.set(__self__, "scheduled_cluster_scan", scheduled_cluster_scan)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
+
+    @property
+    @pulumi.getter(name="agentEnvVars")
+    def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
+        """
+        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        """
+        return pulumi.get(self, "agent_env_vars")
+
+    @agent_env_vars.setter
+    def agent_env_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
+        pulumi.set(self, "agent_env_vars", value)
 
     @property
     @pulumi.getter(name="aksConfig")
@@ -487,6 +503,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
                  aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
@@ -525,6 +542,7 @@ class _ClusterState:
                  windows_prefered_cluster: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
@@ -562,6 +580,8 @@ class _ClusterState:
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
+        if agent_env_vars is not None:
+            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config is not None:
             pulumi.set(__self__, "aks_config", aks_config)
         if annotations is not None:
@@ -637,6 +657,18 @@ class _ClusterState:
             pulumi.set(__self__, "system_project_id", system_project_id)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
+
+    @property
+    @pulumi.getter(name="agentEnvVars")
+    def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
+        """
+        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        """
+        return pulumi.get(self, "agent_env_vars")
+
+    @agent_env_vars.setter
+    def agent_env_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
+        pulumi.set(self, "agent_env_vars", value)
 
     @property
     @pulumi.getter(name="aksConfig")
@@ -1076,6 +1108,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
                  aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
@@ -1508,6 +1541,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -1959,6 +1993,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
                  aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
@@ -2000,6 +2035,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["agent_env_vars"] = agent_env_vars
             __props__.__dict__["aks_config"] = aks_config
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
@@ -2046,6 +2082,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
             aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
@@ -2089,6 +2126,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
@@ -2130,6 +2168,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["agent_env_vars"] = agent_env_vars
         __props__.__dict__["aks_config"] = aks_config
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["ca_cert"] = ca_cert
@@ -2167,6 +2206,14 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["system_project_id"] = system_project_id
         __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentEnvVars")
+    def agent_env_vars(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterAgentEnvVar']]]:
+        """
+        Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        """
+        return pulumi.get(self, "agent_env_vars")
 
     @property
     @pulumi.getter(name="aksConfig")

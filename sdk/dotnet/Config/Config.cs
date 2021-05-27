@@ -44,6 +44,11 @@ namespace Pulumi.Rancher2
         public static string? SecretKey { get; set; } = __config.Get("secretKey");
 
         /// <summary>
+        /// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+        /// </summary>
+        public static string? Timeout { get; set; } = __config.Get("timeout");
+
+        /// <summary>
         /// API token used to authenticate with the rancher server
         /// </summary>
         public static string? TokenKey { get; set; } = __config.Get("tokenKey");

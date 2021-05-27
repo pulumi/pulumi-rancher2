@@ -126,7 +126,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkPolicy;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         /// </summary>
         public readonly string? PodCidr;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ResourceGroup;
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
         /// </summary>
         public readonly string? ServiceCidr;
         /// <summary>
@@ -150,9 +150,13 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, foo=bar (map)
+        /// Use `tags` argument instead as []string
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tag;
+        /// <summary>
+        /// The EKS cluster tags (map)
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// Azure tenant ID to use (string)
         /// </summary>
@@ -238,6 +242,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableDictionary<string, object>? tag,
 
+            ImmutableArray<string> tags,
+
             string tenantId,
 
             string virtualNetwork,
@@ -279,6 +285,7 @@ namespace Pulumi.Rancher2.Outputs
             Subnet = subnet;
             SubscriptionId = subscriptionId;
             Tag = tag;
+            Tags = tags;
             TenantId = tenantId;
             VirtualNetwork = virtualNetwork;
             VirtualNetworkResourceGroup = virtualNetworkResourceGroup;

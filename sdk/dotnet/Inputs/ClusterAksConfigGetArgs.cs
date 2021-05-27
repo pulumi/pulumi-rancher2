@@ -181,7 +181,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NetworkPolicy { get; set; }
 
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> ResourceGroup { get; set; } = null!;
 
         /// <summary>
-        /// A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
@@ -220,12 +220,25 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tag;
 
         /// <summary>
-        /// Tags for Kubernetes cluster. For example, foo=bar (map)
+        /// Use `tags` argument instead as []string
         /// </summary>
+        [Obsolete(@"Use tags argument instead as []string")]
         public InputMap<object> Tag
         {
             get => _tag ?? (_tag = new InputMap<object>());
             set => _tag = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The EKS cluster tags (map)
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         /// <summary>

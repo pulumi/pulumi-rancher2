@@ -55,9 +55,13 @@ type providerArgs struct {
 	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 	Insecure *bool `pulumi:"insecure"`
 	// Rancher connection retries
+	//
+	// Deprecated: Use timeout instead
 	Retries *int `pulumi:"retries"`
 	// API secret used to authenticate with the rancher server
 	SecretKey *string `pulumi:"secretKey"`
+	// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+	Timeout *string `pulumi:"timeout"`
 	// API token used to authenticate with the rancher server
 	TokenKey *string `pulumi:"tokenKey"`
 }
@@ -75,9 +79,13 @@ type ProviderArgs struct {
 	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
 	Insecure pulumi.BoolPtrInput
 	// Rancher connection retries
+	//
+	// Deprecated: Use timeout instead
 	Retries pulumi.IntPtrInput
 	// API secret used to authenticate with the rancher server
 	SecretKey pulumi.StringPtrInput
+	// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+	Timeout pulumi.StringPtrInput
 	// API token used to authenticate with the rancher server
 	TokenKey pulumi.StringPtrInput
 }

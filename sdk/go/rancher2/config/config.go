@@ -42,6 +42,8 @@ func GetInsecure(ctx *pulumi.Context) bool {
 }
 
 // Rancher connection retries
+//
+// Deprecated: Use timeout instead
 func GetRetries(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "rancher2:retries")
 }
@@ -49,6 +51,11 @@ func GetRetries(ctx *pulumi.Context) int {
 // API secret used to authenticate with the rancher server
 func GetSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "rancher2:secretKey")
+}
+
+// Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+func GetTimeout(ctx *pulumi.Context) string {
+	return config.Get(ctx, "rancher2:timeout")
 }
 
 // API token used to authenticate with the rancher server

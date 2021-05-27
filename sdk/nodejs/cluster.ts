@@ -451,6 +451,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     */
+    public readonly agentEnvVars!: pulumi.Output<outputs.ClusterAgentEnvVar[] | undefined>;
+    /**
      * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly aksConfig!: pulumi.Output<outputs.ClusterAksConfig | undefined>;
@@ -610,6 +614,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            inputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
             inputs["aksConfig"] = state ? state.aksConfig : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["caCert"] = state ? state.caCert : undefined;
@@ -648,6 +653,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["windowsPreferedCluster"] = state ? state.windowsPreferedCluster : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
+            inputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
             inputs["aksConfig"] = args ? args.aksConfig : undefined;
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["clusterAuthEndpoint"] = args ? args.clusterAuthEndpoint : undefined;
@@ -696,6 +702,10 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     */
+    readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
      * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
@@ -848,6 +858,10 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+     */
+    readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
      * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */

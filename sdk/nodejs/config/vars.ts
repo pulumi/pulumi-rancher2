@@ -35,6 +35,10 @@ export let retries: number | undefined = __config.getObject<number>("retries");
  */
 export let secretKey: string | undefined = __config.get("secretKey");
 /**
+ * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+ */
+export let timeout: string | undefined = __config.get("timeout");
+/**
  * API token used to authenticate with the rancher server
  */
 export let tokenKey: string | undefined = __config.get("tokenKey");

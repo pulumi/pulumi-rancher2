@@ -17,6 +17,7 @@ __all__ = [
     'CloudCredentialLinodeCredentialConfig',
     'CloudCredentialOpenstackCredentialConfig',
     'CloudCredentialVsphereCredentialConfig',
+    'ClusterAgentEnvVar',
     'ClusterAksConfig',
     'ClusterAlertGroupRecipient',
     'ClusterAlertRuleEventRule',
@@ -752,6 +753,35 @@ class CloudCredentialVsphereCredentialConfig(dict):
 
 
 @pulumi.output_type
+class ClusterAgentEnvVar(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: Name of cluster registration token (string)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ClusterAksConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -874,7 +904,8 @@ class ClusterAksConfig(dict):
                  network_policy: Optional[str] = None,
                  pod_cidr: Optional[str] = None,
                  service_cidr: Optional[str] = None,
-                 tag: Optional[Mapping[str, Any]] = None):
+                 tag: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Sequence[str]] = None):
         """
         :param str agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool (string)
         :param str client_id: Azure client ID to use (string)
@@ -911,9 +942,10 @@ class ClusterAksConfig(dict):
         :param int max_pods: Maximum number of pods that can run on a node. Default `110` (int)
         :param str network_plugin: Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
         :param str network_policy: Network policy used for building Kubernetes network. Chooses from `calico` (string)
-        :param str pod_cidr: A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
-        :param str service_cidr: A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
-        :param Mapping[str, Any] tag: Tags for Kubernetes cluster. For example, foo=bar (map)
+        :param str pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        :param str service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        :param Mapping[str, Any] tag: Use `tags` argument instead as []string
+        :param Sequence[str] tags: The EKS cluster tags (map)
         """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
         pulumi.set(__self__, "client_id", client_id)
@@ -979,6 +1011,8 @@ class ClusterAksConfig(dict):
             pulumi.set(__self__, "service_cidr", service_cidr)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="agentDnsPrefix")
@@ -1264,7 +1298,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[str]:
         """
-        A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -1272,7 +1306,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="serviceCidr")
     def service_cidr(self) -> Optional[str]:
         """
-        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        A CIDR IP range from which to assign Kubernetes Service IPs (string)
         """
         return pulumi.get(self, "service_cidr")
 
@@ -1280,9 +1314,17 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def tag(self) -> Optional[Mapping[str, Any]]:
         """
-        Tags for Kubernetes cluster. For example, foo=bar (map)
+        Use `tags` argument instead as []string
         """
         return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        The EKS cluster tags (map)
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -5794,12 +5836,16 @@ class ClusterOkeConfig(dict):
             suggest = "node_pool_subnet_name"
         elif key == "nodePublicKeyContents":
             suggest = "node_public_key_contents"
+        elif key == "podCidr":
+            suggest = "pod_cidr"
         elif key == "privateKeyPassphrase":
             suggest = "private_key_passphrase"
         elif key == "quantityOfNodeSubnets":
             suggest = "quantity_of_node_subnets"
         elif key == "quantityPerSubnet":
             suggest = "quantity_per_subnet"
+        elif key == "serviceCidr":
+            suggest = "service_cidr"
         elif key == "serviceDnsDomainName":
             suggest = "service_dns_domain_name"
         elif key == "skipVcnDelete":
@@ -5843,9 +5889,11 @@ class ClusterOkeConfig(dict):
                  node_pool_dns_domain_name: Optional[str] = None,
                  node_pool_subnet_name: Optional[str] = None,
                  node_public_key_contents: Optional[str] = None,
+                 pod_cidr: Optional[str] = None,
                  private_key_passphrase: Optional[str] = None,
                  quantity_of_node_subnets: Optional[int] = None,
                  quantity_per_subnet: Optional[int] = None,
+                 service_cidr: Optional[str] = None,
                  service_dns_domain_name: Optional[str] = None,
                  skip_vcn_delete: Optional[bool] = None,
                  vcn_compartment_id: Optional[str] = None,
@@ -5872,9 +5920,11 @@ class ClusterOkeConfig(dict):
         :param str node_pool_dns_domain_name: Name for DNS domain of node pool subnet. Default `nodedns` (string)
         :param str node_pool_subnet_name: Name for node pool subnet. Default `nodedns` (string)
         :param str node_public_key_contents: The contents of the SSH public key file to use for the nodes (string)
+        :param str pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         :param str private_key_passphrase: The passphrase (if any) of the private key for the OKE cluster (string)
         :param int quantity_of_node_subnets: Number of node subnets. Default `1` (int)
         :param int quantity_per_subnet: Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+        :param str service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
         :param str service_dns_domain_name: Name for DNS domain of service subnet. Default `svcdns` (string)
         :param bool skip_vcn_delete: Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
         :param str vcn_compartment_id: The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
@@ -5912,12 +5962,16 @@ class ClusterOkeConfig(dict):
             pulumi.set(__self__, "node_pool_subnet_name", node_pool_subnet_name)
         if node_public_key_contents is not None:
             pulumi.set(__self__, "node_public_key_contents", node_public_key_contents)
+        if pod_cidr is not None:
+            pulumi.set(__self__, "pod_cidr", pod_cidr)
         if private_key_passphrase is not None:
             pulumi.set(__self__, "private_key_passphrase", private_key_passphrase)
         if quantity_of_node_subnets is not None:
             pulumi.set(__self__, "quantity_of_node_subnets", quantity_of_node_subnets)
         if quantity_per_subnet is not None:
             pulumi.set(__self__, "quantity_per_subnet", quantity_per_subnet)
+        if service_cidr is not None:
+            pulumi.set(__self__, "service_cidr", service_cidr)
         if service_dns_domain_name is not None:
             pulumi.set(__self__, "service_dns_domain_name", service_dns_domain_name)
         if skip_vcn_delete is not None:
@@ -6090,6 +6144,14 @@ class ClusterOkeConfig(dict):
         return pulumi.get(self, "node_public_key_contents")
 
     @property
+    @pulumi.getter(name="podCidr")
+    def pod_cidr(self) -> Optional[str]:
+        """
+        A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        """
+        return pulumi.get(self, "pod_cidr")
+
+    @property
     @pulumi.getter(name="privateKeyPassphrase")
     def private_key_passphrase(self) -> Optional[str]:
         """
@@ -6112,6 +6174,14 @@ class ClusterOkeConfig(dict):
         Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
         """
         return pulumi.get(self, "quantity_per_subnet")
+
+    @property
+    @pulumi.getter(name="serviceCidr")
+    def service_cidr(self) -> Optional[str]:
+        """
+        A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        """
+        return pulumi.get(self, "service_cidr")
 
     @property
     @pulumi.getter(name="serviceDnsDomainName")
@@ -22821,6 +22891,7 @@ class GetClusterAksConfigResult(dict):
                  subnet: str,
                  subscription_id: str,
                  tag: Mapping[str, Any],
+                 tags: Sequence[str],
                  tenant_id: str,
                  virtual_network: str,
                  virtual_network_resource_group: str,
@@ -22859,6 +22930,7 @@ class GetClusterAksConfigResult(dict):
         pulumi.set(__self__, "subnet", subnet)
         pulumi.set(__self__, "subscription_id", subscription_id)
         pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "virtual_network", virtual_network)
         pulumi.set(__self__, "virtual_network_resource_group", virtual_network_resource_group)
@@ -22965,6 +23037,11 @@ class GetClusterAksConfigResult(dict):
     @pulumi.getter
     def tag(self) -> Mapping[str, Any]:
         return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
@@ -25419,9 +25496,11 @@ class GetClusterOkeConfigResult(dict):
                  node_pool_dns_domain_name: Optional[str] = None,
                  node_pool_subnet_name: Optional[str] = None,
                  node_public_key_contents: Optional[str] = None,
+                 pod_cidr: Optional[str] = None,
                  private_key_passphrase: Optional[str] = None,
                  quantity_of_node_subnets: Optional[int] = None,
                  quantity_per_subnet: Optional[int] = None,
+                 service_cidr: Optional[str] = None,
                  service_dns_domain_name: Optional[str] = None,
                  skip_vcn_delete: Optional[bool] = None,
                  vcn_compartment_id: Optional[str] = None,
@@ -25461,12 +25540,16 @@ class GetClusterOkeConfigResult(dict):
             pulumi.set(__self__, "node_pool_subnet_name", node_pool_subnet_name)
         if node_public_key_contents is not None:
             pulumi.set(__self__, "node_public_key_contents", node_public_key_contents)
+        if pod_cidr is not None:
+            pulumi.set(__self__, "pod_cidr", pod_cidr)
         if private_key_passphrase is not None:
             pulumi.set(__self__, "private_key_passphrase", private_key_passphrase)
         if quantity_of_node_subnets is not None:
             pulumi.set(__self__, "quantity_of_node_subnets", quantity_of_node_subnets)
         if quantity_per_subnet is not None:
             pulumi.set(__self__, "quantity_per_subnet", quantity_per_subnet)
+        if service_cidr is not None:
+            pulumi.set(__self__, "service_cidr", service_cidr)
         if service_dns_domain_name is not None:
             pulumi.set(__self__, "service_dns_domain_name", service_dns_domain_name)
         if skip_vcn_delete is not None:
@@ -25582,6 +25665,11 @@ class GetClusterOkeConfigResult(dict):
         return pulumi.get(self, "node_public_key_contents")
 
     @property
+    @pulumi.getter(name="podCidr")
+    def pod_cidr(self) -> Optional[str]:
+        return pulumi.get(self, "pod_cidr")
+
+    @property
     @pulumi.getter(name="privateKeyPassphrase")
     def private_key_passphrase(self) -> Optional[str]:
         return pulumi.get(self, "private_key_passphrase")
@@ -25595,6 +25683,11 @@ class GetClusterOkeConfigResult(dict):
     @pulumi.getter(name="quantityPerSubnet")
     def quantity_per_subnet(self) -> Optional[int]:
         return pulumi.get(self, "quantity_per_subnet")
+
+    @property
+    @pulumi.getter(name="serviceCidr")
+    def service_cidr(self) -> Optional[str]:
+        return pulumi.get(self, "service_cidr")
 
     @property
     @pulumi.getter(name="serviceDnsDomainName")

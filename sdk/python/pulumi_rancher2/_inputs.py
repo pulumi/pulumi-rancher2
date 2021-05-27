@@ -16,6 +16,7 @@ __all__ = [
     'CloudCredentialLinodeCredentialConfigArgs',
     'CloudCredentialOpenstackCredentialConfigArgs',
     'CloudCredentialVsphereCredentialConfigArgs',
+    'ClusterAgentEnvVarArgs',
     'ClusterAksConfigArgs',
     'ClusterAlertGroupRecipientArgs',
     'ClusterAlertRuleEventRuleArgs',
@@ -511,6 +512,43 @@ class CloudCredentialVsphereCredentialConfigArgs:
 
 
 @pulumi.input_type
+class ClusterAgentEnvVarArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of cluster registration token (string)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class ClusterAksConfigArgs:
     def __init__(__self__, *,
                  agent_dns_prefix: pulumi.Input[str],
@@ -550,7 +588,8 @@ class ClusterAksConfigArgs:
                  network_policy: Optional[pulumi.Input[str]] = None,
                  pod_cidr: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tag: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool (string)
         :param pulumi.Input[str] client_id: Azure client ID to use (string)
@@ -587,9 +626,10 @@ class ClusterAksConfigArgs:
         :param pulumi.Input[int] max_pods: Maximum number of pods that can run on a node. Default `110` (int)
         :param pulumi.Input[str] network_plugin: Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
         :param pulumi.Input[str] network_policy: Network policy used for building Kubernetes network. Chooses from `calico` (string)
-        :param pulumi.Input[str] pod_cidr: A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
-        :param pulumi.Input[str] service_cidr: A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
-        :param pulumi.Input[Mapping[str, Any]] tag: Tags for Kubernetes cluster. For example, foo=bar (map)
+        :param pulumi.Input[str] pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        :param pulumi.Input[str] service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        :param pulumi.Input[Mapping[str, Any]] tag: Use `tags` argument instead as []string
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The EKS cluster tags (map)
         """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
         pulumi.set(__self__, "client_id", client_id)
@@ -654,7 +694,12 @@ class ClusterAksConfigArgs:
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
         if tag is not None:
+            warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
+            pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
+        if tag is not None:
             pulumi.set(__self__, "tag", tag)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="agentDnsPrefix")
@@ -1080,7 +1125,7 @@ class ClusterAksConfigArgs:
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        A CIDR notation IP range from which to assign Kubernetes Pod IPs when \"network plugin\" is specified in \"kubenet\". Default `172.244.0.0/16` (string)
+        A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -1092,7 +1137,7 @@ class ClusterAksConfigArgs:
     @pulumi.getter(name="serviceCidr")
     def service_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges. Default `10.0.0.0/16` (string)
+        A CIDR IP range from which to assign Kubernetes Service IPs (string)
         """
         return pulumi.get(self, "service_cidr")
 
@@ -1104,13 +1149,25 @@ class ClusterAksConfigArgs:
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Tags for Kubernetes cluster. For example, foo=bar (map)
+        Use `tags` argument instead as []string
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
     def tag(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The EKS cluster tags (map)
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -5882,9 +5939,11 @@ class ClusterOkeConfigArgs:
                  node_pool_dns_domain_name: Optional[pulumi.Input[str]] = None,
                  node_pool_subnet_name: Optional[pulumi.Input[str]] = None,
                  node_public_key_contents: Optional[pulumi.Input[str]] = None,
+                 pod_cidr: Optional[pulumi.Input[str]] = None,
                  private_key_passphrase: Optional[pulumi.Input[str]] = None,
                  quantity_of_node_subnets: Optional[pulumi.Input[int]] = None,
                  quantity_per_subnet: Optional[pulumi.Input[int]] = None,
+                 service_cidr: Optional[pulumi.Input[str]] = None,
                  service_dns_domain_name: Optional[pulumi.Input[str]] = None,
                  skip_vcn_delete: Optional[pulumi.Input[bool]] = None,
                  vcn_compartment_id: Optional[pulumi.Input[str]] = None,
@@ -5911,9 +5970,11 @@ class ClusterOkeConfigArgs:
         :param pulumi.Input[str] node_pool_dns_domain_name: Name for DNS domain of node pool subnet. Default `nodedns` (string)
         :param pulumi.Input[str] node_pool_subnet_name: Name for node pool subnet. Default `nodedns` (string)
         :param pulumi.Input[str] node_public_key_contents: The contents of the SSH public key file to use for the nodes (string)
+        :param pulumi.Input[str] pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         :param pulumi.Input[str] private_key_passphrase: The passphrase (if any) of the private key for the OKE cluster (string)
         :param pulumi.Input[int] quantity_of_node_subnets: Number of node subnets. Default `1` (int)
         :param pulumi.Input[int] quantity_per_subnet: Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+        :param pulumi.Input[str] service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
         :param pulumi.Input[str] service_dns_domain_name: Name for DNS domain of service subnet. Default `svcdns` (string)
         :param pulumi.Input[bool] skip_vcn_delete: Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
         :param pulumi.Input[str] vcn_compartment_id: The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
@@ -5951,12 +6012,16 @@ class ClusterOkeConfigArgs:
             pulumi.set(__self__, "node_pool_subnet_name", node_pool_subnet_name)
         if node_public_key_contents is not None:
             pulumi.set(__self__, "node_public_key_contents", node_public_key_contents)
+        if pod_cidr is not None:
+            pulumi.set(__self__, "pod_cidr", pod_cidr)
         if private_key_passphrase is not None:
             pulumi.set(__self__, "private_key_passphrase", private_key_passphrase)
         if quantity_of_node_subnets is not None:
             pulumi.set(__self__, "quantity_of_node_subnets", quantity_of_node_subnets)
         if quantity_per_subnet is not None:
             pulumi.set(__self__, "quantity_per_subnet", quantity_per_subnet)
+        if service_cidr is not None:
+            pulumi.set(__self__, "service_cidr", service_cidr)
         if service_dns_domain_name is not None:
             pulumi.set(__self__, "service_dns_domain_name", service_dns_domain_name)
         if skip_vcn_delete is not None:
@@ -6209,6 +6274,18 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "node_public_key_contents", value)
 
     @property
+    @pulumi.getter(name="podCidr")
+    def pod_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        """
+        return pulumi.get(self, "pod_cidr")
+
+    @pod_cidr.setter
+    def pod_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_cidr", value)
+
+    @property
     @pulumi.getter(name="privateKeyPassphrase")
     def private_key_passphrase(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6243,6 +6320,18 @@ class ClusterOkeConfigArgs:
     @quantity_per_subnet.setter
     def quantity_per_subnet(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "quantity_per_subnet", value)
+
+    @property
+    @pulumi.getter(name="serviceCidr")
+    def service_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        """
+        return pulumi.get(self, "service_cidr")
+
+    @service_cidr.setter
+    def service_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_cidr", value)
 
     @property
     @pulumi.getter(name="serviceDnsDomainName")

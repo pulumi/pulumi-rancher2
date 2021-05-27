@@ -575,6 +575,12 @@ namespace Pulumi.Rancher2
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        /// </summary>
+        [Output("agentEnvVars")]
+        public Output<ImmutableArray<Outputs.ClusterAgentEnvVar>> AgentEnvVars { get; private set; } = null!;
+
+        /// <summary>
         /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Output("aksConfig")]
@@ -836,6 +842,18 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
+        [Input("agentEnvVars")]
+        private InputList<Inputs.ClusterAgentEnvVarArgs>? _agentEnvVars;
+
+        /// <summary>
+        /// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        /// </summary>
+        public InputList<Inputs.ClusterAgentEnvVarArgs> AgentEnvVars
+        {
+            get => _agentEnvVars ?? (_agentEnvVars = new InputList<Inputs.ClusterAgentEnvVarArgs>());
+            set => _agentEnvVars = value;
+        }
+
         /// <summary>
         /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>
@@ -1035,6 +1053,18 @@ namespace Pulumi.Rancher2
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
+        [Input("agentEnvVars")]
+        private InputList<Inputs.ClusterAgentEnvVarGetArgs>? _agentEnvVars;
+
+        /// <summary>
+        /// Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
+        /// </summary>
+        public InputList<Inputs.ClusterAgentEnvVarGetArgs> AgentEnvVars
+        {
+            get => _agentEnvVars ?? (_agentEnvVars = new InputList<Inputs.ClusterAgentEnvVarGetArgs>());
+            set => _agentEnvVars = value;
+        }
+
         /// <summary>
         /// The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         /// </summary>

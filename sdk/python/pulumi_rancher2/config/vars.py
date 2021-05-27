@@ -16,6 +16,7 @@ __all__ = [
     'insecure',
     'retries',
     'secret_key',
+    'timeout',
     'token_key',
 ]
 
@@ -54,6 +55,11 @@ Rancher connection retries
 secret_key = __config__.get('secretKey')
 """
 API secret used to authenticate with the rancher server
+"""
+
+timeout = __config__.get('timeout')
+"""
+Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
 """
 
 token_key = __config__.get('tokenKey')

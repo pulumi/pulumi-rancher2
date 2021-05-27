@@ -20,6 +20,7 @@ class ProviderArgs:
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
                  token_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -30,6 +31,7 @@ class ProviderArgs:
         :param pulumi.Input[bool] insecure: Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
         :param pulumi.Input[int] retries: Rancher connection retries
         :param pulumi.Input[str] secret_key: API secret used to authenticate with the rancher server
+        :param pulumi.Input[str] timeout: Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
         pulumi.set(__self__, "api_url", api_url)
@@ -46,9 +48,14 @@ class ProviderArgs:
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
         if retries is not None:
+            warnings.warn("""Use timeout instead""", DeprecationWarning)
+            pulumi.log.warn("""retries is deprecated: Use timeout instead""")
+        if retries is not None:
             pulumi.set(__self__, "retries", retries)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
         if token_key is not None:
             pulumi.set(__self__, "token_key", token_key)
 
@@ -137,6 +144,18 @@ class ProviderArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
     @pulumi.getter(name="tokenKey")
     def token_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -161,6 +180,7 @@ class Provider(pulumi.ProviderResource):
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
                  token_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -178,6 +198,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] insecure: Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
         :param pulumi.Input[int] retries: Rancher connection retries
         :param pulumi.Input[str] secret_key: API secret used to authenticate with the rancher server
+        :param pulumi.Input[str] timeout: Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
         ...
@@ -214,6 +235,7 @@ class Provider(pulumi.ProviderResource):
                  insecure: Optional[pulumi.Input[bool]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
                  token_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -238,8 +260,12 @@ class Provider(pulumi.ProviderResource):
             if insecure is None:
                 insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            if retries is not None and not opts.urn:
+                warnings.warn("""Use timeout instead""", DeprecationWarning)
+                pulumi.log.warn("""retries is deprecated: Use timeout instead""")
             __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
             __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["timeout"] = timeout
             __props__.__dict__["token_key"] = token_key
         super(Provider, __self__).__init__(
             'rancher2',

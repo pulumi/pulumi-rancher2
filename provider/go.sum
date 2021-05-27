@@ -1502,6 +1502,10 @@ github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210406132731-632a7710f
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210406132731-632a7710f8fb/go.mod h1:H869nRPv2R3u4GNc10pjHApvCMtX6Lab/gLsebYJS3Y=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210510105028-d620d0d058f6 h1:B9f1L8A5wmzh2UgPaoJAs+sq1gigBqzuKs71NGKbY5Y=
 github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210510105028-d620d0d058f6/go.mod h1:PXLlnjFN8nTz0qznmwFTE6JJc4vy7XRhHwmi+8TtO5M=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521143757-732f14721038 h1:RyCg7bZCAcaEWuksHEVZ0eP7e+UqXlfS1qFR8X0DbSo=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521143757-732f14721038/go.mod h1:PXLlnjFN8nTz0qznmwFTE6JJc4vy7XRhHwmi+8TtO5M=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521164455-a6aa41c55126 h1:mwowioUpw786xLBKKOPkzvLE62ddF28DGwFiCgmLrm8=
+github.com/pulumi/terraform-provider-rancher2 v1.10.3-0.20210521164455-a6aa41c55126/go.mod h1:PXLlnjFN8nTz0qznmwFTE6JJc4vy7XRhHwmi+8TtO5M=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d h1:K6eOUihrFLdZjZnA4XlRp864fmWXv9YTIk7VPLhRacA=
 github.com/qri-io/starlib v0.4.2-0.20200213133954-ff2e8cd5ef8d/go.mod h1:7DPO4domFU579Ga6E61sB9VFNaniPVwJP5C4bBCu3wA=
 github.com/quobyte/api v0.1.8 h1:+sOX1gIlC/OaLipqVZWrHgly9Kh9Qo8OygeS0mWAg30=
