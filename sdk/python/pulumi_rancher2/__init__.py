@@ -6,6 +6,7 @@
 from .active_directory import *
 from .app import *
 from .app_v2 import *
+from .auth_config_active_directory import *
 from .auth_config_adfs import *
 from .auth_config_azure_ad import *
 from .auth_config_free_ipa import *
@@ -86,6 +87,7 @@ from .project_role_template_binding import *
 from .provider import *
 from .registry import *
 from .role_tempalte import *
+from .role_template import *
 from .secret import *
 from .secret_v2 import *
 from .setting import *
@@ -117,6 +119,8 @@ def _register_module():
                 return App(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/appV2:AppV2":
                 return AppV2(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory":
+                return AuthConfigActiveDirectory(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/authConfigAdfs:AuthConfigAdfs":
                 return AuthConfigAdfs(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
@@ -203,6 +207,8 @@ def _register_module():
                 return Registry(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/roleTempalte:RoleTempalte":
                 return RoleTempalte(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/roleTemplate:RoleTemplate":
+                return RoleTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/secret:Secret":
                 return Secret(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/secretV2:SecretV2":
@@ -221,6 +227,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/activeDirectory", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/app", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/appV2", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/authConfigActiveDirectory", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/authConfigAdfs", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/authConfigAzureAd", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/authConfigFreeIpa", _module_instance)
@@ -264,6 +271,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/projectRoleTemplateBinding", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/registry", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/roleTempalte", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/roleTemplate", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/secret", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/secretV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/setting", _module_instance)

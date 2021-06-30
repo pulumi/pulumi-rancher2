@@ -247,6 +247,7 @@ __all__ = [
     'ProjectResourceQuotaProjectLimitArgs',
     'RegistryRegistryArgs',
     'RoleTempalteRuleArgs',
+    'RoleTemplateRuleArgs',
     'GetNotifierDingtalkConfigArgs',
     'GetNotifierMsteamsConfigArgs',
     'GetPodSecurityPolicyTemplateAllowedCsiDriverArgs',
@@ -23568,6 +23569,71 @@ class RegistryRegistryArgs:
 
 @pulumi.input_type
 class RoleTempalteRuleArgs:
+    def __init__(__self__, *,
+                 api_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 non_resource_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verbs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if api_groups is not None:
+            pulumi.set(__self__, "api_groups", api_groups)
+        if non_resource_urls is not None:
+            pulumi.set(__self__, "non_resource_urls", non_resource_urls)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if verbs is not None:
+            pulumi.set(__self__, "verbs", verbs)
+
+    @property
+    @pulumi.getter(name="apiGroups")
+    def api_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "api_groups")
+
+    @api_groups.setter
+    def api_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "api_groups", value)
+
+    @property
+    @pulumi.getter(name="nonResourceUrls")
+    def non_resource_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "non_resource_urls")
+
+    @non_resource_urls.setter
+    def non_resource_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "non_resource_urls", value)
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "resource_names")
+
+    @resource_names.setter
+    def resource_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_names", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def verbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "verbs")
+
+    @verbs.setter
+    def verbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "verbs", value)
+
+
+@pulumi.input_type
+class RoleTemplateRuleArgs:
     def __init__(__self__, *,
                  api_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  non_resource_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

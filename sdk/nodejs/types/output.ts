@@ -7556,6 +7556,14 @@ export interface RegistryRegistry {
 }
 
 export interface RoleTempalteRule {
+    apiGroups?: string[];
+    nonResourceUrls?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs?: string[];
+}
+
+export interface RoleTemplateRule {
     /**
      * Policy rule api groups (list)
      */

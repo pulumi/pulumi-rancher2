@@ -10,7 +10,7 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   RANCHER_INSECURE: "true"
-  RANCHER_URL: https://localhost
+  RANCHER_URL: https://127.0.0.1
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TRAVIS_OS_NAME: linux
 jobs:
@@ -259,7 +259,7 @@ jobs:
         pip3 install virtualenv==20.0.23
         pip3 install pipenv
     - name: Run docker-compose
-      run: docker-compose -f testing/docker-compose.yml up --build -d
+      run: docker-compose -f testing/docker-compose.yml --verbose up --build -d
     - name: Run setup script
       run: testing/setup.sh
     - name: Install dependencies
