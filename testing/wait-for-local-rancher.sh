@@ -7,10 +7,16 @@ HEALTHCHECK_URI="${RANCHER_URL}/ping"
 
 printf "Waiting for local rancher2 to be ready"
 
-until curl -k --output /dev/null --silent --head --fail --max-time 2 "${HEALTHCHECK_URI}"; do
-    printf '.'
-    printf %s "${HEALTHCHECK_URI}"
-    sleep 2
+#until curl -k --output /dev/null --silent --head --fail --max-time 2 "${HEALTHCHECK_URI}"; do
+#    printf '.'
+#    printf %s "${HEALTHCHECK_URI}"
+#    sleep 2
+#done
+
+while [ "${k3s_ready}" != "pong" ]; do
+  sleep 5
+  k3s_ready=$(curl -sk ${HEALTHCHECK_URI}/ping || echo starting rancher cluster)
 done
+sleep 2
 
 echo

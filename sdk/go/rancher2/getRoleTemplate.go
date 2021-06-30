@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rancher2.GetRoleTemplate(ctx, &rancher2.GetRoleTemplateArgs{
+// 		_, err := rancher2.LookupRoleTemplate(ctx, &rancher2.LookupRoleTemplateArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -31,8 +31,8 @@ import (
 // 	})
 // }
 // ```
-func GetRoleTemplate(ctx *pulumi.Context, args *GetRoleTemplateArgs, opts ...pulumi.InvokeOption) (*GetRoleTemplateResult, error) {
-	var rv GetRoleTemplateResult
+func LookupRoleTemplate(ctx *pulumi.Context, args *LookupRoleTemplateArgs, opts ...pulumi.InvokeOption) (*LookupRoleTemplateResult, error) {
+	var rv LookupRoleTemplateResult
 	err := ctx.Invoke("rancher2:index/getRoleTemplate:getRoleTemplate", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -41,7 +41,7 @@ func GetRoleTemplate(ctx *pulumi.Context, args *GetRoleTemplateArgs, opts ...pul
 }
 
 // A collection of arguments for invoking getRoleTemplate.
-type GetRoleTemplateArgs struct {
+type LookupRoleTemplateArgs struct {
 	// Role template context. `cluster` and `project` values are supported (string)
 	Context *string `pulumi:"context"`
 	// The name of the Role Template (string)
@@ -49,7 +49,7 @@ type GetRoleTemplateArgs struct {
 }
 
 // A collection of values returned by getRoleTemplate.
-type GetRoleTemplateResult struct {
+type LookupRoleTemplateResult struct {
 	// (Computed) Administrative role template (bool)
 	Administrative bool `pulumi:"administrative"`
 	// (Computed) Annotations for role template object (map)

@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &App{}
 	case "rancher2:index/appV2:AppV2":
 		r = &AppV2{}
+	case "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory":
+		r = &AuthConfigActiveDirectory{}
 	case "rancher2:index/authConfigAdfs:AuthConfigAdfs":
 		r = &AuthConfigAdfs{}
 	case "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
@@ -112,6 +114,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Registry{}
 	case "rancher2:index/roleTempalte:RoleTempalte":
 		r = &RoleTempalte{}
+	case "rancher2:index/roleTemplate:RoleTemplate":
+		r = &RoleTemplate{}
 	case "rancher2:index/secret:Secret":
 		r = &Secret{}
 	case "rancher2:index/secretV2:SecretV2":
@@ -166,6 +170,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/appV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/authConfigActiveDirectory",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -381,6 +390,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/roleTempalte",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/roleTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

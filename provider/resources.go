@@ -102,9 +102,6 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"rancher2_app": {Tok: makeResource(mainMod, "App")},
-			"rancher2_auth_config_activedirectory": {
-				Tok: makeResource(mainMod, "ActiveDirectory"),
-			},
 			"rancher2_auth_config_adfs": {
 				Tok: makeResource(mainMod, "AuthConfigAdfs"),
 			},
@@ -185,11 +182,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "ProjectRoleTemplateBinding"),
 			},
 			"rancher2_registry": {Tok: makeResource(mainMod, "Registry")},
-			"rancher2_role_template": {
-				Tok: makeResource(mainMod, "RoleTempalte"),
-			},
-			"rancher2_secret":  {Tok: makeResource(mainMod, "Secret")},
-			"rancher2_setting": {Tok: makeResource(mainMod, "Setting")},
+			"rancher2_secret":   {Tok: makeResource(mainMod, "Secret")},
+			"rancher2_setting":  {Tok: makeResource(mainMod, "Setting")},
 			"rancher2_token": {
 				Tok: makeResource(mainMod, "Token"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -308,8 +302,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
 		},
@@ -328,6 +321,10 @@ func Provider() tfbridge.ProviderInfo {
 		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
 			Docs: &tfbridge.DocInfo{Source: "clusterAlertRule.html.markdown"},
 		})
+	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
+		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod, nil)
+	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
+		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod, nil)
 
 	prov.SetAutonaming(255, "-")
 

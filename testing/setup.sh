@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -x -ef -o pipefail
 
+curl -k https://127.0.0.1/ping
+
 ./testing/wait-for-local-rancher.sh
 
 # install requirements
