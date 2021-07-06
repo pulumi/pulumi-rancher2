@@ -5647,6 +5647,14 @@ export interface RegistryRegistry {
 }
 
 export interface RoleTempalteRule {
+    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    verbs?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RoleTemplateRule {
     /**
      * Policy rule api groups (list)
      */

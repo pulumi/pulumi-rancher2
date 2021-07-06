@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./activeDirectory";
 export * from "./app";
 export * from "./appV2";
+export * from "./authConfigActiveDirectory";
 export * from "./authConfigAdfs";
 export * from "./authConfigAzureAd";
 export * from "./authConfigFreeIpa";
@@ -88,6 +89,7 @@ export * from "./projectRoleTemplateBinding";
 export * from "./provider";
 export * from "./registry";
 export * from "./roleTempalte";
+export * from "./roleTemplate";
 export * from "./secret";
 export * from "./secretV2";
 export * from "./setting";
@@ -107,6 +109,7 @@ export {
 import { ActiveDirectory } from "./activeDirectory";
 import { App } from "./app";
 import { AppV2 } from "./appV2";
+import { AuthConfigActiveDirectory } from "./authConfigActiveDirectory";
 import { AuthConfigAdfs } from "./authConfigAdfs";
 import { AuthConfigAzureAd } from "./authConfigAzureAd";
 import { AuthConfigFreeIpa } from "./authConfigFreeIpa";
@@ -150,6 +153,7 @@ import { ProjectLogging } from "./projectLogging";
 import { ProjectRoleTemplateBinding } from "./projectRoleTemplateBinding";
 import { Registry } from "./registry";
 import { RoleTempalte } from "./roleTempalte";
+import { RoleTemplate } from "./roleTemplate";
 import { Secret } from "./secret";
 import { SecretV2 } from "./secretV2";
 import { Setting } from "./setting";
@@ -166,6 +170,8 @@ const _module = {
                 return new App(name, <any>undefined, { urn })
             case "rancher2:index/appV2:AppV2":
                 return new AppV2(name, <any>undefined, { urn })
+            case "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory":
+                return new AuthConfigActiveDirectory(name, <any>undefined, { urn })
             case "rancher2:index/authConfigAdfs:AuthConfigAdfs":
                 return new AuthConfigAdfs(name, <any>undefined, { urn })
             case "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
@@ -252,6 +258,8 @@ const _module = {
                 return new Registry(name, <any>undefined, { urn })
             case "rancher2:index/roleTempalte:RoleTempalte":
                 return new RoleTempalte(name, <any>undefined, { urn })
+            case "rancher2:index/roleTemplate:RoleTemplate":
+                return new RoleTemplate(name, <any>undefined, { urn })
             case "rancher2:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             case "rancher2:index/secretV2:SecretV2":
@@ -270,6 +278,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("rancher2", "index/activeDirectory", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/app", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/appV2", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/authConfigActiveDirectory", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAdfs", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAzureAd", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigFreeIpa", _module)
@@ -313,6 +322,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/projectLogging", _modul
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/registry", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/roleTempalte", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/roleTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secretV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/setting", _module)

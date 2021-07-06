@@ -248,6 +248,7 @@ __all__ = [
     'ProjectResourceQuotaProjectLimit',
     'RegistryRegistry',
     'RoleTempalteRule',
+    'RoleTemplateRule',
     'GetClusterAksConfigResult',
     'GetClusterAlertGroupRecipientResult',
     'GetClusterAlterRuleEventRuleResult',
@@ -22810,6 +22811,72 @@ class RoleTempalteRule(dict):
 
     def get(self, key: str, default = None) -> Any:
         RoleTempalteRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_groups: Optional[Sequence[str]] = None,
+                 non_resource_urls: Optional[Sequence[str]] = None,
+                 resource_names: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 verbs: Optional[Sequence[str]] = None):
+        if api_groups is not None:
+            pulumi.set(__self__, "api_groups", api_groups)
+        if non_resource_urls is not None:
+            pulumi.set(__self__, "non_resource_urls", non_resource_urls)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if verbs is not None:
+            pulumi.set(__self__, "verbs", verbs)
+
+    @property
+    @pulumi.getter(name="apiGroups")
+    def api_groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "api_groups")
+
+    @property
+    @pulumi.getter(name="nonResourceUrls")
+    def non_resource_urls(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "non_resource_urls")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "resource_names")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def verbs(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "verbs")
+
+
+@pulumi.output_type
+class RoleTemplateRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiGroups":
+            suggest = "api_groups"
+        elif key == "nonResourceUrls":
+            suggest = "non_resource_urls"
+        elif key == "resourceNames":
+            suggest = "resource_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleTemplateRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleTemplateRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleTemplateRule.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
