@@ -262,6 +262,7 @@ jobs:
       run: docker-compose -f testing/docker-compose.yml up --build -d
     - name: Run setup script
       run: testing/setup.sh
+      timeout-minutes: 5
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
     - name: Run tests

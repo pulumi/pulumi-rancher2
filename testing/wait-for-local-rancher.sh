@@ -1,3 +1,5 @@
+echo "Wait"
+
 if [ -z "${RANCHER_URL}" ]; then
   echo "Must set RANCHER_URL"
   exit 2

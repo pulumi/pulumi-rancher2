@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -x -ef -o pipefail
 
+echo "Setup"
+
 ./testing/wait-for-local-rancher.sh
 
 # install requirements
