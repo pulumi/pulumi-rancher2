@@ -1,4 +1,0 @@
-urllib3==1.25.8
-requests==2.23.0
-retry_requests==1.0.0
-ConfigArgParse==1.2.3
