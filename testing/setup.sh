@@ -99,6 +99,8 @@ k3s_imported_node=$(${DOCKER_BIN} run -d \
   rancher/k3s:${TESTACC_K3S_VERSION})
 echo ${k3s_imported_node} >> ${TESTACC_DOCKER_LIST}
 
+k3s_server_ip=$(${DOCKER_BIN} inspect ${k3s_imported_server} -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}')
+
 export RANCHER_ACC_CLUSTER_NAME=bootstrap-imported-k3s-cluster
 
 # Show running dockers
