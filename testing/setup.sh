@@ -175,6 +175,7 @@ if [ "${TESTACC_EXPOSE_HOST_PORTS}" == "true" ]; then
   export RANCHER_URL=https://localhost:${TESTACC_RANCHER_PORT}
 else
   sed -i -e 's/localhost/'"${k3s_server_ip}"'/g' ${TESTACC_K3S_KUBECONFIG}
+  sed -i -e 's/127.0.0.1/'"${k3s_server_ip}"'/g' ${TESTACC_K3S_KUBECONFIG}
 fi
 
 # Registering k3s cluster
