@@ -170,6 +170,9 @@ sleep 1
 # Copying kubeconfig
 ${DOCKER_BIN} cp ${k3s_imported_server}:/tmp/${TESTACC_K3S_KUBECONFIG_NAME} ${TESTACC_K3S_KUBECONFIG}
 
+# Let's set what's running
+${DOCKER_BIN} ps
+
 # Setting kubeconfig and rancher_url if exposed host ports
 if [ "${TESTACC_EXPOSE_HOST_PORTS}" == "true" ]; then
   export RANCHER_URL=https://localhost:${TESTACC_RANCHER_PORT}
