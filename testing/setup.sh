@@ -138,3 +138,9 @@ ${DOCKER_BIN} exec -i ${rancher_server} curl -X PUT -sk "${RANCHER_URL}/v3/setti
     -H "Authorization: Bearer ${rancher_token}" \
     -H 'Content-Type: application/json' \
     --data-binary "{\"name\": \"server-url\", \"value\":\"${RANCHER_URL}\"}"
+
+
+export RANCHER_ACCESS_KEY=$(echo $login_token |cut -d ':' -f 1)
+export RANCHER_SECRET_KEY=$(echo $login_token | cut -d ':' -f 2)
+echo "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" >> $GITHUB_ENV
+echo "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" >> $GITHUB_ENV
