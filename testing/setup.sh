@@ -172,6 +172,7 @@ ${DOCKER_BIN} cp ${k3s_imported_server}:/tmp/${TESTACC_K3S_KUBECONFIG_NAME} ${TE
 
 # Let's set what's running
 ${DOCKER_BIN} ps
+${DOCKER_BIN} network ls
 
 # Setting kubeconfig and rancher_url if exposed host ports
 if [ "${TESTACC_EXPOSE_HOST_PORTS}" == "true" ]; then
