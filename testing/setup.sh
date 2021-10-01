@@ -144,3 +144,6 @@ export RANCHER_ACCESS_KEY=$(echo $login_token |cut -d ':' -f 1)
 export RANCHER_SECRET_KEY=$(echo $login_token | cut -d ':' -f 2)
 echo "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" >> $GITHUB_ENV
 echo "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" >> $GITHUB_ENV
+echo "RANCHER_URL=$RANCHER_URL" >> $GITHUB_ENV
+echo "RANCHER_INSECURE=true" >> $GITHUB_ENV
+echo
