@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Rename `rancher2.ActiveDirectory` to be `rancher2.AuthConfigActiveDirectory`
+* Rename `rancher2.RoleTempalte` to be `rancher2.RoleTemplate`
 
 ---
 

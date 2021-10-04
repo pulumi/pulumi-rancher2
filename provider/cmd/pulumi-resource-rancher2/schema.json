@@ -16231,6 +16231,66 @@
                     "items": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nonResourceUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "verbs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rancher2:index/RoleTemplateRule:RoleTemplateRule": {
+            "properties": {
+                "apiGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Policy rule api groups (list)\n",
                     "language": {
                         "python": {
@@ -29595,155 +29655,122 @@
     },
     "resources": {
         "rancher2:index/activeDirectory:ActiveDirectory": {
-            "description": "Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.\n\nIn addition to the built-in local auth, only one external auth config provider can be enabled at a time.\n",
             "properties": {
                 "accessMode": {
-                    "type": "string",
-                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                    "type": "string"
                 },
                 "allowedPrincipalIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                    }
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource (map)\n"
+                    "description": "Annotations of the resource\n"
                 },
                 "certificate": {
-                    "type": "string",
-                    "description": "CA certificate for TLS if selfsigned (string)\n"
+                    "type": "string"
                 },
                 "connectionTimeout": {
-                    "type": "integer",
-                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                    "type": "integer"
                 },
                 "defaultLoginDomain": {
-                    "type": "string",
-                    "description": "ActiveDirectory defult login domain (string)\n"
+                    "type": "string"
                 },
                 "enabled": {
-                    "type": "boolean",
-                    "description": "Enable auth config provider. Default `true` (bool)\n"
+                    "type": "boolean"
                 },
                 "groupDnAttribute": {
-                    "type": "string",
-                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                    "type": "string"
                 },
                 "groupMemberMappingAttribute": {
-                    "type": "string",
-                    "description": "Group member mapping attribute. Default `member` (string)\n"
+                    "type": "string"
                 },
                 "groupMemberUserAttribute": {
-                    "type": "string",
-                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                    "type": "string"
                 },
                 "groupNameAttribute": {
-                    "type": "string",
-                    "description": "Group name attribute. Default `name` (string)\n"
+                    "type": "string"
                 },
                 "groupObjectClass": {
-                    "type": "string",
-                    "description": "Group object class. Default `group` (string)\n"
+                    "type": "string"
                 },
                 "groupSearchAttribute": {
-                    "type": "string",
-                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                    "type": "string"
                 },
                 "groupSearchBase": {
-                    "type": "string",
-                    "description": "Group search base (string)\n"
+                    "type": "string"
                 },
                 "groupSearchFilter": {
-                    "type": "string",
-                    "description": "Group search filter (string)\n"
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource (map)\n"
+                    "description": "Labels of the resource\n"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "(Computed) The name of the resource (string)\n"
+                    "type": "string"
                 },
                 "nestedGroupMembershipEnabled": {
-                    "type": "boolean",
-                    "description": "Nested group membership enable. Default `false` (bool)\n"
+                    "type": "boolean"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "ActiveDirectory port. Default `389` (int)\n"
+                    "type": "integer"
                 },
                 "servers": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "ActiveDirectory servers list (list)\n"
+                    }
                 },
                 "serviceAccountPassword": {
-                    "type": "string",
-                    "description": "Service account password for access ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "serviceAccountUsername": {
-                    "type": "string",
-                    "description": "Service account DN for access ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "testPassword": {
-                    "type": "string",
-                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "testUsername": {
-                    "type": "string",
-                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "tls": {
-                    "type": "boolean",
-                    "description": "Enable TLS connection (bool)\n"
+                    "type": "boolean"
                 },
                 "type": {
-                    "type": "string",
-                    "description": "(Computed) The type of the resource (string)\n"
+                    "type": "string"
                 },
                 "userDisabledBitMask": {
-                    "type": "integer",
-                    "description": "User disabled bit mask. Default `2` (int)\n"
+                    "type": "integer"
                 },
                 "userEnabledAttribute": {
-                    "type": "string",
-                    "description": "User enable attribute (string)\n"
+                    "type": "string"
                 },
                 "userLoginAttribute": {
-                    "type": "string",
-                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                    "type": "string"
                 },
                 "userNameAttribute": {
-                    "type": "string",
-                    "description": "User name attribute. Default `name` (string)\n"
+                    "type": "string"
                 },
                 "userObjectClass": {
-                    "type": "string",
-                    "description": "User object class. Default `person` (string)\n"
+                    "type": "string"
                 },
                 "userSearchAttribute": {
-                    "type": "string",
-                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                    "type": "string"
                 },
                 "userSearchBase": {
-                    "type": "string",
-                    "description": "User search base DN (string)\n"
+                    "type": "string"
                 },
                 "userSearchFilter": {
-                    "type": "string",
-                    "description": "User search filter (string)\n"
+                    "type": "string"
                 }
             },
             "required": [
@@ -29776,144 +29803,114 @@
             ],
             "inputProperties": {
                 "accessMode": {
-                    "type": "string",
-                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                    "type": "string"
                 },
                 "allowedPrincipalIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                    }
                 },
                 "annotations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Annotations of the resource (map)\n"
+                    "description": "Annotations of the resource\n"
                 },
                 "certificate": {
-                    "type": "string",
-                    "description": "CA certificate for TLS if selfsigned (string)\n"
+                    "type": "string"
                 },
                 "connectionTimeout": {
-                    "type": "integer",
-                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                    "type": "integer"
                 },
                 "defaultLoginDomain": {
-                    "type": "string",
-                    "description": "ActiveDirectory defult login domain (string)\n"
+                    "type": "string"
                 },
                 "enabled": {
-                    "type": "boolean",
-                    "description": "Enable auth config provider. Default `true` (bool)\n"
+                    "type": "boolean"
                 },
                 "groupDnAttribute": {
-                    "type": "string",
-                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                    "type": "string"
                 },
                 "groupMemberMappingAttribute": {
-                    "type": "string",
-                    "description": "Group member mapping attribute. Default `member` (string)\n"
+                    "type": "string"
                 },
                 "groupMemberUserAttribute": {
-                    "type": "string",
-                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                    "type": "string"
                 },
                 "groupNameAttribute": {
-                    "type": "string",
-                    "description": "Group name attribute. Default `name` (string)\n"
+                    "type": "string"
                 },
                 "groupObjectClass": {
-                    "type": "string",
-                    "description": "Group object class. Default `group` (string)\n"
+                    "type": "string"
                 },
                 "groupSearchAttribute": {
-                    "type": "string",
-                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                    "type": "string"
                 },
                 "groupSearchBase": {
-                    "type": "string",
-                    "description": "Group search base (string)\n"
+                    "type": "string"
                 },
                 "groupSearchFilter": {
-                    "type": "string",
-                    "description": "Group search filter (string)\n"
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Labels of the resource (map)\n"
+                    "description": "Labels of the resource\n"
                 },
                 "nestedGroupMembershipEnabled": {
-                    "type": "boolean",
-                    "description": "Nested group membership enable. Default `false` (bool)\n"
+                    "type": "boolean"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "ActiveDirectory port. Default `389` (int)\n"
+                    "type": "integer"
                 },
                 "servers": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "ActiveDirectory servers list (list)\n"
+                    }
                 },
                 "serviceAccountPassword": {
-                    "type": "string",
-                    "description": "Service account password for access ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "serviceAccountUsername": {
-                    "type": "string",
-                    "description": "Service account DN for access ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "testPassword": {
-                    "type": "string",
-                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "testUsername": {
-                    "type": "string",
-                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                    "type": "string"
                 },
                 "tls": {
-                    "type": "boolean",
-                    "description": "Enable TLS connection (bool)\n"
+                    "type": "boolean"
                 },
                 "userDisabledBitMask": {
-                    "type": "integer",
-                    "description": "User disabled bit mask. Default `2` (int)\n"
+                    "type": "integer"
                 },
                 "userEnabledAttribute": {
-                    "type": "string",
-                    "description": "User enable attribute (string)\n"
+                    "type": "string"
                 },
                 "userLoginAttribute": {
-                    "type": "string",
-                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                    "type": "string"
                 },
                 "userNameAttribute": {
-                    "type": "string",
-                    "description": "User name attribute. Default `name` (string)\n"
+                    "type": "string"
                 },
                 "userObjectClass": {
-                    "type": "string",
-                    "description": "User object class. Default `person` (string)\n"
+                    "type": "string"
                 },
                 "userSearchAttribute": {
-                    "type": "string",
-                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                    "type": "string"
                 },
                 "userSearchBase": {
-                    "type": "string",
-                    "description": "User search base DN (string)\n"
+                    "type": "string"
                 },
                 "userSearchFilter": {
-                    "type": "string",
-                    "description": "User search filter (string)\n"
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -29928,156 +29925,125 @@
                 "description": "Input properties used for looking up and filtering ActiveDirectory resources.\n",
                 "properties": {
                     "accessMode": {
-                        "type": "string",
-                        "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                        "type": "string"
                     },
                     "allowedPrincipalIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                        }
                     },
                     "annotations": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Annotations of the resource (map)\n"
+                        "description": "Annotations of the resource\n"
                     },
                     "certificate": {
-                        "type": "string",
-                        "description": "CA certificate for TLS if selfsigned (string)\n"
+                        "type": "string"
                     },
                     "connectionTimeout": {
-                        "type": "integer",
-                        "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                        "type": "integer"
                     },
                     "defaultLoginDomain": {
-                        "type": "string",
-                        "description": "ActiveDirectory defult login domain (string)\n"
+                        "type": "string"
                     },
                     "enabled": {
-                        "type": "boolean",
-                        "description": "Enable auth config provider. Default `true` (bool)\n"
+                        "type": "boolean"
                     },
                     "groupDnAttribute": {
-                        "type": "string",
-                        "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                        "type": "string"
                     },
                     "groupMemberMappingAttribute": {
-                        "type": "string",
-                        "description": "Group member mapping attribute. Default `member` (string)\n"
+                        "type": "string"
                     },
                     "groupMemberUserAttribute": {
-                        "type": "string",
-                        "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                        "type": "string"
                     },
                     "groupNameAttribute": {
-                        "type": "string",
-                        "description": "Group name attribute. Default `name` (string)\n"
+                        "type": "string"
                     },
                     "groupObjectClass": {
-                        "type": "string",
-                        "description": "Group object class. Default `group` (string)\n"
+                        "type": "string"
                     },
                     "groupSearchAttribute": {
-                        "type": "string",
-                        "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                        "type": "string"
                     },
                     "groupSearchBase": {
-                        "type": "string",
-                        "description": "Group search base (string)\n"
+                        "type": "string"
                     },
                     "groupSearchFilter": {
-                        "type": "string",
-                        "description": "Group search filter (string)\n"
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Labels of the resource (map)\n"
+                        "description": "Labels of the resource\n"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "(Computed) The name of the resource (string)\n"
+                        "type": "string"
                     },
                     "nestedGroupMembershipEnabled": {
-                        "type": "boolean",
-                        "description": "Nested group membership enable. Default `false` (bool)\n"
+                        "type": "boolean"
                     },
                     "port": {
-                        "type": "integer",
-                        "description": "ActiveDirectory port. Default `389` (int)\n"
+                        "type": "integer"
                     },
                     "servers": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "ActiveDirectory servers list (list)\n"
+                        }
                     },
                     "serviceAccountPassword": {
-                        "type": "string",
-                        "description": "Service account password for access ActiveDirectory service (string)\n"
+                        "type": "string"
                     },
                     "serviceAccountUsername": {
-                        "type": "string",
-                        "description": "Service account DN for access ActiveDirectory service (string)\n"
+                        "type": "string"
                     },
                     "testPassword": {
-                        "type": "string",
-                        "description": "Password for test access to ActiveDirectory service (string)\n"
+                        "type": "string"
                     },
                     "testUsername": {
-                        "type": "string",
-                        "description": "Username for test access to ActiveDirectory service (string)\n"
+                        "type": "string"
                     },
                     "tls": {
-                        "type": "boolean",
-                        "description": "Enable TLS connection (bool)\n"
+                        "type": "boolean"
                     },
                     "type": {
-                        "type": "string",
-                        "description": "(Computed) The type of the resource (string)\n"
+                        "type": "string"
                     },
                     "userDisabledBitMask": {
-                        "type": "integer",
-                        "description": "User disabled bit mask. Default `2` (int)\n"
+                        "type": "integer"
                     },
                     "userEnabledAttribute": {
-                        "type": "string",
-                        "description": "User enable attribute (string)\n"
+                        "type": "string"
                     },
                     "userLoginAttribute": {
-                        "type": "string",
-                        "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                        "type": "string"
                     },
                     "userNameAttribute": {
-                        "type": "string",
-                        "description": "User name attribute. Default `name` (string)\n"
+                        "type": "string"
                     },
                     "userObjectClass": {
-                        "type": "string",
-                        "description": "User object class. Default `person` (string)\n"
+                        "type": "string"
                     },
                     "userSearchAttribute": {
-                        "type": "string",
-                        "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                        "type": "string"
                     },
                     "userSearchBase": {
-                        "type": "string",
-                        "description": "User search base DN (string)\n"
+                        "type": "string"
                     },
                     "userSearchFilter": {
-                        "type": "string",
-                        "description": "User search filter (string)\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "rancher2.ActiveDirectory has been deprecated in favor of rancher2.AuthConfigActiveDirectory"
         },
         "rancher2:index/app:App": {
             "description": "\n\n\n## Import\n\nApps can be imported using the app ID in the format `\u003cproject_id\u003e:\u003capp_name\u003e`\n\n```sh\n $ pulumi import rancher2:index/app:App foo \u0026lt;PROJECT_ID_ID\u0026gt;:\u0026lt;APP_NAME\u0026gt;\n```\n\n ",
@@ -30558,6 +30524,496 @@
                 },
                 "type": "object"
             }
+        },
+        "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory": {
+            "description": "Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.\n\nIn addition to the built-in local auth, only one external auth config provider can be enabled at a time.\n",
+            "properties": {
+                "accessMode": {
+                    "type": "string",
+                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                },
+                "allowedPrincipalIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations of the resource (map)\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "CA certificate for TLS if selfsigned (string)\n"
+                },
+                "connectionTimeout": {
+                    "type": "integer",
+                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                },
+                "defaultLoginDomain": {
+                    "type": "string",
+                    "description": "ActiveDirectory defult login domain (string)\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable auth config provider. Default `true` (bool)\n"
+                },
+                "groupDnAttribute": {
+                    "type": "string",
+                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                },
+                "groupMemberMappingAttribute": {
+                    "type": "string",
+                    "description": "Group member mapping attribute. Default `member` (string)\n"
+                },
+                "groupMemberUserAttribute": {
+                    "type": "string",
+                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                },
+                "groupNameAttribute": {
+                    "type": "string",
+                    "description": "Group name attribute. Default `name` (string)\n"
+                },
+                "groupObjectClass": {
+                    "type": "string",
+                    "description": "Group object class. Default `group` (string)\n"
+                },
+                "groupSearchAttribute": {
+                    "type": "string",
+                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                },
+                "groupSearchBase": {
+                    "type": "string",
+                    "description": "Group search base (string)\n"
+                },
+                "groupSearchFilter": {
+                    "type": "string",
+                    "description": "Group search filter (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels of the resource (map)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "(Computed) The name of the resource (string)\n"
+                },
+                "nestedGroupMembershipEnabled": {
+                    "type": "boolean",
+                    "description": "Nested group membership enable. Default `false` (bool)\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "ActiveDirectory port. Default `389` (int)\n"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "ActiveDirectory servers list (list)\n"
+                },
+                "serviceAccountPassword": {
+                    "type": "string",
+                    "description": "Service account password for access ActiveDirectory service (string)\n"
+                },
+                "serviceAccountUsername": {
+                    "type": "string",
+                    "description": "Service account DN for access ActiveDirectory service (string)\n"
+                },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "Enable TLS connection (bool)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "(Computed) The type of the resource (string)\n"
+                },
+                "userDisabledBitMask": {
+                    "type": "integer",
+                    "description": "User disabled bit mask. Default `2` (int)\n"
+                },
+                "userEnabledAttribute": {
+                    "type": "string",
+                    "description": "User enable attribute (string)\n"
+                },
+                "userLoginAttribute": {
+                    "type": "string",
+                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                },
+                "userNameAttribute": {
+                    "type": "string",
+                    "description": "User name attribute. Default `name` (string)\n"
+                },
+                "userObjectClass": {
+                    "type": "string",
+                    "description": "User object class. Default `person` (string)\n"
+                },
+                "userSearchAttribute": {
+                    "type": "string",
+                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                },
+                "userSearchBase": {
+                    "type": "string",
+                    "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string",
+                    "description": "User search filter (string)\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "groupDnAttribute",
+                "groupMemberMappingAttribute",
+                "groupMemberUserAttribute",
+                "groupNameAttribute",
+                "groupObjectClass",
+                "groupSearchAttribute",
+                "groupSearchBase",
+                "groupSearchFilter",
+                "labels",
+                "name",
+                "nestedGroupMembershipEnabled",
+                "servers",
+                "serviceAccountPassword",
+                "serviceAccountUsername",
+                "testPassword",
+                "testUsername",
+                "tls",
+                "type",
+                "userEnabledAttribute",
+                "userLoginAttribute",
+                "userNameAttribute",
+                "userObjectClass",
+                "userSearchAttribute",
+                "userSearchBase",
+                "userSearchFilter"
+            ],
+            "inputProperties": {
+                "accessMode": {
+                    "type": "string",
+                    "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                },
+                "allowedPrincipalIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations of the resource (map)\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "CA certificate for TLS if selfsigned (string)\n"
+                },
+                "connectionTimeout": {
+                    "type": "integer",
+                    "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                },
+                "defaultLoginDomain": {
+                    "type": "string",
+                    "description": "ActiveDirectory defult login domain (string)\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable auth config provider. Default `true` (bool)\n"
+                },
+                "groupDnAttribute": {
+                    "type": "string",
+                    "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                },
+                "groupMemberMappingAttribute": {
+                    "type": "string",
+                    "description": "Group member mapping attribute. Default `member` (string)\n"
+                },
+                "groupMemberUserAttribute": {
+                    "type": "string",
+                    "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                },
+                "groupNameAttribute": {
+                    "type": "string",
+                    "description": "Group name attribute. Default `name` (string)\n"
+                },
+                "groupObjectClass": {
+                    "type": "string",
+                    "description": "Group object class. Default `group` (string)\n"
+                },
+                "groupSearchAttribute": {
+                    "type": "string",
+                    "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                },
+                "groupSearchBase": {
+                    "type": "string",
+                    "description": "Group search base (string)\n"
+                },
+                "groupSearchFilter": {
+                    "type": "string",
+                    "description": "Group search filter (string)\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels of the resource (map)\n"
+                },
+                "nestedGroupMembershipEnabled": {
+                    "type": "boolean",
+                    "description": "Nested group membership enable. Default `false` (bool)\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "ActiveDirectory port. Default `389` (int)\n"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "ActiveDirectory servers list (list)\n"
+                },
+                "serviceAccountPassword": {
+                    "type": "string",
+                    "description": "Service account password for access ActiveDirectory service (string)\n"
+                },
+                "serviceAccountUsername": {
+                    "type": "string",
+                    "description": "Service account DN for access ActiveDirectory service (string)\n"
+                },
+                "testPassword": {
+                    "type": "string",
+                    "description": "Password for test access to ActiveDirectory service (string)\n"
+                },
+                "testUsername": {
+                    "type": "string",
+                    "description": "Username for test access to ActiveDirectory service (string)\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "Enable TLS connection (bool)\n"
+                },
+                "userDisabledBitMask": {
+                    "type": "integer",
+                    "description": "User disabled bit mask. Default `2` (int)\n"
+                },
+                "userEnabledAttribute": {
+                    "type": "string",
+                    "description": "User enable attribute (string)\n"
+                },
+                "userLoginAttribute": {
+                    "type": "string",
+                    "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                },
+                "userNameAttribute": {
+                    "type": "string",
+                    "description": "User name attribute. Default `name` (string)\n"
+                },
+                "userObjectClass": {
+                    "type": "string",
+                    "description": "User object class. Default `person` (string)\n"
+                },
+                "userSearchAttribute": {
+                    "type": "string",
+                    "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                },
+                "userSearchBase": {
+                    "type": "string",
+                    "description": "User search base DN (string)\n"
+                },
+                "userSearchFilter": {
+                    "type": "string",
+                    "description": "User search filter (string)\n"
+                }
+            },
+            "requiredInputs": [
+                "servers",
+                "serviceAccountPassword",
+                "serviceAccountUsername",
+                "testPassword",
+                "testUsername",
+                "userSearchBase"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthConfigActiveDirectory resources.\n",
+                "properties": {
+                    "accessMode": {
+                        "type": "string",
+                        "description": "Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)\n"
+                    },
+                    "allowedPrincipalIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://\u003cDN\u003e`  `activedirectory_group://\u003cDN\u003e` (list)\n"
+                    },
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations of the resource (map)\n"
+                    },
+                    "certificate": {
+                        "type": "string",
+                        "description": "CA certificate for TLS if selfsigned (string)\n"
+                    },
+                    "connectionTimeout": {
+                        "type": "integer",
+                        "description": "ActiveDirectory connection timeout. Default `5000` (int)\n"
+                    },
+                    "defaultLoginDomain": {
+                        "type": "string",
+                        "description": "ActiveDirectory defult login domain (string)\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable auth config provider. Default `true` (bool)\n"
+                    },
+                    "groupDnAttribute": {
+                        "type": "string",
+                        "description": "Group DN attribute. Default `distinguishedName` (string)\n"
+                    },
+                    "groupMemberMappingAttribute": {
+                        "type": "string",
+                        "description": "Group member mapping attribute. Default `member` (string)\n"
+                    },
+                    "groupMemberUserAttribute": {
+                        "type": "string",
+                        "description": "Group member user attribute. Default `distinguishedName` (string)\n"
+                    },
+                    "groupNameAttribute": {
+                        "type": "string",
+                        "description": "Group name attribute. Default `name` (string)\n"
+                    },
+                    "groupObjectClass": {
+                        "type": "string",
+                        "description": "Group object class. Default `group` (string)\n"
+                    },
+                    "groupSearchAttribute": {
+                        "type": "string",
+                        "description": "Group search attribute. Default `sAMAccountName` (string)\n"
+                    },
+                    "groupSearchBase": {
+                        "type": "string",
+                        "description": "Group search base (string)\n"
+                    },
+                    "groupSearchFilter": {
+                        "type": "string",
+                        "description": "Group search filter (string)\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels of the resource (map)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "(Computed) The name of the resource (string)\n"
+                    },
+                    "nestedGroupMembershipEnabled": {
+                        "type": "boolean",
+                        "description": "Nested group membership enable. Default `false` (bool)\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "ActiveDirectory port. Default `389` (int)\n"
+                    },
+                    "servers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "ActiveDirectory servers list (list)\n"
+                    },
+                    "serviceAccountPassword": {
+                        "type": "string",
+                        "description": "Service account password for access ActiveDirectory service (string)\n"
+                    },
+                    "serviceAccountUsername": {
+                        "type": "string",
+                        "description": "Service account DN for access ActiveDirectory service (string)\n"
+                    },
+                    "testPassword": {
+                        "type": "string",
+                        "description": "Password for test access to ActiveDirectory service (string)\n"
+                    },
+                    "testUsername": {
+                        "type": "string",
+                        "description": "Username for test access to ActiveDirectory service (string)\n"
+                    },
+                    "tls": {
+                        "type": "boolean",
+                        "description": "Enable TLS connection (bool)\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "(Computed) The type of the resource (string)\n"
+                    },
+                    "userDisabledBitMask": {
+                        "type": "integer",
+                        "description": "User disabled bit mask. Default `2` (int)\n"
+                    },
+                    "userEnabledAttribute": {
+                        "type": "string",
+                        "description": "User enable attribute (string)\n"
+                    },
+                    "userLoginAttribute": {
+                        "type": "string",
+                        "description": "User login attribute. Default `sAMAccountName` (string)\n"
+                    },
+                    "userNameAttribute": {
+                        "type": "string",
+                        "description": "User name attribute. Default `name` (string)\n"
+                    },
+                    "userObjectClass": {
+                        "type": "string",
+                        "description": "User object class. Default `person` (string)\n"
+                    },
+                    "userSearchAttribute": {
+                        "type": "string",
+                        "description": "User search attribute. Default `sAMAccountName|sn|givenName` (string)\n"
+                    },
+                    "userSearchBase": {
+                        "type": "string",
+                        "description": "User search base DN (string)\n"
+                    },
+                    "userSearchFilter": {
+                        "type": "string",
+                        "description": "User search filter (string)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "aliases": [
+                {
+                    "type": "rancher2:index/activeDirectory:ActiveDirectory"
+                }
+            ]
         },
         "rancher2:index/authConfigAdfs:AuthConfigAdfs": {
             "description": "Provides a Rancher v2 Auth Config ADFS resource. This can be used to configure and enable Auth Config ADFS for Rancher v2 RKE clusters and retrieve their information.\n\nIn addition to the built-in local auth, only one external auth config provider can be enabled at a time. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 Auth Config ADFS\nconst adfs = new rancher2.AuthConfigAdfs(\"adfs\", {\n    displayNameField: \"\u003cDISPLAY_NAME_FIELD\u003e\",\n    groupsField: \"\u003cGROUPS_FIELD\u003e\",\n    idpMetadataContent: \"\u003cIDP_METADATA_CONTENT\u003e\",\n    rancherApiHost: \"https://\u003cRANCHER_API_HOST\u003e\",\n    spCert: \"\u003cSP_CERT\u003e\",\n    spKey: \"\u003cSP_KEY\u003e\",\n    uidField: \"\u003cUID_FIELD\u003e\",\n    userNameField: \"\u003cUSER_NAME_FIELD\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 Auth Config ADFS\nadfs = rancher2.AuthConfigAdfs(\"adfs\",\n    display_name_field=\"\u003cDISPLAY_NAME_FIELD\u003e\",\n    groups_field=\"\u003cGROUPS_FIELD\u003e\",\n    idp_metadata_content=\"\u003cIDP_METADATA_CONTENT\u003e\",\n    rancher_api_host=\"https://\u003cRANCHER_API_HOST\u003e\",\n    sp_cert=\"\u003cSP_CERT\u003e\",\n    sp_key=\"\u003cSP_KEY\u003e\",\n    uid_field=\"\u003cUID_FIELD\u003e\",\n    user_name_field=\"\u003cUSER_NAME_FIELD\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 Auth Config ADFS\n        var adfs = new Rancher2.AuthConfigAdfs(\"adfs\", new Rancher2.AuthConfigAdfsArgs\n        {\n            DisplayNameField = \"\u003cDISPLAY_NAME_FIELD\u003e\",\n            GroupsField = \"\u003cGROUPS_FIELD\u003e\",\n            IdpMetadataContent = \"\u003cIDP_METADATA_CONTENT\u003e\",\n            RancherApiHost = \"https://\u003cRANCHER_API_HOST\u003e\",\n            SpCert = \"\u003cSP_CERT\u003e\",\n            SpKey = \"\u003cSP_KEY\u003e\",\n            UidField = \"\u003cUID_FIELD\u003e\",\n            UserNameField = \"\u003cUSER_NAME_FIELD\u003e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewAuthConfigAdfs(ctx, \"adfs\", \u0026rancher2.AuthConfigAdfsArgs{\n\t\t\tDisplayNameField:   pulumi.String(\"\u003cDISPLAY_NAME_FIELD\u003e\"),\n\t\t\tGroupsField:        pulumi.String(\"\u003cGROUPS_FIELD\u003e\"),\n\t\t\tIdpMetadataContent: pulumi.String(\"\u003cIDP_METADATA_CONTENT\u003e\"),\n\t\t\tRancherApiHost:     pulumi.String(\"https://\u003cRANCHER_API_HOST\u003e\"),\n\t\t\tSpCert:             pulumi.String(\"\u003cSP_CERT\u003e\"),\n\t\t\tSpKey:              pulumi.String(\"\u003cSP_KEY\u003e\"),\n\t\t\tUidField:           pulumi.String(\"\u003cUID_FIELD\u003e\"),\n\t\t\tUserNameField:      pulumi.String(\"\u003cUSER_NAME_FIELD\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
@@ -39446,7 +39902,217 @@
             }
         },
         "rancher2:index/roleTempalte:RoleTempalte": {
-            "description": "Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. \n\n`cluster` and `project` scopes are supported for role templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 cluster Role Template\nconst foo = new rancher2.RoleTempalte(\"foo\", {\n    context: \"cluster\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 cluster Role Template\nfoo = rancher2.RoleTempalte(\"foo\",\n    context=\"cluster\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTempalteRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 cluster Role Template\n        var foo = new Rancher2.RoleTempalte(\"foo\", new Rancher2.RoleTempalteArgs\n        {\n            Context = \"cluster\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTempalteRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTempalte(ctx, \"foo\", \u0026rancher2.RoleTempalteArgs{\n\t\t\tContext:     pulumi.String(\"cluster\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: rancher2.RoleTempalteRuleArray{\n\t\t\t\t\u0026rancher2.RoleTempalteRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 project Role Template\nconst foo = new rancher2.RoleTempalte(\"foo\", {\n    context: \"project\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 project Role Template\nfoo = rancher2.RoleTempalte(\"foo\",\n    context=\"project\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTempalteRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 project Role Template\n        var foo = new Rancher2.RoleTempalte(\"foo\", new Rancher2.RoleTempalteArgs\n        {\n            Context = \"project\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTempalteRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTempalte(ctx, \"foo\", \u0026rancher2.RoleTempalteArgs{\n\t\t\tContext:     pulumi.String(\"project\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: rancher2.RoleTempalteRuleArray{\n\t\t\t\t\u0026rancher2.RoleTempalteRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRole Template can be imported using the Rancher Role Template ID\n\n```sh\n $ pulumi import rancher2:index/roleTempalte:RoleTempalte foo \u0026lt;role_template_id\u0026gt;\n```\n\n ",
+            "properties": {
+                "administrative": {
+                    "type": "boolean",
+                    "description": "Administrative role template\n"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations of the resource\n"
+                },
+                "builtin": {
+                    "type": "boolean",
+                    "description": "Builtin role template\n"
+                },
+                "context": {
+                    "type": "string",
+                    "description": "Context role template\n"
+                },
+                "defaultRole": {
+                    "type": "boolean",
+                    "description": "Default role template for new created cluster or project\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Role template policy description\n"
+                },
+                "external": {
+                    "type": "boolean",
+                    "description": "External role template\n"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "Hidden role template\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels of the resource\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Locked role template\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Role template policy name\n"
+                },
+                "roleTemplateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Inherit role template IDs\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                    },
+                    "description": "Role template policy rules\n"
+                }
+            },
+            "required": [
+                "annotations",
+                "builtin",
+                "description",
+                "labels",
+                "name",
+                "roleTemplateIds",
+                "rules"
+            ],
+            "inputProperties": {
+                "administrative": {
+                    "type": "boolean",
+                    "description": "Administrative role template\n"
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Annotations of the resource\n"
+                },
+                "context": {
+                    "type": "string",
+                    "description": "Context role template\n"
+                },
+                "defaultRole": {
+                    "type": "boolean",
+                    "description": "Default role template for new created cluster or project\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Role template policy description\n"
+                },
+                "external": {
+                    "type": "boolean",
+                    "description": "External role template\n"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "Hidden role template\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Labels of the resource\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Locked role template\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Role template policy name\n"
+                },
+                "roleTemplateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Inherit role template IDs\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                    },
+                    "description": "Role template policy rules\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RoleTempalte resources.\n",
+                "properties": {
+                    "administrative": {
+                        "type": "boolean",
+                        "description": "Administrative role template\n"
+                    },
+                    "annotations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Annotations of the resource\n"
+                    },
+                    "builtin": {
+                        "type": "boolean",
+                        "description": "Builtin role template\n"
+                    },
+                    "context": {
+                        "type": "string",
+                        "description": "Context role template\n"
+                    },
+                    "defaultRole": {
+                        "type": "boolean",
+                        "description": "Default role template for new created cluster or project\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Role template policy description\n"
+                    },
+                    "external": {
+                        "type": "boolean",
+                        "description": "External role template\n"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Hidden role template\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Labels of the resource\n"
+                    },
+                    "locked": {
+                        "type": "boolean",
+                        "description": "Locked role template\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Role template policy name\n"
+                    },
+                    "roleTemplateIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Inherit role template IDs\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                        },
+                        "description": "Role template policy rules\n"
+                    }
+                },
+                "type": "object"
+            },
+            "deprecationMessage": "rancher2.RoleTempalte has been deprecated in favor of rancher2.RoleTemplate"
+        },
+        "rancher2:index/roleTemplate:RoleTemplate": {
+            "description": "Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information. \n\n`cluster` and `project` scopes are supported for role templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 cluster Role Template\nconst foo = new rancher2.RoleTemplate(\"foo\", {\n    context: \"cluster\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 cluster Role Template\nfoo = rancher2.RoleTemplate(\"foo\",\n    context=\"cluster\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTemplateRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 cluster Role Template\n        var foo = new Rancher2.RoleTemplate(\"foo\", new Rancher2.RoleTemplateArgs\n        {\n            Context = \"cluster\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTemplateRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTemplate(ctx, \"foo\", \u0026rancher2.RoleTemplateArgs{\n\t\t\tContext:     pulumi.String(\"cluster\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: rancher2.RoleTemplateRuleArray{\n\t\t\t\t\u0026rancher2.RoleTemplateRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\n// Create a new rancher2 project Role Template\nconst foo = new rancher2.RoleTemplate(\"foo\", {\n    context: \"project\",\n    defaultRole: true,\n    description: \"Terraform role template acceptance test\",\n    rules: [{\n        apiGroups: [\"*\"],\n        resources: [\"secrets\"],\n        verbs: [\"create\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\n# Create a new rancher2 project Role Template\nfoo = rancher2.RoleTemplate(\"foo\",\n    context=\"project\",\n    default_role=True,\n    description=\"Terraform role template acceptance test\",\n    rules=[rancher2.RoleTemplateRuleArgs(\n        api_groups=[\"*\"],\n        resources=[\"secrets\"],\n        verbs=[\"create\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new rancher2 project Role Template\n        var foo = new Rancher2.RoleTemplate(\"foo\", new Rancher2.RoleTemplateArgs\n        {\n            Context = \"project\",\n            DefaultRole = true,\n            Description = \"Terraform role template acceptance test\",\n            Rules = \n            {\n                new Rancher2.Inputs.RoleTemplateRuleArgs\n                {\n                    ApiGroups = \n                    {\n                        \"*\",\n                    },\n                    Resources = \n                    {\n                        \"secrets\",\n                    },\n                    Verbs = \n                    {\n                        \"create\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.NewRoleTemplate(ctx, \"foo\", \u0026rancher2.RoleTemplateArgs{\n\t\t\tContext:     pulumi.String(\"project\"),\n\t\t\tDefaultRole: pulumi.Bool(true),\n\t\t\tDescription: pulumi.String(\"Terraform role template acceptance test\"),\n\t\t\tRules: rancher2.RoleTemplateRuleArray{\n\t\t\t\t\u0026rancher2.RoleTemplateRuleArgs{\n\t\t\t\t\tApiGroups: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"secrets\"),\n\t\t\t\t\t},\n\t\t\t\t\tVerbs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"create\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRole Template can be imported using the Rancher Role Template ID\n\n```sh\n $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo \u0026lt;role_template_id\u0026gt;\n```\n\n ",
             "properties": {
                 "administrative": {
                     "type": "boolean",
@@ -39508,7 +40174,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                        "$ref": "#/types/rancher2:index/RoleTemplateRule:RoleTemplateRule"
                     },
                     "description": "Role template policy rules (list)\n"
                 }
@@ -39579,13 +40245,13 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                        "$ref": "#/types/rancher2:index/RoleTemplateRule:RoleTemplateRule"
                     },
                     "description": "Role template policy rules (list)\n"
                 }
             },
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering RoleTempalte resources.\n",
+                "description": "Input properties used for looking up and filtering RoleTemplate resources.\n",
                 "properties": {
                     "administrative": {
                         "type": "boolean",
@@ -39647,13 +40313,18 @@
                     "rules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/rancher2:index/RoleTempalteRule:RoleTempalteRule"
+                            "$ref": "#/types/rancher2:index/RoleTemplateRule:RoleTemplateRule"
                         },
                         "description": "Role template policy rules (list)\n"
                     }
                 },
                 "type": "object"
-            }
+            },
+            "aliases": [
+                {
+                    "type": "rancher2:index/roleTempalte:RoleTempalte"
+                }
+            ]
         },
         "rancher2:index/secret:Secret": {
             "description": "Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.\n\nDepending of the availability, there are 2 types of Rancher v2 secrets:\n- Project secret: Available to all namespaces in the `project_id`\n- Namespaced secret: Available to just `namespace_id` in the `project_id`\n\n\n## Import\n\nSecrets can be imported using the secret ID in the format `\u003cnamespace_id\u003e.\u003cproject_id\u003e.\u003csecret_id\u003e`\n\n```sh\n $ pulumi import rancher2:index/secret:Secret foo \u0026lt;namespace_id\u0026gt;.\u0026lt;project_id\u0026gt;.\u0026lt;secret_id\u0026gt;\n```\n\n `\u003cnamespace_id\u003e` is optional, just needed for namespaced secret. ",
@@ -43523,7 +44194,7 @@
             "deprecationMessage": "rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate"
         },
         "rancher2:index/getRoleTemplate:getRoleTemplate": {
-            "description": "Use this data source to retrieve information about a Rancher v2 role template resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getRoleTemplate({\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_role_template(name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetRoleTemplate.InvokeAsync(new Rancher2.GetRoleTemplateArgs\n        {\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.GetRoleTemplate(ctx, \u0026rancher2.GetRoleTemplateArgs{\n\t\t\tName: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to retrieve information about a Rancher v2 role template resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = pulumi.output(rancher2.getRoleTemplate({\n    name: \"foo\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_role_template(name=\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Rancher2.GetRoleTemplate.InvokeAsync(new Rancher2.GetRoleTemplateArgs\n        {\n            Name = \"foo\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v3/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupRoleTemplate(ctx, \u0026rancher2.LookupRoleTemplateArgs{\n\t\t\tName: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoleTemplate.\n",
                 "properties": {
