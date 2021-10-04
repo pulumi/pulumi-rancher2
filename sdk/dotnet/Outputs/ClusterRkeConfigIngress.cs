@@ -50,6 +50,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Provider;
         /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterRkeConfigIngressToleration> Tolerations;
+        /// <summary>
         /// RKE monitoring update strategy (list Maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigIngressUpdateStrategy? UpdateStrategy;
@@ -74,6 +78,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? provider,
 
+            ImmutableArray<Outputs.ClusterRkeConfigIngressToleration> tolerations,
+
             Outputs.ClusterRkeConfigIngressUpdateStrategy? updateStrategy)
         {
             DefaultBackend = defaultBackend;
@@ -85,6 +91,7 @@ namespace Pulumi.Rancher2.Outputs
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
         }
     }

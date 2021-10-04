@@ -25,6 +25,7 @@ class AuthConfigKeycloakArgs:
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a AuthConfigKeycloak resource.
@@ -40,6 +41,7 @@ class AuthConfigKeycloakArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id: KeyCloak Client ID field (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         """
         pulumi.set(__self__, "display_name_field", display_name_field)
@@ -58,6 +60,8 @@ class AuthConfigKeycloakArgs:
             pulumi.set(__self__, "annotations", annotations)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
@@ -206,6 +210,18 @@ class AuthConfigKeycloakArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        KeyCloak Client ID field (string)
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -226,6 +242,7 @@ class _AuthConfigKeycloakState:
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -243,6 +260,7 @@ class _AuthConfigKeycloakState:
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: KeyCloak display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id: KeyCloak Client ID field (string)
         :param pulumi.Input[str] groups_field: KeyCloak group field (string)
         :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -264,6 +282,8 @@ class _AuthConfigKeycloakState:
             pulumi.set(__self__, "display_name_field", display_name_field)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
         if groups_field is not None:
             pulumi.set(__self__, "groups_field", groups_field)
         if idp_metadata_content is not None:
@@ -344,6 +364,18 @@ class _AuthConfigKeycloakState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        KeyCloak Client ID field (string)
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
 
     @property
     @pulumi.getter(name="groupsField")
@@ -476,6 +508,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -515,6 +548,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: KeyCloak display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id: KeyCloak Client ID field (string)
         :param pulumi.Input[str] groups_field: KeyCloak group field (string)
         :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -573,6 +607,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -600,6 +635,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name_field'")
             __props__.__dict__["display_name_field"] = display_name_field
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["entity_id"] = entity_id
             if groups_field is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_field'")
             __props__.__dict__["groups_field"] = groups_field
@@ -639,6 +675,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             display_name_field: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            entity_id: Optional[pulumi.Input[str]] = None,
             groups_field: Optional[pulumi.Input[str]] = None,
             idp_metadata_content: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -661,6 +698,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: KeyCloak display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
+        :param pulumi.Input[str] entity_id: KeyCloak Client ID field (string)
         :param pulumi.Input[str] groups_field: KeyCloak group field (string)
         :param pulumi.Input[str] idp_metadata_content: KeyCloak IDP metadata content (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
@@ -681,6 +719,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["display_name_field"] = display_name_field
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["entity_id"] = entity_id
         __props__.__dict__["groups_field"] = groups_field
         __props__.__dict__["idp_metadata_content"] = idp_metadata_content
         __props__.__dict__["labels"] = labels
@@ -732,6 +771,14 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Output[str]:
+        """
+        KeyCloak Client ID field (string)
+        """
+        return pulumi.get(self, "entity_id")
 
     @property
     @pulumi.getter(name="groupsField")

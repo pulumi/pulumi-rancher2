@@ -211,10 +211,10 @@ namespace Pulumi.Rancher2
         public Output<ImmutableArray<string>> EngineInsecureRegistries { get; private set; } = null!;
 
         /// <summary>
-        /// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        /// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         /// </summary>
         [Output("engineInstallUrl")]
-        public Output<string?> EngineInstallUrl { get; private set; } = null!;
+        public Output<string> EngineInstallUrl { get; private set; } = null!;
 
         /// <summary>
         /// Engine label for the node template (string)
@@ -425,7 +425,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        /// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         /// </summary>
         [Input("engineInstallUrl")]
         public Input<string>? EngineInstallUrl { get; set; }
@@ -636,7 +636,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        /// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         /// </summary>
         [Input("engineInstallUrl")]
         public Input<string>? EngineInstallUrl { get; set; }

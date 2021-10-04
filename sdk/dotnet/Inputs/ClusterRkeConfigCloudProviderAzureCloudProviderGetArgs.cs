@@ -91,7 +91,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
         /// <summary>
-        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// The AKS load balancer sku (string)
         /// </summary>
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? PrimaryScaleSetName { get; set; }
 
         /// <summary>
-        /// The name of the Cluster resource group (string)
+        /// The AKS resource group (string)
         /// </summary>
         [Input("resourceGroup")]
         public Input<string>? ResourceGroup { get; set; }

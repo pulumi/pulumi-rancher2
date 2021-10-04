@@ -503,7 +503,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Output[Optional[str]]:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The group ID to assign project role template binding (string)
         """
@@ -551,7 +551,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> pulumi.Output[Optional[str]]:
+    def user_id(self) -> pulumi.Output[str]:
         """
         The user ID to assign project role template binding (string)
         """

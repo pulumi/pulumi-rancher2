@@ -53,7 +53,7 @@ type ClusterRoleTemplateBinding struct {
 	// The cluster id where bind cluster role template binding (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The group ID to assign cluster role template binding (string)
-	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The groupPrincipal ID to assign cluster role template binding (string)
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels for cluster role template binding (map)
@@ -63,7 +63,7 @@ type ClusterRoleTemplateBinding struct {
 	// The role template id from create cluster role template binding (string)
 	RoleTemplateId pulumi.StringOutput `pulumi:"roleTemplateId"`
 	// The user ID to assign cluster role template binding (string)
-	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	UserId pulumi.StringOutput `pulumi:"userId"`
 	// The userPrincipal ID to assign cluster role template binding (string)
 	UserPrincipalId pulumi.StringOutput `pulumi:"userPrincipalId"`
 }

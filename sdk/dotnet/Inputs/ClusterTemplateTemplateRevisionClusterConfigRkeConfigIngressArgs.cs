@@ -54,6 +54,14 @@ namespace Pulumi.Rancher2.Inputs
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
+        [Input("tolerations")]
+        private InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs>? _tolerations;
+        public InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs> Tolerations
+        {
+            get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs>());
+            set => _tolerations = value;
+        }
+
         [Input("updateStrategy")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs>? UpdateStrategy { get; set; }
 

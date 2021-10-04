@@ -26,6 +26,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsNodelocal? Nodelocal;
         /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Options;
+        /// <summary>
         /// RKE monitoring provider (string)
         /// </summary>
         public readonly string? Provider;
@@ -33,6 +37,10 @@ namespace Pulumi.Rancher2.Outputs
         /// DNS add-on reverse cidr  (list)
         /// </summary>
         public readonly ImmutableArray<string> ReverseCidrs;
+        /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterRkeConfigDnsToleration> Tolerations;
         /// <summary>
         /// RKE monitoring update strategy (list Maxitems: 1)
         /// </summary>
@@ -50,9 +58,13 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterRkeConfigDnsNodelocal? nodelocal,
 
+            ImmutableDictionary<string, object>? options,
+
             string? provider,
 
             ImmutableArray<string> reverseCidrs,
+
+            ImmutableArray<Outputs.ClusterRkeConfigDnsToleration> tolerations,
 
             Outputs.ClusterRkeConfigDnsUpdateStrategy? updateStrategy,
 
@@ -61,8 +73,10 @@ namespace Pulumi.Rancher2.Outputs
             LinearAutoscalerParams = linearAutoscalerParams;
             NodeSelector = nodeSelector;
             Nodelocal = nodelocal;
+            Options = options;
             Provider = provider;
             ReverseCidrs = reverseCidrs;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
             UpstreamNameservers = upstreamNameservers;
         }

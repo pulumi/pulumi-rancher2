@@ -68,7 +68,7 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * The group ID to assign cluster role template binding (string)
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * The groupPrincipal ID to assign cluster role template binding (string)
      */
@@ -88,7 +88,7 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * The user ID to assign cluster role template binding (string)
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    public readonly userId!: pulumi.Output<string>;
     /**
      * The userPrincipal ID to assign cluster role template binding (string)
      */

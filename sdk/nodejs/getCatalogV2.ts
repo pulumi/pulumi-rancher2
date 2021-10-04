@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to retrieve information about a Rancher2 catalog v2.
+ * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
  */
 export function getCatalogV2(args: GetCatalogV2Args, opts?: pulumi.InvokeOptions): Promise<GetCatalogV2Result> {
     if (!opts) {
@@ -74,6 +74,9 @@ export interface GetCatalogV2Result {
      */
     readonly labels: {[key: string]: any};
     readonly name: string;
+    /**
+     * (Computed) The k8s resource version (string)
+     */
     readonly resourceVersion: string;
     /**
      * (Computed) K8s secret name to be used to connect to the repo (string)

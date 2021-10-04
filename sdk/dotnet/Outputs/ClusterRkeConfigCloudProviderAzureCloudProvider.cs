@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? CloudProviderRateLimitQps;
         /// <summary>
-        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// The AKS load balancer sku (string)
         /// </summary>
         public readonly string? LoadBalancerSku;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? PrimaryScaleSetName;
         /// <summary>
-        /// The name of the Cluster resource group (string)
+        /// The AKS resource group (string)
         /// </summary>
         public readonly string? ResourceGroup;
         /// <summary>

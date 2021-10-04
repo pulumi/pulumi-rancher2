@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The EKS cluster tags (map)
+        /// The GKE node config tags (List)
         /// </summary>
         public InputMap<object> Tags
         {

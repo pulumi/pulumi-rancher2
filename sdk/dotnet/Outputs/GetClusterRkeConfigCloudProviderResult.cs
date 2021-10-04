@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         public readonly Outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult? OpenstackCloudProvider;
         public readonly Outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderResult? VsphereCloudProvider;
 
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string customCloudProvider,
 
-            string name,
+            string? name,
 
             Outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult? openstackCloudProvider,
 

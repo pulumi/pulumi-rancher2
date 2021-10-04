@@ -20,9 +20,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Description;
         public readonly bool? EnableKubernetesDashboard;
+        public readonly bool? EnablePrivateControlPlane;
         public readonly bool? EnablePrivateNodes;
         public readonly string Fingerprint;
         public readonly int? FlexOcpus;
+        public readonly string? KmsKeyId;
         public readonly string KubernetesVersion;
         public readonly int? LimitNodeCount;
         public readonly string? LoadBalancerSubnetName1;
@@ -57,11 +59,15 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enableKubernetesDashboard,
 
+            bool? enablePrivateControlPlane,
+
             bool? enablePrivateNodes,
 
             string fingerprint,
 
             int? flexOcpus,
+
+            string? kmsKeyId,
 
             string kubernetesVersion,
 
@@ -113,9 +119,11 @@ namespace Pulumi.Rancher2.Outputs
             CustomBootVolumeSize = customBootVolumeSize;
             Description = description;
             EnableKubernetesDashboard = enableKubernetesDashboard;
+            EnablePrivateControlPlane = enablePrivateControlPlane;
             EnablePrivateNodes = enablePrivateNodes;
             Fingerprint = fingerprint;
             FlexOcpus = flexOcpus;
+            KmsKeyId = kmsKeyId;
             KubernetesVersion = kubernetesVersion;
             LimitNodeCount = limitNodeCount;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;

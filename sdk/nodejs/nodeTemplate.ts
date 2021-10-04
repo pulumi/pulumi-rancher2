@@ -169,9 +169,9 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly engineInsecureRegistries!: pulumi.Output<string[] | undefined>;
     /**
-     * Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+     * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
-    public readonly engineInstallUrl!: pulumi.Output<string | undefined>;
+    public readonly engineInstallUrl!: pulumi.Output<string>;
     /**
      * Engine label for the node template (string)
      */
@@ -353,7 +353,7 @@ export interface NodeTemplateState {
      */
     readonly engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+     * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
     readonly engineInstallUrl?: pulumi.Input<string>;
     /**
@@ -459,7 +459,7 @@ export interface NodeTemplateArgs {
      */
     readonly engineInsecureRegistries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+     * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
     readonly engineInstallUrl?: pulumi.Input<string>;
     /**

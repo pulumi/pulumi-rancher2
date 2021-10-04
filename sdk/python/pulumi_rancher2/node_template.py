@@ -53,7 +53,7 @@ class NodeTemplateArgs:
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
-        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
@@ -255,7 +255,7 @@ class NodeTemplateArgs:
     @pulumi.getter(name="engineInstallUrl")
     def engine_install_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         """
         return pulumi.get(self, "engine_install_url")
 
@@ -463,7 +463,7 @@ class _NodeTemplateState:
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
-        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
@@ -679,7 +679,7 @@ class _NodeTemplateState:
     @pulumi.getter(name="engineInstallUrl")
     def engine_install_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         """
         return pulumi.get(self, "engine_install_url")
 
@@ -970,7 +970,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
-        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
@@ -1206,7 +1206,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
-        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
@@ -1351,9 +1351,9 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineInstallUrl")
-    def engine_install_url(self) -> pulumi.Output[Optional[str]]:
+    def engine_install_url(self) -> pulumi.Output[str]:
         """
-        Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+        Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
         """
         return pulumi.get(self, "engine_install_url")
 

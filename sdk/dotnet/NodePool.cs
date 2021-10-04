@@ -48,6 +48,12 @@ namespace Pulumi.Rancher2
         public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
 
         /// <summary>
+        /// Drain nodes before delete. Default: `false` (bool)
+        /// </summary>
+        [Output("drainBeforeDelete")]
+        public Output<bool?> DrainBeforeDelete { get; private set; } = null!;
+
+        /// <summary>
         /// RKE etcd role for created nodes (bool)
         /// </summary>
         [Output("etcd")]
@@ -172,6 +178,12 @@ namespace Pulumi.Rancher2
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
         /// <summary>
+        /// Drain nodes before delete. Default: `false` (bool)
+        /// </summary>
+        [Input("drainBeforeDelete")]
+        public Input<bool>? DrainBeforeDelete { get; set; }
+
+        /// <summary>
         /// RKE etcd role for created nodes (bool)
         /// </summary>
         [Input("etcd")]
@@ -267,6 +279,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("deleteNotReadyAfterSecs")]
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
+
+        /// <summary>
+        /// Drain nodes before delete. Default: `false` (bool)
+        /// </summary>
+        [Input("drainBeforeDelete")]
+        public Input<bool>? DrainBeforeDelete { get; set; }
 
         /// <summary>
         /// RKE etcd role for created nodes (bool)

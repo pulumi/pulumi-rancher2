@@ -24,6 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string? MachineType;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool? Preemptible;
+        public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult> Taints;
 
         [OutputConstructor]
@@ -44,6 +45,8 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? preemptible,
 
+            ImmutableArray<string> tags,
+
             ImmutableArray<Outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult> taints)
         {
             DiskSizeGb = diskSizeGb;
@@ -54,6 +57,7 @@ namespace Pulumi.Rancher2.Outputs
             MachineType = machineType;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
+            Tags = tags;
             Taints = taints;
         }
     }

@@ -85,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KubernetesVersion { get; set; }
 
         /// <summary>
-        /// Kubernetes cluster monitoring (list maxitems:1)
+        /// Is AKS cluster monitoring enabled? (bool)
         /// </summary>
         [Input("monitoring")]
         public Input<Inputs.ClusterRkeConfigMonitoringGetArgs>? Monitoring { get; set; }

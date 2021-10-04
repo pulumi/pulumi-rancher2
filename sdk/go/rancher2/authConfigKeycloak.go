@@ -57,6 +57,8 @@ type AuthConfigKeycloak struct {
 	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// KeyCloak Client ID field (string)
+	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// KeyCloak group field (string)
 	GroupsField pulumi.StringOutput `pulumi:"groupsField"`
 	// KeyCloak IDP metadata content (string)
@@ -142,6 +144,8 @@ type authConfigKeycloakState struct {
 	DisplayNameField *string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// KeyCloak Client ID field (string)
+	EntityId *string `pulumi:"entityId"`
 	// KeyCloak group field (string)
 	GroupsField *string `pulumi:"groupsField"`
 	// KeyCloak IDP metadata content (string)
@@ -175,6 +179,8 @@ type AuthConfigKeycloakState struct {
 	DisplayNameField pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// KeyCloak Client ID field (string)
+	EntityId pulumi.StringPtrInput
 	// KeyCloak group field (string)
 	GroupsField pulumi.StringPtrInput
 	// KeyCloak IDP metadata content (string)
@@ -212,6 +218,8 @@ type authConfigKeycloakArgs struct {
 	DisplayNameField string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// KeyCloak Client ID field (string)
+	EntityId *string `pulumi:"entityId"`
 	// KeyCloak group field (string)
 	GroupsField string `pulumi:"groupsField"`
 	// KeyCloak IDP metadata content (string)
@@ -242,6 +250,8 @@ type AuthConfigKeycloakArgs struct {
 	DisplayNameField pulumi.StringInput
 	// Enable auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// KeyCloak Client ID field (string)
+	EntityId pulumi.StringPtrInput
 	// KeyCloak group field (string)
 	GroupsField pulumi.StringInput
 	// KeyCloak IDP metadata content (string)

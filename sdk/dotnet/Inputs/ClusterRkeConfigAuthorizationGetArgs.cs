@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigAuthorizationGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        /// The AKS node group mode. Default: `System` (string)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

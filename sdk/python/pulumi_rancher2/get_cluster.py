@@ -20,13 +20,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, agent_env_vars=None, aks_config=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, scheduled_cluster_scans=None, system_project_id=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config and not isinstance(aks_config, dict):
             raise TypeError("Expected argument 'aks_config' to be a dict")
         pulumi.set(__self__, "aks_config", aks_config)
+        if aks_config_v2 and not isinstance(aks_config_v2, dict):
+            raise TypeError("Expected argument 'aks_config_v2' to be a dict")
+        pulumi.set(__self__, "aks_config_v2", aks_config_v2)
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -81,6 +84,9 @@ class GetClusterResult:
         if enable_network_policy and not isinstance(enable_network_policy, bool):
             raise TypeError("Expected argument 'enable_network_policy' to be a bool")
         pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+        if fleet_workspace_name and not isinstance(fleet_workspace_name, str):
+            raise TypeError("Expected argument 'fleet_workspace_name' to be a str")
+        pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
         if gke_config and not isinstance(gke_config, dict):
             raise TypeError("Expected argument 'gke_config' to be a dict")
         pulumi.set(__self__, "gke_config", gke_config)
@@ -130,9 +136,17 @@ class GetClusterResult:
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> 'outputs.GetClusterAksConfigResult':
         """
-        (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config")
+
+    @property
+    @pulumi.getter(name="aksConfigV2")
+    def aks_config_v2(self) -> 'outputs.GetClusterAksConfigV2Result':
+        """
+        (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "aks_config_v2")
 
     @property
     @pulumi.getter
@@ -242,7 +256,7 @@ class GetClusterResult:
     @pulumi.getter(name="eksConfig")
     def eks_config(self) -> 'outputs.GetClusterEksConfigResult':
         """
-        (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "eks_config")
 
@@ -250,7 +264,7 @@ class GetClusterResult:
     @pulumi.getter(name="eksConfigV2")
     def eks_config_v2(self) -> 'outputs.GetClusterEksConfigV2Result':
         """
-        (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
+        (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
@@ -276,10 +290,18 @@ class GetClusterResult:
         return pulumi.get(self, "enable_network_policy")
 
     @property
+    @pulumi.getter(name="fleetWorkspaceName")
+    def fleet_workspace_name(self) -> str:
+        """
+        (Computed) Fleet workspace name (string)
+        """
+        return pulumi.get(self, "fleet_workspace_name")
+
+    @property
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> 'outputs.GetClusterGkeConfigResult':
         """
-        (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
+        (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
         """
         return pulumi.get(self, "gke_config")
 
@@ -287,7 +309,7 @@ class GetClusterResult:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> 'outputs.GetClusterGkeConfigV2Result':
         """
-        (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -303,7 +325,7 @@ class GetClusterResult:
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> 'outputs.GetClusterK3sConfigResult':
         """
-        (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
@@ -332,7 +354,7 @@ class GetClusterResult:
     @pulumi.getter(name="okeConfig")
     def oke_config(self) -> 'outputs.GetClusterOkeConfigResult':
         """
-        (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
@@ -340,7 +362,7 @@ class GetClusterResult:
     @pulumi.getter(name="rke2Config")
     def rke2_config(self) -> 'outputs.GetClusterRke2ConfigResult':
         """
-        (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
@@ -348,7 +370,7 @@ class GetClusterResult:
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> 'outputs.GetClusterRkeConfigResult':
         """
-        (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 
@@ -374,6 +396,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             agent_env_vars=self.agent_env_vars,
             aks_config=self.aks_config,
+            aks_config_v2=self.aks_config_v2,
             annotations=self.annotations,
             ca_cert=self.ca_cert,
             cluster_auth_endpoint=self.cluster_auth_endpoint,
@@ -392,6 +415,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_cluster_alerting=self.enable_cluster_alerting,
             enable_cluster_monitoring=self.enable_cluster_monitoring,
             enable_network_policy=self.enable_network_policy,
+            fleet_workspace_name=self.fleet_workspace_name,
             gke_config=self.gke_config,
             gke_config_v2=self.gke_config_v2,
             id=self.id,
@@ -434,6 +458,7 @@ def get_cluster(name: Optional[str] = None,
     return AwaitableGetClusterResult(
         agent_env_vars=__ret__.agent_env_vars,
         aks_config=__ret__.aks_config,
+        aks_config_v2=__ret__.aks_config_v2,
         annotations=__ret__.annotations,
         ca_cert=__ret__.ca_cert,
         cluster_auth_endpoint=__ret__.cluster_auth_endpoint,
@@ -452,6 +477,7 @@ def get_cluster(name: Optional[str] = None,
         enable_cluster_alerting=__ret__.enable_cluster_alerting,
         enable_cluster_monitoring=__ret__.enable_cluster_monitoring,
         enable_network_policy=__ret__.enable_network_policy,
+        fleet_workspace_name=__ret__.fleet_workspace_name,
         gke_config=__ret__.gke_config,
         gke_config_v2=__ret__.gke_config_v2,
         id=__ret__.id,

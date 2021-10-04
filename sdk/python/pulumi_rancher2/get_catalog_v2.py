@@ -146,6 +146,9 @@ class GetCatalogV2Result:
     @property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
+        """
+        (Computed) The k8s resource version (string)
+        """
         return pulumi.get(self, "resource_version")
 
     @property
@@ -217,7 +220,7 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
                    name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogV2Result:
     """
-    Use this data source to retrieve information about a Rancher2 catalog v2.
+    Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
 
 
     :param str cluster_id: The cluster id of the catalog V2 (string)

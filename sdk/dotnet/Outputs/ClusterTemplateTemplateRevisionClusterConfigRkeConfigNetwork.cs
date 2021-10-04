@@ -19,6 +19,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? Mtu;
         public readonly ImmutableDictionary<string, object>? Options;
         public readonly string? Plugin;
+        public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> Tolerations;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider? WeaveNetworkProvider;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? plugin,
 
+            ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations,
+
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
         {
             CalicoNetworkProvider = calicoNetworkProvider;
@@ -43,6 +46,7 @@ namespace Pulumi.Rancher2.Outputs
             Mtu = mtu;
             Options = options;
             Plugin = plugin;
+            Tolerations = tolerations;
             WeaveNetworkProvider = weaveNetworkProvider;
         }
     }

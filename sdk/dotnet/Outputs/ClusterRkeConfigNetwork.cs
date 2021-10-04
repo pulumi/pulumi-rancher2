@@ -38,6 +38,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Plugin;
         /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterRkeConfigNetworkToleration> Tolerations;
+        /// <summary>
         /// Weave provider config for RKE network (list maxitems:1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkWeaveNetworkProvider? WeaveNetworkProvider;
@@ -56,6 +60,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? plugin,
 
+            ImmutableArray<Outputs.ClusterRkeConfigNetworkToleration> tolerations,
+
             Outputs.ClusterRkeConfigNetworkWeaveNetworkProvider? weaveNetworkProvider)
         {
             CalicoNetworkProvider = calicoNetworkProvider;
@@ -64,6 +70,7 @@ namespace Pulumi.Rancher2.Outputs
             Mtu = mtu;
             Options = options;
             Plugin = plugin;
+            Tolerations = tolerations;
             WeaveNetworkProvider = weaveNetworkProvider;
         }
     }

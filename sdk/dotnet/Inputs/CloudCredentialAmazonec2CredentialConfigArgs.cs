@@ -19,6 +19,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
+        /// AWS default region (string)
+        /// </summary>
+        [Input("defaultRegion")]
+        public Input<string>? DefaultRegion { get; set; }
+
+        /// <summary>
         /// AWS secret key (string)
         /// </summary>
         [Input("secretKey", required: true)]

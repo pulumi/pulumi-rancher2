@@ -30,6 +30,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableKubernetesDashboard;
         /// <summary>
+        /// Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        /// </summary>
+        public readonly bool? EnablePrivateControlPlane;
+        /// <summary>
         /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         /// </summary>
         public readonly bool? EnablePrivateNodes;
@@ -41,6 +45,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
         /// </summary>
         public readonly int? FlexOcpus;
+        /// <summary>
+        /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        /// </summary>
+        public readonly string? KmsKeyId;
         /// <summary>
         /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         /// </summary>
@@ -144,11 +152,15 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enableKubernetesDashboard,
 
+            bool? enablePrivateControlPlane,
+
             bool? enablePrivateNodes,
 
             string fingerprint,
 
             int? flexOcpus,
+
+            string? kmsKeyId,
 
             string kubernetesVersion,
 
@@ -200,9 +212,11 @@ namespace Pulumi.Rancher2.Outputs
             CustomBootVolumeSize = customBootVolumeSize;
             Description = description;
             EnableKubernetesDashboard = enableKubernetesDashboard;
+            EnablePrivateControlPlane = enablePrivateControlPlane;
             EnablePrivateNodes = enablePrivateNodes;
             Fingerprint = fingerprint;
             FlexOcpus = flexOcpus;
+            KmsKeyId = kmsKeyId;
             KubernetesVersion = kubernetesVersion;
             LimitNodeCount = limitNodeCount;
             LoadBalancerSubnetName1 = loadBalancerSubnetName1;

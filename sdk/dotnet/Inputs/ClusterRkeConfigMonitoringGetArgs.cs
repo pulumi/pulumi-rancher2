@@ -48,6 +48,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
 
+        [Input("tolerations")]
+        private InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs>? _tolerations;
+
+        /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs> Tolerations
+        {
+            get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs>());
+            set => _tolerations = value;
+        }
+
         /// <summary>
         /// RKE monitoring update strategy (list Maxitems: 1)
         /// </summary>

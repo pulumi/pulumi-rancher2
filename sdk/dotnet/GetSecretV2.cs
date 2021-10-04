@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     public static class GetSecretV2
     {
         /// <summary>
-        /// Use this data source to retrieve information about a Rancher2 secret v2.
+        /// Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
         /// </summary>
         public static Task<GetSecretV2Result> InvokeAsync(GetSecretV2Args args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretV2Result>("rancher2:index/getSecretV2:getSecretV2", args ?? new GetSecretV2Args(), options.WithVersion());

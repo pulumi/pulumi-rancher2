@@ -77,6 +77,10 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * KeyCloak Client ID field (string)
+     */
+    public readonly entityId!: pulumi.Output<string>;
+    /**
      * KeyCloak group field (string)
      */
     public readonly groupsField!: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["displayNameField"] = state ? state.displayNameField : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
+            inputs["entityId"] = state ? state.entityId : undefined;
             inputs["groupsField"] = state ? state.groupsField : undefined;
             inputs["idpMetadataContent"] = state ? state.idpMetadataContent : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -176,6 +181,7 @@ export class AuthConfigKeycloak extends pulumi.CustomResource {
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["displayNameField"] = args ? args.displayNameField : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
+            inputs["entityId"] = args ? args.entityId : undefined;
             inputs["groupsField"] = args ? args.groupsField : undefined;
             inputs["idpMetadataContent"] = args ? args.idpMetadataContent : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -218,6 +224,10 @@ export interface AuthConfigKeycloakState {
      * Enable auth config provider. Default `true` (bool)
      */
     readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * KeyCloak Client ID field (string)
+     */
+    readonly entityId?: pulumi.Input<string>;
     /**
      * KeyCloak group field (string)
      */
@@ -284,6 +294,10 @@ export interface AuthConfigKeycloakArgs {
      * Enable auth config provider. Default `true` (bool)
      */
     readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * KeyCloak Client ID field (string)
+     */
+    readonly entityId?: pulumi.Input<string>;
     /**
      * KeyCloak group field (string)
      */

@@ -22,6 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableDictionary<string, object> NodeSelector;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Provider;
+        public readonly ImmutableArray<Outputs.GetClusterRkeConfigIngressTolerationResult> Tolerations;
         public readonly Outputs.GetClusterRkeConfigIngressUpdateStrategyResult? UpdateStrategy;
 
         [OutputConstructor]
@@ -44,6 +45,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string provider,
 
+            ImmutableArray<Outputs.GetClusterRkeConfigIngressTolerationResult> tolerations,
+
             Outputs.GetClusterRkeConfigIngressUpdateStrategyResult? updateStrategy)
         {
             DefaultBackend = defaultBackend;
@@ -55,6 +58,7 @@ namespace Pulumi.Rancher2.Outputs
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
         }
     }

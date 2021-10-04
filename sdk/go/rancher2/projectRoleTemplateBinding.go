@@ -51,7 +51,7 @@ type ProjectRoleTemplateBinding struct {
 	// Annotations of the resource (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
 	// The group ID to assign project role template binding (string)
-	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The groupPrincipal ID to assign project role template binding (string)
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels of the resource (map)
@@ -63,7 +63,7 @@ type ProjectRoleTemplateBinding struct {
 	// The role template id from create project role template binding (string)
 	RoleTemplateId pulumi.StringOutput `pulumi:"roleTemplateId"`
 	// The user ID to assign project role template binding (string)
-	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	UserId pulumi.StringOutput `pulumi:"userId"`
 	// The userPrincipal ID to assign project role template binding (string)
 	UserPrincipalId pulumi.StringOutput `pulumi:"userPrincipalId"`
 }

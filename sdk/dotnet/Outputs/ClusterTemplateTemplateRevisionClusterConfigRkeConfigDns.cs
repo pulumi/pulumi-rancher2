@@ -16,8 +16,10 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams? LinearAutoscalerParams;
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal? Nodelocal;
+        public readonly ImmutableDictionary<string, object>? Options;
         public readonly string? Provider;
         public readonly ImmutableArray<string> ReverseCidrs;
+        public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> Tolerations;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy? UpdateStrategy;
         public readonly ImmutableArray<string> UpstreamNameservers;
 
@@ -29,9 +31,13 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal? nodelocal,
 
+            ImmutableDictionary<string, object>? options,
+
             string? provider,
 
             ImmutableArray<string> reverseCidrs,
+
+            ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations,
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy? updateStrategy,
 
@@ -40,8 +46,10 @@ namespace Pulumi.Rancher2.Outputs
             LinearAutoscalerParams = linearAutoscalerParams;
             NodeSelector = nodeSelector;
             Nodelocal = nodelocal;
+            Options = options;
             Provider = provider;
             ReverseCidrs = reverseCidrs;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
             UpstreamNameservers = upstreamNameservers;
         }

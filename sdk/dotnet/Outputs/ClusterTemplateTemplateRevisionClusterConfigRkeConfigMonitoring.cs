@@ -17,6 +17,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableDictionary<string, object>? Options;
         public readonly string? Provider;
         public readonly int? Replicas;
+        public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> Tolerations;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy? UpdateStrategy;
 
         [OutputConstructor]
@@ -29,12 +30,15 @@ namespace Pulumi.Rancher2.Outputs
 
             int? replicas,
 
+            ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations,
+
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy? updateStrategy)
         {
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
             Replicas = replicas;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
         }
     }

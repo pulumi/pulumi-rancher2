@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.20.0 of the Rancher2 Terraform Provider
+* Rename `rancher2.ActiveDirectory` to be `rancher2.AuthConfigActiveDirectory`
+* Rename `rancher2.RoleTempalte` to be `rancher2.RoleTemplate`
 
 ---
 

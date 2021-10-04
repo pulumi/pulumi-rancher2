@@ -102,9 +102,6 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"rancher2_app": {Tok: makeResource(mainMod, "App")},
-			"rancher2_auth_config_activedirectory": {
-				Tok: makeResource(mainMod, "ActiveDirectory"),
-			},
 			"rancher2_auth_config_adfs": {
 				Tok: makeResource(mainMod, "AuthConfigAdfs"),
 			},
@@ -135,7 +132,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_cloud_credential": {
 				Tok: makeResource(mainMod, "CloudCredential"),
 			},
-			"rancher2_cluster": {Tok: makeResource(mainMod, "Cluster")},
+			"rancher2_cluster":    {Tok: makeResource(mainMod, "Cluster")},
+			"rancher2_cluster_v2": {Tok: makeResource(mainMod, "ClusterV2")},
 			"rancher2_cluster_driver": {
 				Tok: makeResource(mainMod, "ClusterDriver"),
 			},
@@ -185,11 +183,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "ProjectRoleTemplateBinding"),
 			},
 			"rancher2_registry": {Tok: makeResource(mainMod, "Registry")},
-			"rancher2_role_template": {
-				Tok: makeResource(mainMod, "RoleTempalte"),
-			},
-			"rancher2_secret":  {Tok: makeResource(mainMod, "Secret")},
-			"rancher2_setting": {Tok: makeResource(mainMod, "Setting")},
+			"rancher2_secret":   {Tok: makeResource(mainMod, "Secret")},
+			"rancher2_setting":  {Tok: makeResource(mainMod, "Setting")},
 			"rancher2_token": {
 				Tok: makeResource(mainMod, "Token"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -209,6 +204,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_global_role":         {Tok: makeResource(mainMod, "GlobalRole")},
 			"rancher2_feature":             {Tok: makeResource(mainMod, "Feature")},
 			"rancher2_secret_v2":           {Tok: makeResource(mainMod, "SecretV2")},
+			"rancher2_machine_config_v2":   {Tok: makeResource(mainMod, "MachineConfigV2")},
+			"rancher2_storage_class_v2":    {Tok: makeResource(mainMod, "StorageClassV2")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":         {Tok: makeDataSource(mainMod, "getApp")},
@@ -281,6 +278,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_global_dns_provider": {Tok: makeDataSource(mainMod, "getGlobalDnsProvider")},
 			"rancher2_global_role":         {Tok: makeDataSource(mainMod, "getGlobalRole")},
 			"rancher2_secret_v2":           {Tok: makeDataSource(mainMod, "getSecretV2")},
+			"rancher2_cluster_v2":          {Tok: makeDataSource(mainMod, "getClusterV2")},
+			"rancher2_storage_class_v2":    {Tok: makeDataSource(mainMod, "getStorageClassV2")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -327,6 +326,10 @@ func Provider() tfbridge.ProviderInfo {
 		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
 			Docs: &tfbridge.DocInfo{Source: "clusterAlertRule.html.markdown"},
 		})
+	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
+		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod, nil)
+	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
+		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod, nil)
 
 	prov.SetAutonaming(255, "-")
 

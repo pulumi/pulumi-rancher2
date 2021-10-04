@@ -25,10 +25,22 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        /// </summary>
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
+
+        /// <summary>
         /// Azure Subscription ID (string)
         /// </summary>
         [Input("subscriptionId", required: true)]
         public Input<string> SubscriptionId { get; set; } = null!;
+
+        /// <summary>
+        /// Azure Tenant ID (string)
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
 
         public CloudCredentialAzureCredentialConfigArgs()
         {

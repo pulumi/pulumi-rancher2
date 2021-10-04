@@ -110,6 +110,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly deleteNotReadyAfterSecs!: pulumi.Output<number | undefined>;
     /**
+     * Drain nodes before delete. Default: `false` (bool)
+     */
+    public readonly drainBeforeDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * RKE etcd role for created nodes (bool)
      */
     public readonly etcd!: pulumi.Output<boolean | undefined>;
@@ -159,6 +163,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["controlPlane"] = state ? state.controlPlane : undefined;
             inputs["deleteNotReadyAfterSecs"] = state ? state.deleteNotReadyAfterSecs : undefined;
+            inputs["drainBeforeDelete"] = state ? state.drainBeforeDelete : undefined;
             inputs["etcd"] = state ? state.etcd : undefined;
             inputs["hostnamePrefix"] = state ? state.hostnamePrefix : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -182,6 +187,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["controlPlane"] = args ? args.controlPlane : undefined;
             inputs["deleteNotReadyAfterSecs"] = args ? args.deleteNotReadyAfterSecs : undefined;
+            inputs["drainBeforeDelete"] = args ? args.drainBeforeDelete : undefined;
             inputs["etcd"] = args ? args.etcd : undefined;
             inputs["hostnamePrefix"] = args ? args.hostnamePrefix : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -218,6 +224,10 @@ export interface NodePoolState {
      * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
      */
     readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
+     * Drain nodes before delete. Default: `false` (bool)
+     */
+    readonly drainBeforeDelete?: pulumi.Input<boolean>;
     /**
      * RKE etcd role for created nodes (bool)
      */
@@ -272,6 +282,10 @@ export interface NodePoolArgs {
      * Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
      */
     readonly deleteNotReadyAfterSecs?: pulumi.Input<number>;
+    /**
+     * Drain nodes before delete. Default: `false` (bool)
+     */
+    readonly drainBeforeDelete?: pulumi.Input<boolean>;
     /**
      * RKE etcd role for created nodes (bool)
      */
