@@ -24,6 +24,8 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Id;
         public readonly string InsecureCommand;
+        public readonly string InsecureNodeCommand;
+        public readonly string InsecureWindowsNodeCommand;
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
@@ -49,6 +51,10 @@ namespace Pulumi.Rancher2.Outputs
 
             string insecureCommand,
 
+            string insecureNodeCommand,
+
+            string insecureWindowsNodeCommand,
+
             ImmutableDictionary<string, object> labels,
 
             string manifestUrl,
@@ -66,6 +72,8 @@ namespace Pulumi.Rancher2.Outputs
             Command = command;
             Id = id;
             InsecureCommand = insecureCommand;
+            InsecureNodeCommand = insecureNodeCommand;
+            InsecureWindowsNodeCommand = insecureWindowsNodeCommand;
             Labels = labels;
             ManifestUrl = manifestUrl;
             Name = name;

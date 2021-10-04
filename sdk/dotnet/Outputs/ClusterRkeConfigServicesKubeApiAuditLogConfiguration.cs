@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
+        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
         /// </summary>
         public readonly string? Policy;
 

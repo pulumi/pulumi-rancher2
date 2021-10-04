@@ -21,6 +21,7 @@ class NodePoolArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  control_plane: Optional[pulumi.Input[bool]] = None,
                  delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class NodePoolArgs:
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
         :param pulumi.Input[int] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] drain_before_delete: Drain nodes before delete. Default: `false` (bool)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the Node Pool (string)
@@ -51,6 +53,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "control_plane", control_plane)
         if delete_not_ready_after_secs is not None:
             pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
+        if drain_before_delete is not None:
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if labels is not None:
@@ -137,6 +141,18 @@ class NodePoolArgs:
         pulumi.set(self, "delete_not_ready_after_secs", value)
 
     @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Drain nodes before delete. Default: `false` (bool)
+        """
+        return pulumi.get(self, "drain_before_delete")
+
+    @drain_before_delete.setter
+    def drain_before_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drain_before_delete", value)
+
+    @property
     @pulumi.getter
     def etcd(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -216,6 +232,7 @@ class _NodePoolState:
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input[bool]] = None,
                  delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd: Optional[pulumi.Input[bool]] = None,
                  hostname_prefix: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -230,6 +247,7 @@ class _NodePoolState:
         :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
         :param pulumi.Input[int] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] drain_before_delete: Drain nodes before delete. Default: `false` (bool)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
@@ -247,6 +265,8 @@ class _NodePoolState:
             pulumi.set(__self__, "control_plane", control_plane)
         if delete_not_ready_after_secs is not None:
             pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
+        if drain_before_delete is not None:
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if hostname_prefix is not None:
@@ -311,6 +331,18 @@ class _NodePoolState:
     @delete_not_ready_after_secs.setter
     def delete_not_ready_after_secs(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delete_not_ready_after_secs", value)
+
+    @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Drain nodes before delete. Default: `false` (bool)
+        """
+        return pulumi.get(self, "drain_before_delete")
+
+    @drain_before_delete.setter
+    def drain_before_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drain_before_delete", value)
 
     @property
     @pulumi.getter
@@ -418,6 +450,7 @@ class NodePool(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input[bool]] = None,
                  delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd: Optional[pulumi.Input[bool]] = None,
                  hostname_prefix: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -444,6 +477,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
         :param pulumi.Input[int] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] drain_before_delete: Drain nodes before delete. Default: `false` (bool)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
@@ -489,6 +523,7 @@ class NodePool(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input[bool]] = None,
                  delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+                 drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd: Optional[pulumi.Input[bool]] = None,
                  hostname_prefix: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -515,6 +550,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["delete_not_ready_after_secs"] = delete_not_ready_after_secs
+            __props__.__dict__["drain_before_delete"] = drain_before_delete
             __props__.__dict__["etcd"] = etcd
             if hostname_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname_prefix'")
@@ -541,6 +577,7 @@ class NodePool(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             control_plane: Optional[pulumi.Input[bool]] = None,
             delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
+            drain_before_delete: Optional[pulumi.Input[bool]] = None,
             etcd: Optional[pulumi.Input[bool]] = None,
             hostname_prefix: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -560,6 +597,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[bool] control_plane: RKE control plane role for created nodes (bool)
         :param pulumi.Input[int] delete_not_ready_after_secs: Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
+        :param pulumi.Input[bool] drain_before_delete: Drain nodes before delete. Default: `false` (bool)
         :param pulumi.Input[bool] etcd: RKE etcd role for created nodes (bool)
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
@@ -577,6 +615,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["delete_not_ready_after_secs"] = delete_not_ready_after_secs
+        __props__.__dict__["drain_before_delete"] = drain_before_delete
         __props__.__dict__["etcd"] = etcd
         __props__.__dict__["hostname_prefix"] = hostname_prefix
         __props__.__dict__["labels"] = labels
@@ -618,6 +657,14 @@ class NodePool(pulumi.CustomResource):
         Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
         """
         return pulumi.get(self, "delete_not_ready_after_secs")
+
+    @property
+    @pulumi.getter(name="drainBeforeDelete")
+    def drain_before_delete(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Drain nodes before delete. Default: `false` (bool)
+        """
+        return pulumi.get(self, "drain_before_delete")
 
     @property
     @pulumi.getter

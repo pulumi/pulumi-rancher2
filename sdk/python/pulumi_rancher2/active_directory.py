@@ -37,6 +37,7 @@ class ActiveDirectoryArgs:
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
                  user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
                  user_enabled_attribute: Optional[pulumi.Input[str]] = None,
@@ -92,6 +93,8 @@ class ActiveDirectoryArgs:
             pulumi.set(__self__, "nested_group_membership_enabled", nested_group_membership_enabled)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if start_tls is not None:
+            pulumi.set(__self__, "start_tls", start_tls)
         if tls is not None:
             pulumi.set(__self__, "tls", tls)
         if user_disabled_bit_mask is not None:
@@ -332,6 +335,15 @@ class ActiveDirectoryArgs:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
+
+    @property
     @pulumi.getter
     def tls(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "tls")
@@ -429,6 +441,7 @@ class _ActiveDirectoryState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -490,6 +503,8 @@ class _ActiveDirectoryState:
             pulumi.set(__self__, "service_account_password", service_account_password)
         if service_account_username is not None:
             pulumi.set(__self__, "service_account_username", service_account_username)
+        if start_tls is not None:
+            pulumi.set(__self__, "start_tls", start_tls)
         if test_password is not None:
             pulumi.set(__self__, "test_password", test_password)
         if test_username is not None:
@@ -720,6 +735,15 @@ class _ActiveDirectoryState:
         pulumi.set(self, "service_account_username", value)
 
     @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
+
+    @property
     @pulumi.getter(name="testPassword")
     def test_password(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "test_password")
@@ -859,6 +883,7 @@ class ActiveDirectory(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -922,6 +947,7 @@ class ActiveDirectory(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -973,6 +999,7 @@ class ActiveDirectory(pulumi.CustomResource):
             if service_account_username is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_username'")
             __props__.__dict__["service_account_username"] = service_account_username
+            __props__.__dict__["start_tls"] = start_tls
             if test_password is None and not opts.urn:
                 raise TypeError("Missing required property 'test_password'")
             __props__.__dict__["test_password"] = test_password
@@ -1024,6 +1051,7 @@ class ActiveDirectory(pulumi.CustomResource):
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_account_password: Optional[pulumi.Input[str]] = None,
             service_account_username: Optional[pulumi.Input[str]] = None,
+            start_tls: Optional[pulumi.Input[bool]] = None,
             test_password: Optional[pulumi.Input[str]] = None,
             test_username: Optional[pulumi.Input[str]] = None,
             tls: Optional[pulumi.Input[bool]] = None,
@@ -1072,6 +1100,7 @@ class ActiveDirectory(pulumi.CustomResource):
         __props__.__dict__["servers"] = servers
         __props__.__dict__["service_account_password"] = service_account_password
         __props__.__dict__["service_account_username"] = service_account_username
+        __props__.__dict__["start_tls"] = start_tls
         __props__.__dict__["test_password"] = test_password
         __props__.__dict__["test_username"] = test_username
         __props__.__dict__["tls"] = tls
@@ -1201,6 +1230,11 @@ class ActiveDirectory(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountUsername")
     def service_account_username(self) -> pulumi.Output[str]:
         return pulumi.get(self, "service_account_username")
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "start_tls")
 
     @property
     @pulumi.getter(name="testPassword")

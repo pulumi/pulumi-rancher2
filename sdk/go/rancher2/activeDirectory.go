@@ -39,6 +39,7 @@ type ActiveDirectory struct {
 	Servers                      pulumi.StringArrayOutput `pulumi:"servers"`
 	ServiceAccountPassword       pulumi.StringOutput      `pulumi:"serviceAccountPassword"`
 	ServiceAccountUsername       pulumi.StringOutput      `pulumi:"serviceAccountUsername"`
+	StartTls                     pulumi.BoolOutput        `pulumi:"startTls"`
 	TestPassword                 pulumi.StringOutput      `pulumi:"testPassword"`
 	TestUsername                 pulumi.StringOutput      `pulumi:"testUsername"`
 	Tls                          pulumi.BoolOutput        `pulumi:"tls"`
@@ -124,6 +125,7 @@ type activeDirectoryState struct {
 	Servers                      []string               `pulumi:"servers"`
 	ServiceAccountPassword       *string                `pulumi:"serviceAccountPassword"`
 	ServiceAccountUsername       *string                `pulumi:"serviceAccountUsername"`
+	StartTls                     *bool                  `pulumi:"startTls"`
 	TestPassword                 *string                `pulumi:"testPassword"`
 	TestUsername                 *string                `pulumi:"testUsername"`
 	Tls                          *bool                  `pulumi:"tls"`
@@ -163,6 +165,7 @@ type ActiveDirectoryState struct {
 	Servers                      pulumi.StringArrayInput
 	ServiceAccountPassword       pulumi.StringPtrInput
 	ServiceAccountUsername       pulumi.StringPtrInput
+	StartTls                     pulumi.BoolPtrInput
 	TestPassword                 pulumi.StringPtrInput
 	TestUsername                 pulumi.StringPtrInput
 	Tls                          pulumi.BoolPtrInput
@@ -205,6 +208,7 @@ type activeDirectoryArgs struct {
 	Servers                      []string               `pulumi:"servers"`
 	ServiceAccountPassword       string                 `pulumi:"serviceAccountPassword"`
 	ServiceAccountUsername       string                 `pulumi:"serviceAccountUsername"`
+	StartTls                     *bool                  `pulumi:"startTls"`
 	TestPassword                 string                 `pulumi:"testPassword"`
 	TestUsername                 string                 `pulumi:"testUsername"`
 	Tls                          *bool                  `pulumi:"tls"`
@@ -243,6 +247,7 @@ type ActiveDirectoryArgs struct {
 	Servers                      pulumi.StringArrayInput
 	ServiceAccountPassword       pulumi.StringInput
 	ServiceAccountUsername       pulumi.StringInput
+	StartTls                     pulumi.BoolPtrInput
 	TestPassword                 pulumi.StringInput
 	TestUsername                 pulumi.StringInput
 	Tls                          pulumi.BoolPtrInput

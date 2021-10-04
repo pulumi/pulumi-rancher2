@@ -30,6 +30,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Replicas;
         /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterRkeConfigMonitoringToleration> Tolerations;
+        /// <summary>
         /// RKE monitoring update strategy (list Maxitems: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoringUpdateStrategy? UpdateStrategy;
@@ -44,12 +48,15 @@ namespace Pulumi.Rancher2.Outputs
 
             int? replicas,
 
+            ImmutableArray<Outputs.ClusterRkeConfigMonitoringToleration> tolerations,
+
             Outputs.ClusterRkeConfigMonitoringUpdateStrategy? updateStrategy)
         {
             NodeSelector = nodeSelector;
             Options = options;
             Provider = provider;
             Replicas = replicas;
+            Tolerations = tolerations;
             UpdateStrategy = updateStrategy;
         }
     }

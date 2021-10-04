@@ -75,6 +75,12 @@ namespace Pulumi.Rancher2
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// KeyCloak Client ID field (string)
+        /// </summary>
+        [Output("entityId")]
+        public Output<string> EntityId { get; private set; } = null!;
+
+        /// <summary>
         /// KeyCloak group field (string)
         /// </summary>
         [Output("groupsField")]
@@ -223,6 +229,12 @@ namespace Pulumi.Rancher2
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// KeyCloak Client ID field (string)
+        /// </summary>
+        [Input("entityId")]
+        public Input<string>? EntityId { get; set; }
+
+        /// <summary>
         /// KeyCloak group field (string)
         /// </summary>
         [Input("groupsField", required: true)]
@@ -324,6 +336,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// KeyCloak Client ID field (string)
+        /// </summary>
+        [Input("entityId")]
+        public Input<string>? EntityId { get; set; }
 
         /// <summary>
         /// KeyCloak group field (string)

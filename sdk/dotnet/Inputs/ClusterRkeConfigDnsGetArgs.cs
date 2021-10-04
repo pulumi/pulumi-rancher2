@@ -36,6 +36,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("nodelocal")]
         public Input<Inputs.ClusterRkeConfigDnsNodelocalGetArgs>? Nodelocal { get; set; }
 
+        [Input("options")]
+        private InputMap<object>? _options;
+
+        /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
+        public InputMap<object> Options
+        {
+            get => _options ?? (_options = new InputMap<object>());
+            set => _options = value;
+        }
+
         /// <summary>
         /// RKE monitoring provider (string)
         /// </summary>
@@ -52,6 +64,18 @@ namespace Pulumi.Rancher2.Inputs
         {
             get => _reverseCidrs ?? (_reverseCidrs = new InputList<string>());
             set => _reverseCidrs = value;
+        }
+
+        [Input("tolerations")]
+        private InputList<Inputs.ClusterRkeConfigDnsTolerationGetArgs>? _tolerations;
+
+        /// <summary>
+        /// Network add-on tolerations (list)
+        /// </summary>
+        public InputList<Inputs.ClusterRkeConfigDnsTolerationGetArgs> Tolerations
+        {
+            get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterRkeConfigDnsTolerationGetArgs>());
+            set => _tolerations = value;
         }
 
         /// <summary>

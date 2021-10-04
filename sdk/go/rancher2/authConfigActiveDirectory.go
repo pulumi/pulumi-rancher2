@@ -19,7 +19,7 @@ type AuthConfigActiveDirectory struct {
 
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
@@ -61,6 +61,8 @@ type AuthConfigActiveDirectory struct {
 	ServiceAccountPassword pulumi.StringOutput `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringOutput `pulumi:"serviceAccountUsername"`
+	// Enable start TLS connection (bool)
+	StartTls pulumi.BoolOutput `pulumi:"startTls"`
 	// Password for test access to ActiveDirectory service (string)
 	TestPassword pulumi.StringOutput `pulumi:"testPassword"`
 	// Username for test access to ActiveDirectory service (string)
@@ -142,7 +144,7 @@ func GetAuthConfigActiveDirectory(ctx *pulumi.Context,
 type authConfigActiveDirectoryState struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
@@ -184,6 +186,8 @@ type authConfigActiveDirectoryState struct {
 	ServiceAccountPassword *string `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername *string `pulumi:"serviceAccountUsername"`
+	// Enable start TLS connection (bool)
+	StartTls *bool `pulumi:"startTls"`
 	// Password for test access to ActiveDirectory service (string)
 	TestPassword *string `pulumi:"testPassword"`
 	// Username for test access to ActiveDirectory service (string)
@@ -213,7 +217,7 @@ type authConfigActiveDirectoryState struct {
 type AuthConfigActiveDirectoryState struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
 	Annotations pulumi.MapInput
@@ -255,6 +259,8 @@ type AuthConfigActiveDirectoryState struct {
 	ServiceAccountPassword pulumi.StringPtrInput
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringPtrInput
+	// Enable start TLS connection (bool)
+	StartTls pulumi.BoolPtrInput
 	// Password for test access to ActiveDirectory service (string)
 	TestPassword pulumi.StringPtrInput
 	// Username for test access to ActiveDirectory service (string)
@@ -288,7 +294,7 @@ func (AuthConfigActiveDirectoryState) ElementType() reflect.Type {
 type authConfigActiveDirectoryArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
@@ -328,6 +334,8 @@ type authConfigActiveDirectoryArgs struct {
 	ServiceAccountPassword string `pulumi:"serviceAccountPassword"`
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername string `pulumi:"serviceAccountUsername"`
+	// Enable start TLS connection (bool)
+	StartTls *bool `pulumi:"startTls"`
 	// Password for test access to ActiveDirectory service (string)
 	TestPassword string `pulumi:"testPassword"`
 	// Username for test access to ActiveDirectory service (string)
@@ -356,7 +364,7 @@ type authConfigActiveDirectoryArgs struct {
 type AuthConfigActiveDirectoryArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode pulumi.StringPtrInput
-	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
 	Annotations pulumi.MapInput
@@ -396,6 +404,8 @@ type AuthConfigActiveDirectoryArgs struct {
 	ServiceAccountPassword pulumi.StringInput
 	// Service account DN for access ActiveDirectory service (string)
 	ServiceAccountUsername pulumi.StringInput
+	// Enable start TLS connection (bool)
+	StartTls pulumi.BoolPtrInput
 	// Password for test access to ActiveDirectory service (string)
 	TestPassword pulumi.StringInput
 	// Username for test access to ActiveDirectory service (string)

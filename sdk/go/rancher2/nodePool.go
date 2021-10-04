@@ -31,6 +31,8 @@ type NodePool struct {
 	ControlPlane pulumi.BoolPtrOutput `pulumi:"controlPlane"`
 	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrOutput `pulumi:"deleteNotReadyAfterSecs"`
+	// Drain nodes before delete. Default: `false` (bool)
+	DrainBeforeDelete pulumi.BoolPtrOutput `pulumi:"drainBeforeDelete"`
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrOutput `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -95,6 +97,8 @@ type nodePoolState struct {
 	ControlPlane *bool `pulumi:"controlPlane"`
 	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
 	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
+	// Drain nodes before delete. Default: `false` (bool)
+	DrainBeforeDelete *bool `pulumi:"drainBeforeDelete"`
 	// RKE etcd role for created nodes (bool)
 	Etcd *bool `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -122,6 +126,8 @@ type NodePoolState struct {
 	ControlPlane pulumi.BoolPtrInput
 	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
+	// Drain nodes before delete. Default: `false` (bool)
+	DrainBeforeDelete pulumi.BoolPtrInput
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrInput
 	// The prefix for created nodes of the Node Pool (string)
@@ -153,6 +159,8 @@ type nodePoolArgs struct {
 	ControlPlane *bool `pulumi:"controlPlane"`
 	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
 	DeleteNotReadyAfterSecs *int `pulumi:"deleteNotReadyAfterSecs"`
+	// Drain nodes before delete. Default: `false` (bool)
+	DrainBeforeDelete *bool `pulumi:"drainBeforeDelete"`
 	// RKE etcd role for created nodes (bool)
 	Etcd *bool `pulumi:"etcd"`
 	// The prefix for created nodes of the Node Pool (string)
@@ -181,6 +189,8 @@ type NodePoolArgs struct {
 	ControlPlane pulumi.BoolPtrInput
 	// Delete not ready node after secs. For Rancher v2.3.3 or above. Default `0` (int)
 	DeleteNotReadyAfterSecs pulumi.IntPtrInput
+	// Drain nodes before delete. Default: `false` (bool)
+	DrainBeforeDelete pulumi.BoolPtrInput
 	// RKE etcd role for created nodes (bool)
 	Etcd pulumi.BoolPtrInput
 	// The prefix for created nodes of the Node Pool (string)

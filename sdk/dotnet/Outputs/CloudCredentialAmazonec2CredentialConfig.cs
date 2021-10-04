@@ -18,6 +18,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
+        /// AWS default region (string)
+        /// </summary>
+        public readonly string? DefaultRegion;
+        /// <summary>
         /// AWS secret key (string)
         /// </summary>
         public readonly string SecretKey;
@@ -26,9 +30,12 @@ namespace Pulumi.Rancher2.Outputs
         private CloudCredentialAmazonec2CredentialConfig(
             string accessKey,
 
+            string? defaultRegion,
+
             string secretKey)
         {
             AccessKey = accessKey;
+            DefaultRegion = defaultRegion;
             SecretKey = secretKey;
         }
     }

@@ -42,7 +42,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
      */
     public readonly accessMode!: pulumi.Output<string | undefined>;
     /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
      */
     public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -125,6 +125,10 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
      * Service account DN for access ActiveDirectory service (string)
      */
     public readonly serviceAccountUsername!: pulumi.Output<string>;
+    /**
+     * Enable start TLS connection (bool)
+     */
+    public readonly startTls!: pulumi.Output<boolean>;
     /**
      * Password for test access to ActiveDirectory service (string)
      */
@@ -209,6 +213,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
             inputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = state ? state.serviceAccountUsername : undefined;
+            inputs["startTls"] = state ? state.startTls : undefined;
             inputs["testPassword"] = state ? state.testPassword : undefined;
             inputs["testUsername"] = state ? state.testUsername : undefined;
             inputs["tls"] = state ? state.tls : undefined;
@@ -262,6 +267,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = args ? args.servers : undefined;
             inputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
+            inputs["startTls"] = args ? args.startTls : undefined;
             inputs["testPassword"] = args ? args.testPassword : undefined;
             inputs["testUsername"] = args ? args.testUsername : undefined;
             inputs["tls"] = args ? args.tls : undefined;
@@ -294,7 +300,7 @@ export interface AuthConfigActiveDirectoryState {
      */
     readonly accessMode?: pulumi.Input<string>;
     /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
      */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -378,6 +384,10 @@ export interface AuthConfigActiveDirectoryState {
      */
     readonly serviceAccountUsername?: pulumi.Input<string>;
     /**
+     * Enable start TLS connection (bool)
+     */
+    readonly startTls?: pulumi.Input<boolean>;
+    /**
      * Password for test access to ActiveDirectory service (string)
      */
     readonly testPassword?: pulumi.Input<string>;
@@ -436,7 +446,7 @@ export interface AuthConfigActiveDirectoryArgs {
      */
     readonly accessMode?: pulumi.Input<string>;
     /**
-     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
      */
     readonly allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -515,6 +525,10 @@ export interface AuthConfigActiveDirectoryArgs {
      * Service account DN for access ActiveDirectory service (string)
      */
     readonly serviceAccountUsername: pulumi.Input<string>;
+    /**
+     * Enable start TLS connection (bool)
+     */
+    readonly startTls?: pulumi.Input<boolean>;
     /**
      * Password for test access to ActiveDirectory service (string)
      */

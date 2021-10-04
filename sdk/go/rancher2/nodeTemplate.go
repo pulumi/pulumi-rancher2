@@ -167,8 +167,8 @@ type NodeTemplate struct {
 	EngineEnv pulumi.MapOutput `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayOutput `pulumi:"engineInsecureRegistries"`
-	// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-	EngineInstallUrl pulumi.StringPtrOutput `pulumi:"engineInstallUrl"`
+	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+	EngineInstallUrl pulumi.StringOutput `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
 	EngineLabel pulumi.MapOutput `pulumi:"engineLabel"`
 	// Engine options for the node template (map)
@@ -250,7 +250,7 @@ type nodeTemplateState struct {
 	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries []string `pulumi:"engineInsecureRegistries"`
-	// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl *string `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
 	EngineLabel map[string]interface{} `pulumi:"engineLabel"`
@@ -305,7 +305,7 @@ type NodeTemplateState struct {
 	EngineEnv pulumi.MapInput
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayInput
-	// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl pulumi.StringPtrInput
 	// Engine label for the node template (string)
 	EngineLabel pulumi.MapInput
@@ -362,7 +362,7 @@ type nodeTemplateArgs struct {
 	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries []string `pulumi:"engineInsecureRegistries"`
-	// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl *string `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
 	EngineLabel map[string]interface{} `pulumi:"engineLabel"`
@@ -416,7 +416,7 @@ type NodeTemplateArgs struct {
 	EngineEnv pulumi.MapInput
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayInput
-	// Docker engine install URL for the node template. Default `https://releases.rancher.com/install-docker/18.09.sh`. Available install docker versions at `https://github.com/rancher/install-docker` (string)
+	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl pulumi.StringPtrInput
 	// Engine label for the node template (string)
 	EngineLabel pulumi.MapInput

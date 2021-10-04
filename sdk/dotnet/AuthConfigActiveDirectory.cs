@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         public Output<string?> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;` (list)
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
         /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
@@ -148,6 +148,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("serviceAccountUsername")]
         public Output<string> ServiceAccountUsername { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable start TLS connection (bool)
+        /// </summary>
+        [Output("startTls")]
+        public Output<bool> StartTls { get; private set; } = null!;
 
         /// <summary>
         /// Password for test access to ActiveDirectory service (string)
@@ -281,7 +287,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;` (list)
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -422,6 +428,12 @@ namespace Pulumi.Rancher2
         public Input<string> ServiceAccountUsername { get; set; } = null!;
 
         /// <summary>
+        /// Enable start TLS connection (bool)
+        /// </summary>
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
+
+        /// <summary>
         /// Password for test access to ActiveDirectory service (string)
         /// </summary>
         [Input("testPassword", required: true)]
@@ -504,7 +516,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;` (list)
+        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -649,6 +661,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("serviceAccountUsername")]
         public Input<string>? ServiceAccountUsername { get; set; }
+
+        /// <summary>
+        /// Enable start TLS connection (bool)
+        /// </summary>
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
 
         /// <summary>
         /// Password for test access to ActiveDirectory service (string)

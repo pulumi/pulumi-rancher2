@@ -72,6 +72,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The GKE node config tags (List)
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("taints")]
         private InputList<Inputs.ClusterGkeConfigV2NodePoolConfigTaintArgs>? _taints;
 

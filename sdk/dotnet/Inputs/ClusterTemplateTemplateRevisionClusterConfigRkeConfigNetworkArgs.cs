@@ -35,6 +35,14 @@ namespace Pulumi.Rancher2.Inputs
         [Input("plugin")]
         public Input<string>? Plugin { get; set; }
 
+        [Input("tolerations")]
+        private InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>? _tolerations;
+        public InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs> Tolerations
+        {
+            get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>());
+            set => _tolerations = value;
+        }
+
         [Input("weaveNetworkProvider")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs>? WeaveNetworkProvider { get; set; }
 

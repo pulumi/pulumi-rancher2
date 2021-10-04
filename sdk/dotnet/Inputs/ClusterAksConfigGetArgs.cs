@@ -73,13 +73,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? AgentVmSize { get; set; }
 
         /// <summary>
-        /// Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+        /// The AKS auth base url (string)
         /// </summary>
         [Input("authBaseUrl")]
         public Input<string>? AuthBaseUrl { get; set; }
 
         /// <summary>
-        /// Different resource management API url to use. Default `https://management.azure.com/` (string)
+        /// The AKS base url (string)
         /// </summary>
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
-        /// Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        /// The AKS node pool count. Default: `1` (int)
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         /// <summary>
-        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// The AKS load balancer sku (string)
         /// </summary>
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
@@ -163,19 +163,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> MasterDnsPrefix { get; set; } = null!;
 
         /// <summary>
-        /// Maximum number of pods that can run on a node. Default `110` (int)
+        /// The AKS node pool max pods. Default: `110` (int)
         /// </summary>
         [Input("maxPods")]
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+        /// The AKS network plugin. Required if `imported=false` (string)
         /// </summary>
         [Input("networkPlugin")]
         public Input<string>? NetworkPlugin { get; set; }
 
         /// <summary>
-        /// Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        /// The AKS network policy (string)
         /// </summary>
         [Input("networkPolicy")]
         public Input<string>? NetworkPolicy { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? PodCidr { get; set; }
 
         /// <summary>
-        /// The name of the Cluster resource group (string)
+        /// The AKS resource group (string)
         /// </summary>
         [Input("resourceGroup", required: true)]
         public Input<string> ResourceGroup { get; set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> SshPublicKeyContents { get; set; } = null!;
 
         /// <summary>
-        /// The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        /// The AKS subnet (string)
         /// </summary>
         [Input("subnet", required: true)]
         public Input<string> Subnet { get; set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The EKS cluster tags (map)
+        /// The GKE node config tags (List)
         /// </summary>
         public InputList<string> Tags
         {
@@ -254,7 +254,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> VirtualNetwork { get; set; } = null!;
 
         /// <summary>
-        /// The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        /// The AKS virtual network resource group (string)
         /// </summary>
         [Input("virtualNetworkResourceGroup", required: true)]
         public Input<string> VirtualNetworkResourceGroup { get; set; } = null!;

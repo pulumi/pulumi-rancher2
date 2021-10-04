@@ -22,9 +22,17 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        /// </summary>
+        public readonly string? Environment;
+        /// <summary>
         /// Azure Subscription ID (string)
         /// </summary>
         public readonly string SubscriptionId;
+        /// <summary>
+        /// Azure Tenant ID (string)
+        /// </summary>
+        public readonly string? TenantId;
 
         [OutputConstructor]
         private CloudCredentialAzureCredentialConfig(
@@ -32,11 +40,17 @@ namespace Pulumi.Rancher2.Outputs
 
             string clientSecret,
 
-            string subscriptionId)
+            string? environment,
+
+            string subscriptionId,
+
+            string? tenantId)
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
+            Environment = environment;
             SubscriptionId = subscriptionId;
+            TenantId = tenantId;
         }
     }
 }

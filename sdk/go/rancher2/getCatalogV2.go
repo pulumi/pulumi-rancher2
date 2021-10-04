@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a Rancher2 catalog v2.
+// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
 func LookupCatalogV2(ctx *pulumi.Context, args *LookupCatalogV2Args, opts ...pulumi.InvokeOption) (*LookupCatalogV2Result, error) {
 	var rv LookupCatalogV2Result
 	err := ctx.Invoke("rancher2:index/getCatalogV2:getCatalogV2", args, &rv, opts...)
@@ -43,9 +43,10 @@ type LookupCatalogV2Result struct {
 	// (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure bool `pulumi:"insecure"`
 	// (Computed) Labels for the catalog v2 (map)
-	Labels          map[string]interface{} `pulumi:"labels"`
-	Name            string                 `pulumi:"name"`
-	ResourceVersion string                 `pulumi:"resourceVersion"`
+	Labels map[string]interface{} `pulumi:"labels"`
+	Name   string                 `pulumi:"name"`
+	// (Computed) The k8s resource version (string)
+	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) K8s secret name to be used to connect to the repo (string)
 	SecretName string `pulumi:"secretName"`
 	// (Computed) K8s secret namespace (string)

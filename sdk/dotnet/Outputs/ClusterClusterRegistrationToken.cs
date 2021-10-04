@@ -34,6 +34,14 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? InsecureCommand;
         /// <summary>
+        /// Insecure node command to execute in a imported k8s cluster (string)
+        /// </summary>
+        public readonly string? InsecureNodeCommand;
+        /// <summary>
+        /// Insecure windows command to execute in a imported k8s cluster (string)
+        /// </summary>
+        public readonly string? InsecureWindowsNodeCommand;
+        /// <summary>
         /// Labels for cluster registration token object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
@@ -70,6 +78,10 @@ namespace Pulumi.Rancher2.Outputs
 
             string? insecureCommand,
 
+            string? insecureNodeCommand,
+
+            string? insecureWindowsNodeCommand,
+
             ImmutableDictionary<string, object>? labels,
 
             string? manifestUrl,
@@ -87,6 +99,8 @@ namespace Pulumi.Rancher2.Outputs
             Command = command;
             Id = id;
             InsecureCommand = insecureCommand;
+            InsecureNodeCommand = insecureNodeCommand;
+            InsecureWindowsNodeCommand = insecureWindowsNodeCommand;
             Labels = labels;
             ManifestUrl = manifestUrl;
             Name = name;

@@ -37,6 +37,7 @@ class AuthConfigActiveDirectoryArgs:
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
                  user_disabled_bit_mask: Optional[pulumi.Input[int]] = None,
                  user_enabled_attribute: Optional[pulumi.Input[str]] = None,
@@ -54,7 +55,7 @@ class AuthConfigActiveDirectoryArgs:
         :param pulumi.Input[str] test_username: Username for test access to ActiveDirectory service (string)
         :param pulumi.Input[str] user_search_base: User search base DN (string)
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
@@ -71,6 +72,7 @@ class AuthConfigActiveDirectoryArgs:
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: ActiveDirectory port. Default `389` (int)
+        :param pulumi.Input[bool] start_tls: Enable start TLS connection (bool)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
         :param pulumi.Input[int] user_disabled_bit_mask: User disabled bit mask. Default `2` (int)
         :param pulumi.Input[str] user_enabled_attribute: User enable attribute (string)
@@ -122,6 +124,8 @@ class AuthConfigActiveDirectoryArgs:
             pulumi.set(__self__, "nested_group_membership_enabled", nested_group_membership_enabled)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if start_tls is not None:
+            pulumi.set(__self__, "start_tls", start_tls)
         if tls is not None:
             pulumi.set(__self__, "tls", tls)
         if user_disabled_bit_mask is not None:
@@ -227,7 +231,7 @@ class AuthConfigActiveDirectoryArgs:
     @pulumi.getter(name="allowedPrincipalIds")
     def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
@@ -428,6 +432,18 @@ class AuthConfigActiveDirectoryArgs:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable start TLS connection (bool)
+        """
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
+
+    @property
     @pulumi.getter
     def tls(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -549,6 +565,7 @@ class _AuthConfigActiveDirectoryState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -564,7 +581,7 @@ class _AuthConfigActiveDirectoryState:
         """
         Input properties used for looking up and filtering AuthConfigActiveDirectory resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
@@ -585,6 +602,7 @@ class _AuthConfigActiveDirectoryState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[str] service_account_username: Service account DN for access ActiveDirectory service (string)
+        :param pulumi.Input[bool] start_tls: Enable start TLS connection (bool)
         :param pulumi.Input[str] test_password: Password for test access to ActiveDirectory service (string)
         :param pulumi.Input[str] test_username: Username for test access to ActiveDirectory service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -642,6 +660,8 @@ class _AuthConfigActiveDirectoryState:
             pulumi.set(__self__, "service_account_password", service_account_password)
         if service_account_username is not None:
             pulumi.set(__self__, "service_account_username", service_account_username)
+        if start_tls is not None:
+            pulumi.set(__self__, "start_tls", start_tls)
         if test_password is not None:
             pulumi.set(__self__, "test_password", test_password)
         if test_username is not None:
@@ -683,7 +703,7 @@ class _AuthConfigActiveDirectoryState:
     @pulumi.getter(name="allowedPrincipalIds")
     def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
@@ -932,6 +952,18 @@ class _AuthConfigActiveDirectoryState:
         pulumi.set(self, "service_account_username", value)
 
     @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable start TLS connection (bool)
+        """
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "start_tls", value)
+
+    @property
     @pulumi.getter(name="testPassword")
     def test_password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1102,6 +1134,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -1122,7 +1155,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
@@ -1142,6 +1175,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[str] service_account_username: Service account DN for access ActiveDirectory service (string)
+        :param pulumi.Input[bool] start_tls: Enable start TLS connection (bool)
         :param pulumi.Input[str] test_password: Password for test access to ActiveDirectory service (string)
         :param pulumi.Input[str] test_username: Username for test access to ActiveDirectory service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -1201,6 +1235,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_password: Optional[pulumi.Input[str]] = None,
                  service_account_username: Optional[pulumi.Input[str]] = None,
+                 start_tls: Optional[pulumi.Input[bool]] = None,
                  test_password: Optional[pulumi.Input[str]] = None,
                  test_username: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
@@ -1251,6 +1286,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
             if service_account_username is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_username'")
             __props__.__dict__["service_account_username"] = service_account_username
+            __props__.__dict__["start_tls"] = start_tls
             if test_password is None and not opts.urn:
                 raise TypeError("Missing required property 'test_password'")
             __props__.__dict__["test_password"] = test_password
@@ -1304,6 +1340,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_account_password: Optional[pulumi.Input[str]] = None,
             service_account_username: Optional[pulumi.Input[str]] = None,
+            start_tls: Optional[pulumi.Input[bool]] = None,
             test_password: Optional[pulumi.Input[str]] = None,
             test_username: Optional[pulumi.Input[str]] = None,
             tls: Optional[pulumi.Input[bool]] = None,
@@ -1324,7 +1361,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
@@ -1345,6 +1382,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[str] service_account_username: Service account DN for access ActiveDirectory service (string)
+        :param pulumi.Input[bool] start_tls: Enable start TLS connection (bool)
         :param pulumi.Input[str] test_password: Password for test access to ActiveDirectory service (string)
         :param pulumi.Input[str] test_username: Username for test access to ActiveDirectory service (string)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -1384,6 +1422,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         __props__.__dict__["servers"] = servers
         __props__.__dict__["service_account_password"] = service_account_password
         __props__.__dict__["service_account_username"] = service_account_username
+        __props__.__dict__["start_tls"] = start_tls
         __props__.__dict__["test_password"] = test_password
         __props__.__dict__["test_username"] = test_username
         __props__.__dict__["tls"] = tls
@@ -1410,7 +1449,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
     @pulumi.getter(name="allowedPrincipalIds")
     def allowed_principal_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>` (list)
+        Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
@@ -1573,6 +1612,14 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         Service account DN for access ActiveDirectory service (string)
         """
         return pulumi.get(self, "service_account_username")
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> pulumi.Output[bool]:
+        """
+        Enable start TLS connection (bool)
+        """
+        return pulumi.get(self, "start_tls")
 
     @property
     @pulumi.getter(name="testPassword")

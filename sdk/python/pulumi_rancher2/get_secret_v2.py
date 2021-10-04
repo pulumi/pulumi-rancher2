@@ -146,7 +146,7 @@ def get_secret_v2(cluster_id: Optional[str] = None,
                   namespace: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretV2Result:
     """
-    Use this data source to retrieve information about a Rancher2 secret v2.
+    Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
 
 
     :param str cluster_id: The cluster id of the secret V2 (string)

@@ -19,6 +19,8 @@ __all__ = [
     'CloudCredentialVsphereCredentialConfig',
     'ClusterAgentEnvVar',
     'ClusterAksConfig',
+    'ClusterAksConfigV2',
+    'ClusterAksConfigV2NodePool',
     'ClusterAlertGroupRecipient',
     'ClusterAlertRuleEventRule',
     'ClusterAlertRuleMetricRule',
@@ -86,18 +88,22 @@ __all__ = [
     'ClusterRkeConfigDns',
     'ClusterRkeConfigDnsLinearAutoscalerParams',
     'ClusterRkeConfigDnsNodelocal',
+    'ClusterRkeConfigDnsToleration',
     'ClusterRkeConfigDnsUpdateStrategy',
     'ClusterRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterRkeConfigIngress',
+    'ClusterRkeConfigIngressToleration',
     'ClusterRkeConfigIngressUpdateStrategy',
     'ClusterRkeConfigIngressUpdateStrategyRollingUpdate',
     'ClusterRkeConfigMonitoring',
+    'ClusterRkeConfigMonitoringToleration',
     'ClusterRkeConfigMonitoringUpdateStrategy',
     'ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate',
     'ClusterRkeConfigNetwork',
     'ClusterRkeConfigNetworkCalicoNetworkProvider',
     'ClusterRkeConfigNetworkCanalNetworkProvider',
     'ClusterRkeConfigNetworkFlannelNetworkProvider',
+    'ClusterRkeConfigNetworkToleration',
     'ClusterRkeConfigNetworkWeaveNetworkProvider',
     'ClusterRkeConfigNode',
     'ClusterRkeConfigPrivateRegistry',
@@ -149,18 +155,22 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry',
@@ -184,12 +194,37 @@ __all__ = [
     'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfig',
     'ClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfig',
     'ClusterTemplateTemplateRevisionQuestion',
+    'ClusterV2AgentEnvVar',
+    'ClusterV2ClusterRegistrationToken',
+    'ClusterV2RkeConfig',
+    'ClusterV2RkeConfigEtcd',
+    'ClusterV2RkeConfigEtcdS3Config',
+    'ClusterV2RkeConfigLocalAuthEndpoint',
+    'ClusterV2RkeConfigMachinePool',
+    'ClusterV2RkeConfigMachinePoolMachineConfig',
+    'ClusterV2RkeConfigMachinePoolRollingUpdate',
+    'ClusterV2RkeConfigMachinePoolTaint',
+    'ClusterV2RkeConfigMachineSelectorConfig',
+    'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector',
+    'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression',
+    'ClusterV2RkeConfigRegistries',
+    'ClusterV2RkeConfigRegistriesConfig',
+    'ClusterV2RkeConfigRegistriesMirror',
+    'ClusterV2RkeConfigUpgradeStrategy',
+    'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions',
+    'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions',
     'EtcdBackupBackupConfig',
     'EtcdBackupBackupConfigS3BackupConfig',
     'GlobalDnsProviderAlidnsConfig',
     'GlobalDnsProviderCloudflareConfig',
     'GlobalDnsProviderRoute53Config',
     'GlobalRoleRule',
+    'MachineConfigV2Amazonec2Config',
+    'MachineConfigV2AzureConfig',
+    'MachineConfigV2DigitaloceanConfig',
+    'MachineConfigV2LinodeConfig',
+    'MachineConfigV2OpenstackConfig',
+    'MachineConfigV2VsphereConfig',
     'MultiClusterAppAnswer',
     'MultiClusterAppMember',
     'MultiClusterAppTarget',
@@ -250,6 +285,8 @@ __all__ = [
     'RoleTempalteRule',
     'RoleTemplateRule',
     'GetClusterAksConfigResult',
+    'GetClusterAksConfigV2Result',
+    'GetClusterAksConfigV2NodePoolResult',
     'GetClusterAlertGroupRecipientResult',
     'GetClusterAlterRuleEventRuleResult',
     'GetClusterAlterRuleMetricRuleResult',
@@ -312,18 +349,22 @@ __all__ = [
     'GetClusterRkeConfigDnsResult',
     'GetClusterRkeConfigDnsLinearAutoscalerParamsResult',
     'GetClusterRkeConfigDnsNodelocalResult',
+    'GetClusterRkeConfigDnsTolerationResult',
     'GetClusterRkeConfigDnsUpdateStrategyResult',
     'GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigIngressResult',
+    'GetClusterRkeConfigIngressTolerationResult',
     'GetClusterRkeConfigIngressUpdateStrategyResult',
     'GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigMonitoringResult',
+    'GetClusterRkeConfigMonitoringTolerationResult',
     'GetClusterRkeConfigMonitoringUpdateStrategyResult',
     'GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateResult',
     'GetClusterRkeConfigNetworkResult',
     'GetClusterRkeConfigNetworkCalicoNetworkProviderResult',
     'GetClusterRkeConfigNetworkCanalNetworkProviderResult',
     'GetClusterRkeConfigNetworkFlannelNetworkProviderResult',
+    'GetClusterRkeConfigNetworkTolerationResult',
     'GetClusterRkeConfigNetworkWeaveNetworkProviderResult',
     'GetClusterRkeConfigNodeResult',
     'GetClusterRkeConfigPrivateRegistryResult',
@@ -376,18 +417,22 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderResult',
+    'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult',
     'GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult',
@@ -411,6 +456,25 @@ __all__ = [
     'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScanConfigCisScanConfigResult',
     'GetClusterTemplateTemplateRevisionClusterConfigScheduledClusterScanScheduleConfigResult',
     'GetClusterTemplateTemplateRevisionQuestionResult',
+    'GetClusterV2AgentEnvVarResult',
+    'GetClusterV2ClusterRegistrationTokenResult',
+    'GetClusterV2RkeConfigResult',
+    'GetClusterV2RkeConfigEtcdResult',
+    'GetClusterV2RkeConfigEtcdS3ConfigResult',
+    'GetClusterV2RkeConfigLocalAuthEndpointResult',
+    'GetClusterV2RkeConfigMachinePoolResult',
+    'GetClusterV2RkeConfigMachinePoolMachineConfigResult',
+    'GetClusterV2RkeConfigMachinePoolRollingUpdateResult',
+    'GetClusterV2RkeConfigMachinePoolTaintResult',
+    'GetClusterV2RkeConfigMachineSelectorConfigResult',
+    'GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult',
+    'GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult',
+    'GetClusterV2RkeConfigRegistriesResult',
+    'GetClusterV2RkeConfigRegistriesConfigResult',
+    'GetClusterV2RkeConfigRegistriesMirrorResult',
+    'GetClusterV2RkeConfigUpgradeStrategyResult',
+    'GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult',
+    'GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult',
     'GetEtcdBackupBackupConfigResult',
     'GetEtcdBackupBackupConfigS3BackupConfigResult',
     'GetGlobalDnsProviderAlidnsConfigResult',
@@ -478,6 +542,8 @@ class CloudCredentialAmazonec2CredentialConfig(dict):
             suggest = "access_key"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "defaultRegion":
+            suggest = "default_region"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudCredentialAmazonec2CredentialConfig. Access the value via the '{suggest}' property getter instead.")
@@ -492,13 +558,17 @@ class CloudCredentialAmazonec2CredentialConfig(dict):
 
     def __init__(__self__, *,
                  access_key: str,
-                 secret_key: str):
+                 secret_key: str,
+                 default_region: Optional[str] = None):
         """
         :param str access_key: AWS access key (string)
         :param str secret_key: AWS secret key (string)
+        :param str default_region: AWS default region (string)
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "secret_key", secret_key)
+        if default_region is not None:
+            pulumi.set(__self__, "default_region", default_region)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -516,6 +586,14 @@ class CloudCredentialAmazonec2CredentialConfig(dict):
         """
         return pulumi.get(self, "secret_key")
 
+    @property
+    @pulumi.getter(name="defaultRegion")
+    def default_region(self) -> Optional[str]:
+        """
+        AWS default region (string)
+        """
+        return pulumi.get(self, "default_region")
+
 
 @pulumi.output_type
 class CloudCredentialAzureCredentialConfig(dict):
@@ -528,6 +606,8 @@ class CloudCredentialAzureCredentialConfig(dict):
             suggest = "client_secret"
         elif key == "subscriptionId":
             suggest = "subscription_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudCredentialAzureCredentialConfig. Access the value via the '{suggest}' property getter instead.")
@@ -543,15 +623,23 @@ class CloudCredentialAzureCredentialConfig(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 subscription_id: str):
+                 subscription_id: str,
+                 environment: Optional[str] = None,
+                 tenant_id: Optional[str] = None):
         """
         :param str client_id: Azure Service Principal Account ID (string)
         :param str client_secret: Azure Service Principal Account password (string)
         :param str subscription_id: Azure Subscription ID (string)
+        :param str environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        :param str tenant_id: Azure Tenant ID (string)
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "subscription_id", subscription_id)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="clientId")
@@ -576,6 +664,22 @@ class CloudCredentialAzureCredentialConfig(dict):
         Azure Subscription ID (string)
         """
         return pulumi.get(self, "subscription_id")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        Azure Tenant ID (string)
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -913,13 +1017,13 @@ class ClusterAksConfig(dict):
         :param str client_secret: Azure client secret associated with the \"client id\" (string)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param str master_dns_prefix: DNS prefix to use the Kubernetes cluster control pane (string)
-        :param str resource_group: The name of the Cluster resource group (string)
+        :param str resource_group: The AKS resource group (string)
         :param str ssh_public_key_contents: Contents of the SSH public key used to authenticate with Linux hosts (string)
-        :param str subnet: The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        :param str subnet: The AKS subnet (string)
         :param str subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
         :param str tenant_id: Azure tenant ID to use (string)
         :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
-        :param str virtual_network_resource_group: The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        :param str virtual_network_resource_group: The AKS virtual network resource group (string)
         :param str aad_server_app_secret: The secret of an Azure Active Directory server application (string)
         :param str aad_tenant_id: The ID of an Azure Active Directory tenant (string)
         :param str add_client_app_id: The ID of an Azure Active Directory client application of type \"Native\". This application is for user login via kubectl (string)
@@ -929,24 +1033,24 @@ class ClusterAksConfig(dict):
         :param str agent_pool_name: Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
         :param str agent_storage_profile: Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
         :param str agent_vm_size: Size of machine in the agent pool. Default `Standard_D1_v2` (string)
-        :param str auth_base_url: Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
-        :param str base_url: Different resource management API url to use. Default `https://management.azure.com/` (string)
-        :param int count: Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        :param str auth_base_url: The AKS auth base url (string)
+        :param str base_url: The AKS base url (string)
+        :param int count: The AKS node pool count. Default: `1` (int)
         :param str dns_service_ip: An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \"service cidr\". Default `10.0.0.10` (string)
         :param str docker_bridge_cidr: A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \"service cidr\". Default `172.17.0.1/16` (string)
         :param bool enable_http_application_routing: Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
         :param bool enable_monitoring: Turn on Azure Log Analytics monitoring. Uses the Log Analytics \"Default\" workspace if it exists, else creates one. if using an existing workspace, specifies \"log analytics workspace resource id\". Default `true` (bool)
-        :param str load_balancer_sku: Load balancer type (basic | standard). Must be standard for auto-scaling
+        :param str load_balancer_sku: The AKS load balancer sku (string)
         :param str location: Azure Kubernetes cluster location. Default `eastus` (string)
         :param str log_analytics_workspace: The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}' (string)
         :param str log_analytics_workspace_resource_group: The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group (string)
-        :param int max_pods: Maximum number of pods that can run on a node. Default `110` (int)
-        :param str network_plugin: Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
-        :param str network_policy: Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        :param int max_pods: The AKS node pool max pods. Default: `110` (int)
+        :param str network_plugin: The AKS network plugin. Required if `imported=false` (string)
+        :param str network_policy: The AKS network policy (string)
         :param str pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         :param str service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
         :param Mapping[str, Any] tag: Use `tags` argument instead as []string
-        :param Sequence[str] tags: The EKS cluster tags (map)
+        :param Sequence[str] tags: The GKE node config tags (List)
         """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
         pulumi.set(__self__, "client_id", client_id)
@@ -1059,7 +1163,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> str:
         """
-        The name of the Cluster resource group (string)
+        The AKS resource group (string)
         """
         return pulumi.get(self, "resource_group")
 
@@ -1075,7 +1179,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def subnet(self) -> str:
         """
-        The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID (string)
+        The AKS subnet (string)
         """
         return pulumi.get(self, "subnet")
 
@@ -1107,7 +1211,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="virtualNetworkResourceGroup")
     def virtual_network_resource_group(self) -> str:
         """
-        The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID (string)
+        The AKS virtual network resource group (string)
         """
         return pulumi.get(self, "virtual_network_resource_group")
 
@@ -1187,7 +1291,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="authBaseUrl")
     def auth_base_url(self) -> Optional[str]:
         """
-        Different authentication API url to use. Default `https://login.microsoftonline.com/` (string)
+        The AKS auth base url (string)
         """
         return pulumi.get(self, "auth_base_url")
 
@@ -1195,7 +1299,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> Optional[str]:
         """
-        Different resource management API url to use. Default `https://management.azure.com/` (string)
+        The AKS base url (string)
         """
         return pulumi.get(self, "base_url")
 
@@ -1203,7 +1307,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def count(self) -> Optional[int]:
         """
-        Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive). Default `1` (int)
+        The AKS node pool count. Default: `1` (int)
         """
         return pulumi.get(self, "count")
 
@@ -1243,7 +1347,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="loadBalancerSku")
     def load_balancer_sku(self) -> Optional[str]:
         """
-        Load balancer type (basic | standard). Must be standard for auto-scaling
+        The AKS load balancer sku (string)
         """
         return pulumi.get(self, "load_balancer_sku")
 
@@ -1275,7 +1379,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[int]:
         """
-        Maximum number of pods that can run on a node. Default `110` (int)
+        The AKS node pool max pods. Default: `110` (int)
         """
         return pulumi.get(self, "max_pods")
 
@@ -1283,7 +1387,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="networkPlugin")
     def network_plugin(self) -> Optional[str]:
         """
-        Network plugin used for building Kubernetes network. Chooses from `azure` or `kubenet`. Default `azure` (string)
+        The AKS network plugin. Required if `imported=false` (string)
         """
         return pulumi.get(self, "network_plugin")
 
@@ -1291,7 +1395,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="networkPolicy")
     def network_policy(self) -> Optional[str]:
         """
-        Network policy used for building Kubernetes network. Chooses from `calico` (string)
+        The AKS network policy (string)
         """
         return pulumi.get(self, "network_policy")
 
@@ -1323,9 +1427,621 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The EKS cluster tags (map)
+        The GKE node config tags (List)
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ClusterAksConfigV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudCredentialId":
+            suggest = "cloud_credential_id"
+        elif key == "resourceGroup":
+            suggest = "resource_group"
+        elif key == "resourceLocation":
+            suggest = "resource_location"
+        elif key == "authBaseUrl":
+            suggest = "auth_base_url"
+        elif key == "authorizedIpRanges":
+            suggest = "authorized_ip_ranges"
+        elif key == "baseUrl":
+            suggest = "base_url"
+        elif key == "dnsPrefix":
+            suggest = "dns_prefix"
+        elif key == "httpApplicationRouting":
+            suggest = "http_application_routing"
+        elif key == "kubernetesVersion":
+            suggest = "kubernetes_version"
+        elif key == "linuxAdminUsername":
+            suggest = "linux_admin_username"
+        elif key == "linuxSshPublicKey":
+            suggest = "linux_ssh_public_key"
+        elif key == "loadBalancerSku":
+            suggest = "load_balancer_sku"
+        elif key == "logAnalyticsWorkspaceGroup":
+            suggest = "log_analytics_workspace_group"
+        elif key == "logAnalyticsWorkspaceName":
+            suggest = "log_analytics_workspace_name"
+        elif key == "networkDnsServiceIp":
+            suggest = "network_dns_service_ip"
+        elif key == "networkDockerBridgeCidr":
+            suggest = "network_docker_bridge_cidr"
+        elif key == "networkPlugin":
+            suggest = "network_plugin"
+        elif key == "networkPodCidr":
+            suggest = "network_pod_cidr"
+        elif key == "networkPolicy":
+            suggest = "network_policy"
+        elif key == "networkServiceCidr":
+            suggest = "network_service_cidr"
+        elif key == "nodePools":
+            suggest = "node_pools"
+        elif key == "privateCluster":
+            suggest = "private_cluster"
+        elif key == "virtualNetwork":
+            suggest = "virtual_network"
+        elif key == "virtualNetworkResourceGroup":
+            suggest = "virtual_network_resource_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAksConfigV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAksConfigV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAksConfigV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_credential_id: str,
+                 resource_group: str,
+                 resource_location: str,
+                 auth_base_url: Optional[str] = None,
+                 authorized_ip_ranges: Optional[Sequence[str]] = None,
+                 base_url: Optional[str] = None,
+                 dns_prefix: Optional[str] = None,
+                 http_application_routing: Optional[bool] = None,
+                 imported: Optional[bool] = None,
+                 kubernetes_version: Optional[str] = None,
+                 linux_admin_username: Optional[str] = None,
+                 linux_ssh_public_key: Optional[str] = None,
+                 load_balancer_sku: Optional[str] = None,
+                 log_analytics_workspace_group: Optional[str] = None,
+                 log_analytics_workspace_name: Optional[str] = None,
+                 monitoring: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 network_dns_service_ip: Optional[str] = None,
+                 network_docker_bridge_cidr: Optional[str] = None,
+                 network_plugin: Optional[str] = None,
+                 network_pod_cidr: Optional[str] = None,
+                 network_policy: Optional[str] = None,
+                 network_service_cidr: Optional[str] = None,
+                 node_pools: Optional[Sequence['outputs.ClusterAksConfigV2NodePool']] = None,
+                 private_cluster: Optional[bool] = None,
+                 subnet: Optional[str] = None,
+                 tags: Optional[Mapping[str, Any]] = None,
+                 virtual_network: Optional[str] = None,
+                 virtual_network_resource_group: Optional[str] = None):
+        """
+        :param str cloud_credential_id: The EKS cloud_credential id (string)
+        :param str resource_group: The AKS resource group (string)
+        :param str resource_location: The AKS resource location (string)
+        :param str auth_base_url: The AKS auth base url (string)
+        :param Sequence[str] authorized_ip_ranges: The AKS authorized ip ranges (list)
+        :param str base_url: The AKS base url (string)
+        :param str dns_prefix: The AKS dns prefix. Required if `imported=false` (string)
+        :param bool http_application_routing: Enable AKS http application routing? (bool)
+        :param bool imported: Is GKE cluster imported? Default: `false` (bool)
+        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str linux_admin_username: The AKS linux admin username (string)
+        :param str linux_ssh_public_key: The AKS linux ssh public key (string)
+        :param str load_balancer_sku: The AKS load balancer sku (string)
+        :param str log_analytics_workspace_group: The AKS log analytics workspace group (string)
+        :param str log_analytics_workspace_name: The AKS log analytics workspace name (string)
+        :param bool monitoring: Is AKS cluster monitoring enabled? (bool)
+        :param str name: Name of cluster registration token (string)
+        :param str network_dns_service_ip: The AKS network dns service ip (string)
+        :param str network_docker_bridge_cidr: The AKS network docker bridge cidr (string)
+        :param str network_plugin: The AKS network plugin. Required if `imported=false` (string)
+        :param str network_pod_cidr: The AKS network pod cidr (string)
+        :param str network_policy: The AKS network policy (string)
+        :param str network_service_cidr: The AKS network service cidr (string)
+        :param Sequence['ClusterAksConfigV2NodePoolArgs'] node_pools: The GKE cluster node pools. Required for create new cluster (List)
+        :param bool private_cluster: Is AKS cluster private? (bool)
+        :param str subnet: The AKS subnet (string)
+        :param Mapping[str, Any] tags: The GKE node config tags (List)
+        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        :param str virtual_network_resource_group: The AKS virtual network resource group (string)
+        """
+        pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+        pulumi.set(__self__, "resource_group", resource_group)
+        pulumi.set(__self__, "resource_location", resource_location)
+        if auth_base_url is not None:
+            pulumi.set(__self__, "auth_base_url", auth_base_url)
+        if authorized_ip_ranges is not None:
+            pulumi.set(__self__, "authorized_ip_ranges", authorized_ip_ranges)
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if dns_prefix is not None:
+            pulumi.set(__self__, "dns_prefix", dns_prefix)
+        if http_application_routing is not None:
+            pulumi.set(__self__, "http_application_routing", http_application_routing)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if linux_admin_username is not None:
+            pulumi.set(__self__, "linux_admin_username", linux_admin_username)
+        if linux_ssh_public_key is not None:
+            pulumi.set(__self__, "linux_ssh_public_key", linux_ssh_public_key)
+        if load_balancer_sku is not None:
+            pulumi.set(__self__, "load_balancer_sku", load_balancer_sku)
+        if log_analytics_workspace_group is not None:
+            pulumi.set(__self__, "log_analytics_workspace_group", log_analytics_workspace_group)
+        if log_analytics_workspace_name is not None:
+            pulumi.set(__self__, "log_analytics_workspace_name", log_analytics_workspace_name)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_dns_service_ip is not None:
+            pulumi.set(__self__, "network_dns_service_ip", network_dns_service_ip)
+        if network_docker_bridge_cidr is not None:
+            pulumi.set(__self__, "network_docker_bridge_cidr", network_docker_bridge_cidr)
+        if network_plugin is not None:
+            pulumi.set(__self__, "network_plugin", network_plugin)
+        if network_pod_cidr is not None:
+            pulumi.set(__self__, "network_pod_cidr", network_pod_cidr)
+        if network_policy is not None:
+            pulumi.set(__self__, "network_policy", network_policy)
+        if network_service_cidr is not None:
+            pulumi.set(__self__, "network_service_cidr", network_service_cidr)
+        if node_pools is not None:
+            pulumi.set(__self__, "node_pools", node_pools)
+        if private_cluster is not None:
+            pulumi.set(__self__, "private_cluster", private_cluster)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if virtual_network is not None:
+            pulumi.set(__self__, "virtual_network", virtual_network)
+        if virtual_network_resource_group is not None:
+            pulumi.set(__self__, "virtual_network_resource_group", virtual_network_resource_group)
+
+    @property
+    @pulumi.getter(name="cloudCredentialId")
+    def cloud_credential_id(self) -> str:
+        """
+        The EKS cloud_credential id (string)
+        """
+        return pulumi.get(self, "cloud_credential_id")
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> str:
+        """
+        The AKS resource group (string)
+        """
+        return pulumi.get(self, "resource_group")
+
+    @property
+    @pulumi.getter(name="resourceLocation")
+    def resource_location(self) -> str:
+        """
+        The AKS resource location (string)
+        """
+        return pulumi.get(self, "resource_location")
+
+    @property
+    @pulumi.getter(name="authBaseUrl")
+    def auth_base_url(self) -> Optional[str]:
+        """
+        The AKS auth base url (string)
+        """
+        return pulumi.get(self, "auth_base_url")
+
+    @property
+    @pulumi.getter(name="authorizedIpRanges")
+    def authorized_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        The AKS authorized ip ranges (list)
+        """
+        return pulumi.get(self, "authorized_ip_ranges")
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[str]:
+        """
+        The AKS base url (string)
+        """
+        return pulumi.get(self, "base_url")
+
+    @property
+    @pulumi.getter(name="dnsPrefix")
+    def dns_prefix(self) -> Optional[str]:
+        """
+        The AKS dns prefix. Required if `imported=false` (string)
+        """
+        return pulumi.get(self, "dns_prefix")
+
+    @property
+    @pulumi.getter(name="httpApplicationRouting")
+    def http_application_routing(self) -> Optional[bool]:
+        """
+        Enable AKS http application routing? (bool)
+        """
+        return pulumi.get(self, "http_application_routing")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        """
+        Is GKE cluster imported? Default: `false` (bool)
+        """
+        return pulumi.get(self, "imported")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[str]:
+        """
+        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter(name="linuxAdminUsername")
+    def linux_admin_username(self) -> Optional[str]:
+        """
+        The AKS linux admin username (string)
+        """
+        return pulumi.get(self, "linux_admin_username")
+
+    @property
+    @pulumi.getter(name="linuxSshPublicKey")
+    def linux_ssh_public_key(self) -> Optional[str]:
+        """
+        The AKS linux ssh public key (string)
+        """
+        return pulumi.get(self, "linux_ssh_public_key")
+
+    @property
+    @pulumi.getter(name="loadBalancerSku")
+    def load_balancer_sku(self) -> Optional[str]:
+        """
+        The AKS load balancer sku (string)
+        """
+        return pulumi.get(self, "load_balancer_sku")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceGroup")
+    def log_analytics_workspace_group(self) -> Optional[str]:
+        """
+        The AKS log analytics workspace group (string)
+        """
+        return pulumi.get(self, "log_analytics_workspace_group")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceName")
+    def log_analytics_workspace_name(self) -> Optional[str]:
+        """
+        The AKS log analytics workspace name (string)
+        """
+        return pulumi.get(self, "log_analytics_workspace_name")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[bool]:
+        """
+        Is AKS cluster monitoring enabled? (bool)
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkDnsServiceIp")
+    def network_dns_service_ip(self) -> Optional[str]:
+        """
+        The AKS network dns service ip (string)
+        """
+        return pulumi.get(self, "network_dns_service_ip")
+
+    @property
+    @pulumi.getter(name="networkDockerBridgeCidr")
+    def network_docker_bridge_cidr(self) -> Optional[str]:
+        """
+        The AKS network docker bridge cidr (string)
+        """
+        return pulumi.get(self, "network_docker_bridge_cidr")
+
+    @property
+    @pulumi.getter(name="networkPlugin")
+    def network_plugin(self) -> Optional[str]:
+        """
+        The AKS network plugin. Required if `imported=false` (string)
+        """
+        return pulumi.get(self, "network_plugin")
+
+    @property
+    @pulumi.getter(name="networkPodCidr")
+    def network_pod_cidr(self) -> Optional[str]:
+        """
+        The AKS network pod cidr (string)
+        """
+        return pulumi.get(self, "network_pod_cidr")
+
+    @property
+    @pulumi.getter(name="networkPolicy")
+    def network_policy(self) -> Optional[str]:
+        """
+        The AKS network policy (string)
+        """
+        return pulumi.get(self, "network_policy")
+
+    @property
+    @pulumi.getter(name="networkServiceCidr")
+    def network_service_cidr(self) -> Optional[str]:
+        """
+        The AKS network service cidr (string)
+        """
+        return pulumi.get(self, "network_service_cidr")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> Optional[Sequence['outputs.ClusterAksConfigV2NodePool']]:
+        """
+        The GKE cluster node pools. Required for create new cluster (List)
+        """
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="privateCluster")
+    def private_cluster(self) -> Optional[bool]:
+        """
+        Is AKS cluster private? (bool)
+        """
+        return pulumi.get(self, "private_cluster")
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> Optional[str]:
+        """
+        The AKS subnet (string)
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The GKE node config tags (List)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="virtualNetwork")
+    def virtual_network(self) -> Optional[str]:
+        """
+        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        """
+        return pulumi.get(self, "virtual_network")
+
+    @property
+    @pulumi.getter(name="virtualNetworkResourceGroup")
+    def virtual_network_resource_group(self) -> Optional[str]:
+        """
+        The AKS virtual network resource group (string)
+        """
+        return pulumi.get(self, "virtual_network_resource_group")
+
+
+@pulumi.output_type
+class ClusterAksConfigV2NodePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZones":
+            suggest = "availability_zones"
+        elif key == "enableAutoScaling":
+            suggest = "enable_auto_scaling"
+        elif key == "maxCount":
+            suggest = "max_count"
+        elif key == "maxPods":
+            suggest = "max_pods"
+        elif key == "minCount":
+            suggest = "min_count"
+        elif key == "orchestratorVersion":
+            suggest = "orchestrator_version"
+        elif key == "osDiskSizeGb":
+            suggest = "os_disk_size_gb"
+        elif key == "osDiskType":
+            suggest = "os_disk_type"
+        elif key == "osType":
+            suggest = "os_type"
+        elif key == "vmSize":
+            suggest = "vm_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAksConfigV2NodePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAksConfigV2NodePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAksConfigV2NodePool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 availability_zones: Optional[Sequence[str]] = None,
+                 count: Optional[int] = None,
+                 enable_auto_scaling: Optional[bool] = None,
+                 max_count: Optional[int] = None,
+                 max_pods: Optional[int] = None,
+                 min_count: Optional[int] = None,
+                 mode: Optional[str] = None,
+                 orchestrator_version: Optional[str] = None,
+                 os_disk_size_gb: Optional[int] = None,
+                 os_disk_type: Optional[str] = None,
+                 os_type: Optional[str] = None,
+                 vm_size: Optional[str] = None):
+        """
+        :param str name: Name of cluster registration token (string)
+        :param Sequence[str] availability_zones: The AKS node pool availability zones (list)
+        :param int count: The AKS node pool count. Default: `1` (int)
+        :param bool enable_auto_scaling: Is AKS node pool auto scaling enabled? Default: `false` (bool)
+        :param int max_count: The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+        :param int max_pods: The AKS node pool max pods. Default: `110` (int)
+        :param int min_count: The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+        :param str mode: The AKS node group mode. Default: `System` (string)
+        :param str orchestrator_version: The AKS node pool orchestrator version (string)
+        :param int os_disk_size_gb: The AKS node pool os disk size gb. Default: `128` (int)
+        :param str os_disk_type: The AKS node pool os disk type. Default: `Managed` (string)
+        :param str os_type: The AKS node pool os type. Default: `Linux` (string)
+        :param str vm_size: The AKS node pool orchestrator version (string)
+        """
+        pulumi.set(__self__, "name", name)
+        if availability_zones is not None:
+            pulumi.set(__self__, "availability_zones", availability_zones)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if enable_auto_scaling is not None:
+            pulumi.set(__self__, "enable_auto_scaling", enable_auto_scaling)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if max_pods is not None:
+            pulumi.set(__self__, "max_pods", max_pods)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if orchestrator_version is not None:
+            pulumi.set(__self__, "orchestrator_version", orchestrator_version)
+        if os_disk_size_gb is not None:
+            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
+        if os_disk_type is not None:
+            pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_type is not None:
+            pulumi.set(__self__, "os_type", os_type)
+        if vm_size is not None:
+            pulumi.set(__self__, "vm_size", vm_size)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[Sequence[str]]:
+        """
+        The AKS node pool availability zones (list)
+        """
+        return pulumi.get(self, "availability_zones")
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        The AKS node pool count. Default: `1` (int)
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="enableAutoScaling")
+    def enable_auto_scaling(self) -> Optional[bool]:
+        """
+        Is AKS node pool auto scaling enabled? Default: `false` (bool)
+        """
+        return pulumi.get(self, "enable_auto_scaling")
+
+    @property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> Optional[int]:
+        """
+        The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+        """
+        return pulumi.get(self, "max_count")
+
+    @property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> Optional[int]:
+        """
+        The AKS node pool max pods. Default: `110` (int)
+        """
+        return pulumi.get(self, "max_pods")
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> Optional[int]:
+        """
+        The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+        """
+        return pulumi.get(self, "min_count")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        The AKS node group mode. Default: `System` (string)
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="orchestratorVersion")
+    def orchestrator_version(self) -> Optional[str]:
+        """
+        The AKS node pool orchestrator version (string)
+        """
+        return pulumi.get(self, "orchestrator_version")
+
+    @property
+    @pulumi.getter(name="osDiskSizeGb")
+    def os_disk_size_gb(self) -> Optional[int]:
+        """
+        The AKS node pool os disk size gb. Default: `128` (int)
+        """
+        return pulumi.get(self, "os_disk_size_gb")
+
+    @property
+    @pulumi.getter(name="osDiskType")
+    def os_disk_type(self) -> Optional[str]:
+        """
+        The AKS node pool os disk type. Default: `Managed` (string)
+        """
+        return pulumi.get(self, "os_disk_type")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> Optional[str]:
+        """
+        The AKS node pool os type. Default: `Linux` (string)
+        """
+        return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter(name="vmSize")
+    def vm_size(self) -> Optional[str]:
+        """
+        The AKS node pool orchestrator version (string)
+        """
+        return pulumi.get(self, "vm_size")
 
 
 @pulumi.output_type
@@ -1974,6 +2690,10 @@ class ClusterClusterRegistrationToken(dict):
             suggest = "cluster_id"
         elif key == "insecureCommand":
             suggest = "insecure_command"
+        elif key == "insecureNodeCommand":
+            suggest = "insecure_node_command"
+        elif key == "insecureWindowsNodeCommand":
+            suggest = "insecure_windows_node_command"
         elif key == "manifestUrl":
             suggest = "manifest_url"
         elif key == "nodeCommand":
@@ -1998,6 +2718,8 @@ class ClusterClusterRegistrationToken(dict):
                  command: Optional[str] = None,
                  id: Optional[str] = None,
                  insecure_command: Optional[str] = None,
+                 insecure_node_command: Optional[str] = None,
+                 insecure_windows_node_command: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  manifest_url: Optional[str] = None,
                  name: Optional[str] = None,
@@ -2010,6 +2732,8 @@ class ClusterClusterRegistrationToken(dict):
         :param str command: Command to execute in a imported k8s cluster (string)
         :param str id: The EKS node group launch template ID (string)
         :param str insecure_command: Insecure command to execute in a imported k8s cluster (string)
+        :param str insecure_node_command: Insecure node command to execute in a imported k8s cluster (string)
+        :param str insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
         :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
         :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
         :param str name: Name of cluster registration token (string)
@@ -2027,6 +2751,10 @@ class ClusterClusterRegistrationToken(dict):
             pulumi.set(__self__, "id", id)
         if insecure_command is not None:
             pulumi.set(__self__, "insecure_command", insecure_command)
+        if insecure_node_command is not None:
+            pulumi.set(__self__, "insecure_node_command", insecure_node_command)
+        if insecure_windows_node_command is not None:
+            pulumi.set(__self__, "insecure_windows_node_command", insecure_windows_node_command)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if manifest_url is not None:
@@ -2079,6 +2807,22 @@ class ClusterClusterRegistrationToken(dict):
         Insecure command to execute in a imported k8s cluster (string)
         """
         return pulumi.get(self, "insecure_command")
+
+    @property
+    @pulumi.getter(name="insecureNodeCommand")
+    def insecure_node_command(self) -> Optional[str]:
+        """
+        Insecure node command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "insecure_node_command")
+
+    @property
+    @pulumi.getter(name="insecureWindowsNodeCommand")
+    def insecure_windows_node_command(self) -> Optional[str]:
+        """
+        Insecure windows command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "insecure_windows_node_command")
 
     @property
     @pulumi.getter
@@ -2591,7 +3335,7 @@ class ClusterEksConfigV2(dict):
         :param Sequence[str] security_groups: List of security groups to use for the cluster (list)
         :param str service_role: The AWS service role to use (string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
-        :param Mapping[str, Any] tags: The EKS cluster tags (map)
+        :param Mapping[str, Any] tags: The GKE node config tags (List)
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
         if imported is not None:
@@ -2749,7 +3493,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The EKS cluster tags (map)
+        The GKE node config tags (List)
         """
         return pulumi.get(self, "tags")
 
@@ -2830,7 +3574,7 @@ class ClusterEksConfigV2NodeGroup(dict):
         :param Mapping[str, Any] resource_tags: The EKS node group resource tags (map)
         :param Sequence[str] spot_instance_types: The EKS node group sport instace types (list string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
-        :param Mapping[str, Any] tags: The EKS cluster tags (map)
+        :param Mapping[str, Any] tags: The GKE node config tags (List)
         :param str user_data: The EKS node group user data (string)
         :param str version: rancher-monitoring chart version (string)
         """
@@ -2994,7 +3738,7 @@ class ClusterEksConfigV2NodeGroup(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The EKS cluster tags (map)
+        The GKE node config tags (List)
         """
         return pulumi.get(self, "tags")
 
@@ -4605,6 +5349,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
                  machine_type: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
+                 tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']] = None):
         """
         :param int disk_size_gb: The GKE node config disk size Gb (int)
@@ -4615,6 +5360,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         :param str machine_type: The GKE node config machine type (string)
         :param Sequence[str] oauth_scopes: The GKE node config oauth scopes (List)
         :param bool preemptible: Enable GKE node config preemptible. Default: `false` (bool)
+        :param Sequence[str] tags: The GKE node config tags (List)
         :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The GKE node config taints (List)
         """
         if disk_size_gb is not None:
@@ -4633,6 +5379,8 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -4699,6 +5447,14 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         Enable GKE node config preemptible. Default: `false` (bool)
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        The GKE node config tags (List)
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
@@ -5821,10 +6577,14 @@ class ClusterOkeConfig(dict):
             suggest = "custom_boot_volume_size"
         elif key == "enableKubernetesDashboard":
             suggest = "enable_kubernetes_dashboard"
+        elif key == "enablePrivateControlPlane":
+            suggest = "enable_private_control_plane"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
         elif key == "flexOcpus":
             suggest = "flex_ocpus"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
         elif key == "limitNodeCount":
             suggest = "limit_node_count"
         elif key == "loadBalancerSubnetName1":
@@ -5882,8 +6642,10 @@ class ClusterOkeConfig(dict):
                  custom_boot_volume_size: Optional[int] = None,
                  description: Optional[str] = None,
                  enable_kubernetes_dashboard: Optional[bool] = None,
+                 enable_private_control_plane: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
                  flex_ocpus: Optional[int] = None,
+                 kms_key_id: Optional[str] = None,
                  limit_node_count: Optional[int] = None,
                  load_balancer_subnet_name1: Optional[str] = None,
                  load_balancer_subnet_name2: Optional[str] = None,
@@ -5913,8 +6675,10 @@ class ClusterOkeConfig(dict):
         :param int custom_boot_volume_size: Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
         :param str description: An optional description of this cluster (string)
         :param bool enable_kubernetes_dashboard: Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        :param bool enable_private_control_plane: Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
         :param bool enable_private_nodes: Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         :param int flex_ocpus: Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+        :param str kms_key_id: The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
         :param int limit_node_count: The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
         :param str load_balancer_subnet_name1: The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
         :param str load_balancer_subnet_name2: The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
@@ -5947,10 +6711,14 @@ class ClusterOkeConfig(dict):
             pulumi.set(__self__, "description", description)
         if enable_kubernetes_dashboard is not None:
             pulumi.set(__self__, "enable_kubernetes_dashboard", enable_kubernetes_dashboard)
+        if enable_private_control_plane is not None:
+            pulumi.set(__self__, "enable_private_control_plane", enable_private_control_plane)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if flex_ocpus is not None:
             pulumi.set(__self__, "flex_ocpus", flex_ocpus)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if limit_node_count is not None:
             pulumi.set(__self__, "limit_node_count", limit_node_count)
         if load_balancer_subnet_name1 is not None:
@@ -6081,6 +6849,14 @@ class ClusterOkeConfig(dict):
         return pulumi.get(self, "enable_kubernetes_dashboard")
 
     @property
+    @pulumi.getter(name="enablePrivateControlPlane")
+    def enable_private_control_plane(self) -> Optional[bool]:
+        """
+        Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        """
+        return pulumi.get(self, "enable_private_control_plane")
+
+    @property
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> Optional[bool]:
         """
@@ -6095,6 +6871,14 @@ class ClusterOkeConfig(dict):
         Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
         """
         return pulumi.get(self, "flex_ocpus")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        """
+        The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="limitNodeCount")
@@ -6429,7 +7213,7 @@ class ClusterRkeConfig(dict):
         :param bool ignore_docker_version: Ignore docker version. Default `true` (bool)
         :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
-        :param 'ClusterRkeConfigMonitoringArgs' monitoring: Kubernetes cluster monitoring (list maxitems:1)
+        :param 'ClusterRkeConfigMonitoringArgs' monitoring: Is AKS cluster monitoring enabled? (bool)
         :param 'ClusterRkeConfigNetworkArgs' network: The GKE cluster network. Required for create new cluster (string)
         :param Sequence['ClusterRkeConfigNodeArgs'] nodes: RKE cluster nodes (list)
         :param str prefix_path: Prefix to customize Kubernetes path (string)
@@ -6578,7 +7362,7 @@ class ClusterRkeConfig(dict):
     @pulumi.getter
     def monitoring(self) -> Optional['outputs.ClusterRkeConfigMonitoring']:
         """
-        Kubernetes cluster monitoring (list maxitems:1)
+        Is AKS cluster monitoring enabled? (bool)
         """
         return pulumi.get(self, "monitoring")
 
@@ -6700,7 +7484,7 @@ class ClusterRkeConfigAuthorization(dict):
                  mode: Optional[str] = None,
                  options: Optional[Mapping[str, Any]] = None):
         """
-        :param str mode: RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        :param str mode: The AKS node group mode. Default: `System` (string)
         :param Mapping[str, Any] options: RKE options for network (map)
         """
         if mode is not None:
@@ -6712,7 +7496,7 @@ class ClusterRkeConfigAuthorization(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        RKE mode for authorization. `rbac` and `none` modes are available. Default `rbac` (string)
+        The AKS node group mode. Default: `System` (string)
         """
         return pulumi.get(self, "mode")
 
@@ -7351,12 +8135,12 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
         :param bool cloud_provider_rate_limit: (bool)
         :param int cloud_provider_rate_limit_bucket: (int)
         :param int cloud_provider_rate_limit_qps: (int)
-        :param str load_balancer_sku: Load balancer type (basic | standard). Must be standard for auto-scaling
+        :param str load_balancer_sku: The AKS load balancer sku (string)
         :param str location: Azure Kubernetes cluster location. Default `eastus` (string)
         :param int maximum_load_balancer_rule_count: (int)
         :param str primary_availability_set_name: (string)
         :param str primary_scale_set_name: (string)
-        :param str resource_group: The name of the Cluster resource group (string)
+        :param str resource_group: The AKS resource group (string)
         :param str route_table_name: (string)
         :param str security_group_name: (string)
         :param str subnet_name: (string)
@@ -7545,7 +8329,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
     @pulumi.getter(name="loadBalancerSku")
     def load_balancer_sku(self) -> Optional[str]:
         """
-        Load balancer type (basic | standard). Must be standard for auto-scaling
+        The AKS load balancer sku (string)
         """
         return pulumi.get(self, "load_balancer_sku")
 
@@ -7585,7 +8369,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[str]:
         """
-        The name of the Cluster resource group (string)
+        The AKS resource group (string)
         """
         return pulumi.get(self, "resource_group")
 
@@ -8680,16 +9464,20 @@ class ClusterRkeConfigDns(dict):
                  linear_autoscaler_params: Optional['outputs.ClusterRkeConfigDnsLinearAutoscalerParams'] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  nodelocal: Optional['outputs.ClusterRkeConfigDnsNodelocal'] = None,
+                 options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
                  reverse_cidrs: Optional[Sequence[str]] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterRkeConfigDnsToleration']] = None,
                  update_strategy: Optional['outputs.ClusterRkeConfigDnsUpdateStrategy'] = None,
                  upstream_nameservers: Optional[Sequence[str]] = None):
         """
         :param 'ClusterRkeConfigDnsLinearAutoscalerParamsArgs' linear_autoscaler_params: LinearAutoScalerParams dns config (list Maxitem: 1)
         :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
         :param 'ClusterRkeConfigDnsNodelocalArgs' nodelocal: Nodelocal dns config  (list Maxitem: 1)
+        :param Mapping[str, Any] options: RKE options for network (map)
         :param str provider: RKE monitoring provider (string)
         :param Sequence[str] reverse_cidrs: DNS add-on reverse cidr  (list)
+        :param Sequence['ClusterRkeConfigDnsTolerationArgs'] tolerations: Network add-on tolerations (list)
         :param 'ClusterRkeConfigDnsUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         :param Sequence[str] upstream_nameservers: DNS add-on upstream nameservers  (list)
         """
@@ -8699,10 +9487,14 @@ class ClusterRkeConfigDns(dict):
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
             pulumi.set(__self__, "nodelocal", nodelocal)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
@@ -8734,6 +9526,14 @@ class ClusterRkeConfigDns(dict):
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[Mapping[str, Any]]:
+        """
+        RKE options for network (map)
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
     def provider(self) -> Optional[str]:
         """
         RKE monitoring provider (string)
@@ -8747,6 +9547,14 @@ class ClusterRkeConfigDns(dict):
         DNS add-on reverse cidr  (list)
         """
         return pulumi.get(self, "reverse_cidrs")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterRkeConfigDnsToleration']]:
+        """
+        Network add-on tolerations (list)
+        """
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="updateStrategy")
@@ -8904,6 +9712,72 @@ class ClusterRkeConfigDnsNodelocal(dict):
 
 
 @pulumi.output_type
+class ClusterRkeConfigDnsToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The GKE taint key (string)
+        :param str effect: The GKE taint effect (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The GKE taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The GKE taint effect (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ClusterRkeConfigDnsUpdateStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9044,6 +9918,7 @@ class ClusterRkeConfigIngress(dict):
                  node_selector: Optional[Mapping[str, Any]] = None,
                  options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterRkeConfigIngressToleration']] = None,
                  update_strategy: Optional['outputs.ClusterRkeConfigIngressUpdateStrategy'] = None):
         """
         :param bool default_backend: Enable ingress default backend. Default: `true` (bool)
@@ -9055,6 +9930,7 @@ class ClusterRkeConfigIngress(dict):
         :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
         :param Mapping[str, Any] options: RKE options for network (map)
         :param str provider: RKE monitoring provider (string)
+        :param Sequence['ClusterRkeConfigIngressTolerationArgs'] tolerations: Network add-on tolerations (list)
         :param 'ClusterRkeConfigIngressUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         """
         if default_backend is not None:
@@ -9075,6 +9951,8 @@ class ClusterRkeConfigIngress(dict):
             pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -9151,12 +10029,86 @@ class ClusterRkeConfigIngress(dict):
         return pulumi.get(self, "provider")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterRkeConfigIngressToleration']]:
+        """
+        Network add-on tolerations (list)
+        """
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.ClusterRkeConfigIngressUpdateStrategy']:
         """
         RKE monitoring update strategy (list Maxitems: 1)
         """
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterRkeConfigIngressToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The GKE taint key (string)
+        :param str effect: The GKE taint effect (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The GKE taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The GKE taint effect (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -9269,12 +10221,14 @@ class ClusterRkeConfigMonitoring(dict):
                  options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
                  replicas: Optional[int] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterRkeConfigMonitoringToleration']] = None,
                  update_strategy: Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategy'] = None):
         """
         :param Mapping[str, Any] node_selector: RKE monitoring node selector (map)
         :param Mapping[str, Any] options: RKE options for network (map)
         :param str provider: RKE monitoring provider (string)
         :param int replicas: RKE monitoring replicas (int)
+        :param Sequence['ClusterRkeConfigMonitoringTolerationArgs'] tolerations: Network add-on tolerations (list)
         :param 'ClusterRkeConfigMonitoringUpdateStrategyArgs' update_strategy: RKE monitoring update strategy (list Maxitems: 1)
         """
         if node_selector is not None:
@@ -9285,6 +10239,8 @@ class ClusterRkeConfigMonitoring(dict):
             pulumi.set(__self__, "provider", provider)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -9321,12 +10277,86 @@ class ClusterRkeConfigMonitoring(dict):
         return pulumi.get(self, "replicas")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterRkeConfigMonitoringToleration']]:
+        """
+        Network add-on tolerations (list)
+        """
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategy']:
         """
         RKE monitoring update strategy (list Maxitems: 1)
         """
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterRkeConfigMonitoringToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The GKE taint key (string)
+        :param str effect: The GKE taint effect (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The GKE taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The GKE taint effect (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -9459,6 +10489,7 @@ class ClusterRkeConfigNetwork(dict):
                  mtu: Optional[int] = None,
                  options: Optional[Mapping[str, Any]] = None,
                  plugin: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterRkeConfigNetworkToleration']] = None,
                  weave_network_provider: Optional['outputs.ClusterRkeConfigNetworkWeaveNetworkProvider'] = None):
         """
         :param 'ClusterRkeConfigNetworkCalicoNetworkProviderArgs' calico_network_provider: Calico provider config for RKE network (list maxitems:1)
@@ -9467,6 +10498,7 @@ class ClusterRkeConfigNetwork(dict):
         :param int mtu: Network provider MTU. Default `0` (int)
         :param Mapping[str, Any] options: RKE options for network (map)
         :param str plugin: Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        :param Sequence['ClusterRkeConfigNetworkTolerationArgs'] tolerations: Network add-on tolerations (list)
         :param 'ClusterRkeConfigNetworkWeaveNetworkProviderArgs' weave_network_provider: Weave provider config for RKE network (list maxitems:1)
         """
         if calico_network_provider is not None:
@@ -9481,6 +10513,8 @@ class ClusterRkeConfigNetwork(dict):
             pulumi.set(__self__, "options", options)
         if plugin is not None:
             pulumi.set(__self__, "plugin", plugin)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if weave_network_provider is not None:
             pulumi.set(__self__, "weave_network_provider", weave_network_provider)
 
@@ -9531,6 +10565,14 @@ class ClusterRkeConfigNetwork(dict):
         Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         """
         return pulumi.get(self, "plugin")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterRkeConfigNetworkToleration']]:
+        """
+        Network add-on tolerations (list)
+        """
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="weaveNetworkProvider")
@@ -9613,6 +10655,72 @@ class ClusterRkeConfigNetworkFlannelNetworkProvider(dict):
         Iface config Flannel network provider (string)
         """
         return pulumi.get(self, "iface")
+
+
+@pulumi.output_type
+class ClusterRkeConfigNetworkToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The GKE taint key (string)
+        :param str effect: The GKE taint effect (string)
+        :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param int seconds: The toleration seconds (int)
+        :param str value: The GKE taint value (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The GKE taint key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The GKE taint effect (string)
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        The toleration seconds (int)
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The GKE taint value (string)
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -10599,7 +11707,7 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
                  configuration: Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
                  enabled: Optional[bool] = None):
         """
-        :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if configuration is not None:
@@ -10611,7 +11719,7 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     @pulumi.getter
     def configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration']:
         """
-        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         """
         return pulumi.get(self, "configuration")
 
@@ -10660,7 +11768,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
         :param int max_backup: Audit log max backup. Default: `10` (int)
         :param int max_size: The EKS node group maximum size. Default `2` (int)
         :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-        :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
+        :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
         """
         if format is not None:
             pulumi.set(__self__, "format", format)
@@ -10719,7 +11827,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. Ex. `"apiVersion: audit.k8s.io/v1\nkind: Policy\nrules:\n- level: RequestResponse\n  resources:\n  - resources:\n    - pods\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string)
+        Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
         """
         return pulumi.get(self, "policy")
 
@@ -10730,7 +11838,7 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
                  configuration: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if configuration is not None:
@@ -10742,7 +11850,7 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     @pulumi.getter
     def configuration(self) -> Optional[str]:
         """
-        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. Ex. `"apiVersion: eventratelimit.admission.k8s.io/v1alpha1\nkind: Configuration\nlimits:\n- type: Server\n  burst: 35000\n  qps: 6000\n"` [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string)
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         """
         return pulumi.get(self, "configuration")
 
@@ -10778,7 +11886,7 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
                  custom_config: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+        :param str custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
         :param bool enabled: Enable scheduled cluster scan. Default: `false` (bool)
         """
         if custom_config is not None:
@@ -10790,7 +11898,7 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> Optional[str]:
         """
-        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. Ex. `apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n- resources:\n  - secrets\n  providers:\n  - aescbc:\n      keys:\n      - name: k-fw5hn\n        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=\n    identity: {}\n` [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string)
+        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
         """
         return pulumi.get(self, "custom_config")
 
@@ -14006,8 +15114,10 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
                  linear_autoscaler_params: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams'] = None,
                  node_selector: Optional[Mapping[str, Any]] = None,
                  nodelocal: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal'] = None,
+                 options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
                  reverse_cidrs: Optional[Sequence[str]] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration']] = None,
                  update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy'] = None,
                  upstream_nameservers: Optional[Sequence[str]] = None):
         if linear_autoscaler_params is not None:
@@ -14016,10 +15126,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
             pulumi.set(__self__, "node_selector", node_selector)
         if nodelocal is not None:
             pulumi.set(__self__, "nodelocal", nodelocal)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
         if reverse_cidrs is not None:
             pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
         if upstream_nameservers is not None:
@@ -14042,6 +15156,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
 
@@ -14049,6 +15168,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
     @pulumi.getter(name="reverseCidrs")
     def reverse_cidrs(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "reverse_cidrs")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="updateStrategy")
@@ -14165,6 +15289,50 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "node_selector")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -14288,6 +15456,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
                  node_selector: Optional[Mapping[str, Any]] = None,
                  options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration']] = None,
                  update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy'] = None):
         if default_backend is not None:
             pulumi.set(__self__, "default_backend", default_backend)
@@ -14307,6 +15476,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
             pulumi.set(__self__, "options", options)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -14356,9 +15527,58 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
         return pulumi.get(self, "provider")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -14455,6 +15675,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring(dict):
                  options: Optional[Mapping[str, Any]] = None,
                  provider: Optional[str] = None,
                  replicas: Optional[int] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration']] = None,
                  update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy'] = None):
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
@@ -14464,6 +15685,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring(dict):
             pulumi.set(__self__, "provider", provider)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -14488,9 +15711,58 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring(dict):
         return pulumi.get(self, "replicas")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -14603,6 +15875,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(dict):
                  mtu: Optional[int] = None,
                  options: Optional[Mapping[str, Any]] = None,
                  plugin: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration']] = None,
                  weave_network_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider'] = None):
         if calico_network_provider is not None:
             pulumi.set(__self__, "calico_network_provider", calico_network_provider)
@@ -14616,6 +15889,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(dict):
             pulumi.set(__self__, "options", options)
         if plugin is not None:
             pulumi.set(__self__, "plugin", plugin)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if weave_network_provider is not None:
             pulumi.set(__self__, "weave_network_provider", weave_network_provider)
 
@@ -14648,6 +15923,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(dict):
     @pulumi.getter
     def plugin(self) -> Optional[str]:
         return pulumi.get(self, "plugin")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="weaveNetworkProvider")
@@ -14709,6 +15989,50 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwork
     @pulumi.getter
     def iface(self) -> Optional[str]:
         return pulumi.get(self, "iface")
+
+
+@pulumi.output_type
+class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 seconds: Optional[int] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -16272,6 +17596,1577 @@ class ClusterTemplateTemplateRevisionQuestion(dict):
 
 
 @pulumi.output_type
+class ClusterV2AgentEnvVar(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: Name of cluster registration token (string)
+        :param str value: The taint value (string)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterV2ClusterRegistrationToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "insecureCommand":
+            suggest = "insecure_command"
+        elif key == "insecureNodeCommand":
+            suggest = "insecure_node_command"
+        elif key == "insecureWindowsNodeCommand":
+            suggest = "insecure_windows_node_command"
+        elif key == "manifestUrl":
+            suggest = "manifest_url"
+        elif key == "nodeCommand":
+            suggest = "node_command"
+        elif key == "windowsNodeCommand":
+            suggest = "windows_node_command"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2ClusterRegistrationToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2ClusterRegistrationToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2ClusterRegistrationToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Optional[Mapping[str, Any]] = None,
+                 cluster_id: Optional[str] = None,
+                 command: Optional[str] = None,
+                 id: Optional[str] = None,
+                 insecure_command: Optional[str] = None,
+                 insecure_node_command: Optional[str] = None,
+                 insecure_windows_node_command: Optional[str] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 manifest_url: Optional[str] = None,
+                 name: Optional[str] = None,
+                 node_command: Optional[str] = None,
+                 token: Optional[str] = None,
+                 windows_node_command: Optional[str] = None):
+        """
+        :param Mapping[str, Any] annotations: Annotations for cluster registration token object (map)
+        :param str cluster_id: Cluster ID (string)
+        :param str command: Command to execute in a imported k8s cluster (string)
+        :param str id: (Computed) The ID of the resource (string)
+        :param str insecure_command: Insecure command to execute in a imported k8s cluster (string)
+        :param str insecure_node_command: Insecure node command to execute in a imported k8s cluster (string)
+        :param str insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        :param str name: Name of cluster registration token (string)
+        :param str node_command: Node command to execute in linux nodes for custom k8s cluster (string)
+        :param str token: Token for cluster registration token object (string)
+        :param str windows_node_command: Node command to execute in windows nodes for custom k8s cluster (string)
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if insecure_command is not None:
+            pulumi.set(__self__, "insecure_command", insecure_command)
+        if insecure_node_command is not None:
+            pulumi.set(__self__, "insecure_node_command", insecure_node_command)
+        if insecure_windows_node_command is not None:
+            pulumi.set(__self__, "insecure_windows_node_command", insecure_windows_node_command)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if manifest_url is not None:
+            pulumi.set(__self__, "manifest_url", manifest_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_command is not None:
+            pulumi.set(__self__, "node_command", node_command)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if windows_node_command is not None:
+            pulumi.set(__self__, "windows_node_command", windows_node_command)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, Any]]:
+        """
+        Annotations for cluster registration token object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[str]:
+        """
+        Cluster ID (string)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[str]:
+        """
+        Command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        (Computed) The ID of the resource (string)
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="insecureCommand")
+    def insecure_command(self) -> Optional[str]:
+        """
+        Insecure command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "insecure_command")
+
+    @property
+    @pulumi.getter(name="insecureNodeCommand")
+    def insecure_node_command(self) -> Optional[str]:
+        """
+        Insecure node command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "insecure_node_command")
+
+    @property
+    @pulumi.getter(name="insecureWindowsNodeCommand")
+    def insecure_windows_node_command(self) -> Optional[str]:
+        """
+        Insecure windows command to execute in a imported k8s cluster (string)
+        """
+        return pulumi.get(self, "insecure_windows_node_command")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="manifestUrl")
+    def manifest_url(self) -> Optional[str]:
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        """
+        return pulumi.get(self, "manifest_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeCommand")
+    def node_command(self) -> Optional[str]:
+        """
+        Node command to execute in linux nodes for custom k8s cluster (string)
+        """
+        return pulumi.get(self, "node_command")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Token for cluster registration token object (string)
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="windowsNodeCommand")
+    def windows_node_command(self) -> Optional[str]:
+        """
+        Node command to execute in windows nodes for custom k8s cluster (string)
+        """
+        return pulumi.get(self, "windows_node_command")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalManifest":
+            suggest = "additional_manifest"
+        elif key == "chartValues":
+            suggest = "chart_values"
+        elif key == "localAuthEndpoint":
+            suggest = "local_auth_endpoint"
+        elif key == "machineGlobalConfig":
+            suggest = "machine_global_config"
+        elif key == "machinePools":
+            suggest = "machine_pools"
+        elif key == "machineSelectorConfigs":
+            suggest = "machine_selector_configs"
+        elif key == "upgradeStrategy":
+            suggest = "upgrade_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_manifest: Optional[str] = None,
+                 chart_values: Optional[str] = None,
+                 etcd: Optional['outputs.ClusterV2RkeConfigEtcd'] = None,
+                 local_auth_endpoint: Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint'] = None,
+                 machine_global_config: Optional[str] = None,
+                 machine_pools: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']] = None,
+                 machine_selector_configs: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']] = None,
+                 registries: Optional['outputs.ClusterV2RkeConfigRegistries'] = None,
+                 upgrade_strategy: Optional['outputs.ClusterV2RkeConfigUpgradeStrategy'] = None):
+        """
+        :param str additional_manifest: Cluster V2 additional manifest (string)
+        :param str chart_values: Cluster V2 chart values. Must be in YAML format (string)
+        :param 'ClusterV2RkeConfigEtcdArgs' etcd: Cluster V2 etcd (list maxitems:1)
+        :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Cluster V2 local auth endpoint (list maxitems:1)
+        :param str machine_global_config: Cluster V2 machine global config. Must be in YAML format (string)
+        :param Sequence['ClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools (list)
+        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Cluster V2 machine selector config (list)
+        :param 'ClusterV2RkeConfigRegistriesArgs' registries: Cluster V2 docker registries (list maxitems:1)
+        :param 'ClusterV2RkeConfigUpgradeStrategyArgs' upgrade_strategy: Cluster V2 upgrade strategy (list maxitems:1)
+        """
+        if additional_manifest is not None:
+            pulumi.set(__self__, "additional_manifest", additional_manifest)
+        if chart_values is not None:
+            pulumi.set(__self__, "chart_values", chart_values)
+        if etcd is not None:
+            pulumi.set(__self__, "etcd", etcd)
+        if local_auth_endpoint is not None:
+            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
+        if machine_global_config is not None:
+            pulumi.set(__self__, "machine_global_config", machine_global_config)
+        if machine_pools is not None:
+            pulumi.set(__self__, "machine_pools", machine_pools)
+        if machine_selector_configs is not None:
+            pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
+        if registries is not None:
+            pulumi.set(__self__, "registries", registries)
+        if upgrade_strategy is not None:
+            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+
+    @property
+    @pulumi.getter(name="additionalManifest")
+    def additional_manifest(self) -> Optional[str]:
+        """
+        Cluster V2 additional manifest (string)
+        """
+        return pulumi.get(self, "additional_manifest")
+
+    @property
+    @pulumi.getter(name="chartValues")
+    def chart_values(self) -> Optional[str]:
+        """
+        Cluster V2 chart values. Must be in YAML format (string)
+        """
+        return pulumi.get(self, "chart_values")
+
+    @property
+    @pulumi.getter
+    def etcd(self) -> Optional['outputs.ClusterV2RkeConfigEtcd']:
+        """
+        Cluster V2 etcd (list maxitems:1)
+        """
+        return pulumi.get(self, "etcd")
+
+    @property
+    @pulumi.getter(name="localAuthEndpoint")
+    def local_auth_endpoint(self) -> Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint']:
+        """
+        Cluster V2 local auth endpoint (list maxitems:1)
+        """
+        return pulumi.get(self, "local_auth_endpoint")
+
+    @property
+    @pulumi.getter(name="machineGlobalConfig")
+    def machine_global_config(self) -> Optional[str]:
+        """
+        Cluster V2 machine global config. Must be in YAML format (string)
+        """
+        return pulumi.get(self, "machine_global_config")
+
+    @property
+    @pulumi.getter(name="machinePools")
+    def machine_pools(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']]:
+        """
+        Cluster V2 machine pools (list)
+        """
+        return pulumi.get(self, "machine_pools")
+
+    @property
+    @pulumi.getter(name="machineSelectorConfigs")
+    def machine_selector_configs(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']]:
+        """
+        Cluster V2 machine selector config (list)
+        """
+        return pulumi.get(self, "machine_selector_configs")
+
+    @property
+    @pulumi.getter
+    def registries(self) -> Optional['outputs.ClusterV2RkeConfigRegistries']:
+        """
+        Cluster V2 docker registries (list maxitems:1)
+        """
+        return pulumi.get(self, "registries")
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategy']:
+        """
+        Cluster V2 upgrade strategy (list maxitems:1)
+        """
+        return pulumi.get(self, "upgrade_strategy")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigEtcd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableSnapshots":
+            suggest = "disable_snapshots"
+        elif key == "s3Config":
+            suggest = "s3_config"
+        elif key == "snapshotRetention":
+            suggest = "snapshot_retention"
+        elif key == "snapshotScheduleCron":
+            suggest = "snapshot_schedule_cron"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigEtcd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigEtcd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigEtcd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_snapshots: Optional[bool] = None,
+                 s3_config: Optional['outputs.ClusterV2RkeConfigEtcdS3Config'] = None,
+                 snapshot_retention: Optional[int] = None,
+                 snapshot_schedule_cron: Optional[str] = None):
+        """
+        :param bool disable_snapshots: Disable ETCD snapshots. Default: `false` (bool)
+        :param 'ClusterV2RkeConfigEtcdS3ConfigArgs' s3_config: Creation option for etcd service (list maxitems:1)
+        :param int snapshot_retention: ETCD snapshot retention (int)
+        :param str snapshot_schedule_cron: ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`) (string)
+        """
+        if disable_snapshots is not None:
+            pulumi.set(__self__, "disable_snapshots", disable_snapshots)
+        if s3_config is not None:
+            pulumi.set(__self__, "s3_config", s3_config)
+        if snapshot_retention is not None:
+            pulumi.set(__self__, "snapshot_retention", snapshot_retention)
+        if snapshot_schedule_cron is not None:
+            pulumi.set(__self__, "snapshot_schedule_cron", snapshot_schedule_cron)
+
+    @property
+    @pulumi.getter(name="disableSnapshots")
+    def disable_snapshots(self) -> Optional[bool]:
+        """
+        Disable ETCD snapshots. Default: `false` (bool)
+        """
+        return pulumi.get(self, "disable_snapshots")
+
+    @property
+    @pulumi.getter(name="s3Config")
+    def s3_config(self) -> Optional['outputs.ClusterV2RkeConfigEtcdS3Config']:
+        """
+        Creation option for etcd service (list maxitems:1)
+        """
+        return pulumi.get(self, "s3_config")
+
+    @property
+    @pulumi.getter(name="snapshotRetention")
+    def snapshot_retention(self) -> Optional[int]:
+        """
+        ETCD snapshot retention (int)
+        """
+        return pulumi.get(self, "snapshot_retention")
+
+    @property
+    @pulumi.getter(name="snapshotScheduleCron")
+    def snapshot_schedule_cron(self) -> Optional[str]:
+        """
+        ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`) (string)
+        """
+        return pulumi.get(self, "snapshot_schedule_cron")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigEtcdS3Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudCredentialName":
+            suggest = "cloud_credential_name"
+        elif key == "endpointCa":
+            suggest = "endpoint_ca"
+        elif key == "skipSslVerify":
+            suggest = "skip_ssl_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigEtcdS3Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigEtcdS3Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigEtcdS3Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 endpoint: str,
+                 cloud_credential_name: Optional[str] = None,
+                 endpoint_ca: Optional[str] = None,
+                 folder: Optional[str] = None,
+                 region: Optional[str] = None,
+                 skip_ssl_verify: Optional[bool] = None):
+        """
+        :param str bucket: Bucket name for S3 service (string)
+        :param str endpoint: ETCD snapshot S3 endpoint (string)
+        :param str cloud_credential_name: ETCD snapshot S3 cloud credential name (string)
+        :param str endpoint_ca: ETCD snapshot S3 endpoint CA (string)
+        :param str folder: ETCD snapshot S3 folder (string)
+        :param str region: ETCD snapshot S3 region (string)
+        :param bool skip_ssl_verify: Disable ETCD skip ssl verify. Default: `false` (bool)
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "endpoint", endpoint)
+        if cloud_credential_name is not None:
+            pulumi.set(__self__, "cloud_credential_name", cloud_credential_name)
+        if endpoint_ca is not None:
+            pulumi.set(__self__, "endpoint_ca", endpoint_ca)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if skip_ssl_verify is not None:
+            pulumi.set(__self__, "skip_ssl_verify", skip_ssl_verify)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Bucket name for S3 service (string)
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        ETCD snapshot S3 endpoint (string)
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="cloudCredentialName")
+    def cloud_credential_name(self) -> Optional[str]:
+        """
+        ETCD snapshot S3 cloud credential name (string)
+        """
+        return pulumi.get(self, "cloud_credential_name")
+
+    @property
+    @pulumi.getter(name="endpointCa")
+    def endpoint_ca(self) -> Optional[str]:
+        """
+        ETCD snapshot S3 endpoint CA (string)
+        """
+        return pulumi.get(self, "endpoint_ca")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[str]:
+        """
+        ETCD snapshot S3 folder (string)
+        """
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        ETCD snapshot S3 region (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="skipSslVerify")
+    def skip_ssl_verify(self) -> Optional[bool]:
+        """
+        Disable ETCD skip ssl verify. Default: `false` (bool)
+        """
+        return pulumi.get(self, "skip_ssl_verify")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigLocalAuthEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigLocalAuthEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigLocalAuthEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigLocalAuthEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 fqdn: Optional[str] = None):
+        """
+        :param str ca_certs: CA certs for the authorized cluster endpoint (string)
+        :param bool enabled: Drain options enabled? Default `true` (bool)
+        :param str fqdn: FQDN for the authorized cluster endpoint (string)
+        """
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[str]:
+        """
+        CA certs for the authorized cluster endpoint (string)
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Drain options enabled? Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        FQDN for the authorized cluster endpoint (string)
+        """
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachinePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudCredentialSecretName":
+            suggest = "cloud_credential_secret_name"
+        elif key == "machineConfig":
+            suggest = "machine_config"
+        elif key == "controlPlaneRole":
+            suggest = "control_plane_role"
+        elif key == "etcdRole":
+            suggest = "etcd_role"
+        elif key == "rollingUpdate":
+            suggest = "rolling_update"
+        elif key == "workerRole":
+            suggest = "worker_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachinePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachinePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachinePool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_credential_secret_name: str,
+                 machine_config: 'outputs.ClusterV2RkeConfigMachinePoolMachineConfig',
+                 name: str,
+                 annotations: Optional[Mapping[str, Any]] = None,
+                 control_plane_role: Optional[bool] = None,
+                 etcd_role: Optional[bool] = None,
+                 labels: Optional[Mapping[str, Any]] = None,
+                 paused: Optional[bool] = None,
+                 quantity: Optional[int] = None,
+                 rolling_update: Optional['outputs.ClusterV2RkeConfigMachinePoolRollingUpdate'] = None,
+                 taints: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolTaint']] = None,
+                 worker_role: Optional[bool] = None):
+        """
+        :param str cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
+        :param 'ClusterV2RkeConfigMachinePoolMachineConfigArgs' machine_config: Machine pool node config (list)
+        :param str name: Name of cluster registration token (string)
+        :param Mapping[str, Any] annotations: Annotations for cluster registration token object (map)
+        :param bool control_plane_role: Machine pool control plane role? (bool)
+        :param bool etcd_role: Machine pool etcd role? (bool)
+        :param Mapping[str, Any] labels: Labels for cluster registration token object (map)
+        :param bool paused: Machine pool paused? (bool)
+        :param int quantity: Machine pool quantity (int)
+        :param 'ClusterV2RkeConfigMachinePoolRollingUpdateArgs' rolling_update: Machine pool rolling update (List maxitems:1)
+        :param Sequence['ClusterV2RkeConfigMachinePoolTaintArgs'] taints: Machine pool taints (list)
+        :param bool worker_role: Machine pool worker role? (bool)
+        """
+        pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
+        pulumi.set(__self__, "machine_config", machine_config)
+        pulumi.set(__self__, "name", name)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if control_plane_role is not None:
+            pulumi.set(__self__, "control_plane_role", control_plane_role)
+        if etcd_role is not None:
+            pulumi.set(__self__, "etcd_role", etcd_role)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+        if worker_role is not None:
+            pulumi.set(__self__, "worker_role", worker_role)
+
+    @property
+    @pulumi.getter(name="cloudCredentialSecretName")
+    def cloud_credential_secret_name(self) -> str:
+        """
+        Cluster V2 cloud credential secret name (string)
+        """
+        return pulumi.get(self, "cloud_credential_secret_name")
+
+    @property
+    @pulumi.getter(name="machineConfig")
+    def machine_config(self) -> 'outputs.ClusterV2RkeConfigMachinePoolMachineConfig':
+        """
+        Machine pool node config (list)
+        """
+        return pulumi.get(self, "machine_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, Any]]:
+        """
+        Annotations for cluster registration token object (map)
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="controlPlaneRole")
+    def control_plane_role(self) -> Optional[bool]:
+        """
+        Machine pool control plane role? (bool)
+        """
+        return pulumi.get(self, "control_plane_role")
+
+    @property
+    @pulumi.getter(name="etcdRole")
+    def etcd_role(self) -> Optional[bool]:
+        """
+        Machine pool etcd role? (bool)
+        """
+        return pulumi.get(self, "etcd_role")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Labels for cluster registration token object (map)
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[bool]:
+        """
+        Machine pool paused? (bool)
+        """
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[int]:
+        """
+        Machine pool quantity (int)
+        """
+        return pulumi.get(self, "quantity")
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.ClusterV2RkeConfigMachinePoolRollingUpdate']:
+        """
+        Machine pool rolling update (List maxitems:1)
+        """
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolTaint']]:
+        """
+        Machine pool taints (list)
+        """
+        return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="workerRole")
+    def worker_role(self) -> Optional[bool]:
+        """
+        Machine pool worker role? (bool)
+        """
+        return pulumi.get(self, "worker_role")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachinePoolMachineConfig(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 name: str):
+        """
+        :param str kind: Machine config kind (string)
+        :param str name: Name of cluster registration token (string)
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        Machine config kind (string)
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of cluster registration token (string)
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachinePoolRollingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachinePoolRollingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachinePoolRollingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachinePoolRollingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_surge: Optional[str] = None,
+                 max_unavailable: Optional[str] = None):
+        """
+        :param str max_surge: Rolling update max surge (string)
+        :param str max_unavailable: Rolling update max unavailable (string)
+        """
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[str]:
+        """
+        Rolling update max surge (string)
+        """
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[str]:
+        """
+        Rolling update max unavailable (string)
+        """
+        return pulumi.get(self, "max_unavailable")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachinePoolTaint(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 effect: Optional[str] = None):
+        """
+        :param str key: Machine selector label match expressions key (string)
+        :param str value: The taint value (string)
+        :param str effect: The taint effect. Default: `\"NoExecute\"` (string)
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Machine selector label match expressions key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The taint value (string)
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The taint effect. Default: `\"NoExecute\"` (string)
+        """
+        return pulumi.get(self, "effect")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineLabelSelector":
+            suggest = "machine_label_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config: Optional[Mapping[str, Any]] = None,
+                 machine_label_selector: Optional['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector'] = None):
+        """
+        :param Mapping[str, Any] config: Machine selector config (map)
+        :param 'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs' machine_label_selector: Machine selector label (list maxitems:1)
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if machine_label_selector is not None:
+            pulumi.set(__self__, "machine_label_selector", machine_label_selector)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, Any]]:
+        """
+        Machine selector config (map)
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="machineLabelSelector")
+    def machine_label_selector(self) -> Optional['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector']:
+        """
+        Machine selector label (list maxitems:1)
+        """
+        return pulumi.get(self, "machine_label_selector")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchExpressions":
+            suggest = "match_expressions"
+        elif key == "matchLabels":
+            suggest = "match_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_expressions: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression']] = None,
+                 match_labels: Optional[Mapping[str, Any]] = None):
+        """
+        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs'] match_expressions: Machine selector label match expressions (list)
+        :param Mapping[str, Any] match_labels: Machine selector label match labels (map)
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression']]:
+        """
+        Machine selector label match expressions (list)
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Machine selector label match labels (map)
+        """
+        return pulumi.get(self, "match_labels")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: Machine selector label match expressions key (string)
+        :param str operator: Machine selector label match expressions operator (string)
+        :param Sequence[str] values: Machine selector label match expressions values (List string)
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Machine selector label match expressions key (string)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Machine selector label match expressions operator (string)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Machine selector label match expressions values (List string)
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigRegistries(dict):
+    def __init__(__self__, *,
+                 configs: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesConfig']] = None,
+                 mirrors: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesMirror']] = None):
+        """
+        :param Sequence['ClusterV2RkeConfigRegistriesConfigArgs'] configs: Cluster V2 docker registries config (list)
+        :param Sequence['ClusterV2RkeConfigRegistriesMirrorArgs'] mirrors: Cluster V2 docker registries mirror (list)
+        """
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if mirrors is not None:
+            pulumi.set(__self__, "mirrors", mirrors)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesConfig']]:
+        """
+        Cluster V2 docker registries config (list)
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def mirrors(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesMirror']]:
+        """
+        Cluster V2 docker registries mirror (list)
+        """
+        return pulumi.get(self, "mirrors")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigRegistriesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authConfigSecretName":
+            suggest = "auth_config_secret_name"
+        elif key == "caBundle":
+            suggest = "ca_bundle"
+        elif key == "tlsSecretName":
+            suggest = "tls_secret_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigRegistriesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigRegistriesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigRegistriesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 auth_config_secret_name: Optional[str] = None,
+                 ca_bundle: Optional[str] = None,
+                 insecure: Optional[bool] = None,
+                 tls_secret_name: Optional[str] = None):
+        """
+        :param str hostname: Registry hostname (string)
+        :param str auth_config_secret_name: Registry auth config secret name (string)
+        :param str ca_bundle: Registry CA bundle (string)
+        :param bool insecure: Registry insecure connectivity (bool)
+        :param str tls_secret_name: Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if auth_config_secret_name is not None:
+            pulumi.set(__self__, "auth_config_secret_name", auth_config_secret_name)
+        if ca_bundle is not None:
+            pulumi.set(__self__, "ca_bundle", ca_bundle)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if tls_secret_name is not None:
+            pulumi.set(__self__, "tls_secret_name", tls_secret_name)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Registry hostname (string)
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="authConfigSecretName")
+    def auth_config_secret_name(self) -> Optional[str]:
+        """
+        Registry auth config secret name (string)
+        """
+        return pulumi.get(self, "auth_config_secret_name")
+
+    @property
+    @pulumi.getter(name="caBundle")
+    def ca_bundle(self) -> Optional[str]:
+        """
+        Registry CA bundle (string)
+        """
+        return pulumi.get(self, "ca_bundle")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[bool]:
+        """
+        Registry insecure connectivity (bool)
+        """
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="tlsSecretName")
+    def tls_secret_name(self) -> Optional[str]:
+        """
+        Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        """
+        return pulumi.get(self, "tls_secret_name")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigRegistriesMirror(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 endpoints: Optional[Sequence[str]] = None,
+                 rewrites: Optional[Mapping[str, Any]] = None):
+        """
+        :param str hostname: Registry hostname (string)
+        :param Sequence[str] endpoints: Registry mirror endpoints (List)
+        :param Mapping[str, Any] rewrites: Registry mirror rewrites (map)
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if rewrites is not None:
+            pulumi.set(__self__, "rewrites", rewrites)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Registry hostname (string)
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence[str]]:
+        """
+        Registry mirror endpoints (List)
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def rewrites(self) -> Optional[Mapping[str, Any]]:
+        """
+        Registry mirror rewrites (map)
+        """
+        return pulumi.get(self, "rewrites")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigUpgradeStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneConcurrency":
+            suggest = "control_plane_concurrency"
+        elif key == "controlPlaneDrainOptions":
+            suggest = "control_plane_drain_options"
+        elif key == "workerConcurrency":
+            suggest = "worker_concurrency"
+        elif key == "workerDrainOptions":
+            suggest = "worker_drain_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigUpgradeStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigUpgradeStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigUpgradeStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_concurrency: Optional[str] = None,
+                 control_plane_drain_options: Optional['outputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions'] = None,
+                 worker_concurrency: Optional[str] = None,
+                 worker_drain_options: Optional['outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions'] = None):
+        """
+        :param str control_plane_concurrency: How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
+        :param 'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs' control_plane_drain_options: Controlplane nodes drain options (list maxitems:1)
+        :param str worker_concurrency: How many worker nodes should be upgrade at time. Percentages are also accepted (string)
+        :param 'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs' worker_drain_options: Worker nodes drain options (list maxitems:1)
+        """
+        if control_plane_concurrency is not None:
+            pulumi.set(__self__, "control_plane_concurrency", control_plane_concurrency)
+        if control_plane_drain_options is not None:
+            pulumi.set(__self__, "control_plane_drain_options", control_plane_drain_options)
+        if worker_concurrency is not None:
+            pulumi.set(__self__, "worker_concurrency", worker_concurrency)
+        if worker_drain_options is not None:
+            pulumi.set(__self__, "worker_drain_options", worker_drain_options)
+
+    @property
+    @pulumi.getter(name="controlPlaneConcurrency")
+    def control_plane_concurrency(self) -> Optional[str]:
+        """
+        How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
+        """
+        return pulumi.get(self, "control_plane_concurrency")
+
+    @property
+    @pulumi.getter(name="controlPlaneDrainOptions")
+    def control_plane_drain_options(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions']:
+        """
+        Controlplane nodes drain options (list maxitems:1)
+        """
+        return pulumi.get(self, "control_plane_drain_options")
+
+    @property
+    @pulumi.getter(name="workerConcurrency")
+    def worker_concurrency(self) -> Optional[str]:
+        """
+        How many worker nodes should be upgrade at time. Percentages are also accepted (string)
+        """
+        return pulumi.get(self, "worker_concurrency")
+
+    @property
+    @pulumi.getter(name="workerDrainOptions")
+    def worker_drain_options(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions']:
+        """
+        Worker nodes drain options (list maxitems:1)
+        """
+        return pulumi.get(self, "worker_drain_options")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteEmptyDirData":
+            suggest = "delete_empty_dir_data"
+        elif key == "disableEviction":
+            suggest = "disable_eviction"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "ignoreDaemonSets":
+            suggest = "ignore_daemon_sets"
+        elif key == "ignoreErrors":
+            suggest = "ignore_errors"
+        elif key == "skipWaitForDeleteTimeoutSeconds":
+            suggest = "skip_wait_for_delete_timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_empty_dir_data: Optional[bool] = None,
+                 disable_eviction: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 force: Optional[bool] = None,
+                 grace_period: Optional[int] = None,
+                 ignore_daemon_sets: Optional[bool] = None,
+                 ignore_errors: Optional[bool] = None,
+                 skip_wait_for_delete_timeout_seconds: Optional[int] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param bool delete_empty_dir_data: Drain options delete empty dir data. Default `false` (bool)
+        :param bool disable_eviction: Drain options disable eviction. Default `false` (bool)
+        :param bool enabled: Drain options enabled? Default `true` (bool)
+        :param bool force: Drain options force. Default `false` (bool)
+        :param int grace_period: Drain options grace period (int)
+        :param bool ignore_daemon_sets: Drain options ignore daemon sets. Default `true` (bool)
+        :param bool ignore_errors: Drain options ignore errors. Default `false` (bool)
+        :param int skip_wait_for_delete_timeout_seconds: Drain options skip wait for delete timeout seconds (int)
+        :param int timeout: Drain options timeout (int)
+        """
+        if delete_empty_dir_data is not None:
+            pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
+        if disable_eviction is not None:
+            pulumi.set(__self__, "disable_eviction", disable_eviction)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if ignore_daemon_sets is not None:
+            pulumi.set(__self__, "ignore_daemon_sets", ignore_daemon_sets)
+        if ignore_errors is not None:
+            pulumi.set(__self__, "ignore_errors", ignore_errors)
+        if skip_wait_for_delete_timeout_seconds is not None:
+            pulumi.set(__self__, "skip_wait_for_delete_timeout_seconds", skip_wait_for_delete_timeout_seconds)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="deleteEmptyDirData")
+    def delete_empty_dir_data(self) -> Optional[bool]:
+        """
+        Drain options delete empty dir data. Default `false` (bool)
+        """
+        return pulumi.get(self, "delete_empty_dir_data")
+
+    @property
+    @pulumi.getter(name="disableEviction")
+    def disable_eviction(self) -> Optional[bool]:
+        """
+        Drain options disable eviction. Default `false` (bool)
+        """
+        return pulumi.get(self, "disable_eviction")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Drain options enabled? Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        """
+        Drain options force. Default `false` (bool)
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        """
+        Drain options grace period (int)
+        """
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="ignoreDaemonSets")
+    def ignore_daemon_sets(self) -> Optional[bool]:
+        """
+        Drain options ignore daemon sets. Default `true` (bool)
+        """
+        return pulumi.get(self, "ignore_daemon_sets")
+
+    @property
+    @pulumi.getter(name="ignoreErrors")
+    def ignore_errors(self) -> Optional[bool]:
+        """
+        Drain options ignore errors. Default `false` (bool)
+        """
+        return pulumi.get(self, "ignore_errors")
+
+    @property
+    @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
+    def skip_wait_for_delete_timeout_seconds(self) -> Optional[int]:
+        """
+        Drain options skip wait for delete timeout seconds (int)
+        """
+        return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        Drain options timeout (int)
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteEmptyDirData":
+            suggest = "delete_empty_dir_data"
+        elif key == "disableEviction":
+            suggest = "disable_eviction"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "ignoreDaemonSets":
+            suggest = "ignore_daemon_sets"
+        elif key == "ignoreErrors":
+            suggest = "ignore_errors"
+        elif key == "skipWaitForDeleteTimeoutSeconds":
+            suggest = "skip_wait_for_delete_timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_empty_dir_data: Optional[bool] = None,
+                 disable_eviction: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 force: Optional[bool] = None,
+                 grace_period: Optional[int] = None,
+                 ignore_daemon_sets: Optional[bool] = None,
+                 ignore_errors: Optional[bool] = None,
+                 skip_wait_for_delete_timeout_seconds: Optional[int] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param bool delete_empty_dir_data: Drain options delete empty dir data. Default `false` (bool)
+        :param bool disable_eviction: Drain options disable eviction. Default `false` (bool)
+        :param bool enabled: Drain options enabled? Default `true` (bool)
+        :param bool force: Drain options force. Default `false` (bool)
+        :param int grace_period: Drain options grace period (int)
+        :param bool ignore_daemon_sets: Drain options ignore daemon sets. Default `true` (bool)
+        :param bool ignore_errors: Drain options ignore errors. Default `false` (bool)
+        :param int skip_wait_for_delete_timeout_seconds: Drain options skip wait for delete timeout seconds (int)
+        :param int timeout: Drain options timeout (int)
+        """
+        if delete_empty_dir_data is not None:
+            pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
+        if disable_eviction is not None:
+            pulumi.set(__self__, "disable_eviction", disable_eviction)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if ignore_daemon_sets is not None:
+            pulumi.set(__self__, "ignore_daemon_sets", ignore_daemon_sets)
+        if ignore_errors is not None:
+            pulumi.set(__self__, "ignore_errors", ignore_errors)
+        if skip_wait_for_delete_timeout_seconds is not None:
+            pulumi.set(__self__, "skip_wait_for_delete_timeout_seconds", skip_wait_for_delete_timeout_seconds)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="deleteEmptyDirData")
+    def delete_empty_dir_data(self) -> Optional[bool]:
+        """
+        Drain options delete empty dir data. Default `false` (bool)
+        """
+        return pulumi.get(self, "delete_empty_dir_data")
+
+    @property
+    @pulumi.getter(name="disableEviction")
+    def disable_eviction(self) -> Optional[bool]:
+        """
+        Drain options disable eviction. Default `false` (bool)
+        """
+        return pulumi.get(self, "disable_eviction")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Drain options enabled? Default `true` (bool)
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        """
+        Drain options force. Default `false` (bool)
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        """
+        Drain options grace period (int)
+        """
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="ignoreDaemonSets")
+    def ignore_daemon_sets(self) -> Optional[bool]:
+        """
+        Drain options ignore daemon sets. Default `true` (bool)
+        """
+        return pulumi.get(self, "ignore_daemon_sets")
+
+    @property
+    @pulumi.getter(name="ignoreErrors")
+    def ignore_errors(self) -> Optional[bool]:
+        """
+        Drain options ignore errors. Default `false` (bool)
+        """
+        return pulumi.get(self, "ignore_errors")
+
+    @property
+    @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
+    def skip_wait_for_delete_timeout_seconds(self) -> Optional[int]:
+        """
+        Drain options skip wait for delete timeout seconds (int)
+        """
+        return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        Drain options timeout (int)
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
 class EtcdBackupBackupConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16721,7 +19616,7 @@ class GlobalRoleRule(dict):
         :param Sequence[str] non_resource_urls: Policy rule non resource urls (list)
         :param Sequence[str] resource_names: Policy rule resource names (list)
         :param Sequence[str] resources: Policy rule resources (list)
-        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
@@ -16770,9 +19665,2358 @@ class GlobalRoleRule(dict):
     @pulumi.getter
     def verbs(self) -> Optional[Sequence[str]]:
         """
-        Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         return pulumi.get(self, "verbs")
+
+
+@pulumi.output_type
+class MachineConfigV2Amazonec2Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityGroups":
+            suggest = "security_groups"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "accessKey":
+            suggest = "access_key"
+        elif key == "blockDurationMinutes":
+            suggest = "block_duration_minutes"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "encryptEbsVolume":
+            suggest = "encrypt_ebs_volume"
+        elif key == "httpEndpoint":
+            suggest = "http_endpoint"
+        elif key == "httpTokens":
+            suggest = "http_tokens"
+        elif key == "iamInstanceProfile":
+            suggest = "iam_instance_profile"
+        elif key == "insecureTransport":
+            suggest = "insecure_transport"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "keypairName":
+            suggest = "keypair_name"
+        elif key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "openPorts":
+            suggest = "open_ports"
+        elif key == "privateAddressOnly":
+            suggest = "private_address_only"
+        elif key == "requestSpotInstance":
+            suggest = "request_spot_instance"
+        elif key == "rootSize":
+            suggest = "root_size"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "securityGroupReadonly":
+            suggest = "security_group_readonly"
+        elif key == "sessionToken":
+            suggest = "session_token"
+        elif key == "spotPrice":
+            suggest = "spot_price"
+        elif key == "sshKeyContents":
+            suggest = "ssh_key_contents"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "useEbsOptimizedInstance":
+            suggest = "use_ebs_optimized_instance"
+        elif key == "usePrivateAddress":
+            suggest = "use_private_address"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2Amazonec2Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2Amazonec2Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2Amazonec2Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ami: str,
+                 region: str,
+                 security_groups: Sequence[str],
+                 subnet_id: str,
+                 vpc_id: str,
+                 zone: str,
+                 access_key: Optional[str] = None,
+                 block_duration_minutes: Optional[str] = None,
+                 device_name: Optional[str] = None,
+                 encrypt_ebs_volume: Optional[bool] = None,
+                 endpoint: Optional[str] = None,
+                 http_endpoint: Optional[str] = None,
+                 http_tokens: Optional[str] = None,
+                 iam_instance_profile: Optional[str] = None,
+                 insecure_transport: Optional[bool] = None,
+                 instance_type: Optional[str] = None,
+                 keypair_name: Optional[str] = None,
+                 kms_key: Optional[str] = None,
+                 monitoring: Optional[bool] = None,
+                 open_ports: Optional[Sequence[str]] = None,
+                 private_address_only: Optional[bool] = None,
+                 request_spot_instance: Optional[bool] = None,
+                 retries: Optional[str] = None,
+                 root_size: Optional[str] = None,
+                 secret_key: Optional[str] = None,
+                 security_group_readonly: Optional[bool] = None,
+                 session_token: Optional[str] = None,
+                 spot_price: Optional[str] = None,
+                 ssh_key_contents: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 tags: Optional[str] = None,
+                 use_ebs_optimized_instance: Optional[bool] = None,
+                 use_private_address: Optional[bool] = None,
+                 userdata: Optional[str] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param str ami: AWS machine image (string)
+        :param str region: OpenStack region name (string)
+        :param Sequence[str] security_groups: AWS VPC security group. (list)
+        :param str subnet_id: AWS VPC subnet id (string)
+        :param str vpc_id: AWS VPC id. (string)
+        :param str zone: AWS zone for instance (i.e. a,b,c,d,e) (string)
+        :param str block_duration_minutes: AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        :param str device_name: AWS root device name. Default `/dev/sda1` (string)
+        :param bool encrypt_ebs_volume: Encrypt EBS volume. Default `false` (bool)
+        :param str endpoint: Optional endpoint URL (hostname only or fully qualified URI) (string)
+        :param str http_endpoint: Enables or disables the HTTP metadata endpoint on your instances (string)
+        :param str http_tokens: The state of token usage for your instance metadata requests (string)
+        :param str iam_instance_profile: AWS IAM Instance Profile (string)
+        :param bool insecure_transport: Disable SSL when sending requests (bool)
+        :param str instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        :param str keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param str kms_key: Custom KMS key ID using the AWS Managed CMK (string)
+        :param bool monitoring: Enable monitoring for droplet. Default `false` (bool)
+        :param Sequence[str] open_ports: Make the specified port number accessible from the Internet. (list)
+        :param bool private_address_only: Only use a private IP address. Default `false` (bool)
+        :param bool request_spot_instance: Set this flag to request spot instance. Default `false` (bool)
+        :param str retries: Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        :param str root_size: AWS root disk size (in GB). Default `16` (string)
+        :param bool security_group_readonly: Skip adding default rules to security groups (bool)
+        :param str session_token: AWS Session Token (string)
+        :param str spot_price: AWS spot instance bid price (in dollar). Default `0.50` (string)
+        :param str ssh_key_contents: SSH private key contents (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx` (list)
+        :param bool use_ebs_optimized_instance: Create an EBS optimized instance. Default `false` (bool)
+        :param bool use_private_address: Force the usage of private IP address. Default `false` (bool)
+        :param str userdata: Path to file with cloud-init user-data (string)
+        :param str volume_type: OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+        pulumi.set(__self__, "ami", ami)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "zone", zone)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if block_duration_minutes is not None:
+            pulumi.set(__self__, "block_duration_minutes", block_duration_minutes)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if encrypt_ebs_volume is not None:
+            pulumi.set(__self__, "encrypt_ebs_volume", encrypt_ebs_volume)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
+        if iam_instance_profile is not None:
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if insecure_transport is not None:
+            pulumi.set(__self__, "insecure_transport", insecure_transport)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if keypair_name is not None:
+            pulumi.set(__self__, "keypair_name", keypair_name)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if open_ports is not None:
+            pulumi.set(__self__, "open_ports", open_ports)
+        if private_address_only is not None:
+            pulumi.set(__self__, "private_address_only", private_address_only)
+        if request_spot_instance is not None:
+            pulumi.set(__self__, "request_spot_instance", request_spot_instance)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if root_size is not None:
+            pulumi.set(__self__, "root_size", root_size)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if security_group_readonly is not None:
+            pulumi.set(__self__, "security_group_readonly", security_group_readonly)
+        if session_token is not None:
+            pulumi.set(__self__, "session_token", session_token)
+        if spot_price is not None:
+            pulumi.set(__self__, "spot_price", spot_price)
+        if ssh_key_contents is not None:
+            pulumi.set(__self__, "ssh_key_contents", ssh_key_contents)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if use_ebs_optimized_instance is not None:
+            pulumi.set(__self__, "use_ebs_optimized_instance", use_ebs_optimized_instance)
+        if use_private_address is not None:
+            pulumi.set(__self__, "use_private_address", use_private_address)
+        if userdata is not None:
+            pulumi.set(__self__, "userdata", userdata)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def ami(self) -> str:
+        """
+        AWS machine image (string)
+        """
+        return pulumi.get(self, "ami")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        OpenStack region name (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Sequence[str]:
+        """
+        AWS VPC security group. (list)
+        """
+        return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        AWS VPC subnet id (string)
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        AWS VPC id. (string)
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        AWS zone for instance (i.e. a,b,c,d,e) (string)
+        """
+        return pulumi.get(self, "zone")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="blockDurationMinutes")
+    def block_duration_minutes(self) -> Optional[str]:
+        """
+        AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        """
+        return pulumi.get(self, "block_duration_minutes")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        """
+        AWS root device name. Default `/dev/sda1` (string)
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="encryptEbsVolume")
+    def encrypt_ebs_volume(self) -> Optional[bool]:
+        """
+        Encrypt EBS volume. Default `false` (bool)
+        """
+        return pulumi.get(self, "encrypt_ebs_volume")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        Optional endpoint URL (hostname only or fully qualified URI) (string)
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[str]:
+        """
+        Enables or disables the HTTP metadata endpoint on your instances (string)
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[str]:
+        """
+        The state of token usage for your instance metadata requests (string)
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @property
+    @pulumi.getter(name="iamInstanceProfile")
+    def iam_instance_profile(self) -> Optional[str]:
+        """
+        AWS IAM Instance Profile (string)
+        """
+        return pulumi.get(self, "iam_instance_profile")
+
+    @property
+    @pulumi.getter(name="insecureTransport")
+    def insecure_transport(self) -> Optional[bool]:
+        """
+        Disable SSL when sending requests (bool)
+        """
+        return pulumi.get(self, "insecure_transport")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="keypairName")
+    def keypair_name(self) -> Optional[str]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
+        return pulumi.get(self, "keypair_name")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        """
+        Custom KMS key ID using the AWS Managed CMK (string)
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[bool]:
+        """
+        Enable monitoring for droplet. Default `false` (bool)
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="openPorts")
+    def open_ports(self) -> Optional[Sequence[str]]:
+        """
+        Make the specified port number accessible from the Internet. (list)
+        """
+        return pulumi.get(self, "open_ports")
+
+    @property
+    @pulumi.getter(name="privateAddressOnly")
+    def private_address_only(self) -> Optional[bool]:
+        """
+        Only use a private IP address. Default `false` (bool)
+        """
+        return pulumi.get(self, "private_address_only")
+
+    @property
+    @pulumi.getter(name="requestSpotInstance")
+    def request_spot_instance(self) -> Optional[bool]:
+        """
+        Set this flag to request spot instance. Default `false` (bool)
+        """
+        return pulumi.get(self, "request_spot_instance")
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[str]:
+        """
+        Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        """
+        return pulumi.get(self, "retries")
+
+    @property
+    @pulumi.getter(name="rootSize")
+    def root_size(self) -> Optional[str]:
+        """
+        AWS root disk size (in GB). Default `16` (string)
+        """
+        return pulumi.get(self, "root_size")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="securityGroupReadonly")
+    def security_group_readonly(self) -> Optional[bool]:
+        """
+        Skip adding default rules to security groups (bool)
+        """
+        return pulumi.get(self, "security_group_readonly")
+
+    @property
+    @pulumi.getter(name="sessionToken")
+    def session_token(self) -> Optional[str]:
+        """
+        AWS Session Token (string)
+        """
+        return pulumi.get(self, "session_token")
+
+    @property
+    @pulumi.getter(name="spotPrice")
+    def spot_price(self) -> Optional[str]:
+        """
+        AWS spot instance bid price (in dollar). Default `0.50` (string)
+        """
+        return pulumi.get(self, "spot_price")
+
+    @property
+    @pulumi.getter(name="sshKeyContents")
+    def ssh_key_contents(self) -> Optional[str]:
+        """
+        SSH private key contents (string)
+        """
+        return pulumi.get(self, "ssh_key_contents")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx` (list)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="useEbsOptimizedInstance")
+    def use_ebs_optimized_instance(self) -> Optional[bool]:
+        """
+        Create an EBS optimized instance. Default `false` (bool)
+        """
+        return pulumi.get(self, "use_ebs_optimized_instance")
+
+    @property
+    @pulumi.getter(name="usePrivateAddress")
+    def use_private_address(self) -> Optional[bool]:
+        """
+        Force the usage of private IP address. Default `false` (bool)
+        """
+        return pulumi.get(self, "use_private_address")
+
+    @property
+    @pulumi.getter
+    def userdata(self) -> Optional[str]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
+        return pulumi.get(self, "userdata")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class MachineConfigV2AzureConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilitySet":
+            suggest = "availability_set"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "customData":
+            suggest = "custom_data"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "dockerPort":
+            suggest = "docker_port"
+        elif key == "faultDomainCount":
+            suggest = "fault_domain_count"
+        elif key == "managedDisks":
+            suggest = "managed_disks"
+        elif key == "noPublicIp":
+            suggest = "no_public_ip"
+        elif key == "openPorts":
+            suggest = "open_ports"
+        elif key == "privateIpAddress":
+            suggest = "private_ip_address"
+        elif key == "resourceGroup":
+            suggest = "resource_group"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "staticPublicIp":
+            suggest = "static_public_ip"
+        elif key == "storageType":
+            suggest = "storage_type"
+        elif key == "subnetPrefix":
+            suggest = "subnet_prefix"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "updateDomainCount":
+            suggest = "update_domain_count"
+        elif key == "usePrivateIp":
+            suggest = "use_private_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2AzureConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2AzureConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2AzureConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_set: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 custom_data: Optional[str] = None,
+                 disk_size: Optional[str] = None,
+                 dns: Optional[str] = None,
+                 docker_port: Optional[str] = None,
+                 environment: Optional[str] = None,
+                 fault_domain_count: Optional[str] = None,
+                 image: Optional[str] = None,
+                 location: Optional[str] = None,
+                 managed_disks: Optional[bool] = None,
+                 no_public_ip: Optional[bool] = None,
+                 nsg: Optional[str] = None,
+                 open_ports: Optional[Sequence[str]] = None,
+                 private_ip_address: Optional[str] = None,
+                 resource_group: Optional[str] = None,
+                 size: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 static_public_ip: Optional[bool] = None,
+                 storage_type: Optional[str] = None,
+                 subnet: Optional[str] = None,
+                 subnet_prefix: Optional[str] = None,
+                 subscription_id: Optional[str] = None,
+                 tenant_id: Optional[str] = None,
+                 update_domain_count: Optional[str] = None,
+                 use_private_ip: Optional[bool] = None,
+                 vnet: Optional[str] = None):
+        """
+        :param str availability_set: Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        :param str client_id: Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str client_secret: Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str custom_data: Path to file with custom-data (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str dns: A unique DNS label for the public IP adddress (string)
+        :param str docker_port: Docker Port. Default `2376` (string)
+        :param str environment: Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        :param str fault_domain_count: Fault domain count to use for availability set. Default `3` (string)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param str location: Azure region to create the virtual machine. Default `westus` (string)
+        :param bool managed_disks: Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        :param bool no_public_ip: Do not create a public IP address for the machine. Default `false` (bool)
+        :param str nsg: Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        :param Sequence[str] open_ports: Make the specified port number accessible from the Internet. (list)
+        :param str private_ip_address: Specify a static private IP address for the machine. (string)
+        :param str resource_group: Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        :param str size: Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param bool static_public_ip: Assign a static public IP address to the machine. Default `false` (bool)
+        :param str storage_type: Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        :param str subnet: Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        :param str subnet_prefix: Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        :param str subscription_id: Azure Subscription ID (string)
+        :param str tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
+        :param str update_domain_count: Update domain count to use for availability set. Default `5` (string)
+        :param bool use_private_ip: Use private IP address of the machine to connect. Default `false` (bool)
+        :param str vnet: Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        """
+        if availability_set is not None:
+            pulumi.set(__self__, "availability_set", availability_set)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if docker_port is not None:
+            pulumi.set(__self__, "docker_port", docker_port)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if fault_domain_count is not None:
+            pulumi.set(__self__, "fault_domain_count", fault_domain_count)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if managed_disks is not None:
+            pulumi.set(__self__, "managed_disks", managed_disks)
+        if no_public_ip is not None:
+            pulumi.set(__self__, "no_public_ip", no_public_ip)
+        if nsg is not None:
+            pulumi.set(__self__, "nsg", nsg)
+        if open_ports is not None:
+            pulumi.set(__self__, "open_ports", open_ports)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if static_public_ip is not None:
+            pulumi.set(__self__, "static_public_ip", static_public_ip)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+        if subnet_prefix is not None:
+            pulumi.set(__self__, "subnet_prefix", subnet_prefix)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if update_domain_count is not None:
+            pulumi.set(__self__, "update_domain_count", update_domain_count)
+        if use_private_ip is not None:
+            pulumi.set(__self__, "use_private_ip", use_private_ip)
+        if vnet is not None:
+            pulumi.set(__self__, "vnet", vnet)
+
+    @property
+    @pulumi.getter(name="availabilitySet")
+    def availability_set(self) -> Optional[str]:
+        """
+        Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        """
+        return pulumi.get(self, "availability_set")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[str]:
+        """
+        Path to file with custom-data (string)
+        """
+        return pulumi.get(self, "custom_data")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter
+    def dns(self) -> Optional[str]:
+        """
+        A unique DNS label for the public IP adddress (string)
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter(name="dockerPort")
+    def docker_port(self) -> Optional[str]:
+        """
+        Docker Port. Default `2376` (string)
+        """
+        return pulumi.get(self, "docker_port")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter(name="faultDomainCount")
+    def fault_domain_count(self) -> Optional[str]:
+        """
+        Fault domain count to use for availability set. Default `3` (string)
+        """
+        return pulumi.get(self, "fault_domain_count")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Azure region to create the virtual machine. Default `westus` (string)
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="managedDisks")
+    def managed_disks(self) -> Optional[bool]:
+        """
+        Configures VM and availability set for managed disks. Just for Rancher v2.3.x and above. Default `false` (bool)
+        """
+        return pulumi.get(self, "managed_disks")
+
+    @property
+    @pulumi.getter(name="noPublicIp")
+    def no_public_ip(self) -> Optional[bool]:
+        """
+        Do not create a public IP address for the machine. Default `false` (bool)
+        """
+        return pulumi.get(self, "no_public_ip")
+
+    @property
+    @pulumi.getter
+    def nsg(self) -> Optional[str]:
+        """
+        Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        """
+        return pulumi.get(self, "nsg")
+
+    @property
+    @pulumi.getter(name="openPorts")
+    def open_ports(self) -> Optional[Sequence[str]]:
+        """
+        Make the specified port number accessible from the Internet. (list)
+        """
+        return pulumi.get(self, "open_ports")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[str]:
+        """
+        Specify a static private IP address for the machine. (string)
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[str]:
+        """
+        Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        """
+        return pulumi.get(self, "resource_group")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        """
+        Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter(name="staticPublicIp")
+    def static_public_ip(self) -> Optional[bool]:
+        """
+        Assign a static public IP address to the machine. Default `false` (bool)
+        """
+        return pulumi.get(self, "static_public_ip")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[str]:
+        """
+        Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> Optional[str]:
+        """
+        Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter(name="subnetPrefix")
+    def subnet_prefix(self) -> Optional[str]:
+        """
+        Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        """
+        return pulumi.get(self, "subnet_prefix")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[str]:
+        """
+        Azure Subscription ID (string)
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="updateDomainCount")
+    def update_domain_count(self) -> Optional[str]:
+        """
+        Update domain count to use for availability set. Default `5` (string)
+        """
+        return pulumi.get(self, "update_domain_count")
+
+    @property
+    @pulumi.getter(name="usePrivateIp")
+    def use_private_ip(self) -> Optional[bool]:
+        """
+        Use private IP address of the machine to connect. Default `false` (bool)
+        """
+        return pulumi.get(self, "use_private_ip")
+
+    @property
+    @pulumi.getter
+    def vnet(self) -> Optional[str]:
+        """
+        Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        """
+        return pulumi.get(self, "vnet")
+
+
+@pulumi.output_type
+class MachineConfigV2DigitaloceanConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "privateNetworking":
+            suggest = "private_networking"
+        elif key == "sshKeyContents":
+            suggest = "ssh_key_contents"
+        elif key == "sshKeyFingerprint":
+            suggest = "ssh_key_fingerprint"
+        elif key == "sshPort":
+            suggest = "ssh_port"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2DigitaloceanConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2DigitaloceanConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2DigitaloceanConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token: Optional[str] = None,
+                 backups: Optional[bool] = None,
+                 image: Optional[str] = None,
+                 ipv6: Optional[bool] = None,
+                 monitoring: Optional[bool] = None,
+                 private_networking: Optional[bool] = None,
+                 region: Optional[str] = None,
+                 size: Optional[str] = None,
+                 ssh_key_contents: Optional[str] = None,
+                 ssh_key_fingerprint: Optional[str] = None,
+                 ssh_port: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 tags: Optional[str] = None,
+                 userdata: Optional[str] = None):
+        """
+        :param str access_token: Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param bool backups: Enable backups for droplet. Default `false` (bool)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param bool ipv6: Enable ipv6 for droplet. Default `false` (bool)
+        :param bool monitoring: Enable monitoring for droplet. Default `false` (bool)
+        :param bool private_networking: Enable private networking for droplet. Default `false` (bool)
+        :param str region: OpenStack region name (string)
+        :param str size: Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        :param str ssh_key_contents: SSH private key contents (string)
+        :param str ssh_key_fingerprint: SSH key fingerprint (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx` (list)
+        :param str userdata: Path to file with cloud-init user-data (string)
+        """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if private_networking is not None:
+            pulumi.set(__self__, "private_networking", private_networking)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if ssh_key_contents is not None:
+            pulumi.set(__self__, "ssh_key_contents", ssh_key_contents)
+        if ssh_key_fingerprint is not None:
+            pulumi.set(__self__, "ssh_key_fingerprint", ssh_key_fingerprint)
+        if ssh_port is not None:
+            pulumi.set(__self__, "ssh_port", ssh_port)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if userdata is not None:
+            pulumi.set(__self__, "userdata", userdata)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[str]:
+        """
+        Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter
+    def backups(self) -> Optional[bool]:
+        """
+        Enable backups for droplet. Default `false` (bool)
+        """
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[bool]:
+        """
+        Enable ipv6 for droplet. Default `false` (bool)
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[bool]:
+        """
+        Enable monitoring for droplet. Default `false` (bool)
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="privateNetworking")
+    def private_networking(self) -> Optional[bool]:
+        """
+        Enable private networking for droplet. Default `false` (bool)
+        """
+        return pulumi.get(self, "private_networking")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        OpenStack region name (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        """
+        Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sshKeyContents")
+    def ssh_key_contents(self) -> Optional[str]:
+        """
+        SSH private key contents (string)
+        """
+        return pulumi.get(self, "ssh_key_contents")
+
+    @property
+    @pulumi.getter(name="sshKeyFingerprint")
+    def ssh_key_fingerprint(self) -> Optional[str]:
+        """
+        SSH key fingerprint (string)
+        """
+        return pulumi.get(self, "ssh_key_fingerprint")
+
+    @property
+    @pulumi.getter(name="sshPort")
+    def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
+        return pulumi.get(self, "ssh_port")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx` (list)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def userdata(self) -> Optional[str]:
+        """
+        Path to file with cloud-init user-data (string)
+        """
+        return pulumi.get(self, "userdata")
+
+
+@pulumi.output_type
+class MachineConfigV2LinodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedUsers":
+            suggest = "authorized_users"
+        elif key == "createPrivateIp":
+            suggest = "create_private_ip"
+        elif key == "dockerPort":
+            suggest = "docker_port"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "rootPass":
+            suggest = "root_pass"
+        elif key == "sshPort":
+            suggest = "ssh_port"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "stackscriptData":
+            suggest = "stackscript_data"
+        elif key == "swapSize":
+            suggest = "swap_size"
+        elif key == "uaPrefix":
+            suggest = "ua_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2LinodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2LinodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2LinodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorized_users: Optional[str] = None,
+                 create_private_ip: Optional[bool] = None,
+                 docker_port: Optional[str] = None,
+                 image: Optional[str] = None,
+                 instance_type: Optional[str] = None,
+                 label: Optional[str] = None,
+                 region: Optional[str] = None,
+                 root_pass: Optional[str] = None,
+                 ssh_port: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 stackscript: Optional[str] = None,
+                 stackscript_data: Optional[str] = None,
+                 swap_size: Optional[str] = None,
+                 tags: Optional[str] = None,
+                 token: Optional[str] = None,
+                 ua_prefix: Optional[str] = None):
+        """
+        :param str authorized_users: Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        :param bool create_private_ip: Create private IP for the instance. Default `false` (bool)
+        :param str docker_port: Docker Port. Default `2376` (string)
+        :param str image: Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        :param str instance_type: Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        :param str label: Linode Instance Label. (string)
+        :param str region: OpenStack region name (string)
+        :param str root_pass: Root Password (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str stackscript: Specifies the Linode StackScript to use to create the instance. (string)
+        :param str stackscript_data: A JSON string specifying data for the selected StackScript. (string)
+        :param str swap_size: Linode Instance Swap Size (MB). Default `512` (string)
+        :param str tags: vSphere tags id e.g. `urn:xxx` (list)
+        :param str token: Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str ua_prefix: Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        """
+        if authorized_users is not None:
+            pulumi.set(__self__, "authorized_users", authorized_users)
+        if create_private_ip is not None:
+            pulumi.set(__self__, "create_private_ip", create_private_ip)
+        if docker_port is not None:
+            pulumi.set(__self__, "docker_port", docker_port)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if root_pass is not None:
+            pulumi.set(__self__, "root_pass", root_pass)
+        if ssh_port is not None:
+            pulumi.set(__self__, "ssh_port", ssh_port)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if stackscript is not None:
+            pulumi.set(__self__, "stackscript", stackscript)
+        if stackscript_data is not None:
+            pulumi.set(__self__, "stackscript_data", stackscript_data)
+        if swap_size is not None:
+            pulumi.set(__self__, "swap_size", swap_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if ua_prefix is not None:
+            pulumi.set(__self__, "ua_prefix", ua_prefix)
+
+    @property
+    @pulumi.getter(name="authorizedUsers")
+    def authorized_users(self) -> Optional[str]:
+        """
+        Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        """
+        return pulumi.get(self, "authorized_users")
+
+    @property
+    @pulumi.getter(name="createPrivateIp")
+    def create_private_ip(self) -> Optional[bool]:
+        """
+        Create private IP for the instance. Default `false` (bool)
+        """
+        return pulumi.get(self, "create_private_ip")
+
+    @property
+    @pulumi.getter(name="dockerPort")
+    def docker_port(self) -> Optional[str]:
+        """
+        Docker Port. Default `2376` (string)
+        """
+        return pulumi.get(self, "docker_port")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc. Default `g6-standard-4` (string)
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        Linode Instance Label. (string)
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        OpenStack region name (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="rootPass")
+    def root_pass(self) -> Optional[str]:
+        """
+        Root Password (string)
+        """
+        return pulumi.get(self, "root_pass")
+
+    @property
+    @pulumi.getter(name="sshPort")
+    def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
+        return pulumi.get(self, "ssh_port")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter
+    def stackscript(self) -> Optional[str]:
+        """
+        Specifies the Linode StackScript to use to create the instance. (string)
+        """
+        return pulumi.get(self, "stackscript")
+
+    @property
+    @pulumi.getter(name="stackscriptData")
+    def stackscript_data(self) -> Optional[str]:
+        """
+        A JSON string specifying data for the selected StackScript. (string)
+        """
+        return pulumi.get(self, "stackscript_data")
+
+    @property
+    @pulumi.getter(name="swapSize")
+    def swap_size(self) -> Optional[str]:
+        """
+        Linode Instance Swap Size (MB). Default `512` (string)
+        """
+        return pulumi.get(self, "swap_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[str]:
+        """
+        vSphere tags id e.g. `urn:xxx` (list)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="uaPrefix")
+    def ua_prefix(self) -> Optional[str]:
+        """
+        Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        """
+        return pulumi.get(self, "ua_prefix")
+
+
+@pulumi.output_type
+class MachineConfigV2OpenstackConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authUrl":
+            suggest = "auth_url"
+        elif key == "availabilityZone":
+            suggest = "availability_zone"
+        elif key == "activeTimeout":
+            suggest = "active_timeout"
+        elif key == "applicationCredentialId":
+            suggest = "application_credential_id"
+        elif key == "applicationCredentialName":
+            suggest = "application_credential_name"
+        elif key == "applicationCredentialSecret":
+            suggest = "application_credential_secret"
+        elif key == "bootFromVolume":
+            suggest = "boot_from_volume"
+        elif key == "configDrive":
+            suggest = "config_drive"
+        elif key == "domainId":
+            suggest = "domain_id"
+        elif key == "domainName":
+            suggest = "domain_name"
+        elif key == "endpointType":
+            suggest = "endpoint_type"
+        elif key == "flavorId":
+            suggest = "flavor_id"
+        elif key == "flavorName":
+            suggest = "flavor_name"
+        elif key == "floatingIpPool":
+            suggest = "floating_ip_pool"
+        elif key == "imageId":
+            suggest = "image_id"
+        elif key == "imageName":
+            suggest = "image_name"
+        elif key == "ipVersion":
+            suggest = "ip_version"
+        elif key == "keypairName":
+            suggest = "keypair_name"
+        elif key == "netId":
+            suggest = "net_id"
+        elif key == "netName":
+            suggest = "net_name"
+        elif key == "novaNetwork":
+            suggest = "nova_network"
+        elif key == "privateKeyFile":
+            suggest = "private_key_file"
+        elif key == "secGroups":
+            suggest = "sec_groups"
+        elif key == "sshPort":
+            suggest = "ssh_port"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "tenantDomainId":
+            suggest = "tenant_domain_id"
+        elif key == "tenantDomainName":
+            suggest = "tenant_domain_name"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "tenantName":
+            suggest = "tenant_name"
+        elif key == "userDataFile":
+            suggest = "user_data_file"
+        elif key == "userDomainId":
+            suggest = "user_domain_id"
+        elif key == "userDomainName":
+            suggest = "user_domain_name"
+        elif key == "volumeDevicePath":
+            suggest = "volume_device_path"
+        elif key == "volumeId":
+            suggest = "volume_id"
+        elif key == "volumeName":
+            suggest = "volume_name"
+        elif key == "volumeSize":
+            suggest = "volume_size"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2OpenstackConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2OpenstackConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2OpenstackConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_url: str,
+                 availability_zone: str,
+                 region: str,
+                 active_timeout: Optional[str] = None,
+                 application_credential_id: Optional[str] = None,
+                 application_credential_name: Optional[str] = None,
+                 application_credential_secret: Optional[str] = None,
+                 boot_from_volume: Optional[bool] = None,
+                 cacert: Optional[str] = None,
+                 config_drive: Optional[bool] = None,
+                 domain_id: Optional[str] = None,
+                 domain_name: Optional[str] = None,
+                 endpoint_type: Optional[str] = None,
+                 flavor_id: Optional[str] = None,
+                 flavor_name: Optional[str] = None,
+                 floating_ip_pool: Optional[str] = None,
+                 image_id: Optional[str] = None,
+                 image_name: Optional[str] = None,
+                 insecure: Optional[bool] = None,
+                 ip_version: Optional[str] = None,
+                 keypair_name: Optional[str] = None,
+                 net_id: Optional[str] = None,
+                 net_name: Optional[str] = None,
+                 nova_network: Optional[bool] = None,
+                 password: Optional[str] = None,
+                 private_key_file: Optional[str] = None,
+                 sec_groups: Optional[str] = None,
+                 ssh_port: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 tenant_domain_id: Optional[str] = None,
+                 tenant_domain_name: Optional[str] = None,
+                 tenant_id: Optional[str] = None,
+                 tenant_name: Optional[str] = None,
+                 user_data_file: Optional[str] = None,
+                 user_domain_id: Optional[str] = None,
+                 user_domain_name: Optional[str] = None,
+                 username: Optional[str] = None,
+                 volume_device_path: Optional[str] = None,
+                 volume_id: Optional[str] = None,
+                 volume_name: Optional[str] = None,
+                 volume_size: Optional[str] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param str auth_url: OpenStack authentication URL (string)
+        :param str availability_zone: OpenStack availability zone (string)
+        :param str region: OpenStack region name (string)
+        :param str active_timeout: OpenStack active timeout Default `200` (string)
+        :param str application_credential_id: OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        :param str application_credential_name: OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        :param str application_credential_secret: OpenStack application credential secret (string)
+        :param bool boot_from_volume: Enable booting from volume. Default is `false` (bool)
+        :param str cacert: CA certificate bundle to verify against (string)
+        :param bool config_drive: Enables the OpenStack config drive for the instance. Default `false` (bool)
+        :param str domain_id: OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        :param str domain_name: OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        :param str endpoint_type: OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        :param str flavor_id: OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        :param str flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        :param str floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        :param str image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param bool insecure: Disable TLS credential checking. Default `false` (bool)
+        :param str ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
+        :param str keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param str net_id: OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        :param str net_name: OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        :param bool nova_network: Use the nova networking services instead of neutron (string)
+        :param str password: OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str private_key_file: Private key content to use for SSH (string)
+        :param str sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str tenant_domain_id: OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+        :param str tenant_domain_name: OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+        :param str tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
+        :param str tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
+        :param str user_data_file: File containing an openstack userdata script (string)
+        :param str user_domain_id: OpenStack user domain id. Conflicts with `user_domain_name` (string)
+        :param str user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
+        :param str username: OpenStack username (string)
+        :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+               > **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+               > **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        :param str volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param str volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param str volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        :param str volume_type: OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+        pulumi.set(__self__, "auth_url", auth_url)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+        if active_timeout is not None:
+            pulumi.set(__self__, "active_timeout", active_timeout)
+        if application_credential_id is not None:
+            pulumi.set(__self__, "application_credential_id", application_credential_id)
+        if application_credential_name is not None:
+            pulumi.set(__self__, "application_credential_name", application_credential_name)
+        if application_credential_secret is not None:
+            pulumi.set(__self__, "application_credential_secret", application_credential_secret)
+        if boot_from_volume is not None:
+            pulumi.set(__self__, "boot_from_volume", boot_from_volume)
+        if cacert is not None:
+            pulumi.set(__self__, "cacert", cacert)
+        if config_drive is not None:
+            pulumi.set(__self__, "config_drive", config_drive)
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
+        if flavor_name is not None:
+            pulumi.set(__self__, "flavor_name", flavor_name)
+        if floating_ip_pool is not None:
+            pulumi.set(__self__, "floating_ip_pool", floating_ip_pool)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if keypair_name is not None:
+            pulumi.set(__self__, "keypair_name", keypair_name)
+        if net_id is not None:
+            pulumi.set(__self__, "net_id", net_id)
+        if net_name is not None:
+            pulumi.set(__self__, "net_name", net_name)
+        if nova_network is not None:
+            pulumi.set(__self__, "nova_network", nova_network)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if sec_groups is not None:
+            pulumi.set(__self__, "sec_groups", sec_groups)
+        if ssh_port is not None:
+            pulumi.set(__self__, "ssh_port", ssh_port)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if tenant_domain_id is not None:
+            pulumi.set(__self__, "tenant_domain_id", tenant_domain_id)
+        if tenant_domain_name is not None:
+            pulumi.set(__self__, "tenant_domain_name", tenant_domain_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if tenant_name is not None:
+            pulumi.set(__self__, "tenant_name", tenant_name)
+        if user_data_file is not None:
+            pulumi.set(__self__, "user_data_file", user_data_file)
+        if user_domain_id is not None:
+            pulumi.set(__self__, "user_domain_id", user_domain_id)
+        if user_domain_name is not None:
+            pulumi.set(__self__, "user_domain_name", user_domain_name)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if volume_device_path is not None:
+            pulumi.set(__self__, "volume_device_path", volume_device_path)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+        if volume_name is not None:
+            pulumi.set(__self__, "volume_name", volume_name)
+        if volume_size is not None:
+            pulumi.set(__self__, "volume_size", volume_size)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> str:
+        """
+        OpenStack authentication URL (string)
+        """
+        return pulumi.get(self, "auth_url")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        OpenStack availability zone (string)
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        OpenStack region name (string)
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="activeTimeout")
+    def active_timeout(self) -> Optional[str]:
+        """
+        OpenStack active timeout Default `200` (string)
+        """
+        return pulumi.get(self, "active_timeout")
+
+    @property
+    @pulumi.getter(name="applicationCredentialId")
+    def application_credential_id(self) -> Optional[str]:
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
+        return pulumi.get(self, "application_credential_id")
+
+    @property
+    @pulumi.getter(name="applicationCredentialName")
+    def application_credential_name(self) -> Optional[str]:
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
+        return pulumi.get(self, "application_credential_name")
+
+    @property
+    @pulumi.getter(name="applicationCredentialSecret")
+    def application_credential_secret(self) -> Optional[str]:
+        """
+        OpenStack application credential secret (string)
+        """
+        return pulumi.get(self, "application_credential_secret")
+
+    @property
+    @pulumi.getter(name="bootFromVolume")
+    def boot_from_volume(self) -> Optional[bool]:
+        """
+        Enable booting from volume. Default is `false` (bool)
+        """
+        return pulumi.get(self, "boot_from_volume")
+
+    @property
+    @pulumi.getter
+    def cacert(self) -> Optional[str]:
+        """
+        CA certificate bundle to verify against (string)
+        """
+        return pulumi.get(self, "cacert")
+
+    @property
+    @pulumi.getter(name="configDrive")
+    def config_drive(self) -> Optional[bool]:
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
+        return pulumi.get(self, "config_drive")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[str]:
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[str]:
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[str]:
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> Optional[str]:
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @property
+    @pulumi.getter(name="flavorName")
+    def flavor_name(self) -> Optional[str]:
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
+        return pulumi.get(self, "flavor_name")
+
+    @property
+    @pulumi.getter(name="floatingIpPool")
+    def floating_ip_pool(self) -> Optional[str]:
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
+        return pulumi.get(self, "floating_ip_pool")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[str]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[bool]:
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[str]:
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="keypairName")
+    def keypair_name(self) -> Optional[str]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
+        return pulumi.get(self, "keypair_name")
+
+    @property
+    @pulumi.getter(name="netId")
+    def net_id(self) -> Optional[str]:
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
+        return pulumi.get(self, "net_id")
+
+    @property
+    @pulumi.getter(name="netName")
+    def net_name(self) -> Optional[str]:
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
+        return pulumi.get(self, "net_name")
+
+    @property
+    @pulumi.getter(name="novaNetwork")
+    def nova_network(self) -> Optional[bool]:
+        """
+        Use the nova networking services instead of neutron (string)
+        """
+        return pulumi.get(self, "nova_network")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[str]:
+        """
+        Private key content to use for SSH (string)
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @property
+    @pulumi.getter(name="secGroups")
+    def sec_groups(self) -> Optional[str]:
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
+        return pulumi.get(self, "sec_groups")
+
+    @property
+    @pulumi.getter(name="sshPort")
+    def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
+        return pulumi.get(self, "ssh_port")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter(name="tenantDomainId")
+    def tenant_domain_id(self) -> Optional[str]:
+        """
+        OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+        """
+        return pulumi.get(self, "tenant_domain_id")
+
+    @property
+    @pulumi.getter(name="tenantDomainName")
+    def tenant_domain_name(self) -> Optional[str]:
+        """
+        OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+        """
+        return pulumi.get(self, "tenant_domain_name")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[str]:
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="tenantName")
+    def tenant_name(self) -> Optional[str]:
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
+        return pulumi.get(self, "tenant_name")
+
+    @property
+    @pulumi.getter(name="userDataFile")
+    def user_data_file(self) -> Optional[str]:
+        """
+        File containing an openstack userdata script (string)
+        """
+        return pulumi.get(self, "user_data_file")
+
+    @property
+    @pulumi.getter(name="userDomainId")
+    def user_domain_id(self) -> Optional[str]:
+        """
+        OpenStack user domain id. Conflicts with `user_domain_name` (string)
+        """
+        return pulumi.get(self, "user_domain_id")
+
+    @property
+    @pulumi.getter(name="userDomainName")
+    def user_domain_name(self) -> Optional[str]:
+        """
+        OpenStack user domain name. Conflicts with `user_domain_id` (string)
+        """
+        return pulumi.get(self, "user_domain_name")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        OpenStack username (string)
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="volumeDevicePath")
+    def volume_device_path(self) -> Optional[str]:
+        """
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        > **Note**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+        > **Note**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        """
+        return pulumi.get(self, "volume_device_path")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[str]:
+        """
+        OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        return pulumi.get(self, "volume_id")
+
+    @property
+    @pulumi.getter(name="volumeName")
+    def volume_name(self) -> Optional[str]:
+        """
+        OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        return pulumi.get(self, "volume_name")
+
+    @property
+    @pulumi.getter(name="volumeSize")
+    def volume_size(self) -> Optional[str]:
+        """
+        OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        """
+        return pulumi.get(self, "volume_size")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class MachineConfigV2VsphereConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boot2dockerUrl":
+            suggest = "boot2docker_url"
+        elif key == "cloneFrom":
+            suggest = "clone_from"
+        elif key == "cloudConfig":
+            suggest = "cloud_config"
+        elif key == "contentLibrary":
+            suggest = "content_library"
+        elif key == "cpuCount":
+            suggest = "cpu_count"
+        elif key == "creationType":
+            suggest = "creation_type"
+        elif key == "customAttributes":
+            suggest = "custom_attributes"
+        elif key == "datastoreCluster":
+            suggest = "datastore_cluster"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "memorySize":
+            suggest = "memory_size"
+        elif key == "sshPassword":
+            suggest = "ssh_password"
+        elif key == "sshPort":
+            suggest = "ssh_port"
+        elif key == "sshUser":
+            suggest = "ssh_user"
+        elif key == "sshUserGroup":
+            suggest = "ssh_user_group"
+        elif key == "vappIpAllocationPolicy":
+            suggest = "vapp_ip_allocation_policy"
+        elif key == "vappIpProtocol":
+            suggest = "vapp_ip_protocol"
+        elif key == "vappProperties":
+            suggest = "vapp_properties"
+        elif key == "vappTransport":
+            suggest = "vapp_transport"
+        elif key == "vcenterPort":
+            suggest = "vcenter_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigV2VsphereConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigV2VsphereConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigV2VsphereConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot2docker_url: Optional[str] = None,
+                 cfgparams: Optional[Sequence[str]] = None,
+                 clone_from: Optional[str] = None,
+                 cloud_config: Optional[str] = None,
+                 cloudinit: Optional[str] = None,
+                 content_library: Optional[str] = None,
+                 cpu_count: Optional[str] = None,
+                 creation_type: Optional[str] = None,
+                 custom_attributes: Optional[Sequence[str]] = None,
+                 datacenter: Optional[str] = None,
+                 datastore: Optional[str] = None,
+                 datastore_cluster: Optional[str] = None,
+                 disk_size: Optional[str] = None,
+                 folder: Optional[str] = None,
+                 hostsystem: Optional[str] = None,
+                 memory_size: Optional[str] = None,
+                 networks: Optional[Sequence[str]] = None,
+                 password: Optional[str] = None,
+                 pool: Optional[str] = None,
+                 ssh_password: Optional[str] = None,
+                 ssh_port: Optional[str] = None,
+                 ssh_user: Optional[str] = None,
+                 ssh_user_group: Optional[str] = None,
+                 tags: Optional[Sequence[str]] = None,
+                 username: Optional[str] = None,
+                 vapp_ip_allocation_policy: Optional[str] = None,
+                 vapp_ip_protocol: Optional[str] = None,
+                 vapp_properties: Optional[Sequence[str]] = None,
+                 vapp_transport: Optional[str] = None,
+                 vcenter: Optional[str] = None,
+                 vcenter_port: Optional[str] = None):
+        """
+        :param str boot2docker_url: vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        :param Sequence[str] cfgparams: vSphere vm configuration parameters (used for guestinfo) (list)
+        :param str clone_from: If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
+        :param str cloud_config: Filepath to a cloud-config yaml file to put into the ISO user-data (string)
+        :param str cloudinit: vSphere cloud-init file or url to set in the guestinfo (string)
+        :param str content_library: If you choose to clone from a content library template specify the name of the library (string)
+        :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
+        :param str creation_type: Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
+        :param Sequence[str] custom_attributes: vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
+        :param str datacenter: vSphere datacenter for docker VM (string)
+        :param str datastore: vSphere datastore for docker VM (string)
+        :param str datastore_cluster: vSphere datastore cluster for virtual machine (string)
+        :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        :param Sequence[str] networks: vSphere network where the docker VM will be attached (list)
+        :param str password: OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param str pool: vSphere resource pool for docker VM (string)
+        :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param str ssh_user_group: If using a non-B2D image the uploaded keys will need chown'ed. Default `staff` (string)
+        :param Sequence[str] tags: vSphere tags id e.g. `urn:xxx` (list)
+        :param str username: OpenStack username (string)
+        :param str vapp_ip_allocation_policy: vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        :param str vapp_ip_protocol: vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        :param Sequence[str] vapp_properties: vSphere vApp properties (list)
+        :param str vapp_transport: vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        :param str vcenter: vSphere IP/hostname for vCenter (string)
+        :param str vcenter_port: vSphere Port for vCenter Default `443` (string)
+        """
+        if boot2docker_url is not None:
+            pulumi.set(__self__, "boot2docker_url", boot2docker_url)
+        if cfgparams is not None:
+            pulumi.set(__self__, "cfgparams", cfgparams)
+        if clone_from is not None:
+            pulumi.set(__self__, "clone_from", clone_from)
+        if cloud_config is not None:
+            pulumi.set(__self__, "cloud_config", cloud_config)
+        if cloudinit is not None:
+            pulumi.set(__self__, "cloudinit", cloudinit)
+        if content_library is not None:
+            pulumi.set(__self__, "content_library", content_library)
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+        if creation_type is not None:
+            pulumi.set(__self__, "creation_type", creation_type)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if datastore_cluster is not None:
+            pulumi.set(__self__, "datastore_cluster", datastore_cluster)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if hostsystem is not None:
+            pulumi.set(__self__, "hostsystem", hostsystem)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
+        if ssh_port is not None:
+            pulumi.set(__self__, "ssh_port", ssh_port)
+        if ssh_user is not None:
+            pulumi.set(__self__, "ssh_user", ssh_user)
+        if ssh_user_group is not None:
+            pulumi.set(__self__, "ssh_user_group", ssh_user_group)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if vapp_ip_allocation_policy is not None:
+            pulumi.set(__self__, "vapp_ip_allocation_policy", vapp_ip_allocation_policy)
+        if vapp_ip_protocol is not None:
+            pulumi.set(__self__, "vapp_ip_protocol", vapp_ip_protocol)
+        if vapp_properties is not None:
+            pulumi.set(__self__, "vapp_properties", vapp_properties)
+        if vapp_transport is not None:
+            pulumi.set(__self__, "vapp_transport", vapp_transport)
+        if vcenter is not None:
+            pulumi.set(__self__, "vcenter", vcenter)
+        if vcenter_port is not None:
+            pulumi.set(__self__, "vcenter_port", vcenter_port)
+
+    @property
+    @pulumi.getter(name="boot2dockerUrl")
+    def boot2docker_url(self) -> Optional[str]:
+        """
+        vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        """
+        return pulumi.get(self, "boot2docker_url")
+
+    @property
+    @pulumi.getter
+    def cfgparams(self) -> Optional[Sequence[str]]:
+        """
+        vSphere vm configuration parameters (used for guestinfo) (list)
+        """
+        return pulumi.get(self, "cfgparams")
+
+    @property
+    @pulumi.getter(name="cloneFrom")
+    def clone_from(self) -> Optional[str]:
+        """
+        If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
+        """
+        return pulumi.get(self, "clone_from")
+
+    @property
+    @pulumi.getter(name="cloudConfig")
+    def cloud_config(self) -> Optional[str]:
+        """
+        Filepath to a cloud-config yaml file to put into the ISO user-data (string)
+        """
+        return pulumi.get(self, "cloud_config")
+
+    @property
+    @pulumi.getter
+    def cloudinit(self) -> Optional[str]:
+        """
+        vSphere cloud-init file or url to set in the guestinfo (string)
+        """
+        return pulumi.get(self, "cloudinit")
+
+    @property
+    @pulumi.getter(name="contentLibrary")
+    def content_library(self) -> Optional[str]:
+        """
+        If you choose to clone from a content library template specify the name of the library (string)
+        """
+        return pulumi.get(self, "content_library")
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[str]:
+        """
+        vSphere CPU number for docker VM. Default `2` (string)
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="creationType")
+    def creation_type(self) -> Optional[str]:
+        """
+        Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
+        """
+        return pulumi.get(self, "creation_type")
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[Sequence[str]]:
+        """
+        vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        vSphere datacenter for docker VM (string)
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[str]:
+        """
+        vSphere datastore for docker VM (string)
+        """
+        return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter(name="datastoreCluster")
+    def datastore_cluster(self) -> Optional[str]:
+        """
+        vSphere datastore cluster for virtual machine (string)
+        """
+        return pulumi.get(self, "datastore_cluster")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[str]:
+        """
+        vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[str]:
+        """
+        vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        """
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter
+    def hostsystem(self) -> Optional[str]:
+        """
+        vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        """
+        return pulumi.get(self, "hostsystem")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[str]:
+        """
+        vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[str]]:
+        """
+        vSphere network where the docker VM will be attached (list)
+        """
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def pool(self) -> Optional[str]:
+        """
+        vSphere resource pool for docker VM (string)
+        """
+        return pulumi.get(self, "pool")
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @property
+    @pulumi.getter(name="sshPort")
+    def ssh_port(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
+        return pulumi.get(self, "ssh_port")
+
+    @property
+    @pulumi.getter(name="sshUser")
+    def ssh_user(self) -> Optional[str]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        return pulumi.get(self, "ssh_user")
+
+    @property
+    @pulumi.getter(name="sshUserGroup")
+    def ssh_user_group(self) -> Optional[str]:
+        """
+        If using a non-B2D image the uploaded keys will need chown'ed. Default `staff` (string)
+        """
+        return pulumi.get(self, "ssh_user_group")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        vSphere tags id e.g. `urn:xxx` (list)
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        OpenStack username (string)
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="vappIpAllocationPolicy")
+    def vapp_ip_allocation_policy(self) -> Optional[str]:
+        """
+        vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        """
+        return pulumi.get(self, "vapp_ip_allocation_policy")
+
+    @property
+    @pulumi.getter(name="vappIpProtocol")
+    def vapp_ip_protocol(self) -> Optional[str]:
+        """
+        vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        """
+        return pulumi.get(self, "vapp_ip_protocol")
+
+    @property
+    @pulumi.getter(name="vappProperties")
+    def vapp_properties(self) -> Optional[Sequence[str]]:
+        """
+        vSphere vApp properties (list)
+        """
+        return pulumi.get(self, "vapp_properties")
+
+    @property
+    @pulumi.getter(name="vappTransport")
+    def vapp_transport(self) -> Optional[str]:
+        """
+        vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        """
+        return pulumi.get(self, "vapp_transport")
+
+    @property
+    @pulumi.getter
+    def vcenter(self) -> Optional[str]:
+        """
+        vSphere IP/hostname for vCenter (string)
+        """
+        return pulumi.get(self, "vcenter")
+
+    @property
+    @pulumi.getter(name="vcenterPort")
+    def vcenter_port(self) -> Optional[str]:
+        """
+        vSphere Port for vCenter Default `443` (string)
+        """
+        return pulumi.get(self, "vcenter_port")
 
 
 @pulumi.output_type
@@ -22890,7 +28134,7 @@ class RoleTemplateRule(dict):
         :param Sequence[str] non_resource_urls: Policy rule non resource urls (list)
         :param Sequence[str] resource_names: Policy rule resource names (list)
         :param Sequence[str] resources: Policy rule resources (list)
-        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        :param Sequence[str] verbs: Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         if api_groups is not None:
             pulumi.set(__self__, "api_groups", api_groups)
@@ -22939,7 +28183,7 @@ class RoleTemplateRule(dict):
     @pulumi.getter
     def verbs(self) -> Optional[Sequence[str]]:
         """
-        Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         """
         return pulumi.get(self, "verbs")
 
@@ -23247,6 +28491,337 @@ class GetClusterAksConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterAksConfigV2Result(dict):
+    def __init__(__self__, *,
+                 cloud_credential_id: str,
+                 dns_prefix: str,
+                 http_application_routing: bool,
+                 kubernetes_version: str,
+                 linux_admin_username: str,
+                 linux_ssh_public_key: str,
+                 load_balancer_sku: str,
+                 log_analytics_workspace_group: str,
+                 log_analytics_workspace_name: str,
+                 monitoring: bool,
+                 name: str,
+                 network_dns_service_ip: str,
+                 network_docker_bridge_cidr: str,
+                 network_plugin: str,
+                 network_pod_cidr: str,
+                 network_policy: str,
+                 network_service_cidr: str,
+                 node_pools: Sequence['outputs.GetClusterAksConfigV2NodePoolResult'],
+                 private_cluster: bool,
+                 resource_group: str,
+                 resource_location: str,
+                 subnet: str,
+                 tags: Mapping[str, Any],
+                 virtual_network: str,
+                 virtual_network_resource_group: str,
+                 auth_base_url: Optional[str] = None,
+                 authorized_ip_ranges: Optional[Sequence[str]] = None,
+                 base_url: Optional[str] = None,
+                 imported: Optional[bool] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+        pulumi.set(__self__, "dns_prefix", dns_prefix)
+        pulumi.set(__self__, "http_application_routing", http_application_routing)
+        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        pulumi.set(__self__, "linux_admin_username", linux_admin_username)
+        pulumi.set(__self__, "linux_ssh_public_key", linux_ssh_public_key)
+        pulumi.set(__self__, "load_balancer_sku", load_balancer_sku)
+        pulumi.set(__self__, "log_analytics_workspace_group", log_analytics_workspace_group)
+        pulumi.set(__self__, "log_analytics_workspace_name", log_analytics_workspace_name)
+        pulumi.set(__self__, "monitoring", monitoring)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_dns_service_ip", network_dns_service_ip)
+        pulumi.set(__self__, "network_docker_bridge_cidr", network_docker_bridge_cidr)
+        pulumi.set(__self__, "network_plugin", network_plugin)
+        pulumi.set(__self__, "network_pod_cidr", network_pod_cidr)
+        pulumi.set(__self__, "network_policy", network_policy)
+        pulumi.set(__self__, "network_service_cidr", network_service_cidr)
+        pulumi.set(__self__, "node_pools", node_pools)
+        pulumi.set(__self__, "private_cluster", private_cluster)
+        pulumi.set(__self__, "resource_group", resource_group)
+        pulumi.set(__self__, "resource_location", resource_location)
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "virtual_network", virtual_network)
+        pulumi.set(__self__, "virtual_network_resource_group", virtual_network_resource_group)
+        if auth_base_url is not None:
+            pulumi.set(__self__, "auth_base_url", auth_base_url)
+        if authorized_ip_ranges is not None:
+            pulumi.set(__self__, "authorized_ip_ranges", authorized_ip_ranges)
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+
+    @property
+    @pulumi.getter(name="cloudCredentialId")
+    def cloud_credential_id(self) -> str:
+        return pulumi.get(self, "cloud_credential_id")
+
+    @property
+    @pulumi.getter(name="dnsPrefix")
+    def dns_prefix(self) -> str:
+        return pulumi.get(self, "dns_prefix")
+
+    @property
+    @pulumi.getter(name="httpApplicationRouting")
+    def http_application_routing(self) -> bool:
+        return pulumi.get(self, "http_application_routing")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> str:
+        return pulumi.get(self, "kubernetes_version")
+
+    @property
+    @pulumi.getter(name="linuxAdminUsername")
+    def linux_admin_username(self) -> str:
+        return pulumi.get(self, "linux_admin_username")
+
+    @property
+    @pulumi.getter(name="linuxSshPublicKey")
+    def linux_ssh_public_key(self) -> str:
+        return pulumi.get(self, "linux_ssh_public_key")
+
+    @property
+    @pulumi.getter(name="loadBalancerSku")
+    def load_balancer_sku(self) -> str:
+        return pulumi.get(self, "load_balancer_sku")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceGroup")
+    def log_analytics_workspace_group(self) -> str:
+        return pulumi.get(self, "log_analytics_workspace_group")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceName")
+    def log_analytics_workspace_name(self) -> str:
+        return pulumi.get(self, "log_analytics_workspace_name")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> bool:
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkDnsServiceIp")
+    def network_dns_service_ip(self) -> str:
+        return pulumi.get(self, "network_dns_service_ip")
+
+    @property
+    @pulumi.getter(name="networkDockerBridgeCidr")
+    def network_docker_bridge_cidr(self) -> str:
+        return pulumi.get(self, "network_docker_bridge_cidr")
+
+    @property
+    @pulumi.getter(name="networkPlugin")
+    def network_plugin(self) -> str:
+        return pulumi.get(self, "network_plugin")
+
+    @property
+    @pulumi.getter(name="networkPodCidr")
+    def network_pod_cidr(self) -> str:
+        return pulumi.get(self, "network_pod_cidr")
+
+    @property
+    @pulumi.getter(name="networkPolicy")
+    def network_policy(self) -> str:
+        return pulumi.get(self, "network_policy")
+
+    @property
+    @pulumi.getter(name="networkServiceCidr")
+    def network_service_cidr(self) -> str:
+        return pulumi.get(self, "network_service_cidr")
+
+    @property
+    @pulumi.getter(name="nodePools")
+    def node_pools(self) -> Sequence['outputs.GetClusterAksConfigV2NodePoolResult']:
+        return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="privateCluster")
+    def private_cluster(self) -> bool:
+        return pulumi.get(self, "private_cluster")
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> str:
+        return pulumi.get(self, "resource_group")
+
+    @property
+    @pulumi.getter(name="resourceLocation")
+    def resource_location(self) -> str:
+        return pulumi.get(self, "resource_location")
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> str:
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="virtualNetwork")
+    def virtual_network(self) -> str:
+        return pulumi.get(self, "virtual_network")
+
+    @property
+    @pulumi.getter(name="virtualNetworkResourceGroup")
+    def virtual_network_resource_group(self) -> str:
+        return pulumi.get(self, "virtual_network_resource_group")
+
+    @property
+    @pulumi.getter(name="authBaseUrl")
+    def auth_base_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_base_url")
+
+    @property
+    @pulumi.getter(name="authorizedIpRanges")
+    def authorized_ip_ranges(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "authorized_ip_ranges")
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[str]:
+        return pulumi.get(self, "base_url")
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[bool]:
+        return pulumi.get(self, "imported")
+
+
+@pulumi.output_type
+class GetClusterAksConfigV2NodePoolResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 vm_size: str,
+                 availability_zones: Optional[Sequence[str]] = None,
+                 count: Optional[int] = None,
+                 enable_auto_scaling: Optional[bool] = None,
+                 max_count: Optional[int] = None,
+                 max_pods: Optional[int] = None,
+                 min_count: Optional[int] = None,
+                 mode: Optional[str] = None,
+                 orchestrator_version: Optional[str] = None,
+                 os_disk_size_gb: Optional[int] = None,
+                 os_disk_type: Optional[str] = None,
+                 os_type: Optional[str] = None):
+        """
+        :param str name: The name of the Cluster (string)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vm_size", vm_size)
+        if availability_zones is not None:
+            pulumi.set(__self__, "availability_zones", availability_zones)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if enable_auto_scaling is not None:
+            pulumi.set(__self__, "enable_auto_scaling", enable_auto_scaling)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if max_pods is not None:
+            pulumi.set(__self__, "max_pods", max_pods)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if orchestrator_version is not None:
+            pulumi.set(__self__, "orchestrator_version", orchestrator_version)
+        if os_disk_size_gb is not None:
+            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
+        if os_disk_type is not None:
+            pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_type is not None:
+            pulumi.set(__self__, "os_type", os_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="vmSize")
+    def vm_size(self) -> str:
+        return pulumi.get(self, "vm_size")
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "availability_zones")
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="enableAutoScaling")
+    def enable_auto_scaling(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_auto_scaling")
+
+    @property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> Optional[int]:
+        return pulumi.get(self, "max_count")
+
+    @property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> Optional[int]:
+        return pulumi.get(self, "max_pods")
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_count")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="orchestratorVersion")
+    def orchestrator_version(self) -> Optional[str]:
+        return pulumi.get(self, "orchestrator_version")
+
+    @property
+    @pulumi.getter(name="osDiskSizeGb")
+    def os_disk_size_gb(self) -> Optional[int]:
+        return pulumi.get(self, "os_disk_size_gb")
+
+    @property
+    @pulumi.getter(name="osDiskType")
+    def os_disk_type(self) -> Optional[str]:
+        return pulumi.get(self, "os_disk_type")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> Optional[str]:
+        return pulumi.get(self, "os_type")
+
+
+@pulumi.output_type
 class GetClusterAlertGroupRecipientResult(dict):
     def __init__(__self__, *,
                  notifier_id: str,
@@ -23458,6 +29033,8 @@ class GetClusterClusterRegistrationTokenResult(dict):
                  command: str,
                  id: str,
                  insecure_command: str,
+                 insecure_node_command: str,
+                 insecure_windows_node_command: str,
                  labels: Mapping[str, Any],
                  manifest_url: str,
                  name: str,
@@ -23475,6 +29052,8 @@ class GetClusterClusterRegistrationTokenResult(dict):
         pulumi.set(__self__, "command", command)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "insecure_command", insecure_command)
+        pulumi.set(__self__, "insecure_node_command", insecure_node_command)
+        pulumi.set(__self__, "insecure_windows_node_command", insecure_windows_node_command)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "manifest_url", manifest_url)
         pulumi.set(__self__, "name", name)
@@ -23512,6 +29091,16 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @pulumi.getter(name="insecureCommand")
     def insecure_command(self) -> str:
         return pulumi.get(self, "insecure_command")
+
+    @property
+    @pulumi.getter(name="insecureNodeCommand")
+    def insecure_node_command(self) -> str:
+        return pulumi.get(self, "insecure_node_command")
+
+    @property
+    @pulumi.getter(name="insecureWindowsNodeCommand")
+    def insecure_windows_node_command(self) -> str:
+        return pulumi.get(self, "insecure_windows_node_command")
 
     @property
     @pulumi.getter
@@ -23773,11 +29362,11 @@ class GetClusterEksConfigV2Result(dict):
                  node_groups: Sequence['outputs.GetClusterEksConfigV2NodeGroupResult'],
                  private_access: bool,
                  public_access: bool,
+                 public_access_sources: Sequence[str],
                  secrets_encryption: bool,
                  imported: Optional[bool] = None,
                  kms_key: Optional[str] = None,
                  logging_types: Optional[Sequence[str]] = None,
-                 public_access_sources: Optional[Sequence[str]] = None,
                  region: Optional[str] = None,
                  security_groups: Optional[Sequence[str]] = None,
                  service_role: Optional[str] = None,
@@ -23792,6 +29381,7 @@ class GetClusterEksConfigV2Result(dict):
         pulumi.set(__self__, "node_groups", node_groups)
         pulumi.set(__self__, "private_access", private_access)
         pulumi.set(__self__, "public_access", public_access)
+        pulumi.set(__self__, "public_access_sources", public_access_sources)
         pulumi.set(__self__, "secrets_encryption", secrets_encryption)
         if imported is not None:
             pulumi.set(__self__, "imported", imported)
@@ -23799,8 +29389,6 @@ class GetClusterEksConfigV2Result(dict):
             pulumi.set(__self__, "kms_key", kms_key)
         if logging_types is not None:
             pulumi.set(__self__, "logging_types", logging_types)
-        if public_access_sources is not None:
-            pulumi.set(__self__, "public_access_sources", public_access_sources)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if security_groups is not None:
@@ -23846,6 +29434,11 @@ class GetClusterEksConfigV2Result(dict):
         return pulumi.get(self, "public_access")
 
     @property
+    @pulumi.getter(name="publicAccessSources")
+    def public_access_sources(self) -> Sequence[str]:
+        return pulumi.get(self, "public_access_sources")
+
+    @property
     @pulumi.getter(name="secretsEncryption")
     def secrets_encryption(self) -> bool:
         return pulumi.get(self, "secrets_encryption")
@@ -23864,11 +29457,6 @@ class GetClusterEksConfigV2Result(dict):
     @pulumi.getter(name="loggingTypes")
     def logging_types(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "logging_types")
-
-    @property
-    @pulumi.getter(name="publicAccessSources")
-    def public_access_sources(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "public_access_sources")
 
     @property
     @pulumi.getter
@@ -24903,6 +30491,7 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
     def __init__(__self__, *,
                  labels: Mapping[str, Any],
                  oauth_scopes: Sequence[str],
+                 tags: Sequence[str],
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  image_type: Optional[str] = None,
@@ -24915,6 +30504,7 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
         """
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
+        pulumi.set(__self__, "tags", tags)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -24942,6 +30532,11 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Sequence[str]:
         return pulumi.get(self, "oauth_scopes")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -25555,8 +31150,10 @@ class GetClusterOkeConfigResult(dict):
                  custom_boot_volume_size: Optional[int] = None,
                  description: Optional[str] = None,
                  enable_kubernetes_dashboard: Optional[bool] = None,
+                 enable_private_control_plane: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
                  flex_ocpus: Optional[int] = None,
+                 kms_key_id: Optional[str] = None,
                  limit_node_count: Optional[int] = None,
                  load_balancer_subnet_name1: Optional[str] = None,
                  load_balancer_subnet_name2: Optional[str] = None,
@@ -25591,10 +31188,14 @@ class GetClusterOkeConfigResult(dict):
             pulumi.set(__self__, "description", description)
         if enable_kubernetes_dashboard is not None:
             pulumi.set(__self__, "enable_kubernetes_dashboard", enable_kubernetes_dashboard)
+        if enable_private_control_plane is not None:
+            pulumi.set(__self__, "enable_private_control_plane", enable_private_control_plane)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if flex_ocpus is not None:
             pulumi.set(__self__, "flex_ocpus", flex_ocpus)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if limit_node_count is not None:
             pulumi.set(__self__, "limit_node_count", limit_node_count)
         if load_balancer_subnet_name1 is not None:
@@ -25692,6 +31293,11 @@ class GetClusterOkeConfigResult(dict):
         return pulumi.get(self, "enable_kubernetes_dashboard")
 
     @property
+    @pulumi.getter(name="enablePrivateControlPlane")
+    def enable_private_control_plane(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_private_control_plane")
+
+    @property
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> Optional[bool]:
         return pulumi.get(self, "enable_private_nodes")
@@ -25700,6 +31306,11 @@ class GetClusterOkeConfigResult(dict):
     @pulumi.getter(name="flexOcpus")
     def flex_ocpus(self) -> Optional[int]:
         return pulumi.get(self, "flex_ocpus")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="limitNodeCount")
@@ -26095,20 +31706,21 @@ class GetClusterRkeConfigBastionHostResult(dict):
 class GetClusterRkeConfigCloudProviderResult(dict):
     def __init__(__self__, *,
                  custom_cloud_provider: str,
-                 name: str,
                  aws_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderResult'] = None,
                  azure_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderAzureCloudProviderResult'] = None,
+                 name: Optional[str] = None,
                  openstack_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
                  vsphere_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderResult'] = None):
         """
         :param str name: The name of the Cluster (string)
         """
         pulumi.set(__self__, "custom_cloud_provider", custom_cloud_provider)
-        pulumi.set(__self__, "name", name)
         if aws_cloud_provider is not None:
             pulumi.set(__self__, "aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
             pulumi.set(__self__, "azure_cloud_provider", azure_cloud_provider)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if openstack_cloud_provider is not None:
             pulumi.set(__self__, "openstack_cloud_provider", openstack_cloud_provider)
         if vsphere_cloud_provider is not None:
@@ -26120,14 +31732,6 @@ class GetClusterRkeConfigCloudProviderResult(dict):
         return pulumi.get(self, "custom_cloud_provider")
 
     @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The name of the Cluster (string)
-        """
-        return pulumi.get(self, "name")
-
-    @property
     @pulumi.getter(name="awsCloudProvider")
     def aws_cloud_provider(self) -> Optional['outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderResult']:
         return pulumi.get(self, "aws_cloud_provider")
@@ -26136,6 +31740,14 @@ class GetClusterRkeConfigCloudProviderResult(dict):
     @pulumi.getter(name="azureCloudProvider")
     def azure_cloud_provider(self) -> Optional['outputs.GetClusterRkeConfigCloudProviderAzureCloudProviderResult']:
         return pulumi.get(self, "azure_cloud_provider")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the Cluster (string)
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="openstackCloudProvider")
@@ -26966,13 +32578,16 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult(dict):
 class GetClusterRkeConfigDnsResult(dict):
     def __init__(__self__, *,
                  node_selector: Mapping[str, Any],
+                 options: Mapping[str, Any],
                  reverse_cidrs: Sequence[str],
                  upstream_nameservers: Sequence[str],
                  linear_autoscaler_params: Optional['outputs.GetClusterRkeConfigDnsLinearAutoscalerParamsResult'] = None,
                  nodelocal: Optional['outputs.GetClusterRkeConfigDnsNodelocalResult'] = None,
                  provider: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterRkeConfigDnsTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyResult'] = None):
         pulumi.set(__self__, "node_selector", node_selector)
+        pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
         pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
         if linear_autoscaler_params is not None:
@@ -26981,6 +32596,8 @@ class GetClusterRkeConfigDnsResult(dict):
             pulumi.set(__self__, "nodelocal", nodelocal)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -26988,6 +32605,11 @@ class GetClusterRkeConfigDnsResult(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Mapping[str, Any]:
         return pulumi.get(self, "node_selector")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter(name="reverseCidrs")
@@ -27013,6 +32635,11 @@ class GetClusterRkeConfigDnsResult(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterRkeConfigDnsTolerationResult']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="updateStrategy")
@@ -27087,6 +32714,49 @@ class GetClusterRkeConfigDnsNodelocalResult(dict):
 
 
 @pulumi.output_type
+class GetClusterRkeConfigDnsTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetClusterRkeConfigDnsUpdateStrategyResult(dict):
     def __init__(__self__, *,
                  rolling_update: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
@@ -27140,6 +32810,7 @@ class GetClusterRkeConfigIngressResult(dict):
                  options: Mapping[str, Any],
                  provider: str,
                  default_backend: Optional[bool] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterRkeConfigIngressTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyResult'] = None):
         pulumi.set(__self__, "dns_policy", dns_policy)
         pulumi.set(__self__, "extra_args", extra_args)
@@ -27151,6 +32822,8 @@ class GetClusterRkeConfigIngressResult(dict):
         pulumi.set(__self__, "provider", provider)
         if default_backend is not None:
             pulumi.set(__self__, "default_backend", default_backend)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -27200,9 +32873,57 @@ class GetClusterRkeConfigIngressResult(dict):
         return pulumi.get(self, "default_backend")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterRkeConfigIngressTolerationResult']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyResult']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigIngressTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -27246,12 +32967,15 @@ class GetClusterRkeConfigMonitoringResult(dict):
                  provider: str,
                  replicas: int,
                  node_selector: Optional[Mapping[str, Any]] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterRkeConfigMonitoringTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterRkeConfigMonitoringUpdateStrategyResult'] = None):
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "replicas", replicas)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -27276,9 +33000,57 @@ class GetClusterRkeConfigMonitoringResult(dict):
         return pulumi.get(self, "node_selector")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterRkeConfigMonitoringTolerationResult']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.GetClusterRkeConfigMonitoringUpdateStrategyResult']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigMonitoringTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -27332,6 +33104,7 @@ class GetClusterRkeConfigNetworkResult(dict):
                  canal_network_provider: Optional['outputs.GetClusterRkeConfigNetworkCanalNetworkProviderResult'] = None,
                  flannel_network_provider: Optional['outputs.GetClusterRkeConfigNetworkFlannelNetworkProviderResult'] = None,
                  mtu: Optional[int] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterRkeConfigNetworkTolerationResult']] = None,
                  weave_network_provider: Optional['outputs.GetClusterRkeConfigNetworkWeaveNetworkProviderResult'] = None):
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "plugin", plugin)
@@ -27343,6 +33116,8 @@ class GetClusterRkeConfigNetworkResult(dict):
             pulumi.set(__self__, "flannel_network_provider", flannel_network_provider)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if weave_network_provider is not None:
             pulumi.set(__self__, "weave_network_provider", weave_network_provider)
 
@@ -27375,6 +33150,11 @@ class GetClusterRkeConfigNetworkResult(dict):
     @pulumi.getter
     def mtu(self) -> Optional[int]:
         return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterRkeConfigNetworkTolerationResult']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="weaveNetworkProvider")
@@ -27416,6 +33196,49 @@ class GetClusterRkeConfigNetworkFlannelNetworkProviderResult(dict):
     @pulumi.getter
     def iface(self) -> str:
         return pulumi.get(self, "iface")
+
+
+@pulumi.output_type
+class GetClusterRkeConfigNetworkTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -29012,20 +34835,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostResult(
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResult(dict):
     def __init__(__self__, *,
                  custom_cloud_provider: str,
-                 name: str,
                  aws_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderResult'] = None,
                  azure_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderResult'] = None,
+                 name: Optional[str] = None,
                  openstack_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
                  vsphere_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderResult'] = None):
         """
         :param str name: The cluster template name (string)
         """
         pulumi.set(__self__, "custom_cloud_provider", custom_cloud_provider)
-        pulumi.set(__self__, "name", name)
         if aws_cloud_provider is not None:
             pulumi.set(__self__, "aws_cloud_provider", aws_cloud_provider)
         if azure_cloud_provider is not None:
             pulumi.set(__self__, "azure_cloud_provider", azure_cloud_provider)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if openstack_cloud_provider is not None:
             pulumi.set(__self__, "openstack_cloud_provider", openstack_cloud_provider)
         if vsphere_cloud_provider is not None:
@@ -29037,14 +34861,6 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResul
         return pulumi.get(self, "custom_cloud_provider")
 
     @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The cluster template name (string)
-        """
-        return pulumi.get(self, "name")
-
-    @property
     @pulumi.getter(name="awsCloudProvider")
     def aws_cloud_provider(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderResult']:
         return pulumi.get(self, "aws_cloud_provider")
@@ -29053,6 +34869,14 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResul
     @pulumi.getter(name="azureCloudProvider")
     def azure_cloud_provider(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderResult']:
         return pulumi.get(self, "azure_cloud_provider")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The cluster template name (string)
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="openstackCloudProvider")
@@ -29883,13 +35707,16 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
     def __init__(__self__, *,
                  node_selector: Mapping[str, Any],
+                 options: Mapping[str, Any],
                  reverse_cidrs: Sequence[str],
                  upstream_nameservers: Sequence[str],
                  linear_autoscaler_params: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult'] = None,
                  nodelocal: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult'] = None,
                  provider: Optional[str] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult'] = None):
         pulumi.set(__self__, "node_selector", node_selector)
+        pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "reverse_cidrs", reverse_cidrs)
         pulumi.set(__self__, "upstream_nameservers", upstream_nameservers)
         if linear_autoscaler_params is not None:
@@ -29898,6 +35725,8 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
             pulumi.set(__self__, "nodelocal", nodelocal)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -29905,6 +35734,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Mapping[str, Any]:
         return pulumi.get(self, "node_selector")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter(name="reverseCidrs")
@@ -29930,6 +35764,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResult']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="updateStrategy")
@@ -30004,6 +35843,49 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult
 
 
 @pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult(dict):
     def __init__(__self__, *,
                  rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
@@ -30057,6 +35939,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
                  options: Mapping[str, Any],
                  provider: str,
                  default_backend: Optional[bool] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult'] = None):
         pulumi.set(__self__, "dns_policy", dns_policy)
         pulumi.set(__self__, "extra_args", extra_args)
@@ -30068,6 +35951,8 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
         pulumi.set(__self__, "provider", provider)
         if default_backend is not None:
             pulumi.set(__self__, "default_backend", default_backend)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -30117,9 +36002,57 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
         return pulumi.get(self, "default_backend")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationResult']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -30163,12 +36096,15 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult(d
                  provider: str,
                  replicas: int,
                  node_selector: Optional[Mapping[str, Any]] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult']] = None,
                  update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult'] = None):
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "replicas", replicas)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
 
@@ -30193,9 +36129,57 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult(d
         return pulumi.get(self, "node_selector")
 
     @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult']]:
+        return pulumi.get(self, "tolerations")
+
+    @property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult']:
         return pulumi.get(self, "update_strategy")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -30249,6 +36233,7 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult(dict
                  canal_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderResult'] = None,
                  flannel_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderResult'] = None,
                  mtu: Optional[int] = None,
+                 tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationResult']] = None,
                  weave_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderResult'] = None):
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "plugin", plugin)
@@ -30260,6 +36245,8 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult(dict
             pulumi.set(__self__, "flannel_network_provider", flannel_network_provider)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
         if weave_network_provider is not None:
             pulumi.set(__self__, "weave_network_provider", weave_network_provider)
 
@@ -30292,6 +36279,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult(dict
     @pulumi.getter
     def mtu(self) -> Optional[int]:
         return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationResult']]:
+        return pulumi.get(self, "tolerations")
 
     @property
     @pulumi.getter(name="weaveNetworkProvider")
@@ -30333,6 +36325,49 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetw
     @pulumi.getter
     def iface(self) -> str:
         return pulumi.get(self, "iface")
+
+
+@pulumi.output_type
+class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 seconds: int,
+                 effect: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "seconds", seconds)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -31373,6 +37408,864 @@ class GetClusterTemplateTemplateRevisionQuestionResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterV2AgentEnvVarResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the Cluster v2 (string)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetClusterV2ClusterRegistrationTokenResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, Any],
+                 cluster_id: str,
+                 command: str,
+                 id: str,
+                 insecure_command: str,
+                 insecure_node_command: str,
+                 insecure_windows_node_command: str,
+                 labels: Mapping[str, Any],
+                 manifest_url: str,
+                 name: str,
+                 node_command: str,
+                 token: str,
+                 windows_node_command: str):
+        """
+        :param str id: (Computed) The ID of the resource (string)
+        :param str name: The name of the Cluster v2 (string)
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "insecure_command", insecure_command)
+        pulumi.set(__self__, "insecure_node_command", insecure_node_command)
+        pulumi.set(__self__, "insecure_windows_node_command", insecure_windows_node_command)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "manifest_url", manifest_url)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_command", node_command)
+        pulumi.set(__self__, "token", token)
+        pulumi.set(__self__, "windows_node_command", windows_node_command)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def command(self) -> str:
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        (Computed) The ID of the resource (string)
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="insecureCommand")
+    def insecure_command(self) -> str:
+        return pulumi.get(self, "insecure_command")
+
+    @property
+    @pulumi.getter(name="insecureNodeCommand")
+    def insecure_node_command(self) -> str:
+        return pulumi.get(self, "insecure_node_command")
+
+    @property
+    @pulumi.getter(name="insecureWindowsNodeCommand")
+    def insecure_windows_node_command(self) -> str:
+        return pulumi.get(self, "insecure_windows_node_command")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="manifestUrl")
+    def manifest_url(self) -> str:
+        return pulumi.get(self, "manifest_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeCommand")
+    def node_command(self) -> str:
+        return pulumi.get(self, "node_command")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="windowsNodeCommand")
+    def windows_node_command(self) -> str:
+        return pulumi.get(self, "windows_node_command")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigResult(dict):
+    def __init__(__self__, *,
+                 etcd: 'outputs.GetClusterV2RkeConfigEtcdResult',
+                 machine_pools: Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult'],
+                 machine_selector_configs: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult'],
+                 additional_manifest: Optional[str] = None,
+                 chart_values: Optional[str] = None,
+                 local_auth_endpoint: Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult'] = None,
+                 machine_global_config: Optional[str] = None,
+                 registries: Optional['outputs.GetClusterV2RkeConfigRegistriesResult'] = None,
+                 upgrade_strategy: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyResult'] = None):
+        pulumi.set(__self__, "etcd", etcd)
+        pulumi.set(__self__, "machine_pools", machine_pools)
+        pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
+        if additional_manifest is not None:
+            pulumi.set(__self__, "additional_manifest", additional_manifest)
+        if chart_values is not None:
+            pulumi.set(__self__, "chart_values", chart_values)
+        if local_auth_endpoint is not None:
+            pulumi.set(__self__, "local_auth_endpoint", local_auth_endpoint)
+        if machine_global_config is not None:
+            pulumi.set(__self__, "machine_global_config", machine_global_config)
+        if registries is not None:
+            pulumi.set(__self__, "registries", registries)
+        if upgrade_strategy is not None:
+            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+
+    @property
+    @pulumi.getter
+    def etcd(self) -> 'outputs.GetClusterV2RkeConfigEtcdResult':
+        return pulumi.get(self, "etcd")
+
+    @property
+    @pulumi.getter(name="machinePools")
+    def machine_pools(self) -> Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult']:
+        return pulumi.get(self, "machine_pools")
+
+    @property
+    @pulumi.getter(name="machineSelectorConfigs")
+    def machine_selector_configs(self) -> Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult']:
+        return pulumi.get(self, "machine_selector_configs")
+
+    @property
+    @pulumi.getter(name="additionalManifest")
+    def additional_manifest(self) -> Optional[str]:
+        return pulumi.get(self, "additional_manifest")
+
+    @property
+    @pulumi.getter(name="chartValues")
+    def chart_values(self) -> Optional[str]:
+        return pulumi.get(self, "chart_values")
+
+    @property
+    @pulumi.getter(name="localAuthEndpoint")
+    def local_auth_endpoint(self) -> Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult']:
+        return pulumi.get(self, "local_auth_endpoint")
+
+    @property
+    @pulumi.getter(name="machineGlobalConfig")
+    def machine_global_config(self) -> Optional[str]:
+        return pulumi.get(self, "machine_global_config")
+
+    @property
+    @pulumi.getter
+    def registries(self) -> Optional['outputs.GetClusterV2RkeConfigRegistriesResult']:
+        return pulumi.get(self, "registries")
+
+    @property
+    @pulumi.getter(name="upgradeStrategy")
+    def upgrade_strategy(self) -> Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyResult']:
+        return pulumi.get(self, "upgrade_strategy")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigEtcdResult(dict):
+    def __init__(__self__, *,
+                 disable_snapshots: Optional[bool] = None,
+                 s3_config: Optional['outputs.GetClusterV2RkeConfigEtcdS3ConfigResult'] = None,
+                 snapshot_retention: Optional[int] = None,
+                 snapshot_schedule_cron: Optional[str] = None):
+        if disable_snapshots is not None:
+            pulumi.set(__self__, "disable_snapshots", disable_snapshots)
+        if s3_config is not None:
+            pulumi.set(__self__, "s3_config", s3_config)
+        if snapshot_retention is not None:
+            pulumi.set(__self__, "snapshot_retention", snapshot_retention)
+        if snapshot_schedule_cron is not None:
+            pulumi.set(__self__, "snapshot_schedule_cron", snapshot_schedule_cron)
+
+    @property
+    @pulumi.getter(name="disableSnapshots")
+    def disable_snapshots(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_snapshots")
+
+    @property
+    @pulumi.getter(name="s3Config")
+    def s3_config(self) -> Optional['outputs.GetClusterV2RkeConfigEtcdS3ConfigResult']:
+        return pulumi.get(self, "s3_config")
+
+    @property
+    @pulumi.getter(name="snapshotRetention")
+    def snapshot_retention(self) -> Optional[int]:
+        return pulumi.get(self, "snapshot_retention")
+
+    @property
+    @pulumi.getter(name="snapshotScheduleCron")
+    def snapshot_schedule_cron(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_schedule_cron")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigEtcdS3ConfigResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 endpoint: str,
+                 cloud_credential_name: Optional[str] = None,
+                 endpoint_ca: Optional[str] = None,
+                 folder: Optional[str] = None,
+                 region: Optional[str] = None,
+                 skip_ssl_verify: Optional[bool] = None):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "endpoint", endpoint)
+        if cloud_credential_name is not None:
+            pulumi.set(__self__, "cloud_credential_name", cloud_credential_name)
+        if endpoint_ca is not None:
+            pulumi.set(__self__, "endpoint_ca", endpoint_ca)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if skip_ssl_verify is not None:
+            pulumi.set(__self__, "skip_ssl_verify", skip_ssl_verify)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="cloudCredentialName")
+    def cloud_credential_name(self) -> Optional[str]:
+        return pulumi.get(self, "cloud_credential_name")
+
+    @property
+    @pulumi.getter(name="endpointCa")
+    def endpoint_ca(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint_ca")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[str]:
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="skipSslVerify")
+    def skip_ssl_verify(self) -> Optional[bool]:
+        return pulumi.get(self, "skip_ssl_verify")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigLocalAuthEndpointResult(dict):
+    def __init__(__self__, *,
+                 ca_certs: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 fqdn: Optional[str] = None):
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[str]:
+        return pulumi.get(self, "ca_certs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachinePoolResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, Any],
+                 cloud_credential_secret_name: str,
+                 labels: Mapping[str, Any],
+                 machine_config: 'outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult',
+                 name: str,
+                 control_plane_role: Optional[bool] = None,
+                 etcd_role: Optional[bool] = None,
+                 paused: Optional[bool] = None,
+                 quantity: Optional[int] = None,
+                 rolling_update: Optional['outputs.GetClusterV2RkeConfigMachinePoolRollingUpdateResult'] = None,
+                 taints: Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolTaintResult']] = None,
+                 worker_role: Optional[bool] = None):
+        """
+        :param str cloud_credential_secret_name: (Computed) Cluster V2 cloud credential secret name (string)
+        :param str name: The name of the Cluster v2 (string)
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "cloud_credential_secret_name", cloud_credential_secret_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "machine_config", machine_config)
+        pulumi.set(__self__, "name", name)
+        if control_plane_role is not None:
+            pulumi.set(__self__, "control_plane_role", control_plane_role)
+        if etcd_role is not None:
+            pulumi.set(__self__, "etcd_role", etcd_role)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+        if rolling_update is not None:
+            pulumi.set(__self__, "rolling_update", rolling_update)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+        if worker_role is not None:
+            pulumi.set(__self__, "worker_role", worker_role)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="cloudCredentialSecretName")
+    def cloud_credential_secret_name(self) -> str:
+        """
+        (Computed) Cluster V2 cloud credential secret name (string)
+        """
+        return pulumi.get(self, "cloud_credential_secret_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineConfig")
+    def machine_config(self) -> 'outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult':
+        return pulumi.get(self, "machine_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="controlPlaneRole")
+    def control_plane_role(self) -> Optional[bool]:
+        return pulumi.get(self, "control_plane_role")
+
+    @property
+    @pulumi.getter(name="etcdRole")
+    def etcd_role(self) -> Optional[bool]:
+        return pulumi.get(self, "etcd_role")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[bool]:
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[int]:
+        return pulumi.get(self, "quantity")
+
+    @property
+    @pulumi.getter(name="rollingUpdate")
+    def rolling_update(self) -> Optional['outputs.GetClusterV2RkeConfigMachinePoolRollingUpdateResult']:
+        return pulumi.get(self, "rolling_update")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolTaintResult']]:
+        return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="workerRole")
+    def worker_role(self) -> Optional[bool]:
+        return pulumi.get(self, "worker_role")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachinePoolMachineConfigResult(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 name: str):
+        """
+        :param str name: The name of the Cluster v2 (string)
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachinePoolRollingUpdateResult(dict):
+    def __init__(__self__, *,
+                 max_surge: Optional[str] = None,
+                 max_unavailable: Optional[str] = None):
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[str]:
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[str]:
+        return pulumi.get(self, "max_unavailable")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachinePoolTaintResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 effect: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        return pulumi.get(self, "effect")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorConfigResult(dict):
+    def __init__(__self__, *,
+                 config: Optional[Mapping[str, Any]] = None,
+                 machine_label_selector: Optional['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult'] = None):
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if machine_label_selector is not None:
+            pulumi.set(__self__, "machine_label_selector", machine_label_selector)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="machineLabelSelector")
+    def machine_label_selector(self) -> Optional['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult']:
+        return pulumi.get(self, "machine_label_selector")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult(dict):
+    def __init__(__self__, *,
+                 match_expressions: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult']] = None,
+                 match_labels: Optional[Mapping[str, Any]] = None):
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult']]:
+        return pulumi.get(self, "match_expressions")
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "match_labels")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigRegistriesResult(dict):
+    def __init__(__self__, *,
+                 configs: Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesConfigResult']] = None,
+                 mirrors: Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesMirrorResult']] = None):
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if mirrors is not None:
+            pulumi.set(__self__, "mirrors", mirrors)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesConfigResult']]:
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def mirrors(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesMirrorResult']]:
+        return pulumi.get(self, "mirrors")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigRegistriesConfigResult(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 auth_config_secret_name: Optional[str] = None,
+                 ca_bundle: Optional[str] = None,
+                 insecure: Optional[bool] = None,
+                 tls_secret_name: Optional[str] = None):
+        pulumi.set(__self__, "hostname", hostname)
+        if auth_config_secret_name is not None:
+            pulumi.set(__self__, "auth_config_secret_name", auth_config_secret_name)
+        if ca_bundle is not None:
+            pulumi.set(__self__, "ca_bundle", ca_bundle)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if tls_secret_name is not None:
+            pulumi.set(__self__, "tls_secret_name", tls_secret_name)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="authConfigSecretName")
+    def auth_config_secret_name(self) -> Optional[str]:
+        return pulumi.get(self, "auth_config_secret_name")
+
+    @property
+    @pulumi.getter(name="caBundle")
+    def ca_bundle(self) -> Optional[str]:
+        return pulumi.get(self, "ca_bundle")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[bool]:
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="tlsSecretName")
+    def tls_secret_name(self) -> Optional[str]:
+        return pulumi.get(self, "tls_secret_name")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigRegistriesMirrorResult(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 endpoints: Optional[Sequence[str]] = None,
+                 rewrites: Optional[Mapping[str, Any]] = None):
+        pulumi.set(__self__, "hostname", hostname)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if rewrites is not None:
+            pulumi.set(__self__, "rewrites", rewrites)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def rewrites(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "rewrites")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigUpgradeStrategyResult(dict):
+    def __init__(__self__, *,
+                 control_plane_concurrency: Optional[str] = None,
+                 control_plane_drain_options: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult'] = None,
+                 worker_concurrency: Optional[str] = None,
+                 worker_drain_options: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult'] = None):
+        if control_plane_concurrency is not None:
+            pulumi.set(__self__, "control_plane_concurrency", control_plane_concurrency)
+        if control_plane_drain_options is not None:
+            pulumi.set(__self__, "control_plane_drain_options", control_plane_drain_options)
+        if worker_concurrency is not None:
+            pulumi.set(__self__, "worker_concurrency", worker_concurrency)
+        if worker_drain_options is not None:
+            pulumi.set(__self__, "worker_drain_options", worker_drain_options)
+
+    @property
+    @pulumi.getter(name="controlPlaneConcurrency")
+    def control_plane_concurrency(self) -> Optional[str]:
+        return pulumi.get(self, "control_plane_concurrency")
+
+    @property
+    @pulumi.getter(name="controlPlaneDrainOptions")
+    def control_plane_drain_options(self) -> Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult']:
+        return pulumi.get(self, "control_plane_drain_options")
+
+    @property
+    @pulumi.getter(name="workerConcurrency")
+    def worker_concurrency(self) -> Optional[str]:
+        return pulumi.get(self, "worker_concurrency")
+
+    @property
+    @pulumi.getter(name="workerDrainOptions")
+    def worker_drain_options(self) -> Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult']:
+        return pulumi.get(self, "worker_drain_options")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult(dict):
+    def __init__(__self__, *,
+                 grace_period: int,
+                 skip_wait_for_delete_timeout_seconds: int,
+                 timeout: int,
+                 delete_empty_dir_data: Optional[bool] = None,
+                 disable_eviction: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 force: Optional[bool] = None,
+                 ignore_daemon_sets: Optional[bool] = None,
+                 ignore_errors: Optional[bool] = None):
+        pulumi.set(__self__, "grace_period", grace_period)
+        pulumi.set(__self__, "skip_wait_for_delete_timeout_seconds", skip_wait_for_delete_timeout_seconds)
+        pulumi.set(__self__, "timeout", timeout)
+        if delete_empty_dir_data is not None:
+            pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
+        if disable_eviction is not None:
+            pulumi.set(__self__, "disable_eviction", disable_eviction)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if ignore_daemon_sets is not None:
+            pulumi.set(__self__, "ignore_daemon_sets", ignore_daemon_sets)
+        if ignore_errors is not None:
+            pulumi.set(__self__, "ignore_errors", ignore_errors)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> int:
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
+    def skip_wait_for_delete_timeout_seconds(self) -> int:
+        return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> int:
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="deleteEmptyDirData")
+    def delete_empty_dir_data(self) -> Optional[bool]:
+        return pulumi.get(self, "delete_empty_dir_data")
+
+    @property
+    @pulumi.getter(name="disableEviction")
+    def disable_eviction(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_eviction")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="ignoreDaemonSets")
+    def ignore_daemon_sets(self) -> Optional[bool]:
+        return pulumi.get(self, "ignore_daemon_sets")
+
+    @property
+    @pulumi.getter(name="ignoreErrors")
+    def ignore_errors(self) -> Optional[bool]:
+        return pulumi.get(self, "ignore_errors")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult(dict):
+    def __init__(__self__, *,
+                 grace_period: int,
+                 skip_wait_for_delete_timeout_seconds: int,
+                 timeout: int,
+                 delete_empty_dir_data: Optional[bool] = None,
+                 disable_eviction: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 force: Optional[bool] = None,
+                 ignore_daemon_sets: Optional[bool] = None,
+                 ignore_errors: Optional[bool] = None):
+        pulumi.set(__self__, "grace_period", grace_period)
+        pulumi.set(__self__, "skip_wait_for_delete_timeout_seconds", skip_wait_for_delete_timeout_seconds)
+        pulumi.set(__self__, "timeout", timeout)
+        if delete_empty_dir_data is not None:
+            pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
+        if disable_eviction is not None:
+            pulumi.set(__self__, "disable_eviction", disable_eviction)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if ignore_daemon_sets is not None:
+            pulumi.set(__self__, "ignore_daemon_sets", ignore_daemon_sets)
+        if ignore_errors is not None:
+            pulumi.set(__self__, "ignore_errors", ignore_errors)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> int:
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
+    def skip_wait_for_delete_timeout_seconds(self) -> int:
+        return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> int:
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="deleteEmptyDirData")
+    def delete_empty_dir_data(self) -> Optional[bool]:
+        return pulumi.get(self, "delete_empty_dir_data")
+
+    @property
+    @pulumi.getter(name="disableEviction")
+    def disable_eviction(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_eviction")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="ignoreDaemonSets")
+    def ignore_daemon_sets(self) -> Optional[bool]:
+        return pulumi.get(self, "ignore_daemon_sets")
+
+    @property
+    @pulumi.getter(name="ignoreErrors")
+    def ignore_errors(self) -> Optional[bool]:
+        return pulumi.get(self, "ignore_errors")
 
 
 @pulumi.output_type

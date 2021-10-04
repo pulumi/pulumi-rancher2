@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Resources;
         /// <summary>
-        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        /// Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         /// </summary>
         public readonly ImmutableArray<string> Verbs;
 

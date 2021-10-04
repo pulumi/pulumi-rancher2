@@ -132,7 +132,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_cloud_credential": {
 				Tok: makeResource(mainMod, "CloudCredential"),
 			},
-			"rancher2_cluster": {Tok: makeResource(mainMod, "Cluster")},
+			"rancher2_cluster":    {Tok: makeResource(mainMod, "Cluster")},
+			"rancher2_cluster_v2": {Tok: makeResource(mainMod, "ClusterV2")},
 			"rancher2_cluster_driver": {
 				Tok: makeResource(mainMod, "ClusterDriver"),
 			},
@@ -203,6 +204,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_global_role":         {Tok: makeResource(mainMod, "GlobalRole")},
 			"rancher2_feature":             {Tok: makeResource(mainMod, "Feature")},
 			"rancher2_secret_v2":           {Tok: makeResource(mainMod, "SecretV2")},
+			"rancher2_machine_config_v2":   {Tok: makeResource(mainMod, "MachineConfigV2")},
+			"rancher2_storage_class_v2":    {Tok: makeResource(mainMod, "StorageClassV2")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":         {Tok: makeDataSource(mainMod, "getApp")},
@@ -275,6 +278,8 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_global_dns_provider": {Tok: makeDataSource(mainMod, "getGlobalDnsProvider")},
 			"rancher2_global_role":         {Tok: makeDataSource(mainMod, "getGlobalRole")},
 			"rancher2_secret_v2":           {Tok: makeDataSource(mainMod, "getSecretV2")},
+			"rancher2_cluster_v2":          {Tok: makeDataSource(mainMod, "getClusterV2")},
+			"rancher2_storage_class_v2":    {Tok: makeDataSource(mainMod, "getStorageClassV2")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

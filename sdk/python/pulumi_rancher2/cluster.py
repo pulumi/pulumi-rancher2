@@ -17,6 +17,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
                  aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
+                 aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
                  cluster_monitoring_input: Optional[pulumi.Input['ClusterClusterMonitoringInputArgs']] = None,
@@ -35,6 +36,7 @@ class ClusterArgs:
                  enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
+                 fleet_workspace_name: Optional[pulumi.Input[str]] = None,
                  gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
                  gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
                  k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
@@ -48,7 +50,8 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
-        :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input['ClusterClusterMonitoringInputArgs'] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -62,19 +65,20 @@ class ClusterArgs:
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
-        :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
+        :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input['ClusterScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -82,6 +86,8 @@ class ClusterArgs:
             pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config is not None:
             pulumi.set(__self__, "aks_config", aks_config)
+        if aks_config_v2 is not None:
+            pulumi.set(__self__, "aks_config_v2", aks_config_v2)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if cluster_auth_endpoint is not None:
@@ -118,6 +124,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+        if fleet_workspace_name is not None:
+            pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if gke_config_v2 is not None:
@@ -155,13 +163,25 @@ class ClusterArgs:
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> Optional[pulumi.Input['ClusterAksConfigArgs']]:
         """
-        The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config")
 
     @aks_config.setter
     def aks_config(self, value: Optional[pulumi.Input['ClusterAksConfigArgs']]):
         pulumi.set(self, "aks_config", value)
+
+    @property
+    @pulumi.getter(name="aksConfigV2")
+    def aks_config_v2(self) -> Optional[pulumi.Input['ClusterAksConfigV2Args']]:
+        """
+        The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "aks_config_v2")
+
+    @aks_config_v2.setter
+    def aks_config_v2(self, value: Optional[pulumi.Input['ClusterAksConfigV2Args']]):
+        pulumi.set(self, "aks_config_v2", value)
 
     @property
     @pulumi.getter
@@ -323,7 +343,7 @@ class ClusterArgs:
     @pulumi.getter(name="eksConfig")
     def eks_config(self) -> Optional[pulumi.Input['ClusterEksConfigArgs']]:
         """
-        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "eks_config")
 
@@ -380,10 +400,22 @@ class ClusterArgs:
         pulumi.set(self, "enable_network_policy", value)
 
     @property
+    @pulumi.getter(name="fleetWorkspaceName")
+    def fleet_workspace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fleet workspace name (string)
+        """
+        return pulumi.get(self, "fleet_workspace_name")
+
+    @fleet_workspace_name.setter
+    def fleet_workspace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fleet_workspace_name", value)
+
+    @property
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> Optional[pulumi.Input['ClusterGkeConfigArgs']]:
         """
-        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "gke_config")
 
@@ -395,7 +427,7 @@ class ClusterArgs:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -407,7 +439,7 @@ class ClusterArgs:
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> Optional[pulumi.Input['ClusterK3sConfigArgs']]:
         """
-        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
@@ -443,7 +475,7 @@ class ClusterArgs:
     @pulumi.getter(name="okeConfig")
     def oke_config(self) -> Optional[pulumi.Input['ClusterOkeConfigArgs']]:
         """
-        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
@@ -455,7 +487,7 @@ class ClusterArgs:
     @pulumi.getter(name="rke2Config")
     def rke2_config(self) -> Optional[pulumi.Input['ClusterRke2ConfigArgs']]:
         """
-        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
@@ -467,7 +499,7 @@ class ClusterArgs:
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> Optional[pulumi.Input['ClusterRkeConfigArgs']]:
         """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 
@@ -505,6 +537,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
                  aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
+                 aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
@@ -527,6 +560,7 @@ class _ClusterState:
                  enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
+                 fleet_workspace_name: Optional[pulumi.Input[str]] = None,
                  gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
                  gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
                  istio_enabled: Optional[pulumi.Input[bool]] = None,
@@ -543,7 +577,8 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
-        :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -560,22 +595,23 @@ class _ClusterState:
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
+        :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
-        :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input['ClusterScheduledClusterScanArgs'] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
@@ -584,6 +620,8 @@ class _ClusterState:
             pulumi.set(__self__, "agent_env_vars", agent_env_vars)
         if aks_config is not None:
             pulumi.set(__self__, "aks_config", aks_config)
+        if aks_config_v2 is not None:
+            pulumi.set(__self__, "aks_config_v2", aks_config_v2)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if ca_cert is not None:
@@ -631,6 +669,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+        if fleet_workspace_name is not None:
+            pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if gke_config_v2 is not None:
@@ -674,13 +714,25 @@ class _ClusterState:
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> Optional[pulumi.Input['ClusterAksConfigArgs']]:
         """
-        The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config")
 
     @aks_config.setter
     def aks_config(self, value: Optional[pulumi.Input['ClusterAksConfigArgs']]):
         pulumi.set(self, "aks_config", value)
+
+    @property
+    @pulumi.getter(name="aksConfigV2")
+    def aks_config_v2(self) -> Optional[pulumi.Input['ClusterAksConfigV2Args']]:
+        """
+        The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "aks_config_v2")
+
+    @aks_config_v2.setter
+    def aks_config_v2(self, value: Optional[pulumi.Input['ClusterAksConfigV2Args']]):
+        pulumi.set(self, "aks_config_v2", value)
 
     @property
     @pulumi.getter
@@ -878,7 +930,7 @@ class _ClusterState:
     @pulumi.getter(name="eksConfig")
     def eks_config(self) -> Optional[pulumi.Input['ClusterEksConfigArgs']]:
         """
-        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "eks_config")
 
@@ -947,10 +999,22 @@ class _ClusterState:
         pulumi.set(self, "enable_network_policy", value)
 
     @property
+    @pulumi.getter(name="fleetWorkspaceName")
+    def fleet_workspace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fleet workspace name (string)
+        """
+        return pulumi.get(self, "fleet_workspace_name")
+
+    @fleet_workspace_name.setter
+    def fleet_workspace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fleet_workspace_name", value)
+
+    @property
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> Optional[pulumi.Input['ClusterGkeConfigArgs']]:
         """
-        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "gke_config")
 
@@ -962,7 +1026,7 @@ class _ClusterState:
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -986,7 +1050,7 @@ class _ClusterState:
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> Optional[pulumi.Input['ClusterK3sConfigArgs']]:
         """
-        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
@@ -1034,7 +1098,7 @@ class _ClusterState:
     @pulumi.getter(name="okeConfig")
     def oke_config(self) -> Optional[pulumi.Input['ClusterOkeConfigArgs']]:
         """
-        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
@@ -1046,7 +1110,7 @@ class _ClusterState:
     @pulumi.getter(name="rke2Config")
     def rke2_config(self) -> Optional[pulumi.Input['ClusterRke2ConfigArgs']]:
         """
-        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
@@ -1058,7 +1122,7 @@ class _ClusterState:
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> Optional[pulumi.Input['ClusterRkeConfigArgs']]:
         """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 
@@ -1110,6 +1174,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
                  aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
+                 aks_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
                  cluster_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']]] = None,
@@ -1128,6 +1193,7 @@ class Cluster(pulumi.CustomResource):
                  enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
+                 fleet_workspace_name: Optional[pulumi.Input[str]] = None,
                  gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
                  gke_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']]] = None,
                  k3s_config: Optional[pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']]] = None,
@@ -1143,6 +1209,8 @@ class Cluster(pulumi.CustomResource):
         Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 
         ## Example Usage
+
+        **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
         ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
 
         **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
@@ -1528,6 +1596,40 @@ class Cluster(pulumi.CustomResource):
                 )],
                 private_access=True,
                 public_access=True,
+            ))
+        ```
+        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above (Tech preview)
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
+            client_id="<CLIENT_ID>",
+            client_secret="<CLIENT_SECRET>",
+            subscription_id="<SUBSCRIPTION_ID>",
+        ))
+        foo = rancher2.Cluster("foo",
+            description="Terraform AKS cluster",
+            aks_config_v2=rancher2.ClusterAksConfigV2Args(
+                cloud_credential_id=foo_aks.id,
+                resource_group="<RESOURCE_GROUP>",
+                resource_location="<RESOURCE_LOCATION>",
+                dns_prefix="<DNS_PREFIX>",
+                kubernetes_version="1.21.2",
+                network_plugin="<NETWORK_PLUGIN>",
+                node_pools=[rancher2.ClusterAksConfigV2NodePoolArgs(
+                    availability_zones=[
+                        "1",
+                        "2",
+                        "3",
+                    ],
+                    name="<NODEPOOL_NAME>",
+                    count=1,
+                    orchestrator_version="1.21.2",
+                    os_disk_size_gb=128,
+                    vm_size="Standard_DS2_v2",
+                )],
             ))
         ```
 
@@ -1542,7 +1644,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
-        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -1556,19 +1659,20 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -1582,6 +1686,8 @@ class Cluster(pulumi.CustomResource):
         Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
 
         ## Example Usage
+
+        **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
         ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
 
         **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
@@ -1967,6 +2073,40 @@ class Cluster(pulumi.CustomResource):
                 )],
                 private_access=True,
                 public_access=True,
+            ))
+        ```
+        ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 or above (Tech preview)
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
+            client_id="<CLIENT_ID>",
+            client_secret="<CLIENT_SECRET>",
+            subscription_id="<SUBSCRIPTION_ID>",
+        ))
+        foo = rancher2.Cluster("foo",
+            description="Terraform AKS cluster",
+            aks_config_v2=rancher2.ClusterAksConfigV2Args(
+                cloud_credential_id=foo_aks.id,
+                resource_group="<RESOURCE_GROUP>",
+                resource_location="<RESOURCE_LOCATION>",
+                dns_prefix="<DNS_PREFIX>",
+                kubernetes_version="1.21.2",
+                network_plugin="<NETWORK_PLUGIN>",
+                node_pools=[rancher2.ClusterAksConfigV2NodePoolArgs(
+                    availability_zones=[
+                        "1",
+                        "2",
+                        "3",
+                    ],
+                    name="<NODEPOOL_NAME>",
+                    count=1,
+                    orchestrator_version="1.21.2",
+                    os_disk_size_gb=128,
+                    vm_size="Standard_DS2_v2",
+                )],
             ))
         ```
 
@@ -1995,6 +2135,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
                  aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
+                 aks_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
                  cluster_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']]] = None,
@@ -2013,6 +2154,7 @@ class Cluster(pulumi.CustomResource):
                  enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
                  enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
+                 fleet_workspace_name: Optional[pulumi.Input[str]] = None,
                  gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
                  gke_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']]] = None,
                  k3s_config: Optional[pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']]] = None,
@@ -2037,6 +2179,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["agent_env_vars"] = agent_env_vars
             __props__.__dict__["aks_config"] = aks_config
+            __props__.__dict__["aks_config_v2"] = aks_config_v2
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
             __props__.__dict__["cluster_monitoring_input"] = cluster_monitoring_input
@@ -2055,6 +2198,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_cluster_alerting"] = enable_cluster_alerting
             __props__.__dict__["enable_cluster_monitoring"] = enable_cluster_monitoring
             __props__.__dict__["enable_network_policy"] = enable_network_policy
+            __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
             __props__.__dict__["gke_config"] = gke_config
             __props__.__dict__["gke_config_v2"] = gke_config_v2
             __props__.__dict__["k3s_config"] = k3s_config
@@ -2084,6 +2228,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]]] = None,
             aks_config: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']]] = None,
+            aks_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
             cluster_auth_endpoint: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']]] = None,
@@ -2106,6 +2251,7 @@ class Cluster(pulumi.CustomResource):
             enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
             enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
             enable_network_policy: Optional[pulumi.Input[bool]] = None,
+            fleet_workspace_name: Optional[pulumi.Input[str]] = None,
             gke_config: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']]] = None,
             gke_config_v2: Optional[pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']]] = None,
             istio_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2127,7 +2273,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAgentEnvVarArgs']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. Just for Rancher v2.5.6 and above (list)
-        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster registration token object (map)
         :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -2144,22 +2291,23 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] desired_auth_image: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] docker_root_dir: Desired auth image. Just for Rancher v2.3.x and above (string)
         :param pulumi.Input[str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
-        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterEksConfigArgs']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterEksConfigV2Args']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         :param pulumi.Input[bool] enable_cluster_alerting: Enable built-in cluster alerting (bool)
         :param pulumi.Input[bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         :param pulumi.Input[bool] enable_cluster_monitoring: Enable built-in cluster monitoring (bool)
         :param pulumi.Input[bool] enable_network_policy: Enable project network isolation (bool)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        :param pulumi.Input[str] fleet_workspace_name: Fleet workspace name (string)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigArgs']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterGkeConfigV2Args']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         :param pulumi.Input[bool] istio_enabled: (Computed) Is istio enabled at cluster? Just for Rancher v2.3.x and above (bool)
-        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterK3sConfigArgs']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster registration token object (map)
         :param pulumi.Input[str] name: Name of cluster registration token (string)
-        :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterOkeConfigArgs']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRke2ConfigArgs']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        :param pulumi.Input[pulumi.InputType['ClusterRkeConfigArgs']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterScheduledClusterScanArgs']] scheduled_cluster_scan: Cluster scheduled cis scan. For Rancher v2.4.0 or above (List maxitems:1)
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
@@ -2170,6 +2318,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["agent_env_vars"] = agent_env_vars
         __props__.__dict__["aks_config"] = aks_config
+        __props__.__dict__["aks_config_v2"] = aks_config_v2
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["ca_cert"] = ca_cert
         __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
@@ -2192,6 +2341,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_cluster_istio"] = enable_cluster_istio
         __props__.__dict__["enable_cluster_monitoring"] = enable_cluster_monitoring
         __props__.__dict__["enable_network_policy"] = enable_network_policy
+        __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
         __props__.__dict__["gke_config"] = gke_config
         __props__.__dict__["gke_config_v2"] = gke_config_v2
         __props__.__dict__["istio_enabled"] = istio_enabled
@@ -2219,9 +2369,17 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="aksConfig")
     def aks_config(self) -> pulumi.Output[Optional['outputs.ClusterAksConfig']]:
         """
-        The Azure AKS configuration for `aks` Clusters. Conflicts with `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config")
+
+    @property
+    @pulumi.getter(name="aksConfigV2")
+    def aks_config_v2(self) -> pulumi.Output[Optional['outputs.ClusterAksConfigV2']]:
+        """
+        The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "aks_config_v2")
 
     @property
     @pulumi.getter
@@ -2355,13 +2513,13 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="eksConfig")
     def eks_config(self) -> pulumi.Output[Optional['outputs.ClusterEksConfig']]:
         """
-        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+        The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "eks_config")
 
     @property
     @pulumi.getter(name="eksConfigV2")
-    def eks_config_v2(self) -> pulumi.Output[Optional['outputs.ClusterEksConfigV2']]:
+    def eks_config_v2(self) -> pulumi.Output['outputs.ClusterEksConfigV2']:
         """
         The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x or above (list maxitems:1)
         """
@@ -2400,10 +2558,18 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "enable_network_policy")
 
     @property
+    @pulumi.getter(name="fleetWorkspaceName")
+    def fleet_workspace_name(self) -> pulumi.Output[str]:
+        """
+        Fleet workspace name (string)
+        """
+        return pulumi.get(self, "fleet_workspace_name")
+
+    @property
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> pulumi.Output[Optional['outputs.ClusterGkeConfig']]:
         """
-        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "gke_config")
 
@@ -2411,7 +2577,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="gkeConfigV2")
     def gke_config_v2(self) -> pulumi.Output[Optional['outputs.ClusterGkeConfigV2']]:
         """
-        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
+        The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 or above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
@@ -2427,7 +2593,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> pulumi.Output['outputs.ClusterK3sConfig']:
         """
-        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
@@ -2459,7 +2625,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="okeConfig")
     def oke_config(self) -> pulumi.Output[Optional['outputs.ClusterOkeConfig']]:
         """
-        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
@@ -2467,7 +2633,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="rke2Config")
     def rke2_config(self) -> pulumi.Output['outputs.ClusterRke2Config']:
         """
-        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+        The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
@@ -2475,7 +2641,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="rkeConfig")
     def rke_config(self) -> pulumi.Output['outputs.ClusterRkeConfig']:
         """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 

@@ -64,6 +64,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
     public readonly servers!: pulumi.Output<string[]>;
     public readonly serviceAccountPassword!: pulumi.Output<string>;
     public readonly serviceAccountUsername!: pulumi.Output<string>;
+    public readonly startTls!: pulumi.Output<boolean>;
     public readonly testPassword!: pulumi.Output<string>;
     public readonly testUsername!: pulumi.Output<string>;
     public readonly tls!: pulumi.Output<boolean>;
@@ -115,6 +116,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
             inputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = state ? state.serviceAccountUsername : undefined;
+            inputs["startTls"] = state ? state.startTls : undefined;
             inputs["testPassword"] = state ? state.testPassword : undefined;
             inputs["testUsername"] = state ? state.testUsername : undefined;
             inputs["tls"] = state ? state.tls : undefined;
@@ -168,6 +170,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
             inputs["servers"] = args ? args.servers : undefined;
             inputs["serviceAccountPassword"] = args ? args.serviceAccountPassword : undefined;
             inputs["serviceAccountUsername"] = args ? args.serviceAccountUsername : undefined;
+            inputs["startTls"] = args ? args.startTls : undefined;
             inputs["testPassword"] = args ? args.testPassword : undefined;
             inputs["testUsername"] = args ? args.testUsername : undefined;
             inputs["tls"] = args ? args.tls : undefined;
@@ -221,6 +224,7 @@ export interface ActiveDirectoryState {
     readonly servers?: pulumi.Input<pulumi.Input<string>[]>;
     readonly serviceAccountPassword?: pulumi.Input<string>;
     readonly serviceAccountUsername?: pulumi.Input<string>;
+    readonly startTls?: pulumi.Input<boolean>;
     readonly testPassword?: pulumi.Input<string>;
     readonly testUsername?: pulumi.Input<string>;
     readonly tls?: pulumi.Input<boolean>;
@@ -266,6 +270,7 @@ export interface ActiveDirectoryArgs {
     readonly servers: pulumi.Input<pulumi.Input<string>[]>;
     readonly serviceAccountPassword: pulumi.Input<string>;
     readonly serviceAccountUsername: pulumi.Input<string>;
+    readonly startTls?: pulumi.Input<boolean>;
     readonly testPassword: pulumi.Input<string>;
     readonly testUsername: pulumi.Input<string>;
     readonly tls?: pulumi.Input<boolean>;

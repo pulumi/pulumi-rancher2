@@ -74,6 +74,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterSync{}
 	case "rancher2:index/clusterTemplate:ClusterTemplate":
 		r = &ClusterTemplate{}
+	case "rancher2:index/clusterV2:ClusterV2":
+		r = &ClusterV2{}
 	case "rancher2:index/etcdBackup:EtcdBackup":
 		r = &EtcdBackup{}
 	case "rancher2:index/feature:Feature":
@@ -86,6 +88,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GlobalRole{}
 	case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
 		r = &GlobalRoleBinding{}
+	case "rancher2:index/machineConfigV2:MachineConfigV2":
+		r = &MachineConfigV2{}
 	case "rancher2:index/multiClusterApp:MultiClusterApp":
 		r = &MultiClusterApp{}
 	case "rancher2:index/namespace:Namespace":
@@ -122,6 +126,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecretV2{}
 	case "rancher2:index/setting:Setting":
 		r = &Setting{}
+	case "rancher2:index/storageClassV2:StorageClassV2":
+		r = &StorageClassV2{}
 	case "rancher2:index/token:Token":
 		r = &Token{}
 	case "rancher2:index/user:User":
@@ -294,6 +300,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
+		"index/clusterV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
 		"index/etcdBackup",
 		&module{version},
 	)
@@ -320,6 +331,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/globalRoleBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/machineConfigV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -410,6 +426,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/setting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/storageClassV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

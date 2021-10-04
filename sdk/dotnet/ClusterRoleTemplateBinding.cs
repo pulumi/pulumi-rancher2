@@ -61,7 +61,7 @@ namespace Pulumi.Rancher2
         /// The group ID to assign cluster role template binding (string)
         /// </summary>
         [Output("groupId")]
-        public Output<string?> GroupId { get; private set; } = null!;
+        public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
         /// The group_principal ID to assign cluster role template binding (string)
@@ -91,7 +91,7 @@ namespace Pulumi.Rancher2
         /// The user ID to assign cluster role template binding (string)
         /// </summary>
         [Output("userId")]
-        public Output<string?> UserId { get; private set; } = null!;
+        public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
         /// The user_principal ID to assign cluster role template binding (string)

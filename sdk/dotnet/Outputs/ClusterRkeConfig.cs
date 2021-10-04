@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// Kubernetes cluster monitoring (list maxitems:1)
+        /// Is AKS cluster monitoring enabled? (bool)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoring? Monitoring;
         /// <summary>

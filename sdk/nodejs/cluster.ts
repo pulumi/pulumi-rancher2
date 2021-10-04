@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  * Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
  *
  * ## Example Usage
+ *
+ * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enableClusterMonitoring = false`, `cloudProvider {}`, `name = ""`
  * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
  *
  * **Note** Cluster monitoring version `0.2.0` or above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
@@ -413,6 +415,41 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 or above (Tech preview)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo_aks = new rancher2.CloudCredential("foo-aks", {azureCredentialConfig: {
+ *     clientId: "<CLIENT_ID>",
+ *     clientSecret: "<CLIENT_SECRET>",
+ *     subscriptionId: "<SUBSCRIPTION_ID>",
+ * }});
+ * const foo = new rancher2.Cluster("foo", {
+ *     description: "Terraform AKS cluster",
+ *     aksConfigV2: {
+ *         cloudCredentialId: foo_aks.id,
+ *         resourceGroup: "<RESOURCE_GROUP>",
+ *         resourceLocation: "<RESOURCE_LOCATION>",
+ *         dnsPrefix: "<DNS_PREFIX>",
+ *         kubernetesVersion: "1.21.2",
+ *         networkPlugin: "<NETWORK_PLUGIN>",
+ *         nodePools: [{
+ *             availabilityZones: [
+ *                 "1",
+ *                 "2",
+ *                 "3",
+ *             ],
+ *             name: "<NODEPOOL_NAME>",
+ *             count: 1,
+ *             orchestratorVersion: "1.21.2",
+ *             osDiskSizeGb: 128,
+ *             vmSize: "Standard_DS2_v2",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -455,9 +492,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly agentEnvVars!: pulumi.Output<outputs.ClusterAgentEnvVar[] | undefined>;
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly aksConfig!: pulumi.Output<outputs.ClusterAksConfig | undefined>;
+    /**
+     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     */
+    public readonly aksConfigV2!: pulumi.Output<outputs.ClusterAksConfigV2 | undefined>;
     /**
      * Annotations for cluster registration token object (map)
      */
@@ -523,13 +564,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly driver!: pulumi.Output<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly eksConfig!: pulumi.Output<outputs.ClusterEksConfig | undefined>;
     /**
      * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x or above (list maxitems:1)
      */
-    public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2 | undefined>;
+    public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2>;
     /**
      * Enable built-in cluster alerting (bool)
      */
@@ -549,11 +590,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * Fleet workspace name (string)
+     */
+    public readonly fleetWorkspaceName!: pulumi.Output<string>;
+    /**
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly gkeConfig!: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
      */
     public readonly gkeConfigV2!: pulumi.Output<outputs.ClusterGkeConfigV2 | undefined>;
     /**
@@ -561,7 +606,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly istioEnabled!: pulumi.Output<boolean>;
     /**
-     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly k3sConfig!: pulumi.Output<outputs.ClusterK3sConfig>;
     /**
@@ -577,15 +622,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly okeConfig!: pulumi.Output<outputs.ClusterOkeConfig | undefined>;
     /**
-     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     public readonly rke2Config!: pulumi.Output<outputs.ClusterRke2Config>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
     public readonly rkeConfig!: pulumi.Output<outputs.ClusterRkeConfig>;
     /**
@@ -616,6 +661,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             inputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
             inputs["aksConfig"] = state ? state.aksConfig : undefined;
+            inputs["aksConfigV2"] = state ? state.aksConfigV2 : undefined;
             inputs["annotations"] = state ? state.annotations : undefined;
             inputs["caCert"] = state ? state.caCert : undefined;
             inputs["clusterAuthEndpoint"] = state ? state.clusterAuthEndpoint : undefined;
@@ -638,6 +684,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableClusterIstio"] = state ? state.enableClusterIstio : undefined;
             inputs["enableClusterMonitoring"] = state ? state.enableClusterMonitoring : undefined;
             inputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
+            inputs["fleetWorkspaceName"] = state ? state.fleetWorkspaceName : undefined;
             inputs["gkeConfig"] = state ? state.gkeConfig : undefined;
             inputs["gkeConfigV2"] = state ? state.gkeConfigV2 : undefined;
             inputs["istioEnabled"] = state ? state.istioEnabled : undefined;
@@ -655,6 +702,7 @@ export class Cluster extends pulumi.CustomResource {
             const args = argsOrState as ClusterArgs | undefined;
             inputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
             inputs["aksConfig"] = args ? args.aksConfig : undefined;
+            inputs["aksConfigV2"] = args ? args.aksConfigV2 : undefined;
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["clusterAuthEndpoint"] = args ? args.clusterAuthEndpoint : undefined;
             inputs["clusterMonitoringInput"] = args ? args.clusterMonitoringInput : undefined;
@@ -673,6 +721,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["enableClusterAlerting"] = args ? args.enableClusterAlerting : undefined;
             inputs["enableClusterMonitoring"] = args ? args.enableClusterMonitoring : undefined;
             inputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
+            inputs["fleetWorkspaceName"] = args ? args.fleetWorkspaceName : undefined;
             inputs["gkeConfig"] = args ? args.gkeConfig : undefined;
             inputs["gkeConfigV2"] = args ? args.gkeConfigV2 : undefined;
             inputs["k3sConfig"] = args ? args.k3sConfig : undefined;
@@ -707,9 +756,13 @@ export interface ClusterState {
      */
     readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfig?: pulumi.Input<inputs.ClusterAksConfig>;
+    /**
+     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     */
+    readonly aksConfigV2?: pulumi.Input<inputs.ClusterAksConfigV2>;
     /**
      * Annotations for cluster registration token object (map)
      */
@@ -775,7 +828,7 @@ export interface ClusterState {
      */
     readonly driver?: pulumi.Input<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
@@ -801,11 +854,15 @@ export interface ClusterState {
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * Fleet workspace name (string)
+     */
+    readonly fleetWorkspaceName?: pulumi.Input<string>;
+    /**
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
      */
     readonly gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
     /**
@@ -813,7 +870,7 @@ export interface ClusterState {
      */
     readonly istioEnabled?: pulumi.Input<boolean>;
     /**
-     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
@@ -829,15 +886,15 @@ export interface ClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly okeConfig?: pulumi.Input<inputs.ClusterOkeConfig>;
     /**
-     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly rke2Config?: pulumi.Input<inputs.ClusterRke2Config>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
     /**
@@ -863,9 +920,13 @@ export interface ClusterArgs {
      */
     readonly agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterAgentEnvVar>[]>;
     /**
-     * The Azure AKS configuration for `aks` Clusters. Conflicts with `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfig?: pulumi.Input<inputs.ClusterAksConfig>;
+    /**
+     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     */
+    readonly aksConfigV2?: pulumi.Input<inputs.ClusterAksConfigV2>;
     /**
      * Annotations for cluster registration token object (map)
      */
@@ -919,7 +980,7 @@ export interface ClusterArgs {
      */
     readonly driver?: pulumi.Input<string>;
     /**
-     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly eksConfig?: pulumi.Input<inputs.ClusterEksConfig>;
     /**
@@ -939,15 +1000,19 @@ export interface ClusterArgs {
      */
     readonly enableNetworkPolicy?: pulumi.Input<boolean>;
     /**
-     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * Fleet workspace name (string)
+     */
+    readonly fleetWorkspaceName?: pulumi.Input<string>;
+    /**
+     * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly gkeConfig?: pulumi.Input<inputs.ClusterGkeConfig>;
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 or above (list maxitems:1)
      */
     readonly gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
     /**
-     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly k3sConfig?: pulumi.Input<inputs.ClusterK3sConfig>;
     /**
@@ -959,15 +1024,15 @@ export interface ClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly okeConfig?: pulumi.Input<inputs.ClusterOkeConfig>;
     /**
-     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly rke2Config?: pulumi.Input<inputs.ClusterRke2Config>;
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig?: pulumi.Input<inputs.ClusterRkeConfig>;
     /**

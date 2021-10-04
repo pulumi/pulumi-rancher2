@@ -32,6 +32,7 @@ export * from "./clusterLogging";
 export * from "./clusterRoleTemplateBinding";
 export * from "./clusterSync";
 export * from "./clusterTemplate";
+export * from "./clusterV2";
 export * from "./etcdBackup";
 export * from "./feature";
 export * from "./getApp";
@@ -47,6 +48,7 @@ export * from "./getClusterLogging";
 export * from "./getClusterRoleTemplateBinding";
 export * from "./getClusterScan";
 export * from "./getClusterTemplate";
+export * from "./getClusterV2";
 export * from "./getEtcdBackup";
 export * from "./getGlobalDnsProvider";
 export * from "./getGlobalRole";
@@ -69,11 +71,13 @@ export * from "./getRoleTemplate";
 export * from "./getSecret";
 export * from "./getSecretV2";
 export * from "./getSetting";
+export * from "./getStorageClassV2";
 export * from "./getUser";
 export * from "./globalDns";
 export * from "./globalDnsProvider";
 export * from "./globalRole";
 export * from "./globalRoleBinding";
+export * from "./machineConfigV2";
 export * from "./multiClusterApp";
 export * from "./namespace";
 export * from "./nodeDriver";
@@ -93,6 +97,7 @@ export * from "./roleTemplate";
 export * from "./secret";
 export * from "./secretV2";
 export * from "./setting";
+export * from "./storageClassV2";
 export * from "./token";
 export * from "./user";
 
@@ -133,12 +138,14 @@ import { ClusterLogging } from "./clusterLogging";
 import { ClusterRoleTemplateBinding } from "./clusterRoleTemplateBinding";
 import { ClusterSync } from "./clusterSync";
 import { ClusterTemplate } from "./clusterTemplate";
+import { ClusterV2 } from "./clusterV2";
 import { EtcdBackup } from "./etcdBackup";
 import { Feature } from "./feature";
 import { GlobalDns } from "./globalDns";
 import { GlobalDnsProvider } from "./globalDnsProvider";
 import { GlobalRole } from "./globalRole";
 import { GlobalRoleBinding } from "./globalRoleBinding";
+import { MachineConfigV2 } from "./machineConfigV2";
 import { MultiClusterApp } from "./multiClusterApp";
 import { Namespace } from "./namespace";
 import { NodeDriver } from "./nodeDriver";
@@ -157,6 +164,7 @@ import { RoleTemplate } from "./roleTemplate";
 import { Secret } from "./secret";
 import { SecretV2 } from "./secretV2";
 import { Setting } from "./setting";
+import { StorageClassV2 } from "./storageClassV2";
 import { Token } from "./token";
 import { User } from "./user";
 
@@ -218,6 +226,8 @@ const _module = {
                 return new ClusterSync(name, <any>undefined, { urn })
             case "rancher2:index/clusterTemplate:ClusterTemplate":
                 return new ClusterTemplate(name, <any>undefined, { urn })
+            case "rancher2:index/clusterV2:ClusterV2":
+                return new ClusterV2(name, <any>undefined, { urn })
             case "rancher2:index/etcdBackup:EtcdBackup":
                 return new EtcdBackup(name, <any>undefined, { urn })
             case "rancher2:index/feature:Feature":
@@ -230,6 +240,8 @@ const _module = {
                 return new GlobalRole(name, <any>undefined, { urn })
             case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
                 return new GlobalRoleBinding(name, <any>undefined, { urn })
+            case "rancher2:index/machineConfigV2:MachineConfigV2":
+                return new MachineConfigV2(name, <any>undefined, { urn })
             case "rancher2:index/multiClusterApp:MultiClusterApp":
                 return new MultiClusterApp(name, <any>undefined, { urn })
             case "rancher2:index/namespace:Namespace":
@@ -266,6 +278,8 @@ const _module = {
                 return new SecretV2(name, <any>undefined, { urn })
             case "rancher2:index/setting:Setting":
                 return new Setting(name, <any>undefined, { urn })
+            case "rancher2:index/storageClassV2:StorageClassV2":
+                return new StorageClassV2(name, <any>undefined, { urn })
             case "rancher2:index/token:Token":
                 return new Token(name, <any>undefined, { urn })
             case "rancher2:index/user:User":
@@ -302,12 +316,14 @@ pulumi.runtime.registerResourceModule("rancher2", "index/clusterLogging", _modul
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/clusterV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDns", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalDnsProvider", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRole", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/machineConfigV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/multiClusterApp", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
@@ -326,6 +342,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/roleTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secretV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/setting", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/storageClassV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/token", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/user", _module)
 

@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _verbs;
 
         /// <summary>
-        /// Policy rule verbs. `create`, `delete`, `get`, `list`, `patch`, `update`, `view`, `watch` and `*` values are supported (list)
+        /// Policy rule verbs. `create`, `delete`, `deletecollection`, `get`, `list`, `patch`, `update`, `view`, `watch`, `own` and `*` values are supported (list)
         /// </summary>
         public InputList<string> Verbs
         {

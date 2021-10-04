@@ -37,6 +37,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnableKubernetesDashboard { get; set; }
 
         /// <summary>
+        /// Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` Just for Rancher v2.5.10 or above (bool)
+        /// </summary>
+        [Input("enablePrivateControlPlane")]
+        public Input<bool>? EnablePrivateControlPlane { get; set; }
+
+        /// <summary>
         /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
         /// </summary>
         [Input("enablePrivateNodes")]
@@ -53,6 +59,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("flexOcpus")]
         public Input<int>? FlexOcpus { get; set; }
+
+        /// <summary>
+        /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. Just for Rancher v2.5.9 or above (string)
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)

@@ -48,6 +48,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("insecureCommand")]
         public Input<string>? InsecureCommand { get; set; }
 
+        /// <summary>
+        /// Insecure node command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("insecureNodeCommand")]
+        public Input<string>? InsecureNodeCommand { get; set; }
+
+        /// <summary>
+        /// Insecure windows command to execute in a imported k8s cluster (string)
+        /// </summary>
+        [Input("insecureWindowsNodeCommand")]
+        public Input<string>? InsecureWindowsNodeCommand { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 

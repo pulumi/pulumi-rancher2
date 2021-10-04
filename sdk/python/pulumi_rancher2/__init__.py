@@ -30,6 +30,7 @@ from .cluster_logging import *
 from .cluster_role_template_binding import *
 from .cluster_sync import *
 from .cluster_template import *
+from .cluster_v2 import *
 from .etcd_backup import *
 from .feature import *
 from .get_app import *
@@ -45,6 +46,7 @@ from .get_cluster_logging import *
 from .get_cluster_role_template_binding import *
 from .get_cluster_scan import *
 from .get_cluster_template import *
+from .get_cluster_v2 import *
 from .get_etcd_backup import *
 from .get_global_dns_provider import *
 from .get_global_role import *
@@ -67,11 +69,13 @@ from .get_role_template import *
 from .get_secret import *
 from .get_secret_v2 import *
 from .get_setting import *
+from .get_storage_class_v2 import *
 from .get_user import *
 from .global_dns import *
 from .global_dns_provider import *
 from .global_role import *
 from .global_role_binding import *
+from .machine_config_v2 import *
 from .multi_cluster_app import *
 from .namespace import *
 from .node_driver import *
@@ -91,6 +95,7 @@ from .role_template import *
 from .secret import *
 from .secret_v2 import *
 from .setting import *
+from .storage_class_v2 import *
 from .token import *
 from .user import *
 from ._inputs import *
@@ -167,6 +172,8 @@ def _register_module():
                 return ClusterSync(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/clusterTemplate:ClusterTemplate":
                 return ClusterTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/clusterV2:ClusterV2":
+                return ClusterV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/etcdBackup:EtcdBackup":
                 return EtcdBackup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/feature:Feature":
@@ -179,6 +186,8 @@ def _register_module():
                 return GlobalRole(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/globalRoleBinding:GlobalRoleBinding":
                 return GlobalRoleBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/machineConfigV2:MachineConfigV2":
+                return MachineConfigV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/multiClusterApp:MultiClusterApp":
                 return MultiClusterApp(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/namespace:Namespace":
@@ -215,6 +224,8 @@ def _register_module():
                 return SecretV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/setting:Setting":
                 return Setting(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "rancher2:index/storageClassV2:StorageClassV2":
+                return StorageClassV2(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/token:Token":
                 return Token(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "rancher2:index/user:User":
@@ -251,12 +262,14 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/clusterRoleTemplateBinding", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/clusterSync", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/clusterTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/clusterV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/etcdBackup", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/feature", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalDns", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalDnsProvider", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalRole", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/globalRoleBinding", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/machineConfigV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/multiClusterApp", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/namespace", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/nodeDriver", _module_instance)
@@ -275,6 +288,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("rancher2", "index/secret", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/secretV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/setting", _module_instance)
+    pulumi.runtime.register_resource_module("rancher2", "index/storageClassV2", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/token", _module_instance)
     pulumi.runtime.register_resource_module("rancher2", "index/user", _module_instance)
 

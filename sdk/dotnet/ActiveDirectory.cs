@@ -85,6 +85,9 @@ namespace Pulumi.Rancher2
         [Output("serviceAccountUsername")]
         public Output<string> ServiceAccountUsername { get; private set; } = null!;
 
+        [Output("startTls")]
+        public Output<bool> StartTls { get; private set; } = null!;
+
         [Output("testPassword")]
         public Output<string> TestPassword { get; private set; } = null!;
 
@@ -258,6 +261,9 @@ namespace Pulumi.Rancher2
         [Input("serviceAccountUsername", required: true)]
         public Input<string> ServiceAccountUsername { get; set; } = null!;
 
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
+
         [Input("testPassword", required: true)]
         public Input<string> TestPassword { get; set; } = null!;
 
@@ -391,6 +397,9 @@ namespace Pulumi.Rancher2
 
         [Input("serviceAccountUsername")]
         public Input<string>? ServiceAccountUsername { get; set; }
+
+        [Input("startTls")]
+        public Input<bool>? StartTls { get; set; }
 
         [Input("testPassword")]
         public Input<string>? TestPassword { get; set; }

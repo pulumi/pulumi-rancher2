@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The EKS cluster tags (map)
+        /// The GKE node config tags (List)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 
